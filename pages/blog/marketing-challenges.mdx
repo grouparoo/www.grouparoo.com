@@ -1,0 +1,64 @@
+---
+title: "Common Challenges for Marketing at Tech Companies"
+date: "2020-09-11"
+author: "Andy Jih"
+layout: "blogPage"
+pullQuote: "We interviewed 100 marketers about their martech challenges. Here's what we learned."
+tags: [marketing]
+---
+
+import Image from "../../components/blog/image";
+
+# Martech Challenges in 2020
+
+In the process of starting Grouparoo, we interviewed a hundred people who work in Marketing at various levels and roles. They spanned levels from independent contributors to executives and covered a wide range of marketing disciplines including Marketing Ops, Marketing Automation, Product Marketing, and more. Across our interviews, we heard about a diversity of experiences, but we heard a few common themes:
+
+1. Marketing’s scope is increasing
+2. Marketing is becoming more and more technical
+3. Marketers often don’t get the support they need from other teams
+
+While every role and level experienced this phenomenon slightly differently, the experiences were similar. I’ll being sharing some highlights from those interviews.
+
+## Marketing’s scope is ever-increasing
+
+We’ve learned from marketers who have been in the tech industry for a while that their scope is continually expanding and increasing. The number of channels that marketers responsible for has grown, and by extension, the number of tools that they need to use to manage all of those channels has also grown. Here’s a diagram showing all of the different Marketing Technology (Martech) providers that exist per [chiefmartech.com](https://chiefmartec.com/2020/04/marketing-technology-landscape-2020-martech-5000/):
+
+<Image
+  centered
+  maxHeight={400}
+  source="https://chiefmartec.com/2020/04/marketing-technology-landscape-2020-martech-5000/"
+  alt="martech 2020"
+  src={require("../../public/posts/marketing-challenges/martech2020.png")}
+/>
+
+Marketers also own more parts of the funnel now. Historically, marketers were responsible primarily for defining the company’s brand and driving awareness. Now, they’re increasingly responsible for qualifying leads, gathering emails, ensuring these leads convert, and nurturing and retaining those customers for the long-term.
+
+## Marketing is becoming more technical
+
+As the number of channels has increased, the tools to support all of those channels has also increased. The skills required to run campaigns across all of these channels and analyzing the results of these campaigns requires more and more technical abilities.
+
+As an organization grows, one of the most important aspects of marketing is segmenting your users correctly before you start any campaigns. If you can’t segment your customer base appropriately, the only options you have left are about how often you can contact your entire user list.
+
+For technology companies, segmenting users isn’t just as simple as segmenting them based on their demographic information. The best kind of segmentation takes into account how your customers use your product, their purchase history, and all other kinds of data that exist in your data warehouse and elsewhere. Being able to join all of that data from various places, segment your users appropriately, and then take actions is super tough. All of this often requires someone with SQL skills to help you out.
+
+## Marketers often don’t get the support they need from other teams
+
+> “It’s **incapacitating** to have to rely on someone else. Third party tools are a **source of tension.** Product & Eng is saying over and over to you that your function isn’t important.” - VP of Marketing, [TaskRabbit](http://taskrabbit.com)
+
+As Marketing is using more and more tools, Engineering and Product teams are needed to evaluate, prioritize, and integrate these tools. We’ve heard of some horror stories where a Marketing team had signed and was paying for Braze for over a year, but the Engineering team hadn’t integrated it yet. So, the Marketing team hadn’t sent a single email in over a year.
+
+> “**No one likes working on marketing integrations.** The systems are brittle, it takes a long time, and it’s hard to know if you got the integration right.” - Engineering Manager, [Guideline](http://guideline.com)
+
+Part of the issue is that very few engineers join a company because they’re excited to build an integration with Marketo. Engineers are usually excited about building and scaling the core product. As a result, this kind of work is often de-prioritized and pushed to next week, next sprint, next quarter, etc.
+
+> “**It’s like pulling teeth** to get engineers to implement new events in Segment.” - Marketing Manager, [Molekule](http://molekule.com)
+
+Even with tools like Segment that claim to be for marketers, the reality is that marketers and other teams are still dependent on engineers when new events need to be instrumented in the product.
+
+> “Sending a new piece of data from Redshift to Marketo takes anywhere from 4-6 weeks. To work around delays, we manually export CSVs.” - Growth Manager, [Stripe](http://stripe.com)
+
+Because of these slow processes, marketers and others often fall back to what’s tried-and-true: spreadsheets and CSVs. Even though CSVs and spreadsheets aren’t the most long-term scalable solution, they get the job done when data isn’t easily strung together.
+
+## How does one solve these problems?
+
+Given everything I've described, while a lot of these challenges are rooted in organizational misalignment, these challenges can also be solved through technology. Here at Grouparoo, we've taken all of these learnings to build a framework and product that makes it easier for engineers to install so they don't have to worry about building and maintaining all of these integrations. Additionally, our product is architected to pull data directly from your core data sources without needing future engineering support. Feel free to share this [blog post](http://grouparoo.com/blog/marketing-challenges) with your engineering team so they can try installing Grouparoo and [reach out](http://grouparoo.com/meet) if you want to learn more.

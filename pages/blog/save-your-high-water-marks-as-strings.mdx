@@ -1,0 +1,64 @@
+---
+title: "Save your High Water Marks as Strings"
+date: "2020-09-14"
+author: "Evan Tahler"
+layout: "blogPage"
+pullQuote: "Asking the database to return the High Water Mark as a string prevents a number of bugs."
+tags: [connections, engineering, notes]
+---
+
+import Image from "../../components/blog/image";
+
+In Brian’s post, [Building a Sync Engine](/blog/building-a-sync-engine), he talks about the value of using a **High Water Mark** to keep track of the latest bit of data you’ve imported. This approach is often a better pattern than using `Limit` and `Offset`, especially when the underlying data might be changing. In this post, I’m gong to dive even deeper into this topic, and suggest that you should be storing you High Water Marks as strings whenever possible.
+
+## The Hidden Problem
+
+Consider the following query:
+
+```sql
+SELECT * FROM USERS WHERE UPDATED_AT >= '2020-08-27 12:00:00' ORDER BY updated_at ASC LIMIT 10
+```
+
+Here, we are asking for the next 10 users who have been updated since noon on August 27th. This query is a good implementation of using a High Water Mark to remember the `updated_at` timestamp of the last User we saw and to get the next batch. In this example, the previous value of our High Water Mark was `2020-08-27 12:00:00`.
+
+There are a number of scenarios in which `2020-08-27 12:00:00` might actually not be the correct _string representation_ of the High Water Mark. The types of bugs to watch out for fall into 2 main categories: `stringification` and `resolution`.
+
+### Stringification Bugs
+
+The `stringification` camp of bugs has to do with converting a "date" or "time" object into a string. We are required to use strings when writing SQL queries, so at some point, either you or your [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping) will need to convert an Object to a String. In just Javascript there are many ways to do this: `new Date().toString()`, `new Date().getTime().toString()`, `new Date().toISOString()`, etc - all of which will generate different strings.
+
+More insidiously, there are other issues hidden in the `stringification` category - those revolving around Timezones and clock drift. When your code builds the `Date` object from response from your database. Which timezone will it be using - the Timezone of your Database or the Timezone of your Application? Do you know if the database is returning timestamps in _its_ timezone or a more global representation of time (ie: `Timestamp with Timezone` in Postgres). Are the results the same in Staging vs Production... and does your ORM know the difference?
+
+### Resolution Bugs
+
+The `resolution` class of problems is less dangerous than the `stringification` problems, but it can result in duplicated reads and therefore slower imports. Consider these rows in Postgres:
+
+<Image
+  maxHeight={200}
+  alt="Getting your API Key and Secret"
+  src={require("../../public/posts/save-your-high-water-marks-as-strings/database.png")}
+/>
+
+We’ve got values of `2020-07-25 12:18:56.831` for `updated_at`– that’s precision down to fractions of a second! However, that data is lost when the [ `pg`](https://node-postgres.com/) package reads that row and casts it to a `new Date()`. When we eventually build a string out of it to make our next query, we only get `2020-07-25 12:18:56` back. If you follow the advice in our previous post to always compare with equality (`=>`) you won’t skip any rows, but you’ll read the same row back again each time.
+
+## The Solution
+
+So what’s the solution here? Knowing that we will need to convert our High Water Mark to and from a string type, **we should ask the database to do the string conversion for us**. This approach is called "casting" - converting data from one type format to another, and the Database is the best place to do it.
+
+Casting the High Water Mark to a string at the database ensures:
+
+- The string representation of the High Water Mark is in a format the database can accept.
+- The string representation of the High Water Mark is in the timezone the database is already using/assuming.
+- The string representation of the High Water Mark is represented with the maximum accuracy the database can use.
+
+This turns our example query into the following:
+
+```sql
+# Postgres
+SELECT *, updated_at::text as __hwm FROM USERS WHERE UPDATED_AT >= '2020-08-27 12:00:00' ORDER BY updated_at ASC LIMIT 10
+
+# MySQL
+SELECT *, CAST(updated_at as CHAR) as __hwm FROM USERS WHERE UPDATED_AT >= '2020-08-27 12:00:00' ORDER BY updated_at ASC LIMIT 10
+```
+
+We ask the database both for all the data about the rows we are selecting, and we ask for `updated_at` to be _cast_ as a string for us, returned as `__hwm`. We can now use `__hwm` directly in subsequent queries without any of the problems listed above.

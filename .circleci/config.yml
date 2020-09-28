@@ -1,0 +1,99 @@
+version: 2
+
+# Define common steps all parts of the test workflow use
+references:
+  ignored-branches: &ignored-branches
+    branches:
+      ignore:
+        - gh-pages
+
+  cache-options: &cache-options
+    key: package-cache-{{ .Branch }}-{{ .Revision }}
+
+# Define Jobs to run
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache-options
+      - run:
+          name: npm-install
+          command: npm install
+      - run:
+          name: build
+          command: npm run build
+      - save_cache:
+          <<: *cache-options
+          paths:
+            - node_modules
+            - .next
+
+  lint:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache-options
+      - run:
+          name: lint
+          command: npm run lint
+
+  test:
+    docker:
+      - image: circleci/node:12
+      - image: selenium/standalone-chrome:latest
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache-options
+      - run:
+          name: display-node-version
+          command: node --version
+      - run:
+          name: display-npm-version
+          command: npm --version
+      - run:
+          name: test
+          command: ./node_modules/.bin/jest --ci --runInBand
+          environment:
+            NODE_ENV: test
+            SELENIUM_REMOTE_URL: http://localhost:4444/wd/hub
+
+  complete:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - run:
+          name: complete
+          command: echo "Tests Complete!"
+
+workflows:
+  version: 2
+  test-grouparoo-www:
+    jobs:
+      - build:
+          filters:
+            <<: *ignored-branches
+
+      - lint:
+          filters:
+            <<: *ignored-branches
+          requires:
+            - build
+
+      - test:
+          filters:
+            <<: *ignored-branches
+          requires:
+            - build
+
+      - complete:
+          filters:
+            <<: *ignored-branches
+          requires:
+            - test
+            - lint

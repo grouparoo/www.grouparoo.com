@@ -1,0 +1,367 @@
+---
+title: "Sharing Code in Next.JS Applications with Plugins"
+date: "2020-07-23"
+author: "Evan Tahler"
+layout: "blogPage"
+pullQuote: "How does Grouparoo use Next.js to load pages and components from plugins to modify our web user interface?"
+tags: [engineering]
+---
+
+import Image from "../../components/blog/image";
+import { Alert } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+
+<Image
+  centered
+  source="https://unsplash.com/photos/MSN8TFhJ0is"
+  alt="computer and fern"
+  src={require("../../public/posts/nextjs-plugins/computer-and-fern.jpg")}
+/>
+
+At Grouparoo, our front-end website is built using [React](https://reactjs.org/) and [Next.js.](https://nextjs.org/) Next.js is an excellent tool made by [Vercel](https://vercel.com/) that handles all the hard parts of making a React app for you - Routing, Server-side Rendering, Page Hydration and more. It includes a simple starting place to build your routes and pages, based on the file system. If you want a `/about` page, just make an `/pages/about.tsx` file!
+
+The Grouparoo ecosystem contains many ways to extend the main Grouparoo application through plugins. Part of what Grouparoo plugins can do is add new pages to the UI, or add new components to existing pages. We use Next.js to build our front-end... which is very opinionated in its default settings to only work with "local" files and pages. How then can we use Next.js to load pages and components from other locations like plugins? In this post, we’ll talk about how to load additional components and pages from a sub-project, like a [lerna](https://github.com/lerna/lerna) monorepo, or a package released to NPM.
+
+<Alert variant="primary">
+  To see the project described in this blog post, please visit the{" "}
+  <a href="https://github.com/grouparoo/next-plugins-example" target="_blank">
+    github.com/grouparoo/next-plugins-example
+  </a>{" "}
+  repository.
+</Alert>
+
+## Setting up the Project
+
+We have a monorepo, which we will be using Lerna to manage. We have a `server` project which is our main application and `plugins` which contain plugins the `server` can use. The plugin, `my-nextjs-plugin` contains a page, `/pages/hello.tsx`, which we want the main application to display.
+
+<a href="https://github.com/grouparoo/next-plugins-example" target="_blank">
+  <Image
+    centered
+    source="https://github.com"
+    alt="A screenshot of the Github Repo"
+    src={require("../../public/posts/nextjs-plugins/repo-screenshot.png")}
+  />
+</a>
+
+Our `learna.json` looks like this:
+
+```json
+// lerna.json
+{
+  "packages": ["plugins/*", "server"],
+  "version": "0.0.1"
+}
+```
+
+Our top-level `package.json` contains only `lerna` and some scripts that allow us to run `lerna bootstrap` as part of the top-level install process and helpers to run `dev` and `start` for us in the main `server` project.
+
+```json
+// package.json
+{
+  "name": "next-plugins",
+  "version": "0.0.1",
+  "description": "An example of how to use a dynamic import to load a page from a random plugin outside of the main next \"pages\" directory",
+  "private": true,
+  "dependencies": {
+    "lerna": "^3.22.1"
+  },
+  "scripts": {
+    "start": "cd server && npm run start",
+    "dev": "cd server && npm run dev",
+    "test": "cd server && npm run build",
+    "prepare": "lerna bootstrap --strict"
+  }
+}
+```
+
+This configuration means that when you type `npm install` at the top-level of this project, the following will happen:
+
+1. Lerna will be installed
+2. `lerna bootstrap` will be run, which in turn:
+   1. Runs `npm install` in each child project (`server` and `plugins`)
+   2. Ensures that we symlink local versions of the `plugins` into the `server` project.
+   3. Runs the `npm prepare` lifecycle hooks for each sub-project, which means we can `next build` automatically as part of the install process.
+
+Our `package.json` file for the server can look like:
+
+```json
+// server/package.json
+{
+  "name": "next-plugins-server",
+  "version": "0.0.1",
+  "description": "I am the server!",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "my-nextjs-plugin": "0.0.1",
+    "next": "^9.3.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "fs-extra": "^9.0.1",
+    "glob": "^7.1.6"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.1",
+    "@types/react": "^16.9.19",
+    "typescript": "^3.7.5"
+  }
+}
+```
+
+And the `pacakge.json` from the plugin can look like:
+
+```json
+// plugins/my-nextjs-plugin/package.json
+{
+  "name": "my-nextjs-plugin",
+  "version": "0.0.1",
+  "description": "I am the plugin!",
+  "main": "index.js",
+  "private": true,
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
+```
+
+Now that the applications are set up, we can add some pages into the `server/pages` directory and confirm that everything is working by running `npm run dev`.
+
+## Dynamic pages in Next.js
+
+Next.js has a cool feature that allows you to use files names\d `[my-variable].tsx` to indicate a wildcard page route. You can then get the value of `my-variable` in your React components. This feature allows us to make a page that handles all the routes we might want to use for our plugins, in this case `pages/plugins/[plugin]/[page].tsx`. The page itself doesn’t do much except for handle the routing, which you can see here:
+
+```tsx
+// server/pages/plugins/[plugin]/[page].tsx
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import Link from "next/link";
+
+export default function PluginContainerPage() {
+  const router = useRouter();
+
+  // The Next router might not be ready yet...
+  if (!router?.query?.plugin) return null;
+  if (!router?.query?.page) return null;
+
+  // dynamically load the component
+  const PluginComponent = dynamic(
+    () =>
+      import(
+        `./../../../../plugins/${router.query.plugin}/pages/${router.query.page}`
+      ),
+    {
+      loading: () => <p>Loading...</p>,
+    }
+  );
+
+  return (
+    <>
+      <Link href="/">
+        <a>Back</a>
+      </Link>
+
+      <hr />
+
+      <PluginComponent />
+    </>
+  );
+}
+```
+
+This configuration is how our `hello` page from the plugin could be loaded by the route `/plugins/my-nextjs-plugin/hello` in the `server` application!
+
+## Hacking the Next.js Webpack configuration
+
+Our next step is to extend the Webpack configuration that Next.js provides and use it in our plugins. Next.js comes with all the required tools and configuration for Webpack and Babel to transpile Typescript and TSX (and JSX) pages on the fly... but our plugin doesn’t have access to that because by default, Next.js only includes files within _this_ project for compilation.
+
+In `next.config.js` we can extend the Webpack configuration that ships with Next.js to include our plugin:
+
+```js
+// server/next.config.js
+module.exports = {
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /plugins\/.*\.ts?|plugins\/.*\.tsx?/,
+      use: [options.defaultLoaders.babel],
+    });
+
+    return config;
+  },
+};
+```
+
+Without this extra Webpack rule, you’ll see compilation or parse errors as the plugins TSX/JSX will not be compiled into browser-usable javascript.
+
+## Webpack Loading Shims
+
+The final piece of the puzzle is give Webpack some help to know where to look for our plugin files. In our `pages/plugins/[plugin]/[page].tsx`, we gave Webpack a pretty big area of the filesystem to search with the `import(./../../../../plugins/${router.query.plugin}/pages/${router.query.page})` directive. Under the hood, Webpack is looking for all possible files which might match this pattern, in any combination. This search pattern includes cases when one of those paths might be `..`, which may end up scanning a large swath of your filesystem. This approach can be very slow if you have a big project, and lead to out-of-memory errors. Even without crashing, it will make your plugin pages slow to load.
+
+To fix these issues, rather than using wildcards, we can statically reference only the files we’ll need by building “shim” loaders as part of our boot process. We can add `require('./plugins.js')` to `next.config.js` to make sure that this process happens at boot.
+
+What `plugins.js` does is that it loops through all the pages in our plugins and creates a shim in `tmp/plugins` for every file we might want to import.
+
+```js
+// server/plugins.js
+const fs = require("fs-extra");
+const path = require("path");
+const glob = require("glob");
+
+// prepare the paths we'll be using and start clean
+if (fs.existsSync(path.join(__dirname, "tmp"))) {
+  fs.rmdirSync(path.join(__dirname, "tmp"), { recursive: true });
+}
+fs.mkdirpSync(path.join(__dirname, "tmp"));
+
+// the top-level folder needs to exist for webpack to scan, even if there are no plugins
+fs.mkdirpSync(path.join(__dirname, "tmp", "plugin"));
+
+// For every plugin provided, we need to make an file within the core project that has a direct import for it.
+// We do not want to use wildcard strings in the import statement to save webpack from scanning all of our directories.
+const plugins = glob.sync(path.join(__dirname, "..", "plugins", "*"));
+plugins.map((plugin) => {
+  const pluginName = plugin
+    .replace(path.join(__dirname, "..", "plugins"), "")
+    .replace(/\//g, "");
+  fs.mkdirpSync(path.join(__dirname, "tmp", "plugin", pluginName));
+  const pluginPages = glob.sync(path.join(plugin, "pages", "*"));
+  pluginPages.map((page) => {
+    const pageName = page
+      .replace(path.join(__dirname, "..", "plugins", pluginName, "pages"), "")
+      .replace(/\//g, "");
+    fs.writeFileSync(
+      path.join(__dirname, "tmp", "plugin", pluginName, `${pageName}`),
+      `export { default } from "${page.replace(/\.tsx$/, "")}"
+console.info("[Plugin] '${pageName}' from ${pluginName}");`
+    );
+  });
+});
+```
+
+For example, the shim for `hello.tsx` in our plugin looks like:
+
+```tsx
+// generated into server/tmp/plugin/my-nextjs-plugin/pages/hello.tsx
+export { default } from "/Users/evan/workspace/next-plugins/plugins/my-nextjs-plugin/pages/hello";
+console.info("[Plugin] 'hello.tsx' from my-nextjs-plugin");
+```
+
+This shim does a few things for us:
+
+1. Since this plugin is now within the main `server` project, Next.js and Webpack will pre-compile and watch this file for us
+2. We can change our dynamic import statement in `pages/plugins/[plugin]/[page].tsx` to reference our shim rather than the file outside of the project. This keeps webpack much faster.
+
+The updated version of `pages/plugins/[plugin]/[page].tsx` is now:
+
+```tsx
+// server/pages/plugins/[plugin]/[page].tsx
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import Link from "next/link";
+
+export default function PluginContainerPage() {
+  const router = useRouter();
+
+  // The Next router might not be ready yet...
+  if (!router?.query?.plugin) return null;
+  if (!router?.query?.page) return null;
+
+  // dynamically load the component
+  const PluginComponent = dynamic(
+    () =>
+      import(
+        `./../../../tmp/plugin/${router.query.plugin}/${router.query.page}`
+      ),
+    {
+      loading: () => <p>Loading...</p>,
+    }
+  );
+
+  return (
+    <>
+      <Link href="/">
+        <a>Back</a>
+      </Link>
+      <hr />
+      <PluginComponent />
+    </>
+  );
+}
+```
+
+And you’ll get a nice note in the console too!
+
+<Image
+  centered
+  source="https://github.com"
+  alt="The plugin loads and shows a note"
+  src={require("../../public/posts/nextjs-plugins/console-note.png")}
+/>
+
+## Packages released via NPM
+
+You can now include React pages and components from plugins into your Next.js application. The methods outlined here will work for both Next’s development mode (`next dev`), and compiled “production” mode with `next build && next start`). These techniques will also work for packages you install from NPM, but you’ll need to adjust some of the paths when building your shims. Assuming your NPM packages only contain your not-yet-compiled code (TSX, TS, or JSX files), we will need to make one final adjustment.
+
+By default, the Next.js Webpack plugin does not compile files found within `node_modules`, so we’ll need to override that behavior too.
+
+That makes our final `next.config.js`:
+
+```js
+// sever/next.config.js
+const glob = require("glob");
+const path = require("path");
+const pluginNames = glob
+  .sync(path.join(__dirname, "..", "plugins", "*"))
+  .map((plugin) => plugin.replace(path.join(__dirname, "..", "plugins"), ""))
+  .map((plugin) => plugin.replace(/\//g, ""));
+
+require("./plugins"); // prepare plugins
+
+module.exports = {
+  webpack: (config, options) => {
+    // allow compilation of our plugins when we load them from NPM
+    const rule = config.module.rules[0];
+    const originalExcludeMethod = rule.exclude;
+    config.module.rules[0].exclude = (moduleName, ...otherArgs) => {
+      // we want to explicitly allow our plugins
+      for (const i in pluginNames) {
+        if (moduleName.indexOf(`node_modules/${pluginNames[i]}`) >= 0) {
+          return false;
+        }
+      }
+
+      // otherwise, use the original rule
+      return originalExcludeMethod(moduleName, ...otherArgs);
+    };
+
+    // add a rule to compile our plugins from within the monorepo
+    config.module.rules.push({
+      test: /plugins\/.*\.ts?|plugins\/.*.tsx?/,
+      use: [options.defaultLoaders.babel],
+    });
+
+    // we want to ensure that the server project's version of react is used in all cases
+    config.resolve.alias["react"] = path.join(
+      __dirname,
+      "node_modules",
+      "react"
+    );
+    config.resolve.alias["react-dom"] = path.resolve(
+      __dirname,
+      "node_modules",
+      "react-dom"
+    );
+
+    return config;
+  },
+};
+```
+
+Note that we’ve also added a `config.resolve.alias` section telling Webpack that any time it sees `react` or `react-dom`, we should always use the version from `server`’s package.json. This alias will help you to avoid problems with multiple versions or instances of React."

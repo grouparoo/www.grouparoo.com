@@ -1,0 +1,143 @@
+---
+title: "Continuous Deployment for NPM Packages"
+date: "2020-05-07"
+author: "Evan Tahler"
+layout: "blogPage"
+pullQuote: "Grouparoo leverages the node.js and NPM ecosystems to manage distribution to our customers. Our open-source software is distributed via the public via NPM"
+tags: [engineering]
+---
+
+import Image from "../../components/blog/image";
+
+## A guide to the Grouparoo Monorepo Automated Release Process
+
+<Image
+  alt="grouparoo monorepo deployment workflow"
+  src={require("../../public/posts/grouparoo-monorepo-deployment/grouparoo-release-process.png")}
+/>
+
+Coming from more traditional web & app development, I’m a big fan of [git-flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) style workflow. Specifically the following features:
+
+- There are `feature` branches, an integration branch where features are merged together (usually called `master` ), and finally the “live” branch that customers are using (often called `stable` , `release` or `production`)
+- The `master` branch is always deployable (and should be deployed automatically with a CI/CD tool)
+- A robust test suite is run against every branch and pull request before deployment
+
+Setting up processes and tools to automate and enforce this workflow is possible with tools like [CircleCI](https://circleci.com/), [Github Actions](https://github.com/features/actions), and even [Fastlane](https://fastlane.tools/) + [CodePush](https://microsoft.github.io/code-push/) for mobile apps. However, since Grouparoo is building software that our customers run themselves, what does “pushing to production” really mean? What do automated releases look like? This blog post outlines our processes and the tools we use to automate our deployments and builds.
+
+Our 4 major steps are:
+
+1. CI every push
+2. Staging Servers
+3. NPM Pre-releases
+4. NPM Releases
+
+## How do Customers get the Grouparoo Application?
+
+Grouparoo leverages the node.js and NPM ecosystems to manage distribution to our customers. Our open-source software is distributed via the public [NPM repository](https://www.npmjs.com/package/@grouparoo/core), and our paid plugins via NPM Enterprise. This means that all our customers need to do in order to obtain Grouparoo is create a `package.json` and keep it up to date ([more detail here](https://github.com/grouparoo/grouparoo/blob/master/documents/deployment/getting-started.md)).
+
+```json
+{
+  "author": "Grouparoo Inc <hello@grouparoo.com>",
+  "name": "my-grouparoo-project",
+  "description": "A Grouparoo Deployment",
+  "version": "0.1.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@grouparoo/core": "latest",
+    "@grouparoo/mysql": "latest",
+    "@grouparoo/postgres": "latest",
+    "@grouparoo/mailchimp": "latest",
+    "@grouparoo/csv": "latest"
+  },
+  "scripts": {
+    "prepare": "cd node_modules/@grouparoo/core && npm run prepare",
+    "start": "cd node_modules/@grouparoo/core && ./api/bin/start",
+    "dev": "cd node_modules/@grouparoo/core && ./api/bin/dev"
+  },
+  "grouparoo": {
+    "plugins": [
+      "@grouparoo/mysql",
+      "@grouparoo/postgres",
+      "@grouparoo/mailchimp",
+      "@grouparoo/csv"
+    ]
+  }
+}
+```
+
+This `package.json` will have it’s versions locked in place with npm (or yarn), but can be easily updated via `npm update`, as the newest version of each package requested is `latest` rather than a specific version.
+
+## Continuous Testing for every push
+
+<Image
+  maxHeight={800}
+  alt="Continuous Testing all the time"
+  src={require("../../public/posts/grouparoo-monorepo-deployment/ci-all-the-time.png")}
+/>
+
+The backbone of any good automated workflow is a robust test suite. You need to be sure that your new code works the way you expect, and hasn’t broken anything. We run our tests on CirleCI, and make use of Jest and man other tools. I’ll talk about our test suite in more detail in a later post, but we have a test suite for every package we publish. The [Grouparoo Monorepo](https://github.com/grouparoo/grouparoo) is a collection of many inter-related packages which we manage together via [Lerna](https://github.com/grouparoo/grouparoo). Lerna helps you keep all of your versions & packages in sync, and more importantly, rely on each-other while developing them! A change in one package might effect the rest, so we test them all in concert.
+
+Since Grouparoo is an Open Source project, you can check on the test suite of our `master` branch here: [CircleCI](https://app.circleci.com/pipelines/github/grouparoo/grouparoo?branch=master) At the moment we are: [![Build Status](https://circleci.com/gh/grouparoo/grouparoo.svg?style=svg)](https://circleci.com/gh/grouparoo/www.grouparoo.com)
+
+## Staging Servers
+
+Once a `feature` branch has been merged into the `master` branch, we want to immediately deploy it onto a staging server so we can do acceptance testing and share it with our partners. At this step, we use [Heroku’s Github Integration](https://devcenter.heroku.com/articles/github-integration) to deploy our `master` branch on any change, after the tests all pass of course.
+
+We use Lerna here to build every project within the monorepo, but running the project within the monorepo has some caveats. Specifically, since Lerna will use symlinks to relate projects within the monorepo to each other, the paths the project sees are not the same as when it will be installed via a normal `npm install`. The app we run on staging looks a lot like our client example above, except that was sprinkle the environment variable `GROUPAROO_MONOREPO_APP` around ([example here](https://github.com/grouparoo/grouparoo/blob/master/apps/staging-public/package.json)).
+
+`@grouparoo/core` uses `GROUPAROO_MONOREPO_APP` to change its require paths for its peer dependencies, mainly the other Grouparoo plugins. Rather than `project/node_modules/@grouparoo/core` and `project/node_modules/@grouparoo/plugin` , the runtime within a Lerna project is more like `root/core` and `root/packages/@grouparoo/plugin`. We’ve isolated the majority of plugin loading to [this module](https://github.com/grouparoo/grouparoo/blob/master/core/api/src/utils/pluginDetails.js). In this way, we can closely emulate the eexperienceof installing Grouparoo and related plugins locally without needing to publish every version to NPM. We use a similar paradigm when developing locally.
+
+## NPM Prereleases
+
+Once we’ve got our new features deployed on our staging servers, we want to release our NPM packages in a way that our customers can try out. For us, this means a weekly release of our packages every Friday. We once again use Circle CI to run our test suite on a schedule:
+
+```yaml
+# Run the tests each week + publish
+test-grouparoo-nightly:
+  triggers:
+    - schedule:
+        cron: "0 0 * * 5"
+        filters:
+          branches:
+            only:
+              - master
+```
+
+This mode of running our CI suite include an extra job called “publish”. Assuming again that our tests all pass, the publish command does a few things which you can [see here](https://github.com/grouparoo/grouparoo/blob/master/bin/publish).
+
+1. Use lerna to bump the version of all packages, and use an “alpha” prefix, ie `lerna version prerelease --preid alpha` would yield a version like `v0.1.2-alpha.4`. We create a new git tag for the release and push that to Github
+2. Use the[`lerna-changelog`](https://github.com/lerna/lerna-changelog) package to automatically create our release notes from our merged pull requests & push those to Github along with our new git tag
+3. Push the new packages to the NPM repository, using the `next` tag.
+
+<Image
+  maxHeight={400}
+  alt="npm prerelease"
+  src={require("../../public/posts/grouparoo-monorepo-deployment/npm-prerelease.png")}
+/>
+
+There are a number of CI secrets we need to manage access to NPM and Github, but they can all be stored in CircleCI’s secrets management tool. Of note, there is at this time no way to automate (or skip) a 2FA token for publishing to NPM. To overcome this, we’ve created a user who can only publish from CI which doesn’t use 2FA.
+
+### A note on NPM Tags
+
+Now, our customers can opt into our alpha releases by changing their dependencies from `latest` to `next` in their `package.json` file. When a normal package is published to NPM, it automatically has the `latest` tag, and that’s what will be installed wit a normal `npm install @grouparoo/core`. However, you can publish your packages to any other tag you want to create parallel distribution channels.
+
+<Image
+  maxHeight={400}
+  alt="npm tags"
+  src={require("../../public/posts/grouparoo-monorepo-deployment/npm-tags.png")}
+/>
+
+## NPM Releases
+
+The last stage of our release process is to publish the `latest` (read: normal channel) NPM packages. We do this by a having a human make the call that we are ready to do this by merging the release candidate (from `master` or another branch) into the `stable` branch. This will then run the same `publish` CI command as with our prerelease, but with a few changes:
+
+1. Use lerna to bump the version of all packages, and issue a patch-level sever change `lerna version patch` would take our last pre-release version like `v0.1.2-alpha.4` and create `v0.1.3` We create a new git tag for the release and push that to Github
+2. Push the new packages to the NPM repository, using the `latest` (normal) tag.
+3. Merge these new version changes back into our `master` branch so we are ready for the next round of `alpha` prereleases to start.
+
+---
+
+Those are the steps we use to continuously deliver Grouparoo to our customers. We use NPM release tags to regularly publish an `alpha` tagged pre-release every week, and have a human review process for our `latest` stable releases.
+
+> The latest version of Grouparoo is just an `npm install` away!

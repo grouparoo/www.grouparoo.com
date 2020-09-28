@@ -1,0 +1,106 @@
+---
+title: "Monitoring & Debugging"
+date: "2020-09-01"
+section: "deployment"
+layout: "docsPage"
+pullQuote: ""
+---
+
+_Outside-In debugging for Distributed Systems_
+
+## Overview
+
+Grouparoo is a distributed system. A distributed system is an application that has dependencies on _other systems_ like databases and load balancers, or operates in parallel with other instances of itself. Grouparoo does both!
+
+The first step in debugging a distributed system is to determine where in the distributed system the problem is occurring. We’ll be using the term `Tier` to describe each logical section of the distributed system. Grouparoo's Tiers can be visualized on the [Topology Page](/docs/deployment/topology). We need to understand the tiers because an error being reported in one tier may be caused by a problem in another tier or the connections between them.
+
+## The Tiers
+
+A Grouparoo deployment has 4 main tiers and a few sub-tiers, depending on your deployment strategy:
+
+1. **The Application Tier**
+   - Web Servers
+   - Background Worker Servers
+2. **The Data Tier**
+   - Grouparoo Postgres Storage (Database)
+   - Grouparoo Redis Storage (Cache)
+   - Grouparoo File Storage (S3)
+3. **Sources and Destinations Tier**
+   - Remote Databases (like MySQL, Postgres, etc)
+   - Remote Services / APIs (like Mailchimp, Hubspot, etc)
+4. **Networking Tier**
+   - Load Balancers
+   - DNS
+   - Firewalls and Permissions (IAM)
+
+## Scaling the Tiers
+
+Grouparoo tiers may be deployed in both a _vertically scaled_ and _horizontally scaled_ way. Keeping in mind how each of your tiers has been scaled will be important for debugging. For example, are there multiple instances of each tier that may be in conflict and have different data? Or is there only one instance that you need to be very careful about accessing?
+
+**Vertical Scaling** - Using a single server for a tier, but growing the capacity of that server is called Vertical Scaling. For example, there may be only a single database server that Grouparoo is using, but it may be scaled by increasing the RAM and Hard Drive space of that one server. This approach is a good choice for ephemeral storage (i.e. data loss might be inconvenient, but isn't necessarily devastating) like Redis. Vertical Scaling is also a good choice for the Grouparoo Postgres server if backups of it are made regularly.
+
+**Horizontal Scaling** - Horizontal Scaling is when you copy a server and have more than one of the same type of instance in a tier running at the same time. This approach is how we recommend that the Grouparoo application tier be scaled- you don’t need particularly large servers but as your data volume grows, you’ll want to run more and more Web and Background Worker Servers.
+
+A whole class of errors exist when there is an imbalance between the scale of your tiers. For example, if you have too many Application Tier servers for your Data Tier to handle, you’ll have very slow performance or even timeouts and connection errors.
+
+## The Connections Between Tiers
+
+It’s important to consider the connectivity between the tiers. Each tier may functioning OK on its own, but perhaps the issue is _between_ tiers. Connection issues often manifest as networking or permission issues.
+
+For example, can the Grouparoo Application tier reach your MySQL source? Have you configured a MySQL user for MySQL? What about opening the relevant firewall ports (or Security Group, IAM role, etc) so the Grouparoo Application Tier servers can reach the Database? What about reaching your Sources and Destinations? Can your Application Tier reach the public internet? Are your vendors having an outage at the moment?
+
+## Debugging
+
+Outside-In debugging starts at the highest level of the system and works in towards the center. Debug in this order: `Tier` --> `Network` --> `Application` --> `Source/Destination` --> `Page or API route`.
+
+### 1. Test Each Individual Tier
+
+Are the servers for each tier up and running? Can you see that the application (Grouparoo app, database, etc) is up and running on each server? Test these directly if possible by SSH-ing into the machine or starting a console. Check application logs or your APM tool.
+
+### 2. Test the Connections Between Tiers
+
+Can the Grouparoo Application reach the Database? Can users get through the Load Balancer to the Grouparoo Application behind it? Test these connections directly if possible by SSH-ing into one machine or starting a console and try to reach the other via the `mysql` command, `curl`, etc.
+
+Can you reach your sources and destinations via another method or are they having an outage? Have you changed API keys?
+
+### 3. Check for Dramatic Changes in Usage
+
+There are two types of "usage" to check - **system** and **application**.
+
+System usage include RAM or Disk space, the resources that each server provides to the applications running on it. Test these resources directly on each system via logs, `htop`, `du`, and similar commands.
+
+Application usage refers to the size of the data you are processing with Grouparoo. Are there more Profiles or Events than normal? Is your database filling up? Check these by connecting to each database in the Data Tier directly and reporting its usage metrics, like number of rows, slow queries, etc.
+
+### 4. Check for Changes in Dependencies
+
+Has something you depend on changed recently that may have broken things? For Grouparoo, these kinds of changes usually look like changes to `node_modules` and `package.json` and `package-lock.json` - which is how Node.js applications store dependency versions.
+
+However, there are other types of dependencies: operating system versions and packages, API versions of your sources and destinations, etc. Check to see if there are any new changes.
+
+### 5. Check for Reproducible Application Tier Problems
+
+Can you break things in the same way multiple times? Reproducible bugs are possible to fix, and it’s important to explain why they happen. Does visiting a certain page crash things? Does importing or exporting a certain profile cause an error?
+
+Sharing this information to reproduce the problem is important when [reporting a bug](/support).
+
+### 6. Add Instrumentation
+
+The worst kind of problem is a non-reproducible error. The error is happening fairly regularly, but you don’t know why. More troubling, the error doesn’t happen all the time with the same behavior. Exhausting all the other possibilities on this list tells you that you need more information. Computers are deterministic... but you don’t know enough yet to determine what’s going on.
+
+Logs and other forms of instrumentation now need to be added, and the application(s) will be re-deployed. Once more information is gathered, you can start the process over again.
+
+## Monitoring Grouparoo
+
+To ensure that you have a robust Grouparoo deployment, we recommend that you set up monitoring along each of the debugging steps above so that you can be alerted to problems as they are starting to happen. Here are some suggestions about how to test the Grouparoo Application Tier:
+
+### Monitor the Application
+
+- Monitor the `/api/v1/status/private` endpoint from within your firewall. Doing so will let you know that the application is running in general. This endpoint also reports on the resque queue length and the size of the backlog of jobs that need to be worked. The queue getting longer than normal can be an early indicator of a problem.
+- Monitor the `/api/v1/status/public` endpoint from outside of your firewall (or from the vantage point of your end users). Doing so will ensure that your end users can use the Grouparoo application and that events can be recorded from user sites/devices.
+- Monitor the Grouparoo application for errors. Use a tool like New Relic or Sentry to report and log errors to a central place. Check how often these errors happen. Be sure to check the Background Worker errors listed in the `/resque` interface, and retry or delete them accordingly.
+
+### Monitor the Tier
+
+- Monitor the hardware performance of the servers running the Grouparoo Application Tier. Is there enough RAM? Is the CPU constantly pegged to 100% usage? Your hosting provider should provide tools to monitor your servers. If you are deploying with a tool like Docker or Kubernetes, there are ways to aggregate this information for all instances of the container.
+- Monitor the number of rows in your database. Are there more Profiles or less Exports than you expect?
+- Monitor the memory consumption of Redis. Redis is an in-memory database, and if it gets full, it will either refuse to accept new data or start deleting old data. Keeping Redis’ data volume small involves tuning the batch sizes of your Grouparoo application and ensuring you have enough Application Background Workers to run all the tasks created and the data tier to support it.

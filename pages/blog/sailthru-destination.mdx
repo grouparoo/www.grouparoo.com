@@ -1,0 +1,186 @@
+---
+title: "Sailthru Destination"
+date: "2020-04-23"
+author: "Brian Leonard"
+layout: "blogPage"
+pullQuote: "Grouparoo allows you to connect your customer data to various marketing platforms like Sailthru."
+tags: [connections, engineering]
+---
+
+import Image from "../../components/blog/image";
+
+Grouparoo allows you to connect your customer data to various marketing platforms like Sailthru. Grouparoo has your data from sources like your product database and data warehouse. This produces profiles with many properties. You can use these to create groups. Now, you can send chosen groups and properties to destinations like Sailthru automatically, using them to communicate with your customers.
+
+## Sailthru setup
+
+In Sailthru, you will need to admin access. In the "Setup / API & Postbacks" section, you can click on the little lock icon and see the "API Key" and "Secret" modal.
+
+<Image
+  maxHeight={200}
+  alt="Getting your API Key and Secret"
+  src={require("../../public/posts/sailthru-destination/sailthru-settings.png")}
+/>
+
+## Create a Grouparoo app
+
+In Grouparoo, apps provide the credentials to be able to connect to other platforms. For Sailthru, you paste in the `apiKey` and the `apiSecret` straight from the Sailthru page. At this point if you hit "Test Connection," you should see "Test Passed."
+
+<Image
+  maxHeight={400}
+  alt="Creating Grouparoo Sailthru App"
+  src={require("../../public/posts/sailthru-destination/create-app.png")}
+/>
+
+## Create a Grouparoo destination
+
+You are ready to start sending your profile data to Sailthru. In Grouparoo, this is done through what we call destinations. Destinations allow you to say who (which profiles) and what (property and group membership) are sent to the external tool. So let's add a new one.
+
+<Image
+  maxHeight={250}
+  alt="Add a destination"
+  src={require("../../public/posts/sailthru-destination/new-destination.png")}
+/>
+
+Then, we pick which groups and properties are going to be synchronized with Sailthru.
+
+<Image
+  maxHeight={250}
+  alt="Grouparoo groups to send to Sailthru"
+  src={require("../../public/posts/sailthru-destination/destination-groups.png")}
+/>
+<Image
+  maxHeight={450}
+  alt="Grouparoo properties to send to Sailthru"
+  src={require("../../public/posts/sailthru-destination/destination-properties.png")}
+/>
+
+From a privacy perspective, I love that we don't have to send their lifetime value to destinations like Sailthru. Instead, we only need to send their membership in the "High Value Customers" group.
+
+## Results
+
+All of the selected users now show up in Sailthru. They are in the "High Value Customers" group and the properties are set on their profile.
+
+<Image
+  maxHeight={200}
+  alt="List added to Sailthru"
+  src={require("../../public/posts/sailthru-destination/sailthru-lists.png")}
+/>
+<Image
+  maxHeight={200}
+  alt="Fields set as Sailthru properties"
+  src={require("../../public/posts/sailthru-destination/sailthru-profile.png")}
+/>
+
+Now, you can do anything that Sailthru enables. For example, the Sailthru Lifecyle Optimizer workflows can be very powerful when combined with this approach. Flows can be kicked off when a profile's properties change or group membership changes.
+
+<Image
+  maxHeight={350}
+  alt="Fields set as Sailthru properties"
+  src={require("../../public/posts/sailthru-destination/sailthru-flow.png")}
+/>
+
+In this case, we send a "thank you for being a great customer" email when you become a member of the "High Value Customers" group. The fact that this kind of triggering can be done by the marketer without any engineering help is very powerful. This autonomy leads to high organizational leverage and more progress being made towards marketing goals.
+
+## Implementation Details
+
+One of the values of using an open source customer data platform (CDP) like Grouparoo to synchronize data to tools like Sailthru is that you gain from the experience that comes from focused attention to making sure it works correctly in the real world, as experience by multiple companies.
+
+For the most part, Grouparoo uses the [user API](https://getstarted.sailthru.com/developers/api/user/) from Sailthru. I thought I'd lay out a few things we encountered here to try and get it right.
+
+### Multiple Lists
+
+To add users to Sailthru, you `POST` to the `https://api.sailthru.com/user` API. It can include all the "vars" (profile properties) and "lists" (group membership).
+
+```json
+{
+  "id": "someone@example.com",
+  "key": "email",
+  "keys": {
+    "email": "someone@example.com"
+  },
+  "lists": {
+    "Have Email": 1,
+    "High LTV": 1
+  },
+  "vars": {
+    "firstName": "Cindy"
+  }
+}
+```
+
+We have seen this often results in these extra lists with the same name if the list did not exist beforehand and multiple users are added in parallel. There looks to be a race condition in list creation.
+
+<Image
+  maxHeight={150}
+  alt="Multiple lists created in Sailthru"
+  src={require("../../public/posts/sailthru-destination/details-multi-lists.png")}
+/>
+
+Unfortunately, this situation can arise fairly easily in the initial synchronization. Many profiles are being exported from Grouparoo when the destination is first added and the lists didn't not exist beforehand. It also creates a problem because the API encourages the name itself to be the key for lookup (as opposed to an id).
+
+One thing that is interesting is that the users are always added to one of the lists, so some code in Sailthru must always be picking one of them.
+
+The Grouparoo code was updated the make sure to make only one list, by first checking to make sure the list already existed and using mutual exclusion techniques to make sure it's only created once.
+
+### DNS Issues
+
+Our sample case had 1500 users and I was running 20 threads in parallel. I was worried about rate limiting, but did not see any issues related to that. What we did see 4 times out of 1500 (0.26% of the time), was the following DNS issue.
+
+```shell
+13 Apr 12:25:19 - sailthru-client - GET Request
+ERROR apiGet user Error: getaddrinfo ENOTFOUND api.sailthru.com
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:60:26) {
+  errno: 'ENOTFOUND',
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'api.sailthru.com'
+} {
+  id: 'me@example.com',
+  key: 'email',
+  fields: { keys: 1 }
+}
+```
+
+It really seems like the `CNAME` came and went, which I have never seen before. Maybe it was Sailthru. Maybe it was node. It happened on all HTTP methods used: `GET`, `POST`, and `DELETE`. Fortunately, the Grouparoo background processing code has built-in retry for cases like this as well as Sailthru planned downtime.
+
+### Response codes
+
+I found the HTTP response codes somewhat surprising. To further add resiliency, Grouparoo is looking up users (`GET`) by email address to get their Sailthru id (`sid`). It expects it not to work when it is a new user to the Sailthru system. One surprising thing is that it returns `400` in this case. I had expected `404`. To me, `400` means “the input is malformed” and it will never work. I had expected `404` (Not found).
+
+Something interesting is that the `DELETE` call does return a `404` when the user's email address is not found in the Sailthru system. So `GET` and `DELETE` work differently. Caller beware shared code!
+
+### Deleting
+
+To make sure things work correctly, we were adding everyone in and then removing everyone. Each time, we tried to remove all 1500 people, there would be a few left.
+
+After logging extensively, saw that Sailthru would say `200 OK` on the `DELETE` call, but it didn’t happen in the actual system.
+
+To be more resilient to this issue, we implemented a loop with a `sleep`, just to make sure it really happens. Then, for good measure we also delete them by email address. Because it seems to be necessary, this extra time is worth it because deleting a user as expected is very important for privacy.
+
+On average, 10 out of 1500 (0.67%) did not delete as expected the first time. 2 out of 1500 (0.13%) required three tries to really delete them.
+
+### List Counts
+
+I read something like this in the documentation, but it was still surprising to see while implementing. The counts shown on the list dashboard is the number of users that have _ever_ been in the group, not the current number.
+
+So when we first synced 1487 users, it looked like this:
+
+<Image
+  maxHeight={100}
+  alt="Sailthru list with 1487 users"
+  src={require("../../public/posts/sailthru-destination/details-list-count1.png")}
+/>
+
+When we deleted everyone and synced again (with the same users), it was doubled:
+
+<Image
+  maxHeight={150}
+  alt="Sailthru list with 1487 users"
+  src={require("../../public/posts/sailthru-destination/details-list-count2.png")}
+/>
+
+In other words: if you were to remove one user and add another one, this number would go up by one even though the real count was constant. This is important to know when making verifying your world is as you expect.
+
+## Summary
+
+It's good to get lots of eyes on this stuff so things "just work" as expected. Using Grouparoo gives you a huge head start on Sailthru and other systems. In just a few clicks, you can get your data in Sailthru, leveraging the community and all of its experience.

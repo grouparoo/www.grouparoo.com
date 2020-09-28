@@ -1,0 +1,452 @@
+---
+title: "Steps for Marketing Tests"
+date: "2020-02-29"
+author: "Brian Leonard"
+layout: "blogPage"
+pullQuote: "There are issues at all points of this cycle, but the most pain is felt in the first quarter between the \"Idea\" and \"Test\" steps."
+tags: [marketing]
+---
+
+import Image from "../../components/blog/image";
+
+In a previous [post](./the-shots-you-get-to-take), I talked about how powerful it is to make as many trips around the build/measure/learn loop as possible. This is an abstract concept that applies just as well to product development as marketing tests. As such, it is a little abstract. I thought it would be useful to go through the steps specific for marketers, show where the current pain is felt, and how [Grouparoo](https://www.grouparoo.com) makes things better.
+
+<Image
+  centered
+  maxHeight={300}
+  source="https://www.entrepreneurshipinabox.com/3186/failure-in-business/"
+  alt="Loop: Idea, build, test, measure, data, learn, idea..."
+  src={require("../../public/posts/steps-for-marketing-tests/build-measure-learn.png")}
+/>
+
+## Getting to the test
+
+There are issues at all points of this cycle, but the most pain is felt in the first quarter between the "Idea" and "Test" steps. Who is going to get the test? What content will it contain? This is where the most uncertainty lies. Because of this, it has the most back and forth with the team (often engineering) that holds the keys to the data.
+
+It might be easier to have a use case in mind. Let's say we sell personal care items online. We just got out of a meeting focused on how to move retention. Retention is defined as the percent of people that bought something last month that also bought something this month. That definition and the [theory](https://www.investopedia.com/terms/r/razor-razorblademodel.asp) lent itself to us to coming up with this idea.
+
+> "Send an email to everyone that bought a razor a month ago and offer \$10 off on razor blades"
+
+We feel like this might move the retention number a meaningful amount (1-5%), leading to higher engagement and lifetime value.
+
+## Summary
+
+First, let's look at an overview. The main point here is about what we call "Marketing Autonomy." On the right with Grouparoo, all of these steps can be done without help from the engineering or data teams. This radically changes the total timeline to run these kinds of tests from months to days. Also, if it works, it's already automated and ready to go live (as opposed to another backlog item for engineering).
+
+<table className="legend step-colors align-self-center">
+  <tbody>
+    <tr>
+      <td>
+        <div className="row justify-content-center">
+          <div className="box eng" />
+          <div className="label">Engineering help</div>
+        </div>
+      </td>
+      <td>
+        <div className="row justify-content-center">
+          <div className="box mar" />
+          <div className="label">Marketing Only</div>
+        </div>
+      </td>
+      <td>
+        <div className="row justify-content-center">
+          <div className="box auto" />
+          <div className="label">Automated</div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table className="steps step-colors align-self-center">
+  <thead>
+    <tr>
+      <th>Step</th>
+      <th>Typical</th>
+      <th>Grouparoo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="step">Collect data to target relevant cohort</td>
+      <td className="eng">
+        Describe the cohort to an engineer and have them write a query that
+        produces a list of customers. Iterate as needed on the definition until
+        the data looks right.
+      </td>
+      <td className="mar">
+        Pull the data in yourself as properties to profiles.
+      </td>
+    </tr>
+    <tr>
+      <td className="step">Determine criteria that create valid test size</td>
+      <td className="eng">
+        Work with a large CSV or go back and forth with an engineer to see how
+        big the cohort is. Change the values and query as needed to get to
+        significance.
+      </td>
+      <td className="mar">
+        Use the group builder to immediately see how filter requirements change
+        the cohort.
+      </td>
+    </tr>
+    <tr>
+      <td className="step">Generate list of people to target and verify</td>
+      <td className="eng">
+        Get a CSV export of the query or script. Browse it to make sure it looks
+        right, checking against other data sources.
+      </td>
+      <td className="mar">
+        Save the group and browse the full profiles in Grouparoo.
+      </td>
+    </tr>
+    <tr>
+      <td className="step">Collect data for content of email</td>
+      <td className="eng">
+        Work with an engineer to add to the query to pull additional data.
+        Change to a script or copy and paste user ids if it can't be in one
+        query.
+      </td>
+      <td className="mar">
+        Pull the data in yourself as properties to profiles.
+      </td>
+    </tr>
+    <tr>
+      <td className="step">Make sure list and content up to date</td>
+      <td className="eng">
+        After making content, ask engineer to run query or script again so the
+        list is as up to date as possible.
+      </td>
+      <td className="auto">
+        The group membership and content data are automatically kept up to date.
+      </td>
+    </tr>
+    <tr>
+      <td className="step">Teach email system about list and content data</td>
+      <td className="mar">Upload the CSV in to the email system.</td>
+      <td className="mar">Add email system destination to Grouparoo.</td>
+    </tr>
+    <tr>
+      <td className="step">Run a test of the content</td>
+      <td className="mar">Send test in email system.</td>
+      <td className="mar">Send test in email system</td>
+    </tr>
+    <tr>
+      <td className="step">Make sure list and content up to date</td>
+      <td className="eng">
+        If time has passed, ask engineer to run query or script again so the
+        list is as up to date as possible. Upload again as necessary.
+      </td>
+      <td className="auto">
+        The group membership and content data and destination are automatically
+        kept up to date.
+      </td>
+    </tr>
+    <tr>
+      <td className="step">Send email</td>
+      <td className="mar">Send the mail!</td>
+      <td className="mar">Send the mail!</td>
+    </tr>
+    <tr>
+      <td className="step">Automate</td>
+      <td className="eng">
+        Work with product and engineering team to prioritize now that real
+        integration has been justified. Send events to email system to create
+        workflow.
+      </td>
+      <td className="mar">
+        Create a trigger yourself to send email at appropriate time.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Detail
+
+Let's go in-depth into each step and see how they play out. We've collected these steps and observations from the 60+ interviews we have done with marketing leaders.
+
+### 1. Collect data to target relevant cohort
+
+The first step is to know who we are going to send the email to. The best communications feel personalized and super-relevant. We will be wanting to balance that with the size of the cohort. In the next step, it will have to be big enough to be able to run a meaningful test in a reasonable amount of time. So, in this step we explore the data a bit, collecting and understanding what we might want to segment by.
+
+In this case, we certainly need a few things and some others might come in handy:
+
+- When a customer last bought a razor (or if they never have)
+- What country the user is in and/or the language they speak (to have the right language in the email)
+- Is the customer already purchasing razor blades from us?
+- Other information about their purchase history: Was the razor their first purchase? How many purchases what they made? What's their lifetime value? We might want to segment on these, try different messages, or understand the effects on different groups.
+- Some way to create a control group: we could do it by postal code, city, user ids, or via A/B testing groups users have already been placed into.
+
+#### Typical
+
+Describe the cohort to an engineer and have them write a query that produces a list of customers. Iterate as needed on the definition until the data looks right.
+
+Generally, it can take a while just to get the time to collaborate with the engineer. Companies are telling us that it's often multiple weeks to get to that. Prioritizing is hard business. Then it might even be back and forth in a ticket tracking system or email.
+
+In this case, it will either be a large SQL query or they will write a script to export all the data to a CSV and share it with us.
+
+#### Grouparoo
+
+Pull the data in yourself as properties to profiles.
+
+<Image
+  centered
+  outline
+  maxWidth={500}
+  alt="Tell Grouparoo how to look up first name."
+  src={require("../../public/posts/steps-for-marketing-tests/01-query.png")}
+/>
+
+Once an app is added, say to a copy of your product database, marketers can use our UI to define properties. These are kept in sync with the database.
+
+### 2. Determine criteria that create valid test size
+
+Let's say we currently have a retention of 10% month over month and we are hoping this test will make a 4% difference (to move it to 10.4%). This means we will need a [sample size](https://www.evanmiller.org/ab-testing/sample-size.html) of 88,768 customers to get a 80% certainty that it worked.
+
+We can play around with these numbers to make the size smaller. We can also decide if we are going to leave a control group. In all cases, we will come up with a number of customers needed.
+
+All of this has to balanced with what we actually have. So in this step, we work with the data to create the cohorts. For example, we could end up with this more formal cohort definition.
+
+> English speakers in the United States who are averaging less than 2 purchases a month that bought a razor between 30 and 60 days ago.
+
+#### Typical
+
+Work with a large CSV or go back and forth with an engineer to see how big the cohort is. Change the values and query as needed to get to significance.
+
+In our interviews, the saddest (and quite common) case was weeks of asynchronous (email, slack, tickets) back and forth, creating 10 iterations questions/answers like: "What if we make it 3 purchases a month? How many then?"
+
+#### Grouparoo
+
+Use the group builder to immediately see how filter requirements change the cohort.
+
+<Image
+  centered
+  outline
+  maxWidth={500}
+  alt="Define in Grouparoo what group should get the email."
+  src={require("../../public/posts/steps-for-marketing-tests/02-group.png")}
+/>
+
+Customer Data Platforms (CDPs) allow instant feedback on cohort size because they can quickly leverage all the properties created in the previous step. Grouparoo makes this even better because if there is more properties needed, the marketer can just pull it in themself.
+
+### 3. Generate list of people to target and verify
+
+At this point, we have a final list of who we are going to send the email to and, if we are doing so, who is in the control group. We'll want to quickly make sure it looks right.
+
+#### Typical
+
+Get a CSV export of the query or script. Browse it to make sure it looks right, checking against other data sources.
+
+#### Grouparoo
+
+Save the group and browse the full profiles in Grouparoo.
+
+<Image
+  centered
+  outline
+  maxWidth={500}
+  alt="Browse group profiles in Grouparoo."
+  src={require("../../public/posts/steps-for-marketing-tests/03-members.png")}
+/>
+
+Marketers can also see various statistics about the group and be able monitor them as they change over time.
+
+### 4. Collect data for content of email
+
+All of the previous steps just got us to a place to know who we are are targeting. We still have design the email itself and write the content. When this happens, we might find that we need more data to make the best test possible.
+
+For example, we might want a URL of the photo of which razor they bought. If we don't already have it, we might also want their first name so that the email can say "`Hi {{first_name}}`" at the top.
+
+#### Typical
+
+Work with an engineer to add to the query to pull additional data. Change to a script or copy and paste user ids if it can't be in one query.
+
+This is where it often gets even more complicated. What often happens in this step is a sort of negotiation - "Do you really need that?" It's hard to say, of course.
+
+#### Grouparoo
+
+Pull the data in yourself as properties to profiles.
+
+In Grouparoo, marketers would just repeat the first step to pull in more properties.
+
+### 5. Make sure list and content up to date
+
+At this point, depending on how long the previous step took, we want to make sure the target list is up to date. The following things have likely happened:
+
+- People may have aged out: it's now been more than 60 days since they bought a razor.
+- People may have aged in: new people are now just barely in the 30 day window.
+- Segmentation criteria has changed: their monthly purchases have gone up or they moved.
+
+#### Typical
+
+After making content, ask engineer to run query or script again so the list is as up to date as possible.
+
+#### Grouparoo
+
+The group membership and content data are automatically kept up to date.
+
+<Image
+  centered
+  outline
+  maxWidth={500}
+  alt="The group growing in Grouparoo."
+  src={require("../../public/posts/steps-for-marketing-tests/05-group-graph.png")}
+/>
+
+Since the creation of the group, it has been adding and removing members as time passed and/or their properties changed. Marketers can easily monitor these changes to see the current situation.
+
+### 6. Teach email system about list and content data
+
+Let's get that data in our email system. Most systems have a notion of groups. Sometimes these are called lists, audience, segments, or cohorts. They also usually have the notion of properties. Sometimes these are called attributes or profile information.
+
+#### Typical
+
+Upload the CSV in to the email system.
+
+This is usually what would be called a "manual" group/list/audience because its being added manually. One interesting side effect of just uploading the content data about these users is that only they will have that property (such `razor_image_url` or `first_name`). Marketers have to remember that for later, so they don't accidentally assume all users in the system have it.
+
+#### Grouparoo
+
+Add email system destination to Grouparoo.
+
+<Image
+  centered
+  outline
+  maxWidth={500}
+  alt="Grouparoo lets you choose what groups to sync to your destination."
+  src={require("../../public/posts/steps-for-marketing-tests/06-destination.png")}
+/>
+<Image
+  centered
+  outline
+  maxWidth={500}
+  alt="Grouparoo lets you choose what properties to sync to your destination."
+  src={require("../../public/posts/steps-for-marketing-tests/06-destination-mapping.png")}
+/>
+
+Grouparoo comes with standardized integrations for many email systems. There is no engineering work needed to do the integration. A marketer can use the UI to say what should be synced. They could sync all groups or just the they are interested in. They would also add the content data so it can be referenced in the email template.
+
+### 7. Run a test of the content
+
+Before we send it to everyone, we probably want to make sure it works. Most systems have a way to test it with a given set of properties.
+
+This one is more or less the same in both cases. Better safe than sorry!
+
+### 8. Make sure list and content up to date
+
+We have one last chance to make sure this thing goes to the right people. If the above took more than a day, let's be sure everything is up to date so that the test is as valid as possible.
+
+#### Typical
+
+If time has passed, ask engineer to run query or script again so the list is as up to date as possible. Upload again as necessary.
+
+Then, move on to the next step as quickly as possible. Tick tock!
+
+#### Grouparoo
+
+The group membership and content data and destination are automatically kept up to date.
+
+<Image
+  centered
+  outline
+  maxWidth={500}
+  alt="Profiles automatically added to groups as their data changes."
+  src={require("../../public/posts/steps-for-marketing-tests/08-group-added.png")}
+/>
+
+From the moment a destination is added, Grouparoo synchronizes everything with the email system. It's always good to go!
+
+### 9. Send email
+
+Hit the right buttons in the email system.
+
+This one is also the same in both cases. Ship it!
+
+### 10. Automate
+
+You are one of the best (or luckiest) digital marketers we have met if 1 out of every 5 of these kinds of tests hit the expected result. That's why it's important to have the autonomy to be able to do as many as possible.
+
+What if this was one that worked? Now it's time to automate it. We more or less want all of the above steps to happen without any humans being involved. 30 days (or whatever number you choose) after buying a razor, all people that met the criteria would get the email and offer.
+
+#### Typical
+
+Work with product and engineering team to prioritize now that real integration has been justified. Send events to email system to create workflow.
+
+In the grand scheme of things, all the test did is get harder numbers to justify that product does the automation work. The return on investment (ROI) is now known so maybe it will happen. Or maybe it won't.
+
+Unfortunately, the organizational dynamic often does not encourage this kind of alignment. We've talked with organizations that had winning tests of this sort that are still not automated 6 months (and counting) later. The ROI number itself just isn't big enough by itself. However, it's lots of focused tests like this that lead to overall shifts.
+
+#### Grouparoo
+
+Create a trigger yourself to send email at appropriate time.
+
+<Image
+  centered
+  outline
+  maxWidth={500}
+  alt="Grouparoo has exported everyone to the Mailchimp destination."
+  src={require("../../public/posts/steps-for-marketing-tests/10-mailchimp.png")}
+/>
+
+The easiest and most common case is to have the email system take an action when someone is added to a group.
+
+The great thing is marketers can leverage everything they've already done. They are already synchronizing this group and the right data continuously. Now, they just have to add the trigger to make it happen forevermore. And if they want to iterate on who is in the group later, they can do that themselves, too, by updating the group definition in Grouparoo.
+
+## Finale
+
+Thanks for making it this far! It's kind of a lot of steps, right? The question is how quickly they can be accomplished. With Grouparoo, it's a step-level change: days, not months.
+
+Not to belabor the point, but this speed is absolutely critical because this was only one test. It's getting as quickly as possible to 100 of these kinds of tests that will make true impact to your business.
+
+<style>
+  {`
+    table.steps {
+      margin-bottom: 40px;
+      width: 100%;
+      table-layout:fixed;
+    }
+
+    table.steps td, th {
+      border: 1px solid black;
+      padding: 10px;
+    }
+
+    table.steps th {
+      text-align: center;
+      background-color: #efefef;
+    }
+
+    table.steps td.step {
+      background-color: #efefef;
+    }
+
+    .step-colors .eng {
+      background-color: #e6b8af;
+    }
+    .step-colors .mar {
+      background-color: #d9ead3;
+    }
+    .step-colors .auto {
+      background-color: #b6d7a8;
+    }
+
+    table.legend {
+      margin-bottom: 20px;
+      border: 1px solid black;
+      width: 100%;
+      table-layout:fixed;
+    }
+    table.legend td {
+      padding: 20px;
+      align-content: center;
+    }
+    table.legend .box {
+      width: 20px;
+      height: 20px;
+      border: 1px solid black;
+    }
+    table.legend .label {
+      line-height: 20px;
+      padding-left: 10px;
+    }
+  `}
+</style>

@@ -1,0 +1,77 @@
+---
+title: "Publishing"
+date: "2020-08-01"
+section: "development"
+layout: "docsPage"
+pullQuote: "Regardless of the method you deploy Grouparoo, the following topology will need to be created."
+---
+
+import Image from "../../../components/blog/image";
+
+<Image
+  centered
+  source="Grouparoo Topology"
+  alt="Grouparoo Topology"
+  src={require("../../../public/images/docs/development/grouparoo-release-process.png")}
+/>
+
+## Overview
+
+We use a combination of tools from `lerna` and `npm` to handle publishing these packages. A detailed blog post on our publishing process can be found [here](https://www.grouparoo.com/blog/grouparoo-monorepo-deployment).
+
+## Automated Publishing Path
+
+The normal path to publishing the packages in this monorepo is:
+
+1. Once a week (as defined in `.circleci/config`) the `master` branch will publish packages to the `next` tag as a pre-release. Pre-release versions have `alpha` in their patch ranges, ie: `v1.2.3-alpha.0`. Publishing is handled automatically by CircleCI.
+2. Manually, when there are changes pushed to the `stable` branch, CircleCI will publish a new patch version, publishing the mainline `latest`-tag that Grouparoo customers use.
+
+Please update the `stable` branch with a _rebase_ from `master`, ie:
+
+```
+git checkout master && \
+git pull && \
+git checkout stable && \
+git pull && \
+git rebase master && \
+git push
+```
+
+Both methods of publishing will also create a new Github release and generate release notes from our Pull Requests. This is done by the `lerna-changelog` package. Only Pull Requests with [labels](https://github.com/lerna/lerna-changelog) will be included. Release Notes can be viewed at [github.com/grouparoo/grouparoo/releases](https://github.com/grouparoo/grouparoo/releases).
+
+## Manual Publishing Path
+
+You can also publish packages manually via the `/bin/publish` script in this repo. This is the same script that CI uses. If you are on the the `master` branch, you will be publishing the pre-release `alpha` packages, and if you are on the `stable` branch, you will be publishing the mainline `latest` releases.
+
+1. Be sure you have no working changes in your git branch (`git reset --hard origin/master`)
+2. Run `npm install` and let it fully complete. This will also run `npm run prepare` and (re)-compile all packages that you are about to publish
+3. Ensure you are logged into NPM as a user who has publish rights to the `@grouparoo` organization on NPM. Check with `npm whoami`
+4. Ensure you have the `GITHUB_AUTH` environment variable set. This is a Github PAT token which is needed to automatically publish our release notes for the new version. You can include this as part of the publish command in-line.
+5. Run `GITHUB_AUTH=xxx ./bin/publish`
+   - You may be asked for your NPM 2FA code before the process completes.
+
+## What Can Go Wrong?
+
+- If CI doesn't pass, no packages will be published
+- If the latest release on master was a commit generated from a previous release, it will have a commit message like `chore(release): publish v0.1.15-alpha.1 [ci skip]`. The `[ci skip]` part means CI won't run this commit again... if you want to then publish a `stable` release, you will need to do it manually.
+- There may be problems publishing to NPM (rare HTTP timeouts). If this happens you will need to publish individual packages that had trouble. You can do this by pulling the latest commit Lerna has made with the updated version numbers (`git pull`) and `cd`-ing into the package folder and running `npm publish --tag alpha` or `npm publish --tag latest`. DO NOT FORGET THE `--tag` flag!
+
+## Notes
+
+- There is a ~5 min delay upon publishing a new NPM package to seeing it in the CLI and npmjs.com website. Just wait!
+- If your NPM account requires 2FA (which it should!) Lerna will ask you for a code in the CLI as part of the publish process. Watch out for the prompt, as it is time-sensitive.
+
+## Future Work
+
+- Using either `semantic-release` or tags from our Pull Requests, we can determine if the next version to publish is a breaking-change or not, and determine if the next version number should be a major/minor/patch change.
+- Automatically publish mainline releases.
+
+## CI Notes
+
+CI uses a few secrets for authentication:
+
+- `GITHUB_AUTH` - a Github PAT token. This is stored as an environment variable within Circle CI.
+- `NPM_TOKEN` - a NPM access token. This is stored as an environment variable within Circle CI.
+- A SSH key with write access to the `grouparoo/grouparoo` repo. This SSH key is only used for CI to checkout our repositories. CircleCI knows the private key and Github knows the public key.
+
+As a note, we cannot `Include administrators` on Github's branch protection for the master or release branches as lerna needs to push it's changes back to the master branch after bumping the version and publishing.

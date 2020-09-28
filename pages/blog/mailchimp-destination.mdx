@@ -1,0 +1,118 @@
+---
+title: "Mailchimp Destination"
+date: "2020-09-15"
+author: "Evan Tahler"
+layout: "blogPage"
+pullQuote: "Use Grouparoo to sync your customer data to Mailchimp."
+tags: [connections, engineering]
+---
+
+import Image from "../../components/blog/image";
+
+Grouparoo allows you to connect your Customer and Product data to Mailchimp. Grouparoo collects all of your customer data in one place and makes it easy to sync your Profiles and Groups to other marketing tools. Mailchimp is a popular email marketing tool with great features and a robust API. However, there are some things to watch out for when integrating with Mailchimp that Grouparoo can help with.
+
+<Image
+  maxHeight={300}
+  alt="How Grouparoo connects to Mailchimp"
+  src={require("../../public/posts/mailchimp-destination/connection.png")}
+/>
+
+## Mailchimp setup
+
+In Mailchimp, you will need to create a new API Key for Grouparoo to use. Visit `Account -> Extras -> API Keys` to generate a new API Key.
+
+<Image
+  maxHeight={600}
+  alt="How Grouparoo connects to Mailchimp"
+  src={require("../../public/posts/mailchimp-destination/api-keys.png")}
+/>
+
+In Grouparoo, Apps provide the credentials to be able to connect to other platforms. For Mailchimp, all you need to do is paste in the `apiKey` from the Mailchimp page. At this point if you hit "Test Connection," you should see "Test Passed" and some data about your Mailchimp account.
+
+<Image
+  maxHeight={600}
+  alt="Creating Grouparoo Mailchimp App"
+  src={require("../../public/posts/mailchimp-destination/mailchimp-app.png")}
+/>
+
+From there, you can create a Destination and start exporting your Profiles and Groups. You can learn more about [creating Destinations here](http://localhost:3001/docs/guides/create-destinations)
+
+## Implementation Details
+
+One of the values of using an open source customer data platform (CDP) like Grouparoo is that you gain from the experience and attention from multiple companies using the same plugin so it works correctly in the real world.
+
+Grouparoo uses the [Mailchimp V3 API](https://mailchimp.com/developer/api/marketing/). Here are a few of the things we've learned about using it:
+
+### Rate Limiting
+
+Mailchimp has a very strict 10-connections-at-once limit.
+
+From https://mailchimp.com/developer/guides/marketing-api-conventions/#throttling
+
+> To improve connections and experiences for all our users, we use some connection limits. Each user account can have up to 10 simultaneous connections; you’ll receive an error message if you reach the limit. We do not throttle based on volume.
+
+This limit means that no matter the size of your plan with Mailchimp, you cannot update more than 10 profiles at once. To solve this issue, Grouparoo implemented a `parallelism` limit to use in our `@grouparoo/mailchimp` package. We'll be sure that no matter how many background processes you are running, no more than 9 of them will ever be working on a Mailchimp import or export at a time. We know how to track pending jobs and can visualize this behavior for you in our Runs and Exports.
+
+### Generating the Mailchimp ID
+
+To Mailchimp, the primary identifier of a customer is their email address. As a result, for all subsequent update `PUT` calls, you'll need to know the `mailchimpId` of the customer. Luckily, it's easy to calculate based on an MD5 has of the email address. We created a shared helper for this calculation for Node.js / Typescript:
+
+```ts
+import * as crypto from "crypto";
+
+export function generateMailchimpId(email: string) {
+  return crypto
+    .createHash("md5")
+    .update(email.toLowerCase().trim())
+    .digest("hex");
+}
+```
+
+Note how it is important to trim and to make the email address lowercase.
+
+### Clearing Data
+
+One of Grouparoo's principles is to minimize the data you send to external parties. This principle is to keep your and your customers' data safe. Part of that story is letting you remove data from your Mailchimp profiles that you have previously sent. There is no explicit way to do this in the Mailchimp API, but we've learned that setting a value to empty string (`""`) works, no matter the data type.
+
+For example if you wanted to remove the `first_name` MERGE VAR from a profile in Mailchimp, you would do the following:
+
+```ts
+const mergeFields = {
+  email: "person@example.com",
+  first_name: "",
+};
+
+const payload = {
+  email_address,
+  status: "subscribed",
+  merge_fields: mergeFields,
+};
+
+const method = exists ? "put" : "post";
+const route = exists
+  ? `/lists/${listId}/members/${generateMailchimpId(email_address)}`
+  : `/lists/${listId}/members`;
+
+// where client is an instance of `mailchimp-api-v3`
+// from https://www.npmjs.com/package/mailchimp-api-v3
+await client[method](route, payload);
+```
+
+### Tag Names
+
+Mailchimp allows you to Tag Profiles, and that is how Grouparoo indicates Group membership. There are a few unintuitive rules about Mailchimp's Tags:
+
+- They must be lowercase
+- They can contain a space
+
+... otherwise, Mailchimp will convert your tag names.
+
+To that end, a good way to ensure you are sending data that will not be modified is to call `toLocaleLowerCase()` on your tags before sending them.
+
+### Boolean Data
+
+Mailchimp allows boolean MERGE VARS, but it still expects data to be sent to them as strings. So, be sure to convert `true` to `"true"` and `false` to `"false"` before sending a Profile to the Mailchimp API.
+
+## Summary
+
+You can learn more about how to use Grouparoo to send data to Mailchimp on our [Mailchimp Integration Page](/integrations/destinations/mailchimp).

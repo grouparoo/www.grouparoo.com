@@ -1,0 +1,22 @@
+# General
+node_modules
+.DS_Store
+.vscode
+npm-debug.log
+yarn-error.log
+.env
+dump.rdb
+newrelic_agent.log
+*.retry
+
+# API
+web/public/javascript/ActionheroWebsocketClient.js
+web/public/javascript/ActionheroWebsocketClient.min.js
+log
+pids
+dist
+
+# Web
+.next
+.mdx-data
+web/out

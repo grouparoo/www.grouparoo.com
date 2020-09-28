@@ -1,0 +1,126 @@
+---
+title: "How to Format Zendesk Tags"
+date: "2020-08-26"
+author: "Brian Leonard"
+layout: "blogPage"
+pullQuote: "You can update a user's tags via the API, but make sure they are lowercase and without spaces."
+tags: [connections, engineering, notes]
+---
+
+import Image from "../../components/blog/image";
+
+In the process of integrating [Grouparoo](https://www.grouparoo.com) with [Zendesk](https://www.zendesk.com), I searched the documentation for the right way to format tags, but was unable to find it. I thought I'd write up a guide to help others on the same journey.
+
+In case you are "that person" and just want the answer, here it is:
+
+> Tags needs to be lowercase and not have any spaces. You can have underscores.
+
+### More Details
+
+Zendesk has the concept of [tags](https://support.zendesk.com/hc/en-us/articles/203662096-About-tags) which can be set on users using the [Support API](https://developer.zendesk.com/rest_api/docs/support/users#json-format-for-agent-or-admin-requests). User tags are pretty cool because they will get copied to the tickets the user creates. Tags then become the best way to route those tickets to the appropriate resolution.
+
+Here is what it looks like to set the tags via the API:
+
+```javascript
+import zendesk from "node-zendesk";
+
+async function updateTags(tags: Array<string>) {
+  const remoteUri = `https://${subdomain}.zendesk.com/api/v2`;
+  const client = new zendesk.createClient({ username, token, remoteUri });
+
+  const payload = {
+    user: {
+      external_id: "testuser123",
+      name: "Required Name",
+      tags: tags,
+    },
+  };
+
+  try {
+    const user = await client.users.createOrUpdate(payload);
+    console.log("tags", user.tags);
+  } catch (error) {
+    console.log("error", error.result.toString());
+  }
+}
+```
+
+And here are some outputs:
+
+```javascript
+// standard lowercase tag
+await updateTags(["first", "second"]);
+// -> tags [ 'first', 'second' ]
+
+// automatically lowercases it
+await updateTags(["Third"]);
+// -> tags [ 'third' ]
+
+// spaces actually make two tags unexpectedly
+await updateTags(["Fourth Tag"]);
+// -> tags [ 'fourth', 'tag' ]
+
+// clears tags
+await updateTags([""]);
+// -> tags []
+
+// clears tags
+await updateTags([" "]);
+// -> tags []
+
+// ignores leading and trailing spaces
+await updateTags([" five "]);
+// -> tags [ 'five' ]
+
+// it doesn't like most punctuation but is ok with underscores
+await updateTags(["one!", "_here_", "!"]);
+// -> tags [ 'one', '_here_' ]
+```
+
+Basically, the function splits the given string or array of strings into lowercase tags. So, if you want to translate some name to a tag (like we do with Grouparoo groups) and predict what it will be in Zendesk, you need to format it correctly.
+
+This function makes the name lowercase and removes spaces and most punctuation. I decided to replace all unsupported punctuation to the one kind of punctuation that I know Zendesk does handle: underscores.
+
+```javascript
+import zendesk from "node-zendesk";
+
+function makeTagName(groupName) {
+  // tags can't have spaces and have to be lowercase
+  let tagName = groupName.toLowerCase();
+  // replace with underscore all punctuation
+  tagName = tagName.replace(/[^a-z]/g, "_");
+  return tagName;
+}
+
+async function updateTags(tags: Array<string>) {
+  const remoteUri = `https://${subdomain}.zendesk.com/api/v2`;
+  const client = new zendesk.createClient({ username, token, remoteUri });
+
+  const payload = {
+    user: {
+      external_id: "testuser123",
+      name: "Required Name",
+      tags: tags.map((tag) => makeTagName(tag)),
+    },
+  };
+
+  try {
+    const user = await client.users.createOrUpdate(payload);
+    console.log("tags", user.tags);
+  } catch (error) {
+    console.log("error", error.result.toString());
+  }
+}
+```
+
+Here is how that works out:
+
+```javascript
+// does not  allows spaces actually to make two tags unexpectedly
+await updateTags(["Fourth Tag"]);
+// -> tags [ 'fourth_tag' ]
+```
+
+### Grouparoo
+
+This learning and many more are built into the [Grouparoo](https://www.grouparoo.com) Zendesk plugin. Grouparoo enables you to sync data from your product database or warehouse, create smart cohorts, and use this (and more!) logic to tag them in Zendesk. Check it out!

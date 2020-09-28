@@ -1,0 +1,194 @@
+---
+title: "Exports is not a function"
+date: "2020-09-23"
+author: "Brian Leonard"
+layout: "blogPage"
+pullQuote: 'Maybe it was a bad idea to have a variable named "exports"'
+tags: [engineering, notes]
+---
+
+import Image from "../../components/blog/image";
+
+I have been working on the [Salesforce integration](https://github.com/grouparoo/grouparoo/pull/754). That experience will be its own story. In the process, though, I found something tricky that I might be uniquely experiencing given the combinatorics of the modern Node/Javascript/Typescript world.
+
+[Grouparoo](https://www.grouparoo.com) connects with sources, processes the data from them, and sends that data to destinations. When data comes from a source, we call it an `import`. When data is sent to a destination, we call it an `export`. These are very good names, in my opinion, because they accurately reflect what is happening and they are known words in the engineering community.
+
+The downside of `import` and `export` being well-known words is that they might be used for other purposes. In this case, `import` and `export` are somewhat magical words when it comes to Javascript. Some code might look like this:
+
+```typescript
+import { ExportProfilesPluginMethod } from "@grouparoo/core";
+
+export const connect = async({appOptions}) {
+  // get a connection to salesforce
+}
+
+export const exportProfiles: ExportProfilesPluginMethod = async ({
+  appOptions,
+  destinationOptions,
+  exports,
+}) => {
+  // call function defined above
+  const client = await connect(appOptions);
+  // do stuff with client and exports array
+};
+```
+
+Notice that `import` is used to pull in code from `@grouparoo/core`, who has defined what it means to be a destination that processes batches of profiles. Notice that `export` is also used to make the function we are writing available to other code that uses this file.
+
+Everything works fine in my [Jest](https://jestjs.io/) tests. Then it starts running for real, and I get this stacktrace:
+
+```bash
+TypeError: exports.connect is not a function
+    at exports.exportProfiles (/grouparoo/plugins/@grouparoo/salesforce/dist/lib/export-objects/exportProfiles.js:16:20)
+    at Object.sendExports (/grouparoo/core/api/src/modules/ops/destination.ts:563:53)
+    ...
+```
+
+What happened here? Of course, `connect` is a function. Things worked when I tested it, too.
+
+Eventually, the answer reveals itself when I looked at the "real" code that was running. Typescript gets transpiled to Javascript. Here is the "real" code:
+
+```javascript
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.exportProfiles = exports.connect = void 0;
+
+exports.connect = async ({ appOptions }) => {
+  // get a connection to salesforce
+};
+
+exports.exportProfiles = async ({
+  appOptions,
+  destinationOptions,
+  exports,
+}) => {
+  // call function defined above
+  const client = await exports.connect({ appOptions });
+  // do stuff with client and exports array
+};
+```
+
+Clearly some weird stuff gets added here, but it looks about right. So what's the issue?
+
+## The Issue
+
+The issue is that our variable name was `exports`. That's a good name, but there's a name collision. When the code got compiled, it saw that the `connect` method wasn't just a regular function, it was on the global `exports` of the file, so it called `exports.connect`. However, the variable names `exports` overrode the global. So when it ran, it looked for a function called `connect` on the `exports` variable that was passed in.
+
+What should have happened? If you look at these compiled `.js` files, you sometimes see `var_1` and such. I would have hoped that it would have ended up like this:
+
+```javascript
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.exportProfiles = exports.connect = void 0;
+
+exports.connect = async ({ appOptions }) => {
+  // get a connection to salesforce
+};
+
+exports.exportProfiles = async ({
+  appOptions,
+  destinationOptions,
+  exports_1,
+}) => {
+  // call function defined above
+  const client = await exports.connect({ appOptions });
+  // do stuff with client and exports_1 array
+};
+```
+
+And everywhere that used the `exports` variable would the use the `exports_1` variable.
+
+## A Functional Solution
+
+As exciting as it sounded to upgrade compilation, I made the following change to the original code:
+
+```typescript
+import { ExportProfilesPluginMethod } from "@grouparoo/core";
+
+export const connect = async({appOptions}) {
+  // ...
+}
+
+const myConnectMethod = connect;
+export const exportProfiles: ExportProfilesPluginMethod = async ({
+  appOptions,
+  destinationOptions,
+  exports,
+}) => {
+  // call function re-named above
+  const client = await myConnect(appOptions);
+  // do stuff with client and exports array
+};
+```
+
+That change resulted in the following Javascript:
+
+```javascript
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.exportProfiles = exports.connect = void 0;
+
+exports.connect = async ({ appOptions }) => {
+  // get a connection to salesforce
+};
+
+const myConnectMethod = exports.connect;
+exports.exportProfiles = async ({
+  appOptions,
+  destinationOptions,
+  exports,
+}) => {
+  // call function re-named above
+  const client = await myConnectMethod({ appOptions });
+  // do stuff with client and exports array
+};
+```
+
+By calling a reference that is _not_ being exported, everything works as expected.
+
+## A Naming Solution
+
+Another option would be to rename the variable. This is still possible even with the destructured input.
+
+```typescript
+import { ExportProfilesPluginMethod } from "@grouparoo/core";
+
+export const connect = async({appOptions}) {
+  // ...
+}
+
+export const exportProfiles: ExportProfilesPluginMethod = async ({
+  appOptions,
+  destinationOptions,
+  exports : profilesToExport,
+}) => {
+  // call function defined above
+  const client = await connect(appOptions);
+  // do stuff with client and profilesToExport array
+};
+```
+
+This change resulted in the following Javascript:
+
+```javascript
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.exportProfiles = exports.connect = void 0;
+
+exports.connect = async ({ appOptions }) => {
+  // get a connection to salesforce
+};
+
+const myConnectMethod = exports.connect;
+exports.exportProfiles = async ({
+  appOptions,
+  destinationOptions,
+  exports: profilesToExport,
+}) => {
+  // call function defined above
+  const client = await exports.connect({ appOptions });
+  // do stuff with client and profilesToExport array
+};
+```
+
+By making the variable name something that is not reserved, everything works as expected.

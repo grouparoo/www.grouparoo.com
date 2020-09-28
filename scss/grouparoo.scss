@@ -1,0 +1,173 @@
+// -- Colors --
+
+// Grouparoo Colors
+
+$grouparoo-light-gray: #adb5bd;
+$grouparoo-dark-gray: #242436;
+$grouparoo-yellow: #ff7518;
+$grouparoo-light-yellow: #fff8f1;
+$grouparoo-red: #ff0039;
+$grouparoo-blue: #29abe2;
+$grouparoo-light-blue: #b3e8ff;
+$grouparoo-blue-gray: #9b9db1;
+$grouparoo-violet: #9954bb;
+$grouparoo-light-violet: #d3d3ff;
+$grouparoo-background-blue: #f6fafb;
+$grouparoo-green: #3fb618;
+
+// Bootstrap Colors
+
+$primary: $grouparoo-blue;
+$secondary: $grouparoo-dark-gray;
+$success: $grouparoo-green;
+$info: $grouparoo-light-violet;
+$warning: $grouparoo-yellow;
+$danger: $grouparoo-red;
+$light: $grouparoo-light-gray;
+$dark: $grouparoo-dark-gray;
+
+@import "~bootstrap/scss/bootstrap";
+
+// -- Fonts --
+// prettier-ignore
+@import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap);
+$font-stack: Roboto, sans-serif;
+
+// Page Defaults
+
+body {
+  background-color: $grouparoo-background-blue;
+  font-family: $font-stack;
+  font-weight: 300;
+  font-size: 18px;
+  color: $grouparoo-dark-gray;
+}
+
+// -- Typography --
+
+.text-big-muted {
+  @extend .text-muted;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+header {
+  font-weight: 400;
+}
+
+.documentationHeader {
+  font-family: "Courier New", Courier, monospace;
+  color: $grouparoo-dark-gray;
+}
+
+.documentationPage {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.documentationPage h2,
+h3 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.documentationPage h2::after {
+  content: " ";
+  display: block;
+  border: 1px solid $grouparoo-blue-gray;
+}
+
+// -- Homepage --
+
+.homePageSection {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.homepageBlueH3 {
+  color: $grouparoo-blue;
+}
+
+.howItWorksImage {
+  box-shadow: 7px 6px 13px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  max-width: 90%;
+  margin: 20px;
+}
+
+.howItWorksImageWithoutDropShadow {
+  border-radius: 4px;
+  max-width: 90%;
+  margin: 20px;
+}
+
+// -- Integrations Pages --
+.productScreenshots {
+  box-shadow: 7px 6px 13px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  max-width: 90%;
+  margin: 20px;
+}
+
+.integrationsBlueH3 {
+  color: $grouparoo-blue;
+}
+
+// -- Page Content --
+.headerImage {
+  width: 100%;
+  max-height: 400px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+code[class*="language-"] {
+  font-size: 14px;
+  line-height: 10px;
+}
+
+// -- Header --
+header {
+  padding-bottom: 50px;
+}
+
+// -- Footer --
+footer {
+  color: $light;
+  background-color: $grouparoo-dark-gray;
+  font-size: 14px;
+}
+
+footer a {
+  text-decoration: none;
+  color: $light;
+}
+
+// -- HR --
+hr {
+  border: 1px solid $grouparoo-blue;
+}
+
+// -- Code --
+
+@import url(/css/prism.css);
+
+// -- Blog --
+
+.blogPage blockquote {
+  // using defaults from bootstrap
+  // .blockquote
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  // .text-center
+  text-align: center !important;
+  // change background and padding
+  background-color: $light;
+  padding: 1rem 1rem 0.25rem 1rem;
+}

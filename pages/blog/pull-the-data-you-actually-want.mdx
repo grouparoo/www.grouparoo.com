@@ -1,0 +1,90 @@
+---
+title: "Pull the Data you Actually Want"
+date: "2020-05-22"
+author: "Evan Tahler"
+layout: "blogPage"
+pullQuote: "One of the most telling critiques of event-based SaaS marketing tools is the fact that marketing teams are actively pruning the events they are sending to control costs."
+tags: [marketing, engineering]
+---
+
+import Image from "../../components/blog/image";
+import { Card } from "react-bootstrap";
+
+<Image
+  centered
+  source="https://unsplash.com/photos/peFEjuzDfQA"
+  alt="Pull doughnuts"
+  src={require("../../public/posts/pull-the-data-you-actually-want/doughnuts.jpg")}
+/>
+
+There’s an underlying pattern prevalent today in many digital marketing tools that is causing problems. Wasted time, overpaying, slow velocity, and privacy issues for your customers are some of the results of this pattern. The problem is the over-reliance on Events. Specifically, the problem is that many marketing tools live in a world where they expect to be “pushed” data, when it would be so much better if they were “pulling” data when they needed it.
+
+In this blog post, we’ll explore the problems with event-based “Push” marketing & analytics tools, and how we can fix them by switching to a “Pull” based solution, like the one that [Grouparoo](https://github.com/grouparoo/grouparoo) is building.
+
+## The Problems with “Push” and Events
+
+We have conducted interviews with over 70 marketing teams of all sizes throughout the world. What follows is a synthesis of some of the common problems they face with their current marketing tools.
+
+### Overpaying
+
+One of the most telling critiques of event-based SaaS marketing tools is the fact that marketing teams are /actively/ pruning the events they are sending to control costs. Tools like Segment work best when you can build a robust profile of your customers' activity, but Segment charges you more when you store more data! Segment essentially holds their functionality hostage as you gain more users who in turn produce more events. Countless marketers lamented pain of having to decide which events to keep tracking versus which to stop tracking. Inevitably, a new campaign idea would hit them a few months later that would need the event that they stopped tracking. These teams and marketers just didn’t have the money to keep sending every event. This takes us to the Stale Data problem.
+
+### Stale Data
+
+When using only events to model your customers, there’s a huge lag time between when you start capturing that data and when you can use it. For example, say you want to run a campaign targeting customers who haven’t purchased in 6 months. If you start sending `purchase` events in June, the soonest you can start your campaign is December. Not only is that a long time to wait, but you’ve also sacrificed your team’s agility to modify those events or the campaign while you wait, [minimizing the shots you get to take](/blog/the-shots-you-get-to-take).
+
+### Lost History
+
+In addition to the slow ramp up time for a new campaign based on events, there’s the problem of lost events. With poor mobile connections, errors on your web pages & apps, slow vendors, and increasingly prevalent ad-blocking tools, it’s very easy to lose an event. Every marketer we talked to had their own less-than-scientific process they used to explain discrepancies between events and product data. Everyone had a different process and no one really trusted an event-based data source. If events are the only way you model your customers, it can be devastating if you miss a `changed-email-address` event - you might never be able to reach your customers at all!
+
+Coupling this issue with the Stale Data problem, there’s no way to fully model customers you had before you started sending events. There’s no way to compare the profile you’ve built in Segment against your product database, where the customer’s data is actually stored with confidence.
+
+### Privacy Nightmare
+
+Finally, there’s a challenging privacy story regarding events. You have a relationship with your customers and part of that relationship is based on trust. How sure are you that Segment or Mixpanel is storing your customers' data safely? How many other services do your events pass though on the way to them? Google Analytics or Google Tag Manager? AdMob? Facebook or Twitter Pixels? The list goes on and on. Any one of these vendors is a potential vector for attack, event theft, or event manipulation.
+
+With regulations like GDPR and CCPA and many more on the way, you have a clear legal responsibility to keep your customers' data safe. Part of that responsibility is ensuring that the companies you share data with will update, delete, and anonymize data when _you_ ask them too. What’s your process for doing that for all of your past events?
+
+## The future is "Pull"
+
+How would you build things if you were starting today? We would focus on pulling in data from our existing sources, of course!
+
+Now, imagine you were starting to build a new marketing tool from scratch, like [Grouparoo](https://www.grouparoo.com) is. You aren’t burdened by the poor legacy choices of Segment, Mixpanel, and the rest. How would you build things if you were starting today? We would focus on pulling in data from our existing data sources. With Grouparoo, events are a way to augment your customer profiles, not the main source of critical data.
+
+Grouparoo’s goal is to make it easy for non-technical members of your team to build robust customer profiles and groups. Then, they can synchronize that data in a safe way to communication and advertising partners. A highly-functioning digital marketing team can quickly add new profile properties, augment them with data from your product and data warehouse(s), and start running a new campaign in minutes, rather than weeks.
+
+### Within your Firewall
+
+To be in the best position to pull in data, the Grouparoo application should be located within your company firewall. This means that Grouparoo should run on _your_ servers and have (read) access to your databases. In this way, no data ever leaves your company’s control, and you can always inspect, audit, and change it. You don’t need to send your customer data over the open internet to a third party just to build a new cohort.
+
+### Safe and Secure
+
+Since your customer data lives where it belongs on your servers, you can make changes and deletions as needed, and you can prove it. You can build a transparent GDPR/CCPA process at your company with Grouparoo. Grouparoo has robust access controls and logs to ensure that every profile and group is managed the way it should be.
+
+### Cost Controls
+
+Since Grouparoo is running on your servers, there’s no additional cost to import more data. If you want to add more properties to your customer profiles to build more fine-grained groups and cohorts, then do it! Have you imported a facet you no longer need? Delete it! Grouparoo doesn't charge per event, or any other measure of data quantity, so you are free to experiment at will.
+
+### Always up-to-date
+
+The “Pull” pattern has a wonderful property; Grouparoo can check up on the data whenever we are about to use it! This means that rather than waiting for an event to (possibly) be sent to Grouparoo to update a customer’s preferences or LTV, we can ask the primary source. Grouparoo will always re-import the properties of every profile before sending a communication to the customer, or syncing with a third party. This means that you can be sure that you’ll always be working with the latest customer preferences, purchase, email address, names, etc. when communicating with them. No lost events will prevent you from communicating effectively.
+
+### Ready for ad-blocking technology by respecting consumer choices
+
+Finally, the pattern of tracking and sending **so many** events from our sites and applications is leading to more and more consumers blocking tools like Segment, Mixpanel, Amplitude, and Google Analytics from getting any events at all. In fact, [major browsers are now shipping with defaults to prevent third-party tracking and cookies](https://www.theverge.com/2020/3/24/21192830/apple-safari-intelligent-tracking-privacy-full-third-party-cookie-blocking). Rather than fight the modern privacy-conscious consumer because your marketing stack relies on events, embrace the choices they are making. Utilize your source-of-truth of their behavior and preferences you already have, your product database.
+
+## Grouparoo’s Open-Source Promise
+
+There’s still a place for events in your marketing stack, but they shouldn’t be the primary source of any piece of customer data. Grouparoo’s goal is to embrace the “Pull” data model as much as we can, and this means making it as easy as possible for you to install and run it within your cloud. To that end, Grouparoo’s core product is **available for free**, under the [Mozilla 2.0 Open Source License](https://github.com/grouparoo/grouparoo/blob/master/LICENSE.txt). You can follow our progress [on Github](https://github.com/grouparoo/grouparoo) and join our developer community at [community.grouparoo.com](https://www.grouparoo.com/docs/community).
+
+<br />
+
+<Card bg="dark" text="light" style={{ textAlign: "center" }}>
+  <Card.Body>
+    <p>
+      Does enabling marketing teams so they can Pull the data they need make
+      more sense for your business?{" "}
+      <a href="https://www.grouparoo.com/meet">Let us give you a demo</a>
+    </p>
+  </Card.Body>
+</Card>
