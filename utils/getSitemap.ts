@@ -14,6 +14,11 @@ async function addStaticPages(smStream: SitemapStream) {
     priority: 1.0,
     changefreq: "daily",
   });
+  smStream.write({
+    url: "/solutions/healthcare",
+    priority: 1.0,
+    changefreq: "daily",
+  });
 
   smStream.write({ url: "/meet", priority: 0.3, changefreq: "daily" });
   smStream.write({ url: "/blog", priority: 0.3, changefreq: "daily" });
