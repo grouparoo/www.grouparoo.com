@@ -1,4 +1,4 @@
 //@ts-ignore
-//<<random-timestamp>> 2020-09-28T02:33:13.607Z
+//<<random-timestamp>> 2020-10-01T18:05:57.438Z
 import { frontMatter as blogFiles } from "../pages/blog/*.mdx";
 export default blogFiles;

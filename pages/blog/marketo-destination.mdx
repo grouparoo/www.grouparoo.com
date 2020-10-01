@@ -1,0 +1,116 @@
+---
+title: "Marketo Destination"
+date: "2020-10-02"
+author: "Brian Leonard"
+layout: "blogPage"
+pullQuote: "Connect to Marketo using Grouparoo to communicate beter with your customers."
+tags: [connections, engineering]
+---
+
+import Image from "../../components/blog/image";
+
+Grouparoo can now connect with [Marketo](https://www.marketo.com) as a destination. Now, you can leverage all the information you already have in Grouparoo, such as profile information and group membership, and send it to Marketo. It will sync continously in real-time, updating leads and putting them in lists within Marketo.
+
+<Image
+  maxHeight={300}
+  alt="How Grouparoo connects to Mailchimp"
+  src={require("../../public/posts/marketo-destination/connection.png")}
+/>
+
+## Marketo setup
+
+In Marketo, you will need to create the user and gather the settings or Grouparoo to connect.
+
+First, we suggest making a new role called "API Permissions" or "Grouparoo" to use.
+
+<Image
+  centered
+  maxWidth={500}
+  alt="Create a Marketo Role"
+  src={require("../../public/posts/marketo-destination/marketo-role.png")}
+/>
+
+Then, let's make a user with that role to connect via the API. Be sure to check "API Only" in this process.
+
+<Image
+  centered
+  maxWidth={500}
+  alt="Create a Marketo User"
+  src={require("../../public/posts/marketo-destination/marketo-user.png")}
+/>
+
+Some settings we will need come from the overall setup. These are the "Endpoint" and "Identity" from the "Web Services" section of the Marketo admin.
+
+<Image
+  centered
+  maxWidth={500}
+  alt="Look for Marketo endpoint and identity"
+  src={require("../../public/posts/marketo-destination/marketo-web-services.png")}
+/>
+
+The other settings come from a new "LaunchPoint" service from the user we created. So let's create the service from the "Launchpoint" admin. Once created, clicking on "View Details" will give you the "Client Id" and "Client Secret" that you will need to authenticate to Marketo.
+
+<Image
+  centered
+  maxWidth={500}
+  alt="Create a new Marketo Launchpoint service"
+  src={require("../../public/posts/marketo-destination/marketo-service.png")}
+/>
+
+<Image
+  centered
+  maxWidth={500}
+  alt="View Details of the Marketo service credentials"
+  src={require("../../public/posts/marketo-destination/marketo-credentials.png")}
+/>
+
+## Create a Grouparoo app
+
+In Grouparoo, apps provide the settings to be able to connect to other platforms. For Marketo, we can use the information from the last section to set things up. At this point if you hit "Test Connection," you should see "Test Passed."
+
+<Image
+  centered
+  maxWidth={500}
+  alt="Creating Grouparoo Marketo App"
+  src={require("../../public/posts/marketo-destination/create-app.png")}
+/>
+
+## Create a Grouparoo destination
+
+You are ready to start sending your profile data to Marketo. We do this by creating a destination. Destinations connect the profile and group membership data in Grouparoo with external tools like Marketo.
+
+In Marketo's case, we will create a Person record for each Grouparoo Profile, setting the properties that are specified. We can choose from all built-in and all custom Marketo fields. The Grouparoo Groups become Marketo Lists. Because everything is automated, it is like you are uploading a new static list every minute with exactly the right people.
+
+<Image
+  centered
+  maxHeight={500}
+  alt="Grouparoo properties and groups to send to Marketo"
+  src={require("../../public/posts/marketo-destination/destination-mapping.png")}
+/>
+
+## Results
+
+All people with an email address now show up in Marketo. It made a "High Value" group and others. The correct people have been placed in each list.
+
+<Image
+  centered
+  maxWidth={500}
+  alt="People added to Marketo"
+  src={require("../../public/posts/marketo-destination/marketo-people.png")}
+/>
+<Image
+  centered
+  maxWidth={500}
+  alt="Marketo Lists created"
+  src={require("../../public/posts/marketo-destination/marketo-lists.png")}
+/>
+
+From here, you can do whatever you want in Marketo. For example, you can trigger a campaign when someone is added to the "High Value" list.
+
+## Implementation Details
+
+This is the first destination plugin that takes advantage of Grouparoo's batching capability. Instead of sending one profile at a time, it works on many at once. Working on one at a time can be more reliable but will cause more API requests to the destination. Marketo has a 50,000 request per day limit, which is not that much for larger Grouparoo users.
+
+> Grouparoo saves API calls and makes the integration more reliable by working on many profiles at once.
+
+Another interesting piece of the integration was where to create the Marketo lists. There is a folder structure. We decided to create them in the root folder, but allow them to be moved anywhere after that. In the picture above, we've placed them in a "Group Lists" subfolder, for example.
