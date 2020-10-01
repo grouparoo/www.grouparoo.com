@@ -97,6 +97,7 @@ spec:
       labels:
         app: grouparoo-worker
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
         - name: grouparoo-worker
           image: grouparoo/app-example:latest
@@ -133,6 +134,7 @@ spec:
       labels:
         app: grouparoo-web
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
         - name: grouparoo-worker
           image: grouparoo/app-example:latest
