@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Image, Button, Tab, Nav, Row, Col } from "react-bootstrap";
 import Head from "next/head";
 import HomepageCodeBox from "../components/home/homepageCodeBox";
-import Integrations from "../components/home/integrations";
+import IntegrationsSection from "../components/home/integrationsSection";
 import SmallIntegration from "../components/home/smallIntegration";
 import GetStarted from "../components/home/getStarted";
 import WhyOpenSource from "../components/home/whyOpenSource";
@@ -384,7 +384,7 @@ export default function IndexPage() {
         </Container>
       </div>
 
-      <Integrations />
+      <IntegrationsSection />
       <WhyOpenSource />
       <GetStarted />
     </>

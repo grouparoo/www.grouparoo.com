@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import IntegrationCard from "./integrationCard";
 import Link from "next/link";
 
-export default function Integrations() {
+export default function IntegrationsSection() {
   return (
     <div
       id="integrations"
