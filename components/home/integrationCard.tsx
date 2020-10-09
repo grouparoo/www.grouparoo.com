@@ -23,7 +23,7 @@ export default function IntegrationCard({
   showLink?: boolean;
 }) {
   const card = (
-    <div style={{ boxShadow: "5px 5px 5px 5px grey" }}>
+    <div style={{ borderRadius: "5px", boxShadow: "5px 5px 5px 5px grey" }}>
       <Card bg="dark" text="white">
         <Card.Body>
           {tag ? tag : ""}
@@ -44,7 +44,7 @@ export default function IntegrationCard({
 
           {otherType ? (
             <>
-              <Badge pill variant="primary">
+              <Badge pill variant="warning">
                 {" "}
                 {otherType.toUpperCase()}
               </Badge>
