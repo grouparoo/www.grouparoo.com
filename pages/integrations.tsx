@@ -29,7 +29,8 @@ export default function IntegrationsPage() {
                 Connect your data stack with all the tools that your team uses
               </h1>
               <p className="text-big-muted">
-                Grouparoo is adding new Integrations all the time!
+                Grouparoo lets you import and export your data to the world's
+                most popular tools
               </p>
             </Col>
           </Row>
