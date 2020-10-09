@@ -30,14 +30,35 @@ export default function IntegrationCard({
           <SmallIntegration fillWidth={true} image={image} slug={slug} />
           <Card.Text>{name}</Card.Text>
 
-          {type ? <Badge variant="primary"> {type.toUpperCase()}</Badge> : ""}
-          {category ? (
+          {type ? (
             <>
               <Badge pill variant="warning">
                 {" "}
+                {type.toUpperCase()}
+              </Badge>
+              <br />
+            </>
+          ) : (
+            ""
+          )}
+
+          {otherType ? (
+            <>
+              <Badge pill variant="primary">
+                {" "}
+                {otherType.toUpperCase()}
+              </Badge>
+              <br />
+            </>
+          ) : (
+            ""
+          )}
+          {category ? (
+            <>
+              <Badge pill variant="primary">
+                {" "}
                 {category.toUpperCase()}
               </Badge>
-              <Badge variant="danger"> {category.toUpperCase()}</Badge>
             </>
           ) : (
             ""
@@ -50,7 +71,7 @@ export default function IntegrationCard({
   if (showLink) {
     return (
       <>
-        <Link href={`/integrations/${type}s/${formatNameIntoLink(name)}`}>
+        <Link href={`/integrations/${type}s/${slug}`}>
           <a>{card}</a>
         </Link>
         <br />
