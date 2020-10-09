@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import Integration from "./integration";
+import IntegrationCard from "./integrationCard";
 import Link from "next/link";
 
 export default function Integrations() {
@@ -19,48 +19,68 @@ export default function Integrations() {
 
         <Row>
           <Col lg={3} md={3} sm={6} xs={6}>
-            <Integration
+            <IntegrationCard
               name="Mailchimp"
+              slug="mailchimp"
               type="destination"
               image="mailchimp.svg"
             />
           </Col>
           <Col lg={3} md={3} sm={6} xs={6}>
-            <Integration
+            <IntegrationCard
               name="Sailthru"
+              slug="sailthru"
               type="destination"
               image="sailthru.png"
             />
           </Col>
           <Col lg={3} md={3} sm={6} xs={6}>
-            <Integration name="Postgres" type="source" image="postgres.svg" />
+            <IntegrationCard
+              name="Postgres"
+              slug="postgres"
+              type="source"
+              image="postgres.svg"
+            />
           </Col>
           <Col lg={3} md={3} sm={6} xs={6}>
-            <Integration name="BigQuery" type="source" image="bigquery.png" />
+            <IntegrationCard
+              name="BigQuery"
+              slug="bigquery"
+              type="source"
+              image="bigquery.png"
+            />
           </Col>
         </Row>
         <Row>
           <Col lg={3} md={3} sm={6} xs={6}>
-            <Integration name="MySQL" type="source" image="mysql.png" />
+            <IntegrationCard
+              name="MySQL"
+              slug="mysql"
+              type="source"
+              image="mysql.png"
+            />
           </Col>
           <Col lg={3} md={3} sm={6} xs={6}>
-            <Integration
+            <IntegrationCard
               name="CSV"
+              slug="csv"
               type="source"
               image="csv.svg"
               showLink={false}
             />
           </Col>
           <Col lg={3} md={3} sm={6} xs={6}>
-            <Integration
+            <IntegrationCard
               name="Hubspot"
+              slug="hubspot"
               type="destination"
               image="hubspot.svg"
             />
           </Col>
           <Col lg={3} md={3} sm={6} xs={6}>
-            <Integration
+            <IntegrationCard
               name="Google Sheets"
+              slug="google-sheets"
               type="source"
               image="google-sheets.png"
               showLink={false}
@@ -70,18 +90,25 @@ export default function Integrations() {
         <Row>
           <Col lg={1} md={1} sm={0} xs={0} />
           <Col lg={3} md={3} sm={6} xs={6}>
-            <Integration name="Redshift" type="source" image="redshift.svg" />
+            <IntegrationCard
+              name="Redshift"
+              slug="redshift"
+              type="source"
+              image="redshift.svg"
+            />
           </Col>
           <Col lg={3} md={3} sm={6} xs={6}>
-            <Integration
+            <IntegrationCard
               name="Zendesk"
+              slug="zendesk"
               type="destination"
               image="zendesk.svg"
             />
           </Col>
           <Col lg={3} md={3} sm={6} xs={6}>
-            <Integration
+            <IntegrationCard
               name="Marketo"
+              slug="marketo"
               type="destination"
               image="marketo.png"
             />

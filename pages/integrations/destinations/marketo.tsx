@@ -1,5 +1,5 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
-import Integration from "../../../components/home/integration";
+import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationMappings from "../../../components/home/integrationMappings";
 import IntegrationSources from "../../../components/home/integrationSources";
 import GetStarted from "../../../components/home/getStarted";
@@ -20,8 +20,9 @@ export default function MarketoPage() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <Integration
+            <IntegrationCard
               name="Grouparoo"
+              slug="grouparoo"
               image="grouparoo.png"
               showLink={false}
             />
@@ -34,7 +35,12 @@ export default function MarketoPage() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <Integration name="Marketo" image="marketo.png" showLink={false} />
+            <IntegrationCard
+              name="Marketo"
+              slug="marketo"
+              image="marketo.png"
+              showLink={false}
+            />
           </Col>
         </Row>
         <br />
@@ -132,6 +138,7 @@ export default function MarketoPage() {
             <br />
             <IntegrationMappings
               name="Marketo"
+              slug="marketo"
               image="marketo.png"
               destinationProfile="Marketo Leads"
               destinationProperty="Marketo Lead Fields"

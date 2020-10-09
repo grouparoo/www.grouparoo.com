@@ -143,12 +143,12 @@ export default function IndexPage() {
                   <br />
                   <br />
                   <br />
-                  <SmallIntegration image="mysql.png" />
-                  <SmallIntegration image="redshift.svg" />
+                  <SmallIntegration slug="mysql" image="mysql.png" />
+                  <SmallIntegration slug="redshift" image="redshift.svg" />
                 </Col>
                 <Col>
-                  <SmallIntegration image="postgres.svg" />
-                  <SmallIntegration image="bigquery.png" />
+                  <SmallIntegration slug="postgres" image="postgres.svg" />
+                  <SmallIntegration slug="bigquery" image="bigquery.png" />
                 </Col>
                 <Col />
               </Row>
@@ -163,12 +163,28 @@ export default function IndexPage() {
             <Col md={6} className="d-md-none">
               <Row className="align-items-center">
                 <Col>
-                  <SmallIntegration fillWidth={true} image="mysql.png" />
-                  <SmallIntegration fillWidth={true} image="redshift.svg" />
+                  <SmallIntegration
+                    slug="mysql"
+                    fillWidth={true}
+                    image="mysql.png"
+                  />
+                  <SmallIntegration
+                    slug="redshift"
+                    fillWidth={true}
+                    image="redshift.svg"
+                  />
                 </Col>
                 <Col>
-                  <SmallIntegration fillWidth={true} image="postgres.svg" />
-                  <SmallIntegration fillWidth={true} image="bigquery.png" />
+                  <SmallIntegration
+                    slug="postgres"
+                    fillWidth={true}
+                    image="postgres.svg"
+                  />
+                  <SmallIntegration
+                    slug="bigquery"
+                    fillWidth={true}
+                    image="bigquery.png"
+                  />
                 </Col>
               </Row>
             </Col>
@@ -192,24 +208,40 @@ export default function IndexPage() {
               <Row className="align-items-center">
                 <Col className="d-none d-md-block" />
                 <Col className="d-none d-md-block">
-                  <SmallIntegration image="mailchimp.svg" />
-                  <SmallIntegration image="marketo.png" />
+                  <SmallIntegration slug="mailchimp" image="mailchimp.svg" />
+                  <SmallIntegration slug="marketo" image="marketo.png" />
                 </Col>
                 <Col className="d-md-none">
-                  <SmallIntegration fillWidth={true} image="mailchimp.svg" />
-                  <SmallIntegration fillWidth={true} image="marketo.png" />
+                  <SmallIntegration
+                    slug="mailchimp"
+                    fillWidth={true}
+                    image="mailchimp.svg"
+                  />
+                  <SmallIntegration
+                    slug="marketo"
+                    fillWidth={true}
+                    image="marketo.png"
+                  />
                 </Col>
                 <Col className="d-none d-md-block">
                   <br />
                   <br />
                   <br />
 
-                  <SmallIntegration image="hubspot.svg" />
-                  <SmallIntegration image="zendesk.svg" />
+                  <SmallIntegration slug="hubspot" image="hubspot.svg" />
+                  <SmallIntegration slug="zendesk" image="zendesk.svg" />
                 </Col>
                 <Col className="d-md-none">
-                  <SmallIntegration fillWidth={true} image="hubspot.svg" />
-                  <SmallIntegration fillWidth={true} image="zendesk.svg" />
+                  <SmallIntegration
+                    slug="hubspot"
+                    fillWidth={true}
+                    image="hubspot.svg"
+                  />
+                  <SmallIntegration
+                    slug="zendesk"
+                    fillWidth={true}
+                    image="zendesk.svg"
+                  />
                 </Col>
                 <Col className="d-none d-md-block" />
               </Row>

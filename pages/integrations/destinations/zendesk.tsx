@@ -1,5 +1,5 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
-import Integration from "../../../components/home/integration";
+import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationMappings from "../../../components/home/integrationMappings";
 import IntegrationSources from "../../../components/home/integrationSources";
 import GetStarted from "../../../components/home/getStarted";
@@ -20,8 +20,9 @@ export default function ZendeskPage() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <Integration
+            <IntegrationCard
               name="Grouparoo"
+              slug="grouparoo"
               image="grouparoo.png"
               type="other"
               showLink={false}
@@ -35,8 +36,9 @@ export default function ZendeskPage() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <Integration
+            <IntegrationCard
               name="Zendesk"
+              slug="zendesk"
               type="destination"
               image="zendesk.svg"
               showLink={false}
@@ -140,6 +142,7 @@ export default function ZendeskPage() {
             <br />
             <IntegrationMappings
               name="Zendesk"
+              slug="zendesk"
               image="zendesk.svg"
               destinationProfile="Zendesk Users"
               destinationProperty="Zendesk User Fields"
