@@ -5,10 +5,12 @@ import { formatNameIntoLink } from "../../utils/formatters";
 export default function IntegrationButton({
   name,
   type,
+  slug,
   image,
 }: {
   name: string;
   type: string;
+  slug: string;
   image: string;
 }) {
   return (
@@ -29,7 +31,7 @@ export default function IntegrationButton({
                 backgroundColor: "white",
                 borderRadius: 4,
               }}
-              src={require(`../../public/images/home/integrations/${image}`)}
+              src={require(`../../public/images/home/integrations/${slug}/${image}`)}
             />
             {name}
           </Button>

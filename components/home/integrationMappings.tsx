@@ -4,12 +4,14 @@ import BigArrow from "../bigArrow";
 export default function IntegrationMappings({
   name,
   image,
+  slug,
   destinationProfile,
   destinationProperty,
   destinationGroup,
 }: {
   name: string;
   image: string;
+  slug: string;
   destinationProfile: string;
   destinationProperty: string;
   destinationGroup: string;
@@ -44,7 +46,7 @@ export default function IntegrationMappings({
         <Col lg={4} md={5} sm={5} xs={5}>
           <Image
             style={imageStyle}
-            src={require(`../../public/images/home/integrations/${image}`)}
+            src={require(`../../public/images/home/integrations/${slug}/${image}`)}
           />
           <br />
           <br />
