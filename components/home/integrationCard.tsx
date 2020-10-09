@@ -26,9 +26,13 @@ export default function IntegrationCard({
     <div style={{ borderRadius: "5px", boxShadow: "5px 5px 5px 5px grey" }}>
       <Card bg="dark" text="white">
         <Card.Body>
-          {tag ? tag : ""}
           <SmallIntegration fillWidth={true} image={image} slug={slug} />
-          <Card.Text>{name}</Card.Text>
+          <Card.Text>
+            <strong>{name}</strong>
+            <span className="mb-2 text-muted">
+              {showLink ? "  Learn more" : ""}
+            </span>
+          </Card.Text>
 
           {type ? (
             <>

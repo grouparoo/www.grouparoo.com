@@ -1,35 +1,47 @@
+import { Container, Row, Col, Button } from "react-bootstrap";
 import IntegrationButton from "../home/integrationButton";
+import { PluginData } from "../../data/plugins";
 
 export default function IntegrationSources() {
   return (
     <>
-      <IntegrationButton
-        name="MySQL"
-        slug="mysql"
-        type="source"
-        image="mysql.png"
-      />
-      &nbsp; &nbsp;
-      <IntegrationButton
-        name="Postgres"
-        slug="postgres"
-        type="source"
-        image="postgres.svg"
-      />
-      &nbsp; &nbsp;
-      <IntegrationButton
-        name="Redshift"
-        slug="redshift"
-        type="source"
-        image="redshift.svg"
-      />
-      &nbsp; &nbsp;
-      <IntegrationButton
-        name="BigQuery"
-        slug="bigquery"
-        type="source"
-        image="bigquery.png"
-      />
+      <Container>
+        <Row>
+          {PluginData.length > 0
+            ? PluginData.sort((a, b) => {
+                return b.priority - a.priority;
+              })
+                .filter((pluginType) => pluginType.primaryType === "source")
+                .slice(0, 5)
+                .map((plugin) => {
+                  return (
+                    <>
+                      <IntegrationButton
+                        name={plugin.name}
+                        slug={plugin.slug}
+                        type={plugin.primaryType}
+                        image={plugin.logo}
+                      />{" "}
+                      &nbsp; &nbsp;
+                    </>
+                  );
+                })
+            : null}
+        </Row>
+        <Row>
+          <Col>
+            <br />
+            <br />
+            <Button
+              variant="outline-primary"
+              href="/integrations"
+              className="integrations-button"
+            >
+              See all of our available integrations
+            </Button>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }

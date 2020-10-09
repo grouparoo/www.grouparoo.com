@@ -24,7 +24,6 @@ export default function ZendeskPage() {
               name="Grouparoo"
               slug="grouparoo"
               image="grouparoo.png"
-              type="other"
               showLink={false}
             />
           </Col>
@@ -39,7 +38,6 @@ export default function ZendeskPage() {
             <IntegrationCard
               name="Zendesk"
               slug="zendesk"
-              type="destination"
               image="zendesk.svg"
               showLink={false}
             />
