@@ -22,7 +22,6 @@ export default function Integrations() {
             <IntegrationCard
               name="Mailchimp"
               slug="mailchimp"
-              type="destination"
               image="mailchimp.svg"
             />
           </Col>
@@ -30,7 +29,6 @@ export default function Integrations() {
             <IntegrationCard
               name="Sailthru"
               slug="sailthru"
-              type="destination"
               image="sailthru.png"
             />
           </Col>
@@ -38,7 +36,6 @@ export default function Integrations() {
             <IntegrationCard
               name="Postgres"
               slug="postgres"
-              type="source"
               image="postgres.svg"
             />
           </Col>
@@ -46,25 +43,18 @@ export default function Integrations() {
             <IntegrationCard
               name="BigQuery"
               slug="bigquery"
-              type="source"
               image="bigquery.png"
             />
           </Col>
         </Row>
         <Row>
           <Col lg={3} md={3} sm={6} xs={6}>
-            <IntegrationCard
-              name="MySQL"
-              slug="mysql"
-              type="source"
-              image="mysql.png"
-            />
+            <IntegrationCard name="MySQL" slug="mysql" image="mysql.png" />
           </Col>
           <Col lg={3} md={3} sm={6} xs={6}>
             <IntegrationCard
               name="CSV"
               slug="csv"
-              type="source"
               image="csv.svg"
               showLink={false}
             />
@@ -73,7 +63,6 @@ export default function Integrations() {
             <IntegrationCard
               name="Hubspot"
               slug="hubspot"
-              type="destination"
               image="hubspot.svg"
             />
           </Col>
@@ -81,7 +70,6 @@ export default function Integrations() {
             <IntegrationCard
               name="Google Sheets"
               slug="google-sheets"
-              type="source"
               image="google-sheets.png"
               showLink={false}
             />
@@ -93,7 +81,6 @@ export default function Integrations() {
             <IntegrationCard
               name="Redshift"
               slug="redshift"
-              type="source"
               image="redshift.svg"
             />
           </Col>
@@ -101,7 +88,6 @@ export default function Integrations() {
             <IntegrationCard
               name="Zendesk"
               slug="zendesk"
-              type="destination"
               image="zendesk.svg"
             />
           </Col>
@@ -109,7 +95,6 @@ export default function Integrations() {
             <IntegrationCard
               name="Marketo"
               slug="marketo"
-              type="destination"
               image="marketo.png"
             />
           </Col>
