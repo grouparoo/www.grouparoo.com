@@ -1,7 +1,6 @@
 import { Card, Badge } from "react-bootstrap";
 import SmallIntegration from "./smallIntegration";
 import Link from "next/link";
-import { formatNameIntoLink } from "../../utils/formatters";
 
 export default function IntegrationCard({
   name,
@@ -29,9 +28,6 @@ export default function IntegrationCard({
           <SmallIntegration fillWidth={true} image={image} slug={slug} />
           <Card.Text>
             <strong>{name}</strong>
-            <span className="mb-2 text-muted">
-              {showLink ? "  Learn more" : ""}
-            </span>
           </Card.Text>
 
           {type ? (

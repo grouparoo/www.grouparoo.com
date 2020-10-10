@@ -34,6 +34,7 @@ export default function IntegrationsSection() {
                       <IntegrationCard
                         name={plugin.name}
                         slug={plugin.slug}
+                        type={plugin.primaryType}
                         image={plugin.logo}
                         showLink={plugin.showLink}
                       />
