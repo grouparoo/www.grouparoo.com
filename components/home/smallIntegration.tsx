@@ -2,9 +2,11 @@ import { Image } from "react-bootstrap";
 
 export default function SmallIntegration({
   image,
+  slug,
   fillWidth,
 }: {
   image: string;
+  slug: string;
   fillWidth?: boolean;
 }) {
   return (
@@ -27,7 +29,7 @@ export default function SmallIntegration({
           padding: 10,
           width: 100,
         }}
-        src={require(`../../public/images/home/integrations/${image}`)}
+        src={require(`../../public/images/home/integrations/${slug}/${image}`)}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
-import Integration from "../../../components/home/integration";
+import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationMappings from "../../../components/home/integrationMappings";
 import IntegrationSources from "../../../components/home/integrationSources";
 import GetStarted from "../../../components/home/getStarted";
@@ -20,8 +20,9 @@ export default function SailthruPage() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <Integration
+            <IntegrationCard
               name="Grouparoo"
+              slug="grouparoo"
               image="grouparoo.png"
               showLink={false}
             />
@@ -34,8 +35,9 @@ export default function SailthruPage() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <Integration
+            <IntegrationCard
               name="Sailthru"
+              slug="sailthru"
               image="sailthru.png"
               showLink={false}
             />
@@ -139,6 +141,7 @@ export default function SailthruPage() {
             <br />
             <IntegrationMappings
               name="Sailthru"
+              slug="sailthru"
               image="sailthru.png"
               destinationProfile="Sailthru Users"
               destinationProperty="Sailthru User Vars"

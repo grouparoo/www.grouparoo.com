@@ -113,6 +113,10 @@ h3 {
   color: $grouparoo-blue;
 }
 
+.integrationCard:hover {
+  box-shadow: 5px 5px 5px 5px grey;
+}
+
 // -- Page Content --
 .headerImage {
   width: 100%;

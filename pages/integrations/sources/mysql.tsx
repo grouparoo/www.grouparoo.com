@@ -1,5 +1,5 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
-import Integration from "../../../components/home/integration";
+import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
@@ -21,7 +21,12 @@ export default function MySQLPage() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <Integration name="MySQL" image="mysql.png" showLink={false} />
+            <IntegrationCard
+              name="MySQL"
+              slug="mysql"
+              image="mysql.png"
+              showLink={false}
+            />
           </Col>
           <Col lg={1} md={2} sm={2} xs={2} style={{ textAlign: "center" }}>
             <br />
@@ -31,8 +36,9 @@ export default function MySQLPage() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <Integration
+            <IntegrationCard
               name="Grouparoo"
+              slug="grouparoo"
               image="grouparoo.png"
               showLink={false}
             />

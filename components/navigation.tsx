@@ -18,7 +18,7 @@ export default function Navigation() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               <Nav.Link href="/#value-prop">Product</Nav.Link>
-              <Nav.Link href="/#how-grouparoo-works">Use Cases</Nav.Link>
+              <Nav.Link href="/integrations">Integrations</Nav.Link>
               <Nav.Link href="/blog">Blog</Nav.Link>
               <Nav.Link href="/docs">Docs</Nav.Link>
               <Nav.Link>

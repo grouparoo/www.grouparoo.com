@@ -1,5 +1,5 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
-import Integration from "../../../components/home/integration";
+import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
@@ -23,8 +23,9 @@ export default function RedshiftPage() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <Integration
+            <IntegrationCard
               name="Redshift"
+              slug="redshift"
               image="redshift.svg"
               showLink={false}
             />
@@ -37,8 +38,9 @@ export default function RedshiftPage() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <Integration
+            <IntegrationCard
               name="Grouparoo"
+              slug="grouparoo"
               image="grouparoo.png"
               showLink={false}
             />

@@ -98,7 +98,7 @@ export default function Footer() {
                 </Link>
               </Col>
               <Col>
-                <strong>Developers</strong>
+                <strong>Product</strong>
                 <br />
                 <Link href="/docs">
                   <a>Docs</a>
@@ -107,10 +107,9 @@ export default function Footer() {
                 <Link href="/docs/community">
                   <a>Community</a>
                 </Link>
-
                 <br />
-                <Link href="/support">
-                  <a>Support</a>
+                <Link href="/integrations">
+                  <a>Integrations</a>
                 </Link>
 
                 <br />
@@ -130,6 +129,10 @@ export default function Footer() {
                 <br />
                 <Link href="/blog">
                   <a>Blog</a>
+                </Link>
+                <br />
+                <Link href="/support">
+                  <a>Support</a>
                 </Link>
                 <br />
                 <Link href="/meet">
