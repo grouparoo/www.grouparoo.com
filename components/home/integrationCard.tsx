@@ -22,8 +22,14 @@ export default function IntegrationCard({
   showLink?: boolean;
 }) {
   const card = (
-    <div style={{ borderRadius: "5px", boxShadow: "5px 5px 5px 5px grey" }}>
-      <Card bg="dark" text="white">
+    <div
+      style={{ borderRadius: "5px", boxShadow: "5px 5px 5px 5px lightgrey" }}
+    >
+      <Card
+        bg="dark"
+        text="white"
+        className={showLink ? "integrationCard" : ""}
+      >
         <Card.Body>
           <SmallIntegration fillWidth={true} image={image} slug={slug} />
           <Card.Text>
