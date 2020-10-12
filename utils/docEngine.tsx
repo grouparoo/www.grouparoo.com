@@ -9,7 +9,7 @@ class DocEntries {
     this.entries.push(entry);
   }
   sort() {
-    this.entries.sort((a, b) => (a.date > b.date ? -1 : 1));
+    this.entries.sort((a, b) => (a.title > b.title ? 1 : -1));
   }
   toArray() {
     return this.entries;
