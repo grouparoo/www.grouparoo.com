@@ -1,0 +1,73 @@
+---
+title: "Upgrading Grouparoo"
+date: "2020-10-12"
+section: "deployment"
+layout: "docsPage"
+pullQuote: "Upgrading your Grouparoo Deployment is as easy as npm upgrade"
+---
+
+import Image from "../../../components/blog/image";
+
+Grouparoo will regularly publish new versions of the packages that compose your Grouparoo application. Grouparoo packages are published to [npm](https://npmjs.com) under the `@grouparoo` and `@grouparoo-inc` organizations. For example you can view a list of [packages in the `@grouparoo` organization here](https://www.npmjs.com/org/grouparoo).
+
+**We strongly recommend that you update your Grouparoo application as soon as a new version becomes available.** In addition to new features, new versions are likely to contain bug and security fixes.
+
+## Determining if there are Updates
+
+There are a few ways to determine if there are updates to the packages that make up your Grouparoo application:
+
+**In App**
+
+If you visit the `/about` page of your Grouparoo server, you'll see a list of the packages you have installed, the current version installed, and the latest version available on npm.
+
+<Image
+  centered
+  source="Grouparoo Topology"
+  alt="Grouparoo Topology"
+  src={require("../../../public/images/docs/deployment/in-app-versions.png")}
+/>
+
+**Release Notes**
+
+Grouparoo publishes release notes for new versions at [https://github.com/grouparoo/grouparoo/releases](https://github.com/grouparoo/grouparoo/releases). Here you can see when each new version was released, and what was added.
+
+<Image
+  centered
+  source="Grouparoo Topology"
+  alt="Grouparoo Topology"
+  src={require("../../../public/images/docs/deployment/release-notes.png")}
+/>
+
+**Tools from the Node.JS ecosystem**
+
+As Grouparoo is a node.js application, there are a number of tools available to automatically notify you when there's an update to a dependency in your `package.json` file. Two recommendations are:
+
+- **Depnedabot** - If you store your Grouparoo application in git hosted on Github.com, you can use [Dependabot](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/) to check for dependency updates every day, week, or month. An example `dependaboy.yml` is available [here](https://github.com/grouparoo/app-example/blob/master/.github/dependabot.yml).
+- **npm-check-updates** - The [npm check updates](https://www.npmjs.com/package/npm-check-updates) package can be used in your Grouparoo project to scan your `package.json` and update the versions of your dependencies.
+
+## Installing Updates
+
+**Running New Versions**
+
+All that is needed to update your Grouparoo application is update the versions of your dependencies in your `package.json` file, then run `npm install`.
+
+<Image
+  centered
+  source="Grouparoo Topology"
+  alt="Grouparoo Topology"
+  src={require("../../../public/images/docs/deployment/upgrade-diff.png")}
+/>
+
+Depending on your method of deployment, you will need to either re-deploy your application, `git push` to Heroku, or publish a new Docker image.
+
+**Migrations**
+
+The Grouparoo application uses `migration` files to describe changes in the schema of the Grouparoo application database. Any new release may contain a change to this schema and include a new migration file.
+
+The Grouparoo application will automatically attempt to run pending migrations as the application starts. There is no special step needed to migrate your database.
+
+**Breaking Changes**
+
+Grouparoo follows [Semver versioning](https://semver.org/). This means that our version numbers mean `major`.`minor`.`patch`. Any breaking changes we make will result in a `major` version change. However, per Semver convention, we will not start tracking breaking changes until we reach version `1.0.0`. This means that before version `1.0.0`, any new version may contain a breaking change.
+
+_Please be sure to read the release notes before upgrading._
