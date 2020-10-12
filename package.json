@@ -59,7 +59,7 @@
     "jest-environment-webdriver": "^0.2.0",
     "jest-mock-axios": "^4.2.1",
     "prettier": "^2.1.2",
-    "responsive-loader": "^2.1.1",
+    "responsive-loader": "^2.2.0",
     "svg-sprite-loader": "^5.0.0",
     "ts-jest": "^26.4.1",
     "webp-loader": "^0.6.0",
