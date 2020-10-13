@@ -25,6 +25,7 @@ export default function WhoWeAre() {
           <Col md={4} className="d-flex justify-content-center">
             <TeamMember
               name="Brian Leonard"
+              image="brian_leonard.png"
               title="CEO"
               description={
                 <span>
@@ -47,6 +48,7 @@ export default function WhoWeAre() {
           <Col md={4} className="d-flex justify-content-center">
             <TeamMember
               name="Evan Tahler"
+              image="evan_tahler.png"
               title="CTO"
               description={
                 <span>
@@ -77,6 +79,7 @@ export default function WhoWeAre() {
           <Col md={4} className="d-flex justify-content-center">
             <TeamMember
               name="Andy Jih"
+              image="andy_jih.png"
               title="COO"
               description={
                 <span>
