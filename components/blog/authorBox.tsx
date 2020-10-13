@@ -3,7 +3,13 @@ import BlogTags from "../../utils/blogTags";
 import { BlogEntry } from "../../utils/blogEngine";
 import { Row, Col, Image, Alert } from "react-bootstrap";
 
-export default function AuthorBox({ entry }: { entry: BlogEntry }) {
+export default function AuthorBox({
+  author,
+  entry,
+}: {
+  author: { name: string; slug: string; url: string; description: string };
+  entry?: BlogEntry;
+}) {
   return (
     <Alert variant="primary">
       <Row>
@@ -11,31 +17,35 @@ export default function AuthorBox({ entry }: { entry: BlogEntry }) {
           <Image
             style={{ width: "100%", maxWidth: 200 }}
             roundedCircle
-            src={require(`../../public/images/team/${entry.author.slug}.png`)}
+            src={require(`../../public/images/team/${author.slug}.png`)}
           />
         </Col>
         <Col md={10}>
           <small>
-            <strong>
-              Written by {entry.author.name} on {entry.dateText()}
-            </strong>
+            {entry ? (
+              <>
+                <strong>
+                  Written by {author.name} on {entry.dateText()}
+                </strong>
+                <br />
+                Tagged in {BlogTags(entry.tags)}
+                <br />
+                <Link
+                  href="/blog/author/[slug]"
+                  as={`/blog/author/${author.slug}`}
+                >
+                  <a>See all of {author.name}'s posts.</a>
+                </Link>
+                <br />
+                <br />
+              </>
+            ) : null}
+            <em>{author.description}</em>
             <br />
-            Tagged in {BlogTags(entry.tags)}
             <br />
-            <Link
-              href="/blog/author/[slug]"
-              as={`/blog/author/${entry.author.slug}`}
-            >
-              <a>See all of {entry.author.name}'s posts.</a>
-            </Link>{" "}
-            <br />
-            <br />
-            <em>{entry.author.description}</em>
-            <br />
-            <br />
-            Learn more about {entry.author.name.split(" ")[0]} @{" "}
-            <a href={entry.author.url} target="_new">
-              {entry.author.url}
+            Learn more about {author.name.split(" ")[0]} @{" "}
+            <a href={author.url} target="_new">
+              {author.url}
             </a>
           </small>
         </Col>

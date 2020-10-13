@@ -43,7 +43,7 @@ export default function BlogPageLayout({ frontMatter, children: content }) {
               {content}
             </div>
             <br />
-            <AuthorBox entry={entry} />
+            <AuthorBox author={entry.author} entry={entry} />
           </Col>
 
           <Col>

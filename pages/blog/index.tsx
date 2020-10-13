@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
-import blogEngine from "../../utils/blogEngine";
+import blogEngine, { getAuthor } from "../../utils/blogEngine";
 import { Container, Image } from "react-bootstrap";
 import BlogTags from "../../utils/blogTags";
+import AuthorBox from "../../components/blog/authorBox";
 
 function blogEntries() {
   return blogEngine.getEntries();
@@ -64,24 +65,29 @@ export default function BlogIndex({ category = "", author = "" }) {
         <h1>Blog</h1>
 
         {category ? (
-          <p>
-            Showing articles tagged <strong>{category}</strong>.{" "}
-            <Link href="/blog">
-              <a>Show all articles.</a>
-            </Link>
-          </p>
+          <>
+            <p>
+              Showing articles tagged <strong>{category}</strong>.{" "}
+              <Link href="/blog">
+                <a>Show all articles.</a>
+              </Link>
+            </p>
+            <hr />
+          </>
         ) : null}
 
         {author ? (
-          <p>
-            Showing articles written by <strong>{author}</strong>.{" "}
-            <Link href="/blog">
-              <a>Show all articles.</a>
-            </Link>
-          </p>
+          <>
+            <p>
+              Showing articles written by <strong>{author}</strong>.{" "}
+              <Link href="/blog">
+                <a>Show all articles.</a>
+              </Link>
+            </p>
+            <AuthorBox author={getAuthor(author)} />
+          </>
         ) : null}
 
-        <hr />
         {blogPosts.length > 0 ? (
           blogPosts.map((entry, idx) => BlogEntry(entry, idx))
         ) : (
