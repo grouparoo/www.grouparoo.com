@@ -25,15 +25,15 @@ export default function BlogPageLayout({ frontMatter, children: content }) {
             <p>
               <Link
                 href="/blog/author/[author]"
-                as={`/blog/author/${entry.author}`}
+                as={`/blog/author/${entry.author.slug}`}
               >
                 <a>
                   <Image
                     style={{ width: 50, margin: 10 }}
                     roundedCircle
-                    src={require(`../../public/images/team/${entry.author}.png`)}
+                    src={require(`../../public/images/team/${entry.author.slug}.png`)}
                   />
-                  {entry.author}
+                  {entry.author.name}
                 </a>
               </Link>{" "}
               on {entry.dateText()} in {BlogTags(entry.tags)}

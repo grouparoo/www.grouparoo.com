@@ -18,14 +18,17 @@ function BlogEntry(entry, idx) {
       </Link>
       <h4>{BlogTags(entry.tags)}</h4>
       <p>
-        <Link href="/blog/author/[author]" as={`/blog/author/${entry.author}`}>
+        <Link
+          href="/blog/author/[author]"
+          as={`/blog/author/${entry.author.slug}`}
+        >
           <a>
             <Image
               style={{ width: 50, margin: 10 }}
               roundedCircle
-              src={require(`../../public/images/team/${entry.author}.png`)}
+              src={require(`../../public/images/team/${entry.author.slug}.png`)}
             />
-            {entry.author}
+            {entry.author.name}
           </a>
         </Link>{" "}
         on {entry.dateText()}
@@ -46,7 +49,9 @@ export default function BlogIndex({ category = "", author = "" }) {
   }
 
   if (author !== "") {
-    blogPosts = blogPosts.filter((entry) => entry.author === author);
+    blogPosts = blogPosts.filter(
+      (entry) => entry.author.name === author || entry.author.slug === author
+    );
   }
 
   return (
