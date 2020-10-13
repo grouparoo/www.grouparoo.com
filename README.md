@@ -1,6 +1,6 @@
 # www.grouparoo.com
 
-The Grouparoo public website & Docs.
+The Grouparoo public website, blog, & docs.
 
 [![CircleCI](https://circleci.com/gh/grouparoo/www.grouparoo.com.svg?style=svg&circle-token=2747e60bdaad93f1d253a42af07930e517106f64)](https://circleci.com/gh/grouparoo/www.grouparoo.com)
 
@@ -15,10 +15,6 @@ cd www.grouparoo.com
 
 # Install dependencies
 npm install
-
-# Configure your local environment variables in .env
-cp .env.example .env
-open .env
 
 # Run the project in development mode
 npm run dev
