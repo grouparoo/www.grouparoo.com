@@ -9,13 +9,13 @@ export default function HavingProblems() {
         <h5>Having Problems?</h5>
 
         <p>
-          If you are having trouble, visit{" "}
+          If you are having trouble, visit the list of
           <Link href="/docs/deployment/common-issues">
-            <a>the list of common issues</a>
+            <a>common issues</a>
           </Link>{" "}
           or{" "}
           <Link href="/support">
-            <a>open an issue</a>
+            <a>open a Github issue</a>
           </Link>{" "}
           to get support.
         </p>
