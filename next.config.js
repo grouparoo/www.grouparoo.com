@@ -28,7 +28,7 @@ module.exports = withOptimizedImages(
     defaultLayout: false,
     fileExtensions: ["mdx"],
     remarkPlugins: [],
-    rehypePlugins: [rehypePrism],
+    rehypePlugins: [[rehypePrism, {}]],
     extendFrontMatter: {
       process: (mdxContent, frontMatter) => {},
       phase: "both",

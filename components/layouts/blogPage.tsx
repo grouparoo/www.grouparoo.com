@@ -1,12 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { BlogEntry } from "../../utils/blogEngine";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import BlogTags from "../../utils/blogTags";
 import Subscribe from "../subscribe";
+import AuthorBox from "../blog/authorBox";
 
 export default function BlogPageLayout({ frontMatter, children: content }) {
+  const router = useRouter();
   const entry = new BlogEntry(frontMatter);
+
   return (
     <>
       <Head>
@@ -16,32 +20,32 @@ export default function BlogPageLayout({ frontMatter, children: content }) {
       </Head>
 
       <Container className="blogPage">
-        <h3>The Grouparoo Blog</h3>
+        <h3 onClick={() => router.push("/blog")}>The Grouparoo Blog</h3>
         <hr />
 
         <Row>
           <Col md={9}>
             <h1 id="blogTitle">{entry.title}</h1>
-            <p>
+            <small>
+              Tagged in {BlogTags(entry.tags)} <br />
+              By{" "}
               <Link
-                href="/blog/author/[author]"
-                as={`/blog/author/${entry.author}`}
+                href="/blog/author/[slug]"
+                as={`/blog/author/${entry.author.slug}`}
               >
-                <a>
-                  <Image
-                    style={{ width: 50, margin: 10 }}
-                    roundedCircle
-                    src={require(`../../public/images/team/${entry.author}.png`)}
-                  />
-                  {entry.author}
-                </a>
+                <a>{entry.author.name}</a>
               </Link>{" "}
-              on {entry.dateText()} in {BlogTags(entry.tags)}
-            </p>
-            <div style={{ lineHeight: "200%" }} id="blogContent">
+              on {entry.dateText()}
+            </small>
+            <br />
+            <br />
+            <div style={{ lineHeight: "150%" }} id="blogContent">
               {content}
             </div>
+            <br />
+            <AuthorBox author={entry.author} entry={entry} />
           </Col>
+
           <Col>
             <Subscribe />
             <a

@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
-import blogEngine from "../../utils/blogEngine";
+import blogEngine, { getAuthor } from "../../utils/blogEngine";
 import { Container, Image } from "react-bootstrap";
 import BlogTags from "../../utils/blogTags";
+import AuthorBox from "../../components/blog/authorBox";
 
 function blogEntries() {
   return blogEngine.getEntries();
@@ -18,14 +19,17 @@ function BlogEntry(entry, idx) {
       </Link>
       <h4>{BlogTags(entry.tags)}</h4>
       <p>
-        <Link href="/blog/author/[author]" as={`/blog/author/${entry.author}`}>
+        <Link
+          href="/blog/author/[author]"
+          as={`/blog/author/${entry.author.slug}`}
+        >
           <a>
             <Image
               style={{ width: 50, margin: 10 }}
               roundedCircle
-              src={require(`../../public/images/team/${entry.author}.png`)}
+              src={require(`../../public/images/team/${entry.author.slug}.png`)}
             />
-            {entry.author}
+            {entry.author.name}
           </a>
         </Link>{" "}
         on {entry.dateText()}
@@ -46,7 +50,9 @@ export default function BlogIndex({ category = "", author = "" }) {
   }
 
   if (author !== "") {
-    blogPosts = blogPosts.filter((entry) => entry.author === author);
+    blogPosts = blogPosts.filter(
+      (entry) => entry.author.name === author || entry.author.slug === author
+    );
   }
 
   return (
@@ -59,24 +65,29 @@ export default function BlogIndex({ category = "", author = "" }) {
         <h1>Blog</h1>
 
         {category ? (
-          <p>
-            Showing articles tagged <strong>{category}</strong>.{" "}
-            <Link href="/blog">
-              <a>Show all articles.</a>
-            </Link>
-          </p>
+          <>
+            <p>
+              Showing articles tagged <strong>{category}</strong>.{" "}
+              <Link href="/blog">
+                <a>Show all articles.</a>
+              </Link>
+            </p>
+            <hr />
+          </>
         ) : null}
 
         {author ? (
-          <p>
-            Showing articles written by <strong>{author}</strong>.{" "}
-            <Link href="/blog">
-              <a>Show all articles.</a>
-            </Link>
-          </p>
+          <>
+            <p>
+              Showing articles written by <strong>{author}</strong>.{" "}
+              <Link href="/blog">
+                <a>Show all articles.</a>
+              </Link>
+            </p>
+            <AuthorBox author={getAuthor(author)} />
+          </>
         ) : null}
 
-        <hr />
         {blogPosts.length > 0 ? (
           blogPosts.map((entry, idx) => BlogEntry(entry, idx))
         ) : (

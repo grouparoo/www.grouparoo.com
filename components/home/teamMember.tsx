@@ -2,6 +2,7 @@ import { Row, Col, Image } from "react-bootstrap";
 
 export default function TeamMember({
   name,
+  image,
   title,
   description,
   github,
@@ -15,7 +16,7 @@ export default function TeamMember({
           <Image
             style={{ height: 150, width: 150, objectFit: "cover" }}
             roundedCircle
-            src={require(`../../public/images/team/${name}.png`)}
+            src={require(`../../public/images/team/${image}`)}
           />
           <p>
             <strong>{name}</strong>

@@ -1,4 +1,5 @@
 import blogPosts from "./blogPosts";
+import Authors from "../data/authors";
 
 class BlogEntries {
   entries: Array<BlogEntry>;
@@ -31,10 +32,16 @@ export class BlogEntry {
   public date: Date;
   public pullQuote: string;
   public tags: string[];
-  public author: string;
+  public author: {
+    name: string;
+    slug: string;
+    image: string;
+    url: string;
+    description: string;
+  };
   constructor(page: BlogPage) {
     this.title = page.title;
-    this.author = page.author;
+    this.author = getAuthor(page.author);
     this.pullQuote = page.pullQuote;
     this.tags = page.tags;
     this.date = new Date(page.date);
@@ -52,6 +59,14 @@ export class BlogEntry {
   private formatPath(p) {
     return "/" + p.replace(/\.mdx$/, "");
   }
+}
+
+export function getAuthor(nameOrSlug: string) {
+  let author = Authors.find((a) => a.slug === nameOrSlug);
+  if (!author) {
+    author = Authors.find((a) => a.name === nameOrSlug);
+  }
+  return author;
 }
 
 class BlogEngine {
