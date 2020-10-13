@@ -6,6 +6,8 @@ layout: "docsPage"
 pullQuote: "Grouparoo is easy to deploy with Heroku."
 ---
 
+import HavingProblems from "../../../components/docs/havingProblems";
+
 ## Example
 
 An example project can be found at https://github.com/grouparoo/app-example. You can deploy this app with the following button:
@@ -42,3 +44,5 @@ You can scale the number of `web` and `worker` processes with the `heroku ps` co
 You can start with Heroku's free tier and increase your plan sizes as needed.
 
 Heroku will regularly restart/rebuild your dynos. You may at times see "stuck" background task in the `resque` dashboard. Grouparoo will automatically rescue these jobs and retry them after an hour.
+
+<HavingProblems />

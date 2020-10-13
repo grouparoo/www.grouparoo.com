@@ -7,6 +7,7 @@ pullQuote: "Upgrading your Grouparoo Deployment is as easy as npm upgrade"
 ---
 
 import Image from "../../../components/blog/image";
+import HavingProblems from "../../../components/docs/havingProblems";
 
 Grouparoo will regularly publish new versions of the packages that compose your Grouparoo application. Grouparoo packages are published to [npm](https://npmjs.com) under the `@grouparoo` and `@grouparoo-inc` organizations. For example you can view a list of [packages in the `@grouparoo` organization here](https://www.npmjs.com/org/grouparoo).
 
@@ -71,3 +72,5 @@ The Grouparoo application will automatically attempt to run pending migrations a
 Grouparoo follows [Semver versioning](https://semver.org/). This means that our version numbers mean `major`.`minor`.`patch`. Any breaking changes we make will result in a `major` version change. However, per Semver convention, we will not start tracking breaking changes until we reach version `1.0.0`. This means that before version `1.0.0`, any new version may contain a breaking change.
 
 _Please be sure to read the release notes before upgrading._
+
+<HavingProblems />

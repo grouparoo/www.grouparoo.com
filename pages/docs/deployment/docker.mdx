@@ -6,6 +6,8 @@ layout: "docsPage"
 pullQuote: "Grouparoo is easy to deploy with Docker and Docker Compose."
 ---
 
+import HavingProblems from "../../../components/docs/havingProblems";
+
 Grouparoo is easy to deploy with [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/).
 
 ## Example
@@ -132,3 +134,5 @@ The example `docker-compose.yml` has no data persistence - DO NOT USE IN PRODUCT
 The example `docker-compose.yml` has no load balancing between `grouparoo-web` instances - DO NOT USE IN PRODUCTION!
 
 You can scale the number of `web` and `worker` processes independently. Depending on your workload, you may need more of one type of process than another.
+
+<HavingProblems />
