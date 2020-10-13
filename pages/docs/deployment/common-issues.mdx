@@ -1,0 +1,39 @@
+---
+title: "Common Issues"
+date: "2020-10-12"
+section: "deployment"
+layout: "docsPage"
+pullQuote: "Solutions to common issues."
+---
+
+## My Dates and Times are off by a few Hours
+
+Ensure that your Grouparoo Application Servers and Grouparoo Database servers/instances are all in the same timezone. Furthermore, some Sources (particularly database sources like MySQL and Postgres) should also be in the same timezone.
+
+Depending on your deployment environment, there are a number of ways you can set the system timezone. Common ways to do this include:
+
+- Setting the system-wide environment variable `process.env.TZ` which the node.js Grouparoo process will read. Depending on your Operating System, this can be set a number of ways.
+  - [Ubuntu](https://linuxize.com/post/how-to-set-or-change-timezone-on-ubuntu-18-04/)
+  - [OSX](https://support.apple.com/en-us/HT203413)
+  - Or, set the `TZ` environment variable directly for [most Docker containers](https://stackoverflow.com/questions/57607381/how-do-i-change-timezone-in-a-docker-container).
+- Depending on your Source database type, you may also be able to set the Timezone of the Database independently of the the host OS's timezone:
+  - [MySQL](https://phoenixnap.com/kb/change-mysql-time-zone)
+  - [Postgres](https://kb.objectrocket.com/postgresql/postgresql-set-time-zone-1064)
+
+## My Runs do not Complete
+
+In general, Runs will wait for all of their Imports and Exports to complete before for finishing themselves. Encountering an error is OK when trying to import or export a profile, but not _trying_ to do the import or export will cause a problem. If a Run should have imported 100 Profiles, but the system only processed 99, the Run will still be in the `running` state. What happened to that last Profile Import?
+
+- Check for resque (background task) errors on your server by visiting `/resque`. Are there any errors? Does it look like a worker has been working on a profile for a long time (ie: over a minute)?
+
+Grouparoo will try to retry ["stuck" worker-type errors](https://github.com/actionhero/node-resque#failed-worker-management), but if your Grouparoo deployment is unstable, these types of errors will happen often. Here are some common causes:
+
+- Your grouparoo servers are getting rebooted often. Perhaps you have deployed Grouparoo on Kubernetes, and you are regularly re-balancing your cluster.
+- You are not giving the Grouparoo application enough time to shut down properly. When you signal a Grouparoo server to shutdown, it may be in the middle of processing a background task. Rather than immediately terminating the process, you should allow the application some time to gracefully exit
+  - In practice, this looks like:
+    - `SIGTERM`
+    - (wait 30 seconds)
+    - `SIGKILL`
+  - Depending on your deployment orchestrator, there are different options to set. For example, in Kubernetes, the `terminationGracePeriodSeconds` directive should be used
+  - Heroku will always [give each Dyno 30 seconds to stop gracefully](https://devcenter.heroku.com/articles/dynos#graceful-shutdown-with-sigterm) before terminating it.
+  - Check that the Grouparoo process is receiving the shutdown signals. Do not use another runner (like `npm start`, `pm2`, or `nodemon`) to then run Grouparoo. They often will intercept system signals like `SIGTERM` and not pass them down to the child process.

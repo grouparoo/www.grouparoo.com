@@ -6,6 +6,8 @@ layout: "docsPage"
 pullQuote: ""
 ---
 
+import HavingProblems from "../../../components/docs/havingProblems";
+
 _Outside-In debugging for Distributed Systems_
 
 ## Overview
@@ -13,6 +15,8 @@ _Outside-In debugging for Distributed Systems_
 Grouparoo is a distributed system. A distributed system is an application that has dependencies on _other systems_ like databases and load balancers, or operates in parallel with other instances of itself. Grouparoo does both!
 
 The first step in debugging a distributed system is to determine where in the distributed system the problem is occurring. We’ll be using the term `Tier` to describe each logical section of the distributed system. Grouparoo's Tiers can be visualized on the [Topology Page](/docs/deployment/topology). We need to understand the tiers because an error being reported in one tier may be caused by a problem in another tier or the connections between them.
+
+<HavingProblems />
 
 ## The Tiers
 
