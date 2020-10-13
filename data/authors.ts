@@ -23,6 +23,14 @@ const Authors = [
     description:
       "Brian is the CEO and co-founder of Grouparoo, a new company building tools that empower marketers to do their best work.  Brian is a leader and technologist who enjoys hanging out with his family, traveling, learning new things, and building software that makes people's lives easier.",
   },
+  {
+    name: "Tiger Oakes",
+    slug: "tiger_oakes",
+    image: "tiger_oakes.png",
+    url: "https://tigeroakes.com",
+    description:
+      "Tiger is a guest writer working on Microsoft Edge. He has previously worked on PWA support in Firefox for Android, web projects for Google Chrome and Yelp, and studies at the University of British Columbia. In his spare time, Tiger searches for geocaches with his partner.",
+  },
 ];
 
 export default Authors;
