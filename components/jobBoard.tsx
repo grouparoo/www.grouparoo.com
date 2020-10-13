@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Row, Col, Card, Button, Accordion, Alert } from "react-bootstrap";
+import { useEffect, useState, Fragment } from "react";
+import { Row, Col, Card, Button, Alert } from "react-bootstrap";
 const JOBS_URL = "https://api.lever.co/v0/postings/grouparoo?mode=json";
 
 export interface LeverJob {
@@ -67,13 +67,11 @@ function JobCard({ job }: { job: LeverJob }) {
         <Card.Text dangerouslySetInnerHTML={{ __html: job.description }} />
 
         {job.lists.map((listItem) => (
-          <JobListItem
-            key={`job-${job.id}-list-${listItem.text}`}
-            listItem={listItem}
-          />
+          <Fragment key={`job-${job.id}-list-${listItem.text}`}>
+            <JobListItem listItem={listItem} />
+            <br />
+          </Fragment>
         ))}
-
-        <br />
 
         <Button variant="primary" href={job.applyUrl} target="_blank">
           Apply Now - {job.text}
@@ -85,17 +83,11 @@ function JobCard({ job }: { job: LeverJob }) {
 
 function JobListItem({ listItem }: { listItem: LeverJobListItem }) {
   return (
-    <Accordion>
-      <Card>
-        <Card.Header>
-          <Accordion.Toggle as={Button} variant="link" eventKey="0">
-            <strong>{listItem.text}</strong>
-          </Accordion.Toggle>
-        </Card.Header>
-        <Accordion.Collapse eventKey="0">
-          <Card.Body dangerouslySetInnerHTML={{ __html: listItem.content }} />
-        </Accordion.Collapse>
-      </Card>
-    </Accordion>
+    <Card>
+      <Card.Header>
+        <strong>{listItem.text}</strong>
+      </Card.Header>
+      <Card.Body dangerouslySetInnerHTML={{ __html: listItem.content }} />
+    </Card>
   );
 }
