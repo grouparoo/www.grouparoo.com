@@ -27,14 +27,14 @@ TypeScript has another [neat feature called function overloads](https://www.type
 function convertType(value: string): number;
 function convertType(value: number): string;
 function convertType(value: string | number): number | string {
-  if (typeof value === 'number') {
+  if (typeof value === "number") {
     return value.toString();
   } else {
     return parseFloat(value);
   }
 }
 
-const num: number = convertType('number');
+const num: number = convertType("number");
 const str: string = convertType(num);
 ```
 
@@ -49,7 +49,7 @@ class Promise {
   static all<T>(array: (T | Promise<T>)[]): T[];
 }
 
-Promise.all([Promise.resolve(10), Promise.resolve('hello world')]).then(
+Promise.all([Promise.resolve(10), Promise.resolve("hello world")]).then(
   (result) => {
     // result's type is (number | string)[]
     // @ts-expect-error: Type 'string' is not assignable to type 'number'.
@@ -71,7 +71,7 @@ class Promise {
   static all<T>(array: (T | Promise<T>)[]): T[];
 }
 
-Promise.all([Promise.resolve(10), Promise.resolve('hello world')]).then(
+Promise.all([Promise.resolve(10), Promise.resolve("hello world")]).then(
   (result) => {
     // result's type is [number, string]
     // This line is no longer an error
@@ -90,7 +90,7 @@ Remember that `any` will match with any type, and that function overloads use th
 function convertType(value: string): number;
 function convertType(value: number): string;
 function convertType(value: string | number): number | string {
-  if (typeof value === 'number') {
+  if (typeof value === "number") {
     return value.toString();
   } else {
     return parseFloat(value);
@@ -106,7 +106,19 @@ The first overload is always used when you pass in a variable with type `any`, b
 
 In the case of `Promise.all`, the first function overload signature is an array with a hardcoded length of 10. That can create confusing bugs like this, where `any` is passed in and the resulting type becomes an array of exactly 10 `unknown`s.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Ok <a href="https://twitter.com/typescript?ref_src=twsrc%5Etfw">@typescript</a> world - why is awaiting a map of `any` an array of *exactly* 10 `unknown`s? <a href="https://t.co/GeEIVqwjvD">pic.twitter.com/GeEIVqwjvD</a></p>&mdash; Evan™ (@EvanTahler) <a href="https://twitter.com/EvanTahler/status/1315782177288679424?ref_src=twsrc%5Etfw">October 12, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote className="twitter-tweet">
+  <p lang="en" dir="ltr">
+    Ok{" "}
+    <a href="https://twitter.com/typescript?ref_src=twsrc%5Etfw">@typescript</a>{" "}
+    world - why is awaiting a map of `any` an array of *exactly* 10 `unknown`s?{" "}
+    <a href="https://t.co/GeEIVqwjvD">pic.twitter.com/GeEIVqwjvD</a>
+  </p>
+  &mdash; Evan™ (@EvanTahler) <a href="https://twitter.com/EvanTahler/status/1315782177288679424?ref_src=twsrc%5Etfw">October 12, 2020</a>
+</blockquote> <script
+  async
+  src="https://platform.twitter.com/widgets.js"
+  charSet="utf-8"
+></script>
 
 ## Future solutions
 
