@@ -67,9 +67,10 @@ export default function BlogIndex({ category = "", author = "" }) {
         {category ? (
           <>
             <p>
-              Showing articles tagged <strong>{category}</strong>.{" "}
+              Showing {blogPosts.length} articles tagged{" "}
+              <strong>{category}</strong>. <br />
               <Link href="/blog">
-                <a>Show all articles.</a>
+                <a>Show all articles instead.</a>
               </Link>
             </p>
             <hr />
@@ -79,9 +80,10 @@ export default function BlogIndex({ category = "", author = "" }) {
         {author ? (
           <>
             <p>
-              Showing articles written by <strong>{author}</strong>.{" "}
+              Showing {blogPosts.length} articles written by{" "}
+              <strong>{getAuthor(author).name}</strong>. <br />
               <Link href="/blog">
-                <a>Show all articles.</a>
+                <a>Show all articles instead.</a>
               </Link>
             </p>
             <AuthorBox author={getAuthor(author)} />
