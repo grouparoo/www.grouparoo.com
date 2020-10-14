@@ -21,7 +21,7 @@ obj.bar = 100;
 
 ## What are function overloads?
 
-TypeScript has another [neat feature called function overloads](https://www.typescriptlang.org/docs/handbook/2/functions.html#function-overloads). Some JavaScript functions return different results based on the arguments you supply, and this can be represented in TypeScript by written multiple function types on top of each other. Only one function signature can match at a time. The matching overload is determined by the arguments you supply to he function. [The first applicable overload will always be chosen](https://github.com/microsoft/TypeScript/issues/1860#issuecomment-72154737).
+TypeScript has another [neat feature called function overloads](https://www.typescriptlang.org/docs/handbook/2/functions.html#function-overloads). Some JavaScript functions return different results based on the arguments you supply, and this can be represented in TypeScript by written multiple function types on top of each other. Only one function signature can match at a time. The matching overload is determined by the arguments you supply to the function. [The first applicable overload will always be chosen](https://github.com/microsoft/TypeScript/issues/1860#issuecomment-72154737).
 
 ```tsx
 function convertType(value: string): number;
