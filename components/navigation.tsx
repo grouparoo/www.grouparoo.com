@@ -20,6 +20,7 @@ export default function Navigation() {
               <Nav.Link href="/#value-prop">Product</Nav.Link>
               <Nav.Link href="/integrations">Integrations</Nav.Link>
               <Nav.Link href="/blog">Blog</Nav.Link>
+              <Nav.Link href="/pricing">Pricing</Nav.Link>
               <Nav.Link href="/docs">Docs</Nav.Link>
               <Nav.Link>
                 <div style={{ paddingTop: 4 }}>
