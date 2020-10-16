@@ -44,23 +44,31 @@ export default function PricingPage() {
               border="primary"
               bg="secondary"
               text="white"
+              style={{ paddingTop: 50, paddingBottom: 50 }}
             >
               <Card.Body>
-                <Card.Title>Free!</Card.Title>
+                <Card.Title>Open Source</Card.Title>
                 <Card.Text>
                   Grouparoo is open source and free to run in on your own cloud.
                   <br />
                   <br />
-                  <li>Realtime syncing infrastructure</li>
-                  <li>Access to all Sources and Destinations </li>
-                  <li>Dynamic Group definition</li>
+                  <div style={{ fontSize: "14px" }}>
+                    <li>Realtime syncing infrastructure</li>
+                    <li>Access to all Sources and Destinations </li>
+                    <li>Dynamic Group definition</li>
+                  </div>
                 </Card.Text>
-                <Button variant="primary" href="/docs">
-                  Get Started
-                </Button>
               </Card.Body>
+              <Card.Footer>
+                <Button variant="primary" href="/docs">
+                  Get started
+                </Button>
+              </Card.Footer>
             </Card>
-            <Card className="pricingCard" border="secondary">
+            <Card
+              style={{ paddingTop: 50, paddingBottom: 50 }}
+              className="pricingCard"
+            >
               <Card.Body>
                 <Card.Title>Hosted</Card.Title>
                 <Card.Text>
@@ -68,16 +76,21 @@ export default function PricingPage() {
                   yourself? Let's chat!
                   <br />
                   <br />
-                </Card.Text>
+                </Card.Text>{" "}
+              </Card.Body>
+              <Card.Footer>
                 <Button
                   variant="outline-primary"
                   href="/meet?ref=pricing-page&button=hosted"
                 >
                   Get in touch
                 </Button>
-              </Card.Body>
+              </Card.Footer>
             </Card>
-            <Card className="pricingCard" border="secondary">
+            <Card
+              style={{ paddingTop: 50, paddingBottom: 50 }}
+              className="pricingCard"
+            >
               <Card.Body>
                 <Card.Title>Premium Support</Card.Title>
                 <Card.Text>
@@ -86,13 +99,15 @@ export default function PricingPage() {
                   <br />
                   <br />
                 </Card.Text>
+              </Card.Body>
+              <Card.Footer>
                 <Button
                   variant="outline-primary"
                   href="/meet?ref=pricing-page&button=support"
                 >
                   Get in touch
                 </Button>
-              </Card.Body>
+              </Card.Footer>
             </Card>
           </CardDeck>
         </Container>
