@@ -1,0 +1,127 @@
+---
+title: "Using Typescript to create a Robust API between your frontend and backend"
+date: "2020-10-16"
+author: "Evan Tahler"
+layout: "blogPage"
+pullQuote: "Use Typescript to more tightly couple your React apps to your API"
+tags: [engineering]
+---
+
+import Image from "../../components/blog/image";
+
+Two of the major components of the `@grouparoo/core` application are a Node.js API server and a React frontend. We use [Actionhero](https://www.actionherojs.com) as the API server, and [Next.JS](https://nextjs.org/) for our React site generator. As we develop the Grouparoo application, we are constantly adding new API endpoints and changing existing ones.
+
+One of the great features of Typescript is that it can help not only to share type definitions within a codebase, but also _across_ multiple codebases or services. We share the Typescript `types` of our API responses with our React Frontend to be sure that we always know what kind of data we are getting back. This helps us ensure that there is a tight coupling between the frontend and backend, and that we will get compile-time warnings if there’s something wrong.
+
+## Getting the type of an API Response
+
+In Actionhero, all API responses are defined by Actions, which are classes. The `run()` method of the Action class is what is finally returned to the API consumer. Here’s a prototypical example of an action that lets us know what time it is:
+
+```ts
+import { Action } from "actionhero";
+
+export class GetTime extends Action {
+  constructor() {
+    super();
+    this.name = "getTime";
+    this.description = "I let you know what time it is";
+    this.inputs = {};
+    this.outputExample = {};
+  }
+
+  async run() {
+    const now = new Date();
+    return { time: now.getTime() };
+  }
+}
+```
+
+This action takes no input, and returns the current time as a `number` (the unix epoch in ms). The action is also listed in our `config/routes.ts` file as responding to `GET /time`.
+
+The next step is to extract the `run()` method’s return type to get the `type` of the API response
+
+We can use a helper like [`type-fest`’s](https://www.npmjs.com/package/type-fest) `PromiseValue` to get the return value, or we can do it ourselves:
+
+```ts
+// from https://www.jpwilliams.dev/how-to-unpack-the-return-type-of-a-promise-in-typescript
+
+export type UnwrapPromise<T> = T extends Promise<infer U>
+  ? U
+  : T extends (...args: any) => Promise<infer U>
+  ? U
+  : T extends (...args: any) => infer U
+  ? U
+  : T;
+```
+
+So, the type of the Action’s response is:
+
+```ts
+type ActionResponse = UnwrapPromise<typeof GetTime.prototype.run>; // = { time: number; }
+```
+
+And in our IDE:
+
+<Image
+  width={"100%"}
+  alt="Share Dataset"
+  src={require("../../public/posts/typescript-frontend-backend/screenshot-1.png")}
+/>
+
+This is excellent because now any changes to our action will result in the `type` being automatically updated!
+
+## Consuming the API Response Type in React
+
+The Grouparoo Application is stored in a [monorepo](https://github.com/grouparoo/grouparoo), which means that the frontend and backend code always exist side-by-side. This means that we can reference the API code from our Frontend code, and make a helper to check our response types. We don't need our API code at run-time, but we can import the `types` from it as we develop and compile the app to Javascript.
+
+The first thing to do is make a utility file which imports our Actions and extracts their types. Grouparoo does this in `web/utils/apiData.ts`
+
+```ts
+import { UnwrapPromise } from "./UnwrapPromise";
+import { GetTime } from "../../api/src/actions/getTime";
+
+export namespace Actions {
+  export type GetTime = UnwrapPromise<typeof GetTime.prototype.run>;
+}
+```
+
+This `apiData.ts` will allow us to more concisely reference `Actions.GetTime` in the rest of our react application.
+
+Now, to use the Action’s response type, all we have to do is assign it to the response of an API request:
+
+```ts
+import { useState, useEffect } from "react";
+import { Actions } from "../utils/apiData";
+
+export default function TimeComponent() {
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  async function load() {
+    const response: Actions.GetTime = await fetch("/api/time");
+    setTime(response.time);
+  }
+
+  if (time === 0) return <div>loading...</div>;
+
+  const formattedTime = new Date(time).toLocaleString();
+  return <div>The time is: {formattedTime}</div>;
+}
+```
+
+Now we have enforced that the type of `response` in the `load()` method above will match the Action, being `{ time: number; }`. We will now get help from Typescript if don’t use that response value as a number, if we try to assign it to a string variable or otherwise use it improperly.
+
+<Image
+  width={"100%"}
+  alt="Share Dataset"
+  src={require("../../public/posts/typescript-frontend-backend/screenshot-2.png")}
+/>
+
+## Summary
+
+Since Typescript is used at “compile time”, it can be used across application boundaries in surprisingly useful ways. It’s a great way to help your team keep your frontend and backend in sync. You won’t incur any runtime overhead using Typescript like this, and it provides extra certainty in your test suite that your frontend will use the data it gets from your API correctly.
+
+If this type of work is interesting to you, [Grouparoo is hiring](www.grouparoo.com/jobs)!
