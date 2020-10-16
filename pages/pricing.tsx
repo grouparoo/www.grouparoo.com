@@ -59,7 +59,7 @@ export default function PricingPage() {
                   </div>
                 </Card.Text>
               </Card.Body>
-              <Card.Footer>
+              <Card.Footer style={{ borderTop: "none" }}>
                 <Button variant="primary" href="/docs">
                   Get started
                 </Button>
@@ -78,7 +78,7 @@ export default function PricingPage() {
                   <br />
                 </Card.Text>{" "}
               </Card.Body>
-              <Card.Footer>
+              <Card.Footer style={{ background: "white", borderTop: "none" }}>
                 <Button
                   variant="outline-primary"
                   href="/meet?ref=pricing-page&button=hosted"
@@ -100,7 +100,7 @@ export default function PricingPage() {
                   <br />
                 </Card.Text>
               </Card.Body>
-              <Card.Footer>
+              <Card.Footer style={{ background: "white", borderTop: "none" }}>
                 <Button
                   variant="outline-primary"
                   href="/meet?ref=pricing-page&button=support"
