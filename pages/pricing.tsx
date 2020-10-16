@@ -24,9 +24,7 @@ export default function PricingPage() {
         <Container>
           <Row>
             <Col>
-              <h1>
-                Grouparoo is <b>open source</b> and our core product is free.
-              </h1>
+              <h1>Grouparoo is open source and our core product is free.</h1>
               <p className="text-big-muted">
                 Host and run Grouparoo on your own infrastructure for free.
               </p>
