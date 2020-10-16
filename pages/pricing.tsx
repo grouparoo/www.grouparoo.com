@@ -1,7 +1,8 @@
 import React from "react";
-import { Container, Row, Col, Card, CardGroup, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, CardDeck, Button } from "react-bootstrap";
 import Head from "next/head";
-import Link from "next/link";
+import IntegrationsSection from "../components/home/integrationsSection";
+import GetStarted from "../components/home/getStarted";
 
 export default function PricingPage() {
   return (
@@ -23,7 +24,9 @@ export default function PricingPage() {
         <Container>
           <Row>
             <Col>
-              <h1>Grouparoo is open source and free.</h1>
+              <h1>
+                Grouparoo is <b>open source</b> and our core product is free.
+              </h1>
               <p className="text-big-muted">
                 Host and run Grouparoo on your own infrastructure for free.
               </p>
@@ -37,33 +40,70 @@ export default function PricingPage() {
         style={{ textAlign: "center" }}
       >
         <Container>
-          <CardGroup>
-            <Card>
+          <CardDeck>
+            <Card
+              className="pricingCard"
+              border="primary"
+              bg="secondary"
+              text="white"
+            >
               <Card.Body>
-                <Card.Title>Free</Card.Title>
+                <Card.Title>Free!</Card.Title>
                 <Card.Text>
-                  Grouparoo is open source and free to run in your own VPC.
+                  Grouparoo is open source and free to run in on your own cloud.
+                  <br />
+                  <br />
+                  <li>Realtime syncing infrastructure</li>
+                  <li>Access to all Sources and Destinations </li>
+                  <li>Dynamic Group definition</li>
                 </Card.Text>
-                <Button href="/docs">Try it Now</Button>
+                <Button variant="primary" href="/docs">
+                  Get Started
+                </Button>
               </Card.Body>
             </Card>
-            <Card>
+            <Card className="pricingCard" border="secondary">
               <Card.Body>
                 <Card.Title>Hosted</Card.Title>
                 <Card.Text>
-                  Grouparoo is open source and free to run in your own VPC.
+                  Interested in trying Grouparoo but don't want to host it
+                  yourself? Let's chat!
+                  <br />
+                  <br />
                 </Card.Text>
-                <Button href="/docs">Try it Now</Button>
+                <Button
+                  variant="outline-primary"
+                  href="/meet?ref=pricing-page&button=hosted"
+                >
+                  Get in touch
+                </Button>
               </Card.Body>
             </Card>
-            <Card>Services</Card>
-            <Card>Features</Card>
-          </CardGroup>
+            <Card className="pricingCard" border="secondary">
+              <Card.Body>
+                <Card.Title>Premium Support</Card.Title>
+                <Card.Text>
+                  Looking for additional support with integrating or managing
+                  your Grouparoo install?
+                  <br />
+                  <br />
+                </Card.Text>
+                <Button
+                  variant="outline-primary"
+                  href="/meet?ref=pricing-page&button=support"
+                >
+                  Get in touch
+                </Button>
+              </Card.Body>
+            </Card>
+          </CardDeck>
         </Container>
       </div>
       <br />
       <br />
       <br />
+      <IntegrationsSection />
+      <GetStarted />
     </>
   );
 }
