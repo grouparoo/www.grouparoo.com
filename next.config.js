@@ -2,38 +2,40 @@ const fs = require("fs");
 const path = require("path");
 const os = require("os");
 
-const withMdxEnhanced = require("next-mdx-enhanced");
+// const withMdxEnhanced = require("next-mdx-enhanced");
+// const rehypePrism = require("@mapbox/rehype-prism");
+
 const withOptimizedImages = require("next-optimized-images");
-const rehypePrism = require("@mapbox/rehype-prism");
 
 // on boot, touch the blogPost and docPost files to force MDX to re-render the files
-[
-  path.join(__dirname, "utils", "blogPosts.ts"),
-  path.join(__dirname, "utils", "docPosts.ts"),
-].forEach((f) => {
-  const lines = fs.readFileSync(f).toString().split(os.EOL);
-  const newLines = lines.map((line) => {
-    if (line.includes("<<random-timestamp>>")) {
-      return `//<<random-timestamp>> ${new Date().toISOString()}`;
-    } else {
-      return line;
-    }
-  });
-  fs.writeFileSync(f, newLines.join(os.EOL));
-});
+// [
+//   path.join(__dirname, "utils", "blogPosts.ts"),
+//   path.join(__dirname, "utils", "docPosts.ts"),
+// ].forEach((f) => {
+//   const lines = fs.readFileSync(f).toString().split(os.EOL);
+//   const newLines = lines.map((line) => {
+//     if (line.includes("<<random-timestamp>>")) {
+//       return `//<<random-timestamp>> ${new Date().toISOString()}`;
+//     } else {
+//       return line;
+//     }
+//   });
+//   fs.writeFileSync(f, newLines.join(os.EOL));
+// });
 
 module.exports = withOptimizedImages(
-  withMdxEnhanced({
-    layoutPath: "components/layouts",
-    defaultLayout: false,
-    fileExtensions: ["mdx"],
-    remarkPlugins: [],
-    rehypePlugins: [[rehypePrism, {}]],
-    extendFrontMatter: {
-      process: (mdxContent, frontMatter) => {},
-      phase: "both",
-    },
-  })({
+  // withMdxEnhanced({
+  //   layoutPath: "components/layouts",
+  //   defaultLayout: false,
+  //   fileExtensions: ["mdx"],
+  //   remarkPlugins: [],
+  //   rehypePlugins: [[rehypePrism, {}]],
+  //   extendFrontMatter: {
+  //     process: (mdxContent, frontMatter) => {},
+  //     phase: "both",
+  //   },
+  // })(
+  {
     responsive: {
       adapter: require("responsive-loader/sharp"),
     },
@@ -65,5 +67,6 @@ module.exports = withOptimizedImages(
         },
       ];
     },
-  })
+  }
 );
+// );

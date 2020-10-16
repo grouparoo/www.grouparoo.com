@@ -6,6 +6,7 @@ function Image(props) {
     bottomSpace,
     source,
     outline,
+    src,
     ...imageProps
   } = props;
 
@@ -36,10 +37,12 @@ function Image(props) {
   imageProps.style.borderStyle = "solid";
   imageProps.style.backgroundColor = "white";
 
+  // imageProps.src = require(src);
+
   // TODO: use source
   return (
     <p className="blogImageContainer" style={containerStyle}>
-      <img {...imageProps} />
+      <img {...imageProps} src={src} />
     </p>
   );
 }
