@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Badge } from "react-bootstrap";
 import Link from "next/link";
 
-const badgeTypes = {
+export const badgeTypes = {
   marketing: "primary",
   engineering: "success",
   connections: "info",

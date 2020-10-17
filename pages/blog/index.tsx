@@ -1,15 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
-import blogEngine, { getAuthor } from "../../utils/blogEngine";
+import getAuthor from "../../utils/getAuthor";
 import { Container, Image } from "react-bootstrap";
 import BlogTags from "../../utils/blogTags";
 import AuthorBox from "../../components/blog/authorBox";
-
-function blogEntries() {
-  return blogEngine.getEntries();
-}
+import fs from "fs";
+import path from "path";
+import glob from "glob";
+import matter from "gray-matter";
 
 function BlogEntry(entry, idx) {
+  const author = getAuthor(entry.author);
+
   return (
     <div key={`blogEntry-${idx}`}>
       <Link href={entry.path}>
@@ -19,20 +21,17 @@ function BlogEntry(entry, idx) {
       </Link>
       <h4>{BlogTags(entry.tags)}</h4>
       <p>
-        <Link
-          href="/blog/author/[author]"
-          as={`/blog/author/${entry.author.slug}`}
-        >
+        <Link href="/blog/author/[author]" as={`/blog/author/${author.slug}`}>
           <a>
             <Image
               style={{ width: 50, margin: 10 }}
               roundedCircle
-              src={require(`../../public/images/authors/${entry.author.slug}.png`)}
+              src={require(`../../public/images/authors/${author.slug}.png`)}
             />
-            {entry.author.name}
+            {author.name}
           </a>
         </Link>{" "}
-        on {entry.dateText()}
+        on {entry.date}
       </p>
       <blockquote style={{ color: "darkGray" }}>
         <span style={{ fontSize: 20, fontFamily: "Georgia" }}>"</span>
@@ -42,8 +41,8 @@ function BlogEntry(entry, idx) {
   );
 }
 
-export default function BlogIndex({ category = "", author = "" }) {
-  let blogPosts = blogEntries();
+export default function BlogIndex({ pageProps, category = "", author = "" }) {
+  let blogPosts = pageProps.entries;
 
   if (category !== "") {
     blogPosts = blogPosts.filter((entry) => entry.tags.includes(category));
@@ -51,7 +50,9 @@ export default function BlogIndex({ category = "", author = "" }) {
 
   if (author !== "") {
     blogPosts = blogPosts.filter(
-      (entry) => entry.author.name === author || entry.author.slug === author
+      (entry) =>
+        getAuthor(entry.author).name === author ||
+        getAuthor(entry.author).slug === author
     );
   }
 
@@ -99,4 +100,17 @@ export default function BlogIndex({ category = "", author = "" }) {
       <br />
     </>
   );
+}
+
+export async function getStaticProps() {
+  const entries = [];
+  const files = glob.sync(path.join(process.cwd(), "pages", "blog", `*.mdx`));
+  for (const i in files) {
+    const source = fs.readFileSync(files[i]);
+    const { data } = matter(source);
+    data.path = `/blog/${path.parse(files[i]).base.split(".")[0]}`;
+    entries.push(data);
+  }
+
+  return { props: { entries } };
 }

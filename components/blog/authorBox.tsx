@@ -25,7 +25,7 @@ export default function AuthorBox({
             {entry ? (
               <>
                 <strong>
-                  Written by {author.name} on {entry.dateText()}
+                  Written by {author.name} on {entry.date}
                 </strong>
                 <br />
                 Tagged in {BlogTags(entry.tags)}

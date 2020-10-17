@@ -7,8 +7,6 @@ pullQuote: "Asking the database to return the High Water Mark as a string preven
 tags: [connections, engineering, notes]
 ---
 
-import Image from "../../components/blog/image";
-
 In Brian’s post, [Building a Sync Engine](/blog/building-a-sync-engine), he talks about the value of using a **High Water Mark** to keep track of the latest bit of data you’ve imported. This approach is often a better pattern than using `Limit` and `Offset`, especially when the underlying data might be changing. In this post, I’m gong to dive even deeper into this topic, and suggest that you should be storing you High Water Marks as strings whenever possible.
 
 ## The Hidden Problem
@@ -36,7 +34,7 @@ The `resolution` class of problems is less dangerous than the `stringification` 
 <Image
   maxHeight={200}
   alt="Getting your API Key and Secret"
-  src={require("../../public/posts/save-your-high-water-marks-as-strings/database.png")}
+  src="save-your-high-water-marks-as-strings/database.png"
 />
 
 We’ve got values of `2020-07-25 12:18:56.831` for `updated_at`– that’s precision down to fractions of a second! However, that data is lost when the [ `pg`](https://node-postgres.com/) package reads that row and casts it to a `new Date()`. When we eventually build a string out of it to make our next query, we only get `2020-07-25 12:18:56` back. If you follow the advice in our previous post to always compare with equality (`=>`) you won’t skip any rows, but you’ll read the same row back again each time.

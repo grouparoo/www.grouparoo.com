@@ -37,12 +37,15 @@ function Image(props) {
   imageProps.style.borderStyle = "solid";
   imageProps.style.backgroundColor = "white";
 
-  // imageProps.src = require(src);
+  if (src.includes("data:image")) {
+    imageProps.src = src;
+  } else {
+    imageProps.src = require(`../../public/posts/${src}`);
+  }
 
-  // TODO: use source
   return (
     <p className="blogImageContainer" style={containerStyle}>
-      <img {...imageProps} src={src} />
+      <img {...imageProps} />
     </p>
   );
 }
