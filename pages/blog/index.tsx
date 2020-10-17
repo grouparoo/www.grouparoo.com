@@ -112,5 +112,9 @@ export async function getStaticProps() {
     entries.push(data);
   }
 
+  entries.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+
   return { props: { entries } };
 }
