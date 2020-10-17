@@ -6,9 +6,6 @@ layout: "docsPage"
 pullQuote: "Upgrading your Grouparoo Deployment is as easy as npm upgrade"
 ---
 
-import Image from "../../../components/blog/image";
-import HavingProblems from "../../../components/docs/havingProblems";
-
 Grouparoo will regularly publish new versions of the packages that compose your Grouparoo application. Grouparoo packages are published to [npm](https://npmjs.com) under the `@grouparoo` and `@grouparoo-inc` organizations. For example you can view a list of [packages in the `@grouparoo` organization here](https://www.npmjs.com/org/grouparoo).
 
 **We strongly recommend that you update your Grouparoo application as soon as a new version becomes available.** In addition to new features, new versions are likely to contain bug and security fixes.
@@ -25,7 +22,7 @@ If you visit the `/about` page of your Grouparoo server, you'll see a list of th
   centered
   source="Grouparoo Topology"
   alt="Grouparoo Topology"
-  src={require("../../../public/images/docs/deployment/in-app-versions.png")}
+  src="docs/deployment/in-app-versions.png"
 />
 
 **Release Notes**
@@ -36,7 +33,7 @@ Grouparoo publishes release notes for new versions at [https://github.com/groupa
   centered
   source="Grouparoo Topology"
   alt="Grouparoo Topology"
-  src={require("../../../public/images/docs/deployment/release-notes.png")}
+  src="docs/deployment/release-notes.png"
 />
 
 **Tools from the Node.JS ecosystem**
@@ -56,7 +53,7 @@ All that is needed to update your Grouparoo application is update the versions o
   centered
   source="Grouparoo Topology"
   alt="Grouparoo Topology"
-  src={require("../../../public/images/docs/deployment/upgrade-diff.png")}
+  src="docs/deployment/upgrade-diff.png"
 />
 
 Depending on your method of deployment, you will need to either re-deploy your application, `git push` to Heroku, or publish a new Docker image.
