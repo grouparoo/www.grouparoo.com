@@ -1,23 +1,22 @@
 import Head from "next/head";
 import { Container, Row, Col, Breadcrumb } from "react-bootstrap";
-import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
-import rehypePrism from "@mapbox/rehype-prism";
-import fs from "fs";
-import path from "path";
-import glob from "glob";
-import matter from "gray-matter";
 import {
   TableOfContents,
   capitalize,
 } from "../../../components/docs/tableOfContents";
 import HavingProblems from "../../../components/docs/havingProblems";
 import DocImage from "../../../components/docs/image";
+import {
+  loadEntries,
+  loadMdxFile,
+  getStaticMdxPaths,
+} from "../../../utils/mdxUtils";
 
 const components = { HavingProblems, Image: DocImage };
 
 export default function DocPage({ pageProps }) {
-  const { source, frontMatter, entries } = pageProps;
+  const { source, frontMatter, docs } = pageProps;
   const content = hydrate(source, { components });
 
   return (
@@ -52,7 +51,7 @@ export default function DocPage({ pageProps }) {
         ) : null}
         <Row>
           <Col className="d-none d-md-block">
-            <TableOfContents entries={entries} />
+            <TableOfContents docs={docs} />
           </Col>
 
           <Col
@@ -72,7 +71,7 @@ export default function DocPage({ pageProps }) {
           </Col>
 
           <Col className="d-md-none">
-            <TableOfContents entries={entries} />
+            <TableOfContents docs={docs} />
           </Col>
         </Row>
       </Container>
@@ -83,61 +82,20 @@ export default function DocPage({ pageProps }) {
 }
 
 export async function getStaticProps({ params }) {
-  const mdxOptions = {
-    remarkPlugins: [],
-    rehypePlugins: [[rehypePrism, {}]],
-    extendFrontMatter: {
-      process: (mdxContent, frontMatter) => {},
-      phase: "both",
-    },
-  };
-
-  const entries = [];
-  const dir = path.join(process.cwd(), "pages", "docs");
-  const files = glob.sync(path.join(dir, `**`, `*.mdx`));
-
-  for (const i in files) {
-    const source = fs.readFileSync(files[i]);
-    const { data } = matter(source);
-    data.path =
-      "/docs" +
-      files[i]
-        .replace(path.join(process.cwd(), "pages", "docs"), "")
-        .split(".")[0];
-    entries.push(data);
+  const dirParts = ["docs"];
+  if (params.page) {
+    dirParts.push(params.section);
+    dirParts.push(`${params.page}.mdx`);
+  } else {
+    dirParts.push(`${params.section}.mdx`);
   }
 
-  const file = path.join(
-    process.cwd(),
-    "pages",
-    "docs",
-    `${params.page ? `${params.section}/${params.page}` : params.section}.mdx`
-  );
-  const source = fs.readFileSync(file);
-  const { content, data } = matter(source);
-  data.path =
-    "/docs" +
-    file.replace(path.join(process.cwd(), "pages", "docs"), "").split(".")[0];
-  const mdxSource = await renderToString(content, {
-    components,
-    scope: data,
-    mdxOptions,
-  });
+  const { source, frontMatter } = await loadMdxFile(dirParts, components);
+  const docs = await loadEntries(["docs"]);
 
-  return { props: { source: mdxSource, frontMatter: data, entries } };
+  return { props: { source, frontMatter, docs } };
 }
 
 export async function getStaticPaths(depth = 1) {
-  const dir = path.join(process.cwd(), "pages", "docs");
-  const paths = glob
-    .sync(path.join(dir, "**", "*.mdx"))
-    .map((p) => p.replace(path.join(process.cwd(), "pages", "docs"), ""))
-    .map((p) => p.split(".")[0])
-    .map((p) => `/docs${p}`)
-    .filter((p) => p.split("/").length === depth + 2);
-
-  return {
-    paths,
-    fallback: false,
-  };
+  return getStaticMdxPaths(["docs"], depth);
 }

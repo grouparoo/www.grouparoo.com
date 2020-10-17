@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { Card } from "react-bootstrap";
 
-export function TableOfContents({ entries }) {
+export function TableOfContents({ docs }) {
   const router = useRouter();
   const highlightColor = "#fd7e14";
-  const tableOfContents = tableOfContentsFromEntries(entries);
+  const tableOfContents = tableOfContentsFromEntries(docs);
 
   return (
     <>
@@ -56,7 +56,7 @@ export function TableOfContents({ entries }) {
   );
 }
 
-export function tableOfContentsFromEntries(entries) {
+export function tableOfContentsFromEntries(docs) {
   const sections: { [section: string]: { title: string; path: string }[] } = {
     deployment: [],
     guides: [],
@@ -73,7 +73,7 @@ export function tableOfContentsFromEntries(entries) {
     ],
   };
 
-  entries.forEach((entry) => {
+  docs.forEach((entry) => {
     const pathParts = entry.path.split("/");
     if (pathParts.length > 3) {
       const section = pathParts[2];

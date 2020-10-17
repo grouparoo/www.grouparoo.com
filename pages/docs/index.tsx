@@ -1,8 +1,4 @@
 import Head from "next/head";
-import fs from "fs";
-import path from "path";
-import glob from "glob";
-import matter from "gray-matter";
 import {
   Container,
   Row,
@@ -11,10 +7,11 @@ import {
   ButtonGroup,
   Alert,
 } from "react-bootstrap";
+import { loadEntries } from "../../utils/mdxUtils";
 import { TableOfContents } from "../../components/docs/tableOfContents";
 
 export default function DocsIndex({ pageProps }) {
-  const { entries } = pageProps;
+  const { docs } = pageProps;
 
   return (
     <>
@@ -25,7 +22,7 @@ export default function DocsIndex({ pageProps }) {
       <Container>
         <Row>
           <Col className="d-none d-md-block">
-            <TableOfContents entries={entries} />
+            <TableOfContents docs={docs} />
           </Col>
           <Col xl={9} lg={9} md={8} sm={12} xs={12}>
             <h1>Grouparoo Documentation</h1>
@@ -136,7 +133,7 @@ export default function DocsIndex({ pageProps }) {
             </Alert>
           </Col>
           <Col className="d-md-none">
-            <TableOfContents entries={entries} />
+            <TableOfContents docs={docs} />
           </Col>
         </Row>
       </Container>
@@ -145,21 +142,6 @@ export default function DocsIndex({ pageProps }) {
 }
 
 export async function getStaticProps() {
-  const entries = [];
-  const files = glob.sync(
-    path.join(process.cwd(), "pages", "docs", `**`, `*.mdx`)
-  );
-
-  for (const i in files) {
-    const source = fs.readFileSync(files[i]);
-    const { data } = matter(source);
-    data.path =
-      "/docs" +
-      files[i]
-        .replace(path.join(process.cwd(), "pages", "docs"), "")
-        .split(".")[0];
-    entries.push(data);
-  }
-
-  return { props: { entries } };
+  const docs = await loadEntries(["docs"]);
+  return { props: { docs } };
 }

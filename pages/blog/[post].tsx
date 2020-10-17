@@ -1,7 +1,4 @@
-import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
-import rehypePrism from "@mapbox/rehype-prism";
-import matter from "gray-matter";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -10,18 +7,18 @@ import BlogTags from "../../utils/blogTags";
 import Subscribe from "../../components/subscribe";
 import AuthorBox from "../../components/blog/authorBox";
 import getAuthor from "../../utils/getAuthor";
-import path from "path";
-import fs from "fs";
-import glob from "glob";
-
+import { loadMdxFile, getStaticMdxPaths } from "../../utils/mdxUtils";
 import BlogImage from "../../components/blog/image";
+import { BlogPost } from "./index";
 
 const components = { Image: BlogImage, Alert, Card, CardBody: Card.Body };
 
 export default function BlogPage({ pageProps }) {
   const router = useRouter();
-
-  const { source, frontMatter } = pageProps;
+  const {
+    source,
+    frontMatter,
+  }: { source: any; frontMatter: BlogPost } = pageProps;
   const content = hydrate(source, { components });
   const author = getAuthor(frontMatter.author);
 
@@ -89,37 +86,10 @@ export default function BlogPage({ pageProps }) {
 }
 
 export async function getStaticProps({ params }) {
-  const mdxOptions = {
-    remarkPlugins: [],
-    rehypePlugins: [[rehypePrism, {}]],
-    extendFrontMatter: {
-      process: (mdxContent, frontMatter) => {},
-      phase: "both",
-    },
-  };
-
-  const file = path.join(process.cwd(), "pages", "blog", `${params.post}.mdx`);
-  const source = fs.readFileSync(file);
-  const { content, data } = matter(source);
-  const mdxSource = await renderToString(content, {
-    components,
-    scope: data,
-    mdxOptions,
-  });
-
-  return { props: { source: mdxSource, frontMatter: data } };
+  const props = await loadMdxFile(["blog", `${params.post}.mdx`], components);
+  return { props };
 }
 
 export async function getStaticPaths() {
-  const dir = path.join(process.cwd(), "pages", "blog");
-  const paths = glob
-    .sync(path.join(dir, "*.mdx"))
-    .map((p) => path.parse(p).base)
-    .map((p) => p.split(".")[0])
-    .map((p) => `/blog/${p}`);
-
-  return {
-    paths,
-    fallback: false,
-  };
+  return getStaticMdxPaths(["blog"]);
 }

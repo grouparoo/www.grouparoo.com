@@ -4,12 +4,18 @@ import getAuthor from "../../utils/getAuthor";
 import { Container, Image } from "react-bootstrap";
 import BlogTags from "../../utils/blogTags";
 import AuthorBox from "../../components/blog/authorBox";
-import fs from "fs";
-import path from "path";
-import glob from "glob";
-import matter from "gray-matter";
+import { loadEntries } from "../../utils/mdxUtils";
 
-function BlogEntry(entry, idx) {
+export type BlogPost = {
+  title: string;
+  date: string;
+  author: string;
+  pullQuote: string;
+  tags: string[];
+  path: string;
+};
+
+function BlogEntry(entry: BlogPost, idx: number) {
   const author = getAuthor(entry.author);
 
   return (
@@ -42,14 +48,14 @@ function BlogEntry(entry, idx) {
 }
 
 export default function BlogIndex({ pageProps, category = "", author = "" }) {
-  let blogPosts = pageProps.entries;
+  let posts: BlogPost[] = pageProps.posts;
 
   if (category !== "") {
-    blogPosts = blogPosts.filter((entry) => entry.tags.includes(category));
+    posts = posts.filter((entry) => entry.tags.includes(category));
   }
 
   if (author !== "") {
-    blogPosts = blogPosts.filter(
+    posts = posts.filter(
       (entry) =>
         getAuthor(entry.author).name === author ||
         getAuthor(entry.author).slug === author
@@ -68,8 +74,8 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
         {category ? (
           <>
             <p>
-              Showing {blogPosts.length} articles tagged{" "}
-              <strong>{category}</strong>. <br />
+              Showing {posts.length} articles tagged <strong>{category}</strong>
+              . <br />
               <Link href="/blog">
                 <a>Show all articles instead.</a>
               </Link>
@@ -81,7 +87,7 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
         {author ? (
           <>
             <p>
-              Showing {blogPosts.length} articles written by{" "}
+              Showing {posts.length} articles written by{" "}
               <strong>{getAuthor(author).name}</strong>. <br />
               <Link href="/blog">
                 <a>Show all articles instead.</a>
@@ -91,8 +97,8 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
           </>
         ) : null}
 
-        {blogPosts.length > 0 ? (
-          blogPosts.map((entry, idx) => BlogEntry(entry, idx))
+        {posts.length > 0 ? (
+          posts.map((entry, idx) => BlogEntry(entry, idx))
         ) : (
           <p>No posts found</p>
         )}
@@ -103,18 +109,11 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
 }
 
 export async function getStaticProps() {
-  const entries = [];
-  const files = glob.sync(path.join(process.cwd(), "pages", "blog", `*.mdx`));
-  for (const i in files) {
-    const source = fs.readFileSync(files[i]);
-    const { data } = matter(source);
-    data.path = `/blog/${path.parse(files[i]).base.split(".")[0]}`;
-    entries.push(data);
-  }
+  const posts = await loadEntries(["blog"]);
 
-  entries.sort((a, b) => {
+  posts.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 
-  return { props: { entries } };
+  return { props: { posts } };
 }
