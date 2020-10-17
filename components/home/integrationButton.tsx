@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Button, Image } from "react-bootstrap";
-import { formatNameIntoLink } from "../../utils/formatters";
 
 export default function IntegrationButton({
   name,
@@ -15,7 +14,7 @@ export default function IntegrationButton({
 }) {
   return (
     <>
-      <Link href={`/integrations/${type}s/${formatNameIntoLink(name)}`}>
+      <Link href={`/integrations/${type}s/${slug}`}>
         <a>
           <Button
             size="lg"

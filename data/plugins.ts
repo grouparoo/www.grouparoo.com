@@ -1,4 +1,15 @@
-export const PluginData = [
+export const PluginData: Array<{
+  name: string;
+  description: string;
+  priority: number;
+  slug: string;
+  logo: string;
+  primaryType: string;
+  otherTypes: string[];
+  category: string;
+  badge: string;
+  showLink: boolean;
+}> = [
   {
     name: "CSV",
     description: "",
@@ -57,7 +68,7 @@ export const PluginData = [
     otherTypes: [],
     category: "email marketing",
     badge: "popular",
-    showlink: true,
+    showLink: true,
   },
   {
     name: "Marketo",
@@ -93,7 +104,7 @@ export const PluginData = [
     otherTypes: ["destination"],
     category: "database",
     badge: "",
-    showlink: true,
+    showLink: true,
   },
   {
     name: "Redshift",
@@ -117,7 +128,7 @@ export const PluginData = [
     otherTypes: [],
     category: "email marketing",
     badge: "",
-    showlink: true,
+    showLink: true,
   },
 
   {
@@ -130,7 +141,6 @@ export const PluginData = [
     otherTypes: [],
     category: "crm",
     badge: "",
-    integrationPage: "",
     showLink: false,
   },
   {
@@ -143,7 +153,6 @@ export const PluginData = [
     otherTypes: ["destination"],
     category: "data warehouse",
     badge: "",
-    integrationPage: "",
     showLink: false,
   },
   {

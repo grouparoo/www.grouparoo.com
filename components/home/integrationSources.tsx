@@ -13,6 +13,7 @@ export default function IntegrationSources() {
                 return b.priority - a.priority;
               })
                 .filter((pluginType) => pluginType.primaryType === "source")
+                .filter((pluginType) => pluginType.showLink === true)
                 .slice(0, 5)
                 .map((plugin, idx) => {
                   return (

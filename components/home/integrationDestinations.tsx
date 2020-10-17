@@ -15,6 +15,7 @@ export default function IntegrationDestinations() {
                 .filter(
                   (pluginType) => pluginType.primaryType === "destination"
                 )
+                .filter((pluginType) => pluginType.showLink === true)
                 .slice(0, 5)
                 .map((plugin, idx) => {
                   return (
