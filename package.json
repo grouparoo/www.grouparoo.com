@@ -18,9 +18,9 @@
     "build": "next build",
     "start": "next start --port $PORT",
     "dev": "next dev --port 3001",
-    "pretest": "npm run lint && npm run prepare",
+    "pretest": "npm run lint && npm run build",
     "test": "jest --runInBand",
-    "lint": "prettier --check pages/**/*tsx components/**/*.tsx __tests__/**/*.tsx",
+    "lint": "prettier --check pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
     "nuke": "rm -rf node_modules && rm -rf api/dist"
   },
   "dependencies": {

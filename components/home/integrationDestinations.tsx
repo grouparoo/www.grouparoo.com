@@ -1,6 +1,7 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 import IntegrationButton from "../home/integrationButton";
 import { PluginData } from "../../data/plugins";
+import { Fragment } from "react";
 
 export default function IntegrationDestinations() {
   return (
@@ -15,9 +16,9 @@ export default function IntegrationDestinations() {
                   (pluginType) => pluginType.primaryType === "destination"
                 )
                 .slice(0, 5)
-                .map((plugin) => {
+                .map((plugin, idx) => {
                   return (
-                    <>
+                    <Fragment key={`integrationDestination-${idx}`}>
                       <IntegrationButton
                         name={plugin.name}
                         slug={plugin.slug}
@@ -25,7 +26,7 @@ export default function IntegrationDestinations() {
                         image={plugin.logo}
                       />{" "}
                       &nbsp; &nbsp;
-                    </>
+                    </Fragment>
                   );
                 })
             : null}
