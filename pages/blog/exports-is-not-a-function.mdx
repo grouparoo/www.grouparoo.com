@@ -7,8 +7,6 @@ pullQuote: 'Maybe it was a bad idea to have a variable named "exports"'
 tags: [engineering, notes]
 ---
 
-import Image from "../../components/blog/image";
-
 I have been working on the [Salesforce integration](https://github.com/grouparoo/grouparoo/pull/754). That experience will be its own story. In the process, though, I found something tricky that I might be uniquely experiencing given the combinatorics of the modern Node/Javascript/Typescript world.
 
 [Grouparoo](https://www.grouparoo.com) connects with sources, processes the data from them, and sends that data to destinations. When data comes from a source, we call it an `import`. When data is sent to a destination, we call it an `export`. These are very good names, in my opinion, because they accurately reflect what is happening and they are known words in the engineering community.

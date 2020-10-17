@@ -7,12 +7,10 @@ pullQuote: "Use Typescript to more tightly couple your React apps to your API"
 tags: [engineering]
 ---
 
-import Image from "../../components/blog/image";
-
 <Image
   width={"100%"}
   alt="Keyboard image"
-  src={require("../../public/posts/typescript-frontend-backend/keyboard.jpg")}
+  src="typescript-frontend-backend/keyboard.jpg"
 />
 
 Two of the major components of the `@grouparoo/core` application are a Node.js API server and a React frontend. We use [Actionhero](https://www.actionherojs.com) as the API server, and [Next.JS](https://nextjs.org/) for our React site generator. As we develop the Grouparoo application, we are constantly adding new API endpoints and changing existing ones.
@@ -71,7 +69,7 @@ And in our IDE:
 <Image
   width={"100%"}
   alt="Display TS types"
-  src={require("../../public/posts/typescript-frontend-backend/screenshot-1.png")}
+  src="typescript-frontend-backend/screenshot-1.png"
 />
 
 This is excellent because now any changes to our action will result in the `type` being automatically updated!
@@ -123,7 +121,7 @@ Now we have enforced that the type of `response` in the `load()` method above wi
 <Image
   width={"100%"}
   alt="TS error"
-  src={require("../../public/posts/typescript-frontend-backend/screenshot-2.png")}
+  src="typescript-frontend-backend/screenshot-2.png"
 />
 
 ## Summary

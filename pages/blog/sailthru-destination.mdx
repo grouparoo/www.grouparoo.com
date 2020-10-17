@@ -7,8 +7,6 @@ pullQuote: "Grouparoo allows you to connect your customer data to various market
 tags: [connections, engineering]
 ---
 
-import Image from "../../components/blog/image";
-
 Grouparoo allows you to connect your customer data to various marketing platforms like Sailthru. Grouparoo has your data from sources like your product database and data warehouse. This produces profiles with many properties. You can use these to create groups. Now, you can send chosen groups and properties to destinations like Sailthru automatically, using them to communicate with your customers.
 
 ## Sailthru setup
@@ -18,7 +16,7 @@ In Sailthru, you will need to admin access. In the "Setup / API & Postbacks" sec
 <Image
   maxHeight={200}
   alt="Getting your API Key and Secret"
-  src={require("../../public/posts/sailthru-destination/sailthru-settings.png")}
+  src="sailthru-destination/sailthru-settings.png"
 />
 
 ## Create a Grouparoo app
@@ -28,7 +26,7 @@ In Grouparoo, apps provide the credentials to be able to connect to other platfo
 <Image
   maxHeight={400}
   alt="Creating Grouparoo Sailthru App"
-  src={require("../../public/posts/sailthru-destination/create-app.png")}
+  src="sailthru-destination/create-app.png"
 />
 
 ## Create a Grouparoo destination
@@ -38,7 +36,7 @@ You are ready to start sending your profile data to Sailthru. In Grouparoo, this
 <Image
   maxHeight={250}
   alt="Add a destination"
-  src={require("../../public/posts/sailthru-destination/new-destination.png")}
+  src="sailthru-destination/new-destination.png"
 />
 
 Then, we pick which groups and properties are going to be synchronized with Sailthru.
@@ -46,12 +44,12 @@ Then, we pick which groups and properties are going to be synchronized with Sail
 <Image
   maxHeight={250}
   alt="Grouparoo groups to send to Sailthru"
-  src={require("../../public/posts/sailthru-destination/destination-groups.png")}
+  src="sailthru-destination/destination-groups.png"
 />
 <Image
   maxHeight={450}
   alt="Grouparoo properties to send to Sailthru"
-  src={require("../../public/posts/sailthru-destination/destination-properties.png")}
+  src="sailthru-destination/destination-properties.png"
 />
 
 From a privacy perspective, I love that we don't have to send their lifetime value to destinations like Sailthru. Instead, we only need to send their membership in the "High Value Customers" group.
@@ -63,12 +61,12 @@ All of the selected users now show up in Sailthru. They are in the "High Value C
 <Image
   maxHeight={200}
   alt="List added to Sailthru"
-  src={require("../../public/posts/sailthru-destination/sailthru-lists.png")}
+  src="sailthru-destination/sailthru-lists.png"
 />
 <Image
   maxHeight={200}
   alt="Fields set as Sailthru properties"
-  src={require("../../public/posts/sailthru-destination/sailthru-profile.png")}
+  src="sailthru-destination/sailthru-profile.png"
 />
 
 Now, you can do anything that Sailthru enables. For example, the Sailthru Lifecyle Optimizer workflows can be very powerful when combined with this approach. Flows can be kicked off when a profile's properties change or group membership changes.
@@ -76,7 +74,7 @@ Now, you can do anything that Sailthru enables. For example, the Sailthru Lifecy
 <Image
   maxHeight={350}
   alt="Fields set as Sailthru properties"
-  src={require("../../public/posts/sailthru-destination/sailthru-flow.png")}
+  src="sailthru-destination/sailthru-flow.png"
 />
 
 In this case, we send a "thank you for being a great customer" email when you become a member of the "High Value Customers" group. The fact that this kind of triggering can be done by the marketer without any engineering help is very powerful. This autonomy leads to high organizational leverage and more progress being made towards marketing goals.
@@ -113,7 +111,7 @@ We have seen this often results in these extra lists with the same name if the l
 <Image
   maxHeight={150}
   alt="Multiple lists created in Sailthru"
-  src={require("../../public/posts/sailthru-destination/details-multi-lists.png")}
+  src="sailthru-destination/details-multi-lists.png"
 />
 
 Unfortunately, this situation can arise fairly easily in the initial synchronization. Many profiles are being exported from Grouparoo when the destination is first added and the lists didn't not exist beforehand. It also creates a problem because the API encourages the name itself to be the key for lookup (as opposed to an id).
@@ -168,7 +166,7 @@ So when we first synced 1487 users, it looked like this:
 <Image
   maxHeight={100}
   alt="Sailthru list with 1487 users"
-  src={require("../../public/posts/sailthru-destination/details-list-count1.png")}
+  src="sailthru-destination/details-list-count1.png"
 />
 
 When we deleted everyone and synced again (with the same users), it was doubled:
@@ -176,7 +174,7 @@ When we deleted everyone and synced again (with the same users), it was doubled:
 <Image
   maxHeight={150}
   alt="Sailthru list with 1487 users"
-  src={require("../../public/posts/sailthru-destination/details-list-count2.png")}
+  src="sailthru-destination/details-list-count2.png"
 />
 
 In other words: if you were to remove one user and add another one, this number would go up by one even though the real count was constant. This is important to know when making verifying your world is as you expect.

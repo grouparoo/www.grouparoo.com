@@ -45,6 +45,7 @@ module.exports = withOptimizedImages(
     },
     webpack: (config) => {
       config.module.rules.push({ test: /\.md$/, use: "raw-loader" });
+      config.module.rules.push({ test: /\.excalidraw$/, use: "raw-loader" });
       return config;
     },
     async rewrites() {

@@ -16,7 +16,7 @@ import glob from "glob";
 
 import BlogImage from "../../components/blog/image";
 
-const components = { Image: BlogImage, Alert, Card };
+const components = { Image: BlogImage, Alert, Card, CardBody: Card.Body };
 
 export default function BlogPage({ pageProps }) {
   const router = useRouter();

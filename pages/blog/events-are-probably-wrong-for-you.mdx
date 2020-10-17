@@ -1,13 +1,11 @@
 ---
-title: "Why tracking your product’s performance with events is probably wrong"
+title: "Why tracking your Product’s Performance with Events is Probably Wrong"
 date: "2020-09-17"
 author: "Andy Jih"
 layout: "blogPage"
 pullQuote: "Events-based product data will never be as good as your data warehouse"
 tags: [product, engineering, marketing]
 ---
-
-import Image from "../../components/blog/image";
 
 Many businesses have built great analytics products to help with tracking the actions your users are taking in your product ([Mixpanel](http://mixpanel.com), [Pendo](http://pendo.io), and [Amplitude](http://amplitude.com), to name a few). These products use an events-based data model where they track user behavior, usually client-side, so you can understand and visualize behavior like page views and button clicks. While this event-based model has been somewhat helpful at modeling high-level funnels and actions, we’ve learned over time that this model often creates more problems and challenges than they actually solve. Speaking as a product manager who has lobbied to integrate these kinds of analytics tools in the past, I’m sharing my thoughts on why events are usually wrong for tracking product usage.
 
@@ -50,7 +48,7 @@ In most cases though, some processes or functions in your business actually happ
   centered
   maxHeight={1000}
   alt="Events don't capture everything that can happen in your product"
-  src={require("../../public/posts/events-are-probably-wrong-for-you/funnel.png")}
+  src="events-are-probably-wrong-for-you/funnel.png"
 />
 
 ## **You only have history from when you first implemented events**

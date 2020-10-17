@@ -7,13 +7,11 @@ pullQuote: "Grouparoo leverages the node.js and NPM ecosystems to manage distrib
 tags: [engineering]
 ---
 
-import Image from "../../components/blog/image";
-
 ## A guide to the Grouparoo Monorepo Automated Release Process
 
 <Image
   alt="grouparoo monorepo deployment workflow"
-  src={require("../../public/posts/grouparoo-monorepo-deployment/grouparoo-release-process.png")}
+  src="grouparoo-monorepo-deployment/grouparoo-release-process.png"
 />
 
 Coming from more traditional web & app development, I’m a big fan of [git-flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) style workflow. Specifically the following features:
@@ -73,7 +71,7 @@ This `package.json` will have it’s versions locked in place with npm (or yarn)
 <Image
   maxHeight={800}
   alt="Continuous Testing all the time"
-  src={require("../../public/posts/grouparoo-monorepo-deployment/ci-all-the-time.png")}
+  src="grouparoo-monorepo-deployment/ci-all-the-time.png"
 />
 
 The backbone of any good automated workflow is a robust test suite. You need to be sure that your new code works the way you expect, and hasn’t broken anything. We run our tests on CirleCI, and make use of Jest and man other tools. I’ll talk about our test suite in more detail in a later post, but we have a test suite for every package we publish. The [Grouparoo Monorepo](https://github.com/grouparoo/grouparoo) is a collection of many inter-related packages which we manage together via [Lerna](https://github.com/grouparoo/grouparoo). Lerna helps you keep all of your versions & packages in sync, and more importantly, rely on each-other while developing them! A change in one package might effect the rest, so we test them all in concert.
@@ -113,7 +111,7 @@ This mode of running our CI suite include an extra job called “publish”. Ass
 <Image
   maxHeight={400}
   alt="npm prerelease"
-  src={require("../../public/posts/grouparoo-monorepo-deployment/npm-prerelease.png")}
+  src="grouparoo-monorepo-deployment/npm-prerelease.png"
 />
 
 There are a number of CI secrets we need to manage access to NPM and Github, but they can all be stored in CircleCI’s secrets management tool. Of note, there is at this time no way to automate (or skip) a 2FA token for publishing to NPM. To overcome this, we’ve created a user who can only publish from CI which doesn’t use 2FA.
@@ -125,7 +123,7 @@ Now, our customers can opt into our alpha releases by changing their dependencie
 <Image
   maxHeight={400}
   alt="npm tags"
-  src={require("../../public/posts/grouparoo-monorepo-deployment/npm-tags.png")}
+  src="grouparoo-monorepo-deployment/npm-tags.png"
 />
 
 ## NPM Releases

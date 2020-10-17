@@ -7,15 +7,13 @@ pullQuote: "Connect to Marketo using Grouparoo to communicate better with your c
 tags: [connections, engineering]
 ---
 
-import Image from "../../components/blog/image";
-
 Grouparoo can now connect with [Marketo](https://www.marketo.com) as a destination. Now, you can leverage all the information you already have in Grouparoo, such as profile information and group membership, and send it to Marketo. It will sync continously in real-time, updating leads and putting them in lists within Marketo.
 
 <Image
   centered
   maxHeight={300}
   alt="How Grouparoo connects to Mailchimp"
-  src={require("../../public/posts/marketo-destination/connection.png")}
+  src="marketo-destination/connection.png"
 />
 
 ## Marketo setup
@@ -28,7 +26,7 @@ First, we suggest making a new role called "API Permissions" or "Grouparoo" to u
   centered
   maxWidth={500}
   alt="Create a Marketo Role"
-  src={require("../../public/posts/marketo-destination/marketo-role.png")}
+  src="marketo-destination/marketo-role.png"
 />
 
 Then, let's make a user with that role to connect via the API. Be sure to check the "API Only" checkbox in this process.
@@ -37,7 +35,7 @@ Then, let's make a user with that role to connect via the API. Be sure to check 
   centered
   maxWidth={500}
   alt="Create a Marketo User"
-  src={require("../../public/posts/marketo-destination/marketo-user.png")}
+  src="marketo-destination/marketo-user.png"
 />
 
 Grouparoo will also need the "Endpoint" and "Identity" REST API settings from the "Web Services" section of the Marketo admin.
@@ -46,7 +44,7 @@ Grouparoo will also need the "Endpoint" and "Identity" REST API settings from th
   centered
   maxWidth={500}
   alt="Look for Marketo endpoint and identity"
-  src={require("../../public/posts/marketo-destination/marketo-web-services.png")}
+  src="marketo-destination/marketo-web-services.png"
 />
 
 The other settings come from a new "LaunchPoint" service tied to the user you created. So let's create the service from the "Launchpoint" admin. Once created, clicking on "View Details" will give you the "Client Id" and "Client Secret" that you will need to authenticate to Marketo.
@@ -55,14 +53,14 @@ The other settings come from a new "LaunchPoint" service tied to the user you cr
   centered
   maxWidth={500}
   alt="Create a new Marketo Launchpoint service"
-  src={require("../../public/posts/marketo-destination/marketo-service.png")}
+  src="marketo-destination/marketo-service.png"
 />
 
 <Image
   centered
   maxWidth={500}
   alt="View Details of the Marketo service credentials"
-  src={require("../../public/posts/marketo-destination/marketo-credentials.png")}
+  src="marketo-destination/marketo-credentials.png"
 />
 
 ## Create a Grouparoo app
@@ -73,7 +71,7 @@ In Grouparoo, apps provide the settings to be able to connect to other platforms
   centered
   maxWidth={500}
   alt="Creating Grouparoo Marketo App"
-  src={require("../../public/posts/marketo-destination/create-app.png")}
+  src="marketo-destination/create-app.png"
 />
 
 ## Create a Grouparoo destination
@@ -86,7 +84,7 @@ In Marketo's case, Grouparoo will create a Person record for each Grouparoo Prof
   centered
   maxHeight={500}
   alt="Grouparoo properties and groups to send to Marketo"
-  src={require("../../public/posts/marketo-destination/destination-mapping.png")}
+  src="marketo-destination/destination-mapping.png"
 />
 
 ## Results
@@ -97,13 +95,13 @@ All people with an email address now show up in Marketo. Grouparoo made a "High 
   centered
   maxWidth={500}
   alt="People added to Marketo"
-  src={require("../../public/posts/marketo-destination/marketo-people.png")}
+  src="marketo-destination/marketo-people.png"
 />
 <Image
   centered
   maxWidth={500}
   alt="Marketo Lists created"
-  src={require("../../public/posts/marketo-destination/marketo-lists.png")}
+  src="marketo-destination/marketo-lists.png"
 />
 
 From here, you can do whatever you want in Marketo. For example, you can trigger a campaign when someone is added to the "High Value" list.
