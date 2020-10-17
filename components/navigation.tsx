@@ -17,10 +17,10 @@ export default function Navigation() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link href="/#value-prop">Product</Nav.Link>
               <Nav.Link href="/integrations">Integrations</Nav.Link>
-              <Nav.Link href="/blog">Blog</Nav.Link>
+              <Nav.Link href="/pricing">Pricing</Nav.Link>
               <Nav.Link href="/docs">Docs</Nav.Link>
+              <Nav.Link href="/blog">Blog</Nav.Link>
               <Nav.Link>
                 <div style={{ paddingTop: 4 }}>
                   <iframe
