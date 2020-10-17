@@ -11,12 +11,6 @@ import externalLinks from "remark-external-links";
 export const mdxOptions = {
   remarkPlugins: [[externalLinks, { target: "_blank" }]],
   rehypePlugins: [[rehypePrism, {}]],
-  extendFrontMatter: {
-    process: (mdxContent, frontMatter) => {
-      console.log({ mdxContent, frontMatter });
-    },
-    phase: "both",
-  },
 };
 
 export async function loadMdxFile(dirParts: string[], components) {
