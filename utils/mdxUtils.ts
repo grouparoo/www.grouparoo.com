@@ -1,15 +1,20 @@
 import fs from "fs";
 import path from "path";
 import glob from "glob";
-import rehypePrism from "@mapbox/rehype-prism";
 import renderToString from "next-mdx-remote/render-to-string";
 import matter from "gray-matter";
 
+// markdown plugins
+import rehypePrism from "@mapbox/rehype-prism";
+import externalLinks from "remark-external-links";
+
 export const mdxOptions = {
-  remarkPlugins: [],
+  remarkPlugins: [[externalLinks, { target: "_blank" }]],
   rehypePlugins: [[rehypePrism, {}]],
   extendFrontMatter: {
-    process: (mdxContent, frontMatter) => {},
+    process: (mdxContent, frontMatter) => {
+      console.log({ mdxContent, frontMatter });
+    },
     phase: "both",
   },
 };
