@@ -1,4 +1,10 @@
-const Authors = [
+const Authors: Array<{
+  name: string;
+  slug: string;
+  image: string;
+  url: string;
+  description: string;
+}> = [
   {
     name: "Evan Tahler",
     slug: "evan_tahler",
