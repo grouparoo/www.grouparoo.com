@@ -2,12 +2,9 @@
 title: "Building a Sync Engine"
 date: "2020-08-04"
 author: "Brian Leonard"
-layout: "blogPage"
 pullQuote: "Syncing ain't easy."
 tags: [engineering]
 ---
-
-import Image from "../../components/blog/image";
 
 So you have data in your product database and you need to synchronize it with something else.
 
@@ -33,7 +30,7 @@ The most common type of watermark is a `DATETIME` column for when the row is upd
   centered
   maxHeight={1000}
   alt="Steps of a simple sync"
-  src={require("../../public/posts/building-a-sync-engine/simple.png")}
+  src="building-a-sync-engine/simple.png"
 />
 
 ## Auto-setting your watermark column
@@ -153,7 +150,7 @@ The issue comes up if there is an update to one for the first ones we processed 
   centered
   maxHeight={1900}
   alt="Steps of a batch sync with an error"
-  src={require("../../public/posts/building-a-sync-engine/batch.png")}
+  src="building-a-sync-engine/batch.png"
 />
 
 Because of how the sorting and offsets works, we miss one.

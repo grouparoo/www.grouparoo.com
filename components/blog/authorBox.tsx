@@ -1,6 +1,5 @@
 import Link from "next/link";
 import BlogTags from "../../utils/blogTags";
-import { BlogEntry } from "../../utils/blogEngine";
 import { Row, Col, Image, Alert } from "react-bootstrap";
 
 export default function AuthorBox({
@@ -8,7 +7,7 @@ export default function AuthorBox({
   entry,
 }: {
   author: { name: string; slug: string; url: string; description: string };
-  entry?: BlogEntry;
+  entry?: any;
 }) {
   return (
     <Alert variant="primary">
@@ -25,7 +24,7 @@ export default function AuthorBox({
             {entry ? (
               <>
                 <strong>
-                  Written by {author.name} on {entry.dateText()}
+                  Written by {author.name} on {entry.date}
                 </strong>
                 <br />
                 Tagged in {BlogTags(entry.tags)}

@@ -2,12 +2,9 @@
 title: "Simulating Cohorts"
 date: "2020-01-12"
 author: "Brian Leonard"
-layout: "blogPage"
 pullQuote: "It turns out, going from 1 to 4 tests a month makes a huge difference, especially as those cohorts build on each other over time."
 tags: [marketing]
 ---
-
-import Image from "../../components/blog/image";
 
 In the last [post](./the-shots-you-get-to-take), I made a case that the way to make the biggest difference in a metric like retention is to increase how many tests you can run each month. It turns out, going from 1 to 4 tests a month makes a huge difference, especially as those cohorts build on each other over time.
 
@@ -20,7 +17,7 @@ A cohort in this case is defined as everyone that made their first purchase in a
 <Image
   maxHeight={250}
   alt="Cohort triangle with revenue"
-  src={require("../../public/posts/cohort-generation/triangle.png")}
+  src="cohort-generation/triangle.png"
 />
 
 This one factors in a given user growth so each cohort is bigger than the last. It uses a model of the retention rate that can be [entered](https://docs.google.com/spreadsheets/d/1gEZhCRxdmydugAn88UaZDD0U-XjZ9o-fzBbZ7h1EU3Q/edit#gid=793886651) in. These rates tend to drop quickly in the second month, slope down, and then level off.
@@ -29,17 +26,14 @@ This one factors in a given user growth so each cohort is bigger than the last. 
   centered
   maxHeight={350}
   alt="Retention rate graph drops off quickly"
-  src={require("../../public/posts/cohort-generation/retention-rate-graph.png")}
+  src="cohort-generation/retention-rate-graph.png"
 />
 
 ## Formulas
 
 So now, what we have to do is generate these cohorts and their predicted behavior. One thing that has always bugged me was how fragile these things were. Because it is staggered by nature, I have always seen a lot of copy and paste. I wanted to be able to do that things where you drag it across the rows and columns and it is smart. What I learned about in the process was that you could have relative cell references. For example, `"R[-1]C[-1]"` means one row up and one column to the left. When combined with `INDIRECT` and `IFS`, you can do every cell the cohort graph in one glorious formula.
 
-<Image
-  alt='=IFS($A4<C$1, IFERROR(1/0), EQ($A4,C$1), INDIRECT("R[-1]C[-1]", FALSE)*(1+$B$43), $A4>C$1,INDIRECT(CONCATENATE("R[",-1*($A4-C$1),"]C[0]"), FALSE)*INDIRECT("Model!B"&($A4-C$1+2)))'
-  src={require("../../public/posts/cohort-generation/formula-cohort.png")}
-/>
+<Image alt="google formula" src="cohort-generation/formula-cohort.png" />
 
 `=IFS($A4<C$1, IFERROR(1/0), EQ($A4,C$1), INDIRECT("R[-1]C[-1]", FALSE)*(1+$B$43), $A4>C$1,INDIRECT(CONCATENATE("R[",-1*($A4-C$1),"]C[0]"), FALSE)*INDIRECT("Model!B"&($A4-C$1+2)))`
 
@@ -108,7 +102,7 @@ I was able to to a similar formula to understand how the number of tests you do 
 
 <Image
   alt='=IFS($A4<C$1, IFERROR(1/0), EQ($A4,C$1), INDIRECT("R[0]C[-1]", FALSE), $A4>C$1,INDIRECT("R[-1]C[0]",FALSE)*$B$46)'
-  src={require("../../public/posts/cohort-generation/formula-tests.png")}
+  src="cohort-generation/formula-tests.png"
 />
 
 `=IFS($A4<C$1, IFERROR(1/0), EQ($A4,C$1), INDIRECT("R[0]C[-1]", FALSE), $A4>C$1,INDIRECT("R[-1]C[0]",FALSE)*$B$46)`
@@ -121,13 +115,13 @@ The results are somewhat astounding. That, more tests really makes a huge differ
   centered
   maxHeight={350}
   alt="More tests each month over 2 years makes a big difference in retention improvements"
-  src={require("../../public/posts/cohort-generation/graph-test-lift.png")}
+  src="cohort-generation/graph-test-lift.png"
 />
 <Image
   centered
   maxHeight={350}
   alt="More tests each month over 2 years makes a big difference in revenue"
-  src={require("../../public/posts/cohort-generation/graph-revenue-lift.png")}
+  src="cohort-generation/graph-revenue-lift.png"
 />
 
 ## Try it out

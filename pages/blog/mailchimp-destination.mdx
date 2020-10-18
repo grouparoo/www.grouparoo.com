@@ -2,19 +2,16 @@
 title: "Mailchimp Destination"
 date: "2020-09-15"
 author: "Evan Tahler"
-layout: "blogPage"
 pullQuote: "Use Grouparoo to sync your customer data to Mailchimp."
 tags: [connections, engineering]
 ---
-
-import Image from "../../components/blog/image";
 
 Grouparoo allows you to connect your Customer and Product data to Mailchimp. Grouparoo collects all of your customer data in one place and makes it easy to sync your Profiles and Groups to other marketing tools. Mailchimp is a popular email marketing tool with great features and a robust API. However, there are some things to watch out for when integrating with Mailchimp that Grouparoo can help with.
 
 <Image
   maxHeight={300}
   alt="How Grouparoo connects to Mailchimp"
-  src={require("../../public/posts/mailchimp-destination/connection.png")}
+  src="mailchimp-destination/connection.png"
 />
 
 ## Mailchimp setup
@@ -24,7 +21,7 @@ In Mailchimp, you will need to create a new API Key for Grouparoo to use. Visit 
 <Image
   maxHeight={600}
   alt="How Grouparoo connects to Mailchimp"
-  src={require("../../public/posts/mailchimp-destination/api-keys.png")}
+  src="mailchimp-destination/api-keys.png"
 />
 
 In Grouparoo, Apps provide the credentials to be able to connect to other platforms. For Mailchimp, all you need to do is paste in the `apiKey` from the Mailchimp page. At this point if you hit "Test Connection," you should see "Test Passed" and some data about your Mailchimp account.
@@ -32,7 +29,7 @@ In Grouparoo, Apps provide the credentials to be able to connect to other platfo
 <Image
   maxHeight={600}
   alt="Creating Grouparoo Mailchimp App"
-  src={require("../../public/posts/mailchimp-destination/mailchimp-app.png")}
+  src="mailchimp-destination/mailchimp-app.png"
 />
 
 From there, you can create a Destination and start exporting your Profiles and Groups. You can learn more about [creating Destinations here](http://localhost:3001/docs/guides/create-destinations)

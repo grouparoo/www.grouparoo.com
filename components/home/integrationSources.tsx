@@ -1,6 +1,7 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 import IntegrationButton from "../home/integrationButton";
 import { PluginData } from "../../data/plugins";
+import { Fragment } from "react";
 
 export default function IntegrationSources() {
   return (
@@ -12,10 +13,11 @@ export default function IntegrationSources() {
                 return b.priority - a.priority;
               })
                 .filter((pluginType) => pluginType.primaryType === "source")
+                .filter((pluginType) => pluginType.showLink === true)
                 .slice(0, 5)
-                .map((plugin) => {
+                .map((plugin, idx) => {
                   return (
-                    <>
+                    <Fragment key={`integrationSource-${idx}`}>
                       <IntegrationButton
                         name={plugin.name}
                         slug={plugin.slug}
@@ -23,7 +25,7 @@ export default function IntegrationSources() {
                         image={plugin.logo}
                       />{" "}
                       &nbsp; &nbsp;
-                    </>
+                    </Fragment>
                   );
                 })
             : null}

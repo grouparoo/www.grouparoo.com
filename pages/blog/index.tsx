@@ -1,15 +1,23 @@
 import Head from "next/head";
 import Link from "next/link";
-import blogEngine, { getAuthor } from "../../utils/blogEngine";
+import getAuthor from "../../utils/getAuthor";
 import { Container, Image } from "react-bootstrap";
 import BlogTags from "../../utils/blogTags";
 import AuthorBox from "../../components/blog/authorBox";
+import { loadEntries } from "../../utils/mdxUtils";
 
-function blogEntries() {
-  return blogEngine.getEntries();
-}
+export type BlogPost = {
+  title: string;
+  date: string;
+  author: string;
+  pullQuote: string;
+  tags: string[];
+  path: string;
+};
 
-function BlogEntry(entry, idx) {
+function BlogEntry(entry: BlogPost, idx: number) {
+  const author = getAuthor(entry.author);
+
   return (
     <div key={`blogEntry-${idx}`}>
       <Link href={entry.path}>
@@ -19,20 +27,17 @@ function BlogEntry(entry, idx) {
       </Link>
       <h4>{BlogTags(entry.tags)}</h4>
       <p>
-        <Link
-          href="/blog/author/[author]"
-          as={`/blog/author/${entry.author.slug}`}
-        >
+        <Link href="/blog/author/[author]" as={`/blog/author/${author.slug}`}>
           <a>
             <Image
               style={{ width: 50, margin: 10 }}
               roundedCircle
-              src={require(`../../public/images/authors/${entry.author.slug}.png`)}
+              src={require(`../../public/images/authors/${author.slug}.png`)}
             />
-            {entry.author.name}
+            {author.name}
           </a>
         </Link>{" "}
-        on {entry.dateText()}
+        on {entry.date}
       </p>
       <blockquote style={{ color: "darkGray" }}>
         <span style={{ fontSize: 20, fontFamily: "Georgia" }}>"</span>
@@ -42,16 +47,18 @@ function BlogEntry(entry, idx) {
   );
 }
 
-export default function BlogIndex({ category = "", author = "" }) {
-  let blogPosts = blogEntries();
+export default function BlogIndex({ pageProps, category = "", author = "" }) {
+  let posts: BlogPost[] = pageProps.posts;
 
   if (category !== "") {
-    blogPosts = blogPosts.filter((entry) => entry.tags.includes(category));
+    posts = posts.filter((entry) => entry.tags.includes(category));
   }
 
   if (author !== "") {
-    blogPosts = blogPosts.filter(
-      (entry) => entry.author.name === author || entry.author.slug === author
+    posts = posts.filter(
+      (entry) =>
+        getAuthor(entry.author).name === author ||
+        getAuthor(entry.author).slug === author
     );
   }
 
@@ -67,8 +74,8 @@ export default function BlogIndex({ category = "", author = "" }) {
         {category ? (
           <>
             <p>
-              Showing {blogPosts.length} articles tagged{" "}
-              <strong>{category}</strong>. <br />
+              Showing {posts.length} articles tagged <strong>{category}</strong>
+              . <br />
               <Link href="/blog">
                 <a>Show all articles instead.</a>
               </Link>
@@ -80,7 +87,7 @@ export default function BlogIndex({ category = "", author = "" }) {
         {author ? (
           <>
             <p>
-              Showing {blogPosts.length} articles written by{" "}
+              Showing {posts.length} articles written by{" "}
               <strong>{getAuthor(author).name}</strong>. <br />
               <Link href="/blog">
                 <a>Show all articles instead.</a>
@@ -90,8 +97,8 @@ export default function BlogIndex({ category = "", author = "" }) {
           </>
         ) : null}
 
-        {blogPosts.length > 0 ? (
-          blogPosts.map((entry, idx) => BlogEntry(entry, idx))
+        {posts.length > 0 ? (
+          posts.map((entry, idx) => BlogEntry(entry, idx))
         ) : (
           <p>No posts found</p>
         )}
@@ -99,4 +106,14 @@ export default function BlogIndex({ category = "", author = "" }) {
       <br />
     </>
   );
+}
+
+export async function getStaticProps() {
+  const posts = await loadEntries(["blog"]);
+
+  posts.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+
+  return { props: { posts } };
 }

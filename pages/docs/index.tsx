@@ -7,9 +7,12 @@ import {
   ButtonGroup,
   Alert,
 } from "react-bootstrap";
-import { TableOfContents } from "../../components/layouts/docsPage";
+import { loadEntries } from "../../utils/mdxUtils";
+import { TableOfContents } from "../../components/docs/tableOfContents";
 
-export default function DocsIndex() {
+export default function DocsIndex({ pageProps }) {
+  const { docs } = pageProps;
+
   return (
     <>
       <Head>
@@ -19,7 +22,7 @@ export default function DocsIndex() {
       <Container>
         <Row>
           <Col className="d-none d-md-block">
-            <TableOfContents />
+            <TableOfContents docs={docs} />
           </Col>
           <Col xl={9} lg={9} md={8} sm={12} xs={12}>
             <h1>Grouparoo Documentation</h1>
@@ -130,10 +133,15 @@ export default function DocsIndex() {
             </Alert>
           </Col>
           <Col className="d-md-none">
-            <TableOfContents />
+            <TableOfContents docs={docs} />
           </Col>
         </Row>
       </Container>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const docs = await loadEntries(["docs"]);
+  return { props: { docs } };
 }
