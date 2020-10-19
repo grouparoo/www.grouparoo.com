@@ -28,7 +28,7 @@
     "axios": "0.20.0",
     "babel-plugin-import-glob-array": "0.2.0",
     "babel-plugin-transform-define": "2.0.0",
-    "bootstrap": "4.5.2",
+    "bootstrap": "4.5.3",
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
     "next": "9.5.5",
