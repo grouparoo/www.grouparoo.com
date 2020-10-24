@@ -44,7 +44,7 @@ function Image(props) {
   }
 
   return (
-    <p className="blogImageContainer" style={containerStyle}>
+    <p style={containerStyle}>
       <img {...imageProps} />
     </p>
   );

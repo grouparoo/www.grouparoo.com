@@ -5,8 +5,9 @@ import { Container, Badge, Row, Col } from "react-bootstrap";
 import { loadEntries, loadMdxFilePath } from "../../utils/mdxUtils";
 import hydrate from "next-mdx-remote/hydrate";
 import Moment from "react-moment";
+import BlogImage from "../../components/blog/image";
 
-const components = {}; // can add components here to include in mdx
+const components = { Image: BlogImage };
 
 export type ReleasePost = {
   title: string;
