@@ -21,16 +21,18 @@ function ReleaseEntry(entry: ReleasePost, idx: number) {
   const { source, tags, date, title, blog } = entry;
   const content = hydrate(source, { components });
   const ago = releaseDate(date);
+  const badges = releaseBadges(tags);
   return (
     <Row key={`releaseEntry-${idx}`}>
       <Col md={3} lg={2} className="d-none d-md-block">
+        {badges}
+        <br />
         {ago}
       </Col>
       <Col>
         <h4 style={{ paddingBottom: 0 }}>{title}</h4>
-        <div style={{ paddingBottom: 10 }}>
-          {releaseTags(tags)}
-          <span className="d-md-none"> {ago}</span>
+        <div style={{ paddingBottom: 10 }} className="d-md-none">
+          {badges} {ago}
         </div>
         <div>{content}</div>
         {blog ? (
@@ -94,7 +96,7 @@ const badgeTypes = {
   fix: "warning",
 };
 
-function releaseTags(tags: string[]) {
+function releaseBadges(tags: string[]) {
   return (
     <span>
       {tags.map((tag, idx) => (
