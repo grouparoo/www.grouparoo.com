@@ -15,7 +15,12 @@ export const mdxOptions = {
 
 export async function loadMdxFile(dirParts: string[], components) {
   const pagesDir = path.join(process.cwd(), "pages");
-  const source = fs.readFileSync(path.join(pagesDir, ...dirParts));
+  const fullPath = path.resolve(path.join(pagesDir, ...dirParts));
+  return loadMdxFilePath(fullPath, components);
+}
+
+export async function loadMdxFilePath(fullPath, components) {
+  const source = fs.readFileSync(fullPath);
   const { content, data } = matter(source);
   const mdxSource = await renderToString(content, {
     components,
@@ -29,11 +34,13 @@ export async function loadMdxFile(dirParts: string[], components) {
 export async function loadEntries(dirParts: string[]) {
   const entries = [];
   const pagesDir = path.join(process.cwd(), "pages");
-  const files = glob.sync(path.join(pagesDir, ...dirParts, "**", "*.mdx"));
+  const rootPath = path.resolve(path.join(pagesDir, ...dirParts));
+  const files = glob.sync(path.join(rootPath, "**", "*.mdx"));
   for (const i in files) {
     const source = fs.readFileSync(files[i]);
     const { data } = matter(source);
     data.path = files[i].replace(pagesDir, "").split(".")[0];
+    data.filePath = files[i];
     entries.push(data);
   }
 
