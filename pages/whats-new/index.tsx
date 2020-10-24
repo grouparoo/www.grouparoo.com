@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
 import { Fragment } from "react";
-import { Container, Badge } from "react-bootstrap";
+import { Container, Badge, Row, Col } from "react-bootstrap";
 import { loadEntries, loadMdxFilePath } from "../../utils/mdxUtils";
 import hydrate from "next-mdx-remote/hydrate";
+import Moment from "react-moment";
 
 const components = {}; // can add components here to include in mdx
 
@@ -18,12 +19,17 @@ export type ReleasePost = {
 function ReleaseEntry(entry: ReleasePost, idx: number) {
   const { source, tags, date, title, blog } = entry;
   const content = hydrate(source, { components });
+  const ago = releaseDate(date);
   return (
-    <>
-      <div key={`releaseEntry-${idx}`}>
+    <Row key={`releaseEntry-${idx}`}>
+      <Col md={3} lg={2} className="d-none d-md-block">
+        {ago}
+      </Col>
+      <Col>
         <h4 style={{ paddingBottom: 0 }}>{title}</h4>
-        <div>
-          {releaseDate(date)} {releaseTags(tags)}
+        <div style={{ paddingBottom: 10 }}>
+          {releaseTags(tags)}
+          <span className="d-md-none"> {ago}</span>
         </div>
         <div>{content}</div>
         {blog ? (
@@ -31,9 +37,9 @@ function ReleaseEntry(entry: ReleasePost, idx: number) {
             <a>See more</a>
           </Link>
         ) : null}
-      </div>
-      <hr />
-    </>
+        <hr />
+      </Col>
+    </Row>
   );
 }
 
@@ -46,9 +52,8 @@ export default function ReleaseIndex({ pageProps }) {
         <title>Grouparoo: What's New</title>
       </Head>
 
-      <Container>
-        <h1>What's New</h1>
-        <hr />
+      <Container className="releasePage">
+        <h1 style={{ paddingBottom: 30 }}>What's New</h1>
         {posts.length > 0 ? (
           posts.map((entry, idx) => ReleaseEntry(entry, idx))
         ) : (
@@ -75,7 +80,11 @@ export async function getStaticProps() {
 }
 
 function releaseDate(date: string) {
-  return <span>{date}</span>;
+  return (
+    <span className="metadata">
+      <Moment fromNow>{date}</Moment>
+    </span>
+  );
 }
 
 const badgeTypes = {
