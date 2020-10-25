@@ -40,7 +40,7 @@ function ReleaseEntry(entry: ReleasePost, idx: number) {
             <a>See more</a>
           </Link>
         ) : null}
-        <hr />
+        <hr style={{ marginTop: 32, marginBottom: 32 }} />
       </Col>
     </Row>
   );
