@@ -2,25 +2,17 @@ import Head from "next/head";
 import Link from "next/link";
 import { Fragment } from "react";
 import { Container, Badge, Row, Col } from "react-bootstrap";
-import { loadEntries, loadMdxFilePath } from "../../utils/mdxUtils";
 import hydrate from "next-mdx-remote/hydrate";
+import { ReleaseNote, getReleaseNotes } from "../../utils/releaseNotes";
+
 import Moment from "react-moment";
 import BlogImage from "../../components/blog/image";
 
 const components = { Image: BlogImage };
 
-export type ReleaseNote = {
-  title: string;
-  slug: string;
-  date: string;
-  tags: string[];
-  blog: string;
-  source: any;
-};
-
 function releaseNote(note: ReleaseNote, idx: number) {
   const { source, tags, date, title, blog, slug } = note;
-  const content = hydrate(source, { components });
+  const content = hydrate(source, { components: components });
   const ago = releaseDate(date);
   const badges = releaseBadges(tags);
   return (
@@ -73,16 +65,7 @@ export default function ReleaseIndex({ pageProps }) {
 }
 
 export async function getStaticProps() {
-  const releases = await loadEntries(["..", "releases"]);
-  const notes = [];
-  for (const release of releases) {
-    const { filePath, slug } = release;
-    const { source, frontMatter } = await loadMdxFilePath(filePath, components);
-    notes.push({ source, slug, ...frontMatter });
-  }
-  notes.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
+  const notes = await getReleaseNotes();
   return { props: { notes } };
 }
 
