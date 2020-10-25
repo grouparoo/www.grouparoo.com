@@ -39,7 +39,7 @@ export async function getReleaseNotes(): Promise<ReleaseNote[]> {
 export async function getFeed(): Promise<Feed> {
   const feed = new Feed({
     title: "Grouparoo: What's New",
-    description: "Updates on product updates as they happen.",
+    description: "Notes about product updates as they happen.",
     id: "https://www.grouparoo.com/whats-new",
     link: "https://www.grouparoo.com/whats-new",
     language: "en", // optional, used only in RSS 2.0, possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
