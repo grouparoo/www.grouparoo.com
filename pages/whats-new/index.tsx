@@ -9,7 +9,7 @@ import BlogImage from "../../components/blog/image";
 
 const components = { Image: BlogImage };
 
-export type ReleasePost = {
+export type ReleaseNote = {
   title: string;
   slug: string;
   date: string;
@@ -18,13 +18,13 @@ export type ReleasePost = {
   source: any;
 };
 
-function ReleaseEntry(entry: ReleasePost, idx: number) {
-  const { source, tags, date, title, blog, slug } = entry;
+function releaseNote(note: ReleaseNote, idx: number) {
+  const { source, tags, date, title, blog, slug } = note;
   const content = hydrate(source, { components });
   const ago = releaseDate(date);
   const badges = releaseBadges(tags);
   return (
-    <Row key={`releaseEntry-${idx}`}>
+    <Row key={`releaseNote-${idx}`}>
       <Col md={3} lg={2} className="d-none d-md-block">
         {badges}
         <br />
@@ -51,7 +51,7 @@ function ReleaseEntry(entry: ReleasePost, idx: number) {
 }
 
 export default function ReleaseIndex({ pageProps }) {
-  let posts: ReleasePost[] = pageProps.posts;
+  let notes: ReleaseNote[] = pageProps.notes;
 
   return (
     <>
@@ -61,10 +61,10 @@ export default function ReleaseIndex({ pageProps }) {
 
       <Container className="releasePage">
         <h1 style={{ paddingBottom: 30 }}>What's New</h1>
-        {posts.length > 0 ? (
-          posts.map((entry, idx) => ReleaseEntry(entry, idx))
+        {notes.length > 0 ? (
+          notes.map((note, idx) => releaseNote(note, idx))
         ) : (
-          <p>No posts found</p>
+          <p>No notes found</p>
         )}
       </Container>
       <br />
@@ -74,16 +74,16 @@ export default function ReleaseIndex({ pageProps }) {
 
 export async function getStaticProps() {
   const releases = await loadEntries(["..", "releases"]);
-  const posts = [];
+  const notes = [];
   for (const release of releases) {
     const { filePath, slug } = release;
     const { source, frontMatter } = await loadMdxFilePath(filePath, components);
-    posts.push({ source, slug, ...frontMatter });
+    notes.push({ source, slug, ...frontMatter });
   }
-  posts.sort((a, b) => {
+  notes.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
-  return { props: { posts } };
+  return { props: { notes } };
 }
 
 function releaseDate(date: string) {
