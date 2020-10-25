@@ -1,0 +1,10 @@
+---
+title: "Faster Previews"
+date: "2020-09-12"
+tags: ["fix"]
+github: "https://github.com/grouparoo/grouparoo/pull/716"
+---
+
+When creating sources on larger datasets, the web page was often timing out. It turns out it was from selecting rows to show as the preview, which takes a long time in many SQL systems.
+
+While it is nice to show a good sample of rows, it's not worth it. We updated the logic to pick the first few rows and now everything is fast again.
