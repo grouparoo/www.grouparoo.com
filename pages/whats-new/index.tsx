@@ -53,13 +53,13 @@ export default function ReleaseIndex({ pageProps }) {
           rel="alternate"
           title="JSON Feed: Grouparoo What's New"
           type="application/feed+json"
-          href="https://www.grouparoo.com/api/feeds/whatsnew.json"
+          href="https://www.grouparoo.com/feeds/whatsnew.json"
         />
         <link
           rel="alternate"
           title="RSS Feed: Grouparoo What's New"
           type="application/rss+xml"
-          href="https://www.grouparoo.com/api/feeds/whatsnew.xml"
+          href="https://www.grouparoo.com/feeds/whatsnew.xml"
         />
       </Head>
 

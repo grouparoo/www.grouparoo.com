@@ -48,8 +48,8 @@ export async function getFeed(): Promise<Feed> {
     copyright: "© Grouparoo, Inc. 2020",
     generator: "Feed for Node.js",
     feedLinks: {
-      json: "https://www.grouparoo.com/api/feeds/whatsnew.json",
-      rss: "https://www.grouparoo.com/api/feeds/whatsnew.xml",
+      json: "https://www.grouparoo.com/feeds/whatsnew.json",
+      rss: "https://www.grouparoo.com/feeds/whatsnew.xml",
     },
     author: {
       name: "Grouparoo, Inc.",

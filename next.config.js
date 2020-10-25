@@ -14,7 +14,18 @@ module.exports = withOptimizedImages({
     return config;
   },
   async rewrites() {
-    return [{ source: "/sitemap.xml", destination: "/api/sitemap" }];
+    // TODO: I'd rather compile these into public/feeds and public/sitemap.xml
+    const sitemaps = [{ source: "/sitemap.xml", destination: "/api/sitemap" }];
+    const feeds = [
+      "whatsnew.json",
+      "whatsnew.xml",
+      "blog.json",
+      "blog.xml",
+    ].map((f) => ({
+      source: `/feeds/${f}`,
+      destination: `/api/feeds/${f}`,
+    }));
+    return sitemaps.concat(feeds);
   },
   async redirects() {
     return [

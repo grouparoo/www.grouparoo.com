@@ -28,13 +28,13 @@ export default function BlogPage({ pageProps }) {
           rel="alternate"
           title="JSON Feed: Grouparoo Blog"
           type="application/feed+json"
-          href="https://www.grouparoo.com/api/feeds/blog.json"
+          href="https://www.grouparoo.com/feeds/blog.json"
         />
         <link
           rel="alternate"
           title="RSS Feed: Grouparoo Blog"
           type="application/rss+xml"
-          href="https://www.grouparoo.com/api/feeds/blog.xml"
+          href="https://www.grouparoo.com/feeds/blog.xml"
         />
       </Head>
 
