@@ -24,6 +24,18 @@ export default function BlogPage({ pageProps }) {
         <title> Grouparoo Blog: {post.title}</title>
         <meta name="description" content={post.pullQuote} />
         <link rel="canonical" href={`http://www.grouparoo.com${post.path}`} />
+        <link
+          rel="alternate"
+          title="JSON Feed: Grouparoo Blog"
+          type="application/feed+json"
+          href="https://www.grouparoo.com/api/feeds/blog.json"
+        />
+        <link
+          rel="alternate"
+          title="RSS Feed: Grouparoo Blog"
+          type="application/rss+xml"
+          href="https://www.grouparoo.com/api/feeds/blog.xml"
+        />
       </Head>
 
       <Container className="blogPage">
