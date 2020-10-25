@@ -41,6 +41,7 @@ export async function loadEntries(dirParts: string[]) {
     const { data } = matter(source);
     data.path = files[i].replace(pagesDir, "").split(".")[0];
     data.filePath = files[i];
+    data.slug = path.basename(files[i], ".mdx");
     entries.push(data);
   }
 

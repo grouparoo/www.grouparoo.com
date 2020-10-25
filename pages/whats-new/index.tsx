@@ -11,6 +11,7 @@ const components = { Image: BlogImage };
 
 export type ReleasePost = {
   title: string;
+  slug: string;
   date: string;
   tags: string[];
   blog: string;
@@ -18,7 +19,7 @@ export type ReleasePost = {
 };
 
 function ReleaseEntry(entry: ReleasePost, idx: number) {
-  const { source, tags, date, title, blog } = entry;
+  const { source, tags, date, title, blog, slug } = entry;
   const content = hydrate(source, { components });
   const ago = releaseDate(date);
   const badges = releaseBadges(tags);
@@ -30,7 +31,10 @@ function ReleaseEntry(entry: ReleasePost, idx: number) {
         {ago}
       </Col>
       <Col>
-        <h4 style={{ paddingBottom: 0 }}>{title}</h4>
+        <h4 style={{ paddingBottom: 0 }}>
+          {title}
+          <a id={slug} />
+        </h4>
         <div style={{ paddingBottom: 10 }} className="d-md-none">
           {badges} {ago}
         </div>
@@ -72,9 +76,9 @@ export async function getStaticProps() {
   const releases = await loadEntries(["..", "releases"]);
   const posts = [];
   for (const release of releases) {
-    const { filePath } = release;
+    const { filePath, slug } = release;
     const { source, frontMatter } = await loadMdxFilePath(filePath, components);
-    posts.push({ source, ...frontMatter });
+    posts.push({ source, slug, ...frontMatter });
   }
   posts.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
