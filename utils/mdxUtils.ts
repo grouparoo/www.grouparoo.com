@@ -20,8 +20,8 @@ export async function loadMdxFile(dirParts: string[], components) {
 }
 
 export async function loadMdxFilePath(fullPath, components) {
-  const source = fs.readFileSync(fullPath);
-  const { content, data } = matter(source);
+  const file = fs.readFileSync(fullPath);
+  const { content, data } = matter(file);
   const mdxSource = await renderToString(content, {
     components,
     scope: data,

@@ -20,6 +20,9 @@ const components = { Image: PermanentImage };
 
 export async function getReleaseNotes(): Promise<ReleaseNote[]> {
   const releases = await loadEntries(["..", "releases"]);
+  releases.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
   const notes = [];
   for (const release of releases) {
     const { filePath, slug } = release;
@@ -30,9 +33,6 @@ export async function getReleaseNotes(): Promise<ReleaseNote[]> {
     const html = source.renderedOutput;
     notes.push({ title, slug, date, tags, blog, source, html });
   }
-  notes.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
   return notes;
 }
 
