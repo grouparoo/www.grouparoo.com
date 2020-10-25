@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { getFeed } from "../../../utils/feedReleases";
+import { getFeed } from "../../../utils/releaseNotes";
 
 export default async function handler(
   req: IncomingMessage,
