@@ -1,5 +1,6 @@
 function Image(props) {
   const {
+    permalink,
     centered,
     maxHeight,
     maxWidth,
@@ -40,7 +41,11 @@ function Image(props) {
   if (src.includes("data:image")) {
     imageProps.src = src;
   } else {
-    imageProps.src = require(`../../public/posts/${src}`);
+    if (permalink) {
+      imageProps.src = `https://www.grouparoo.com/posts/${src}`;
+    } else {
+      imageProps.src = require(`../../public/posts/${src}`);
+    }
   }
 
   return (

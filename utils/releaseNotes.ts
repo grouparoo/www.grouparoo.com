@@ -11,7 +11,11 @@ export type ReleaseNote = {
   source: any;
 };
 
-const components = { Image: BlogImage };
+function PermanentImage(props) {
+  return BlogImage({ ...props, permalink: true });
+}
+// These keys need to match the one in whats-new/index
+const components = { Image: PermanentImage };
 
 export async function getReleaseNotes(): Promise<ReleaseNote[]> {
   const releases = await loadEntries(["..", "releases"]);
@@ -23,7 +27,7 @@ export async function getReleaseNotes(): Promise<ReleaseNote[]> {
     const tags = frontMatter.tags || [];
     const blog = frontMatter.blog || null;
     const html = source.renderedOutput;
-    notes.push({ title, slug, date, tags, blog, source });
+    notes.push({ title, slug, date, tags, blog, source, html });
   }
   notes.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
