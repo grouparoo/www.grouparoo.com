@@ -47,7 +47,7 @@
     "uuid": "8.3.1"
   },
   "devDependencies": {
-    "@types/jest": "26.0.14",
+    "@types/jest": "26.0.15",
     "@types/node": "14.14.3",
     "@types/react-dom": "16.9.8",
     "enzyme": "3.11.0",
