@@ -1,0 +1,44 @@
+{
+  "redirects": [
+    {
+      "source": "/_next",
+      "destination": "/404",
+      "statusCode": 404
+    },
+    {
+      "source": "/_next/data",
+      "destination": "/404",
+      "statusCode": 404
+    },
+    {
+      "source": "/_next/data/([A-z0-9_-]{21})",
+      "destination": "/404",
+      "statusCode": 404
+    },
+    {
+      "source": "/_next/static",
+      "destination": "/404",
+      "statusCode": 404
+    },
+    {
+      "source": "/_next/static/([A-z0-9_-]{21})",
+      "destination": "/404",
+      "statusCode": 404
+    },
+    {
+      "source": "/_next/static/chunks",
+      "destination": "/404",
+      "statusCode": 404
+    },
+    {
+      "source": "/_next/static/css",
+      "destination": "/404",
+      "statusCode": 404
+    },
+    {
+      "source": "/_next/static/images",
+      "destination": "/404",
+      "statusCode": 404
+    }
+  ]
+}
