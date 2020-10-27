@@ -67,6 +67,10 @@ export function tableOfContentsFromEntries(docs) {
   const externalLinks = {
     community: [
       {
+        title: "What's New",
+        path: "/whats-new",
+      },
+      {
         title: "Roadmap",
         path: "/roadmap",
       },

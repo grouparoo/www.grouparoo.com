@@ -108,14 +108,17 @@ export default function Footer() {
                   <a>Pricing</a>
                 </Link>
                 <br />
-                <Link href="/docs/community">
-                  <a>Community</a>
-                </Link>
-                <br />
                 <Link href="/integrations">
                   <a>Integrations</a>
                 </Link>
-
+                <br />
+                <Link href="/whats-new">
+                  <a>What's New</a>
+                </Link>
+                <br />
+                <Link href="/docs/community">
+                  <a>Community</a>
+                </Link>
                 <br />
                 <a
                   target="_blank"

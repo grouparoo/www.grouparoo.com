@@ -1,0 +1,14 @@
+---
+title: "Profile Property Arrays"
+date: "2020-07-24"
+tags: ["new"]
+github: "https://github.com/grouparoo/grouparoo/pull/470"
+---
+
+Previously, profile properties could only be a single value. For example, `lastPurchaseCategory = "Toys"`.
+
+Now sources allow you to create arrays, or lists of values. For example, `purchaseCategories = ["Toys", "Sports", "Electronics"]`.
+
+These can be leveraged in group definitions. In this case, you can define group membership if someone has ever purchased something in the `Sports` category.
+
+Destinations that support lists will also be able to sync the full property.

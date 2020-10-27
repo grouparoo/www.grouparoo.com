@@ -14,7 +14,7 @@ module.exports = withOptimizedImages({
     return config;
   },
   async rewrites() {
-    return [{ source: "/sitemap.xml", destination: "/api/sitemap" }];
+    return [];
   },
   async redirects() {
     return [

@@ -1,0 +1,15 @@
+---
+title: "Redshift Source and Destination"
+date: "2020-08-02"
+tags: ["new"]
+github: "https://github.com/grouparoo/grouparoo/pull/515"
+---
+
+We have added [Redshift](https://aws.amazon.com/redshift/) as both a source and a destination.
+
+The most common usage will be as a source. You can use your Redshift data warehouse to populate profiles with properties to be used for group definitions and sent to destinations. Redhsift has two sources:
+
+- Query: write your own SQL
+- Table: no-code property creation
+
+The Redshift destination, like MySQL and Postgres, allows you to write Grouparoo properties and group membership in order to leverage them in business intelligence and other tools.

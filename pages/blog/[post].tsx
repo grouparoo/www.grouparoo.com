@@ -7,29 +7,34 @@ import BlogTags from "../../utils/blogTags";
 import Subscribe from "../../components/subscribe";
 import AuthorBox from "../../components/blog/authorBox";
 import getAuthor from "../../utils/getAuthor";
-import { loadMdxFile, getStaticMdxPaths } from "../../utils/mdxUtils";
+import { BlogPost, getBlogPost, getBlogPaths } from "../../utils/blogPosts";
 import BlogImage from "../../components/blog/image";
-import { BlogPost } from "./index";
 
 const components = { Image: BlogImage, Alert, Card, CardBody: Card.Body };
 
 export default function BlogPage({ pageProps }) {
   const router = useRouter();
-  const {
-    source,
-    frontMatter,
-  }: { source: any; frontMatter: BlogPost } = pageProps;
-  const content = hydrate(source, { components });
-  const author = getAuthor(frontMatter.author);
+  const post: BlogPost = pageProps.post;
+  const content = hydrate(post.source, { components });
+  const author = getAuthor(post.author);
 
   return (
     <>
       <Head>
-        <title> Grouparoo Blog: {frontMatter.title}</title>
-        <meta name="description" content={frontMatter.pullQuote} />
+        <title> Grouparoo Blog: {post.title}</title>
+        <meta name="description" content={post.pullQuote} />
+        <link rel="canonical" href={`http://www.grouparoo.com${post.path}`} />
         <link
-          rel="canonical"
-          href={`http://www.grouparoo.com${frontMatter.path}`}
+          rel="alternate"
+          title="JSON Feed: Grouparoo Blog"
+          type="application/feed+json"
+          href="https://www.grouparoo.com/feeds/blog.json"
+        />
+        <link
+          rel="alternate"
+          title="RSS Feed: Grouparoo Blog"
+          type="application/rss+xml"
+          href="https://www.grouparoo.com/feeds/blog.xml"
         />
       </Head>
 
@@ -39,9 +44,9 @@ export default function BlogPage({ pageProps }) {
 
         <Row>
           <Col md={9}>
-            <h1 id="blogTitle">{frontMatter.title}</h1>
+            <h1 id="blogTitle">{post.title}</h1>
             <small>
-              Tagged in {BlogTags(frontMatter.tags)} <br />
+              Tagged in {BlogTags(post.tags)} <br />
               By{" "}
               <Link
                 href="/blog/author/[slug]"
@@ -49,7 +54,7 @@ export default function BlogPage({ pageProps }) {
               >
                 <a>{author.name}</a>
               </Link>{" "}
-              on {frontMatter.date}
+              on {post.date}
             </small>
             <br />
             <br />
@@ -57,15 +62,15 @@ export default function BlogPage({ pageProps }) {
               {content}
             </div>
             <br />
-            <AuthorBox author={author} entry={frontMatter} />
+            <AuthorBox author={author} entry={post} />
           </Col>
 
           <Col>
             <Subscribe />
             <a
               href={`https://twitter.com/intent/tweet?text="${
-                frontMatter.title
-              }" from @grouparoo &url=${`https://www.grouparoo.com${frontMatter.path}`}`}
+                post.title
+              }" from @grouparoo &url=${`https://www.grouparoo.com${post.path}`}`}
               target="_blank"
             >
               <p>
@@ -86,10 +91,10 @@ export default function BlogPage({ pageProps }) {
 }
 
 export async function getStaticProps({ params }) {
-  const props = await loadMdxFile(["blog", `${params.post}.mdx`], components);
-  return { props };
+  const post = await getBlogPost(params.post);
+  return { props: { post } };
 }
 
 export async function getStaticPaths() {
-  return getStaticMdxPaths(["blog"]);
+  return getBlogPaths();
 }

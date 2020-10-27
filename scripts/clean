@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+cd `dirname "$0"`
+cd ../
+rm -rf public/feeds/
+rm -rf public/sitemap.xml

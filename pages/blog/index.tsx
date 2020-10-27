@@ -2,20 +2,11 @@ import Head from "next/head";
 import Link from "next/link";
 import getAuthor from "../../utils/getAuthor";
 import { Container, Image } from "react-bootstrap";
+import { BlogEntry, getBlogEntries } from "../../utils/blogPosts";
 import BlogTags from "../../utils/blogTags";
 import AuthorBox from "../../components/blog/authorBox";
-import { loadEntries } from "../../utils/mdxUtils";
 
-export type BlogPost = {
-  title: string;
-  date: string;
-  author: string;
-  pullQuote: string;
-  tags: string[];
-  path: string;
-};
-
-function BlogEntry(entry: BlogPost, idx: number) {
+function blogEntry(entry: BlogEntry, idx: number) {
   const author = getAuthor(entry.author);
 
   return (
@@ -48,14 +39,14 @@ function BlogEntry(entry: BlogPost, idx: number) {
 }
 
 export default function BlogIndex({ pageProps, category = "", author = "" }) {
-  let posts: BlogPost[] = pageProps.posts;
+  let entries: BlogEntry[] = pageProps.entries;
 
   if (category !== "") {
-    posts = posts.filter((entry) => entry.tags.includes(category));
+    entries = entries.filter((entry) => entry.tags.includes(category));
   }
 
   if (author !== "") {
-    posts = posts.filter(
+    entries = entries.filter(
       (entry) =>
         getAuthor(entry.author).name === author ||
         getAuthor(entry.author).slug === author
@@ -66,6 +57,18 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
     <>
       <Head>
         <title>Grouparoo Blog</title>
+        <link
+          rel="alternate"
+          title="JSON Feed: Grouparoo Blog"
+          type="application/feed+json"
+          href="https://www.grouparoo.com/feeds/blog.json"
+        />
+        <link
+          rel="alternate"
+          title="RSS Feed: Grouparoo Blog"
+          type="application/rss+xml"
+          href="https://www.grouparoo.com/feeds/blog.xml"
+        />
       </Head>
 
       <Container>
@@ -74,7 +77,8 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
         {category ? (
           <>
             <p>
-              Showing {posts.length} articles tagged <strong>{category}</strong>
+              Showing {entries.length} articles tagged{" "}
+              <strong>{category}</strong>
               . <br />
               <Link href="/blog">
                 <a>Show all articles instead.</a>
@@ -87,7 +91,7 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
         {author ? (
           <>
             <p>
-              Showing {posts.length} articles written by{" "}
+              Showing {entries.length} articles written by{" "}
               <strong>{getAuthor(author).name}</strong>. <br />
               <Link href="/blog">
                 <a>Show all articles instead.</a>
@@ -97,10 +101,10 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
           </>
         ) : null}
 
-        {posts.length > 0 ? (
-          posts.map((entry, idx) => BlogEntry(entry, idx))
+        {entries.length > 0 ? (
+          entries.map((entry, idx) => blogEntry(entry, idx))
         ) : (
-          <p>No posts found</p>
+          <p>No entries found</p>
         )}
       </Container>
       <br />
@@ -109,11 +113,6 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
 }
 
 export async function getStaticProps() {
-  const posts = await loadEntries(["blog"]);
-
-  posts.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
-
-  return { props: { posts } };
+  const entries = await getBlogEntries();
+  return { props: { entries } };
 }

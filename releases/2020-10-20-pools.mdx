@@ -1,0 +1,10 @@
+---
+title: "Connection Pooling"
+date: "2020-10-20"
+tags: ["fix"]
+github: "https://github.com/grouparoo/grouparoo/pull/876"
+---
+
+The MySQL and Postgres have had connection sharing across background workers for a while. Every now and then, some users saw an issue where a connection was stale.
+
+Now, these plugins connect to their respective databases with connection pools. This increases the reliability and has been seen to fix these issues.
