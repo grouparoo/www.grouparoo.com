@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss
+  version="2.0"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+>
+    <channel>
+        <title>Grouparoo: What's New</title>
+        <link>https://www.grouparoo.com/whats-new</link>
+        <description>Notes about product updates as they happen.</description>
+        <lastBuildDate>Tue, 27 Oct 2020 03:52:56 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>Feed for Node.js</generator>
+        <language>en</language>
+        <image>
+            <title>Grouparoo: What's New</title>
+            <url>https://www.grouparoo.com/favicon/favicon-196x196.png</url>
+            <link>https://www.grouparoo.com/whats-new</link>
+        </image>
+        <copyright>© Grouparoo, Inc. 2020</copyright>
+        <atom:link
+      href="https://www.grouparoo.com/feeds/whatsnew.xml"
+      rel="self"
+      type="application/rss+xml"
+    />
+        <item>
+            <title><![CDATA[Connection Pooling]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-10-20-pools</link>
+            <guid>grouparoo-release-note-2020-10-20-pools</guid>
+            <pubDate>Tue, 20 Oct 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>The MySQL and Postgres have had connection sharing across background workers for a while. Every now and then, some users saw an issue where a connection was stale.</p><p>Now, these plugins connect to their respective databases with connection pools. This increases the reliability and has been seen to fix these issues.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Version Notification and Reporting]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-10-14-versions</link>
+            <guid>grouparoo-release-note-2020-10-14-versions</guid>
+            <pubDate>Wed, 14 Oct 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>On the <code>/about</code> page, we now badge the version of your installed plugins. They will be successful (green) if your installed version matches the <code>latest</code>-tagged version of that package on NPM, and warning (orange) if they don&#x27;t.</p><p><img alt="Versioned /about page" style="max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/releases/2020-10-10-versions-1.png"/></p><p>In this way, you can get a quick snapshot about if you are running the latest version of Grouparoo or not.</p><p>You will also get a notification automatically if you are out of date.</p><p><img alt="Version notification" style="max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/releases/2020-10-10-versions-2.png"/></p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Snowflake Source]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2020-10-02-snowflake</link>
+            <guid>grouparoo-release-note-2020-10-02-snowflake</guid>
+            <pubDate>Fri, 02 Oct 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p><a href="https://www.snowflake.com" target="_blank" rel="nofollow noopener noreferrer">Snowflake</a> can not be set up as a Grouparoo source, enabling you to create profile properties from your Snowflake data warehouse.</p><p>It supports custom queries as well as a the simplified table source.</p><p><img alt="Types of Snowflake sources" style="max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/releases/2020-10-02-snowflake.png"/></p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Salesforce Destination]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2020-10-01-salesforce</link>
+            <guid>grouparoo-release-note-2020-10-01-salesforce</guid>
+            <pubDate>Thu, 01 Oct 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We have added <a href="https://www.salesforce.com" target="_blank" rel="nofollow noopener noreferrer">Salesforce</a> as a destination. You can now create Salesforce Objects from your profiles and Groups.</p><p>It is a very generic integration because many people use Salesforce in many different ways. Because of this, you can configure it however you want.</p><p>For example, you can sync your profiles to create Contacts with linked Accounts. Groups can the decide what Campaigns they are in. It will automatically keep everything up to date.</p><p><img alt="Configuring Salesforce Destination" style="max-height:400px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/releases/2020-10-01-salesforce.png"/></p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Setup Assistance]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-09-20-setup</link>
+            <guid>grouparoo-release-note-2020-09-20-setup</guid>
+            <pubDate>Sun, 20 Sep 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We have created a setup checklist in Grouparoo to help people getting things going for the first time. It walks you through creating a working sync system.</p><p>By the end of it, you&#x27;ll have users on teams, a source, properties, groups, and a destination.</p><p><img alt="Grouparoo Setup Steps" style="max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/releases/2020-09-15-setup.png"/></p><p>We hope this helps people get off to strong start managing their customer data.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Faster Previews]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-09-12-random</link>
+            <guid>grouparoo-release-note-2020-09-12-random</guid>
+            <pubDate>Sat, 12 Sep 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>When creating sources on larger datasets, the web page was often timing out. It turns out it was from selecting rows to show as the preview, which takes a long time in many SQL systems.</p><p>While it is nice to show a good sample of rows, it&#x27;s not worth it. We updated the logic to pick the first few rows and now everything is fast again.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Marketo Destination]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-09-06-marketo</link>
+            <guid>grouparoo-release-note-2020-09-06-marketo</guid>
+            <pubDate>Sun, 06 Sep 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We have added <a href="https://www.marketo.com" target="_blank" rel="nofollow noopener noreferrer">Marketo</a> as a Grouparoo destination. This means you can sync your profiles and groups to this enterprise marketing automation tool. We handle rate-limiting and other challenging things with the connection.</p><p><img alt="How Grouparoo connects to Mailchimp" style="max-height:250px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/marketo-destination/connection.png"/></p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Phone Number Property]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2020-09-03-phone-property</link>
+            <guid>grouparoo-release-note-2020-09-03-phone-property</guid>
+            <pubDate>Thu, 03 Sep 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>All profile property rules have types. Some of the existing types include <code>string</code>, <code>email</code>, <code>integer</code>, <code>float</code>, and <code>date</code>. We have added the <code>phoneNumber</code> type to Grouparoo.</p><p>Knowing the type allows Grouparoo to help ensure data validity, provide better options for filtering and group defining, as well as make smarter mappings to destinations.</p><p>As part of this, for example, we also now support setting the <code>phone</code> property in Zendesk.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Zendesk Destination]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-08-23-zendesk</link>
+            <guid>grouparoo-release-note-2020-08-23-zendesk</guid>
+            <pubDate>Sun, 23 Aug 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We have added <a href="https://www.zendesk.com" target="_blank" rel="nofollow noopener noreferrer">Zendesk</a> as a Grouparoo destination. One of our most popular requests, we are exciting to be helping our friends in operations get more data to support their customers.</p><p><img alt="Zendesk destination concepts" style="max-height:250px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/releases/2020-08-23-zendesk.png"/></p><p>We particularly love the use case of shared group definitions between your email and support tools. Your &quot;High Value&quot; customer group in email can now seamlessly have their tickets routed to higher SLA Zendesk queues as well.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Destination Performance]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2020-08-15-performance</link>
+            <guid>grouparoo-release-note-2020-08-15-performance</guid>
+            <pubDate>Sat, 15 Aug 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We have been updating how Grouparoo works with destinations in order to be more performant and responsive to their unique needs. Here are a few recent improvements:</p><ul><li>Settings for plugins to define how many threads can communicate with a destination at a time</li><li>Patterns for responding to reaching an API limit and dynamically reacting</li><li>Support for batching updates to send many profiles at a time</li><li>In steady-state, only communicate with desitnation if there is a change in the data</li><li>Hardened handling of intermittent errors from destinations</li><li>Improved UI to track destination exports and their progress/status</li></ul>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Redshift Source and Destination]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-08-02-redshift</link>
+            <guid>grouparoo-release-note-2020-08-02-redshift</guid>
+            <pubDate>Sun, 02 Aug 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We have added <a href="https://aws.amazon.com/redshift/" target="_blank" rel="nofollow noopener noreferrer">Redshift</a> as both a source and a destination.</p><p>The most common usage will be as a source. You can use your Redshift data warehouse to populate profiles with properties to be used for group definitions and sent to destinations. Redhsift has two sources:</p><ul><li>Query: write your own SQL</li><li>Table: no-code property creation</li></ul><p>The Redshift destination, like MySQL and Postgres, allows you to write Grouparoo properties and group membership in order to leverage them in business intelligence and other tools.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Grouparoo Project Generator]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-07-29-npx</link>
+            <guid>grouparoo-release-note-2020-07-29-npx</guid>
+            <pubDate>Wed, 29 Jul 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We have provided an <a href="https://github.com/grouparoo/app-example" target="_blank" rel="nofollow noopener noreferrer">example Grouparoo app</a> for a while, but now we&#x27;ve made it easier to generate one of these with a simple command: <code>npx grouparoo generate</code></p><p>From <code>npx grouparoo --help</code></p><pre><code>Usage: grouparoo [options] [command]
+
+Options:
+  -V, --version    output the version number
+  -h, --help       display help for command
+
+Commands:
+  generate [path]  generate a new Grouparoo project
+  upgrade [path]   upgrade an existing Grouparoo project
+  help [command]   display help for command
+</code></pre>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Profile Property Arrays]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2020-07-24-profile-proprty-arrays</link>
+            <guid
+      >grouparoo-release-note-2020-07-24-profile-proprty-arrays</guid>
+            <pubDate>Fri, 24 Jul 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Previously, profile properties could only be a single value. For example, <code>lastPurchaseCategory = &quot;Toys&quot;</code>.</p><p>Now sources allow you to create arrays, or lists of values. For example, <code>purchaseCategories = [&quot;Toys&quot;, &quot;Sports&quot;, &quot;Electronics&quot;]</code>.</p><p>These can be leveraged in group definitions. In this case, you can define group membership if someone has ever purchased something in the <code>Sports</code> category.</p><p>Destinations that support lists will also be able to sync the full property.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Run Progress]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-07-11-runs</link>
+            <guid>grouparoo-release-note-2020-07-11-runs</guid>
+            <pubDate>Sat, 11 Jul 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We are now giving more information about how your data is importing via schedules and other runs. Each run can now see the percentage complete.</p><p><img alt="Create a property rule from your events" style="max-height:250px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/releases/2020-07-11-runs.png"/></p><p>Using this, you can track how things are going.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Hubspot Destination]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-06-26-hubspot</link>
+            <guid>grouparoo-release-note-2020-06-26-hubspot</guid>
+            <pubDate>Fri, 26 Jun 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>You can now connect your Grouparoo profiles and groups to <a href="https://www.hubspot.com" target="_blank" rel="nofollow noopener noreferrer">Hubspot</a>. With this destination, you can empower your sales teams on the Hubspot platform with anything from your data warehouse.</p><p>Grouparoo will make contacts with properties and add the to lists inside the Hubspot environment.</p><p><img alt="Hubspot destination concepts" style="max-height:250px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/releases/2020-06-26-hubspot.png"/></p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Event Stream]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-06-05-events</link>
+            <guid>grouparoo-release-note-2020-06-05-events</guid>
+            <pubDate>Fri, 05 Jun 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Real-time visibility into the events coming into the system is important to knowing things are working as expected. To help with that, we have added a stream and other statistics on the event system.</p><p><img alt="Grouparoo event stream" style="max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/releases/2020-06-05-events.png"/></p><p>Stream away!</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Events]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-05-25-events</link>
+            <guid>grouparoo-release-note-2020-05-25-events</guid>
+            <pubDate>Mon, 25 May 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>This is a big update to add the concept of events. Grouparoo loves connecting to sources like data wwarehouses, but events (like pageviews) are still important.</p><p>Now, there is an API and a Javascript client to report pageviews and identify users. These events are saved in the Grouparoo database and linked to profiles. It&#x27;s smart enough to merge profiles if it turns out the user was actually the same one.</p><p>Once you have those events, you can create a source that makes profile properties from them. For example, let&#x27;s add how many page views a user has had. And another one for what they last looked at. Of course, you can use those when creating groups and syncing to destinations.</p><p><img alt="Create a property rule from your events" style="max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/releases/2020-05-25-events.png"/></p><p>With events, we are excited to help you get an even picture of your customer.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[BigQuery Source]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-05-09-bigquery</link>
+            <guid>grouparoo-release-note-2020-05-09-bigquery</guid>
+            <pubDate>Sat, 09 May 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>You can now connect your <a href="https://cloud.google.com/bigquery" target="_blank" rel="nofollow noopener noreferrer">BigQuery</a> data warehouse to Grouparoo, using it as a source for your profile properties.</p><p>This implementation adds all the same features as our other SQL sources like MySQL and Postgres. For example, you can write a custom SQL query to add a property. There is also the table source that allows importing data without knowing SQL.</p><p><img alt="Two new types of sources: query and table" style="max-height:200px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/bigquery-source/source-types.png"/></p><p>You can also use all the built-in datasets that Google provides. That&#x27;s pretty neat.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Sailthru Destination]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-04-23-sailthru</link>
+            <guid>grouparoo-release-note-2020-04-23-sailthru</guid>
+            <pubDate>Thu, 23 Apr 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We have added <a href="https://www.sailthru.com" target="_blank" rel="nofollow noopener noreferrer">Sailthru</a> as a destination. This means you can export your profile and group data to this email automation tool. One great thing to do there is to use their Lifecycle Optimizer to run campaigns when someone enters a group.</p><p>A few companies have noted that they had some challenges integrating with Sailthru nuances, so we are glad to add, iterate, and harden this plugin.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Typeahead]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2020-04-29-typeaheads</link>
+            <guid>grouparoo-release-note-2020-04-29-typeaheads</guid>
+            <pubDate>Mon, 20 Apr 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>To help fill out more fields, we&#x27;ve added typeaheads to several places in the user experience.</p><p>Now, when you are searching profiles or creating groups, it will use values from those profile properties to make it easier.</p><p>Also, when setting up sources and destinations, plugins can choose to provide typeahead selectors.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Google Sheets Source]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2020-04-15-google-sheets</link>
+            <guid>grouparoo-release-note-2020-04-15-google-sheets</guid>
+            <pubDate>Wed, 15 Apr 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We have added the ability to connect your Google Sheets to import data into Grouparoo. To some degree, we made Grouparoo so you don&#x27;t need all these spreadsheets. And yet, sometimes it&#x27;s still the best way to make things happen. Now they can become a &quot;real&quot; part of your data infrastructure.</p><p><img alt="Data preview of new source from Google Sheets" style="max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/google-sheets-source/source-data-preview.png"/></p><p>Don&#x27;t forget: with great power comes great responsibility!</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Experience Updates]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-04-10-updates</link>
+            <guid>grouparoo-release-note-2020-04-10-updates</guid>
+            <pubDate>Fri, 10 Apr 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We updated the data model and experience to make things work better. A few of the changes:</p><ul><li>Create drafts of the objects</li><li>Groups things together with a better UX</li><li>Better mapping for destinations</li></ul><p>Thanks for the feedback!</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Mailchimp Destination]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2020-03-26-mailchimp</link>
+            <guid>grouparoo-release-note-2020-03-26-mailchimp</guid>
+            <pubDate>Thu, 26 Mar 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We now support the ability to sync your profiles and groups to <a href="https://www.mailchimp.com" target="_blank" rel="nofollow noopener noreferrer">Mailchimp</a>. You select the list you want to populate, the merge variables to set, and whcih tags should be set.</p><p><img alt="How Grouparoo connects to Mailchimp" style="max-height:250px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white" src="https://www.grouparoo.com/posts/mailchimp-destination/connection.png"/></p><p>Mailchimp has been one of the most popular destination requests from startups and we are excited for you try it out.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+    </channel>
+</rss>
