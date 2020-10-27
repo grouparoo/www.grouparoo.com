@@ -4,3 +4,6 @@ cd ../
 npm install
 cd `dirname "$0"`
 ../node_modules/.bin/ts-node ./generate_static_files.ts
+cd ../
+./node_modules/.bin/prettier ./public/feeds --write
+./node_modules/.bin/prettier ./public/sitemap.xml --write
