@@ -2,7 +2,13 @@ import { SitemapStream, streamToPromise } from "sitemap";
 import glob from "glob";
 import path from "path";
 
-const pagesDir = path.resolve(path.join(__dirname, "..", "pages"));
+let pagesDir;
+if (!__dirname || __dirname === "/") {
+  pagesDir = path.resolve(path.join(process.cwd(), "pages"));
+} else {
+  pagesDir = path.resolve(path.join(__dirname, "..", "pages"));
+}
+console.log({ pagesDir });
 
 export async function getSitemapStream() {
   const paths = glob

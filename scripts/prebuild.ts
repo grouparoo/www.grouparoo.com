@@ -2,16 +2,18 @@ import path from "path";
 import fs from "fs";
 import { getFeed as whatsNewFeed } from "../utils/releaseNotes";
 import { getFeed as blogFeed } from "../utils/blogPosts";
+import { getSitemapStream } from "../utils/sitemap";
 
 async function build() {
   const feeds = writePublic(await feedContent());
+  const sitemap = writePublic(await sitemapContent());
   return Promise.all([feeds]);
 }
 
 async function writePublic(contentMap): Promise<void> {
   const locations = Object.keys(contentMap);
   for (const location of locations) {
-    const content = locations[location];
+    const content = contentMap[location];
     const filePath = path.resolve(
       path.join(__dirname, "..", "public", location)
     );
@@ -33,6 +35,13 @@ async function feedContent() {
     "feeds/whatsnew.xml": whatsnew.rss2(),
     "feeds/blog.json": blog.json1(),
     "feeds/blog.xml": blog.rss2(),
+  };
+}
+
+async function sitemapContent() {
+  const content = await getSitemapStream();
+  return {
+    "sitemap.xml": content,
   };
 }
 

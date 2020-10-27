@@ -8,7 +8,14 @@ import matter from "gray-matter";
 import rehypePrism from "@mapbox/rehype-prism";
 import externalLinks from "remark-external-links";
 
-const pagesDir = path.resolve(path.join(__dirname, "..", "pages"));
+const dirname = __dirname;
+let pagesDir;
+if (!dirname || dirname === "/") {
+  pagesDir = path.resolve(path.join(process.cwd(), "pages"));
+} else {
+  pagesDir = path.resolve(path.join(__dirname, "..", "pages"));
+}
+console.log({ pagesDir });
 
 export const mdxOptions = {
   remarkPlugins: [[externalLinks, { target: "_blank" }]],
