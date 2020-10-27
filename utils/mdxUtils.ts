@@ -27,6 +27,9 @@ export async function loadMdxFile(dirParts: string[], components) {
 }
 
 export async function loadMdxFilePath(fullPath, components) {
+  if (!fs.existsSync(fullPath)) {
+    throw new Error(`mdx path does not exist: ${fullPath}`);
+  }
   const file = fs.readFileSync(fullPath);
   const { content, data } = matter(file);
   const mdxSource = await renderToString(content, {
@@ -41,6 +44,9 @@ export async function loadMdxFilePath(fullPath, components) {
 export async function loadEntries(dirParts: string[]) {
   const entries = [];
   const rootPath = path.resolve(path.join(pagesDir, ...dirParts));
+  if (!fs.existsSync(rootPath)) {
+    throw new Error(`entries path does not exist: ${rootPath}`);
+  }
   const files = glob.sync(path.join(rootPath, "**", "*.mdx"));
   for (const i in files) {
     const source = fs.readFileSync(files[i]);
@@ -55,6 +61,9 @@ export async function loadEntries(dirParts: string[]) {
 }
 
 export async function getStaticMdxPaths(dirParts: string[], depth = 1) {
+  if (!fs.existsSync(pagesDir)) {
+    throw new Error(`mdx paths does not exist: ${pagesDir}`);
+  }
   const paths = glob
     .sync(path.join(pagesDir, ...dirParts, "**", "*.mdx"))
     .map((p) => p.replace(pagesDir, ""))

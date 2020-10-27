@@ -19,7 +19,7 @@ function PermanentImage(props) {
 const components = { Image: PermanentImage };
 
 export async function getReleaseNotes(): Promise<ReleaseNote[]> {
-  const releases = await loadEntries(["..", "releases"]);
+  const releases = await loadEntries(["whats-new"]);
   releases.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
