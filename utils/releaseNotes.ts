@@ -37,6 +37,7 @@ export async function getReleaseNotes(): Promise<ReleaseNote[]> {
 }
 
 export async function getFeed(): Promise<Feed> {
+  const notes: ReleaseNote[] = await getReleaseNotes();
   const feed = new Feed({
     title: "Grouparoo: What's New",
     description: "Notes about product updates as they happen.",
@@ -47,6 +48,7 @@ export async function getFeed(): Promise<Feed> {
     favicon: "https://www.grouparoo.com/favicon/favicon-32x32.png",
     copyright: "© Grouparoo, Inc. 2020",
     generator: "Feed for Node.js",
+    updated: notes[0] ? new Date(notes[0].date) : null,
     feedLinks: {
       json: "https://www.grouparoo.com/feeds/whatsnew.json",
       rss: "https://www.grouparoo.com/feeds/whatsnew.xml",
@@ -57,8 +59,6 @@ export async function getFeed(): Promise<Feed> {
       link: "https://www.grouparoo.com",
     },
   });
-
-  const notes: ReleaseNote[] = await getReleaseNotes();
   for (const note of notes) {
     feed.addItem({
       title: note.title,

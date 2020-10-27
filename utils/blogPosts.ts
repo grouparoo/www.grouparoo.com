@@ -58,6 +58,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 }
 
 export async function getFeed(): Promise<Feed> {
+  const posts: BlogPost[] = await getBlogPosts();
   const feed = new Feed({
     title: "Grouparoo: Blog",
     description: "Articles and updates from Grouparoo.",
@@ -68,6 +69,7 @@ export async function getFeed(): Promise<Feed> {
     favicon: "https://www.grouparoo.com/favicon/favicon-32x32.png",
     copyright: "© Grouparoo, Inc. 2020",
     generator: "Feed for Node.js",
+    updated: posts[0] ? new Date(posts[0].date) : null,
     feedLinks: {
       json: "https://www.grouparoo.com/feeds/blog.json",
       rss: "https://www.grouparoo.com/feeds/blog.xml",
@@ -79,7 +81,6 @@ export async function getFeed(): Promise<Feed> {
     },
   });
 
-  const posts: BlogPost[] = await getBlogPosts();
   for (const post of posts) {
     const author = getAuthor(post.author);
     feed.addItem({
