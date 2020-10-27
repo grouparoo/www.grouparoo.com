@@ -15,14 +15,13 @@
   "main": "api/dist/index",
   "types": "api/dist/index",
   "scripts": {
-    "prebuild": "./scripts/prebuild",
     "build": "next build",
     "start": "next start --port $PORT",
     "dev": "next dev --port 3001",
     "pretest": "npm run lint && npm run build",
     "test": "jest --runInBand",
     "lint": "prettier --check pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
-    "nuke": "rm -rf node_modules && rm -rf api/dist && scripts/clean"
+    "nuke": "rm -rf node_modules && rm -rf api/dist"
   },
   "dependencies": {
     "@mapbox/rehype-prism": "0.5.0",
