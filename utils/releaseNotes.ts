@@ -1,4 +1,4 @@
-import { loadEntries, loadMdxFilePath } from "./mdxUtils";
+import { loadEntries, loadMdxFilePath, getStaticMdxPaths } from "./mdxUtils";
 import BlogImage from "../components/blog/image";
 import { Feed } from "feed";
 
@@ -34,6 +34,10 @@ export async function getReleaseNotes(): Promise<ReleaseNote[]> {
     notes.push({ title, slug, date, tags, blog, source, html });
   }
   return notes;
+}
+
+export async function getReleasePaths() {
+  return getStaticMdxPaths(["whats-new"]);
 }
 
 export async function getFeed(): Promise<Feed> {
