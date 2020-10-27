@@ -20,3 +20,7 @@ dist
 .next
 .mdx-data
 web/out
+
+# Generated files
+/public/feeds/
+/public/sitemap.xml

@@ -1,33 +1,17 @@
 import { SitemapStream, streamToPromise } from "sitemap";
-import { IncomingMessage, ServerResponse } from "http";
 import glob from "glob";
 import path from "path";
 
-export default async function SitemapAPI(
-  req: IncomingMessage,
-  res: ServerResponse
-) {
-  res.setHeader("Content-Type", "text/xml");
-  try {
-    const sitemap = await buildSitemapStream();
-    res.write(sitemap);
-    res.end();
-  } catch (e) {
-    console.log(e);
-    res.statusCode = 500;
-    res.end();
-  }
-}
+const pagesDir = path.resolve(path.join(__dirname, "..", "pages"));
 
-export async function buildSitemapStream() {
-  const dir = path.join(process.cwd(), "pages");
+export async function getSitemapStream() {
   const paths = glob
-    .sync(path.join(dir, "**", "+(*.tsx|*.mdx)"))
+    .sync(path.join(pagesDir, "**", "+(*.tsx|*.mdx)"))
     .filter((p) => !p.match(/\/\[.*\].*.tsx$/))
     .filter((p) => !p.match(/\/_app.tsx$/))
     .filter((p) => !p.match(/\/404.tsx$/))
     .filter((p) => !p.match(/\/docker-compose.tsx$/))
-    .map((p) => p.replace(dir, ""))
+    .map((p) => p.replace(pagesDir, ""))
     .map((p) => p.replace(/\.tsx$/, ""))
     .map((p) => p.replace(/\.mdx$/, ""))
     .map((p) => p.replace(/\/index$/, "/"))

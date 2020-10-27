@@ -15,6 +15,7 @@
   "main": "api/dist/index",
   "types": "api/dist/index",
   "scripts": {
+    "prebuild": "./scripts/prebuild",
     "build": "next build",
     "start": "next start --port $PORT",
     "dev": "next dev --port 3001",

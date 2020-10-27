@@ -8,13 +8,14 @@ import matter from "gray-matter";
 import rehypePrism from "@mapbox/rehype-prism";
 import externalLinks from "remark-external-links";
 
+const pagesDir = path.resolve(path.join(__dirname, "..", "pages"));
+
 export const mdxOptions = {
   remarkPlugins: [[externalLinks, { target: "_blank" }]],
   rehypePlugins: [[rehypePrism, {}]],
 };
 
 export async function loadMdxFile(dirParts: string[], components) {
-  const pagesDir = path.join(process.cwd(), "pages");
   const fullPath = path.resolve(path.join(pagesDir, ...dirParts));
   return loadMdxFilePath(fullPath, components);
 }
@@ -33,7 +34,6 @@ export async function loadMdxFilePath(fullPath, components) {
 
 export async function loadEntries(dirParts: string[]) {
   const entries = [];
-  const pagesDir = path.join(process.cwd(), "pages");
   const rootPath = path.resolve(path.join(pagesDir, ...dirParts));
   const files = glob.sync(path.join(rootPath, "**", "*.mdx"));
   for (const i in files) {
@@ -49,7 +49,6 @@ export async function loadEntries(dirParts: string[]) {
 }
 
 export async function getStaticMdxPaths(dirParts: string[], depth = 1) {
-  const pagesDir = path.join(process.cwd(), "pages");
   const paths = glob
     .sync(path.join(pagesDir, ...dirParts, "**", "*.mdx"))
     .map((p) => p.replace(pagesDir, ""))
