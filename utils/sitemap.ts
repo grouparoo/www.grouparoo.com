@@ -8,7 +8,6 @@ if (!__dirname || __dirname === "/") {
 } else {
   pagesDir = path.resolve(path.join(__dirname, "..", "pages"));
 }
-console.log({ pagesDir });
 
 export async function getSitemapStream() {
   const paths = glob

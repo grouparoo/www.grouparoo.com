@@ -15,7 +15,6 @@ if (!dirname || dirname === "/") {
 } else {
   pagesDir = path.resolve(path.join(__dirname, "..", "pages"));
 }
-console.log({ pagesDir });
 
 export const mdxOptions = {
   remarkPlugins: [[externalLinks, { target: "_blank" }]],
