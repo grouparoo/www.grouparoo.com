@@ -19,6 +19,7 @@ describe("utils/releaseNotes", () => {
         expect(item).toBeTruthy();
 
         expect(item.title).toBeTruthy();
+        expect(item.slug).toBeTruthy();
         expect(item.description).toBeTruthy();
 
         const date = new Date(item.date);
