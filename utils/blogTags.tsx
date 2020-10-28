@@ -8,6 +8,8 @@ export const badgeTypes = {
   connections: "info",
   notes: "warning",
   product: "danger",
+  operations: "secondary",
+  company: "info"
 };
 
 export default function blogTags(tags: string[]) {
