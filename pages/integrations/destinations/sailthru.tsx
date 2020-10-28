@@ -2,12 +2,18 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationMappings from "../../../components/home/integrationMappings";
 import IntegrationSources from "../../../components/home/integrationSources";
+import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
 
 export default function SailthruPage() {
   return (
     <>
+      <IntegrationsHead
+        name="Sailthru"
+        primaryType="destination"
+        slug="sailthru"
+      />
       <Container>
         <Row>
           <Col lg={5} md={12}>

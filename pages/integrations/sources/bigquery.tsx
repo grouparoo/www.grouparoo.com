@@ -1,12 +1,14 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
+import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
 
 export default function BigQueryPage() {
   return (
     <>
+      <IntegrationsHead name="BigQuery" primaryType="source" slug="bigquery" />
       <Container>
         <Row>
           <Col lg={5} md={12}>
