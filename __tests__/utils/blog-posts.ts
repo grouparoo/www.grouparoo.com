@@ -16,7 +16,7 @@ describe("utils/blogPosts", () => {
 
     for (const entry of entries) {
       test(`${entry.slug}`, async () => {
-        const listItem = items.find((i) => (i.slug = entry.slug));
+        const listItem = items.find((i) => i.slug === entry.slug);
         expect(listItem).toBeTruthy();
 
         const item = await getBlogPost(entry.slug);

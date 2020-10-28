@@ -15,7 +15,7 @@ describe("utils/releaseNotes", () => {
 
     for (const entry of entries) {
       test(`${entry.slug}`, () => {
-        const item = items.find((i) => (i.slug = entry.slug));
+        const item = items.find((i) => i.slug === entry.slug);
         expect(item).toBeTruthy();
 
         expect(item.title).toBeTruthy();
