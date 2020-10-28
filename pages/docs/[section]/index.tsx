@@ -16,7 +16,7 @@ import {
 const components = { HavingProblems, Image: DocImage };
 
 export default function DocPage({ pageProps }) {
-  const { source, frontMatter, docs } = pageProps;
+  const { source, frontMatter, docs, path } = pageProps;
   const content = hydrate(source, { components });
 
   return (
@@ -24,22 +24,19 @@ export default function DocPage({ pageProps }) {
       <Head>
         <title>Grouparoo Docs: {frontMatter.title}</title>
         <meta name="description" content={frontMatter.pullQuote} />
-        <link
-          rel="canonical"
-          href={`http://www.grouparoo.com${frontMatter.path}`}
-        />
+        <link rel="canonical" href={`http://www.grouparoo.com${path}`} />
       </Head>
 
       <Container>
-        {frontMatter.path !== "/docs/index" ? (
+        {path !== "/docs/index" ? (
           <Breadcrumb>
-            {frontMatter.path
+            {path
               .split("/")
               .splice(1)
               .map((part, idx) => (
                 <Breadcrumb.Item
                   key={`breadcrumb-${idx}`}
-                  href={`${frontMatter.path
+                  href={`${path
                     .split("/")
                     .filter((_p, i) => i <= idx + 1)
                     .join("/")}`}
@@ -90,10 +87,10 @@ export async function getStaticProps({ params }) {
     dirParts.push(`${params.section}.mdx`);
   }
 
-  const { source, frontMatter } = await loadMdxFile(dirParts, components);
+  const { source, frontMatter, path } = await loadMdxFile(dirParts, components);
   const docs = loadEntries(["docs"]);
 
-  return { props: { source, frontMatter, docs } };
+  return { props: { source, frontMatter, docs, path } };
 }
 
 export async function getStaticPaths(depth = 1) {
