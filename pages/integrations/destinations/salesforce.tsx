@@ -81,18 +81,24 @@ export default function SalesforcePage() {
               <h2>Use Cases</h2>
               <ul>
                 <li>
-                  Create and update any profileObject in Salesforce such as Contacts, Leads, or Individuals as new users sign up in your core product
+                  Create and update any profileObject in Salesforce such as
+                  Contacts, Leads, or Individuals as new users sign up in your
+                  core product
                 </li>
                 <li>
-                  Update existing Fields on people objects such as email and first name
-                  and also create new custom Fields without needing engineering
-                  help
+                  Update existing Fields on people objects such as email and
+                  first name and also create new custom Fields without needing
+                  engineering help
                 </li>
                 <li>
-                  Automatically create Campaigns or add people to Campaigns in Salesforce
+                  Automatically create Campaigns or add people to Campaigns in
+                  Salesforce
                 </li>
                 <li>Keep Lead Fields up-to-date automatically</li>
-                <li>Have better control over how you segment your Leads and Contacts</li>
+                <li>
+                  Have better control over how you segment your Leads and
+                  Contacts
+                </li>
               </ul>
             </Col>
           </Row>
@@ -108,10 +114,17 @@ export default function SalesforcePage() {
               Trying to figure out how to integrate your data with Salesforce?
               Here’s an overview for how Salesforce defines customer objects.
             </p>
-            <p>At its core, Salesforce is a database, and a very flexible one at that. While most of the objects we name here are the primary default ways to use Salesforce, you can map Grouparoo profiles to just about any kind of object in Salesforce.</p>
             <p>
-              Salesforce has a few primary objects: Leads, Contacts, and Individuals. Each of those three previous objects represents an
-              individual person who might be a lead or a customer. These objects all have three required fields: Email and LastName
+              At its core, Salesforce is a database, and a very flexible one at
+              that. While most of the objects we name here are the primary
+              default ways to use Salesforce, you can map Grouparoo profiles to
+              just about any kind of object in Salesforce.
+            </p>
+            <p>
+              Salesforce has a few primary objects: Leads, Contacts, and
+              Individuals. Each of those three previous objects represents an
+              individual person who might be a lead or a customer. These objects
+              all have three required fields: Email and LastName
             </p>
           </Col>
         </Row>
@@ -167,7 +180,8 @@ export default function SalesforcePage() {
               in real-time
             </h3>
             <p>
-              Empower your sales team to make the right actions now that all of your lead and contact information is up-to-date in Salesforce
+              Empower your sales team to make the right actions now that all of
+              your lead and contact information is up-to-date in Salesforce
             </p>
           </Col>
           <Col md={9}>
@@ -189,7 +203,9 @@ export default function SalesforcePage() {
         <Container>
           <Row>
             <Col style={{ textAlign: "center" }}>
-              <h2>Import your customer data from these tools into Salesforce</h2>
+              <h2>
+                Import your customer data from these tools into Salesforce
+              </h2>
               <br />
               <IntegrationSources />
             </Col>

@@ -133,8 +133,8 @@ export default function Snowflake() {
             </h3>
             <p>
               Since Grouparoo is installed in your cloud infrastructure, you can
-              easily point Grouparoo to any number of Snowflake instances you may
-              have running.
+              easily point Grouparoo to any number of Snowflake instances you
+              may have running.
             </p>
           </Col>
           <Col md={9}>
