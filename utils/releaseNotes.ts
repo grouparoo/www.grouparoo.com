@@ -6,9 +6,10 @@ export type ReleaseNote = {
   title: string;
   slug: string;
   date: string;
+  description: string;
+  image: string;
   tags: string[];
   blog: string;
-  html: string;
   source: any;
 };
 
@@ -19,7 +20,7 @@ function PermanentImage(props) {
 const components = { Image: PermanentImage };
 
 export async function getReleaseNotes(): Promise<ReleaseNote[]> {
-  const releases = await loadEntries(["whats-new"]);
+  const releases = loadEntries(["whats-new"]);
   releases.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
@@ -27,11 +28,11 @@ export async function getReleaseNotes(): Promise<ReleaseNote[]> {
   for (const release of releases) {
     const { filePath, slug } = release;
     const { source, frontMatter } = await loadMdxFilePath(filePath, components);
-    const { title, date } = frontMatter;
-    const tags = frontMatter.tags || [];
-    const blog = frontMatter.blog || null;
-    const html = source.renderedOutput;
-    notes.push({ title, slug, date, tags, blog, source, html });
+    const note: any = Object.assign({}, frontMatter, { source, slug });
+    if (note.image) {
+      note.image = `https://www.grouparoo.com/posts/${note.image}`;
+    }
+    notes.push(note);
   }
   return notes;
 }
@@ -69,7 +70,7 @@ export async function getFeed(): Promise<Feed> {
       id: `grouparoo-release-note-${note.slug}`,
       link: `https://www.grouparoo.com/whats-new#${note.slug}`,
       //description: "description in rss, summary in json",
-      content: note.html,
+      content: note.source.renderedOutput,
       author: [
         {
           name: "Grouparoo, Inc.",
@@ -78,7 +79,7 @@ export async function getFeed(): Promise<Feed> {
         },
       ],
       date: new Date(note.date),
-      //image: post.image,
+      image: note.image,
     });
   }
   return feed;

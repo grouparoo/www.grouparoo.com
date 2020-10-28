@@ -41,7 +41,7 @@ export async function loadMdxFilePath(fullPath, components) {
   return { source: mdxSource, frontMatter: data };
 }
 
-export async function loadEntries(dirParts: string[]) {
+export function loadEntries(dirParts: string[]) {
   const entries = [];
   const rootPath = path.resolve(path.join(pagesDir, ...dirParts));
   if (!fs.existsSync(rootPath)) {

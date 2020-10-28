@@ -17,13 +17,15 @@ export default function BlogPage({ pageProps }) {
   const post: BlogPost = pageProps.post;
   const content = hydrate(post.source, { components });
   const author = getAuthor(post.author);
+  const url = `https://www.grouparoo.com${post.path}`;
 
   return (
     <>
       <Head>
         <title> Grouparoo Blog: {post.title}</title>
         <meta name="description" content={post.pullQuote} />
-        <link rel="canonical" href={`http://www.grouparoo.com${post.path}`} />
+        <link rel="canonical" href={url} />
+
         <link
           rel="alternate"
           title="JSON Feed: Grouparoo Blog"
@@ -36,6 +38,14 @@ export default function BlogPage({ pageProps }) {
           type="application/rss+xml"
           href="https://www.grouparoo.com/feeds/blog.xml"
         />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@grouparoo" />
+        <meta name="twitter:creator" content={author.twitter || "@grouparoo"} />
+        <meta property="og:url" content={url} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.pullQuote} />
+        {post.image ? <meta property="og:image" content={post.image} /> : null}
       </Head>
 
       <Container className="blogPage">

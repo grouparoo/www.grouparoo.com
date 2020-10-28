@@ -66,11 +66,35 @@ function getHeader(feature: ReleaseNote) {
   );
 }
 
+function getSocial(feature: ReleaseNote) {
+  if (!feature) {
+    return null;
+  }
+
+  const url = `https://www.grouparoo.com/whats-new/${feature.slug}`;
+  return (
+    <>
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@grouparoo" />
+      <meta name="twitter:creator" content="@grouparoo" />
+      <meta property="og:url" content={url} />
+      <meta property="og:title" content={feature.title} />
+      {feature.description ? (
+        <meta property="og:description" content={feature.description} />
+      ) : null}
+      {feature.image ? (
+        <meta property="og:image" content={feature.image} />
+      ) : null}
+    </>
+  );
+}
+
 export default function ReleaseIndex({ pageProps }) {
   let notes: ReleaseNote[] = pageProps.notes;
   let feature: ReleaseNote = pageProps.feature;
 
   let headerComponent = getHeader(feature);
+  let socialComponent = getSocial(feature);
   let title = "Grouparoo: What's New";
   if (feature) {
     title += ` - ${feature.title}`;
@@ -79,7 +103,8 @@ export default function ReleaseIndex({ pageProps }) {
     <>
       <Head>
         <title>{title}</title>
-        <link rel="canonical" href={`http://www.grouparoo.com/whats-new`} />
+        <link rel="canonical" href="https://www.grouparoo.com/whats-new" />
+
         <link
           rel="alternate"
           title="JSON Feed: Grouparoo What's New"
@@ -92,6 +117,8 @@ export default function ReleaseIndex({ pageProps }) {
           type="application/rss+xml"
           href="https://www.grouparoo.com/feeds/whatsnew.xml"
         />
+
+        {socialComponent}
       </Head>
 
       <Container className="releasePage">

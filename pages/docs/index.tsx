@@ -142,6 +142,6 @@ export default function DocsIndex({ pageProps }) {
 }
 
 export async function getStaticProps() {
-  const docs = await loadEntries(["docs"]);
+  const docs = loadEntries(["docs"]);
   return { props: { docs } };
 }

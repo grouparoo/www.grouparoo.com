@@ -91,7 +91,7 @@ export async function getStaticProps({ params }) {
   }
 
   const { source, frontMatter } = await loadMdxFile(dirParts, components);
-  const docs = await loadEntries(["docs"]);
+  const docs = loadEntries(["docs"]);
 
   return { props: { source, frontMatter, docs } };
 }
