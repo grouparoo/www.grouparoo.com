@@ -35,9 +35,9 @@ async function getNote(filePath): Promise<ReleaseNote> {
     slug,
     date,
     description,
-    image,
+    image: image || null,
     tags,
-    blog,
+    blog: blog || null,
     source,
   };
 }

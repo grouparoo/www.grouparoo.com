@@ -56,7 +56,7 @@ export async function getBlogPost(slugName): Promise<BlogPost> {
     tags,
     path,
     slug,
-    image,
+    image: image || null,
     source,
   };
 }
