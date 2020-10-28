@@ -18,7 +18,7 @@ export default function Support() {
               name="description"
               content="Learn more about how to get support for Grouparoo."
             />
-            <link rel="canonical" href="http://www.grouparoo.com/support" />
+            <link rel="canonical" href="https://www.grouparoo.com/support" />
           </Col>
         </Row>
 

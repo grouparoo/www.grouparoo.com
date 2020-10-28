@@ -18,7 +18,7 @@ export default function About() {
               name="description"
               content="Join Grouparoo Open Positions Engineering Marketing Automation Support"
             />
-            <link rel="canonical" href="http://www.grouparoo.com/about" />
+            <link rel="canonical" href="https://www.grouparoo.com/about" />
           </Col>
         </Row>
         <Row>

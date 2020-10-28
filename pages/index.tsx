@@ -16,7 +16,7 @@ export default function IndexPage() {
           name="description"
           content="Grouparoo is real-time data infrastructure that puts marketers and operators in control."
         />
-        <link rel="canonical" href="http://www.grouparoo.com/" />
+        <link rel="canonical" href="https://www.grouparoo.com/" />
       </Head>
 
       <div

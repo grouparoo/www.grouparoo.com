@@ -13,7 +13,7 @@ export default function PricingPage() {
           name="description"
           content="Grouparoo is open-source, so you can use our product for free today! Features and services available to fit your needs."
         />
-        <link rel="canonical" href="http://www.grouparoo.com/pricing" />
+        <link rel="canonical" href="https://www.grouparoo.com/pricing" />
       </Head>
 
       <div
