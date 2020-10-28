@@ -183,6 +183,8 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/destinations/sailthru</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/integrations/destinations/salesforce</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/destinations/zendesk</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/sources/bigquery</loc><changefreq
@@ -192,4 +194,6 @@
     >https://www.grouparoo.com/integrations/sources/postgres</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/sources/redshift</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/integrations/sources/snowflake</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url></urlset>
