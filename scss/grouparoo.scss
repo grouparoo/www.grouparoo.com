@@ -26,7 +26,9 @@ $danger: $grouparoo-red;
 $light: $grouparoo-light-gray;
 $dark: $grouparoo-dark-gray;
 
+// -- External Components --
 @import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-svg-core/styles.css";
 
 // -- Fonts --
 // prettier-ignore

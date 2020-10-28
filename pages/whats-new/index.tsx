@@ -4,23 +4,23 @@ import { Fragment } from "react";
 import { Container, Badge, Row, Col } from "react-bootstrap";
 import hydrate from "next-mdx-remote/hydrate";
 import { ReleaseNote, getReleaseNotes } from "../../utils/releaseNotes";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Moment from "react-moment";
 import BlogImage from "../../components/blog/image";
 
 const components = { Image: BlogImage };
 
 function releaseNote(note: ReleaseNote, idx: number) {
+  const isFeature = idx < 0;
+
   const { source, tags, date, title, blog, slug } = note;
   const content = hydrate(source, { components: components });
   const ago = releaseDate(date);
   const badges = releaseBadges(tags);
-
-  const isFeature = idx < 0;
+  const header = releaseHeader(note, isFeature);
 
   const leftClassName = isFeature ? "d-none" : "d-none d-md-block";
   const rightClassName = isFeature ? "d-xs-none" : "d-md-none";
-  const Header = isFeature ? "h1" : "h4";
   const Separator = isFeature ? "div" : "hr";
 
   return (
@@ -31,19 +31,16 @@ function releaseNote(note: ReleaseNote, idx: number) {
         {ago}
       </Col>
       <Col>
-        <Header style={{ paddingBottom: 0 }}>
-          {title}
-          <a id={slug} />
-        </Header>
+        {header}
         <div style={{ paddingBottom: 10 }} className={rightClassName}>
           {badges} {ago}
         </div>
         <div>{content}</div>
-        {blog ? (
+        {blog && (
           <Link href={`/blog/${blog}`}>
             <a>See more</a>
           </Link>
-        ) : null}
+        )}
         <Separator style={{ marginTop: 32, marginBottom: 32 }} />
       </Col>
     </Row>
@@ -52,6 +49,39 @@ function releaseNote(note: ReleaseNote, idx: number) {
 
 function featureNote(note: ReleaseNote) {
   return releaseNote(note, -1);
+}
+
+function releaseHeader(note: ReleaseNote, isFeature: boolean) {
+  const Header = isFeature ? "h1" : "h4";
+  const { github, slug, title } = note;
+  return (
+    <>
+      <Row>
+        <Col>
+          <Header style={{ paddingBottom: 0 }}>
+            {title}
+            <a id={slug} />
+          </Header>
+        </Col>
+        <Col style={{ textAlign: "right" }} xs={2}>
+          {github && (
+            <Link href={github}>
+              <a style={{ paddingLeft: 10 }} target="_blank">
+                <FontAwesomeIcon icon={["fab", "github"]} size="xs" />
+              </a>
+            </Link>
+          )}
+          {!isFeature && (
+            <Link href={`/whats-new/${slug}`}>
+              <a style={{ paddingLeft: 10 }}>
+                <FontAwesomeIcon icon={["fas", "link"]} size="xs" />
+              </a>
+            </Link>
+          )}
+        </Col>
+      </Row>
+    </>
+  );
 }
 
 function getHeader(feature: ReleaseNote) {

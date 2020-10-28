@@ -10,6 +10,7 @@ export type ReleaseNote = {
   image: string;
   tags: string[];
   blog: string;
+  github: string;
   source: any;
 };
 
@@ -24,7 +25,7 @@ async function getNote(filePath): Promise<ReleaseNote> {
     filePath,
     components
   );
-  const { title, date, description, tags, blog } = frontMatter;
+  const { title, date, description, tags, blog, github } = frontMatter;
   let { image } = frontMatter;
   if (image && !image.startsWith("http")) {
     image = `https://www.grouparoo.com/posts/${image}`;
@@ -37,6 +38,7 @@ async function getNote(filePath): Promise<ReleaseNote> {
     description,
     image: image || null,
     tags,
+    github: github || null,
     blog: blog || null,
     source,
   };

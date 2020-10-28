@@ -1,4 +1,5 @@
 import "../scss/grouparoo.scss";
+import "../components/icons"; // this is needed to load the library
 import Layout from "../components/layouts/main";
 import Router from "next/router";
 
