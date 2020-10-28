@@ -141,7 +141,7 @@ export const PluginData: Array<{
     otherTypes: [],
     category: "crm",
     badge: "",
-    showLink: false,
+    showLink: true,
   },
   {
     name: "Snowflake",
