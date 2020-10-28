@@ -18,10 +18,10 @@ export interface BlogEntry {
   tags: string[];
   path: string;
   slug: string;
+  image: string;
 }
 
 export interface BlogPost extends BlogEntry {
-  html: string;
   source: any;
 }
 
@@ -30,21 +30,35 @@ export async function getBlogPaths() {
 }
 
 export async function getBlogEntries(): Promise<BlogEntry[]> {
-  const entries = await loadEntries(["blog"]);
+  const entries = loadEntries(["blog"]);
   entries.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
   return entries;
 }
 
-export async function getBlogPost(slug): Promise<BlogPost> {
-  const { source, frontMatter } = await loadMdxFile(
-    ["blog", `${slug}.mdx`],
+export async function getBlogPost(slugName): Promise<BlogPost> {
+  const { source, frontMatter, path, slug } = await loadMdxFile(
+    ["blog", `${slugName}.mdx`],
     components
   );
-  const html = source.renderedOutput;
-  const post: any = Object.assign({}, frontMatter, { html, source });
-  return post;
+  const { title, date, author, pullQuote, tags } = frontMatter;
+  let { image } = frontMatter;
+  if (image && !image.startsWith("http")) {
+    image = `https://www.grouparoo.com/posts/${image}`;
+  }
+
+  return {
+    title,
+    date,
+    author,
+    pullQuote,
+    tags,
+    path,
+    slug,
+    image: image || null,
+    source,
+  };
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
@@ -88,7 +102,7 @@ export async function getFeed(): Promise<Feed> {
       id: `grouparoo-blog-post-${post.slug}`,
       link: `https://www.grouparoo.com${post.path}`,
       //description: "description in rss, summary in json",
-      content: post.html,
+      content: post.source.renderedOutput,
       author: [
         {
           name: author ? author.name : "Grouparoo, Inc.",
@@ -98,7 +112,7 @@ export async function getFeed(): Promise<Feed> {
         },
       ],
       date: new Date(post.date),
-      //image: post.image,
+      image: post.image,
     });
   }
   return feed;

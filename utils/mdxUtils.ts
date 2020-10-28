@@ -26,7 +26,16 @@ export async function loadMdxFile(dirParts: string[], components) {
   return loadMdxFilePath(fullPath, components);
 }
 
+function getMetadata(fullPath) {
+  const relativePath = fullPath.replace(pagesDir, "").split(".")[0];
+  const slug = path.basename(fullPath, ".mdx");
+  return { filePath: fullPath, path: relativePath, slug };
+}
+
 export async function loadMdxFilePath(fullPath, components) {
+  if (!fs.existsSync(fullPath)) {
+    throw new Error(`mdx path does not exist: ${fullPath}`);
+  }
   const file = fs.readFileSync(fullPath);
   const { content, data } = matter(file);
   const mdxSource = await renderToString(content, {
@@ -35,26 +44,33 @@ export async function loadMdxFilePath(fullPath, components) {
     mdxOptions,
   });
 
-  return { source: mdxSource, frontMatter: data };
+  return Object.assign(
+    {},
+    { source: mdxSource, frontMatter: data },
+    getMetadata(fullPath)
+  );
 }
 
-export async function loadEntries(dirParts: string[]) {
+export function loadEntries(dirParts: string[]) {
   const entries = [];
   const rootPath = path.resolve(path.join(pagesDir, ...dirParts));
+  if (!fs.existsSync(rootPath)) {
+    throw new Error(`entries path does not exist: ${rootPath}`);
+  }
   const files = glob.sync(path.join(rootPath, "**", "*.mdx"));
   for (const i in files) {
     const source = fs.readFileSync(files[i]);
     const { data } = matter(source);
-    data.path = files[i].replace(pagesDir, "").split(".")[0];
-    data.filePath = files[i];
-    data.slug = path.basename(files[i], ".mdx");
-    entries.push(data);
+    entries.push(Object.assign({}, data, getMetadata(files[i])));
   }
 
   return entries;
 }
 
 export async function getStaticMdxPaths(dirParts: string[], depth = 1) {
+  if (!fs.existsSync(pagesDir)) {
+    throw new Error(`mdx paths does not exist: ${pagesDir}`);
+  }
   const paths = glob
     .sync(path.join(pagesDir, ...dirParts, "**", "*.mdx"))
     .map((p) => p.replace(pagesDir, ""))

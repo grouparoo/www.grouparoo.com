@@ -65,7 +65,7 @@ export default function Meet() {
           name="description"
           content="Sign up to meet with the Grouparoo team and see a demo of the Grouparoo product"
         />
-        <link rel="canonical" href="http://www.grouparoo.com/meet" />
+        <link rel="canonical" href="https://www.grouparoo.com/meet" />
       </Head>
 
       <Container>

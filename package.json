@@ -24,6 +24,10 @@
     "nuke": "rm -rf node_modules && rm -rf api/dist"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "1.2.32",
+    "@fortawesome/free-brands-svg-icons": "5.15.1",
+    "@fortawesome/free-solid-svg-icons": "5.15.1",
+    "@fortawesome/react-fontawesome": "0.1.12",
     "@mapbox/rehype-prism": "0.5.0",
     "axios": "0.21.0",
     "babel-plugin-import-glob-array": "0.2.0",
@@ -40,8 +44,8 @@
     "react-bootstrap": "1.4.0",
     "react-dom": "16.14.0",
     "react-hook-form": "6.9.6",
-    "react-syntax-highlighter": "15.2.1",
     "react-moment": "1.0.0",
+    "react-syntax-highlighter": "15.2.1",
     "remark-external-links": "^8.0.0",
     "sass": "1.27.0",
     "sharp": "0.26.2",

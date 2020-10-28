@@ -1,4 +1,4 @@
-import { loadEntries, loadMdxFilePath } from "./mdxUtils";
+import { loadEntries, loadMdxFilePath, getStaticMdxPaths } from "./mdxUtils";
 import BlogImage from "../components/blog/image";
 import { Feed } from "feed";
 
@@ -6,9 +6,11 @@ export type ReleaseNote = {
   title: string;
   slug: string;
   date: string;
+  description: string;
+  image: string;
   tags: string[];
   blog: string;
-  html: string;
+  github: string;
   source: any;
 };
 
@@ -18,22 +20,46 @@ function PermanentImage(props) {
 // These keys need to match the one in whats-new/index
 const components = { Image: PermanentImage };
 
+async function getNote(filePath): Promise<ReleaseNote> {
+  const { source, frontMatter, slug } = await loadMdxFilePath(
+    filePath,
+    components
+  );
+  const { title, date, description, tags, blog, github } = frontMatter;
+  let { image } = frontMatter;
+  if (image && !image.startsWith("http")) {
+    image = `https://www.grouparoo.com/posts/${image}`;
+  }
+
+  return {
+    title,
+    slug,
+    date,
+    description,
+    image: image || null,
+    tags,
+    github: github || null,
+    blog: blog || null,
+    source,
+  };
+}
+
 export async function getReleaseNotes(): Promise<ReleaseNote[]> {
-  const releases = await loadEntries(["..", "releases"]);
+  const releases = loadEntries(["whats-new"]);
   releases.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
   const notes = [];
   for (const release of releases) {
-    const { filePath, slug } = release;
-    const { source, frontMatter } = await loadMdxFilePath(filePath, components);
-    const { title, date } = frontMatter;
-    const tags = frontMatter.tags || [];
-    const blog = frontMatter.blog || null;
-    const html = source.renderedOutput;
-    notes.push({ title, slug, date, tags, blog, source, html });
+    const { filePath } = release;
+    const note = await getNote(filePath);
+    notes.push(note);
   }
   return notes;
+}
+
+export async function getReleasePaths() {
+  return getStaticMdxPaths(["whats-new"]);
 }
 
 export async function getFeed(): Promise<Feed> {
@@ -65,7 +91,7 @@ export async function getFeed(): Promise<Feed> {
       id: `grouparoo-release-note-${note.slug}`,
       link: `https://www.grouparoo.com/whats-new#${note.slug}`,
       //description: "description in rss, summary in json",
-      content: note.html,
+      content: note.source.renderedOutput,
       author: [
         {
           name: "Grouparoo, Inc.",
@@ -74,7 +100,7 @@ export async function getFeed(): Promise<Feed> {
         },
       ],
       date: new Date(note.date),
-      //image: post.image,
+      image: note.image,
     });
   }
   return feed;

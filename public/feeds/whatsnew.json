@@ -26,6 +26,7 @@
       "content_html": "<p>On the <code>/about</code> page, we now badge the version of your installed plugins. They will be successful (green) if your installed version matches the <code>latest</code>-tagged version of that package on NPM, and warning (orange) if they don&#x27;t.</p><p><img alt=\"Versioned /about page\" style=\"max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/releases/2020-10-10-versions-1.png\"/></p><p>In this way, you can get a quick snapshot about if you are running the latest version of Grouparoo or not.</p><p>You will also get a notification automatically if you are out of date.</p><p><img alt=\"Version notification\" style=\"max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/releases/2020-10-10-versions-2.png\"/></p>",
       "url": "https://www.grouparoo.com/whats-new#2020-10-14-versions",
       "title": "Version Notification and Reporting",
+      "image": "https://www.grouparoo.com/posts/releases/2020-10-10-versions-2.png",
       "date_modified": "2020-10-14T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
@@ -34,9 +35,10 @@
     },
     {
       "id": "grouparoo-release-note-2020-10-02-snowflake",
-      "content_html": "<p><a href=\"https://www.snowflake.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Snowflake</a> can not be set up as a Grouparoo source, enabling you to create profile properties from your Snowflake data warehouse.</p><p>It supports custom queries as well as a the simplified table source.</p><p><img alt=\"Types of Snowflake sources\" style=\"max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/releases/2020-10-02-snowflake.png\"/></p>",
+      "content_html": "<p><a href=\"https://www.snowflake.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Snowflake</a> can now be set up as a Grouparoo source, enabling you to create profile properties from your Snowflake data warehouse.</p><p>It supports custom queries as well as a the simplified table source.</p><p><img alt=\"Types of Snowflake sources\" style=\"max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/releases/2020-10-02-snowflake.png\"/></p>",
       "url": "https://www.grouparoo.com/whats-new#2020-10-02-snowflake",
       "title": "Snowflake Source",
+      "image": "https://www.grouparoo.com/posts/releases/2020-10-02-snowflake.png",
       "date_modified": "2020-10-02T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
@@ -48,6 +50,7 @@
       "content_html": "<p>We have added <a href=\"https://www.salesforce.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Salesforce</a> as a destination. You can now create Salesforce Objects from your profiles and Groups.</p><p>It is a very generic integration because many people use Salesforce in many different ways. Because of this, you can configure it however you want.</p><p>For example, you can sync your profiles to create Contacts with linked Accounts. Groups can the decide what Campaigns they are in. It will automatically keep everything up to date.</p><p><img alt=\"Configuring Salesforce Destination\" style=\"max-height:400px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/releases/2020-10-01-salesforce.png\"/></p>",
       "url": "https://www.grouparoo.com/whats-new#2020-10-01-salesforce",
       "title": "Salesforce Destination",
+      "image": "https://www.grouparoo.com/posts/releases/2020-10-01-salesforce.png",
       "date_modified": "2020-10-01T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
@@ -59,6 +62,7 @@
       "content_html": "<p>We have created a setup checklist in Grouparoo to help people getting things going for the first time. It walks you through creating a working sync system.</p><p>By the end of it, you&#x27;ll have users on teams, a source, properties, groups, and a destination.</p><p><img alt=\"Grouparoo Setup Steps\" style=\"max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/releases/2020-09-15-setup.png\"/></p><p>We hope this helps people get off to strong start managing their customer data.</p>",
       "url": "https://www.grouparoo.com/whats-new#2020-09-20-setup",
       "title": "Setup Assistance",
+      "image": "https://www.grouparoo.com/posts/releases/2020-09-15-setup.png",
       "date_modified": "2020-09-20T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
@@ -81,6 +85,7 @@
       "content_html": "<p>We have added <a href=\"https://www.marketo.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Marketo</a> as a Grouparoo destination. This means you can sync your profiles and groups to this enterprise marketing automation tool. We handle rate-limiting and other challenging things with the connection.</p><p><img alt=\"How Grouparoo connects to Mailchimp\" style=\"max-height:250px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/marketo-destination/connection.png\"/></p>",
       "url": "https://www.grouparoo.com/whats-new#2020-09-06-marketo",
       "title": "Marketo Destination",
+      "image": "https://www.grouparoo.com/posts/marketo-destination/connection.png",
       "date_modified": "2020-09-06T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
@@ -158,6 +163,7 @@
       "content_html": "<p>We are now giving more information about how your data is importing via schedules and other runs. Each run can now see the percentage complete.</p><p><img alt=\"Create a property rule from your events\" style=\"max-height:250px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/releases/2020-07-11-runs.png\"/></p><p>Using this, you can track how things are going.</p>",
       "url": "https://www.grouparoo.com/whats-new#2020-07-11-runs",
       "title": "Run Progress",
+      "image": "https://www.grouparoo.com/posts/releases/2020-07-11-runs.png",
       "date_modified": "2020-07-11T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
@@ -169,6 +175,7 @@
       "content_html": "<p>You can now connect your Grouparoo profiles and groups to <a href=\"https://www.hubspot.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Hubspot</a>. With this destination, you can empower your sales teams on the Hubspot platform with anything from your data warehouse.</p><p>Grouparoo will make contacts with properties and add the to lists inside the Hubspot environment.</p><p><img alt=\"Hubspot destination concepts\" style=\"max-height:250px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/releases/2020-06-26-hubspot.png\"/></p>",
       "url": "https://www.grouparoo.com/whats-new#2020-06-26-hubspot",
       "title": "Hubspot Destination",
+      "image": "https://www.grouparoo.com/posts/releases/2020-06-26-hubspot.png",
       "date_modified": "2020-06-26T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
@@ -180,6 +187,7 @@
       "content_html": "<p>Real-time visibility into the events coming into the system is important to knowing things are working as expected. To help with that, we have added a stream and other statistics on the event system.</p><p><img alt=\"Grouparoo event stream\" style=\"max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/releases/2020-06-05-events.png\"/></p><p>Stream away!</p>",
       "url": "https://www.grouparoo.com/whats-new#2020-06-05-events",
       "title": "Event Stream",
+      "image": "https://www.grouparoo.com/posts/releases/2020-06-05-events.png",
       "date_modified": "2020-06-05T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
@@ -188,9 +196,10 @@
     },
     {
       "id": "grouparoo-release-note-2020-05-25-events",
-      "content_html": "<p>This is a big update to add the concept of events. Grouparoo loves connecting to sources like data wwarehouses, but events (like pageviews) are still important.</p><p>Now, there is an API and a Javascript client to report pageviews and identify users. These events are saved in the Grouparoo database and linked to profiles. It&#x27;s smart enough to merge profiles if it turns out the user was actually the same one.</p><p>Once you have those events, you can create a source that makes profile properties from them. For example, let&#x27;s add how many page views a user has had. And another one for what they last looked at. Of course, you can use those when creating groups and syncing to destinations.</p><p><img alt=\"Create a property rule from your events\" style=\"max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/releases/2020-05-25-events.png\"/></p><p>With events, we are excited to help you get an even picture of your customer.</p>",
+      "content_html": "<p>This is a big update to add the concept of events. Grouparoo loves connecting to sources like data warehouses, but events (like pageviews) are still important.</p><p>Now, there is an API and a Javascript client to report pageviews and identify users. These events are saved in the Grouparoo database and linked to profiles. It&#x27;s smart enough to merge profiles if it turns out the user was actually the same one.</p><p>Once you have those events, you can create a source that makes profile properties from them. For example, let&#x27;s add how many page views a user has had. And another one for what they last looked at. Of course, you can use those when creating groups and syncing to destinations.</p><p><img alt=\"Create a property rule from your events\" style=\"max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/releases/2020-05-25-events.png\"/></p><p>With events, we are excited to help you get an even picture of your customer.</p>",
       "url": "https://www.grouparoo.com/whats-new#2020-05-25-events",
       "title": "Events",
+      "image": "https://www.grouparoo.com/posts/releases/2020-05-25-events.png",
       "date_modified": "2020-05-25T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
@@ -202,6 +211,7 @@
       "content_html": "<p>You can now connect your <a href=\"https://cloud.google.com/bigquery\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">BigQuery</a> data warehouse to Grouparoo, using it as a source for your profile properties.</p><p>This implementation adds all the same features as our other SQL sources like MySQL and Postgres. For example, you can write a custom SQL query to add a property. There is also the table source that allows importing data without knowing SQL.</p><p><img alt=\"Two new types of sources: query and table\" style=\"max-height:200px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/bigquery-source/source-types.png\"/></p><p>You can also use all the built-in datasets that Google provides. That&#x27;s pretty neat.</p>",
       "url": "https://www.grouparoo.com/whats-new#2020-05-09-bigquery",
       "title": "BigQuery Source",
+      "image": "https://www.grouparoo.com/posts/bigquery-source/source-types.png",
       "date_modified": "2020-05-09T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
@@ -213,6 +223,7 @@
       "content_html": "<p>We have added <a href=\"https://www.sailthru.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Sailthru</a> as a destination. This means you can export your profile and group data to this email automation tool. One great thing to do there is to use their Lifecycle Optimizer to run campaigns when someone enters a group.</p><p>A few companies have noted that they had some challenges integrating with Sailthru nuances, so we are glad to add, iterate, and harden this plugin.</p>",
       "url": "https://www.grouparoo.com/whats-new#2020-04-23-sailthru",
       "title": "Sailthru Destination",
+      "image": "https://www.grouparoo.com/posts/sailthru-destination/sailthru-profile.png",
       "date_modified": "2020-04-23T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
@@ -235,6 +246,7 @@
       "content_html": "<p>We have added the ability to connect your Google Sheets to import data into Grouparoo. To some degree, we made Grouparoo so you don&#x27;t need all these spreadsheets. And yet, sometimes it&#x27;s still the best way to make things happen. Now they can become a &quot;real&quot; part of your data infrastructure.</p><p><img alt=\"Data preview of new source from Google Sheets\" style=\"max-height:300px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/google-sheets-source/source-data-preview.png\"/></p><p>Don&#x27;t forget: with great power comes great responsibility!</p>",
       "url": "https://www.grouparoo.com/whats-new#2020-04-15-google-sheets",
       "title": "Google Sheets Source",
+      "image": "https://www.grouparoo.com/posts/google-sheets-source/source-data-preview.png",
       "date_modified": "2020-04-15T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
@@ -254,9 +266,10 @@
     },
     {
       "id": "grouparoo-release-note-2020-03-26-mailchimp",
-      "content_html": "<p>We now support the ability to sync your profiles and groups to <a href=\"https://www.mailchimp.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Mailchimp</a>. You select the list you want to populate, the merge variables to set, and whcih tags should be set.</p><p><img alt=\"How Grouparoo connects to Mailchimp\" style=\"max-height:250px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/mailchimp-destination/connection.png\"/></p><p>Mailchimp has been one of the most popular destination requests from startups and we are excited for you try it out.</p>",
+      "content_html": "<p>We now support the ability to sync your profiles and groups to <a href=\"https://www.mailchimp.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Mailchimp</a>. You select the list you want to populate, the merge variables to set, and which tags should be set.</p><p><img alt=\"How Grouparoo connects to Mailchimp\" style=\"max-height:250px;max-width:100%;border-color:darkgray;border-width:2px;border-style:solid;background-color:white\" src=\"https://www.grouparoo.com/posts/mailchimp-destination/connection.png\"/></p><p>Mailchimp has been one of the most popular destination requests from startups and we are excited for you try it out.</p>",
       "url": "https://www.grouparoo.com/whats-new#2020-03-26-mailchimp",
       "title": "Mailchimp Destination",
+      "image": "https://www.grouparoo.com/posts/mailchimp-destination/connection.png",
       "date_modified": "2020-03-26T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
