@@ -42,16 +42,23 @@ export async function getBlogPost(slugName): Promise<BlogPost> {
     ["blog", `${slugName}.mdx`],
     components
   );
+  const { title, date, author, pullQuote, tags } = frontMatter;
+  let { image } = frontMatter;
+  if (image && !image.startsWith("http")) {
+    image = `https://www.grouparoo.com/posts/${image}`;
+  }
 
-  const post: any = Object.assign({}, frontMatter, {
-    source,
+  return {
+    title,
+    date,
+    author,
+    pullQuote,
+    tags,
     path,
     slug,
-  });
-  if (post.image) {
-    post.image = `https://www.grouparoo.com/posts/${post.image}`;
-  }
-  return post;
+    image,
+    source,
+  };
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {

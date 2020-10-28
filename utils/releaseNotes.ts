@@ -19,6 +19,29 @@ function PermanentImage(props) {
 // These keys need to match the one in whats-new/index
 const components = { Image: PermanentImage };
 
+async function getNote(filePath): Promise<ReleaseNote> {
+  const { source, frontMatter, slug } = await loadMdxFilePath(
+    filePath,
+    components
+  );
+  const { title, date, description, tags, blog } = frontMatter;
+  let { image } = frontMatter;
+  if (image && !image.startsWith("http")) {
+    image = `https://www.grouparoo.com/posts/${image}`;
+  }
+
+  return {
+    title,
+    slug,
+    date,
+    description,
+    image,
+    tags,
+    blog,
+    source,
+  };
+}
+
 export async function getReleaseNotes(): Promise<ReleaseNote[]> {
   const releases = loadEntries(["whats-new"]);
   releases.sort((a, b) => {
@@ -26,12 +49,8 @@ export async function getReleaseNotes(): Promise<ReleaseNote[]> {
   });
   const notes = [];
   for (const release of releases) {
-    const { filePath, slug } = release;
-    const { source, frontMatter } = await loadMdxFilePath(filePath, components);
-    const note: any = Object.assign({}, frontMatter, { source, slug });
-    if (note.image) {
-      note.image = `https://www.grouparoo.com/posts/${note.image}`;
-    }
+    const { filePath } = release;
+    const note = await getNote(filePath);
     notes.push(note);
   }
   return notes;
