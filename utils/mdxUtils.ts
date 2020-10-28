@@ -26,6 +26,12 @@ export async function loadMdxFile(dirParts: string[], components) {
   return loadMdxFilePath(fullPath, components);
 }
 
+function getMetadata(fullPath) {
+  const relativePath = fullPath.replace(pagesDir, "").split(".")[0];
+  const slug = path.basename(fullPath, ".mdx");
+  return { filePath: fullPath, path: relativePath, slug };
+}
+
 export async function loadMdxFilePath(fullPath, components) {
   if (!fs.existsSync(fullPath)) {
     throw new Error(`mdx path does not exist: ${fullPath}`);
@@ -38,7 +44,11 @@ export async function loadMdxFilePath(fullPath, components) {
     mdxOptions,
   });
 
-  return { source: mdxSource, frontMatter: data };
+  return Object.assign(
+    {},
+    { source: mdxSource, frontMatter: data },
+    getMetadata(fullPath)
+  );
 }
 
 export function loadEntries(dirParts: string[]) {
@@ -51,10 +61,7 @@ export function loadEntries(dirParts: string[]) {
   for (const i in files) {
     const source = fs.readFileSync(files[i]);
     const { data } = matter(source);
-    data.path = files[i].replace(pagesDir, "").split(".")[0];
-    data.filePath = files[i];
-    data.slug = path.basename(files[i], ".mdx");
-    entries.push(data);
+    entries.push(Object.assign({}, data, getMetadata(files[i])));
   }
 
   return entries;

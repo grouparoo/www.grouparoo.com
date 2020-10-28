@@ -37,12 +37,17 @@ export async function getBlogEntries(): Promise<BlogEntry[]> {
   return entries;
 }
 
-export async function getBlogPost(slug): Promise<BlogPost> {
-  const { source, frontMatter } = await loadMdxFile(
-    ["blog", `${slug}.mdx`],
+export async function getBlogPost(slugName): Promise<BlogPost> {
+  const { source, frontMatter, path, slug } = await loadMdxFile(
+    ["blog", `${slugName}.mdx`],
     components
   );
-  const post: any = Object.assign({}, frontMatter, { source });
+
+  const post: any = Object.assign({}, frontMatter, {
+    source,
+    path,
+    slug,
+  });
   if (post.image) {
     post.image = `https://www.grouparoo.com/posts/${post.image}`;
   }

@@ -22,12 +22,13 @@ describe("utils/blogPosts", () => {
         const item = await getBlogPost(entry.slug);
 
         expect(item.title).toBeTruthy();
+        expect(item.path).toMatch(/blog\//);
+        expect(item.slug).toBeTruthy();
         expect(item.pullQuote).toBeTruthy();
 
         expect(item.author).toBeTruthy();
         const author = getAuthor(item.author);
         expect(author).toBeTruthy();
-
         expect(author.name).toBeTruthy();
 
         const date = new Date(item.date);
