@@ -1,12 +1,14 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
+import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
 
 export default function PostgresPage() {
   return (
     <>
+      <IntegrationsHead name="Postgres" primaryType="source" slug="postgres" />
       <Container>
         <Row>
           <Col lg={5} md={12}>
@@ -68,7 +70,7 @@ export default function PostgresPage() {
         <Container>
           <Row>
             <Col lg={6} md={6} xs={12}>
-              <h2>Grouparoo & Postgres</h2>
+              <h2>Grouparoo &amp; Postgres</h2>
               <p>
                 Grouparoo is open source data infrastructure to keep your
                 customer data in-sync with 3rd party tools.

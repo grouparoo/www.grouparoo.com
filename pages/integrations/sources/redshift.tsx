@@ -1,12 +1,14 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
+import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
 
 export default function RedshiftPage() {
   return (
     <>
+      <IntegrationsHead name="Redshift" primaryType="source" slug="redshift" />
       <Container>
         <Row>
           <Col lg={5} md={12}>
@@ -68,7 +70,7 @@ export default function RedshiftPage() {
         <Container>
           <Row>
             <Col lg={6} md={6} xs={12}>
-              <h2>Grouparoo & Redshift</h2>
+              <h2>Grouparoo &amp; Redshift</h2>
               <p>
                 Grouparoo is open source data infrastructure to keep your
                 customer data in-sync with 3rd party tools.

@@ -5,30 +5,34 @@ import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
 
-export default function BigQueryPage() {
+export default function Snowflake() {
   return (
     <>
-      <IntegrationsHead name="BigQuery" primaryType="source" slug="bigquery" />
+      <IntegrationsHead
+        name="Snowflake"
+        primaryType="source"
+        slug="snowflake"
+      />
       <Container>
         <Row>
           <Col lg={5} md={12}>
             <br />
             <h1>
-              Sync BigQuery customer data with all of your 3rd party tools
+              Sync Snowflake customer data with all of your 3rd party tools
             </h1>
             <p>
-              Grouparoo's BigQuery integration allows you to sync all of your
-              customer data that lives in your Google BigQuery data warehouse
-              with various destinations such as CRMs, Customer Support Tools,
-              and Marketing Tools.
+              Grouparoo's Snowflake integration allows you to sync all of your
+              customer data that lives in your Snowflake data warehouse with
+              various destinations such as CRMs, Customer Support Tools, and
+              Marketing Tools.
             </p>
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
             <IntegrationCard
-              name="BigQuery"
-              slug="bigquery"
-              image="bigquery.png"
+              name="Snowflake"
+              slug="snowflake"
+              image="snowflake.png"
               showLink={false}
             />
           </Col>
@@ -63,14 +67,14 @@ export default function BigQueryPage() {
         <br />
       </Container>
       <div
-        id="BigQuery and Use Cases"
+        id="Snowflake and Use Cases"
         className="bg-dark text-white"
         style={{ paddingTop: 50, paddingBottom: 50 }}
       >
         <Container>
           <Row>
             <Col lg={6} md={6} xs={12}>
-              <h2>Grouparoo &amp; BigQuery</h2>
+              <h2>Grouparoo &amp; Snowflake</h2>
               <p>
                 Grouparoo is open source data infrastructure to keep your
                 customer data in-sync with 3rd party tools.
@@ -89,8 +93,7 @@ export default function BigQueryPage() {
                 </li>
                 <li>Create a unified customer definition in Grouparoo</li>
                 <li>
-                  Easily make cohorts and segments out of your BigQuery data
-                  warehouse
+                  Easily make cohorts and segments out of your Snowflake data
                 </li>
                 <li>
                   Denormalize your database so you can easily send customer data
@@ -110,8 +113,8 @@ export default function BigQueryPage() {
             <p>
               Grouparoo's core objects are Profiles and Profile Properties.
               These objects are defined based on your data such as the data in
-              your BigQuery data warehouse. You can pull this data either with
-              our no-code UI or you can write SQL queries directly.
+              your Snowflake DB. You can pull this data either with our no-code
+              UI or you can write SQL queries directly.
             </p>
             <p>
               Once you've defined these Profiles and Profile Properties, you can
@@ -132,18 +135,18 @@ export default function BigQueryPage() {
           <Col md={3}>
             <br />
             <h3 className="integrationsBlueH3">
-              Easily connect your BigQuery data
+              Easily connect your Snowflake data
             </h3>
             <p>
               Since Grouparoo is installed in your cloud infrastructure, you can
-              easily point Grouparoo to any number of BigQuery instances you may
-              have running.
+              easily point Grouparoo to any number of Snowflake instances you
+              may have running.
             </p>
           </Col>
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/bigquery/add-bigquery-app.png")}
+              src={require("../../../public/images/home/integrations/snowflake/add-snowflake-app.png")}
             />
           </Col>
         </Row>
@@ -163,7 +166,7 @@ export default function BigQueryPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/bigquery/bigquery-table-mode.png")}
+              src={require("../../../public/images/home/integrations/snowflake/snowflake-table-mode.png")}
             />
           </Col>
         </Row>
@@ -183,7 +186,7 @@ export default function BigQueryPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/bigquery/bigquery-query-mode.png")}
+              src={require("../../../public/images/home/integrations/snowflake/snowflake-query-mode.png")}
             />
           </Col>
         </Row>
@@ -192,14 +195,14 @@ export default function BigQueryPage() {
       <br />
       <br />
       <div
-        id="Grouparoo Connects with BigQuery"
+        id="Grouparoo Connects with Snowflake"
         className="bg-dark text-white"
         style={{ paddingTop: 50, paddingBottom: 50 }}
       >
         <Container>
           <Row>
             <Col style={{ textAlign: "center" }}>
-              <h2>Send your customer data from BigQuery to these tools</h2>
+              <h2>Send your customer data from Snowflake to these tools</h2>
               <br />
               <IntegrationDestinations />
             </Col>

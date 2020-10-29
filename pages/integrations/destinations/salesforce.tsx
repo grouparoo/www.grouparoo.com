@@ -6,22 +6,22 @@ import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
 
-export default function MailchimpPage() {
+export default function SalesforcePage() {
   return (
     <>
       <IntegrationsHead
-        name="Mailchimp"
+        name="Salesforce"
         primaryType="destination"
-        slug="mailchimp"
+        slug="salesforce"
       />
       <Container>
         <Row>
           <Col lg={5} md={12}>
             <br />
-            <h1>Sync Mailchimp with all of your tools and customer data</h1>
+            <h1>Sync Salesforce with all of your tools and customer data</h1>
             <p>
-              Grouparoo's Mailchimp integration allows you to sync all of your
-              customer data that lives in various sources into Mailchimp.
+              Grouparoo's Salesforce integration allows you to sync all of your
+              customer data that lives in various sources into Salesforce.
             </p>
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
@@ -42,9 +42,9 @@ export default function MailchimpPage() {
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
             <IntegrationCard
-              name="Mailchimp"
-              slug="mailchimp"
-              image="mailchimp.svg"
+              name="Salesforce"
+              slug="salesforce"
+              image="salesforce.jpg"
               showLink={false}
             />
           </Col>
@@ -64,22 +64,22 @@ export default function MailchimpPage() {
         <br />
       </Container>
       <div
-        id="Mailchimp and Use Cases"
+        id="Salesforce Use Cases"
         className="bg-dark text-white"
         style={{ paddingTop: 50, paddingBottom: 50 }}
       >
         <Container>
           <Row>
             <Col lg={6} md={6} xs={12}>
-              <h2>Grouparoo &amp; Mailchimp</h2>
+              <h2>Grouparoo &amp; Salesforce</h2>
               <p>
                 Grouparoo is open source data infrastructure to keep customer
                 data in-sync between your data warehouse and 3rd party tools
-                such as Mailchimp.
+                such as Salesforce.
               </p>
               <p>
                 Grouparoo pulls customer data in real-time from all of your data
-                sources and keeps that data synced to Mailchimp.
+                sources and keeps that data synced to Salesforce.
               </p>
               <p></p>
             </Col>
@@ -87,15 +87,24 @@ export default function MailchimpPage() {
               <h2>Use Cases</h2>
               <ul>
                 <li>
-                  Automatically create Customers as new users sign up in your
+                  Create and update any profileObject in Salesforce such as
+                  Contacts, Leads, or Individuals as new users sign up in your
                   core product
                 </li>
                 <li>
-                  Create new Merge Fields in Mailchimp without needing
+                  Update existing Fields on people objects such as email and
+                  first name and also create new custom Fields without needing
                   engineering help
                 </li>
-                <li>Trigger email campaigns based on dynamic Audiences</li>
-                <li>Keep Merge Field values up-to-date automatically</li>
+                <li>
+                  Automatically create Campaigns or add people to Campaigns in
+                  Salesforce
+                </li>
+                <li>Keep Lead Fields up-to-date automatically</li>
+                <li>
+                  Have better control over how you segment your Leads and
+                  Contacts
+                </li>
               </ul>
             </Col>
           </Row>
@@ -106,23 +115,22 @@ export default function MailchimpPage() {
       <Container>
         <Row>
           <Col>
-            <h2>An Overview of Mailchimp’s Data Model and API</h2>
+            <h2>An Overview of Salesforce's Data Model and API</h2>
             <p>
-              Trying to figure out how to integrate with Mailchimp? Here’s an
-              overview for how Mailchimp defines customers.
+              Trying to figure out how to integrate your data with Salesforce?
+              Here’s an overview for how Salesforce defines customer objects.
             </p>
             <p>
-              The core object in Mailchimp is a Contact (also known as a
-              Member). A Contact represents an individual person that lives on a
-              List or Audience. Contacts have one required attribute, which is
-              their email address.
+              At its core, Salesforce is a database, and a very flexible one at
+              that. While most of the objects we name here are the primary
+              default ways to use Salesforce, you can map Grouparoo profiles to
+              just about any kind of object in Salesforce.
             </p>
             <p>
-              Mailchimp calls attributes of a Contact a Merge Field (formerly a
-              Merge Var). MailChimp pre-defines a number of Merge Fields like{" "}
-              <code>FNAME</code> (first name) and <code>LNAME</code> (last name)
-              for example, but you can define as many Merge Fields as you'd like
-              using Grouparoo or in the Mailchimp website.
+              Salesforce has a few primary objects: Leads, Contacts, and
+              Individuals. Each of those three previous objects represents an
+              individual person who might be a lead or a customer. These objects
+              all have three required fields: Email and LastName
             </p>
           </Col>
         </Row>
@@ -136,15 +144,15 @@ export default function MailchimpPage() {
       <Container>
         <Row>
           <Col>
-            <h2>How Grouparoo Connects with Mailchimp</h2>
+            <h2>How Grouparoo Connects with Salesforce</h2>
             <br />
             <IntegrationMappings
-              name="Mailchimp"
-              slug="mailchimp"
-              image="mailchimp.svg"
-              destinationProfile="Mailchimp Contacts"
-              destinationProperty="Mailchimp Merge Vars"
-              destinationGroup="Mailchimp Tags"
+              name="Salesforce"
+              slug="salesforce"
+              image="salesforce.jpg"
+              destinationProfile="Salesforce Lead/Contact"
+              destinationProperty="Salesforce Lead/Contact Fields"
+              destinationGroup="Salesforce Campaigns"
             />
           </Col>
         </Row>
@@ -154,7 +162,7 @@ export default function MailchimpPage() {
           <Col md={3}>
             <br />
             <h3 className="integrationsBlueH3">
-              Define what customer data you want in Mailchimp
+              Define what customer data you want in Salesforce
             </h3>
             <p>
               Grouparoo is low-code, so non-technical team members can modify
@@ -165,7 +173,7 @@ export default function MailchimpPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/mailchimp/grouparoo-to-mailchimp.png")}
+              src={require("../../../public/images/home/integrations/salesforce/grouparoo-to-salesforce.png")}
             />
           </Col>
         </Row>
@@ -174,18 +182,18 @@ export default function MailchimpPage() {
           <Col md={3}>
             <br />
             <h3 className="integrationsBlueH3">
-              Grouparoo keeps your customer data in Mailchimp updated in
-              real-time
+              Grouparoo keeps your contact and lead data in Salesforce updated
+              in real-time
             </h3>
             <p>
-              Run campaigns in Mailchimp based on the Merge Fields and Tags that
-              you've mapped from Grouparoo.
+              Empower your sales team to make the right actions now that all of
+              your lead and contact information is up-to-date in Salesforce
             </p>
           </Col>
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/mailchimp/mailchimp-audience.png")}
+              src={require("../../../public/images/home/integrations/salesforce/salesforce-campaign.png")}
             />
           </Col>
         </Row>
@@ -194,14 +202,16 @@ export default function MailchimpPage() {
       <br />
       <br />
       <div
-        id="Grouparoo Connects with Mailchimp"
+        id="Grouparoo Connects with Salesforce"
         className="bg-dark text-white"
         style={{ paddingTop: 50, paddingBottom: 50 }}
       >
         <Container>
           <Row>
             <Col style={{ textAlign: "center" }}>
-              <h2>Import your customer data from these tools into Mailchimp</h2>
+              <h2>
+                Import your customer data from these tools into Salesforce
+              </h2>
               <br />
               <IntegrationSources />
             </Col>

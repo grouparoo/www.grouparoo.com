@@ -2,12 +2,18 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationMappings from "../../../components/home/integrationMappings";
 import IntegrationSources from "../../../components/home/integrationSources";
+import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
 
 export default function HubspotPage() {
   return (
     <>
+      <IntegrationsHead
+        name="Hubspot"
+        primaryType="destination"
+        slug="hubspot"
+      />
       <Container>
         <Row>
           <Col lg={5} md={12}>
@@ -65,7 +71,7 @@ export default function HubspotPage() {
         <Container>
           <Row>
             <Col lg={6} md={6} xs={12}>
-              <h2>Grouparoo & Hubspot</h2>
+              <h2>Grouparoo &amp; Hubspot</h2>
               <p>
                 Grouparoo is open source data infrastructure to keep customer
                 data in-sync between your data warehouse and 3rd party tools

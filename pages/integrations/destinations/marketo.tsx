@@ -2,12 +2,18 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationMappings from "../../../components/home/integrationMappings";
 import IntegrationSources from "../../../components/home/integrationSources";
+import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
 
 export default function MarketoPage() {
   return (
     <>
+      <IntegrationsHead
+        name="Marketo"
+        primaryType="destination"
+        slug="marketo"
+      />
       <Container>
         <Row>
           <Col lg={5} md={12}>
@@ -65,7 +71,7 @@ export default function MarketoPage() {
         <Container>
           <Row>
             <Col lg={6} md={6} xs={12}>
-              <h2>Grouparoo & Marketo</h2>
+              <h2>Grouparoo &amp; Marketo</h2>
               <p>
                 Grouparoo is open source data infrastructure to keep customer
                 data in-sync between your data warehouse and 3rd party tools
