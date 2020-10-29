@@ -71,7 +71,7 @@ export default function MarketoPage() {
         <Container>
           <Row>
             <Col lg={6} md={6} xs={12}>
-              <h2>Grouparoo & Marketo</h2>
+              <h2>Grouparoo &amp; Marketo</h2>
               <p>
                 Grouparoo is open source data infrastructure to keep customer
                 data in-sync between your data warehouse and 3rd party tools

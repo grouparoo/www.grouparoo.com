@@ -74,7 +74,7 @@ export default function Snowflake() {
         <Container>
           <Row>
             <Col lg={6} md={6} xs={12}>
-              <h2>Grouparoo & Snowflake</h2>
+              <h2>Grouparoo &amp; Snowflake</h2>
               <p>
                 Grouparoo is open source data infrastructure to keep your
                 customer data in-sync with 3rd party tools.

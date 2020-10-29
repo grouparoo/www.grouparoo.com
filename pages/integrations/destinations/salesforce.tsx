@@ -71,7 +71,7 @@ export default function SalesforcePage() {
         <Container>
           <Row>
             <Col lg={6} md={6} xs={12}>
-              <h2>Grouparoo & Salesforce</h2>
+              <h2>Grouparoo &amp; Salesforce</h2>
               <p>
                 Grouparoo is open source data infrastructure to keep customer
                 data in-sync between your data warehouse and 3rd party tools
