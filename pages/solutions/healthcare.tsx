@@ -15,7 +15,7 @@ export default function Healthcare() {
         />
         <link
           rel="canonical"
-          href="http://www.grouparoo.com/solutions/healthcare"
+          href="https://www.grouparoo.com/solutions/healthcare"
         />
       </Head>
 
@@ -55,7 +55,7 @@ export default function Healthcare() {
                   size="sm"
                   variant="outline-primary"
                   style={{ padding: ".5rem 1rem" }}
-                  href="http://www.grouparoo.com/docs"
+                  href="https://www.grouparoo.com/docs"
                 >
                   Install Now
                 </Button>
