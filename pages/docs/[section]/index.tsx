@@ -24,7 +24,7 @@ export default function DocPage({ pageProps }) {
       <Head>
         <title>Grouparoo Docs: {frontMatter.title}</title>
         <meta name="description" content={frontMatter.pullQuote} />
-        <link rel="canonical" href={`http://www.grouparoo.com${path}`} />
+        <link rel="canonical" href={`https://www.grouparoo.com${path}`} />
       </Head>
 
       <Container>

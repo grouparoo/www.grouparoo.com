@@ -18,7 +18,7 @@ export default function IndexPage() {
         />
         <link
           rel="canonical"
-          href="http://www.grouparoo.com/solutions/marketers"
+          href="https://www.grouparoo.com/solutions/marketers"
         />
       </Head>
 

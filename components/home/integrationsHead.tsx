@@ -19,7 +19,7 @@ export default function IntegrationsHead({
         />
         <link
           rel="canonical"
-          href={`http://www.grouparoo.com/integrations/${primaryType}s/${slug}`}
+          href={`https://www.grouparoo.com/integrations/${primaryType}s/${slug}`}
         />
       </Head>
     </>
