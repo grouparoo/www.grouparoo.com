@@ -7,16 +7,16 @@ image: "events-are-probably-wrong-for-you/funnel.png"
 tags: [product, engineering, marketing]
 ---
 
-Many businesses have built great analytics products to help with tracking the actions your users are taking in your product ([Mixpanel](http://mixpanel.com), [Pendo](http://pendo.io), and [Amplitude](http://amplitude.com), to name a few). These products use an events-based data model where they track user behavior, usually client-side, so you can understand and visualize behavior like page views and button clicks. While this event-based model has been somewhat helpful at modeling high-level funnels and actions, we’ve learned over time that this model often creates more problems and challenges than they actually solve. Speaking as a product manager who has lobbied to integrate these kinds of analytics tools in the past, I’m sharing my thoughts on why events are usually wrong for tracking product usage.
+Many businesses have built great analytics products to help with tracking the actions your users are taking in your product ([Mixpanel](https://mixpanel.com), [Pendo](https://pendo.io), and [Amplitude](https://amplitude.com), to name a few). These products use an events-based data model where they track user behavior, usually client-side, so you can understand and visualize behavior like page views and button clicks. While this event-based model has been somewhat helpful at modeling high-level funnels and actions, we’ve learned over time that this model often creates more problems and challenges than they actually solve. Speaking as a product manager who has lobbied to integrate these kinds of analytics tools in the past, I’m sharing my thoughts on why events are usually wrong for tracking product usage.
 
 ## **You’re adding additional work every time you make changes to your product or want to track something new**
 
-When I worked at [TaskRabbit](http://taskrabbit.com), my fellow product managers and I prioritized integrating one of these event-based analytics tools into our products. The promise was very enticing: gaining visibility into how our users were using our apps, allowing us to analyze our funnels, and then driving product insights.
+When I worked at [TaskRabbit](https://www.taskrabbit.com), my fellow product managers and I prioritized integrating one of these event-based analytics tools into our products. The promise was very enticing: gaining visibility into how our users were using our apps, allowing us to analyze our funnels, and then driving product insights.
 
 While this tool was great for tracking client-side actions like button clicks and page views, our funnel analyses inevitably needed to incorporate server-side actions for us to get the full picture. However, our engineering team was reluctant to add more events for a few reasons:
 
 - Triggering events from the server-side meant additional work purely for tracking purposes.
-- The data from this work was then duplicated as we also had [Looker](http://looker.com) pointing to our data warehouse.
+- The data from this work was then duplicated as we also had [Looker](https://www.looker.com) pointing to our data warehouse.
 
 The engineers obliged due to my persistence, but I should have listened. Now, every new feature had an additional level of overhead and discussion: do we need to add a new event both server-side and client-side? How do we want to track it? How much time will it take to add this tracking? Do we really need to track this event?
 
@@ -26,7 +26,7 @@ And on the other end of the spectrum, let’s say you choose _not_ to instrument
 
 ## **You now have multiple data sources.**
 
-With events, you now have multiple data sources. Do you trust the data in [Google Analytics](http://analytics.google.com)/[Amplitude](http://amplitude.com) and friends? Or do you trust your data warehouse? Analyzing your funnel now becomes fraught as you might end up combining data between different data sources. The data in your data warehouse will probably differ from the data that you see in Mixpanel, so you can either spend days if not weeks trying to debug the source of the discrepancy, or you can just accept that there’s some amount of variance (probably 10%-ish) between your data sources. Inevitably, you’ll likely pick one data source as your source of truth and just ignore or heavily discount the others.
+With events, you now have multiple data sources. Do you trust the data in [Google Analytics](https://analytics.google.com)/[Amplitude](https://amplitude.com) and friends? Or do you trust your data warehouse? Analyzing your funnel now becomes fraught as you might end up combining data between different data sources. The data in your data warehouse will probably differ from the data that you see in Mixpanel, so you can either spend days if not weeks trying to debug the source of the discrepancy, or you can just accept that there’s some amount of variance (probably 10%-ish) between your data sources. Inevitably, you’ll likely pick one data source as your source of truth and just ignore or heavily discount the others.
 
 ## **Directional data is helpful for analysis, but not much else**
 
