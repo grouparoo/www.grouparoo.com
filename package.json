@@ -71,7 +71,7 @@
     "prettier": "2.1.2",
     "responsive-loader": "2.2.0",
     "svg-sprite-loader": "5.0.0",
-    "ts-jest": "26.4.2",
+    "ts-jest": "26.4.3",
     "ts-node": "9.0.0",
     "webp-loader": "0.6.0",
     "xml2js": "0.4.23"
