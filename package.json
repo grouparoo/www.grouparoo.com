@@ -45,7 +45,7 @@
     "react-dom": "16.14.0",
     "react-hook-form": "6.9.6",
     "react-moment": "1.0.0",
-    "react-syntax-highlighter": "15.2.1",
+    "react-syntax-highlighter": "15.3.0",
     "remark-external-links": "^8.0.0",
     "sass": "1.27.0",
     "sharp": "0.26.2",
