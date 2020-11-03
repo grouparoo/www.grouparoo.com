@@ -93,6 +93,7 @@ export async function getStaticProps({ params }) {
   return { props: { source, frontMatter, docs, path } };
 }
 
-export async function getStaticPaths(depth = 1) {
+export async function getStaticPaths(args: { depth: number }) {
+  const depth = args.depth || 1;
   return getStaticMdxPaths(["docs"], depth);
 }

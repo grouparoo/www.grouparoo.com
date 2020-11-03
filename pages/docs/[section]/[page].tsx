@@ -12,5 +12,5 @@ export async function getStaticProps(ctx) {
 }
 
 export async function getStaticPaths() {
-  return DocPageGetStaticPaths(2);
+  return DocPageGetStaticPaths({ depth: 2 });
 }
