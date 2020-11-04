@@ -44,7 +44,7 @@ export default function SalesforcePage() {
             <IntegrationCard
               name="Salesforce"
               slug="salesforce"
-              image="salesforce.jpg"
+              image="salesforce.png"
               showLink={false}
             />
           </Col>
@@ -149,7 +149,7 @@ export default function SalesforcePage() {
             <IntegrationMappings
               name="Salesforce"
               slug="salesforce"
-              image="salesforce.jpg"
+              image="salesforce.png"
               destinationProfile="Salesforce Lead/Contact"
               destinationProperty="Salesforce Lead/Contact Fields"
               destinationGroup="Salesforce Campaigns"

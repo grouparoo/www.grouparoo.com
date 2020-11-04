@@ -51,8 +51,6 @@ export default function WhyOpenSource() {
                   width: 75,
                   height: 75,
                   borderRadius: 5,
-                  objectFit: "cover",
-                  objectPosition: "45% 50%",
                 }}
                 width={100}
                 src={require("../../public/images/home/gdpr.png")}
