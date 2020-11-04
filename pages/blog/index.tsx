@@ -57,6 +57,7 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
     <>
       <Head>
         <title>Grouparoo Blog</title>
+        <link rel="canonical" href="https://www.grouparoo.com/blog" />
         <link
           rel="alternate"
           title="JSON Feed: Grouparoo Blog"

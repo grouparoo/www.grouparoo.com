@@ -58,6 +58,7 @@
     "@types/jest": "26.0.15",
     "@types/node": "14.14.6",
     "@types/react-dom": "16.9.9",
+    "cheerio": "1.0.0-rc.3",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.5",
     "image-trace-loader": "1.0.2",

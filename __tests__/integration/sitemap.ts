@@ -7,7 +7,7 @@ let url: string;
 // stub the selenium injected variables
 declare var by: any;
 
-describe("integration", () => {
+describe("sitemap integration", () => {
   let urls;
 
   beforeAll(async () => {
