@@ -136,7 +136,7 @@ export const PluginData: Array<{
     description: "",
     priority: 100,
     slug: "salesforce",
-    logo: "salesforce.jpg",
+    logo: "salesforce.png",
     primaryType: "destination",
     otherTypes: [],
     category: "crm",

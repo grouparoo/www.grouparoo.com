@@ -13,6 +13,7 @@ export default function FourOhFour() {
               <Image
                 width="100%"
                 src="https://media.giphy.com/media/5dWWa4tYjpBSM/giphy.gif"
+                alt="Kangaroo dropping ball"
                 rounded
               />
             </Col>

@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import TeamMember from "./teamMember";
 
 export default function WhoWeAre() {
@@ -34,7 +34,11 @@ export default function WhoWeAre() {
                   Previously:
                   <br />
                   CTO, Technical Co-Founder{" "}
-                  <a href="https://www.taskrabbit.com" target="_blank">
+                  <a
+                    href="https://www.taskrabbit.com"
+                    target="_blank"
+                    rel="noreferrer nofollow"
+                  >
                     @TaskRabbit
                   </a>
                 </span>
@@ -57,7 +61,11 @@ export default function WhoWeAre() {
                   Previously:
                   <br />
                   Founder{" "}
-                  <a href="https://actionherojs.com" target="_blank">
+                  <a
+                    href="https://actionherojs.com"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     @ActionheroJS
                   </a>{" "}
                   <br />
@@ -65,6 +73,7 @@ export default function WhoWeAre() {
                   <a
                     href="https://www.airbus.com/innovation/urban-air-mobility/voom.html"
                     target="_blank"
+                    rel="noreferrer nofollow"
                   >
                     @Voom
                   </a>
@@ -87,7 +96,11 @@ export default function WhoWeAre() {
                   <br /> Previously:
                   <br />
                   Product{" "}
-                  <a href="https://www.stripe.com" target="_blank">
+                  <a
+                    href="https://www.stripe.com"
+                    target="_blank"
+                    rel="noreferrer nofollow"
+                  >
                     @Stripe
                   </a>{" "}
                   <br />
@@ -95,6 +108,7 @@ export default function WhoWeAre() {
                   <a
                     href="https://www.crunchbase.com/organization/remedy-labs-inc"
                     target="_blank"
+                    rel="noreferrer nofollow"
                   >
                     @Remedy
                   </a>

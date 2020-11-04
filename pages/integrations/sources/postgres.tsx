@@ -143,6 +143,7 @@ export default function PostgresPage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/postgres/add-postgres-app.png")}
+              alt="Grouparoo Postrgres settings"
             />
           </Col>
         </Row>
@@ -163,6 +164,7 @@ export default function PostgresPage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/postgres/postgres-table-mode.png")}
+              alt="Postgres table source"
             />
           </Col>
         </Row>
@@ -183,6 +185,7 @@ export default function PostgresPage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/postgres/postgres-query-mode.png")}
+              alt="Postgres query source"
             />
           </Col>
         </Row>

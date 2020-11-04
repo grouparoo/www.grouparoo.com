@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Container, Row, Col, Image, Alert, Card } from "react-bootstrap";
+import { Container, Row, Col, Image, Card } from "react-bootstrap";
 import WhoWeAre from "../components/home/whoWeAre";
 import JobBoard from "../components/jobBoard";
 
@@ -23,7 +23,11 @@ export default function About() {
         </Row>
         <Row>
           <Col xl={6} lg={5} md={4}>
-            <Image thumbnail src={require("../public/images/team/team.jpg")} />
+            <Image
+              thumbnail
+              src={require("../public/images/team/team.jpg")}
+              alt="Team photo"
+            />
             <p>
               <small>
                 <em>The Grouparoo Founding Meeting</em>

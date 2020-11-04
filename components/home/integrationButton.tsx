@@ -31,6 +31,7 @@ export default function IntegrationButton({
                 borderRadius: 4,
               }}
               src={require(`../../public/images/home/integrations/${slug}/${image}`)}
+              alt={name}
             />
             {name}
           </Button>

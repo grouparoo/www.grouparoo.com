@@ -17,6 +17,7 @@ export default function DocsIndex({ pageProps }) {
     <>
       <Head>
         <title>Grouparoo Documentation</title>
+        <link rel="canonical" href="https://www.grouparoo.com/docs" />
       </Head>
 
       <Container>

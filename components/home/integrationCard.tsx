@@ -31,7 +31,12 @@ export default function IntegrationCard({
         className={showLink ? "integrationCard" : ""}
       >
         <Card.Body>
-          <SmallIntegration fillWidth={true} image={image} slug={slug} />
+          <SmallIntegration
+            fillWidth={true}
+            image={image}
+            slug={slug}
+            name={name}
+          />
           <Card.Text>
             <strong>{name}</strong>
           </Card.Text>

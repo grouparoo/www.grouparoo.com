@@ -82,12 +82,14 @@ export default function BlogPage({ pageProps }) {
                 post.title
               }" from @grouparoo &url=${`https://www.grouparoo.com${post.path}`}`}
               target="_blank"
+              rel="noreferrer nofollow"
             >
               <p>
                 Share this post{" "}
                 <Image
                   style={{ width: 25 }}
                   src={require("../../public/images/home/twitter.png")}
+                  alt="Twitter Logo"
                 />
               </p>
             </a>

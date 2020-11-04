@@ -173,6 +173,7 @@ export default function SailthruPage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/sailthru/grouparoo-to-sailthru.png")}
+              alt="Map data to Sailthru"
             />
           </Col>
         </Row>
@@ -193,6 +194,7 @@ export default function SailthruPage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/sailthru/sailthru-list.png")}
+              alt="List in Sailthru"
             />
           </Col>
         </Row>

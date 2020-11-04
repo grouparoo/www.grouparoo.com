@@ -133,6 +133,7 @@ export default function Healthcare() {
                 className="howItWorksImageWithoutDropShadow"
                 width="90%"
                 src={require("../../public/images/home/bowtie.svg")}
+                alt="Grouparoo sources and destinations connected"
               />
             </Col>
           </Row>
@@ -163,6 +164,7 @@ export default function Healthcare() {
                 className="howItWorksImage"
                 width="100%"
                 src={require("../../public/images/home/how-it-works-1.png")}
+                alt="Grouparoo profile"
               />
             </Col>
           </Row>
@@ -181,6 +183,7 @@ export default function Healthcare() {
                 className="howItWorksImage"
                 style={{ width: "100%" }}
                 src={require("../../public/images/home/how-it-works-2.png")}
+                alt="Grouparoo groups"
               />
             </Col>
           </Row>
@@ -199,6 +202,7 @@ export default function Healthcare() {
                 className="howItWorksImage"
                 style={{ width: "100%" }}
                 src={require("../../public/images/home/how-it-works-3.png")}
+                alt="Grouparoo destination"
               />
             </Col>
           </Row>
@@ -217,6 +221,7 @@ export default function Healthcare() {
                 className="howItWorksImage"
                 style={{ width: "100%" }}
                 src={require("../../public/images/home/how-it-works-4.png")}
+                alt="Data synced to destination"
               />
             </Col>
           </Row>
@@ -277,18 +282,21 @@ export default function Healthcare() {
                       <Image
                         style={{ width: "100%" }}
                         src={require("../../public/images/home/retention-marketing.png")}
+                        alt="Sync groups to destinations"
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="customer-support">
                       <Image
                         style={{ width: "100%" }}
                         src={require("../../public/images/home/solutions/healthcare/zendesk-users.png")}
+                        alt="Users in Zendesk"
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="product-customization">
                       <Image
                         style={{ width: "100%" }}
                         src={require("../../public/images/home/solutions/healthcare/in-product.png")}
+                        alt="Map data to product database"
                       />
                     </Tab.Pane>
                   </Tab.Content>
@@ -311,6 +319,7 @@ export default function Healthcare() {
                 <Image
                   style={{ width: "95%" }}
                   src={require("../../public/images/home/retention-marketing.png")}
+                  alt="Sync groups to destinations"
                 />
               </Col>
             </Row>
@@ -329,6 +338,7 @@ export default function Healthcare() {
                 <Image
                   style={{ width: "95%" }}
                   src={require("../../public/images/home/solutions/healthcare/zendesk-users.png")}
+                  alt="Users in Zendesk"
                 />
               </Col>
             </Row>
@@ -347,6 +357,7 @@ export default function Healthcare() {
                 <Image
                   style={{ width: "95%" }}
                   src={require("../../public/images/home/solutions/healthcare/in-product.png")}
+                  alt="Map data to product database"
                 />
               </Col>
             </Row>

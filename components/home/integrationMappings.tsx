@@ -26,6 +26,7 @@ export default function IntegrationMappings({
           <Image
             style={imageStyle}
             src={require("../../public/images/home/logo-square-with-padding-blue-background.svg")}
+            alt="Grouparoo Logo"
           />
           <br />
           <br />
@@ -47,6 +48,7 @@ export default function IntegrationMappings({
           <Image
             style={imageStyle}
             src={require(`../../public/images/home/integrations/${slug}/${image}`)}
+            alt={name}
           />
           <br />
           <br />

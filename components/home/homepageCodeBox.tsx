@@ -22,6 +22,7 @@ export default function HomepageCodeBox({ code, icon }) {
             className="d-none d-md-block"
             style={{ paddingBottom: 0 }}
             src={require(`../../public/images/home/${icon}.svg`)}
+            alt={icon}
           />
 
           {/* Mobile  */}
@@ -29,6 +30,7 @@ export default function HomepageCodeBox({ code, icon }) {
             className="d-md-none"
             style={{ paddingBottom: 20 }}
             src={require(`../../public/images/home/${icon}.svg`)}
+            alt={icon}
           />
         </Col>
         <Col>{code}</Col>

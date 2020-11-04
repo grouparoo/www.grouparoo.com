@@ -31,6 +31,7 @@ export default function WhyOpenSource() {
                   padding: 10,
                 }}
                 src={require("../../public/images/home/github.png")}
+                alt="Github Logo"
               />
             </Col>
           </Row>
@@ -50,11 +51,10 @@ export default function WhyOpenSource() {
                   width: 75,
                   height: 75,
                   borderRadius: 5,
-                  objectFit: "cover",
-                  objectPosition: "45% 50%",
                 }}
                 width={100}
                 src={require("../../public/images/home/gdpr.png")}
+                alt="GDPR Logo"
               />
             </Col>
           </Row>

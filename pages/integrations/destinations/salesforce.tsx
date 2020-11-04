@@ -44,7 +44,7 @@ export default function SalesforcePage() {
             <IntegrationCard
               name="Salesforce"
               slug="salesforce"
-              image="salesforce.jpg"
+              image="salesforce.png"
               showLink={false}
             />
           </Col>
@@ -149,7 +149,7 @@ export default function SalesforcePage() {
             <IntegrationMappings
               name="Salesforce"
               slug="salesforce"
-              image="salesforce.jpg"
+              image="salesforce.png"
               destinationProfile="Salesforce Lead/Contact"
               destinationProperty="Salesforce Lead/Contact Fields"
               destinationGroup="Salesforce Campaigns"
@@ -174,6 +174,7 @@ export default function SalesforcePage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/salesforce/grouparoo-to-salesforce.png")}
+              alt="Map data to Salesforce"
             />
           </Col>
         </Row>
@@ -194,6 +195,7 @@ export default function SalesforcePage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/salesforce/salesforce-campaign.png")}
+              alt="Campaign in Salesforce"
             />
           </Col>
         </Row>

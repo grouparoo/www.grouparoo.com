@@ -13,6 +13,7 @@ export async function getSitemapStream() {
   const paths = glob
     .sync(path.join(pagesDir, "**", "+(*.tsx|*.mdx)"))
     .filter((p) => !p.match(/\/\[.*\].*.tsx$/))
+    .filter((p) => !p.match(/\/_document.tsx$/))
     .filter((p) => !p.match(/\/_app.tsx$/))
     .filter((p) => !p.match(/\/404.tsx$/))
     .filter((p) => !p.match(/\/docker-compose.tsx$/))

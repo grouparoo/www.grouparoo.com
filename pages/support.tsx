@@ -28,6 +28,7 @@ export default function Support() {
               className="headerImage"
               thumbnail
               src={require("../public/images/support/support.jpg")}
+              alt="Computers and people"
             />
 
             <p>
@@ -51,6 +52,7 @@ export default function Support() {
               <a
                 target="_blank"
                 href="https://github.com/grouparoo/grouparoo/issues/new/choose"
+                rel="noreferrer"
               >
                 Github Issue
               </a>{" "}
@@ -76,6 +78,7 @@ export default function Support() {
               <a
                 href="https://github.com/grouparoo/grouparoo/issues/new/choose"
                 target="_blank"
+                rel="noreferrer"
               >
                 Github Issue
               </a>{" "}

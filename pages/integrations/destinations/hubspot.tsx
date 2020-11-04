@@ -169,6 +169,7 @@ export default function HubspotPage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/hubspot/grouparoo-to-hubspot.png")}
+              alt="Hubspot destination settings"
             />
           </Col>
         </Row>
@@ -189,6 +190,7 @@ export default function HubspotPage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/hubspot/hubspot-list.png")}
+              alt="List in Hubspot"
             />
           </Col>
         </Row>
