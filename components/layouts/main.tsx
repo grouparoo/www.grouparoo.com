@@ -3,7 +3,6 @@ import Head from "next/head";
 import GoogleAnalytics from "../googleAnalytics";
 import Navigation from "../navigation";
 import Footer from "../footer";
-import { Container } from "react-bootstrap";
 
 function PageTemplate({ children }) {
   return (
