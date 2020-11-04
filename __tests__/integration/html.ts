@@ -83,11 +83,10 @@ describe("sitemap integration", () => {
       });
 
       test("images", async () => {
-        const images = $("img");
         const altTagMissing = [];
-        images.each(function () {
-          const image = $(this);
-          const src = image.attr("src");
+        $("img").each(function () {
+          const tag = $(this);
+          const src = tag.attr("src");
           expect(src).toBeTruthy();
 
           let name = src;
@@ -95,13 +94,34 @@ describe("sitemap integration", () => {
             name = name.slice(0, 80);
           }
 
-          const alt = image.attr("alt");
+          const alt = tag.attr("alt");
           if (!alt) {
             altTagMissing.push(name);
           }
         });
 
         expect(altTagMissing).toEqual([]);
+      });
+
+      test("links", async () => {
+        const missingRefOnBlank = [];
+        $("a").each(function () {
+          const tag = $(this);
+          const href = tag.attr("href");
+          const id = tag.attr("id");
+          const name = href || id;
+          expect(name).toBeTruthy();
+
+          const target = tag.attr("target");
+          const rel = tag.attr("rel") || "";
+          if (target === "_blank") {
+            if (!rel.includes("noopener") && !rel.includes("noreferrer")) {
+              missingRefOnBlank.push(name);
+            }
+          }
+        });
+
+        expect(missingRefOnBlank).toEqual([]);
       });
     });
   }

@@ -114,6 +114,7 @@ export default function IndexPage() {
               <a
                 href="https://heroku.com/deploy?template=https://github.com/grouparoo/app-example"
                 target="_blank"
+                rel="noreferrer nofollow"
               >
                 <HomepageCodeBox icon="heroku" code={`[ click to deploy ]`} />
               </a>

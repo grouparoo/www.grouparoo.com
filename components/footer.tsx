@@ -15,15 +15,23 @@ function LogoAndSocialLinks({ router }) {
       <br />
       <br />
       <p>
-        <a href="https://www.twitter.com/grouparoo" target="_blank">
+        <a
+          href="https://www.twitter.com/grouparoo"
+          target="_blank"
+          rel="noreferrer"
+        >
           Twitter
         </a>{" "}
         |{" "}
-        <a href="https://github.com/grouparoo" target="_blank">
+        <a href="https://github.com/grouparoo" target="_blank" rel="noreferrer">
           Github
         </a>{" "}
         |{" "}
-        <a href="https://www.linkedin.com/company/grouparoo" target="_blank">
+        <a
+          href="https://www.linkedin.com/company/grouparoo"
+          target="_blank"
+          rel="noreferrer"
+        >
           LinkedIn
         </a>{" "}
       </p>
@@ -45,6 +53,7 @@ function EditThisPage({ router }) {
           <a
             href={`${urlBase}/pages/docs/${docsPageMatch[1]}.mdx`}
             target="_blank"
+            rel="noreferrer"
           >
             Edit this page on Github
           </a>
@@ -60,6 +69,7 @@ function EditThisPage({ router }) {
           <a
             href={`${urlBase}/pages/blog/${blogPageMatch[1]}.mdx`}
             target="_blank"
+            rel="noreferrer"
           >
             View this page in Markdown
           </a>
@@ -127,6 +137,7 @@ export default function Footer() {
                 <a
                   target="_blank"
                   href="https://github.com/grouparoo/grouparoo"
+                  rel="noreferrer"
                 >
                   Github
                 </a>

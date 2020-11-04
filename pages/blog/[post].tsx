@@ -82,6 +82,7 @@ export default function BlogPage({ pageProps }) {
                 post.title
               }" from @grouparoo &url=${`https://www.grouparoo.com${post.path}`}`}
               target="_blank"
+              rel="noreferrer nofollow"
             >
               <p>
                 Share this post{" "}

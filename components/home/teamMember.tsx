@@ -28,17 +28,17 @@ export default function TeamMember({
       </Row>
       <Row>
         <Col>
-          <a href={github} target="_blank">
+          <a href={github} target="_blank" rel="noreferrer">
             <SocialIconGrayscale name="github" />
           </a>
         </Col>
         <Col>
-          <a href={twitter} target="_blank">
+          <a href={twitter} target="_blank" rel="noreferrer">
             <SocialIconGrayscale name="twitter" />
           </a>
         </Col>
         <Col>
-          <a href={linkedIn} target="_blank">
+          <a href={linkedIn} target="_blank" rel="noreferrer">
             <SocialIconGrayscale name="linkedin" />
           </a>
         </Col>

@@ -66,7 +66,7 @@ function releaseHeader(note: ReleaseNote, isFeature: boolean) {
         <Col style={{ textAlign: "right" }} xs={2}>
           {github && (
             <Link href={github}>
-              <a style={{ paddingLeft: 10 }} target="_blank">
+              <a style={{ paddingLeft: 10 }} target="_blank" rel="noreferrer">
                 <FontAwesomeIcon icon={["fab", "github"]} size="xs" />
               </a>
             </Link>
