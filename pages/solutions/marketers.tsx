@@ -137,6 +137,7 @@ export default function IndexPage() {
                 className="howItWorksImageWithoutDropShadow"
                 width="90%"
                 src={require("../../public/images/home/bowtie.svg")}
+                alt="Grouparoo sources and destination connections"
               />
             </Col>
           </Row>
@@ -167,6 +168,7 @@ export default function IndexPage() {
                 className="howItWorksImage"
                 width="100%"
                 src={require("../../public/images/home/how-it-works-1.png")}
+                alt="Grouparoo profile"
               />
             </Col>
           </Row>
@@ -185,6 +187,7 @@ export default function IndexPage() {
                 className="howItWorksImage"
                 style={{ width: "100%" }}
                 src={require("../../public/images/home/how-it-works-2.png")}
+                alt="Grouparoo groups"
               />
             </Col>
           </Row>
@@ -202,6 +205,7 @@ export default function IndexPage() {
                 className="howItWorksImage"
                 style={{ width: "100%" }}
                 src={require("../../public/images/home/how-it-works-3.png")}
+                alt="Grouparoo destination"
               />
             </Col>
           </Row>
@@ -220,6 +224,7 @@ export default function IndexPage() {
                 className="howItWorksImage"
                 style={{ width: "100%" }}
                 src={require("../../public/images/home/how-it-works-4.png")}
+                alt="Data synced to destination"
               />
             </Col>
           </Row>
@@ -279,18 +284,21 @@ export default function IndexPage() {
                       <Image
                         style={{ width: "100%" }}
                         src={require("../../public/images/home/retention-marketing.png")}
+                        alt="Sync groups to destinations"
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="ops-enablement">
                       <Image
                         style={{ width: "100%" }}
                         src={require("../../public/images/home/marketing-ops.png")}
+                        alt="Create properties from sources"
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="growth-marketing">
                       <Image
                         style={{ width: "100%" }}
                         src={require("../../public/images/home/growth-marketing.png")}
+                        alt="Map data to destinations"
                       />
                     </Tab.Pane>
                   </Tab.Content>
@@ -313,6 +321,7 @@ export default function IndexPage() {
                 <Image
                   style={{ width: "95%" }}
                   src={require("../../public/images/home/retention-marketing.png")}
+                  alt="Sync groups to destinations"
                 />
               </Col>
             </Row>
@@ -321,7 +330,7 @@ export default function IndexPage() {
 
             <Row>
               <Col md={6}>
-                <h3>Marketing Ops & Enablement</h3>
+                <h3>Marketing Ops &amp; Enablement</h3>
                 <p>
                   Keep customer data definitions uniform and tidy, all without
                   needing CSVs or engineering help.
@@ -331,6 +340,7 @@ export default function IndexPage() {
                 <Image
                   style={{ width: "95%" }}
                   src={require("../../public/images/home/marketing-ops.png")}
+                  alt="Create properties from sources"
                 />
               </Col>
             </Row>
@@ -349,6 +359,7 @@ export default function IndexPage() {
                 <Image
                   style={{ width: "95%" }}
                   src={require("../../public/images/home/growth-marketing.png")}
+                  alt="Map data to destinations"
                 />
               </Col>
             </Row>

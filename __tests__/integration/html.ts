@@ -56,13 +56,16 @@ describe("sitemap integration", () => {
         testUrl = productionUrl.replace(productionHost, url);
         testPath = productionUrl.replace(productionHost, "");
         const response = await fetch(testUrl);
+        expect(response.status).toEqual(200);
         const htmlContent = await response.text();
         $ = cheerio.load(htmlContent);
       });
+
       test("title", async () => {
         const title = $("title").text();
         expect(title).toBeTruthy();
       });
+
       test("canonical link", async () => {
         const link = $("link[rel=canonical]");
         expect(link).toBeTruthy();
@@ -77,6 +80,28 @@ describe("sitemap integration", () => {
         } else {
           expect(href).toEqual(productionUrl);
         }
+      });
+
+      test("images", async () => {
+        const images = $("img");
+        const altTagMissing = [];
+        images.each(function () {
+          const image = $(this);
+          const src = image.attr("src");
+          expect(src).toBeTruthy();
+
+          let name = src;
+          if (name.startsWith("data:")) {
+            name = name.slice(0, 80);
+          }
+
+          const alt = image.attr("alt");
+          if (!alt) {
+            altTagMissing.push(name);
+          }
+        });
+
+        expect(altTagMissing).toEqual([]);
       });
     });
   }

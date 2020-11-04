@@ -174,6 +174,7 @@ export default function SalesforcePage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/salesforce/grouparoo-to-salesforce.png")}
+              alt="Map data to Salesforce"
             />
           </Col>
         </Row>
@@ -194,6 +195,7 @@ export default function SalesforcePage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/salesforce/salesforce-campaign.png")}
+              alt="Campaign in Salesforce"
             />
           </Col>
         </Row>

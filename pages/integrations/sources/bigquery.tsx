@@ -144,6 +144,7 @@ export default function BigQueryPage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/bigquery/add-bigquery-app.png")}
+              alt="Grouparoo BigQuery settings"
             />
           </Col>
         </Row>
@@ -164,6 +165,7 @@ export default function BigQueryPage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/bigquery/bigquery-table-mode.png")}
+              alt="Grouparoo table source settings"
             />
           </Col>
         </Row>
@@ -184,6 +186,7 @@ export default function BigQueryPage() {
             <Image
               className="productScreenshots"
               src={require("../../../public/images/home/integrations/bigquery/bigquery-query-mode.png")}
+              alt="Grouparoo query source settings"
             />
           </Col>
         </Row>

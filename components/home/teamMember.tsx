@@ -17,6 +17,7 @@ export default function TeamMember({
             style={{ height: 150, width: 150, objectFit: "cover" }}
             roundedCircle
             src={require(`../../public/images/team/${image}`)}
+            alt={name}
           />
           <p>
             <strong>{name}</strong>
@@ -59,6 +60,7 @@ function SocialIconGrayscale({ name }) {
       width="20"
       style={{ filter: "grayscale(100%)" }}
       src={require(`../../public/images/home/${name}.png`)}
+      alt={name}
     />
   );
 }

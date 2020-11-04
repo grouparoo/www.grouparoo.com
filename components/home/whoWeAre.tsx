@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import TeamMember from "./teamMember";
 
 export default function WhoWeAre() {

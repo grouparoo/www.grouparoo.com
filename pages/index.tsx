@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Image, Button, Tab, Nav, Row, Col } from "react-bootstrap";
+import { Container, Image, Button, Row, Col } from "react-bootstrap";
 import Head from "next/head";
 import HomepageCodeBox from "../components/home/homepageCodeBox";
 import IntegrationsSection from "../components/home/integrationsSection";
@@ -70,6 +70,7 @@ export default function IndexPage() {
                 className="howItWorksImageWithoutDropShadow"
                 width="90%"
                 src={require("../public/images/home/bowtie.svg")}
+                alt="Grouparoo sources and destination connections"
               />
             </Col>
           </Row>
@@ -143,12 +144,28 @@ export default function IndexPage() {
                   <br />
                   <br />
                   <br />
-                  <SmallIntegration slug="mysql" image="mysql.png" />
-                  <SmallIntegration slug="redshift" image="redshift.svg" />
+                  <SmallIntegration
+                    name="MySQL"
+                    slug="mysql"
+                    image="mysql.png"
+                  />
+                  <SmallIntegration
+                    name="Redshift"
+                    slug="redshift"
+                    image="redshift.svg"
+                  />
                 </Col>
                 <Col>
-                  <SmallIntegration slug="postgres" image="postgres.svg" />
-                  <SmallIntegration slug="bigquery" image="bigquery.png" />
+                  <SmallIntegration
+                    name="Postgres"
+                    slug="postgres"
+                    image="postgres.svg"
+                  />
+                  <SmallIntegration
+                    name="BigQuery"
+                    slug="bigquery"
+                    image="bigquery.png"
+                  />
                 </Col>
                 <Col />
               </Row>
@@ -164,26 +181,30 @@ export default function IndexPage() {
               <Row className="align-items-center">
                 <Col>
                   <SmallIntegration
+                    name="MySQL"
                     slug="mysql"
-                    fillWidth={true}
                     image="mysql.png"
+                    fillWidth={true}
                   />
                   <SmallIntegration
+                    name="Redshift"
                     slug="redshift"
-                    fillWidth={true}
                     image="redshift.svg"
+                    fillWidth={true}
                   />
                 </Col>
                 <Col>
                   <SmallIntegration
+                    name="Postgres"
                     slug="postgres"
-                    fillWidth={true}
                     image="postgres.svg"
+                    fillWidth={true}
                   />
                   <SmallIntegration
+                    name="BigQuery"
                     slug="bigquery"
-                    fillWidth={true}
                     image="bigquery.png"
+                    fillWidth={true}
                   />
                 </Col>
               </Row>
@@ -208,16 +229,26 @@ export default function IndexPage() {
               <Row className="align-items-center">
                 <Col className="d-none d-md-block" />
                 <Col className="d-none d-md-block">
-                  <SmallIntegration slug="mailchimp" image="mailchimp.svg" />
-                  <SmallIntegration slug="marketo" image="marketo.png" />
+                  <SmallIntegration
+                    name="Mailchimp"
+                    slug="mailchimp"
+                    image="mailchimp.svg"
+                  />
+                  <SmallIntegration
+                    name="Marketo"
+                    slug="marketo"
+                    image="marketo.png"
+                  />
                 </Col>
                 <Col className="d-md-none">
                   <SmallIntegration
+                    name="Mailchimp"
                     slug="mailchimp"
                     fillWidth={true}
                     image="mailchimp.svg"
                   />
                   <SmallIntegration
+                    name="Marketo"
                     slug="marketo"
                     fillWidth={true}
                     image="marketo.png"
@@ -228,16 +259,26 @@ export default function IndexPage() {
                   <br />
                   <br />
 
-                  <SmallIntegration slug="hubspot" image="hubspot.svg" />
-                  <SmallIntegration slug="zendesk" image="zendesk.svg" />
+                  <SmallIntegration
+                    name="Hubspot"
+                    slug="hubspot"
+                    image="hubspot.svg"
+                  />
+                  <SmallIntegration
+                    name="Zendesk"
+                    slug="zendesk"
+                    image="zendesk.svg"
+                  />
                 </Col>
                 <Col className="d-md-none">
                   <SmallIntegration
+                    name="Hubspot"
                     slug="hubspot"
                     fillWidth={true}
                     image="hubspot.svg"
                   />
                   <SmallIntegration
+                    name="Zendesk"
                     slug="zendesk"
                     fillWidth={true}
                     image="zendesk.svg"
@@ -261,6 +302,7 @@ export default function IndexPage() {
             >
               <Image
                 src={require("../public/images/home/github-white.png")}
+                alt="Github Logo"
                 width={100}
               />
             </Col>
@@ -286,6 +328,7 @@ export default function IndexPage() {
             <Col className="d-md-none" md={6} style={{ textAlign: "center" }}>
               <Image
                 src={require("../public/images/home/github-white.png")}
+                alt="Github Logo"
                 width={100}
               />
             </Col>
@@ -322,6 +365,7 @@ export default function IndexPage() {
                 className="howItWorksImage"
                 width="100%"
                 src={require("../public/images/home/how-it-works-1.png")}
+                alt="Grouparoo profile"
               />
             </Col>
           </Row>
@@ -340,6 +384,7 @@ export default function IndexPage() {
                 className="howItWorksImage"
                 style={{ width: "100%" }}
                 src={require("../public/images/home/how-it-works-2.png")}
+                alt="Grouparoo groups"
               />
             </Col>
           </Row>
@@ -357,6 +402,7 @@ export default function IndexPage() {
                 className="howItWorksImage"
                 style={{ width: "100%" }}
                 src={require("../public/images/home/how-it-works-3.png")}
+                alt="Grouparoo destination"
               />
             </Col>
           </Row>
@@ -378,6 +424,7 @@ export default function IndexPage() {
                 className="howItWorksImage"
                 style={{ width: "100%" }}
                 src={require("../public/images/home/how-it-works-4.png")}
+                alt="Data synced to destination"
               />
             </Col>
           </Row>

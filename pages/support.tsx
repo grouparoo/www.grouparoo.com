@@ -28,6 +28,7 @@ export default function Support() {
               className="headerImage"
               thumbnail
               src={require("../public/images/support/support.jpg")}
+              alt="Computers and people"
             />
 
             <p>

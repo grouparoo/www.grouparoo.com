@@ -24,6 +24,7 @@ function blogEntry(entry: BlogEntry, idx: number) {
               style={{ width: 50, margin: 10 }}
               roundedCircle
               src={require(`../../public/images/authors/${author.slug}.png`)}
+              alt={author.name}
             />
             {author.name}
           </a>

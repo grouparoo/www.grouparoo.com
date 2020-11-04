@@ -88,6 +88,7 @@ export default function BlogPage({ pageProps }) {
                 <Image
                   style={{ width: 25 }}
                   src={require("../../public/images/home/twitter.png")}
+                  alt="Twitter Logo"
                 />
               </p>
             </a>

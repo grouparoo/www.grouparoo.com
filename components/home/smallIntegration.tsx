@@ -3,10 +3,12 @@ import { Image } from "react-bootstrap";
 export default function SmallIntegration({
   image,
   slug,
+  name,
   fillWidth,
 }: {
   image: string;
   slug: string;
+  name: string;
   fillWidth?: boolean;
 }) {
   return (
@@ -30,6 +32,7 @@ export default function SmallIntegration({
           width: 100,
         }}
         src={require(`../../public/images/home/integrations/${slug}/${image}`)}
+        alt={name}
       />
     </div>
   );

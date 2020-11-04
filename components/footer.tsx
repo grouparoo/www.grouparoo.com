@@ -7,7 +7,11 @@ function LogoAndSocialLinks({ router }) {
 
   return (
     <>
-      <Image style={{ width: 50 }} src={require("../public/images/logo.png")} />
+      <Image
+        style={{ width: 50 }}
+        src={require("../public/images/logo.png")}
+        alt="Grouparoo Logo"
+      />
       <br />
       <br />
       <p>
