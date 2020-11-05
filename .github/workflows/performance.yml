@@ -14,4 +14,5 @@ jobs:
           ./scripts/performance_action
       - uses: marocchino/sticky-pull-request-comment@v1
         with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           path: ./.lighthouseci/comment.md
