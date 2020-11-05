@@ -1,0 +1,18 @@
+name: Performance
+on: pull_request
+jobs:
+  lhci:
+    name: Lighthouse
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'grouparoo/www.grouparoo.com' }}
+    steps:
+      - uses: actions/checkout@master
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Calculate performance
+        run: |
+          ./scripts/performance_action
+      - uses: marocchino/sticky-pull-request-comment@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: ./.lighthouseci/comment.md

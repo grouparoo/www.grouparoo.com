@@ -9,6 +9,9 @@ dump.rdb
 newrelic_agent.log
 *.retry
 
+# Outputs
+.lighthouseci
+
 # API
 web/public/javascript/ActionheroWebsocketClient.js
 web/public/javascript/ActionheroWebsocketClient.min.js
