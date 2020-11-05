@@ -50,12 +50,15 @@ function getScore(data, key) {
     value = "null";
   } else if (score === undefined) {
     value = "undefined";
-  } else if (score >= 0.9) {
-    emoji = "🟢";
-  } else if (score >= 0.75) {
-    emoji = "🟡";
   } else {
-    emoji = "🔴";
+    value = Math.round(score * 100);
+    if (value >= 90) {
+      emoji = "🟢";
+    } else if (value >= 60) {
+      emoji = "🟠";
+    } else {
+      emoji = "🔴";
+    }
   }
 
   return `${emoji} ${value || "unknown"}`;
