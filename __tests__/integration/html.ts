@@ -1,26 +1,9 @@
 import * as helper from "../helpers/specHelper";
-import path from "path";
-import fs from "fs";
 import cheerio from "cheerio";
 import fetch from "isomorphic-fetch";
+import { readSitemap } from "../../scripts/readSitemap";
 
 let url: string;
-
-function allPages() {
-  const fullPath = path.resolve(
-    path.join(__dirname, "..", "..", "public", "sitemap.xml")
-  );
-  const urls = [];
-  const content = fs.readFileSync(fullPath).toString();
-  const regex = /<\s*loc\s*>(.+)<\s*\/loc\s*>/g;
-
-  let match;
-  while ((match = regex.exec(content)) !== null) {
-    const found = match[1];
-    urls.push(found);
-  }
-  return urls;
-}
 
 const EDGE_CASES = {
   "/solutions/engineers": { canonical: "https://www.grouparoo.com/" },
@@ -37,7 +20,7 @@ describe("sitemap integration", () => {
   });
 
   // parse sitemap and make a test for each
-  const pages = allPages();
+  const pages = readSitemap();
 
   test("read sitemap", async () => {
     expect(pages.length).toBeGreaterThan(10);
