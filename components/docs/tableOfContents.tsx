@@ -29,22 +29,24 @@ export function TableOfContents({ docs }) {
                       <strong>{capitalize(section)}</strong>
                     </a>
                   </Link>
-                  {tableOfContents[section].map((entry) => (
-                    <li key={`toc-${section}-${entry.title}`}>
-                      <Link href={entry.path}>
-                        <a
-                          style={{
-                            color:
-                              router.asPath === entry.path
-                                ? highlightColor
-                                : undefined,
-                          }}
-                        >
-                          {entry.title}
-                        </a>
-                      </Link>
-                    </li>
-                  ))}
+                  <ul>
+                    {tableOfContents[section].map((entry) => (
+                      <li key={`toc-${section}-${entry.title}`}>
+                        <Link href={entry.path}>
+                          <a
+                            style={{
+                              color:
+                                router.asPath === entry.path
+                                  ? highlightColor
+                                  : undefined,
+                            }}
+                          >
+                            {entry.title}
+                          </a>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </Fragment>
               );
             })}
