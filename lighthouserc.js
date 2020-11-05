@@ -1,9 +1,24 @@
-const readSitemap = require("./scripts/readSitemap").default;
-const urls = readSitemap("http://localhost:54321");
+const readSitemap = require("./scripts/readSitemap").readSitemap;
+const sitemapUrls = readSitemap("http://localhost:54321");
+
+// filter out some pages
+const urls = [];
+let whatsNew = false;
+for (const url of sitemapUrls) {
+  // only need 1 /whats-new
+  if (url.includes("/whats-new/")) {
+    if (whatsNew) {
+      continue;
+    }
+    whatsNew = true;
+  }
+  urls.push(url);
+}
 
 module.exports = {
   ci: {
     collect: {
+      numberOfRuns: 1,
       url: urls,
       startServerCommand: "PORT=54321 npm start",
     },

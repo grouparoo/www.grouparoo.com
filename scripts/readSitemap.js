@@ -21,4 +21,4 @@ function readSitemap(changeHost = null) {
   return urls;
 }
 
-module.exports.default = readSitemap;
+module.exports.readSitemap = readSitemap;
