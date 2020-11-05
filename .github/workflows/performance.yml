@@ -9,16 +9,9 @@ jobs:
       - uses: actions/checkout@master
         with:
           ref: ${{ github.head_ref }}
-      - name: Use Node.js 10.x
-        uses: actions/setup-node@v1
+      - name: Calculate performance
+        run: |
+          ./scripts/performance_action
+      - uses: marocchino/sticky-pull-request-comment@v1
         with:
-          node-version: 10.x
-      - name: Install, Build
-        run: |
-          npm install
-          npm run build
-      - name: Run Lighthouse CI
-        run: |
-          node_modules/.bin/lhci autorun
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          path: ./.lighthouseci/comment.md

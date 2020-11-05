@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+cd `dirname "$0"`
+cd ../
+npm install
+npm run build
+node_modules/.bin/lhci autorun
+
+cd `dirname "$0"`
+../node_modules/.bin/ts-node ./write_lighthouse_comment.ts
