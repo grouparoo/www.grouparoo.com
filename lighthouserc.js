@@ -21,6 +21,17 @@ module.exports = {
       numberOfRuns: 1,
       url: urls,
       startServerCommand: "PORT=54321 npm start",
+      settings: {
+        onlyCategories: [
+          "performance",
+          "best-practices",
+          "accessibility",
+          "seo",
+        ], // removes pwa (progressive web app)
+        skipAudits: [
+          "canonical", // never will be right on localhost
+        ],
+      },
     },
     upload: {
       target: "temporary-public-storage",
