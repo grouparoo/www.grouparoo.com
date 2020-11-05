@@ -1,5 +1,6 @@
 import Head from "next/head";
-import { Container, Row, Col, Image, Card } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import Image from "../components/Image";
 import WhoWeAre from "../components/home/whoWeAre";
 import JobBoard from "../components/jobBoard";
 

@@ -1,4 +1,4 @@
-import { Image } from "react-bootstrap";
+import Image from "../Image";
 
 export default function SmallIntegration({
   image,

@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import getAuthor from "../../utils/getAuthor";
-import { Container, Image } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import Image from "../../components/Image";
 import { BlogEntry, getBlogEntries } from "../../utils/blogPosts";
 import BlogTags from "../../utils/blogTags";
 import AuthorBox from "../../components/blog/authorBox";

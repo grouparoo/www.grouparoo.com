@@ -1,6 +1,7 @@
 import React from "react";
+import Image from "../Image";
 
-function Image(props) {
+function BlogImage(props) {
   const {
     permalink,
     centered,
@@ -52,9 +53,9 @@ function Image(props) {
 
   return (
     <p style={containerStyle}>
-      <img {...imageProps} />
+      <Image {...imageProps} />
     </p>
   );
 }
 
-export default Image;
+export default BlogImage;

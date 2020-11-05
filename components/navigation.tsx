@@ -1,4 +1,5 @@
 import { Nav, Navbar, Container, Button } from "react-bootstrap";
+import Image from "./Image";
 
 export default function Navigation() {
   return (
@@ -7,7 +8,7 @@ export default function Navigation() {
         <br />
         <Navbar variant="light" expand="md" style={{ padding: 5 }}>
           <Navbar.Brand href="/">
-            <img
+            <Image
               src="/images/logo-and-wordmark-black-words.png"
               alt="Grouparoo Logo"
               style={{

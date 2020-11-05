@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Image, Button, Tab, Nav, Row, Col } from "react-bootstrap";
+import { Container, Button, Tab, Nav, Row, Col } from "react-bootstrap";
+import Image from "../../components/Image";
 import Head from "next/head";
 import IntegrationsSection from "../../components/home/integrationsSection";
 import GetStarted from "../../components/home/getStarted";

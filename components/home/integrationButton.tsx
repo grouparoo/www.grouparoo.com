@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Button, Image } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import Image from "../Image";
 
 export default function IntegrationButton({
   name,

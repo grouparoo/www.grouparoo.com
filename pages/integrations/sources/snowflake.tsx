@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
 import IntegrationsHead from "../../../components/home/integrationsHead";

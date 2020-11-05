@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useBootstrapPrefix } from "react-bootstrap/ThemeProvider";
 import { BsPrefixAndClassNameOnlyProps } from "react-bootstrap/helpers";
 
-export interface ImageProps
+export interface MyImageProps
   extends BsPrefixAndClassNameOnlyProps,
     React.ImgHTMLAttributes<HTMLImageElement> {
   fluid?: boolean;
@@ -47,7 +47,7 @@ const defaultProps = {
   thumbnail: false,
 };
 
-const Image = React.forwardRef<HTMLImageElement, ImageProps>(
+const MyImage = React.forwardRef<HTMLImageElement, MyImageProps>(
   (
     { bsPrefix, className, fluid, rounded, roundedCircle, thumbnail, ...props },
     ref
@@ -62,17 +62,13 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>(
     );
 
     return (
-      <img // eslint-disable-line jsx-a11y/alt-text
-        ref={ref}
-        {...props}
-        className={classNames(className, classes)}
-      />
+      <img ref={ref} {...props} className={classNames(className, classes)} />
     );
   }
 );
 
-Image.displayName = "Image";
-Image.propTypes = propTypes;
-Image.defaultProps = defaultProps;
+MyImage.displayName = "MyImage";
+MyImage.propTypes = propTypes;
+MyImage.defaultProps = defaultProps;
 
-export default Image;
+export default MyImage;

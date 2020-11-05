@@ -1,5 +1,6 @@
 import Head from "next/head";
-import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import Image from "../components/Image";
 
 export default function Support() {
   const supportButtonStyle = { marginTop: 10, marginBottom: 40 };

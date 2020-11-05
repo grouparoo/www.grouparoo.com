@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "./Image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 

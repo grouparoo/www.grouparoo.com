@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Image, Button, Row, Col } from "react-bootstrap";
+import { Container, Button, Row, Col } from "react-bootstrap";
+import Image from "../components/Image";
 import Head from "next/head";
 import HomepageCodeBox from "../components/home/homepageCodeBox";
 import IntegrationsSection from "../components/home/integrationsSection";

@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "../components/Image";
 import Link from "next/link";
 
 export default function FourOhFour() {

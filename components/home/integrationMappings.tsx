@@ -1,4 +1,5 @@
-import { Row, Col, Image } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
+import Image from "../Image";
 import BigArrow from "../bigArrow";
 
 export default function IntegrationMappings({
