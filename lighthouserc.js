@@ -19,7 +19,7 @@ module.exports = {
   ci: {
     collect: {
       numberOfRuns: 1,
-      url: ["http://localhost:54321/", "http://localhost:54321/about"],
+      url: urls,
       startServerCommand: "PORT=54321 npm start",
     },
     upload: {
