@@ -5,7 +5,7 @@ import { Alert, Card } from "react-bootstrap";
 import { Feed } from "feed";
 
 function RelativeImage(props) {
-  return BlogImage({ ...props, permalink: false });
+  return BlogImage({ ...props, permalink: true });
 }
 // These keys need to match the one in blog/[post]
 const components = { Image: RelativeImage, Alert, Card, CardBody: Card.Body };
