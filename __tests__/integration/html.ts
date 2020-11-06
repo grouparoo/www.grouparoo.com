@@ -29,6 +29,7 @@ describe("sitemap integration", () => {
   for (let productionUrl of pages) {
     describe(productionUrl, () => {
       let $;
+      let htmlContent;
       let testUrl;
       let testPath;
       const productionHost = "https://www.grouparoo.com";
@@ -40,7 +41,7 @@ describe("sitemap integration", () => {
         testPath = productionUrl.replace(productionHost, "");
         const response = await fetch(testUrl);
         expect(response.status).toEqual(200);
-        const htmlContent = await response.text();
+        htmlContent = await response.text();
         $ = cheerio.load(htmlContent);
       });
 
@@ -69,7 +70,7 @@ describe("sitemap integration", () => {
         const altTagMissing = [];
         $("img").each(function () {
           const tag = $(this);
-          const src = tag.attr("src");
+          const src = tag.attr("src") || tag.attr("data-src");
           expect(src).toBeTruthy();
 
           let name = src;
