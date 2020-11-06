@@ -32,10 +32,10 @@ More insidiously, there are other issues hidden in the `stringification` categor
 The `resolution` class of problems is less dangerous than the `stringification` problems, but it can result in duplicated reads and therefore slower imports. Consider these rows in Postgres:
 
 <Image
-  unsized
-  maxHeight={200}
   alt="Getting your API Key and Secret"
   src="save-your-high-water-marks-as-strings/database.png"
+  width={1000}
+  height={83}
 />
 
 We’ve got values of `2020-07-25 12:18:56.831` for `updated_at`– that’s precision down to fractions of a second! However, that data is lost when the [ `pg`](https://node-postgres.com/) package reads that row and casts it to a `new Date()`. When we eventually build a string out of it to make our next query, we only get `2020-07-25 12:18:56` back. If you follow the advice in our previous post to always compare with equality (`=>`) you won’t skip any rows, but you’ll read the same row back again each time.
