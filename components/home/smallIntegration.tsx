@@ -25,14 +25,12 @@ export default function SmallIntegration({
         justifyContent: "center",
       }}
     >
-      <div style={{ padding: 10 }}>
-        <Image
-          src={`/images/home/integrations/${slug}/${image}`}
-          alt={name}
-          height={100}
-          width={100}
-        />
-      </div>
+      <Image
+        src={`/images/home/integrations/${slug}/${image}`}
+        alt={name}
+        height={80}
+        width={80}
+      />
     </div>
   );
 }

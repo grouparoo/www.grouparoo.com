@@ -18,21 +18,30 @@ function blogEntry(entry: BlogEntry, idx: number) {
         </a>
       </Link>
       <h4>{BlogTags(entry.tags)}</h4>
-      <p>
+      <div className="d-flex flex-row" style={{ marginBottom: 10 }}>
         <Link href="/blog/author/[author]" as={`/blog/author/${author.slug}`}>
           <a>
             <Image
-              unsized
-              style={{ width: 50, margin: 10 }}
               roundedCircle
               src={`/images/authors/${author.slug}.png`}
               alt={author.name}
+              width={50}
+              height={50}
             />
-            {author.name}
           </a>
         </Link>{" "}
-        on {entry.date}
-      </p>
+        <div style={{ height: 50 }} className="d-flex align-items-center">
+          <p style={{ marginLeft: 10, marginBottom: 0 }}>
+            <Link
+              href="/blog/author/[author]"
+              as={`/blog/author/${author.slug}`}
+            >
+              <a>{author.name}</a>
+            </Link>{" "}
+            on {entry.date}
+          </p>
+        </div>
+      </div>
       <blockquote style={{ color: "darkGray" }}>
         <span style={{ fontSize: 20, fontFamily: "Georgia" }}>"</span>
         <em>{entry.pullQuote}</em>
