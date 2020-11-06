@@ -45,18 +45,21 @@ export default function DocsIndex({ pageProps }) {
                   <br />
                   <ButtonGroup>
                     <Button
+                      size="sm"
                       variant="outline-primary"
                       href="/docs/deployment/heroku"
                     >
                       Heroku
                     </Button>
                     <Button
+                      size="sm"
                       variant="outline-primary"
                       href="/docs/deployment/docker"
                     >
                       Docker
                     </Button>
                     <Button
+                      size="sm"
                       variant="outline-primary"
                       href="/docs/deployment/aws-and-k8s"
                     >
