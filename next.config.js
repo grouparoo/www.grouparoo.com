@@ -1,9 +1,4 @@
-const withOptimizedImages = require("next-optimized-images");
-
-module.exports = withOptimizedImages({
-  responsive: {
-    adapter: require("responsive-loader/sharp"),
-  },
+module.exports = {
   env: {
     ROBOTS_DISABLED: process.env.ROBOTS_DISABLED,
     GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
@@ -33,4 +28,4 @@ module.exports = withOptimizedImages({
       },
     ];
   },
-});
+};
