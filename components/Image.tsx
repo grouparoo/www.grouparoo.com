@@ -40,21 +40,38 @@ export type MyImageProps = ImageProps &
   };
 
 const MyImage = React.forwardRef<HTMLImageElement, MyImageProps>(
-  (
-    { bsPrefix, className, fluid, rounded, roundedCircle, thumbnail, ...props },
-    ref
-  ) => {
+  ({
+    bsPrefix,
+    className,
+    fluid,
+    rounded,
+    roundedCircle,
+    thumbnail,
+    ...props
+  }) => {
     bsPrefix = useBootstrapPrefix(bsPrefix, "img");
 
+    const { src, height, width } = props;
     const classes = classNames(
       fluid && `${bsPrefix}-fluid`,
       rounded && `rounded`,
       roundedCircle && `rounded-circle`,
       thumbnail && `${bsPrefix}-thumbnail`
     );
-    console.log({ props });
 
-    return <NextImage {...props} className={classNames(className, classes)} />;
+    const imgClasses = classNames(className, classes);
+    if (src && (src.startsWith("http:") || src.startsWith("https:"))) {
+      // next/image doesn't handle things not in public directory
+      const imgStyle: any = {};
+      imgStyle.height = height;
+      imgStyle.width = width;
+      imgStyle.maxHeight = "100%";
+      imgStyle.maxWidth = "100%";
+      props.style = imgStyle;
+      return <img {...props} className={imgClasses} />;
+    }
+
+    return <NextImage {...props} className={imgClasses} />;
   }
 );
 

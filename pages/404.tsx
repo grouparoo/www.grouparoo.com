@@ -12,8 +12,8 @@ export default function FourOhFour() {
           <Row>
             <Col md={6}>
               <Image
-                unsized
-                style={{ width: "100%" }}
+                width={540}
+                height={304}
                 src="https://media.giphy.com/media/5dWWa4tYjpBSM/giphy.gif"
                 alt="Kangaroo dropping ball"
                 rounded

@@ -4,11 +4,11 @@ import BlogImage from "../components/blog/image";
 import { Alert, Card } from "react-bootstrap";
 import { Feed } from "feed";
 
-function PermanentImage(props) {
-  return BlogImage({ ...props, permalink: true });
+function RelativeImage(props) {
+  return BlogImage({ ...props, permalink: false });
 }
 // These keys need to match the one in blog/[post]
-const components = { Image: PermanentImage, Alert, Card, CardBody: Card.Body };
+const components = { Image: RelativeImage, Alert, Card, CardBody: Card.Body };
 
 export interface BlogEntry {
   title: string;
