@@ -10,7 +10,8 @@ tags: [connections, engineering]
 Grouparoo allows you to connect your Customer and Product data to Hubspot. Grouparoo collects all of your customer data in one place and makes it easy to sync your Profiles and Groups to other marketing tools. Hubspot is a popular email marketing and account management tool with great features and a robust API. However, there are some things to watch out for when integrating with Hubspot that Grouparoo can help with.
 
 <Image
-  maxHeight={300}
+  width={710}
+  height={296}
   alt="How Grouparoo connects to Hubspot"
   src="hubspot-destination/connection.png"
 />
@@ -20,16 +21,18 @@ Grouparoo allows you to connect your Customer and Product data to Hubspot. Group
 In Hubspot, you will need to create a new API Key for Grouparoo to use. Visit `Settings -> Integrations -> API Key` to generate a new API Key.
 
 <Image
-  maxHeight={600}
-  alt="How Grouparoo connects to Mailchimp"
+  width={821}
+  height={583}
+  alt="Setting the Hubspot API Key"
   src="hubspot-destination/api-key.png"
 />
 
 In Grouparoo, Apps provide the credentials to be able to connect to other platforms. For Hubspot, all you need to do is paste in the `hapiKey` (the `h` is for hubspot!) from the Hubspot page. At this point if you hit "Test Connection," you should see "Test Passed" and some data about your Hubspot account.
 
 <Image
-  maxHeight={600}
-  alt="Creating Grouparoo Mailchimp App"
+  width={821}
+  height={583}
+  alt="Configuring the Hubspot App"
   src="hubspot-destination/hubspot-app.png"
 />
 
@@ -46,8 +49,9 @@ Grouparoo uses the [Hubspot V2 API](https://developers.hubspot.com/docs/api/over
 There are _lot_ of profile properties that can be set on a Hubspot Contact. In order to have a reasonable list of properties in the Grouparoo web interface, we had to make some choices about which properties to show as `known` properties vs those that we'll hide under the additional properties drop-down. We use the terminology `important` and `unimportant` properties. We wanted to make sure that our users could choose to send any property that Hubspot could accept, but to make the setup experience less intimidating. Any profile property you are using is, of course, `important`, but what about all the others?
 
 <Image
-  maxHeight={600}
-  alt="How Grouparoo connects to Mailchimp"
+  width={821}
+  height={583}
+  alt="Viewing all the Hubspot Profile Properties"
   src="hubspot-destination/additional-properties.png"
 />
 
@@ -66,8 +70,9 @@ We implemented the following heuristics:
 While the the [`hubspot-api` package](https://github.com/HubSpotWebTeam/hs-node-api) package made it very easy to work with contacts, it does not provide any methods for working with Lists. Grouparoo syncs your Groups to what Hubspot calls `Static Lists`, and we automatically keep those lists up-to-date with the information in Grouparoo.
 
 <Image
-  maxHeight={600}
-  alt="How Grouparoo connects to Mailchimp"
+  width={821}
+  height={583}
+  alt="A Hubspot static list"
   src="hubspot-destination/static-lists.png"
 />
 
