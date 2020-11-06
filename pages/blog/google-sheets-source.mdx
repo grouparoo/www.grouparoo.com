@@ -16,37 +16,37 @@ In Grouparoo, apps make the connection to facilitate data movement in the form o
 In the [credentials section](https://console.developers.google.com/apis/credentials) of the Google API console, you can make a new Service Account.
 
 <Image
-  unsized
-  maxHeight={200}
   alt="Creating a Google Service Account"
   src="google-sheets-source/new-service-account.png"
+  height={200}
+  width={577}
 />
 
 This allows you to essentially make a user that will have access to the documents that are shared with them. After that, there are some other screens about making roles, but those are not necessary. You can hit "Cancel" on that.
 
 <Image
-  unsized
-  maxHeight={300}
   alt="Naming a Google Service Account"
   src="google-sheets-source/create-service-account.png"
+  height={300}
+  width={457}
 />
 
 When clicking on your new Service Account, you can now make a key. This is the information you will give to Grouparoo to be able to connect as this new user.
 
 <Image
-  unsized
-  maxHeight={300}
   alt="Making a Google Service Account key"
   src="google-sheets-source/service-account-key.png"
+  height={300}
+  width={459}
 />
 
 Creating a key in this way, automatically downloads a `.json` file that looks something like this:
 
 <Image
-  unsized
-  maxHeight={200}
   alt="JSON for a Google Service Account key"
   src="google-sheets-source/service-account-key-data.png"
+  height={200}
+  width={639}
 />
 
 We will need the `private_key` and the `client_email` to setup an app in Grouparoo.
@@ -58,10 +58,10 @@ In Grouparoo, you make a new app from the "Platform" section in the navigation. 
 For Google Sheets, you paste in the `client_email` and the `private_key` straight from the JSON file. The `private_key` is a bit long, but just go with it. It's ok to include those `\n` characters as-is.
 
 <Image
-  unsized
-  maxHeight={300}
   alt="Creating a Grouparoo app for Google Sheets"
   src="google-sheets-source/grouparoo-app.png"
+  height={300}
+  width={419}
 />
 
 You can "Test Connection" to make sure everything is working.
@@ -69,10 +69,10 @@ You can "Test Connection" to make sure everything is working.
 So now, you should have your app ready to go!
 
 <Image
-  unsized
-  maxHeight={300}
   alt="Google Sheets in the app list"
   src="google-sheets-source/app-list.png"
+  height={300}
+  width={328}
 />
 
 ## Give access to the document
@@ -80,10 +80,10 @@ So now, you should have your app ready to go!
 In a document that you want to share with Grouparoo, you share it with this Service Accout. In this example case, it was `grouparoo-access@sample-sources.iam.gserviceaccount.com`. Yours will likely look similiar to this:
 
 <Image
-  unsized
-  maxHeight={400}
   alt="Give the Service Account access to the document"
   src="google-sheets-source/add-user-to-access.png"
+  height={400}
+  width={332}
 />
 
 I like this model because it means that the owners of the document can control what Grouparoo has access to.
@@ -95,19 +95,19 @@ You are ready to start pulling in data from Google Sheets. You do this through c
 You paste the URL in for the sheet to create a new source. It gives you a data preview so you know it's working.
 
 <Image
-  unsized
-  maxHeight={400}
   alt="Data preview of new source from Google Sheets"
   src="google-sheets-source/source-data-preview.png"
+  height={400}
+  width={482}
 />
 
 How does Grouparoo know who is who in this sheet? You teach it through making a mapping.
 
 <Image
-  unsized
-  maxHeight={400}
   alt="Data preview of new source from Google Sheets"
   src="google-sheets-source/source-mapping.png"
+  width={1000}
+  height={397}
 />
 
 In this case, my spreadsheet had a `UserID` and I could map them to the same concept that I've already been loading in from a MySQL source. If this was another sheet (like the result of a Google Form) and we had their email address, we could map it that.
@@ -117,10 +117,10 @@ In this case, my spreadsheet had a `UserID` and I could map them to the same con
 For each column in the sheet, you now can pull that in and associate it with the profile. In Grouparoo, this is done via a profile property rule. So let's go ahead and make the the rule.
 
 <Image
-  unsized
-  maxHeight={400}
   alt="Add a profile property rule for the column"
   src="google-sheets-source/profile-property-rule.png"
+  height={400}
+  width={500}
 />
 
 How often should Grouparoo check that sheet for new data? You can tell it by making a schedule.
@@ -128,10 +128,10 @@ How often should Grouparoo check that sheet for new data? You can tell it by mak
 Now, you have everything you need. It's on auto-pilot from here on out. It will check the Google Sheet every hour and update all the profiles with the data.
 
 <Image
-  unsized
-  maxHeight={400}
   alt="Google Sheet source rule and schedule"
   src="google-sheets-source/source-rule-and-schedule.png"
+  height={400}
+  width={685}
 />
 
 ## Results
@@ -139,19 +139,19 @@ Now, you have everything you need. It's on auto-pilot from here on out. It will 
 When it runs, you can then see the results in each profile.
 
 <Image
-  unsized
-  maxHeight={400}
   alt="Profile has the data from the Google sheet"
   src="google-sheets-source/profile.png"
+  height={400}
+  width={480}
 />
 
 And you can also use it to make groups.
 
 <Image
-  unsized
-  maxHeight={400}
   alt="Groups can use the data from the Google sheet"
   src="google-sheets-source/group.png"
+  height={400}
+  width={665}
 />
 
 Because of the schedule, it will always be up to date. This data can be sent to destinations like Mailchimp.

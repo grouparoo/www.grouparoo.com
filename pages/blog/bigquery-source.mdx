@@ -16,17 +16,17 @@ The setup is similar to the one described [here](google-sheets-source) in the Go
 You then give this account access to your BigQuery database from the [console](https://console.cloud.google.com/bigquery).
 
 <Image
-  unsized
-  maxHeight={100}
   alt="Share Dataset"
   src="bigquery-source/google-share-dataset.png"
+  height={100}
+  width={465}
 />
 
 <Image
-  unsized
-  maxHeight={400}
   alt="Share Dataset"
   src="bigquery-source/google-add-account.png"
+  height={400}
+  width={380}
 />
 
 ## Create a Grouparoo app
@@ -34,10 +34,10 @@ You then give this account access to your BigQuery database from the [console](h
 In Grouparoo, you now need to teach the system about your BigQuery setup. This is done through creating an app.
 
 <Image
-  unsized
-  maxHeight={400}
   alt="Creating Grouparoo App"
   src="bigquery-source/app-settings.png"
+  height={400}
+  width={625}
 />
 
 For BigQuery, this takes in the project and dataset. You paste in the `client_email` and the `private_key` straight from the JSON credentials file. The `private_key` is a bit long, but just go with it. It's ok to include those `\n` characters as-is.
@@ -47,10 +47,10 @@ For BigQuery, this takes in the project and dataset. You paste in the `client_em
 With the app created, you will now have two new new possible sources.
 
 <Image
-  unsized
-  maxHeight={200}
   alt="Two new types of sources: query and table"
   src="bigquery-source/source-types.png"
+  height={200}
+  width={213}
 />
 
 There are two possible ways to bring in data from BigQuery: Table and Query. Let's talk about each one.
@@ -60,19 +60,19 @@ There are two possible ways to bring in data from BigQuery: Table and Query. Let
 With a BigQuery Table source, the user (often a marketer) can note which data they want to pull in and not have to know how to write the correct SQL.
 
 <Image
-  unsized
-  maxHeight={300}
   alt="Pick a table to use"
   src="bigquery-source/table-preview.png"
+  height={300}
+  width={578}
 />
 
 You pick which table contains the information you want to make profiles properties from. In this case, I've chosen the `purchases` table, which contains information about which fruits a customer has bought. You can see a preview of the data available.
 
 <Image
-  unsized
-  maxHeight={300}
   alt="Make mapping to existing properties"
   src="bigquery-source/table-mapping.png"
+  height={300}
+  width={849}
 />
 
 Here we have taught Grouparoo how to map this to profiles that are currently in our system. In this case, the `profile_id` in the table maps to the existing `userId` profiles property.
@@ -80,19 +80,19 @@ Here we have taught Grouparoo how to map this to profiles that are currently in 
 Now, we can make a profile property from the data in this table. Let's say we want to know their lifetime value (LTV) in fruit purchases. That would look like this:
 
 <Image
-  unsized
-  maxHeight={400}
   alt="Create a sum of the purchases made"
   src="bigquery-source/table-property.png"
+  height={400}
+  width={462}
 />
 
 We can also add filters here. Maybe we only want their LTV for apples and not all the fruits.
 
 <Image
-  unsized
-  maxHeight={150}
   alt="Create another property that filters to specific purchases"
   src="bigquery-source/table-filter.png"
+  height={150}
+  width={756}
 />
 
 ## Table schedule
@@ -102,10 +102,10 @@ An important part of Grouparoo is that these properties we just created will alw
 Grouparoo accomplishes this through creating a schedule. In our Table source case, you only have to teach it which column to use.
 
 <Image
-  unsized
-  maxHeight={400}
   alt="Running a schedule to import purchases"
   src="bigquery-source/table-schedule.png"
+  height={400}
+  width={530}
 />
 
 In this case, by picking the `stamp` column, when that updates to a newer value (or a new row is added), the respective profiles `LTV` fields will be updated. Now everything is always up to date.
@@ -117,10 +117,10 @@ Not every use case can be solved without writing SQL, so Grouparoo also has a wa
 While exploring how BigQuery worked, I stumbled across [many public datasets](https://cloud.google.com/bigquery/public-data) that they have. One [example](https://console.cloud.google.com/marketplace/details/social-security-administration/us-names?filter=solution-type:dataset&q=name&id=7a385178-115c-44b0-8ec2-4da800e47888) is information about names in the United States.
 
 <Image
-  unsized
-  maxHeight={300}
   alt="Query public names data"
   src="bigquery-source/names-query.png"
+  height={300}
+  width={432}
 />
 
 With this information and the Query source, we can make a new property called `guessedGender` that will use the user `firstName` property value. Here's the query we will use:
@@ -130,10 +130,10 @@ SELECT gender FROM`bigquery-public-data.usa_names.usa_1910_current`WHERE LOWER(n
 ```
 
 <Image
-  unsized
-  maxHeight={300}
   alt="Profile property rule"
   src="bigquery-source/query-property.png"
+  height={300}
+  width={480}
 />
 
 ## Results
@@ -141,19 +141,19 @@ SELECT gender FROM`bigquery-public-data.usa_names.usa_1910_current`WHERE LOWER(n
 At this point, we can see the profile properties that have been created in each profile.
 
 <Image
-  unsized
-  maxHeight={400}
   alt="Profile has the data from BigQuery"
   src="bigquery-source/profile.png"
+  height={400}
+  width={565}
 />
 
 And you can also use it to make groups.
 
 <Image
-  unsized
-  maxHeight={300}
   alt="Groups can use the data from BigQuery"
   src="bigquery-source/group.png"
+  height={300}
+  width={609}
 />
 
 This data can be sent to destinations like Mailchimp.
