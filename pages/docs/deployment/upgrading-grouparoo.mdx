@@ -18,11 +18,12 @@ There are a few ways to determine if there are updates to the packages that make
 If you visit the `/about` page of your Grouparoo server, you'll see a list of the packages you have installed, the current version installed, and the latest version available on npm.
 
 <Image
-  unsized
   centered
   source="Grouparoo Topology"
   alt="Grouparoo Topology"
   src="docs/deployment/in-app-versions.png"
+  width={820}
+  height={643}
 />
 
 **Release Notes**
@@ -30,11 +31,12 @@ If you visit the `/about` page of your Grouparoo server, you'll see a list of th
 Grouparoo publishes release notes for new versions at [https://github.com/grouparoo/grouparoo/releases](https://github.com/grouparoo/grouparoo/releases). Here you can see when each new version was released, and what was added.
 
 <Image
-  unsized
   centered
   source="Grouparoo Topology"
   alt="Grouparoo Topology"
   src="docs/deployment/release-notes.png"
+  width={820}
+  height={772}
 />
 
 **Tools from the Node.JS ecosystem**
@@ -51,11 +53,12 @@ As Grouparoo is a node.js application, there are a number of tools available to 
 All that is needed to update your Grouparoo application is update the versions of your dependencies in your `package.json` file, then run `npm install`.
 
 <Image
-  unsized
   centered
   source="Grouparoo Topology"
   alt="Grouparoo Topology"
   src="docs/deployment/upgrade-diff.png"
+  width={820}
+  height={483}
 />
 
 Depending on your method of deployment, you will need to either re-deploy your application, `git push` to Heroku, or publish a new Docker image.
