@@ -146,10 +146,11 @@ export default function Snowflake() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/snowflake/add-snowflake-app.png"
               alt="Grouparoo Snowflake settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -168,10 +169,11 @@ export default function Snowflake() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/snowflake/snowflake-table-mode.png"
               alt="Snowflake table source"
+              width={742}
+              height={495}
             />
           </Col>
         </Row>
@@ -190,10 +192,11 @@ export default function Snowflake() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/snowflake/snowflake-query-mode.png"
               alt="Snowflake query source"
+              width={742}
+              height={492}
             />
           </Col>
         </Row>

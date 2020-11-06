@@ -142,10 +142,11 @@ export default function RedshiftPage() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/postgres/add-postgres-app.png"
               alt="Grouparoo Redshift settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -164,10 +165,11 @@ export default function RedshiftPage() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/postgres/postgres-table-mode.png"
               alt="Redshift table source"
+              width={742}
+              height={614}
             />
           </Col>
         </Row>
@@ -186,10 +188,11 @@ export default function RedshiftPage() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/postgres/postgres-query-mode.png"
               alt="Redshift query source"
+              width={742}
+              height={619}
             />
           </Col>
         </Row>

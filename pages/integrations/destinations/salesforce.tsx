@@ -173,10 +173,11 @@ export default function SalesforcePage() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/salesforce/grouparoo-to-salesforce.png"
               alt="Map data to Salesforce"
+              width={742}
+              height={487}
             />
           </Col>
         </Row>
@@ -195,10 +196,11 @@ export default function SalesforcePage() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/salesforce/salesforce-campaign.png"
               alt="Campaign in Salesforce"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>

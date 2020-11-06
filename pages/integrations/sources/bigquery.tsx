@@ -143,10 +143,11 @@ export default function BigQueryPage() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/bigquery/add-bigquery-app.png"
               alt="Grouparoo BigQuery settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -165,10 +166,11 @@ export default function BigQueryPage() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/bigquery/bigquery-table-mode.png"
               alt="Grouparoo table source settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -187,10 +189,11 @@ export default function BigQueryPage() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/bigquery/bigquery-query-mode.png"
               alt="Grouparoo query source settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>

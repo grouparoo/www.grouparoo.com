@@ -172,10 +172,11 @@ export default function SailthruPage() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/sailthru/grouparoo-to-sailthru.png"
               alt="Map data to Sailthru"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -194,10 +195,11 @@ export default function SailthruPage() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/sailthru/sailthru-list.png"
               alt="List in Sailthru"
+              width={742}
+              height={546}
             />
           </Col>
         </Row>

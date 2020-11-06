@@ -171,10 +171,11 @@ export default function ZendeskPage() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/zendesk/grouparoo-to-zendesk.png"
               alt="Zendesk destination settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -190,10 +191,11 @@ export default function ZendeskPage() {
           </Col>
           <Col md={9}>
             <Image
-              unsized
               className="productScreenshots"
               src="/images/home/integrations/zendesk/zendesk-users.png"
               alt="Users in Zendesk"
+              width={742}
+              height={432}
             />
           </Col>
         </Row>
