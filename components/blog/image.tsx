@@ -4,10 +4,11 @@ import Image, { MyImageProps } from "../Image";
 export type BlogImageProps = MyImageProps & {
   permalink?: boolean;
   bottomSpace?: number;
+  maxHeight?: number;
 };
 
 function BlogImage(props: BlogImageProps) {
-  const { permalink, bottomSpace, ...otherProps } = props;
+  const { permalink, bottomSpace, maxHeight, ...otherProps } = props;
 
   const imageProps: MyImageProps = otherProps;
   const { src } = imageProps;
