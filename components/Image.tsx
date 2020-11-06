@@ -37,7 +37,25 @@ export type MyImageProps = ImageProps &
     rounded?: boolean;
     roundedCircle?: boolean;
     thumbnail?: boolean;
+    centered?: boolean;
   };
+
+function getMainComponent(props, imgClasses) {
+  const { src, height, width } = props;
+
+  if (src && (src.startsWith("http:") || src.startsWith("https:"))) {
+    // next/image doesn't handle things not in public directory
+    const imgStyle: any = {};
+    imgStyle.height = height;
+    imgStyle.width = width;
+    imgStyle.maxHeight = "100%";
+    imgStyle.maxWidth = "100%";
+    props.style = imgStyle;
+    return <img {...props} className={imgClasses} />;
+  }
+
+  return <NextImage {...props} className={imgClasses} />;
+}
 
 const MyImage = React.forwardRef<HTMLImageElement, MyImageProps>(
   ({
@@ -47,31 +65,33 @@ const MyImage = React.forwardRef<HTMLImageElement, MyImageProps>(
     rounded,
     roundedCircle,
     thumbnail,
+    centered,
     ...props
   }) => {
     bsPrefix = useBootstrapPrefix(bsPrefix, "img");
-
-    const { src, height, width } = props;
     const classes = classNames(
       fluid && `${bsPrefix}-fluid`,
       rounded && `rounded`,
       roundedCircle && `rounded-circle`,
       thumbnail && `${bsPrefix}-thumbnail`
     );
-
     const imgClasses = classNames(className, classes);
-    if (src && (src.startsWith("http:") || src.startsWith("https:"))) {
-      // next/image doesn't handle things not in public directory
-      const imgStyle: any = {};
-      imgStyle.height = height;
-      imgStyle.width = width;
-      imgStyle.maxHeight = "100%";
-      imgStyle.maxWidth = "100%";
-      props.style = imgStyle;
-      return <img {...props} className={imgClasses} />;
-    }
+    const imgComponent = getMainComponent(props, imgClasses);
 
-    return <NextImage {...props} className={imgClasses} />;
+    if (centered) {
+      return (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          {imgComponent}
+        </div>
+      );
+    } else {
+      return imgComponent;
+    }
   }
 );
 

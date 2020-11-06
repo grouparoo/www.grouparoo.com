@@ -18,23 +18,14 @@ export default function HomepageCodeBox({ code, icon }) {
     >
       <Row className="align-items-center">
         <Col md={2}>
-          {/* Desktop */}
-          <Image
-            unsized
-            className="d-none d-md-block"
-            style={{ paddingBottom: 0 }}
-            src={`/images/home/${icon}.svg`}
-            alt={icon}
-          />
-
-          {/* Mobile  */}
-          <Image
-            unsized
-            className="d-md-none"
-            style={{ paddingBottom: 20 }}
-            src={`/images/home/${icon}.svg`}
-            alt={icon}
-          />
+          <div style={{ paddingBottom: 10 }}>
+            <Image
+              src={`/images/home/${icon}.svg`}
+              alt={icon}
+              width={46}
+              height={46}
+            />
+          </div>
         </Col>
         <Col>{code}</Col>
       </Row>

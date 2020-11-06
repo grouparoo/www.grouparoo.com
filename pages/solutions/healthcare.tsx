@@ -132,7 +132,6 @@ export default function Healthcare() {
               <br />
               <Image
                 unsized
-                className="howItWorksImageWithoutDropShadow"
                 style={{ width: "90%" }}
                 src="/images/home/bowtie.svg"
                 alt="Grouparoo sources and destinations connected"

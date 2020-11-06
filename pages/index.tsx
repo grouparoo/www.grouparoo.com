@@ -68,11 +68,11 @@ export default function IndexPage() {
               <h2>Easily sync your customer data</h2>
               <br />
               <Image
-                unsized
-                className="howItWorksImageWithoutDropShadow"
-                style={{ width: "90%" }}
+                centered
                 src="/images/home/bowtie.svg"
                 alt="Grouparoo sources and destination connections"
+                width={1000}
+                height={537}
               />
             </Col>
           </Row>
@@ -304,10 +304,11 @@ export default function IndexPage() {
               style={{ textAlign: "center" }}
             >
               <Image
-                unsized
+                centered
                 src="/images/home/github-white.png"
                 alt="Github Logo"
-                style={{ width: "100" }}
+                height={100}
+                width={100}
               />
             </Col>
             <Col md={6}>
@@ -331,10 +332,10 @@ export default function IndexPage() {
             </Col>
             <Col className="d-md-none" md={6} style={{ textAlign: "center" }}>
               <Image
-                unsized
                 src="/images/home/github-white.png"
                 alt="Github Logo"
-                style={{ width: "100" }}
+                width={100}
+                height={100}
               />
             </Col>
           </Row>
@@ -367,11 +368,11 @@ export default function IndexPage() {
             </Col>
             <Col md={8}>
               <Image
-                unsized
                 className="howItWorksImage"
-                style={{ width: "100%" }}
                 src="/images/home/how-it-works-1.png"
                 alt="Grouparoo profile"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -387,11 +388,11 @@ export default function IndexPage() {
             </Col>
             <Col md={8}>
               <Image
-                unsized
                 className="howItWorksImage"
-                style={{ width: "100%" }}
                 src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -406,11 +407,11 @@ export default function IndexPage() {
             </Col>
             <Col md={8}>
               <Image
-                unsized
                 className="howItWorksImage"
-                style={{ width: "100%" }}
                 src="/images/home/how-it-works-3.png"
                 alt="Grouparoo destination"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -429,11 +430,11 @@ export default function IndexPage() {
             </Col>
             <Col md={8}>
               <Image
-                unsized
                 className="howItWorksImage"
-                style={{ width: "100%" }}
                 src="/images/home/how-it-works-4.png"
                 alt="Data synced to destination"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>

@@ -136,7 +136,6 @@ export default function IndexPage() {
               <br />
               <Image
                 unsized
-                className="howItWorksImageWithoutDropShadow"
                 style={{ width: "90%" }}
                 src="/images/home/bowtie.svg"
                 alt="Grouparoo sources and destination connections"

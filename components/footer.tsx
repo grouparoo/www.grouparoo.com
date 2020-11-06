@@ -9,10 +9,10 @@ function LogoAndSocialLinks({ router }) {
   return (
     <>
       <Image
-        unsized
-        style={{ width: 50 }}
         src="/images/logo.png"
         alt="Grouparoo Logo"
+        width={50}
+        height={40}
       />
       <br />
       <br />

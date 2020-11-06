@@ -24,16 +24,12 @@ export default function WhyOpenSource() {
             </Col>
             <Col style={{ textAlign: "center" }}>
               <Image
-                unsized
-                style={{
-                  backgroundColor: "white",
-                  width: 75,
-                  height: 75,
-                  borderRadius: 5,
-                  padding: 10,
-                }}
-                src="/public/images/home/github.png"
+                centered
+                rounded
+                src="/images/home/github-white.png"
                 alt="Github Logo"
+                width={75}
+                height={75}
               />
             </Col>
           </Row>
@@ -49,14 +45,12 @@ export default function WhyOpenSource() {
             </Col>
             <Col style={{ textAlign: "center" }}>
               <Image
-                unsized
-                style={{
-                  width: 75,
-                  height: 75,
-                  borderRadius: 5,
-                }}
+                centered
+                rounded
                 src="/images/home/gdpr.png"
                 alt="GDPR Logo"
+                width={75}
+                height={75}
               />
             </Col>
           </Row>
