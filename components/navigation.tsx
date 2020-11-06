@@ -10,9 +10,11 @@ export default function Navigation() {
           <Navbar.Brand href="/">
             <Image
               src="/images/logo-and-wordmark-black-words.png"
-              width="160"
-              height="32"
+              alt="Grouparoo Logo"
+              width={160}
+              height={32}
             />
+            <p className="d-none">Grouparoo</p>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
