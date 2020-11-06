@@ -15,11 +15,11 @@ export default function TeamMember({
       <Row>
         <Col>
           <Image
-            unsized
-            style={{ height: 150, width: 150, objectFit: "cover" }}
             roundedCircle
-            src={`/public/images/team/${image}`}
+            src={`/images/team/${image}`}
             alt={name}
+            width={150}
+            height={150}
           />
           <p>
             <strong>{name}</strong>
@@ -58,11 +58,13 @@ export default function TeamMember({
 
 function SocialIconGrayscale({ name }) {
   return (
-    <Image
-      unsized
-      style={{ filter: "grayscale(100%)", width: "20px" }}
-      src={`/images/home/${name}.png`}
-      alt={name}
-    />
+    <div style={{ filter: "grayscale(100%)" }}>
+      <Image
+        src={`/images/home/${name}.png`}
+        alt={name}
+        width={20}
+        height={20}
+      />
+    </div>
   );
 }

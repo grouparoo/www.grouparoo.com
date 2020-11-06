@@ -25,10 +25,11 @@ export default function About() {
         <Row>
           <Col xl={6} lg={5} md={4}>
             <Image
-              unsized
               thumbnail
               src="/images/team/team.jpg"
               alt="Team photo"
+              width={530}
+              height={398}
             />
             <p>
               <small>
