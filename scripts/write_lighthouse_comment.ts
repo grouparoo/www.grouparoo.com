@@ -1,5 +1,5 @@
 import path from "path";
-import fs, { write } from "fs";
+import fs from "fs";
 import glob from "glob";
 import makeTable from "markdown-table";
 import { URL } from "url";
