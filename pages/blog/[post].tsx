@@ -85,15 +85,17 @@ export default function BlogPage({ pageProps }) {
               target="_blank"
               rel="noreferrer nofollow"
             >
-              <p>
-                Share this post{" "}
+              <div style={{ height: 25 }} className="d-flex align-items-center">
+                <p style={{ marginRight: 5, marginBottom: 0, marginTop: 0 }}>
+                  Share this post
+                </p>
                 <Image
-                  unsized
-                  style={{ width: 25 }}
                   src="/images/home/twitter.png"
                   alt="Twitter Logo"
+                  width={25}
+                  height={25}
                 />
-              </p>
+              </div>
             </a>
           </Col>
         </Row>

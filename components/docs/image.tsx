@@ -2,7 +2,8 @@ import Image, { MyImageProps } from "../Image";
 
 export type DocImageProps = MyImageProps;
 
-export default function DocImage(imageProps: DocImageProps) {
+export default function DocImage(props: DocImageProps) {
+  const imageProps = Object.assign({}, props);
   const { src } = imageProps;
 
   if (src.includes("data:image")) {
@@ -11,7 +12,5 @@ export default function DocImage(imageProps: DocImageProps) {
     imageProps.src = `/images/${src}`;
   }
 
-  return (
-    <Image style={{ maxWidth: "100%", marginBottom: 10 }} {...imageProps} />
-  );
+  return <Image {...imageProps} />;
 }

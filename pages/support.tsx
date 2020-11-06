@@ -26,11 +26,11 @@ export default function Support() {
         <Row>
           <Col>
             <Image
-              unsized
-              className="headerImage"
               thumbnail
               src="/images/support/support.jpg"
               alt="Computers and people"
+              width={1100}
+              height={733}
             />
 
             <p>

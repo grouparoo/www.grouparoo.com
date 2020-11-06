@@ -135,10 +135,11 @@ export default function IndexPage() {
               <h2>Synchronize all of your customer data</h2>
               <br />
               <Image
-                unsized
-                style={{ width: "90%" }}
+                centered
                 src="/images/home/bowtie.svg"
                 alt="Grouparoo sources and destination connections"
+                width={1000}
+                height={537}
               />
             </Col>
           </Row>
@@ -166,11 +167,11 @@ export default function IndexPage() {
             </Col>
             <Col md={8}>
               <Image
-                unsized
                 className="howItWorksImage"
-                style={{ width: "100%" }}
                 src="/images/home/how-it-works-1.png"
                 alt="Grouparoo profile"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -186,11 +187,11 @@ export default function IndexPage() {
             </Col>
             <Col md={8}>
               <Image
-                unsized
                 className="howItWorksImage"
-                style={{ width: "100%" }}
                 src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -205,11 +206,11 @@ export default function IndexPage() {
             </Col>
             <Col md={8}>
               <Image
-                unsized
                 className="howItWorksImage"
-                style={{ width: "100%" }}
                 src="/images/home/how-it-works-3.png"
                 alt="Grouparoo destination"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -225,11 +226,11 @@ export default function IndexPage() {
             </Col>
             <Col md={8}>
               <Image
-                unsized
                 className="howItWorksImage"
-                style={{ width: "100%" }}
                 src="/images/home/how-it-works-4.png"
                 alt="Data synced to destination"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -239,6 +240,7 @@ export default function IndexPage() {
       <div
         id="for-marketing-teams"
         className="bg-dark text-white homePageSection"
+        style={{ marginTop: 40 }}
       >
         <Container>
           <Row style={{ textAlign: "center" }}>
@@ -287,26 +289,29 @@ export default function IndexPage() {
                   <Tab.Content style={{ textAlign: "center" }}>
                     <Tab.Pane eventKey="retention-marketing">
                       <Image
-                        unsized
-                        style={{ width: "100%" }}
+                        centered
                         src="/images/home/retention-marketing.png"
                         alt="Sync groups to destinations"
+                        width={730}
+                        height={480}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="ops-enablement">
                       <Image
-                        unsized
-                        style={{ width: "100%" }}
+                        centered
                         src="/images/home/marketing-ops.png"
                         alt="Create properties from sources"
+                        width={730}
+                        height={613}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="growth-marketing">
                       <Image
-                        unsized
-                        style={{ width: "100%" }}
+                        centered
                         src="/images/home/growth-marketing.png"
                         alt="Map data to destinations"
+                        width={730}
+                        height={528}
                       />
                     </Tab.Pane>
                   </Tab.Content>
@@ -327,10 +332,11 @@ export default function IndexPage() {
               </Col>
               <Col md={6}>
                 <Image
-                  unsized
-                  style={{ width: "95%" }}
+                  centered
                   src="/images/home/retention-marketing.png"
                   alt="Sync groups to destinations"
+                  width={300}
+                  height={197}
                 />
               </Col>
             </Row>
@@ -347,10 +353,11 @@ export default function IndexPage() {
               </Col>
               <Col md={6}>
                 <Image
-                  unsized
-                  style={{ width: "95%" }}
+                  centered
                   src="/images/home/marketing-ops.png"
                   alt="Create properties from sources"
+                  width={300}
+                  height={252}
                 />
               </Col>
             </Row>
@@ -367,10 +374,11 @@ export default function IndexPage() {
               </Col>
               <Col md={6}>
                 <Image
-                  unsized
-                  style={{ width: "95%" }}
+                  centered
                   src="/images/home/growth-marketing.png"
                   alt="Map data to destinations"
+                  width={300}
+                  height={217}
                 />
               </Col>
             </Row>

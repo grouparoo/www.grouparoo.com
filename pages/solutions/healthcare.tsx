@@ -131,10 +131,11 @@ export default function Healthcare() {
               <h2>Synchronize all of your patient data</h2>
               <br />
               <Image
-                unsized
-                style={{ width: "90%" }}
+                centered
                 src="/images/home/bowtie.svg"
-                alt="Grouparoo sources and destinations connected"
+                alt="Grouparoo sources and destination connections"
+                width={1000}
+                height={537}
               />
             </Col>
           </Row>
@@ -162,11 +163,11 @@ export default function Healthcare() {
             </Col>
             <Col md={8}>
               <Image
-                unsized
                 className="howItWorksImage"
-                style={{ width: "100%" }}
                 src="/images/home/how-it-works-1.png"
                 alt="Grouparoo profile"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -182,11 +183,11 @@ export default function Healthcare() {
             </Col>
             <Col md={8}>
               <Image
-                unsized
                 className="howItWorksImage"
-                style={{ width: "100%" }}
                 src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -202,11 +203,11 @@ export default function Healthcare() {
             </Col>
             <Col md={8}>
               <Image
-                unsized
                 className="howItWorksImage"
-                style={{ width: "100%" }}
                 src="/images/home/how-it-works-3.png"
                 alt="Grouparoo destination"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -222,11 +223,11 @@ export default function Healthcare() {
             </Col>
             <Col md={8}>
               <Image
-                unsized
                 className="howItWorksImage"
-                style={{ width: "100%" }}
                 src="/images/home/how-it-works-4.png"
                 alt="Data synced to destination"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -236,6 +237,7 @@ export default function Healthcare() {
       <div
         id="for-marketing-teams"
         className="bg-dark text-white homePageSection"
+        style={{ marginTop: 40 }}
       >
         <Container>
           <Row style={{ textAlign: "center" }}>
@@ -285,26 +287,27 @@ export default function Healthcare() {
                   <Tab.Content style={{ textAlign: "center" }}>
                     <Tab.Pane eventKey="email-marketing">
                       <Image
-                        unsized
-                        style={{ width: "100%" }}
+                        centered
                         src="/images/home/retention-marketing.png"
                         alt="Sync groups to destinations"
+                        width={730}
+                        height={480}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="customer-support">
                       <Image
-                        unsized
-                        style={{ width: "100%" }}
                         src="/images/home/solutions/healthcare/zendesk-users.png"
                         alt="Users in Zendesk"
+                        width={730}
+                        height={425}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="product-customization">
                       <Image
-                        unsized
-                        style={{ width: "100%" }}
                         src="/images/home/solutions/healthcare/in-product.png"
                         alt="Map data to product database"
+                        width={730}
+                        height={492}
                       />
                     </Tab.Pane>
                   </Tab.Content>
@@ -325,10 +328,11 @@ export default function Healthcare() {
               </Col>
               <Col md={6}>
                 <Image
-                  unsized
-                  style={{ width: "95%" }}
+                  centered
                   src="/images/home/retention-marketing.png"
                   alt="Sync groups to destinations"
+                  width={300}
+                  height={197}
                 />
               </Col>
             </Row>
@@ -345,10 +349,10 @@ export default function Healthcare() {
               </Col>
               <Col md={6}>
                 <Image
-                  unsized
-                  style={{ width: "95%" }}
                   src="/images/home/solutions/healthcare/zendesk-users.png"
                   alt="Users in Zendesk"
+                  width={730}
+                  height={175}
                 />
               </Col>
             </Row>
@@ -365,10 +369,10 @@ export default function Healthcare() {
               </Col>
               <Col md={6}>
                 <Image
-                  unsized
-                  style={{ width: "95%" }}
                   src="/images/home/solutions/healthcare/in-product.png"
                   alt="Map data to product database"
+                  width={300}
+                  height={202}
                 />
               </Col>
             </Row>
