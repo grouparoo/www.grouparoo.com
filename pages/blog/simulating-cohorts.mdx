@@ -16,6 +16,7 @@ To prove this out, I built a spreadsheet. Because I learned even more from creat
 A cohort in this case is defined as everyone that made their first purchase in a given month. The retention rate of that cohort is the percentage that also makes a purchase the following month. The third month has its own retention rate. And so on. All of this adds up this fairly common triangular spreadsheet.
 
 <Image
+  unsized
   maxHeight={250}
   alt="Cohort triangle with revenue"
   src="cohort-generation/triangle.png"
@@ -24,6 +25,7 @@ A cohort in this case is defined as everyone that made their first purchase in a
 This one factors in a given user growth so each cohort is bigger than the last. It uses a model of the retention rate that can be [entered](https://docs.google.com/spreadsheets/d/1gEZhCRxdmydugAn88UaZDD0U-XjZ9o-fzBbZ7h1EU3Q/edit#gid=793886651) in. These rates tend to drop quickly in the second month, slope down, and then level off.
 
 <Image
+  unsized
   centered
   maxHeight={350}
   alt="Retention rate graph drops off quickly"
@@ -34,7 +36,11 @@ This one factors in a given user growth so each cohort is bigger than the last. 
 
 So now, what we have to do is generate these cohorts and their predicted behavior. One thing that has always bugged me was how fragile these things were. Because it is staggered by nature, I have always seen a lot of copy and paste. I wanted to be able to do that things where you drag it across the rows and columns and it is smart. What I learned about in the process was that you could have relative cell references. For example, `"R[-1]C[-1]"` means one row up and one column to the left. When combined with `INDIRECT` and `IFS`, you can do every cell the cohort graph in one glorious formula.
 
-<Image alt="google formula" src="cohort-generation/formula-cohort.png" />
+<Image
+  unsized
+  alt="google formula"
+  src="cohort-generation/formula-cohort.png"
+/>
 
 `=IFS($A4<C$1, IFERROR(1/0), EQ($A4,C$1), INDIRECT("R[-1]C[-1]", FALSE)*(1+$B$43), $A4>C$1,INDIRECT(CONCATENATE("R[",-1*($A4-C$1),"]C[0]"), FALSE)*INDIRECT("Model!B"&($A4-C$1+2)))`
 
@@ -102,6 +108,7 @@ With that formula, I was able to be sure that there were no copy/paste errors be
 I was able to to a similar formula to understand how the number of tests you do a month impacts the gains you can get on a retention metric.
 
 <Image
+  unsized
   alt='=IFS($A4<C$1, IFERROR(1/0), EQ($A4,C$1), INDIRECT("R[0]C[-1]", FALSE), $A4>C$1,INDIRECT("R[-1]C[0]",FALSE)*$B$46)'
   src="cohort-generation/formula-tests.png"
 />
@@ -113,12 +120,14 @@ I was able to to a similar formula to understand how the number of tests you do 
 The results are somewhat astounding. That, more tests really makes a huge difference. This is because of something akin to compound interest. Each month, more users are retained from month to month and their lifetime value acculates.
 
 <Image
+  unsized
   centered
   maxHeight={350}
   alt="More tests each month over 2 years makes a big difference in retention improvements"
   src="cohort-generation/graph-test-lift.png"
 />
 <Image
+  unsized
   centered
   maxHeight={350}
   alt="More tests each month over 2 years makes a big difference in revenue"

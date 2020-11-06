@@ -10,10 +10,8 @@ export default function Navigation() {
           <Navbar.Brand href="/">
             <Image
               src="/images/logo-and-wordmark-black-words.png"
-              alt="Grouparoo Logo"
-              style={{
-                maxWidth: 160,
-              }}
+              width="160"
+              height="32"
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -8,7 +8,8 @@ tags: [engineering]
 ---
 
 <Image
-  width={"100%"}
+  unsized
+  style={{ width: "100%" }}
   alt="Keyboard image"
   src="typescript-frontend-backend/keyboard.jpg"
 />
@@ -67,7 +68,8 @@ type ActionResponse = UnwrapPromise<typeof GetTime.prototype.run>; // = { time: 
 And in our IDE:
 
 <Image
-  width={"100%"}
+  unsized
+  style={{ width: "100%" }}
   alt="Display TS types"
   src="typescript-frontend-backend/screenshot-1.png"
 />
@@ -119,7 +121,8 @@ export default function TimeComponent() {
 Now we have enforced that the type of `response` in the `load()` method above will match the Action, being `{ time: number; }`. We will now get help from Typescript if we don’t use that response value properly as a number. Foe example, assigning it to a string variable creates an error.
 
 <Image
-  width={"100%"}
+  unsized
+  style={{ width: "100%" }}
   alt="TS error"
   src="typescript-frontend-backend/screenshot-2.png"
 />

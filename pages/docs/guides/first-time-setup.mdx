@@ -15,9 +15,16 @@ The first thing you need to do is to add an App. Apps are how Grouparoo can conn
 
 You can add an app either from the dashboard or from the left-navigation.
 
-<Image centered source="Add App" alt="Add App" src="docs/guides/add-app.png" />
+<Image
+  unsized
+  centered
+  source="Add App"
+  alt="Add App"
+  src="docs/guides/add-app.png"
+/>
 
 <Image
+  unsized
   centered
   source="Add Left Nav"
   alt="Add App Left Nav"
@@ -27,6 +34,7 @@ You can add an app either from the dashboard or from the left-navigation.
 We recommend starting with the App that has the majority of your customer data such as a data warehouse or production database replica. Once you've chosen an App, add the connection details you'll need to connect to this App.
 
 <Image
+  unsized
   centered
   source="Add Left Nav"
   alt="Add App Left Nav"
@@ -40,6 +48,7 @@ Now that you've added an App, your first step is to create a [Source](/docs/guid
 To start, you'll click on the Sources navigation in the left-nav and click `Add new Source`.
 
 <Image
+  unsized
   centered
   source="Add new source"
   alt="Add new source"
@@ -49,6 +58,7 @@ To start, you'll click on the Sources navigation in the left-nav and click `Add 
 Then you'll choose the kind of Source you'd like to create. The choices shown will be based on which Apps you've already connected. If you don't see the App you want to use, you can add a new App.
 
 <Image
+  unsized
   centered
   source="Add new postgres source"
   alt="Add new postgres source"
@@ -58,6 +68,7 @@ Then you'll choose the kind of Source you'd like to create. The choices shown wi
 Once you've chosen the App, you will name your Source and identify the table with user data that you want to pull into Grouparoo.
 
 <Image
+  unsized
   centered
   source="New postgres source"
   alt="New postgres source"
@@ -71,6 +82,7 @@ After you've chosen the database table that contains your user data, you will ne
 You will also create your first Profile Property Rule. A Profile Property Rule is how you pull data from your Source and add that onto all of your Profiles in Grouparoo. In this first case, you will map it directly to a unique identifier for your users.
 
 <Image
+  unsized
   centered
   source="First Profile Property"
   alt="First Profile Property"
@@ -84,6 +96,7 @@ A Schedule defines how often Grouparoo will check your Source for new data. When
 You can choose how often Grouparoo will check your Source for new data. You will also point Grouparoo to the column that indicates when a row in your users table has been updated, such as an `updated_at` timestamp column.
 
 <Image
+  unsized
   centered
   source="Schedule"
   alt="Schedule"
@@ -97,6 +110,7 @@ Now your first Source is all set up! 🎉 Grouparoo is now regularly pulling in 
 You can have multiple Profile Properties defined from the same Source. You can create new Profile Properties from the Profile Property Rules list:
 
 <Image
+  unsized
   centered
   source="New Profile Properties"
   alt="New Profile Properties"
@@ -106,6 +120,7 @@ You can have multiple Profile Properties defined from the same Source. You can c
 You can also create new Profile Properties by going to a Source's detail page.
 
 <Image
+  unsized
   centered
   source="New Profile Properties Source Details"
   alt="New Profile Properties Source Details"

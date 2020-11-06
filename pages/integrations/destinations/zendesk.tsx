@@ -171,8 +171,9 @@ export default function ZendeskPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/zendesk/grouparoo-to-zendesk.png")}
+              src="/images/home/integrations/zendesk/grouparoo-to-zendesk.png"
               alt="Zendesk destination settings"
             />
           </Col>
@@ -189,8 +190,9 @@ export default function ZendeskPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/zendesk/zendesk-users.png")}
+              src="/images/home/integrations/zendesk/zendesk-users.png"
               alt="Users in Zendesk"
             />
           </Col>

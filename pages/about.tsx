@@ -25,8 +25,9 @@ export default function About() {
         <Row>
           <Col xl={6} lg={5} md={4}>
             <Image
+              unsized
               thumbnail
-              src={require("../public/images/team/team.jpg")}
+              src="/images/team/team.jpg"
               alt="Team photo"
             />
             <p>

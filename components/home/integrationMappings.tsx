@@ -25,8 +25,9 @@ export default function IntegrationMappings({
         <Col lg={1} md={0} sm={0} xs={0} />
         <Col lg={4} md={5} sm={5} xs={5}>
           <Image
+            unsized
             style={imageStyle}
-            src={require("../../public/images/home/logo-square-with-padding-blue-background.svg")}
+            src="/images/home/logo-square-with-padding-blue-background.svg"
             alt="Grouparoo Logo"
           />
           <br />
@@ -47,8 +48,9 @@ export default function IntegrationMappings({
         </Col>
         <Col lg={4} md={5} sm={5} xs={5}>
           <Image
+            unsized
             style={imageStyle}
-            src={require(`../../public/images/home/integrations/${slug}/${image}`)}
+            src={`/images/home/integrations/${slug}/${image}`}
             alt={name}
           />
           <br />

@@ -169,8 +169,9 @@ export default function MarketoPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/marketo/grouparoo-to-marketo.png")}
+              src="/images/home/integrations/marketo/grouparoo-to-marketo.png"
               alt="Map data to Marketo"
             />
           </Col>
@@ -190,8 +191,9 @@ export default function MarketoPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/marketo/marketo-list.png")}
+              src="/images/home/integrations/marketo/marketo-list.png"
               alt="List in Marketo"
             />
           </Col>

@@ -1,12 +1,14 @@
-import Image from "../Image";
+import Image, { MyImageProps } from "../Image";
 
-export default function DocImage(props) {
-  const { src, ...imageProps } = props;
+export type DocImageProps = MyImageProps;
+
+export default function DocImage(imageProps: DocImageProps) {
+  const { src } = imageProps;
 
   if (src.includes("data:image")) {
     imageProps.src = src;
   } else {
-    imageProps.src = require(`../../public/images/${src}`);
+    imageProps.src = `/images/${src}`;
   }
 
   return (

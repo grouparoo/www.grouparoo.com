@@ -165,8 +165,9 @@ export default function MailchimpPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/mailchimp/grouparoo-to-mailchimp.png")}
+              src="/images/home/integrations/mailchimp/grouparoo-to-mailchimp.png"
               alt="Map data to Mailchimp"
             />
           </Col>
@@ -186,8 +187,9 @@ export default function MailchimpPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/mailchimp/mailchimp-audience.png")}
+              src="/images/home/integrations/mailchimp/mailchimp-audience.png"
               alt="Mailchimp audience populated"
             />
           </Col>

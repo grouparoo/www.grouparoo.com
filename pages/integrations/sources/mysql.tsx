@@ -138,8 +138,9 @@ export default function MySQLPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/mysql/add-mysql-app.png")}
+              src="/images/home/integrations/mysql/add-mysql-app.png"
               alt="Grouparoo MySQL settings"
             />
           </Col>
@@ -159,8 +160,9 @@ export default function MySQLPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/mysql/mysql-table-mode.png")}
+              src="/images/home/integrations/mysql/mysql-table-mode.png"
               alt="MySQL table source"
             />
           </Col>
@@ -180,8 +182,9 @@ export default function MySQLPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/mysql/mysql-query-mode.png")}
+              src="/images/home/integrations/mysql/mysql-query-mode.png"
               alt="MySQL query source"
             />
           </Col>

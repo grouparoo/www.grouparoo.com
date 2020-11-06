@@ -26,12 +26,13 @@ export default function SmallIntegration({
       }}
     >
       <Image
+        unsized
         style={{
           margin: "auto",
           padding: 10,
           width: 100,
         }}
-        src={require(`../../public/images/home/integrations/${slug}/${image}`)}
+        src={`/images/home/integrations/${slug}/${image}`}
         alt={name}
       />
     </div>

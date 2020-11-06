@@ -28,6 +28,7 @@ An example of a watermark could be an auto-incrementing `id` primary key in a ta
 The most common type of watermark is a `DATETIME` column for when the row is updated. Many systems make this easy. For example, Ruby on Rails will automatically fill out a `updated_at` column if it exists. In this case, the sync engine will know the last time that it did a sync. Then, it will look for rows changed after that the next time it syncs.
 
 <Image
+  unsized
   centered
   maxHeight={1000}
   alt="Steps of a simple sync"
@@ -148,6 +149,7 @@ The most common way to do this is via `LIMIT` and `OFFSET` in your watermark que
 The issue comes up if there is an update to one for the first ones we processed in between the queries.
 
 <Image
+  unsized
   centered
   maxHeight={1900}
   alt="Steps of a batch sync with an error"

@@ -23,6 +23,7 @@ export default function IntegrationButton({
             style={{ borderWidth: 4, marginBottom: 10 }}
           >
             <Image
+              unsized
               style={{
                 textAlign: "center",
                 height: 50,
@@ -31,7 +32,7 @@ export default function IntegrationButton({
                 backgroundColor: "white",
                 borderRadius: 4,
               }}
-              src={require(`../../public/images/home/integrations/${slug}/${image}`)}
+              src={`/images/home/integrations/${slug}/${image}`}
               alt={name}
             />
             {name}

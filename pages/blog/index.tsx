@@ -22,9 +22,10 @@ function blogEntry(entry: BlogEntry, idx: number) {
         <Link href="/blog/author/[author]" as={`/blog/author/${author.slug}`}>
           <a>
             <Image
+              unsized
               style={{ width: 50, margin: 10 }}
               roundedCircle
-              src={require(`../../public/images/authors/${author.slug}.png`)}
+              src={`/images/authors/${author.slug}.png`}
               alt={author.name}
             />
             {author.name}

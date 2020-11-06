@@ -10,6 +10,7 @@ tags: [engineering]
 ## A guide to the Grouparoo Monorepo Automated Release Process
 
 <Image
+  unsized
   alt="grouparoo monorepo deployment workflow"
   src="grouparoo-monorepo-deployment/grouparoo-release-process.png"
 />
@@ -69,6 +70,7 @@ This `package.json` will have it’s versions locked in place with npm (or yarn)
 ## Continuous Testing for every push
 
 <Image
+  unsized
   maxHeight={800}
   alt="Continuous Testing all the time"
   src="grouparoo-monorepo-deployment/ci-all-the-time.png"
@@ -109,6 +111,7 @@ This mode of running our CI suite include an extra job called “publish”. Ass
 3. Push the new packages to the NPM repository, using the `next` tag.
 
 <Image
+  unsized
   maxHeight={400}
   alt="npm prerelease"
   src="grouparoo-monorepo-deployment/npm-prerelease.png"
@@ -121,6 +124,7 @@ There are a number of CI secrets we need to manage access to NPM and Github, but
 Now, our customers can opt into our alpha releases by changing their dependencies from `latest` to `next` in their `package.json` file. When a normal package is published to NPM, it automatically has the `latest` tag, and that’s what will be installed wit a normal `npm install @grouparoo/core`. However, you can publish your packages to any other tag you want to create parallel distribution channels.
 
 <Image
+  unsized
   maxHeight={400}
   alt="npm tags"
   src="grouparoo-monorepo-deployment/npm-tags.png"

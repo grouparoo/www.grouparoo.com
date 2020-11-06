@@ -88,8 +88,9 @@ export default function BlogPage({ pageProps }) {
               <p>
                 Share this post{" "}
                 <Image
+                  unsized
                   style={{ width: 25 }}
-                  src={require("../../public/images/home/twitter.png")}
+                  src="/images/home/twitter.png"
                   alt="Twitter Logo"
                 />
               </p>

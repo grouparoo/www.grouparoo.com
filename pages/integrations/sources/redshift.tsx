@@ -142,8 +142,9 @@ export default function RedshiftPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/postgres/add-postgres-app.png")}
+              src="/images/home/integrations/postgres/add-postgres-app.png"
               alt="Grouparoo Redshift settings"
             />
           </Col>
@@ -163,8 +164,9 @@ export default function RedshiftPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/postgres/postgres-table-mode.png")}
+              src="/images/home/integrations/postgres/postgres-table-mode.png"
               alt="Redshift table source"
             />
           </Col>
@@ -184,8 +186,9 @@ export default function RedshiftPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/postgres/postgres-query-mode.png")}
+              src="/images/home/integrations/postgres/postgres-query-mode.png"
               alt="Redshift query source"
             />
           </Col>

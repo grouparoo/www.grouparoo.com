@@ -26,9 +26,10 @@ export default function Support() {
         <Row>
           <Col>
             <Image
+              unsized
               className="headerImage"
               thumbnail
-              src={require("../public/images/support/support.jpg")}
+              src="/images/support/support.jpg"
               alt="Computers and people"
             />
 

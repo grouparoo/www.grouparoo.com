@@ -1,19 +1,26 @@
 import React from "react";
-import Image from "../Image";
+import Image, { MyImageProps } from "../Image";
 
-function BlogImage(props) {
+export type BlogImageProps = MyImageProps & {
+  permalink?: boolean;
+  centered?: boolean;
+  maxHeight?: number;
+  maxWidth?: number;
+  bottomSpace?: number;
+};
+
+function BlogImage(props: BlogImageProps) {
   const {
     permalink,
     centered,
     maxHeight,
     maxWidth,
     bottomSpace,
-    source,
-    outline,
-    src,
-    ...imageProps
+    ...otherProps
   } = props;
 
+  const imageProps: MyImageProps = otherProps;
+  const { src } = imageProps;
   const containerStyle = { textAlign: null, marginBottom: null };
   imageProps.style = imageProps.style || {};
 
@@ -21,16 +28,16 @@ function BlogImage(props) {
     containerStyle.textAlign = "center";
   }
 
-  if (maxHeight) {
-    imageProps.style.maxHeight = maxHeight;
-  }
+  // if (maxHeight) {
+  //   imageProps.style.maxHeight = maxHeight;
+  // }
 
-  if (maxWidth) {
-    imageProps.style.width = "100%";
-    imageProps.style.maxWidth = maxWidth;
-  } else {
-    imageProps.style.maxWidth = "100%";
-  }
+  // if (maxWidth) {
+  //   imageProps.style.width = "100%";
+  //   imageProps.style.maxWidth = maxWidth;
+  // } else {
+  //   imageProps.style.maxWidth = "100%";
+  // }
 
   if (bottomSpace) {
     containerStyle.marginBottom = bottomSpace;
@@ -44,11 +51,11 @@ function BlogImage(props) {
   if (src.includes("data:image")) {
     imageProps.src = src;
   } else {
-    if (permalink) {
-      imageProps.src = `https://www.grouparoo.com/posts/${src}`;
-    } else {
-      imageProps.src = require(`../../public/posts/${src}`);
-    }
+    //if (permalink) {
+    //  imageProps.src = `https://www.grouparoo.com/posts/${src}`;
+    //} else {
+    imageProps.src = `/posts/${src}`;
+    //}
   }
 
   return (

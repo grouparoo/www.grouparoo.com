@@ -168,8 +168,9 @@ export default function HubspotPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/hubspot/grouparoo-to-hubspot.png")}
+              src="/images/home/integrations/hubspot/grouparoo-to-hubspot.png"
               alt="Hubspot destination settings"
             />
           </Col>
@@ -189,8 +190,9 @@ export default function HubspotPage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/hubspot/hubspot-list.png")}
+              src="/images/home/integrations/hubspot/hubspot-list.png"
               alt="List in Hubspot"
             />
           </Col>

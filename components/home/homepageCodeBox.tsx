@@ -20,17 +20,19 @@ export default function HomepageCodeBox({ code, icon }) {
         <Col md={2}>
           {/* Desktop */}
           <Image
+            unsized
             className="d-none d-md-block"
             style={{ paddingBottom: 0 }}
-            src={require(`../../public/images/home/${icon}.svg`)}
+            src={`/images/home/${icon}.svg`}
             alt={icon}
           />
 
           {/* Mobile  */}
           <Image
+            unsized
             className="d-md-none"
             style={{ paddingBottom: 20 }}
-            src={require(`../../public/images/home/${icon}.svg`)}
+            src={`/images/home/${icon}.svg`}
             alt={icon}
           />
         </Col>

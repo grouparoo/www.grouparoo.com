@@ -15,9 +15,10 @@ export default function AuthorBox({
       <Row>
         <Col md={2}>
           <Image
+            unsized
             style={{ width: "100%", maxWidth: 200 }}
             roundedCircle
-            src={require(`../../public/images/authors/${author.slug}.png`)}
+            src={`/images/authors/${author.slug}.png`}
             alt={author.name}
           />
         </Col>

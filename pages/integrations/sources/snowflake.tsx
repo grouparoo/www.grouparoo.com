@@ -146,8 +146,9 @@ export default function Snowflake() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/snowflake/add-snowflake-app.png")}
+              src="/images/home/integrations/snowflake/add-snowflake-app.png"
               alt="Grouparoo Snowflake settings"
             />
           </Col>
@@ -167,8 +168,9 @@ export default function Snowflake() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/snowflake/snowflake-table-mode.png")}
+              src="/images/home/integrations/snowflake/snowflake-table-mode.png"
               alt="Snowflake table source"
             />
           </Col>
@@ -188,8 +190,9 @@ export default function Snowflake() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/snowflake/snowflake-query-mode.png")}
+              src="/images/home/integrations/snowflake/snowflake-query-mode.png"
               alt="Snowflake query source"
             />
           </Col>

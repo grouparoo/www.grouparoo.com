@@ -173,8 +173,9 @@ export default function SalesforcePage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/salesforce/grouparoo-to-salesforce.png")}
+              src="/images/home/integrations/salesforce/grouparoo-to-salesforce.png"
               alt="Map data to Salesforce"
             />
           </Col>
@@ -194,8 +195,9 @@ export default function SalesforcePage() {
           </Col>
           <Col md={9}>
             <Image
+              unsized
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/salesforce/salesforce-campaign.png")}
+              src="/images/home/integrations/salesforce/salesforce-campaign.png"
               alt="Campaign in Salesforce"
             />
           </Col>
