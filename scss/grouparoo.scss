@@ -90,6 +90,12 @@ h3 {
   color: $grouparoo-blue;
 }
 
+.imageOutline {
+  border-color: lightgray;
+  border-width: 2;
+  border-style: solid;
+}
+
 .howItWorksImage {
   box-shadow: 7px 6px 13px rgba(0, 0, 0, 0.12);
   border-radius: 4px;

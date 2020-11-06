@@ -37,6 +37,7 @@ export type MyImageProps = ImageProps &
     rounded?: boolean;
     roundedCircle?: boolean;
     thumbnail?: boolean;
+    outline?: boolean;
     centered?: boolean;
   };
 
@@ -67,6 +68,7 @@ const MyImage = React.forwardRef<HTMLImageElement, MyImageProps>(
       roundedCircle,
       thumbnail,
       centered,
+      outline,
       ...props
     },
     ref
@@ -76,7 +78,8 @@ const MyImage = React.forwardRef<HTMLImageElement, MyImageProps>(
       fluid && `${bsPrefix}-fluid`,
       rounded && `rounded`,
       roundedCircle && `rounded-circle`,
-      thumbnail && `${bsPrefix}-thumbnail`
+      thumbnail && `${bsPrefix}-thumbnail`,
+      outline && "imageOutline"
     );
     const imgClasses = classNames(className, classes);
     const imgComponent = getMainComponent(props, imgClasses);

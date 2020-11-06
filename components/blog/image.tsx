@@ -4,20 +4,18 @@ import Image, { MyImageProps } from "../Image";
 export type BlogImageProps = MyImageProps & {
   permalink?: boolean;
   bottomSpace?: number;
-  maxHeight?: number;
 };
 
 function BlogImage(props: BlogImageProps) {
-  const { permalink, bottomSpace, maxHeight, ...otherProps } = props;
+  const { permalink, bottomSpace, ...otherProps } = props;
 
   const imageProps: MyImageProps = otherProps;
+  imageProps.outline = true;
+
   const { src } = imageProps;
+
   const marginBottom = 20;
   const containerStyle: any = {
-    // borderColor: "lightgray",
-    // borderWidth: 2,
-    // borderStyle: "solid",
-    // backgroundColor: "white",
     marginBottom: (bottomSpace || 0) + marginBottom,
   };
 
