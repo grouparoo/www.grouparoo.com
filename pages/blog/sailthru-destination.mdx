@@ -14,9 +14,10 @@ Grouparoo allows you to connect your customer data to various marketing platform
 In Sailthru, you will need to admin access. In the "Setup / API & Postbacks" section, you can click on the little lock icon and see the "API Key" and "Secret" modal.
 
 <Image
-  maxHeight={200}
   alt="Getting your API Key and Secret"
   src="sailthru-destination/sailthru-settings.png"
+  height={200}
+  width={549}
 />
 
 ## Create a Grouparoo app
@@ -24,9 +25,10 @@ In Sailthru, you will need to admin access. In the "Setup / API & Postbacks" sec
 In Grouparoo, apps provide the credentials to be able to connect to other platforms. For Sailthru, you paste in the `apiKey` and the `apiSecret` straight from the Sailthru page. At this point if you hit "Test Connection," you should see "Test Passed."
 
 <Image
-  maxHeight={400}
   alt="Creating Grouparoo Sailthru App"
   src="sailthru-destination/create-app.png"
+  height={400}
+  width={473}
 />
 
 ## Create a Grouparoo destination
@@ -34,22 +36,25 @@ In Grouparoo, apps provide the credentials to be able to connect to other platfo
 You are ready to start sending your profile data to Sailthru. In Grouparoo, this is done through what we call destinations. Destinations allow you to say who (which profiles) and what (property and group membership) are sent to the external tool. So let's add a new one.
 
 <Image
-  maxHeight={250}
   alt="Add a destination"
   src="sailthru-destination/new-destination.png"
+  height={200}
+  width={642}
 />
 
 Then, we pick which groups and properties are going to be synchronized with Sailthru.
 
 <Image
-  maxHeight={250}
   alt="Grouparoo groups to send to Sailthru"
   src="sailthru-destination/destination-groups.png"
+  height={250}
+  width={424}
 />
 <Image
-  maxHeight={450}
   alt="Grouparoo properties to send to Sailthru"
   src="sailthru-destination/destination-properties.png"
+  height={450}
+  width={466}
 />
 
 From a privacy perspective, I love that we don't have to send their lifetime value to destinations like Sailthru. Instead, we only need to send their membership in the "High Value Customers" group.
@@ -59,22 +64,25 @@ From a privacy perspective, I love that we don't have to send their lifetime val
 All of the selected users now show up in Sailthru. They are in the "High Value Customers" group and the properties are set on their profile.
 
 <Image
-  maxHeight={200}
   alt="List added to Sailthru"
   src="sailthru-destination/sailthru-lists.png"
+  height={200}
+  width={895}
 />
 <Image
-  maxHeight={200}
   alt="Fields set as Sailthru properties"
   src="sailthru-destination/sailthru-profile.png"
+  height={200}
+  width={769}
 />
 
 Now, you can do anything that Sailthru enables. For example, the Sailthru Lifecyle Optimizer workflows can be very powerful when combined with this approach. Flows can be kicked off when a profile's properties change or group membership changes.
 
 <Image
-  maxHeight={350}
   alt="Fields set as Sailthru properties"
   src="sailthru-destination/sailthru-flow.png"
+  height={350}
+  width={507}
 />
 
 In this case, we send a "thank you for being a great customer" email when you become a member of the "High Value Customers" group. The fact that this kind of triggering can be done by the marketer without any engineering help is very powerful. This autonomy leads to high organizational leverage and more progress being made towards marketing goals.
@@ -109,9 +117,10 @@ To add users to Sailthru, you `POST` to the `https://api.sailthru.com/user` API.
 We have seen this often results in these extra lists with the same name if the list did not exist beforehand and multiple users are added in parallel. There looks to be a race condition in list creation.
 
 <Image
-  maxHeight={150}
   alt="Multiple lists created in Sailthru"
   src="sailthru-destination/details-multi-lists.png"
+  height={150}
+  width={981}
 />
 
 Unfortunately, this situation can arise fairly easily in the initial synchronization. Many profiles are being exported from Grouparoo when the destination is first added and the lists didn't not exist beforehand. It also creates a problem because the API encourages the name itself to be the key for lookup (as opposed to an id).
@@ -164,17 +173,19 @@ I read something like this in the documentation, but it was still surprising to 
 So when we first synced 1487 users, it looked like this:
 
 <Image
-  maxHeight={100}
   alt="Sailthru list with 1487 users"
   src="sailthru-destination/details-list-count1.png"
+  height={100}
+  width={350}
 />
 
 When we deleted everyone and synced again (with the same users), it was doubled:
 
 <Image
-  maxHeight={150}
   alt="Sailthru list with 1487 users"
   src="sailthru-destination/details-list-count2.png"
+  height={150}
+  width={557}
 />
 
 In other words: if you were to remove one user and add another one, this number would go up by one even though the real count was constant. This is important to know when making verifying your world is as you expect.

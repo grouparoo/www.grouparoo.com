@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationMappings from "../../../components/home/integrationMappings";
 import IntegrationSources from "../../../components/home/integrationSources";
@@ -173,8 +174,10 @@ export default function SalesforcePage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/salesforce/grouparoo-to-salesforce.png")}
+              src="/images/home/integrations/salesforce/grouparoo-to-salesforce.png"
               alt="Map data to Salesforce"
+              width={742}
+              height={487}
             />
           </Col>
         </Row>
@@ -194,8 +197,10 @@ export default function SalesforcePage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/salesforce/salesforce-campaign.png")}
+              src="/images/home/integrations/salesforce/salesforce-campaign.png"
               alt="Campaign in Salesforce"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>

@@ -1,15 +1,16 @@
-import { Image } from "react-bootstrap";
+import Image, { MyImageProps } from "../Image";
 
-export default function DocImage(props) {
-  const { src, ...imageProps } = props;
+export type DocImageProps = MyImageProps;
+
+export default function DocImage(props: DocImageProps) {
+  const imageProps = Object.assign({}, props);
+  const { src } = imageProps;
 
   if (src.includes("data:image")) {
     imageProps.src = src;
   } else {
-    imageProps.src = require(`../../public/images/${src}`);
+    imageProps.src = `/images/${src}`;
   }
 
-  return (
-    <Image style={{ maxWidth: "100%", marginBottom: 10 }} {...imageProps} />
-  );
+  return <Image {...imageProps} />;
 }

@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationMappings from "../../../components/home/integrationMappings";
 import IntegrationSources from "../../../components/home/integrationSources";
@@ -171,8 +172,10 @@ export default function ZendeskPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/zendesk/grouparoo-to-zendesk.png")}
+              src="/images/home/integrations/zendesk/grouparoo-to-zendesk.png"
               alt="Zendesk destination settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -189,8 +192,10 @@ export default function ZendeskPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/zendesk/zendesk-users.png")}
+              src="/images/home/integrations/zendesk/zendesk-users.png"
               alt="Users in Zendesk"
+              width={742}
+              height={432}
             />
           </Col>
         </Row>

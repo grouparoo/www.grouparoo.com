@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Image, Button, Tab, Nav, Row, Col } from "react-bootstrap";
+import { Container, Button, Tab, Nav, Row, Col } from "react-bootstrap";
+import Image from "../../components/Image";
 import Head from "next/head";
 import IntegrationsSection from "../../components/home/integrationsSection";
 import GetStarted from "../../components/home/getStarted";
@@ -134,10 +135,11 @@ export default function IndexPage() {
               <h2>Synchronize all of your customer data</h2>
               <br />
               <Image
-                className="howItWorksImageWithoutDropShadow"
-                width="90%"
-                src={require("../../public/images/home/bowtie.svg")}
+                centered
+                src="/images/home/bowtie.svg"
                 alt="Grouparoo sources and destination connections"
+                width={1000}
+                height={537}
               />
             </Col>
           </Row>
@@ -166,9 +168,10 @@ export default function IndexPage() {
             <Col md={8}>
               <Image
                 className="howItWorksImage"
-                width="100%"
-                src={require("../../public/images/home/how-it-works-1.png")}
+                src="/images/home/how-it-works-1.png"
                 alt="Grouparoo profile"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -185,9 +188,10 @@ export default function IndexPage() {
             <Col md={8}>
               <Image
                 className="howItWorksImage"
-                style={{ width: "100%" }}
-                src={require("../../public/images/home/how-it-works-2.png")}
+                src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -203,9 +207,10 @@ export default function IndexPage() {
             <Col md={8}>
               <Image
                 className="howItWorksImage"
-                style={{ width: "100%" }}
-                src={require("../../public/images/home/how-it-works-3.png")}
+                src="/images/home/how-it-works-3.png"
                 alt="Grouparoo destination"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -222,9 +227,10 @@ export default function IndexPage() {
             <Col md={8}>
               <Image
                 className="howItWorksImage"
-                style={{ width: "100%" }}
-                src={require("../../public/images/home/how-it-works-4.png")}
+                src="/images/home/how-it-works-4.png"
                 alt="Data synced to destination"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -234,6 +240,7 @@ export default function IndexPage() {
       <div
         id="for-marketing-teams"
         className="bg-dark text-white homePageSection"
+        style={{ marginTop: 40 }}
       >
         <Container>
           <Row style={{ textAlign: "center" }}>
@@ -282,23 +289,29 @@ export default function IndexPage() {
                   <Tab.Content style={{ textAlign: "center" }}>
                     <Tab.Pane eventKey="retention-marketing">
                       <Image
-                        style={{ width: "100%" }}
-                        src={require("../../public/images/home/retention-marketing.png")}
+                        centered
+                        src="/images/home/retention-marketing.png"
                         alt="Sync groups to destinations"
+                        width={730}
+                        height={480}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="ops-enablement">
                       <Image
-                        style={{ width: "100%" }}
-                        src={require("../../public/images/home/marketing-ops.png")}
+                        centered
+                        src="/images/home/marketing-ops.png"
                         alt="Create properties from sources"
+                        width={730}
+                        height={613}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="growth-marketing">
                       <Image
-                        style={{ width: "100%" }}
-                        src={require("../../public/images/home/growth-marketing.png")}
+                        centered
+                        src="/images/home/growth-marketing.png"
                         alt="Map data to destinations"
+                        width={730}
+                        height={528}
                       />
                     </Tab.Pane>
                   </Tab.Content>
@@ -319,9 +332,11 @@ export default function IndexPage() {
               </Col>
               <Col md={6}>
                 <Image
-                  style={{ width: "95%" }}
-                  src={require("../../public/images/home/retention-marketing.png")}
+                  centered
+                  src="/images/home/retention-marketing.png"
                   alt="Sync groups to destinations"
+                  width={300}
+                  height={197}
                 />
               </Col>
             </Row>
@@ -338,9 +353,11 @@ export default function IndexPage() {
               </Col>
               <Col md={6}>
                 <Image
-                  style={{ width: "95%" }}
-                  src={require("../../public/images/home/marketing-ops.png")}
+                  centered
+                  src="/images/home/marketing-ops.png"
                   alt="Create properties from sources"
+                  width={300}
+                  height={252}
                 />
               </Col>
             </Row>
@@ -357,9 +374,11 @@ export default function IndexPage() {
               </Col>
               <Col md={6}>
                 <Image
-                  style={{ width: "95%" }}
-                  src={require("../../public/images/home/growth-marketing.png")}
+                  centered
+                  src="/images/home/growth-marketing.png"
                   alt="Map data to destinations"
+                  width={300}
+                  height={217}
                 />
               </Col>
             </Row>

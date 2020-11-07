@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "../Image";
 
 export default function WhyOpenSource() {
   return (
@@ -23,15 +24,12 @@ export default function WhyOpenSource() {
             </Col>
             <Col style={{ textAlign: "center" }}>
               <Image
-                style={{
-                  backgroundColor: "white",
-                  width: 75,
-                  height: 75,
-                  borderRadius: 5,
-                  padding: 10,
-                }}
-                src={require("../../public/images/home/github.png")}
+                centered
+                rounded
+                src="/images/home/github-white.png"
                 alt="Github Logo"
+                width={75}
+                height={75}
               />
             </Col>
           </Row>
@@ -47,14 +45,12 @@ export default function WhyOpenSource() {
             </Col>
             <Col style={{ textAlign: "center" }}>
               <Image
-                style={{
-                  width: 75,
-                  height: 75,
-                  borderRadius: 5,
-                }}
-                width={100}
-                src={require("../../public/images/home/gdpr.png")}
+                centered
+                rounded
+                src="/images/home/gdpr.png"
                 alt="GDPR Logo"
+                width={75}
+                height={75}
               />
             </Col>
           </Row>

@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
 import IntegrationsHead from "../../../components/home/integrationsHead";
@@ -146,8 +147,10 @@ export default function Snowflake() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/snowflake/add-snowflake-app.png")}
+              src="/images/home/integrations/snowflake/add-snowflake-app.png"
               alt="Grouparoo Snowflake settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -167,8 +170,10 @@ export default function Snowflake() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/snowflake/snowflake-table-mode.png")}
+              src="/images/home/integrations/snowflake/snowflake-table-mode.png"
               alt="Snowflake table source"
+              width={742}
+              height={495}
             />
           </Col>
         </Row>
@@ -188,8 +193,10 @@ export default function Snowflake() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/snowflake/snowflake-query-mode.png")}
+              src="/images/home/integrations/snowflake/snowflake-query-mode.png"
               alt="Snowflake query source"
+              width={742}
+              height={492}
             />
           </Col>
         </Row>

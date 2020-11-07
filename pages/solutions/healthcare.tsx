@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Image, Button, Tab, Nav, Row, Col } from "react-bootstrap";
+import { Container, Button, Tab, Nav, Row, Col } from "react-bootstrap";
+import Image from "../../components/Image";
 import Head from "next/head";
 import IntegrationsSection from "../../components/home/integrationsSection";
 import GetStarted from "../../components/home/getStarted";
@@ -130,10 +131,11 @@ export default function Healthcare() {
               <h2>Synchronize all of your patient data</h2>
               <br />
               <Image
-                className="howItWorksImageWithoutDropShadow"
-                width="90%"
-                src={require("../../public/images/home/bowtie.svg")}
-                alt="Grouparoo sources and destinations connected"
+                centered
+                src="/images/home/bowtie.svg"
+                alt="Grouparoo sources and destination connections"
+                width={1000}
+                height={537}
               />
             </Col>
           </Row>
@@ -162,9 +164,10 @@ export default function Healthcare() {
             <Col md={8}>
               <Image
                 className="howItWorksImage"
-                width="100%"
-                src={require("../../public/images/home/how-it-works-1.png")}
+                src="/images/home/how-it-works-1.png"
                 alt="Grouparoo profile"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -181,9 +184,10 @@ export default function Healthcare() {
             <Col md={8}>
               <Image
                 className="howItWorksImage"
-                style={{ width: "100%" }}
-                src={require("../../public/images/home/how-it-works-2.png")}
+                src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -200,9 +204,10 @@ export default function Healthcare() {
             <Col md={8}>
               <Image
                 className="howItWorksImage"
-                style={{ width: "100%" }}
-                src={require("../../public/images/home/how-it-works-3.png")}
+                src="/images/home/how-it-works-3.png"
                 alt="Grouparoo destination"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -219,9 +224,10 @@ export default function Healthcare() {
             <Col md={8}>
               <Image
                 className="howItWorksImage"
-                style={{ width: "100%" }}
-                src={require("../../public/images/home/how-it-works-4.png")}
+                src="/images/home/how-it-works-4.png"
                 alt="Data synced to destination"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -231,6 +237,7 @@ export default function Healthcare() {
       <div
         id="for-marketing-teams"
         className="bg-dark text-white homePageSection"
+        style={{ marginTop: 40 }}
       >
         <Container>
           <Row style={{ textAlign: "center" }}>
@@ -280,23 +287,27 @@ export default function Healthcare() {
                   <Tab.Content style={{ textAlign: "center" }}>
                     <Tab.Pane eventKey="email-marketing">
                       <Image
-                        style={{ width: "100%" }}
-                        src={require("../../public/images/home/retention-marketing.png")}
+                        centered
+                        src="/images/home/retention-marketing.png"
                         alt="Sync groups to destinations"
+                        width={730}
+                        height={480}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="customer-support">
                       <Image
-                        style={{ width: "100%" }}
-                        src={require("../../public/images/home/solutions/healthcare/zendesk-users.png")}
+                        src="/images/home/solutions/healthcare/zendesk-users.png"
                         alt="Users in Zendesk"
+                        width={730}
+                        height={425}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="product-customization">
                       <Image
-                        style={{ width: "100%" }}
-                        src={require("../../public/images/home/solutions/healthcare/in-product.png")}
+                        src="/images/home/solutions/healthcare/in-product.png"
                         alt="Map data to product database"
+                        width={730}
+                        height={492}
                       />
                     </Tab.Pane>
                   </Tab.Content>
@@ -317,9 +328,11 @@ export default function Healthcare() {
               </Col>
               <Col md={6}>
                 <Image
-                  style={{ width: "95%" }}
-                  src={require("../../public/images/home/retention-marketing.png")}
+                  centered
+                  src="/images/home/retention-marketing.png"
                   alt="Sync groups to destinations"
+                  width={300}
+                  height={197}
                 />
               </Col>
             </Row>
@@ -336,9 +349,10 @@ export default function Healthcare() {
               </Col>
               <Col md={6}>
                 <Image
-                  style={{ width: "95%" }}
-                  src={require("../../public/images/home/solutions/healthcare/zendesk-users.png")}
+                  src="/images/home/solutions/healthcare/zendesk-users.png"
                   alt="Users in Zendesk"
+                  width={730}
+                  height={175}
                 />
               </Col>
             </Row>
@@ -355,9 +369,10 @@ export default function Healthcare() {
               </Col>
               <Col md={6}>
                 <Image
-                  style={{ width: "95%" }}
-                  src={require("../../public/images/home/solutions/healthcare/in-product.png")}
+                  src="/images/home/solutions/healthcare/in-product.png"
                   alt="Map data to product database"
+                  width={300}
+                  height={202}
                 />
               </Col>
             </Row>

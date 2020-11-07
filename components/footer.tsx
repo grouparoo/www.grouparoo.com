@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "./Image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -8,9 +9,10 @@ function LogoAndSocialLinks({ router }) {
   return (
     <>
       <Image
-        style={{ width: 50 }}
-        src={require("../public/images/logo.png")}
+        src="/images/logo.png"
         alt="Grouparoo Logo"
+        width={50}
+        height={40}
       />
       <br />
       <br />

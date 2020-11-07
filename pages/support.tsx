@@ -1,5 +1,6 @@
 import Head from "next/head";
-import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import Image from "../components/Image";
 
 export default function Support() {
   const supportButtonStyle = { marginTop: 10, marginBottom: 40 };
@@ -25,10 +26,11 @@ export default function Support() {
         <Row>
           <Col>
             <Image
-              className="headerImage"
               thumbnail
-              src={require("../public/images/support/support.jpg")}
+              src="/images/support/support.jpg"
               alt="Computers and people"
+              width={1100}
+              height={733}
             />
 
             <p>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import BlogTags from "../../utils/blogTags";
-import { Row, Col, Image, Alert } from "react-bootstrap";
+import { Row, Col, Alert } from "react-bootstrap";
+import Image from "../Image";
 
 export default function AuthorBox({
   author,
@@ -14,10 +15,11 @@ export default function AuthorBox({
       <Row>
         <Col md={2}>
           <Image
-            style={{ width: "100%", maxWidth: 200 }}
             roundedCircle
-            src={require(`../../public/images/authors/${author.slug}.png`)}
+            src={`/images/authors/${author.slug}.png`}
             alt={author.name}
+            width={200}
+            height={200}
           />
         </Col>
         <Col md={10}>

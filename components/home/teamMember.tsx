@@ -1,4 +1,5 @@
-import { Row, Col, Image } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
+import Image from "../Image";
 
 export default function TeamMember({
   name,
@@ -14,10 +15,11 @@ export default function TeamMember({
       <Row>
         <Col>
           <Image
-            style={{ height: 150, width: 150, objectFit: "cover" }}
             roundedCircle
-            src={require(`../../public/images/team/${image}`)}
+            src={`/images/team/${image}`}
             alt={name}
+            width={150}
+            height={150}
           />
           <p>
             <strong>{name}</strong>
@@ -56,11 +58,13 @@ export default function TeamMember({
 
 function SocialIconGrayscale({ name }) {
   return (
-    <Image
-      width="20"
-      style={{ filter: "grayscale(100%)" }}
-      src={require(`../../public/images/home/${name}.png`)}
-      alt={name}
-    />
+    <div style={{ filter: "grayscale(100%)" }}>
+      <Image
+        src={`/images/home/${name}.png`}
+        alt={name}
+        width={20}
+        height={20}
+      />
+    </div>
   );
 }

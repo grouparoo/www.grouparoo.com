@@ -1,4 +1,4 @@
-import { Image } from "react-bootstrap";
+import Image from "../Image";
 
 export default function SmallIntegration({
   image,
@@ -26,13 +26,10 @@ export default function SmallIntegration({
       }}
     >
       <Image
-        style={{
-          margin: "auto",
-          padding: 10,
-          width: 100,
-        }}
-        src={require(`../../public/images/home/integrations/${slug}/${image}`)}
+        src={`/images/home/integrations/${slug}/${image}`}
         alt={name}
+        height={80}
+        width={80}
       />
     </div>
   );

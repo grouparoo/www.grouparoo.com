@@ -90,25 +90,21 @@ h3 {
   color: $grouparoo-blue;
 }
 
+.imageOutline {
+  border-color: lightgray;
+  border-width: 2;
+  border-style: solid;
+}
+
 .howItWorksImage {
   box-shadow: 7px 6px 13px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
-  max-width: 90%;
-  margin: 20px;
-}
-
-.howItWorksImageWithoutDropShadow {
-  border-radius: 4px;
-  max-width: 90%;
-  margin: 20px;
 }
 
 // -- Integrations Pages --
 .productScreenshots {
   box-shadow: 7px 6px 13px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
-  max-width: 90%;
-  margin: 20px;
 }
 
 .integrationsBlueH3 {
@@ -125,14 +121,6 @@ h3 {
 }
 
 // -- Page Content --
-.headerImage {
-  width: 100%;
-  max-height: 400px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  object-fit: cover;
-}
-
 code[class*="language-"] {
   font-size: 14px;
   line-height: 10px;

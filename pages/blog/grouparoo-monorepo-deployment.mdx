@@ -12,6 +12,8 @@ tags: [engineering]
 <Image
   alt="grouparoo monorepo deployment workflow"
   src="grouparoo-monorepo-deployment/grouparoo-release-process.png"
+  width={1000}
+  height={583}
 />
 
 Coming from more traditional web & app development, I’m a big fan of [git-flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) style workflow. Specifically the following features:
@@ -69,9 +71,10 @@ This `package.json` will have it’s versions locked in place with npm (or yarn)
 ## Continuous Testing for every push
 
 <Image
-  maxHeight={800}
   alt="Continuous Testing all the time"
   src="grouparoo-monorepo-deployment/ci-all-the-time.png"
+  height={800}
+  width={849}
 />
 
 The backbone of any good automated workflow is a robust test suite. You need to be sure that your new code works the way you expect, and hasn’t broken anything. We run our tests on CirleCI, and make use of Jest and man other tools. I’ll talk about our test suite in more detail in a later post, but we have a test suite for every package we publish. The [Grouparoo Monorepo](https://github.com/grouparoo/grouparoo) is a collection of many inter-related packages which we manage together via [Lerna](https://github.com/grouparoo/grouparoo). Lerna helps you keep all of your versions & packages in sync, and more importantly, rely on each-other while developing them! A change in one package might effect the rest, so we test them all in concert.
@@ -109,9 +112,10 @@ This mode of running our CI suite include an extra job called “publish”. Ass
 3. Push the new packages to the NPM repository, using the `next` tag.
 
 <Image
-  maxHeight={400}
   alt="npm prerelease"
   src="grouparoo-monorepo-deployment/npm-prerelease.png"
+  height={400}
+  width={828}
 />
 
 There are a number of CI secrets we need to manage access to NPM and Github, but they can all be stored in CircleCI’s secrets management tool. Of note, there is at this time no way to automate (or skip) a 2FA token for publishing to NPM. To overcome this, we’ve created a user who can only publish from CI which doesn’t use 2FA.
@@ -121,9 +125,10 @@ There are a number of CI secrets we need to manage access to NPM and Github, but
 Now, our customers can opt into our alpha releases by changing their dependencies from `latest` to `next` in their `package.json` file. When a normal package is published to NPM, it automatically has the `latest` tag, and that’s what will be installed wit a normal `npm install @grouparoo/core`. However, you can publish your packages to any other tag you want to create parallel distribution channels.
 
 <Image
-  maxHeight={400}
   alt="npm tags"
   src="grouparoo-monorepo-deployment/npm-tags.png"
+  height={400}
+  width={544}
 />
 
 ## NPM Releases

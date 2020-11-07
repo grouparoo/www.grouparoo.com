@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationMappings from "../../../components/home/integrationMappings";
 import IntegrationSources from "../../../components/home/integrationSources";
@@ -168,8 +169,10 @@ export default function HubspotPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/hubspot/grouparoo-to-hubspot.png")}
+              src="/images/home/integrations/hubspot/grouparoo-to-hubspot.png"
               alt="Hubspot destination settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -189,8 +192,10 @@ export default function HubspotPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/hubspot/hubspot-list.png")}
+              src="/images/home/integrations/hubspot/hubspot-list.png"
               alt="List in Hubspot"
+              width={742}
+              height={455}
             />
           </Col>
         </Row>

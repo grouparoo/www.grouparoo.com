@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Image, Button, Row, Col } from "react-bootstrap";
+import { Container, Button, Row, Col } from "react-bootstrap";
+import Image from "../components/Image";
 import Head from "next/head";
 import HomepageCodeBox from "../components/home/homepageCodeBox";
 import IntegrationsSection from "../components/home/integrationsSection";
@@ -67,10 +68,11 @@ export default function IndexPage() {
               <h2>Easily sync your customer data</h2>
               <br />
               <Image
-                className="howItWorksImageWithoutDropShadow"
-                width="90%"
-                src={require("../public/images/home/bowtie.svg")}
+                centered
+                src="/images/home/bowtie.svg"
                 alt="Grouparoo sources and destination connections"
+                width={1000}
+                height={537}
               />
             </Col>
           </Row>
@@ -302,8 +304,10 @@ export default function IndexPage() {
               style={{ textAlign: "center" }}
             >
               <Image
-                src={require("../public/images/home/github-white.png")}
+                centered
+                src="/images/home/github-white.png"
                 alt="Github Logo"
+                height={100}
                 width={100}
               />
             </Col>
@@ -328,9 +332,10 @@ export default function IndexPage() {
             </Col>
             <Col className="d-md-none" md={6} style={{ textAlign: "center" }}>
               <Image
-                src={require("../public/images/home/github-white.png")}
+                src="/images/home/github-white.png"
                 alt="Github Logo"
                 width={100}
+                height={100}
               />
             </Col>
           </Row>
@@ -364,9 +369,10 @@ export default function IndexPage() {
             <Col md={8}>
               <Image
                 className="howItWorksImage"
-                width="100%"
-                src={require("../public/images/home/how-it-works-1.png")}
+                src="/images/home/how-it-works-1.png"
                 alt="Grouparoo profile"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -383,9 +389,10 @@ export default function IndexPage() {
             <Col md={8}>
               <Image
                 className="howItWorksImage"
-                style={{ width: "100%" }}
-                src={require("../public/images/home/how-it-works-2.png")}
+                src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -401,9 +408,10 @@ export default function IndexPage() {
             <Col md={8}>
               <Image
                 className="howItWorksImage"
-                style={{ width: "100%" }}
-                src={require("../public/images/home/how-it-works-3.png")}
+                src="/images/home/how-it-works-3.png"
                 alt="Grouparoo destination"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>
@@ -423,9 +431,10 @@ export default function IndexPage() {
             <Col md={8}>
               <Image
                 className="howItWorksImage"
-                style={{ width: "100%" }}
-                src={require("../public/images/home/how-it-works-4.png")}
+                src="/images/home/how-it-works-4.png"
                 alt="Data synced to destination"
+                width={650}
+                height={398}
               />
             </Col>
           </Row>

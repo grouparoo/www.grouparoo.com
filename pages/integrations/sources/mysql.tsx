@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
 import IntegrationsHead from "../../../components/home/integrationsHead";
@@ -137,9 +138,12 @@ export default function MySQLPage() {
           </Col>
           <Col md={9}>
             <Image
+              centered
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/mysql/add-mysql-app.png")}
+              src="/images/home/integrations/mysql/add-mysql-app.png"
               alt="Grouparoo MySQL settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -158,9 +162,12 @@ export default function MySQLPage() {
           </Col>
           <Col md={9}>
             <Image
+              centered
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/mysql/mysql-table-mode.png")}
+              src="/images/home/integrations/mysql/mysql-table-mode.png"
               alt="MySQL table source"
+              width={742}
+              height={806}
             />
           </Col>
         </Row>
@@ -179,9 +186,12 @@ export default function MySQLPage() {
           </Col>
           <Col md={9}>
             <Image
+              centered
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/mysql/mysql-query-mode.png")}
+              src="/images/home/integrations/mysql/mysql-query-mode.png"
               alt="MySQL query source"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>

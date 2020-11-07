@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationMappings from "../../../components/home/integrationMappings";
 import IntegrationSources from "../../../components/home/integrationSources";
@@ -165,8 +166,10 @@ export default function MailchimpPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/mailchimp/grouparoo-to-mailchimp.png")}
+              src="/images/home/integrations/mailchimp/grouparoo-to-mailchimp.png"
               alt="Map data to Mailchimp"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -186,8 +189,10 @@ export default function MailchimpPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/mailchimp/mailchimp-audience.png")}
+              src="/images/home/integrations/mailchimp/mailchimp-audience.png"
               alt="Mailchimp audience populated"
+              width={742}
+              height={518}
             />
           </Col>
         </Row>

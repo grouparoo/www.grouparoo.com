@@ -1,44 +1,23 @@
 import React from "react";
+import Image, { MyImageProps } from "../Image";
 
-function Image(props) {
-  const {
-    permalink,
-    centered,
-    maxHeight,
-    maxWidth,
-    bottomSpace,
-    source,
-    outline,
-    src,
-    ...imageProps
-  } = props;
+export type BlogImageProps = MyImageProps & {
+  permalink?: boolean;
+  bottomSpace?: number;
+};
 
-  const containerStyle = { textAlign: null, marginBottom: null };
-  imageProps.style = imageProps.style || {};
+function BlogImage(props: BlogImageProps) {
+  const { permalink, bottomSpace, ...otherProps } = props;
 
-  if (centered) {
-    containerStyle.textAlign = "center";
-  }
+  const imageProps: MyImageProps = otherProps;
+  imageProps.outline = true;
 
-  if (maxHeight) {
-    imageProps.style.maxHeight = maxHeight;
-  }
+  const { src } = imageProps;
 
-  if (maxWidth) {
-    imageProps.style.width = "100%";
-    imageProps.style.maxWidth = maxWidth;
-  } else {
-    imageProps.style.maxWidth = "100%";
-  }
-
-  if (bottomSpace) {
-    containerStyle.marginBottom = bottomSpace;
-  }
-
-  imageProps.style.borderColor = "darkgray";
-  imageProps.style.borderWidth = 2;
-  imageProps.style.borderStyle = "solid";
-  imageProps.style.backgroundColor = "white";
+  const marginBottom = 20;
+  const containerStyle: any = {
+    marginBottom: (bottomSpace || 0) + marginBottom,
+  };
 
   if (src.includes("data:image")) {
     imageProps.src = src;
@@ -46,15 +25,15 @@ function Image(props) {
     if (permalink) {
       imageProps.src = `https://www.grouparoo.com/posts/${src}`;
     } else {
-      imageProps.src = require(`../../public/posts/${src}`);
+      imageProps.src = `/posts/${src}`;
     }
   }
 
   return (
-    <p style={containerStyle}>
-      <img {...imageProps} />
-    </p>
+    <div style={containerStyle}>
+      <Image {...imageProps} />
+    </div>
   );
 }
 
-export default Image;
+export default BlogImage;

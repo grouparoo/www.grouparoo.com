@@ -2,7 +2,8 @@ import hydrate from "next-mdx-remote/hydrate";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
-import { Container, Row, Col, Alert, Image, Card } from "react-bootstrap";
+import { Container, Row, Col, Alert, Card } from "react-bootstrap";
+import Image from "../../components/Image";
 import BlogTags from "../../utils/blogTags";
 import Subscribe from "../../components/subscribe";
 import AuthorBox from "../../components/blog/authorBox";
@@ -84,14 +85,17 @@ export default function BlogPage({ pageProps }) {
               target="_blank"
               rel="noreferrer nofollow"
             >
-              <p>
-                Share this post{" "}
+              <div style={{ height: 25 }} className="d-flex align-items-center">
+                <p style={{ marginRight: 5, marginBottom: 0, marginTop: 0 }}>
+                  Share this post
+                </p>
                 <Image
-                  style={{ width: 25 }}
-                  src={require("../../public/images/home/twitter.png")}
+                  src="/images/home/twitter.png"
                   alt="Twitter Logo"
+                  width={25}
+                  height={25}
                 />
-              </p>
+              </div>
             </a>
           </Col>
         </Row>

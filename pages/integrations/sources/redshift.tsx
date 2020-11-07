@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
 import IntegrationsHead from "../../../components/home/integrationsHead";
@@ -142,8 +143,10 @@ export default function RedshiftPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/postgres/add-postgres-app.png")}
+              src="/images/home/integrations/postgres/add-postgres-app.png"
               alt="Grouparoo Redshift settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -163,8 +166,10 @@ export default function RedshiftPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/postgres/postgres-table-mode.png")}
+              src="/images/home/integrations/postgres/postgres-table-mode.png"
               alt="Redshift table source"
+              width={742}
+              height={614}
             />
           </Col>
         </Row>
@@ -184,8 +189,10 @@ export default function RedshiftPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/postgres/postgres-query-mode.png")}
+              src="/images/home/integrations/postgres/postgres-query-mode.png"
               alt="Redshift query source"
+              width={742}
+              height={619}
             />
           </Col>
         </Row>

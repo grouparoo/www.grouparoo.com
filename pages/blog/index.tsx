@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import getAuthor from "../../utils/getAuthor";
-import { Container, Image } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import Image from "../../components/Image";
 import { BlogEntry, getBlogEntries } from "../../utils/blogPosts";
 import BlogTags from "../../utils/blogTags";
 import AuthorBox from "../../components/blog/authorBox";
@@ -17,20 +18,30 @@ function blogEntry(entry: BlogEntry, idx: number) {
         </a>
       </Link>
       <h4>{BlogTags(entry.tags)}</h4>
-      <p>
+      <div className="d-flex flex-row" style={{ marginBottom: 10 }}>
         <Link href="/blog/author/[author]" as={`/blog/author/${author.slug}`}>
           <a>
             <Image
-              style={{ width: 50, margin: 10 }}
               roundedCircle
-              src={require(`../../public/images/authors/${author.slug}.png`)}
+              src={`/images/authors/${author.slug}.png`}
               alt={author.name}
+              width={50}
+              height={50}
             />
-            {author.name}
           </a>
         </Link>{" "}
-        on {entry.date}
-      </p>
+        <div style={{ height: 50 }} className="d-flex align-items-center">
+          <p style={{ marginLeft: 10, marginBottom: 0 }}>
+            <Link
+              href="/blog/author/[author]"
+              as={`/blog/author/${author.slug}`}
+            >
+              <a>{author.name}</a>
+            </Link>{" "}
+            on {entry.date}
+          </p>
+        </div>
+      </div>
       <blockquote style={{ color: "darkGray" }}>
         <span style={{ fontSize: 20, fontFamily: "Georgia" }}>"</span>
         <em>{entry.pullQuote}</em>

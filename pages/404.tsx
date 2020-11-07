@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "../components/Image";
 import Link from "next/link";
 
 export default function FourOhFour() {
@@ -11,7 +12,8 @@ export default function FourOhFour() {
           <Row>
             <Col md={6}>
               <Image
-                width="100%"
+                width={540}
+                height={304}
                 src="https://media.giphy.com/media/5dWWa4tYjpBSM/giphy.gif"
                 alt="Kangaroo dropping ball"
                 rounded

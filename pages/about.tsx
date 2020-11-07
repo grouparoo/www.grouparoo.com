@@ -1,5 +1,6 @@
 import Head from "next/head";
-import { Container, Row, Col, Image, Card } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import Image from "../components/Image";
 import WhoWeAre from "../components/home/whoWeAre";
 import JobBoard from "../components/jobBoard";
 
@@ -25,8 +26,10 @@ export default function About() {
           <Col xl={6} lg={5} md={4}>
             <Image
               thumbnail
-              src={require("../public/images/team/team.jpg")}
+              src="/images/team/team.jpg"
               alt="Team photo"
+              width={530}
+              height={398}
             />
             <p>
               <small>

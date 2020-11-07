@@ -29,9 +29,10 @@ The most common type of watermark is a `DATETIME` column for when the row is upd
 
 <Image
   centered
-  maxHeight={1000}
   alt="Steps of a simple sync"
   src="building-a-sync-engine/simple.png"
+  width={500}
+  height={996}
 />
 
 ## Auto-setting your watermark column
@@ -149,9 +150,10 @@ The issue comes up if there is an update to one for the first ones we processed 
 
 <Image
   centered
-  maxHeight={1900}
   alt="Steps of a batch sync with an error"
   src="building-a-sync-engine/batch.png"
+  width={500}
+  height={1872}
 />
 
 Because of how the sorting and offsets works, we miss one.

@@ -15,13 +15,22 @@ The first thing you need to do is to add an App. Apps are how Grouparoo can conn
 
 You can add an app either from the dashboard or from the left-navigation.
 
-<Image centered source="Add App" alt="Add App" src="docs/guides/add-app.png" />
+<Image
+  centered
+  source="Add App"
+  alt="Add App"
+  src="docs/guides/add-app.png"
+  width={820}
+  height={414}
+/>
 
 <Image
   centered
   source="Add Left Nav"
   alt="Add App Left Nav"
   src="docs/guides/add-app-nav.png"
+  width={820}
+  height={414}
 />
 
 We recommend starting with the App that has the majority of your customer data such as a data warehouse or production database replica. Once you've chosen an App, add the connection details you'll need to connect to this App.
@@ -31,6 +40,8 @@ We recommend starting with the App that has the majority of your customer data s
   source="Add Left Nav"
   alt="Add App Left Nav"
   src="docs/guides/add-app-postgres.png"
+  width={820}
+  height={414}
 />
 
 ## 2. Create a Source
@@ -44,6 +55,8 @@ To start, you'll click on the Sources navigation in the left-nav and click `Add 
   source="Add new source"
   alt="Add new source"
   src="docs/guides/add-new-source.png"
+  width={820}
+  height={414}
 />
 
 Then you'll choose the kind of Source you'd like to create. The choices shown will be based on which Apps you've already connected. If you don't see the App you want to use, you can add a new App.
@@ -53,6 +66,8 @@ Then you'll choose the kind of Source you'd like to create. The choices shown wi
   source="Add new postgres source"
   alt="Add new postgres source"
   src="docs/guides/add-new-source-choose-app.png"
+  width={820}
+  height={414}
 />
 
 Once you've chosen the App, you will name your Source and identify the table with user data that you want to pull into Grouparoo.
@@ -62,6 +77,8 @@ Once you've chosen the App, you will name your Source and identify the table wit
   source="New postgres source"
   alt="New postgres source"
   src="docs/guides/new-source-postgres.png"
+  width={820}
+  height={414}
 />
 
 After you've chosen the database table that contains your user data, you will need to indicate what makes your users unique. Often a unique identifier is a `id`, `user id`, `guid`, or `email`.
@@ -75,6 +92,8 @@ You will also create your first Profile Property Rule. A Profile Property Rule i
   source="First Profile Property"
   alt="First Profile Property"
   src="docs/guides/new-source-bootstrap.png"
+  width={820}
+  height={414}
 />
 
 ### Add a Schedule to your Source
@@ -88,6 +107,8 @@ You can choose how often Grouparoo will check your Source for new data. You will
   source="Schedule"
   alt="Schedule"
   src="docs/guides/new-source-schedule.png"
+  width={820}
+  height={414}
 />
 
 Now your first Source is all set up! 🎉 Grouparoo is now regularly pulling in data from your Source.
@@ -101,6 +122,8 @@ You can have multiple Profile Properties defined from the same Source. You can c
   source="New Profile Properties"
   alt="New Profile Properties"
   src="docs/guides/new-profile-properties.png"
+  width={820}
+  height={414}
 />
 
 You can also create new Profile Properties by going to a Source's detail page.
@@ -110,6 +133,8 @@ You can also create new Profile Properties by going to a Source's detail page.
   source="New Profile Properties Source Details"
   alt="New Profile Properties Source Details"
   src="docs/guides/new-profile-properties-source-detail.png"
+  width={820}
+  height={414}
 />
 
 ## Next steps

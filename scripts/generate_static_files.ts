@@ -1,3 +1,4 @@
+import "../setup";
 import path from "path";
 import fs from "fs";
 import { getFeed as whatsNewFeed } from "../utils/releaseNotes";

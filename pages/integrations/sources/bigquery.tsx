@@ -1,4 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
 import IntegrationsHead from "../../../components/home/integrationsHead";
@@ -143,8 +144,10 @@ export default function BigQueryPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/bigquery/add-bigquery-app.png")}
+              src="/images/home/integrations/bigquery/add-bigquery-app.png"
               alt="Grouparoo BigQuery settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -164,8 +167,10 @@ export default function BigQueryPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/bigquery/bigquery-table-mode.png")}
+              src="/images/home/integrations/bigquery/bigquery-table-mode.png"
               alt="Grouparoo table source settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
@@ -185,8 +190,10 @@ export default function BigQueryPage() {
           <Col md={9}>
             <Image
               className="productScreenshots"
-              src={require("../../../public/images/home/integrations/bigquery/bigquery-query-mode.png")}
+              src="/images/home/integrations/bigquery/bigquery-query-mode.png"
               alt="Grouparoo query source settings"
+              width={742}
+              height={506}
             />
           </Col>
         </Row>
