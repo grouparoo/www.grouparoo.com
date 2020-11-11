@@ -45,10 +45,15 @@ function JobCard({ job }: { job: LeverJob }) {
         >
           Apply Now
         </Button>
-        <br />
-        <br />
 
-        <Card.Text dangerouslySetInnerHTML={{ __html: job.description }} />
+        <hr />
+
+        <div
+          id="job-description"
+          dangerouslySetInnerHTML={{ __html: job.description }}
+        />
+
+        <br />
 
         {job.lists.map((listItem) => (
           <Fragment key={`job-${job.id}-list-${listItem.text}`}>
