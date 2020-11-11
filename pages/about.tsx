@@ -1,8 +1,9 @@
 import Head from "next/head";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Image from "../components/Image";
 import WhoWeAre from "../components/home/whoWeAre";
-import JobBoard from "../components/jobBoard";
+import JobBoard from "../components/jobs/jobBoard";
+import ApplyAnywayJobCard from "../components/jobs/applyAnywayJobCard";
 
 export default function About() {
   return (
@@ -116,17 +117,7 @@ export default function About() {
             <JobBoard />
           </Col>
           <Col>
-            <Card>
-              <Card.Body>
-                <small>
-                  We are always looking for exceptional Engineers, Designers,
-                  Product Managers, and Marketers who share our Mission. Even if
-                  we don't have a position posted, we would love to meet you!
-                  You can reach us at{" "}
-                  <a href="mailto:hello@grouparoo.com">hello@grouparoo.com</a>.
-                </small>
-              </Card.Body>
-            </Card>
+            <ApplyAnywayJobCard />
           </Col>
         </Row>
       </Container>
