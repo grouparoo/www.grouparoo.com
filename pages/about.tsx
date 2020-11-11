@@ -1,10 +1,12 @@
 import Head from "next/head";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Image from "../components/Image";
 import WhoWeAre from "../components/home/whoWeAre";
-import JobBoard from "../components/jobBoard";
+import JobBoard from "../components/jobs/jobBoard";
+import ApplyAnywayJobCard from "../components/jobs/applyAnywayJobCard";
+import { LeverJob } from "../utils/jobPosts";
 
-export default function About() {
+export default function About({ pageProps }) {
   return (
     <>
       <Head>
@@ -113,23 +115,18 @@ export default function About() {
         <h2 id="careers">Open Positions</h2>
         <Row>
           <Col md={8}>
-            <JobBoard />
+            <JobBoard jobs={pageProps?.jobs || []} />
           </Col>
           <Col>
-            <Card>
-              <Card.Body>
-                <small>
-                  We are always looking for exceptional Engineers, Designers,
-                  Product Managers, and Marketers who share our Mission. Even if
-                  we don't have a position posted, we would love to meet you!
-                  You can reach us at{" "}
-                  <a href="mailto:hello@grouparoo.com">hello@grouparoo.com</a>.
-                </small>
-              </Card.Body>
-            </Card>
+            <ApplyAnywayJobCard />
           </Col>
         </Row>
       </Container>
     </>
   );
 }
+
+About.getInitialProps = async (ctx) => {
+  const { jobs } = await JobBoard.getInitialProps(ctx);
+  return { jobs };
+};
