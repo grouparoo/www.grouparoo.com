@@ -19,19 +19,14 @@ export interface LeverJobListItem {
   content: string;
 }
 
-export async function getJobs(setLoading?: (state: boolean) => void) {
-  if (setLoading) setLoading(true);
+export async function getJobs() {
   const jobs: LeverJob[] = await fetch(JOBS_URL).then((response) =>
     response.json()
   );
-  if (setLoading) setLoading(false);
   return jobs;
 }
 
-export async function getJob(
-  id: string,
-  setLoading?: (state: boolean) => void
-) {
-  const jobs = await getJobs(setLoading);
+export async function getJob(id: string) {
+  const jobs = await getJobs();
   return jobs.find((j) => j.id === id);
 }

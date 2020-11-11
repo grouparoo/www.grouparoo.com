@@ -1,29 +1,10 @@
-import { useEffect, useState, Fragment } from "react";
+import { Fragment } from "react";
 import { Row, Col, Container, Card, Alert, Button } from "react-bootstrap";
 import { getJob, LeverJob, LeverJobListItem } from "../../utils/jobPosts";
-import { useRouter } from "next/router";
 import ApplyAnywayJobCard from "../../components/jobs/applyAnywayJobCard";
-import Loader from "../../components/loader";
 
-export default function JobBoard() {
-  const router = useRouter();
-  const [job, setJob] = useState<LeverJob>(null);
-  const [loading, setLoading] = useState(false);
-  const id = router.query.id;
-
-  useEffect(() => {
-    load();
-  }, [id]);
-
-  async function load() {
-    if (!id || job) return;
-    const _job = await getJob(id.toString(), setLoading);
-    setJob(_job);
-  }
-
-  if (loading || !id) {
-    return <Loader />;
-  }
+export default function JobPage({ pageProps }) {
+  const job: LeverJob = pageProps.job;
 
   if (!job) {
     return (
@@ -94,3 +75,8 @@ function JobListItem({ listItem }: { listItem: LeverJobListItem }) {
     </Card>
   );
 }
+
+JobPage.getInitialProps = async (ctx) => {
+  const job = await getJob(ctx.query.id);
+  return { job };
+};

@@ -1,25 +1,7 @@
-import { useEffect, useState } from "react";
 import { Row, Col, Card, Alert, Button } from "react-bootstrap";
 import { getJobs, LeverJob } from "../../utils/jobPosts";
-import Loader from "../loader";
 
-export default function JobBoard() {
-  const [jobs, setJobs] = useState<LeverJob[]>([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    load();
-  }, []);
-
-  async function load() {
-    const jobs = await getJobs(setLoading);
-    setJobs(jobs);
-  }
-
-  if (loading) {
-    return <Loader />;
-  }
-
+export default function JobBoard({ jobs }: { jobs: LeverJob[] }) {
   if (jobs.length === 0) {
     return (
       <Alert variant="primary">There are no open positions at this time</Alert>
@@ -52,3 +34,8 @@ export default function JobBoard() {
     </>
   );
 }
+
+JobBoard.getInitialProps = async (ctx) => {
+  const jobs = await getJobs();
+  return { jobs };
+};

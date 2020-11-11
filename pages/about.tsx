@@ -4,8 +4,9 @@ import Image from "../components/Image";
 import WhoWeAre from "../components/home/whoWeAre";
 import JobBoard from "../components/jobs/jobBoard";
 import ApplyAnywayJobCard from "../components/jobs/applyAnywayJobCard";
+import { LeverJob } from "../utils/jobPosts";
 
-export default function About() {
+export default function About({ pageProps }) {
   return (
     <>
       <Head>
@@ -114,7 +115,7 @@ export default function About() {
         <h2 id="careers">Open Positions</h2>
         <Row>
           <Col md={8}>
-            <JobBoard />
+            <JobBoard jobs={pageProps.jobs} />
           </Col>
           <Col>
             <ApplyAnywayJobCard />
@@ -124,3 +125,8 @@ export default function About() {
     </>
   );
 }
+
+About.getInitialProps = async (ctx) => {
+  const { jobs } = await JobBoard.getInitialProps(ctx);
+  return { jobs };
+};
