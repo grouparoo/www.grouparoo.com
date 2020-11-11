@@ -115,7 +115,7 @@ export default function About({ pageProps }) {
         <h2 id="careers">Open Positions</h2>
         <Row>
           <Col md={8}>
-            <JobBoard jobs={pageProps.jobs} />
+            <JobBoard jobs={pageProps?.jobs || []} />
           </Col>
           <Col>
             <ApplyAnywayJobCard />
