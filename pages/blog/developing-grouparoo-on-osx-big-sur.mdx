@@ -1,0 +1,71 @@
+---
+title: "Developing Grouparoo on OSX Big Sur"
+date: "2020-11-13"
+author: "Evan Tahler"
+pullQuote: "How to run a Typescript app on OSX Big Sur"
+image: "pull-the-data-you-actually-want/doughnuts.jpg"
+tags: [notes, engineering]
+---
+
+<Image
+  centered
+  source="apple.com"
+  alt="OSX Big Sur Screenshot"
+  src="developing-grouparoo-on-osx-big-sur/big-sur.jpg"
+  width={800}
+  height={520}
+/>
+
+The [newest release of OSX](https://www.apple.com/newsroom/2020/11/macos-big-sur-is-here/) is out! Like any new OS release, there are plenty of new features... and new bugs to squash. The Grouparoo team uses develops on OSX, and we've taken notes about what we needed to do to continue being productive though the upgrade.
+
+## Update Homebrew and Databases
+
+Like most OSX developers, we install our dependencies and database with [`Homebrew`](https://brew.sh), a great package manager for OSX. The first thing I checked after the upgrade was if my [homebrew services](https://github.com/Homebrew/homebrew-services) were running. Well... they were not.
+
+<Image
+  centered
+  source="apple.com"
+  alt="OSX Big Sur Screenshot"
+  src="developing-grouparoo-on-osx-big-sur/homebrew.png"
+  width={800}
+  height={430}
+/>
+
+The good new is that newer versions of Homebrew work with OSX Big Sur - but you need to `brew upgrade`.
+
+```bash
+brew upgrade
+```
+
+Pay attention - you'll likely be asked for your password. This command will update homebrew itself and **all** of your installed packages to the latest version. This is important, because many packages will need to be re-compiled with the newer version of XCode you now have.
+
+Upgrading all of you packages is a big step. While not related to Big Sur, when I ran `brew upgrade`, I bumped my Postgres version from 11 to 13. When you upgrade your postgres version, you all need to migrate your database so they work with new version. You can accomplish this via:
+
+```bash
+brew services stop postgres
+brew postgresql-upgrade-database
+brew services restart postgres
+```
+
+Finally, the `brew upgrade` command will have fixed any file permissions that changed during the upgrade. Restart any other running homebrew services you have running. In my case, I needed to restart redis, as it couldn't write to the file system until after the upgrade.
+
+```bash
+brew services restart redis
+```
+
+## Rebuild Node.js packages
+
+Node.js continued to function just fine after the OSX upgrade, but since XCode and various underlying libraries have been changed, I needed to re-compile any `node_modules` which had a compilation step. The easiest way to do this is just to re-install everything
+
+```bash
+rm -r node_modules
+npm install
+```
+
+At Grouparoo, we use [`pnpm`](https://pnpm.js.org) to mange dependencies in our monorepo. In our case, there's a single command to rebuild our dependencies:
+
+```bash
+pnpm install --force
+```
+
+And that's all it took to get back to work on OSX Big Sur!
