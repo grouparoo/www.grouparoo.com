@@ -1,0 +1,199 @@
+---
+title: "Salesforce Destination"
+date: "2020-11-14"
+author: "Brian Leonard"
+pullQuote: "use Grouparoo to sync your customer data with Salesforce."
+image: "salesforce-destination/connection.png"
+tags: [connections, engineering]
+---
+
+You can now sync your Grouparoo data with [Salesforce](https://www.salesforce.com). This destination allows you to take advantage of the profiles and groups you already have in Grouparoo and populate any set of Objects in Salesforce. After setting it up, everything will continuously update in real-time.
+
+<Image
+  centered
+  alt="How Grouparoo connects to Salesforce"
+  src="salesforce-destination/connection.png"
+  height={300}
+  width={700}
+/>
+
+Using Contacts and Leads with Campaigns in the most common setup, but Grouparoo allows you to be very flexible.
+
+So the most important thing to understand is how your Grouparoo profiles and groups will map to Objects in Salesforce. Because Salesforce has many types of Objects including custom ones, there can be a lot to choose from. The profile ones are usually "people" type objects and the groups are lists of those people.
+
+Grouparoo also allows you to create an extra Object hanging off your profile. For example, it will automatically make Accounts for your Contacts based on Grouparoo profile data.
+
+## Salesforce setup
+
+In Salesforce, you will need your username and password, along with a security token. Reset it from within your user "settings" screen.
+
+<Image
+  centered
+  alt="Get a Salesforce security token"
+  src="salesforce-destination/salesforce-token.png"
+  height={300}
+  width={549}
+/>
+
+## Create a Grouparoo app
+
+In Grouparoo, apps provide the settings to be able to connect to other platforms. For Salesforce, we can use your credentials from last section to configure your Salesforce app. At this point if you hit "Test Connection," you should see "Test Passed."
+
+<Image
+  centered
+  alt="Creating Grouparoo Salesforce App"
+  src="salesforce-destination/create-app.png"
+  width={500}
+  height={639}
+/>
+
+## Create a Grouparoo destination
+
+Now, it's time to create a destination. In Grouparoo, destinations are the configuration for how the data flows, connecting the profile and group membership data in Grouparoo with external tools like Salesforce.
+
+Because Salesforce is so flexible, this is where we will teach Grouparoo how we want to populate our Object data.
+
+Here are the options available:
+
+<table className="blogTable">
+  <style>{`
+     .blogTable td, .blogTable th {
+      border: 1px solid black;
+      border-collapse: collapse;
+      text-align: center;
+      padding: 10px;
+    }
+  `}</style>
+  <tbody>
+    <tr>
+      <th> Option </th>
+      <th> Common values </th>
+      <th> Question </th>
+    </tr>
+    <tr>
+      <td> profile Object </td>
+      <td> Contact, Lead </td>
+      <td> Which object in Salesforce represents a Grouparoo profile? </td>
+    </tr>
+    <tr>
+      <td> profile Match Field </td>
+      <td> email, id from database </td>
+      <td>
+        Which field in the profile Object is used to match Grouparoo profiles?
+      </td>
+    </tr>
+    <tr>
+      <td> group Object </td>
+      <td> Campaign, Topic </td>
+      <td> Which object in Salesforce represents a Grouparoo group? </td>
+    </tr>
+    <tr>
+      <td> group Name Field </td>
+      <td> Name </td>
+      <td>
+        Which field in the group Object is used for the name of a Grouparoo
+        group?
+      </td>
+    </tr>
+    <tr>
+      <td> membership Object </td>
+      <td> Campaign Member, Topic Assignment </td>
+      <td>
+        Which object in Salesforce maps the profile object to the group object?
+      </td>
+    </tr>
+    <tr>
+      <td> membership Profile Field </td>
+      <td> Contact Id, Lead Id </td>
+      <td>
+        Which field in the membership Object is the reference to the profile?
+      </td>
+    </tr>
+    <tr>
+      <td> membership Group Field </td>
+      <td> Campaign Id, Topic Id </td>
+      <td>
+        Which field in the membership Object is the reference to the group?
+      </td>
+    </tr>
+    <tr>
+      <td> profile Reference Field </td>
+      <td> Account Id </td>
+      <td> Is there a reference field on the profile Object to fill out? </td>
+    </tr>
+    <tr>
+      <td> profile Reference Object </td>
+      <td> Account </td>
+      <td>
+        If there is a reference field, which Object should be created to apply
+        to the profile?
+      </td>
+    </tr>
+    <tr>
+      <td> profile Reference Match Field </td>
+      <td> name, company_id from database </td>
+      <td>
+        If there is a reference field, how should it be matched to Grouparoo
+        profiles?
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+
+There are lots of things to choose from, but the flexibility allows you to do whatever you need to do. In the future, we will likely make optimized destinations for common paths such as Contacts with Accounts in Campaigns. Now, that would be accomplished like this:
+
+<Image
+  centered
+  alt="Setting up the Salesforce destination"
+  src="salesforce-destination/destination-options.png"
+  width={700}
+  height={1259}
+/>
+
+Then, you fill out the profile properties to map these concepts to your Grouparoo profiles.
+
+<Image
+  centered
+  alt="Grouparoo properties to send to Salesforce"
+  src="salesforce-destination/destination-mapping.png"
+  width={700}
+  height={432}
+/>
+
+This would include your groups.
+
+<Image
+  centered
+  alt="Grouparoo groups to send to Salesforce"
+  src="salesforce-destination/destination-groups.png"
+  width={600}
+  height={239}
+/>
+
+## Results
+
+All of your Grouparoo profiles now are in Salesforce as Contacts. Each Contact is mapped to the appropriate Account based on their `companyName` profile property. Grouparoo made a "High Value" Campaign and one for the other groups too. The correct people have been placed in each Campaign.
+
+<Image
+  centered
+  alt="Contacts added to Salesforce"
+  src="salesforce-destination/salesforce-contacts.png"
+  width={700}
+  height={172}
+/>
+<Image
+  centered
+  alt="Salesforce Campaigns created"
+  src="salesforce-destination/salesforce-campaign.png"
+  width={700}
+  height={694}
+/>
+
+From here, you can do whatever you want in Salesforce.
+
+## Implementation Details
+
+This is by far our most configurable plugin. It was neat to see that the model scales to to account for this. We can use the destination options in the data mapping section to provide flexibility.
+
+The [jsforce](https://jsforce.github.io/) library is quite complete and really made it easy to do the integration. It provides a unified interface regardless of the Salesforce version number. Once consequence to look out for, though, is that it can look like it's batching records, but not really doing it. It falls back to doing many single requests in parallel on some operations before v42.
