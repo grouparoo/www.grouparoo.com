@@ -7,6 +7,7 @@ import IntegrationsSection from "../components/home/integrationsSection";
 import SmallIntegration from "../components/home/smallIntegration";
 import GetStarted from "../components/home/getStarted";
 import WhyOpenSource from "../components/home/whyOpenSource";
+import CustomerTestimonials from "../components/home/customerTestimonials";
 
 export default function IndexPage() {
   return (
@@ -65,7 +66,11 @@ export default function IndexPage() {
         <Container>
           <Row>
             <Col>
-              <h2>Easily sync your customer data</h2>
+              <h2>
+                Grouparoo is an open source framework to keep customer data
+                in-sync between your data warehouse and 3rd party tools
+              </h2>
+              <br />
               <br />
               <Image
                 centered
@@ -81,18 +86,6 @@ export default function IndexPage() {
 
       <div id="value-prop" className="bg-dark text-white homePageSection">
         <Container>
-          <Row>
-            <Col style={{ textAlign: "center" }}>
-              <h2>
-                Grouparoo is open source data infrastructure to keep customer
-                data in-sync between your data warehouse and 3rd party tools
-              </h2>
-            </Col>
-          </Row>
-
-          <br />
-          <br />
-
           <Row className="align-items-center">
             <Col md={6}>
               <h3>Free and Easy to Install</h3>
@@ -343,9 +336,13 @@ export default function IndexPage() {
       </div>
 
       <br />
+      <CustomerTestimonials />
       <br />
 
-      <div id="how-grouparoo-works">
+      <div
+        id="how-grouparoo-works"
+        className="bg-dark text-white homePageSection"
+      >
         <Container>
           <Row style={{ textAlign: "center" }}>
             <Col>
