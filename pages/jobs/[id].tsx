@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Row, Col, Container, Card, Alert, Button } from "react-bootstrap";
 import { getJob, LeverJob, LeverJobListItem } from "../../utils/jobPosts";
-import ApplyAnywayJobCard from "../../components/jobs/applyAnywayJobCard";
+import WorkingAtGrouparooCard from "../../components/jobs/workingAtGrouparoo";
 
 export default function JobPage({ pageProps }) {
   const job: LeverJob = pageProps.job;
@@ -22,7 +22,7 @@ export default function JobPage({ pageProps }) {
           <JobCard job={job} />
         </Col>
         <Col>
-          <ApplyAnywayJobCard />
+          <WorkingAtGrouparooCard />
         </Col>
       </Row>
     </Container>
