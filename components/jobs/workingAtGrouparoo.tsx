@@ -1,9 +1,16 @@
 import { Card } from "react-bootstrap";
 
-export default function ApplyAnywayJobCard() {
+export default function WorkingAtGrouparooCard() {
   return (
     <Card>
       <Card.Body>
+        <p>
+          Learn more about what it is like working at Grouparoo on our{" "}
+          <a href="https://www.keyvalues.com/grouparoo" target="_blank">
+            KeyValues profile.
+          </a>
+        </p>
+
         <small>
           We are always looking for exceptional Engineers, Designers, Product
           Managers, and Marketers who share our Mission. Even if we don't have a

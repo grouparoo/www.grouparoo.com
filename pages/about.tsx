@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Image from "../components/Image";
 import WhoWeAre from "../components/home/whoWeAre";
 import JobBoard from "../components/jobs/jobBoard";
-import ApplyAnywayJobCard from "../components/jobs/applyAnywayJobCard";
+import WorkingAtGrouparooCard from "../components/jobs/workingAtGrouparoo";
 import { LeverJob } from "../utils/jobPosts";
 
 export default function About({ pageProps }) {
@@ -118,7 +118,7 @@ export default function About({ pageProps }) {
             <JobBoard jobs={pageProps?.jobs || []} />
           </Col>
           <Col>
-            <ApplyAnywayJobCard />
+            <WorkingAtGrouparooCard />
           </Col>
         </Row>
       </Container>
