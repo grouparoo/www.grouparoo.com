@@ -11,6 +11,17 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2020-11-17-batch-imports-and-mailchimp-source",
+      "content_html": "<p>We&#x27;re excited to share our latest release with a ton of new features, bug fixes, and updates:</p><p><strong>Batch Imports &amp; Updated Dashboard</strong></p><p>We&#x27;ve revamped a bunch of how Grouparoo works under the hood, simplifying how our data imports work and also improving performance. As such, we&#x27;ve also given the Grouparoo dashboard a refresh to better explain the current state of how Grouparoo is managing your data.</p><div style=\"margin-bottom:20px\"><img src=\"https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png\" alt=\"Updated Grouparoo dashboard\" width=\"600\" height=\"300\" style=\"height:300px;width:600px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div><p><strong>Mailchimp as a Source</strong></p><p>You can now add Mailchimp as a Source. Some of our users were asking for a way to identify users in Mailchimp using a property besides email, so now you can import users from Mailchimp into Grouparoo based on</p><p><strong>Grouparoo can run off of SQLite</strong></p><p>Now you can choose between SQLite and Postgres for the database system underlying Grouparoo. You can make these modifications in your environment variables.</p>",
+      "url": "https://www.grouparoo.com/whats-new#2020-11-17-batch-imports-and-mailchimp-source",
+      "title": "Batch Imports and Mailchimp Source",
+      "date_modified": "2020-11-17T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2020-10-20-pools",
       "content_html": "<p>The MySQL and Postgres have had connection sharing across background workers for a while. Every now and then, some users saw an issue where a connection was stale.</p><p>Now, these plugins connect to their respective databases with connection pools. This increases the reliability and has been seen to fix these issues.</p>",
       "url": "https://www.grouparoo.com/whats-new#2020-10-20-pools",
