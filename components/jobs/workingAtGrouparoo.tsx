@@ -6,7 +6,11 @@ export default function WorkingAtGrouparooCard() {
       <Card.Body>
         <p>
           Learn more about what it is like working at Grouparoo on our{" "}
-          <a href="https://www.keyvalues.com/grouparoo" target="_blank">
+          <a
+            href="https://www.keyvalues.com/grouparoo"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
             KeyValues profile.
           </a>
         </p>
