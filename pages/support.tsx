@@ -30,7 +30,7 @@ export default function Support() {
               src="/images/support/support.jpg"
               alt="Computers and people"
               width={1100}
-              height={733}
+              height={517}
             />
 
             <p>
@@ -54,7 +54,7 @@ export default function Support() {
               <a
                 target="_blank"
                 href="https://github.com/grouparoo/grouparoo/issues/new/choose"
-                rel="noreferrer"
+                rel="nofollow noopener noreferrer"
               >
                 Github Issue
               </a>{" "}
@@ -71,6 +71,7 @@ export default function Support() {
               variant="outline-primary"
               style={supportButtonStyle}
               href="https://github.com/grouparoo/grouparoo/issues/new/choose"
+              target="blank"
             >
               Create a new support issue
             </Button>
@@ -80,7 +81,7 @@ export default function Support() {
               <a
                 href="https://github.com/grouparoo/grouparoo/issues/new/choose"
                 target="_blank"
-                rel="noreferrer"
+                rel="nofollow noopener noreferrer"
               >
                 Github Issue
               </a>{" "}
