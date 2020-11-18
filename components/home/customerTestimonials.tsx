@@ -29,7 +29,7 @@ export default function CustomerTestimonials() {
                   and I wish we had it years ago.
                 </em>
               </p>{" "}
-              <p>-- Joaquín Brenner, Co- founder and COO @ Chipax</p>
+              <p>-- Joaquín Brenner, Co-founder and COO @ Chipax</p>
             </Col>
             <Col>
               <Link href="https://sendoso.com">

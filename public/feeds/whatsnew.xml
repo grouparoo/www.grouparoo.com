@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Tue, 20 Oct 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 17 Nov 2020 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,46 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Batch Imports and Updated Dashboard]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2020-11-17-batch-imports-and-dashboard</link>
+            <guid
+      >grouparoo-release-note-2020-11-17-batch-imports-and-dashboard</guid>
+            <pubDate>Tue, 17 Nov 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We&#x27;ve revamped a bunch of how Grouparoo works under the hood, simplifying how our data imports work and also improving performance. As such, we&#x27;ve also given the Grouparoo dashboard a refresh to better explain the current state of how Grouparoo is managing your data.</p><div style="margin-bottom:20px"><img src="https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png" alt="Updated Grouparoo dashboard" width="600" height="300" style="height:300px;width:600px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+            <enclosure
+        url="https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
+        <item>
+            <title><![CDATA[Mailchimp as a Source]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2020-11-17-mailchimp-as-a-source</link>
+            <guid>grouparoo-release-note-2020-11-17-mailchimp-as-a-source</guid>
+            <pubDate>Tue, 17 Nov 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>You can now add Mailchimp as a Source. Some of our users were asking for a way to identify users in Mailchimp using a property besides <code>email</code>, so now you can import users from Mailchimp into Grouparoo and identify them using any unique identifier that exists in Mailchimp. You can also pull in open rates and click rates on a profile.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Grouparoo can run off of SQLite]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-11-17-sqlite</link>
+            <guid>grouparoo-release-note-2020-11-17-sqlite</guid>
+            <pubDate>Tue, 17 Nov 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Now you can choose between SQLite and Postgres for the database system underlying Grouparoo. You can make these modifications in your environment variables by setting your <code>DATABASE_URL</code> to a SQLite database.</p><div style="margin-bottom:20px"><img src="https://www.grouparoo.com/posts/releases/2020-11-17-sqlite.png" alt="SQlite Environment Variable" width="547" height="125" style="height:125px;width:547px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+            <enclosure
+        url="https://www.grouparoo.com/posts/releases/2020-11-17-sqlite.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title><![CDATA[Connection Pooling]]></title>
             <link>https://www.grouparoo.com/whats-new#2020-10-20-pools</link>
