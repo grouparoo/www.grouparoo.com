@@ -113,7 +113,7 @@ export default function About({ pageProps }) {
         <h2 id="investors">Our Investors</h2>
         <p>
           We're excited and humbled to be working with an amazing team of
-          investors!
+          investors who believe in our mission.
         </p>
         <div style={{ margin: "30px" }}>
           <Row>
@@ -142,17 +142,55 @@ export default function About({ pageProps }) {
               </Link>
             </Col>
           </Row>
-          <br /> <br />
+          <br />
           <Row>
-            <ul>
-              <li>J Zac Stein (Lattice)</li>
-              <li>Stacy Philpot-Brown (TaskRabbit)</li>
-              <li>Hack VC</li>
-              <li>Liquid 2</li>
-            </ul>
+            <Col>
+              <Link href="https://hack-vc.com/">
+                <a target="_blank" rel="nofollow noopener noreferrer">
+                  <div className="investor-logo">
+                    <Image
+                      src="/images/investors/hack-vc-logo.svg"
+                      alt="Hack VC logo"
+                      width={250}
+                      height={75}
+                    />
+                  </div>
+                </a>
+              </Link>
+            </Col>
+            <Col>
+              <Link href="https://liquid2.vc/">
+                <a target="_blank" rel="nofollow noopener noreferrer">
+                  <Image
+                    src="/images/investors/liquid2-ventures-logo.png"
+                    alt="Liquid2 VC logo"
+                    width={250}
+                    height={75}
+                    rounded
+                  />
+                </a>
+              </Link>
+            </Col>
+            <Col>
+              <Link href="https://www.scmadvisors.co.uk/">
+                <a target="_blank" rel="nofollow noopener noreferrer">
+                  <Image
+                    src="/images/investors/scm-advisors-logo-124.png"
+                    alt="SCM Advisors logo"
+                    width={250}
+                    height={75}
+                  />
+                </a>
+              </Link>
+            </Col>
           </Row>
-          <Row></Row>
+          {/* <br />
+          <Row>
+            Meka Asonye, Stacy Philpot-Brown, J Zac Stein, Jonathan Golda, and
+            more
+          </Row> */}
         </div>
+
         <br />
         <h2 id="careers">Open Positions</h2>
         <Row>
