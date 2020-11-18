@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "../components/Image";
 import WhoWeAre from "../components/home/whoWeAre";
@@ -62,10 +63,8 @@ export default function About({ pageProps }) {
             </p>
           </Col>
         </Row>
-
         <br />
         <WhoWeAre />
-
         <Row>
           <Col>
             <h2>Grouparoo's Mission & Vision</h2>
@@ -111,7 +110,50 @@ export default function About({ pageProps }) {
           </Col>
         </Row>
         <br />
-
+        <h2 id="investors">Our Investors</h2>
+        <p>
+          We're excited and humbled to be working with an amazing team of
+          investors!
+        </p>
+        <div style={{ margin: "30px" }}>
+          <Row>
+            <Col>
+              <Link href="https://eniac.vc">
+                <a target="_blank" rel="nofollow noopener noreferrer">
+                  <Image
+                    src="/images/investors/eniac-logo.svg"
+                    alt="Eniac Ventures logo"
+                    width={362}
+                    height={75}
+                  />
+                </a>
+              </Link>
+            </Col>
+            <Col>
+              <Link href="https://fuelcapital.com">
+                <a target="_blank" rel="nofollow noopener noreferrer">
+                  <Image
+                    src="/images/investors/fuel-capital-logo.png"
+                    alt="Fuel Capital logo"
+                    width={362}
+                    height={75}
+                  />
+                </a>
+              </Link>
+            </Col>
+          </Row>
+          <br /> <br />
+          <Row>
+            <ul>
+              <li>J Zac Stein (Lattice)</li>
+              <li>Stacy Philpot-Brown (TaskRabbit)</li>
+              <li>Hack VC</li>
+              <li>Liquid 2</li>
+            </ul>
+          </Row>
+          <Row></Row>
+        </div>
+        <br />
         <h2 id="careers">Open Positions</h2>
         <Row>
           <Col md={8}>
