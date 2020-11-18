@@ -1,27 +1,27 @@
 import Head from "next/head";
+import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "../components/Image";
 import WhoWeAre from "../components/home/whoWeAre";
 import JobBoard from "../components/jobs/jobBoard";
 import WorkingAtGrouparooCard from "../components/jobs/workingAtGrouparoo";
-import { LeverJob } from "../utils/jobPosts";
 
 export default function About({ pageProps }) {
   return (
     <>
       <Head>
         <title>About Grouparoo</title>
+        <meta
+          name="description"
+          content="Join Grouparoo Open Positions Engineering Marketing Automation Support"
+        />
+        <link rel="canonical" href="https://www.grouparoo.com/about" />
       </Head>
 
       <Container>
         <Row>
           <Col>
             <h1>About Grouparoo</h1>
-            <meta
-              name="description"
-              content="Join Grouparoo Open Positions Engineering Marketing Automation Support"
-            />
-            <link rel="canonical" href="https://www.grouparoo.com/about" />
           </Col>
         </Row>
         <Row>
@@ -62,10 +62,8 @@ export default function About({ pageProps }) {
             </p>
           </Col>
         </Row>
-
         <br />
         <WhoWeAre />
-
         <Row>
           <Col>
             <h2>Grouparoo's Mission & Vision</h2>
@@ -111,7 +109,82 @@ export default function About({ pageProps }) {
           </Col>
         </Row>
         <br />
-
+        <h2 id="investors">Our Investors</h2>
+        <p>
+          We're excited and humbled to be working with an amazing team of
+          investors who believe in our mission.
+        </p>
+        <div style={{ margin: "30px" }}>
+          <Row>
+            <Col>
+              <Link href="https://fuelcapital.com">
+                <a target="_blank" rel="nofollow noopener noreferrer">
+                  <Image
+                    src="/images/investors/fuel-capital-logo.png"
+                    alt="Fuel Capital logo"
+                    width={362}
+                    height={75}
+                  />
+                </a>
+              </Link>
+            </Col>
+            <Col>
+              <Link href="https://eniac.vc">
+                <a target="_blank" rel="nofollow noopener noreferrer">
+                  <Image
+                    src="/images/investors/eniac-logo.svg"
+                    alt="Eniac Ventures logo"
+                    width={362}
+                    height={75}
+                  />
+                </a>
+              </Link>
+            </Col>
+          </Row>
+          <br />
+          <Row>
+            <Col>
+              <Link href="https://hack-vc.com/">
+                <a target="_blank" rel="nofollow noopener noreferrer">
+                  <div className="investor-logo">
+                    <Image
+                      src="/images/investors/hack-vc-logo.svg"
+                      alt="Hack VC logo"
+                      width={250}
+                      height={75}
+                    />
+                  </div>
+                </a>
+              </Link>
+            </Col>
+            <Col>
+              <Link href="https://liquid2.vc/">
+                <a target="_blank" rel="nofollow noopener noreferrer">
+                  <Image
+                    src="/images/investors/liquid2-ventures-logo.png"
+                    alt="Liquid2 VC logo"
+                    width={175}
+                    height={75}
+                    rounded
+                  />
+                </a>
+              </Link>
+            </Col>
+            <Col>
+              <Link href="https://www.scmadvisors.co.uk/">
+                <a target="_blank" rel="nofollow noopener noreferrer">
+                  <Image
+                    src="/images/investors/scm-advisors-logo-124.png"
+                    alt="SCM Advisors logo"
+                    width={217}
+                    height={75}
+                  />
+                </a>
+              </Link>
+            </Col>
+          </Row>
+        </div>
+        <br />
         <h2 id="careers">Open Positions</h2>
         <Row>
           <Col md={8}>
