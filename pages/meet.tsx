@@ -72,7 +72,10 @@ export default function Meet() {
         <Row>
           <Col md={6}>
             <h1>Meet Grouparoo</h1>
-            <p>See how Grouparoo can help you achieve marketing autonomy.</p>
+            <p>
+              See how Grouparoo can help you with your data synchronization
+              needs.
+            </p>
             <p>We will get back to you soon and schedule a quick call.</p>
           </Col>
           <Col md={6}>
