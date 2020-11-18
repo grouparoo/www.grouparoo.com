@@ -5,24 +5,23 @@ import Image from "../components/Image";
 import WhoWeAre from "../components/home/whoWeAre";
 import JobBoard from "../components/jobs/jobBoard";
 import WorkingAtGrouparooCard from "../components/jobs/workingAtGrouparoo";
-import { LeverJob } from "../utils/jobPosts";
 
 export default function About({ pageProps }) {
   return (
     <>
       <Head>
         <title>About Grouparoo</title>
+        <meta
+          name="description"
+          content="Join Grouparoo Open Positions Engineering Marketing Automation Support"
+        />
+        <link rel="canonical" href="https://www.grouparoo.com/about" />
       </Head>
 
       <Container>
         <Row>
           <Col>
             <h1>About Grouparoo</h1>
-            <meta
-              name="description"
-              content="Join Grouparoo Open Positions Engineering Marketing Automation Support"
-            />
-            <link rel="canonical" href="https://www.grouparoo.com/about" />
           </Col>
         </Row>
         <Row>
@@ -118,11 +117,11 @@ export default function About({ pageProps }) {
         <div style={{ margin: "30px" }}>
           <Row>
             <Col>
-              <Link href="https://eniac.vc">
+              <Link href="https://fuelcapital.com">
                 <a target="_blank" rel="nofollow noopener noreferrer">
                   <Image
-                    src="/images/investors/eniac-logo.svg"
-                    alt="Eniac Ventures logo"
+                    src="/images/investors/fuel-capital-logo.png"
+                    alt="Fuel Capital logo"
                     width={362}
                     height={75}
                   />
@@ -130,11 +129,11 @@ export default function About({ pageProps }) {
               </Link>
             </Col>
             <Col>
-              <Link href="https://fuelcapital.com">
+              <Link href="https://eniac.vc">
                 <a target="_blank" rel="nofollow noopener noreferrer">
                   <Image
-                    src="/images/investors/fuel-capital-logo.png"
-                    alt="Fuel Capital logo"
+                    src="/images/investors/eniac-logo.svg"
+                    alt="Eniac Ventures logo"
                     width={362}
                     height={75}
                   />
@@ -164,7 +163,7 @@ export default function About({ pageProps }) {
                   <Image
                     src="/images/investors/liquid2-ventures-logo.png"
                     alt="Liquid2 VC logo"
-                    width={250}
+                    width={175}
                     height={75}
                     rounded
                   />
@@ -177,7 +176,7 @@ export default function About({ pageProps }) {
                   <Image
                     src="/images/investors/scm-advisors-logo-124.png"
                     alt="SCM Advisors logo"
-                    width={250}
+                    width={217}
                     height={75}
                   />
                 </a>
@@ -185,7 +184,6 @@ export default function About({ pageProps }) {
             </Col>
           </Row>
         </div>
-
         <br />
         <h2 id="careers">Open Positions</h2>
         <Row>
