@@ -184,11 +184,6 @@ export default function About({ pageProps }) {
               </Link>
             </Col>
           </Row>
-          {/* <br />
-          <Row>
-            Meka Asonye, Stacy Philpot-Brown, J Zac Stein, Jonathan Golda, and
-            more
-          </Row> */}
         </div>
 
         <br />
