@@ -9,17 +9,17 @@ export default function Support() {
     <>
       <Head>
         <title>Grouparoo: Support</title>
+        <meta
+          name="description"
+          content="Learn more about how to get support for Grouparoo."
+        />
+        <link rel="canonical" href="https://www.grouparoo.com/support" />
       </Head>
 
       <Container>
         <Row>
           <Col>
             <h1>Getting Support for Grouparoo</h1>
-            <meta
-              name="description"
-              content="Learn more about how to get support for Grouparoo."
-            />
-            <link rel="canonical" href="https://www.grouparoo.com/support" />
           </Col>
         </Row>
 
