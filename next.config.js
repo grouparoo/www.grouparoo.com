@@ -27,7 +27,7 @@ module.exports = {
         statusCode: 302,
       },
       {
-        source: "/feature",
+        source: "/feature-request",
         destination:
           "https://github.com/grouparoo/grouparoo/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=",
         statusCode: 302,
