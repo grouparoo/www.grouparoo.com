@@ -79,9 +79,7 @@ describe("sitemap integration", () => {
           }
 
           const alt = tag.attr("alt");
-          if (!alt) {
-            altTagMissing.push(name);
-          }
+          if (!alt && !name.match(/^data:image/)) altTagMissing.push(name);
         });
 
         expect(altTagMissing).toEqual([]);
