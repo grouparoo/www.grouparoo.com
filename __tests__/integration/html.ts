@@ -78,10 +78,9 @@ describe("sitemap integration", () => {
             name = name.slice(0, 80);
           }
 
+          const ariaHidden = tag.attr("aria-hidden");
           const alt = tag.attr("alt");
-          if (!alt) {
-            altTagMissing.push(name);
-          }
+          if (!alt && ariaHidden !== "true") altTagMissing.push(name);
         });
 
         expect(altTagMissing).toEqual([]);
