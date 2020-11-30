@@ -68,7 +68,7 @@
     "jest-environment-webdriver": "0.2.0",
     "jest-mock-axios": "4.2.1",
     "markdown-table": "^2.0.0",
-    "prettier": "2.2.0",
+    "prettier": "2.2.1",
     "ts-jest": "26.4.4",
     "ts-node": "9.0.0",
     "xml2js": "0.4.23"
