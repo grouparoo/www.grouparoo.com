@@ -1,0 +1,240 @@
+---
+title: "Code Config"
+date: "2020-11-27"
+section: "deployment"
+pullQuote: "Configuring Grouparoo with Code"
+---
+
+Grouparoo allows you to configure your application in a number of ways:
+
+**Programmatically**:
+
+- Individual files for each object
+- A single file which contains many object
+
+**Interactively**:
+
+- via the application website
+- via the application REST API
+
+In all cases, Grouparoo will combine all of your configurations into the application database, which will be used when the application is running. You can mix-and-match configuration modes to fit your organizational needs.
+
+## Code-Config Notes
+
+- Grouparoo can read Javascript (`.js`) and JSON (`.json`) files at this time
+- In the case you need to load configuration information dynamically, you can choose to load it in 2 ways:
+  - Via Environment variables
+    - For example, if you want to set a variable called `production_hubspot_api_key` for use only in Hubspot Apps, you would set `GROUPAROO_OPTION__APP__production_hubspot_api_key=abc123`
+    - When setting an Environment Variable to use with Grouparoo, you'll be using the pattern: `GROUPAROO_OPTION__{topic}__{name}={value}`
+    - See https://www.grouparoo.com/docs/deployment/security for more information
+  - Via Code Config
+    - Code config files can be Javascript that can export an `async` method, you can ask that Grouparoo load data from an database or API.
+    - More information below.
+- Within the Running Grouparoo application, you will be able to see the Apps/Sources/Groups etc that you configured via code, but they will not be editable.
+
+## File Locations
+
+Config files are located at the root of your application directory, in a directory called `config`.
+
+Your application structure should be:
+
+```
+/
+- package.json
+- package-lock.json
+- .env
+- config/
+  - ... config files
+```
+
+You can optionally choose to use another directory for your configuration by setting the `GROUPAROO_CONFIG_DIR` environment variable, for example `GROUPAROO_CONFIG_DIR=/path/to/config`.
+
+## Example Code Config
+
+For example, if you wanted to define a Postgres App called "Data Warehouse" in code. You can define a JSON or Javascript file which exports either a constant or function:
+
+**JSON**
+
+```json
+// file: config/apps/data_warehouse.json
+
+[
+  {
+    "name": "Data Warehouse",
+    "id": "data_warehouse",
+    "class": "app",
+    "type": "postgres",
+    "options": {
+      "host": "127.0.0.1",
+      "port": "5432",
+      "username": "person",
+      "password": "pass",
+      "database": "data_warehouse"
+    }
+  }
+]
+```
+
+Grouparoo parses JSON config files with [`JSON5`](https://json5.org). This enables you to use comments and multi-line strings.
+
+**Javascript**
+
+```js
+// file: config/apps/data_warehouse.js
+
+exports.default = [
+  {
+    name: "Data Warehouse",
+    id: "data_warehouse",
+    class: "app",
+    type: "postgres",
+    options: {
+      host: "127.0.0.1",
+      port: "5432",
+      username: "person",
+      password: "pass",
+      database: "data_warehouse",
+    },
+  },
+];
+```
+
+**Javascript with async loading**
+
+```js
+// file: config/apps/data_warehouse.js
+
+exports.default = async function GetDataWarehouseConfig() {
+  const { databasePassword } = await fetch(`/api/company/secrets`);
+
+  return [
+    {
+      name: "Data Warehouse",
+      class: "app",
+      id: "data_warehouse",
+      type: "postgres",
+      options: {
+        host: "127.0.0.1",
+        port: "5432",
+        username: "person",
+        password: databasePassword,
+        database: "data_warehouse",
+      },
+    },
+  ];
+};
+```
+
+Every object you define needs, at least:
+
+- name
+- id (which will be used to build the object's `guid`)
+- class
+
+## Multiple Configurations in one File
+
+No matter which type of file you create for your code config, you can export more than one object per file. Note how in the examples above we always return/export an array.
+
+```js
+// file: config/apps/databases.js
+
+exports.default = [
+  {
+    name: "Data Warehouse",
+    id: "data_warehouse",
+    class: "app",
+    type: "postgres",
+    options: {
+      host: "datawarehouse.db.internal",
+      port: "5432",
+      username: "person",
+      password: "pass",
+      database: "data_warehouse",
+    },
+  },
+
+  {
+    name: "Product DB Replica",
+    id: "replica_db",
+    class: "app",
+    type: "postgres",
+    options: {
+      host: "replica.production.db.internal",
+      port: "5432",
+      username: "person",
+      password: "pass",
+      database: "product_db",
+    },
+  },
+];
+```
+
+## Referencing other Config Objects
+
+To fully define your infrastructure and Profile Properties, you will need to reference one config from another. We do this by referencing the `id` of the related object.
+
+For example, to define an `App → Source → Profile Property`, you could do:
+
+```js
+// file: config/grouparoo.js
+
+exports.default = [
+  {
+    name: "Data Warehouse",
+    id: "data_warehouse",
+    class: "App",
+    type: "postgres",
+    options: {
+      host: "127.0.0.1",
+      port: "5432",
+      username: "person",
+      password: "pass",
+      database: "grouparoo_dev",
+    },
+  },
+
+  {
+    name: "Users Table",
+    id: "users_table",
+    class: "Source",
+    type: "postgres-table-import",
+    appId: "data_warehouse", // <-- reference id
+    options: {
+      table: "users",
+    },
+    mapping: {
+      id: "User Id",
+    },
+  },
+
+  {
+    name: "User Id",
+    class: "ProfilePropertyRule",
+    type: "integer",
+    unique: true,
+    isArray: false,
+    sourceId: "users_table", // <-- reference id
+    options: {
+      column: "id",
+      aggregationMethod: "exact",
+      sort: null,
+    },
+    filters: [],
+  },
+];
+```
+
+We use the ID's you provide to build the `guids` for each object. So the Data Warehouse id of `data_warehouse` will become `app_data_warehouse`. GUIDs have some restrictions:
+
+- lower case letters and numbers + underscores
+- no spaces
+- less than 38 chars
+- unique
+
+## Learning the Available Options
+
+**Coming Soon**: CLI command `grouparoo describe`
+
+## Validating your Configuration
+
+**Coming Soon**: CLI command `grouparoo validate`
