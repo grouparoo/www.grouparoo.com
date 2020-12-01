@@ -15,6 +15,9 @@ This document is a collection of the guidelines Grouparoo uses when dealing with
 - No default values for strings. Define defaults in the model. Do mark columns as non-null.
 - No foreign key constraints in the database... do these checks in the model. But, it's probably a good idea to add a search index to these
 - All guids/uuids are 40 characters long - a real V4 UUID (36 characters) + 3 letter prefix + underscore, ie: `app_168c4564-e389-4fbd-8338-db04d62022ba`
+- Do not use compound indexes for SQLite.  There's a [Seqeulzie bug](https://github.com/sequelize/sequelize/issues/12823)
+  - Instead, do the uniqueness validation in the model in a `@BeforeSave` hook
+  - You can continue to add compound indexes for Postgres (do so with a check against `config.seqeulize.dialect === 'postgres'`)
 
 ## Grouparoo Model Guidelines
 
