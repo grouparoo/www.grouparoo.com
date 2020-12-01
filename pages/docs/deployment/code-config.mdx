@@ -82,7 +82,7 @@ Grouparoo parses JSON config files with [`JSON5`](https://json5.org). This enabl
 ```js
 // file: config/apps/data_warehouse.js
 
-export default [
+exports.default = [
   {
     name: "Data Warehouse",
     id: "data_warehouse",
@@ -104,7 +104,7 @@ export default [
 ```js
 // file: config/apps/data_warehouse.js
 
-export default async function GetDataWarehouseConfig() {
+exports.default = async function GetDataWarehouseConfig() {
   const { databasePassword } = await fetch(`/api/company/secrets`);
 
   return [
@@ -122,7 +122,7 @@ export default async function GetDataWarehouseConfig() {
       },
     },
   ];
-}
+};
 ```
 
 Every object you define needs, at least:
@@ -138,7 +138,7 @@ No matter which type of file you create for your code config, you can export mor
 ```js
 // file: config/apps/databases.js
 
-export default [
+exports.default = [
   {
     name: "Data Warehouse",
     id: "data_warehouse",
@@ -178,7 +178,7 @@ For example, to define an `App → Source → Profile Property`, you could do:
 ```js
 // file: config/grouparoo.js
 
-export default [
+exports.default = [
   {
     name: "Data Warehouse",
     id: "data_warehouse",
