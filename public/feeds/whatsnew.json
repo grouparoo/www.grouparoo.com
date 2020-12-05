@@ -11,6 +11,18 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2020-12-05-redis",
+      "content_html": "<p>You can now run Grouparoo locally without needing to run Redis. In your <code>.env</code> file, set your redis URL to <code>REDIS_URL=&quot;redis://mock&quot;</code>. If you choose to run Grouparoo this way, you can&#x27;t use Grouparoo in a cluster. Additionally there is no data persistence, so if you stop and restart your server, there might be data loss.</p>",
+      "url": "https://www.grouparoo.com/whats-new#2020-12-05-redis",
+      "title": "Grouparoo can run locally without Redis",
+      "image": "https://www.grouparoo.com/posts/releases/2020-11-17-sqlite.png",
+      "date_modified": "2020-12-05T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2020-11-17-batch-imports-and-dashboard",
       "content_html": "<p>We&#x27;ve revamped a bunch of how Grouparoo works under the hood, simplifying how our data imports work and also improving performance. As such, we&#x27;ve also given the Grouparoo dashboard a refresh to better explain the current state of how Grouparoo is managing your data.</p><div style=\"margin-bottom:20px\"><img src=\"https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png\" alt=\"Updated Grouparoo dashboard\" width=\"600\" height=\"300\" style=\"height:300px;width:600px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
       "url": "https://www.grouparoo.com/whats-new#2020-11-17-batch-imports-and-dashboard",
@@ -24,7 +36,7 @@
     },
     {
       "id": "grouparoo-release-note-2020-11-17-mailchimp-as-a-source",
-      "content_html": "<p>You can now add Mailchimp as a Source. Some of our users were asking for a way to identify users in Mailchimp using a property besides <code>email</code>, so now you can import users from Mailchimp into Grouparoo and identify them using any unique identifier that exists in Mailchimp. You can also pull in open rates and click rates on a profile.</p>",
+      "content_html": "<p>You can now add Mailchimp as a Source to Grouparoo. Some of our users were asking for a way to identify users in Mailchimp using a property besides <code>email</code>, so now you can import users from Mailchimp into Grouparoo and identify them using any unique identifier that exists in Mailchimp. You can also pull in open rates and click rates on a profile.</p>",
       "url": "https://www.grouparoo.com/whats-new#2020-11-17-mailchimp-as-a-source",
       "title": "Mailchimp as a Source",
       "date_modified": "2020-11-17T00:00:00.000Z",
