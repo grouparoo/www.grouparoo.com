@@ -1,0 +1,12 @@
+---
+title: "Grouparoo can run locally without Redis"
+date: "2020-12-05"
+tags: ["new"]
+description: "You can now run Grouparoo locally without needing to run Redis"
+image: "releases/2020-11-17-sqlite.png"
+github: "https://github.com/grouparoo/grouparoo/pull/993"
+---
+
+You can now run Grouparoo locally without needing to run Redis. This feature makes it possible for you to try out Grouparoo without needing any dependencies! In your `.env` file, set your redis URL to `REDIS_URL="redis://mock"`. If you choose to run Grouparoo this way, you can't use Grouparoo in a cluster. Additionally there is no data persistence, so if you stop and restart your server, there will be data loss.
+
+This update is an important part of the foundation for Grouparoo v0.2. Learn more here grouparoo/grouparoo#1054

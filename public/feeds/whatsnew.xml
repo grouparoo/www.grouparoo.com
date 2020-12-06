@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Tue, 17 Nov 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 05 Dec 2020 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -25,6 +25,20 @@
       type="application/rss+xml"
     />
         <item>
+            <title><![CDATA[Grouparoo can run locally without Redis]]></title>
+            <link>https://www.grouparoo.com/whats-new#2020-12-05-redis</link>
+            <guid>grouparoo-release-note-2020-12-05-redis</guid>
+            <pubDate>Sat, 05 Dec 2020 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>You can now run Grouparoo locally without needing to run Redis. This feature makes it possible for you to try out Grouparoo without needing any dependencies! In your <code>.env</code> file, set your redis URL to <code>REDIS_URL=&quot;redis://mock&quot;</code>. If you choose to run Grouparoo this way, you can&#x27;t use Grouparoo in a cluster. Additionally there is no data persistence, so if you stop and restart your server, there will be data loss.</p><p>This update is an important part of the foundation for Grouparoo v0.2. Learn more here grouparoo/grouparoo#1054</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+            <enclosure
+        url="https://www.grouparoo.com/posts/releases/2020-11-17-sqlite.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
+        <item>
             <title><![CDATA[Batch Imports and Updated Dashboard]]></title>
             <link
       >https://www.grouparoo.com/whats-new#2020-11-17-batch-imports-and-dashboard</link>
@@ -32,7 +46,7 @@
       >grouparoo-release-note-2020-11-17-batch-imports-and-dashboard</guid>
             <pubDate>Tue, 17 Nov 2020 00:00:00 GMT</pubDate>
             <content:encoded
-      ><![CDATA[<p>We&#x27;ve revamped a bunch of how Grouparoo works under the hood, simplifying how our data imports work and also improving performance. As such, we&#x27;ve also given the Grouparoo dashboard a refresh to better explain the current state of how Grouparoo is managing your data.</p><div style="margin-bottom:20px"><img src="https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png" alt="Updated Grouparoo dashboard" width="600" height="300" style="height:300px;width:600px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+      ><![CDATA[<p>We&#x27;ve revamped how Grouparoo works under the hood, simplifying how our data imports work, and more. We&#x27;ve also given the Grouparoo dashboard a refresh to better explain the current state of how Grouparoo is managing your data.</p><div style="margin-bottom:20px"><img src="https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png" alt="Updated Grouparoo dashboard" width="600" height="300" style="height:300px;width:600px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
             <enclosure
         url="https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png"
@@ -47,7 +61,7 @@
             <guid>grouparoo-release-note-2020-11-17-mailchimp-as-a-source</guid>
             <pubDate>Tue, 17 Nov 2020 00:00:00 GMT</pubDate>
             <content:encoded
-      ><![CDATA[<p>You can now add Mailchimp as a Source. Some of our users were asking for a way to identify users in Mailchimp using a property besides <code>email</code>, so now you can import users from Mailchimp into Grouparoo and identify them using any unique identifier that exists in Mailchimp. You can also pull in open rates and click rates on a profile.</p>]]></content:encoded>
+      ><![CDATA[<p>You can now add Mailchimp as a Source to Grouparoo. Some of our users were asking for a way to identify users in Mailchimp using a property besides <code>email</code>, so now you can import users from Mailchimp into Grouparoo and identify them using any unique identifier that exists in Mailchimp. You can also pull in open rates and click rates on a profile.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
