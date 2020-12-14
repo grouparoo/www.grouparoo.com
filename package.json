@@ -49,7 +49,7 @@
     "sass": "1.30.0",
     "sharp": "0.26.3",
     "sitemap": "6.3.3",
-    "typescript": "4.1.2",
+    "typescript": "4.1.3",
     "uuid": "8.3.1"
   },
   "devDependencies": {
