@@ -185,6 +185,46 @@ export default function About({ pageProps }) {
           </Row>
         </div>
         <br />
+        <h2 id="benefits">Benefits and Perks</h2>
+        <br />
+
+        <Row>
+          <Col md={6}>
+            <h5>Work from anywhere in the US</h5>
+            <p>
+              We're a fully remote company, so you can work from anywhere in the
+              U.S.{" "}
+            </p>
+            <h5>Healthcare coverage</h5>
+            <p>
+              We offer medical, vision, and dental insurance plans to all of our
+              employees.
+            </p>
+            <h5>401(k) matching</h5>
+            <p>
+              We match 100% of retirement contributions on the first 3%
+              contributed and then 50% of contributions from 3% to 5%.
+            </p>
+          </Col>
+          <Col md={6}>
+            <h5>Equity</h5>
+            <p>
+              We believe in building for the long-term, so all employees get
+              equity in Grouparoo.
+            </p>
+            <h5>Equipment and Internet stipend</h5>
+            <p>
+              We want all of our teammates to work effectively, so we provide
+              stipends for your internet and a budget for equipment for your
+              home office.
+            </p>
+            <h5>Parental leave</h5>
+            <p>
+              We offer 4 weeks of paid leave for the birth and care of a child.
+            </p>
+          </Col>
+        </Row>
+        <br />
         <h2 id="careers">Open Positions</h2>
         <Row>
           <Col md={8}>
