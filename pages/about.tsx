@@ -220,7 +220,8 @@ export default function About({ pageProps }) {
             </p>
             <h5>Parental leave</h5>
             <p>
-              We offer 4 weeks of paid leave for the birth and care of a child.
+              We offer 4 weeks of paid leave for the care of a new child in your
+              life.
             </p>
           </Col>
         </Row>
