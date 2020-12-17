@@ -41,7 +41,7 @@ export const PluginData: Array<{
     slug: "google-sheets",
     logo: "google-sheets.png",
     primaryType: "source",
-    otherTypes: ["destination"],
+    otherTypes: [],
     category: "data tool",
     badge: "",
     showLink: false,
