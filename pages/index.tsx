@@ -16,7 +16,11 @@ export default function IndexPage() {
         <title>Grouparoo: Open Source Real Time Data Infrastructure</title>
         <meta
           name="description"
-          content="Grouparoo is real-time data infrastructure that puts marketers and operators in control."
+          content="Grouparoo is an open source data framework to make it easy to power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse."
+        />
+        <meta
+          name="og:title"
+          content="Grouparoo is an open source data framework to make it easy to power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse."
         />
         <link rel="canonical" href="https://www.grouparoo.com/" />
       </Head>
