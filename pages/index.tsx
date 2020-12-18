@@ -21,9 +21,7 @@ export default function IndexPage() {
         />
 
         <meta property="og:site_name" content="Grouparoo" />
-
         <meta property="og:url" content="https://www.grouparoo.com/" />
-
         <meta property="og:type" content="website" />
         <meta
           name="twitter:title"
@@ -51,15 +49,15 @@ export default function IndexPage() {
 
         <meta
           name="description"
-          content="Grouparoo is an open source data framework to make it easy to power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse."
+          content="Power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse. Grouparoo is an open source data framework that easily connects your data to business tools."
         />
         <meta
           name="twitter:description"
-          content="Grouparoo is an open source data framework to make it easy to power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse."
+          content="Power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse. Grouparoo is an open source data framework that easily connects your data to business tools."
         />
         <meta
           name="og:description"
-          content="Grouparoo is an open source data framework to make it easy to power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse."
+          content="Power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse. Grouparoo is an open source data framework that easily connects your data to business tools."
         />
 
         <link rel="canonical" href="https://www.grouparoo.com/" />
