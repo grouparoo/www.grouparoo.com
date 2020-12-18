@@ -5,7 +5,10 @@ import Link from "next/link";
 export default function CustomerTestimonials() {
   return (
     <>
-      <div id="customer-testimonials" className="homePageSection">
+      <div
+        id="customer-testimonials"
+        className="bg-dark text-white homePageSection"
+      >
         <Container>
           <Row>
             <Col>

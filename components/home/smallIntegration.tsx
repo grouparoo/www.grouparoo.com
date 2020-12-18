@@ -23,6 +23,7 @@ export default function SmallIntegration({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        border: "1px solid #C4C4C4",
       }}
     >
       <Image

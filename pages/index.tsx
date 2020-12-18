@@ -31,8 +31,8 @@ export default function IndexPage() {
             <Col>
               <h1>Sync, Segment, and Send your Product Data Everywhere</h1>
               <p className="text-big-muted">
-                Focus on building your core product, not integrating with
-                3rd-party tools.
+                Focus on building your core product, not integrating with SaaS
+                tools.
               </p>
             </Col>
           </Row>
@@ -52,39 +52,40 @@ export default function IndexPage() {
               </Button>
             </Col>
           </Row>
-
-          <br />
-          <br />
         </Container>
       </div>
 
       <div
         id="synchronize"
-        style={{ textAlign: "center" }}
-        className="bg-dark text-white homePageSection"
+        style={{
+          textAlign: "center",
+          backgroundImage: "linear-gradient(#242436,#43435F)",
+        }}
+        className="text-white homePageSection"
       >
         <Container>
           <Row>
             <Col>
-              <h2>
-                Grouparoo is an open source framework to keep customer data
-                in-sync between your data warehouse and 3rd party tools
-              </h2>
               <br />
+              <h2>Make your customer data actionable</h2>
+              <p>
+                Grouparoo syndicates your customer profiles and groups to the
+                places where they make a difference.
+              </p>
               <br />
               <Image
                 centered
-                src="/images/home/bowtie.svg"
+                src="/images/home/hero-diagram.svg"
                 alt="Grouparoo sources and destination connections"
-                width={1000}
-                height={537}
+                width={1260}
+                height={524}
               />
             </Col>
           </Row>
         </Container>
       </div>
 
-      <div id="value-prop" className="bg-dark text-white homePageSection">
+      <div id="value-prop" className="homePageSection">
         <Container>
           <Row className="align-items-center">
             <Col md={6}>
@@ -298,7 +299,7 @@ export default function IndexPage() {
             >
               <Image
                 centered
-                src="/images/home/github-white.png"
+                src="/images/home/github.png"
                 alt="Github Logo"
                 height={100}
                 width={100}
@@ -337,10 +338,10 @@ export default function IndexPage() {
 
       <br />
       <CustomerTestimonials />
-      <br />
 
       <div
         id="how-grouparoo-works"
+        style={{ backgroundImage: "linear-gradient(#242436,#43435F)" }}
         className="bg-dark text-white homePageSection"
       >
         <Container>
