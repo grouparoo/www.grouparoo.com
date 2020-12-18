@@ -13,15 +13,55 @@ export default function IndexPage() {
   return (
     <>
       <Head>
-        <title>Grouparoo: Open Source Real Time Data Infrastructure</title>
+        {/* Title */}
+        <title>Grouparoo: Open Source Real Time Data Framework</title>
+        <meta
+          name="og:title"
+          content="Grouparoo: Open Source Real Time Data Framework"
+        />
+
+        <meta property="og:site_name" content="Grouparoo" />
+
+        <meta property="og:url" content="https://www.grouparoo.com/" />
+
+        <meta property="og:type" content="website" />
+        <meta
+          name="twitter:title"
+          content="Grouparoo: Open Source Real Time Data Framework"
+        />
+        <meta name="twitter:site" content="@grouparoo" />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        {/* Image */}
+
+        <meta
+          property="og:image"
+          content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png"
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="Twitter Card for Grouparoo, a company building an open source data framework."
+        />
+
+        {/* Description */}
+
         <meta
           name="description"
           content="Grouparoo is an open source data framework to make it easy to power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse."
         />
         <meta
-          name="og:title"
+          name="twitter:description"
           content="Grouparoo is an open source data framework to make it easy to power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse."
         />
+        <meta
+          name="og:description"
+          content="Grouparoo is an open source data framework to make it easy to power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse."
+        />
+
         <link rel="canonical" href="https://www.grouparoo.com/" />
       </Head>
 
