@@ -34,11 +34,13 @@ export default function IndexPage() {
 
         <meta
           property="og:image"
-          content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
+          content="https://www-grouparoo-com-git-opengraph-image.grouparoo.vercel.app/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
+          // content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
         />
         <meta
           name="twitter:image"
-          content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
+          content="https://www-grouparoo-com-git-opengraph-image.grouparoo.vercel.app/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
+          // content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
         />
         <meta
           name="twitter:image:alt"
