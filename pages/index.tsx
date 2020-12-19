@@ -13,11 +13,53 @@ export default function IndexPage() {
   return (
     <>
       <Head>
-        <title>Grouparoo: Open Source Real Time Data Infrastructure</title>
+        {/* Title */}
+        <title>Grouparoo: Open Source Real Time Data Framework</title>
+        <meta
+          name="og:title"
+          content="Grouparoo: Open Source Real Time Data Framework"
+        />
+
+        <meta property="og:site_name" content="Grouparoo" />
+        <meta property="og:url" content="https://www.grouparoo.com/" />
+        <meta property="og:type" content="website" />
+        <meta
+          name="twitter:title"
+          content="Grouparoo: Open Source Real Time Data Framework"
+        />
+        <meta name="twitter:site" content="@grouparoo" />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        {/* Image */}
+
+        <meta
+          property="og:image"
+          content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png"
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="Twitter Card for Grouparoo, a company building an open source data framework."
+        />
+
+        {/* Description */}
+
         <meta
           name="description"
-          content="Grouparoo is real-time data infrastructure that puts marketers and operators in control."
+          content="Power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse. Grouparoo is an open source data framework that easily connects your data to business tools."
         />
+        <meta
+          name="twitter:description"
+          content="Power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse. Grouparoo is an open source data framework that easily connects your data to business tools."
+        />
+        <meta
+          name="og:description"
+          content="Power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse. Grouparoo is an open source data framework that easily connects your data to business tools."
+        />
+
         <link rel="canonical" href="https://www.grouparoo.com/" />
       </Head>
 
@@ -31,8 +73,8 @@ export default function IndexPage() {
             <Col>
               <h1>Sync, Segment, and Send your Product Data Everywhere</h1>
               <p className="text-big-muted">
-                Focus on building your core product, not integrating with
-                3rd-party tools.
+                Focus on building your core product, not integrating with SaaS
+                tools.
               </p>
             </Col>
           </Row>
@@ -52,39 +94,40 @@ export default function IndexPage() {
               </Button>
             </Col>
           </Row>
-
-          <br />
-          <br />
         </Container>
       </div>
 
       <div
         id="synchronize"
-        style={{ textAlign: "center" }}
-        className="bg-dark text-white homePageSection"
+        style={{
+          textAlign: "center",
+          backgroundImage: "linear-gradient(#242436,#43435F)",
+        }}
+        className="text-white homePageSection"
       >
         <Container>
           <Row>
             <Col>
-              <h2>
-                Grouparoo is an open source framework to keep customer data
-                in-sync between your data warehouse and 3rd party tools
-              </h2>
               <br />
+              <h2>Make your customer data actionable</h2>
+              <p>
+                Grouparoo syndicates your customer profiles and groups to the
+                places where they make a difference.
+              </p>
               <br />
               <Image
                 centered
-                src="/images/home/bowtie.svg"
+                src="/images/home/hero-diagram.svg"
                 alt="Grouparoo sources and destination connections"
-                width={1000}
-                height={537}
+                width={1260}
+                height={524}
               />
             </Col>
           </Row>
         </Container>
       </div>
 
-      <div id="value-prop" className="bg-dark text-white homePageSection">
+      <div id="value-prop" className="homePageSection">
         <Container>
           <Row className="align-items-center">
             <Col md={6}>
@@ -298,7 +341,7 @@ export default function IndexPage() {
             >
               <Image
                 centered
-                src="/images/home/github-white.png"
+                src="/images/home/github.png"
                 alt="Github Logo"
                 height={100}
                 width={100}
@@ -337,10 +380,10 @@ export default function IndexPage() {
 
       <br />
       <CustomerTestimonials />
-      <br />
 
       <div
         id="how-grouparoo-works"
+        style={{ backgroundImage: "linear-gradient(#242436,#43435F)" }}
         className="bg-dark text-white homePageSection"
       >
         <Container>

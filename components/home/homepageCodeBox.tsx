@@ -7,12 +7,12 @@ export default function HomepageCodeBox({ code, icon }) {
       style={{
         color: "white",
         fontFamily: "Courier",
-        backgroundColor: "black",
+        backgroundColor: "#43435F",
         fontSize: 20,
         padding: 30,
         marginTop: 20,
         borderRadius: 4,
-        border: "2px solid #29ABE2",
+        border: "1px solid #000000",
         wordWrap: "break-word",
       }}
     >
