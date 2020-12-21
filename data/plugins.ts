@@ -17,7 +17,7 @@ export const PluginData: Array<{
     slug: "csv",
     logo: "csv.svg",
     primaryType: "source",
-    otherTypes: ["destination"],
+    otherTypes: [],
     category: "data tool",
     badge: "",
     showLink: false,
