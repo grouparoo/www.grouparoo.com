@@ -162,7 +162,7 @@ This data can be sent to destinations like Mailchimp.
 
 The largest challenge with BigQuery was around the syntax for the Table source. The SQL engines we have implemented (Postgres, MySQL) handle typing a bit more gracefully. Specifically, you can send a quoted integer to a `INT` Postgres column and it will still work. For example: `SELECT * FROM users WHERE age = '22'`. This same query one BigQuery would cause a type error because `age` is a numerical column.
 
-What this means for the implementation is that the code has to be much more sure about all the types involved. In the end this makes the implementation much smarter, but it took lots of [testing](https://github.com/grouparoo/grouparoo/blob/master/plugins/%40grouparoo/bigquery/__tests__/table-import/import-property.ts) to handle all the combinatorics involved. It also made it slower because we are checking the types a lot. I will likely go back and add some caching in next.
+What this means for the implementation is that the code has to be much more sure about all the types involved. In the end this makes the implementation much smarter, but it took lots of [testing](https://github.com/grouparoo/grouparoo/blob/2c609ecee8bc4324c8f4612d0e306152fabfaa74/plugins/%40grouparoo/bigquery/__tests__/table-import/import-property.ts) to handle all the combinatorics involved. It also made it slower because we are checking the types a lot. I will likely go back and add some caching in next.
 
 There are also 4 different kinds of date-ish column types involved:
 
