@@ -40,7 +40,7 @@ export default function CustomerTestimonials() {
                   <Image
                     src="/images/home/customer-logos/Sendoso-Logo-1.svg"
                     alt="Sendoso logo"
-                    height={60}
+                    height={27}
                     width={123}
                     id="customer-logo"
                     className="customerLogo"
