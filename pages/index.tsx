@@ -120,7 +120,7 @@ export default function IndexPage() {
                 src="/images/home/hero-diagram.svg"
                 alt="Grouparoo sources and destination connections"
                 width={1260}
-                height={524}
+                height={535}
               />
             </Col>
           </Row>
@@ -189,9 +189,9 @@ export default function IndexPage() {
                     image="mysql.png"
                   />
                   <SmallIntegration
-                    name="Redshift"
-                    slug="redshift"
-                    image="redshift.svg"
+                    name="Snowflake"
+                    slug="snowflake"
+                    image="snowflake.png"
                   />
                 </Col>
                 <Col>
