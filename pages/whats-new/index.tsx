@@ -186,7 +186,7 @@ const badgeTypes = {
 function releaseBadges(tags: string[]) {
   return (
     <span>
-      {tags.map((tag, idx) => (
+      {(tags || []).map((tag, idx) => (
         <Fragment key={`tag-${idx}`}>
           <Badge variant={badgeTypes[tag] || "secondary"}>
             {tag.charAt(0).toUpperCase() + tag.slice(1)}

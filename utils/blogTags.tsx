@@ -9,13 +9,13 @@ export const badgeTypes = {
   notes: "warning",
   product: "danger",
   operations: "secondary",
-  company: "info"
+  company: "info",
 };
 
 export default function blogTags(tags: string[]) {
   return (
     <>
-      {tags.map((tag, idx) => (
+      {(tags || []).map((tag, idx) => (
         <Fragment key={`tag-${idx}`}>
           <Link href="/blog/category/[category]" as={`/blog/category/${tag}`}>
             <a>
