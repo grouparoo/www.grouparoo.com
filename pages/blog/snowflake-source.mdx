@@ -126,6 +126,6 @@ All of the profile and group membership data can then be used to keep your desti
 
 ## Implementation Details
 
-The weirdest thing about Snowflake seems to be it's preference and defualt to uppercase table and columns names. Thgis was the first time, we'd seen that an had to update some assumptions from our other implementations (Postgres, Redshift, BigQuery).
+The weirdest thing about Snowflake seems to be it's preference and default to uppercase table and columns names. This was the first time, we'd seen that an had to update some assumptions from our other implementations (Postgres, Redshift, BigQuery).
 
-All of that was refactored into a single implemtnation of all SQL sources that is shared between all of the above. The `app-templates` plugin now implements a [table](https://github.com/grouparoo/grouparoo/tree/2c609ecee8bc4324c8f4612d0e306152fabfaa74/plugins/%40grouparoo/app-templates/src/source/table) and [query](https://github.com/grouparoo/grouparoo/tree/2c609ecee8bc4324c8f4612d0e306152fabfaa74/plugins/%40grouparoo/app-templates/src/source/query) template. Each database connector now only implements their nuances. This should make future plugins even easier.
+All of that was refactored into a single implementation of all SQL sources that is shared between all of the above. The `app-templates` plugin now implements a [table](https://github.com/grouparoo/grouparoo/tree/2c609ecee8bc4324c8f4612d0e306152fabfaa74/plugins/%40grouparoo/app-templates/src/source/table) and [query](https://github.com/grouparoo/grouparoo/tree/2c609ecee8bc4324c8f4612d0e306152fabfaa74/plugins/%40grouparoo/app-templates/src/source/query) template. Each database connector now only implements their nuances. This should make future plugins even easier.
