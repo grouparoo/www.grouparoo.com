@@ -4,7 +4,7 @@ import React from "react";
 import { useBootstrapPrefix } from "react-bootstrap/ThemeProvider";
 import { BsPrefixAndClassNameOnlyProps } from "react-bootstrap/helpers";
 
-import NextImage from "next/image";
+import NextImage from "./DebugImage";
 /* Most of this is from next/image */
 declare const VALID_LOADING_VALUES: readonly ["lazy", "eager", undefined];
 declare type LoadingValue = typeof VALID_LOADING_VALUES[number];
