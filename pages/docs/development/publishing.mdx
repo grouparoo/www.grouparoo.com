@@ -1,14 +1,14 @@
 ---
 title: "Publishing"
-date: "2020-08-01"
+date: "2020-12-22"
 section: "development"
-pullQuote: "Regardless of the method you deploy Grouparoo, the following topology will need to be created."
+pullQuote: "Grouparoo Releases - Mainline and Alpha"
 ---
 
 <Image
   centered
-  source="Grouparoo Topology"
-  alt="Grouparoo Topology"
+  source="Grouparoo Release Process"
+  alt="Grouparoo Release Process"
   src="docs/development/grouparoo-release-process.png"
   width={820}
   height={478}
@@ -16,7 +16,7 @@ pullQuote: "Regardless of the method you deploy Grouparoo, the following topolog
 
 ## Overview
 
-We use a combination of tools from `lerna` and `npm` to handle publishing these packages. A detailed blog post on our publishing process can be found [here](/blog/grouparoo-monorepo-deployment).
+We use a combination of tools from `lerna` and `pnpm` to handle publishing these packages. A detailed blog post on our publishing process can be found [here](/blog/grouparoo-monorepo-deployment).
 
 ## Automated Publishing Path
 
@@ -43,11 +43,12 @@ Both methods of publishing will also create a new Github release and generate re
 You can also publish packages manually via the `/bin/publish` script in this repo. This is the same script that CI uses. If you are on the the `master` branch, you will be publishing the pre-release `alpha` packages, and if you are on the `stable` branch, you will be publishing the mainline `latest` releases.
 
 1. Be sure you have no working changes in your git branch (`git reset --hard origin/master`)
-2. Run `npm install` and let it fully complete. This will also run `npm run prepare` and (re)-compile all packages that you are about to publish
-3. Ensure you are logged into NPM as a user who has publish rights to the `@grouparoo` organization on NPM. Check with `npm whoami`
-4. Ensure you have the `GITHUB_AUTH` environment variable set. This is a Github PAT token which is needed to automatically publish our release notes for the new version. You can include this as part of the publish command in-line.
-5. Run `GITHUB_AUTH=xxx ./bin/publish`
+2. Ensure you are logged into NPM as a user who has publish rights to the `@grouparoo` organization on NPM. Check with `npm whoami`
+3. Ensure you have the `GITHUB_AUTH` environment variable set. This is a [Github PAT token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) which is needed to automatically publish our release notes for the new version. You can include this as part of the publish command in-line.
+4. Run `GITHUB_AUTH=xxx ./bin/publish` from the root of the monorepo. Just like with the Automated Publishing Path, if you are on the `master` branch, a new alpha release will be created, and if you are on the `stable` branch, a new mainline release.
+   - This will also run `npm prepare` in all packages, building the javascript releases as needed
    - You may be asked for your NPM 2FA code before the process completes.
+   - Release notes will be automatically created by `learna changelog`
 
 ## What Can Go Wrong?
 
