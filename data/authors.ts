@@ -13,7 +13,7 @@ const Authors: Array<{
     url: "https://www.evantahler.com",
     twitter: "@evantahler",
     description:
-      "Evan is the CTO and co-founder of Grouparoo, a new company building tools that empower marketers to do their best work. Evan is an open-source innovator, and frequent speaker at software development conferences focusing on Product Management, Node.JS, Rails, and databases.  ",
+      "Evan is the CTO and co-founder of Grouparoo, an open source data framework that easily connects your data to business tools. Evan is an open-source innovator, and frequent speaker at software development conferences focusing on Product Management, Node.JS, Rails, and databases.  ",
   },
   {
     name: "Andy Jih",
@@ -22,7 +22,7 @@ const Authors: Array<{
     url: "https://www.linkedin.com/in/andyjih",
     twitter: "@andyjih",
     description:
-      "Andy is the COO and co-founder of Grouparoo, a new company building tools that empower marketers to do their best work.  Andy loves building products that help people.",
+      "Andy is the COO and co-founder of Grouparoo, an open source data framework that easily connects your data to business tools.  Andy loves building products that help people.",
   },
   {
     name: "Brian Leonard",
@@ -31,7 +31,7 @@ const Authors: Array<{
     url: "https://www.linkedin.com/in/brianl429",
     twitter: "@bleonard",
     description:
-      "Brian is the CEO and co-founder of Grouparoo, a new company building tools that empower marketers to do their best work.  Brian is a leader and technologist who enjoys hanging out with his family, traveling, learning new things, and building software that makes people's lives easier.",
+      "Brian is the CEO and co-founder of Grouparoo, an open source data framework that easily connects your data to business tools.  Brian is a leader and technologist who enjoys hanging out with his family, traveling, learning new things, and building software that makes people's lives easier.",
   },
   {
     name: "Tiger Oakes",
