@@ -27,7 +27,7 @@
     "@fortawesome/fontawesome-svg-core": "1.2.32",
     "@fortawesome/free-brands-svg-icons": "5.15.1",
     "@fortawesome/free-solid-svg-icons": "5.15.1",
-    "@fortawesome/react-fontawesome": "0.1.13",
+    "@fortawesome/react-fontawesome": "0.1.14",
     "@mapbox/rehype-prism": "0.5.0",
     "axios": "0.21.0",
     "babel-plugin-import-glob-array": "0.2.0",
