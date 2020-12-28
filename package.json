@@ -48,7 +48,7 @@
     "react-syntax-highlighter": "15.4.3",
     "remark-external-links": "^8.0.0",
     "sass": "1.30.0",
-    "sharp": "0.26.3",
+    "sharp": "0.27.0",
     "sitemap": "6.3.3",
     "typescript": "4.1.3",
     "uuid": "8.3.2"
