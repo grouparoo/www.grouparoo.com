@@ -39,7 +39,7 @@
     "image-size": "^0.9.3",
     "moment": "2.29.1",
     "next": "10.0.4",
-    "next-mdx-remote": "^1.0.1",
+    "next-mdx-remote": "^2.0.1",
     "react": "17.0.1",
     "react-bootstrap": "1.4.0",
     "react-dom": "17.0.1",
