@@ -29,7 +29,7 @@
     "@fortawesome/free-solid-svg-icons": "5.15.1",
     "@fortawesome/react-fontawesome": "0.1.13",
     "@mapbox/rehype-prism": "0.5.0",
-    "axios": "0.21.0",
+    "axios": "0.21.1",
     "babel-plugin-import-glob-array": "0.2.0",
     "babel-plugin-transform-define": "2.0.0",
     "bootstrap": "4.5.3",
