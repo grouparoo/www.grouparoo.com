@@ -118,9 +118,6 @@ In your plugin's `package.json`, we use a `grouparoo` section to list certain op
     "typescript": "^3.8.3"
   },
   "grouparoo": {
-    "webComponents": {
-      "session/sign-in": ["newSignIn"]
-    },
     "env": {
       "api": ["APP_API_KEY"],
       "web": ["APP_CLIENT_ID"]
@@ -128,13 +125,6 @@ In your plugin's `package.json`, we use a `grouparoo` section to list certain op
   }
 }
 ```
-
-**`grouparoo/webComponents`**
-
-- This object lists react components you are providing to the Grouparoo web UI.
-- These files must end with `.plugin.js|jsx|ts|tsx`.
-- This example is referencing a file path which would match `src/components/newSignIn.plugin.tsx` in the plugin directory
-  - The `tsconfig.json` configuration for your plugin should not compile components into `dist`. Grouparoo Core will handle this for you.
 
 **`grouparoo/env`**
 
@@ -356,14 +346,3 @@ await api.plugins.updateSetting(pluginName, key, value);
 ```
 
 Settings are all of type `string`, so coerce them if needed. Setting keys and values are limited to 191 characters in length.
-
-### UI Elements
-
-When creating a new react component to be used within the Grouparoo application, your component will be passed a few props:
-
-- `apiVersion`: number, the version of the API we are using),
-- `errorHandler`: object, how to display error messages in the ui. `errorHandler.set({error: "oh no!"})`,
-- `successHandler`: object, how to display success messages in the ui. `errorHandler.set({message: "yay!"})`,,
-- `...Handler`: object. There are many other "handler" helpers by which you can subscribe to state changes of the various top-level objects, like Session, App, etc.
-- `query`: object: The Next query object. You can determine the page you are on, etc
-- `useApi`: The hook to build the connection to use the Grouparoo API. Should be instantiated like so: `const { execApi } = useApi(props, errorHandler);`
