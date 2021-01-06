@@ -15,7 +15,7 @@ Sources also can define `schedules`. These know how to connect with the data to 
 
 An `App` represents the ability to communicate with a source. For example, this could mean server address and credentials for a data warehouse.
 
-The properties of an `App` are:
+The properties ([`PluginApp`](https://docs.grouparoo.com/interfaces/pluginapp.html)) of an `App` are:
 
 - **name**: The user-facing name of the app. For example, `snowflake` or `postgres`.
 - **options**: Options needed to configure and connect to your app. This might commonly be an `apiKey` or `username` and `password`. Options have `key` (string), `displayName` (string), `description` (string), `placeholder` (string), and `required` (boolean) attributes.
@@ -25,15 +25,15 @@ The properties of an `App` are:
 
   These methods are used to configure and interact with the app.
 
-  - `test: TestPluginMethod` This method will be called when an app is created to ensure that the app can be reached. The `appOptions` and other data will be passed to it. The `test` method should whether it can connect with those options or not, along with a message. This will often use the `connect` result to verify success.
-  - `connect: ConnectPluginAppMethod` If defined, this method is called to get an instance of a client to the source. It uses the `appOptions` passed to it to return an object that knows how to make queries. It will cache the client and give it to `Connection` methods. If it is not defined, the `Connection` (import) methods will be expected to connect each time. Using `connect` results in higher efficiency sources. For example, the `postgres` plugin uses this to keep a socket open with the database server.
-  - `disconnect: DisconnectPluginAppMethod` When defining `connect`, this method is used to disconnect the client. For example, to close the Postgres socket when the server is shutting down.
+  - `test `[`TestPluginMethod`](https://docs.grouparoo.com/interfaces/testpluginmethod.html) This method will be called when an app is created to ensure that the app can be reached. The `appOptions` and other data will be passed to it. The `test` method should whether it can connect with those options or not, along with a message. This will often use the `connect` result to verify success.
+  - `connect `[`ConnectPluginAppMethod`](https://docs.grouparoo.com/interfaces/connectpluginappmethod.html) If defined, this method is called to get an instance of a client to the source. It uses the `appOptions` passed to it to return an object that knows how to make queries. It will cache the client and give it to `Connection` methods. If it is not defined, the `Connection` (import) methods will be expected to connect each time. Using `connect` results in higher efficiency sources. For example, the `postgres` plugin uses this to keep a socket open with the database server.
+  - `disconnect `[`DisconnectPluginAppMethod`](https://docs.grouparoo.com/interfaces/disconnectpluginappmethod.html) When defining `connect`, this method is used to disconnect the client. For example, to close the Postgres socket when the server is shutting down.
 
 ### Connections
 
 Your plugin can provide multiple types of `Connections` for use within Grouparoo. `Connections` use `Apps` to import or export data. In the source case, this is about the `import` direction.
 
-The properties of a source `Connection` are:
+The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/pluginconnection.html)) of a source `Connection` are:
 
 - **name**: The user-facing name of the connection, like `snowflake-query-import` or `postgres-table-import`.
 - **direction**: Use `import` for sources.
@@ -47,24 +47,24 @@ The properties of a source `Connection` are:
 
   These methods are used in the creation of a source with properties.
 
-  - `sourceOptions: SourceOptionsMethod` This allows more dynamic `options` to be specified. For example, it could also use code to provide a set of choices for a list selection. For example, the `postgres-table-import` connection lists out table names.
-  - `sourcePreview: SourcePreviewMethod` Show the user a preview of the data. Given the current options, if possible return a preview. For example, the `postgres-table-import` returns 10 rows from the selected table.
-  - `sourceFilters: SourceFilterMethod` During property creation, this allows the plugin to determine what filters are available. For example, the `postgres-table-import` notes that integers columns have actions such as `greater than` and string columns have different filters such as `like`.
-  - `uniquePropertyBootstrapOptions: UniquePropertyBootstrapOptions`: There is an interesting case during creation of the first source. It's possible that the first source (Postgres User Table) might need one of it's own properties (user_id) to bootstrap the rest. This allows a source to define the options that such a property would use.
+  - `sourceOptions `[`SourceOptionsMethod`](https://docs.grouparoo.com/interfaces/sourceoptionsmethod.html) This allows more dynamic `options` to be specified. For example, it could also use code to provide a set of choices for a list selection. For example, the `postgres-table-import` connection lists out table names.
+  - `sourcePreview `[`SourcePreviewMethod`](https://docs.grouparoo.com/interfaces/sourcepreviewmethod.html) Show the user a preview of the data. Given the current options, if possible return a preview. For example, the `postgres-table-import` returns 10 rows from the selected table.
+  - `sourceFilters `[`SourceFilterMethod`](https://docs.grouparoo.com/interfaces/sourcefiltermethod.html) During property creation, this allows the plugin to determine what filters are available. For example, the `postgres-table-import` notes that integers columns have actions such as `greater than` and string columns have different filters such as `like`.
+  - `uniquePropertyBootstrapOptions `[`UniquePropertyBootstrapOptions`](https://docs.grouparoo.com/interfaces/uniquepropertybootstrapoptions.html): There is an interesting case during creation of the first source. It's possible that the first source (Postgres User Table) might need one of it's own properties (user_id) to bootstrap the rest. This allows a source to define the options that such a property would use.
 
 - **Property Methods**
 
   One of these should be defined. The choice is whether or not the plugin can import many users at once for a property or it is done one at a time.
 
-  - `profileProperty: ProfilePropertyPluginMethod`: Given a profile and the property definition, get the value of the property for that profile.
-  - `profileProperties: ProfilePropertiesPluginMethod`: Given an array of profiles and the property definition, get the value of the property for each profile.
+  - `profileProperty `[`ProfilePropertyPluginMethod`](https://docs.grouparoo.com/interfaces/profilepropertypluginmethod.html) Given a profile and the property definition, get the value of the property for that profile.
+  - `profileProperties `[`ProfilePropertiesPluginMethod`](https://docs.grouparoo.com/interfaces/profilepropertiespluginmethod.html) Given an array of profiles and the property definition, get the value of the property for each profile.
 
 - **Schedule Methods**
 
   These methods are used when the source can have a schedule.
 
-  - `profiles: ProfilesPluginMethod`: This method is the core method to implement a schedule. It uses a high-water mark and given options to return a collection of profiles to import. This options might also return properties to set on the profiles The main goal of this method is to call `await plugin.createImport(schedule, run, row)` for each row of data, where row is an object like `{user_id: 9, email: "person@example.com", first_name: "person"}`
-  - `sourceRunPercentComplete: SourceRunPercentCompleteMethod` If implemented, this method can help the user by getting a percentage that an import session is complete. SQL sources tend divide how many imports have been done by the number of total records since the last change.
+  - `profiles `[`ProfilesPluginMethod`](https://docs.grouparoo.com/interfaces/profilespluginmethod.html) This method is the core method to implement a schedule. It uses a high-water mark and given options to return a collection of profiles to import. This options might also return properties to set on the profiles The main goal of this method is to call `await plugin.createImport(schedule, run, row)` for each row of data, where row is an object like `{user_id: 9, email: "person@example.com", first_name: "person"}`
+  - `sourceRunPercentComplete `[`SourceRunPercentCompleteMethod`](https://docs.grouparoo.com/interfaces/sourcerunpercentcompletemethod.html) If implemented, this method can help the user by getting a percentage that an import session is complete. SQL sources tend divide how many imports have been done by the number of total records since the last change.
 
 When defining `methods`, link to the method directly, do not use a string name.
 

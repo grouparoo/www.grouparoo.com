@@ -13,7 +13,7 @@ A destination will define how Grouparoo should export profile property values an
 
 An `App` represents the ability to communicate with a destination. For example, this could mean credentials or an API key for a Saas tool.
 
-The properties of an `App` are:
+The properties ([`PluginApp`](https://docs.grouparoo.com/interfaces/pluginapp.html)) of an `App` are:
 
 - **name**: The user-facing name of the app. For example, `mailchimp` or `zendesk`.
 - **options**: Options needed to configure and connect to your app. This might commonly be an `apiKey` or `username` and `password`. Options have `key` (string), `displayName` (string), `description` (string), `placeholder` (string), and `required` (boolean) attributes.
@@ -23,14 +23,14 @@ The properties of an `App` are:
 
   These methods are used to configure and interact with the app.
 
-  - `test: TestPluginMethod` This method will be called when an app is created to ensure that the app can be reached. The `appOptions` and other data will be passed to it. The `test` method should whether it can connect with those options or not, along with a message. This will often use the `connect` result to verify success.
-  - `parallelism: AppParallelismMethod;` If defined, the method will be called to see how many worker processes can be made at a time. The method returns an integer. Many destinations have such a number. For example, Mailchimp can only be contacted 10 times in parallel. More dynamic rate limiting is handled by reacting to the responses while sending data.
+  - `test `[`TestPluginMethod`](https://docs.grouparoo.com/interfaces/testpluginmethod.html) This method will be called when an app is created to ensure that the app can be reached. The `appOptions` and other data will be passed to it. The `test` method should whether it can connect with those options or not, along with a message. This will often use the `connect` result to verify success.
+  - `parallelism `[`AppParallelismMethod`](https://docs.grouparoo.com/interfaces/appparallelismmethod.html) If defined, the method will be called to see how many worker processes can be made at a time. The method returns an integer. Many destinations have such a number. For example, Mailchimp can only be contacted 10 times in parallel. More dynamic rate limiting is handled by reacting to the responses while sending data.
 
 ### Connections
 
 Your plugin can provide multiple types of `Connections` for use within Grouparoo. `Connections` use `Apps` to import or export data. In the destination case, this is about the `export` direction.
 
-The properties of a destination `Connection` are:
+The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/pluginconnection.html)) of a destination `Connection` are:
 
 - **name**: The user-facing name of the connection, like `mailchimp-export` or `zendesk-export`.
 - **direction**: Use `export` for destinations.
@@ -42,15 +42,15 @@ The properties of a destination `Connection` are:
 
   These methods are used in the creation of a destination.
 
-  - `destinationOptions: DestinationOptionsMethod` This allows more dynamic `options` to be specified. For example, it could also use code to provide a set of choices for a list selection. For example, the `mailchimp-export` lets the user pick from existing Mailchimp lists.
-  - `destinationMappingOptions: DestinationMappingOptionsMethod` Connect to the destination and return the properties that are "required" (often `email` or `external_id`) and those that are "known" (often firstName or custom fields). For example, in the Mailchimp case, `email_address` is required. Asking it via API about the fields returns `FNAME`, `ADDRESS`, and any other custom fields that exist. Grouparoo then allows mapping of these to its properties.
+  - `destinationOptions `[`DestinationOptionsMethod`](https://docs.grouparoo.com/interfaces/destinationoptionsmethod.html) This allows more dynamic `options` to be specified. For example, it could also use code to provide a set of choices for a list selection. For example, the `mailchimp-export` lets the user pick from existing Mailchimp lists.
+  - `destinationMappingOptions `[`DestinationMappingOptionsMethod`](https://docs.grouparoo.com/interfaces/destinationmappingoptionsmethod.html) Connect to the destination and return the properties that are "required" (often `email` or `external_id`) and those that are "known" (often firstName or custom fields). For example, in the Mailchimp case, `email_address` is required. Asking it via API about the fields returns `FNAME`, `ADDRESS`, and any other custom fields that exist. Grouparoo then allows mapping of these to its properties.
 
 - **Data Methods**
 
   One of these should be defined. The choice is whether or not the destination can export many profiles at once or it is done one at a time.
 
-  - `profileProperty: ExportProfilePluginMethod` Given the property values and group memberships to export for a single profile, send it to the destination. The singular case is much easier to reason about, particularly when there is an error with the destination.
-  - `profileProperties: ExportProfilesPluginMethod` Given the property values and group memberships to export for many profiles, send it to the destination. The extra semantics can be more complicated because there can be partial failures. However, if the destination has a "batch" API, it's generally better to use this for performance reasons.
+  - `profileProperty `[`ExportProfilePluginMethod`](https://docs.grouparoo.com/interfaces/exportprofilepluginmethod.html) Given the property values and group memberships to export for a single profile, send it to the destination. The singular case is much easier to reason about, particularly when there is an error with the destination.
+  - `profileProperties `[`ExportProfilesPluginMethod`](https://docs.grouparoo.com/interfaces/exportprofilespluginmethod.html) Given the property values and group memberships to export for many profiles, send it to the destination. The extra semantics can be more complicated because there can be partial failures. However, if the destination has a "batch" API, it's generally better to use this for performance reasons.
 
 When defining `methods`, link to the method directly, do not use a string name.
 
