@@ -56,7 +56,7 @@ When defining `methods`, link to the method directly, do not use a string name.
 
 ## Research
 
-The first thing to do is create a document that discusses how the Grouparoo model (Profiles with properties, Group memberships) map to the destination system. Here are some example from [Salesforce](https://github.com/grouparoo/grouparoo/issues/649) and [Intercom](https://github.com/grouparoo/grouparoo/issues/1046).
+The first thing to do is create a document that discusses how the Grouparoo model (Profiles with properties, Group memberships) map to the destination system. Here are some examples from [Salesforce](https://github.com/grouparoo/grouparoo/issues/649) and [Intercom](https://github.com/grouparoo/grouparoo/issues/1046).
 
 Here are the main things to figure out (and the answer for the _Intercom_ case).
 
@@ -91,14 +91,14 @@ Here are the main things to figure out (and the answer for the _Intercom_ case).
 
 - Anything to learn from other integrations?
   - [Segment](https://segment.com/docs/connections/destinations/catalog/)? _Only handles Users_
-  - [Lytics](https://www.lytics.com/integrations/)?
+  - [Lytics](https://www.lytics.com/integrations/)? _No info_
 
 ## Destination Strategy
 
 We first need to decide if there is anything that should be configured or it's all a simple mapping. Here are some examples and how we have handled them. Feedback of people already using those systems is critical.
 
 - Salesforce
-  Salesforce has basically unlimited mappings with some primary core "user" Object models: Lead and Contact. They could also be literally anything. A common group mapping is to Campaigns, but it can also be very generic. We decided to start with the generic case. There is a highly configurable destination where you pick the Salesforce Object that you want to sync with. We will likely make more targeted destinations (Leads/Contacts in Campaigns) as we learn more.
+  There are conceptually unlimited mappings with some primary core "user" Object models: Lead and Contact. They could also be literally anything. A common group mapping is to Campaigns, but it can also be very generic. We decided to start with the generic case. There is a highly configurable destination where you pick the Salesforce Object that you want to sync with. We will likely make more targeted destinations (Leads/Contacts in Campaigns) as we learn more.
 
 - Intercom
   Contacts can be either a concept called "Leads" or "Users" - the difference is if they have signed up or not. Any Contact cannot exist with the same externalId/email combination. In this case, we decided to update whatever was already there and provide options as to how to handle the creation case (as a Lead or a User) because we found people using either exclusively. We also implemented the semantic of "signed up or not" by giving an option to "upgrade" a Lead to a User when they got a externalId.
@@ -264,3 +264,81 @@ Here is a list of things that are important to test related to exporting profile
 - known error cases
 
 Use the current tests as your guide.
+
+## Example
+
+Here is an example destination `plugin.ts` file.
+
+```typescript
+import { Initializer } from "actionhero";
+import { plugin } from "@grouparoo/core";
+
+import { test } from "./../lib/test";
+
+import { exportProfile } from "../lib/export/exportProfile";
+import { destinationOptions } from "../lib/export/destinationOptions";
+import { destinationMappingOptions } from "../lib/export/destinationMappingOptions";
+import { exportArrayProperties } from "../lib/export/exportArrayProperties";
+
+const packageJSON = require("./../../package.json");
+
+export class Plugins extends Initializer {
+  constructor() {
+    super();
+    this.name = packageJSON.name;
+  }
+
+  async initialize() {
+    plugin.registerPlugin({
+      name: packageJSON.name,
+      icon: "/public/@grouparoo/zendesk/zendesk.svg",
+      apps: [
+        {
+          name: "zendesk",
+          options: [
+            {
+              key: "subdomain",
+              displayName: "Zendesk Subdomain",
+              required: true,
+              description: "The `companyname` in companyname.zendesk.com.",
+            },
+            {
+              key: "username",
+              displayName: "User Name",
+              required: true,
+              description:
+                "Zendesk username, often the email address of an admin user.",
+            },
+            {
+              key: "token",
+              displayName: "API Token",
+              required: true,
+              description: "Zendesk api token for the admin user.",
+            },
+          ],
+          methods: { test },
+        },
+      ],
+      connections: [
+        {
+          name: "zendesk-export",
+          direction: "export",
+          description: "Export Profiles to a Zendesk account.",
+          app: "zendesk",
+          options: [],
+          methods: {
+            exportProfile,
+            destinationOptions,
+            destinationMappingOptions,
+            exportArrayProperties,
+          },
+        },
+      ],
+    });
+  }
+
+  async start() {
+    plugin.mountModels();
+  }
+}
+```
