@@ -83,3 +83,164 @@ Both of these SQL sources tend to recalculate their properties each time a profi
 Another class of source runs more off data pulled during the schedule phase than fetching properties. For example, the Google Sheets source will connect to a spreadsheet and note the cell values. Those get written directly into profile property values for each property ("column" in this case) defined.
 
 This differs from the SQL sources because the spreadsheet is not contacted every time a profile is being recalculated.
+
+## Example
+
+Here is an example source `plugin.ts` file.
+
+```typescript
+import { Initializer } from "actionhero";
+import { plugin } from "@grouparoo/core";
+
+import { test } from "./../lib/test";
+import { connect } from "./../lib/connect";
+import { disconnect } from "./../lib/disconnect";
+import { exportProfile } from "../lib/export/exportProfile";
+import { exportArrayProperties } from "../lib/export/exportArrayProperties";
+
+import { getConnection as getTableConnection } from "../lib/table-import/connection";
+import { getConnection as getQueryConnection } from "../lib/query-import/connection";
+
+import { destinationOptions } from "../lib/export/destinationOptions";
+import { destinationMappingOptions } from "../lib/export/destinationMappingOptions";
+
+const packageJSON = require("./../../package.json");
+
+export class Plugins extends Initializer {
+  constructor() {
+    super();
+    this.name = packageJSON.name;
+  }
+
+  async initialize() {
+    plugin.registerPlugin({
+      name: packageJSON.name,
+      icon: "/public/@grouparoo/postgres/postgres.svg",
+      apps: [
+        {
+          name: "postgres",
+          options: [
+            {
+              key: "host",
+              displayName: "Host",
+              required: false,
+              description: "The Postgres host.",
+              placeholder: "localhost",
+            },
+            {
+              key: "port",
+              displayName: "Port",
+              required: false,
+              description: "The Postgres port.",
+              placeholder: "5432",
+            },
+            {
+              key: "database",
+              displayName: "Database",
+              required: true,
+              description: "The Postgres database.",
+            },
+            {
+              key: "schema",
+              displayName: "Schema",
+              required: false,
+              description: "The Postgres schema (default: public).",
+              placeholder: "public",
+            },
+            {
+              key: "user",
+              displayName: "User",
+              required: false,
+              description: "The Postgres user.",
+            },
+            {
+              key: "password",
+              displayName: "Password",
+              required: false,
+              description: "The Postgres user's password.",
+            },
+            {
+              key: "ssl",
+              displayName: "SSL",
+              required: false,
+              description:
+                "Require the use of a SSL connection (default: false).  If you need custom SSL certificates paste in their values below.",
+            },
+            {
+              key: "ssl_cert",
+              displayName: "SSL Certificate",
+              required: false,
+              description: "The ssl certificate.",
+            },
+            {
+              key: "ssl_key",
+              displayName: "SSL Key",
+              required: false,
+              description: "The ssl certificate's key.",
+            },
+            {
+              key: "ssl_ca",
+              displayName: "SSL Certificate Authority",
+              required: false,
+              description: "The ssl certificate authority (CA).",
+            },
+          ],
+          methods: { test, connect, disconnect },
+        },
+      ],
+      connections: [getTableConnection(), getQueryConnection()],
+    });
+  }
+
+  async start() {
+    plugin.mountModels();
+  }
+}
+```
+
+Many SQL plugins use a helper from `@grouparoo/app-templates` to build the `query` and `table` sources. It helps standardize how things work across all the SQL types.
+
+```typescript
+// table-import/connection
+import { buildConnection } from "@grouparoo/app-templates/dist/source/table";
+import { getSampleRows } from "./getSampleRows";
+import { getColumns } from "./getColumns";
+import { getTables } from "./getTables";
+import { getChangedRows } from "./getChangedRows";
+import { getPropertyValue } from "./getPropertyValue";
+import { getPropertyValues } from "./getPropertyValues";
+import { getChangedRowCount } from "./getChangedRowCount";
+
+export function getConnection() {
+  return buildConnection({
+    app: "postgres",
+    name: "postgres-table-import",
+    description: "Import or update Profiles from a Postgres database table.",
+    tableOptionDescription: "The table to scan",
+    getSampleRows,
+    getColumns,
+    getTables,
+    getChangedRows,
+    getPropertyValue,
+    getPropertyValues,
+    getChangedRowCount,
+  });
+}
+```
+
+```typescript
+// query-import/connection
+import { buildConnection } from "@grouparoo/app-templates/dist/source/query";
+import { executeQuery } from "./executeQuery";
+import { getChangedRows } from "./getChangedRows";
+
+export function getConnection() {
+  return buildConnection({
+    app: "postgres",
+    name: "postgres-query-import",
+    description: "Import or update Profiles via a custom Postgres query.",
+    executeQuery,
+    getChangedRows,
+  });
+}
+```

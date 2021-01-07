@@ -176,3 +176,9 @@ hr {
   color: $grouparoo-light-gray;
   font-size: 1rem;
 }
+
+// -- Documentation --
+
+.documentationPage li {
+  margin-bottom: 1rem; // matches <p>
+}
