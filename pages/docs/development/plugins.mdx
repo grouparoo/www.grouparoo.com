@@ -1,8 +1,8 @@
 ---
 title: "Plugins"
-date: "2020-08-01"
+date: "2020-01-05"
 section: "development"
-pullQuote: "Regardless of the method you deploy Grouparoo, the following topology will need to be created."
+pullQuote: "The Grouparoo Plugin System is how you can add & extend Grouparoo."
 ---
 
 The Grouparoo Plugin System is how you can add & extend Grouparoo!
@@ -68,7 +68,7 @@ Your directory structure for your plugin should look like:
 | - ts.config.json
 ```
 
-The best way to develop you plugin is to create a parent Grouparoo project's `package.json` (see "Installing a Plugin" above) which requires both grouparoo-core and your new plugin. From there, you can either mount your local plugin as you develop it with tools like (`npm link`](https://docs.npmjs.com/cli/link.html) or [`lerna`](https://github.com/lerna/lerna) for more complex projects.
+The best way to develop you plugin is to create a parent Grouparoo project's `package.json` (see "Installing a Plugin" above) which requires both grouparoo-core and your new plugin. From there, you can either mount your local plugin as you develop it with tools like [`npm link`](https://docs.npmjs.com/cli/link.html) or [`lerna`](https://github.com/lerna/lerna) for more complex projects.
 
 Below, we will enumerate the types of things your plugins can do:
 
@@ -118,9 +118,6 @@ In your plugin's `package.json`, we use a `grouparoo` section to list certain op
     "typescript": "^3.8.3"
   },
   "grouparoo": {
-    "webComponents": {
-      "session/sign-in": ["newSignIn"]
-    },
     "env": {
       "api": ["APP_API_KEY"],
       "web": ["APP_CLIENT_ID"]
@@ -128,13 +125,6 @@ In your plugin's `package.json`, we use a `grouparoo` section to list certain op
   }
 }
 ```
-
-**`grouparoo/webComponents`**
-
-- This object lists react components you are providing to the Grouparoo web UI.
-- These files must end with `.plugin.js|jsx|ts|tsx`.
-- This example is referencing a file path which would match `src/components/newSignIn.plugin.tsx` in the plugin directory
-  - The `tsconfig.json` configuration for your plugin should not compile components into `dist`. Grouparoo Core will handle this for you.
 
 **`grouparoo/env`**
 
@@ -154,13 +144,20 @@ Notes:
 - Ensure that the version of Grouparoo you are targeting is in _both_ `peerDependencies` and `devDependencies`. It should not be in `dependencies`.
 - If you are creating initializers, actions, or tasks, `actionhero` should be in _both_ `peerDependencies` and `devDependencies`. It should not be in `dependencies`.
 
+### Connections
+
+Your plugin can provide multiple types of `Apps` for use within Grouparoo. Grouparoo users can create multiple instances of each type of app. It can then create `Connections` to import and/or export data.
+
+More information is available for each type:
+
+- Import via [sources](./sources)
+- Export via [destinations](./destinations)
+
 ### Initializers
 
 An initializer is an Actionhero file which lives in `/src/initializers`. There are 3 lifecycle parts of an initializer: initialize, start, and stop in which you can run code.
 
-Learn more about Actionhero initializers here https://www.actionherojs.com/tutorials/initializers
-
-### Grouparoo Apps & Connections
+Learn more about Actionhero initializers [here](https://www.actionherojs.com/tutorials/initializers).
 
 Within initializers, you can register routes and create apps and connections for Grouparoo.
 If your Plugin is providing apps or connections you can use the `plugin.registerPlugin` method. See the example below.
@@ -241,47 +238,9 @@ export class Plugins extends Initializer {
 }
 ```
 
-### Apps
-
-Your plugin can provide multiple types of `Apps` for use within grouparoo. Grouparoo users can create multiple instances of each type of app.
-
-The properties of an `App` are:
-
-- **name**: The user-facing name of the app, like `csv` or `mysql`
-- **options**: Required options needed to configure and connect to your app. This might commonly be an `apiKey` or `username` and `password`. Options have `name` (string), `description` (string) and `required` (boolean) attributes.
-- **icon**: The path to the app's icon file (SVG or PNG). Icons should be stored in the `/public` directory of your plugin.
-- Methods:
-  - `async test()` This method will be called when an app is created to ensure that the app can be reached. the `app` object will be passed to it, and the test method should return true or false.
-  - `async profilePropertyRuleQueryOptions()`: This method returns all the options available in table/columns object to the query builder.
-  - `async buildProfilePropertyRuleQuery()` This method takes the choices selected from **profilePropertyRuleQueryOptions** and builds the string query for the app.
-
-### Connections
-
-Your plugin can provide multiple types of `connections` for use within grouparoo. Connections use Apps to import or export data. Connections are used by `sources` and `destinations`.
-
-To learn more about each method's signatures, please see the Typedoc.
-
-The properties of a `Connection` are:
-
-- **name**: The user-facing name of the connection, like `import-csv` or `import-mysql-table`
-- **direction**: Only `import` or `export`
-- **description**: The user-facing description of the connection
-- **app**: An array of `app`s that can use this connection. For example, your `import-mysql-table` connection might require the `mysql` app, also defined by your plugin
-- **options**: Required options needed to configure this connection. This differs from the options of an `app`, and is likely dependent on the `app` options. For example, an `import-mysql-table` connection requires a `table` option to be set by the Grouparoo user, and will use the `name`, `host`, `password` and `database` options from the mysql `app` that it is linked too.
-- **Import Methods**
-  - `async profiles()`: This methods is called during a run, with a high-water mark and set options to return a collection of profiles to import. This options might also return properties to set on the profiles.
-    - The main goal of this method is to call `await plugin.createImport(schedule, run, row)` for each row of data, where row is an object like `{email: "person@example.com", first_name: "person"}`
-  - `async profileProperty()`: This method is called for one profile, and returns the data this connection can get for the profile.
-  - `async columns()`: This method is used by the UI to configure the mapping from your data source to Grouparoo. It should return `{ columns, rows }` where rows is an array that explains how your data is structured (column names from mysql or headers from a csv file) and rows, which contains a flattened object that shows a 10-row sample of your data.
-- **Export Methods**
-  - `async exportProfile()`: This method is called for one profile, and sends the profile data off to the destination.
-  - `async columns()`: This method is used by the UI to configure the mapping from your data destination to Grouparoo. It should return `{ columns, rows }` where rows is an array that explains how your data is structured (column names from mysql or headers from a csv file) and rows, which contains a flattened object that shows a 10-row sample of your data.
-
-When defining `methods`, link to the method directly, do not use a string name.
-
 ### Actions
 
-Actions are how you can add API endpoints to grouparoo!
+Actions are how you can add API endpoints to Grouparoo!
 
 To learn more about actions, visit https://www.actionherojs.com/tutorials/actions
 
@@ -356,14 +315,3 @@ await api.plugins.updateSetting(pluginName, key, value);
 ```
 
 Settings are all of type `string`, so coerce them if needed. Setting keys and values are limited to 191 characters in length.
-
-### UI Elements
-
-When creating a new react component to be used within the Grouparoo application, your component will be passed a few props:
-
-- `apiVersion`: number, the version of the API we are using),
-- `errorHandler`: object, how to display error messages in the ui. `errorHandler.set({error: "oh no!"})`,
-- `successHandler`: object, how to display success messages in the ui. `errorHandler.set({message: "yay!"})`,,
-- `...Handler`: object. There are many other "handler" helpers by which you can subscribe to state changes of the various top-level objects, like Session, App, etc.
-- `query`: object: The Next query object. You can determine the page you are on, etc
-- `useApi`: The hook to build the connection to use the Grouparoo API. Should be instantiated like so: `const { execApi } = useApi(props, errorHandler);`
