@@ -9,10 +9,10 @@ The Grouparoo Plugin System is how you can add & extend Grouparoo!
 
 ## Installing a Plugin
 
-In your Grouparoo deployment project, simply install the plugin with NPM:
+In your Grouparoo deployment project, simply install the plugin with NPM and enable it in your `package.json` file
 
 1. `npm install @grouparoo/awesome-plugin`
-2. Add the plugin to your `grouparoo/plugins` hash within your package.json. When complete, your `package.json` using `@grouparoo/awesome-plugin` will look like:
+2. Add the plugin to your `grouparoo -> plugins` hash within `package.json`. When complete, your `package.json` using `@grouparoo/awesome-plugin` will look like:
 
 ```json
 {
@@ -23,31 +23,28 @@ In your Grouparoo deployment project, simply install the plugin with NPM:
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@grouparoo/core": "latest",
-    "@grouparoo/awesome-plugin": "latest"
+    "@grouparoo/core": "1.0.0",
+    "@grouparoo/awesome-plugin": "1.0.0"
   },
   "scripts": {
-    "prepare": "cd node_modules/@grouparoo/core && npm run prepare",
-    "import": "cd node_modules/@grouparoo/core && ./api/bin/import",
-    "start": "cd node_modules/@grouparoo/core && ./api/bin/start",
-    "dev": "cd node_modules/@grouparoo/core && ./api/bin/dev"
+    "start": "cd node_modules/@grouparoo/core && ./bin/start",
+    "dev": "cd node_modules/@grouparoo/core && ./bin/dev"
   },
   "grouparoo": {
-    "plugins": ["@grouparoo/awesome-plugin"]
+    "plugins": ["@grouparoo/awesome-plugin"] // <--- HERE
   }
 }
 ```
 
 ## Developing a Plugin
 
-Plugins can:
+Mainly, Plugins add new [Sources](/docs/development/sources) and [Destinations](/docs/development/destinations) to interact with new databases and APIs. However Plugins also can:
 
-- Add new initializers and middleware
 - Add API actions
 - Add new API tasks/background jobs
+- Add new initializers and middleware
 - Interact with the database (via `models`)
 - Add new CLI commands for the API
-- Create new UI pages for the Grouparoo Website
 
 ### Setup
 
@@ -61,14 +58,14 @@ Your directory structure for your plugin should look like:
   | - actions
   | - tasks
   | - initializers
-  | - cli
+  | - bin
   | - components
 |
 | - package.json
 | - ts.config.json
 ```
 
-The best way to develop you plugin is to create a parent Grouparoo project's `package.json` (see "Installing a Plugin" above) which requires both grouparoo-core and your new plugin. From there, you can either mount your local plugin as you develop it with tools like [`npm link`](https://docs.npmjs.com/cli/link.html) or [`lerna`](https://github.com/lerna/lerna) for more complex projects.
+The best way to develop you plugin is to create a parent Grouparoo project with a `package.json` (see "Installing a Plugin" above) which requires both `@grouparoo/core` and your new plugin. From there, you can either mount your local plugin as you develop it with tools like [`npm link`](https://docs.npmjs.com/cli/link.html) or [`pnpm`](https://pnpm.js.org) for more complex projects in a monorepo.
 
 Below, we will enumerate the types of things your plugins can do:
 
@@ -118,26 +115,43 @@ In your plugin's `package.json`, we use a `grouparoo` section to list certain op
     "typescript": "^3.8.3"
   },
   "grouparoo": {
+    // <-- HERE
     "env": {
-      "api": ["APP_API_KEY"],
-      "web": ["APP_CLIENT_ID"]
-    }
+      "api": ["APP_API_KEY"]
+    },
+    "serverInjection": ["/path/to/file.js"]
   }
 }
 ```
 
 **`grouparoo/env`**
 
-- This section contains 2 sub-keys, `api` and `web`. The items you add to these arrays define required environment variables that your application needs to launch.
+- The `api` key defines the environment variables that your application needs to launch.
   - If these environment variables are not present, the Grouparoo Core application will display an error, but will still launch
-- Environment variables uses in `grouparoo/env/api` will only be used on the api server, however `grouparoo/env/web` will be sent to the client website. Do not include secrets that should not be shared with all users in `grouparoo/env/web`.
-- This example means that `process.env.APP_API_KEY` will be used by the server and `process.env.APP_CLIENT_ID` will be consumed by the web UI, and available to browsers.
+- This example means that `process.env.APP_API_KEY` can be used within your plugin (if the user provides it).
 
 **`grouparoo/serverInjection`**
 
 - This array of files will be required very early on in the server boot process (before actionhero and config).
-- This is a great place to load a bog tracker or process monitor early on in the server's life cycle
+- This is a great place to load a bug tracker or process monitor early on in the server's life cycle
 - This file needs to export a default (non-async) function which will then be run at boot.
+- If you are using Typescript, be sure to only include the compiled `dist` version of the file
+
+For Example, here is how `@grouparoo/new-relic` is initialized:
+
+```ts
+// from `@grouparoo/new-relic/src/serverInjection.ts`
+
+if (process.env.NEW_RELIC_LICENSE_KEY) {
+  require("newrelic");
+}
+
+export default function main() {
+  if (process.env.NEW_RELIC_LICENSE_KEY) {
+    console.log("newrelic injected into application");
+  }
+}
+```
 
 Notes:
 
@@ -160,7 +174,7 @@ An initializer is an Actionhero file which lives in `/src/initializers`. There a
 Learn more about Actionhero initializers [here](https://www.actionherojs.com/tutorials/initializers).
 
 Within initializers, you can register routes and create apps and connections for Grouparoo.
-If your Plugin is providing apps or connections you can use the `plugin.registerPlugin` method. See the example below.
+If your Plugin is providing apps or connections you can use the `plugin.registerPlugin` method. See the simplified example below. You can see the full file from [`@grouparoo/postgres` here](https://github.com/grouparoo/grouparoo/blob/master/plugins/%40grouparoo/postgres/src/initializers/plugin.ts)
 
 ```ts
 import { Initializer } from "actionhero";
@@ -176,12 +190,10 @@ import { profiles } from "./../lib/profiles";
 import { profileProperty } from "./../lib/profileProperty";
 import { exportProfile } from "./../lib/exportProfile";
 
-const packageJSON = require("./../../package.json");
-
 export class Plugins extends Initializer {
   constructor() {
     super();
-    this.name = packageJSON.name;
+    this.name = "@grouparoo/postgres";
   }
 
   async initialize() {
@@ -194,6 +206,8 @@ export class Plugins extends Initializer {
           options: [
             { key: "host", required: false, description: "the postgres host" },
             { key: "port", required: false, description: "the postgres port" },
+            { key: "user", required: false, description: "the postgres user" },
+            // ...
           ],
           test: test,
           profilePropertyRuleQueryOptions,
@@ -208,6 +222,7 @@ export class Plugins extends Initializer {
           app: ["postgres"],
           options: [
             { key: "table", required: true, description: "the table to scan" },
+            // ...
           ],
           methods: {
             profiles,
@@ -226,6 +241,7 @@ export class Plugins extends Initializer {
               required: true,
               description: "the table to write profiles to",
             },
+            // ...
           ],
           methods: {
             exportProfile,
@@ -247,9 +263,9 @@ To learn more about actions, visit https://www.actionherojs.com/tutorials/action
 You likely want to authenticate your actions. You can use Grouparoo's middleware for this:
 
 ```js
-const { Action } = require("actionhero");
+import { Action } from "actionhero";
 
-exports.action = class AwesomeStatus extends Action {
+export class AwesomeStatus extends Action {
   constructor() {
     super();
     this.name = "awesome:getStatus";
@@ -261,20 +277,20 @@ exports.action = class AwesomeStatus extends Action {
     this.permission = { topic: "profile", mode: "read" };
   }
 
-  async run({ response }) {
-    response.awesome = true;
+  async run() {
+    return { awesome: true };
   }
-};
+}
 ```
 
 If you want your action to require a logged-in web user or valid API Key, use the `authenticated-action` middleware. We will then check that this user/API Key has the proper permissions you specified.
 
-Unlike actions directly provided by Grouparoo Core, Actions created by plugins will need to be manually added to the roues file. You do this in an initializer within your plugin:
+Unlike actions directly provided by Grouparoo Core, Actions created by plugins will need to be manually added to the roues file. You do this in an `Initializer` within your plugin:
 
 ```ts
 import { Initializer, route } from "actionhero";
 
-export class MySignIn extends Initializer {
+export class AwesomeInitializer extends Initializer {
   constructor() {
     super();
     this.name = "myPlugin:authentication";
@@ -282,9 +298,9 @@ export class MySignIn extends Initializer {
 
   async initialize() {
     route.registerRoute(
-      "post", // The HTTP Verb
-      "/v:apiVersion/session/myApp", // The Route (with variables)
-      "session:myApp:create" // the name of the action
+      "get", // The HTTP Verb
+      "/v:apiVersion/awesome/status", // The Route (with variables)
+      "awesome:getStatus" // the name of the action
     );
   }
 }
