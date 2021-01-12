@@ -1,6 +1,6 @@
 ---
 title: "Deployment"
-date: "2020-08-01"
+date: "2021-01-12"
 section: "deployment"
 pullQuote: "This guide will help you run the Grouparoo application on your local machine. At the end of this guide there are links to instructions on how to run Grouparoo on various production-ready platforms."
 ---
@@ -75,7 +75,6 @@ In a new directory, run the following command to generate the files Grouparoo ne
 
 ```bash
 npx grouparoo generate
-npm start
 ```
 
 This will create a `package.json` and `.env` files like these:
@@ -125,9 +124,8 @@ DATABASE_URL="postgresql://localhost:5432/grouparoo_development"
 SERVER_TOKEN="a-random-string"
 ```
 
-> Note: the `.env` file only works when running in `NODE_ENV=development`. On your server, you should set up these same environment variables.
-
-> A note on `SERVER_TOKEN`: This should be a random string that will be used to identify Grouparoo servers to each-other in the same cluster. It will not be used to authenticate users, but rather authorize servers to make requests against each other. SERVER_TOKEN is not a replacement for setting unique, per-application database credentials and isolated runtime environments.
+> Grouparoo is primarily configured via Environment variables.
+> Learn more about [the environment variables in use by Grouparoo](/docs/deployment/environment).
 
 `npm install` will not succeed without these environment variables being set.
 
@@ -154,7 +152,7 @@ Grouparoo can be configured to work with your data in a few ways.
 
 Now that you've tried Grouparoo locally, it's time to deploy it! An example application which can be copied and deployed via Docker or Heroku is available at [github.com/grouparoo/app-example](https://github.com/grouparoo/app-example).
 
-First, learn more about [Grouparoo's Deployment Topology](/docs/deployment/topology) and [how to secure your Grouparoo cluster](/docs/deployment/security).
+First, learn more about [Grouparoo's Deployment Topology](/docs/deployment/topology), [Environment variables](/docs/deployment/environment), and [how to secure your Grouparoo cluster](/docs/deployment/security).
 
 Then find the deployment Guide for your environment:
 

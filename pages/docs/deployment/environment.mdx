@@ -1,0 +1,150 @@
+---
+title: "Environment"
+date: "2021-01-12"
+section: "development"
+pullQuote: "Information about the Environment Variables used by Grouparoo"
+---
+
+The Grouparoo application is configured primarily by setting Environment Variables. In the `development` environment, this can be done by modifying a `.env` file in the root of your application directory, but in production environments, you will need to set these variables in other ways - either in your OS, Docker Orchestrator or PaaS host.
+
+## Environment Variables and API Keys
+
+**General Settings**
+
+- `PORT` is the port the application will run on. When developing, set this to something static like `3000`. Many PaaS providers (like Heroku) will provide you a port dynamically at runtime via this environment variable.
+- `WEB_URL` is the URL to access the Grouparoo web application, ie "http://localhost:3000" when developing. This is used to set access headers among other things.
+- `SERVER_TOKEN` is a random string that will be used to identify Grouparoo servers to each-other in the same cluster. It will not be used to authenticate users, but rather authorize servers to make requests against each other. SERVER_TOKEN is not a replacement for setting unique, per-application database credentials and isolated runtime environments.
+
+The following options configure if Grouparoo should enable the server and workers for this instance. When deploying, you will likely want some "api" servers and some "worker" servers, which can all be configured with these environment variables.
+
+- `WEB_SERVER=true`
+- `SCHEDULER=true`
+- `WORKERS=1`
+
+**Logging**
+
+The Grouparoo logs can be modified with the following environment variables:
+
+- `GROUPAROO_LOG_LEVEL=info`
+- `GROUPAROO_LOGS_STDOUT_DISABLE_COLOR=true`
+- `GROUPAROO_LOGS_STDOUT_DISABLE_TIMESTAMP=true`
+- `GROUPAROO_LOGS_PATH="/path/to/logs"`
+
+**Telemetry**
+
+You can disable telemetry collection by setting `GROUPAROO_TELEMETRY_ENABLED=false`. Learn more about Grouparoo's telemetry collection [here](/docs/deployment/telemetry).
+
+**Redis**
+
+Grouparoo uses Redis as both a cache and as a background job queue via node-resque. You can also customize how this are used via your environment variables.
+
+- `REDIS_URL="redis://localhost:6379/0"`
+
+To use an in-memory redis, set `REDIS_URL="redis://mock"`
+
+**Database**
+
+Grouparoo stores all of your data in a database. We use Sequelize to connect, so you can use a Postgres or SQLITE database. You can also customize your database connection string via environment variables.
+
+- `DATABASE_URL="postgresql://localhost:5432/grouparoo_development"`
+
+You can also modify the SSL connection options to your postgres database with:
+
+- `DATABASE_SSL=true`
+- `DATABASE_SSL_SELF_SIGNED=true`
+
+To use SQLite, set `DATABASE_URL="sqlite://grouparoo_development.sqlite"` which will be stored in your application directory.
+
+**File Storage**
+
+By default, Grouparoo will store files locally on disk in your application directory. This is OK for development, but you will want to store files in S3 (or a compatible service, such as Google Cloud Storage) when you deploy your application. This will persist files across deployments and nodes in your cluster.
+
+To enable S3 file storage, install the `@grouparoo/files-s3` plugin and enable it in your `package.json`. You will need to provide the required environment variables to the Grouparoo application so it can access your S3 bucket:
+
+- `S3_ACCESS_KEY`
+- `S3_SECRET_ACCESS_KEY`
+- `S3_REGION`
+- `S3_BUCKET`
+
+`S3_ACCESS_KEY` and `S3_SECRET_ACCESS_KEY` are for an [IAM](https://console.aws.amazon.com/iam/home) user which you should create for this purpose alone. This user will need a policy granting it read & write access to the S3 Bucket in question:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1571257330000",
+      "Effect": "Allow",
+      "Action": ["s3:*"],
+      "Resource": ["arn:aws:s3:::your-bucket-name/*"]
+    }
+  ]
+}
+```
+
+`S3_REGION` is an AWS region, like `"us-east-1"` and `S3_BUCKET` is the name of your bucket, which should match the one used in the policy for the IAM user,`your-bucket-name` in this example.
+
+## `.env` example
+
+```bash
+#############
+## GENERAL ##
+#############
+
+PORT=3000
+WEB_URL=http://localhost:3000
+
+WEB_SERVER=true
+SCHEDULER=true
+WORKERS=1
+SERVER_TOKEN=my-serer-token
+
+# By default, the config directory should be located in a folder named "config" within the root of your project.  You can change that with `GROUPAROO_CONFIG_DIR`
+# GROUPAROO_CONFIG_DIR=/path/to/config
+
+#############
+## LOGGING ##
+#############
+
+GROUPAROO_LOG_LEVEL=info
+# GROUPAROO_LOGS_STDOUT_DISABLE_COLOR=true
+# GROUPAROO_LOGS_STDOUT_DISABLE_TIMESTAMP=true
+# GROUPAROO_LOGS_PATH="/path/to/logs"
+
+###########
+## REDIS ##
+###########
+
+# To use an in-memory redis mock (no persistence)
+REDIS_URL="redis://mock"
+
+# To use a Redis Server
+# REDIS_URL="redis://localhost:6379/0"
+
+##############
+## DATABASE ##
+##############
+
+# To use sqlite
+DATABASE_URL="sqlite://grouparoo_development.sqlite"
+
+# To use Postgres
+# DATABASE_URL="postgresql://localhost:5432/grouparoo_development"
+
+# With custom SSL options:
+# DATABASE_SSL=true
+# DATABASE_SSL_SELF_SIGNED=true
+
+########
+## S3 ##
+########
+
+S3_ACCESS_KEY="xxx"
+S3_SECRET_ACCESS_KEY="xxx"
+S3_REGION="us-east-1"
+S3_BUCKET="your-bucket-name"
+```
+
+> Reminder: the `.env` file only works when running in `NODE_ENV=development`. On your server, you should set up these same environment variables.
+
+> A note on `SERVER_TOKEN`: This should be a random string that will be used to identify Grouparoo servers to each-other in the same cluster. It will not be used to authenticate users, but rather authorize servers to make requests against each other. SERVER_TOKEN is not a replacement for setting unique, per-application database credentials and isolated runtime environments.
