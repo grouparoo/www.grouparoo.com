@@ -1,0 +1,118 @@
+---
+title: "Lighthouse reports on Github"
+date: "2021-01-16"
+author: "Brian Leonard"
+pullQuote: "Creating a performance report on each pull request"
+image: "lighthouse-reports-on-github/github-comment.png"
+tags: [notes, engineering]
+---
+
+Performance is an important factor for user satisfaction, conversion and SEO. [Lighthouse](https://github.com/GoogleChrome/lighthouse) is a tool that creates a report on performance and other best practices. Most commonly, it used from the [chrome extension](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk).
+
+<Image
+  centered
+  height={271}
+  width={519}
+  alt="Lighthouse Chrome extension"
+  src="lighthouse-reports-on-github/chrome-extension.png"
+/>
+
+However, you can also run this test locally. The `@lhci/cli` library, when installed, provides the following command line tool.
+
+```bash
+> next build
+info  - Creating an optimized production build
+info  - Compiled successfully
+info  - Collecting page data
+info  - Generating static pages (123/123)
+info  - Finalizing page optimization
+...
+
+> lhci autorun
+✅  .lighthouseci/ directory writable
+✅  Configuration file found
+✅  Chrome installation found
+Healthcheck passed!
+
+Started a web server with "PORT=54321 npm start"...
+Running Lighthouse 1 time(s) on http://localhost:54321/about
+Run #1...done.
+...
+Done running Lighthouse!
+
+Uploading median LHR of http://localhost:54321/about...success!
+Open the report at https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1610848080418-24331.report.html
+...
+
+Done running autorun.
+```
+
+This will run for all the URLs that you tell it, launching a headless chrome browser one or more times for each to generate a report.
+
+<Image
+  centered
+  height={180}
+  width={519}
+  alt="Lighthouse report from local run"
+  src="lighthouse-reports-on-github/local-report.png"
+/>
+
+I have also noticed that the numbers (performance) on `localhost` are slower than on our production site. This is likely because the production site takes advantage of a CDN and other caching features. For example, the 84 above on the `/about` page is a 96 on production. However, the local numbers correlate with the production ones.
+
+## Configuration
+
+To make `lhci autorun` work how you want it, you'll need some configuration in the `lighthouserc.js` file. Ours exports this:
+
+```javascript
+module.exports = {
+  ci: {
+    collect: {
+      numberOfRuns: 1,
+      url: urls,
+      startServerCommand: "PORT=54321 npm start",
+      settings: {
+        onlyCategories: [
+          "performance",
+          "best-practices",
+          "accessibility",
+          "seo",
+        ], // removes pwa (progressive web app)
+        skipAudits: [
+          "canonical", // never will be right on localhost
+        ],
+      },
+    },
+    upload: {
+      target: "temporary-public-storage",
+    },
+  },
+};
+```
+
+The most interesting thing about [our implementation](https://github.com/grouparoo/www.grouparoo.com/blob/f93ce04b26900dd7473e0ac9584d5f46a3031efb/lighthouserc.js) is that it reads the sitemap so that it automatically tests all the URLs that we give to search engines. As a related matter, we are also [auto-generating](https://github.com/grouparoo/www.grouparoo.com/blob/f93ce04b26900dd7473e0ac9584d5f46a3031efb/scripts/generate_static_files.ts) our sitemap, so this means that every time we add a page, the new page will be performance tested.
+
+I found that setting `numberOfRuns` more than `1` just took too long. Testing a URL more than once gives more accurate results, so the tradeoff was whether to really test every page or have less accurate results. I chose to test every page and haven't seen too much variance in the results so far.
+
+## Comment on the Pull Request
+
+Testing and monitoring are great, but they have to be a part of the real workflow to make any difference. I decided to start with visibility. We can update this to fail a check and prevent a merge when there is a low score later.
+
+To add this visibility, I [set up](https://github.com/grouparoo/www.grouparoo.com/blob/f93ce04b26900dd7473e0ac9584d5f46a3031efb/.github/workflows/performance.yml#L2-L11) Github to [run an command](https://github.com/grouparoo/www.grouparoo.com/blob/f93ce04b26900dd7473e0ac9584d5f46a3031efb/.github/workflows/performance.yml#L12-L14) on every pull request when there is a commit.
+
+The [command](https://github.com/grouparoo/www.grouparoo.com/blob/f93ce04b26900dd7473e0ac9584d5f46a3031efb/scripts/performance_action) runs `lchi autorun` and then a script.
+
+The [script](https://github.com/grouparoo/www.grouparoo.com/blob/f93ce04b26900dd7473e0ac9584d5f46a3031efb/scripts/write_lighthouse_comment.ts) knows that `lhci autorun` puts performance reports as JSON in a certain place. It find those and generates a markdown table and writes that to disk.
+
+Now, back in the Github action, it [uses](https://github.com/grouparoo/www.grouparoo.com/blob/f93ce04b26900dd7473e0ac9584d5f46a3031efb/.github/workflows/performance.yml#L15-L18) the markdown to make a comment that gets updated each time there is a commit.
+
+The result is a comment on each pull request like this [one](https://github.com/grouparoo/www.grouparoo.com/pull/152#issuecomment-759074302):
+
+<Image
+  centered
+  height={485}
+  width={990}
+  alt="Lighthouse report as a Github comment"
+  src="lighthouse-reports-on-github/github-comment.png"
+/>
+
+Each URL shows its Lighthouse overview and links to the real report. Success!
