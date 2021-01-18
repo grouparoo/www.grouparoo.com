@@ -60,7 +60,7 @@
     "@types/node": "14.14.21",
     "@types/react-dom": "17.0.0",
     "cheerio": "1.0.0-rc.5",
-    "csv-stringify": "^5.6.0",
+    "csv-stringify": "^5.6.1",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.5",
     "isomorphic-fetch": "3.0.0",
