@@ -75,7 +75,63 @@ npm run dev
 ### Running the Monorepo (Linux):
 
 ```bash
-#TODO
+# Install NVM to manage node versions
+To download the nvm installation script from the project’s GitHub page, you can use curl. Note that the version number may differ from what is highlighted here:
+
+curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh -o install_nvm.sh
+
+Inspect the installation script with nano:
+
+nano install_nvm.sh
+
+Run the script with bash:
+
+bash install_nvm.sh
+
+# Install node.js v12
+nvm install v12
+
+# Install & run postgresql (v9.x)
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+
+# Install & run Redis
+sudo apt update
+sudo apt install redis-server
+
+# Open this file with your preferred text editor:
+sudo nano /etc/redis/redis.conf
+
+# comment the line:
+supervised no
+
+# add the following line bellow the commented line:
+supervised systemd
+
+# alternatively, you can use the redis official Docker image:
+sudo docker run --name my-redis-container -d redis
+
+# Clone this repository
+git clone git@github.com:grouparoo/grouparoo.git
+cd grouparoo
+
+# Install dependencies with pnpm (If you don't have pnpm, install it via "npm i -g pnpm")
+pnpm install
+
+# Configure your local environment variables in .env to be able to run the "staging-public" app
+cp apps/staging-public/.env.example apps/staging-public/.env
+open apps/staging-public/.env
+
+# Create your local development database (Postgres)
+createdb "grouparoo_development"
+
+# or in `psql`
+CREATE DATABASE grouparoo_development;
+GRANT ALL PRIVILEGES ON DATABASE grouparoo_development TO postgres;
+
+# Run the staging-public app example project
+cd apps/staging-public # If you aren't already here
+npm run dev
 ```
 
 ## Typescript
@@ -93,19 +149,19 @@ Grouparoo is built on top of many wonderful open source technologies. An exhaust
 Grouparoo Core:
 
 - General
-  - [pnpm](https://pnpm.js.org)
-  - [Lerna](https://github.com/lerna/lerna)
-  - [Jest](https://jestjs.io/)
+- [pnpm](https://pnpm.js.org)
+- [Lerna](https://github.com/lerna/lerna)
+- [Jest](https://jestjs.io/)
 - API
-  - [Actionhero](https://www.actionherojs.com/)
-  - [Sequelzie-Typescript](https://github.com/RobinBuschmann/sequelize-typescript)
-  - [Sequelzie](https://sequelize.org/)
-  - [Node Resque](https://github.com/actionhero/node-resque)
+- [Actionhero](https://www.actionherojs.com/)
+- [Sequelzie-Typescript](https://github.com/RobinBuschmann/sequelize-typescript)
+- [Sequelzie](https://sequelize.org/)
+- [Node Resque](https://github.com/actionhero/node-resque)
 - Web
-  - [Next.js](https://nextjs.org/)
-  - [React](https://reactjs.org/)
-  - [React-Bootstrap](https://react-bootstrap.github.io/)
-  - [fontawesome](https://fontawesome.com/)
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [React-Bootstrap](https://react-bootstrap.github.io/)
+- [fontawesome](https://fontawesome.com/)
 
 All dependencies Grouparoo uses must be licensed under a non-viral open-source licence that allows for commercial use. We audit every dependency in every sub-project of this monorepo via [license-checker](https://www.npmjs.com/package/license-checker). The list of licenses we accept can be found [here](https://github.com/grouparoo/grouparoo/blob/master/tools/license-checker/check).
 
