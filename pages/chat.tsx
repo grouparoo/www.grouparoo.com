@@ -6,16 +6,16 @@ import WhoWeAre from "../components/home/whoWeAre";
 import JobBoard from "../components/jobs/jobBoard";
 import WorkingAtGrouparooCard from "../components/jobs/workingAtGrouparoo";
 
-export default function Community() {
+export default function Chat() {
   return (
     <>
       <Head>
-        <title>Grouparoo Community</title>
+        <title>Grouparoo Community Chat</title>
         <meta
           name="description"
           content="The Grouparoo community is a place to discuss how to help growth and data teams make the most of their customer data and tools."
         />
-        <link rel="canonical" href="https://www.grouparoo.com/community" />
+        <link rel="canonical" href="https://www.grouparoo.com/chat" />
       </Head>
 
       <div
