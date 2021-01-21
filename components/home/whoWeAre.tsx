@@ -22,7 +22,7 @@ export default function WhoWeAre() {
         style={{ textAlign: "center" }}
       >
         <Row>
-          <Col md={4} className="d-flex justify-content-center">
+          <Col md={4} lg={3} className="d-flex justify-content-center">
             <TeamMember
               name="Brian Leonard"
               image="brian_leonard.png"
@@ -49,7 +49,7 @@ export default function WhoWeAre() {
             />
           </Col>
 
-          <Col md={4} className="d-flex justify-content-center">
+          <Col md={4} lg={3} className="d-flex justify-content-center">
             <TeamMember
               name="Evan Tahler"
               image="evan_tahler.png"
@@ -85,7 +85,7 @@ export default function WhoWeAre() {
             />
           </Col>
 
-          <Col md={4} className="d-flex justify-content-center">
+          <Col md={4} lg={3} className="d-flex justify-content-center">
             <TeamMember
               name="Andy Jih"
               image="andy_jih.png"
@@ -117,6 +117,32 @@ export default function WhoWeAre() {
               github="https://github.com/andyjih"
               twitter="https://twitter.com/andyjih"
               linkedIn="https://www.linkedin.com/in/andyjih/"
+            />
+          </Col>
+
+          <Col md={4} lg={3} className="d-flex justify-content-center">
+            <TeamMember
+              name="Sean C Davis"
+              image="sean_c_davis.jpg"
+              title="Senior Software Engineer"
+              description={
+                <span>
+                  👨‍👩‍👧 🦮 🎸 ✍️
+                  <br /> Previously:
+                  <br />
+                  Director of Technology{" "}
+                  <a
+                    href="https://www.ample.co/"
+                    target="_blank"
+                    rel="noreferrer nofollow"
+                  >
+                    @Ample
+                  </a>
+                </span>
+              }
+              github="https://github.com/seancdavis"
+              twitter="https://twitter.com/seancdavis29"
+              linkedIn="https://www.linkedin.com/in/seancdavis29/"
             />
           </Col>
         </Row>

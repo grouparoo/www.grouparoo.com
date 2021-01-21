@@ -11,7 +11,7 @@ export default function TeamMember({
   linkedIn,
 }) {
   return (
-    <div style={{ width: 150, paddingBottom: 20 }}>
+    <div style={{ width: 250, paddingBottom: 20 }}>
       <Row>
         <Col>
           <Image
@@ -28,18 +28,18 @@ export default function TeamMember({
           </p>
         </Col>
       </Row>
-      <Row>
-        <Col>
+      <Row className="justify-content-center">
+        <Col xs={2} className="px-1">
           <a href={github} target="_blank" rel="noreferrer">
             <SocialIconGrayscale name="github" />
           </a>
         </Col>
-        <Col>
+        <Col xs={2} className="px-1">
           <a href={twitter} target="_blank" rel="noreferrer">
             <SocialIconGrayscale name="twitter" />
           </a>
         </Col>
-        <Col>
+        <Col xs={2} className="px-1">
           <a href={linkedIn} target="_blank" rel="noreferrer">
             <SocialIconGrayscale name="linkedin" />
           </a>
