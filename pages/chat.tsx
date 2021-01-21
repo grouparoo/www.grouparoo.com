@@ -1,10 +1,5 @@
 import Head from "next/head";
-import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
-import Image from "../components/Image";
-import WhoWeAre from "../components/home/whoWeAre";
-import JobBoard from "../components/jobs/jobBoard";
-import WorkingAtGrouparooCard from "../components/jobs/workingAtGrouparoo";
 
 export default function Chat() {
   return (
