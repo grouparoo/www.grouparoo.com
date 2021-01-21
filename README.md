@@ -20,6 +20,12 @@ npm install
 npm run dev
 ```
 
+If you run into an issue installing Sharp on an Apple M1 machine, make sure `vips` is installed properly. ([See this issue](https://github.com/lovell/sharp/issues/2460#issuecomment-751491241) for more information.)
+
+```bash
+brew install vips
+```
+
 ## To Test:
 
 You will need `chromedriver` installed to run the automated browser tests:
