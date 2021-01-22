@@ -19,7 +19,11 @@ function BlogImage(props: BlogImageProps) {
     marginBottom: (bottomSpace || 0) + marginBottom,
   };
 
-  if (src.includes("data:image")) {
+  if (
+    src.includes("data:image") ||
+    src.startsWith("http:") ||
+    src.startsWith("https:")
+  ) {
     imageProps.src = src;
   } else {
     if (permalink) {
