@@ -11,6 +11,8 @@ This document is place to centrally describe how all of this works!
 
 ## Core Data Models
 
+![Grouparoo Data](https://docs.google.com/drawings/d/e/2PACX-1vTUnMHODdlKe0IN_QZtM7aF5sIo4USVjRcKsyueU1khYQAIMo7GbqVW3ta06Z8ay98waNcGxWTgPp_G/pub?w=1440&h=1080)
+
 ### Profiles and Profile Properties
 
 The main object in Grouparoo is a `Profile`. A profile by itself is simply a `guid` and the time it was created and last updated. It is a "join table" to collect many `Profile Properties`, which act as a key-value store for the data about `Profiles`. For example, a common `Profile Property` would be `key='email', value='evan@grouparoo.com', type='string'`. We also store when each `Profile Property` was created and updated.
