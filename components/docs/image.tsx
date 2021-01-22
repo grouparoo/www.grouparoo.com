@@ -6,7 +6,11 @@ export default function DocImage(props: DocImageProps) {
   const imageProps = Object.assign({}, props);
   const { src } = imageProps;
 
-  if (src.includes("data:image")) {
+  if (
+    src.includes("data:image") ||
+    src.startsWith("http:") ||
+    src.startsWith("https:")
+  ) {
     imageProps.src = src;
   } else {
     imageProps.src = `/images/${src}`;
