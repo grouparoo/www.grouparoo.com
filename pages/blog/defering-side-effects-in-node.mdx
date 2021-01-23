@@ -22,8 +22,8 @@ At Grouparoo, we use [Actionhero](https://www.actionherojs.com) as our Node.js A
 Take the following example from a prototypical blogging site. When a user is created (`POST /api/v1/user`), we also create their first post and send them a welcome Email. All examples in this post are written in Typescript, but the concepts work the same for Javascript.
 
 ```ts
-import { action } from "actionhero"
-import { User, Post } from "../models"
+import { action } from "actionhero";
+import { User, Post } from "../models";
 
 export class UserCreate extends Action {
   constructor() {
@@ -45,9 +45,9 @@ export class UserCreate extends Action {
 
     const post = await new Post({
       userId: user.id,
-      title: 'My First Post',
-      published: false.
-    })
+      title: "My First Post",
+      published: false,
+    });
 
     return { userId: user.id, postId: post.id };
   }
@@ -76,7 +76,7 @@ async run({ params }) {
     const post = await new Post({
       userId: user.id,
       title: 'My First Post',
-      published: false.
+      published: false,
     }, {transaction: t})
 
     return { userId: user.id, postId: post.id };
@@ -122,7 +122,7 @@ async run({ params }) {
     const post = await new Post({
       userId: user.id,
       title: 'My First Post',
-      published: false.
+      published: false,
     })
 
     return { userId: user.id, postId: post.id };
@@ -224,9 +224,9 @@ export class UserCreate extends CLSAction {
 
     const post = await new Post({
       userId: user.id,
-      title: 'My First Post',
-      published: false.
-    })
+      title: "My First Post",
+      published: false,
+    });
 
     return { userId: user.id, postId: post.id };
   }
