@@ -253,7 +253,9 @@ There are several methods to implement that more or less represent the destinati
 
 Within any of these methods, an `error` or `skipMessage` (info error) can be associated with a profile. That profile will be omitted from subsequent steps.
 
-## Testing
+## Iteration and Testing
+
+Read more about [plugin development](./plugins#iteration-and-testing) to understand the best way to work on your new plugin.
 
 Plugins are tested using [jest](https://jestjs.io/). The primary way of testing them is to test the individual methods (`exportProfile`, `destinationMappingOptions`, etc) in their own file/suite. Several plugins have multiple suites for exporting profiles when there are `destinationOptions` that make them work differently.
 

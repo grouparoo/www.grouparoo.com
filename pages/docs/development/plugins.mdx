@@ -331,3 +331,36 @@ await api.plugins.updateSetting(pluginName, key, value);
 ```
 
 Settings are all of type `string`, so coerce them if needed. Setting keys and values are limited to 191 characters in length.
+
+<a id="iteration-and-testing" />
+
+### Iteration and Testing
+
+When setting up Grouparoo, use `pnpm install` from the root of the monorepo to get everything installed. This used [lerna](https://lerna.js.org/) to act like all the plugins are "regular" npm ones but there are really the local files.
+
+When you add a new plugin, it's version should be the same as all the other ones. This will allow lerna to pick up that local plugin before it is published and allow you to iterate on the functionality. Run `pnpm install` after creating the new package and every time a dependency is added.
+
+To make this new plugin be used while running, add it to the `package.json` file of a Grouparoo app like the one in [`apps/staging-public`](https://github.com/grouparoo/grouparoo/blob/c4dc38bfa44354c23ed1d6de7f66a89adad11a41/apps/staging-public/package.json). It needs to be added to both the [`dependencies`](https://github.com/grouparoo/grouparoo/blob/c4dc38bfa44354c23ed1d6de7f66a89adad11a41/apps/staging-public/package.json#L22) and the [`plugins`](https://github.com/grouparoo/grouparoo/blob/c4dc38bfa44354c23ed1d6de7f66a89adad11a41/apps/staging-public/package.json#L51) array at the bottom. After adding to these spots, run `pnpm install` from the root and `npm run dev` from the app.
+
+It would be frustrating to have to run `pnpm install` every time there was a change. The running app, when run with `npm run dev` will automatically reboot itself with changes to the compiled Typescript. Run `npm run watch` (the same as `node_modules/.bin/tsc --watch`) from the plugin directory to watch for changes to make this happen. If you do this, then file changes to the plugin will show up momentarily in the running app. Sometimes, the app struggles to restart and you have to kill it and run `npm run dev` again.
+
+When running tests for your new plugin, use `node_modules/.bin/jest __tests__/file/path.ts`. This will automatically incorporate any changes to the library or test files in that plugin.
+
+#### Summary: Localhost
+
+For `localhost:3000` development (from monorepo root):
+
+- `pnpm install`
+- `cd apps/staging-public && npm run dev`
+- `cd plugins/@grouparoo/new-plugin && npm run watch`
+
+Now you can change files in `plugins/@grouparoo/new-plugin` and see them reflected on the server.
+
+#### Summary: Testing
+
+For `jest` testing (from monorepo root):
+
+- `cd plugins/@grouparoo/new-plugin`
+- `node_modules/.bin/jest __tests__/file/path.ts`
+
+Change your files and tests and re-run command as needed.
