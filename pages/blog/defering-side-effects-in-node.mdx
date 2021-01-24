@@ -15,11 +15,11 @@ tags: [engineering]
   height={667}
 />
 
-At Grouparoo, we use [Actionhero](https://www.actionherojs.com) as our Node.js API server and [Sequelize](https://sequelize.org) for our Object Relational Mapping (ORM) tool - making it easy to work with complex records from our database. Within our Actions and Tasks, we often want to treat the whole execution as a singe [database transaction](https://stackoverflow.com/questions/974596/what-is-a-database-transaction) - either all the modifications to the database will succeed or fail as a unit. This is really helpful when a single activity may create or modify many database rows.
+At Grouparoo, we use [Actionhero](https://www.actionherojs.com) as our Node.js API server and [Sequelize](https://sequelize.org) for our Object Relational Mapping (ORM) tool - making it easy to work with complex records from our database. Within our Actions and Tasks, we often want to treat the whole execution as a single [database transaction](https://stackoverflow.com/questions/974596/what-is-a-database-transaction) - either all the modifications to the database will succeed or fail as a unit. This is really helpful when a single activity may create or modify many database rows.
 
 ## Why do we need Transactions?
 
-Take the following example from a prototypical blogging site. When a user is created (`POST /api/v1/user`), we also create their first post and send them a welcome Email. All examples in this post are written in Typescript, but the concepts work the same for Javascript.
+Take the following example from a prototypical blogging site. When a user is created (`POST /api/v1/user`), we also create their first post and send them a welcome email. All examples in this post are written in Typescript, but the concepts work the same for Javascript.
 
 ```ts
 import { action } from "actionhero";
@@ -96,7 +96,7 @@ Sending the email as-written will happen even if we roll back the transaction be
 
 ## Automatically Pass Transactions to all Queries: CLS-Hooked
 
-The solution to our problem comes from a wonderful package called [`cls-hooked`](https://github.com/Jeff-Lewis/cls-hooked). Using the magic of [`AsyncHooks`](https://github.com/nodejs/node/blob/master/doc/api/async_hooks.md), this package can tell when certain code is _within_ a callback chain or promise. In this way, you can say: "for all methods invoked within this async function, I want to keep this variable in scope". This is pretty wild! If you opt into using Sequelzie with CLS-Hooked, _every_ SQL statement will check to see if there is already a transaction in scope... You don't need to manually supply it as an argument!
+The solution to our problem comes from a wonderful package called [`cls-hooked`](https://github.com/Jeff-Lewis/cls-hooked). Using the magic of [`AsyncHooks`](https://github.com/nodejs/node/blob/master/doc/api/async_hooks.md), this package can tell when certain code is _within_ a callback chain or promise. In this way, you can say: "for all methods invoked within this async function, I want to keep this variable in scope". This is pretty wild! If you opt into using Sequelize with CLS-Hooked, _every_ SQL statement will check to see if there is already a transaction in scope... You don't need to manually supply it as an argument!
 
 There is a performance penalty for using `cls-hooked`, but in our testing, it isn’t meaningful when compared to `await`-ing SQL results from a remote database.
 
