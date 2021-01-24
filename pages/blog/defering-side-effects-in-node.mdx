@@ -43,7 +43,7 @@ export class UserCreate extends Action {
     await user.updatePassword(params.password);
     await user.sendWelcomeEmail();
 
-    const post = await new Post({
+    const post = await Post.create({
       userId: user.id,
       title: "My First Post",
       published: false,
@@ -73,7 +73,7 @@ async run({ params }) {
     await user.updatePassword(params.password, {transaction: t} );
     await user.sendWelcomeEmail();
 
-    const post = await new Post({
+    const post = await Post.create({
       userId: user.id,
       title: 'My First Post',
       published: false,
@@ -119,7 +119,7 @@ async run({ params }) {
     await user.updatePassword(params.password);
     await user.sendWelcomeEmail();
 
-    const post = await new Post({
+    const post = await Post.create({
       userId: user.id,
       title: 'My First Post',
       published: false,
@@ -222,7 +222,7 @@ export class UserCreate extends CLSAction {
     // the email will be sent only if the transaction succeeds
     await CLS.afterCommit(user.sendWelcomeEmail);
 
-    const post = await new Post({
+    const post = await Post.create({
       userId: user.id,
       title: "My First Post",
       published: false,
