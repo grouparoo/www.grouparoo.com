@@ -29,7 +29,7 @@ export class UserCreate extends Action {
   constructor() {
     super();
     this.name = "user:create";
-    this.description = "create a user and thier first post";
+    this.description = "create a user and their first post";
     this.inputs = {
       firstName: { required: true },
       lastName: { required: true },
@@ -181,11 +181,10 @@ Now that it is possible to take arbitrary functions and delay their execution un
 Putting everything together, our new transaction-safe Action looks like this:
 
 ```ts
+// *** Define the CLSAction Class ***
+
 import { Action } from "actionhero";
 import { CLS } from "../modules/cls";
-import { User, Post } from "../models";
-
-// *** Define the CLSAction Class ***
 
 export abstract class CLSAction extends Action {
   constructor() {
@@ -198,14 +197,19 @@ export abstract class CLSAction extends Action {
 
   abstract runWithinTransaction(data): Promise<any>;
 }
+```
 
+```ts
 // *** Use the CLSAction Class ***
+
+import { CLSAction } from "../classes";
+import { User, Post } from "../models";
 
 export class UserCreate extends CLSAction {
   constructor() {
     super();
     this.name = "user:create";
-    this.description = "create a user and thier first post";
+    this.description = "create a user and their first post";
     this.inputs = {
       firstName: { required: true },
       lastName: { required: true },
@@ -214,12 +218,9 @@ export class UserCreate extends CLSAction {
     };
   }
 
-  // runWithinTransaction automatically applies transactions to all Seqeulzie methods/models
   async runWithinTransaction({ params }) {
     const user = await User.create(params);
     await user.updatePassword(params.password);
-
-    // the email will be sent only if the transaction succeeds
     await CLS.afterCommit(user.sendWelcomeEmail);
 
     const post = await Post.create({
