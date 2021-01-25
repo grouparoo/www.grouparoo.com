@@ -18,7 +18,13 @@ When developing Grouparoo, you'll be running code within the `monorepo`. This gi
 - **CLI**: The Grouparoo CLI tool, ie: `npx grouparoo generate`
 - **Plugins**: There are opt-in add-ons for Grouparoo customers, and contain the logic to connect to new sources & destinations, or otherwise add new functionality to Grouparoo.
 
-### Running the Monorepo (OSX):
+### Running the Monorepo
+
+_Click to expand the instructions for your operating system_
+
+<details>
+  <summary><strong>MacOS</strong></summary>
+  <p>
 
 ```bash
 # Install NVM to manage node versions
@@ -66,17 +72,90 @@ cd apps/staging-public # If you aren't already here
 npm run dev
 ```
 
-### Running the Monorepo (Windows):
+  </p>
+</details>
+
+<details>
+  <summary>
+    <strong>Windows</strong>
+  </summary>
+  <p>
 
 ```bash
 #TODO
 ```
 
-### Running the Monorepo (Linux):
+  </p>
+</details>
+
+<details>
+  <summary>
+    <strong>Linux</strong>
+  </summary>
+  <p>
 
 ```bash
-#TODO
+# Install NVM to manage node versions
+To download the nvm installation script from the project’s GitHub page, you can use curl. Note that the version number may differ from what is highlighted here:
+
+curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh -o install_nvm.sh
+
+Inspect the installation script with nano:
+
+nano install_nvm.sh
+
+Run the script with bash:
+
+bash install_nvm.sh
+
+# Install node.js v12
+nvm install v12
+
+# Install & run postgresql (v9.x)
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+
+# Install & run Redis
+sudo apt update
+sudo apt install redis-server
+
+# Open this file with your preferred text editor:
+sudo nano /etc/redis/redis.conf
+
+# comment the line:
+supervised no
+
+# add the following line bellow the commented line:
+supervised systemd
+
+# alternatively, you can use the redis official Docker image:
+sudo docker run --name my-redis-container -d redis
+
+# Clone this repository
+git clone git@github.com:grouparoo/grouparoo.git
+cd grouparoo
+
+# Install dependencies with pnpm (If you don't have pnpm, install it via "npm i -g pnpm")
+pnpm install
+
+# Configure your local environment variables in .env to be able to run the "staging-public" app
+cp apps/staging-public/.env.example apps/staging-public/.env
+open apps/staging-public/.env
+
+# Create your local development database (Postgres)
+createdb "grouparoo_development"
+
+# or in `psql`
+CREATE DATABASE grouparoo_development;
+GRANT ALL PRIVILEGES ON DATABASE grouparoo_development TO postgres;
+
+# Run the staging-public app example project
+cd apps/staging-public # If you aren't already here
+npm run dev
 ```
+
+  </p>
+</details>
 
 ## Typescript
 
