@@ -18,7 +18,13 @@ When developing Grouparoo, you'll be running code within the `monorepo`. This gi
 - **CLI**: The Grouparoo CLI tool, ie: `npx grouparoo generate`
 - **Plugins**: There are opt-in add-ons for Grouparoo customers, and contain the logic to connect to new sources & destinations, or otherwise add new functionality to Grouparoo.
 
-### Running the Monorepo (OSX):
+### Running the Monorepo
+
+_Click to expand the instructions for your operating system_
+
+<details>
+  <summary><strong>MacOS</strong></summary>
+  <p>
 
 ```bash
 # Install NVM to manage node versions
@@ -66,13 +72,27 @@ cd apps/staging-public # If you aren't already here
 npm run dev
 ```
 
-### Running the Monorepo (Windows):
+  </p>
+</details>
+
+<details>
+  <summary>
+    <strong>Windows</strong>
+  </summary>
+  <p>
 
 ```bash
 #TODO
 ```
 
-### Running the Monorepo (Linux):
+  </p>
+</details>
+
+<details>
+  <summary>
+    <strong>Linux</strong>
+  </summary>
+  <p>
 
 ```bash
 # Install NVM to manage node versions
@@ -134,6 +154,9 @@ cd apps/staging-public # If you aren't already here
 npm run dev
 ```
 
+  </p>
+</details>
+
 ## Typescript
 
 Grouparoo is written in [Typescript](https://www.typescriptlang.org/), which means that we need to compile our Typescript to Javascript before we can run it. This is true for Grouparoo plugins, but not necessarily true for Grouparoo Apps or Core, if you are using `npm run dev` (development mode), which will handle the compilation on the fly. Every sub-project in the Grouparoo Monorepo has an `npm run prepare` command which handles the compilation process. `npm run prepare` is also an [NPM lifecycle hook](https://docs.npmjs.com/misc/scripts#prepublish-and-prepare), which will automatically run after every `npm install` as well.
@@ -147,6 +170,7 @@ Grouparoo self-documents its Typescript interface to [docs.grouparoo.com](https:
 Grouparoo is built on top of many wonderful open source technologies. An exhaustive list of our dependencies can be found within our [package.json](https://github.com/grouparoo/grouparoo/blob/master/core/package.json) files. This below list provides links to the core packages we rely on.
 
 Grouparoo Core:
+
 - General
   - [pnpm](https://pnpm.js.org)
   - [Lerna](https://github.com/lerna/lerna)
