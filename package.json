@@ -33,7 +33,7 @@
     "babel-plugin-import-glob-array": "0.2.0",
     "babel-plugin-transform-define": "2.0.0",
     "bootstrap": "4.6.0",
-    "feed": "^4.2.1",
+    "feed": "^4.2.2",
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
     "image-size": "^0.9.3",
