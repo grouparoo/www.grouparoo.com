@@ -98,6 +98,12 @@ Sending the email as-written will happen even if we roll back the transaction be
 
 The solution to our problem comes from a wonderful package called [`cls-hooked`](https://github.com/Jeff-Lewis/cls-hooked). Using the magic of [`AsyncHooks`](https://github.com/nodejs/node/blob/master/doc/api/async_hooks.md), this package can tell when certain code is _within_ a callback chain or promise. In this way, you can say: "for all methods invoked within this async function, I want to keep this variable in scope". This is pretty wild! If you opt into using Sequelize with CLS-Hooked, _every_ SQL statement will check to see if there is already a transaction in scope... You don't need to manually supply it as an argument!
 
+From the `cls-hooked` readme:
+
+> CLS: "Continuation-Local Storage"
+
+> Continuation-local storage works like thread-local storage in threaded programming, but is based on chains of Node-style callbacks instead of threads.
+
 There is a performance penalty for using `cls-hooked`, but in our testing, it isn’t meaningful when compared to `await`-ing SQL results from a remote database.
 
 Using `cls-hooked`, our Action's run method now can look like this:
