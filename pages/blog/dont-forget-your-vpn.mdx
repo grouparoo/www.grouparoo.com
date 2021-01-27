@@ -1,0 +1,46 @@
+---
+title: "Don’t Forget Your VPNs and Tracker Blockers"
+date: "2021-01-27"
+author: "Andy Jih"
+pullQuote: "Ad blockers are great, until they’re not"
+image: "dont-forget-your-vpn/intercom_blocked.png"
+tags: [product, notes]
+---
+
+I was testing the new [Intercom](https://intercom.com) plugin that our team had built, and ran into a strange snag. When adding apps to Grouparoo, we have this handy “Test Connection” button that checks to make sure the connection details and credentials work. When I was testing this new Intercom plugin, something strange appeared this time around.
+
+<Image
+  centered
+  alt="Steps of a simple sync"
+  src="dont-forget-your-vpn/intercom_blocked.png"
+  width={845}
+  height={586}
+/>
+
+I was testing locally, but the Test Connection button actually talks to an external API, so I was confused that the connection failed due to something from localhost.
+
+Brian and I fiddled around with various `.env` variables, double-checked the Intercom Access Token, and poked around a bunch in Intercom settings to make sure that we didn’t mess up some permissions settings.
+
+After we spent an embarassing amount of time debugging, I remembered that I had [Disconnect VPN](https://disconnect.me) installed, which blocks a bunch of various trackers and ad networks. I opened up Disconnect and saw that they’d recently added Intercom to their block list.
+
+<Image
+  centered
+  alt="Steps of a simple sync"
+  src="dont-forget-your-vpn/disconnect_vpn.png"
+  width={316}
+  height={505}
+/>
+
+After I turned off Disconnect, I was able to connect to Intercom just fine.
+
+<Image
+  centered
+  alt="Steps of a simple sync"
+  src="dont-forget-your-vpn/intercom_unblocked.png"
+  width={842}
+  height={629}
+/>
+
+This experience served as yet another reminder that as tools become more sophisticated at blocking ads and trackers like [Google Analytics](https://analytics.google.com), Facebook Ads, and [Segment](https://segment.com), front-end events will become less useful to businesses (and less creepy to the general public!).
+
+And this experience was also a reminder to always check your VPN settings when testing and developing. 😅
