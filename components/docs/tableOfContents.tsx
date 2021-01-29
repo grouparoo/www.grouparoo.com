@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { Card } from "react-bootstrap";
 
+import { titleize } from "../../utils/inflectors";
+
 export function TableOfContents({ docs }) {
   const router = useRouter();
   const highlightColor = "#fd7e14";
@@ -26,7 +28,7 @@ export function TableOfContents({ docs }) {
                             : undefined,
                       }}
                     >
-                      <strong>{capitalize(section)}</strong>
+                      <strong>{titleize(section)}</strong>
                     </a>
                   </Link>
                   <ul>
@@ -60,6 +62,7 @@ export function TableOfContents({ docs }) {
 
 export function tableOfContentsFromEntries(docs) {
   const sections: { [section: string]: { title: string; path: string }[] } = {
+    "try-now": [],
     deployment: [],
     guides: [],
     development: [],
@@ -95,11 +98,4 @@ export function tableOfContentsFromEntries(docs) {
   }
 
   return sections;
-}
-
-export function capitalize(word: string) {
-  return word
-    .split("-")
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(" ");
 }

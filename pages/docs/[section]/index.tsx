@@ -1,10 +1,8 @@
 import Head from "next/head";
 import { Container, Row, Col, Breadcrumb } from "react-bootstrap";
 import hydrate from "next-mdx-remote/hydrate";
-import {
-  TableOfContents,
-  capitalize,
-} from "../../../components/docs/tableOfContents";
+import { TableOfContents } from "../../../components/docs/tableOfContents";
+import { titleize } from "../../../utils/inflectors";
 import * as components from "../../../components/docs";
 import {
   loadEntries,
@@ -38,7 +36,7 @@ export default function DocPage({ pageProps }) {
                     .filter((_p, i) => i <= idx + 1)
                     .join("/")}`}
                 >
-                  {capitalize(part)}
+                  {titleize(part)}
                 </Breadcrumb.Item>
               ))}
           </Breadcrumb>
