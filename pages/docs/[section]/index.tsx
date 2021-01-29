@@ -5,15 +5,12 @@ import {
   TableOfContents,
   capitalize,
 } from "../../../components/docs/tableOfContents";
-import HavingProblems from "../../../components/docs/havingProblems";
-import DocImage from "../../../components/docs/image";
+import * as components from "../../../components/docs";
 import {
   loadEntries,
   loadMdxFile,
   getStaticMdxPaths,
 } from "../../../utils/mdxUtils";
-
-const components = { HavingProblems, Image: DocImage };
 
 export default function DocPage({ pageProps }) {
   const { source, frontMatter, docs, path } = pageProps;

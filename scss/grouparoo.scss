@@ -179,6 +179,18 @@ hr {
 
 // -- Documentation --
 
-.documentationPage li {
-  margin-bottom: 1rem; // matches <p>
+.documentationPage {
+  li {
+    margin-bottom: 1rem; // matches <p>
+  }
+
+  .nav-tabs {
+    border-bottom: none;
+  }
+
+  .tab-content {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+  }
 }

@@ -5,13 +5,25 @@ section: "guides"
 pullQuote: "Now that you've created Profiles and Profile Properties, the next step is to create Groups. Groups are a segment or cohort of Profiles."
 ---
 
-Now that you've created Profiles and Profile Properties, the next step is to create Groups. Groups are a segment or cohort of Profiles. You can have `Calculated Groups` and `Manual Groups`.
+Now that you've created Profiles and Profile Properties, the next step is to create Groups. Groups are a segment or cohort of Profiles. You can have _Calculated Groups_ and _Manual Groups_.
 
 ## Calculated Groups
 
-`Calculated Groups` add and remove Profiles automatically based on Group Rules that you define. Here are a few different examples of `Calculated Groups` and their rules:
+Calculated Groups add and remove Profiles automatically based on Group Rules that you define. Each Rule has several options for logically determining if a profile belongs in the group. Those options are listed below, followed by a few examples.
 
-### Example: Repeat Purchasers
+### Rule Operation Options
+
+Each Rule has an operator — a logical statement to filter profiles. A profile must match every Rule to be included in the Group.
+
+Available operations depends on both the _type_ of Property and the underlying Grouparoo database (SQLite vs. Postgres). See below for a list of rules. (If in doubt, choose Postgres.)
+
+<RuleOpsTable />
+
+### Examples
+
+Here are a few different examples of Calculated Groups and their rules:
+
+#### Example: Repeat Purchasers
 
 Group Rules:
 
@@ -27,7 +39,7 @@ Group Rules:
   height={414}
 />
 
-### Example: High-Value & Abandoned Cart Recently
+#### Example: High-Value & Abandoned Cart Recently
 
 Group Rules:
 
@@ -44,7 +56,7 @@ Group Rules:
   height={414}
 />
 
-### Example: High-Value Xhosa Speakers
+#### Example: High-Value Xhosa Speakers
 
 Group Rules:
 
