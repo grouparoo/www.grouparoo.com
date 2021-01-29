@@ -20,14 +20,14 @@ interface PropertyOperations {
 }
 
 interface RuleOpsDbTypeData {
-  boolean: any;
-  date: any;
-  email: any;
-  float: any;
-  integer: any;
-  phoneNumber: any;
-  string: any;
-  url: any;
+  boolean: PropertyOperations[];
+  date: PropertyOperations[];
+  email: PropertyOperations[];
+  float: PropertyOperations[];
+  integer: PropertyOperations[];
+  phoneNumber: PropertyOperations[];
+  string: PropertyOperations[];
+  url: PropertyOperations[];
   [key: string]: any;
 }
 
