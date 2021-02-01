@@ -27,6 +27,8 @@ const DocsNav: NavItem[] = [
         title: "Upgrading Grouparoo",
         path: "/docs/deployment/upgrading-grouparoo",
       },
+      { title: "First Time Setup", path: "/docs/config/first-time-setup" },
+      { title: "Product Concepts", path: "/docs/config/product-concepts" },
     ],
   },
 
@@ -42,24 +44,26 @@ const DocsNav: NavItem[] = [
     ],
   },
 
-  // --- Guides ---
+  // --- Configuration ---
   {
-    title: "Guides",
-    path: "/docs/guides",
+    title: "Configuration",
+    path: "/docs/config",
     children: [
-      { title: "Add Apps", path: "/docs/guides/add-apps" },
+      { title: "Apps", path: "/docs/config/apps" },
+      { title: "Sources", path: "/docs/config/sources" },
       {
-        title: "Create Destinations",
-        path: "/docs/guides/create-destinations",
+        title: "Properties",
+        path: "/docs/config/properties",
       },
-      { title: "Create Groups", path: "/docs/guides/create-groups" },
+      { title: "Groups", path: "/docs/config/groups" },
       {
-        title: "Create Profile Properties",
-        path: "/docs/guides/create-profile-properties",
+        title: "Destinations",
+        path: "/docs/config/destinations",
       },
-      { title: "Create Sources", path: "/docs/guides/create-sources" },
-      { title: "First Time Setup", path: "/docs/guides/first-time-setup" },
-      { title: "Product Concepts", path: "/docs/guides/product-concepts" },
+      // TODO: Settings
+      // TODO: Permissions (Enterprise)
+      // TODO: Environment Variables
+      // TODO: Secrets
     ],
   },
 
