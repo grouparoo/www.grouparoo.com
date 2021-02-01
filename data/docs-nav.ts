@@ -27,8 +27,8 @@ const DocsNav: NavItem[] = [
         title: "Upgrading Grouparoo",
         path: "/docs/deployment/upgrading-grouparoo",
       },
-      { title: "First Time Setup", path: "/docs/config/first-time-setup" },
-      { title: "Product Concepts", path: "/docs/config/product-concepts" },
+      { title: "First Time Setup", path: "/docs/guides/first-time-setup" },
+      { title: "Product Concepts", path: "/docs/guides/product-concepts" },
     ],
   },
 
@@ -61,9 +61,15 @@ const DocsNav: NavItem[] = [
         path: "/docs/config/destinations",
       },
       // TODO: Settings
-      // TODO: Permissions (Enterprise)
+      {
+        title: "Permissions",
+        path: "/docs/config/permissions",
+      },
       // TODO: Environment Variables
-      // TODO: Secrets
+      {
+        title: "Secrets",
+        path: "/docs/config/secrets",
+      },
     ],
   },
 
