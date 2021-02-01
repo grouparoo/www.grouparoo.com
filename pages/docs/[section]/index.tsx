@@ -60,6 +60,7 @@ export default function DocPage({ pageProps }) {
             </small>
             <hr />
             <div>{content}</div>
+            <components.HavingProblems />
           </Col>
 
           <Col className="d-md-none">
