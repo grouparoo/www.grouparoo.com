@@ -1,0 +1,29 @@
+---
+title: "Node.js Memory Error on Mac Using M1"
+date: "2021-02-02"
+author: "Sean C Davis"
+pullQuote: "How to fix Node.js memory error on Mac OS X using Apple M1 chip."
+tags: [notes]
+---
+
+In working on our fancy new CLI tool last week, I came across this scary error, courtesy of Node.js:
+
+    FATAL ERROR: wasm code commit Allocation failed - process out of memory
+
+It began occurring regularly enough that I started digging, and I eventually came across [this discussion](https://forum.ghost.org/t/cant-get-ghost-running-on-apple-m1-chip/19526/5) which noted that Node.js versions prior to v15 do not natively support the Apple M1 chip. (At least not _yet_.) Being that I'm on a new Apple machine with an M1 chip, this caught my attention.
+
+Our team uses [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm) to install and manage multiple node versions. I happened to be working with v12.
+
+    $ nvm ls
+    ->     v12.20.1
+            system
+    default -> 12 (-> v12.20.1)
+    ...
+
+So I gave v15 a shot, and _Voila!_ It did the trick!
+
+    $ nvm install 15
+    $ nvm use 15
+    $ nvm alias default 15
+
+_Note: I even tried v14 just to see what would happen, and sure enough, I also ran into issues with it._ So, at least for now, Node.js v15 is the way to go on new Apple machines with the M1 chip.
