@@ -23,7 +23,7 @@ function blogEntry(entry: BlogEntry, idx: number) {
           <a>
             <Image
               roundedCircle
-              src={`/images/authors/${author.slug}.png`}
+              src={`/images/authors/${author.image}`}
               alt={author.name}
               width={50}
               height={50}
