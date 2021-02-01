@@ -15,7 +15,6 @@ const DocsNav: NavItem[] = [
     children: [
       { title: "Code Config", path: "/docs/deployment/code-config" },
       { title: "Common Issues", path: "/docs/deployment/common-issues" },
-      { title: "Environment", path: "/docs/deployment/environment" },
       {
         title: "Monitoring & Debugging",
         path: "/docs/deployment/monitoring-and-debugging",
@@ -65,7 +64,7 @@ const DocsNav: NavItem[] = [
         title: "Permissions",
         path: "/docs/config/permissions",
       },
-      // TODO: Environment Variables
+      { title: "Environment", path: "/docs/config/environment" },
       {
         title: "Secrets",
         path: "/docs/config/secrets",
