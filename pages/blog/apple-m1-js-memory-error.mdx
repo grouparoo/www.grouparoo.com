@@ -3,6 +3,7 @@ title: "Node.js Memory Error on Mac Using M1"
 date: "2021-02-02"
 author: "Sean C Davis"
 pullQuote: "How to fix Node.js memory error on Mac OS X using Apple M1 chip."
+image: apple-m1-js-memory-error/error-graphic.png
 tags: [notes]
 ---
 
@@ -27,3 +28,7 @@ So I gave v15 a shot, and _Voila!_ It did the trick!
     $ nvm alias default 15
 
 _Note: I even tried v14 just to see what would happen, and sure enough, I also ran into issues with it._ So, at least for now, Node.js v15 is the way to go on new Apple machines with the M1 chip.
+
+## Running in Compatibility Mode
+
+Another option is to run your terminal in compatibility mode using Rosetta. You can set your terminal application to _Open using Rosetta_, then reinstall node versions. [See here for more info](https://stackoverflow.com/q/64899827/2241124).
