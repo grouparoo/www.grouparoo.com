@@ -4,21 +4,18 @@ interface NavItem {
   children?: NavItem[];
 }
 
-const DocsNav: { [section: string]: NavItem } = {
+const DocsNav: NavItem[] = [
   // --- Try Now ---
-  "try-now": { title: "Try Now!", path: "/docs/try-now", children: [] },
+  { title: "Try Now!", path: "/docs/try-now", children: [] },
 
   // --- Installation & Deployment ---
-  deployment: {
-    title: "Installation & Deployment",
-    path: "/docs/deployment",
+  {
+    title: "MOVE ME!",
+    path: "/",
     children: [
-      { title: "AWS & Kubernetes", path: "/docs/deployment/aws-and-k8s" },
       { title: "Code Config", path: "/docs/deployment/code-config" },
       { title: "Common Issues", path: "/docs/deployment/common-issues" },
-      { title: "Docker & Docker Compose", path: "/docs/deployment/docker" },
       { title: "Environment", path: "/docs/deployment/environment" },
-      { title: "Heroku", path: "/docs/deployment/heroku" },
       {
         title: "Monitoring & Debugging",
         path: "/docs/deployment/monitoring-and-debugging",
@@ -33,8 +30,19 @@ const DocsNav: { [section: string]: NavItem } = {
     ],
   },
 
+  // --- Installation & Deployment ---
+  {
+    title: "Installation & Deployment",
+    path: "/docs/deployment",
+    children: [
+      { title: "Heroku", path: "/docs/deployment/heroku" },
+      { title: "Docker & Docker Compose", path: "/docs/deployment/docker" },
+      { title: "AWS & Kubernetes", path: "/docs/deployment/aws-and-k8s" },
+    ],
+  },
+
   // --- Guides ---
-  guides: {
+  {
     title: "Guides",
     path: "/docs/guides",
     children: [
@@ -55,7 +63,7 @@ const DocsNav: { [section: string]: NavItem } = {
   },
 
   // --- Development ---
-  development: {
+  {
     title: "Development",
     path: "/docs/development",
     children: [
@@ -76,12 +84,12 @@ const DocsNav: { [section: string]: NavItem } = {
   },
 
   // --- Community ---
-  community: {
+  {
     title: "Community",
     path: "/docs/community",
     children: [
-      { title: "Code of Conduct", path: "code-of-conduct" },
-      { title: "Legal", path: "legal" },
+      { title: "Code of Conduct", path: "/docs/community/code-of-conduct" },
+      { title: "Legal", path: "/docs/community/legal" },
       {
         title: "What's New",
         path: "/whats-new",
@@ -92,6 +100,6 @@ const DocsNav: { [section: string]: NavItem } = {
       },
     ],
   },
-};
+];
 
 export default DocsNav;

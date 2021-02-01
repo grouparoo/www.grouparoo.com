@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Card } from "react-bootstrap";
 import navItems from "../../data/docs-nav";
 
-export function TableOfContents({ docs }) {
+export function TableOfContents() {
   const router = useRouter();
   const highlightColor = "#fd7e14";
 
@@ -14,9 +14,9 @@ export function TableOfContents({ docs }) {
         <Card.Header>Grouparoo Docs</Card.Header>
         <Card.Body>
           <small>
-            {Object.entries(navItems).map(([id, section]) => {
+            {navItems.map((section, idx) => {
               return (
-                <Fragment key={`toc-section-${id}`}>
+                <Fragment key={`toc-section-${idx}`}>
                   <Link href={section.path}>
                     <a
                       style={{
