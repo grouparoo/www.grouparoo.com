@@ -35,6 +35,7 @@ const DocsNav: NavItem[] = [
     title: "Installation & Deployment",
     path: "/docs/deployment",
     children: [
+      { title: "Local (Node.js)", path: "/docs/deployment/node" },
       { title: "Heroku", path: "/docs/deployment/heroku" },
       { title: "Docker & Docker Compose", path: "/docs/deployment/docker" },
       { title: "AWS & Kubernetes", path: "/docs/deployment/aws-and-k8s" },
