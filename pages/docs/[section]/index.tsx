@@ -4,14 +4,10 @@ import hydrate from "next-mdx-remote/hydrate";
 import { TableOfContents } from "../../../components/docs/tableOfContents";
 import { titleize } from "../../../utils/inflectors";
 import * as components from "../../../components/docs";
-import {
-  loadEntries,
-  loadMdxFile,
-  getStaticMdxPaths,
-} from "../../../utils/mdxUtils";
+import { loadMdxFile, getStaticMdxPaths } from "../../../utils/mdxUtils";
 
 export default function DocPage({ pageProps }) {
-  const { source, frontMatter, docs, path } = pageProps;
+  const { source, frontMatter, path } = pageProps;
   const content = hydrate(source, { components });
 
   return (
@@ -43,7 +39,7 @@ export default function DocPage({ pageProps }) {
         ) : null}
         <Row>
           <Col className="d-none d-md-block">
-            <TableOfContents docs={docs} />
+            <TableOfContents />
           </Col>
 
           <Col
@@ -64,7 +60,7 @@ export default function DocPage({ pageProps }) {
           </Col>
 
           <Col className="d-md-none">
-            <TableOfContents docs={docs} />
+            <TableOfContents />
           </Col>
         </Row>
       </Container>
@@ -84,9 +80,8 @@ export async function getStaticProps({ params }) {
   }
 
   const { source, frontMatter, path } = await loadMdxFile(dirParts, components);
-  const docs = loadEntries(["docs"]);
 
-  return { props: { source, frontMatter, docs, path } };
+  return { props: { source, frontMatter, path } };
 }
 
 export async function getStaticPaths(args: { depth: number }) {
