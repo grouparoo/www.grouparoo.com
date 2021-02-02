@@ -2,12 +2,11 @@ import Head from "next/head";
 import { Container, Row, Col, Breadcrumb } from "react-bootstrap";
 import hydrate from "next-mdx-remote/hydrate";
 import { TableOfContents } from "../../../components/docs/tableOfContents";
-import { titleize } from "../../../utils/inflectors";
 import * as components from "../../../components/docs";
 import { loadMdxFile, getStaticMdxPaths } from "../../../utils/mdxUtils";
 
 export default function DocPage({ pageProps }) {
-  const { source, frontMatter, path } = pageProps;
+  const { source, frontMatter, path, breadcrumbs } = pageProps;
   const content = hydrate(source, { components });
 
   return (
@@ -21,20 +20,11 @@ export default function DocPage({ pageProps }) {
       <Container>
         {path !== "/docs/index" ? (
           <Breadcrumb>
-            {path
-              .split("/")
-              .splice(1)
-              .map((part, idx) => (
-                <Breadcrumb.Item
-                  key={`breadcrumb-${idx}`}
-                  href={`${path
-                    .split("/")
-                    .filter((_p, i) => i <= idx + 1)
-                    .join("/")}`}
-                >
-                  {titleize(part).replace(/-/g, " ")}
-                </Breadcrumb.Item>
-              ))}
+            {breadcrumbs.map(({ title, path }, idx) => (
+              <Breadcrumb.Item key={idx} href={path}>
+                {title}
+              </Breadcrumb.Item>
+            ))}
           </Breadcrumb>
         ) : null}
         <Row>
@@ -79,9 +69,12 @@ export async function getStaticProps({ params }) {
     dirParts.push(`${params.section}.mdx`);
   }
 
-  const { source, frontMatter, path } = await loadMdxFile(dirParts, components);
+  const { source, frontMatter, path, breadcrumbs } = await loadMdxFile(
+    dirParts,
+    components
+  );
 
-  return { props: { source, frontMatter, path } };
+  return { props: { source, frontMatter, path, breadcrumbs } };
 }
 
 export async function getStaticPaths(args: { depth: number }) {
