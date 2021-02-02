@@ -5,38 +5,21 @@ interface NavItem {
 }
 
 const DocsNav: NavItem[] = [
-  // --- Try Now ---
+  // -- Try Now --
   { title: "Try Now!", path: "/docs/try-now", children: [] },
 
-  // --- Installation & Deployment ---
+  // TODO: Move these
   {
     title: "MOVE ME!",
     path: "/",
     children: [
       { title: "Code Config", path: "/docs/deployment/code-config" },
-      { title: "Common Issues", path: "/docs/deployment/common-issues" },
-      {
-        title: "Monitoring & Debugging",
-        path: "/docs/deployment/monitoring-and-debugging",
-      },
-      { title: "Security", path: "/docs/deployment/security" },
-      { title: "Telemetry", path: "/docs/deployment/telemetry" },
-      { title: "Topology", path: "/docs/deployment/topology" },
-      {
-        title: "Upgrading Grouparoo",
-        path: "/docs/deployment/upgrading-grouparoo",
-      },
       { title: "First Time Setup", path: "/docs/guides/first-time-setup" },
       { title: "Product Concepts", path: "/docs/guides/product-concepts" },
-      {
-        title: "Security Disclosures",
-        path: "/docs/development/security-disclosures",
-      },
-      { title: "Legal", path: "/docs/community/legal" },
     ],
   },
 
-  // --- Installation & Deployment ---
+  // -- Installation & Deployment --
   {
     title: "Installation & Deployment",
     path: "/docs/deployment",
@@ -48,7 +31,7 @@ const DocsNav: NavItem[] = [
     ],
   },
 
-  // --- Configuration ---
+  // -- Configuration --
   {
     title: "Configuration",
     path: "/docs/config",
@@ -64,7 +47,6 @@ const DocsNav: NavItem[] = [
         title: "Destinations",
         path: "/docs/config/destinations",
       },
-      // TODO: Settings
       {
         title: "Permissions",
         path: "/docs/config/permissions",
@@ -77,7 +59,7 @@ const DocsNav: NavItem[] = [
     ],
   },
 
-  // --- Development ---
+  // -- Development --
   {
     title: "Development",
     path: "/docs/development",
@@ -95,7 +77,7 @@ const DocsNav: NavItem[] = [
     ],
   },
 
-  // --- Community ---
+  // -- Community --
   {
     title: "Community",
     path: "/docs/community",
@@ -113,6 +95,25 @@ const DocsNav: NavItem[] = [
       {
         title: "Roadmap",
         path: "/roadmap",
+      },
+    ],
+  },
+
+  // -- Support --
+  {
+    title: "Support",
+    path: "/docs/support",
+    children: [
+      { title: "Common Issues", path: "/docs/support/common-issues" },
+      { title: "Debugging", path: "/docs/support/debugging" },
+      { title: "Telemetry", path: "/docs/support/telemetry" },
+      { title: "Security", path: "/docs/support/security" },
+      { title: "Network", path: "/docs/support/network" },
+      { title: "Monitoring", path: "/docs/support/monitoring" },
+      { title: "Legal", path: "/docs/support/legal" },
+      {
+        title: "Upgrading Grouparoo",
+        path: "/docs/support/upgrading-grouparoo",
       },
     ],
   },
