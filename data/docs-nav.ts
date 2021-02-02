@@ -28,6 +28,11 @@ const DocsNav: NavItem[] = [
       },
       { title: "First Time Setup", path: "/docs/guides/first-time-setup" },
       { title: "Product Concepts", path: "/docs/guides/product-concepts" },
+      {
+        title: "Security Disclosures",
+        path: "/docs/development/security-disclosures",
+      },
+      { title: "Legal", path: "/docs/community/legal" },
     ],
   },
 
@@ -87,10 +92,6 @@ const DocsNav: NavItem[] = [
       },
       { title: "Plugins: Sources", path: "/docs/development/sources" },
       { title: "Publishing", path: "/docs/development/publishing" },
-      {
-        title: "Security Disclosures",
-        path: "/docs/development/security-disclosures",
-      },
     ],
   },
 
@@ -100,7 +101,11 @@ const DocsNav: NavItem[] = [
     path: "/docs/community",
     children: [
       { title: "Code of Conduct", path: "/docs/community/code-of-conduct" },
-      { title: "Legal", path: "/docs/community/legal" },
+      { title: "Contributions", path: "/docs/community/contributions" },
+      {
+        title: "Forum",
+        path: "https://github.com/grouparoo/grouparoo/discussions",
+      },
       {
         title: "What's New",
         path: "/whats-new",
