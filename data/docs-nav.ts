@@ -5,8 +5,17 @@ interface NavItem {
 }
 
 const DocsNav: NavItem[] = [
-  // -- Try Now --
-  { title: "Try Now!", path: "/docs/try-now", children: [] },
+  // -- Getting Started --
+  {
+    title: "Getting Started",
+    path: "/docs/getting-started",
+    children: [
+      {
+        title: "Product Concepts",
+        path: "/docs/getting-started/product-concepts",
+      },
+    ],
+  },
 
   // TODO: Move these
   {
@@ -15,7 +24,6 @@ const DocsNav: NavItem[] = [
     children: [
       { title: "Code Config", path: "/docs/deployment/code-config" },
       { title: "First Time Setup", path: "/docs/guides/first-time-setup" },
-      { title: "Product Concepts", path: "/docs/guides/product-concepts" },
     ],
   },
 
