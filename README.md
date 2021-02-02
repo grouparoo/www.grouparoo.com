@@ -30,7 +30,7 @@ brew install vips
 
 You will need `chromedriver` installed to run the automated browser tests:
 
-- OSX: `brew cask install chromedriver`
+- OSX: `brew install --cask chromedriver`
 - Windows: TODO
 - Linux: TODO
 
