@@ -79,17 +79,18 @@ const DocsNav: NavItem[] = [
     children: [
       { title: "Databases", path: "/docs/development/databases" },
       { title: "Data Flow", path: "/docs/development/dataflow" },
-      { title: "Destinations", path: "/docs/development/destinations" },
       { title: "Events", path: "/docs/development/events" },
-      { title: "Plugins", path: "/docs/development/plugins" },
+      { title: "Plugins: Overview", path: "/docs/development/plugins" },
+      {
+        title: "Plugins: Destinations",
+        path: "/docs/development/destinations",
+      },
+      { title: "Plugins: Sources", path: "/docs/development/sources" },
       { title: "Publishing", path: "/docs/development/publishing" },
       {
         title: "Security Disclosures",
         path: "/docs/development/security-disclosures",
       },
-      { title: "Sources", path: "/docs/development/sources" },
-      { title: "Development Tools", path: "/docs/development/tools" },
-      { title: "Typescript API", path: "/docs/development/typescript-api" },
     ],
   },
 
