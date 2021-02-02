@@ -32,7 +32,7 @@ export default function DocPage({ pageProps }) {
                     .filter((_p, i) => i <= idx + 1)
                     .join("/")}`}
                 >
-                  {titleize(part)}
+                  {titleize(part).replace(/-/g, " ")}
                 </Breadcrumb.Item>
               ))}
           </Breadcrumb>
