@@ -48,6 +48,10 @@ const DocsNav: NavItem[] = [
         path: "/docs/config/destinations",
       },
       {
+        title: "Settings (Coming Soon)",
+        path: "/docs/config/settings",
+      },
+      {
         title: "Permissions",
         path: "/docs/config/permissions",
       },
@@ -58,6 +62,9 @@ const DocsNav: NavItem[] = [
       },
     ],
   },
+
+  // -- Running Grouparoo --
+  { title: "Running Grouparoo (Coming Soon)", path: "/docs/running-grouparoo" },
 
   // -- Development --
   {
