@@ -1,3 +1,5 @@
+const docsRedirects = require("./data/docs-redirects");
+
 module.exports = {
   env: {
     ROBOTS_DISABLED: process.env.ROBOTS_DISABLED,
@@ -32,6 +34,12 @@ module.exports = {
           "https://github.com/grouparoo/grouparoo/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=",
         statusCode: 302,
       },
+      {
+        source: "/support",
+        destination: "/docs/support",
+        statusCode: 302,
+      },
+      ...docsRedirects,
     ];
   },
 };
