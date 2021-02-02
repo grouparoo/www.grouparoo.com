@@ -45,7 +45,7 @@ export function TableOfContents() {
       <Card>
         <Card.Header>Grouparoo Docs</Card.Header>
         <Card.Body>
-          <small>
+          <small className="docsTableOfContents">
             {navItems.map((section, idx) => {
               return (
                 <Fragment key={`toc-section-${idx}`}>
@@ -57,6 +57,7 @@ export function TableOfContents() {
                             ? highlightColor
                             : undefined,
                       }}
+                      className="sectionHeading"
                     >
                       <strong>{section.title}</strong>
                     </a>
