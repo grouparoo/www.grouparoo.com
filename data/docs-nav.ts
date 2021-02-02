@@ -17,16 +17,6 @@ const DocsNav: NavItem[] = [
     ],
   },
 
-  // TODO: Move these
-  {
-    title: "MOVE ME!",
-    path: "/",
-    children: [
-      { title: "Code Config", path: "/docs/deployment/code-config" },
-      { title: "First Time Setup", path: "/docs/guides/first-time-setup" },
-    ],
-  },
-
   // -- Installation & Deployment --
   {
     title: "Installation & Deployment",
@@ -44,6 +34,8 @@ const DocsNav: NavItem[] = [
     title: "Configuration",
     path: "/docs/config",
     children: [
+      { title: "Code Config", path: "/docs/config/code-config" },
+      { title: "First Time Setup", path: "/docs/config/first-time-setup" },
       { title: "Apps", path: "/docs/config/apps" },
       { title: "Sources", path: "/docs/config/sources" },
       {
