@@ -16,6 +16,11 @@ const DocsNav: NavItem[] = [
       },
       { title: "First Time Setup", path: "/docs/guides/first-time-setup" },
       { title: "Product Concepts", path: "/docs/guides/product-concepts" },
+      {
+        title: "Security Disclosures",
+        path: "/docs/development/security-disclosures",
+      },
+      { title: "Legal", path: "/docs/community/legal" },
     ],
   },
 
