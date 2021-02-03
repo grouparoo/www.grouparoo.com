@@ -56,39 +56,6 @@ header {
   font-weight: 400;
 }
 
-// -- Docs --
-
-.documentationHeader {
-  font-family: "Courier New", Courier, monospace;
-  color: $grouparoo-dark-gray;
-}
-
-.documentationPage {
-  font-family: Helvetica, Arial, sans-serif;
-
-  h2,
-  h3 {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-  h2::after {
-    content: " ";
-    display: block;
-    border: 1px solid $grouparoo-blue-gray;
-  }
-}
-
-.docsTableOfContents {
-  .sectionHeading {
-    display: block;
-
-    & + .sectionHeading {
-      margin-top: 1rem;
-    }
-  }
-}
-
 // -- Homepage --
 .homePageSection {
   padding-top: 50px;
@@ -183,7 +150,23 @@ hr {
 
 // -- Documentation --
 
+// -- Docs --
+
 .documentationPage {
+  font-family: Helvetica, Arial, sans-serif;
+
+  h2,
+  h3 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  h2::after {
+    content: " ";
+    display: block;
+    border: 1px solid $grouparoo-blue-gray;
+  }
+
   li {
     margin-bottom: 1rem; // matches <p>
   }
@@ -196,6 +179,25 @@ hr {
     background-color: #fff;
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
+  }
+}
+
+.documentationHeader {
+  font-family: "Courier New", Courier, monospace;
+  color: $grouparoo-dark-gray;
+}
+
+.docsTableOfContents {
+  .sectionHeading {
+    display: block;
+
+    & + .sectionHeading {
+      margin-top: 1rem;
+    }
+  }
+
+  ul {
+    padding-inline-start: 1rem;
   }
 }
 
