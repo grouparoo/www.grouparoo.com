@@ -61,13 +61,8 @@ export default function DocPage({ pageProps }) {
 }
 
 export async function getStaticProps({ params }) {
-  const dirParts = ["docs"];
-  if (params.page) {
-    dirParts.push(params.section);
-    dirParts.push(`${params.page}.mdx`);
-  } else {
-    dirParts.push(`${params.section}.mdx`);
-  }
+  let dirParts = ["docs", params.section, params.page, params.subpage];
+  dirParts = `${dirParts.filter((x) => x).join("/")}.mdx`.split("/");
 
   const { source, frontMatter, path, breadcrumbs } = await loadMdxFile(
     dirParts,
