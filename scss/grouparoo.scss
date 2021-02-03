@@ -36,7 +36,6 @@ $dark: $grouparoo-dark-gray;
 $font-stack: Roboto, sans-serif;
 
 // Page Defaults
-
 body {
   background-color: $grouparoo-background-blue;
   font-family: $font-stack;
@@ -46,7 +45,6 @@ body {
 }
 
 // -- Typography --
-
 .text-big-muted {
   @extend .text-muted;
   font-weight: 400;
@@ -92,7 +90,6 @@ header {
 }
 
 // -- Homepage --
-
 .homePageSection {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -160,12 +157,7 @@ hr {
   border: 1px solid $grouparoo-blue;
 }
 
-// -- Code --
-
-@import url(/css/prism.css);
-
 // -- Blog --
-
 .blogPage blockquote {
   // using defaults from bootstrap
   // .blockquote
@@ -206,3 +198,6 @@ hr {
     border-radius: 0.25rem;
   }
 }
+
+// -- Code --
+// @import url(/css/prism.css);

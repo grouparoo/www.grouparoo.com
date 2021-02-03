@@ -108,6 +108,7 @@ function PageTemplate({ children }) {
           content="/favicon/mstile-310x310.png"
         />
         <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="/css/prism.css"></link>
       </Head>
 
       <div className="main">
