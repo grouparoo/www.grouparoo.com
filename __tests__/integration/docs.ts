@@ -31,7 +31,7 @@ describe("integration/docs", () => {
     const testUrl = url + "/docs/deployment";
     await browser.get(testUrl);
     const header = await browser.findElement(by.tagName("h1")).getText();
-    expect(header).toBe("Deployment");
+    expect(header).toBe("Installation & Deployment");
   });
 
   test("it renders a page", async () => {
