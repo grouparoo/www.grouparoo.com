@@ -13,12 +13,6 @@ const DocsNav: NavItem[] = [
       {
         title: "Product Concepts",
         path: "/docs/getting-started/product-concepts",
-        children: [
-          {
-            title: "Another Page",
-            path: "/docs/getting-started/product-concepts/another-page",
-          },
-        ],
       },
     ],
   },
