@@ -2,51 +2,67 @@ import { Fragment } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { Card } from "react-bootstrap";
+import navItems from "../../data/docs-nav";
 
-export function TableOfContents({ docs }) {
+const highlightColor = "#fd7e14";
+
+const NavListItem = ({ item }) => {
   const router = useRouter();
-  const highlightColor = "#fd7e14";
-  const tableOfContents = tableOfContentsFromEntries(docs);
+
+  return (
+    <li>
+      <Link href={item.path}>
+        <a
+          style={{
+            color: router.asPath === item.path ? highlightColor : undefined,
+          }}
+        >
+          {item.title}
+        </a>
+      </Link>
+      <NavList items={item.children} />
+    </li>
+  );
+};
+
+const NavList = ({ items }) => {
+  if (!items || items.length === 0) return null;
+
+  return (
+    <ul>
+      {items.map((item, idx) => (
+        <NavListItem key={idx} item={item} />
+      ))}
+    </ul>
+  );
+};
+
+export function TableOfContents() {
+  const router = useRouter();
 
   return (
     <>
       <Card>
         <Card.Header>Grouparoo Docs</Card.Header>
         <Card.Body>
-          <small>
-            {Object.keys(tableOfContents).map((section) => {
+          <small className="docsTableOfContents">
+            {navItems.map((section, idx) => {
               return (
-                <Fragment key={`toc-section-${section}`}>
-                  <Link href={`/docs/${section}`}>
+                <Fragment key={`toc-section-${idx}`}>
+                  <Link href={section.path}>
                     <a
                       style={{
                         color:
-                          router.asPath === `/docs/${section}`
+                          router.asPath === section.path
                             ? highlightColor
                             : undefined,
                       }}
+                      className="sectionHeading"
                     >
-                      <strong>{capitalize(section)}</strong>
+                      <strong>{section.title}</strong>
                     </a>
                   </Link>
-                  <ul>
-                    {tableOfContents[section].map((entry) => (
-                      <li key={`toc-${section}-${entry.title}`}>
-                        <Link href={entry.path}>
-                          <a
-                            style={{
-                              color:
-                                router.asPath === entry.path
-                                  ? highlightColor
-                                  : undefined,
-                            }}
-                          >
-                            {entry.title}
-                          </a>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  <NavList items={section.children} />
                 </Fragment>
               );
             })}
@@ -56,50 +72,4 @@ export function TableOfContents({ docs }) {
       <br />
     </>
   );
-}
-
-export function tableOfContentsFromEntries(docs) {
-  const sections: { [section: string]: { title: string; path: string }[] } = {
-    deployment: [],
-    guides: [],
-    development: [],
-    community: [],
-  };
-
-  const externalLinks = {
-    community: [
-      {
-        title: "What's New",
-        path: "/whats-new",
-      },
-      {
-        title: "Roadmap",
-        path: "/roadmap",
-      },
-    ],
-  };
-
-  docs.forEach((entry) => {
-    const pathParts = entry.path.split("/");
-    if (pathParts.length > 3) {
-      const section = pathParts[2];
-      if (!sections[section]) sections[section] = [];
-      sections[section].push(entry);
-    }
-  });
-
-  for (const section in externalLinks) {
-    for (const k in externalLinks[section]) {
-      sections[section].push(externalLinks[section][k]);
-    }
-  }
-
-  return sections;
-}
-
-export function capitalize(word: string) {
-  return word
-    .split("-")
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(" ");
 }

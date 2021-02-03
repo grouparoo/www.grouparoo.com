@@ -7,7 +7,8 @@ https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clik
  */
 
 code[class*="language-"],
-pre[class*="language-"] {
+pre,
+pre > code {
 	color: #f8f8f2;
 	background: none;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
@@ -31,7 +32,7 @@ pre[class*="language-"] {
 }
 
 /* Code blocks */
-pre[class*="language-"] {
+pre {
 	padding: 1em;
 	margin: .5em 0;
 	overflow: auto;
@@ -39,7 +40,7 @@ pre[class*="language-"] {
 }
 
 :not(pre) > code[class*="language-"],
-pre[class*="language-"] {
+pre {
 	background: #272822;
 }
 

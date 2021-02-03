@@ -1,0 +1,20 @@
+---
+title: "Monitoring"
+date: "2021-02-02"
+section: "support"
+pullQuote: "How to Monitor your Grouparoo Cluster"
+---
+
+To ensure that you have a robust Grouparoo deployment, we recommend that you set up monitoring along each of the debugging steps above so that you can be alerted to problems as they are starting to happen. Here are some suggestions about how to test the Grouparoo Application Tier:
+
+### Monitor the Application
+
+- Monitor the `/api/v1/status/private` endpoint from within your firewall. Doing so will let you know that the application is running in general. This endpoint also reports on the resque queue length and the size of the backlog of jobs that need to be worked. The queue getting longer than normal can be an early indicator of a problem.
+- Monitor the `/api/v1/status/public` endpoint from outside of your firewall (or from the vantage point of your end users). Doing so will ensure that your end users can use the Grouparoo application and that events can be recorded from user sites/devices.
+- Monitor the Grouparoo application for errors. Use a tool like New Relic or Sentry to report and log errors to a central place. Check how often these errors happen. Be sure to check the Background Worker errors listed in the `/resque` interface, and retry or delete them accordingly.
+
+### Monitor the Tier
+
+- Monitor the hardware performance of the servers running the Grouparoo Application Tier. Is there enough RAM? Is the CPU constantly pegged to 100% usage? Your hosting provider should provide tools to monitor your servers. If you are deploying with a tool like Docker or Kubernetes, there are ways to aggregate this information for all instances of the container.
+- Monitor the number of rows in your database. Are there more Profiles or less Exports than you expect?
+- Monitor the memory consumption of Redis. Redis is an in-memory database, and if it gets full, it will either refuse to accept new data or start deleting old data. Keeping Redis’ data volume small involves tuning the batch sizes of your Grouparoo application and ensuring you have enough Application Background Workers to run all the tasks created and the data tier to support it.

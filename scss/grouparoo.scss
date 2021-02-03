@@ -56,6 +56,8 @@ header {
   font-weight: 400;
 }
 
+// -- Docs --
+
 .documentationHeader {
   font-family: "Courier New", Courier, monospace;
   color: $grouparoo-dark-gray;
@@ -63,18 +65,28 @@ header {
 
 .documentationPage {
   font-family: Helvetica, Arial, sans-serif;
+
+  h2,
+  h3 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  h2::after {
+    content: " ";
+    display: block;
+    border: 1px solid $grouparoo-blue-gray;
+  }
 }
 
-.documentationPage h2,
-h3 {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
+.docsTableOfContents {
+  .sectionHeading {
+    display: block;
 
-.documentationPage h2::after {
-  content: " ";
-  display: block;
-  border: 1px solid $grouparoo-blue-gray;
+    & + .sectionHeading {
+      margin-top: 1rem;
+    }
+  }
 }
 
 // -- Homepage --
@@ -121,6 +133,11 @@ h3 {
 code[class*="language-"] {
   font-size: 14px;
   line-height: 10px;
+}
+
+pre > code {
+  color: #f8f8f2;
+  font-size: 87.5%;
 }
 
 // -- Header --

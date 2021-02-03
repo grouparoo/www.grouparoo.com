@@ -1,0 +1,46 @@
+---
+title: "Security"
+date: "2020-08-01"
+section: "support"
+pullQuote: "Grouparoo provides a number of tools to help keep your data secure."
+---
+
+Grouparoo provides a number of tools to help keep your data secure.
+
+## Deployment
+
+First and foremost, you should deploy Grouparoo only within an environment you trust.
+
+- Ensure that all user and API access to Grouparoo is done via HTTPS.
+- Only open the ports you need on your grouparoo web servers for HTTP(s) access.
+- Encrypt the Grouparoo database at rest.
+
+## Destination Configuration
+
+- When sending customer data to third-parties, only send the data you absolutely need communicate with them.
+- Use Group Membership as a proxy for customer data. For example, rather than sending a Customer's address to your CRM tool, send that they are in the group "California Customers".
+
+## Permissions
+
+Grouparoo's Enterprise edition has a robust permission system you can use to limit access. The Grouparoo permission model operates on Teams (for individual users) and API Keys (for applications).
+
+<Button variant="outline-primary" href="/docs/config/permissions">
+  Learn more about permissions
+</Button>
+
+## Environment Variables for Secrets
+
+To communicate with Sources and Destinations, Grouparoo will need to be provided with a number of API Keys and passwords, otherwise known as "Secrets". While Grouparoo can store this information in its application database, you may prefer to store this information in the Environment. This will ensure that these Secrets are not readable by Grouparoo users, and that they will also not be compromised if the Grouparoo database is accessed improperly.
+
+<Button variant="outline-primary" href="/docs/config/secrets">
+  Learn more about secrets
+</Button>
+
+## Monitoring for Vulnerability
+
+As an early-stage startup, we do not yet have a formal bug-bounty program, though we plan to add one as we grow. **If you believe you have found a security vulnerability with any Grouparoo product, or a library we rely on, please email help@grouparoo.com.**
+
+To help monitor for security issues and disclosures, we employ automated dependency monitoring via:
+
+- [Github Vulnerability Alerts](https://help.github.com/en/github/managing-security-vulnerabilities/about-security-alerts-for-vulnerable-dependencies)
+- [Dependabot Monitoring](https://dependabot.com/)
