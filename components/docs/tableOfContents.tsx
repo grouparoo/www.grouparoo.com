@@ -53,7 +53,7 @@ export function TableOfContents() {
                     <a
                       style={{
                         color:
-                          router.asPath === `/docs/${section.path}`
+                          router.asPath === section.path
                             ? highlightColor
                             : undefined,
                       }}
