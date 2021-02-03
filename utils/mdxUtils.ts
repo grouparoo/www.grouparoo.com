@@ -95,7 +95,7 @@ export async function getStaticMdxPaths(dirParts: string[], depth = 1) {
  */
 export function getBreadcrumbs(fullPath: string) {
   // The path the to the page (e.g. "/docs/deployment/docker")
-  const fullPagePath = fullPath.replace(pagesDir, "").replaceAll(".mdx", "");
+  const fullPagePath = fullPath.replace(pagesDir, "").replace(/.mdx/g, "");
   // Split the path into individual segments. The first one is an empty string
   // because we would have had a leading slash.
   const pathParts = fullPagePath.split("/");
