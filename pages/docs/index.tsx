@@ -35,7 +35,11 @@ export default function DocsIndex() {
                   </p>
                 </Col>
                 <Col style={{ textAlign: "center" }}>
-                  <Button variant="primary" href="/docs/deployment" size="lg">
+                  <Button
+                    variant="primary"
+                    href="/docs/getting-started"
+                    size="lg"
+                  >
                     Get Started
                   </Button>
                   <br />
