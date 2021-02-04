@@ -2,7 +2,65 @@
 title: "Running Grouparoo"
 date: "2021-02-02"
 section: "config"
-pullQuote: "Section coming soon ..."
+pullQuote: "There are a number of ways to run Grouparoo to fit your workflow."
 ---
 
-Section coming soon ...
+There are a number of ways to run Grouparoo to fit your workflow. Grouparoo exists to help you complete a number of different jobs, which we've categorized below:
+
+### Project Maintenance
+
+- `grouparoo init [dir]` - Create a new Grouparoo project.
+- `grouparoo update` - Upgrade all Grouparoo packages to the latest versions.
+- `grouparoo install [package]` - Install packages defined in your `package.json` or add new ones. This is equivalent to `npm install [package]`.
+
+### Configuration
+
+- `grouparoo generate [options] [template] [id]` - Generate a config file for an new object (App, Source, Property, Destination, etc) from a template.
+- `grouparoo validate (--local)` - Test and validate your code config. Doesn't write changes to the database. Optionally disable checking with remote Apps.
+- `grouparoo apply (--local)` - Apply config changes to the database. This also happens automatically with `grouparoo start` and `grouparoo run` as well. Optionally disable checking with remote Apps.
+
+### Development and Testing
+
+- `grouparoo destroy` - Empty the Profiles, Groups, and related data from your database.
+- `grouparoo console` - (developer) Get an interactive cli console with the `api` object in scope.
+
+### Deployment
+
+- `grouparoo status` - Get the status of your grouparoo cluster.
+- `grouparoo sync <profile> (--no-export)` - Import and Export 1 profile fully and output a snapshot.
+- `grouparoo run (--web) (--destroy) (--no-export)` - Run the application and stop after every Profile has been imported and exported as needed.
+- `grouparoo start` - Run the application. Keep checking for new and updated Profiles. This is equivalent to `npm start`.
+
+## Example
+
+If you were creating a new Grouparoo project, you might:
+
+```bash
+# in a new directory
+
+# install the grouparoo CLI
+npm install -g grouparoo
+
+# initialize the project
+grouparoo init .
+
+# create a Team and Team Member
+grouparoo generate team admin_team
+grouparoo generate team:member person@company.com
+
+# create an app, source, and properties
+grouparoo generate postgres:app data_warehouse
+grouparoo generate postgres:table:source users_table
+grouparoo generate postgres:table:source users_table
+grouparoo generate generate postgres:table:property email
+grouparoo generate generate postgres:table:property first_name
+grouparoo generate generate postgres:table:property last_name
+
+# check out config files
+grouparoo validate
+grouparoo apply
+
+# start the application
+grouparoo start --web
+# and you can visit http://localhost:3000 to view the dashboard and watch your data import
+```
