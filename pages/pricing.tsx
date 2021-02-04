@@ -60,7 +60,7 @@ export default function PricingPage() {
                 </Card.Text>
               </Card.Body>
               <Card.Footer style={{ borderTop: "none" }}>
-                <Button variant="primary" href="/docs">
+                <Button variant="primary" href="/docs/getting-started">
                   Get started
                 </Button>
               </Card.Footer>

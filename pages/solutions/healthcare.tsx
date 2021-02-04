@@ -56,7 +56,7 @@ export default function Healthcare() {
                   size="sm"
                   variant="outline-primary"
                   style={{ padding: ".5rem 1rem" }}
-                  href="https://www.grouparoo.com/docs"
+                  href="/docs/getting-started"
                 >
                   Install Now
                 </Button>
