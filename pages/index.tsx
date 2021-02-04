@@ -87,7 +87,7 @@ export default function IndexPage() {
                 size="lg"
                 variant="primary"
                 style={{ padding: ".5rem 1rem" }}
-                href="/docs"
+                href="docs/getting-started"
                 className="ml-auto"
               >
                 Get Started
