@@ -16,6 +16,7 @@ const NavListItem = ({ item }) => {
           style={{
             color: router.asPath === item.path ? highlightColor : undefined,
           }}
+          target={item.target}
         >
           {item.title}
         </a>
@@ -57,6 +58,7 @@ export function TableOfContents() {
                             ? highlightColor
                             : undefined,
                       }}
+                      target={section.target}
                       className="sectionHeading"
                     >
                       <strong>{section.title}</strong>
