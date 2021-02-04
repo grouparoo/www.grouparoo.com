@@ -1,7 +1,7 @@
 import DocPage, {
   getStaticProps as DocPageGetStaticProps,
   getStaticPaths as DocPageGetStaticPaths,
-} from "./index";
+} from "../index";
 
 export default function SectionDocPage(props) {
   return <DocPage {...props} />;
@@ -12,5 +12,5 @@ export async function getStaticProps(ctx) {
 }
 
 export async function getStaticPaths() {
-  return DocPageGetStaticPaths({ depth: 2 });
+  return DocPageGetStaticPaths({ depth: 3 });
 }
