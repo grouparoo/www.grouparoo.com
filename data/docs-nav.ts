@@ -104,6 +104,7 @@ const DocsNav: NavItem[] = [
       {
         title: "Roadmap",
         path: "/roadmap",
+        target: "_blank",
       },
     ],
   },
