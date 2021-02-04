@@ -65,7 +65,20 @@ const DocsNav: NavItem[] = [
   },
 
   // -- Running Grouparoo --
-  { title: "Running Grouparoo", path: "/docs/running-grouparoo" },
+  {
+    title: "Running Grouparoo",
+    path: "/docs/running-grouparoo",
+    children: [
+      {
+        title: "Commands",
+        path: "/docs/running-grouparoo/commands",
+      },
+      {
+        title: "Testing",
+        path: "/docs/running-grouparoo/testing",
+      },
+    ],
+  },
 
   // -- Development --
   {

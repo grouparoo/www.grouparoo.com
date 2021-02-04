@@ -1,66 +1,72 @@
 ---
 title: "Running Grouparoo"
 date: "2021-02-02"
-section: "config"
+section: "running-grouparoo"
 pullQuote: "There are a number of ways to run Grouparoo to fit your workflow."
 ---
 
-There are a number of ways to run Grouparoo to fit your workflow. The Grouparoo CLI exists to help you complete a number of different jobs, which we've categorized below:
+There are a number of ways to run Grouparoo to fit your workflow. We believe that the 3 phases to a successfully Grouparoo Deployment are:
 
-You can obtain the grouparoo CLI via NPM with `npm install -g grouparoo`
+1. Project Maintenance
+2. Configuration
+3. Development, Testing, and Deployment
 
 ### Project Maintenance
 
-- `grouparoo init [dir]` - Create a new Grouparoo project.
-- `grouparoo update` - Upgrade all Grouparoo packages to the latest versions.
-- `grouparoo install [package]` - Install packages defined in your `package.json` or add new ones. This is equivalent to `npm install [package]`.
+Configuring your Grouparoo Project starts by making a new `git` repository in a new directory. You then can use the `grouparoo` cli tool to initialize a new project.
+
+Grouparoo is a node.js project at heart, so you will be configuring your environment, creating a `package.json` and installing dependencies. You can also use commands like `npm install` to replace the Grouparoo commands in this section.
+
+<Button href="/docs/running-grouparoo/commands">
+  Learn about the Grouparoo CLI
+</Button>
 
 ### Configuration
 
-- `grouparoo generate [options] [template] [id]` - Generate a config file for an new object (App, Source, Property, Destination, etc) from a template.
-- `grouparoo validate (--local)` - Test and validate your code config. Doesn't write changes to the database. Optionally disable checking with remote Apps.
-- `grouparoo apply (--local)` - Apply config changes to the database. This also happens automatically with `grouparoo start` and `grouparoo run` as well. Optionally disable checking with remote Apps.
+To use Grouparoo to import and export your data, you will be configuring our main objects: Apps, Sources, Destinations, Properties, etc. You can [learn more about Grouparoo's product concepts here](http://localhost:3001/docs/getting-started/product-concepts). You will be using the Grouparoo CLI's `generate`, `validate`. and `apply` commands to ensure that the application can read from your Sources and write to your Destinations.
 
-### Development and Testing
+Configuration files are either JSON or Javscript which allow you the flexibility to manipulate data or load configuration from external sources:
 
-- `grouparoo destroy` - Empty the Profiles, Groups, and related data from your database.
-- `grouparoo console` - (developer) Get an interactive cli console with the `api` object in scope.
+```js
+// file: config/apps/data_warehouse.js
 
-### Deployment
+exports.default = async function GetDataWarehouseConfig() {
+  const { databasePassword } = await fetch(`/api/company/secrets`);
 
-- `grouparoo status` - Get the status of your grouparoo cluster.
-- `grouparoo sync <profile> (--no-export)` - Import and Export 1 profile fully and output a snapshot.
-- `grouparoo run (--web) (--destroy) (--no-export)` - Run the application and stop after every Profile has been imported and exported as needed.
-- `grouparoo start` - Run the application. Keep checking for new and updated Profiles. This is equivalent to `npm start`.
-
-## Example
-
-If you were creating a new Grouparoo project, you might:
-
-```bash
-# install the grouparoo CLI
-npm install -g grouparoo
-
-# initialize the project (in a new directory)
-grouparoo init .
-
-# create a Team and Team Member
-grouparoo generate team admin_team
-grouparoo generate team:member person@company.com
-
-# create an app, source, and properties
-grouparoo generate postgres:app data_warehouse
-grouparoo generate postgres:table:source users_table
-grouparoo generate postgres:table:source users_table
-grouparoo generate generate postgres:table:property email
-grouparoo generate generate postgres:table:property first_name
-grouparoo generate generate postgres:table:property last_name
-
-# check out config files
-grouparoo validate
-grouparoo apply
-
-# start the application
-grouparoo start --web
-# and you can visit http://localhost:3000 to view the dashboard and watch your data import
+  return [
+    {
+      name: "Data Warehouse",
+      class: "app",
+      id: "data_warehouse",
+      type: "postgres",
+      options: {
+        host: "127.0.0.1",
+        port: "5432",
+        username: "person",
+        password: databasePassword,
+        database: "data_warehouse",
+      },
+    },
+  ];
+};
 ```
+
+You can learn more about the [configuration files here](/docs/deployment/code-config).
+
+<Button href="/docs/running-grouparoo/commands#generate">
+  Learn about the Generate Command
+</Button>
+
+### Development, Testing, and Deployment
+
+After your Grouparoo application is configured, we expect that you'll want to trial your configuration locally before deploying to production.
+
+Unlike other tools, Grouparoo fits into your developer workflow allowing you to run the same code within multiple environments (dev/staging/prod) and we provide tools which allow you to craft meaningful tests around your data orchestration process.
+
+Commands like `grouparoo sync` allow you to trial the whole sync process with only one profile to check for expected results. In combination with commands like `grouparoo run`, you may also want to start fresh with a new database (`grouparoo destroy`) or write test to ensure your sync process is working as you expect. You can write [tests for your Grouparoo data using Jest](/docs/running-grouparoo/testing).
+
+Finally, you can choose to run the Grouparoo application in a one-off mode (`grouparoo run`) or as a persistent server (`grouparoo start` / `npm start`) - whichever best fits your use-case.
+
+<Button href="/docs/running-grouparoo/commands">
+  Learn about the Grouparoo CLI
+</Button>

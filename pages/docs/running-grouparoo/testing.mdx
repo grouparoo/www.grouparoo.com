@@ -1,0 +1,64 @@
+---
+title: "Testing Grouparoo"
+date: "2021-02-02"
+section: "running-grouparoo"
+pullQuote: "Grouparoo provides the tools you need to write expectation and snapshot tests against your data."
+---
+
+## Testing your Grouparoo Application
+
+In order to help fit Grouparoo into the CI/CD tools you use today, we've adding testing utilities to which you can use to build up a test suite that ensures that the application is producing the Profiles and Groups you expect. Grouparoo relies on [Jest](https://jestjs.io) to provide expectations and snapshot testing. To enable Grouparoo testing:
+
+1. `npm install --save @grouparoo/spec-helper jest`
+2. Create a new test in `__tests__` within your project
+3. Write you test
+4. Run your test with `./node_modules/.bin/jest [path/to/test]`
+
+## Writing Tests
+
+In Jest, you can do expectation testing (`a` should equal `1`) or snapshot testing (the output of this method should not change between tests). Grouparoo supports both! The following example demonstrates a full suite which does both expectation testing and snapshot testing.
+
+In this example:
+
+- Your application is already fully configured with Apps, Sources, etc via code-config
+- You have specified a test postgres or SQLite database to use via `DATABASE_URL` or a test-specific `GROUPAROO_ENV_CONFIG_FILE`
+- `"person@example"` is a user in your source database that we are testing.
+
+```ts
+/**
+ * @jest-environment node
+ */
+
+// Should we load configuration from a .env file? Use to set DATABASE_URL, etc
+// Set before requiring @grouparoo/spec-helper
+// Otherwise, set DATABASE_URL, etc in jest.config.js or in CI
+process.env.GROUPAROO_ENV_CONFIG_FILE = `${__dirname}/../.env`;
+
+const { helper, relaxedSnapshot } = require("@grouparoo/spec-helper");
+
+describe("snapshot", () => {
+  // utility to start and stop the server within the test suite
+  helper.grouparooTestServer();
+
+  test("a profile snapshot can be tested", async () => {
+    const { profile, snapshot } = await helper.getProfile({
+      email: "person@example",
+    });
+
+    // You can do snapshot testing
+    // `relaxedSnapshot` lets you skip time and UUID generated properties, but ensure everything else matches exactly
+    expect(snapshot).toMatchSnapshot(relaxedSnapshot(snapshot));
+
+    // Or you can test the properties of the snapshot directly
+    expect(snapshot.properties.userId.values).toEqual([100]);
+    expect(snapshot.groups.length).toBe(1);
+    expect(snapshot.groups[0].name).toBe("People with Email Addresses");
+    expect(profile.state).toBe("ready");
+  });
+});
+```
+
+## Testing Notes
+
+- Unless you specify in your `package.json` or `jest.config.js`, You'll need to use magic comments to let Jest know that we are running a node.js app (`@jest-environment node`)
+- You need to specify to grouparoo which database to use, server_token to use, etc. You can either define these directly in your test, as environment variable on your CI tool, or tell Grouparoo to load a `.env` file directly by setting `process.env.GROUPAROO_ENV_CONFIG_FILE`. With either of these methods, this needs to be done before requiring `@grouparoo/spec-helper`

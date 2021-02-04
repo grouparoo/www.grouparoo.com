@@ -1,0 +1,222 @@
+[
+  {
+    "name": "init <path>",
+    "description": "Initialize a new Grouparoo project.  Use \".\" for this directory.",
+    "example": "",
+    "inputs": {
+      "force": {
+        "letter": "f",
+        "description": "overwrite the generated files if they already exist",
+        "default": "false"
+      }
+    }
+  },
+  {
+    "name": "update",
+    "description": "Upgrade the NPM packages in this Grouparoo project",
+    "example": "",
+    "inputs": {}
+  },
+  {
+    "name": "install [package]",
+    "description": "Install a grouparoo plugin (via npm install) and enable it.  Use package@version for a specific version or tag",
+    "example": "",
+    "inputs": {}
+  },
+  {
+    "name": "apply",
+    "description": "Apply changes from code config",
+    "example": "",
+    "inputs": {
+      "local": {
+        "default": false,
+        "description": "Disable external validation",
+        "letter": "l",
+        "flag": true
+      },
+      "timestamps": {
+        "default": false,
+        "description": "Should timestamps be prepended to each log line?",
+        "letter": "t",
+        "flag": true
+      }
+    }
+  },
+  {
+    "name": "console",
+    "description": "Start an interactive REPL session with the api object in-scope",
+    "example": "",
+    "inputs": {
+      "timestamps": {
+        "default": false,
+        "description": "Should timestamps be prepended to each log line?",
+        "letter": "t",
+        "flag": true
+      }
+    }
+  },
+  {
+    "name": "destroy",
+    "description": "Remove imported Profiles, Groups, Imports, and Exports from your cluster.  Properties, Groups and other configuration will remain.",
+    "example": "",
+    "inputs": {
+      "timestamps": {
+        "default": false,
+        "description": "Should timestamps be prepended to each log line?",
+        "letter": "t",
+        "flag": true
+      }
+    }
+  },
+  {
+    "name": "generate [template] [id]",
+    "description": "Generate new code config files from templates. ",
+    "example": "grouparoo generate postgres:app data_warehouse",
+    "inputs": {
+      "list": {
+        "required": false,
+        "default": false,
+        "letter": "l",
+        "flag": true,
+        "description": "Display the available config templates to use with config-generate.  You can filter the list of templates by providing a string to match against, ie: `grouparoo generate app --list` to see templates which match \"app\""
+      },
+      "describe": {
+        "required": false,
+        "default": false,
+        "letter": "d",
+        "flag": true,
+        "description": "Display the options for the template in detail"
+      },
+      "overwrite": {
+        "required": true,
+        "default": false,
+        "letter": "o",
+        "flag": true,
+        "description": "Overwrite existing files?"
+      },
+      "path": {
+        "required": true,
+        "letter": "p",
+        "default": "/Users/evan/workspace/grouparoo/grouparoo/core/config",
+        "description": "The location of the config directory"
+      }
+    }
+  },
+  {
+    "name": "run",
+    "description": "Run all Schedules, Runs, Imports and Exports pending in this cluster.  Use GROUPAROO_LOG_LEVEL env to set log level.",
+    "example": "",
+    "inputs": {
+      "destroy": {
+        "default": false,
+        "description": "[DANGER] Empty the cluster of all Profile data before starting the run?",
+        "letter": "d",
+        "flag": true
+      },
+      "reset-high-watermarks": {
+        "default": false,
+        "description": "Should we run all Schedules from the beginning?",
+        "letter": "m",
+        "flag": true
+      },
+      "run-all-schedules": {
+        "default": false,
+        "description": "Should we run all Schedules, even those that do not have a recurring time set?",
+        "letter": "s",
+        "flag": true
+      },
+      "no-export": {
+        "default": false,
+        "description": "Skip exporting the profiles",
+        "letter": "n",
+        "flag": true
+      },
+      "web": {
+        "default": false,
+        "description": "Enable the web server during this run?",
+        "letter": "w",
+        "flag": true
+      },
+      "timestamps": {
+        "default": false,
+        "description": "Should timestamps be prepended to each log line?",
+        "letter": "t",
+        "flag": true
+      }
+    }
+  },
+  {
+    "name": "start",
+    "description": "Run the Grouparoo server.  Use GROUPAROO_LOG_LEVEL env to set log level.",
+    "example": "",
+    "inputs": {
+      "timestamps": {
+        "default": false,
+        "description": "Should timestamps be prepended to each log line?",
+        "letter": "t",
+        "flag": true
+      }
+    }
+  },
+  {
+    "name": "status",
+    "description": "Display the status of your Grouparoo cluster",
+    "example": "",
+    "inputs": {
+      "timestamps": {
+        "default": false,
+        "description": "Should timestamps be prepended to each log line?",
+        "letter": "t",
+        "flag": true
+      }
+    }
+  },
+  {
+    "name": "sync <profileProperty>",
+    "description": "Sync (import & export) a Profile.  You can provide a Profile id or a unique Profile Property",
+    "example": "grouparoo sync person@example.com --property email",
+    "inputs": {
+      "property": {
+        "description": "Choose the name of the Property to find the Profile by (i.e.: email_address)",
+        "letter": "p"
+      },
+      "no-export": {
+        "default": false,
+        "description": "Skip exporting the profile",
+        "letter": "n",
+        "flag": true
+      },
+      "timestamps": {
+        "default": false,
+        "description": "Should timestamps be prepended to each log line?",
+        "letter": "t",
+        "flag": true
+      },
+      "json": {
+        "default": false,
+        "description": "Return data as JSON? Use process.env.GROUPAROO_LOG_LEVEL=alert to disable other messages.",
+        "letter": "j",
+        "flag": true
+      }
+    }
+  },
+  {
+    "name": "validate",
+    "description": "Validate your code config",
+    "example": "",
+    "inputs": {
+      "local": {
+        "default": false,
+        "description": "Disable external validation",
+        "letter": "l",
+        "flag": true
+      },
+      "timestamps": {
+        "default": false,
+        "description": "Should timestamps be prepended to each log line?",
+        "letter": "t",
+        "flag": true
+      }
+    }
+  }
+]
