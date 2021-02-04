@@ -59,7 +59,7 @@ export default function IndexPage() {
                   size="sm"
                   variant="outline-primary"
                   style={{ padding: ".5rem 1rem" }}
-                  href="https://github.com/grouparoo/grouparoo"
+                  href="/docs/getting-started"
                 >
                   Install Now
                 </Button>
