@@ -5,33 +5,64 @@ section: "getting-started"
 pullQuote: "Get up and running with Grouparoo in just a few minutes to see what it's all about!"
 ---
 
-Welcome! We're so glad you've chosen to spend some time with Grouparoo. See below for getting started with the basics.
+Welcome!
+
+We're so glad you've chosen to spend some time with Grouparoo. This guide will help you get started by running Grouparoo locally on your computer or in a trial environment.
 
 ## Installation
 
-There are two ways to quickly install Grouparoo. For more options and for information on deploying to a production environment, see [the Installation & Deployment section](/docs/deployment).
+There are three ways to quickly install Grouparoo. For more options and for information on deploying to a production environment, see [the Installation & Deployment section](/docs/deployment).
 
-### Deploy to Heroku
+<!-- prettier-ignore -->
+<Tabs defaultActiveKey="heroku">
+  <Tab
+    key="heroku"
+    eventKey="heroku"
+    title="Heroku"
+    style={{ padding: "1rem" }}
+  >
+<h3>Deploy to Heroku</h3>
 
 The simplest way to see Grouparoo in action is to deploy it to Heroku for free:
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/grouparoo/app-example)
 
-### Run locally with Docker & Docker Compose
+  </Tab>
+  <Tab
+    key="docker"
+    eventKey="docker"
+    title="Docker"
+    style={{ padding: "1rem" }}
+  >
+<h3>Run locally with Docker & Docker Compose</h3>
 
 If you have [Docker](https://www.docker.com/) installed, you can also run Grouparoo locally:
 
-    # in a new directory
-    curl -L https://www.grouparoo.com/docker-compose --output docker-compose.yml
-    docker-compose up
+```
+# in a new directory
+curl -L https://www.grouparoo.com/docker-compose --output docker-compose.yml
+docker-compose up
+```
 
-### Run Locally with Node.js
+  </Tab>
+  <Tab
+    key="node"
+    eventKey="node"
+    title="Node.js"
+    style={{ padding: "1rem" }}
+  >
+<h3>Run Locally with Node.js</h3>
 
-You can also try Grouparoo locally:
+You can also try Grouparoo locally with Node.js:
 
-    # in a new directory
-    npx grouparoo init .
-    npm start
+```
+# in a new directory
+npx grouparoo init .
+npm start
+```
+
+  </Tab>
+</Tabs>
 
 ## Understanding the Basics
 
