@@ -155,7 +155,7 @@ export default function Footer() {
                   <a>Blog</a>
                 </Link>
                 <br />
-                <Link href="/support">
+                <Link href="/docs/support">
                   <a>Support</a>
                 </Link>
                 <br />

@@ -10,11 +10,11 @@ export default function HavingProblems() {
 
         <p>
           If you are having trouble, visit the list of{" "}
-          <Link href="/docs/deployment/common-issues">
+          <Link href="/docs/support/common-issues">
             <a>common issues</a>
           </Link>{" "}
           or{" "}
-          <Link href="/support">
+          <Link href="/docs/support">
             <a>open a Github issue</a>
           </Link>{" "}
           to get support.

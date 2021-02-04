@@ -80,15 +80,15 @@ export default function DocsIndex() {
                   </p>
                 </Col>
                 <Col style={{ textAlign: "center" }}>
-                  <Button variant="light" size="lg" href="/docs/guides">
-                    User Guides
+                  <Button variant="light" size="lg" href="/docs/config">
+                    Config Guides
                   </Button>
                   <br />
                   <br />
                   <Button
                     variant="light"
                     size="lg"
-                    href="/docs/guides/product-concepts"
+                    href="/docs/getting-started/product-concepts"
                   >
                     Product Concepts
                   </Button>

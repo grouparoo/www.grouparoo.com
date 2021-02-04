@@ -47,7 +47,7 @@ export default function GetStarted({
                       <a>Grouparoo community</a>
                     </Link>{" "}
                     or how to get{" "}
-                    <Link href="/support">
+                    <Link href="/docs/support">
                       <a>support</a>
                     </Link>
                     .
