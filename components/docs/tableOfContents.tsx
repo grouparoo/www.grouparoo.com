@@ -16,6 +16,8 @@ const NavListItem = ({ item }) => {
           style={{
             color: router.asPath === item.path ? highlightColor : undefined,
           }}
+          target={item.target}
+          rel={item.target === "_blank" ? "nofollow noopener noreferrer" : null}
         >
           {item.title}
         </a>
@@ -57,6 +59,12 @@ export function TableOfContents() {
                             ? highlightColor
                             : undefined,
                       }}
+                      target={section.target}
+                      rel={
+                        section.target === "_blank"
+                          ? "nofollow noopener noreferrer"
+                          : null
+                      }
                       className="sectionHeading"
                     >
                       <strong>{section.title}</strong>

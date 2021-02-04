@@ -2,6 +2,7 @@ interface NavItem {
   title: string;
   path: string;
   children?: NavItem[];
+  target?: "_self" | "_blank" | "_parent" | "_top";
 }
 
 const DocsNav: NavItem[] = [
@@ -94,6 +95,7 @@ const DocsNav: NavItem[] = [
       {
         title: "Forum",
         path: "https://github.com/grouparoo/grouparoo/discussions",
+        target: "_blank",
       },
       {
         title: "What's New",
@@ -102,6 +104,7 @@ const DocsNav: NavItem[] = [
       {
         title: "Roadmap",
         path: "/roadmap",
+        target: "_blank",
       },
     ],
   },
