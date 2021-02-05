@@ -5,15 +5,21 @@ section: "support"
 pullQuote: "Upgrading your Grouparoo Deployment is as easy as npm upgrade"
 ---
 
-Grouparoo will regularly publish new versions of the packages that compose your Grouparoo application. Grouparoo packages are published to [npm](https://npmjs.com) under the `@grouparoo` and `@grouparoo-inc` organizations. For example you can view a list of [packages in the `@grouparoo` organization here](https://www.npmjs.com/org/grouparoo).
+Grouparoo will regularly publish new versions of the packages that compose your Grouparoo application. Grouparoo packages are published to [npm](https://npmjs.com) under the `@grouparoo`. You can view a list of [packages in the `@grouparoo` organization here](https://www.npmjs.com/org/grouparoo).
 
 **We strongly recommend that you update your Grouparoo application as soon as a new version becomes available.** In addition to new features, new versions are likely to contain bug and security fixes.
 
-## Determining if there are Updates
+## Upgrade Guides
+
+Our upgrade guides will help you through the process of upgrading when the new version contains a breaking change. Here is a list of available upgrade guides:
+
+- [v0.1 to v0.2](/docs/support/upgrading-grouparoo/v01-v02)
+
+## Determining if There are Updates
 
 There are a few ways to determine if there are updates to the packages that make up your Grouparoo application:
 
-**In App**
+**In the App**
 
 If you visit the `/about` page of your Grouparoo server, you'll see a list of the packages you have installed, the current version installed, and the latest version available on npm.
 
@@ -50,7 +56,7 @@ As Grouparoo is a node.js application, there are a number of tools available to 
 
 **Running New Versions**
 
-All that is needed to update your Grouparoo application is update the versions of your dependencies in your `package.json` file, then run `npm install`.
+In most cases, all that is needed to update your Grouparoo application is update the versions of your dependencies in your `package.json` file, then run `npm install`.
 
 <Image
   centered
@@ -62,6 +68,8 @@ All that is needed to update your Grouparoo application is update the versions o
 />
 
 Depending on your method of deployment, you will need to either re-deploy your application, `git push` to Heroku, or publish a new Docker image.
+
+Some cases will require additional effort. See our Upgrade Guides (listed above) for more info.
 
 **Migrations**
 

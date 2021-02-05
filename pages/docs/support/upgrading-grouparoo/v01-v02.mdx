@@ -1,0 +1,48 @@
+---
+title: "Upgrading Grouparoo from v0.1 to v0.2"
+date: "2021-02-05"
+section: "upgrading-grouparoo"
+pullQuote: "v0.2 is an exciting release with some breaking changes! Learn how to upgrade to v0.2."
+---
+
+Hello Grouparoo Community! v0.2 brings four major changes:
+
+1. [Code Config](/docs/config)
+2. The Grouparoo CLI
+3. Support for writing tests for your application
+4. UI Editions
+
+## UI Editions
+
+Our UI is now offered in two separate packages: `@grouparoo/ui-community` and `@grouparoo/ui-enterprise`.
+
+The open-source `@grouparoo/ui-community` edition is a everything an engineering team needs to successfully deploy and monitor Grouparoo to sync data. It includes the following features:
+
+- Monitor the application.
+- View-only objects like Properties, Profiles, Groups, etc.
+- Trigger runs.
+
+The closed-source `@grouparoo/ui-enterprise` edition is **everything a company needs to successfully empower all their teams with the data they need.** It offers everything in `@grouparoo/ui-community`, along with:
+
+- Allow non-technical users to configure the Grouparoo server via the web.
+- Provide a no-code way to create & manager Properties, Apps, Sources, Schedules, Destinations, Groups, etc.
+- Manage permissions and access for these non-technical users, including Enterprise login, Team management, etc.
+- Do analysis of your data and gain insights.
+
+If you are interested in using the `@grouparoo/ui-enterprise` package, please [contact us](https://www.grouparoo.com/meet)!
+
+## Migration Guide
+
+See [this pull request](https://github.com/grouparoo/app-example/pull/103/files), which contains the changes to the `app-example` project. This is a good guide for upgrading to v0.2 for your app. You wil want to do the following:
+
+1. Remove any references to `@grouparoo/email-authentication`. This package has been removed and is no longer needed.
+2. `npm install --save @grouparoo/ui-community` to add the Grouparoo UI and also add it to `grouparoo.plugins` within your `package.json` file.
+3. Remove the `prepare` step from `scripts` inside your `package.json`. This step is no longer needed and will speed up your install process. Check the rest of your build process and remove all instances of `npm run prepare`, i.e. in a `Dockerfile`.
+4. Change the paths for your `start` and `dev` scripts to remove the `/api` path per the example below. If you are using Docker or another runner to start your apps, you may also need to make a similar change. In a Dockerfile, you might change `CMD ["./api/bin/start"]` to `CMD ["./bin/start"]`
+
+   ```json5
+   "scripts": {
+     "start": "cd node_modules/@grouparoo/core && ./bin/start", // "api/" has been removed
+     "dev": "cd node_modules/@grouparoo/core && ./bin/dev", // "api/" has been removed
+   }
+   ```
