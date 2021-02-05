@@ -262,4 +262,6 @@
     >https://www.grouparoo.com/integrations/sources/redshift</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/sources/snowflake</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/support/upgrading-grouparoo/v01-v02</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url></urlset>
