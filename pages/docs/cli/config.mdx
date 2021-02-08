@@ -1,0 +1,35 @@
+---
+title: "CLI: Configuration"
+date: "2021-02-08"
+section: "cli"
+pullQuote: "CLI commands for configuring your Grouparoo application."
+---
+
+<CLICommand name="generate" />
+
+The generate command will create a template configuration file for you that you will then need to fill out.
+
+There are many templates which you can use to generate from, depending on the plugins you have installed. You can use the `--list` flag to see available templates and filter the results. For example:
+
+```
+grouparoo generate --list postgres
+
+Available Templates: matching "postgres"
+
+  postgres:app (id) - Config for a Grouparoo postgres App
+  postgres:destination (id) - Config for a postgres Destination
+  postgres:query:property (id) - Config for a postgres Query Property
+  postgres:query:schedule (id) - Config for a postgres Query Schedule
+  postgres:query:source (id) - Config for a postgres Query Source. Work with multiple tables and build custom queries for its properties.
+  postgres:table:property (id) - Config for a postgres Table Property
+  postgres:table:schedule (id) - Config for a postgres Table Schedule
+  postgres:table:source (id) - Config for a postgres Table Source. Construct properties from the data in the table without writing SQL.
+```
+
+You are required to provide and `id` to the generate command. This `id` will be used in the file, to set the filename, and may be used by you later. For example if you generated an app called `data_warehouse`, in your sources you would set `appId: "data_warehouse"` to indicate those sources rely on the `data_warehouse` app.
+
+You can learn more about the [configuration files here](/docs/deployment/code-config).
+
+<CLICommand name="validate" />
+
+<CLICommand name="apply" />

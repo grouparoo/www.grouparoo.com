@@ -70,12 +70,28 @@ const DocsNav: NavItem[] = [
     path: "/docs/running-grouparoo",
     children: [
       {
-        title: "Commands",
-        path: "/docs/running-grouparoo/commands",
-      },
-      {
         title: "Testing",
         path: "/docs/running-grouparoo/testing",
+      },
+    ],
+  },
+
+  // -- CLI --
+  {
+    title: "CLI",
+    path: "/docs/cli",
+    children: [
+      {
+        title: "Setup & Maintenance",
+        path: "/docs/cli/setup",
+      },
+      {
+        title: "Configuration",
+        path: "/docs/cli/config",
+      },
+      {
+        title: "Running & Testing",
+        path: "/docs/cli/run",
       },
     ],
   },

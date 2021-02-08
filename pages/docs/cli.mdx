@@ -1,0 +1,72 @@
+---
+title: "Command-Line Interface (CLI)"
+date: "2021-02-08"
+section: "cli"
+pullQuote: "Detailed information about the Grouparoo CLI commands."
+---
+
+You can obtain the grouparoo CLI via NPM with `npm install -g grouparoo`
+
+### Project Maintenance
+
+- [`grouparoo init [dir]`](/docs/cli/setup#init) - Create a new Grouparoo project.
+- [`grouparoo update`](/docs/cli/setup#update) - Upgrade all Grouparoo packages to the latest versions.
+- [`grouparoo install [package]`](/docs/cli/setup#install) - Install packages defined in your `package.json` or add new ones. This is equivalent to `npm install [package]`.
+
+<Button variant="outline-primary" href="/docs/cli/setup">
+  Learn More about Project Maintenance
+</Button>
+
+### Configuration
+
+- [`grouparoo generate [options] [template] [id]`](/docs/cli/config#generate) - Generate a config file for an new object (App, Source, Property, Destination, etc) from a template.
+- [`grouparoo validate (--local)`](/docs/cli/config#validate) - Test and validate your code config. Doesn't write changes to the database. Optionally disable checking with remote Apps.
+- [`grouparoo apply (--local)`](/docs/cli/config#apply) - Apply config changes to the database. This also happens automatically with `grouparoo start` and `grouparoo run` as well. Optionally disable checking with remote Apps.
+
+<Button variant="outline-primary" href="/docs/cli/config">
+  Learn More about Configuration
+</Button>
+
+### Development, Testing and Deployment
+
+- [`grouparoo status`](/docs/cli/run#status) - Get the status of your grouparoo cluster.
+- [`grouparoo sync <profile> (--no-export)`](/docs/cli/run#sync) - Import and Export 1 profile fully and output a snapshot.
+- [`grouparoo run (--web) (--destroy) (--no-export)`](/docs/cli/run#run) - Run the application and stop after every Profile has been imported and exported as needed.
+- [`grouparoo start`](/docs/cli/run#start) - Run the application. Keep checking for new and updated Profiles. This is equivalent to `npm start`.
+- [`grouparoo destroy`](/docs/cli/run#destroy) - Empty the Profiles, Groups, and related data from your database.
+- [`grouparoo console`](/docs/cli/run#console) - (developer) Get an interactive cli console with the `api` object in scope.
+
+<Button variant="outline-primary" href="/docs/cli/run">
+  Learn More about Runnning Grouparoo
+</Button>
+
+## Example
+
+If you were creating a new Grouparoo project, you might:
+
+```bash
+# install the grouparoo CLI
+npm install -g grouparoo
+
+# initialize the project (in a new directory)
+grouparoo init .
+
+# create a Team and Team Member
+grouparoo generate team admin_team
+grouparoo generate team:member person@company.com
+
+# create an App, Source, and Properties
+grouparoo generate postgres:app data_warehouse
+grouparoo generate postgres:table:source users_table
+]grouparoo generate postgres:table:property email
+grouparoo generate postgres:table:property first_name
+grouparoo generate postgres:table:property last_name
+
+# check out config files
+grouparoo validate
+grouparoo apply
+
+# start the application
+grouparoo start --web
+# and you can visit http://localhost:3000 to view the dashboard and watch your data import
+```
