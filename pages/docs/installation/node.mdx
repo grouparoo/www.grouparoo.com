@@ -7,11 +7,18 @@ pullQuote: "This guide will help you run the Grouparoo application on your local
 
 This guide will help you run the Grouparoo application on your local machine using Node.js.
 
-### Step 1: Install Runtime and Databases
+## Step 1: Install Runtime and Databases
 
-Grouparoo is a [node.js](https://nodejs.org/) application and requires Node.js version 12 or higher. You can download Node.js from their [website](https://nodejs.org/) or through the package manager for your operating system. The same is true for Postgres and Redis.
+Grouparoo is a [node.js](https://nodejs.org/) application and requires Node.js version 12 or higher. You can download Node.js from their [website](https://nodejs.org/) or through the package manager for your operating system.
 
-We also need to create a database within Postgres for Grouparoo to use. Let's use one called `grouparoo_development`.
+By default, running Grouparoo locally relies on the following dependencies:
+
+- [Redis](https://redis.io/)
+- [PostgreSQL](https://www.postgresql.org/)
+
+However, if you want to skip these dependencies when getting started, there is an option to use [SQLite](https://www.sqlite.org/index.html) and a Redis mock. More on this below.
+
+If you want to use Redis and Postgres, let's get them installed.
 
 **On OSX**:
 
@@ -26,7 +33,6 @@ brew services start redis # Start Redis
 
 brew install postgresql # Install Postgres
 brew services start postgresql # Start Postgres
-createdb grouparoo_development # Create a database for Grouparoo
 ```
 
 **On Linux/Ubuntu**:
@@ -40,10 +46,17 @@ nvm use v12 # use v12 of node.js
 sudo apt install redis-server # Install Redis
 
 sudo apt install postgresql postgresql-contrib # Install Postgres
+```
+
+### Create Grouparoo Database
+
+Using either Postgres or SQLite, create a database for Grouparoo to use. This is where the application data will be stored, such as profiles, apps, and sources. In our example, we've called the database `grouparoo_development`. This is what it looks like for Postgres:
+
+```bash
 createdb grouparoo_development # Create a database for Grouparoo
 ```
 
-### Step 2: Generate `package.json` and `.env`
+## Step 2: Generate `package.json` and `.env`
 
 In a new directory, run the following command to generate the files Grouparoo needs:
 
@@ -94,8 +107,17 @@ WEB_SERVER=true
 SCHEDULER=true
 WORKERS=1
 REDIS_URL="redis://localhost:6379/0"
+# Or REDIS_URL="redis://mock" to use an in-memory redis.
 DATABASE_URL="postgresql://localhost:5432/grouparoo_development"
+# Or DATABASE_URL="sqlite://grouparoo_development.sqlite" for SQLite.
 SERVER_TOKEN="a-random-string"
+```
+
+To use an in-memory redis (Redis mock) and/or SQLite, set the `REDIS_URL` and `DATABASE_URL` appropriately:
+
+```bash
+REDIS_URL="redis://mock"
+DATABASE_URL="sqlite://grouparoo_development.sqlite"
 ```
 
 > Grouparoo is primarily configured via Environment variables.
@@ -105,7 +127,7 @@ SERVER_TOKEN="a-random-string"
 
 Only these 2 files are needed to make an "app" for Grouparoo to run. There is an example in the [app-example](https://github.com/grouparoo/app-example/blob/master/package.json) directory.
 
-### Step 3: Install Dependencies
+## Step 3: Install Dependencies
 
 Run `npm install` to install dependencies. This will also run `npm prepare` which will compile the typescript application and build the web components. `npx grouparoo generate` will do this automatically for you.
 
