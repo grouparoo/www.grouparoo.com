@@ -9,7 +9,7 @@
         <title>Grouparoo: Blog</title>
         <link>https://www.grouparoo.com/blog</link>
         <description>Articles and updates from Grouparoo.</description>
-        <lastBuildDate>Mon, 01 Feb 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 02 Feb 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,28 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Node.js Memory Error on Mac Using M1]]></title>
+            <link>https://www.grouparoo.com/blog/apple-m1-js-memory-error</link>
+            <guid>grouparoo-blog-post-apple-m1-js-memory-error</guid>
+            <pubDate>Tue, 02 Feb 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>In working on our fancy new CLI tool last week, I came across this scary error, courtesy of Node.js:</p><pre><code>FATAL ERROR: wasm code commit Allocation failed - process out of memory
+</code></pre><p>It began occurring regularly enough that I started digging, and I eventually came across <a href="https://forum.ghost.org/t/cant-get-ghost-running-on-apple-m1-chip/19526/5" target="_blank" rel="nofollow noopener noreferrer">this discussion</a> which noted that Node.js versions prior to v15 do not natively support the Apple M1 chip. (At least not <em>yet</em>.) Being that I&#x27;m on a new Apple machine with an M1 chip, this caught my attention.</p><p>Our team uses <a href="https://github.com/nvm-sh/nvm" target="_blank" rel="nofollow noopener noreferrer">NVM (Node Version Manager)</a> to install and manage multiple node versions. I happened to be working with v12.</p><pre><code>$ nvm ls
+-&gt;     v12.20.1
+        system
+default -&gt; 12 (-&gt; v12.20.1)
+...
+</code></pre><p>So I gave v15 a shot, and <em>Voila!</em> It did the trick!</p><pre><code>$ nvm install 15
+$ nvm use 15
+$ nvm alias default 15
+</code></pre><p><em>Note: I even tried v14 just to see what would happen, and sure enough, I also ran into issues with it.</em> So, at least for now, Node.js v15 is the way to go on new Apple machines with the M1 chip.</p><h2>Running in Compatibility Mode</h2><p>Another option is to run your terminal in compatibility mode using Rosetta. You can set your terminal application to <em>Open using Rosetta</em>, then reinstall node versions. <a href="https://stackoverflow.com/q/64899827/2241124" target="_blank" rel="nofollow noopener noreferrer">See here for more info</a>.</p>]]></content:encoded>
+            <enclosure
+        url="https://www.grouparoo.com/posts/apple-m1-js-memory-error/error-graphic.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title><![CDATA[Welcome, Sean!]]></title>
             <link>https://www.grouparoo.com/blog/welcome-sean</link>
