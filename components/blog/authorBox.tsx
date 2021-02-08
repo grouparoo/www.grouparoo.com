@@ -2,12 +2,13 @@ import Link from "next/link";
 import BlogTags from "../../utils/blogTags";
 import { Row, Col, Alert } from "react-bootstrap";
 import Image from "../Image";
+import { Author } from "../../data/authors";
 
 export default function AuthorBox({
   author,
   entry,
 }: {
-  author: { name: string; slug: string; url: string; description: string };
+  author: Author;
   entry?: any;
 }) {
   return (
@@ -16,7 +17,7 @@ export default function AuthorBox({
         <Col md={2}>
           <Image
             roundedCircle
-            src={`/images/authors/${author.slug}.png`}
+            src={`/images/authors/${author.image}`}
             alt={author.name}
             width={200}
             height={200}

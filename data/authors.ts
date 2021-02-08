@@ -1,11 +1,13 @@
-const Authors: Array<{
+export interface Author {
   name: string;
   slug: string;
   image: string;
   url: string;
   twitter: string;
   description: string;
-}> = [
+}
+
+const Authors: Author[] = [
   {
     name: "Evan Tahler",
     slug: "evan_tahler",
