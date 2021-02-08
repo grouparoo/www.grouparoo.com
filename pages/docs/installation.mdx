@@ -1,0 +1,77 @@
+---
+title: "Install Grouparoo"
+date: "2021-02-08"
+section: "install"
+pullQuote: "The process of getting your own Grouparoo application begins with local installation."
+---
+
+When you're ready to get your own instance of Grouparoo running, the first step is to install it locally. This will enable you to configure it properly before deploying to production.
+
+<Alert variant="primary">
+  <p className="mb-0">
+    If you just want to try Grouparoo, see our{" "}
+    <a href="/docs/getting-started">Getting Started Guide</a>.
+  </p>
+</Alert>
+
+### Step 1: Create New Repository
+
+Configuring your Grouparoo Project starts by making a new `git` repository in a new directory. You then can use the [`grouparoo` cli tool](/docs/cli) to initialize a new project.
+
+### Step 2: Pick an Installation Method
+
+There are two methods for local development:
+
+<!-- prettier-ignore -->
+<Tabs defaultActiveKey="node">
+  <Tab
+    key="node"
+    eventKey="node"
+    title="Node.js"
+    style={{ padding: "1rem" }}
+  >
+<h3>Run Locally with Node.js</h3>
+
+You can also try Grouparoo locally with Node.js:
+
+```bash
+# in a new directory
+npx grouparoo init .
+npm start
+```
+
+Read our guide for setting up Grouparoo locally with Node.js.
+
+<Button variant="outline-primary" href="/docs/installation/node">
+  Get Started with Node.js
+</Button>
+
+  </Tab>
+  <Tab
+    key="docker"
+    eventKey="docker"
+    title="Docker"
+    style={{ padding: "1rem" }}
+  >
+<h3>Run locally with Docker & Docker Compose</h3>
+
+If you have [Docker](https://www.docker.com/) installed, you can also run Grouparoo locally:
+
+```bash
+# in a new directory
+curl -L https://www.grouparoo.com/docker-compose --output docker-compose.yml
+docker-compose up
+```
+
+Continue with installation details in our Docker installation guide.
+
+<Button variant="outline-primary" href="/docs/installation/docker">
+  Get Started with Docker
+</Button>
+
+  </Tab>
+</Tabs>
+
+### What's Next?
+
+After you've successfully installed Grouparoo, it's time to configure it. Head over to the [Configuration Guides](/docs/config).

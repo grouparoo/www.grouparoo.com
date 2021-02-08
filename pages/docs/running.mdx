@@ -1,0 +1,18 @@
+---
+title: "Running Grouparoo"
+date: "2021-02-02"
+section: "running-grouparoo"
+pullQuote: "Run Grouparoo locally to see it all work before deploying to production."
+---
+
+Okay. So you have Grouparoo installed locally. And you've configured it with your Apps, Sources, Destinations, and other objects. Now it's time to see it all work before going to production.
+
+Unlike other tools, Grouparoo fits into your developer workflow allowing you to run the same code within multiple environments (dev/staging/prod) and we provide tools which allow you to craft meaningful tests around your data orchestration process.
+
+Commands like `grouparoo sync` allow you to trial the whole sync process with only one profile to check for expected results. In combination with commands like `grouparoo run`, you may also want to start fresh with a new database (`grouparoo destroy`) or write test to ensure your sync process is working as you expect. You can write [tests for your Grouparoo data using Jest](/docs/running/testing).
+
+Finally, you can choose to run the Grouparoo application in a one-off mode (`grouparoo run`) or as a persistent server (`grouparoo start` / `npm start`) - whichever best fits your use-case.
+
+<Button variant="outline-primary" href="/docs/cli">
+  Learn about the Grouparoo CLI
+</Button>
