@@ -14,7 +14,7 @@ Hello Grouparoo Community! v0.2 brings four major changes:
 
 ## Migration Guide
 
-See [this pull request](https://github.com/grouparoo/app-example/pull/103/files), which contains the changes to the `app-example` project. This is a good example for upgrading to v0.2 of Grouparoo for your app. You wil want to do the following:
+See [this pull request](https://github.com/grouparoo/app-example/pull/103/files), which contains the changes to the `app-example` project. This is a good example for upgrading to v0.2 of Grouparoo for your app. All of the changes required will be in your `package.json` file.
 
 1. Install the latest version of the grouparoo command line tool: `npm install -g grouparoo`
 2. Remove any references to `@grouparoo/email-authentication`. This package has been removed and is no longer needed.
@@ -33,3 +33,15 @@ See [this pull request](https://github.com/grouparoo/app-example/pull/103/files)
      "dev": "cd node_modules/@grouparoo/core && ./bin/dev", // "api/" has been removed
    }
    ```
+
+The changes, in entirety, to your `package.json` will look similar to this:
+
+<Image
+  thumbnail
+  src="support/upgrading-grouparoo/v0.2-upgrade-package.png"
+  alt="People working together on a computer"
+  width={731}
+  height={500}
+/>
+
+Now you can install the updated dependencies (`grouparoo install`) and run your Grouparoo application (`grouparoo start`)!
