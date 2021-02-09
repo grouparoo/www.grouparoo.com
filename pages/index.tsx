@@ -143,7 +143,7 @@ export default function IndexPage() {
                 icon="npm"
                 code={
                   <>
-                    {`>`} npx grouparoo generate
+                    {`>`} npx grouparoo init .
                     <br />
                     {`>`} npm start
                   </>
