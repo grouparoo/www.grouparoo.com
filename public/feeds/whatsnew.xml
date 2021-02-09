@@ -212,7 +212,7 @@
             <guid>grouparoo-release-note-2020-07-29-npx</guid>
             <pubDate>Wed, 29 Jul 2020 00:00:00 GMT</pubDate>
             <content:encoded
-      ><![CDATA[<p>We have provided an <a href="https://github.com/grouparoo/app-example" target="_blank" rel="nofollow noopener noreferrer">example Grouparoo app</a> for a while, but now we&#x27;ve made it easier to generate one of these with a simple command: <code>npx grouparoo generate</code></p><p>From <code>npx grouparoo --help</code></p><pre><code>Usage: grouparoo [options] [command]
+      ><![CDATA[<p>We have provided an <a href="https://github.com/grouparoo/app-example" target="_blank" rel="nofollow noopener noreferrer">example Grouparoo app</a> for a while, but now we&#x27;ve made it easier to generate one of these with a simple command: <code>npx grouparoo generate</code> (edit Feb 9, 2021: the command is now <code>grouparoo init</code>)</p><p>From <code>npx grouparoo --help</code></p><pre><code>Usage: grouparoo [options] [command]
 
 Options:
   -V, --version    output the version number
