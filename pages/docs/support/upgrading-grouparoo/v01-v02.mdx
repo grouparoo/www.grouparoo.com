@@ -1,0 +1,35 @@
+---
+title: "Upgrading Grouparoo from v0.1 to v0.2"
+date: "2021-02-05"
+section: "upgrading-grouparoo"
+pullQuote: "v0.2 is an exciting release with some breaking changes! Learn how to upgrade to v0.2."
+---
+
+Hello Grouparoo Community! v0.2 brings four major changes:
+
+1. [Code Config](/docs/config)
+2. [The Grouparoo CLI](/docs/cli)
+3. [Support for writing tests for your application](/docs/running/testing)
+4. UI Editions (coming soon)
+
+## Migration Guide
+
+See [this pull request](https://github.com/grouparoo/app-example/pull/103/files), which contains the changes to the `app-example` project. This is a good example for upgrading to v0.2 of Grouparoo for your app. You wil want to do the following:
+
+1. Install the latest version of the grouparoo command line tool: `npm install -g grouparoo`
+2. Remove any references to `@grouparoo/email-authentication`. This package has been removed and is no longer needed.
+3. `grouparoo install @grouparoo/ui-community` and `npm uninstall @grouparoo/ui` to add the Grouparoo UI and remove the old version.
+   - Also remove `@grouparoo/ui` from `grouparoo.plugins` within your `package.json` file.
+4. Remove the `prepare` step from `scripts` inside your `package.json`. This step is no longer needed and will speed up your install process.
+   - Check the rest of your build process and remove all instances of `npm run prepare` that you might have, i.e. in a `Dockerfile`.
+5. Change the paths for your `start` and `dev` scripts to remove the `/api` path per the example below.
+
+   - If you are using Docker or another runner to start your apps, you may also need to make a similar change.
+   - In a Dockerfile, you might change `CMD ["./api/bin/start"]` to `CMD ["./bin/start"]`
+
+   ```json5
+   "scripts": {
+     "start": "cd node_modules/@grouparoo/core && ./bin/start", // "api/" has been removed
+     "dev": "cd node_modules/@grouparoo/core && ./bin/dev", // "api/" has been removed
+   }
+   ```
