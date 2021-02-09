@@ -17,7 +17,7 @@ describe("getBreadcumbs()", () => {
       },
       {
         path: "/docs/getting-started",
-        title: "Try Grouparoo Now!",
+        title: "Getting Started",
       },
       {
         path: "/docs/getting-started/product-concepts",

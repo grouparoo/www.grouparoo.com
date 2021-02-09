@@ -1,59 +1,19 @@
 ---
 title: "Docker & Docker Compose"
-date: "2020-08-01"
+date: "2021-02-08"
 section: "deployment"
 pullQuote: "Grouparoo is easy to deploy with Docker and Docker Compose."
 ---
 
-Grouparoo is easy to deploy with [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/).
-
-## Example
-
-An example project can be found at https://github.com/grouparoo/app-example
-
-## Getting Started
-
-1. Create a new git repository
-   - Do not include an environment file, `.env`. Your environment variables will be managed by Docker
-   - Include a `package.json` file which contains your dependencies and commands per the [deployment Guide](/docs/deployment)
-   - Include a `.dockerignore` file which excludes `node_modules` and any local config you might have (ie: `.env`)
-   - Include a `Dockerfile` which is similar the to the below. We are building a `Dockerfile` which can be used in multiple modes, as a background task worker or web server, which are controlled by Environment Variables.
-
-```bash
-# Dockerfile
-FROM node:12
-
-WORKDIR /grouparoo
-
-ENV NODE_ENV='production'
-ENV PORT=3000
-ENV WEB_URL=http://localhost:$PORT
-ENV WEB_SERVER=true
-ENV SERVER_TOKEN="change-me"
-ENV SCHEDULER=true
-ENV WORKERS=1
-ENV REDIS_URL="redis://localhost:6379/0"
-ENV DATABASE_URL="postgresql://localhost:5432/grouparoo_development"
-ENV S3_ACCESS_KEY=""
-ENV S3_SECRET_ACCESS_KEY=""
-ENV S3_REGION=""
-ENV S3_BUCKET=""
-
-COPY . .
-RUN npm install
-RUN npm run prepare
-RUN npm prune
-
-WORKDIR /grouparoo/node_modules/@grouparoo/core
-CMD ["./api/bin/start"]
-
-EXPOSE $PORT/tcp
-```
-
-2. Build your docker image with `docker build .`
-3. Push and run your docker image!
-
-## Docker Compose
+<Alert variant="primary">
+  <p className="mb-0">
+    This guide assumes you have already worked through{" "}
+    <a href="/docs/installation/docker">
+      the setup of a Docker instance of Grouparoo
+    </a>
+    , and <a href="/docs/config">that you've configured it</a>.
+  </p>
+</Alert>
 
 As an example of how to orchestrate a more complex deployment, the following example `docker-compose` file is provided. This will create our needed networks (frontend and backend), our needed storage servers (Postgres and Redis), 2 types of grouparoo instances (`web` and `backend`).
 

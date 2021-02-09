@@ -18,21 +18,19 @@ const DocsNav: NavItem[] = [
     ],
   },
 
-  // -- Installation & Deployment --
+  // -- 01: Install --
   {
-    title: "Installation & Deployment",
-    path: "/docs/deployment",
+    title: "Step 1: Install",
+    path: "/docs/installation",
     children: [
-      { title: "Local (Node.js)", path: "/docs/deployment/node" },
-      { title: "Heroku", path: "/docs/deployment/heroku" },
-      { title: "Docker & Docker Compose", path: "/docs/deployment/docker" },
-      { title: "AWS & Kubernetes", path: "/docs/deployment/aws-and-k8s" },
+      { title: "Node.js", path: "/docs/installation/node" },
+      { title: "Docker", path: "/docs/installation/docker" },
     ],
   },
 
-  // -- Configuration --
+  // -- 02: Configure --
   {
-    title: "Configuration",
+    title: "Step 2: Configure",
     path: "/docs/config",
     children: [
       { title: "Code Config", path: "/docs/config/code-config" },
@@ -64,8 +62,48 @@ const DocsNav: NavItem[] = [
     ],
   },
 
-  // -- Running Grouparoo --
-  { title: "Running Grouparoo", path: "/docs/running-grouparoo" },
+  // -- 03: Run --
+  {
+    title: "Step 3: Run",
+    path: "/docs/running",
+    children: [
+      {
+        title: "Testing",
+        path: "/docs/running/testing",
+      },
+    ],
+  },
+
+  // -- 04: Deploy --
+  {
+    title: "Step 4: Deploy",
+    path: "/docs/deployment",
+    children: [
+      { title: "Heroku", path: "/docs/deployment/heroku" },
+      { title: "Docker & Docker Compose", path: "/docs/deployment/docker" },
+      { title: "AWS & Kubernetes", path: "/docs/deployment/aws-and-k8s" },
+    ],
+  },
+
+  // -- CLI --
+  {
+    title: "CLI",
+    path: "/docs/cli",
+    children: [
+      {
+        title: "Setup & Maintenance",
+        path: "/docs/cli/setup",
+      },
+      {
+        title: "Configuration",
+        path: "/docs/cli/config",
+      },
+      {
+        title: "Running & Testing",
+        path: "/docs/cli/run",
+      },
+    ],
+  },
 
   // -- Development --
   {

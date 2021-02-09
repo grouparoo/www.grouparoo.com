@@ -2,72 +2,23 @@
 title: "Installation & Deployment"
 date: "2021-01-12"
 section: "deployment"
-pullQuote: "This guide will help you run the Grouparoo application on your local machine. At the end of this guide there are links to instructions on how to run Grouparoo on various production-ready platforms."
+pullQuote: "Learn how to run Grouparoo on various production-ready platforms."
 ---
 
-This guide will help you run the Grouparoo application on your local machine. At the end of this guide there are links to instructions on how to run Grouparoo on various production-ready platforms.
+Woohoo! You made it!
 
-Grouparoo is a [node.js](https://nodejs.org/) application written in [TypeScript](https://www.typescriptlang.org/). Grouparoo relies on a [Postgres](https://www.postgresql.org) database and [Redis](https://redis.io) cache. Grouparoo is distributed though [NPM](https://www.npmjs.com).
+You've installed, configured, run, tested, tinkered with, and now you're ready to deploy Grouparoo to production. Just a little more effort and you'll have all your customer data in all the right places!
 
-This guide has 3 options for you to install Grouparoo:
+## Before You Deploy
 
-- Deploy to Heroku
-- Run locally with Docker & Docker Compose
-- Run Locally with Node.js
+Before you deploy, it's important to understand [Grouparoo's deployment topology](/docs/support/network), [environment variables](/docs/config/environment), and [how to secure your Grouparoo cluster](/docs/support/security).
 
-## Deploy to Heroku
+If you need a reference along the way, there is an example application available at [github.com/grouparoo/app-example](https://github.com/grouparoo/app-example).
 
-The simplest way to see Grouparoo in action is to deploy it to Heroku for free:
+## Deployment Guides
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/grouparoo/app-example)
+When you're ready, find the appropriate deployment guide for your environment:
 
-## Run locally with Docker & Docker Compose
-
-Assuming you have Docker installed:
-
-```bash
-# in a new directory
-curl -L https://www.grouparoo.com/docker-compose --output docker-compose.yml
-docker-compose up
-```
-
-Continue with installation details in our Docker installation guide.
-
-<Button variant="outline-primary" href="/docs/deployment/docker">
-  Get Started with Docker
-</Button>
-
-## Run Locally with Node.js
-
-Assuming you have node.js and NPM installed:
-
-```bash
-# in a new directory
-npx grouparoo init .
-npm start
-```
-
-Read our guide for setting up Grouparoo locally with Node.js.
-
-<Button variant="outline-primary" href="/docs/deployment/node">
-  Get Started with Node.js
-</Button>
-
-## Configuring your Grouparoo Cluster
-
-Grouparoo can be configured to work with your data in a few ways.
-
-- You can use the Grouparoo web interface to configure your cluster visually. Learn more from our [user guides](/docs/config)
-- You can configure Grouparoo programmatically. Learn more from our [code config guide](/docs/config/code-config).
-
-## Deploying to Production Environments
-
-Now that you've tried Grouparoo locally, it's time to deploy it! An example application which can be copied and deployed via Docker or Heroku is available at [github.com/grouparoo/app-example](https://github.com/grouparoo/app-example).
-
-First, learn more about [Grouparoo's Deployment Topology](/docs/support/network), [Environment variables](/docs/config/environment), and [how to secure your Grouparoo cluster](/docs/support/security).
-
-Then find the deployment Guide for your environment:
-
-- [Deploying with Heroku](/docs/deployment/heroku)
-- [Deploying with Docker](/docs/deployment/docker)
-- [Deploying with Kubernetes and AWS](/docs/deployment/aws-and-k8s.md)
+- [Heroku](/docs/deployment/heroku)
+- [Docker](/docs/deployment/docker)
+- [Kubernetes and AWS](/docs/deployment/aws-and-k8s)
