@@ -12,6 +12,10 @@ const DocsNav: NavItem[] = [
     path: "/docs/getting-started",
     children: [
       {
+        title: "First Time Setup",
+        path: "/docs/getting-started/first-time-setup",
+      },
+      {
         title: "Product Concepts",
         path: "/docs/getting-started/product-concepts",
       },
@@ -35,7 +39,6 @@ const DocsNav: NavItem[] = [
     path: "/docs/config",
     children: [
       { title: "Code Config", path: "/docs/config/code-config" },
-      { title: "First Time Setup", path: "/docs/config/first-time-setup" },
       { title: "Apps", path: "/docs/config/apps" },
       { title: "Sources", path: "/docs/config/sources" },
       {
@@ -50,15 +53,6 @@ const DocsNav: NavItem[] = [
       {
         title: "Settings",
         path: "/docs/config/settings",
-      },
-      {
-        title: "Permissions",
-        path: "/docs/config/permissions",
-      },
-      { title: "Environment", path: "/docs/config/environment" },
-      {
-        title: "Secrets",
-        path: "/docs/config/secrets",
       },
     ],
   },
@@ -155,13 +149,16 @@ const DocsNav: NavItem[] = [
     children: [
       { title: "Common Issues", path: "/docs/support/common-issues" },
       { title: "Debugging", path: "/docs/support/debugging" },
-      { title: "Telemetry", path: "/docs/support/telemetry" },
-      { title: "Security", path: "/docs/support/security" },
-      { title: "Network", path: "/docs/support/network" },
-      { title: "Monitoring", path: "/docs/support/monitoring" },
+      { title: "Environment", path: "/docs/support/environment" },
       { title: "Legal", path: "/docs/support/legal" },
+      { title: "Monitoring", path: "/docs/support/monitoring" },
+      { title: "Network", path: "/docs/support/network" },
+      { title: "Permissions", path: "/docs/support/permissions" },
+      { title: "Secrets", path: "/docs/support/secrets" },
+      { title: "Security", path: "/docs/support/security" },
+      { title: "Telemetry", path: "/docs/support/telemetry" },
       {
-        title: "Upgrading Grouparoo",
+        title: "Upgrade Guides",
         path: "/docs/support/upgrading-grouparoo",
         children: [
           {

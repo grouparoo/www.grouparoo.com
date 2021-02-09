@@ -31,7 +31,7 @@ const guidesRedirects = [
   },
   {
     src: "/docs/guides/first-time-setup",
-    dest: "/docs/config/first-time-setup",
+    dest: "/docs/getting-started/first-time-setup",
   },
 ];
 
@@ -40,7 +40,7 @@ const guidesRedirects = [
 const deploymentRedirects = [
   {
     src: "/docs/deployment/environment",
-    dest: "/docs/config/environment",
+    dest: "/docs/support/environment",
   },
   {
     src: "/docs/deployment/common-issues",
