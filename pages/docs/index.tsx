@@ -48,23 +48,23 @@ export default function DocsIndex() {
                     <Button
                       size="sm"
                       variant="outline-primary"
-                      href="/docs/deployment/heroku"
+                      href="/docs/installation/node"
                     >
-                      Heroku
+                      Node.js
                     </Button>
                     <Button
                       size="sm"
                       variant="outline-primary"
-                      href="/docs/deployment/docker"
+                      href="/docs/installation/docker"
                     >
                       Docker
                     </Button>
                     <Button
                       size="sm"
                       variant="outline-primary"
-                      href="/docs/deployment/aws-and-k8s"
+                      href="/docs/deployment/heroku"
                     >
-                      AWS + Kubernetes
+                      Heroku
                     </Button>
                   </ButtonGroup>
                 </Col>
