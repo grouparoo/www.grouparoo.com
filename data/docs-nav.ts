@@ -25,6 +25,7 @@ const DocsNav: NavItem[] = [
     children: [
       { title: "Node.js", path: "/docs/installation/node" },
       { title: "Docker", path: "/docs/installation/docker" },
+      { title: "Plugins", path: "/docs/installation/plugins" },
     ],
   },
 
