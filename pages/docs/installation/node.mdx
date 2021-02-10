@@ -7,9 +7,9 @@ pullQuote: "This guide will help you run the Grouparoo application on your local
 
 This guide will help you run the Grouparoo application on your local machine using Node.js.
 
-### Step 1: Install Runtime and Databases
+### Step 1: Install Node.js Runtime and Databases
 
-Grouparoo is a [node.js](https://nodejs.org/) application and requires Node.js version 12 or higher. You can download Node.js from their [website](https://nodejs.org/) or through the package manager for your operating system.
+Grouparoo is a [Node.js](https://nodejs.org/) application and requires Node.js version 12 or higher. You can download Node.js from their [website](https://nodejs.org/) or through the package manager for your operating system.
 
 <!-- prettier-ignore -->
 <Tabs defaultActiveKey="MacOS">
@@ -19,7 +19,7 @@ Grouparoo is a [node.js](https://nodejs.org/) application and requires Node.js v
   title="MacOS"
   style={{ padding: "1rem" }}
 >
-<h5>Install node.js on MacOS</h5>
+<h5>Install Node.js on MacOS</h5>
 
 ```bash
 # Install Homebrew (https://brew.sh) if you don't have it
@@ -33,18 +33,20 @@ brew install node # Install Node.JS
   title="Linux/Ubuntu"
   style={{ padding: "1rem" }}
 >
-<h5>Install node.js on Linux/Ubuntu</h5>
+<h5>Install Node.js on Linux/Ubuntu</h5>
 
 ```bash
 # Install NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
-nvm install v12 # install v12 of node.js
-nvm use v12 # use v12 of node.js
+nvm install v12 # install v12 of Node.js
+nvm use v12 # use v12 of Node.js
 ```
 
 </Tab>
 </Tabs>
+
+<br />
 
 By default, Grouparoo will run from a [SQLite](https://www.sqlite.org/index.html) database and in-memory Redis, so no external dependencies are required. However, if you want to safely persists data between runs, you'll need to also install [Postgres](https://www.postgresql.org/) and [Redis](https://redis.io/).
 
