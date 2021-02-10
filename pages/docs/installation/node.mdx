@@ -46,7 +46,7 @@ nvm use v12 # use v12 of node.js
 </Tab>
 </Tabs>
 
-By default, Grouparoo will run from a SQLite database and in-memory Redis, so no external dependencies are required. However, if you want to safely persists data between runs, you'll need to also install Postgres and Redis.
+By default, Grouparoo will run from a [SQLite](https://www.sqlite.org/index.html) database and in-memory Redis, so no external dependencies are required. However, if you want to safely persists data between runs, you'll need to also install [Postgres](https://www.postgresql.org/) and [Redis](https://redis.io/).
 
 <!-- prettier-ignore -->
 <Tabs defaultActiveKey="MacOS">
@@ -85,7 +85,7 @@ sudo apt install postgresql postgresql-contrib # Install Postgres
 </Tabs>
 <br />
 
-Finally, create a Postgres database for Grouparoo to use with `createdb grouparoo_development`.
+Finally, create a Postgres database for Grouparoo to use with `createdb grouparoo_development` (this is not needed if you are using a SQLite database).
 
 ### Step 2: Generate `package.json` and `.env`
 
@@ -143,9 +143,9 @@ SERVER_TOKEN="a-random-string"
 ```
 
 > Grouparoo is configured via Environment variables.
-> Learn more about [the environment variables in use by Grouparoo](/docs/config/environment).
+> [Learn more about the environment variables in use by Grouparoo and see a full default configuration](/docs/config/environment).
 
-Only these 2 files (a `package.json` and environment variables) are needed to make an "app" for Grouparoo to run!
+_Only these 2 files (a `package.json` and environment variables) are needed to make an "app" for Grouparoo to run!_
 
 ### Step 3: Install New Dependencies
 
