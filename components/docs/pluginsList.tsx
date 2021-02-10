@@ -51,8 +51,8 @@ export default function PluginsList() {
       <thead>
         <tr>
           <th>Name</th>
+          <th>Version</th>
           <th>Description</th>
-          <th>Latest Version</th>
         </tr>
       </thead>
       <tbody>
@@ -70,8 +70,8 @@ export default function PluginsList() {
                   {plugin.name}
                 </a>
               </td>
-              <td>{plugin.description}</td>
               <td>{plugin.version}</td>
+              <td>{plugin.description}</td>
             </tr>
           ))
         )}
