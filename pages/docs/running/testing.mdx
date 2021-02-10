@@ -60,5 +60,5 @@ describe("snapshot", () => {
 
 ## Testing Notes
 
-- Unless you specify in your `package.json` or `jest.config.js`, You'll need to use magic comments to let Jest know that we are running a node.js app (`@jest-environment node`)
+- Unless you specify in your `package.json` or `jest.config.js`, You'll need to use magic comments to let Jest know that we are running a Node.js app (`@jest-environment node`)
 - You need to specify to grouparoo which database to use, server_token to use, etc. You can either define these directly in your test, as environment variable on your CI tool, or tell Grouparoo to load a `.env` file directly by setting `process.env.GROUPAROO_ENV_CONFIG_FILE`. With either of these methods, this needs to be done before requiring `@grouparoo/spec-helper`

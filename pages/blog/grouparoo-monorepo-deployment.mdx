@@ -2,7 +2,7 @@
 title: "Continuous Deployment for NPM Packages"
 date: "2020-05-07"
 author: "Evan Tahler"
-pullQuote: "Grouparoo leverages the node.js and NPM ecosystems to manage distribution to our customers. Our open-source software is distributed via the public via NPM"
+pullQuote: "Grouparoo leverages the Node.js and NPM ecosystems to manage distribution to our customers. Our open-source software is distributed via the public via NPM"
 image: "grouparoo-monorepo-deployment/grouparoo-release-process.png"
 tags: [engineering]
 ---
@@ -33,7 +33,7 @@ Our 4 major steps are:
 
 ## How do Customers get the Grouparoo Application?
 
-Grouparoo leverages the node.js and NPM ecosystems to manage distribution to our customers. Our open-source software is distributed via the public [NPM repository](https://www.npmjs.com/package/@grouparoo/core), and our paid plugins via NPM Enterprise. This means that all our customers need to do in order to obtain Grouparoo is create a `package.json` and keep it up to date ([more detail here](https://github.com/grouparoo/grouparoo/blob/master/documents/deployment/getting-started.md)).
+Grouparoo leverages the Node.js and NPM ecosystems to manage distribution to our customers. Our open-source software is distributed via the public [NPM repository](https://www.npmjs.com/package/@grouparoo/core), and our paid plugins via NPM Enterprise. This means that all our customers need to do in order to obtain Grouparoo is create a `package.json` and keep it up to date ([more detail here](https://github.com/grouparoo/grouparoo/blob/master/documents/deployment/getting-started.md)).
 
 ```json
 {
@@ -52,8 +52,8 @@ Grouparoo leverages the node.js and NPM ecosystems to manage distribution to our
   },
   "scripts": {
     "prepare": "cd node_modules/@grouparoo/core && npm run prepare",
-    "start": "cd node_modules/@grouparoo/core && ./api/bin/start",
-    "dev": "cd node_modules/@grouparoo/core && ./api/bin/dev"
+    "start": "cd node_modules/@grouparoo/core && ./bin/start",
+    "dev": "cd node_modules/@grouparoo/core && ./bin/dev"
   },
   "grouparoo": {
     "plugins": [

@@ -185,7 +185,7 @@
     },
     {
       "id": "grouparoo-release-note-2020-07-29-npx",
-      "content_html": "<p>We have provided an <a href=\"https://github.com/grouparoo/app-example\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">example Grouparoo app</a> for a while, but now we&#x27;ve made it easier to generate one of these with a simple command: <code>npx grouparoo generate</code></p><p>From <code>npx grouparoo --help</code></p><pre><code>Usage: grouparoo [options] [command]\n\nOptions:\n  -V, --version    output the version number\n  -h, --help       display help for command\n\nCommands:\n  generate [path]  generate a new Grouparoo project\n  upgrade [path]   upgrade an existing Grouparoo project\n  help [command]   display help for command\n</code></pre>",
+      "content_html": "<p>We have provided an <a href=\"https://github.com/grouparoo/app-example\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">example Grouparoo app</a> for a while, but now we&#x27;ve made it easier to generate one of these with a simple command: <code>npx grouparoo generate</code> (edit Feb 9, 2021: the command is now <code>grouparoo init</code>)</p><p>From <code>npx grouparoo --help</code></p><pre><code>Usage: grouparoo [options] [command]\n\nOptions:\n  -V, --version    output the version number\n  -h, --help       display help for command\n\nCommands:\n  generate [path]  generate a new Grouparoo project\n  upgrade [path]   upgrade an existing Grouparoo project\n  help [command]   display help for command\n</code></pre>",
       "url": "https://www.grouparoo.com/whats-new#2020-07-29-npx",
       "title": "Grouparoo Project Generator",
       "date_modified": "2020-07-29T00:00:00.000Z",

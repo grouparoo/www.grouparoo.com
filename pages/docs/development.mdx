@@ -11,20 +11,26 @@ Grouparoo relies on the contributions of many people just like you to create the
 
 ## Getting Started
 
-When developing Grouparoo, you'll be running code within the `monorepo`. This git repository is the Grouparoo Monorepo, and contains a number of related bu separate projects. There are `Apps`, `CLI`, `Core`, `Plugins`, along with a number of tools and utilities. We use [`pnpm`](https://pnpm.js.org) to install packages to allow us to run and test all of these packages together without needing to publish them to NPM. We use [`lerna`](https://github.com/lerna/lerna) to publish packages.
+When developing Grouparoo, you'll be running code within the [`grouparoo monorepo`](https://github.com/grouparoo/grouparoo). This git repository contains a number of related bu separate projects. There are `Apps`, `CLI`, `Core`, `Plugins`, along with a number of tools and utilities. We use [`pnpm`](https://pnpm.js.org) to install packages to allow us to run and test all of these packages together without needing to publish them to NPM. We use [`lerna`](https://github.com/lerna/lerna) to publish packages.
 
 - **Apps**: These are example applications like a Grouparoo customer would run - they require `@grouparoo/core` and any number of plugins and may have toggled certain settings
-- **Core**: The `@grouparoo/core` project is the main part of any Grouparoo application and includes the API (both web and workers), along with the Grouparoo administration website
-- **CLI**: The Grouparoo CLI tool, ie: `npx grouparoo generate`
+- **Core**: The `@grouparoo/core` project is the main part of any Grouparoo application and includes the API (both web and workers).
+- **CLI**: The Grouparoo CLI tool, ie: `npx grouparoo init`
 - **Plugins**: There are opt-in add-ons for Grouparoo customers, and contain the logic to connect to new sources & destinations, or otherwise add new functionality to Grouparoo.
+- **UI**: The grouparoo UI plugins, `ui-community` and `ui-enterprise` and shared component libraries.
 
 ### Running the Monorepo
 
-_Click to expand the instructions for your operating system_
+See below for the installation guide for your operating system.
 
-<details>
-  <summary><strong>MacOS</strong></summary>
-  <p>
+<!-- prettier-ignore -->
+<Tabs defaultActiveKey="MacOS">
+<Tab
+  key="MacOS"
+  eventKey="MacOS"
+  title="MacOS"
+  style={{ padding: "1rem" }}
+>
 
 ```bash
 # Install NVM to manage node versions
@@ -35,7 +41,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 # From: https://brew.sh/
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# Install node.js v12
+# Install Node.js v12
 nvm install v12
 
 # Depending on your shell (bash, zsh, etc) you may need to ensure that nvm is loaded into your environment via .bashrc, .bash_profile, etc
@@ -56,9 +62,9 @@ cd grouparoo
 # Install dependencies
 pnpm install
 
-# Configure your local environment variables in .env to be able to run the "staging-public" app
-cp apps/staging-public/.env.example apps/staging-public/.env
-open apps/staging-public/.env
+# Configure your local environment variables in .env to be able to run the "staging-enterprise" app
+cp apps/staging-enterprise/.env.example apps/staging-enterprise/.env
+open apps/staging-enterprise/.env
 
 # Create your local development database (Postgres)
 createdb "grouparoo_development"
@@ -67,48 +73,25 @@ createdb "grouparoo_development"
 CREATE DATABASE grouparoo_development;
 GRANT ALL PRIVILEGES ON DATABASE grouparoo_development TO postgres;
 
-# Run the staging-public app example project
-cd apps/staging-public # If you aren't already here
+# Run the staging-enterprise app example project
+cd apps/staging-enterprise # If you aren't already here
 npm run dev
 ```
 
-  </p>
-</details>
-
-<details>
-  <summary>
-    <strong>Windows</strong>
-  </summary>
-  <p>
-
-```bash
-#TODO
-```
-
-  </p>
-</details>
-
-<details>
-  <summary>
-    <strong>Linux</strong>
-  </summary>
-  <p>
+</Tab>
+<Tab
+  key="Linux/Ubuntu"
+  eventKey="Linux/Ubuntu"
+  title="Linux/Ubuntu"
+  style={{ padding: "1rem" }}
+>
 
 ```bash
 # Install NVM to manage node versions
-To download the nvm installation script from the project’s GitHub page, you can use curl. Note that the version number may differ from what is highlighted here:
+# From: https://github.com/nvm-sh/nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
-curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh -o install_nvm.sh
-
-Inspect the installation script with nano:
-
-nano install_nvm.sh
-
-Run the script with bash:
-
-bash install_nvm.sh
-
-# Install node.js v12
+# Install Node.js v12
 nvm install v12
 
 # Install & run postgresql (v9.x)
@@ -138,9 +121,9 @@ cd grouparoo
 # Install dependencies with pnpm (If you don't have pnpm, install it via "npm i -g pnpm")
 pnpm install
 
-# Configure your local environment variables in .env to be able to run the "staging-public" app
-cp apps/staging-public/.env.example apps/staging-public/.env
-open apps/staging-public/.env
+# Configure your local environment variables in .env to be able to run the "staging-enterprise" app
+cp apps/staging-enterprise/.env.example apps/staging-enterprise/.env
+open apps/staging-enterprise/.env
 
 # Create your local development database (Postgres)
 createdb "grouparoo_development"
@@ -149,13 +132,25 @@ createdb "grouparoo_development"
 CREATE DATABASE grouparoo_development;
 GRANT ALL PRIVILEGES ON DATABASE grouparoo_development TO postgres;
 
-# Run the staging-public app example project
-cd apps/staging-public # If you aren't already here
+# Run the staging-enterprise app example project
+cd apps/staging-enterprise # If you aren't already here
 npm run dev
 ```
 
-  </p>
-</details>
+</Tab>
+<Tab
+  key="Windows"
+  eventKey="Windows"
+  title="Windows"
+  style={{ padding: "1rem" }}
+>
+
+```bash
+# TODO
+```
+
+</Tab>
+</Tabs>
 
 ## Typescript
 
@@ -164,6 +159,10 @@ Grouparoo is written in [Typescript](https://www.typescriptlang.org/), which mea
 If you are developing a plugin, you will need to `npm run prepare` it before seeing your changes. In many cases, the `prepare` step only calls out to `tsc`, and in these cases, you may be able to `tsc --watch` to automatically source changes and rebuild your plugin.
 
 Grouparoo self-documents its Typescript interface to [docs.grouparoo.com](https://docs.grouparoo.com) via [Typedoc](https://typedoc.org/). The docs from the `master` branch are automatically published to this site. If you want to read the docs for an older version of Grouparoo or a different branch, you can generate the docs locally by running `cd core && npm run docs` in this repository.
+
+## Architecture
+
+Learn about the Grouparoo architecture and models from the other pages in this documentation section.
 
 ## Dependencies
 
@@ -198,7 +197,7 @@ You will need `chromedriver` installed to run the automated browser tests:
 
 ```shell
 # Create and populate test databases
-./core/api/bin/create-test-databases
+./core/bin/create-test-databases
 npm test # I will also run the build and lint commands
 ```
 
@@ -210,7 +209,7 @@ A note on chromedriver for OSX Users: As Chrome updates, you may need to `brew c
 
 ## Deploying the Example Server
 
-On your servers:
+On the server:
 
 1. Ensure you have the proper environment variables set
 2. Run `pnpm install` at the root of this project, which will run the build steps too

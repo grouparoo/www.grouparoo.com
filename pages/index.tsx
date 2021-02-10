@@ -143,9 +143,9 @@ export default function IndexPage() {
                 icon="npm"
                 code={
                   <>
-                    {`>`} npx grouparoo generate
+                    {`$`} npx grouparoo init .
                     <br />
-                    {`>`} npm start
+                    {`$`} npm start
                   </>
                 }
               />
@@ -160,10 +160,10 @@ export default function IndexPage() {
                 icon="docker"
                 code={
                   <>
-                    {`>`} curl -L https://www.grouparoo.com/docker-compose
+                    {`$`} curl -L https://www.grouparoo.com/docker-compose
                     --output docker-compose.yml
                     <br />
-                    {`>`} docker-compose up
+                    {`$`} docker-compose up
                   </>
                 }
               />

@@ -18,11 +18,12 @@ See [this pull request](https://github.com/grouparoo/app-example/pull/103/files)
 
 1. Install the latest version of the grouparoo command line tool: `npm install -g grouparoo`
 2. Remove any references to `@grouparoo/email-authentication`. This package has been removed and is no longer needed.
-3. `grouparoo install @grouparoo/ui-community` and `npm uninstall @grouparoo/ui` to add the Grouparoo UI and remove the old version.
-   - Also remove `@grouparoo/ui` from `grouparoo.plugins` within your `package.json` file.
-4. Remove the `prepare` step from `scripts` inside your `package.json`. This step is no longer needed and will speed up your install process.
+3. Update all the package version numbers to the latest version, ie `"@grouparoo/core": "0.2.0"` and then `npm install --legacy-peer-deps` to install the latest versions.
+   - There are tools like [`npm-check-updates`](https://www.npmjs.com/package/npm-check-updates) which can do this for you automatically, ie: `npx npm-check-updates --upgrade && npm install --legacy-peer-deps`
+4. To add the Grouparoo UI, run `grouparoo install @grouparoo/ui-community`
+5. Remove the `prepare` step from `scripts` inside your `package.json`. This step is no longer needed and will speed up your install process.
    - Check the rest of your build process and remove all instances of `npm run prepare` that you might have, i.e. in a `Dockerfile`.
-5. Change the paths for your `start` and `dev` scripts to remove the `/api` path per the example below.
+6. Change the paths for your `start` and `dev` scripts to remove the `/api` path per the example below.
 
    - If you are using Docker or another runner to start your apps, you may also need to make a similar change.
    - In a Dockerfile, you might change `CMD ["./api/bin/start"]` to `CMD ["./bin/start"]`
@@ -39,9 +40,9 @@ The changes, in entirety, to your `package.json` will look similar to this:
 <Image
   thumbnail
   src="support/upgrading-grouparoo/v0.2-upgrade-package.png"
-  alt="People working together on a computer"
+  alt="Example diff of an upgraded application"
   width={731}
   height={500}
 />
 
-Now you can install the updated dependencies (`grouparoo install`) and run your Grouparoo application (`grouparoo start`)!
+Now you can run your Grouparoo application (`grouparoo start`)!
