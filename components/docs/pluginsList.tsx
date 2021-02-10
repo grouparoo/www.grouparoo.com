@@ -46,8 +46,6 @@ export default function PluginsList() {
     setPlugins(packages);
   }
 
-  console.log({ loading });
-
   return (
     <Table size="sm" striped bordered hover style={{ fontSize: "14px" }}>
       <thead>
