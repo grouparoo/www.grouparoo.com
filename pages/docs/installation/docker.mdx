@@ -18,7 +18,7 @@ Create a new git repository on your local machine. Note the following:
 
 ### Step 2: Build your Dockerfile
 
-Include a `Dockerfile` which is similar the to the below. We are building a single `Dockerfile` which can be used in multiple modes. For example, the image can be run as a background task worker (`WEB_SERVER=false`, `WORKERS=10`) or web server (`WEB_SERVER=true`, `WORKERS=0`). These settings are controlled by Environment Variables. The default environment variables set here are expected to be overridden by your runtime environment (Swarm, Kubernetes, etc).
+Include a `Dockerfile` which is similar the to the below. We are building a single `Dockerfile` which can be used in multiple modes. For example, the image can be run as a background task worker (`WEB_SERVER=false`, `WORKERS=10`) or web server (`WEB_SERVER=true`, `WORKERS=0`). These settings are controlled by environment variables. The default environment variables set here are expected to be overridden by your runtime environment (Swarm, Kubernetes, etc).
 
 ```bash
 # Dockerfile

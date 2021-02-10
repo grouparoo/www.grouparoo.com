@@ -1,5 +1,5 @@
 ---
-title: "Local Node.js Installation"
+title: "Node.js Installation"
 date: "2021-02-08"
 section: "deployment"
 pullQuote: "This guide will help you run the Grouparoo application on your local machine using Node.js."
@@ -9,46 +9,91 @@ This guide will help you run the Grouparoo application on your local machine usi
 
 ### Step 1: Install Runtime and Databases
 
-Grouparoo is a [node.js](https://nodejs.org/) application and requires Node.js version 12 or higher. You can download Node.js from their [website](https://nodejs.org/) or through the package manager for your operating system. The same is true for Postgres and Redis.
+Grouparoo is a [node.js](https://nodejs.org/) application and requires Node.js version 12 or higher. You can download Node.js from their [website](https://nodejs.org/) or through the package manager for your operating system.
 
-We also need to create a database within Postgres for Grouparoo to use. Let's use one called `grouparoo_development`.
-
-**On OSX**:
+<!-- prettier-ignore -->
+<Tabs defaultActiveKey="MacOS">
+<Tab
+  key="MacOS"
+  eventKey="MacOS"
+  title="MacOS"
+  style={{ padding: "1rem" }}
+>
+<h5>Install node.js on MacOS</h5>
 
 ```bash
 # Install Homebrew (https://brew.sh) if you don't have it
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
 brew install node # Install Node.JS
+```
 
+</Tab>
+<Tab
+  key="Linux/Ubuntu"
+  eventKey="Linux/Ubuntu"
+  title="Linux/Ubuntu"
+  style={{ padding: "1rem" }}
+>
+<h5>Install node.js on Linux/Ubuntu</h5>
+
+```bash
+# Install NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+nvm install v12 # install v12 of node.js
+nvm use v12 # use v12 of node.js
+```
+
+</Tab>
+</Tabs>
+
+By default, Grouparoo will run from a SQLite database and in-memory Redis, so no external dependencies are required. However, if you want to safely persists data between runs, you'll need to also install Postgres and Redis.
+
+<!-- prettier-ignore -->
+<Tabs defaultActiveKey="MacOS">
+<Tab
+  key="MacOS"
+  eventKey="MacOS"
+  title="MacOS"
+  style={{ padding: "1rem" }}
+>
+<h5>Install Postgres and Redis on MacOS</h5>
+
+```bash
 brew install redis # Install Redis
 brew services start redis # Start Redis
 
 brew install postgresql # Install Postgres
 brew services start postgresql # Start Postgres
-createdb grouparoo_development # Create a database for Grouparoo
 ```
 
-**On Linux/Ubuntu**:
+</Tab>
+<Tab
+  key="Linux/Ubuntu"
+  eventKey="Linux/Ubuntu"
+  title="Linux/Ubuntu"
+  style={{ padding: "1rem" }}
+>
+<h5>Install Postgres and Redis on Linux/Ubuntu</h5>
 
 ```bash
-# Install NVM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-nvm install v12 # install v12 of node.js
-nvm use v12 # use v12 of node.js
-
 sudo apt install redis-server # Install Redis
 
 sudo apt install postgresql postgresql-contrib # Install Postgres
-createdb grouparoo_development # Create a database for Grouparoo
 ```
+
+</Tab>
+</Tabs>
+<br />
+
+Finally, create a Postgres database for Grouparoo to use with `createdb grouparoo_development`.
 
 ### Step 2: Generate `package.json` and `.env`
 
 In a new directory, run the following command to initialize a new Grouparoo application and install dependencies:
 
 ```bash
-npx grouparoo init .
+npm install -g grouparoo # Install the Grouparoo command line tool
+grouparoo init . # Initialize a new Grouparoo project
 ```
 
 This will create a `package.json` and `.env` files like these:
@@ -82,7 +127,7 @@ This will create a `package.json` and `.env` files like these:
 }
 ```
 
-There are some environment variables needed by Grouparoo that need to be set by your host/docker image. These variables tell Grouparoo how to connect to your database, which URL to use, etc. In development, we can also load these variables from a `.env` file that lives alongside your `package.json`. At minimum, you will need to set the following variables:
+Grouparoo is configured by environment variables. These environment variables tell Grouparoo how to connect to your database, which URL to use, etc. In development, we can also load these variables from a `.env` file that lives alongside your `package.json`. At minimum, you will need to set the following variables:
 
 **`.env`**
 
@@ -97,21 +142,19 @@ DATABASE_URL="postgresql://localhost:5432/grouparoo_development"
 SERVER_TOKEN="a-random-string"
 ```
 
-> Grouparoo is primarily configured via Environment variables.
+> Grouparoo is configured via Environment variables.
 > Learn more about [the environment variables in use by Grouparoo](/docs/config/environment).
 
-`npm install` will not succeed without these environment variables being set.
+Only these 2 files (a `package.json` and environment variables) are needed to make an "app" for Grouparoo to run!
 
-Only these 2 files are needed to make an "app" for Grouparoo to run. There is an example in the [app-example](https://github.com/grouparoo/app-example/blob/master/package.json) directory.
+### Step 3: Install New Dependencies
 
-### Step 3: Install Dependencies
-
-Run `npm install` to install dependencies. This will also run `npm prepare` which will compile the typescript application and build the web components. `npx grouparoo init` will do this automatically for you.
+Run `grouparoo install [plugin]` to install new plugins you may want.
 
 If you are having trouble installing dependencies, and you are using NPM v7 or later, please see [this discussion for help](https://github.com/grouparoo/grouparoo/discussions/1270)
 
 ### Step 4: Configure & Run!
 
-Now you're ready to run the application. You can test to make sure running `npm start` starts the server. You should then be able to visit `http://localhost:3000`. _Note that starting the Grouparoo application will also migrate your database and generally configure things as-needed._
+Now you're ready to run the application! You can do so via `grouparoo start` or `npm start` to start the server. You should then be able to visit `http://localhost:3000` (with 3000 being the value for `$PORT` from `.env`). Note that starting the Grouparoo application will also migrate your database and generally configure things as-needed.
 
 If everything looks good, it's time to get your application configured! Head over to the [Configuration Guides](/docs/config).
