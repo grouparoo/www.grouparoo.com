@@ -187,21 +187,45 @@ Grouparoo Core:
 
 All dependencies Grouparoo uses must be licensed under a non-viral open-source licence that allows for commercial use. We audit every dependency in every sub-project of this monorepo via [license-checker](https://www.npmjs.com/package/license-checker). The list of licenses we accept can be found [here](https://github.com/grouparoo/grouparoo/blob/master/tools/license-checker/check).
 
+## Populating Demo Data
+
+The `@grouparoo/demo` plugin makes it easy to generate sample data!  You can use the `staging-community` app to try things out:
+
+```bash
+cd apps/staging-community
+# populate the system with 1000 profiles, properties, 1000 purchases, groups, and some events
+(npx) grouparoo demo-data-purchases
+
+# including the --scale param allows you to control how many profiles you make. e.g. --scale 10 makes 10,000 extra profiles.
+(npx) grouparoo demo-data-purchases --scale 10
+
+# populate the system with events
+(npx) grouparoo demo-event-stream
+```
+
 ## Testing
 
-You will need `chromedriver` installed to run the automated browser tests:
+Grouparoo uses [Jest](https://jestjs.io/) as our testing framework. To run tests, first make sure you've installed all dependencies in the root of the project.
+
+```bash
+cd ../
+pnpm install # we use pnpm to manage the monorepo
+```
+
+You will need `chromedriver` installed to run the automated browser tests as well:
 
 - OSX: `brew cask install chromedriver`
 - Windows: TODO
 - Linux: TODO
 
-```shell
-# Create and populate test databases
-./core/bin/create-test-databases
-npm test # I will also run the build and lint commands
+Next, create the test databases:
+
+```bash
+cd core
+./bin/create_test_database
 ```
 
-Running `npm test` from the top-level of this monorepo will run the `npm test` command in every sub-package of the monorepo via pnpm. You can also test an individual package by entering that directory and running `npm test`.
+Running `npm test` from the top-level of this monorepo will run the `npm test` command in every sub-package of the monorepo via pnpm. You can also test an individual package by entering that directory and running `npm test`.  If you want to run a single test file you can `./node_modules/.bin/jest /path/to/test` and you can watch files with jest's `--watch` flag.
 
 Jest will automatically test the latest version of your typescript files, and you do not need to compile your code to test. However, the test suite should test the compile step as well. We usually run `npm run prepare` as a `pretest` NPM hook.
 
