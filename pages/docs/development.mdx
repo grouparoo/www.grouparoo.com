@@ -189,7 +189,7 @@ All dependencies Grouparoo uses must be licensed under a non-viral open-source l
 
 ## Populating Demo Data
 
-The `@grouparoo/demo` plugin makes it easy to generate sample data!  You can use the `staging-community` app to try things out:
+The `@grouparoo/demo` plugin makes it easy to generate sample data! You can use the `staging-community` app to try things out:
 
 ```bash
 cd apps/staging-community
@@ -208,7 +208,6 @@ cd apps/staging-community
 Grouparoo uses [Jest](https://jestjs.io/) as our testing framework. To run tests, first make sure you've installed all dependencies in the root of the project.
 
 ```bash
-cd ../
 pnpm install # we use pnpm to manage the monorepo
 ```
 
@@ -222,10 +221,10 @@ Next, create the test databases:
 
 ```bash
 cd core
-./bin/create_test_database
+./bin/create_test_databases
 ```
 
-Running `npm test` from the top-level of this monorepo will run the `npm test` command in every sub-package of the monorepo via pnpm. You can also test an individual package by entering that directory and running `npm test`.  If you want to run a single test file you can `./node_modules/.bin/jest /path/to/test` and you can watch files with jest's `--watch` flag.
+Running `npm test` from the top-level of this monorepo will run the `npm test` command in every sub-package of the monorepo via pnpm. You can also test an individual package by entering that directory and running `npm test`. If you want to run a single test file you can `./node_modules/.bin/jest /path/to/test` and you can watch files with jest's `--watch` flag.
 
 Jest will automatically test the latest version of your typescript files, and you do not need to compile your code to test. However, the test suite should test the compile step as well. We usually run `npm run prepare` as a `pretest` NPM hook.
 
