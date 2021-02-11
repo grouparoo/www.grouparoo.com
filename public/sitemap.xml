@@ -177,6 +177,8 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/code-config</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/config/settings</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/ui-config</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/deployment/aws-and-k8s</loc><changefreq
