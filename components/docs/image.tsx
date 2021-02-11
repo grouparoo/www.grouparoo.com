@@ -16,5 +16,5 @@ export default function DocImage(props: DocImageProps) {
     imageProps.src = `/images/${src}`;
   }
 
-  return <Image {...imageProps} />;
+  return <Image className="mb-4" {...imageProps} />;
 }
