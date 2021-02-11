@@ -5,4 +5,86 @@ pullQuote: "Now that you've added an App, your first step is to create a Source.
 breadcrumb_label: "Community Guide"
 ---
 
-...
+<Alert variant="primary">
+  <p className="mb-0">
+    This guide is covers configuration with Grouparoo's Code Config, which is
+    the recommended way to configure your application. If you have{" "}
+    <a href="/meet">purchased the Enterprise Edition</a>, you may wish to
+    <a href="/docs/config/sources/enterprise">
+      use the Enterprise Sources Guide
+    </a> instead.
+  </p>
+</Alert>
+
+<Alert variant="warning">
+  <p className="mb-0">
+    This guide assumes that you've already{" "}
+    <a href="/docs/config/apps/community">added an App</a>.
+  </p>
+</Alert>
+
+Now that you've added an App ([see here if you haven't](/docs/config/apps/community)), your next step is to create a Source. A Source is a definition for how you pull data from an App into Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+
+## Generating a New Source
+
+To generate a new Source for your Grouparoo application, run [the `generate` command](/docs/cli/config#generate).
+
+For example, let's say you have configured a Postgres App with the ID `data_warehouse`. You can generate a new Postgres Source (from a table in the database) like this:
+
+    grouparoo generate postgres:table:source users
+
+Note here that `users` is the ID for the Source. An ID is always required when generating a config object.
+
+This command will generate a file in your application directory at `config/sources/users.js`. See below for more information about this file.
+
+### List of Available Source Types
+
+Postgres is just one _type_ of Source you can create. To see a full list of available types, use the `--list` option, filtered by "source":
+
+    grouparoo generate source --list
+
+This will give you something like the following:
+
+    bigquery:query:source (id) - Config for a bigquery Query Source. Work with multiple tables and build custom queries for its properties.
+    bigquery:table:source (id) - Config for a bigquery Table Source. Construct properties from the data in the table without writing SQL.
+    csv:source (id) - Config for a CSV Source
+    events:source (id) - Config for a Grouparoo Source based on an Events App
+    google-sheets:source (id) - Config for a Google Sheets Source
+    mailchimp:source (id) - Config for a Mailchimp Source
+    manual:source (id) - Config for a Grouparoo Source based on a Manual App
+    mysql:query:source (id) - Config for a mysql Query Source. Work with multiple tables and build custom queries for its properties.
+    mysql:table:source (id) - Config for a mysql Table Source. Construct properties from the data in the table without writing SQL.
+    postgres:query:source (id) - Config for a postgres Query Source. Work with multiple tables and build custom queries for its properties.
+    postgres:table:source (id) - Config for a postgres Table Source. Construct properties from the data in the table without writing SQL.
+    redshift:query:source (id) - Config for a redshift Query Source. Work with multiple tables and build custom queries for its properties.
+    redshift:table:source (id) - Config for a redshift Table Source. Construct properties from the data in the table without writing SQL.
+    snowflake:query:source (id) - Config for a snowflake Query Source. Work with multiple tables and build custom queries for its properties.
+    snowflake:table:source (id) - Config for a snowflake Table Source. Construct properties from the data in the table without writing SQL.
+
+### Installing New Source Types
+
+The list of available Source types is driven by the set of plugins you've installed. If you installed your Grouparoo application using [the `init` command](/docs/cli/setup#init), you'll have a default set of plugins already installed.
+
+You can see the current list of installed plugins in your `package.json` file, in the `grouparoo.plugins` section.
+
+To install a new plugin, use [the `install` command](/docs/cli/setup#install). For a complete list of plugins, [see the Plugins doc](/docs/installation/plugins).
+
+## Configuring Your Source
+
+The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/apps` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess.
+
+Note that the `appId` setting is where you would use the ID from the App you created (e.g. `data_warehouse`).
+
+The best practice when configuring an Source is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Source.
+
+## Validating & Applying Your Config
+
+You can validate your config at any time using [the `validate` command](/docs/cli/config#validate):
+
+    grouparoo validate
+
+And you can apply that config (save it to your Grouparoo application's database) using [the `apply` command](/docs/cli/config#apply):
+
+    grouparoo apply
+
+Note that `apply` will run `validate`, but it's recommended to run `validate` on its own first, just to be safe.
