@@ -51,10 +51,6 @@ const DocsNav: NavItem[] = [
         title: "Destinations",
         path: "/docs/config/destinations",
       },
-      {
-        title: "Settings",
-        path: "/docs/config/settings",
-      },
     ],
   },
 
@@ -63,6 +59,10 @@ const DocsNav: NavItem[] = [
     title: "Step 3: Run",
     path: "/docs/running",
     children: [
+      {
+        title: "Settings",
+        path: "/docs/running/settings",
+      },
       {
         title: "Testing",
         path: "/docs/running/testing",
