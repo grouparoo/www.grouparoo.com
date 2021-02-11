@@ -5,4 +5,61 @@ pullQuote: "Now that you've created Profiles and Profile Properties, the next st
 breadcrumb_label: "Community Guide"
 ---
 
-...
+<Alert variant="primary">
+  <p className="mb-0">
+    This guide is covers configuration with Grouparoo's Code Config, which is
+    the recommended way to configure your application. If you have{" "}
+    <a href="/meet">purchased the Enterprise Edition</a>, you may wish to
+    <a href="/docs/config/groups/enterprise">
+      use the Enterprise Groups Guide
+    </a> instead.
+  </p>
+</Alert>
+
+Once you have an App, Source, and Properties ([start with an App](/docs/config/apps/enterprise) if you don't have any), then you're ready to define your Groups.
+
+Groups are where the magic happens in Grouparoo. (It's in the name, after all!) Groups are a segment or cohort of Profiles. They are useful in that you can use Groups to target a specific set of users to [export to some Destination](/docs/config/destinations/enterprise). You can have _Calculated Groups_ and _Manual Groups_. [See here](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+
+## Generating a Calculated Group
+
+To generate a new Calculated Group for your Grouparoo application, run [the `generate` command](/docs/cli/config#generate).
+
+    grouparoo generate group:calculated all_emails
+
+Note here that `all_emails` is the ID for the Group. An ID is always required when generating a config object.
+
+This command will generate a file in your application directory at `config/groups/all_emails.js`. See below for more information about this file.
+
+## Configuring Your Calculated Group
+
+Configuring a Calculated Group is all about adding Rules to the group. A Rule is some logical operator to filter Properties. A profile must match every Rule to be included in the Group.
+
+Available operations depends on both the _type_ of Property and the underlying Grouparoo database (SQLite vs. Postgres). See below for a list of rules. (If in doubt, choose Postgres.)
+
+<RuleOpsTable />
+
+Add your list of Rules to the `rules` array in the generated config file. You may also change any of the other default values, as necessary.
+
+## Adding Manual Groups
+
+While a great deal of the value of Grouparoo comes from our Calculated Groups, Manual Groups are still valuable in certain circumstances. Manual Groups are Groups of profiles where you manually add or remove Profiles from the Group.
+
+To generate a new Manual Group for your Grouparoo application, run [the `generate` command](/docs/cli/config#generate).
+
+    grouparoo generate group:manual my_custom_group
+
+Note here that `my_custom_group` is the ID for the Group. An ID is always required when generating a config object.
+
+This command will generate a file in your application directory at `config/groups/my_custom_group.js`. You can change the `name` and `id` properties in this file.
+
+## Validating & Applying Your Config
+
+You can validate your config at any time using [the `validate` command](/docs/cli/config#validate):
+
+    grouparoo validate
+
+And you can apply that config (save it to your Grouparoo application's database) using [the `apply` command](/docs/cli/config#apply):
+
+    grouparoo apply
+
+Note that `apply` will run `validate`, but it's recommended to run `validate` on its own first, just to be safe.
