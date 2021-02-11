@@ -43,7 +43,7 @@ To install a paid plugin, you will need to authenticate to the npm registry to d
 Create a new `.npmrc` file in your Grouparoo project. This can be checked into your project and Docker images if kept private. The contents of the file will look like:
 
 ```bash
-//registry.npmjs.org/:_authToken=${NPM_TOKEN}
+//registry.npmjs.org/:_authToken=NPM_TOKEN
 # ie: //registry.npmjs.org/:_authToken=abc123
 ```
 
@@ -90,6 +90,8 @@ The closed-source `@grouparoo/ui-enterprise` edition is everything a company nee
     </tr>
   </tbody>
 </table>
+
+Note: Please ensure that you are only have one version of the `@grouparoo/ui-*` plugins installed, not both. 
 
 ## Creating your own Plugins
 
