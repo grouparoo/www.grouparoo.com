@@ -1,7 +1,93 @@
 ---
-title: "Apps"
-date: "2021-02-09"
+title: "Apps (Community)"
+date: "2021-02-11"
 pullQuote: "Apps are how Grouparoo can connect to any number of different tools such as your databases, data warehouses, and other 3rd party tools."
+breadcrumb_label: "Community Guide"
 ---
 
-...
+<Alert variant="primary">
+  <p className="mb-0">
+    This guide is covers configuration with Grouparoo's Code Config, which is
+    the recommended way to configure your application. If you have{" "}
+    <a href="/meet">purchased the Enterprise Edition</a>, you may wish to
+    <a href="/docs/config/apps/enterprise">
+      use the Enterprise Apps Guide
+    </a> instead.
+  </p>
+</Alert>
+
+<Alert variant="warning">
+  <p className="mb-0">
+    This guide assumes that you've{" "}
+    <a href="/docs/cli">installed the Grouparoo CLI</a> and used the CLI to{" "}
+    <a href="/docs/installation">
+      initialized the Grouparoo application locally
+    </a>
+    .
+  </p>
+</Alert>
+
+Apps are typically the first types of objects that you will create. They help Grouparoo
+connect to a number of different tools, such as your databases, data warehouses,
+and other third-party tools. [See this doc](/docs/getting-started/product-concepts)
+to learn more about the core concepts in Grouparoo.
+
+## Generating a New App
+
+To generate a new App for your Grouparoo application, run [the `generate` command](/docs/cli/config#generate).
+
+For example, let's say you have a Postgres data warehouse containing your customer data. You can generate a new app like this:
+
+    grouparoo generate postgres:app data_warehouse
+
+Note here that `data_warehouse` is the ID for the application. An ID is always required when generating a config object.
+
+This command will generate a file in your application directory at `config/apps/data_warehouse.js`. See below for more information about this file.
+
+### List of Available App Types
+
+Postgres is just one _type_ of App you can create. To see a full list of available types, use the `--list` option, filtered by "app":
+
+    grouparoo generate app --list
+
+This will give you something like the following:
+
+    bigquery:app (id) - Config for a Grouparoo bigquery App
+    csv:app (id) - Config for a CSV App
+    events:app (id) - Config for a Grouparoo App based on Events
+    google-sheets:app (id) - Config for a Google Sheets App
+    hubspot:app (id) - Config for a Grouparoo hubspot App
+    mailchimp:app (id) - Config for a Mailchimp App
+    manual:app (id) - Config for a Grouparoo App with manual property values
+    mysql:app (id) - Config for a Grouparoo mysql App
+    postgres:app (id) - Config for a Grouparoo postgres App
+    redshift:app (id) - Config for a Grouparoo redshift App
+    salesforce:app (id) - Config for a Grouparoo salesforce App
+    snowflake:app (id) - Config for a Grouparoo snowflake App
+    zendesk:app (id) - Config for a Grouparoo zendesk App
+
+### Installing New App Types
+
+The list of available App types is driven by the set of plugins you've installed. If you installed your Grouparoo application using [the `init` command](/docs/cli/setup#init), you'll have a default set of plugins already installed.
+
+You can see the current list of installed plugins in your `package.json` file, in the `grouparoo.plugins` section.
+
+To install a new plugin, use [the `install` command](/docs/cli/setup#install). For a complete list of plugins, [see the Plugins doc](/docs/installation/plugins).
+
+## Configuring Your App
+
+The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/apps` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess.
+
+The best practice when configuring an App is to read the comments, keys, and values within the generated file and fill in the appropriate values for your App.
+
+## Validating & Applying Your Config
+
+You can validate your config at any time using [the `validate` command](/docs/cli/config#validate):
+
+    grouparoo validate
+
+And you can apply that config (save it to your Grouparoo application's database) using [the `apply` command](/docs/cli/config#apply):
+
+    grouparoo apply
+
+Note that `apply` will run `validate`, but it's recommended to run `validate` on its own first, just to be safe.
