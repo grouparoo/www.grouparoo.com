@@ -42,15 +42,10 @@ const DocsNav: NavItem[] = [
       { title: "UI Config", path: "/docs/config/ui-config" },
       { title: "Apps", path: "/docs/config/apps" },
       { title: "Sources", path: "/docs/config/sources" },
-      {
-        title: "Properties",
-        path: "/docs/config/properties",
-      },
+      { title: "Properties", path: "/docs/config/properties" },
       { title: "Groups", path: "/docs/config/groups" },
-      {
-        title: "Destinations",
-        path: "/docs/config/destinations",
-      },
+      { title: "Destinations", path: "/docs/config/destinations" },
+      { title: "Settings", path: "/docs/config/settings" },
     ],
   },
 
@@ -58,16 +53,7 @@ const DocsNav: NavItem[] = [
   {
     title: "Step 3: Run",
     path: "/docs/running",
-    children: [
-      {
-        title: "Settings",
-        path: "/docs/running/settings",
-      },
-      {
-        title: "Testing",
-        path: "/docs/running/testing",
-      },
-    ],
+    children: [{ title: "Testing", path: "/docs/running/testing" }],
   },
 
   // -- 04: Deploy --
@@ -131,15 +117,8 @@ const DocsNav: NavItem[] = [
         path: "https://github.com/grouparoo/grouparoo/discussions",
         target: "_blank",
       },
-      {
-        title: "What's New",
-        path: "/whats-new",
-      },
-      {
-        title: "Roadmap",
-        path: "/roadmap",
-        target: "_blank",
-      },
+      { title: "What's New", path: "/whats-new" },
+      { title: "Roadmap", path: "/roadmap", target: "_blank" },
     ],
   },
 
