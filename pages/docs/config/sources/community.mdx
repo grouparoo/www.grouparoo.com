@@ -61,17 +61,9 @@ This will give you something like the following:
     snowflake:query:source (id) - Config for a snowflake Query Source. Work with multiple tables and build custom queries for its properties.
     snowflake:table:source (id) - Config for a snowflake Table Source. Construct properties from the data in the table without writing SQL.
 
-### Installing New Source Types
-
-The list of available Source types is driven by the set of plugins you've installed. If you installed your Grouparoo application using [the `init` command](/docs/cli/setup#init), you'll have a default set of plugins already installed.
-
-You can see the current list of installed plugins in your `package.json` file, in the `grouparoo.plugins` section.
-
-To install a new plugin, use [the `install` command](/docs/cli/setup#install). For a complete list of plugins, [see the Plugins doc](/docs/installation/plugins).
-
 ## Configuring Your Source
 
-The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/apps` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess.
+The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/sources` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess.
 
 Note that the `appId` setting is where you would use the ID from the App you created (e.g. `data_warehouse`).
 
