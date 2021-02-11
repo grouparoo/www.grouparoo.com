@@ -1,10 +1,25 @@
 ---
 title: "Properties (Enterprise)"
-date: "2020-08-01"
+date: "2021-02-11"
 pullQuote: "Learn how to configure Properties in Grouparoo's Enterprise Edition."
 ---
 
-Now that you have a Source or some Sources ([how to add a Source](/docs/config/sources)), you can start to define Profile Properties. [Profile Properties](/docs/getting-started/product-concepts) are data values associated to the Profiles you have in Grouparoo.
+<Alert variant="primary">
+  <p className="mb-0">
+    This guide is covers configuration with Grouparoo's Enterprise Edition. If
+    your application is using the Community Edition,{" "}
+    <a href="/docs/config/apps/community">use the Community Apps Guide</a>{" "}
+    instead.
+  </p>
+</Alert>
+
+Now that you have a Source or some Sources ([see here if you don't have a Source](/docs/config/sources/enterprise)), you can begin to define additional Profile Properties. Profile Properties are data values associated to the Profiles you have in Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+
+## Creating a Profile Property
+
+There are two ways to add Profile Properties to a source:
+
+### Option 1: Profile Properties Page
 
 Multiple Profile Properties can be defined from the same Source. You can create new Profile Properties from the Profile Properties list:
 
@@ -17,6 +32,8 @@ Multiple Profile Properties can be defined from the same Source. You can create 
   height={414}
 />
 
+### Option 2: Source Page
+
 You can also create new Profile Properties by going to a Source's detail page.
 
 <Image
@@ -27,6 +44,8 @@ You can also create new Profile Properties by going to a Source's detail page.
   width={820}
   height={414}
 />
+
+## Property Attributes
 
 There are a number of options for how you can define Profile Properties such as whether it is `unique`, whether the property is an `array`, and as well as the aggregation method.
 
@@ -41,4 +60,6 @@ There are a number of options for how you can define Profile Properties such as 
 
 ## Next Steps
 
-- [Creating a Destination](/docs/config/destinations)
+Once you have all your Properties defined, you're in good shape! You'll see Profiles being imported into Grouparoo. That means it's time to [put your users into Groups](/docs/config/groups/enterprise) of users.
+
+And once you have those Groups, you can [create a Destination](/docs/config/destinations/enterprise) to export data from Groups. (Just remember to [create an App](/docs/config/apps/enterprise) for your Destination.

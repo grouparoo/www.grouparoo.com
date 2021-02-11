@@ -1,12 +1,32 @@
 ---
 title: "Apps (Enterprise)"
-date: "2020-08-01"
+date: "2021-02-11"
 pullQuote: "Learn how to configure Apps in Grouparoo's Enterprise Edition."
 ---
 
-Apps are how Grouparoo can connect to any number of different tools such as your databases, data warehouses, and other 3rd party tools.
+<Alert variant="primary">
+  <p className="mb-0">
+    This guide is covers configuration with Grouparoo's Enterprise Edition. If
+    your application is using the Community Edition,{" "}
+    <a href="/docs/config/apps/community">use the Community Apps Guide</a>{" "}
+    instead.
+  </p>
+</Alert>
 
-You can add an app either from the dashboard or from the left-navigation.
+Apps are typically the first types of objects that you will create. They help Grouparoo connect to a number of different tools, such as your databases, data warehouses, and other third-party tools. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+
+### Step 1: Add an App
+
+You can add an app either from the dashboard or from the left-navigation. You will see a list of available Apps on screen. Choose one.
+
+<Alert variant="primary">
+  <p className="mb-0">
+    Apps are enabled by installing plugins.{" "}
+    <a href="/docs/installation/plugins">Learn more about plugins.</a>
+  </p>
+</Alert>
+
+**Pro Tip:** When you're first getting started, we recommend adding the App that has the majority of your customer data such as a data warehouse or production database replica.
 
 <Image
   centered
@@ -26,7 +46,9 @@ You can add an app either from the dashboard or from the left-navigation.
   height={414}
 />
 
-When you're first getting started, we recommend adding the App that has the majority of your customer data such as a data warehouse or production database replica. Once you've chosen an App, add the connection details you'll need to connect to this App.
+### Step 2: Configure Your App
+
+Once you've chosen an App, add the connection details you'll need to connect to this App.
 
 <Image
   centered
@@ -37,9 +59,8 @@ When you're first getting started, we recommend adding the App that has the majo
   height={414}
 />
 
-As you add more tools to your stack, you'll want to add new Apps first before you add Sources or Destinations.
-
 ## Next Steps
 
-- [Creating a Source](/docs/config/sources) to pull Customer data into Grouparoo
-- [Creating a Destination](/docs/config/destinations) to Export data from Grouparoo
+Your Grouparoo application starts with Apps. As you continue to configure your application, you'll want to remember to **always start with an App.** Want to add a new Destination? Make sure there is an App to support it.
+
+Sources and Destinations both are direct descendents of Apps. If you don't have any Sources in your Grouparoo application yet, move on to [create a Source](/docs/config/sources/enterprise). If you've already imported data into Grouparoo, then you're ready to [create a Destination](/docs/config/destinations/enterprise) to export data from Grouparoo.

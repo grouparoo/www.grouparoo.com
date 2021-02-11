@@ -1,20 +1,27 @@
 ---
 title: "Destinations (Enterprise)"
-date: "2020-08-01"
+date: "2021-02-11"
 pullQuote: "Learn how to configure Destinations in Grouparoo's Enterprise Edition."
 ---
 
-Now that you've defined Profiles, Profile Properties, and Groups, you can now send your Customer Data to [Destinations](/docs/getting-started/product-concepts). Destinations are tools where you want to send your Customer Data so you can take action on your workflows. These Destinations can be Email Marketing tools like Marketo, Sendgrid, or Braze. Destinations can also be data tools like Redshift or Snowflake.
+<Alert variant="primary">
+  <p className="mb-0">
+    This guide is covers configuration with Grouparoo's Enterprise Edition. If
+    your application is using the Community Edition,{" "}
+    <a href="/docs/config/apps/community">use the Community Apps Guide</a>{" "}
+    instead.
+  </p>
+</Alert>
+
+Destinations are the last step in the Grouparoo configuration process. That means you should have already configured at least one [App](/docs/config/app/enterprise), [Source](/docs/config/source/enterprise), [Property](/docs/config/properties/enterprise), and [Group](/docs/config/group/enterprise).
+
+Once you have all other items configuration, you're ready to send your customer data to Destinations. Destinations are the last piece of the puzzle. They are the place(s) you want to send your customer data so you can take action on your workflows. These Destinations can be email marketing tools like [Marketo](https://www.marketo.com/), [SendGrid](https://sendgrid.com/), or [Braze](https://www.braze.com/). Destinations can also be data tools like [Redshift](https://aws.amazon.com/redshift) or [Snowflake](https://www.snowflake.com/). [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
 
 Here's how to send Profiles, Groups, and Profile Properties to Destinations:
 
-## 1. Add an App
+### Step 1: Choose an App
 
-See our [guide](/docs/config/apps) on how to add your Destination App.
-
-## 2. Create a Destination
-
-Once you've added the App, you can create a Destination. Click on `Destinations` in the left-nav and then click `Add new Destination`.
+Click on _Destinations_ in the left-nav and then click _Add New Destination_.
 
 <Image
   centered
@@ -25,7 +32,7 @@ Once you've added the App, you can create a Destination. Click on `Destinations`
   height={414}
 />
 
-Select the type of App where you want to send Customer Data.
+Destinations are created using Apps. Next, choose the kind of Destination you'd like to create from the list of available Apps. The choices shown will be based on which Apps you've already connected. If you don't see the App you want to use, you can [add a new App](/docs/config/apps/enterprise).
 
 <Image
   centered
@@ -36,7 +43,9 @@ Select the type of App where you want to send Customer Data.
   height={414}
 />
 
-Once you've selected the type of App, the specific questions and settings will vary. Here is Mailchimp, as an example. Mailchimp has Audiences that each have a `listId`. You can choose the specific `listId` you'll want to set for this Destination.
+### Step 2: Set Destination Options
+
+Once you've selected the type of App, the specific questions and settings will vary. Here is [Mailchimp](https://mailchimp.com/), as an example. Mailchimp has Audiences that each have a `listId`. You can choose the specific `listId` you'll want to set for this Destination.
 
 <Image
   centered
@@ -47,7 +56,9 @@ Once you've selected the type of App, the specific questions and settings will v
   height={414}
 />
 
-Now you can define what Groups and what Profile Properties you want to send to your Destination. You can choose to send `All Groups` or a specific Group to send. This mapping defines which Profiles, or **Who** gets sent to the Destination.
+### Step 3: Choose Groups
+
+Now you can define what Groups and what Profile Properties you want to send to your Destination. You can choose to send _All Groups_ or a specific Group to send. This mapping defines which Profiles, or **who gets sent to the Destination**.
 
 <Image
   centered
@@ -57,6 +68,8 @@ Now you can define what Groups and what Profile Properties you want to send to y
   width={820}
   height={414}
 />
+
+### Step 4: Map Profile Properties
 
 Next you can choose which Profile Properties you want to send to your Destination. Usually a Unique Profile Property such as `email` or `user id` will be required so the Destination knows how to identify Profiles and to keep Profiles separate.
 
@@ -69,6 +82,8 @@ Next you can choose which Profile Properties you want to send to your Destinatio
   height={414}
 />
 
+### Step 5: Choose Group Membership
+
 Lastly, you can choose how Group membership shows up in your destination. This mapping lets you decide how Groups are represented in your Destination. Often Groups are shown as Lists, Audiences, or Tags in these Destinations.
 
 <Image
@@ -80,6 +95,8 @@ Lastly, you can choose how Group membership shows up in your destination. This m
   height={414}
 />
 
-You're all set! 🎉 Your Profiles, Profile Properties, and Groups are all synchronized in real-time across your Sources and Destinations. As your customers take actions, Grouparoo will automatically detect changes in your Sources, update Profiles and Groups, and send them to your Destinations.
+## 🎉 You're Done! Yay! 🎉
+
+You're all set! Your Profiles, Profile Properties, and Groups are all synchronized in real-time across your Sources and Destinations. As your customers take actions, Grouparoo will automatically detect changes in your Sources, update Profiles and Groups, and send them to your Destinations.
 
 If you have any additional questions, please let us know through our [support form / Github Issues](https://github.com/grouparoo/grouparoo/issues/new/choose).
