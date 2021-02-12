@@ -1,15 +1,30 @@
 ---
-title: "First Time Setup"
-date: "2020-08-01"
-section: "config"
-pullQuote: "Once you've installed Grouparoo, the first step is to get your customer data into Grouparoo."
+title: "UI Config (Enterprise)"
+date: "2021-02-10"
+pullQuote: "Configure Grouparoo through the UI using the Enterprise Edition."
 ---
 
-If you need help installing Grouparoo, please go to our [Getting Started](/docs/deployment) guide.
+<UIConfigPrereqs />
 
-Once you've installed Grouparoo, the first step is to get your customer data into Grouparoo. There are a few steps to get started:
+While we recommend using [Code Config](/docs/config/code-config) to configure your application, you can also use the UI if you have installed our Enterprise Edition. This process provides you with a clean interface to be able to connect various services so that you can import and export data to and from your Grouparoo application.
 
-## 1. Add an App
+<EnterpriseCTA />
+
+## UI Config Guides
+
+Here are a list of the available guides:
+
+- [Adding Apps](/docs/config/apps/enterprise)
+- [Adding Sources](/docs/config/sources/enterprise)
+- [Adding Properties to Sources](/docs/config/properties/enterprise)
+- [Adding Destinations](/docs/config/destinations/enterprise)
+- [Creating Groups](/docs/config/groups/enterprise)
+
+## Quick Example
+
+Here's an example of a workflow taking you through the UI:
+
+### Step 1: Add an App
 
 The first thing you need to do is to add an App. Apps are how Grouparoo can connect to any number of different tools such as your databases, data warehouses, and other 3rd party tools.
 
@@ -44,7 +59,7 @@ We recommend starting with the App that has the majority of your customer data s
   height={414}
 />
 
-## 2. Create a Source
+### Step 2: Create a Source
 
 Now that you've added an App, your first step is to create a [Source](/docs/getting-started/product-concepts). A Source is a definition for how you pull data from an App into Grouparoo.
 
@@ -83,7 +98,7 @@ Once you've chosen the App, you will name your Source and identify the table wit
 
 After you've chosen the database table that contains your user data, you will need to indicate what makes your users unique. Often a unique identifier is a `id`, `user id`, or `email`.
 
-### Create your first Profile Property Rule
+### Step 3: Create your first Profile Property Rule
 
 You will also create your first Profile Property Rule. A Profile Property Rule is how you pull data from your Source and add that onto all of your Profiles in Grouparoo. In this first case, you will map it directly to a unique identifier for your users.
 
@@ -96,7 +111,7 @@ You will also create your first Profile Property Rule. A Profile Property Rule i
   height={414}
 />
 
-### Add a Schedule to your Source
+### Step 4: Add a Schedule to your Source
 
 A Schedule defines how often Grouparoo will check your Source for new data. When there are additions or changes in your data Source, Grouparoo will pull that data in based on your Schedule settings.
 
@@ -113,7 +128,7 @@ You can choose how often Grouparoo will check your Source for new data. You will
 
 Now your first Source is all set up! 🎉 Grouparoo is now regularly pulling in data from your Source.
 
-### Adding more Profile Properties
+### Step 5: Add More Profile Properties
 
 You can have multiple Profile Properties defined from the same Source. You can create new Profile Properties from the Profile Property Rules list:
 
@@ -137,7 +152,7 @@ You can also create new Profile Properties by going to a Source's detail page.
   height={414}
 />
 
-## Next steps
+### Next steps
 
 - Repeat the steps above to create more Sources and/or Profile Properties
 - [Create Groups](/docs/config/groups) of Profiles (cohorts or segments)

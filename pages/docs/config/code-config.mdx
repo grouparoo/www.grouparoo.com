@@ -1,59 +1,97 @@
 ---
 title: "Code Config"
 date: "2020-11-27"
-section: "config"
-pullQuote: "Configuring Grouparoo with Code"
+pullQuote: "Use Grouparoo CLI to configure your application using code."
 ---
 
-Grouparoo allows you to configure your application in a number of ways:
+To use Grouparoo to import and export your data, you must configure Apps, Sources, Destinations, Properties, Groups, and more. You can [learn more about Grouparoo's product concepts here](/docs/getting-started/product-concepts). With Code Config, you will make use of the [Grouparoo CLI](/docs/cli) to create and validate your config files.
 
-**Programmatically**:
+The Grouparoo CLI is built to generate an individual file for each object that you wish to configure. These config files are either JSON or Javscript which allow you the flexibility to manipulate data or load configuration from external sources.
 
-- Individual files for each object
-- A single file which contains many object
+<Alert variant="warning">
+  <p className="mb-0">
+    Within the Running Grouparoo application, you will be able to see the
+    Apps/Sources/Groups/etc. that you've configured via code, but they will not
+    be editable.
+  </p>
+</Alert>
 
-**Interactively**:
+## Generating Config Files
 
-- via the enterprise user interface (`@grouparoo/ui-enterprise`)
-- via the application REST API
+You can generate a new config file for any type of object. For general info on the generate command, [check out the CLI docs](/docs/cli/config#generate). Or, for info on generating a specific type of object, check out one of our config guides:
 
-In all cases, Grouparoo will combine all of your configurations into the application database, which will be used when the application is running. You can mix-and-match configuration modes to fit your organizational needs.
+- [Adding Apps](/docs/config/apps/community)
+- [Adding Sources](/docs/config/sources/community)
+- [Adding Properties to Sources](/docs/config/properties/community)
+- [Adding Destinations](/docs/config/destinations/community)
+- [Creating Groups](/docs/config/groups/community)
 
-## Code-Config Notes
+## Config Object Shapes
 
-- Grouparoo can read Javascript (`.js`) and JSON (`.json`) files at this time
-- In the case you need to load configuration information dynamically, you can choose to load it in 2 ways:
-  - Via Environment variables
-    - For example, if you want to set a variable called `production_hubspot_api_key` for use only in Hubspot Apps, you would set `GROUPAROO_OPTION__APP__production_hubspot_api_key=abc123`
-    - When setting an Environment Variable to use with Grouparoo, you'll be using the pattern: `GROUPAROO_OPTION__{topic}__{name}={value}`
-    - See (the Secrets page)[/docs/config/secrets] for more information about using environment variables for config.
-  - Via Code Config
-    - Code config files can be use Javascript functions that can export an `async` method, which can `await` while loading data from an database or API.
-    - More information below.
-    - Within the Running Grouparoo application, you will be able to see the Apps/Sources/Groups etc that you configured via code, but they will not be editable.
+Every type of object brings its own options. However, every object you define needs at least the following properties:
 
-## File Locations
+- `id`
+- `class`
+- `name`
 
-Config files are located at the root of your application directory, in a directory called `config`.
+`id` values have some restrictions:
 
-Your application structure should be:
+- Lowercase letters, numbers, and underscores only
+- No spaces
+- Fewer than 38 characters
+- Must be unique among other objects of the same typee.
+
+Grouparoo will format the `id` values provided to the [`grouparoo generate`](/docs/cli/config) command to match these rules.
+
+## Config Files Location
+
+Config files are generated at the root of your application directory, in a directory called `config`. A typical application structure looks like this:
 
 ```
-/
-- package.json
-- package-lock.json
-- .env
-- config/
-  - ... config files
+my-application/
+├── package.json
+├── package-lock.json
+├── .env
+└── config/
+    └── ... (config files go here)
 ```
 
 You can optionally choose to use another directory for your configuration by setting the `GROUPAROO_CONFIG_DIR` environment variable, for example `GROUPAROO_CONFIG_DIR=/path/to/config`.
 
-## Example Code Config
+## Using Dynamic Values
 
-For example, if you wanted to define a Postgres App called "Data Warehouse" in code. You can define a JSON or Javascript file which exports either a constant or function:
+There are two methods for loading configuration information dynamically:
 
-**JSON**
+- Environment Variables
+- JavaScript Functions
+
+### Environment Variables
+
+If you want to set a variable called `production_hubspot_api_key` for use only in Hubspot Apps, you would set `GROUPAROO_OPTION__APP__production_hubspot_api_key=abc123`.
+
+<Alert variant="warning">
+  <p className="mb-0">
+    ⚠️ <code>APP</code> (the object type) is surrounded by double underscores.
+  </p>
+</Alert>
+
+When setting an Environment Variable to use with Grouparoo, you'll be using the pattern:
+
+```bash
+export GROUPAROO_OPTION__{topic}__{name}={value}
+```
+
+See [the Secrets page](/docs/config/secrets) for more information about using environment variables for config.
+
+### JavaScript Functions
+
+Code config files can be use Javascript functions that can export an `async` method, which can `await` while loading data from an database or API. (See the _Examples_ section below.)
+
+## Example Code Configs
+
+Let's say you wanted to define a Postgres App called "Data Warehouse" in code. You can use either JSON or JavaScript to define the application.
+
+**JSON:**
 
 ```json
 // file: config/apps/data_warehouse.json
@@ -77,7 +115,7 @@ For example, if you wanted to define a Postgres App called "Data Warehouse" in c
 
 Grouparoo parses JSON config files with [`JSON5`](https://json5.org). This enables you to use comments and multi-line strings.
 
-**Javascript**
+**JavaScript:**
 
 ```js
 // file: config/apps/data_warehouse.js
@@ -99,7 +137,7 @@ exports.default = [
 ];
 ```
 
-**Javascript with async loading**
+**JavaScript with Async Loading:**
 
 ```js
 // file: config/apps/data_warehouse.js
@@ -125,13 +163,7 @@ exports.default = async function GetDataWarehouseConfig() {
 };
 ```
 
-Every object you define needs, at least:
-
-- id
-- class
-- name
-
-## Multiple Configurations in one File
+## Defining Multiple Object in one File
 
 No matter which type of file you create for your code config, you can export more than one object per file. Note how in the examples above we always return/export an array.
 
@@ -152,7 +184,6 @@ exports.default = [
       database: "data_warehouse",
     },
   },
-
   {
     name: "Product DB Replica",
     id: "replica_db",
@@ -179,6 +210,7 @@ For example, to define an `App → Source → Profile Property`, you could do:
 // file: config/grouparoo.js
 
 exports.default = [
+  // App
   {
     name: "Data Warehouse",
     id: "data_warehouse",
@@ -192,7 +224,7 @@ exports.default = [
       database: "grouparoo_dev",
     },
   },
-
+  // Source
   {
     name: "Users Table",
     id: "users_table",
@@ -206,7 +238,7 @@ exports.default = [
       id: "User Id",
     },
   },
-
+  // Property
   {
     name: "User Id",
     class: "ProfilePropertyRule",
@@ -224,17 +256,4 @@ exports.default = [
 ];
 ```
 
-`id`s have some restrictions:
-
-- lower case letters and numbers + underscores
-- no spaces
-- less than 38 chars
-- unique
-
-Grouparoo will format the `id`s provided to the [`grouparoo generate`](/docs/cli/config) command to match these rules
-
-## Related CLI Commands
-
-- Use the [`grouparoo generate`](/docs/cli/config) command to help build your config files from templates
-- Use the [`grouparoo validate`](/docs/cli/config) command to test your configuration files and look for errors
-- Use the [`grouparoo apply`](/docs/cli/config) command to apply your new configuration changes to your database
+<ValidateAndApplyConfig />

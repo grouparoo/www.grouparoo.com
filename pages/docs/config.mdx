@@ -1,56 +1,39 @@
 ---
 title: "Configuration"
 date: "2021-02-08"
-section: "config"
 pullQuote: "Learn how to use Code Config to configure your Grouparoo application."
 ---
 
-After you've installed Grouparoo locally, you're ready to configure it! The easiest way to configure Grouparoo is through Code Config. Get started with Code Config below or reference one of our Configuration Guides.
+After you've installed Grouparoo locally, you're ready to configure it. The easiest way to configure Grouparoo is through Code Config. If you're using Grouparoo's Enterprise Edition, you can also configure the application through the UI. See the UI Config section below for more info.
 
-## Code Config
-
-To use Grouparoo to import and export your data, you will be configuring our main objects: Apps, Sources, Destinations, Properties, etc. You can [learn more about Grouparoo's product concepts here](/docs/getting-started/product-concepts). You will be using the Grouparoo CLI's `generate`, `validate`, and `apply` commands to ensure that the application can read from your Sources and write to your Destinations.
-
-Configuration files are either JSON or Javscript which allow you the flexibility to manipulate data or load configuration from external sources:
-
-```js
-// file: config/apps/data_warehouse.js
-
-exports.default = async function GetDataWarehouseConfig() {
-  const { databasePassword } = await fetch(`/api/company/secrets`);
-
-  return [
-    {
-      name: "Data Warehouse",
-      class: "app",
-      id: "data_warehouse",
-      type: "postgres",
-      options: {
-        host: "127.0.0.1",
-        port: "5432",
-        username: "person",
-        password: databasePassword,
-        database: "data_warehouse",
-      },
-    },
-  ];
-};
-```
-
-You can learn more about the [configuration files here](/docs/deployment/code-config).
-
-<Button variant="outline-primary" href="/docs/cli/config">
-  Learn about the Generate Command
+<Button
+  className="mb-4"
+  variant="outline-primary"
+  href="/docs/config/code-config"
+>
+  Get Started with Code Config
 </Button>
 
-### Configuration Guides
+## Code Config Guides
 
-Explore our guides and examples to start using Grouparoo:
+Code Config is the recommended way to install Grouparoo. Here are some guides to help you through that process:
 
-- [Installing Grouparoo](/docs/deployment)
-- [Setting up Grouparoo the first time](/docs/config/first-time-setup)
-- [Adding Apps](/docs/config/apps)
-- [Adding Sources](/docs/config/sources)
-- [Adding Destinations](/docs/config/destinations)
-- [Defining a Profile Property Rule](/docs/config/properties)
-- [Creating Groups](/docs/config/groups)
+- [Intro to Code Config](/docs/config/code-config)
+- [Adding Apps](/docs/config/apps/community)
+- [Adding Sources](/docs/config/sources/community)
+- [Adding Properties to Sources](/docs/config/properties/community)
+- [Adding Destinations](/docs/config/destinations/community)
+- [Creating Groups](/docs/config/groups/community)
+
+## UI Config (Enterprise) Guides
+
+<UIConfigPrereqs />
+
+Grouparoo's Enterprise Edition enables you to configure Grouparoo through the UI. If you have [purchased an Enterprise license](/meet), you can configure your application through the UI. Here are some guides to help you through that process:
+
+- [Intro to UI Config](/docs/config/ui-config)
+- [Adding Apps](/docs/config/apps/enterprise)
+- [Adding Sources](/docs/config/sources/enterprise)
+- [Adding Properties to Sources](/docs/config/properties/enterprise)
+- [Adding Destinations](/docs/config/destinations/enterprise)
+- [Creating Groups](/docs/config/groups/enterprise)

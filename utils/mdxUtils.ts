@@ -117,7 +117,9 @@ export function getBreadcrumbs(fullPath: string) {
       // Extract the frontmattter.
       const { data } = matter(content);
       // Look for a title value, and set the title if it's there.
-      if (data.title) title = data.title;
+      if (data.breadcrumb_label || data.title) {
+        title = data.breadcrumb_label || data.title;
+      }
     }
     // Add the breadcrumb object.
     breadcrumbs.push({ title, path: pagePath });

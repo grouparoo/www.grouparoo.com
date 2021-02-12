@@ -12,6 +12,10 @@ const DocsNav: NavItem[] = [
     path: "/docs/getting-started",
     children: [
       {
+        title: "First Time Setup",
+        path: "/docs/getting-started/first-time-setup",
+      },
+      {
         title: "Product Concepts",
         path: "/docs/getting-started/product-concepts",
       },
@@ -35,31 +39,13 @@ const DocsNav: NavItem[] = [
     path: "/docs/config",
     children: [
       { title: "Code Config", path: "/docs/config/code-config" },
-      { title: "First Time Setup", path: "/docs/config/first-time-setup" },
+      { title: "UI Config", path: "/docs/config/ui-config" },
       { title: "Apps", path: "/docs/config/apps" },
       { title: "Sources", path: "/docs/config/sources" },
-      {
-        title: "Properties",
-        path: "/docs/config/properties",
-      },
+      { title: "Properties", path: "/docs/config/properties" },
       { title: "Groups", path: "/docs/config/groups" },
-      {
-        title: "Destinations",
-        path: "/docs/config/destinations",
-      },
-      {
-        title: "Settings",
-        path: "/docs/config/settings",
-      },
-      {
-        title: "Permissions",
-        path: "/docs/config/permissions",
-      },
-      { title: "Environment", path: "/docs/config/environment" },
-      {
-        title: "Secrets",
-        path: "/docs/config/secrets",
-      },
+      { title: "Destinations", path: "/docs/config/destinations" },
+      { title: "Settings", path: "/docs/config/settings" },
     ],
   },
 
@@ -67,12 +53,7 @@ const DocsNav: NavItem[] = [
   {
     title: "Step 3: Run",
     path: "/docs/running",
-    children: [
-      {
-        title: "Testing",
-        path: "/docs/running/testing",
-      },
-    ],
+    children: [{ title: "Testing", path: "/docs/running/testing" }],
   },
 
   // -- 04: Deploy --
@@ -136,15 +117,8 @@ const DocsNav: NavItem[] = [
         path: "https://github.com/grouparoo/grouparoo/discussions",
         target: "_blank",
       },
-      {
-        title: "What's New",
-        path: "/whats-new",
-      },
-      {
-        title: "Roadmap",
-        path: "/roadmap",
-        target: "_blank",
-      },
+      { title: "What's New", path: "/whats-new" },
+      { title: "Roadmap", path: "/roadmap", target: "_blank" },
     ],
   },
 
@@ -155,13 +129,16 @@ const DocsNav: NavItem[] = [
     children: [
       { title: "Common Issues", path: "/docs/support/common-issues" },
       { title: "Debugging", path: "/docs/support/debugging" },
-      { title: "Telemetry", path: "/docs/support/telemetry" },
-      { title: "Security", path: "/docs/support/security" },
-      { title: "Network", path: "/docs/support/network" },
-      { title: "Monitoring", path: "/docs/support/monitoring" },
+      { title: "Environment", path: "/docs/support/environment" },
       { title: "Legal", path: "/docs/support/legal" },
+      { title: "Monitoring", path: "/docs/support/monitoring" },
+      { title: "Network", path: "/docs/support/network" },
+      { title: "Permissions", path: "/docs/support/permissions" },
+      { title: "Secrets", path: "/docs/support/secrets" },
+      { title: "Security", path: "/docs/support/security" },
+      { title: "Telemetry", path: "/docs/support/telemetry" },
       {
-        title: "Upgrading Grouparoo",
+        title: "Upgrade Guides",
         path: "/docs/support/upgrading-grouparoo",
         children: [
           {

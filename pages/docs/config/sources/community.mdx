@@ -1,0 +1,86 @@
+---
+title: "Sources (Community)"
+date: "2021-02-11"
+pullQuote: "Now that you've added an App, your first step is to create a Source. A Source is a definition for how you pull data from an App into Grouparoo."
+breadcrumb_label: "Community Guide"
+---
+
+<ConfigToggle edition="community" section="sources" />
+
+<Alert variant="warning">
+  This guide assumes that you've already{" "}
+  <a href="/docs/config/apps/community">added an App</a>.
+</Alert>
+
+Now that you've added an App ([see here if you haven't](/docs/config/apps/community)), your next step is to create a Source. A Source is a definition for how you pull data from an App into Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+
+## Generating a New Source
+
+To generate a new Source for your Grouparoo application, run [the `generate` command](/docs/cli/config#generate).
+
+For example, let's say you have configured a Postgres App with the ID `data_warehouse`. You can generate a new Postgres Source (from a table in the database) like this:
+
+    grouparoo generate postgres:table:source users
+
+Note here that `users` is the ID for the Source. An ID is always required when generating a config object.
+
+This command will generate a file in your application directory at `config/sources/users.js` that looks something like this:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      class: "source",
+      id: "users",
+      name: "users",
+      type: "postgres-table-import",
+      appId: "...",
+      options: {
+        table: "...",
+      },
+      mapping: {
+        id: "user_id",
+      },
+    },
+  ];
+};
+```
+
+The shape of the object(s) returned by the function will look different depending on the type of Source generated. More on this below.
+
+### List of Available Source Types
+
+Postgres is just one _type_ of Source you can create. To see a full list of available types, use the `--list` option, filtered by "source":
+
+    grouparoo generate source --list
+
+This will give you something like the following:
+
+    bigquery:query:source (id) - Config for a bigquery Query Source. Work with multiple tables and build custom queries for its properties.
+    bigquery:table:source (id) - Config for a bigquery Table Source. Construct properties from the data in the table without writing SQL.
+    csv:source (id) - Config for a CSV Source
+    events:source (id) - Config for a Grouparoo Source based on an Events App
+    google-sheets:source (id) - Config for a Google Sheets Source
+    mailchimp:source (id) - Config for a Mailchimp Source
+    manual:source (id) - Config for a Grouparoo Source based on a Manual App
+    mysql:query:source (id) - Config for a mysql Query Source. Work with multiple tables and build custom queries for its properties.
+    mysql:table:source (id) - Config for a mysql Table Source. Construct properties from the data in the table without writing SQL.
+    postgres:query:source (id) - Config for a postgres Query Source. Work with multiple tables and build custom queries for its properties.
+    postgres:table:source (id) - Config for a postgres Table Source. Construct properties from the data in the table without writing SQL.
+    redshift:query:source (id) - Config for a redshift Query Source. Work with multiple tables and build custom queries for its properties.
+    redshift:table:source (id) - Config for a redshift Table Source. Construct properties from the data in the table without writing SQL.
+    snowflake:query:source (id) - Config for a snowflake Query Source. Work with multiple tables and build custom queries for its properties.
+    snowflake:table:source (id) - Config for a snowflake Table Source. Construct properties from the data in the table without writing SQL.
+
+## Configuring Your Source
+
+The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/sources` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Postgres Source, all but `appId` and `options.table` were pre-populated.
+
+<Alert variant="primary">
+  Note that the <code>appId</code> setting is where you would use the ID from
+  the App you created (e.g. <code>data_warehouse</code>).
+</Alert>
+
+Other sections may be commented out but require some action by you. The best practice when configuring an Source is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Source.
+
+<ValidateAndApplyConfig />

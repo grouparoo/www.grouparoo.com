@@ -14,7 +14,9 @@ const NavListItem = ({ item }) => {
       <Link href={item.path}>
         <a
           style={{
-            color: router.asPath === item.path ? highlightColor : undefined,
+            color: router.asPath.includes(item.path)
+              ? highlightColor
+              : undefined,
           }}
           target={item.target}
           rel={item.target === "_blank" ? "nofollow noopener noreferrer" : null}
@@ -54,10 +56,9 @@ export function TableOfContents() {
                   <Link href={section.path}>
                     <a
                       style={{
-                        color:
-                          router.asPath === section.path
-                            ? highlightColor
-                            : undefined,
+                        color: router.asPath.includes(section.path)
+                          ? highlightColor
+                          : undefined,
                       }}
                       target={section.target}
                       rel={

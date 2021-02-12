@@ -31,7 +31,7 @@ const guidesRedirects = [
   },
   {
     src: "/docs/guides/first-time-setup",
-    dest: "/docs/config/first-time-setup",
+    dest: "/docs/getting-started/first-time-setup",
   },
 ];
 
@@ -40,7 +40,7 @@ const guidesRedirects = [
 const deploymentRedirects = [
   {
     src: "/docs/deployment/environment",
-    dest: "/docs/config/environment",
+    dest: "/docs/support/environment",
   },
   {
     src: "/docs/deployment/common-issues",
@@ -94,11 +94,25 @@ const communityRedirects = [
   },
 ];
 
+/* --- Config (Temp) --- */
+
+const configRedirects = [
+  { src: "/docs/config/apps", dest: "/docs/config/apps/community" },
+  { src: "/docs/config/sources", dest: "/docs/config/sources/community" },
+  { src: "/docs/config/properties", dest: "/docs/config/properties/community" },
+  { src: "/docs/config/groups", dest: "/docs/config/groups/community" },
+  {
+    src: "/docs/config/destinations",
+    dest: "/docs/config/destinations/community",
+  },
+];
+
 const combinedRedirects = [
   ...guidesRedirects,
   ...deploymentRedirects,
   ...developmentRedirects,
   ...communityRedirects,
+  ...configRedirects,
 ];
 
 module.exports = combinedRedirects.map(({ src, dest, permanent }) => ({
