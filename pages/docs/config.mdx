@@ -4,19 +4,15 @@ date: "2021-02-08"
 pullQuote: "Learn how to use Code Config to configure your Grouparoo application."
 ---
 
-After you've installed Grouparoo locally, you're ready to configure it. The easiest way to configure Grouparoo is through [Code Config](/docs/config/code-config).
+After you've installed Grouparoo locally, you're ready to configure it. The easiest way to configure Grouparoo is through Code Config. If you're using Grouparoo's Enterprise Edition, you can also configure the application through the UI. See the UI Config section below for more info.
 
-<Button className="mb-4" variant="outline-primary">
+<Button
+  className="mb-4"
+  variant="outline-primary"
+  href="/docs/config/code-config"
+>
   Get Started with Code Config
 </Button>
-
-<Alert variant="primary">
-  <p className="mb-0">
-    <strong>Note:</strong> Grouparoo's Enterprise Edition enables you to
-    configure Grouparoo through the UI.{" "}
-    <a href="/docs/config/ui-config">Learn more about UI Config here</a>.
-  </p>
-</Alert>
 
 ## Code Config Guides
 
@@ -31,7 +27,14 @@ Code Config is the recommended way to install Grouparoo. Here are some guides to
 
 ## UI Config (Enterprise) Guides
 
-If you have [purchased a license to Grouparoo's Enterprise Edition](/meet), you can configure your application through the UI. Here are some guides to help you through that process:
+<Alert variant="warning">
+  <p className="mb-0">
+    UI Config requires that your Grouparoo application{" "}
+    <a href="/docs/deployment">is running in production</a>.
+  </p>
+</Alert>
+
+Grouparoo's Enterprise Edition enables you to configure Grouparoo through the UI. If you have [purchased an Enterprise license](/meet), you can configure your application through the UI. Here are some guides to help you through that process:
 
 - [Intro to UI Config](/docs/config/ui-config)
 - [Adding Apps](/docs/config/apps/enterprise)
