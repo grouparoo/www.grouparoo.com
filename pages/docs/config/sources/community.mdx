@@ -5,23 +5,11 @@ pullQuote: "Now that you've added an App, your first step is to create a Source.
 breadcrumb_label: "Community Guide"
 ---
 
-<Alert variant="primary">
-  <p className="mb-0">
-    This guide covers configuration with Grouparoo's Code Config, which is the
-    recommended way to configure your application. If you have{" "}
-    <a href="/meet">purchased the Enterprise Edition</a>, you may wish to{" "}
-    <a href="/docs/config/sources/enterprise">
-      use the Enterprise Sources Guide
-    </a>{" "}
-    instead.
-  </p>
-</Alert>
+<ConfigToggle edition="community" section="sources" />
 
 <Alert variant="warning">
-  <p className="mb-0">
-    This guide assumes that you've already{" "}
-    <a href="/docs/config/apps/community">added an App</a>.
-  </p>
+  This guide assumes that you've already{" "}
+  <a href="/docs/config/apps/community">added an App</a>.
 </Alert>
 
 Now that you've added an App ([see here if you haven't](/docs/config/apps/community)), your next step is to create a Source. A Source is a definition for how you pull data from an App into Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
@@ -36,7 +24,29 @@ For example, let's say you have configured a Postgres App with the ID `data_ware
 
 Note here that `users` is the ID for the Source. An ID is always required when generating a config object.
 
-This command will generate a file in your application directory at `config/sources/users.js`. See below for more information about this file.
+This command will generate a file in your application directory at `config/sources/users.js` that looks something like this:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      class: "source",
+      id: "users",
+      name: "users",
+      type: "postgres-table-import",
+      appId: "...",
+      options: {
+        table: "...",
+      },
+      mapping: {
+        id: "user_id",
+      },
+    },
+  ];
+};
+```
+
+The shape of the object(s) returned by the function will look different depending on the type of Source generated. More on this below.
 
 ### List of Available Source Types
 
@@ -64,20 +74,13 @@ This will give you something like the following:
 
 ## Configuring Your Source
 
-The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/sources` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess.
+The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/sources` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Postgres Source, all but `appId` and `options.table` were pre-populated.
 
-Note that the `appId` setting is where you would use the ID from the App you created (e.g. `data_warehouse`).
+<Alert variant="primary">
+  Note that the <code>appId</code> setting is where you would use the ID from
+  the App you created (e.g. <code>data_warehouse</code>).
+</Alert>
 
-The best practice when configuring an Source is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Source.
+Other sections may be commented out but require some action by you. The best practice when configuring an Source is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Source.
 
-## Validating & Applying Your Config
-
-You can validate your config at any time using [the `validate` command](/docs/cli/config#validate):
-
-    grouparoo validate
-
-And you can apply that config (save it to your Grouparoo application's database) using [the `apply` command](/docs/cli/config#apply):
-
-    grouparoo apply
-
-Note that `apply` will run `validate`, but it's recommended to run `validate` on its own first, just to be safe.
+<ValidateAndApplyConfig />

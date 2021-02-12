@@ -5,25 +5,14 @@ pullQuote: "Apps are how Grouparoo can connect to any number of different tools 
 breadcrumb_label: "Community Guide"
 ---
 
-<Alert variant="primary">
-  <p className="mb-0">
-    This guide covers configuration with Grouparoo's Code Config, which is the
-    recommended way to configure your application. If you have{" "}
-    <a href="/meet">purchased the Enterprise Edition</a>, you may wish to{" "}
-    <a href="/docs/config/apps/enterprise">use the Enterprise Apps Guide</a>{" "}
-    instead.
-  </p>
-</Alert>
+<ConfigToggle edition="community" section="apps" />
 
 <Alert variant="warning">
-  <p className="mb-0">
-    This guide assumes that you've{" "}
-    <a href="/docs/cli">installed the Grouparoo CLI</a> and used the CLI to{" "}
-    <a href="/docs/installation">
-      initialize the Grouparoo application locally
-    </a>
-    .
-  </p>
+  This guide assumes that you've{" "}
+  <Link href="/docs/cli">installed the Grouparoo CLI</Link> and used the CLI to{" "}
+  <Link href="/docs/installation">
+    initialize the Grouparoo application locally
+  </Link>
 </Alert>
 
 Apps are typically the first types of objects that you will create. They help Grouparoo
@@ -41,7 +30,31 @@ For example, let's say you have a Postgres data warehouse containing your custom
 
 Note here that `data_warehouse` is the ID for the App. An ID is always required when generating a config object.
 
-This command will generate a file in your application directory at `config/apps/data_warehouse.js`. See below for more information about this file.
+This command will generate a file in your application directory at `config/apps/data_warehouse.js` that looks something like this:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      class: "app",
+      id: "data_warehouse",
+      name: "data_warehouse",
+      type: "postgres",
+      options: {
+        host: "localhost",
+        port: 5432,
+        database: "...",
+        schema: "public",
+        user: "...",
+        password: "...",
+        ssl: false,
+      },
+    },
+  ];
+};
+```
+
+The shape of the object(s) returned by the function will look different depending on the type of App generated. More on this below.
 
 ### List of Available App Types
 
@@ -75,18 +88,8 @@ To install a new plugin, use [the `install` command](/docs/cli/setup#install). F
 
 ## Configuring Your App
 
-The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/apps` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess.
+The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/apps` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Postgres App, all but `database`, `user`, and `password` were pre-populated.
 
 The best practice when configuring an App is to read the comments, keys, and values within the generated file and fill in the appropriate values for your App.
 
-## Validating & Applying Your Config
-
-You can validate your config at any time using [the `validate` command](/docs/cli/config#validate):
-
-    grouparoo validate
-
-And you can apply that config (save it to your Grouparoo application's database) using [the `apply` command](/docs/cli/config#apply):
-
-    grouparoo apply
-
-Note that `apply` will run `validate`, but it's recommended to run `validate` on its own first, just to be safe.
+<ValidateAndApplyConfig />

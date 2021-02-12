@@ -5,15 +5,7 @@ pullQuote: "Now that you've created Profiles and Profile Properties, the next st
 breadcrumb_label: "Community Guide"
 ---
 
-<Alert variant="primary">
-  <p className="mb-0">
-    This guide covers configuration with Grouparoo's Code Config, which is the
-    recommended way to configure your application. If you have{" "}
-    <a href="/meet">purchased the Enterprise Edition</a>, you may wish to{" "}
-    <a href="/docs/config/groups/enterprise">use the Enterprise Groups Guide</a>{" "}
-    instead.
-  </p>
-</Alert>
+<ConfigToggle edition="community" section="groups" />
 
 Once you have an App, Source, and Properties ([start with an App](/docs/config/apps/enterprise) if you don't have any), then you're ready to define your Groups.
 
@@ -27,7 +19,23 @@ To generate a new Calculated Group for your Grouparoo application, run [the `gen
 
 Note here that `all_emails` is the ID for the Group. An ID is always required when generating a config object.
 
-This command will generate a file in your application directory at `config/groups/all_emails.js`. See below for more information about this file.
+This command will generate a file in your application directory at `config/groups/all_emails.js` that looks something like this:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      class: "group",
+      id: "all_emails",
+      name: "all_emails",
+      type: "calculated",
+      rules: [],
+    },
+  ];
+};
+```
+
+More info this below.
 
 ## Configuring Your Calculated Group
 
@@ -51,14 +59,4 @@ Note here that `my_custom_group` is the ID for the Group. An ID is always requir
 
 This command will generate a file in your application directory at `config/groups/my_custom_group.js`. You can change the `name` and `id` properties in this file.
 
-## Validating & Applying Your Config
-
-You can validate your config at any time using [the `validate` command](/docs/cli/config#validate):
-
-    grouparoo validate
-
-And you can apply that config (save it to your Grouparoo application's database) using [the `apply` command](/docs/cli/config#apply):
-
-    grouparoo apply
-
-Note that `apply` will run `validate`, but it's recommended to run `validate` on its own first, just to be safe.
+<ValidateAndApplyConfig />

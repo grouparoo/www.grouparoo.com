@@ -5,23 +5,11 @@ pullQuote: "Now that you have a Source or some Sources, you can start to define 
 breadcrumb_label: "Community Guide"
 ---
 
-<Alert variant="primary">
-  <p className="mb-0">
-    This guide covers configuration with Grouparoo's Code Config, which is the
-    recommended way to configure your application. If you have{" "}
-    <a href="/meet">purchased the Enterprise Edition</a>, you may wish to{" "}
-    <a href="/docs/config/properties/enterprise">
-      use the Enterprise Properties Guide
-    </a>{" "}
-    instead.
-  </p>
-</Alert>
+<ConfigToggle edition="community" section="properties" />
 
 <Alert variant="warning">
-  <p className="mb-0">
-    This guide assumes that you've already{" "}
-    <a href="/docs/config/sources/community">added a Source</a>.
-  </p>
+  This guide assumes that you've already{" "}
+  <Link href="/docs/config/sources/community">added a Source</Link>.
 </Alert>
 
 Now that you have a Source or some Sources ([see here if you don't have a Source](/docs/config/sources/community)), you can begin to define additional Profile Properties. Profile Properties are data values associated to the Profiles you have in Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
@@ -40,7 +28,32 @@ For example, let's say you have configured a Postgres Table Source with the ID `
 
 Note here that `ltv` is the ID for the Source. An ID is always required when generating a config object.
 
-This command will generate a file in your application directory at `config/properties/ltv.js`. See below for more information about this file.
+This command will generate a file in your application directory at `config/properties/ltv.js` that looks something like this:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      id: "ltv",
+      name: "ltv",
+      class: "property",
+      sourceId: "...",
+      type: "string",
+      unique: true,
+      identifying: true,
+      isArray: false,
+      options: {
+        column: "...",
+        aggregationMethod: "exact",
+        sort: null,
+      },
+      filters: [],
+    },
+  ];
+};
+```
+
+The shape of the object(s) returned by the function will look different depending on the type of Property generated. More on this below.
 
 ### Method #2: Duplicating Existing Code
 
@@ -74,20 +87,13 @@ This will give you something like the following:
 
 ## Configuring Your Property
 
-The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/properties` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess.
+The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/properties` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Property for a Postgres Source, all but `sourceId` and `options.column` were pre-populated.
 
-Note that the `sourceId` setting is where you would use the ID from the Source you created (e.g. `users`).
+<Alert variant="primary">
+  Note that the <code>sourceId</code> setting is where you would use the ID from
+  the Source you created (e.g. <code>users</code>).
+</Alert>
 
-The best practice when configuring an Property is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Property.
+Other sections may be commented out but require some action by you. The best practice when configuring an Property is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Property.
 
-## Validating & Applying Your Config
-
-You can validate your config at any time using [the `validate` command](/docs/cli/config#validate):
-
-    grouparoo validate
-
-And you can apply that config (save it to your Grouparoo application's database) using [the `apply` command](/docs/cli/config#apply):
-
-    grouparoo apply
-
-Note that `apply` will run `validate`, but it's recommended to run `validate` on its own first, just to be safe.
+<ValidateAndApplyConfig />
