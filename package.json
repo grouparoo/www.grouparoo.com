@@ -46,6 +46,8 @@
     "react-hook-form": "6.15.1",
     "react-moment": "1.1.1",
     "react-syntax-highlighter": "15.4.3",
+    "rehype-autolink-headings": "5.0.1",
+    "rehype-slug": "4.0.1",
     "remark-external-links": "8.0.0",
     "sass": "1.32.7",
     "sharp": "0.27.1",
