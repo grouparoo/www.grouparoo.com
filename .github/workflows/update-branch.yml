@@ -3,7 +3,7 @@ name: update-branch
 on: pull_request
 
 jobs:
-  build:
+  update-branch:
     runs-on: ubuntu-latest
     if: ${{ github.repository == 'grouparoo/www.grouparoo.com' }}
     steps:
