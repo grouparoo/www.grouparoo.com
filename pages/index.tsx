@@ -129,6 +129,9 @@ export default function IndexPage() {
 
       <div id="value-prop" className="homePageSection">
         <Container>
+          <br />
+          <br />
+
           <Row className="align-items-center">
             <Col md={6}>
               <h3>Free and Easy to Install</h3>
@@ -143,27 +146,11 @@ export default function IndexPage() {
                 icon="npm"
                 code={
                   <>
-                    {`$`} npx grouparoo init .
+                    {`$`} npm grouparoo install -g
                     <br />
-                    {`$`} npm start
-                  </>
-                }
-              />
-              <a
-                href="https://heroku.com/deploy?template=https://github.com/grouparoo/app-example"
-                target="_blank"
-                rel="noreferrer nofollow"
-              >
-                <HomepageCodeBox icon="heroku" code={`[ click to deploy ]`} />
-              </a>
-              <HomepageCodeBox
-                icon="docker"
-                code={
-                  <>
-                    {`$`} curl -L https://www.grouparoo.com/docker-compose
-                    --output docker-compose.yml
+                    {`$`} grouparoo init .
                     <br />
-                    {`$`} docker-compose up
+                    {`$`} grouparoo start
                   </>
                 }
               />
