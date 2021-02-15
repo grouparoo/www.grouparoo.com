@@ -1,0 +1,52 @@
+---
+title: "Gifit: Convert Screen Recordings to easy-to-share Animated gifs"
+date: "2021-02-12"
+author: "Evan Tahler"
+pullQuote: "With open source tools, you can easily share and embed your screen recordings"
+image: "gifit/screenshot.png"
+tags: [engineering, notes]
+---
+
+<Image
+  alt="Grouparoo gif example of changing destination groups"
+  src="gifit/screenshot.gif"
+  width={766}
+  height={550}
+/>
+
+When building Grouparoo, the Grouparoo team often shares screen recordings of our work with each other. In many cases, the tools we are using (like Github, until recently anyway) could only embed image content into READMEs and Pull Requests. That meant that the humble animated gif was often the best way to share a video. Here is my personal script called `gifit` which uses the open source `ffmpeg` and `gifsicle` tools to make it super easy to convert any video file into an easy-to-share gif!
+
+```bash
+#!/bin/bash
+
+# This script required ffmpeg and gifsicle
+# On OSX: `brew install ffmpeg gifsicle`
+
+SECONDS=0
+INPUT_FILE=$1
+BASENAME="${INPUT_FILE%.*}"
+OUTPUT_FILE="$BASENAME.gif"
+
+echo "🎥 Converting $INPUT_FILE to $OUTPUT_FILE"
+
+# Convert the video to a gif
+ffmpeg -i $INPUT_FILE -pix_fmt rgb8 -r 10 $OUTPUT_FILE -loglevel warning -stats
+
+# Compress the Gif
+# Reduce the size to 1/2 the original (because we are recording a retina screen)
+# Tweak the "lossy" argument to add more colors, but increase filesize
+gifsicle -O3 $OUTPUT_FILE -o $OUTPUT_FILE --lossy=80 --scale=0.5
+
+# How lng did it take?
+ELAPSED="$(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
+
+echo "🎉 Complete in $ELAPSED"
+```
+
+Note that on OSX you will need to `brew install ffmpeg gifsicle` first.
+
+So, to make the video above, I:
+
+1. Used Quicktime to record my screen
+2. Saved the video as `screenshot.mov`
+3. Ran `gifit screenshot.mov` and I got `screenshot.gif`!

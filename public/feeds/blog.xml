@@ -9,7 +9,7 @@
         <title>Grouparoo: Blog</title>
         <link>https://www.grouparoo.com/blog</link>
         <description>Articles and updates from Grouparoo.</description>
-        <lastBuildDate>Mon, 08 Feb 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 12 Feb 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,44 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title
+      ><![CDATA[Gifit: Convert Screen Recordings to easy-to-share Animated gifs]]></title>
+            <link>https://www.grouparoo.com/blog/gifit</link>
+            <guid>grouparoo-blog-post-gifit</guid>
+            <pubDate>Fri, 12 Feb 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<div style="margin-bottom:20px"><img alt="Grouparoo gif example of changing destination groups" src="https://www.grouparoo.com/posts/gifit/screenshot.gif" width="766" height="550" style="height:550px;width:766px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>When building Grouparoo, the Grouparoo team often shares screen recordings of our work with each other. In many cases, the tools we are using (like Github, until recently anyway) could only embed image content into READMEs and Pull Requests. That meant that the humble animated gif was often the best way to share a video. Here is my personal script called <code>gifit</code> which uses the open source <code>ffmpeg</code> and <code>gifsicle</code> tools to make it super easy to convert any video file into an easy-to-share gif!</p><pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token comment"># This script required ffmpeg and gifsicle</span>
+<span class="token comment"># On OSX: `brew install ffmpeg gifsicle`</span>
+
+<span class="token assign-left variable"><span class="token environment constant">SECONDS</span></span><span class="token operator">=</span><span class="token number">0</span>
+<span class="token assign-left variable">INPUT_FILE</span><span class="token operator">=</span><span class="token variable">$1</span>
+<span class="token assign-left variable">BASENAME</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">${INPUT_FILE<span class="token operator">%</span>.*}</span>&quot;</span>
+<span class="token assign-left variable">OUTPUT_FILE</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">$BASENAME</span>.gif&quot;</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;🎥 Converting <span class="token variable">$INPUT_FILE</span> to <span class="token variable">$OUTPUT_FILE</span>&quot;</span>
+
+<span class="token comment"># Convert the video to a gif</span>
+ffmpeg -i <span class="token variable">$INPUT_FILE</span> -pix_fmt rgb8 -r <span class="token number">10</span> <span class="token variable">$OUTPUT_FILE</span> -loglevel warning -stats
+
+<span class="token comment"># Compress the Gif</span>
+<span class="token comment"># Reduce the size to 1/2 the original (because we are recording a retina screen)</span>
+<span class="token comment"># Tweak the &quot;lossy&quot; argument to add more colors, but increase filesize</span>
+gifsicle -O3 <span class="token variable">$OUTPUT_FILE</span> -o <span class="token variable">$OUTPUT_FILE</span> --lossy<span class="token operator">=</span><span class="token number">80</span> --scale<span class="token operator">=</span><span class="token number">0.5</span>
+
+<span class="token comment"># How lng did it take?</span>
+<span class="token assign-left variable">ELAPSED</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable"><span class="token variable">$((</span>$SECONDS <span class="token operator">/</span> <span class="token number">3600</span><span class="token variable">))</span></span>hrs<span class="token bash punctuation"> <span class="token punctuation">$((</span><span class="token punctuation">(</span></span><span class="token environment constant">$SECONDS</span> / 60) % 60))min <span class="token variable"><span class="token variable">$((</span>$SECONDS <span class="token operator">%</span> <span class="token number">60</span><span class="token variable">))</span></span>sec&quot;</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;🎉 Complete in <span class="token variable">$ELAPSED</span>&quot;</span>
+</code></pre><p>Note that on OSX you will need to <code>brew install ffmpeg gifsicle</code> first.</p><p>So, to make the video above, I:</p><ol><li>Used Quicktime to record my screen</li><li>Saved the video as <code>screenshot.mov</code></li><li>Ran <code>gifit screenshot.mov</code> and I got <code>screenshot.gif</code>!</li></ol>]]></content:encoded>
+            <enclosure
+        url="https://www.grouparoo.com/posts/gifit/screenshot.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title><![CDATA[Node.js Memory Error on Mac Using M1]]></title>
             <link>https://www.grouparoo.com/blog/apple-m1-js-memory-error</link>
