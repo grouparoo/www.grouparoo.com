@@ -14,7 +14,7 @@ When developing Grouparoo, you'll be running code within the [`grouparoo monorep
 
 - **Apps**: These are example applications like a Grouparoo customer would run - they require `@grouparoo/core` and any number of plugins and may have toggled certain settings
 - **Core**: The `@grouparoo/core` project is the main part of any Grouparoo application and includes the API (both web and workers).
-- **CLI**: The Grouparoo CLI tool, ie: `npx grouparoo init`
+- **CLI**: The Grouparoo CLI tool, ie: `grouparoo init .`
 - **Plugins**: There are opt-in add-ons for Grouparoo customers, and contain the logic to connect to new sources & destinations, or otherwise add new functionality to Grouparoo.
 - **UI**: The grouparoo UI plugins, `ui-community` and `ui-enterprise` and shared component libraries.
 
@@ -193,13 +193,13 @@ The `@grouparoo/demo` plugin makes it easy to generate sample data! You can use 
 ```bash
 cd apps/staging-community
 # populate the system with 1000 profiles, properties, 1000 purchases, groups, and some events
-(npx) grouparoo demo-data-purchases
+grouparoo demo-data-purchases
 
 # including the --scale param allows you to control how many profiles you make. e.g. --scale 10 makes 10,000 extra profiles.
-(npx) grouparoo demo-data-purchases --scale 10
+grouparoo demo-data-purchases --scale 10
 
 # populate the system with events
-(npx) grouparoo demo-event-stream
+grouparoo demo-event-stream
 ```
 
 ## Testing
