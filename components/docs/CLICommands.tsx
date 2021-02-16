@@ -8,11 +8,9 @@ export default function CLICommand({ name }) {
 
   return (
     <>
-      <a id={`${name}`}>
-        <h3>
-          <code>grouparoo {name}</code>
-        </h3>
-      </a>
+      <h3 id={`${name}`}>
+        <code>grouparoo {name}</code>
+      </h3>
       <pre>
         <code>
           <strong>$ grouparoo {data.name}</strong>
