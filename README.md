@@ -26,6 +26,8 @@ If you run into an issue installing Sharp on an Apple M1 machine, make sure `vip
 brew install vips
 ```
 
+If you find yourself needing to change the API endpoint that the webiste is using, you can use the `API_URL` environment variable, ie: `API_URL=http://localhost:8080`
+
 ## To Test:
 
 You will need `chromedriver` installed to run the automated browser tests:
