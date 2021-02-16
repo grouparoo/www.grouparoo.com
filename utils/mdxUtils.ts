@@ -6,6 +6,8 @@ import matter from "gray-matter";
 
 // markdown plugins
 import rehypePrism from "@mapbox/rehype-prism";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
 import externalLinks from "remark-external-links";
 
 import { titleize } from "../utils/inflectors";
@@ -20,7 +22,7 @@ if (!dirname || dirname === "/") {
 
 export const mdxOptions = {
   remarkPlugins: [[externalLinks, { target: "_blank" }]],
-  rehypePlugins: [[rehypePrism, {}]],
+  rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, [rehypePrism, {}]],
 };
 
 export async function loadMdxFile(dirParts: string[], components) {

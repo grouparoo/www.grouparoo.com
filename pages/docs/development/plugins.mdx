@@ -331,8 +331,6 @@ await api.plugins.updateSetting(pluginName, key, value);
 
 Settings are all of type `string`, so coerce them if needed. Setting keys and values are limited to 191 characters in length.
 
-<a id="iteration-and-testing" />
-
 ### Iteration and Testing
 
 When setting up Grouparoo, use `pnpm install` from the root of the monorepo to get everything installed. This used [lerna](https://lerna.js.org/) to act like all the plugins are "regular" npm ones but there are really the local files.
