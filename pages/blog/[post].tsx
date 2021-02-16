@@ -83,8 +83,6 @@ export default function BlogPage({ pageProps }) {
             <AuthorBox author={author} entry={post} />
           </Col>
           <Col>
-            <br />
-            <PageNavigation />
             <Subscribe />
             <a
               href={`https://twitter.com/intent/tweet?text="${
@@ -105,6 +103,15 @@ export default function BlogPage({ pageProps }) {
                 />
               </div>
             </a>
+            <br />
+            <div
+              style={{
+                position: "sticky",
+                top: 10,
+              }}
+            >
+              <PageNavigation />
+            </div>
           </Col>
         </Row>
       </Container>

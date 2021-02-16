@@ -7,7 +7,11 @@ interface pageNavItem {
   title: string;
 }
 
-export function PageNavigation() {
+export function PageNavigation({
+  includeLineBreak,
+}: {
+  includeLineBreak?: boolean;
+}) {
   const router = useRouter();
   const [pageNav, setPageNav] = useState<pageNavItem[]>([]);
   useEffect(() => buildPageNavigation(), [router.asPath]);
@@ -31,19 +35,22 @@ export function PageNavigation() {
   if (pageNav.length < 2) return null;
 
   return (
-    <Card>
-      <Card.Header>On this Page</Card.Header>
-      <Card.Body>
-        <small className="docsTableOfContents">
-          <ul>
-            {pageNav.map((section) => (
-              <li key={`nav-${section.title}`}>
-                <a href={section.href}>{section.title}</a>
-              </li>
-            ))}
-          </ul>
-        </small>
-      </Card.Body>
-    </Card>
+    <>
+      {includeLineBreak ? <br /> : null}
+      <Card>
+        <Card.Header>On this Page</Card.Header>
+        <Card.Body>
+          <small className="docsTableOfContents">
+            <ul>
+              {pageNav.map((section) => (
+                <li key={`nav-${section.title}`}>
+                  <a href={section.href}>{section.title}</a>
+                </li>
+              ))}
+            </ul>
+          </small>
+        </Card.Body>
+      </Card>
+    </>
   );
 }
