@@ -28,6 +28,8 @@ export function PageNavigation() {
     setPageNav(_pageNav);
   }
 
+  if (pageNav.length < 2) return null;
+
   return (
     <Card>
       <Card.Header>On this Page</Card.Header>
