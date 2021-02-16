@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Container, Row, Col, Breadcrumb } from "react-bootstrap";
 import hydrate from "next-mdx-remote/hydrate";
 import { TableOfContents } from "../../../components/docs/tableOfContents";
+import { PageNavigation } from "../../../components/docs/pageNavigation";
 import * as components from "../../../components/docs";
 import { loadMdxFile, getStaticMdxPaths } from "../../../utils/mdxUtils";
 
@@ -30,6 +31,19 @@ export default function DocPage({ pageProps }) {
         <Row>
           <Col className="d-none d-md-block">
             <TableOfContents />
+            <div
+              style={{
+                position: "sticky",
+                top: 10,
+              }}
+            >
+              <PageNavigation />
+            </div>
+          </Col>
+
+          <Col className="d-md-none">
+            <PageNavigation />
+            <br />
           </Col>
 
           <Col
