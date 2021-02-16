@@ -14,7 +14,10 @@ export function PageNavigation({
 }) {
   const router = useRouter();
   const [pageNav, setPageNav] = useState<pageNavItem[]>([]);
-  useEffect(() => buildPageNavigation(), [router.asPath]);
+  useEffect(() => {
+    buildPageNavigation();
+    setTimeout(buildPageNavigation, 150);
+  }, [router.asPath]);
 
   function buildPageNavigation() {
     const headerElements = globalThis.document.querySelectorAll(
