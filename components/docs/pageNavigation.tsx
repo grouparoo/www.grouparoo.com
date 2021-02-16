@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { Card } from "react-bootstrap";
 
 interface pageNavItem {
@@ -7,8 +8,9 @@ interface pageNavItem {
 }
 
 export function PageNavigation() {
+  const router = useRouter();
   const [pageNav, setPageNav] = useState<pageNavItem[]>([]);
-  useEffect(() => buildPageNavigation(), []);
+  useEffect(() => buildPageNavigation(), [router.asPath]);
 
   function buildPageNavigation() {
     const headerElements = globalThis.document.querySelectorAll(
