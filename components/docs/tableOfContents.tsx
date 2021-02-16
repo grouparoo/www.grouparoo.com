@@ -51,14 +51,14 @@ export function TableOfContents() {
         <Card.Body>
           <small className="docsTableOfContents">
             {navItems.map((section, idx) => {
+              const isActiveSection = router.asPath.includes(section.path);
+
               return (
                 <Fragment key={`toc-section-${idx}`}>
                   <Link href={section.path}>
                     <a
                       style={{
-                        color: router.asPath.includes(section.path)
-                          ? highlightColor
-                          : undefined,
+                        color: isActiveSection ? highlightColor : undefined,
                       }}
                       target={section.target}
                       rel={
@@ -71,7 +71,9 @@ export function TableOfContents() {
                       <strong>{section.title}</strong>
                     </a>
                   </Link>
-                  <NavList items={section.children} />
+                  {isActiveSection ? (
+                    <NavList items={section.children} />
+                  ) : null}
                 </Fragment>
               );
             })}
