@@ -10,6 +10,7 @@ import AuthorBox from "../../components/blog/authorBox";
 import getAuthor from "../../utils/getAuthor";
 import { BlogPost, getBlogPost, getBlogPaths } from "../../utils/blogPosts";
 import BlogImage from "../../components/blog/image";
+import { PageNavigation } from "../../components/docs/pageNavigation";
 
 const components = { Image: BlogImage, Alert, Card, CardBody: Card.Body };
 
@@ -56,7 +57,7 @@ export default function BlogPage({ pageProps }) {
         <hr />
 
         <Row>
-          <Col md={9}>
+          <Col md={12}>
             <h1 id="blogTitle">{post.title}</h1>
             <small>
               Tagged in {BlogTags(post.tags)} <br />
@@ -69,7 +70,11 @@ export default function BlogPage({ pageProps }) {
               </Link>{" "}
               on {post.date}
             </small>
-            <br />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col md={9}>
             <br />
             <div style={{ lineHeight: "150%" }} id="blogContent">
               {content}
@@ -77,8 +82,9 @@ export default function BlogPage({ pageProps }) {
             <br />
             <AuthorBox author={author} entry={post} />
           </Col>
-
           <Col>
+            <br />
+            <PageNavigation />
             <Subscribe />
             <a
               href={`https://twitter.com/intent/tweet?text="${
