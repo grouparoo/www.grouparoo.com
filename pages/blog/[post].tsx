@@ -10,7 +10,7 @@ import AuthorBox from "../../components/blog/authorBox";
 import getAuthor from "../../utils/getAuthor";
 import { BlogPost, getBlogPost, getBlogPaths } from "../../utils/blogPosts";
 import BlogImage from "../../components/blog/image";
-import { PageNavigation } from "../../components/docs/pageNavigation";
+import { PageNavigation } from "../../components/pageNavigation";
 
 const components = { Image: BlogImage, Alert, Card, CardBody: Card.Body };
 

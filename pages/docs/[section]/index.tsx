@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Container, Row, Col, Breadcrumb } from "react-bootstrap";
 import hydrate from "next-mdx-remote/hydrate";
 import { TableOfContents } from "../../../components/docs/tableOfContents";
-import { PageNavigation } from "../../../components/docs/pageNavigation";
+import { PageNavigation } from "../../../components/pageNavigation";
 import * as components from "../../../components/docs";
 import { loadMdxFile, getStaticMdxPaths } from "../../../utils/mdxUtils";
 
