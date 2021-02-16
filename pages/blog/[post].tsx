@@ -50,7 +50,9 @@ export default function BlogPage({ pageProps }) {
       </Head>
 
       <Container className="blogPage">
-        <h3 onClick={() => router.push("/blog")}>The Grouparoo Blog</h3>
+        <h3 style={{ cursor: "pointer" }} onClick={() => router.push("/blog")}>
+          The Grouparoo Blog
+        </h3>
         <hr />
 
         <Row>
