@@ -130,21 +130,32 @@ hr {
 }
 
 // -- Blog --
-.blogPage blockquote {
-  // using defaults from bootstrap
-  // .blockquote
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 40px;
-  margin-inline-end: 40px;
-  margin: 0 0 1rem;
-  font-size: 1.25rem;
-  // .text-center
-  text-align: center !important;
-  // change background and padding
-  background-color: $light;
-  padding: 1rem 1rem 0.25rem 1rem;
+.blogPage {
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a {
+    color: $grouparoo-dark-gray;
+  }
+
+  blockquote {
+    // using defaults from bootstrap
+    // .blockquote
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+    margin: 0 0 1rem;
+    font-size: 1.25rem;
+    // .text-center
+    text-align: center !important;
+    // change background and padding
+    background-color: $light;
+    padding: 1rem 1rem 0.25rem 1rem;
+  }
 }
 
 // -- What's New --
@@ -159,6 +170,15 @@ hr {
 
 .documentationPage {
   font-family: Helvetica, Arial, sans-serif;
+
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a {
+    color: $grouparoo-dark-gray;
+  }
 
   h2,
   h3 {

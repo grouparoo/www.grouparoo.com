@@ -22,7 +22,11 @@ if (!dirname || dirname === "/") {
 
 export const mdxOptions = {
   remarkPlugins: [[externalLinks, { target: "_blank" }]],
-  rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, [rehypePrism, {}]],
+  rehypePlugins: [
+    [rehypeSlug, {}],
+    [rehypeAutolinkHeadings, { behavior: "wrap" }],
+    [rehypePrism, {}],
+  ],
 };
 
 export async function loadMdxFile(dirParts: string[], components) {
