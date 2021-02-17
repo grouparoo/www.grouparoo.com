@@ -6,6 +6,7 @@ node_modules
 npm-debug.log
 yarn-error.log
 .env
+.envrc
 dump.rdb
 newrelic_agent.log
 *.retry
