@@ -47,15 +47,18 @@ export default function PricingPage() {
               style={{ paddingTop: 50, paddingBottom: 50 }}
             >
               <Card.Body>
-                <Card.Title>Open Source</Card.Title>
+                <Card.Title>Community Edition</Card.Title>
                 <Card.Text>
                   Grouparoo is open source and free to run in on your own cloud.
                   <br />
                   <br />
                   <div style={{ fontSize: "14px" }}>
+                    <b>Features include:</b>
                     <li>Realtime syncing infrastructure</li>
                     <li>Access to all Sources and Destinations </li>
+                    <li>Configurable with code and our CLI</li>
                     <li>Dynamic Group definition</li>
+                    <li>Ticket-based support</li>
                   </div>
                 </Card.Text>
               </Card.Body>
@@ -70,18 +73,28 @@ export default function PricingPage() {
               className="pricingCard"
             >
               <Card.Body>
-                <Card.Title>Hosted</Card.Title>
+                <Card.Title>Self-Managed Enterprise Edition</Card.Title>
                 <Card.Text>
-                  Interested in trying Grouparoo but don't want to host it
-                  yourself? Let's chat!
+                  Empowers non-technical users and teams to configure and use
+                  Grouparoo.
                   <br />
                   <br />
-                </Card.Text>{" "}
+                  <div style={{ fontSize: "14px" }}>
+                    <b>Everything in Community, plus:</b>
+                    <li>
+                      A low-code web UI allowing team members to configure
+                      Grouparoo
+                    </li>
+                    <li>Data governance (coming soon)</li>
+                    <li>Insights and analytics (coming soon)</li>
+                    <li>Business hours support</li>
+                  </div>
+                </Card.Text>
               </Card.Body>
               <Card.Footer style={{ background: "white", borderTop: "none" }}>
                 <Button
                   variant="outline-primary"
-                  href="/meet?ref=pricing-page&button=hosted"
+                  href="/meet?ref=pricing-page&button=support"
                 >
                   Get in touch
                 </Button>
@@ -92,18 +105,25 @@ export default function PricingPage() {
               className="pricingCard"
             >
               <Card.Body>
-                <Card.Title>Premium Support</Card.Title>
+                <Card.Title>Hosted</Card.Title>
                 <Card.Text>
-                  Looking for additional support with integrating or managing
-                  your Grouparoo install?
+                  Interested in trying Grouparoo but don't want to host it
+                  yourself? Let's chat!
                   <br />
                   <br />
-                </Card.Text>
+                  <div style={{ fontSize: "14px" }}>
+                    <b>Everything in Enterprise Edition, plus:</b>
+                    <li>Private single-tenant instance</li>
+                    <li>OTHER IDEAS?</li>
+                    <li>Business hours support</li>
+                    <li>Enhanced support response time SLAs</li>
+                  </div>
+                </Card.Text>{" "}
               </Card.Body>
               <Card.Footer style={{ background: "white", borderTop: "none" }}>
                 <Button
                   variant="outline-primary"
-                  href="/meet?ref=pricing-page&button=support"
+                  href="/meet?ref=pricing-page&button=hosted"
                 >
                   Get in touch
                 </Button>
