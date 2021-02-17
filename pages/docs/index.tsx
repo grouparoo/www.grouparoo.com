@@ -78,7 +78,7 @@ export default function DocsIndex() {
                     Want to learn more about how to configure and use Grouparoo?
                   </h2>
                   <p>
-                    Grouparoo is can be configured without needing to write any
+                    Grouparoo can be configured without needing to write any
                     code. Learn how to connect to your Sources and Destinations
                     to begin syncing your data.
                   </p>
