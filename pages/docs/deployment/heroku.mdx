@@ -19,8 +19,8 @@ An example project can be found at https://github.com/grouparoo/app-example. You
 
 ```bash
 # in Procfile
-web:    WEB_SERVER=true  SCHEDULER=false WORKERS=0  cd node_modules/@grouparoo/core && ./bin/start
-worker: WEB_SERVER=false SCHEDULER=true  WORKERS=10 cd node_modules/@grouparoo/core && ./bin/start
+web:    WEB_SERVER=true  WORKERS=0  cd node_modules/@grouparoo/core && ./bin/start
+worker: WEB_SERVER=false WORKERS=10 cd node_modules/@grouparoo/core && ./bin/start
 ```
 
 2. Add the Heroku add-on `heroku-postgres` via `heroku addons:create heroku-postgresql:<PLAN_NAME>`. Learn more about the plan options here: https://devcenter.heroku.com/articles/heroku-postgresql. This add-on will set the Environment Variable `DATABASE_URL` which Grouparoo will automatically use.

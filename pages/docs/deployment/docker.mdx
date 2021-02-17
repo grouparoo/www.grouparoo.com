@@ -48,7 +48,6 @@ services:
       REDIS_URL: redis://redis:6379/0
       DATABASE_URL: postgresql://postgres:password@db:5432/grouparoo_docker
       WEB_SERVER: "true"
-      SCHEDULER: "false"
       WORKERS: 0
     depends_on:
       - db
@@ -63,7 +62,6 @@ services:
       REDIS_URL: redis://redis:6379/0
       DATABASE_URL: postgresql://postgres:password@db:5432/grouparoo_docker
       WEB_SERVER: "false"
-      SCHEDULER: "true"
       WORKERS: 10
     depends_on:
       - db
