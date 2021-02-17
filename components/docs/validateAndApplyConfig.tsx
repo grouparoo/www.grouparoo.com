@@ -3,7 +3,11 @@ import Link from "next/link";
 export default function ValidateAndApplyConfig() {
   return (
     <>
-      <h2>Validating &amp; Applying Your Config</h2>
+      <h2 id="validating-and-applying-your-config">
+        <a href="#validating-and-applying-your-config">
+          Validating &amp; Applying Your Config
+        </a>
+      </h2>
 
       <p>
         You can validate your config at any time using{" "}
