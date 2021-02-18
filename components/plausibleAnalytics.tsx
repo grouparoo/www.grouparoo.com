@@ -11,7 +11,7 @@ export default function PlausibleAnalytics() {
           data-domain="grouparoo.com"
           async
           defer
-          src={`https://plausible.io/js/plausible.js`}
+          src={`https://plausible.grouparoo.com/js/index.js`}
         />
       </Head>
     </>
