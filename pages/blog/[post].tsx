@@ -21,8 +21,6 @@ export default function BlogPage({ pageProps }) {
   const author = getAuthor(post.author);
   const url = `https://www.grouparoo.com${post.path}`;
 
-  console.log(post.twitter_card);
-
   return (
     <>
       <Head>
