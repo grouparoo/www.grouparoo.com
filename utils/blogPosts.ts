@@ -59,7 +59,7 @@ export async function getBlogPost(slugName): Promise<BlogPost> {
     slug,
     image: image || null,
     source,
-    twitter_card,
+    twitter_card: twitter_card || "summary",
   };
 }
 
