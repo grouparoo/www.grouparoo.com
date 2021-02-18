@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationMappings from "../../../components/home/integrationMappings";
+import IntegrationInstallation from "../../../components/home/integrationInstallation";
 import IntegrationSources from "../../../components/home/integrationSources";
 import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
@@ -113,6 +114,11 @@ export default function SalesforcePage() {
       </div>
       <br />
       <br />
+      <IntegrationInstallation
+        displayName="Salesforce"
+        packageName="@grouparoo/salesforce"
+      />
+
       <Container>
         <Row>
           <Col>
@@ -160,7 +166,7 @@ export default function SalesforcePage() {
         <br />
         <br />
         <Row className="align-items-center">
-          <Col md={3}>
+          <Col md={4}>
             <br />
             <h3 className="integrationsBlueH3">
               Define what customer data you want in Salesforce
@@ -171,9 +177,9 @@ export default function SalesforcePage() {
               support.
             </p>
           </Col>
-          <Col md={9}>
+          <Col md={8}>
             <Image
-              className="productScreenshots"
+              className="productScreenshots border"
               src="/images/home/integrations/salesforce/grouparoo-to-salesforce.png"
               alt="Map data to Salesforce"
               width={742}
@@ -183,7 +189,7 @@ export default function SalesforcePage() {
         </Row>
         <br />
         <Row className="align-items-center">
-          <Col md={3}>
+          <Col md={4} className="order-1 order-md-2">
             <br />
             <h3 className="integrationsBlueH3">
               Grouparoo keeps your contact and lead data in Salesforce updated
@@ -194,9 +200,9 @@ export default function SalesforcePage() {
               your lead and contact information is up-to-date in Salesforce
             </p>
           </Col>
-          <Col md={9}>
+          <Col md={8} className="order-2 order-md-1">
             <Image
-              className="productScreenshots"
+              className="productScreenshots border"
               src="/images/home/integrations/salesforce/salesforce-campaign.png"
               alt="Campaign in Salesforce"
               width={742}

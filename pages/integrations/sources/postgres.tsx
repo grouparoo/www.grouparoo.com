@@ -108,17 +108,16 @@ export default function PostgresPage() {
         displayName="Postgres"
         packageName="@grouparoo/postgres"
       />
-      <br />
-      <br />
+
       <Container>
         <Row>
-          <Col md={8}>
+          <Col>
             <h2>An Overview of Grouparoo's Data Model</h2>
             <p>
               Grouparoo's core objects are Profiles and Profile Properties.
               These objects are defined based on your data such as the data in
-              your Postgres DB. You can pull this data in directly or you can
-              write SQL queries directly.
+              your Postgres DB. You can pull this data in with Grouparoo's help
+              or you can write SQL queries directly.
             </p>
             <p>
               Once you've defined these Profiles and Profile Properties, you can
@@ -126,12 +125,9 @@ export default function PostgresPage() {
             </p>
           </Col>
         </Row>
-        <br />
-        <Row>
-          <Col></Col>
-        </Row>
-        <br />
       </Container>
+
+      <br />
 
       <Container>
         <Row className="align-items-center mb-5">
