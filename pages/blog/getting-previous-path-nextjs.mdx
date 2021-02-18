@@ -13,9 +13,9 @@ We have a form [on our meet page](https://www.grouparoo.com/meet) (which, BTW, w
 
 ## The `document.referrer` Attempt
 
-My gut was to start with [`document.referrer`](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer). I've used that in the past with some success and it seemed like a simple solution.
+My gut was to start with [`document.referrer`](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer). I've used it in the past with some success and it seemed like a simple solution.
 
-The [official spec](https://html.spec.whatwg.org/multipage/dom.html#dom-document-referrer-dev) is this:
+The [official spec](https://html.spec.whatwg.org/multipage/dom.html#dom-document-referrer-dev) says `document.referrer` should do this:
 
 > Returns the URL of the Document from which the user navigated to this one, unless it was blocked or there was no such document, in which case it returns the empty string.
 
@@ -70,3 +70,5 @@ export default function GrouparooWWW(props) {
 Every time the `router.asPath` value changes, `storePathValues` fires, which adjusts our `prevPath` and `currentPath` values.
 
 With this approach we are only capturing local traffic. But we don't have to worry about any special way of linking to the `/meet` page. It just does its thing behind the scenes, regardless of whether the link to the page used Next's router or not.
+
+If you're still super curious, [here is the PR](https://github.com/grouparoo/www.grouparoo.com/pull/223) to our website that introduced this change.
