@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
+import IntegrationInstallation from "../../../components/home/integrationInstallation";
 import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
@@ -103,20 +104,25 @@ export default function PostgresPage() {
       </div>
       <br />
       <br />
+      <IntegrationInstallation
+        displayName="Postgres"
+        packageName="@grouparoo/postgres"
+      />
+      <br />
+      <br />
       <Container>
         <Row>
-          <Col>
+          <Col md={8}>
             <h2>An Overview of Grouparoo's Data Model</h2>
             <p>
               Grouparoo's core objects are Profiles and Profile Properties.
               These objects are defined based on your data such as the data in
-              your Postgres DB. You can pull this data either with our no-code
-              UI or you can write SQL queries directly.
+              your Postgres DB. You can pull this data in directly or you can
+              write SQL queries directly.
             </p>
             <p>
               Once you've defined these Profiles and Profile Properties, you can
-              use Grouparoo's no-code Group builder to create dynamic segments
-              and cohorts.
+              use Grouparoo to create dynamic segments and cohorts.
             </p>
           </Col>
         </Row>
@@ -128,8 +134,8 @@ export default function PostgresPage() {
       </Container>
 
       <Container>
-        <Row className="align-items-center">
-          <Col md={3}>
+        <Row className="align-items-center mb-5">
+          <Col md={4}>
             <br />
             <h3 className="integrationsBlueH3">
               Easily connect your Postgres data
@@ -140,9 +146,9 @@ export default function PostgresPage() {
               have running.
             </p>
           </Col>
-          <Col md={9}>
+          <Col md={8}>
             <Image
-              className="productScreenshots"
+              className="productScreenshots border"
               src="/images/home/integrations/postgres/add-postgres-app.png"
               alt="Grouparoo Postgres settings"
               width={742}
@@ -151,8 +157,17 @@ export default function PostgresPage() {
           </Col>
         </Row>
         <br />
-        <Row className="align-items-center">
-          <Col md={3}>
+        <Row className="align-items-center mb-5">
+          <Col md={8} className="order-2 order-md-1">
+            <Image
+              className="productScreenshots border"
+              src="/images/home/integrations/postgres/postgres-table-mode.png"
+              alt="Postgres table source"
+              width={742}
+              height={614}
+            />
+          </Col>
+          <Col md={4} className="order-1 order-md-2">
             <br />
             <h3 className="integrationsBlueH3">
               Define Profile Properties without needing to write SQL queries
@@ -163,19 +178,10 @@ export default function PostgresPage() {
               They can pull the data they need when they want.
             </p>
           </Col>
-          <Col md={9}>
-            <Image
-              className="productScreenshots"
-              src="/images/home/integrations/postgres/postgres-table-mode.png"
-              alt="Postgres table source"
-              width={742}
-              height={614}
-            />
-          </Col>
         </Row>
         <br />
-        <Row className="align-items-center">
-          <Col md={3}>
+        <Row className="align-items-center mb-5">
+          <Col md={4}>
             <br />
             <h3 className="integrationsBlueH3">
               But you can also write SQL if you want
@@ -186,9 +192,9 @@ export default function PostgresPage() {
               need.
             </p>
           </Col>
-          <Col md={9}>
+          <Col md={8}>
             <Image
-              className="productScreenshots"
+              className="productScreenshots border"
               src="/images/home/integrations/postgres/postgres-query-mode.png"
               alt="Postgres query source"
               width={742}
