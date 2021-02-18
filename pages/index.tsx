@@ -250,7 +250,7 @@ export default function IndexPage() {
               <p>
                 Marketing, Sales, Customer Support and other teams are trying
                 new tools all the time. Instead of building and maintaining all
-                of these integrations, add our pre-built connectors.
+                of these integrations, use Grouparoo's pre-built connectors.
               </p>
             </Col>
             <Col md={6}>
@@ -382,27 +382,6 @@ export default function IndexPage() {
               <br />
             </Col>
           </Row>
-          {/* <Row>
-            <Col><div><h3 className="homepageBlueH3">Connect to all of your apps</h3><p>
-            
-  return [
-    {
-      class: "app",
-      id: "data_warehouse",
-      name: "data_warehouse",
-      type: "postgres",
-      options: {
-        host: "localhost",
-        port: 5432,
-        database: "...",
-        schema: "public",
-        user: "...",
-        password: "...",
-        ssl: false,
-      },
-    },
-};</p></div></Col>
-          </Row> */}
           <Row className="align-items-center">
             <Col md={4}>
               <div>

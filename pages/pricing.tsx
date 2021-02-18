@@ -157,7 +157,7 @@ export default function PricingPage() {
         <Container>
           <Row>
             <Col>
-              <Table>
+              <Table style={{ textAlign: "center" }}>
                 <thead>
                   <tr>
                     <th></th>
@@ -168,7 +168,7 @@ export default function PricingPage() {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>
+                    <td style={{ textAlign: "left" }}>
                       <b>Features</b>
                     </td>
                     <td></td>
@@ -176,55 +176,190 @@ export default function PricingPage() {
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Real-time data-syncing framework</td>
-                    <td>✅</td>
-                    <td>✅</td>
-                    <td>✅</td>
-                  </tr>
-                  <tr>
-                    <td>Integrations available</td>
-                    <td>All</td>
-                    <td>All</td>
-                    <td>All</td>
-                  </tr>
-                  <tr>
-                    <td>Dynamic Group Definitions</td>
-                    <td>✅</td>
-                    <td>✅</td>
-                    <td>✅</td>
-                  </tr>
-                  <tr>
-                    <td>Configurable with Code</td>
-                    <td>✅</td>
-                    <td>✅</td>
-                    <td>✅</td>
-                  </tr>
-                  <tr>
-                    <td>Configurable in the UI</td>
-                    <td> - </td>
-                    <td>✅</td>
-                    <td>✅</td>
-                  </tr>
-                  <tr>
-                    <td>Teams, Team Members, and Permissions</td>
-                    <td> - </td>
-                    <td>✅</td>
-                    <td>✅</td>
-                  </tr>
-                  <tr>
-                    <td>Insights and Analytics (coming soon)</td>
-                    <td> - </td>
-                    <td>✅</td>
-                    <td>✅</td>
-                  </tr>
-                  <tr>
-                    <td>Data Governance (coming soon)</td>
-                    <td> - </td>
-                    <td>✅</td>
-                    <td>✅</td>
-                  </tr>
-                  <tr>
+                    <td style={{ textAlign: "left" }}>
+                      Real-time data-syncing framework
+                    </td>
                     <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ textAlign: "left" }}>
+                      Integrations available
+                    </td>
+                    <td>All</td>
+                    <td>All</td>
+                    <td>All</td>
+                  </tr>
+                  <tr>
+                    <td style={{ textAlign: "left" }}>
+                      Dynamic Group Definitions
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ textAlign: "left" }}>
+                      Configurable with Code
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ textAlign: "left" }}>
+                      Configurable in the UI
+                    </td>
+                    <td> - </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ textAlign: "left" }}>
+                      Teams, Team Members, and Permissions
+                    </td>
+                    <td> - </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ textAlign: "left" }}>
+                      Insights and Analytics (coming soon)
+                    </td>
+                    <td> - </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ textAlign: "left" }}>
+                      Data Governance (coming soon)
+                    </td>
+                    <td> - </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ textAlign: "left" }}>
                       <b>Support</b>
                     </td>
                     <td></td>
@@ -232,25 +367,85 @@ export default function PricingPage() {
                     <td></td>
                   </tr>
                   <tr>
-                    <td>Access to the community</td>
-                    <td>✅</td>
-                    <td>✅</td>
-                    <td>✅</td>
+                    <td style={{ textAlign: "left" }}>
+                      Access to the community
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
                   </tr>
                   <tr>
-                    <td>Ticket-based Support</td>
-                    <td>✅</td>
-                    <td>✅</td>
-                    <td>✅</td>
+                    <td style={{ textAlign: "left" }}>Ticket-based Support</td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
                   </tr>
                   <tr>
-                    <td>Support during Business Hours</td>
+                    <td style={{ textAlign: "left" }}>
+                      Support during Business Hours
+                    </td>
                     <td> - </td>
-                    <td>✅</td>
-                    <td>✅</td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
+                    <td>
+                      <Image
+                        src="/images/grouparoo-blue-checkmark.svg"
+                        alt="Grouparoo blue checkmark"
+                        width={24}
+                        height={24}
+                      />
+                    </td>
                   </tr>
                   <tr>
-                    <td>Enhanced Support SLAs</td>
+                    <td style={{ textAlign: "left" }}>Enhanced Support SLAs</td>
                     <td> - </td>
                     <td>add-on</td>
                     <td>add-on</td>
