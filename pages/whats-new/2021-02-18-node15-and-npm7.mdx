@@ -1,0 +1,21 @@
+---
+title: "Node.js v15 and NPM v7 Support"
+date: "2021-02-18"
+tags: ["improvement"]
+description: "Grouparoo now works with Node.js v15."
+image: "releases/2021-02-18-node15-and-npm7-node.png"
+github: "https://github.com/grouparoo/grouparoo/pull/1282"
+---
+
+Grouparoo works on [Node.js](https://nodejs.org/) v12, v14, and now... v15! This means we are in a great position to support the forthcoming LTS release of Node.js v16, along with the current LTS versions of v12 and v14 for years to come.
+
+<Image
+  alt="Grouparoo now works with Node.js v14 and v15.  Image from NPM/Github foundation."
+  src="releases/2021-02-18-node15-and-npm7-node.png"
+  width={439}
+  height={230}
+/>
+
+Previously, due to the [`peerDependencies` changes](https://github.blog/2020-10-13-presenting-v7-0-0-of-the-npm-cli/) introduced by NPM v7, we could not initially support Node.js v15 (which ships with NPM v7). The `grouparoo` CLI tool has been updated to know how to work with both the old and new NPM behavior. We've detailed our [mitigation steps here](https://github.com/grouparoo/grouparoo/discussions/1270).
+
+The ability to support Node.js v15 is also important, as it's the only version that is [natively supported by the new M1 MacOS computers](https://www.grouparoo.com/blog/apple-m1-js-memory-error).
