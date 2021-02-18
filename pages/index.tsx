@@ -72,9 +72,11 @@ export default function IndexPage() {
           <Row>
             <Col>
               <h1>Sync, Segment, and Send your Product Data Everywhere</h1>
+              <br />
               <p className="text-big-muted">
-                Focus on building your core product, not integrating with SaaS
-                tools.
+                Grouparoo is an Open Source framework to help you move data
+                between your databases and cloud-based tools{" "}
+                <b>the right way</b>.
               </p>
             </Col>
           </Row>
@@ -111,7 +113,7 @@ export default function IndexPage() {
               <br />
               <h2>Make your customer data actionable</h2>
               <p>
-                Grouparoo syndicates your customer profiles and groups to the
+                Grouparoo connects your customer profiles and groups to all the
                 places where they make a difference.
               </p>
               <br />
@@ -136,7 +138,7 @@ export default function IndexPage() {
             <Col md={6}>
               <h3>Free and Easy to Install</h3>
               <p>
-                Run Grouparoo on your computer today or install it on your
+                Try Grouparoo on your computer today or install it on your
                 company’s servers. Your data stays private on your servers. No
                 usage or storage limits.
               </p>
@@ -244,7 +246,7 @@ export default function IndexPage() {
 
           <Row className="align-items-center">
             <Col md={6}>
-              <h3>Connect new tools without writing code</h3>
+              <h3>Connect new tools quickly and easily</h3>
               <p>
                 Marketing, Sales, Customer Support and other teams are trying
                 new tools all the time. Instead of building and maintaining all
@@ -286,9 +288,9 @@ export default function IndexPage() {
                   <br />
 
                   <SmallIntegration
-                    name="Hubspot"
-                    slug="hubspot"
-                    image="hubspot.svg"
+                    name="Salesforce"
+                    slug="salesforce"
+                    image="salesforce.png"
                   />
                   <SmallIntegration
                     name="Zendesk"
@@ -298,10 +300,10 @@ export default function IndexPage() {
                 </Col>
                 <Col className="d-md-none">
                   <SmallIntegration
-                    name="Hubspot"
-                    slug="hubspot"
+                    name="Salesforce"
+                    slug="salesforce"
                     fillWidth={true}
-                    image="hubspot.svg"
+                    image="salesforce.png"
                   />
                   <SmallIntegration
                     name="Zendesk"
@@ -380,6 +382,27 @@ export default function IndexPage() {
               <br />
             </Col>
           </Row>
+          {/* <Row>
+            <Col><div><h3 className="homepageBlueH3">Connect to all of your apps</h3><p>
+            
+  return [
+    {
+      class: "app",
+      id: "data_warehouse",
+      name: "data_warehouse",
+      type: "postgres",
+      options: {
+        host: "localhost",
+        port: 5432,
+        database: "...",
+        schema: "public",
+        user: "...",
+        password: "...",
+        ssl: false,
+      },
+    },
+};</p></div></Col>
+          </Row> */}
           <Row className="align-items-center">
             <Col md={4}>
               <div>
@@ -388,8 +411,8 @@ export default function IndexPage() {
                 </h3>
                 <p>
                   Create a single view of your customers from all of your data
-                  sources. Define what data you care about, either with our No
-                  Code tool or with SQL.
+                  sources. Define what data you care about either with Code or
+                  in our Enterprise UI.
                 </p>
               </div>
             </Col>
