@@ -23,6 +23,7 @@ export interface BlogEntry {
 
 export interface BlogPost extends BlogEntry {
   source: any;
+  twitter_card: "summary" | "summary_large_image" | "app" | "player";
 }
 
 export async function getBlogPaths() {
@@ -42,7 +43,7 @@ export async function getBlogPost(slugName): Promise<BlogPost> {
     ["blog", `${slugName}.mdx`],
     components
   );
-  const { title, date, author, pullQuote, tags } = frontMatter;
+  const { title, date, author, pullQuote, tags, twitter_card } = frontMatter;
   let { image } = frontMatter;
   if (image && !image.startsWith("http")) {
     image = `https://www.grouparoo.com/posts/${image}`;
@@ -58,6 +59,7 @@ export async function getBlogPost(slugName): Promise<BlogPost> {
     slug,
     image: image || null,
     source,
+    twitter_card,
   };
 }
 

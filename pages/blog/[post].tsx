@@ -21,6 +21,8 @@ export default function BlogPage({ pageProps }) {
   const author = getAuthor(post.author);
   const url = `https://www.grouparoo.com${post.path}`;
 
+  console.log(post.twitter_card);
+
   return (
     <>
       <Head>
@@ -41,7 +43,7 @@ export default function BlogPage({ pageProps }) {
           href="https://www.grouparoo.com/feeds/blog.xml"
         />
 
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content={post.twitter_card || "summary"} />
         <meta name="twitter:site" content="@grouparoo" />
         <meta name="twitter:creator" content={author.twitter || "@grouparoo"} />
         <meta property="og:url" content={url} />
