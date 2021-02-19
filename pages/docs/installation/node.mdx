@@ -8,7 +8,7 @@ This guide will help you run the Grouparoo application on your local machine usi
 
 ### Step 1: Install Node.js Runtime and Databases
 
-Grouparoo is a [Node.js](https://nodejs.org/) application and requires Node.js version 12 or higher. You can download Node.js from their [website](https://nodejs.org/) or through the package manager for your operating system.
+Grouparoo is a [Node.js](https://nodejs.org/) application and requires Node.js version 12 or higher. You can download Node.js from the [website](https://nodejs.org/) or through the package manager for your operating system.
 
 <!-- prettier-ignore -->
 <Tabs defaultActiveKey="MacOS">
@@ -22,24 +22,51 @@ Grouparoo is a [Node.js](https://nodejs.org/) application and requires Node.js v
 
 ```bash
 # Install Homebrew (https://brew.sh) if you don't have it
+# If you have Homebrew, you'll also have Xcode Command line tools, which are needed (`sudo xcode-select --install`)
+
 brew install node # Install Node.JS
 ```
 
 </Tab>
 <Tab
-  key="Linux/Ubuntu"
-  eventKey="Linux/Ubuntu"
-  title="Linux/Ubuntu"
+  key="Linux - Ubuntu"
+  eventKey="Linux - Ubuntu"
+  title="Linux - Ubuntu"
   style={{ padding: "1rem" }}
 >
-<h5>Install Node.js on Linux/Ubuntu</h5>
+<h5>Install Node.js on Ubuntu Linux</h5>
+<em>... or other Linux distributions that use the `apt` package manager.</em>
 
 ```bash
-# Install NVM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+# Install dependencies
+sudo apt-get install curl wget build-essential python -y
 
-nvm install v12 # install v12 of Node.js
-nvm use v12 # use v12 of Node.js
+# Install NVM and a modern node.js version
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash # https://github.com/nvm-sh/nvm to learn more
+source ~/.bashrc # re-source the NVM shell helpers
+nvm install v14 # install v14 of Node.js
+nvm use v14 # use v14 of Node.js
+```
+
+</Tab>
+<Tab
+  key="Linux - CentOS/Red Hat/AWS Linux"
+  eventKey="Linux - CentOS/Red Hat/AWS Linux"
+  title="Linux - CentOS, Red Hat, and AWS Linux"
+  style={{ padding: "1rem" }}
+>
+<h5>Install Node.js on Ubuntu, Red Hat, or AWS Linux</h5>
+<em>... or other Linux distributions that use the `yum` package manager.</em>
+
+```bash
+# Install dependencies
+sudo yum install wget curl gcc gcc-c++ make python -y
+
+# Install NVM and a modern node.js version
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash # https://github.com/nvm-sh/nvm to learn more
+source ~/.bashrc # re-source the NVM shell helpers
+nvm install v14 # install v14 of Node.js
+nvm use v14 # use v14 of Node.js
 ```
 
 </Tab>
@@ -47,7 +74,7 @@ nvm use v12 # use v12 of Node.js
 
 <br />
 
-By default, Grouparoo will run from a [SQLite](https://www.sqlite.org/index.html) database and in-memory Redis, so no external dependencies are required. However, if you want to safely persists data between runs, you'll need to also install [Postgres](https://www.postgresql.org/) and [Redis](https://redis.io/).
+By default, Grouparoo will run from a [SQLite](https://www.sqlite.org/index.html) database and in-memory Redis, so no external dependencies are required. However, if you want to safely persists data between runs, you'll need to also install [Postgres](https://www.postgresql.org/) and [Redis](https://redis.io/). When deploying Grouparoo, the best practice would be to use hosted versions of these databases from your cloud provider.
 
 <!-- prettier-ignore -->
 <Tabs defaultActiveKey="MacOS">
@@ -69,18 +96,38 @@ brew services start postgresql # Start Postgres
 
 </Tab>
 <Tab
-  key="Linux/Ubuntu"
-  eventKey="Linux/Ubuntu"
-  title="Linux/Ubuntu"
+  key="Linux - Ubuntu"
+  eventKey="Linux - Ubuntu"
+  title="Linux - Ubuntu"
   style={{ padding: "1rem" }}
 >
-<h5>Install Postgres and Redis on Linux/Ubuntu</h5>
+<h5>Install Postgres and Redis on Ubuntu Linux</h5>
 
 ```bash
-sudo apt install redis-server # Install Redis
+sudo apt install redis-server # Install & Start Redis
 
-sudo apt install postgresql postgresql-contrib # Install Postgres
+sudo apt install postgresql postgresql-contrib # Install & Start Postgres
 ```
+
+</Tab>
+<Tab
+  key="Linux - CentOS/Red Hat/AWS Linux"
+  eventKey="Linux - CentOS/Red Hat/AWS Linux"
+  title="Linux - CentOS, Red Hat, and AWS Linux"
+  style={{ padding: "1rem" }}
+>
+<h5>Install Postgres and Redis on Ubuntu, Red Hat, or AWS Linux</h5>
+<em>... or other Linux distributions that use the `yum` package manager.</em>
+
+```bash
+sudo yum install redis # Install Redis
+sudo systemctl start redis # Start Redis
+```
+
+Installing Postgres is a bit more complex:
+
+- CentOS: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-7
+- Amazon Linux https://techviewleo.com/install-postgresql-12-on-amazon-linux/
 
 </Tab>
 </Tabs>
@@ -107,23 +154,15 @@ This will create a `package.json` and `.env` files like these:
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@grouparoo/core": "latest",
-    "@grouparoo/mysql": "latest",
-    "@grouparoo/postgres": "latest",
-    "@grouparoo/mailchimp": "latest",
-    "@grouparoo/csv": "latest"
+    "@grouparoo/core": "1.2.3",
+    "@grouparoo/ui-enterprise": "1.2.3"
   },
   "scripts": {
     "start": "cd node_modules/@grouparoo/core && ./bin/start",
     "dev": "cd node_modules/@grouparoo/core && ./bin/dev"
   },
   "grouparoo": {
-    "plugins": [
-      "@grouparoo/mysql",
-      "@grouparoo/postgres",
-      "@grouparoo/mailchimp",
-      "@grouparoo/csv"
-    ]
+    "plugins": ["@grouparoo/ui-enterprise"]
   }
 }
 ```
@@ -147,9 +186,9 @@ SERVER_TOKEN="a-random-string"
 
 _Only these 2 files (a `package.json` and environment variables) are needed to make an "app" for Grouparoo to run!_
 
-### Step 3: Install New Dependencies
+### Step 3: Install New Plugins
 
-Run `grouparoo install [plugin]` to install new plugins you may want.
+Run `grouparoo install [plugin]` to install the plugins you may want. Plugins are how the Grouparoo application can be extended to use new Sources and Destinations. Learn more [here](/docs/installation/plugins).
 
 If you are having trouble installing dependencies, and you are using NPM v7 or later, please see [this discussion for help](https://github.com/grouparoo/grouparoo/discussions/1270)
 
