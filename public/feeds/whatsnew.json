@@ -11,6 +11,18 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2021-02-18-node15-and-npm7",
+      "content_html": "<p>Grouparoo works on <a href=\"https://nodejs.org/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Node.js</a> v12, v14, and now... v15! This means we are in a great position to support the forthcoming LTS release of Node.js v16, along with the current LTS versions of v12 and v14 for years to come.</p><div style=\"margin-bottom:20px\"><img alt=\"Grouparoo now works with Node.js v14 and v15.  Image from NPM/Github foundation.\" src=\"https://www.grouparoo.com/posts/releases/2021-02-18-node15-and-npm7-node.png\" width=\"439\" height=\"230\" style=\"height:230px;width:439px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div><p>Previously, due to the <a href=\"https://github.blog/2020-10-13-presenting-v7-0-0-of-the-npm-cli/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\"><code>peerDependencies</code> changes</a> introduced by NPM v7, we could not initially support Node.js v15 (which ships with NPM v7). The <code>grouparoo</code> CLI tool has been updated to know how to work with both the old and new NPM behavior. We&#x27;ve detailed our <a href=\"https://github.com/grouparoo/grouparoo/discussions/1270\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">mitigation steps here</a>.</p><p>The ability to support Node.js v15 is also important, as it&#x27;s the only version that is <a href=\"https://www.grouparoo.com/blog/apple-m1-js-memory-error\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">natively supported by the new M1 MacOS computers</a>.</p>",
+      "url": "https://www.grouparoo.com/whats-new#2021-02-18-node15-and-npm7",
+      "title": "Node.js v15 and NPM v7 Support",
+      "image": "https://www.grouparoo.com/posts/releases/2021-02-18-node15-and-npm7-node.png",
+      "date_modified": "2021-02-18T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-02-12-intercom",
       "content_html": "<p>We have added <a href=\"https://www.intercom.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Intercom</a> as a destination. You can create Intercom users or leads and tag them based on your Grouparoo groups.</p><p>Intercom is used by support and marketing organizations to communicate via chat and email with their customers.</p><div style=\"margin-bottom:20px\"><img alt=\"Configuring Intercom Destination\" src=\"https://www.grouparoo.com/posts/releases/2021-02-12-intercom.png\" width=\"439\" height=\"400\" style=\"height:400px;width:439px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
       "url": "https://www.grouparoo.com/whats-new#2021-02-12-intercom",
