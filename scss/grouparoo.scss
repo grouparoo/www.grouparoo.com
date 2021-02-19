@@ -169,7 +169,7 @@ hr {
 // -- Docs --
 
 .documentationPage {
-  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
 
   h1 a,
   h2 a,
@@ -206,11 +206,6 @@ hr {
     border-radius: 0.25rem;
     margin-bottom: 1rem;
   }
-}
-
-.documentationHeader {
-  font-family: "Courier New", Courier, monospace;
-  color: $grouparoo-dark-gray;
 }
 
 .docsTableOfContents {
