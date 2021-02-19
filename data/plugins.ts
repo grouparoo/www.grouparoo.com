@@ -168,3 +168,15 @@ export const PluginData: Array<{
     showLink: true,
   },
 ];
+
+export function randomPlugin(type: "source" | "destination") {
+  const pluginDestinationNames = PluginData.filter(
+    (p) => p.primaryType === type
+  ).map((p) => p.name);
+  const pluginName =
+    pluginDestinationNames[
+      Math.floor(Math.random() * pluginDestinationNames.length)
+    ];
+
+  return pluginName;
+}

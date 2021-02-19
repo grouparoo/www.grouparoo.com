@@ -18,14 +18,25 @@ export default function GetStarted({
             <Col>
               <br />
               <br />
-              <h2>Get Started</h2>
-              <p>Easily install Grouparoo or schedule a demo</p>
+              <h2>Get Started with Grouparoo</h2>
+              <p>
+                Easily install the Grouparoo application, join the Community, or
+                schedule a demo to learn more.
+              </p>
               <Button
                 variant="primary"
                 href="/docs/getting-started"
                 className="ml-auto"
               >
                 Try it now
+              </Button>
+              &nbsp; &nbsp; &nbsp;
+              <Button
+                variant="outline-primary"
+                href="/docs/community"
+                className="ml-auto"
+              >
+                Join the Community
               </Button>
               &nbsp; &nbsp; &nbsp;
               <Button
@@ -40,15 +51,10 @@ export default function GetStarted({
                   <br />
                   <br />
                   <br />
-                  <br />
                   <p>
-                    Or learn about the{" "}
+                    Or learn more about the{" "}
                     <Link href="/about">
-                      <a>team</a>
-                    </Link>
-                    , the{" "}
-                    <Link href="/docs/community">
-                      <a>Grouparoo community</a>
+                      <a>company</a>
                     </Link>{" "}
                     or how to get{" "}
                     <Link href="/docs/support">
