@@ -12,10 +12,8 @@ import CustomerTestimonials from "../components/home/customerTestimonials";
 import { randomPlugin } from "../data/plugins";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function IndexPage() {
-  const [pluginName, setPluginName] = useState("");
-  useEffect(() => setPluginName(randomPlugin("destination")), []);
-
+export default function IndexPage({ pageProps }) {
+  const { pluginName }: string = pageProps;
   const title = "Grouparoo: Open Source Data Synchronization Framework";
   const description =
     "Grouparoo is an open source framework that helps you move data between your database and all of your cloud-based tools.";
@@ -511,3 +509,8 @@ export default function IndexPage() {
     </>
   );
 }
+
+IndexPage.getInitialProps = () => {
+  const pluginName = randomPlugin("destination");
+  return { pluginName };
+};
