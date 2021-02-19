@@ -2,42 +2,6 @@ import path from "path";
 import { spawn } from "child_process";
 import http from "http";
 
-async function spawnPromise(
-  command: string,
-  args: Array<string> = [],
-  cwd: string = process.cwd(),
-  extraEnv = {}
-) {
-  return new Promise((resolve, reject) => {
-    const env = process.env;
-    let stdout = "";
-    let stderr = "";
-
-    const spawnProcess = spawn(command, args, {
-      cwd,
-      env: Object.assign(extraEnv, env),
-    });
-
-    spawnProcess.stdout.on("data", (data) => {
-      stdout += String(data);
-    });
-
-    spawnProcess.stderr.on("data", (data) => {
-      stderr += String(data);
-    });
-
-    spawnProcess.on("close", (code) => {
-      if (code !== 0) {
-        console.log(stdout);
-        console.error(stderr);
-        return reject(new Error("something is wrong with the process"));
-      }
-
-      resolve();
-    });
-  });
-}
-
 async function httpGet(url: string) {
   return new Promise((resolve, reject) => {
     let data = "";

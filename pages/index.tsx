@@ -393,7 +393,6 @@ export default function IndexPage({ pageProps }) {
             </Col>
             <Col md={6} style={{ textAlign: "center" }}>
               <br />
-
               <FontAwesomeIcon color="black" icon={"battery-full"} size="5x" />
             </Col>
           </Row>
