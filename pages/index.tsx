@@ -9,7 +9,7 @@ import SmallIntegration from "../components/home/smallIntegration";
 import GetStarted from "../components/home/getStarted";
 import WhyOpenSource from "../components/home/whyOpenSource";
 import CustomerTestimonials from "../components/home/customerTestimonials";
-import { randomPlugin } from "../data/plugins";
+import { randomHomepagePlugin } from "../data/plugins";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function IndexPage({ pageProps }) {
@@ -508,6 +508,6 @@ export default function IndexPage({ pageProps }) {
 }
 
 IndexPage.getInitialProps = () => {
-  const pluginName = randomPlugin("destination");
+  const pluginName = randomHomepagePlugin();
   return { pluginName };
 };
