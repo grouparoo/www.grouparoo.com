@@ -12,19 +12,42 @@ export default function CustomerTestimonials() {
         <Container>
           <Row>
             <Col>
-              <Link href="https://chipax.com">
-                <a target="_blank" rel="nofollow noopener noreferrer">
-                  <Image
-                    src="/images/home/customer-logos/chipax-logo@2x.png"
-                    alt="Chipax logo"
-                    height={60}
-                    width={187}
-                    id="customer-logo"
-                    className="customerLogo"
-                  />
-                </a>
-              </Link>
-              <br />
+              <div style={{ height: 60, verticalAlign: "center" }}>
+                <Link href="https://chipax.com">
+                  <a target="_blank" rel="nofollow noopener noreferrer">
+                    <Image
+                      src="/images/home/customer-logos/chipax-logo@2x.png"
+                      alt="Chipax logo"
+                      height={60}
+                      width={187}
+                      id="customer-logo"
+                      className="customerLogo"
+                    />
+                  </a>
+                </Link>
+              </div>
+            </Col>
+            <Col>
+              <div
+                style={{ height: 60, marginTop: 16, verticalAlign: "center" }}
+              >
+                <Link href="https://sendoso.com">
+                  <a target="_blank" rel="nofollow noopener noreferrer">
+                    <Image
+                      src="/images/home/customer-logos/Sendoso-Logo-1.svg"
+                      alt="Sendoso logo"
+                      height={27}
+                      width={123}
+                      id="customer-logo"
+                      className="customerLogo"
+                    />
+                  </a>
+                </Link>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
               <p>
                 <em>
                   "I was able to set up a process that merges and maintains user
@@ -35,19 +58,6 @@ export default function CustomerTestimonials() {
               <p>-- Joaquín Brenner, Co-founder and COO @ Chipax</p>
             </Col>
             <Col>
-              <Link href="https://sendoso.com">
-                <a target="_blank" rel="nofollow noopener noreferrer">
-                  <Image
-                    src="/images/home/customer-logos/Sendoso-Logo-1.svg"
-                    alt="Sendoso logo"
-                    height={27}
-                    width={123}
-                    id="customer-logo"
-                    className="customerLogo"
-                  />
-                </a>
-              </Link>
-              <br />
               <p>
                 <em>
                   "Grouparoo has definitely helped us level up our customer data

@@ -20,7 +20,11 @@ export default function GetStarted({
               <br />
               <h2>Get Started</h2>
               <p>Easily install Grouparoo or schedule a demo</p>
-              <Button variant="primary" href="/docs" className="ml-auto">
+              <Button
+                variant="primary"
+                href="/docs/getting-started"
+                className="ml-auto"
+              >
                 Try it now
               </Button>
               &nbsp; &nbsp; &nbsp;
