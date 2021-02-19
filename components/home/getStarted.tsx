@@ -20,7 +20,7 @@ export default function GetStarted({
               <br />
               <h2>Get Started with Grouparoo</h2>
               <p>
-                Easily install the Grouparoo application, join the Community, or
+                Easily install the Grouparoo application, join the community, or
                 schedule a demo to learn more.
               </p>
               <Button

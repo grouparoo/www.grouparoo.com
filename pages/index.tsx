@@ -381,14 +381,12 @@ export default function IndexPage({ pageProps }) {
 
           <Row className="align-items-center">
             <Col md={6}>
-              <h3>Best Practices & Batteries Included</h3>
+              <h3>Best Practices &amp; Batteries Included</h3>
               <p>
-                The Grouparoo community is constantly working to handle every
-                nuance and edge case. With built-in support for things like
-                rate-limiting and retrying, Grouparoo is ready for whatever
-                problems The Cloud can throw at you. Grouparoo can be run on
-                your Laptop or scaled across many servers to increase
-                throughput.
+                With built-in support for edges cases like rate-limiting and
+                retrying, you will be ready for whatever problems{" "}
+                <em>The Cloud</em> can throw at you. Grouparoo can be run on
+                your laptop or scale across many servers to increase throughput.
               </p>
             </Col>
             <Col md={6} style={{ textAlign: "center" }}>
