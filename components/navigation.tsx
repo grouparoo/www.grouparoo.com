@@ -1,30 +1,31 @@
-import { Nav, Navbar, Container, Button } from "react-bootstrap";
-import Image from "./Image";
+import { Nav, Navbar, Container, Button, Image } from "react-bootstrap";
 
 export default function Navigation() {
   return (
     <header>
       <Container>
         <br />
-        <Navbar variant="light" expand="md" style={{ padding: 5 }}>
+        <Navbar variant="light" expand="md">
           <Navbar.Brand href="/">
             <Image
               src="/images/logo-and-wordmark-black-words.png"
               alt="Grouparoo Logo"
-              width={160}
+              width={150}
               height={32}
             />
-            <p className="d-none">Grouparoo</p>
+            <span className="d-none">Grouparoo</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto">
+            <Nav className="ml-auto" style={{ marginTop: 30 }}>
               <Nav.Link href="/integrations">Integrations</Nav.Link>
               <Nav.Link href="/pricing">Pricing</Nav.Link>
               <Nav.Link href="/docs">Docs</Nav.Link>
-              <Nav.Link href="/docs/community">Community</Nav.Link>
+              <Nav.Link className="d-md-none d-lg-block" href="/docs/community">
+                Community
+              </Nav.Link>
               <Nav.Link href="/blog">Blog</Nav.Link>
-              <Nav.Link>
+              <Nav.Link className="d-md-none d-lg-block">
                 <div style={{ paddingTop: 4 }}>
                   <iframe
                     src="https://ghbtns.com/github-btn.html?user=grouparoo&repo=grouparoo&type=star&count=false"
@@ -38,7 +39,6 @@ export default function Navigation() {
               </Nav.Link>
 
               <Button
-                className="d-md-none d-lg-block"
                 variant="primary"
                 href="/docs"
                 size="sm"

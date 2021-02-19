@@ -168,3 +168,21 @@ export const PluginData: Array<{
     showLink: true,
   },
 ];
+
+export function randomHomepagePlugin() {
+  // This is a fixed list of plugins rather than any random plugin as we want to focus on the popular ones.
+  // Some entries are duplicated to bias the likelihood they appear
+  const pluginNames = [
+    "Marketo",
+    "Marketo",
+    "Salesforce",
+    "Salesforce",
+    "Zendesk",
+    "Mailchimp",
+  ];
+
+  const pluginName =
+    pluginNames[Math.floor(Math.random() * pluginNames.length)];
+
+  return pluginName;
+}
