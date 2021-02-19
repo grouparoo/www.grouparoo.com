@@ -71,7 +71,7 @@
   {
     "name": "generate [template] [id]",
     "description": "Generate new code config files from templates. ",
-    "example": "grouparoo generate postgres:app data_warehouse",
+    "example": "App generation:\n    grouparoo generate postgres:app data_warehouse\n\n  Simple Source Generation (needs parent app):\n    grouparoo generate postgres:table:source users_table \\\n      --parent data_warehouse\n\n  Complex Source Generation (needs parent app to be `applied`):\n    grouparoo generate postgres:table:source users_table \\\n      --parent data_warehouse \\\n      --from users \\\n      --with id,first_name,email,last_name \\\n      --mapping 'id=user_id' \\\n      --high-water-mark updated_at\n    ",
     "inputs": {
       "list": {
         "required": false,
@@ -87,18 +87,38 @@
         "flag": true,
         "description": "Display the options for the template in detail"
       },
+      "parent": {
+        "required": false,
+        "letter": "p",
+        "description": "The id of the object that is the direct parent of this new object.  ie: the appId if you are creating a new Source, the sourceId if you are creating a new Property, etc."
+      },
+      "from": {
+        "required": false,
+        "letter": "f",
+        "description": "For complex generators, where should we source the objects from?"
+      },
+      "with": {
+        "required": false,
+        "letter": "w",
+        "description": "For complex generators, what additional objects should we create? Use commas to separate names (--with \"id,first_name,last_name\").",
+        "default": "*"
+      },
+      "mapping": {
+        "required": false,
+        "letter": "m",
+        "description": "For complex generators, how should we map this object? The remote key precedes the Grouparoo Property name. Use = to set the pair (--mapping \"id=user_id\")."
+      },
+      "high-water-mark": {
+        "required": false,
+        "letter": "H",
+        "description": "For complex generators, what should we use for the high-water-mark?"
+      },
       "overwrite": {
         "required": true,
         "default": false,
         "letter": "o",
         "flag": true,
         "description": "Overwrite existing files?"
-      },
-      "path": {
-        "required": true,
-        "letter": "p",
-        "default": "/Users/evan/workspace/grouparoo/grouparoo/core/config",
-        "description": "The location of the config directory"
       }
     }
   },
