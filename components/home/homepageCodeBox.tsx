@@ -1,7 +1,13 @@
 import { Row, Col } from "react-bootstrap";
 import Image from "../Image";
 
-export default function HomepageCodeBox({ code, icon }) {
+export default function BigCodeBox({
+  code,
+  icon,
+}: {
+  code: any;
+  icon?: string;
+}) {
   return (
     <div
       style={{
@@ -17,16 +23,18 @@ export default function HomepageCodeBox({ code, icon }) {
       }}
     >
       <Row className="align-items-center">
-        <Col md={2}>
-          <div style={{ paddingBottom: 10 }}>
-            <Image
-              src={`/images/home/${icon}.svg`}
-              alt={icon}
-              width={46}
-              height={46}
-            />
-          </div>
-        </Col>
+        {icon && (
+          <Col md={2}>
+            <div style={{ paddingBottom: 10 }}>
+              <Image
+                src={`/images/home/${icon}.svg`}
+                alt={icon}
+                width={46}
+                height={46}
+              />
+            </div>
+          </Col>
+        )}
         <Col>{code}</Col>
       </Row>
     </div>

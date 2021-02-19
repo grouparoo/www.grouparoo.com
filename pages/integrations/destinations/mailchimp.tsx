@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationMappings from "../../../components/home/integrationMappings";
+import IntegrationInstallation from "../../../components/home/integrationInstallation";
 import IntegrationSources from "../../../components/home/integrationSources";
 import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
@@ -104,6 +105,11 @@ export default function MailchimpPage() {
       </div>
       <br />
       <br />
+      <IntegrationInstallation
+        displayName="Mailchimp"
+        packageName="@grouparoo/mailchimp"
+      />
+
       <Container>
         <Row>
           <Col>
@@ -127,12 +133,9 @@ export default function MailchimpPage() {
             </p>
           </Col>
         </Row>
-        <br />
-        <Row>
-          <Col></Col>
-        </Row>
-        <br />
       </Container>
+
+      <br />
 
       <Container>
         <Row>
@@ -152,7 +155,7 @@ export default function MailchimpPage() {
         <br />
         <br />
         <Row className="align-items-center">
-          <Col md={3}>
+          <Col md={4}>
             <br />
             <h3 className="integrationsBlueH3">
               Define what customer data you want in Mailchimp
@@ -163,9 +166,9 @@ export default function MailchimpPage() {
               support.
             </p>
           </Col>
-          <Col md={9}>
+          <Col md={8}>
             <Image
-              className="productScreenshots"
+              className="productScreenshots border"
               src="/images/home/integrations/mailchimp/grouparoo-to-mailchimp.png"
               alt="Map data to Mailchimp"
               width={742}
@@ -175,7 +178,7 @@ export default function MailchimpPage() {
         </Row>
         <br />
         <Row className="align-items-center">
-          <Col md={3}>
+          <Col md={4} className="order-1 order-md-2">
             <br />
             <h3 className="integrationsBlueH3">
               Grouparoo keeps your customer data in Mailchimp updated in
@@ -186,9 +189,9 @@ export default function MailchimpPage() {
               you've mapped from Grouparoo.
             </p>
           </Col>
-          <Col md={9}>
+          <Col md={8} className="order-2 order-md-1">
             <Image
-              className="productScreenshots"
+              className="productScreenshots border"
               src="/images/home/integrations/mailchimp/mailchimp-audience.png"
               alt="Mailchimp audience populated"
               width={742}

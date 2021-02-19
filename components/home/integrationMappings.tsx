@@ -23,7 +23,18 @@ export default function IntegrationMappings({
     <>
       <Row style={{ textAlign: "center" }}>
         <Col lg={1} md={0} sm={0} xs={0} />
-        <Col lg={4} md={5} sm={5} xs={5}>
+        <Col
+          lg={4}
+          md={5}
+          sm={5}
+          xs={5}
+          style={{
+            borderStyle: "dashed",
+            borderWidth: 1,
+            padding: 20,
+            borderRadius: 15,
+          }}
+        >
           <Image
             centered
             style={imageStyle}
@@ -48,7 +59,18 @@ export default function IntegrationMappings({
           <br />
           <BigArrow />
         </Col>
-        <Col lg={4} md={5} sm={5} xs={5}>
+        <Col
+          lg={4}
+          md={5}
+          sm={5}
+          xs={5}
+          style={{
+            borderStyle: "dashed",
+            borderWidth: 1,
+            padding: 20,
+            borderRadius: 15,
+          }}
+        >
           <Image
             centered
             style={imageStyle}
