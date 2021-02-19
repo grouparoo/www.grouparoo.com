@@ -13,7 +13,7 @@ import { randomPlugin } from "../data/plugins";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function IndexPage({ pageProps }) {
-  const { pluginName }: string = pageProps;
+  const { pluginName }: { pluginName: string } = pageProps;
   const title = "Grouparoo: Open Source Data Synchronization Framework";
   const description =
     "Grouparoo is an open source framework that helps you move data between your database and all of your cloud-based tools.";
