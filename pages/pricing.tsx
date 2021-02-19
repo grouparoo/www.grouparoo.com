@@ -106,10 +106,7 @@ export default function PricingPage() {
                 </div>
               </Card.Body>
               <Card.Footer style={{ borderTop: "none" }}>
-                <Button
-                  variant="primary"
-                  href="/meet?ref=pricing-page&button=enterprise"
-                >
+                <Button variant="primary" href="/meet">
                   Get a quote
                 </Button>
               </Card.Footer>
@@ -138,10 +135,7 @@ export default function PricingPage() {
                 </div>
               </Card.Body>
               <Card.Footer style={{ borderTop: "none" }}>
-                <Button
-                  variant="primary"
-                  href="/meet?ref=pricing-page&button=hosted"
-                >
+                <Button variant="primary" href="/meet">
                   Get a quote
                 </Button>
               </Card.Footer>
