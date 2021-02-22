@@ -31,11 +31,11 @@ You are required to provide and `id` to the generate command. This `id` will be 
 
 You can learn more about the [configuration files here](/docs/deployment/code-config).
 
-#### Complex Generation
+#### Batch Generation
 
-Certain plugins may provide additional complex generation options to help you generate many objects at once. For example, if you have a valid [`App`](/docs/config/apps) already configured and applied, Grouparoo can inspect that App and generate a Source and Properties automatically for you. Complex generation is signified by using the `--from` flag, and potentially the `--with`, `--mapping` and `--high-water-mark` flags as well.
+Certain plugins may provide additional generation options to help you generate many objects at once. For example, if you have a valid [`App`](/docs/config/apps) already configured and applied, Grouparoo can inspect that App and generate a Source and Properties automatically for you. Batch generation is signified by using the `--from` flag, and potentially the `--with`, `--mapping` and `--high-water-mark` flags as well.
 
-For example, the `@grouparoo/postgres`, `@grouparoo/mysql`,`@grouparoo/redshift`, `@grouparoo/bigquery` and `@grouparoo/snowflake` sources all support complex source generation:
+For example, the `@grouparoo/postgres`, `@grouparoo/mysql`,`@grouparoo/redshift`, `@grouparoo/bigquery` and `@grouparoo/snowflake` sources all support batch source generation:
 
 ```bash
 # first, make an App
