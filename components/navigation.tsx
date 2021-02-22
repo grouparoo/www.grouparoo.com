@@ -40,7 +40,7 @@ export default function Navigation() {
 
               <Button
                 variant="primary"
-                href="/docs"
+                href="/docs/getting-started"
                 size="sm"
                 style={{ marginTop: 7, marginBottom: 20 }}
               >
