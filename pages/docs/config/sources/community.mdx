@@ -20,7 +20,7 @@ To generate a new Source for your Grouparoo application, run [the `generate` com
 
 For example, let's say you have configured a Postgres App with the ID `data_warehouse`. You can generate a new Postgres Source (from a table in the database) like this:
 
-    grouparoo generate postgres:table:source users
+    grouparoo generate postgres:table:source users --parent postgres_app
 
 Note here that `users` is the ID for the Source. An ID is always required when generating a config object.
 

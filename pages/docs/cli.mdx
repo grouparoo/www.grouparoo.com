@@ -52,14 +52,14 @@ grouparoo init .
 
 # create a Team and Team Member
 grouparoo generate team admin_team
-grouparoo generate team:member person@company.com
+grouparoo generate team:member person@company.com --parent admin_team
 
 # create an App, Source, and Properties
 grouparoo generate postgres:app data_warehouse
-grouparoo generate postgres:table:source users_table
-]grouparoo generate postgres:table:property email
-grouparoo generate postgres:table:property first_name
-grouparoo generate postgres:table:property last_name
+grouparoo generate postgres:table:source users_table --parent data_warehouse
+]grouparoo generate postgres:table:property email --parent users_table
+grouparoo generate postgres:table:property first_name --parent users_table
+grouparoo generate postgres:table:property last_name --parent users_table
 
 # check out config files
 grouparoo validate
