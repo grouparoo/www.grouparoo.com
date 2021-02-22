@@ -58,7 +58,7 @@ brew services start redis
 git clone git@github.com:grouparoo/grouparoo.git
 cd grouparoo
 
-# Install dependencies
+# Install with pnpm (If you don't have pnpm, install it via "npm i -g pnpm")
 pnpm install
 
 # Configure your local environment variables in .env to be able to run the "staging-enterprise" app
@@ -201,6 +201,13 @@ grouparoo demo-data-purchases --scale 10
 # populate the system with events
 grouparoo demo-event-stream
 ```
+
+**Note: This will clear all existing data, replacing it with the sample data.**
+
+You can then use the following credentials to log in:
+
+- Username: `demo@grouparoo.com`
+- Password: `password`
 
 ## Testing
 
