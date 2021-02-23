@@ -168,7 +168,7 @@ export default function IndexPage({ pageProps }) {
                 icon="npm"
                 code={
                   <>
-                    {`$`} npm grouparoo install -g
+                    {`$`} npm install -g grouparoo
                     <br />
                     {`$`} grouparoo init .
                     <br />
