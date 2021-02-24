@@ -159,51 +159,6 @@ export default function FacebookPage() {
         </Row>
         <br />
         <br />
-        <Row className="align-items-center">
-          <Col md={4}>
-            <br />
-            <h3 className="integrationsBlueH3">
-              Define what customer data you want in Facebook
-            </h3>
-            <p>
-              Grouparoo is low-code, so non-technical team members can modify
-              what data they send to different tools without needing engineering
-              support.
-            </p>
-          </Col>
-          <Col md={8}>
-            <Image
-              className="productScreenshots border"
-              src="/images/home/integrations/hubspot/grouparoo-to-hubspot.png"
-              alt="Hubspot destination settings"
-              width={742}
-              height={506}
-            />
-          </Col>
-        </Row>
-        <br />
-        <Row className="align-items-center">
-          <Col md={4} className="order-1 order-md-2">
-            <br />
-            <h3 className="integrationsBlueH3">
-              Grouparoo keeps your custom audiences in Facebook updated in
-              real-time
-            </h3>
-            <p>
-              Run campaigns in Facebook based on the Users that you've synced
-              from Grouparoo.
-            </p>
-          </Col>
-          <Col md={8} className="order-2 order-md-1">
-            <Image
-              className="productScreenshots border"
-              src="/images/home/integrations/hubspot/hubspot-list.png"
-              alt="List in Hubspot"
-              width={742}
-              height={455}
-            />
-          </Col>
-        </Row>
       </Container>
 
       <br />
