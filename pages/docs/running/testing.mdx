@@ -11,7 +11,7 @@ In order to help fit Grouparoo into the CI/CD tools you use today, Grouparoo com
 1. `npm install --save @grouparoo/spec-helper jest`
 2. create a `.env.test` file to store your test configuration.
 3. Create a new test in a `__tests__` directory within your project
-4. Write you test
+4. Write your test
 5. Run your test with `./node_modules/.bin/jest [path/to/test]`.
    - You can wire up `npm test` to run this for you.
 
@@ -60,7 +60,7 @@ In Jest, you can do expectation testing (`a` should equal `1`) or snapshot testi
 
 In this example:
 
-- Your application is already fully configured with Apps, Sources, etc via code-config
+- Your application is already fully configured with Apps, Sources, etc via [Code Config](/docs/config/code-config)
 - You have specified a test postgres or SQLite database to use via `DATABASE_URL` or a test-specific `GROUPAROO_ENV_CONFIG_FILE`
 - `"person@example"` is a user in your source database that we are testing.
 
