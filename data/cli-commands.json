@@ -90,7 +90,7 @@
       "parent": {
         "required": false,
         "letter": "p",
-        "description": "The id of the object that is the direct parent of this new object.  ie: the appId if you are creating a new Source, the sourceId if you are creating a new Property, etc."
+        "description": "The id of the object that is the direct parent of this new object, e.g. the appId if you are creating a new Source."
       },
       "from": {
         "required": false,
@@ -100,8 +100,8 @@
       "with": {
         "required": false,
         "letter": "w",
-        "description": "For batch generators, what additional objects should we create? Use commas to separate names (--with \"id,first_name,last_name\"). Default  is `*`",
-        "default": "*"
+        "description": "For batch generators, what additional objects should we create? Use commas to separate names (--with \"id,first_name,last_name\") or \"*\" for all (`--with \"*\"`). Default is ``",
+        "default": ""
       },
       "mapping": {
         "required": false,
@@ -187,6 +187,12 @@
         "default": false,
         "description": "Should timestamps be prepended to each log line?",
         "letter": "t",
+        "flag": true
+      },
+      "json": {
+        "default": false,
+        "description": "Return data as JSON? Use process.env.GROUPAROO_LOG_LEVEL=alert to disable other messages.",
+        "letter": "j",
         "flag": true
       }
     }
