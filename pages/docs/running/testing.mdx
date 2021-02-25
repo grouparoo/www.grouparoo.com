@@ -10,7 +10,7 @@ In order to help fit Grouparoo into the CI/CD tools you use today, we've adding 
 
 1. `npm install --save @grouparoo/spec-helper jest`
 2. Create a new test in `__tests__` within your project
-3. Write you test
+3. Write your test
 4. Run your test with `./node_modules/.bin/jest [path/to/test]`
 
 ## Writing Tests
@@ -19,7 +19,7 @@ In Jest, you can do expectation testing (`a` should equal `1`) or snapshot testi
 
 In this example:
 
-- Your application is already fully configured with Apps, Sources, etc via code-config
+- Your application is already fully configured with Apps, Sources, etc via [Code Config](/docs/config/code-config)
 - You have specified a test postgres or SQLite database to use via `DATABASE_URL` or a test-specific `GROUPAROO_ENV_CONFIG_FILE`
 - `"person@example"` is a user in your source database that we are testing.
 
@@ -59,5 +59,5 @@ describe("snapshot", () => {
 
 ## Testing Notes
 
-- Unless you specify in your `package.json` or `jest.config.js`, You'll need to use magic comments to let Jest know that we are running a Node.js app (`@jest-environment node`)
-- You need to specify to grouparoo which database to use, server_token to use, etc. You can either define these directly in your test, as environment variable on your CI tool, or tell Grouparoo to load a `.env` file directly by setting `process.env.GROUPAROO_ENV_CONFIG_FILE`. With either of these methods, this needs to be done before requiring `@grouparoo/spec-helper`
+- Unless you specify in your `package.json` or `jest.config.js`, You'll need to use magic comments to let Jest know that we are running a Node.js app (`@jest-environment node`).
+- You need to specify to Grouparoo which database to use, `server_token` to use, etc. You can either define these directly in your test, as environment variables on your CI tool, or tell Grouparoo to load a `.env` file directly by setting `process.env.GROUPAROO_ENV_CONFIG_FILE`. With either of these methods, this needs to be done before requiring `@grouparoo/spec-helper`.
