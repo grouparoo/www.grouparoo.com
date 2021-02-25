@@ -6,11 +6,43 @@ pullQuote: "CLI commands for running, testing, and deploying your Grouparoo appl
 
 <CLICommand name="status" />
 
+The `status` command will produce human-readable output like the following:
+
+```
+┌-- Cluster Status @ 2021-02-25T16:58:12.839Z ---
+| Overview
+| * Cluster Name: evan's dev cluster / development
+| * Total Profiles: 1000
+| * Total Groups: 3
+|
+| Groups
+| * People with Email Addresses: 1000 members / newest member: 2021-02-25T05:16:07.928Z
+| * A Small Group: 50 members / newest member: 2021-02-25T05:16:07.921Z
+| * High Value Customers: 185 members / newest member: 2021-02-25T05:15:44.137Z
+|
+| Active Runs
+| * None
+|
+| Pending Items
+| * Active Runs: 0
+| * Pending Profiles: 0 / 1000
+| * Pending Imports: 0
+| * Pending Exports: 0
+└------------------------------------------------
+```
+
 <CLICommand name="sync" />
 
 <CLICommand name="run" />
 
+The `grouparoo run` command differs from the `grouparoo start` command in a few key ways:
+
+- The `grouparoo run` command will terminate when there is nothing left to do. You'll see similar status to `grouparoo status` periodically displayed in the console.
+- The `grouparoo run` command will run _all_ schedules exactly once. We will not continue to process them as time progresses. You can choose to run non-recurring schedules as well via a flag.
+
 <CLICommand name="start" />
+
+- The `grouparoo start` command is equivalent to `npm start`.
 
 <CLICommand name="destroy" />
 
