@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Thu, 18 Feb 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 26 Feb 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,21 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Documentation Overhaul]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-02-26-documentation</link>
+            <guid>grouparoo-release-note-2021-02-26-documentation</guid>
+            <pubDate>Fri, 26 Feb 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>With the introduction of <a href="/docs/config/code-config">Code Config</a> in v0.2, we took a step back to look at how we were organizing our documentation. We want to make it as easy as possible to get up and running with Grouparoo.</p><p>Through that process, we created a number of new documents and updated almost every existing doc. Here&#x27;s a brief summary of the changes:</p><ul><li><a href="/docs/getting-started">Getting Started</a> focuses your first-time effort on getting you up and running quickly on your local machine.</li><li>The process of working with Grouparoo is now described in four steps: <a href="/docs/installation">Installation</a>, <a href="/docs/config">Configuration</a>, <a href="/docs/running">Running</a>, and <a href="/docs/deployment">Deployment</a>.</li><li>There is a new section <a href="/docs/cli">on the CLI</a>, which received a major overhaul in v0.2.</li><li>The <a href="/docs/support">Support section</a> is a grab bag of articles to provide more information and support as you dive deeper into Grouparoo.</li><li>The nav is cleaned up so it&#x27;s clear where you are on your documentation journey.</li><li>A table of contents sits below the main nav to guide you through the current page.</li></ul>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+            <enclosure
+        url="https://www.grouparoo.com/posts/releases/2021-02-18-documentation.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title><![CDATA[Node.js v15 and NPM v7 Support]]></title>
             <link
