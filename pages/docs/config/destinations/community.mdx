@@ -22,7 +22,7 @@ To generate a new Destination for your Grouparoo application, run [the `generate
 
 For example, let's say you have configured a Mailchimp App with the ID `mailchimp`. You can generate a new Mailchimp Destination (from a table in the database) like this:
 
-    grouparoo generate mailchimp:email:destination newsletter
+    grouparoo generate mailchimp:email:destination newsletter --parent mailchimp_app
 
 Note here that `newsletter` is the ID for the Destination. An ID is always required when generating a config object.
 
@@ -64,14 +64,20 @@ Postgres is just one _type_ of Destination you can create. To see a full list of
 
 This will give you something like the following:
 
-    hubspot:destination (id) - Config for a hubspot Destination
-    mailchimp:email:destination (id) - Config for a Mailchimp Email Destination
-    mailchimp:id:destination (id) - Config for a Mailchimp ID Destination. Note: Use the email destination unless you know you need this.
-    mysql:destination (id) - Config for a mysql Destination
-    postgres:destination (id) - Config for a postgres Destination
-    redshift:destination (id) - Config for a redshift Destination
-    salesforce:destination (id) - Config for a salesforce Destination
-    zendesk:destination (id) - Config for a zendesk Destination
+    facebook:destination (id, parent) - Config for a facebook Destination
+    hubspot:destination (id, parent) - Config for a hubspot Destination
+    intercom:destination (id, parent) - Config for a intercom Destination
+    iterable:destination (id, parent) - Config for a iterable Destination
+    mailchimp:email:destination (id, parent) - Config for a Mailchimp Email Destination
+    mailchimp:id:destination (id, parent) - Config for a Mailchimp ID Destination. Note: Use the email destination unless you know you need this.
+    marketo:destination (id, parent) - Config for a marketo Destination
+    mysql:destination (id, parent) - Config for a mysql Destination
+    postgres:destination (id, parent) - Config for a postgres Destination
+    redshift:destination (id, parent) - Config for a redshift Destination
+    sailthru:destination (id, parent) - Config for a sailthru Destination
+    salesforce:destination (id, parent) - Config for a salesforce Destination
+    sendgrid:destination (id, parent) - Config for a sendgrid Destination
+    zendesk:destination (id, parent) - Config for a zendesk Destination
 
 ## Configuring Your Destination
 

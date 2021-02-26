@@ -1,32 +1,35 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import Image from "../components/Image";
 import Head from "next/head";
+import Link from "next/link";
 import HomepageCodeBox from "../components/home/homepageCodeBox";
 import IntegrationsSection from "../components/home/integrationsSection";
 import SmallIntegration from "../components/home/smallIntegration";
 import GetStarted from "../components/home/getStarted";
 import WhyOpenSource from "../components/home/whyOpenSource";
 import CustomerTestimonials from "../components/home/customerTestimonials";
+import { randomHomepagePlugin } from "../data/plugins";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function IndexPage() {
+export default function IndexPage({ pageProps }) {
+  const { pluginName }: { pluginName: string } = pageProps;
+  const title = "Grouparoo: Open Source Data Synchronization Framework";
+  const description =
+    "Grouparoo is an open source framework that helps you move data between your database and all of your cloud-based tools.";
+  const tagline = `Stop writing code to sync data to ${pluginName}*`;
+
   return (
     <>
       <Head>
         {/* Title */}
-        <title>Grouparoo: Open Source Real Time Data Framework</title>
-        <meta
-          name="og:title"
-          content="Grouparoo: Open Source Real Time Data Framework"
-        />
 
+        <title>{title}</title>
+        <meta name="og:title" content={title} />
         <meta property="og:site_name" content="Grouparoo" />
         <meta property="og:url" content="https://www.grouparoo.com/" />
         <meta property="og:type" content="website" />
-        <meta
-          name="twitter:title"
-          content="Grouparoo: Open Source Real Time Data Framework"
-        />
+        <meta name="twitter:title" content={title} />
         <meta name="twitter:site" content="@grouparoo" />
         <meta name="twitter:card" content="summary_large_image" />
 
@@ -40,25 +43,13 @@ export default function IndexPage() {
           name="twitter:image"
           content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
         />
-        <meta
-          name="twitter:image:alt"
-          content="Twitter Card for Grouparoo, a company building an open source data framework."
-        />
+        <meta name="twitter:image:alt" content={title} />
 
         {/* Description */}
 
-        <meta
-          name="description"
-          content="Power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse. Grouparoo is an open source data framework that easily connects your data to business tools."
-        />
-        <meta
-          name="twitter:description"
-          content="Power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse. Grouparoo is an open source data framework that easily connects your data to business tools."
-        />
-        <meta
-          name="og:description"
-          content="Power your business tools (Salesforce, Marketo, Hubspot, and more) with the data from your product database or warehouse. Grouparoo is an open source data framework that easily connects your data to business tools."
-        />
+        <meta name="description" content={description} />
+        <meta name="twitter:description" content={description} />
+        <meta name="og:description" content={description} />
 
         <link rel="canonical" href="https://www.grouparoo.com/" />
       </Head>
@@ -71,12 +62,15 @@ export default function IndexPage() {
         <Container>
           <Row>
             <Col>
-              <h1>Sync, Segment, and Send your Product Data Everywhere</h1>
-              <p className="text-big-muted">
-                Focus on building your core product, not integrating with SaaS
-                tools.
-              </p>
+              <h1>{tagline}</h1>
             </Col>
+          </Row>
+          <Row>
+            <Col md={2} />
+            <Col md={8}>
+              <p className="text-big-muted">{description}</p>
+            </Col>
+            <Col md={2} />
           </Row>
 
           <br />
@@ -92,6 +86,34 @@ export default function IndexPage() {
               >
                 Get Started
               </Button>
+            </Col>
+          </Row>
+
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <Row>
+            <Col md={12}>
+              <small>
+                <p>
+                  <em>
+                    * Sorry,{" "}
+                    <Link
+                      href={`/integrations/destinations/${pluginName.toLowerCase()}`}
+                    >
+                      <a>{pluginName}</a>
+                    </Link>{" "}
+                    - we don't mean to pick on you specifically. We integrate
+                    with{" "}
+                    <Link href="/integrations">
+                      <a>lots of marketing, operations, and sales tools</a>
+                    </Link>
+                    .
+                  </em>
+                </p>
+              </small>
             </Col>
           </Row>
         </Container>
@@ -111,7 +133,7 @@ export default function IndexPage() {
               <br />
               <h2>Make your customer data actionable</h2>
               <p>
-                Grouparoo syndicates your customer profiles and groups to the
+                Grouparoo connects your customer profiles and groups to all the
                 places where they make a difference.
               </p>
               <br />
@@ -136,7 +158,7 @@ export default function IndexPage() {
             <Col md={6}>
               <h3>Free and Easy to Install</h3>
               <p>
-                Run Grouparoo on your computer today or install it on your
+                Try Grouparoo on your computer today or install it on your
                 company’s servers. Your data stays private on your servers. No
                 usage or storage limits.
               </p>
@@ -146,7 +168,7 @@ export default function IndexPage() {
                 icon="npm"
                 code={
                   <>
-                    {`$`} npm grouparoo install -g
+                    {`$`} npm install -g grouparoo
                     <br />
                     {`$`} grouparoo init .
                     <br />
@@ -157,8 +179,6 @@ export default function IndexPage() {
             </Col>
           </Row>
 
-          <br />
-          <br />
           <br />
           <br />
 
@@ -238,17 +258,14 @@ export default function IndexPage() {
           </Row>
 
           <br />
-          <br />
-          <br />
-          <br />
 
           <Row className="align-items-center">
             <Col md={6}>
-              <h3>Connect new tools without writing code</h3>
+              <h3>Connect new tools quickly and easily</h3>
               <p>
                 Marketing, Sales, Customer Support and other teams are trying
                 new tools all the time. Instead of building and maintaining all
-                of these integrations, add our pre-built connectors.
+                of these integrations, use Grouparoo's pre-built connectors.
               </p>
             </Col>
             <Col md={6}>
@@ -286,9 +303,9 @@ export default function IndexPage() {
                   <br />
 
                   <SmallIntegration
-                    name="Hubspot"
-                    slug="hubspot"
-                    image="hubspot.svg"
+                    name="Salesforce"
+                    slug="salesforce"
+                    image="salesforce.png"
                   />
                   <SmallIntegration
                     name="Zendesk"
@@ -298,10 +315,10 @@ export default function IndexPage() {
                 </Col>
                 <Col className="d-md-none">
                   <SmallIntegration
-                    name="Hubspot"
-                    slug="hubspot"
+                    name="Salesforce"
+                    slug="salesforce"
                     fillWidth={true}
-                    image="hubspot.svg"
+                    image="salesforce.png"
                   />
                   <SmallIntegration
                     name="Zendesk"
@@ -315,9 +332,6 @@ export default function IndexPage() {
             </Col>
           </Row>
 
-          <br />
-          <br />
-          <br />
           <br />
 
           <Row className="align-items-center">
@@ -355,11 +369,29 @@ export default function IndexPage() {
             </Col>
             <Col className="d-md-none" md={6} style={{ textAlign: "center" }}>
               <Image
-                src="/images/home/github-white.png"
+                src="/images/home/github.png"
                 alt="Github Logo"
                 width={100}
                 height={100}
               />
+            </Col>
+          </Row>
+
+          <br />
+
+          <Row className="align-items-center">
+            <Col md={6}>
+              <h3>Best Practices &amp; Batteries Included</h3>
+              <p>
+                With built-in support for edges cases like rate-limiting and
+                retrying, you will be ready for whatever problems{" "}
+                <em>The Cloud</em> can throw at you. Grouparoo can be run on
+                your laptop or scale across many servers to increase throughput.
+              </p>
+            </Col>
+            <Col md={6} style={{ textAlign: "center" }}>
+              <br />
+              <FontAwesomeIcon color="black" icon={"battery-full"} size="5x" />
             </Col>
           </Row>
         </Container>
@@ -388,8 +420,8 @@ export default function IndexPage() {
                 </h3>
                 <p>
                   Create a single view of your customers from all of your data
-                  sources. Define what data you care about, either with our No
-                  Code tool or with SQL.
+                  sources. Define what data you care about either with Code or
+                  in our Enterprise UI.
                 </p>
               </div>
             </Col>
@@ -469,8 +501,92 @@ export default function IndexPage() {
       </div>
 
       <IntegrationsSection />
+
       <WhyOpenSource />
+
+      <div
+        id="productFeatures"
+        className="bg-dark text-white homePageSection"
+        style={{ textAlign: "left" }}
+      >
+        <Container>
+          <div style={{ textAlign: "center" }}>
+            <h3>Features that embed in your workflow</h3>
+            <p>Grouparoo makes it easy to follow developer best practices.</p>
+          </div>
+
+          <br />
+          <Row>
+            <Col md={4}>
+              <FontAwesomeIcon color="white" icon={"wrench"} size="1x" />
+              <strong> Pre-built integrations</strong>
+              <br />
+              <p>
+                All of the integration code is already written, so all of the
+                nuances like rate limits, API requirements, and others are
+                covered.
+              </p>
+            </Col>
+            <Col md={4}>
+              <FontAwesomeIcon color="white" icon={"chart-line"} size="1x" />
+              <strong> Observability</strong>
+              <br />
+              <p>
+                Charts, tools, and data to help you monitor your Grouparoo
+                instance.
+              </p>
+            </Col>
+            <Col md={4}>
+              <FontAwesomeIcon color="white" icon={"vial"} size="1x" />
+              <strong> Testable</strong>
+              <br />
+              <p>
+                Write automated tests, so you can verify that the data is being
+                imported and exported as you'd expect.
+              </p>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={4}>
+              <FontAwesomeIcon color="white" icon={"tasks"} size="1x" />
+              <strong> Many deploy options</strong>
+              <br />
+              <p>
+                Deploy easily using Heroku, Kubernetes, or Docker, or through
+                your own deploy process.
+              </p>
+            </Col>
+            <Col md={4}>
+              <FontAwesomeIcon color="white" icon={"shoe-prints"} size="1x" />
+              <strong> Conventions</strong>
+              <br />
+              <p>
+                Maintainable conventions so everyone on the team can easily
+                understand and modify Grouparoo.
+              </p>
+            </Col>
+            <Col md={4}>
+              <FontAwesomeIcon color="white" icon={"layer-group"} size="1x" />
+              <strong> Open Source and Extensible</strong>
+              <br />
+              <p>
+                Grouparoo is open source, so you can look under the hood to see
+                how everything works and extend it to your needs.
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+
+      <br />
+
       <GetStarted />
     </>
   );
 }
+
+IndexPage.getInitialProps = () => {
+  const pluginName = randomHomepagePlugin();
+  return { pluginName };
+};

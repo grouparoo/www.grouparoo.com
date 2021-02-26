@@ -23,8 +23,6 @@ describe("integration", () => {
   test("it renders the home page", async () => {
     await browser.get(url);
     const header = await browser.findElement(by.tagName("h1")).getText();
-    expect(header).toContain(
-      "Sync, Segment, and Send your Product Data Everywhere"
-    );
+    expect(header).toContain("Stop writing code to sync data");
   });
 });

@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
+import IntegrationInstallation from "../../../components/home/integrationInstallation";
 import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
@@ -104,6 +105,11 @@ export default function BigQueryPage() {
       </div>
       <br />
       <br />
+      <IntegrationInstallation
+        displayName="BigQuery"
+        packageName="@grouparoo/bigquery"
+      />
+
       <Container>
         <Row>
           <Col>
@@ -111,26 +117,22 @@ export default function BigQueryPage() {
             <p>
               Grouparoo's core objects are Profiles and Profile Properties.
               These objects are defined based on your data such as the data in
-              your BigQuery data warehouse. You can pull this data either with
-              our no-code UI or you can write SQL queries directly.
+              your BigQuery data warehouse. You can pull this data in with
+              Grouparoo's help or you can write SQL queries directly.
             </p>
             <p>
               Once you've defined these Profiles and Profile Properties, you can
-              use Grouparoo's no-code Group builder to create dynamic segments
-              and cohorts.
+              use Grouparoo to create dynamic segments and cohorts.
             </p>
           </Col>
         </Row>
-        <br />
-        <Row>
-          <Col></Col>
-        </Row>
-        <br />
       </Container>
+
+      <br />
 
       <Container>
         <Row className="align-items-center">
-          <Col md={3}>
+          <Col md={4}>
             <br />
             <h3 className="integrationsBlueH3">
               Easily connect your BigQuery data
@@ -141,9 +143,9 @@ export default function BigQueryPage() {
               have running.
             </p>
           </Col>
-          <Col md={9}>
+          <Col md={8}>
             <Image
-              className="productScreenshots"
+              className="productScreenshots border"
               src="/images/home/integrations/bigquery/add-bigquery-app.png"
               alt="Grouparoo BigQuery settings"
               width={742}
@@ -153,7 +155,7 @@ export default function BigQueryPage() {
         </Row>
         <br />
         <Row className="align-items-center">
-          <Col md={3}>
+          <Col md={4} className="order-1 order-md-2">
             <br />
             <h3 className="integrationsBlueH3">
               Define Profile Properties without needing to write SQL queries
@@ -164,9 +166,9 @@ export default function BigQueryPage() {
               They can pull the data they need when they want.
             </p>
           </Col>
-          <Col md={9}>
+          <Col md={8} className="order-2 order-md-1">
             <Image
-              className="productScreenshots"
+              className="productScreenshots border"
               src="/images/home/integrations/bigquery/bigquery-table-mode.png"
               alt="Grouparoo table source settings"
               width={742}
@@ -176,7 +178,7 @@ export default function BigQueryPage() {
         </Row>
         <br />
         <Row className="align-items-center">
-          <Col md={3}>
+          <Col md={4}>
             <br />
             <h3 className="integrationsBlueH3">
               But you can also write SQL if you want
@@ -187,9 +189,9 @@ export default function BigQueryPage() {
               need.
             </p>
           </Col>
-          <Col md={9}>
+          <Col md={8}>
             <Image
-              className="productScreenshots"
+              className="productScreenshots border"
               src="/images/home/integrations/bigquery/bigquery-query-mode.png"
               alt="Grouparoo query source settings"
               width={742}

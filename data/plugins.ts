@@ -23,6 +23,18 @@ export const PluginData: Array<{
     showLink: false,
   },
   {
+    name: "Facebook",
+    description: "",
+    priority: 60,
+    slug: "facebook",
+    logo: "facebook.png",
+    primaryType: "destination",
+    otherTypes: [],
+    category: "ad platform",
+    badge: "",
+    showLink: true,
+  },
+  {
     name: "Google BigQuery",
     description: "",
     priority: 80,
@@ -52,6 +64,30 @@ export const PluginData: Array<{
     priority: 70,
     slug: "hubspot",
     logo: "hubspot.svg",
+    primaryType: "destination",
+    otherTypes: [],
+    category: "email marketing",
+    badge: "",
+    showLink: true,
+  },
+  {
+    name: "Intercom",
+    description: "",
+    priority: 80,
+    slug: "intercom",
+    logo: "intercom.png",
+    primaryType: "destination",
+    otherTypes: [],
+    category: "crm",
+    badge: "",
+    showLink: true,
+  },
+  {
+    name: "Iterable",
+    description: "",
+    priority: 80,
+    slug: "iterable",
+    logo: "iterable.png",
     primaryType: "destination",
     otherTypes: [],
     category: "email marketing",
@@ -144,6 +180,18 @@ export const PluginData: Array<{
     showLink: true,
   },
   {
+    name: "Sendgrid",
+    description: "",
+    priority: 70,
+    slug: "sendgrid",
+    logo: "sendgrid.png",
+    primaryType: "destination",
+    otherTypes: [],
+    category: "email",
+    badge: "",
+    showLink: true,
+  },
+  {
     name: "Snowflake",
     description: "",
     priority: 90,
@@ -168,3 +216,21 @@ export const PluginData: Array<{
     showLink: true,
   },
 ];
+
+export function randomHomepagePlugin() {
+  // This is a fixed list of plugins rather than any random plugin as we want to focus on the popular ones.
+  // Some entries are duplicated to bias the likelihood they appear
+  const pluginNames = [
+    "Marketo",
+    "Marketo",
+    "Salesforce",
+    "Salesforce",
+    "Zendesk",
+    "Mailchimp",
+  ];
+
+  const pluginName =
+    pluginNames[Math.floor(Math.random() * pluginNames.length)];
+
+  return pluginName;
+}

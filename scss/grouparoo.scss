@@ -169,7 +169,7 @@ hr {
 // -- Docs --
 
 .documentationPage {
-  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
 
   h1 a,
   h2 a,
@@ -208,11 +208,6 @@ hr {
   }
 }
 
-.documentationHeader {
-  font-family: "Courier New", Courier, monospace;
-  color: $grouparoo-dark-gray;
-}
-
 .docsTableOfContents {
   .sectionHeading {
     display: block;
@@ -229,3 +224,19 @@ hr {
 
 // -- Code --
 // @import url(/css/prism.css);
+
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}

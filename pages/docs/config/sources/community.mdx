@@ -20,7 +20,7 @@ To generate a new Source for your Grouparoo application, run [the `generate` com
 
 For example, let's say you have configured a Postgres App with the ID `data_warehouse`. You can generate a new Postgres Source (from a table in the database) like this:
 
-    grouparoo generate postgres:table:source users
+    grouparoo generate postgres:table:source users --parent postgres_app
 
 Note here that `users` is the ID for the Source. An ID is always required when generating a config object.
 
@@ -56,21 +56,21 @@ Postgres is just one _type_ of Source you can create. To see a full list of avai
 
 This will give you something like the following:
 
-    bigquery:query:source (id) - Config for a bigquery Query Source. Work with multiple tables and build custom queries for its properties.
-    bigquery:table:source (id) - Config for a bigquery Table Source. Construct properties from the data in the table without writing SQL.
-    csv:source (id) - Config for a CSV Source
-    events:source (id) - Config for a Grouparoo Source based on an Events App
-    google-sheets:source (id) - Config for a Google Sheets Source
-    mailchimp:source (id) - Config for a Mailchimp Source
-    manual:source (id) - Config for a Grouparoo Source based on a Manual App
-    mysql:query:source (id) - Config for a mysql Query Source. Work with multiple tables and build custom queries for its properties.
-    mysql:table:source (id) - Config for a mysql Table Source. Construct properties from the data in the table without writing SQL.
-    postgres:query:source (id) - Config for a postgres Query Source. Work with multiple tables and build custom queries for its properties.
-    postgres:table:source (id) - Config for a postgres Table Source. Construct properties from the data in the table without writing SQL.
-    redshift:query:source (id) - Config for a redshift Query Source. Work with multiple tables and build custom queries for its properties.
-    redshift:table:source (id) - Config for a redshift Table Source. Construct properties from the data in the table without writing SQL.
-    snowflake:query:source (id) - Config for a snowflake Query Source. Work with multiple tables and build custom queries for its properties.
-    snowflake:table:source (id) - Config for a snowflake Table Source. Construct properties from the data in the table without writing SQL.
+    bigquery:query:source (id, parent) - Config for a bigquery query Source. Work with multiple tables and build custom queries for its properties.
+    bigquery:table:source (id, parent, from, mapping, with, high-water-mark) - Config for a bigquery table Source. Construct Sources and Properties without writing SQL.
+    csv:source (id, parent) - Config for a CSV Source
+    events:source (id, parent) - Config for a Grouparoo Source based on an Events App
+    google-sheets:source (id, parent) - Config for a Google Sheets Source
+    mailchimp:source (id, parent) - Config for a Mailchimp Source
+    manual:source (id, parent) - Config for a Grouparoo Source based on a Manual App
+    mysql:query:source (id, parent) - Config for a mysql query Source. Work with multiple tables and build custom queries for its properties.
+    mysql:table:source (id, parent, from, mapping, with, high-water-mark) - Config for a mysql table Source. Construct Sources and Properties without writing SQL.
+    postgres:query:source (id, parent) - Config for a postgres query Source. Work with multiple tables and build custom queries for its properties.
+    postgres:table:source (id, parent, from, mapping, with, high-water-mark) - Config for a postgres table Source. Construct Sources and Properties without writing SQL.
+    redshift:query:source (id, parent) - Config for a redshift query Source. Work with multiple tables and build custom queries for its properties.
+    redshift:table:source (id, parent, from, mapping, with, high-water-mark) - Config for a redshift table Source. Construct Sources and Properties without writing SQL.
+    snowflake:query:source (id, parent) - Config for a snowflake query Source. Work with multiple tables and build custom queries for its properties.
+    snowflake:table:source (id, parent, from, mapping, with, high-water-mark) - Config for a snowflake table Source. Construct Sources and Properties without writing SQL.
 
 ## Configuring Your Source
 
@@ -82,5 +82,9 @@ The `generate` command attempts to make a _reasonable_ guess at the values in th
 </Alert>
 
 Other sections may be commented out but require some action by you. The best practice when configuring an Source is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Source.
+
+## Batch Source Generation
+
+Certain plugins may provide batch source generation options. This means that is you have a valid [`App`](/docs/config/apps) already configured and applied, Grouparoo can inspect that app and generate a Source and Properties automatically for you. Learn more about this from the [Generate CLI Command documentation](/docs/cli/config#batch-generation).
 
 <ValidateAndApplyConfig />

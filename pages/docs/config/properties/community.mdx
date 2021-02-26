@@ -24,7 +24,7 @@ To generate a new Property for your Grouparoo application, you can run [the `gen
 
 For example, let's say you have configured a Postgres Table Source with the ID `users`. And let's say you want to add a Property that calculates the lifetime value of each customer. You can generate a new Profile for that Source like this:
 
-    grouparoo generate postgres:table:property ltv
+    grouparoo generate postgres:table:property ltv --parent users_table
 
 Note here that `ltv` is the ID for the Source. An ID is always required when generating a config object.
 
@@ -69,21 +69,21 @@ A Postgres table Property is just one _type_ of Property you can create. To see 
 
 This will give you something like the following:
 
-    bigquery:query:property (id) - Config for a bigquery Query Property
-    bigquery:table:property (id) - Config for a bigquery Table Property
-    csv:property (id) - Config for a CSV Property
-    events:property (id) - Config for a Grouparoo Property based on an Events Source
-    google-sheets:property (id) - Config for a Google Sheets Property
-    mailchimp:property (id) - Config for a Mailchimp Property
-    manual:property (id) - Config for a Grouparoo Property based on a Manual Source
-    mysql:query:property (id) - Config for a mysql Query Property
-    mysql:table:property (id) - Config for a mysql Table Property
-    postgres:query:property (id) - Config for a postgres Query Property
-    postgres:table:property (id) - Config for a postgres Table Property
-    redshift:query:property (id) - Config for a redshift Query Property
-    redshift:table:property (id) - Config for a redshift Table Property
-    snowflake:query:property (id) - Config for a snowflake Query Property
-    snowflake:table:property (id) - Config for a snowflake Table Property
+    bigquery:query:property (id, parent) - Config for a bigquery Query Property
+    bigquery:table:property (id, parent) - Config for a bigquery Table Property
+    csv:property (id, parent) - Config for a CSV Property
+    events:property (id, parent) - Config for a Grouparoo Property based on an Events Source
+    google-sheets:property (id, parent) - Config for a Google Sheets Property
+    mailchimp:property (id, parent) - Config for a Mailchimp Property
+    manual:property (id, parent) - Config for a Grouparoo Property based on a Manual Source
+    mysql:query:property (id, parent) - Config for a mysql Query Property
+    mysql:table:property (id, parent) - Config for a mysql Table Property
+    postgres:query:property (id, parent) - Config for a postgres Query Property
+    postgres:table:property (id, parent) - Config for a postgres Table Property
+    redshift:query:property (id, parent) - Config for a redshift Query Property
+    redshift:table:property (id, parent) - Config for a redshift Table Property
+    snowflake:query:property (id, parent) - Config for a snowflake Query Property
+    snowflake:table:property (id, parent) - Config for a snowflake Table Property
 
 ## Configuring Your Property
 

@@ -31,6 +31,8 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/blog/building-a-sync-engine</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/blog/declarative-data-sync</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/blog/defering-side-effects-in-node</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/blog/developing-grouparoo-on-macos-big-sur</loc><changefreq
@@ -173,6 +175,8 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/whats-new/2021-02-12-intercom</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/whats-new/2021-02-18-node15-and-npm7</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/cli/config</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/cli/run</loc><changefreq
@@ -243,7 +247,13 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/support/upgrading-grouparoo</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/integrations/destinations/facebook</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/destinations/hubspot</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/integrations/destinations/intercom</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/integrations/destinations/iterable</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/destinations/mailchimp</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
@@ -252,6 +262,8 @@
     >https://www.grouparoo.com/integrations/destinations/sailthru</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/destinations/salesforce</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/integrations/destinations/sendgrid</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/destinations/zendesk</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc

@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Image from "../../../components/Image";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
+import IntegrationInstallation from "../../../components/home/integrationInstallation";
 import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
@@ -107,6 +108,11 @@ export default function Snowflake() {
       </div>
       <br />
       <br />
+      <IntegrationInstallation
+        displayName="Snowflake"
+        packageName="@grouparoo/snowflake"
+      />
+
       <Container>
         <Row>
           <Col>
@@ -114,26 +120,22 @@ export default function Snowflake() {
             <p>
               Grouparoo's core objects are Profiles and Profile Properties.
               These objects are defined based on your data such as the data in
-              your Snowflake DB. You can pull this data either with our no-code
-              UI or you can write SQL queries directly.
+              your Snowflake DB. You can pull this data in with Grouparoo's help
+              or you can write SQL queries directly.
             </p>
             <p>
               Once you've defined these Profiles and Profile Properties, you can
-              use Grouparoo's no-code Group builder to create dynamic segments
-              and cohorts.
+              use Grouparoo to create dynamic segments and cohorts.
             </p>
           </Col>
         </Row>
-        <br />
-        <Row>
-          <Col></Col>
-        </Row>
-        <br />
       </Container>
+
+      <br />
 
       <Container>
         <Row className="align-items-center">
-          <Col md={3}>
+          <Col md={4}>
             <br />
             <h3 className="integrationsBlueH3">
               Easily connect your Snowflake data
@@ -144,9 +146,9 @@ export default function Snowflake() {
               may have running.
             </p>
           </Col>
-          <Col md={9}>
+          <Col md={8}>
             <Image
-              className="productScreenshots"
+              className="productScreenshots border"
               src="/images/home/integrations/snowflake/add-snowflake-app.png"
               alt="Grouparoo Snowflake settings"
               width={742}
@@ -156,7 +158,7 @@ export default function Snowflake() {
         </Row>
         <br />
         <Row className="align-items-center">
-          <Col md={3}>
+          <Col md={4} className="order-1 order-md-2">
             <br />
             <h3 className="integrationsBlueH3">
               Define Profile Properties without needing to write SQL queries
@@ -167,9 +169,9 @@ export default function Snowflake() {
               They can pull the data they need when they want.
             </p>
           </Col>
-          <Col md={9}>
+          <Col md={8} className="order-2 order-md-1">
             <Image
-              className="productScreenshots"
+              className="productScreenshots border"
               src="/images/home/integrations/snowflake/snowflake-table-mode.png"
               alt="Snowflake table source"
               width={742}
@@ -179,7 +181,7 @@ export default function Snowflake() {
         </Row>
         <br />
         <Row className="align-items-center">
-          <Col md={3}>
+          <Col md={4}>
             <br />
             <h3 className="integrationsBlueH3">
               But you can also write SQL if you want
@@ -190,9 +192,9 @@ export default function Snowflake() {
               need.
             </p>
           </Col>
-          <Col md={9}>
+          <Col md={8}>
             <Image
-              className="productScreenshots"
+              className="productScreenshots border"
               src="/images/home/integrations/snowflake/snowflake-query-mode.png"
               alt="Snowflake query source"
               width={742}

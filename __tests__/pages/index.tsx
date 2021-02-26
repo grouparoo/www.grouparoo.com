@@ -1,11 +1,12 @@
 import { shallow } from "enzyme";
 import Home from "../../pages/index";
+import "../../components/icons";
 
 describe("page/home", () => {
   test("renders the page", () => {
-    const page = shallow(<Home />);
+    const page = shallow(<Home pageProps={{ pluginName: "AnnoyingPlugin" }} />);
     expect(page.html()).toContain(
-      "Sync, Segment, and Send your Product Data Everywhere"
+      "Stop writing code to sync data to AnnoyingPlugin*"
     );
   });
 });

@@ -40,8 +40,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 # From: https://brew.sh/
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# Install Node.js v12
-nvm install v12
+# Install Node.js v14
+nvm install v14
 
 # Depending on your shell (bash, zsh, etc) you may need to ensure that nvm is loaded into your environment via .bashrc, .bash_profile, etc
 # On OSX/ZSH, we recommend installing Oh My ZSH (https://github.com/ohmyzsh/ohmyzsh) and enabling the nvm plugin
@@ -58,7 +58,7 @@ brew services start redis
 git clone git@github.com:grouparoo/grouparoo.git
 cd grouparoo
 
-# Install dependencies
+# Install with pnpm (If you don't have pnpm, install it via "npm i -g pnpm")
 pnpm install
 
 # Configure your local environment variables in .env to be able to run the "staging-enterprise" app
@@ -91,7 +91,7 @@ npm run dev
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
 # Install Node.js v12
-nvm install v12
+nvm install v14
 
 # Install & run postgresql (v9.x)
 sudo apt update
@@ -201,6 +201,13 @@ grouparoo demo-data-purchases --scale 10
 # populate the system with events
 grouparoo demo-event-stream
 ```
+
+**Note: This will clear all existing data, replacing it with the sample data.**
+
+You can then use the following credentials to log in:
+
+- Username: `demo@grouparoo.com`
+- Password: `password`
 
 ## Testing
 

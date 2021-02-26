@@ -8,6 +8,8 @@ pullQuote: "CLI commands for configuring your Grouparoo application."
 
 The generate command will create a template configuration file for you that you will then need to fill out.
 
+#### `grouparoo generate --list`
+
 There are many templates which you can use to generate from, depending on the plugins you have installed. You can use the `--list` flag to see available templates and filter the results. For example:
 
 ```
@@ -16,18 +18,61 @@ grouparoo generate --list postgres
 Available Templates: matching "postgres"
 
   postgres:app (id) - Config for a Grouparoo postgres App
-  postgres:destination (id) - Config for a postgres Destination
-  postgres:query:property (id) - Config for a postgres Query Property
-  postgres:query:schedule (id) - Config for a postgres Query Schedule
-  postgres:query:source (id) - Config for a postgres Query Source. Work with multiple tables and build custom queries for its properties.
-  postgres:table:property (id) - Config for a postgres Table Property
-  postgres:table:schedule (id) - Config for a postgres Table Schedule
-  postgres:table:source (id) - Config for a postgres Table Source. Construct properties from the data in the table without writing SQL.
+  postgres:destination (id, parent) - Config for a postgres Destination
+  postgres:query:property (id, parent) - Config for a postgres Query Property
+  postgres:query:source (id, parent) - Config for a postgres query Source. Work with multiple tables and build custom queries for its properties.
+  postgres:table:property (id, parent) - Config for a postgres Table Property
+  postgres:table:source (id, parent, from, mapping, with, high-water-mark) - Config for a postgres table Source. Construct Sources and Properties without writing SQL.
 ```
 
 You are required to provide and `id` to the generate command. This `id` will be used in the file, to set the filename, and may be used by you later. For example if you generated an app called `data_warehouse`, in your sources you would set `appId: "data_warehouse"` to indicate those sources rely on the `data_warehouse` app.
 
 You can learn more about the [configuration files here](/docs/deployment/code-config).
+
+#### `grouparoo generate --describe`
+
+You can use the `--describe flag` to see more information about the possible options you can use to generate a new object.
+
+```
+grouparoo generate postgres:table:source --describe
+
+🦘 Grouparoo: generate postgres:table:source
+
+Config for a postgres table Source. Construct Sources and Properties without writing SQL.
+
+Required Inputs:
+  * id (required) - The id of this new Source
+  * parent (required) - The id of the postgres App to use for this Source, e.g: `--parent data_warehouse`
+
+Optional Inputs:
+  * from - The table to use for this source, e.g: `--from users`
+  * high-water-mark - The name of the column to uses for this Source's Schedule, e.g: `--high-water-mark updated_at`.
+  * mapping - The mapping between a column in this table and a Grouparoo Property, e.g: `--mapping "id=user_id"`
+  * with - The names of the columns to create properties from, e.g: `--with users,id,first_name,last_name`. Defaults to '*'
+```
+
+#### Batch Generation
+
+Certain plugins may provide additional generation options to help you generate many objects at once. For example, if you have a valid [`App`](/docs/config/apps) already configured and applied, Grouparoo can inspect that App and generate a Source and Properties automatically for you. Batch generation is signified by using the `--from` flag, and potentially the `--with`, `--mapping` and `--high-water-mark` flags as well.
+
+For example, the `@grouparoo/postgres`, `@grouparoo/mysql`,`@grouparoo/redshift`, `@grouparoo/bigquery` and `@grouparoo/snowflake` sources all support batch source generation:
+
+```bash
+# first, make an App
+grouparoo generate postgres:app data_warehouse
+# (fill out the App config)
+grouparoo apply
+
+# Then generate the Source, Schedule, and Properties all at once
+grouparoo generate postgres:table:source users_table \
+  --parent data_warehouse \
+  --from users \ # The table to use
+  --with id,first_name,email,last_name \  # The columns to make into properties (default *)
+  --mapping 'id=user_id' \ # How the mapping should shake out + Bootstrapping if the column is in the `--with` list
+  --high-water-mark updated_at
+```
+
+The above commands would create a Source, Schedule, and 4 Properties.
 
 <CLICommand name="validate" />
 

@@ -6,12 +6,53 @@ pullQuote: "Grouparoo provides the tools you need to write expectation and snaps
 
 ## Testing your Grouparoo Application
 
-In order to help fit Grouparoo into the CI/CD tools you use today, we've adding testing utilities to which you can use to build up a test suite that ensures that the application is producing the Profiles and Groups you expect. Grouparoo relies on [Jest](https://jestjs.io) to provide expectations and snapshot testing. To enable Grouparoo testing:
+In order to help fit Grouparoo into the CI/CD tools you use today, Grouparoo comes with testing utilities to which you can use to build a test suite that ensures that the application is producing the Profiles and Groups you expect. Grouparoo relies on [Jest](https://jestjs.io) to provide expectations and snapshot testing. To enable Grouparoo testing:
 
 1. `npm install --save @grouparoo/spec-helper jest`
-2. Create a new test in `__tests__` within your project
-3. Write you test
-4. Run your test with `./node_modules/.bin/jest [path/to/test]`
+2. create a `.env.test` file to store your test configuration.
+3. Create a new test in a `__tests__` directory within your project
+4. Write your test
+5. Run your test with `./node_modules/.bin/jest [path/to/test]`.
+   - You can wire up `npm test` to run this for you.
+
+When you test your Grouparoo application, you'll be testing your configuration files, Apps, Sources, and Destinations. Ideally, you have a specific Profile in mind that you can fully sync. You can ensure that it ends up in the right Groups, and would be exported to the Destinations you expect.
+
+## `.env.test`
+
+When running tests, you'll want to connect to a test-specific Grouparoo database. This is a great time to use sqlite and mock-redis so you don't need to provision a "real" database for your tests. You can also safely disable the webserver and workers.
+
+An example `.env.test` could be:
+
+```bash
+#############
+## GENERAL ##
+#############
+
+WEB_SERVER=false
+WORKERS=0
+SERVER_TOKEN=test-server-token
+GROUPAROO_TELEMETRY_ENABLED=false
+
+#############
+## LOGGING ##
+#############
+
+GROUPAROO_LOG_LEVEL=info
+
+###########
+## REDIS ##
+###########
+
+REDIS_URL="redis://mock"
+
+##############
+## DATABASE ##
+##############
+
+DATABASE_URL="sqlite://grouparoo_test.sqlite"
+```
+
+In your test file, you'll be setting `process.env.DATABASE_URL = "sqlite://test_db.sqlite";` so the test will know which environment file to use.
 
 ## Writing Tests
 
@@ -19,7 +60,7 @@ In Jest, you can do expectation testing (`a` should equal `1`) or snapshot testi
 
 In this example:
 
-- Your application is already fully configured with Apps, Sources, etc via code-config
+- Your application is already fully configured with Apps, Sources, etc via [Code Config](/docs/config/code-config)
 - You have specified a test postgres or SQLite database to use via `DATABASE_URL` or a test-specific `GROUPAROO_ENV_CONFIG_FILE`
 - `"person@example"` is a user in your source database that we are testing.
 
@@ -28,10 +69,10 @@ In this example:
  * @jest-environment node
  */
 
-// Should we load configuration from a .env file? Use to set DATABASE_URL, etc
+// Where should we load the test environment from?
+// You'll probably want a similar config to your normal .env file, but with a different database and 0 workers
 // Set before requiring @grouparoo/spec-helper
-// Otherwise, set DATABASE_URL, etc in jest.config.js or in CI
-process.env.GROUPAROO_ENV_CONFIG_FILE = `${__dirname}/../.env`;
+process.env.GROUPAROO_ENV_CONFIG_FILE = `.env.test`;
 
 const { helper, relaxedSnapshot } = require("@grouparoo/spec-helper");
 
@@ -60,4 +101,3 @@ describe("snapshot", () => {
 ## Testing Notes
 
 - Unless you specify in your `package.json` or `jest.config.js`, You'll need to use magic comments to let Jest know that we are running a Node.js app (`@jest-environment node`)
-- You need to specify to grouparoo which database to use, server_token to use, etc. You can either define these directly in your test, as environment variable on your CI tool, or tell Grouparoo to load a `.env` file directly by setting `process.env.GROUPAROO_ENV_CONFIG_FILE`. With either of these methods, this needs to be done before requiring `@grouparoo/spec-helper`

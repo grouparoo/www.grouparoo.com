@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import GoogleAnalytics from "../googleAnalytics";
+import PlausibleAnalytics from "../plausibleAnalytics";
 import Navigation from "../navigation";
 import Footer from "../footer";
 
@@ -119,7 +119,7 @@ function PageTemplate({ children }) {
         <Footer />
       </div>
 
-      <GoogleAnalytics />
+      <PlausibleAnalytics />
     </>
   );
 }
