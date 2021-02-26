@@ -1,0 +1,58 @@
+---
+title: "Declarative Data Sync"
+date: "2021-02-26"
+author: "Brian Leonard"
+pullQuote: "Grouparoo now supports declarative data models and integrations to continuously sync your data to all of your cloud-based tools. You manage data sync just like you would any other part of your stack."
+image: "declarative-data-sync/sync.png"
+tags: [engineering, product]
+---
+
+Developers have been using the [Grouparoo](https://www.grouparoo.com) UI to set up automated data movement from their databases to Mailchimp, Marketo, Salesforce, and [more](https://www.grouparoo.com/integrations). While having these integrations already written for them saved plenty of time, there was something they missed: their normal developer workflow.
+
+Grouparoo now supports declarative data models and integrations to continuously sync your data to all of your cloud-based tools. You manage data sync just like you would any other part of your stack. You test the configuration, check it into git, run it on CI, review, merge, and deploy.
+
+Using the declarative configuration, Grouparoo does the heavy lifting of building profiles from your customer data sources, segmenting them into groups, and syncing the results to destination tools. Everyone wins when engineers can move faster and with more confidence.
+
+<p className="video-responsive">
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/kQ789gMXJB8"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  ></iframe>
+</p>
+
+Here is the [example app](https://github.com/grouparoo/app-example-config) from the video.
+
+## Data Sync Framework
+
+If you have developed Node apps before, you will have a pipeline up and running in minutes. The whole app is just a `package.json` file and the declarative configuration. If you are new to Node, we have lots of helpers to get you going.
+
+Here is how you declare your pipeline:
+
+- [Get](https://www.grouparoo.com/docs/installation#step-2-pick-an-installation-method) our `grouparoo` command line tool via npm and `init` a new Grouparoo project
+- [Install](https://www.grouparoo.com/docs/installation/plugins#installing-a-plugin) plugins for the connections you need (Postgres, Mailchimp, Salesforce, etc.).
+- Generate an [App](https://www.grouparoo.com/docs/config/apps/community) with connection information (Postgres database, etc).
+- Generate a [Source](https://www.grouparoo.com/docs/config/sources/community) with [Properties](https://www.grouparoo.com/docs/config/properties/community) (id, email, first_name from users table) to create Profiles.
+- Generate calculated [Groups](https://www.grouparoo.com/docs/config/groups/community) of Profiles (High Value Users) based on Profile Property values.
+- Generate a [Destination](https://www.grouparoo.com/docs/config/destinations/community) and map the data to it (sync email, first_name, and group membership to Mailchimp)
+
+Now, you can call `grouparoo run` to test the data [sync](https://www.grouparoo.com/docs/running), make expectation or snapshot [tests](https://www.grouparoo.com/docs/running/testing), and [deploy](https://www.grouparoo.com/docs/deployment) your application so it’s always running and looking for new data to sync.
+
+## Zooming Out
+
+Businesses need data in their tools to be effective because success in marketing, sales, and support is data-driven with personalization, segmentation, and timeliness. We want these teams to be empowered to create great customer experiences.
+
+Unfortunately, integrations are not fun to build and are tricky to get right. There are edge cases around rate limiting and data formatting. Engineers don’t tend to use the tools being integrated, so it’s hard to know what “right” even looks like. There are no clear patterns to follow. Consequently, data sync infrastructure is often brittle and unloved.
+
+Open source is great because it tends to take hard problems and solve them for everyone. Grouparoo solves the data sync problem by making it 10x easier to build and maintain by allowing developers to stop worrying about the data pipes and focus on declaring the right definition of what is valuable.
+
+<Image
+  centered
+  alt="Declaratively sync data to Mailchimp"
+  src="declarative-data-sync/sync.png"
+  width={600}
+  height={338}
+/>
