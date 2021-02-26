@@ -502,6 +502,81 @@ export default function IndexPage({ pageProps }) {
 
       <IntegrationsSection />
       <WhyOpenSource />
+      <div
+        id="productFeatures"
+        className="bg-dark text-white homePageSection"
+        style={{ textAlign: "left" }}
+      >
+        <Container>
+          <Row>
+            <Col>
+              <div style={{ textAlign: "center" }}>
+                <h3>Features that embed in your workflow</h3>
+                <p>
+                  Grouparoo makes it easy to follow developer best practices.
+                </p>
+              </div>
+            </Col>
+          </Row>
+          <br />
+          <Row>
+            <Col>
+              <FontAwesomeIcon color="white" icon={"wrench"} size="1x" />
+              <strong> Pre-built integrations</strong>
+              <br />
+              <p>
+                All of the integration code is already written, so all of the
+                nuances like rate limits, API requirements, and others are
+                covered.
+              </p>
+            </Col>
+            <Col>
+              <FontAwesomeIcon color="white" icon={"chart-line"} size="1x" />
+              <strong> Observability</strong>
+              <br />
+              Charts, tools, and data to help you monitor your Grouparoo
+              instance.
+            </Col>
+            <Col>
+              <FontAwesomeIcon color="white" icon={"vial"} size="1x" />
+              <strong> Testable</strong>
+              <br />
+              Write automated tests, so you can verify that the data is being
+              imported and exported as you'd expect.
+            </Col>
+          </Row>
+          <br />
+          <br />
+          <Row>
+            <Col>
+              <FontAwesomeIcon color="white" icon={"tasks"} size="1x" />
+              <strong> Many deploy options</strong>
+              <br />
+              Deploy easily using Heroku, Kubernetes, or Docker, or through your
+              own deploy process.
+            </Col>
+            <Col>
+              <FontAwesomeIcon color="white" icon={"shoe-prints"} size="1x" />
+              <strong> Conventions</strong>
+              <br />
+              Maintainable conventions so everyone on the team can easily
+              understand and modify Grouparoo.
+            </Col>
+            <Col>
+              <FontAwesomeIcon color="white" icon={"layer-group"} size="1x" />
+              <strong> Open Source and Extensible</strong>
+              <br />
+              <p>
+                Grouparoo is open source, so you can look under the hood to see
+                how everything works and extend it to your needs.
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <br />
+      <br />
+      <br />
       <GetStarted />
     </>
   );

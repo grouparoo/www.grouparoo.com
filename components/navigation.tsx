@@ -21,10 +21,10 @@ export default function Navigation() {
               <Nav.Link href="/integrations">Integrations</Nav.Link>
               <Nav.Link href="/pricing">Pricing</Nav.Link>
               <Nav.Link href="/docs">Docs</Nav.Link>
+              <Nav.Link href="/blog">Blog</Nav.Link>
               <Nav.Link className="d-md-none d-lg-block" href="/docs/community">
                 Community
               </Nav.Link>
-              <Nav.Link href="/blog">Blog</Nav.Link>
               <Nav.Link className="d-md-none d-lg-block">
                 <div style={{ paddingTop: 4 }}>
                   <iframe
