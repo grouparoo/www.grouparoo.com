@@ -501,26 +501,23 @@ export default function IndexPage({ pageProps }) {
       </div>
 
       <IntegrationsSection />
+
       <WhyOpenSource />
+
       <div
         id="productFeatures"
         className="bg-dark text-white homePageSection"
         style={{ textAlign: "left" }}
       >
         <Container>
-          <Row>
-            <Col>
-              <div style={{ textAlign: "center" }}>
-                <h3>Features that embed in your workflow</h3>
-                <p>
-                  Grouparoo makes it easy to follow developer best practices.
-                </p>
-              </div>
-            </Col>
-          </Row>
+          <div style={{ textAlign: "center" }}>
+            <h3>Features that embed in your workflow</h3>
+            <p>Grouparoo makes it easy to follow developer best practices.</p>
+          </div>
+
           <br />
           <Row>
-            <Col>
+            <Col md={4}>
               <FontAwesomeIcon color="white" icon={"wrench"} size="1x" />
               <strong> Pre-built integrations</strong>
               <br />
@@ -530,39 +527,46 @@ export default function IndexPage({ pageProps }) {
                 covered.
               </p>
             </Col>
-            <Col>
+            <Col md={4}>
               <FontAwesomeIcon color="white" icon={"chart-line"} size="1x" />
               <strong> Observability</strong>
               <br />
-              Charts, tools, and data to help you monitor your Grouparoo
-              instance.
+              <p>
+                Charts, tools, and data to help you monitor your Grouparoo
+                instance.
+              </p>
             </Col>
-            <Col>
+            <Col md={4}>
               <FontAwesomeIcon color="white" icon={"vial"} size="1x" />
               <strong> Testable</strong>
               <br />
-              Write automated tests, so you can verify that the data is being
-              imported and exported as you'd expect.
+              <p>
+                Write automated tests, so you can verify that the data is being
+                imported and exported as you'd expect.
+              </p>
             </Col>
           </Row>
-          <br />
-          <br />
+
           <Row>
-            <Col>
+            <Col md={4}>
               <FontAwesomeIcon color="white" icon={"tasks"} size="1x" />
               <strong> Many deploy options</strong>
               <br />
-              Deploy easily using Heroku, Kubernetes, or Docker, or through your
-              own deploy process.
+              <p>
+                Deploy easily using Heroku, Kubernetes, or Docker, or through
+                your own deploy process.
+              </p>
             </Col>
-            <Col>
+            <Col md={4}>
               <FontAwesomeIcon color="white" icon={"shoe-prints"} size="1x" />
               <strong> Conventions</strong>
               <br />
-              Maintainable conventions so everyone on the team can easily
-              understand and modify Grouparoo.
+              <p>
+                Maintainable conventions so everyone on the team can easily
+                understand and modify Grouparoo.
+              </p>
             </Col>
-            <Col>
+            <Col md={4}>
               <FontAwesomeIcon color="white" icon={"layer-group"} size="1x" />
               <strong> Open Source and Extensible</strong>
               <br />
@@ -574,9 +578,9 @@ export default function IndexPage({ pageProps }) {
           </Row>
         </Container>
       </div>
+
       <br />
-      <br />
-      <br />
+
       <GetStarted />
     </>
   );

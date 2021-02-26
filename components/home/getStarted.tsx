@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, ButtonGroup } from "react-bootstrap";
 import Link from "next/link";
 
 export default function GetStarted({
@@ -23,29 +23,30 @@ export default function GetStarted({
                 Easily install the Grouparoo application, join the community, or
                 schedule a demo to learn more.
               </p>
-              <Button
-                variant="primary"
-                href="/docs/getting-started"
-                className="ml-auto"
-              >
-                Try it now
-              </Button>
-              &nbsp; &nbsp; &nbsp;
-              <Button
-                variant="outline-primary"
-                href="/docs/community"
-                className="ml-auto"
-              >
-                Join the Community
-              </Button>
-              &nbsp; &nbsp; &nbsp;
-              <Button
-                variant="outline-primary"
-                href="/meet"
-                className="ml-auto"
-              >
-                Get a Demo
-              </Button>
+              <ButtonGroup>
+                <Button
+                  variant="primary"
+                  href="/docs/getting-started"
+                  className="ml-auto"
+                >
+                  Try it now
+                </Button>
+                <Button
+                  variant="outline-primary"
+                  href="/docs/community"
+                  className="ml-auto"
+                >
+                  Join the Community
+                </Button>
+                <Button
+                  variant="outline-primary"
+                  href="/meet"
+                  className="ml-auto"
+                >
+                  Get a Demo
+                </Button>
+              </ButtonGroup>
+
               {showLearnMore ? (
                 <>
                   <br />
