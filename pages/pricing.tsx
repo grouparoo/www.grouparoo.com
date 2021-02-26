@@ -10,7 +10,6 @@ import {
   Image,
 } from "react-bootstrap";
 import Head from "next/head";
-import IntegrationsSection from "../components/home/integrationsSection";
 import GetStarted from "../components/home/getStarted";
 
 export default function PricingPage() {
@@ -453,7 +452,7 @@ export default function PricingPage() {
       <br />
 
       <br />
-      <IntegrationsSection />
+
       <GetStarted />
     </>
   );
