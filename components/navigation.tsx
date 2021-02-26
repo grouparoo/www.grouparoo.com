@@ -18,10 +18,10 @@ export default function Navigation() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto" style={{ marginTop: 30 }}>
-              <Nav.Link href="/features">Features</Nav.Link>
               <Nav.Link href="/integrations">Integrations</Nav.Link>
               <Nav.Link href="/pricing">Pricing</Nav.Link>
               <Nav.Link href="/docs">Docs</Nav.Link>
+              <Nav.Link href="/blog">Blog</Nav.Link>
               <Nav.Link className="d-md-none d-lg-block" href="/docs/community">
                 Community
               </Nav.Link>
