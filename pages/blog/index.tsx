@@ -114,7 +114,7 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
           </>
         ) : null}
 
-        {entries.length > 0 ? (
+        {entries && entries.length > 0 ? (
           entries.map((entry, idx) => blogEntry(entry, idx))
         ) : (
           <p>No entries found</p>
@@ -125,7 +125,8 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
   );
 }
 
-export async function getStaticProps() {
-  const entries = await getBlogEntries();
-  return { props: { entries } };
+export async function getStaticProps(ctx) {
+  const pageNumber = parseInt(ctx.params?.pageNumber || "1");
+  const entries = await getBlogEntries(pageNumber);
+  return { props: { entries, pageNumber } };
 }

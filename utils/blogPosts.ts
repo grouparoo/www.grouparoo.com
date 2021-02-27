@@ -21,6 +21,7 @@ export interface BlogEntry {
   image: string;
 }
 
+export const LIMIT = 10;
 export interface BlogPost extends BlogEntry {
   source: any;
   twitter_card: "summary" | "summary_large_image" | "app" | "player";
@@ -30,12 +31,24 @@ export async function getBlogPaths() {
   return getStaticMdxPaths(["blog"]);
 }
 
-export async function getBlogEntries(): Promise<BlogEntry[]> {
-  const entries = loadEntries(["blog"]);
-  entries.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
+export async function getBlogEntries(
+  pageNumber: number = 1,
+  limit = LIMIT
+): Promise<BlogEntry[]> {
+  const offset = (pageNumber - 1) * limit;
+  console.log({ offset });
+  const entries: BlogEntry[] = loadEntries(["blog"])
+    .sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    })
+    .slice(offset, offset + limit);
+
   return entries;
+}
+
+export async function pagesCount(limit = LIMIT) {
+  const entries: BlogEntry[] = loadEntries(["blog"]);
+  return Math.ceil(entries.length / limit);
 }
 
 export async function getBlogPost(slugName): Promise<BlogPost> {
@@ -64,7 +77,7 @@ export async function getBlogPost(slugName): Promise<BlogPost> {
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  const entries = await getBlogEntries();
+  const entries = await getBlogEntries(1, 1000);
   const posts = [];
   for (const entry of entries) {
     const post = await getBlogPost(entry.slug);
