@@ -13,8 +13,8 @@ export default function BlogIndexWithCategory({ pageProps }) {
   );
 }
 
-export async function getStaticProps() {
-  return blogIndexStaticProps();
+export async function getStaticProps(ctx) {
+  return blogIndexStaticProps(ctx);
 }
 
 export async function getStaticPaths() {
