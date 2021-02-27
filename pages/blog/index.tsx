@@ -6,6 +6,7 @@ import Image from "../../components/Image";
 import { BlogEntry, getBlogEntries } from "../../utils/blogPosts";
 import BlogTags from "../../utils/blogTags";
 import AuthorBox from "../../components/blog/authorBox";
+import { PaginationHelper } from "../../components/paginationHelper";
 
 function blogEntry(entry: BlogEntry, idx: number) {
   const author = getAuthor(entry.author);
@@ -52,6 +53,7 @@ function blogEntry(entry: BlogEntry, idx: number) {
 
 export default function BlogIndex({ pageProps, category = "", author = "" }) {
   let entries: BlogEntry[] = pageProps.entries;
+  const { limit, offset, total } = pageProps;
 
   if (category !== "") {
     entries = entries.filter((entry) => entry.tags.includes(category));
@@ -119,14 +121,20 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
         ) : (
           <p>No entries found</p>
         )}
+
+        <PaginationHelper
+          baseUrl="/blog/page"
+          total={total}
+          limit={limit}
+          offset={offset}
+        />
       </Container>
-      <br />
     </>
   );
 }
 
 export async function getStaticProps(ctx) {
   const pageNumber = parseInt(ctx.params?.pageNumber || "1");
-  const entries = await getBlogEntries(pageNumber);
-  return { props: { entries, pageNumber } };
+  const { entries, limit, offset, total } = await getBlogEntries(pageNumber);
+  return { props: { entries, limit, offset, total, pageNumber } };
 }

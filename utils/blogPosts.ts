@@ -31,19 +31,19 @@ export async function getBlogPaths() {
   return getStaticMdxPaths(["blog"]);
 }
 
-export async function getBlogEntries(
-  pageNumber: number = 1,
-  limit = LIMIT
-): Promise<BlogEntry[]> {
+export async function getBlogEntries(pageNumber: number = 0, limit = LIMIT) {
   const offset = (pageNumber - 1) * limit;
   console.log({ offset });
-  const entries: BlogEntry[] = loadEntries(["blog"])
-    .sort((a, b) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
-    })
-    .slice(offset, offset + limit);
+  const entries: BlogEntry[] = loadEntries(["blog"]).sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
 
-  return entries;
+  return {
+    entries: entries.slice(offset, offset + limit),
+    total: entries.length,
+    limit,
+    offset,
+  };
 }
 
 export async function pagesCount(limit = LIMIT) {
