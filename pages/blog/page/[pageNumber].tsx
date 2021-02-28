@@ -1,5 +1,4 @@
 import { pagesCount } from "../../../utils/blogPosts";
-
 export { default, getStaticProps } from "../index";
 
 export async function getStaticPaths() {

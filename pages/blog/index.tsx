@@ -51,21 +51,9 @@ function blogEntry(entry: BlogEntry, idx: number) {
   );
 }
 
-export default function BlogIndex({ pageProps, category = "", author = "" }) {
+export default function BlogIndex({ pageProps }) {
   let entries: BlogEntry[] = pageProps.entries;
-  const { limit, offset, total } = pageProps;
-
-  if (category !== "") {
-    entries = entries.filter((entry) => entry.tags.includes(category));
-  }
-
-  if (author !== "") {
-    entries = entries.filter(
-      (entry) =>
-        getAuthor(entry.author).name === author ||
-        getAuthor(entry.author).slug === author
-    );
-  }
+  let { limit, offset, total, author, category } = pageProps;
 
   return (
     <>
@@ -92,7 +80,7 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
         {category ? (
           <>
             <p>
-              Showing {entries.length} articles tagged{" "}
+              Showing {entries.length} of {total} articles tagged{" "}
               <strong>{category}</strong>
               . <br />
               <Link href="/blog">
@@ -106,7 +94,7 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
         {author ? (
           <>
             <p>
-              Showing {entries.length} articles written by{" "}
+              Showing {entries.length} of {total} articles written by{" "}
               <strong>{getAuthor(author).name}</strong>. <br />
               <Link href="/blog">
                 <a>Show all articles instead.</a>
@@ -123,7 +111,13 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
         )}
 
         <PaginationHelper
-          baseUrl="/blog/page"
+          baseUrl={
+            author !== ""
+              ? `/blog/author/${author}`
+              : category !== ""
+              ? `/blog/category/${category}`
+              : `/blog/page`
+          }
           total={total}
           limit={limit}
           offset={offset}
@@ -135,6 +129,15 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
 
 export async function getStaticProps(ctx) {
   const pageNumber = parseInt(ctx.params?.pageNumber || "1");
-  const { entries, limit, offset, total } = await getBlogEntries(pageNumber);
-  return { props: { entries, limit, offset, total, pageNumber } };
+  const category = ctx.params?.category || "";
+  const author = ctx.params?.author || "";
+  const { entries, limit, offset, total } = await getBlogEntries(
+    pageNumber,
+    author,
+    category
+  );
+
+  const props = { entries, limit, offset, total, pageNumber, author, category };
+
+  return { props };
 }

@@ -31,15 +31,30 @@ export async function getBlogPaths() {
   return getStaticMdxPaths(["blog"]);
 }
 
-export async function getBlogEntries(pageNumber: number = 0, limit = LIMIT) {
+export async function getBlogEntries(
+  pageNumber: number = 0,
+  author?: string,
+  category?: string,
+  limit = LIMIT
+) {
   const offset = (pageNumber - 1) * limit;
-  console.log({ offset });
-  const entries: BlogEntry[] = loadEntries(["blog"]).sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
+  const entries: BlogEntry[] = loadEntries(["blog"])
+    .filter((entry) => {
+      if (!author) return true;
+      return getAuthor(author) === getAuthor(entry.author);
+    })
+    .filter((entry) => {
+      if (!category) return true;
+      return entry.tags.includes(category);
+    })
+    .sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+
+  const paginatedEntries = entries.slice(offset, offset + limit);
 
   return {
-    entries: entries.slice(offset, offset + limit),
+    entries: paginatedEntries,
     total: entries.length,
     limit,
     offset,
@@ -77,7 +92,7 @@ export async function getBlogPost(slugName): Promise<BlogPost> {
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  const entries = await getBlogEntries(1, 1000);
+  const { entries } = await getBlogEntries(1, null, null, 1000);
   const posts = [];
   for (const entry of entries) {
     const post = await getBlogPost(entry.slug);
