@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Fri, 26 Feb 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 01 Mar 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,22 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Declarative Configuration]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-03-01-declarative-configuration</link>
+            <guid
+      >grouparoo-release-note-2021-03-01-declarative-configuration</guid>
+            <pubDate>Mon, 01 Mar 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Grouparoo supports declarative data models and integrations to continuously sync data to cloud-based tools. You manage data sync just like you would any other part of your stack.</p><p>By adding <a href="/docs/config/code-config">declarative code as configuration</a>, you can now use your normal development workflow. You test the configuration, check it into git, run it on CI, review, merge, and deploy.</p><p>Check out the <a href="/blog/declarative-data-sync">video</a> and the <a href="/docs/config/code-config">docs</a> on how to get started. We think it is a big leap forward in how data sync apps are created and maintained.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+            <enclosure
+        url="https://www.grouparoo.com/posts/declarative-data-sync/declarative-sync.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title><![CDATA[Documentation Overhaul]]></title>
             <link

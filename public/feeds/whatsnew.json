@@ -11,6 +11,18 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2021-03-01-declarative-configuration",
+      "content_html": "<p>Grouparoo supports declarative data models and integrations to continuously sync data to cloud-based tools. You manage data sync just like you would any other part of your stack.</p><p>By adding <a href=\"/docs/config/code-config\">declarative code as configuration</a>, you can now use your normal development workflow. You test the configuration, check it into git, run it on CI, review, merge, and deploy.</p><p>Check out the <a href=\"/blog/declarative-data-sync\">video</a> and the <a href=\"/docs/config/code-config\">docs</a> on how to get started. We think it is a big leap forward in how data sync apps are created and maintained.</p>",
+      "url": "https://www.grouparoo.com/whats-new#2021-03-01-declarative-configuration",
+      "title": "Declarative Configuration",
+      "image": "https://www.grouparoo.com/posts/declarative-data-sync/declarative-sync.png",
+      "date_modified": "2021-03-01T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-02-26-documentation",
       "content_html": "<p>With the introduction of <a href=\"/docs/config/code-config\">Code Config</a> in v0.2, we took a step back to look at how we were organizing our documentation. We want to make it as easy as possible to get up and running with Grouparoo.</p><p>Through that process, we created a number of new documents and updated almost every existing doc. Here&#x27;s a brief summary of the changes:</p><ul><li><a href=\"/docs/getting-started\">Getting Started</a> focuses your first-time effort on getting you up and running quickly on your local machine.</li><li>The process of working with Grouparoo is now described in four steps: <a href=\"/docs/installation\">Installation</a>, <a href=\"/docs/config\">Configuration</a>, <a href=\"/docs/running\">Running</a>, and <a href=\"/docs/deployment\">Deployment</a>.</li><li>There is a new section <a href=\"/docs/cli\">on the CLI</a>, which received a major overhaul in v0.2.</li><li>The <a href=\"/docs/support\">Support section</a> is a grab bag of articles to provide more information and support as you dive deeper into Grouparoo.</li><li>The nav is cleaned up so it&#x27;s clear where you are on your documentation journey.</li><li>A table of contents sits below the main nav to guide you through the current page.</li></ul>",
       "url": "https://www.grouparoo.com/whats-new#2021-02-26-documentation",
