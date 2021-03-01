@@ -32,7 +32,7 @@ export async function getBlogPaths() {
 }
 
 export async function getBlogEntries(
-  pageNumber: number = 0,
+  pageNumber: number = 1,
   author?: string,
   category?: string,
   limit = LIMIT

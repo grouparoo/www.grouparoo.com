@@ -46,7 +46,7 @@ async function getNote(filePath): Promise<ReleaseNote> {
   };
 }
 
-export async function getReleaseNotes(pageNumber: number = 0, limit = LIMIT) {
+export async function getReleaseNotes(pageNumber: number = 1, limit = LIMIT) {
   const offset = (pageNumber - 1) * limit;
   const notes = loadEntries(["whats-new"]);
 
@@ -76,7 +76,7 @@ export async function getReleasePaths() {
 }
 
 export async function getFeed(): Promise<Feed> {
-  const { notes } = await getReleaseNotes(null, 1000);
+  const { notes } = await getReleaseNotes(1, 1000);
   const feed = new Feed({
     title: "Grouparoo: What's New",
     description: "Notes about product updates as they happen.",
