@@ -71,7 +71,7 @@
     "jest-mock-axios": "4.3.0",
     "markdown-table": "^2.0.0",
     "prettier": "2.2.1",
-    "ts-jest": "26.5.1",
+    "ts-jest": "26.5.2",
     "ts-node": "9.1.1",
     "xml2js": "0.4.23"
   }
