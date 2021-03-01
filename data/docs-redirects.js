@@ -31,7 +31,11 @@ const guidesRedirects = [
   },
   {
     src: "/docs/guides/first-time-setup",
-    dest: "/docs/getting-started/first-time-setup",
+    dest: "/docs/getting-started",
+  },
+  {
+    src: "/docs/getting-started/first-time-setup",
+    dest: "/docs/getting-started",
   },
 ];
 

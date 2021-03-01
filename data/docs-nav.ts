@@ -12,10 +12,6 @@ const DocsNav: NavItem[] = [
     path: "/docs/getting-started",
     children: [
       {
-        title: "First Time Setup",
-        path: "/docs/getting-started/first-time-setup",
-      },
-      {
         title: "Product Concepts",
         path: "/docs/getting-started/product-concepts",
       },
