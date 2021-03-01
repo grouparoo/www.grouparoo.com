@@ -1,6 +1,8 @@
 import { getReleaseNotes } from "../../utils/releaseNotes";
 import { loadEntries } from "../../utils/mdxUtils";
 
+const LIMIT = 25;
+
 describe("utils/releaseNotes", () => {
   const entries = loadEntries(["whats-new"]);
   test("has entries", () => {
@@ -8,24 +10,32 @@ describe("utils/releaseNotes", () => {
   });
 
   describe("release notes", () => {
-    let items;
+    let notes, total;
+
     beforeAll(async () => {
-      items = await getReleaseNotes();
+      const items = await getReleaseNotes(1, LIMIT);
+      notes = items.notes;
+      total = items.total;
     });
 
-    for (const entry of entries) {
+    test("pagination", async () => {
+      expect(entries.length).toBe(total);
+      expect(notes.length).toBe(LIMIT);
+    });
+
+    for (const entry of entries.reverse().slice(0, LIMIT)) {
       test(`${entry.slug}`, () => {
-        const item = items.find((i) => i.slug === entry.slug);
-        expect(item).toBeTruthy();
+        const note = notes.find((note) => note.slug === entry.slug);
+        expect(note).toBeTruthy();
 
-        expect(item.title).toBeTruthy();
-        expect(item.slug).toBeTruthy();
-        expect(item.description).toBeTruthy();
+        expect(note.title).toBeTruthy();
+        expect(note.slug).toBeTruthy();
+        expect(note.description).toBeTruthy();
 
-        const date = new Date(item.date);
+        const date = new Date(note.date);
         expect(date.getTime()).toBeGreaterThan(0);
 
-        expect(item.tags.length).toBeGreaterThan(0);
+        expect(note.tags.length).toBeGreaterThan(0);
       });
     }
   });

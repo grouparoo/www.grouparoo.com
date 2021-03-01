@@ -60,7 +60,7 @@ describe("sitemap integration", () => {
         if (EDGE_CASES[testPath]?.canonical) {
           expect(href).toEqual(EDGE_CASES[testPath].canonical);
         } else if (testPath.startsWith("/whats-new/")) {
-          expect(href).toEqual(`${productionHost}/whats-new`);
+          expect(href).toContain(`${productionHost}/whats-new/`);
         } else {
           expect(href).toEqual(productionUrl);
         }

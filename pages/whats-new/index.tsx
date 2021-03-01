@@ -139,6 +139,12 @@ export default function ReleaseIndex({ pageProps }) {
     <>
       <Head>
         <title>{title}</title>
+        <link
+          rel="canonical"
+          href={`https://www.grouparoo.com/whats-new${
+            feature ? `/${feature.slug}` : ""
+          }`}
+        />
 
         <link
           rel="alternate"
