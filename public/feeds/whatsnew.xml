@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Mon, 01 Mar 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 02 Mar 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,51 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Grouparoo CLI Updates]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-03-02-grouparoo-cli-updates</link>
+            <guid>grouparoo-release-note-2021-03-02-grouparoo-cli-updates</guid>
+            <pubDate>Tue, 02 Mar 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Along with all the updates to support <a href="/blog/declarative-data-sync">declarative data sync</a>, the <code>grouparoo</code> command itself has been enhanced with a number of new features to make working from the command line easer. We&#x27;ve grouped them into 3 categories: Project Maintenance, Configuration, and Running Grouparoo (Development, Testing and Deployment).</p><p><strong>Project Maintenance</strong></p><pre class="language-bash"><code class="language-bash"><span class="token comment"># Create a new Grouparoo project.</span>
+grouparoo init <span class="token punctuation">[</span>dir<span class="token punctuation">]</span>
+
+<span class="token comment"># Upgrade all Grouparoo packages to the latest versions.</span>
+grouparoo update
+
+<span class="token comment"># Install packages defined in your package.json or add new ones. This is equivalent to npm install [package].</span>
+grouparoo <span class="token function">install</span> <span class="token punctuation">[</span>package<span class="token punctuation">]</span>
+</code></pre><p><strong>Configuration</strong></p><pre class="language-bash"><code class="language-bash"><span class="token comment"># Generate a config file for an new object (App, Source, Property, Destination, etc) from a template.</span>
+grouparoo generate <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">[</span>template<span class="token punctuation">]</span> <span class="token punctuation">[</span>id<span class="token punctuation">]</span>
+
+<span class="token comment"># Test and validate your code config. Doesn&#x27;t write changes to the database. Optionally disable checking with remote Apps.</span>
+grouparoo validate <span class="token punctuation">(</span>--local<span class="token punctuation">)</span>
+
+<span class="token comment"># Apply config changes to the database.</span>
+grouparoo apply <span class="token punctuation">(</span>--local<span class="token punctuation">)</span>
+</code></pre><p><strong>Development, Testing and Deployment</strong></p><pre class="language-bash"><code class="language-bash"><span class="token comment"># Get the status of your grouparoo cluster.</span>
+grouparoo status
+
+<span class="token comment"># Import and Export 1 profile fully and output a snapshot.</span>
+grouparoo <span class="token function">sync</span> <span class="token operator">&lt;</span>profile<span class="token operator">&gt;</span> <span class="token punctuation">(</span>--no-export<span class="token punctuation">)</span>
+
+<span class="token comment"># Run the application and stop after every Profile has been imported and exported as needed.</span>
+grouparoo run <span class="token punctuation">(</span>--web<span class="token punctuation">)</span> <span class="token punctuation">(</span>--destroy<span class="token punctuation">)</span> <span class="token punctuation">(</span>--no-export<span class="token punctuation">)</span>
+
+<span class="token comment"># Run the application. Keep checking for new and updated Profiles. This is equivalent to npm start</span>
+grouparoo start
+
+<span class="token comment"># Empty the Profiles, Groups, and related data from your database.</span>
+grouparoo destroy
+</code></pre><p>Learn more from the new <a href="/docs/cli">CLI Reference</a> page in the Grouparoo docs.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+            <enclosure
+        url="https://www.grouparoo.com/posts/declarative-data-sync/declarative-sync.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title><![CDATA[Declarative Configuration]]></title>
             <link
