@@ -2,14 +2,16 @@ import { badgeTypes } from "../../../../utils/blogTags";
 export { default, getStaticProps } from "./index";
 
 export async function getStaticPaths() {
+  const pageNumbers = [1, 2, 3, 4, 5];
+
   const tags = Object.keys(badgeTypes);
-  const paths = [
-    tags.map((tag) => `/blog/category/${tag}/1`),
-    tags.map((tag) => `/blog/category/${tag}/2`),
-    tags.map((tag) => `/blog/category/${tag}/3`),
-    tags.map((tag) => `/blog/category/${tag}/4`),
-    tags.map((tag) => `/blog/category/${tag}/5`),
-  ].flat();
+  const paths = []
+    .concat(
+      pageNumbers.map((pageNumber) =>
+        tags.map((tag) => `/blog/category/${tag}/${pageNumber}`)
+      )
+    )
+    .flat();
 
   return {
     paths,
