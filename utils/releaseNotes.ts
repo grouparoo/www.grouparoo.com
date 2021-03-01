@@ -14,6 +14,8 @@ export type ReleaseNote = {
   source: any;
 };
 
+const LIMIT = 10;
+
 function PermanentImage(props) {
   return BlogImage({ ...props, permalink: true });
 }
@@ -44,18 +46,29 @@ async function getNote(filePath): Promise<ReleaseNote> {
   };
 }
 
-export async function getReleaseNotes(): Promise<ReleaseNote[]> {
-  const releases = loadEntries(["whats-new"]);
-  releases.sort((a, b) => {
+export async function getReleaseNotes(pageNumber: number = 0, limit = LIMIT) {
+  const offset = (pageNumber - 1) * limit;
+  const notes = loadEntries(["whats-new"]);
+
+  notes.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
-  const notes = [];
-  for (const release of releases) {
-    const { filePath } = release;
-    const note = await getNote(filePath);
-    notes.push(note);
-  }
-  return notes;
+
+  const paginatedNotes: ReleaseNote[] = await Promise.all(
+    notes.slice(offset, offset + limit).map(async (release) => {
+      const { filePath } = release;
+      return getNote(filePath);
+    })
+  );
+
+  return { notes: paginatedNotes, limit, offset, total: notes.length };
+}
+
+export async function getReleaseNote(slug: string) {
+  const notes = loadEntries(["whats-new"]);
+  const release = notes.find((n) => n.slug === slug);
+  const { filePath } = release;
+  return getNote(filePath);
 }
 
 export async function getReleasePaths() {
@@ -63,7 +76,7 @@ export async function getReleasePaths() {
 }
 
 export async function getFeed(): Promise<Feed> {
-  const notes: ReleaseNote[] = await getReleaseNotes();
+  const { notes } = await getReleaseNotes(null, 1000);
   const feed = new Feed({
     title: "Grouparoo: What's New",
     description: "Notes about product updates as they happen.",

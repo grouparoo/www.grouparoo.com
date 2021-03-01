@@ -1,29 +1,15 @@
-import ReleaseIndex, { getStaticProps as parentStaticProps } from "./index";
-import { getReleasePaths } from "../../utils/releaseNotes";
+import ReleaseIndex from "./index";
+import { getReleasePaths, getReleaseNote } from "../../utils/releaseNotes";
 
 export default function Note({ pageProps }) {
   return ReleaseIndex({ pageProps });
 }
 
-export async function getStaticProps({ params }) {
-  const parent = await parentStaticProps();
-  const all = parent.props.notes;
-  const notes = [];
+export async function getStaticProps(ctx) {
+  const slug = ctx.params.note;
+  const note = await getReleaseNote(slug);
 
-  let feature = null;
-  for (const note of all) {
-    if (params.note === note.slug) {
-      feature = note;
-    } else {
-      notes.push(note);
-    }
-  }
-
-  if (!feature) {
-    throw new Error(`Release note not found: ${params.note}`);
-  }
-  Object.assign(parent.props, { notes, feature });
-  return parent;
+  return { props: { feature: note } };
 }
 
 export async function getStaticPaths() {
