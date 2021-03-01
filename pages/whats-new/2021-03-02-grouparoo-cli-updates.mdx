@@ -6,7 +6,13 @@ description: "Grouparoo now supports declarative data models and integrations to
 image: "declarative-data-sync/declarative-sync.png"
 ---
 
-Along with all the updates to support [declarative data sync](/blog/declarative-data-sync), the `grouparoo` command itself has been enhanced with a number of new features to make working from the command line easer. We've grouped them into 3 categories: Project Maintenance, Configuration, and Running Grouparoo (Development, Testing and Deployment).
+Along with all the updates to support [declarative data sync](/blog/declarative-data-sync), the `grouparoo` command itself has been enhanced with a number of new features to make working from the command line easer. We've grouped them into 3 categories: Project Maintenance, Configuration, and Running Grouparoo (Development, Testing and Deployment). The Grouparoo CLI now supports a number of different workflows. For example, we've found that customers want to both `grouparoo start` and `grouparoo run`, depending on how they use Grouparoo.
+
+`grouparoo start` boots up the Grouparoo application as a stand-alone service which will be constantly checking your Sources for new data via Schedules and exporting those Profiles. `grouparoo start` is best for Growth Engineering teams who are looking to sync data in real-time.,
+
+`grouparoo run` is a one-off process which will look for new Profile data once, sync those profiles, and then exit when complete. `grouparoo run` is best for Data Engineering teams who want to run Grouparoo after they've populated their data warehouse with the latest data, and don't need to run Grouparoo again until that next update.
+
+The Grouparoo CLI commands are:
 
 **Project Maintenance**
 
