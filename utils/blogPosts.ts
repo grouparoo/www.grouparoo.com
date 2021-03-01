@@ -92,7 +92,8 @@ export async function getBlogPost(slugName): Promise<BlogPost> {
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  const { entries } = await getBlogEntries(1, null, null, 1000);
+  const total = loadEntries(["blog"]).length;
+  const { entries } = await getBlogEntries(1, null, null, total);
   const posts = [];
   for (const entry of entries) {
     const post = await getBlogPost(entry.slug);

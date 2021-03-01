@@ -76,7 +76,8 @@ export async function getReleasePaths() {
 }
 
 export async function getFeed(): Promise<Feed> {
-  const { notes } = await getReleaseNotes(1, 1000);
+  const total = loadEntries(["whats-new"]).length;
+  const { notes } = await getReleaseNotes(1, total);
   const feed = new Feed({
     title: "Grouparoo: What's New",
     description: "Notes about product updates as they happen.",
