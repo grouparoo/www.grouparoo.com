@@ -1,0 +1,56 @@
+---
+title: "Grouparoo CLI Updates"
+date: "2021-03-02"
+tags: ["new"]
+description: "Grouparoo now supports declarative data models and integrations to continuously sync data to cloud-based tools."
+image: "declarative-data-sync/declarative-sync.png"
+---
+
+Along with all the updates to support [declarative data sync](/blog/declarative-data-sync), the `grouparoo` command itself has been enhanced with a number of new features to make working from the command line easer. We've grouped them into 3 categories: Project Maintenance, Configuration, and Running Grouparoo (Development, Testing and Deployment).
+
+**Project Maintenance**
+
+```bash
+# Create a new Grouparoo project.
+grouparoo init [dir]
+
+# Upgrade all Grouparoo packages to the latest versions.
+grouparoo update
+
+# Install packages defined in your package.json or add new ones. This is equivalent to npm install [package].
+grouparoo install [package]
+```
+
+**Configuration**
+
+```bash
+# Generate a config file for an new object (App, Source, Property, Destination, etc) from a template.
+grouparoo generate [options] [template] [id]
+
+# Test and validate your code config. Doesn't write changes to the database. Optionally disable checking with remote Apps.
+grouparoo validate (--local)
+
+# Apply config changes to the database.
+grouparoo apply (--local)
+```
+
+**Development, Testing and Deployment**
+
+```bash
+# Get the status of your grouparoo cluster.
+grouparoo status
+
+# Import and Export 1 profile fully and output a snapshot.
+grouparoo sync <profile> (--no-export)
+
+# Run the application and stop after every Profile has been imported and exported as needed.
+grouparoo run (--web) (--destroy) (--no-export)
+
+# Run the application. Keep checking for new and updated Profiles. This is equivalent to npm start
+grouparoo start
+
+# Empty the Profiles, Groups, and related data from your database.
+grouparoo destroy
+```
+
+Learn more from the new [CLI Reference](/docs/cli) page in the Grouparoo docs.
