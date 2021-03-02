@@ -236,6 +236,11 @@ Jest will automatically test the latest version of your typescript files, and yo
 
 A note on chromedriver for OSX Users: As Chrome updates, you may need to `brew cask reinstall chromedriver` to keep up to date as well. Every time you update chromedriver, you will need to re-authorize the application to run in system preferences, as it is unsigned.
 
+## Notes on Example Apps
+- If you create a new example app, you will need to `pnpm install` again to link up the dependencies in the monorepo.
+- Be sure that your `pacakge.json`'s `name` field matches the folder name.
+- Be sure that `package.json`'s `grouparoo.grouparoo_monorepo_app` matches the folder name.
+
 ## Deploying the Example Server
 
 On the server:
