@@ -15,9 +15,9 @@ export default function ReleaseIndex({ pageProps }) {
   let notes: ReleaseNote[] = pageProps.notes;
   const { limit, offset, total } = pageProps;
 
-  const contents = notes.map((note) =>
-    hydrate(note.source, { components: components })
-  );
+  const contents = notes
+    ? notes.map((note) => hydrate(note.source, { components: components }))
+    : [];
 
   return (
     <>
