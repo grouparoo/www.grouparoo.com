@@ -9,143 +9,21 @@ import Moment from "react-moment";
 import BlogImage from "../../components/blog/image";
 import { PaginationHelper } from "../../components/paginationHelper";
 
-const components = { Image: BlogImage };
-
-function releaseNote(note: ReleaseNote, idx: number) {
-  const isFeature = idx < 0;
-
-  const { source, tags, date, title, blog, slug } = note;
-  const content = hydrate(source, { components: components });
-  const ago = releaseDate(date);
-  const badges = releaseBadges(tags);
-  const header = releaseHeader(note, isFeature);
-
-  const leftClassName = isFeature ? "d-none" : "d-none d-md-block";
-  const rightClassName = isFeature ? "d-xs-none" : "d-md-none";
-  const Separator = isFeature ? "div" : "hr";
-
-  return (
-    <Row key={`releaseNote-${idx}`}>
-      <Col md={3} lg={2} className={leftClassName}>
-        {badges}
-        <br />
-        {ago}
-      </Col>
-      <Col>
-        {header}
-        <div style={{ paddingBottom: 10 }} className={rightClassName}>
-          {badges} {ago}
-        </div>
-        <div>{content}</div>
-        {blog && (
-          <Link href={`/blog/${blog}`}>
-            <a>See more</a>
-          </Link>
-        )}
-        <Separator style={{ marginTop: 32, marginBottom: 32 }} />
-      </Col>
-    </Row>
-  );
-}
-
-function featureNote(note: ReleaseNote) {
-  return releaseNote(note, -1);
-}
-
-function releaseHeader(note: ReleaseNote, isFeature: boolean) {
-  const Header = isFeature ? "h1" : "h4";
-  const { github, slug, title } = note;
-  return (
-    <>
-      <Row>
-        <Col>
-          <Header style={{ paddingBottom: 0 }}>
-            {title}
-            <a id={slug} />
-          </Header>
-        </Col>
-        <Col style={{ textAlign: "right" }} xs={2}>
-          {github && (
-            <Link href={github}>
-              <a style={{ paddingLeft: 10 }} target="_blank" rel="noreferrer">
-                <FontAwesomeIcon icon={["fab", "github"]} size="xs" />
-              </a>
-            </Link>
-          )}
-          {!isFeature && (
-            <Link href={`/whats-new/${slug}`}>
-              <a style={{ paddingLeft: 10 }}>
-                <FontAwesomeIcon icon={["fas", "link"]} size="xs" />
-              </a>
-            </Link>
-          )}
-        </Col>
-      </Row>
-    </>
-  );
-}
-
-function getHeader(feature: ReleaseNote) {
-  if (!feature) {
-    return <h1 style={{ paddingBottom: 30 }}>What's New</h1>;
-  }
-
-  return (
-    <>
-      {featureNote(feature)}
-      <hr />
-      <Link href="/whats-new">
-        <a>See all Updates</a>
-      </Link>
-    </>
-  );
-}
-
-function getSocial(feature: ReleaseNote) {
-  if (!feature) {
-    return null;
-  }
-
-  const url = `https://www.grouparoo.com/whats-new/${feature.slug}`;
-  return (
-    <>
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content="@grouparoo" />
-      <meta name="twitter:creator" content="@grouparoo" />
-      <meta property="og:url" content={url} />
-      <meta property="og:title" content={feature.title} />
-      {feature.description ? (
-        <meta property="og:description" content={feature.description} />
-      ) : null}
-      {feature.image ? (
-        <meta property="og:image" content={feature.image} />
-      ) : null}
-    </>
-  );
-}
+export const components = { Image: BlogImage };
 
 export default function ReleaseIndex({ pageProps }) {
   let notes: ReleaseNote[] = pageProps.notes;
-  let feature: ReleaseNote = pageProps.feature;
   const { limit, offset, total } = pageProps;
 
-  let headerComponent = getHeader(feature);
-  let socialComponent = getSocial(feature);
-  let title = "Grouparoo: What's New";
-  if (feature) {
-    title += ` - ${feature.title}`;
-  }
+  const contents = notes.map((note) =>
+    hydrate(note.source, { components: components })
+  );
+
   return (
     <>
       <Head>
-        <title>{title}</title>
-        <link
-          rel="canonical"
-          href={`https://www.grouparoo.com/whats-new${
-            feature ? `/${feature.slug}` : ""
-          }`}
-        />
-
+        <title>Grouparoo: What's New</title>
+        <link rel="canonical" href={`https://www.grouparoo.com/whats-new`} />
         <link
           rel="alternate"
           title="JSON Feed: Grouparoo What's New"
@@ -158,34 +36,85 @@ export default function ReleaseIndex({ pageProps }) {
           type="application/rss+xml"
           href="https://www.grouparoo.com/feeds/whatsnew.xml"
         />
-
-        {socialComponent}
       </Head>
 
       <Container className="releasePage">
-        {headerComponent}
-        {feature ? null : notes && notes.length > 0 ? (
-          notes.map((note, idx) => releaseNote(note, idx))
-        ) : (
-          <p>No notes found</p>
-        )}
+        <h1 style={{ paddingBottom: 30 }}>What's New</h1>
 
-        {feature ? null : (
-          <Row>
-            <Col md={3} lg={2} />
-            <Col>
-              <PaginationHelper
-                baseUrl={`/whats-new/page`}
-                total={total}
-                limit={limit}
-                offset={offset}
-              />
-            </Col>
-          </Row>
-        )}
+        {!notes || notes.length === 0 ? <p>No notes found</p> : null}
+
+        {notes
+          ? notes.map((note, idx) => {
+              const { tags, date, title, blog, slug, github } = note;
+              const ago = releaseDate(date);
+              const badges = releaseBadges(tags);
+
+              return (
+                <Row key={`note-${idx}`}>
+                  <Col md={3} lg={2} className={"d-none d-md-block"}>
+                    {badges}
+                    <br />
+                    {ago}
+                  </Col>
+                  <Col>
+                    <Row>
+                      <Col>
+                        <h4 style={{ paddingBottom: 0 }}>
+                          {title}
+                          <a id={slug} />
+                        </h4>
+                      </Col>
+                      <Col style={{ textAlign: "right" }} xs={2}>
+                        {github && (
+                          <Link href={github}>
+                            <a
+                              style={{ paddingLeft: 10 }}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              <FontAwesomeIcon
+                                icon={["fab", "github"]}
+                                size="xs"
+                              />
+                            </a>
+                          </Link>
+                        )}
+                        <Link href={`/whats-new/${slug}`}>
+                          <a style={{ paddingLeft: 10 }}>
+                            <FontAwesomeIcon icon={["fas", "link"]} size="xs" />
+                          </a>
+                        </Link>
+                      </Col>
+                    </Row>
+
+                    <div style={{ paddingBottom: 10 }} className={"d-md-none"}>
+                      {badges} {ago}
+                    </div>
+                    <div>{contents[idx]}</div>
+                    {blog && (
+                      <Link href={`/blog/${blog}`}>
+                        <a>See more</a>
+                      </Link>
+                    )}
+                    <hr style={{ marginTop: 32, marginBottom: 32 }} />
+                  </Col>
+                </Row>
+              );
+            })
+          : null}
+
+        <Row>
+          <Col md={3} lg={2} />
+          <Col>
+            <PaginationHelper
+              baseUrl={`/whats-new/page`}
+              total={total}
+              limit={limit}
+              offset={offset}
+            />
+          </Col>
+        </Row>
       </Container>
-
-      <br />
     </>
   );
 }
@@ -196,21 +125,13 @@ export async function getStaticProps(ctx) {
   return { props: { notes, limit, offset, total } };
 }
 
-function releaseDate(date: string) {
-  return (
-    <span className="metadata">
-      <Moment fromNow>{date}</Moment>
-    </span>
-  );
-}
-
-const badgeTypes = {
+export const badgeTypes = {
   new: "primary",
   improvement: "success",
   fix: "warning",
 };
 
-function releaseBadges(tags: string[]) {
+export function releaseBadges(tags: string[]) {
   return (
     <span>
       {(tags || []).map((tag, idx) => (
@@ -221,6 +142,14 @@ function releaseBadges(tags: string[]) {
           &nbsp;
         </Fragment>
       ))}
+    </span>
+  );
+}
+
+export function releaseDate(date: string) {
+  return (
+    <span className="metadata">
+      <Moment fromNow>{date}</Moment>
     </span>
   );
 }
