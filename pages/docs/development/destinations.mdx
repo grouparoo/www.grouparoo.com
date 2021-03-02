@@ -117,10 +117,10 @@ We first need to decide if there is anything that should be configured or it's a
 
 A key thing to understand is if there is a bulk API or not. In general, it's better to use one if it exists, especially with the helpers that we have created to handle the challenges of more than one profile syncing at a time.
 
-The easiest way to get started is to pick the approach and copy an existing plugin. Pick the ones that is closest. For example if you are making another ad platform destination that does batching, [facebook](https://github.com/grouparoo/grouparoo/tree/master/plugins/%40grouparoo/facebook) might be a good bet. Otherwise, here are some simple defaults.
+The easiest way to get started is to pick the approach and copy an existing plugin. Pick the ones that is closest. For example if you are making another ad platform destination that does batching, [facebook](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/facebook) might be a good bet. Otherwise, here are some simple defaults.
 
-- Single profile at a time (`exportProfile`): [hubspot](https://github.com/grouparoo/grouparoo/tree/master/plugins/%40grouparoo/hubspot)
-- Batch multiple profiles (`exportProfiles`): [marketo](https://github.com/grouparoo/grouparoo/tree/master/plugins/%40grouparoo/marketo)
+- Single profile at a time (`exportProfile`): [hubspot](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/hubspot)
+- Batch multiple profiles (`exportProfiles`): [marketo](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/marketo)
 
 After copying, change the names in the `plugin.ts`, `package.json`, and the directory structure to the one you are making. Look for an icon with a license that we can use and note the attribution in the `README.md`. The icon should be square and 256+ pixels. Transparent backgrounds are preferred.
 

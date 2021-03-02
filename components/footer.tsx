@@ -44,7 +44,7 @@ function LogoAndSocialLinks({ router }) {
 }
 
 function EditThisPage({ router }) {
-  const urlBase = "https://github.com/grouparoo/www.grouparoo.com/tree/master";
+  const urlBase = "https://github.com/grouparoo/www.grouparoo.com/tree/main";
   const docsPageMatch = router.asPath.match(/^\/docs\/(.*)/);
   const blogPageMatch = router.asPath.match(/^\/blog\/(.*)/);
 

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 const REDIRECT_URL =
-  "https://raw.githubusercontent.com/grouparoo/app-example/master/docker-compose.published.yml";
+  "https://raw.githubusercontent.com/grouparoo/app-example/main/docker-compose.published.yml";
 
 export default function DockerCompose() {
   useEffect(() => {

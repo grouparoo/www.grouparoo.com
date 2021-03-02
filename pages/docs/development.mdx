@@ -157,7 +157,7 @@ Grouparoo is written in [Typescript](https://www.typescriptlang.org/), which mea
 
 If you are developing a plugin, you will need to `npm run prepare` it before seeing your changes. In many cases, the `prepare` step only calls out to `tsc`, and in these cases, you may be able to `tsc --watch` to automatically source changes and rebuild your plugin.
 
-Grouparoo self-documents its Typescript interface to [docs.grouparoo.com](https://docs.grouparoo.com) via [Typedoc](https://typedoc.org/). The docs from the `master` branch are automatically published to this site. If you want to read the docs for an older version of Grouparoo or a different branch, you can generate the docs locally by running `cd core && npm run docs` in this repository.
+Grouparoo self-documents its Typescript interface to [docs.grouparoo.com](https://docs.grouparoo.com) via [Typedoc](https://typedoc.org/). The docs from the `main` branch are automatically published to this site. If you want to read the docs for an older version of Grouparoo or a different branch, you can generate the docs locally by running `cd core && npm run docs` in this repository.
 
 ## Architecture
 
@@ -165,7 +165,7 @@ Learn about the Grouparoo architecture and models from the other pages in this d
 
 ## Dependencies
 
-Grouparoo is built on top of many wonderful open source technologies. An exhaustive list of our dependencies can be found within our [package.json](https://github.com/grouparoo/grouparoo/blob/master/core/package.json) files. This below list provides links to the core packages we rely on.
+Grouparoo is built on top of many wonderful open source technologies. An exhaustive list of our dependencies can be found within our [package.json](https://github.com/grouparoo/grouparoo/blob/main/core/package.json) files. This below list provides links to the core packages we rely on.
 
 Grouparoo Core:
 
@@ -184,7 +184,7 @@ Grouparoo Core:
   - [React-Bootstrap](https://react-bootstrap.github.io/)
   - [fontawesome](https://fontawesome.com/)
 
-All dependencies Grouparoo uses must be licensed under a non-viral open-source licence that allows for commercial use. We audit every dependency in every sub-project of this monorepo via [license-checker](https://www.npmjs.com/package/license-checker). The list of licenses we accept can be found [here](https://github.com/grouparoo/grouparoo/blob/master/tools/license-checker/check).
+All dependencies Grouparoo uses must be licensed under a non-viral open-source licence that allows for commercial use. We audit every dependency in every sub-project of this monorepo via [license-checker](https://www.npmjs.com/package/license-checker). The list of licenses we accept can be found [here](https://github.com/grouparoo/grouparoo/blob/main/tools/license-checker/check).
 
 ## Populating Demo Data
 
@@ -244,5 +244,5 @@ On the server:
 2. Run `pnpm install` at the root of this project, which will run the build steps too
 3. Run `cd apps/staging-public && npm run start`
 
-See the [`Procfile`](https://github.com/grouparoo/grouparoo/blob/master/Procfile) for an example of how to run a web and worker process independently.
+See the [`Procfile`](https://github.com/grouparoo/grouparoo/blob/main/Procfile) for an example of how to run a web and worker process independently.
 If you are deploying to Heroku or a similar PaaS, they might prune node_modules that aren't explicitly in "dependencies". However, due to the way lerna works, this might delete all of your modules. Check with your provider for how to disable this (ex: https://devcenter.heroku.com/articles/nodejs-support#build-behavior)

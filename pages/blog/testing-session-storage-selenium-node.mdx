@@ -18,7 +18,7 @@ This website is a [Next.js](https://nextjs.org/) application that uses [Jest](ht
 
 What I wanted to do with Jest and Selenium was to read from `sessionStorage` after visiting a series of pages. After a bit of perusing, I finally uncovered a (goofy) way to achieve what I wanted.
 
-We can use the `executeScript` method to run a JavaScript expression and capture the result. [Our test looks like this](https://github.com/grouparoo/www.grouparoo.com/blob/master/__tests__/integration/sessionStorage.ts):
+We can use the `executeScript` method to run a JavaScript expression and capture the result. [Our test looks like this](https://github.com/grouparoo/www.grouparoo.com/blob/main/__tests__/integration/sessionStorage.ts):
 
 ```ts
 declare var browser: any;
