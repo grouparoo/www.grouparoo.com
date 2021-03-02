@@ -15,10 +15,6 @@ export default function ReleaseIndex({ pageProps }) {
   let notes: ReleaseNote[] = pageProps.notes;
   const { limit, offset, total } = pageProps;
 
-  const contents = notes
-    ? notes.map((note) => hydrate(note.source, { components: components }))
-    : [];
-
   return (
     <>
       <Head>
@@ -46,10 +42,11 @@ export default function ReleaseIndex({ pageProps }) {
         {notes
           ? notes.map((note, idx) => {
               const { tags, date, title, blog, slug, github } = note;
+              const content = hydrate(note.source, { components: components });
               const ago = releaseDate(date);
               const badges = releaseBadges(tags);
 
-              if (!title) return null;
+              if (!title) return null; // do not render placeholder notes
 
               return (
                 <Row key={`note-${idx}`}>
@@ -58,7 +55,7 @@ export default function ReleaseIndex({ pageProps }) {
                     <br />
                     {ago}
                   </Col>
-                  <Col>
+                  <Col md={9} lg={10}>
                     <Row>
                       <Col>
                         <h4 style={{ paddingBottom: 0 }}>
@@ -66,6 +63,7 @@ export default function ReleaseIndex({ pageProps }) {
                           <a id={slug} />
                         </h4>
                       </Col>
+
                       <Col style={{ textAlign: "right" }} xs={2}>
                         {github && (
                           <Link href={github}>
@@ -92,12 +90,15 @@ export default function ReleaseIndex({ pageProps }) {
                     <div style={{ paddingBottom: 10 }} className={"d-md-none"}>
                       {badges} {ago}
                     </div>
-                    <div>{contents[idx]}</div>
+
+                    <div>{content}</div>
+
                     {blog && (
                       <Link href={`/blog/${blog}`}>
                         <a>See more</a>
                       </Link>
                     )}
+
                     <hr style={{ marginTop: 32, marginBottom: 32 }} />
                   </Col>
                 </Row>
