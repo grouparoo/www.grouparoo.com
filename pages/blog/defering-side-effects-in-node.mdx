@@ -140,7 +140,7 @@ Ok! We have removed the need to pass `transaction` to all queries and sub-method
 
 ## CLS and Deferred Execution
 
-Looking deeper into how `cls-hooked` works, we can see that it is possible to tell if you are currently in a namespace, and to set and get values from the namespace. Think of this like a session... but for the callback or promise your code is within! With this in mind, we can write our run method to be **transaction-aware**. This means that we can use a pattern that knows to run a function in-line if we aren’t within a transaction, but if we are, defer it until the end. We’ve wrapped utilities to do this within [Grouparoo’s CLS module](https://github.com/grouparoo/grouparoo/blob/master/core/src/modules/cls.ts).
+Looking deeper into how `cls-hooked` works, we can see that it is possible to tell if you are currently in a namespace, and to set and get values from the namespace. Think of this like a session... but for the callback or promise your code is within! With this in mind, we can write our run method to be **transaction-aware**. This means that we can use a pattern that knows to run a function in-line if we aren’t within a transaction, but if we are, defer it until the end. We’ve wrapped utilities to do this within [Grouparoo’s CLS module](https://github.com/grouparoo/grouparoo/blob/main/core/src/modules/cls.ts).
 
 With the CLS module you can write code like this:
 
@@ -182,7 +182,7 @@ test("without a transaction, deferred jobs will be run in-line", async () => {
 
 ## CLSAction and CLSTask
 
-Now that it is possible to take arbitrary functions and delay their execution until the transaction is complete, we can use these techniques to make a new type of Action and Task that has this functionality built in. We call these [`CLSAction`](https://github.com/grouparoo/grouparoo/blob/master/core/src/classes/actions/clsAction.ts) and [`CLSTask`](https://github.com/grouparoo/grouparoo/blob/master/core/src/classes/tasks/clsTask.ts). These new classes extend the regular Actionhero Action and Task classes, but provide a new `runWithinTransaction` method to replace `run`, which helpfully already uses `CLS.wrap()`. This makes it very easy for us to opt-into an Action in which automatically runs within a Sequelize transaction, and can defer it's own side-effects!
+Now that it is possible to take arbitrary functions and delay their execution until the transaction is complete, we can use these techniques to make a new type of Action and Task that has this functionality built in. We call these [`CLSAction`](https://github.com/grouparoo/grouparoo/blob/main/core/src/classes/actions/clsAction.ts) and [`CLSTask`](https://github.com/grouparoo/grouparoo/blob/main/core/src/classes/tasks/clsTask.ts). These new classes extend the regular Actionhero Action and Task classes, but provide a new `runWithinTransaction` method to replace `run`, which helpfully already uses `CLS.wrap()`. This makes it very easy for us to opt-into an Action in which automatically runs within a Sequelize transaction, and can defer it's own side-effects!
 
 Putting everything together, our new transaction-safe Action looks like this:
 

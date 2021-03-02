@@ -21,17 +21,17 @@ We use a combination of tools from `lerna` and `pnpm` to handle publishing these
 
 The normal path to publishing the packages in this monorepo is:
 
-1. Once a week (as defined in `.circleci/config`) the `master` branch will publish packages to the `next` tag as a pre-release. Pre-release versions have `alpha` in their patch ranges, ie: `v1.2.3-alpha.0`. Publishing is handled automatically by CircleCI.
+1. Once a week (as defined in `.circleci/config`) the `main` branch will publish packages to the `next` tag as a pre-release. Pre-release versions have `alpha` in their patch ranges, ie: `v1.2.3-alpha.0`. Publishing is handled automatically by CircleCI.
 2. Manually, when there are changes pushed to the `stable` branch, CircleCI will publish a new patch version, publishing the mainline `latest`-tag that Grouparoo customers use.
 
-Please update the `stable` branch with a _rebase_ from `master`, ie:
+Please update the `stable` branch with a _rebase_ from `main`, ie:
 
 ```
-git checkout master && \
+git checkout main && \
 git pull && \
 git checkout stable && \
 git pull && \
-git rebase master && \
+git rebase main && \
 git push
 ```
 
@@ -39,12 +39,12 @@ Both methods of publishing will also create a new Github release and generate re
 
 ## Manual Publishing Path
 
-You can also publish packages manually via the `/bin/publish` script in this repo. This is the same script that CI uses. If you are on the the `master` branch, you will be publishing the pre-release `alpha` packages, and if you are on the `stable` branch, you will be publishing the mainline `latest` releases.
+You can also publish packages manually via the `/bin/publish` script in this repo. This is the same script that CI uses. If you are on the the `main` branch, you will be publishing the pre-release `alpha` packages, and if you are on the `stable` branch, you will be publishing the mainline `latest` releases.
 
-1. Be sure you have no working changes in your git branch (`git reset --hard origin/master`)
+1. Be sure you have no working changes in your git branch (`git reset --hard origin/main`)
 2. Ensure you are logged into NPM as a user who has publish rights to the `@grouparoo` organization on NPM. Check with `npm whoami`
 3. Ensure you have the `GITHUB_AUTH` environment variable set. This is a [Github PAT token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) which is needed to automatically publish our release notes for the new version. You can include this as part of the publish command in-line.
-4. Run `GITHUB_AUTH=xxx ./bin/publish` from the root of the monorepo. Just like with the Automated Publishing Path, if you are on the `master` branch, a new alpha release will be created, and if you are on the `stable` branch, a new mainline release.
+4. Run `GITHUB_AUTH=xxx ./bin/publish` from the root of the monorepo. Just like with the Automated Publishing Path, if you are on the `main` branch, a new alpha release will be created, and if you are on the `stable` branch, a new mainline release.
    - This will also run `npm prepare` in all packages, building the javascript releases as needed
    - You may be asked for your NPM 2FA code before the process completes.
    - Release notes will be automatically created by `learna changelog`
@@ -52,7 +52,7 @@ You can also publish packages manually via the `/bin/publish` script in this rep
 ## What Can Go Wrong?
 
 - If CI doesn't pass, no packages will be published
-- If the latest release on master was a commit generated from a previous release, it will have a commit message like `chore(release): publish v0.1.15-alpha.1 [ci skip]`. The `[ci skip]` part means CI won't run this commit again... if you want to then publish a `stable` release, you will need to do it manually.
+- If the latest release on main was a commit generated from a previous release, it will have a commit message like `chore(release): publish v0.1.15-alpha.1 [ci skip]`. The `[ci skip]` part means CI won't run this commit again... if you want to then publish a `stable` release, you will need to do it manually.
 - There may be problems publishing to NPM (rare HTTP timeouts). If this happens you will need to publish individual packages that had trouble. You can do this by pulling the latest commit Lerna has made with the updated version numbers (`git pull`) and `cd`-ing into the package folder and running `npm publish --tag alpha` or `npm publish --tag latest`. DO NOT FORGET THE `--tag` flag!
 
 ## Notes
@@ -73,4 +73,4 @@ CI uses a few secrets for authentication:
 - `NPM_TOKEN` - a NPM access token. This is stored as an environment variable within Circle CI.
 - A SSH key with write access to the `grouparoo/grouparoo` repo. This SSH key is only used for CI to checkout our repositories. CircleCI knows the private key and Github knows the public key.
 
-As a note, we cannot `Include administrators` on Github's branch protection for the master or release branches as lerna needs to push it's changes back to the master branch after bumping the version and publishing.
+As a note, we cannot `Include administrators` on Github's branch protection for the main or release branches as lerna needs to push it's changes back to the main branch after bumping the version and publishing.

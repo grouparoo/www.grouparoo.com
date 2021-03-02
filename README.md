@@ -46,8 +46,8 @@ npm test # I will also run the build and lint commands
 
 - All Pull Requests are automatically built by Vercel which you can preview. Check your Pull Request for more information and a link
 
-**Master Branch**
+**Main Branch**
 
-- All changes to the `master` branch are automatically deployed to www.grouparoo.com (assuming tests pass).
+- All changes to the `main` branch are automatically deployed to www.grouparoo.com (assuming tests pass).
 
 🦘
