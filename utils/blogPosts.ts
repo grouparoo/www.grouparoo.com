@@ -21,6 +21,7 @@ export interface BlogEntry {
   image: string;
 }
 
+export const LIMIT = 10;
 export interface BlogPost extends BlogEntry {
   source: any;
   twitter_card: "summary" | "summary_large_image" | "app" | "player";
@@ -30,12 +31,39 @@ export async function getBlogPaths() {
   return getStaticMdxPaths(["blog"]);
 }
 
-export async function getBlogEntries(): Promise<BlogEntry[]> {
-  const entries = loadEntries(["blog"]);
-  entries.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
-  return entries;
+export async function getBlogEntries(
+  pageNumber: number = 1,
+  author?: string,
+  category?: string,
+  limit = LIMIT
+) {
+  const offset = (pageNumber - 1) * limit;
+  const entries: BlogEntry[] = loadEntries(["blog"])
+    .filter((entry) => {
+      if (!author) return true;
+      return getAuthor(author) === getAuthor(entry.author);
+    })
+    .filter((entry) => {
+      if (!category) return true;
+      return entry.tags.includes(category);
+    })
+    .sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+
+  const paginatedEntries = entries.slice(offset, offset + limit);
+
+  return {
+    entries: paginatedEntries,
+    total: entries.length,
+    limit,
+    offset,
+  };
+}
+
+export async function pagesCount(limit = LIMIT) {
+  const entries: BlogEntry[] = loadEntries(["blog"]);
+  return Math.ceil(entries.length / limit);
 }
 
 export async function getBlogPost(slugName): Promise<BlogPost> {
@@ -64,7 +92,8 @@ export async function getBlogPost(slugName): Promise<BlogPost> {
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  const entries = await getBlogEntries();
+  const total = loadEntries(["blog"]).length;
+  const { entries } = await getBlogEntries(1, null, null, total);
   const posts = [];
   for (const entry of entries) {
     const post = await getBlogPost(entry.slug);

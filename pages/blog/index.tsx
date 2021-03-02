@@ -6,6 +6,7 @@ import Image from "../../components/Image";
 import { BlogEntry, getBlogEntries } from "../../utils/blogPosts";
 import BlogTags from "../../utils/blogTags";
 import AuthorBox from "../../components/blog/authorBox";
+import { PaginationHelper } from "../../components/paginationHelper";
 
 function blogEntry(entry: BlogEntry, idx: number) {
   const author = getAuthor(entry.author);
@@ -50,20 +51,9 @@ function blogEntry(entry: BlogEntry, idx: number) {
   );
 }
 
-export default function BlogIndex({ pageProps, category = "", author = "" }) {
+export default function BlogIndex({ pageProps }) {
   let entries: BlogEntry[] = pageProps.entries;
-
-  if (category !== "") {
-    entries = entries.filter((entry) => entry.tags.includes(category));
-  }
-
-  if (author !== "") {
-    entries = entries.filter(
-      (entry) =>
-        getAuthor(entry.author).name === author ||
-        getAuthor(entry.author).slug === author
-    );
-  }
+  let { limit, offset, total, author, category } = pageProps;
 
   return (
     <>
@@ -90,7 +80,7 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
         {category ? (
           <>
             <p>
-              Showing {entries.length} articles tagged{" "}
+              Showing {entries.length} of {total} articles tagged{" "}
               <strong>{category}</strong>
               . <br />
               <Link href="/blog">
@@ -104,7 +94,7 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
         {author ? (
           <>
             <p>
-              Showing {entries.length} articles written by{" "}
+              Showing {entries.length} of {total} articles written by{" "}
               <strong>{getAuthor(author).name}</strong>. <br />
               <Link href="/blog">
                 <a>Show all articles instead.</a>
@@ -114,18 +104,40 @@ export default function BlogIndex({ pageProps, category = "", author = "" }) {
           </>
         ) : null}
 
-        {entries.length > 0 ? (
+        {entries && entries.length > 0 ? (
           entries.map((entry, idx) => blogEntry(entry, idx))
         ) : (
           <p>No entries found</p>
         )}
+
+        <PaginationHelper
+          baseUrl={
+            author !== ""
+              ? `/blog/author/${author}`
+              : category !== ""
+              ? `/blog/category/${category}`
+              : `/blog/page`
+          }
+          total={total}
+          limit={limit}
+          offset={offset}
+        />
       </Container>
-      <br />
     </>
   );
 }
 
-export async function getStaticProps() {
-  const entries = await getBlogEntries();
-  return { props: { entries } };
+export async function getStaticProps(ctx) {
+  const pageNumber = parseInt(ctx.params?.pageNumber || "1");
+  const category = ctx.params?.category || "";
+  const author = ctx.params?.author || "";
+  const { entries, limit, offset, total } = await getBlogEntries(
+    pageNumber,
+    author,
+    category
+  );
+
+  const props = { entries, limit, offset, total, pageNumber, author, category };
+
+  return { props };
 }

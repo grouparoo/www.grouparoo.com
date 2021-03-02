@@ -3,6 +3,7 @@
  */
 
 import * as helper from "../helpers/specHelper";
+import { getReleaseNotes } from "../../utils/releaseNotes";
 
 let url: string;
 
@@ -11,9 +12,13 @@ declare var browser: any;
 declare var by: any;
 
 describe("integration/what-new", () => {
+  let notes;
+
   beforeAll(async () => {
     const env = await helper.prepareForIntegrationTest();
     url = env.url;
+    const response = await getReleaseNotes();
+    notes = response.notes;
   }, 1000 * 60);
 
   afterAll(async () => {
@@ -32,7 +37,7 @@ describe("integration/what-new", () => {
       const items = await browser.findElements(by.tagName("h4"));
       const titles = await Promise.all(items.map((item) => item.getText()));
       expect(titles).toEqual(
-        expect.arrayContaining(["Snowflake Source", "Marketo Destination"])
+        expect.arrayContaining(notes.map((note) => note.title))
       );
     },
     30 * 1000

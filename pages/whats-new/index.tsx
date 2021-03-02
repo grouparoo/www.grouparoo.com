@@ -7,6 +7,7 @@ import { ReleaseNote, getReleaseNotes } from "../../utils/releaseNotes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Moment from "react-moment";
 import BlogImage from "../../components/blog/image";
+import { PaginationHelper } from "../../components/paginationHelper";
 
 const components = { Image: BlogImage };
 
@@ -88,10 +89,14 @@ function getHeader(feature: ReleaseNote) {
   if (!feature) {
     return <h1 style={{ paddingBottom: 30 }}>What's New</h1>;
   }
+
   return (
     <>
       {featureNote(feature)}
-      <h3 style={{ paddingBottom: 15, marginTop: 15 }}>Other updates</h3>
+      <hr />
+      <Link href="/whats-new">
+        <a>See all Updates</a>
+      </Link>
     </>
   );
 }
@@ -122,6 +127,7 @@ function getSocial(feature: ReleaseNote) {
 export default function ReleaseIndex({ pageProps }) {
   let notes: ReleaseNote[] = pageProps.notes;
   let feature: ReleaseNote = pageProps.feature;
+  const { limit, offset, total } = pageProps;
 
   let headerComponent = getHeader(feature);
   let socialComponent = getSocial(feature);
@@ -133,7 +139,12 @@ export default function ReleaseIndex({ pageProps }) {
     <>
       <Head>
         <title>{title}</title>
-        <link rel="canonical" href="https://www.grouparoo.com/whats-new" />
+        <link
+          rel="canonical"
+          href={`https://www.grouparoo.com/whats-new${
+            feature ? `/${feature.slug}` : ""
+          }`}
+        />
 
         <link
           rel="alternate"
@@ -153,20 +164,36 @@ export default function ReleaseIndex({ pageProps }) {
 
       <Container className="releasePage">
         {headerComponent}
-        {notes.length > 0 ? (
+        {feature ? null : notes && notes.length > 0 ? (
           notes.map((note, idx) => releaseNote(note, idx))
         ) : (
           <p>No notes found</p>
         )}
+
+        {feature ? null : (
+          <Row>
+            <Col md={3} lg={2} />
+            <Col>
+              <PaginationHelper
+                baseUrl={`/whats-new/page`}
+                total={total}
+                limit={limit}
+                offset={offset}
+              />
+            </Col>
+          </Row>
+        )}
       </Container>
+
       <br />
     </>
   );
 }
 
-export async function getStaticProps() {
-  const notes = await getReleaseNotes();
-  return { props: { notes } };
+export async function getStaticProps(ctx) {
+  const pageNumber = parseInt(ctx.params?.pageNumber || "1");
+  const { notes, limit, offset, total } = await getReleaseNotes(pageNumber);
+  return { props: { notes, limit, offset, total } };
 }
 
 function releaseDate(date: string) {

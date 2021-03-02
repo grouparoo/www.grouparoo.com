@@ -1,20 +1,15 @@
-import BlogIndex, { getStaticProps as blogIndexStaticProps } from "../index";
-import { badgeTypes } from "../../../utils/blogTags";
+import BlogIndex, { getStaticProps as blogIndexStaticProps } from "../../index";
+import { badgeTypes } from "../../../../utils/blogTags";
 import { useRouter } from "next/router";
 
 export default function BlogIndexWithCategory({ pageProps }) {
   const router = useRouter();
   const { category } = router.query;
-  return (
-    <BlogIndex
-      pageProps={pageProps}
-      category={Array.isArray(category) ? category[0] : category}
-    />
-  );
+  return <BlogIndex pageProps={pageProps} />;
 }
 
-export async function getStaticProps() {
-  return blogIndexStaticProps();
+export async function getStaticProps(ctx) {
+  return blogIndexStaticProps(ctx);
 }
 
 export async function getStaticPaths() {
