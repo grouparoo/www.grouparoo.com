@@ -61,6 +61,29 @@ export async function getReleaseNotes(pageNumber: number = 1, limit = LIMIT) {
     })
   );
 
+  // we need the number of 'hydrate' calls in the list view to match exactly on all pages
+  while (paginatedNotes.length < limit) {
+    paginatedNotes.push({
+      title: null,
+      slug: null,
+      date: null,
+      description: null,
+      source: {
+        compiledSource:
+          "function MDXContent() { return null }" +
+          "MDXContent.isMDXComponent = false;",
+        renderedOutput: null,
+        scope: {},
+      },
+      image: null,
+      tags: [],
+      github: null,
+      blog: null,
+    });
+  }
+
+  console.log(paginatedNotes[0]);
+
   return { notes: paginatedNotes, limit, offset, total: notes.length };
 }
 

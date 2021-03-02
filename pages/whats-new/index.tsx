@@ -49,6 +49,8 @@ export default function ReleaseIndex({ pageProps }) {
               const ago = releaseDate(date);
               const badges = releaseBadges(tags);
 
+              if (!title) return null;
+
               return (
                 <Row key={`note-${idx}`}>
                   <Col md={3} lg={2} className={"d-none d-md-block"}>
