@@ -82,8 +82,6 @@ export async function getReleaseNotes(pageNumber: number = 1, limit = LIMIT) {
     });
   }
 
-  console.log(paginatedNotes[0]);
-
   return { notes: paginatedNotes, limit, offset, total: notes.length };
 }
 
