@@ -19,7 +19,7 @@ Like many applications, Grouparoo stores data in a relational database. Unlike m
 
 Grouparoo uses the [Sequelize](https://sequelize.org/) Object Relational Mapper, or `ORM`, along with [sequelize-typescript](https://github.com/RobinBuschmann/sequelize-typescript) so we can work with the same Objects in our codebase, regardless of the database providing persistence. Sequelize does a great job of abstracting away the differences between the database types... most of the time. In this blog post, I’ll be sharing the times when the differences in the SQL implementations of Postgres and SQLite matter.
 
-## Case Insensitive Sting Comparisons.
+## Case Insensitive Sting Comparisons
 
 Postgres supports both the `like` and `iLike` operators for comparing strings, with the `i` indicating case-insensitive matching ([Postgres Docs](https://www.postgresql.org/docs/12/functions-matching.html)). That means you can choose, per query, if you are ignoring case or not:
 
@@ -50,7 +50,7 @@ SELECT * FROM users WHERE email LIKE '%@EXAMPLE.COM';
 
 In the Grouparoo application, this distinction shows up in a number of places, with the most interesting being that we need to provide different rules that can be used to calculate Group membership. If you visit [www.grouparoo.com/docs/config/groups/community](/docs/config/groups/community) and check out the options for string or email comparisons between Postgres and SQLite, you’ll see the difference.
 
-## Date and Time Part Functions.
+## Date and Time Part Functions
 
 Postgres ships with a number of handy date and time functions with a consistent API, like `date_trunc`. ([Postgres Docs](https://www.postgresql.org/docs/9.1/functions-datetime.html)) SQLite instead chose to rely on the C-like `strftime` function ([SQLite Docs](https://sqlite.org/lang_datefunc.html)). Both are popular ways to deal with time, but very different ways of approaches.
 
