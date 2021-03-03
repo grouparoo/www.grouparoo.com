@@ -19,11 +19,11 @@ export default function AuthorBox({
             roundedCircle
             src={`/images/authors/${author.image}`}
             alt={author.name}
-            width={200}
-            height={200}
+            width={100}
+            height={100}
           />
         </Col>
-        <Col md={10}>
+        <Col>
           <small>
             {entry ? (
               <>
