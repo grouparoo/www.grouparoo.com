@@ -84,6 +84,7 @@ export default function IntegrationsPage({ pageProps }) {
   }
 
   if (!data) return <p>no plugin</p>;
+  if (!data.useCases) return <p>no plugin</p>;
 
   return (
     <>
