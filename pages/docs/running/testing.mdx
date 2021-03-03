@@ -101,3 +101,53 @@ describe("snapshot", () => {
 ## Testing Notes
 
 - Unless you specify in your `package.json` or `jest.config.js`, You'll need to use magic comments to let Jest know that we are running a Node.js app (`@jest-environment node`)
+
+## Spec Helper API
+
+The spec helper makes a few helpful methods available to you. Here are the commonly-used methods and options:
+
+### `grouparooTestServer`
+
+Starts a test version of the Grouparoo server prior to running the specs and stops it after running the tests.
+
+Usage:
+
+```js
+const options = {
+  truncate: false,
+  enableTestPlugin: false,
+  resetSettings: false,
+  disableTestPluginImport: false,
+};
+helper.grouparooTestServer(options);
+```
+
+Options are passed as an object. Available options:
+
+- `truncate` (`boolean`): Truncates the database prior to starting the server. (Default: `false`)
+- `enableTestPlugin` (`boolean`): Mocks a plugin. (Default: `false`)
+- `resetSettings` (`boolean`): Sets all settings back to their default values _after_ starting the server. (Default: `false`)
+- `disableTestPluginImport` (`boolean`): Disables the ability for the mocked plugin to import files. Must be used in conjunction with `enableTestPlugin`. (Default: `false`)
+
+### `getProfile`
+
+Retrieves a profile from a series of key-value pairs representing properties of that profile.
+
+Usage:
+
+```js
+const profile = await helper.getProfile({
+  user_id: 100,
+  email: "example@example.com",
+});
+```
+
+<Alert variant="warning">
+  <p className="mb-0">
+    ⚠️{" "}
+    <strong>
+      Note that the set of properties passed must include the bootstrapped
+      Property (the first Property created in Grouparoo).
+    </strong>
+  </p>
+</Alert>
