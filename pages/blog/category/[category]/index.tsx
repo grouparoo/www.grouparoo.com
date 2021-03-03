@@ -1,10 +1,7 @@
 import BlogIndex, { getStaticProps as blogIndexStaticProps } from "../../index";
 import { badgeTypes } from "../../../../utils/blogTags";
-import { useRouter } from "next/router";
 
 export default function BlogIndexWithCategory({ pageProps }) {
-  const router = useRouter();
-  const { category } = router.query;
   return <BlogIndex pageProps={pageProps} />;
 }
 
