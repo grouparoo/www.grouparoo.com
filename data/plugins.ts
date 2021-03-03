@@ -10,17 +10,17 @@ export const PluginData: Array<{
   badge: string;
   showLink: boolean;
   packageName: string;
-  useCases: {
-    paragraphOne?: string;
-    paragraphTwo?: string;
+  useCases?: {
+    paragraphOne: string;
+    paragraphTwo: string;
   };
-  useCasesList: string[];
-  dataModelTitle: string;
-  dataModelDescription: string[];
+  useCasesList?: string[];
+  dataModelTitle?: string;
+  dataModelDescription?: string[];
   destinationProfile?: string;
   destinationProperty?: string;
   destinationGroup?: string;
-  otherPluginsHeading: string;
+  otherPluginsHeading?: string;
   pluginScreenshots?: {
     header: string;
     description: string;
@@ -41,6 +41,7 @@ export const PluginData: Array<{
     category: "data tool",
     badge: "",
     showLink: false,
+    packageName: "@grouparoo/csv",
   },
   {
     name: "Facebook",
@@ -154,6 +155,7 @@ export const PluginData: Array<{
     category: "data tool",
     badge: "",
     showLink: false,
+    packageName: "@grouparoo/google-sheets",
   },
   {
     name: "Hubspot",
