@@ -1,32 +1,33 @@
-import { Alert, Button, Tabs, Tab } from "react-bootstrap";
+import { Alert, Button, Tab } from "react-bootstrap";
 import Link from "next/link";
 
-import Image from "./image";
 import {
   ConfigToggle,
   EnterpriseCTA,
   HavingProblems,
   UIConfigPrereqs,
 } from "./callouts";
-import RuleOpsTable from "./ruleOpsTable";
 import CLICommand from "./CLICommands";
+import Image from "./image";
 import PluginsList from "./pluginsList";
+import RuleOpsTable from "./ruleOpsTable";
+import Tabs from "./tabs";
 import ValidateAndApplyConfig from "./validateAndApplyConfig";
 
 // The exported components are available for use in docs MDX files.
 export {
   Alert,
   Button,
+  CLICommand,
   ConfigToggle,
   EnterpriseCTA,
   HavingProblems,
-  UIConfigPrereqs,
   Image,
   Link,
-  RuleOpsTable,
-  CLICommand,
   PluginsList,
-  Tabs,
+  RuleOpsTable,
   Tab,
+  Tabs,
+  UIConfigPrereqs,
   ValidateAndApplyConfig,
 };
