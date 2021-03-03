@@ -35,10 +35,10 @@ export default function IntegrationsPage({ pageProps }) {
 
   function Screenshots() {
     const Screenshots = data.pluginScreenshots.map((screenshot, idx) => (
-      <>
+      <div key={`Screenshots-${idx}`}>
         {idx % 2 === 0 && (
           <>
-            <Row key={`Screenshots-${idx}`} className="align-items-center">
+            <Row className="align-items-center">
               <Col md={4}>
                 <br />
                 <h3 className="integrationsBlueH3">{screenshot.header}</h3>
@@ -59,7 +59,7 @@ export default function IntegrationsPage({ pageProps }) {
         )}
         {idx % 2 === 1 && (
           <>
-            <Row key={`Screenshots-${idx}`} className="align-items-center">
+            <Row className="align-items-center">
               <Col md={4} className="order-1 order-md-2">
                 <br />
                 <h3 className="integrationsBlueH3">{screenshot.header}</h3>
@@ -78,7 +78,7 @@ export default function IntegrationsPage({ pageProps }) {
             <br />
           </>
         )}
-      </>
+      </div>
     ));
     return <>{Screenshots}</>;
   }
@@ -156,7 +156,7 @@ export default function IntegrationsPage({ pageProps }) {
         )}
         <br />
         <br />
-        <Screenshots />
+        {data.pluginScreenshots && <Screenshots />}
       </Container>
 
       <br />
