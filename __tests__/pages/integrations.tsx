@@ -1,17 +1,42 @@
 import { shallow } from "enzyme";
-import IntegrationsPage from "../../pages/integrations/[type]/[plugin]";
 import { PluginData } from "../../data/plugins";
+let IntegrationsPage;
 
 describe("page/integrations", () => {
-  PluginData.filter((p) => p.useCases).map((plugin) => {
-    test(`pages exist for ${plugin.name}`, async () => {
-      const page = shallow(
-        <IntegrationsPage pageProps={{ plugin: plugin.slug }} />
-      );
-      expect(page.html()).toContain(`${plugin.name} integration`);
-    });
+  beforeAll(async () => {
+    // TODO: why does this need to be imported async?
+    IntegrationsPage = (
+      await import("../../pages/integrations/[type]/[plugin]")
+    ).default;
   });
 
-  test.todo("pages exist for destinations");
-  test.todo("pages do not exist for plugins without a use case");
+  PluginData.filter((p) => p.useCases)
+    .filter((p) => p.primaryType === "source")
+    .map((plugin) => {
+      test(`pages exist for Source ${plugin.name}`, async () => {
+        const page = shallow(
+          <IntegrationsPage pageProps={{ plugin: plugin.slug }} />
+        );
+        expect(page.html()).toContain(`${plugin.name} integration`);
+      });
+    });
+
+  PluginData.filter((p) => p.useCases)
+    .filter((p) => p.primaryType === "destination")
+    .map((plugin) => {
+      test(`pages exist for Destination ${plugin.name}`, async () => {
+        const page = shallow(
+          <IntegrationsPage pageProps={{ plugin: plugin.slug }} />
+        );
+        expect(page.html()).toContain(`${plugin.name} integration`);
+      });
+    });
+
+  PluginData.filter((p) => !p.useCases).map((plugin) => {
+    test(`pages does not exist for ${plugin.name}`, async () => {
+      expect(() =>
+        shallow(<IntegrationsPage pageProps={{ plugin: plugin.slug }} />)
+      ).toThrow();
+    });
+  });
 });
