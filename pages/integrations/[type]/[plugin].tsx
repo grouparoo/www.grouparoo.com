@@ -238,12 +238,6 @@ function DestionationHeaderArrow({ data }) {
       </Row>
 
       <br />
-
-      <Row>
-        <Col />
-        <Col lg={3} md={4} sm={6} xs={6} style={{ textAlign: "center" }}></Col>
-        <Col />
-      </Row>
     </>
   );
 }
@@ -285,11 +279,6 @@ function SourceHeaderArrow({ data }) {
         </Col>
       </Row>
       <br />
-      <Row>
-        <Col />
-        <Col lg={3} md={4} sm={6} xs={6} style={{ textAlign: "center" }}></Col>
-        <Col />
-      </Row>
     </>
   );
 }
