@@ -113,21 +113,14 @@ Starts a test version of the Grouparoo server prior to running the specs and sto
 Usage:
 
 ```js
-const options = {
-  truncate: false,
-  enableTestPlugin: false,
-  resetSettings: false,
-  disableTestPluginImport: false,
-};
-helper.grouparooTestServer(options);
+helper.grouparooTestServer();
 ```
 
-Options are passed as an object. Available options:
+Options may be passed to `grouparooTestServer` as an object. The main option of use to you is `truncate`, which tells the helper to truncate the database prior to running the specs.
 
-- `truncate` (`boolean`): Truncates the database prior to starting the server. (Default: `false`)
-- `enableTestPlugin` (`boolean`): Mocks a plugin. (Default: `false`)
-- `resetSettings` (`boolean`): Sets all settings back to their default values _after_ starting the server. (Default: `false`)
-- `disableTestPluginImport` (`boolean`): Disables the ability for the mocked plugin to import files. Must be used in conjunction with `enableTestPlugin`. (Default: `false`)
+```js
+helper.grouparooTestServer({ truncate: false });
+```
 
 ### `getProfile`
 
