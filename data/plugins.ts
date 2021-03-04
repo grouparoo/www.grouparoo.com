@@ -46,7 +46,7 @@ export const PluginData: Array<{
   {
     name: "Facebook",
     description:
-      "Grouparoo's Facebook Audiences integration allows you to sync all of your customer data that lives in various sources into Facebook.",
+      "Grouparoo's Facebook integration allows you to sync all of your customer data that lives in various sources into Facebook.",
     priority: 60,
     slug: "facebook",
     logo: "facebook.png",
@@ -85,7 +85,7 @@ export const PluginData: Array<{
   {
     name: "Google BigQuery",
     description:
-      "Grouparoo's BigQuery integration allows you to sync all of your customer data that lives in your Google BigQuery data warehouse with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
+      "Grouparoo's Google BigQuery integration allows you to sync all of your customer data that lives in your Google BigQuery data warehouse with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
     priority: 80,
     slug: "bigquery",
     logo: "bigquery.png",

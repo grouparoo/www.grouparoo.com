@@ -1,11 +1,17 @@
 import { shallow } from "enzyme";
-import MailchimpPage from "../../pages/integrations/destinations/mailchimp";
+import IntegrationsPage from "../../pages/integrations/[type]/[plugin]";
+import { PluginData } from "../../data/plugins";
 
-describe("page/integrations/destinations/mailchimp", () => {
-  test("renders the page", () => {
-    const page = shallow(<MailchimpPage />);
-    expect(page.html()).toContain(
-      "Grouparoo keeps your customer data in Mailchimp updated"
-    );
+describe("page/integrations", () => {
+  PluginData.filter((p) => p.useCases).map((plugin) => {
+    test(`pages exist for ${plugin.name}`, async () => {
+      const page = shallow(
+        <IntegrationsPage pageProps={{ plugin: plugin.slug }} />
+      );
+      expect(page.html()).toContain(`${plugin.name} integration`);
+    });
   });
+
+  test.todo("pages exist for destinations");
+  test.todo("pages do not exist for plugins without a use case");
 });

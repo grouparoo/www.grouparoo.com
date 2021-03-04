@@ -10,8 +10,12 @@ import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
 import { PluginData } from "../../../data/plugins";
 
-export default function IntegrationsPage({ pageProps }) {
-  const { plugin, type }: { plugin: string; type: string } = pageProps;
+export default function IntegrationsPage({
+  pageProps,
+}: {
+  pageProps: { plugin: string };
+}) {
+  const { plugin } = pageProps;
   const data = PluginData.find((e) => e.slug === plugin);
 
   function useCaseList() {
@@ -82,9 +86,6 @@ export default function IntegrationsPage({ pageProps }) {
     ));
     return <>{Screenshots}</>;
   }
-
-  if (!data) return <p>no plugin</p>;
-  if (!data.useCases) return <p>no plugin</p>;
 
   return (
     <>
@@ -187,11 +188,11 @@ export default function IntegrationsPage({ pageProps }) {
 
 export async function getStaticProps(ctx) {
   const { plugin, type } = ctx.params;
-  return { props: { plugin, type } };
+  return { props: { plugin } };
 }
 
 export async function getStaticPaths() {
-  const paths = PluginData.map(
+  const paths = PluginData.filter((p) => p.useCases).map(
     (p) => `/integrations/${p.primaryType}s/${p.slug}`
   );
 
