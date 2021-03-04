@@ -1,0 +1,104 @@
+---
+title: "Dialect differences between SQLite and Postgres in Sequelize"
+date: "2021-03-04"
+author: "Evan Tahler"
+pullQuote: "Grouparoo works with both SQLite and Postgres databases.  This post shares what we've learned about the differences."
+image: "sql-dialect-differences/210303-databases.png"
+tags: [notes, engineering]
+---
+
+Like many applications, Grouparoo stores data in a relational database. Unlike most applications, Grouparoo works with 2 different types of databases - Postgres and SQLite. We enable our customers to run Grouparoo in a number of different ways - on their laptop with no external decencies, and as part of a large cluster with many servers processing data in parallel. When running Grouparoo locally, you can use SQLite so no other dependencies are needed, and in the production cluster, you can use a hosted version of Postgres provided by your hosting provider.
+
+<Image
+  centered
+  alt="Gropuaroo likes SQLite and Postgres"
+  src="sql-dialect-differences/210303-databases.png"
+  width={1015}
+  height={533}
+/>
+
+Grouparoo uses the [Sequelize](https://sequelize.org/) Object Relational Mapper, or `ORM`, along with [sequelize-typescript](https://github.com/RobinBuschmann/sequelize-typescript) so we can work with the same Objects in our codebase, regardless of the database providing persistence. Sequelize does a great job of abstracting away the differences between the database types... most of the time. In this blog post, I’ll be sharing the times when the differences in the SQL implementations of Postgres and SQLite matter.
+
+## Case Insensitive Sting Comparisons
+
+Postgres supports both the `like` and `iLike` operators for comparing strings, with the `i` indicating case-insensitive matching ([Postgres Docs](https://www.postgresql.org/docs/12/functions-matching.html)). That means you can choose, per query, if you are ignoring case or not:
+
+```sql
+-- Postgres --
+-- assuming you have `email = person@example.com` (lowercase) in your `users` table
+
+-- match
+SELECT * FROM users WHERE email ILIKE '%@EXAMPLE.COM';
+
+-- no match
+SELECT * FROM users WHERE email LIKE '%@EXAMPLE.COM';
+```
+
+However, in SQLite, all string comparisons are case-insensitive (and there is no `iLike` function ([SQLite Docs](https://sqlite.org/lang_expr.html)). Instead, if you really want your `like` function to be made case-sensitive, you would use the `case_sensitive_like` PRAGMA ([SQLite Docs](https://sqlite.org/pragma.html#pragma_case_sensitive_like))... but that’s a database-wide change that you likely don’t want to use.
+
+```sql
+-- SQLite --
+-- assuming you have `email = person@example.com` (lowercase) in your `users` table
+
+-- match
+SELECT * FROM users WHERE email LIKE '%@EXAMPLE.COM';
+
+-- no match
+PRAGMA case_sensitive_like=ON;
+SELECT * FROM users WHERE email LIKE '%@EXAMPLE.COM';
+```
+
+In the Grouparoo application, this distinction shows up in a number of places, with the most interesting being that we need to provide different rules that can be used to calculate Group membership. If you visit [the groups config page](/docs/config/groups/community) and check out the options for string or email comparisons between Postgres and SQLite, you’ll see the difference.
+
+## Date and Time Part Functions
+
+Postgres ships with a number of handy date and time functions with a consistent API, like `date_trunc`. ([Postgres Docs](https://www.postgresql.org/docs/9.1/functions-datetime.html)) SQLite instead chose to rely on the C-like `strftime` function ([SQLite Docs](https://sqlite.org/lang_datefunc.html)). Both are popular ways to deal with time, but very different ways of approaches.
+
+For example, if we want to count up how many events occurred per hour:
+
+```SQL
+-- Postgres ---
+SELECT COUNT(*) as total, date_trunc('hour', "occurredAt") as time FROM events GROUP BY 2
+
+-- SQLite ---
+SELECT COUNT(*) as total, strftime('%Y-%m-%d %H:00:00', "occurredAt") as time FROM events GROUP BY 2
+```
+
+While not necessarily a user-facing problem, there are quite a few places in the Grouparoo codebase were we calculate rollups like these, and need to make different queries depending on the database in use.
+
+## Min and Max typecasting
+
+Sequelize helps you to write rather complex queries in a database-agnostic way. Consider the following query that asks for all the types of events that exist, and returns the count, first occurrence and most recent occurrence. e.g.: we might learn that there have been 100 `pageview` events, with the first one on Jan 1 and the most recent one today. This Sequelize query works for both Postgres and SQLite!
+
+```js
+const types = await Event.findAll({
+  attributes: [
+    "type",
+    [api.sequelize.fn("COUNT", "id"), "count"],
+    [api.sequelize.fn("MIN", api.sequelize.col("occurredAt")), "min"],
+    [api.sequelize.fn("MAX", api.sequelize.col("occurredAt")), "max"],
+  ],
+  group: ["type"],
+  order: [[api.sequelize.literal("count"), "desc"]],
+});
+```
+
+However, the resulting objects differ slightly `types[0].min` will be a JS `Date` object from Postgres and a `string` from SQLite. They will need to be converted to the same type in your application code.
+
+## Boolean Column typecasting
+
+[SQLite does not have Boolean columns](https://www.sqlite.org/datatype3.html), and uses integers instead. When using an ORM that supports the boolean type, _most_ of the time it knows to covert the database’s `1` to `true` and `0` to `false`, but when accessing properties directly it may not. This appears regularly with Sequelize’s `instance.getDataValue()` method. Conversely, Postgres boolean values are always properly cast.
+
+## Transaction Limits
+
+SQLite can only handle one transaction at a time. This makes sense, as it’s quite literally reading and writing a file on disk. Postgres, on the other hand, can handle many transactions at once and does a great job of merging the results and avoiding deadlocks. If you using Node.JS like Grouparoo is, even a single process can generate many transactions - you might be processing many API requests in parallel, or in the case of Grouparoo, running many background tasks at once.
+
+To help avoid SQLite deadlocks (which look like `SequelizeTimeoutError: SQLITE_BUSY: database is locked`), we limit the number of workers we run against a SQLite database to 1.
+
+## Compound Indexes with Unique Columns
+
+Sequelize has a [bug](https://github.com/sequelize/sequelize/issues/12823) in which a migration against a table that has an index against 2 columns will make those columns unique, even if they wen’t before the migration. To mitigate this, we do not use compound indexes in the Grouparoo application.
+
+---
+
+While this list may seem long, the vast majority of the Grouparoo codebase works exactly the same regardless of if you are backing the application with SQLite or Postgres. The Sequelize team did a great job abstracting most of the dialect nuances away.

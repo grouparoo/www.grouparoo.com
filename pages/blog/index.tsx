@@ -75,7 +75,7 @@ export default function BlogIndex({ pageProps }) {
       </Head>
 
       <Container>
-        <h1>Blog</h1>
+        <h1>The Grouparoo Blog</h1>
 
         {category ? (
           <>
@@ -84,10 +84,9 @@ export default function BlogIndex({ pageProps }) {
               <strong>{category}</strong>
               . <br />
               <Link href="/blog">
-                <a>Show all articles instead.</a>
+                <a>Show all articles</a>
               </Link>
             </p>
-            <hr />
           </>
         ) : null}
 
@@ -97,12 +96,14 @@ export default function BlogIndex({ pageProps }) {
               Showing {entries.length} of {total} articles written by{" "}
               <strong>{getAuthor(author).name}</strong>. <br />
               <Link href="/blog">
-                <a>Show all articles instead.</a>
+                <a>Show all articles</a>
               </Link>
             </p>
             <AuthorBox author={getAuthor(author)} />
           </>
         ) : null}
+
+        <hr />
 
         {entries && entries.length > 0 ? (
           entries.map((entry, idx) => blogEntry(entry, idx))

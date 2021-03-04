@@ -24,7 +24,7 @@ describe("integration/blog", () => {
     const testUrl = url + "/blog";
     await browser.get(testUrl);
     const header = await browser.findElement(by.tagName("h1")).getText();
-    expect(header).toBe("Blog");
+    expect(header).toBe("The Grouparoo Blog");
   });
 
   test("it renders a blog page", async () => {
