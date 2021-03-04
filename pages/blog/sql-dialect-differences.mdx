@@ -7,7 +7,7 @@ image: "sql-dialect-differences/210303-databases.png"
 tags: [notes, engineering]
 ---
 
-Like many applications, Grouparoo stores data in a relational database. Unlike most applications, Grouparoo works with 2 different types of databases - Postgres and SQLite. We enable our customers to run Grouparoo in a number of different ways - on their laptop with no external decencies, and as part of a large cluster with may servers processing data in parallel. When running Grouparoo locally, you can use SQLite so no other dependencies are needed, and in the production cluster, you can use a hosted version of Postgres provided by your hosting provider.
+Like many applications, Grouparoo stores data in a relational database. Unlike most applications, Grouparoo works with 2 different types of databases - Postgres and SQLite. We enable our customers to run Grouparoo in a number of different ways - on their laptop with no external decencies, and as part of a large cluster with many servers processing data in parallel. When running Grouparoo locally, you can use SQLite so no other dependencies are needed, and in the production cluster, you can use a hosted version of Postgres provided by your hosting provider.
 
 <Image
   centered
@@ -87,7 +87,7 @@ However, the resulting objects differ slightly `types[0].min` will be a JS `Date
 
 ## Boolean Column typecasting
 
-[SQLite does not have Boolean columns](https://www.sqlite.org/datatype3.html), and uses integers instead. When using an ORM that supports the boolean type, _most_ of the time it knows to covert the database’s `1` to `true` and `0` to `false`, but when accessing properties directly it may not. This appears regularly with Sequelize’s `instance.getDataValue()` method. Conversely, Postgres boolean value are always properly cast.
+[SQLite does not have Boolean columns](https://www.sqlite.org/datatype3.html), and uses integers instead. When using an ORM that supports the boolean type, _most_ of the time it knows to covert the database’s `1` to `true` and `0` to `false`, but when accessing properties directly it may not. This appears regularly with Sequelize’s `instance.getDataValue()` method. Conversely, Postgres boolean values are always properly cast.
 
 ## Transaction Limits
 
@@ -101,4 +101,4 @@ Sequelize has a [bug](https://github.com/sequelize/sequelize/issues/12823) in wh
 
 ---
 
-While this list may seem long, the vast majority of the Grouparoo codebase works exactly the same regardless of if you are backing the application with SQLite or Postgres. The Sequelzie team did a great job abstracting most of the dialect nuances away.
+While this list may seem long, the vast majority of the Grouparoo codebase works exactly the same regardless of if you are backing the application with SQLite or Postgres. The Sequelize team did a great job abstracting most of the dialect nuances away.
