@@ -13,7 +13,7 @@ jobs:
       - name: Update files
         run: |
           ./scripts/github_action
-      - uses: stefanzweifel/git-auto-commit-action@v4.1.2
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Updating things automatically
           commit_user_name: Grouparoo Bot
