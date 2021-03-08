@@ -37,9 +37,7 @@ export default function IntegrationCard({
             slug={slug}
             name={name}
           />
-          <Card.Text>
-            <strong>{name}</strong>
-          </Card.Text>
+          <Card.Text>{name}</Card.Text>
 
           {type ? (
             <>
