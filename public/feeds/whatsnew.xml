@@ -83,13 +83,13 @@ grouparoo status
 grouparoo <span class="token function">sync</span> <span class="token operator">&lt;</span>profile<span class="token operator">&gt;</span> <span class="token punctuation">(</span>--no-export<span class="token punctuation">)</span>
 
 <span class="token comment"># Run the application and stop after every Profile has been imported and exported as needed.</span>
-grouparoo run <span class="token punctuation">(</span>--web<span class="token punctuation">)</span> <span class="token punctuation">(</span>--destroy<span class="token punctuation">)</span> <span class="token punctuation">(</span>--no-export<span class="token punctuation">)</span>
+grouparoo run <span class="token punctuation">(</span>--web<span class="token punctuation">)</span> <span class="token punctuation">(</span>--reset<span class="token punctuation">)</span> <span class="token punctuation">(</span>--no-export<span class="token punctuation">)</span>
 
 <span class="token comment"># Run the application. Keep checking for new and updated Profiles. This is equivalent to npm start</span>
 grouparoo start
 
 <span class="token comment"># Empty the Profiles, Groups, and related data from your database.</span>
-grouparoo destroy
+grouparoo reset
 </code></pre><p>Learn more from the new <a href="/docs/cli">CLI Reference</a> page in the Grouparoo docs.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
             <enclosure
