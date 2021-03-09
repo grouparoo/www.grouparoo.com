@@ -34,7 +34,7 @@ export default function JobPage({ pageProps }) {
         <meta property="og:title" content={`${job.text}`} />
         <meta
           property="og:description"
-          content={`Grouparoo is hiring a ${job.text}!`}
+          content={`Join our 100% remote team to build the best open-source data sync apps.`}
         />
         <meta
           property="og:image"
