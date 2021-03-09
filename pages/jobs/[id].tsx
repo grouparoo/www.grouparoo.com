@@ -6,6 +6,7 @@ import {
   LeverJob,
   LeverJobListItem,
 } from "../../utils/jobPosts";
+import Head from "next/head";
 import WorkingAtGrouparooCard from "../../components/jobs/workingAtGrouparoo";
 
 export default function JobPage({ pageProps }) {
@@ -20,17 +21,39 @@ export default function JobPage({ pageProps }) {
   }
 
   return (
-    <Container>
-      <h1>Join Grouparoo</h1>
-      <Row>
-        <Col md={8}>
-          <JobCard job={job} />
-        </Col>
-        <Col>
-          <WorkingAtGrouparooCard />
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Head>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@grouparoo" />
+        <meta name="twitter:creator" content={"@grouparoo"} />
+        <meta
+          property="og:url"
+          content={`https://www.grouparoo.com/jobs/${job.id}`}
+        />
+        <meta property="og:title" content={`Grouparoo - ${job.text}`} />
+        <meta property="og:description" content={job.description} />
+        <meta
+          property="og:image"
+          content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
+        />
+      </Head>
+
+      <Container>
+        <h1>Join Grouparoo</h1>
+        <Row>
+          <Col md={8}>
+            <JobCard job={job} />
+          </Col>
+          <Col>
+            <WorkingAtGrouparooCard />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 
