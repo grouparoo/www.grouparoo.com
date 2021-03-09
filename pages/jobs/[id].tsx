@@ -125,14 +125,7 @@ function JobListItem({ listItem }: { listItem: LeverJobListItem }) {
   );
 }
 
-export async function getStaticProps({ params }) {
-  const job = await getJob(params.id);
-  return { props: { job } };
-}
-
-export async function getStaticPaths() {
-  const jobs = await getJobs();
-  const paths = jobs.map((job) => `/jobs/${job.id}`);
-
-  return { paths, fallback: true };
-}
+JobPage.getInitialProps = async function (ctx) {
+  const job = await getJob(ctx.query.id);
+  return { job };
+};
