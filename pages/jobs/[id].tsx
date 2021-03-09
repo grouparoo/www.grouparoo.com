@@ -95,5 +95,5 @@ export async function getStaticPaths() {
   const jobs = await getJobs();
   const paths = jobs.map((job) => `/jobs/${job.id}`);
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
