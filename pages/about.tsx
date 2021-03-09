@@ -241,7 +241,7 @@ export default function About({ pageProps }) {
   );
 }
 
-export async function getStaticProps() {
+About.getInitialProps = async (ctx) => {
   const jobs = await getJobs();
-  return { props: { jobs } };
-}
+  return { jobs };
+};
