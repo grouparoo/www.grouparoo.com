@@ -50,13 +50,13 @@ grouparoo status
 grouparoo sync <profile> (--no-export)
 
 # Run the application and stop after every Profile has been imported and exported as needed.
-grouparoo run (--web) (--destroy) (--no-export)
+grouparoo run (--web) (--reset) (--no-export)
 
 # Run the application. Keep checking for new and updated Profiles. This is equivalent to npm start
 grouparoo start
 
 # Empty the Profiles, Groups, and related data from your database.
-grouparoo destroy
+grouparoo reset
 ```
 
 Learn more from the new [CLI Reference](/docs/cli) page in the Grouparoo docs.

@@ -56,19 +56,6 @@
     }
   },
   {
-    "name": "destroy",
-    "description": "Remove imported Profiles, Groups, Imports, and Exports from your cluster.  Properties, Groups and other configuration will remain.",
-    "example": "",
-    "inputs": {
-      "timestamps": {
-        "default": false,
-        "description": "Should timestamps be prepended to each log line?",
-        "letter": "t",
-        "flag": true
-      }
-    }
-  },
-  {
     "name": "generate [template] [id]",
     "description": "Generate new code config files from templates. ",
     "example": "App generation:\n    grouparoo generate postgres:app data_warehouse\n\n  Simple Source Generation (needs parent app):\n    grouparoo generate postgres:table:source users_table \\\n      --parent data_warehouse\n\n  Batch Source Generation (needs parent app to be applied first):\n    grouparoo generate postgres:table:source users_table \\\n      --parent data_warehouse \\\n      --from users \\\n      --with id,first_name,email,last_name \\\n      --mapping 'id=user_id' \\\n      --high-water-mark updated_at\n    ",
@@ -123,14 +110,28 @@
     }
   },
   {
+    "name": "reset <mode>",
+    "description": "Reset part of this Cluster. Mode can be `cluster` (all data), `data` (imported data) and `cache`",
+    "example": "",
+    "inputs": {
+      "confirm": {
+        "required": false,
+        "default": false,
+        "flag": true,
+        "letter": "c",
+        "description": "Confirm the command"
+      }
+    }
+  },
+  {
     "name": "run",
     "description": "Run all Schedules, Runs, Imports and Exports pending in this cluster.  Use GROUPAROO_LOG_LEVEL env to set log level.",
     "example": "",
     "inputs": {
-      "destroy": {
+      "reset": {
         "default": false,
-        "description": "[DANGER] Empty the cluster of all Profile data before starting the run?",
-        "letter": "d",
+        "description": "[DANGER] Empty the cluster of all Profile data before starting the run? Equivalent to `grouparoo reset data`",
+        "letter": "r",
         "flag": true
       },
       "reset-high-watermarks": {
