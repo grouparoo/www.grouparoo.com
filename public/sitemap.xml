@@ -139,6 +139,8 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/installation</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/plugins</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/running</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/support</loc><changefreq
@@ -284,8 +286,6 @@
     >https://www.grouparoo.com/docs/installation/docker</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/installation/node</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/installation/plugins</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/running/testing</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
