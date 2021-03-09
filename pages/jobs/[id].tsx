@@ -7,6 +7,7 @@ import {
   LeverJobListItem,
 } from "../../utils/jobPosts";
 import Head from "next/head";
+import Link from "next/link";
 import WorkingAtGrouparooCard from "../../components/jobs/workingAtGrouparoo";
 
 export default function JobPage({ pageProps }) {
@@ -52,7 +53,14 @@ export default function JobPage({ pageProps }) {
             <JobCard job={job} />
           </Col>
           <Col>
-            <WorkingAtGrouparooCard />
+            <div
+              style={{
+                position: "sticky",
+                top: 10,
+              }}
+            >
+              <WorkingAtGrouparooCard />
+            </div>
           </Col>
         </Row>
       </Container>
@@ -96,6 +104,11 @@ function JobCard({ job }: { job: LeverJob }) {
         <Button variant="primary" href={job.applyUrl} target="_blank">
           Apply Now - {job.text}
         </Button>
+        <br />
+        <br />
+        <Link href="/jobs">
+          <a>See all open Positions</a>
+        </Link>
       </Card.Body>
     </Card>
   );
