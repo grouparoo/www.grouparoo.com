@@ -1,6 +1,13 @@
 import { Fragment } from "react";
 import { Row, Col, Container, Card, Alert, Button } from "react-bootstrap";
-import { getJob, LeverJob, LeverJobListItem } from "../../utils/jobPosts";
+import {
+  getJob,
+  getJobs,
+  LeverJob,
+  LeverJobListItem,
+} from "../../utils/jobPosts";
+import Head from "next/head";
+import Link from "next/link";
 import WorkingAtGrouparooCard from "../../components/jobs/workingAtGrouparoo";
 
 export default function JobPage({ pageProps }) {
@@ -15,17 +22,49 @@ export default function JobPage({ pageProps }) {
   }
 
   return (
-    <Container>
-      <h1>Join Grouparoo</h1>
-      <Row>
-        <Col md={8}>
-          <JobCard job={job} />
-        </Col>
-        <Col>
-          <WorkingAtGrouparooCard />
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Head>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@grouparoo" />
+        <meta name="twitter:creator" content={"@grouparoo"} />
+        <meta
+          property="og:url"
+          content={`https://www.grouparoo.com/jobs/${job.id}`}
+        />
+        <meta property="og:title" content={`${job.text}`} />
+        <meta
+          property="og:description"
+          content={`Join our 100% remote team to build the best open-source data sync apps.`}
+        />
+        <meta
+          property="og:image"
+          content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
+        />
+      </Head>
+
+      <Container>
+        <h1>Join Grouparoo</h1>
+        <Row>
+          <Col md={8}>
+            <JobCard job={job} />
+          </Col>
+          <Col>
+            <div
+              style={{
+                position: "sticky",
+                top: 10,
+              }}
+            >
+              <WorkingAtGrouparooCard />
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 
@@ -65,6 +104,11 @@ function JobCard({ job }: { job: LeverJob }) {
         <Button variant="primary" href={job.applyUrl} target="_blank">
           Apply Now - {job.text}
         </Button>
+        <br />
+        <br />
+        <Link href="/jobs">
+          <a>See all open Positions</a>
+        </Link>
       </Card.Body>
     </Card>
   );
@@ -81,7 +125,7 @@ function JobListItem({ listItem }: { listItem: LeverJobListItem }) {
   );
 }
 
-JobPage.getInitialProps = async (ctx) => {
+JobPage.getInitialProps = async function (ctx) {
   const job = await getJob(ctx.query.id);
   return { job };
 };
