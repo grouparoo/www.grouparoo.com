@@ -1,5 +1,5 @@
 import { Row, Col, Card, Alert, Button } from "react-bootstrap";
-import { getJobs, LeverJob } from "../../utils/jobPosts";
+import { LeverJob } from "../../utils/jobPosts";
 
 export default function JobBoard({ jobs }: { jobs: LeverJob[] }) {
   if (jobs.length === 0) {
@@ -34,8 +34,3 @@ export default function JobBoard({ jobs }: { jobs: LeverJob[] }) {
     </>
   );
 }
-
-JobBoard.getInitialProps = async (ctx) => {
-  const jobs = await getJobs();
-  return { jobs };
-};

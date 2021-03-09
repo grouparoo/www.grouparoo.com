@@ -5,6 +5,7 @@ import Image from "../components/Image";
 import WhoWeAre from "../components/home/whoWeAre";
 import JobBoard from "../components/jobs/jobBoard";
 import WorkingAtGrouparooCard from "../components/jobs/workingAtGrouparoo";
+import { getJobs } from "../utils/jobPosts";
 
 export default function About({ pageProps }) {
   return (
@@ -240,7 +241,7 @@ export default function About({ pageProps }) {
   );
 }
 
-About.getInitialProps = async (ctx) => {
-  const { jobs } = await JobBoard.getInitialProps(ctx);
-  return { jobs };
-};
+export async function getStaticProps() {
+  const jobs = await getJobs();
+  return { props: { jobs } };
+}

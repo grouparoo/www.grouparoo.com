@@ -1,6 +1,11 @@
 import { Fragment } from "react";
 import { Row, Col, Container, Card, Alert, Button } from "react-bootstrap";
-import { getJob, LeverJob, LeverJobListItem } from "../../utils/jobPosts";
+import {
+  getJob,
+  getJobs,
+  LeverJob,
+  LeverJobListItem,
+} from "../../utils/jobPosts";
 import WorkingAtGrouparooCard from "../../components/jobs/workingAtGrouparoo";
 
 export default function JobPage({ pageProps }) {
@@ -81,7 +86,14 @@ function JobListItem({ listItem }: { listItem: LeverJobListItem }) {
   );
 }
 
-JobPage.getInitialProps = async (ctx) => {
-  const job = await getJob(ctx.query.id);
-  return { job };
-};
+export async function getStaticProps({ params }) {
+  const job = await getJob(params.id);
+  return { props: { job } };
+}
+
+export async function getStaticPaths() {
+  const jobs = await getJobs();
+  const paths = jobs.map((job) => `/jobs/${job.id}`);
+
+  return { paths, fallback: false };
+}
