@@ -30,8 +30,11 @@ export default function JobPage({ pageProps }) {
           property="og:url"
           content={`https://www.grouparoo.com/jobs/${job.id}`}
         />
-        <meta property="og:title" content={`Grouparoo - ${job.text}`} />
-        <meta property="og:description" content={job.description} />
+        <meta property="og:title" content={`${job.text}`} />
+        <meta
+          property="og:description"
+          content={`Grouparoo is hiring a ${job.text}!`}
+        />
         <meta
           property="og:image"
           content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
