@@ -105,6 +105,13 @@ const DocsNav: NavItem[] = [
     ],
   },
 
+  // -- Plugins --
+  {
+    title: "Plugins",
+    path: "/docs/plugins",
+    children: [],
+  },
+
   // -- Tutorials --
   {
     title: "Tutorials",

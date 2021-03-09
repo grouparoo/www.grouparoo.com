@@ -98,7 +98,7 @@ const communityRedirects = [
   },
 ];
 
-/* --- Config (Temp) --- */
+/* --- Config --- */
 
 const configRedirects = [
   { src: "/docs/config/apps", dest: "/docs/config/apps/community" },
@@ -111,12 +111,19 @@ const configRedirects = [
   },
 ];
 
+/* --- Installation --- */
+
+const installationRedirects = [
+  { src: "/docs/installation/plugins", dest: "/docs/plugins" },
+];
+
 const combinedRedirects = [
   ...guidesRedirects,
   ...deploymentRedirects,
   ...developmentRedirects,
   ...communityRedirects,
   ...configRedirects,
+  ...installationRedirects,
 ];
 
 module.exports = combinedRedirects.map(({ src, dest, permanent }) => ({
