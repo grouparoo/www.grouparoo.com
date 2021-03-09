@@ -1,18 +1,22 @@
 import { Nav, Navbar, Container, Button, Image } from "react-bootstrap";
+import Link from "next/link";
 
 export default function Navigation() {
   return (
     <header>
       <Container>
-        <br />
         <Navbar variant="light" expand="md">
-          <Navbar.Brand href="/">
-            <Image
-              src="/images/logo-and-wordmark-black-words.png"
-              alt="Grouparoo Logo"
-              width={150}
-              height={32}
-            />
+          <Navbar.Brand>
+            <Link href="/">
+              <a>
+                <Image
+                  src="/images/logo-and-wordmark-black-words.png"
+                  alt="Grouparoo Logo"
+                  width={150}
+                  height={32}
+                />
+              </a>
+            </Link>
             <span className="d-none">Grouparoo</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
