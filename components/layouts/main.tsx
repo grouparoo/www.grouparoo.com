@@ -1,10 +1,23 @@
-import React from "react";
+import { useState, useEffect, Children, cloneElement } from "react";
 import Head from "next/head";
 import PlausibleAnalytics from "../plausibleAnalytics";
 import Navigation from "../navigation";
 import Footer from "../footer";
+import { Alert } from "react-bootstrap";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 function PageTemplate({ children }) {
+  const router = useRouter();
+  const [releaseNote, setReleaseNote] = useState<{
+    name: string;
+    description: string;
+  }>(null);
+
+  useEffect(() => {
+    if (router.asPath !== "/") setReleaseNote(null);
+  }, [router.asPath]);
+
   return (
     <>
       <Head>
@@ -111,10 +124,23 @@ function PageTemplate({ children }) {
         <link rel="stylesheet" href="/css/prism.css"></link>
       </Head>
 
+      {releaseNote?.description ? (
+        <Alert variant="primary" style={{ textAlign: "center", margin: 0 }}>
+          <small>
+            <strong>What's New</strong> - {releaseNote.description}{" "}
+            <Link href="/whats-new">
+              <a>Learn More</a>
+            </Link>
+          </small>
+        </Alert>
+      ) : null}
+
       <div className="main">
         <Navigation />
         <div id="content-container" style={{ minHeight: 700 }}>
-          {children}
+          {Children.map(children, (child) =>
+            cloneElement(child, { setReleaseNote })
+          )}
         </div>
         <Footer />
       </div>

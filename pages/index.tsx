@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Container, Button, Row, Col } from "react-bootstrap";
+import { useEffect } from "react";
+import { Container, Button, Row, Col, Alert } from "react-bootstrap";
 import Image from "../components/Image";
 import Head from "next/head";
 import Link from "next/link";
@@ -10,14 +10,20 @@ import GetStarted from "../components/home/getStarted";
 import WhyOpenSource from "../components/home/whyOpenSource";
 import CustomerTestimonials from "../components/home/customerTestimonials";
 import { randomHomepagePlugin } from "../data/plugins";
+import { getReleaseNotes } from "../utils/releaseNotes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function IndexPage({ pageProps }) {
-  const { pluginName }: { pluginName: string } = pageProps;
+export default function IndexPage({ pageProps, setReleaseNote }) {
+  const {
+    pluginName,
+    releaseNote,
+  }: { pluginName: string; releaseNote: any } = pageProps;
   const title = "Grouparoo: Open Source Data Synchronization Framework";
   const description =
     "Grouparoo is an open source framework that helps you move data between your database and all of your cloud-based tools.";
   const tagline = `Stop writing code to sync data to ${pluginName}*`;
+
+  useEffect(() => setReleaseNote(releaseNote), []);
 
   return (
     <>
@@ -53,6 +59,8 @@ export default function IndexPage({ pageProps }) {
 
         <link rel="canonical" href="https://www.grouparoo.com/" />
       </Head>
+
+      <Alert></Alert>
 
       <div
         id="headline"
@@ -586,7 +594,8 @@ export default function IndexPage({ pageProps }) {
   );
 }
 
-IndexPage.getInitialProps = () => {
+export async function getServerSideProps() {
   const pluginName = randomHomepagePlugin();
-  return { pluginName };
-};
+  const { notes } = await getReleaseNotes(1, 1);
+  return { props: { pluginName, releaseNote: notes[0] } };
+}
