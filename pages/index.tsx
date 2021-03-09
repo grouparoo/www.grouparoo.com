@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Container, Button, Row, Col, Alert } from "react-bootstrap";
+import { Container, Button, Row, Col } from "react-bootstrap";
 import Image from "../components/Image";
 import Head from "next/head";
 import Link from "next/link";
@@ -59,8 +59,6 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
 
         <link rel="canonical" href="https://www.grouparoo.com/" />
       </Head>
-
-      <Alert></Alert>
 
       <div
         id="headline"
