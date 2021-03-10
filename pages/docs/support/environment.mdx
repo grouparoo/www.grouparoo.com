@@ -34,24 +34,24 @@ You can disable telemetry collection by setting `GROUPAROO_TELEMETRY_ENABLED=fal
 
 **Redis**
 
-Grouparoo uses Redis as both a cache and as a background job queue via node-resque. You can also customize how this are used via your environment variables.
+Grouparoo uses Redis as both a cache and as a background job queue via node-resque. You can customize how this are used via your environment variables.
 
 - `REDIS_URL="redis://localhost:6379/0"`
 
-To use an in-memory redis, set `REDIS_URL="redis://mock"`
+The full set of options is: `REDIS_URL="redis://{user}:{password}@{host}:{port}/{database}"`. To use an in-memory redis, set `REDIS_URL="redis://mock"`
 
 **Database**
 
-Grouparoo stores all of your data in a database. We use Sequelize to connect, so you can use a Postgres or SQLITE database. You can also customize your database connection string via environment variables.
+Grouparoo stores all of your data in a database. You can use a Postgres or SQLITE database. You can customize your database connection string via environment variables.
 
 - `DATABASE_URL="postgresql://localhost:5432/grouparoo_development"`
 
-You can also modify the SSL connection options to your postgres database with:
+The full set of options is: `REDIS_URL="postgresql://{user}:{password}@{host}:{port}/{database}?{ssl=true}"`. You can also modify the SSL connection options to your postgres database with these environment variables:
 
 - `DATABASE_SSL=true`
 - `DATABASE_SSL_SELF_SIGNED=true`
 
-To use SQLite, set `DATABASE_URL="sqlite://grouparoo_development.sqlite"` which will be stored in your application directory.
+To use SQLite, set `DATABASE_URL="sqlite://grouparoo_development.sqlite"` which will be stored in your application directory by default, or you can provide an absolute path, ie: `DATABASE_URL="sqlite:///path/to/db.sqlite"`.
 
 **File Storage**
 
