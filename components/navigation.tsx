@@ -22,13 +22,36 @@ export default function Navigation() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto" style={{ marginTop: 30 }}>
-              <Nav.Link href="/integrations">Integrations</Nav.Link>
-              <Nav.Link href="/pricing">Pricing</Nav.Link>
-              <Nav.Link href="/docs">Docs</Nav.Link>
-              <Nav.Link href="/blog">Blog</Nav.Link>
-              <Nav.Link className="d-md-none d-lg-block" href="/docs/community">
-                Community
-              </Nav.Link>
+              <Link href="/integrations">
+                <a className="nav-link" role="button">
+                  Integrations
+                </a>
+              </Link>
+
+              <Link href="/pricing">
+                <a className="nav-link" role="button">
+                  Pricing
+                </a>
+              </Link>
+
+              <Link href="/docs">
+                <a className="nav-link" role="button">
+                  Docs
+                </a>
+              </Link>
+
+              <Link href="/blog">
+                <a className="nav-link" role="button">
+                  Blog
+                </a>
+              </Link>
+
+              <Link href="/docs/community">
+                <a className="nav-link d-md-none d-lg-block" role="button">
+                  Community
+                </a>
+              </Link>
+
               <Nav.Link className="d-md-none d-lg-block">
                 <div style={{ paddingTop: 4 }}>
                   <iframe
