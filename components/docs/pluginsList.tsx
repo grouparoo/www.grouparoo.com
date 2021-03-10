@@ -14,6 +14,7 @@ interface NPMPackage {
     repository: string;
     bugs: string;
   };
+  url: string;
 }
 
 const ignoredPlugins = [
@@ -39,9 +40,16 @@ export default function PluginsList() {
 
     if (!response.objects) return;
 
+    const pluginDocsUrl = (pkg: { name: string }) => {
+      const name = pkg.name
+        .replace(/\@/g, "") // Characters to remove
+        .replace(/[\ \/]/g, "-"); // Characters to replace with a hyphen
+      return `/docs/plugins/${name}`;
+    };
+
     const packages: NPMPackage[] = response.objects
       .filter((o) => o.package)
-      .map((o) => o.package)
+      .map((o) => ({ ...o.package, url: pluginDocsUrl(o.package) }))
       .filter((o) => !ignoredPlugins.includes(o.name))
       .sort((a, b) => {
         if (a.name > b.name) return 1;
@@ -72,9 +80,7 @@ export default function PluginsList() {
           plugins.map((plugin) => (
             <tr key={plugin.name}>
               <td style={{ width: 210 }}>
-                <a target="_blank" href={plugin.links.npm}>
-                  {plugin.name}
-                </a>
+                <a href={plugin.url}>{plugin.name}</a>
               </td>
               <td>{plugin.version}</td>
               <td>{plugin.description}</td>
