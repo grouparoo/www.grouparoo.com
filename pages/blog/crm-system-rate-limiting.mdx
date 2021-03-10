@@ -1,0 +1,289 @@
+---
+title: "CRM System Rating Limiting Overview"
+date: "2021-03-10"
+author: "Brian Leonard"
+pullQuote: "An important part of performing data sync with a marketing system is adapting to its rate limit limitations."
+image: "crm-system-rate-limiting/dam.jpg"
+tags: [engineering, sync]
+---
+
+Rate limiting is the method by which an API limits the calls for its use. When creating a data sync implementation with an API, it's important to adapt the approach that the remote system takes.
+
+Whether stated or not, all systems have a rate limit. Even if not addressed explicitly, there is still some finite number of parallel connections that a set of servers can handle. Instead of leaving it to chance, SaaS providers tend to understand their limitations and use technology at the edge to reject requests that exceed some limit. Sometimes, this limit is configurable depending on your pricing plan.
+
+At Grouparoo, we have integrated with several CRM (customer relationship management) tools. These often take the form of systems for Sales or email automation tools for Marketing. This article presents an overview of the appraches that we have encountered.
+
+## Calls per time
+
+The most common approach is limiting the caller to a certain of calls per a unit of time. These vary by service. Here are some examples:
+
+<table className="rate-limiting">
+  <tr>
+    <td>
+      <strong>Service</strong>
+    </td>
+    <td>
+      <strong>Limit</strong>
+    </td>
+    <td>
+      <strong>Per Time</strong>
+    </td>
+    <td className="d-none d-md-table-cell">
+      <strong>Per Minute</strong>
+    </td>
+    <td className="notes d-none d-lg-table-cell">
+      <strong>Notes</strong>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://developers.intercom.com/intercom-api-reference/reference#rate-limiting">
+        Intercom
+      </a>
+    </td>
+    <td>1,000</td>
+    <td>minute</td>
+    <td className="d-none d-md-table-cell">1,000</td>
+    <td className="notes d-none d-lg-table-cell"></td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm">
+        Salesforce
+      </a>
+    </td>
+    <td>100,000</td>
+    <td>day</td>
+    <td className="d-none d-md-table-cell">69</td>
+    <td className="notes d-none d-lg-table-cell">
+      Many nuances around certain types of calls and options to buy more.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://developers.hubspot.com/docs/api/usage-details">Hubpot</a>
+    </td>
+    <td>100</td>
+    <td>10 seconds</td>
+    <td className="d-none d-md-table-cell">600</td>
+    <td className="notes d-none d-lg-table-cell">
+      >Also daily limit of 250,000
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://www.braze.com/docs/api/basics/#api-limits">Braze</a>
+    </td>
+    <td>250,000</td>
+    <td>hour</td>
+    <td className="d-none d-md-table-cell">4,167</td>
+    <td className="notes d-none d-lg-table-cell">
+      Some endpoints have other limits
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://api.iterable.com/api/docs#users_updateUser">Iterable</a>
+    </td>
+    <td>500</td>
+    <td>second</td>
+    <td className="d-none d-md-table-cell">30,000</td>
+    <td className="notes d-none d-lg-table-cell">
+      500/second is for updating users. Others are much lower, for example
+      getting information about a user by email is 3/second.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://developers.marketo.com/rest-api/marketo-integration-best-practices/">
+        Marketo
+      </a>
+    </td>
+    <td>50,000</td>
+    <td>day</td>
+    <td className="d-none d-md-table-cell">35</td>
+    <td className="notes d-none d-lg-table-cell">
+      There is also 100 calls per 20 second limit.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://developer.pardot.com/#rate-limits">Pardot</a>
+    </td>
+    <td>25,000</td>
+    <td>day</td>
+    <td className="d-none d-md-table-cell">17</td>
+    <td className="notes d-none d-lg-table-cell">You can buy a higher limit</td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://docs.oracle.com/en/cloud/saas/marketing/eloqua-develop/Developers/BulkAPI/Reference/bulk-limits.htm">
+        Eloqua
+      </a>
+    </td>
+    <td>2,000</td>
+    <td>day</td>
+    <td className="d-none d-md-table-cell">1.4</td>
+    <td className="notes d-none d-lg-table-cell">
+      They are heavily encouraging using their batch API.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://customer.io/docs/api/#tag/trackLimit">Customer.io</a>
+    </td>
+    <td>100</td>
+    <td>second</td>
+    <td className="d-none d-md-table-cell">6,000</td>
+    <td className="notes d-none d-lg-table-cell"></td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://getstarted.sailthru.com/developers/api-basics/technical/#Rate_Limiting">
+        Sailthru
+      </a>
+    </td>
+    <td>300</td>
+    <td>second</td>
+    <td className="d-none d-md-table-cell">18,000</td>
+    <td className="notes d-none d-lg-table-cell">
+      Different APIs have different limits. Deleting users, for example, is
+      40/second.
+    </td>
+  </tr>
+</table>
+
+The ones with lower limits tend to highly encourage batching.
+
+## Concurrent calls
+
+In addition to (or instead of) calls per time, some services limit concurrent access. For example, Mailchimp allows you to have 10 threads talking to Mailchimp at any given time. In effect, this ends up being the same as a number of calls per second. It just happens to depend on how long the call takes.
+
+<table className="rate-limiting">
+  <tr>
+    <td>
+      <strong>Service</strong>
+    </td>
+    <td>
+      <strong>In Parallel</strong>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://mailchimp.com/developer/marketing/docs/fundamentals/#api-limits">
+        Mailchimp
+      </a>
+    </td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://developers.marketo.com/rest-api/marketo-integration-best-practices/">
+        Marketo
+      </a>
+    </td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://developer.pardot.com/#rate-limits">Pardot</a>
+    </td>
+    <td>5</td>
+  </tr>
+</table>
+
+## Responses
+
+When you reach your API limit for a time period, many APIs respond with the `429` HTTP response code. This is [defined as](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) "Too Many Requests" in the spec.
+
+The response content often looks something like [this](https://developers.hubspot.com/docs/api/usage-details):
+
+```json
+{
+  "status": "error",
+  "message": "You have reached your daily limit.",
+  "errorType": "RATE_LIMIT",
+  "correlationId": "c033cdaa-2c40-4a64-ae48-b4cec88dad24",
+  "policyName": "DAILY",
+  "requestId": "3d3e35b7-0dae-4b9f-a6e3-9c230cbcf8dd"
+}
+```
+
+The APIs that do this well give plenty of information about how a caller is progressing towards their rate limit. The most common approach is returning rate limit information in the headers of each response.
+
+For example, here are the [Intercom](https://developers.intercom.com/intercom-api-reference/reference#rate-limiting) headers:
+
+```
+X-RateLimit-Limit:	Maximum number of requests allowed for the app.
+X-RateLimit-Remaining:	Number of requests left in the current time.
+X-RateLimit-Reset:	Time when the number of requests will be reset to the maximum limit. Shown as UNIX timestamp.
+```
+
+## Handling rate limits
+
+When writing code to sync data to these CRM systems, you will have to catch errors and handle the rate limit response. Ideally, you would use the headers to try again at the appropriate time.
+
+For example, here is the code that handles the above Intercom headers.
+
+```typescript
+export const exportProfile = async (args) => {
+  try {
+    return sendProfile(args);
+  } catch (error) {
+    // https://developers.intercom.com/intercom-api-reference/reference#rate-limiting
+    if (error.statusCode === 429) {
+      const headers = error.headers || {};
+      const now = Math.ceil(new Date().getTime() / 1000.0);
+      const resetEpoch = headers["x-ratelimit-reset"] || 0;
+      let retryIn = now - resetEpoch;
+      if (retryIn <= 0) {
+        retryIn = 60;
+      }
+
+      // add some random time to that to spread it out
+      retryIn += Math.floor(Math.random() * 30) + 1;
+      return { error, success: false, retryDelay: 1000 * retryIn };
+    }
+
+    throw error;
+  }
+};
+```
+
+Because the Intercom API is per minute, this code tries to use the header but defaults to trying again a minute later. It also takes the approach of adding a bit of random time on top of that. We have seen that if all the requests were to use the _exact_ time, it would likely trigger the rate limiting again. This code spreads it out.
+
+In this case, the Grouparoo platform knows how to handle the `retryDelay` to re-run the code after the given delay.
+
+Grouparoo also knows how to handle the currency limits. A Grouparoo app can set its `parallelism` to limit how many background workers are being processed at a given time. For example, Mailchimp is set to never go over 10 concurrent workers.
+
+<Image
+  alt="A Dam holding back the water"
+  src="crm-system-rate-limiting/dam.jpg"
+  centered
+  source="https://search.creativecommons.org/photos/96ae67a8-caf0-4f1e-900f-dea7b4909944"
+  height={439}
+  width={900}
+/>
+
+<style>
+  {`
+    table.rate-limiting {
+      margin-bottom: 30px;
+      width: 100%;
+      table-layout:fixed;
+    }
+
+    table.rate-limiting td, th {
+      border: 1px solid black;
+      padding: 10px;
+    }
+
+    table.rate-limiting td {
+      min-width: 40px;
+    }
+
+    table.rate-limiting td.notes {
+      width: 40%;
+    }
+  `}
+</style>
