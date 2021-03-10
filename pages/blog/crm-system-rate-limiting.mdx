@@ -223,7 +223,7 @@ X-RateLimit-Reset:	Time when the number of requests will be reset to the maximum
 
 When writing code to sync data to these CRM systems, you will have to catch errors and handle the rate limit response. Ideally, you would use the headers to try again at the appropriate time.
 
-For example, here is the code that handles the above Intercom headers.
+For example, here is the Node.js / Typescript code that handles the above Intercom headers.
 
 ```typescript
 export const exportProfile = async (args) => {
