@@ -1,0 +1,17 @@
+---
+title: "Code Config Generators"
+date: "2021-03-09"
+tags: ["new"]
+description: "Grouparoo's Declarative Sync feature revolves around the use of the generate command within our CLI tool."
+image: "declarative-data-sync/declarative-sync.png"
+---
+
+Last month we launched an exciting new feature, [Declarative Sync](/blog/declarative-data-sync). This feature revolves around the use of [our CLI tool](/docs/cli), specifically [the `generate` command](/docs/cli/config#generate).
+
+The generate command uses your input to write a configuration file to your file system. You can then use this file to configure the various objects in Grouparoo, like [Apps](/docs/config/apps/community), [Sources](/docs/config/sources/community), or [Destinations](/docs/config/destinations/community).
+
+These templates are then read and processed by Grouparoo when the server starts. This makes it trivial to import and export data from your various data sources and destinations by just writing a few lines of JSON.
+
+You can work the way you are already working. You check your config files into Git. And you can even [run tests](/docs/running/testing) to ensure your data is moving around as you'd expect.
+
+See [the docs](/docs/config/code-config) for more information on how to configure your Grouparoo project using code config files. Or [check out our video](https://youtu.be/kQ789gMXJB8) to see an overview on how it all fits together.
