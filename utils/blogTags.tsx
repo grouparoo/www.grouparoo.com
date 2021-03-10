@@ -10,6 +10,7 @@ export const badgeTypes = {
   product: "danger",
   operations: "secondary",
   company: "info",
+  sync: "danger",
 };
 
 export default function blogTags(tags: string[]) {
