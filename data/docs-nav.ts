@@ -57,9 +57,31 @@ const DocsNav: NavItem[] = [
     title: "Step 4: Deploy",
     path: "/docs/deployment",
     children: [
-      { title: "Heroku", path: "/docs/deployment/heroku" },
-      { title: "Docker & Docker Compose", path: "/docs/deployment/docker" },
-      { title: "AWS & Kubernetes", path: "/docs/deployment/aws-and-k8s" },
+      {
+        title: "Config",
+        path: "https://github.com/grouparoo/app-example-config",
+        target: "_blank",
+      },
+      {
+        title: "Heroku",
+        path: "https://github.com/grouparoo/app-example-heroku",
+        target: "_blank",
+      },
+      {
+        title: "AWS",
+        path: "https://github.com/grouparoo/app-example-aws",
+        target: "_blank",
+      },
+      {
+        title: "GCP",
+        path: "https://github.com/grouparoo/app-example-gcp",
+        target: "_blank",
+      },
+      {
+        title: "Docker",
+        path: "https://github.com/grouparoo/app-example-docker",
+        target: "_blank",
+      },
     ],
   },
 
