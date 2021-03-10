@@ -16,9 +16,7 @@ Now that you have a Source or some Sources ([see here if you don't have a Source
 
 ## Generating a New Property
 
-You are likely to have more Profile Properties than any other type of config object in your Grouparoo application. Because of this, creating them with the CLI can be a tedious venture. While we still recommend using the CLI, we've outlined two approaches to take when creating Properties.
-
-### Method #1: Using the CLI
+You are likely to have more Profile Properties than any other type of config object in your Grouparoo application. Because of this, creating them with the CLI can be a tedious venture. While we still recommend using the CLI, you can also generate a single Property and the duplicate the code inside one file or among multiple files.
 
 To generate a new Property for your Grouparoo application, you can run [the `generate` command](/docs/cli/config#generate).
 
@@ -26,9 +24,9 @@ For example, let's say you have configured a Postgres Table Source with the ID `
 
     grouparoo generate postgres:table:property ltv --parent users_table
 
-Note here that `ltv` is the ID for the Source. An ID is always required when generating a config object.
+Note here that `ltv` is the `id` for the Source. An `id` is always required when generating a config object.
 
-This command will generate a file in your application directory at `config/properties/ltv.js` that looks something like this:
+This command will generate a file in your application directory at `config/properties/ltv.js`. Fill that file out with the appropriate values. The file will look something like this:
 
 ```js
 exports.default = async function buildConfig() {
@@ -55,12 +53,6 @@ exports.default = async function buildConfig() {
 
 The shape of the object(s) returned by the function will look different depending on the type of Property generated. More on this below.
 
-### Method #2: Duplicating Existing Code
-
-Because you are likely to create several Properties for any given source, you don't _have_ to use the CLI for each one. You could choose to create a single Property, and then duplicate the code for any additional Properties, changing values as necessary.
-
-And you also don't need an individual file for each Property object. You could choose to shove all Properties for a source in a single file, or even in the Source's file. Grouparoo's CLI is smart enough to figure out which objects to load first. Your config objects can be in any directory, just as long as they are JavaScript or JSON files.
-
 ### List of Available Source Types
 
 A Postgres table Property is just one _type_ of Property you can create. To see a full list of available types, use the `--list` option, filtered by "property":
@@ -84,6 +76,8 @@ This will give you something like the following:
     redshift:table:property (id, parent) - Config for a redshift Table Property
     snowflake:query:property (id, parent) - Config for a snowflake Query Property
     snowflake:table:property (id, parent) - Config for a snowflake Table Property
+
+This list is determined by the plugins that you have installed. [Learn more about Plugins](/docs/plugins).
 
 ## Configuring Your Property
 
