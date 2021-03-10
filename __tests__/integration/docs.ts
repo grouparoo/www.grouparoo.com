@@ -28,16 +28,16 @@ describe("integration/docs", () => {
   });
 
   test("it renders a sub-index page", async () => {
-    const testUrl = url + "/docs/deployment";
+    const testUrl = url + "/docs/config";
     await browser.get(testUrl);
     const header = await browser.findElement(by.tagName("h1")).getText();
-    expect(header).toBe("Deployment");
+    expect(header).toBe("Configuration");
   });
 
   test("it renders a page", async () => {
-    const testUrl = url + "/docs/deployment/heroku";
+    const testUrl = url + "/docs/config/apps/community";
     await browser.get(testUrl);
     const header = await browser.findElement(by.tagName("h1")).getText();
-    expect(header).toBe("Heroku");
+    expect(header).toBe("Apps (Community)");
   });
 });
