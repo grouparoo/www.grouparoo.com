@@ -8,12 +8,16 @@ function LogoAndSocialLinks({ router }) {
 
   return (
     <>
-      <Image
-        src="/images/logo.png"
-        alt="Grouparoo Logo"
-        width={50}
-        height={40}
-      />
+      <Link href="/">
+        <a>
+          <Image
+            src="/images/logo.png"
+            alt="Grouparoo Logo"
+            width={50}
+            height={40}
+          />
+        </a>
+      </Link>
       <br />
       <br />
       <p>
