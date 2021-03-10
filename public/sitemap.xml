@@ -207,12 +207,6 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/ui-config</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/deployment/aws-and-k8s</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/deployment/docker</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/deployment/heroku</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/development/databases</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/development/dataflow</loc><changefreq
