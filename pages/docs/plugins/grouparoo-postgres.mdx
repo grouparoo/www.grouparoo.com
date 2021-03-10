@@ -1,0 +1,134 @@
+---
+title: "@grouparoo/postgres"
+date: "2021-03-10"
+pullQuote: "Learn how to work with the Postgres plugin as a Source or a Destination."
+---
+
+**NPM:** [@grouparoo/postgres](https://www.npmjs.com/package/@grouparoo/postgres) <br />
+**GitHub:** [@grouparoo/postgres](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/postgres)
+
+Grouparoo's Postgres plugin enables you to import data from one or more PostgreSQL databases or to export data to a PostgreSQL database.
+
+## Installing the Postgres Plugin
+
+To work with the Postgres plugin, you must first install it in an existing Grouparoo project. You can do this using [the `install` command](/docs/cli/setup#install) from [our CLI](/docs/cli):
+
+    $ grouparoo install @grouparoo/postgres
+
+This adds the package to your `package.json` file as a dependency, and also drops the plugin in the `grouparoo.plugins` section in that same file, which enables it.
+
+Once the plugin is installed, you'll be working primarily with [the CLI's configuration commands](/docs/cli/config) to get everything set up.
+
+## Creating a Postgres App
+
+With Grouparoo, an App is how we establish a connection with a source or destination. Add this connection by generating an App:
+
+    $ grouparoo generate postgress:app my_data_warehouse
+
+<Alert variant="primary">
+  <p className="mb-0">
+    Note that every generator requires an <code>id</code> argument. It is a
+    unique value describing the App you just created. It should be alphanumeric,
+    lower case, without spaces, and unique among other objects of the same type
+    (Apps).
+  </p>
+</Alert>
+
+Here our `id` is `my_data_warehouse`. [Learn more about the `generate` command](/docs/cli/config#generate).
+
+This will generate a file at `config/apps/my_data_warehouse.js`. Open this file and **edit the connection details to match your desired configuration**.
+
+Every config object has a similar starting shape. [Learn more about config object shapes](/docs/config/code-config#config-object-shapes).
+
+Here are the Postgres-specific options available to you in the `options` section of the config file:
+
+- `host` (**required**, default: `"localhost"`): The host at which your database lives.
+- `port` (**required**, default: `5432`): The port used to connect to the database.
+- `database`: (**required**) The name of your database.
+- `schema`: (**required**, default: `"public"`) The database schema you want to target, which usually doesn't have to be changed.
+- `user`: The user is the user connecting to your database. Note that if you are connecting to localhost (if you don't need a user), you should comment out or delete this line.
+- `password`: Password is the user's password. You may also want to delete this or set it to `undefined` if working with localhost.
+- `ssl`: (**required**, default: `false`) Enforce SSL connections only. Grouparoo will use SSL optionally if supported by the server. If using SSL, you can also pass the following options:
+  - `ssl_cert`
+  - `ssl_key`
+  - `ssl_ca`
+
+## Creating a Postgres Source
+
+A Source is how you import data into Grouparoo. For columnar sources, like Postgres, there are two _types_ of sources:
+
+- A _Table Source_ targets specific columns within a single table and can perform aggregation methods on that column.
+- A _Query Source_ provides the ability to write custom SQL code to extract data from one or more tables and import the result into Grouparoo.
+
+You can generate each type of source using the `generate` command. Each requires that you specify a `parent`, which should match the `id` of the App you created.
+
+    $ grouparoo generate postgres:table:source users --parent my_data_warehouse
+    $ grouparoo generate postgres:query:source purchases --parent my_data_warehouse
+
+Each generator has additional options for speeding up the config process. You can use the `--describe` flag to learn more about each command. For example:
+
+    $ grouparoo generate postgres:table:source --describe
+
+Some generators have a way to batch multiple generated config files together. [Read more here](/docs/config/sources/community#batch-source-generation).
+
+All Sources have a common set of options, [which you can read about here](/docs/config/sources/community#configuring-your-source). Type-specific options are listed below.
+
+### Table Source
+
+There are two objects in the Table Source config file that are unique to this type: `options` and `mappings`. More on these and other related items below.
+
+#### Table Source Options
+
+There is only one option:
+
+- `table`: (**required**) Name of the table in the Postgres database.
+
+#### Table Source Mappings
+
+Mapping is a section of key-value pairs which represents how Grouparoo should match source columns to properties in Grouparoo.
+
+For example, let's say your database has a column named `email` and `first_name`, while the Property `id` values in Grouparoo are `emailAddress` and `firstName`. Your mapping would look like this:
+
+```js
+{
+  // ...
+  mapping: {
+    email: "emailAddress",
+    first_name: "firstName"
+  }
+}
+```
+
+#### Table Source Schedule
+
+A schedule is attached to every Source config file by default, commented out. If you want to import data from the source on a schedule (which is the typical behavior), then you should remove the comments and apply the necessary values.
+
+[You can read more about the common options here](/docs/config/sources/community#adding-a-schedule). The Postgres-specific options (those in the `options` object) are:
+
+- `column`: (**required**) The name of the column to use as the high water mark. This is a date column.
+
+#### Table Source Properties
+
+After you generate a Source, you'll likely want to add Properties to it. You can do this through the CLI:
+
+    $ grouparoo generate postgres:table:property first_name --parent users
+
+TODO:
+
+- [ ] Add common options section to Properties doc
+- [ ] Add docs for query source
+- [ ] Add docs for destination
+- [ ] Close with a note about running the code
+- [ ] Open PR and describe what changed here and where I want feedback
+
+### Query Source Options
+
+## Adding Properties to a Source
+
+Unless you are controlling this import in some other way, you're likely to want the import to occur at some interval, which Grouparoo calls a Schedule.
+
+Schedules largely look the same ([see here for more info](/docs/config/sources/community#adding-a-schedule)). The unique option for
+
+- Properties
+- Destination
+- Run code??
