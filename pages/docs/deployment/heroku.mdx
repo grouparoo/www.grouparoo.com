@@ -6,9 +6,9 @@ pullQuote: "Grouparoo is easy to deploy with Heroku."
 
 ## Example
 
-An example project can be found at https://github.com/grouparoo/app-example. You can deploy this app with the following button:
+An example project can be found at https://github.com/grouparoo/app-example-heroku. You can deploy this app with the following button:
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/grouparoo/app-example)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/grouparoo/app-example-heroku)
 
 ## Getting Started
 
@@ -18,7 +18,7 @@ An example project can be found at https://github.com/grouparoo/app-example. You
    - Include a `Procfile` which is similar the to the below. Heroku uses `Procfile`s to define the multiple processes which run for the same application. In the `Procfile` we use Environment variables to differentiate between our web and worker processes. we also skip using `npm` as our process runner, and call the grouparoo start command directly.
 
 ```bash
-# in Procfile
+# Procfile
 web:    WEB_SERVER=true  WORKERS=0  cd node_modules/@grouparoo/core && ./bin/start
 worker: WEB_SERVER=false WORKERS=10 cd node_modules/@grouparoo/core && ./bin/start
 ```
@@ -32,8 +32,6 @@ Visit your new Heroku URL and create your first Grouparoo Team member!
 ## Notes
 
 Grouparoo will source Heroku's `PORT` variable automatically to bind to the proper variable port.
-
-Grouparoo will automatically build your project (compiling typescript and including your plugins) after any `npm install`, which Heroku will automatically run, as there is a `package.json` checked into your git repository.
 
 You can scale the number of `web` and `worker` processes with the `heroku ps` command. Depending on your workload, you may need more of one type of process than another.
 
