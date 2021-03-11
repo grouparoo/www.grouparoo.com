@@ -24,7 +24,7 @@ For example, let's say you have configured a Postgres Table Source with the ID `
 
     grouparoo generate postgres:table:property ltv --parent users_table
 
-Note here that `ltv` is the `id` for the Source. An `id` is always required when generating a config object.
+Note here that `ltv` is the `id` for the Property. An `id` is always required when generating a config object.
 
 This command will generate a file in your application directory at `config/properties/ltv.js`. Fill that file out with the appropriate values. The file will look something like this:
 
@@ -53,7 +53,7 @@ exports.default = async function buildConfig() {
 
 The shape of the object(s) returned by the function will look different depending on the type of Property generated. More on this below.
 
-### List of Available Source Types
+### List of Available Property Types
 
 A Postgres table Property is just one _type_ of Property you can create. To see a full list of available types, use the `--list` option, filtered by "property":
 
@@ -81,12 +81,18 @@ This list is determined by the plugins that you have installed. [Learn more abou
 
 ## Configuring Your Property
 
-The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/properties` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Property for a Postgres Source, all but `sourceId` and `options.column` were pre-populated.
+Each Property has a common set of options, while other options are specific to the _type_ of Property. Here are the common options:
 
-<Alert variant="primary">
-  Note that the <code>sourceId</code> setting is where you would use the ID from
-  the Source you created (e.g. <code>users</code>).
-</Alert>
+- `class`: (**required**) Should be set to `"property"`.
+- `id`: (**required**) The unique value that defines this Property.
+- `identifying`: (**required**) Consider this option to be the primary key for your Profile. It is how Grouparoo identifies the Property in the UI.
+- `isArray`: (**required**) Is the Property an array?
+- `name`: (**required**) A display name for the Property. Will be set to the `id` by default.
+- `sourceId`: (**required**) The `id` of the Source that the Property is created from. This will be the value of the `--parent` option you passed to the `generate` command.
+- `type`: (**required**) The data type of the Property. The options available will be generated as a comment in the generated config file.
+- `unique`: (**required**) If `true` Profiles will be forced to have unique records for this Property.
+
+The generator attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/properties` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Property for a Postgres Source, all but `sourceId` and `options.column` were pre-populated.
 
 Other sections may be commented out but require some action by you. The best practice when configuring an Property is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Property.
 

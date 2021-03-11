@@ -79,15 +79,59 @@ This will give you something like the following:
     sendgrid:destination (id, parent) - Config for a sendgrid Destination
     zendesk:destination (id, parent) - Config for a zendesk Destination
 
+This list is determined by the plugins that you have installed. [Learn more about Plugins](/docs/plugins).
+
 ## Configuring Your Destination
 
-The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/destinations` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Postgres App, all but `appId`, `groupId`, and `options.listId` were pre-populated.
+Each Destination has a common set of options, while other options are specific to the _type_ of Destination. Here are the commons set of options that may look similar to other config object shapes in Grouparoo:
 
-<Alert variant="primary">
-  Note that the <code>appId</code> setting is where you would use the ID from
-  the App you created (e.g. <code>data_warehouse</code>).
-</Alert>
+- `id`: (**required**) The unique value that defines this Destination.
+- `name`: (**required**) A display name for the Destination. Will be set to the `id` by default.
+- `class`: (**required**) Should be set to `"destination"`.
+- `type`: (**required**) The type of Destination will vary based on the generator you're using. You likely don't want to change this value.
+- `appId`: (**required**) The `id` of the App (connection) that the Destination uses.
+- `groupId`: (**required**) The `id` of the group whose members should be exported to the Destination. (This is where Groups in Grouparoo really come in handy.)
+- `mapping`: See below.
+- `destinationGroupMemberships`: See below.
+
+The generator attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/destinations` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Postgres App, all but `appId`, `groupId`, and `options.listId` were pre-populated.
 
 The best practice when configuring an Destination is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Destination.
+
+In addition, Destinations have the concept of Mappings and Group Memberships. See below for more info.
+
+### Destination Mappings
+
+Mappings are a series of key-value pairs that tell Grouparoo which Properties to export to the destination for each Profile. The structure may vary for each type of Destination, but generally, the keys are the fields in the Destination, while the values are the `id` values for the Properties in Grouparoo.
+
+Here's an example of a Mailchimp mapping configuration:
+
+```js
+{
+  mapping: {
+    email: "email",
+    FNAME: "firstName",
+    LNAME: "lastName",
+  }
+}
+```
+
+Notice the odd structure of the keys. That's specific to Mailchimp. Each Destination's config file will be generated will some helper comments to get you started.
+
+### Destination Group Membership
+
+Grouparoo also provides the ability to attach group membership to the exported data. How this looks within the Destination is specific to the Destination. But the shape of the config file largely remains the same.
+
+`destinationGroupMemberships` are a set of key-value pairs that tell Grouparoo which memberships to publish to the Destination. For example, you may have sent all your users to a Mailchimp Destination, but you wanted to tag high-value customers. That config might look something like this:
+
+```js
+{
+  destinationGroupMemberships: {
+    "High Value Customers!": "highValueCustomers",
+  }
+}
+```
+
+Here the key represents the tag in Mailchimp, while the value is the `id` of the Group in Grouparoo.
 
 <ValidateAndApplyConfig />
