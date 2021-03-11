@@ -9,6 +9,8 @@ pullQuote: "Learn how to work with the Postgres plugin as a Source or a Destinat
 
 Grouparoo's Postgres plugin enables you to import data from one or more PostgreSQL databases or to export data to a PostgreSQL database.
 
+To get started, you want to first [install the plugin](#installing-the-postgres-plugin) and then [create an App](#creating-a-postgres-app). From there, you can use the App to [create a source](#creating-a-postgres-source) or a [destination](#creating-a-postgres-destination).
+
 ## Installing the Postgres Plugin
 
 To work with the Postgres plugin, you must first install it in an existing Grouparoo project. You can do this using [the `install` command](/docs/cli/setup#install) from [our CLI](/docs/cli):
@@ -53,6 +55,8 @@ Here are the Postgres-specific options available to you in the `options` section
   - `ssl_key`
   - `ssl_ca`
 
+<ValidateAndApplyConfig />
+
 ## Creating a Postgres Source
 
 A Source is how you import data into Grouparoo. For columnar sources, like Postgres, there are two _types_ of sources:
@@ -69,7 +73,7 @@ Each generator has additional options for speeding up the config process. You ca
 
     $ grouparoo generate postgres:table:source --describe
 
-Some generators have a way to batch multiple generated config files together. [Read more here](/docs/config/sources/community#batch-source-generation).
+Some generators have a way to batch multiple generated config files together. [Read more here](/docs/cli/config#batch-generation).
 
 All Sources have a common set of options, [which you can read about here](/docs/config/sources/community#configuring-your-source). Type-specific options are listed below.
 
@@ -90,12 +94,9 @@ Mapping is a section of key-value pairs which represents how Grouparoo should ma
 For example, let's say your database has a column named `email` and `first_name`, while the Property `id` values in Grouparoo are `emailAddress` and `firstName`. Your mapping would look like this:
 
 ```js
-{
-  // ...
-  mapping: {
-    email: "emailAddress",
-    first_name: "firstName"
-  }
+mapping: {
+  email: "emailAddress",
+  first_name: "firstName"
 }
 ```
 
@@ -113,22 +114,92 @@ After you generate a Source, you'll likely want to add Properties to it. You can
 
     $ grouparoo generate postgres:table:property first_name --parent users
 
-TODO:
+You can also create properties in a batch when creating the Table Source [using the `--with` option while running the `generate` command](/docs/cli/config#batch-generation).
 
-- [ ] Add common options section to Properties doc
-- [ ] Add docs for query source
-- [ ] Add docs for destination
-- [ ] Close with a note about running the code
-- [ ] Open PR and describe what changed here and where I want feedback
+The Property generator will drop individual files in the `config/properties` directory. Edit these files to match your desired configuration.
 
-### Query Source Options
+The Property config object has several options. [Some are share across all Properties](/docs/config/properties/community#configuring-your-property), while others are more specific to the type of Property generated. A Postgres Table Source has a few unique options. These can be found in the `options` object in the config file. They are:
 
-## Adding Properties to a Source
+- `column`: (**required**) The name of the column to use for the Property.
+- `aggregationMethod`: (**required**, default: `"exact"`) The type of aggregation method to use when extracting the data. The available options will be added to the generated config file as a comment.
+- `sort`: (**required**, default: `null`), // You can sort the results by another column in this table.
 
-Unless you are controlling this import in some other way, you're likely to want the import to occur at some interval, which Grouparoo calls a Schedule.
+A Postgres Table Source also provides the ability to filter your data via the `filters` option. This is a series of rules that will filter data in the database table to find the appropriate value for each Profile for a given Property.
 
-Schedules largely look the same ([see here for more info](/docs/config/sources/community#adding-a-schedule)). The unique option for
+For example, let's say you had a property called `lifetime_value` which summed all the purchases for a given user. Your Source is a `purchases` table that has a `state` column set to either `successful` or `returned`. You may only want to include `successful` purchases. Your `filters` config might look like this:
 
-- Properties
-- Destination
-- Run code??
+```js
+{
+  filters: [{ key: "state", op: "equals", match: "successful" }],
+}
+```
+
+The available operators (`op`) will be added to the generated config file as a comment near the `filters` section.
+
+### Query Source
+
+A Query Source is a more flexible way to build properties. With a Query Source, you can add custom SQL commands to your Properties, which could pull data from one or more tables in your database.
+
+The unique thing about the way a Query Source works is that there aren't any unique options for the Source itself. But the Schedule and Properties look a little different.
+
+#### Query Source Schedule
+
+Like a [Table Source Schedule](#table-source-schedule), a Query Source Schedule is included with the generated config file, commented. It has a couple unique options:
+
+- `query`: A SQL query to return that tells Grouparoo which Profiles to check each time the interval occurs.
+- `propertyId`: The `id` of the Grouparoo Property whose data is returned by `options.query`.
+
+Here's an example:
+
+```js
+{
+  options: {
+    query: "SELECT id FROM users WHERE updated_at >= (NOW() - INTERVAL '2 day')",
+    propertyId: "userId"
+  }
+}
+```
+
+#### Query Source Properties
+
+Query Sources are a little simpler when it comes to Properties. You can generate a Property using the CLI:
+
+    $ grouparoo generate postgres:query:property lifetime_value --parent purchases
+
+This will drop a file at `config/properties/lifetime_value.js`. Edit this file to match your desired configuration.
+
+There is one unique option for Query Source Properties:
+
+- `query`: The query to extract the Property. You can use [mustache variables](https://github.com/janl/mustache.js#variables) to represent the keys of other Properties in the system.
+
+Here's an example that sums the values in the `price` column for rows in which the `user_id` column's value matches the value of the Grouparoo Profile's `userId` field (i.e. `userId` is the `id` for the Property in Grouparoo):
+
+```js
+{
+  options: {
+    query: "SELECT SUM(price) from purchases where user_id = {{userId}}";
+  }
+}
+```
+
+## Creating a Postgres Destination
+
+Postgres is one of the few integrations that can be both a Source and a Destination. You can use Grouparoo to export data to a Postgres database. Like a Source, a Destination requires that you've already configured an App to describe the connection details to you Postgres database.
+
+Once your App exists, you can generate the config file for the Destination:
+
+    $ grouparoo generate postgres:destination my_exports
+
+This would generate a config file at `config/destinations/my_export.js` in your Grouparoo project. Edit this file to match your desired configuration.
+
+The Postgres Destination has a few unique options:
+
+- `table`: The name of the table which Grouparoo which use to export **Profiles**.
+- `primaryKey`: The primary key for the specified table.
+- `groupsTable`: Grouparoo also exports group memberships. This is the table used to export Group data.
+- `groupForeignKey`: The foreign key that the groups table uses to reference the profiles table.
+- `groupColumnName`: The column name used to store the Group name values.
+
+## Import and Export Postgres Data
+
+Once you have the plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
