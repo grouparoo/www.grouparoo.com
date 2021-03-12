@@ -11,6 +11,18 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2021-03-12-query-source-schedules",
+      "content_html": "<p>Grouparoo now allows users of a Query Source (Postgres, MySQL, Redshift, BigQuery, etc) to provide a custom query to determine which profiles to import. Just provide the query that returns the Profiles to be updated, and let Grouparoo know which Property the query refers to.</p><p>Naively, <code>SELECT id FROM users</code> would work, and all Profiles would be updated. However, you can often be smarter with your Schedule to keep things fast. For example, if your custom query to calculate LTV would only update when a purchase is made, you might <code>SELECT DISTINCT(user_id) FROM purchases where MAX(created_at) &gt; (NOW() - interval 2 day) GROUP BY user_id</code> to only re-import Profiles which have had a recent purchase.</p>",
+      "url": "https://www.grouparoo.com/whats-new#2021-03-12-query-source-schedules",
+      "title": "Query Source Schedules",
+      "image": "https://www.grouparoo.com/posts/releases/2021-03-12-query-source-schedules.png",
+      "date_modified": "2021-03-12T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-03-10-sendgrid",
       "content_html": "<p>We have added <a href=\"https://www.sendgrid.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Sendgrid</a> as a destination. Sendgrid is a very popular transactional email tool in the developer community, and they&#x27;re starting to build more CRM-esque features into their offering. Our integration allows you to easily connect your product database (Postgres, MySQL) or data warehouse (Snowflake) to Sendgrid with just a few clicks or lines of code.</p><div style=\"margin-bottom:20px\"><img alt=\"Sendgrid List populated by Grouparoo\" src=\"https://www.grouparoo.com/posts/releases/2021-03-10-sendgrid-lists.png\" width=\"919\" height=\"682\" style=\"height:682px;width:919px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
       "url": "https://www.grouparoo.com/whats-new#2021-03-10-sendgrid",

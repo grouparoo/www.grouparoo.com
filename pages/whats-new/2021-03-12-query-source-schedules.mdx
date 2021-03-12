@@ -1,0 +1,12 @@
+---
+title: "Query Source Schedules"
+date: "2021-03-12"
+tags: ["improvement"]
+description: "Grouparoo now supports Schedules for Query Sources!"
+image: "releases/2021-03-12-query-source-schedules.png"
+github: "https://github.com/grouparoo/grouparoo/pull/1122"
+---
+
+Grouparoo now allows users of a Query Source (Postgres, MySQL, Redshift, BigQuery, etc) to provide a custom query to determine which profiles to import. Just provide the query that returns the Profiles to be updated, and let Grouparoo know which Property the query refers to.
+
+Naively, `SELECT id FROM users` would work, and all Profiles would be updated. However, you can often be smarter with your Schedule to keep things fast. For example, if your custom query to calculate LTV would only update when a purchase is made, you might `SELECT DISTINCT(user_id) FROM purchases where MAX(created_at) > (NOW() - interval 2 day) GROUP BY user_id` to only re-import Profiles which have had a recent purchase.
