@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "license": "UNLICENSED",
   "engines": {
-    "node": "14.x"
+    "node": ">14"
   },
   "repository": {
     "type": "git",
