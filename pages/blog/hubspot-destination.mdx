@@ -27,7 +27,7 @@ In Hubspot, you will need to create a new API Key for Grouparoo to use. Visit `S
   src="hubspot-destination/api-key.png"
 />
 
-In Grouparoo, Apps provide the credentials to be able to connect to other platforms. For Hubspot, all you need to do is paste in the `hapiKey` (the `h` is for hubspot!) from the Hubspot page. At this point if you hit "Test Connection," you should see "Test Passed" and some data about your Hubspot account.
+In Grouparoo, Apps provide the credentials to be able to connect to other platforms. For Hubspot, all you need to do is paste in the `hapiKey` (the `h` is for Hubspot!) from the Hubspot page. At this point if you hit "Test Connection," you should see "Test Passed" and some data about your Hubspot account.
 
 <Image
   width={821}
@@ -86,7 +86,7 @@ For example:
 
 However, things get tricky when you introduce parallelism. The Hubspot API is strictly RESTful, which means if you, for example, try to create a new list twice, one of your API calls will succeed and the other will fail. Grouparoo tries to work as fast as possible when syncing your data. To that end, we'll parallelize exporting profiles to destinations like Hubspot. If we are syncing 2 profiles at the same time, both of which should be in a List that doesn't yet exist in Hubspot, one of those export attempts is likely to run into an issue when creating that list.
 
-To solve this, we needed to introduce a distributed lock across all nodes in the Grouparoo cluster when creating or destroying Hubspot lists. This means that our [`getLists()` method](https://github.com/grouparoo/grouparoo/blob/main/plugins/@grouparoo/hubspot/src/lib/export/listMethods.ts) needed a way to "claim" the hubspot API exclusively from any other process or thead while it checks if a list existed or not. [Redis](https://redis.io) is already part of the Grouparoo infrastructure, and is a great backend for shared locks like this. One process can claim a lock and be certain that they have it, due to the single-threaded atomic nature of redis. Redis also provides APIs to have locks time out after a certain time if anything goes wrong with the API request, so another process can try again. Redis is also [very fast](https://www.digitalocean.com/community/tutorials/how-to-perform-redis-benchmark-tests).
+To solve this, we needed to introduce a distributed lock across all nodes in the Grouparoo cluster when creating or destroying Hubspot lists. This means that our [`getLists()` method](https://github.com/grouparoo/grouparoo/blob/main/plugins/@grouparoo/hubspot/src/lib/export/listMethods.ts) needed a way to "claim" the Hubspot API exclusively from any other process or thread while it checks if a list existed or not. [Redis](https://redis.io) is already part of the Grouparoo infrastructure, and is a great backend for shared locks like this. One process can claim a lock and be certain that they have it, due to the single-threaded atomic nature of Redis. Redis also provides APIs to have locks time out after a certain time if anything goes wrong with the API request, so another process can try again. Redis is also [very fast](https://www.digitalocean.com/community/tutorials/how-to-perform-redis-benchmark-tests).
 
 In this way, we've been able to continue export data to Hubspot quickly and in parallel, but fall back to "single-threaded" execution for list creation methods that need atomicity.
 
