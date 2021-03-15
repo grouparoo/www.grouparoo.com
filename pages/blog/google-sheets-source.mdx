@@ -77,7 +77,7 @@ So now, you should have your app ready to go!
 
 ## Give access to the document
 
-In a document that you want to share with Grouparoo, you share it with this Service Accout. In this example case, it was `grouparoo-access@sample-sources.iam.gserviceaccount.com`. Yours will likely look similiar to this:
+In a document that you want to share with Grouparoo, you share it with this Service Account. In this example case, it was `grouparoo-access@sample-sources.iam.gserviceaccount.com`. Yours will likely look similar to this:
 
 <Image
   alt="Give the Service Account access to the document"
@@ -158,6 +158,6 @@ Because of the schedule, it will always be up to date. This data can be sent to 
 
 ## Implementation Details
 
-I researched for a quite a bit to figure out the best way to connect to Google Drive. Service Accounts seemed to be the best option. I like that the owner of the document can choose to share it. I also didn't want to have multiple people have to oauth.
+I researched for a quite a bit to figure out the best way to connect to Google Drive. Service Accounts seemed to be the best option. I like that the owner of the document can choose to share it. I also didn't want to have multiple people have to OAuth.
 
 The [Google API](https://developers.google.com/sheets/api/quickstart/nodejs) for this stuff is probably very powerful, but it seemed quite complicated just to read these sheets. The [google-spreadsheet](https://github.com/theoephraim/node-google-spreadsheet) library really simplified things.

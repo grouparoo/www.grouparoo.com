@@ -20,7 +20,7 @@ The [newest release of macOS](https://www.apple.com/newsroom/2020/11/macos-big-s
 
 ## Update Homebrew and Databases
 
-Like most macOS developers, we install our dependencies and database with [`Homebrew`](https://brew.sh), a great package manager for macOS. The first thing I checked after the upgrade was if my [homebrew services](https://github.com/Homebrew/homebrew-services) were running. Well... they were not.
+Like most macOS developers, we install our dependencies and database with [`Homebrew`](https://brew.sh), a great package manager for macOS. The first thing I checked after the upgrade was if my [Homebrew services](https://github.com/Homebrew/homebrew-services) were running. Well... they were not.
 
 <Image
   centered
@@ -37,9 +37,9 @@ The good news is that newer versions of Homebrew work with macOS Big Sur - but y
 brew upgrade
 ```
 
-Pay attention - you'll likely be asked for your password. This command will update homebrew itself and **all** of your installed packages to the latest version. This step is important, because many packages will need to be re-compiled with the newer version of XCode you now have.
+Pay attention - you'll likely be asked for your password. This command will update Homebrew itself and **all** of your installed packages to the latest version. This step is important, because many packages will need to be re-compiled with the newer version of XCode you now have.
 
-Upgrading all of your packages is a big step. While not related to Big Sur, when I ran `brew upgrade`, I bumped my Postgres version from 11 to 13. When you upgrade your postgres version, you need to migrate your databases so they work with new version. You can accomplish this via:
+Upgrading all of your packages is a big step. While not related to Big Sur, when I ran `brew upgrade`, I bumped my Postgres version from 11 to 13. When you upgrade your Postgres version, you need to migrate your databases so they work with new version. You can accomplish this via:
 
 ```bash
 brew services stop postgres
@@ -47,7 +47,7 @@ brew postgresql-upgrade-database
 brew services restart postgres
 ```
 
-Finally, the `brew upgrade` command will have fixed any file permissions that changed during the upgrade. Restart any other running homebrew services you have running. In my case, I needed to restart redis, as it couldn't write to the file system until after the upgrade.
+Finally, the `brew upgrade` command will have fixed any file permissions that changed during the upgrade. Restart any other running Homebrew services you have running. In my case, I needed to restart Redis, as it couldn't write to the file system until after the upgrade.
 
 ```bash
 brew services restart redis
