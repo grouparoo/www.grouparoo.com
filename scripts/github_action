@@ -8,3 +8,4 @@ cd `dirname "$0"`
 cd ../
 ./node_modules/.bin/prettier ./public/feeds --write
 ./node_modules/.bin/prettier ./public/sitemap.xml --write
+git checkout package-lock.json

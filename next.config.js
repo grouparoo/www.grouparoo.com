@@ -3,7 +3,6 @@ const docsRedirects = require("./data/docs-redirects");
 module.exports = {
   env: {
     ROBOTS_DISABLED: process.env.ROBOTS_DISABLED,
-    GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
   },
   webpack: (config) => {
     config.module.rules.push({ test: /\.md$/, use: "raw-loader" });
@@ -27,6 +26,12 @@ module.exports = {
         source: "/roadmap",
         destination: "https://github.com/orgs/grouparoo/projects/26",
         statusCode: 302,
+      },
+      {
+        source: "/docker-compose",
+        destination:
+          "https://raw.githubusercontent.com/grouparoo/app-example-docker/main/docker-compose.published.yml",
+        statusCode: 301,
       },
       {
         source: "/feature-request",
