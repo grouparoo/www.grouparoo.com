@@ -28,6 +28,12 @@ module.exports = {
         statusCode: 302,
       },
       {
+        source: "/docker-compose",
+        destination:
+          "https://raw.githubusercontent.com/grouparoo/app-example-docker/main/docker-compose.published.yml",
+        statusCode: 301,
+      },
+      {
         source: "/feature-request",
         destination:
           "https://github.com/grouparoo/grouparoo/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=",
