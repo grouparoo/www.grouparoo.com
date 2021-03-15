@@ -4,7 +4,7 @@ jobs:
   lhci:
     name: Lighthouse
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'grouparoo/www.grouparoo.com' }} && {{ github.actor != 'dependabot[bot]' }}
+    if: ${{ github.repository == 'grouparoo/www.grouparoo.com' && github.actor != 'dependabot[bot]' }}
     steps:
       - name: echo actor
         run: |
