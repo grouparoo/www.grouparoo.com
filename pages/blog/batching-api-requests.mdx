@@ -1,0 +1,115 @@
+---
+title: "Batching API requests"
+date: "2021-03-16"
+author: "Brian Leonard"
+pullQuote: "When working with Enterprise APIs, it is important to use their batching capabilities."
+image: "batching-api-requests/cookies.jpg"
+tags: [engineering, sync]
+---
+
+One thing we can observe from a [table of CRM rate limits](/blog/crm-system-rate-limiting) is a inverse correlation between "Enterprise-ness" systems and their normalized limits. Systems like Pardot, Marketo, Eloqua, and Salesforce have daily limits as opposed to per minute or second like the others. This encourages the use of their batching APIs.
+
+_Batching_ in this context means performing API operations related to multiple people with one API request. This is as opposed to handling one person at a time. For example, you might have an account system that allows a user to change their name. When that happens, you want to sync that data to your email system so that emails that lead with `"Hi {{first_name}}"` will be correct.
+
+However, if you are using Eloqua, we can [see](https://docs.oracle.com/en/cloud/saas/marketing/eloqua-develop/Developers/BulkAPI/Reference/bulk-limits.htm) that you only get 2,000 calls per day. Evenly distributed, that works out to 1.4 a minute. It's not that hard to have enough users changing _something_ such that it works out to be more than 2 per minute. This is even more true for these "Enterprise" systems because they target larger organizations with larger customer bases.
+
+The solution to this challenge is to use batching. Instead of handling each user one at a time as things change, collect the changed users every few minutes and update them all at once.
+
+## Data Sync Engine
+
+First, we have to know who changed. Grouparoo does this in away similar to how the [sync engine](/blog/building-a-sync-engine) example was described. One difference is that it can monitor many sources, keeping high-water marks for each so that it can produce an incremental change list.
+
+When a change is detected, it writes down in a database the unique profile information of each user instead of just processing that user right away. With this temporary buffer, we now have the opportunity to de-duplicate and batch.
+
+## Batching Algorithm
+
+Now that we know who changed, it's time to ensure that the remote CRM system is updated. There are many possible cases so an algorithm is necessary.
+
+For example, when syncing data to Marketo, any of these could be true for a single user:
+
+1. Marketo does not yet know about the user
+2. The user needs to be updated
+3. The user needs to be added to some list memberships
+4. The user needs to be removed from some list memberships
+5. The user should be deleted from Marketo altogether.
+
+The combinatorics are then multiplied because there are 300 users to update. We will need to approach the problem in a systematic fashion to make sure we ensure correctness.
+
+For the algorithm, we assume that we receive data about the user (properties and group memberships) as well as whether they should be in the remote system or not (create/update or delete).
+
+### Lookup Destination IDs
+
+The first step is to determine the foreign key of each user and see if the user exists in the remote system. For example, in Marketo's case this is the email address.
+
+We can use a search API with the 300 email addresses and see who comes back. In most systems what you will get back is what I call the "Destination ID." This is that user's ID in that remote system.
+
+From the search results, we can map a Destination ID to each email address in memory.
+
+### Delete if requested
+
+Some of the users are to be deleted. Collect each of these users and, if they have a Destination ID, use it to remove them from the the system. Use a batch API, if possible, so this will only use one request.
+
+If they do not have a Destination ID, we can forget about them. They were never added or have already been deleted.
+
+### Update and create users
+
+The rest of the user are meant to exist in the Marketo system. The next step is to call an update API for the users that have a Destination ID. They already exist in the system, so they just need to be updated. The most common batch API takes in an array that includes their Destination IDs.
+
+Then, for the users not not already in Marketo, we create the rest all at once using that batch API. When inserted, they will now be assigned a Destination ID. Write that down for each user and verify that all users now have one.
+
+Some APIs have a so-called "upsert" API. What this means is it is one call for updating _or_ inserting a user. If this exists, it allows us to save one API call.
+
+### Add and remove group membership
+
+Now that each user has a Destination ID, we use those to add and remove them from groups. In Marketo's case, this means adding and removing them from Lists in their system.
+
+There are several different cases here depending on the API of the remote system. Some cases I've seen:
+
+1. **Salesforce** - All Campaign additions are one request for N users. All removals are another.
+2. **Marketo** - Lists are dealt with one at a time with addition and removal also separately.
+3. **Pardot** - List memberships are part of the user update and no additional calls are needed.
+
+In all cases, the goal here is to be as efficient as possible. In Marketo's case, make sure that for every list, we bundle up everyone that is being added to a specific list and only make one call.
+
+As part of determining their Destination ID, some APIs allow you to also wee what groups hey are already in. Having this knowledge can save you some calls in this step.
+
+## Batching Math
+
+Marketo [allows](https://developers.marketo.com/rest-api/marketo-integration-best-practices/) 50,000 API calls each day (in the US Central timezone for better or worse). This means that you get 35 each minute, on average. But as we can see, there are more than one request needed to ensure a full data sync.
+
+Let's go through one run knowing that Marketo allows 300 users to be processed in any given request and we have 5 groups that we are syncing with:
+
+1. Lookup Destination IDs (1 request) and apply them
+2. Delete any users that need to be deleted (1 request)
+3. Update users with found Destination IDs (1 request)
+4. Create new users for the rest (1 request)
+5. Add to groups (5 requests)
+6. Remove from lists (5 requests)
+
+There are 14 requests possible to process those 300 users. That puts us at about 2.5 batches every minute. This means that, on average, 750 users can change something every minute.
+
+Where it gets interesting is if there are 1000 users in a batch and they are not all in all the groups, then some more efficiencies can be applied.
+
+1. Lookup Destination IDs (3 requests) and apply them
+2. Delete any users that need to be deleted (1 request if less than 300)
+3. Update users with found Destination IDs (~2 requests because some are updated and some are created)
+4. Create new users for the rest (~2 requests because some are updated and some are created)
+5. Add to groups (depends on the population of the groups. average case: 8 requests)
+6. Remove from lists (not as many removals generally: 5 requests)
+
+There are about 19 requests to process those 1000 users. That puts us at about 1.8 batches every minute. This means that, on average, 1800 users can change something every minute.
+
+These are the tradeoffs available to you. The bigger the batches, the more efficient you can be. In my experience, most systems are fine batching every 15 minutes or so. Using these techniques with this window, the math will work out at steady state because Marketo would allot you 500 requests in that 15 minute window. You would need many more groups or consistently a thousand times more users changing data to hit that limit.
+
+## Conclusion
+
+After a bit of math and handling things systematically, you can figure out the best way to sync data even with fairly low rate limits. Now, go forth and bake up a batch of data.
+
+<Image
+  alt="A batch of cookies"
+  src="batching-api-requests/cookies.jpg"
+  centered
+  source="https://unsplash.com/photos/krNP2ESq-54"
+  height={462}
+  width={1000}
+/>
