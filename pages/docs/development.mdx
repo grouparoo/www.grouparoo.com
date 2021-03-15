@@ -240,7 +240,7 @@ A note on chromedriver for OSX Users: As Chrome updates, you may need to `brew c
 
 The plugin `@grouparoo/spec-helper` exists to make testing easier, especially within plugins. It contains factories, startup/shutdown helpers for the application, and reasonable testing defaults. Unlike a traditional node module, including this package into a test suite **will** have side-effects - specifically your working directly will be changed into `@grouparoo/core` so you can run the application like normal in your tests. You can see what happens [here](https://github.com/grouparoo/grouparoo/blob/78f0dae336b641f653422db3c1c5f1a5488f3d8f/plugins/%40grouparoo/spec-helper/src/lib/specHelper.ts#L7-L21).
 
-```ts
+```js
 import path from "path";
 // First, set an environment variable so that @grouparoo/core will load this plugin if you are doing an integration test
 process.env.GROUPAROO_INJECTED_PLUGINS = JSON.stringify({
