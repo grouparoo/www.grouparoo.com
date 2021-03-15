@@ -60,7 +60,7 @@
     "@prettier/plugin-xml": "0.13.1",
     "@types/jest": "26.0.20",
     "@types/node": "14.14.32",
-    "@types/react-dom": "17.0.1",
+    "@types/react-dom": "17.0.2",
     "cheerio": "1.0.0-rc.5",
     "csv-stringify": "5.6.2",
     "enzyme": "3.11.0",
