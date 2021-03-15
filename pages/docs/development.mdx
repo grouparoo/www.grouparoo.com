@@ -236,6 +236,38 @@ Jest will automatically test the latest version of your typescript files, and yo
 
 A note on chromedriver for OSX Users: As Chrome updates, you may need to `brew cask reinstall chromedriver` to keep up to date as well. Every time you update chromedriver, you will need to re-authorize the application to run in system preferences, as it is unsigned.
 
+### `@grouparoo/spec-helper`
+
+The plugin `@grouparoo/spec-helper` exists to make testing easier, especially within plugins. It contains factories, startup/shutdown helpers for the application, and reasonable testing defaults. Unlike a traditional node module, including this package into a test suite **will** have side-effects - specifically your working directly will be changed into `@grouparoo/core` so you can run the application like normal in your tests. You can see what happens [here](https://github.com/grouparoo/grouparoo/blob/78f0dae336b641f653422db3c1c5f1a5488f3d8f/plugins/%40grouparoo/spec-helper/src/lib/specHelper.ts#L7-L21).
+
+```ts
+import path from "path";
+// First, set an environment variable so that @grouparoo/core will load this plugin if you are doing an integration test
+process.env.GROUPAROO_INJECTED_PLUGINS = JSON.stringify({
+  "@grouparoo/hubspot": { path: path.join(__dirname, "..", "..") },
+});
+
+// Then, include the spec helper
+import { helper } from "@grouparoo/spec-helper";
+// Note! Because of tree-shaking, if you don't actually *use* what you've imported form @grouparoo/spec-helper in your test file, the import statement will be ignored.  In that case, do a raw import of the file:
+// import "@grouparoo/spec-helper";
+
+// import other things, including @grouparoo/core if you need it
+import { Profile } from "@grouparoo/core";
+
+describe("my plugin", () => {
+  // This command injects a `beforeAll` and `afterAll` to startup and shutdown the server.  There are lots of options to help you with testing.  If you need access to Models, you need to turn on the server so it can connect to Postgres
+  helper.grouparooTestServer({ truncate: true, enableTestPlugin: true });
+
+  // Now the server will be booted up, connected to the database, and you can use factories and models like normal
+  test("works", async () => {
+    const factory = await helper.factories.profile();
+    const profile = await Profile.findOne({ where: { id: factory.id } });
+    expect(profile.id).toBe(profile.id);
+  });
+});
+```
+
 ## Notes on Example Apps
 
 - If you create a new example app, you will need to `pnpm install` again to link up the dependencies in the monorepo.
