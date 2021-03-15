@@ -44,6 +44,27 @@ The `grouparoo run` command differs from the `grouparoo start` command in a few 
 
 The `grouparoo start` command is equivalent to `npm start`.
 
-<CLICommand name="destroy" />
+<CLICommand name="reset" />
+
+When running `grouparoo reset` you provide a mode, either: `cluster`, `data` or `cache`. These same reset actions are available in the UI at `/settings/actions`
+
+**`reset:cluster`** (most dangerous)
+
+- truncates all tables except those regarding teams/members
+- clears the redis cache
+- clears resque
+
+**`reset:data`**
+
+- truncates "data" tables (profiles, groups, etc) but leaves apps, sources, properties
+- clears the redis cache
+- clears resque
+
+**`reset:cache`** (not that dangerous)
+
+- clears the redis cache
+- clears resque
+
+To use any of the `grouparoo reset` mode's you will need to also pass `--confirm` to the command as well.
 
 <CLICommand name="console" />
