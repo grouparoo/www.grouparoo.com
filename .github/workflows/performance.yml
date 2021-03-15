@@ -4,7 +4,7 @@ jobs:
   lhci:
     name: Lighthouse
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'grouparoo/www.grouparoo.com' }}
+    if: ${{ github.repository == 'grouparoo/www.grouparoo.com' }} && {{ github.actor != 'dependabot' }}
     steps:
       - uses: actions/checkout@master
         with:
