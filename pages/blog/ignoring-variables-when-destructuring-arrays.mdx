@@ -10,18 +10,16 @@ tags: [engineering, notes]
 Last week when working on Grouparoo's [OneSignal integration](https://github.com/grouparoo/grouparoo/tree/main/plugins/@grouparoo/onesignal), I wrote a quick [CLI script](https://github.com/grouparoo/grouparoo/blob/8f5c237be3eb7d5eac25535109641f604dbd89f7/plugins/%40grouparoo/onesignal/bin/seed) to create users in their system that we could use for testing. This script would take in a single argument, which would be the `external_user_id` on OneSignal:
 
 ```bash
-$ ./create_user <external_user_id> 
+$ ./create_user <external_user_id>
 ```
+
 ## Parsing command-line arguments
+
 To allow parsing command-line arguments, Node provides `process.argv`. This property returns an array that contains all arguments passed when the process was launched. The first two arguments are always the path to node and the path to the JS file being executed, respectively. For example, the previous example would return the following array:
 
 ```js
 // process.argv
-[
-	'/path/to/node',
-	'/path/to/create_user',
-	'<external_user_id>'
-]
+["/path/to/node", "/path/to/create_user", "<external_user_id>"];
 ```
 
 To unpack this array and use these variables in our code, we could use JavaScript's array destructuring features:
@@ -33,9 +31,10 @@ const [nodePath, scriptPath, externalUserId, ...otherArgs] = process.argv;
 createUser(externalUserId);
 ```
 
-Taking a closer look at the example above, you'll notice that we're not actually doing anything with the first two variables. 
+Taking a closer look at the example above, you'll notice that we're not actually doing anything with the first two variables.
 
 ## Ignoring unused variables
+
 A common practice is to prefix the unused variables with an underscore to clearly indicate that they will not be used:
 
 ```js
@@ -48,7 +47,7 @@ Something very similar to this is what I have usually done in the past, but I wa
 const [, , externalUserId] = process.argv;
 ```
 
-Much to my surprise, when I saved the file [Prettier](https://github.com/prettier/prettier) came in and formatted it without any complaints. It turns out you don't even need to assign the unused variables! 
+Much to my surprise, when I saved the file [Prettier](https://github.com/prettier/prettier) came in and formatted it without any complaints. It turns out you don't even need to assign the unused variables!
 
 [<Image
   alt="GitHub screenshot: Surprised comments after learning about ignoring variables"
@@ -66,5 +65,3 @@ const [one, , , four] = ["one", "two", "three", "four"];
 ```
 
 It's great to learn something new about things you use so frequently!
-
-
