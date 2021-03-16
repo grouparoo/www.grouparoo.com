@@ -1,0 +1,19 @@
+---
+title: "Error Level: Info"
+date: "2021-03-17"
+tags: ["improvement"]
+description: "Grouparoo now reduces noise by having different levels of errors."
+image: "releases/2021-03-17-errorlevel-info.png"
+github: "https://github.com/grouparoo/grouparoo/pull/1069"
+---
+
+There are many variations of things that could go "wrong" when working with the many destinations that Grouparoo supports. For example, there a recoverable errors like rate limiting. However, there is sometimes expected behavior that is still interesting to note. For these cases, we have added an `info` error level.
+
+For example, the Salesforce destination has an "Enrich" mode. This means that it should only update users that are already in the system. In these cases, the plugin returns an `info` error. This is useful for observability in that it helps the user debug what happened.
+
+<Image
+  alt="Salesforce info error level"
+  src="releases/2021-03-17-errorlevel-info.png"
+  width={422}
+  height={250}
+/>
