@@ -65,6 +65,37 @@ error: pathspec <span class="token string">&#x27;master&#x27;</span> did not mat
       />
         </item>
         <item>
+            <title
+      ><![CDATA[Ignoring Unused Variables When Destructuring Arrays]]></title>
+            <link
+      >https://www.grouparoo.com/blog/ignoring-variables-when-destructuring-arrays</link>
+            <guid
+      >grouparoo-blog-post-ignoring-variables-when-destructuring-arrays</guid>
+            <pubDate>Mon, 15 Mar 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Last week when working on Grouparoo&#x27;s <a href="https://github.com/grouparoo/grouparoo/tree/main/plugins/@grouparoo/onesignal" target="_blank" rel="nofollow noopener noreferrer">OneSignal integration</a>, I wrote a quick <a href="https://github.com/grouparoo/grouparoo/blob/8f5c237be3eb7d5eac25535109641f604dbd89f7/plugins/%40grouparoo/onesignal/bin/seed" target="_blank" rel="nofollow noopener noreferrer">CLI script</a> to create users in their system that we could use for testing. This script would take in a single argument, which would be the <code>external_user_id</code> on OneSignal:</p><pre class="language-bash"><code class="language-bash">$ ./create_user <span class="token operator">&lt;</span>external_user_id<span class="token operator">&gt;</span> 
+</code></pre><h2 id="parsing-command-line-arguments"><a href="#parsing-command-line-arguments">Parsing command-line arguments</a></h2><p>To allow parsing command-line arguments, Node provides <code>process.argv</code>. This property returns an array that contains all arguments passed when the process was launched. The first two arguments are always the path to node and the path to the JS file being executed, respectively. For example, the previous example would return the following array:</p><pre class="language-js"><code class="language-js"><span class="token comment">// process.argv</span>
+<span class="token punctuation">[</span>
+    <span class="token string">&#x27;/path/to/node&#x27;</span><span class="token punctuation">,</span>
+    <span class="token string">&#x27;/path/to/create_user&#x27;</span><span class="token punctuation">,</span>
+    <span class="token string">&#x27;&lt;external_user_id&gt;&#x27;</span>
+<span class="token punctuation">]</span>
+</code></pre><p>To unpack this array and use these variables in our code, we could use JavaScript&#x27;s array destructuring features:</p><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">[</span>nodePath<span class="token punctuation">,</span> scriptPath<span class="token punctuation">,</span> externalUserId<span class="token punctuation">,</span> <span class="token spread operator">...</span>otherArgs<span class="token punctuation">]</span> <span class="token operator">=</span> process<span class="token punctuation">.</span><span class="token property-access">argv</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Do something with the externalUserId</span>
+<span class="token function">createUser</span><span class="token punctuation">(</span>externalUserId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p>Taking a closer look at the example above, you&#x27;ll notice that we&#x27;re not actually doing anything with the first two variables. </p><h2 id="ignoring-unused-variables"><a href="#ignoring-unused-variables">Ignoring unused variables</a></h2><p>A common practice is to prefix the unused variables with an underscore to clearly indicate that they will not be used:</p><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">[</span>_nodePath<span class="token punctuation">,</span> _scriptPath<span class="token punctuation">,</span> externalUserId<span class="token punctuation">]</span> <span class="token operator">=</span> process<span class="token punctuation">.</span><span class="token property-access">argv</span><span class="token punctuation">;</span>
+</code></pre><p>Something very similar to this is what I have usually done in the past, but I was writing this script pretty quickly and (accidentally) omitted the variable names, <a href="https://github.com/grouparoo/grouparoo/blob/8f5c237be3eb7d5eac25535109641f604dbd89f7/plugins/%40grouparoo/onesignal/bin/seed#L30" target="_blank" rel="nofollow noopener noreferrer">writing this instead</a>:</p><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token punctuation">,</span> externalUserId<span class="token punctuation">]</span> <span class="token operator">=</span> process<span class="token punctuation">.</span><span class="token property-access">argv</span><span class="token punctuation">;</span>
+</code></pre><p>Much to my surprise, when I saved the file <a href="https://github.com/prettier/prettier" target="_blank" rel="nofollow noopener noreferrer">Prettier</a> came in and formatted it without any complaints. It turns out you don&#x27;t even need to assign the unused variables! </p><p><a href="https://github.com/grouparoo/grouparoo/pull/1462#commitcomment-48195546" target="_blank" rel="nofollow noopener noreferrer"><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="GitHub screenshot: Surprised comments after learning about ignoring variables" src="https://www.grouparoo.com/posts/ignoring-variables-when-destructuring-arrays/surprised-destructuring.png" height="142" width="500" style="height:142px;width:500px;max-height:100%;max-width:100%" class="imageOutline"/></div></div></a></p><p>This works anywhere in the array, so you can also do this with elements in the middle:</p><pre class="language-js"><code class="language-js"><span class="token comment">// Only assign the first and fourth elements</span>
+<span class="token keyword">const</span> <span class="token punctuation">[</span>one<span class="token punctuation">,</span> <span class="token punctuation">,</span> <span class="token punctuation">,</span> four<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;one&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;two&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;three&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;four&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre><p>It&#x27;s great to learn something new about things you use so frequently!</p>]]></content:encoded>
+            <enclosure
+        url="https://www.grouparoo.com/posts/ignoring-variables-when-destructuring-arrays/surprised-destructuring.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
+        <item>
             <title><![CDATA[CRM System Rate Limiting Overview]]></title>
             <link>https://www.grouparoo.com/blog/crm-system-rate-limiting</link>
             <guid>grouparoo-blog-post-crm-system-rate-limiting</guid>
