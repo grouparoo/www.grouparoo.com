@@ -72,15 +72,16 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             </Col>
           </Row>
           <Row>
-            <Col md={2} />
-            <Col md={8}>
+            <Col lg={2} />
+            <Col lg={8}>
               <p className="text-big-muted">{description}</p>
             </Col>
-            <Col md={2} />
+            <Col lg={2} />
           </Row>
 
           <Row>
-            <Col>
+            <Col lg={2} />
+            <Col lg={8}>
               <p className="video-responsive">
                 <iframe
                   width="560"
@@ -92,6 +93,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
                 ></iframe>
               </p>
             </Col>
+            <Col lg={2} />
           </Row>
 
           <br />
