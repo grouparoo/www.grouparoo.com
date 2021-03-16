@@ -63,7 +63,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
       <div
         id="headline"
         className="homePageSection"
-        style={{ textAlign: "center", paddingTop: 100, paddingBottom: 100 }}
+        style={{ textAlign: "center", paddingTop: 0, paddingBottom: 20 }}
       >
         <Container>
           <Row>
@@ -72,11 +72,28 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             </Col>
           </Row>
           <Row>
-            <Col md={2} />
-            <Col md={8}>
+            <Col lg={2} />
+            <Col lg={8}>
               <p className="text-big-muted">{description}</p>
             </Col>
-            <Col md={2} />
+            <Col lg={2} />
+          </Row>
+
+          <Row>
+            <Col lg={2} />
+            <Col lg={8}>
+              <p className="video-responsive">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/kQ789gMXJB8?rel=0"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </p>
+            </Col>
+            <Col lg={2} />
           </Row>
 
           <br />
