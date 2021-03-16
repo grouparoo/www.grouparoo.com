@@ -53,6 +53,15 @@ const Authors: Author[] = [
     description:
       "Sean is a full-stack developer working on Grouparoo, an open source data framework that easily connects your data to business tools. Sean is a tinkerer and a teacher who enjoys long walks in the woods, spending time with his family, baking bread, playing music, and eating sandwiches.",
   },
+  {
+    name: "Pedro S Lopez",
+    slug: "pedroslopez",
+    image: "pedro_s_lopez.png",
+    url: "https://pedroslopez.me/",
+    twitter: "@pedroslopez",
+    description:
+      "Pedro is a full-stack Software Engineer that fell in love with programming at an early age. He's a tinkerer that enjoys reverse engineering, automation and technology in general. When he's not programming, Pedro spends his time playing and listening to music.",
+  },
 ];
 
 export default Authors;
