@@ -1,0 +1,92 @@
+---
+title: "Git prune to remove reference to origin/master"
+date: "2021-03-15"
+author: "Brian Leonard"
+pullQuote: "When switching to using a main branch, use git prune to remove master references."
+image: "git-prune-to-remove-master/instructions.png"
+tags: [engineering, notes]
+---
+
+TLDR: This command will fully get rid of the `master` branch after you've switched to using `main`.
+
+> git remote prune origin
+
+What I was seeing was `git checkout master` still referenced the existence of the old branch I had used. I needed to get rid of that old one so that it would be an error.
+
+## The switch
+
+We have switched to using the `main` branch instead of the `master` branch on all [our](https://github.com/grouparoo/www.grouparoo.com) [Github](https://github.com/grouparoo/grouparoo) [projects](https://github.com/grouparoo/app-example-heroku).
+
+When you do so, you get this helpful screenshot from Github:
+
+<Image
+  alt="Github screenshot: how to switch to main branch"
+  src="git-prune-to-remove-master/instructions.png"
+  width={500}
+  height={306}
+/>
+
+Those instructions typed out:
+
+```bash
+> git branch -m master main
+> git fetch origin
+> git branch -u origin/main main
+```
+
+I have also seen this one added:
+
+```bash
+> git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main
+```
+
+## Muscle memory
+
+However, I still had a problem. My fingers kept typing `git checkout master` when I should now be typing `git checkout main`.
+
+I would get over that in time, except that it wasn't giving me an error even though this was not a local or remote branch:
+
+```bash
+> git checkout master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+Switched to a new branch 'master'
+
+> git checkout blah
+error: pathspec 'blah' did not match any file(s) known to git
+```
+
+I wanted to get the second result: an error. Then my fingers would learn what my heart and head knew was right.
+
+## Solution
+
+The solution hint came from running this command:
+
+```bash
+> git branch -a
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/any_old_branch
+  remotes/origin/blog_config
+  remotes/origin/main
+  remotes/origin/master
+```
+
+So if I did `git checkout any_old_branch` that would not error either _even though_ that was not a local or remote branch.
+
+The solution was to run `git remote prune origin`:
+
+```bash
+> git remote prune origin
+Pruning origin
+URL: git@github.com:grouparoo/www.grouparoo.com.git
+ * [pruned] origin/any_old_branch
+ * [pruned] origin/blog_config
+ * [pruned] origin/master
+```
+
+Now it is gone from `git branch -a` and I get the expected result:
+
+```bash
+> git checkout master
+error: pathspec 'master' did not match any file(s) known to git
+```
