@@ -1,0 +1,57 @@
+---
+title: "Don’t use Underscores in your HTTP Headers "
+date: "2021-03-17"
+author: "Evan Tahler"
+pullQuote: "Ad blockers are great, until they’re not"
+image: "dont-use-underscores-in-http-headers/header.jpg"
+tags: [engineering, notes]
+---
+
+Don’t use underscores in your HTTP Headers... at least according to AWS and Nginx!
+
+```bash
+curl --HEADER "AUTH_TOKEN: abc" example.com # is bad
+curl --HEADER "AUTH-TOKEN: abc" example.com # is OK
+```
+
+Grouparoo is a self-hosted application, and we are always helping folks run and deploy our service in new ways. Recently, we’ve been working an [example application](https://github.com/grouparoo/app-example-aws) for Amazon Web Service’s (AWS) Elastic Beanstalk service. Elastic Beanstalk is AWS’s original Platform as a Service (PaaS) which means you can deploy your application without having to directly manage the servers yourself. Also, Elastic Beanstalk servers are within you Virtual Private Cloud (VPC), so they are good choice if you want to integrate with any of AWS’ other services, like a database or cache.
+
+The `app-example-aws` app deployed just fine, but we were running into a strange bug: users of our web UI would be logged out on every subsequent page load! We weren’t seeing this behavior on any of the other hosting platforms we’ve used, including other AWS deployments hosting options. What could be wrong?
+
+Eventually we narrowed down the problem to communication between our website UI and the API server. The Grouparoo UI server uses a special header, `X-GROUPAROO-SERVER_TOKEN` , along with the users’s session cookie, to authenticate against the API to pre-hydrate our pages on behalf of the user making the request. This page hydration request was the only type of request failing failing. Eventually we got into the weeds of the network request, and saw that the API was never receiving the `X-GROUPAROO-SERVER_TOKEN` header, but everything else was coming though OK:
+
+```json
+{
+  "headers": {
+    "connection": "upgrade",
+    "host": "app-example-aws.example.com",
+    "x-real-ip": "172.31.xxx.xxx",
+    "x-forwarded-for": "54.157.xxx.xxx, 172.31.xxx.xxx",
+    "x-forwarded-proto": "https",
+    "x-forwarded-port": "443",
+    "x-amzn-trace-id": "Root=1-60517ca4-xxxxx",
+    "accept": "application/json",
+    "content-type": "application/json",
+    "cookie": "grouparooSessionId=xxxxxxxxxx",
+    "user-agent": "axios/0.21.1"
+  }
+}
+```
+
+After some digging, we learned that Elastic Beanstalk fronts its applications with Nginx acting as a reverse proxy, which by default, considers headers with underscores CGI commands of yore and ignores them. By default the Nginx option `underscores_in_headers ` is `off` , and you can learn more [here](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/?highlight=underscore#missing-disappearing-http-headers). Please note that using underscores in headers is perfectly valid per the HTTP spec, but Nginx, by default, will ignore them.
+
+<Image
+  centered
+  alt="A header in Soccer.  From https://unsplash.com/photos/JqCpvGN0JFo"
+  src="dont-use-underscores-in-http-headers/header.jpg"
+  width={879}
+  height={586}
+/>
+
+<small>
+  <em>(photo of a lost header, the soccer kind)</em>
+</small>
+<br />
+<br />
+
+It was a matter of preference whether or not right thing to do was to change the header we use and not use underscores (`X-GROUPAROO-SERVER-TOKEN`) , or to modify the Nginx reverse proxy configuration on our Elastic Beanstalk servers (which is possible - [see here](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/java-se-nginx.html)). At the end of the day we want Grouparoo to work out-of-the box on as many platforms as possible without needing custom configuration. Nginx is a wildly popular web server, load balancer, and reverse proxy - and we should to be compatible with its defaults. To that end, we opted to change our headers not to use underscores. I recommend that everyone else developing a web application do the same and follow Nginx's defaults to avoid problems like this down the road.
