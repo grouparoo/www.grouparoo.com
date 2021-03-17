@@ -18,7 +18,7 @@ Grouparoo is a self-hosted application, and we are always helping folks run and 
 
 The `app-example-aws` app deployed just fine, but we were running into a strange bug: users of our web UI would be logged out on every subsequent page load! We weren’t seeing this behavior on any of the other hosting platforms we’ve used, including other AWS deployments hosting options. What could be wrong?
 
-Eventually we narrowed down the problem to communication between our website UI and the API server. The Grouparoo UI server uses a special header, `X-GROUPAROO-SERVER_TOKEN` , along with the users’s session cookie, to authenticate against the API to pre-hydrate our pages on behalf of the user making the request. This page hydration request was the only type of request failing failing. Eventually we got into the weeds of the network request, and saw that the API was never receiving the `X-GROUPAROO-SERVER_TOKEN` header, but everything else was coming though OK:
+Eventually we narrowed down the problem to communication between our website UI and the API server. The Grouparoo UI server uses a special header, `X-GROUPAROO-SERVER_TOKEN` , along with the users’s session cookie, to authenticate against the API to pre-hydrate our pages on behalf of the user making the request. This page hydration request was the only type of request failing. Eventually we got into the weeds of the network request, and saw that the API was never receiving the `X-GROUPAROO-SERVER_TOKEN` header, but everything else was coming though OK:
 
 ```json
 {
