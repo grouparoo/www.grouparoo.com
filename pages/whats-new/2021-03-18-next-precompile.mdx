@@ -1,0 +1,10 @@
+---
+title: "Faster Installs with Precomplied UI Pacakges"
+date: "2021-03-18"
+tags: ["improvement"]
+description: "It's now ever faster to install Grouparoo!"
+---
+
+The Grouparoo UI packages, `@grouparoo/ui-community` and `@grouparoo/ui-enterprise` now install faster and require fewer depencies on your machines!
+
+Previously, we were shipping the raw Typescript/Javascript files for our React frontend to our customers, and every time you ran `npm install`, you were also building the webpack bundle. Now, we do this all for you on our build servers. This leads to larger downlod sizes, but a faster overall install experince as there is no "build" step. Under the hood, we rely on [next.js](https://nextjs.org) to build and package our UIs.
