@@ -17,19 +17,7 @@ When you're ready to get your own instance of Grouparoo running, the first step 
 
 Configuring your Grouparoo Project starts by making a new `git` repository in a new directory. You then can use the [`grouparoo` cli tool](/docs/cli) to initialize a new project.
 
-### Step 2: Pick an Installation Method
-
-There are two methods for local development:
-
-<!-- prettier-ignore -->
-<Tabs defaultActiveKey="node">
-  <Tab
-    key="node"
-    eventKey="node"
-    title="Node.js"
-    style={{ padding: "1rem" }}
-  >
-<h3>Run Locally with Node.js</h3>
+### Step 2: Run Locally with Node.js
 
 If you have Node.js (v12+) installed, initializing a new Grouparoo project is as simple as:
 
@@ -45,32 +33,6 @@ Read our guide for setting up Grouparoo locally with Node.js.
 <Button variant="outline-primary" href="/docs/installation/node">
   Get Started with Node.js
 </Button>
-
-  </Tab>
-  <Tab
-    key="docker"
-    eventKey="docker"
-    title="Docker"
-    style={{ padding: "1rem" }}
-  >
-<h3>Run locally with Docker & Docker Compose</h3>
-
-If you have [Docker](https://www.docker.com/) installed, you can also run Grouparoo locally via a sample Docker Compose file:
-
-```bash
-# in a new directory
-curl -L https://www.grouparoo.com/docker-compose --output docker-compose.yml
-docker-compose up
-```
-
-Continue with installation details in our Docker installation guide.
-
-<Button variant="outline-primary" href="/docs/installation/docker">
-  Get Started with Docker
-</Button>
-
-  </Tab>
-</Tabs>
 
 ### What's Next?
 
