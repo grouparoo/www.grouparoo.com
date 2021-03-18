@@ -11,6 +11,17 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2021-03-18-next-precompile",
+      "content_html": "<p>The Grouparoo UI packages, <code>@grouparoo/ui-community</code> and <code>@grouparoo/ui-enterprise</code> now install faster and require fewer dependencies on your machines!</p><p>Previously, we were shipping the raw Typescript/Javascript files for our React frontend to our customers, and every time you ran <code>npm install</code>, you were also building the webpack bundle. Now, we do this all for you on our build servers. This leads to larger download sizes, but a faster overall install experience as there is no &quot;build&quot; step. Under the hood, we rely on <a href=\"https://nextjs.org\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">next.js</a> to build and package our UIs.</p>",
+      "url": "https://www.grouparoo.com/whats-new#2021-03-18-next-precompile",
+      "title": "Faster Installs with Precompiled UI Packages",
+      "date_modified": "2021-03-18T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-03-17-errorlevel-info",
       "content_html": "<p>There are many variations of things that could go &quot;wrong&quot; when working with the many destinations that Grouparoo supports. For example, there a recoverable errors like rate limiting. However, there is sometimes expected behavior that is still interesting to note. For these cases, we have added an <code>info</code> error level.</p><p>For example, the Salesforce destination has an &quot;Enrich&quot; mode. This means that it should only update users that are already in the system. In these cases, the plugin returns an <code>info</code> error. This is useful for observability in that it helps the user debug what happened.</p><div style=\"margin-bottom:20px\"><img alt=\"Salesforce info error level\" src=\"https://www.grouparoo.com/posts/releases/2021-03-17-errorlevel-info.png\" width=\"422\" height=\"250\" style=\"height:250px;width:422px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
       "url": "https://www.grouparoo.com/whats-new#2021-03-17-errorlevel-info",

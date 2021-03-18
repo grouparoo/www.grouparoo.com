@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Wed, 17 Mar 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 18 Mar 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,17 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title
+      ><![CDATA[Faster Installs with Precompiled UI Packages]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-03-18-next-precompile</link>
+            <guid>grouparoo-release-note-2021-03-18-next-precompile</guid>
+            <pubDate>Thu, 18 Mar 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>The Grouparoo UI packages, <code>@grouparoo/ui-community</code> and <code>@grouparoo/ui-enterprise</code> now install faster and require fewer dependencies on your machines!</p><p>Previously, we were shipping the raw Typescript/Javascript files for our React frontend to our customers, and every time you ran <code>npm install</code>, you were also building the webpack bundle. Now, we do this all for you on our build servers. This leads to larger download sizes, but a faster overall install experience as there is no &quot;build&quot; step. Under the hood, we rely on <a href="https://nextjs.org" target="_blank" rel="nofollow noopener noreferrer">next.js</a> to build and package our UIs.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
         <item>
             <title><![CDATA[Error Level: Info]]></title>
             <link
