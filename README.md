@@ -33,7 +33,6 @@ If you find yourself needing to change the API endpoint that the webiste is usin
 You will need `chromedriver` installed to run the automated browser tests:
 
 - OSX: `brew install --cask chromedriver`
-- Windows: TODO
 - Linux: TODO
 
 ```bash
