@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
 import { Container, Row, Col, Alert, Card } from "react-bootstrap";
+import Tweet from "../../components/blog/tweet";
 import Image from "../../components/Image";
 import BlogTags from "../../utils/blogTags";
 import Subscribe from "../../components/subscribe";
@@ -12,7 +13,13 @@ import { BlogPost, getBlogPost, getBlogPaths } from "../../utils/blogPosts";
 import BlogImage from "../../components/blog/image";
 import { PageNavigation } from "../../components/pageNavigation";
 
-const components = { Image: BlogImage, Alert, Card, CardBody: Card.Body };
+const components = {
+  Image: BlogImage,
+  Alert,
+  Card,
+  CardBody: Card.Body,
+  Tweet,
+};
 
 export default function BlogPage({ pageProps }) {
   const router = useRouter();
