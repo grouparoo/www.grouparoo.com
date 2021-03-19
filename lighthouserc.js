@@ -3,16 +3,23 @@ const sitemapUrls = readSitemap("http://localhost:54321");
 
 // filter out some pages
 const urls = [];
-let whatsNew = false;
+const singles = {
+  "/whats-new/": false,
+};
 for (const url of sitemapUrls) {
-  // only need 1 /whats-new
-  if (url.includes("/whats-new/")) {
-    if (whatsNew) {
-      continue;
+  // only need 1 one a few of them
+  let skip = false;
+  for (const singlePath in singles) {
+    if (url.includes(singlePath)) {
+      if (singles[singlePath]) {
+        skip = true;
+      }
+      singles[singlePath] = true;
     }
-    whatsNew = true;
   }
-  urls.push(url);
+  if (!skip) {
+    urls.push(url);
+  }
 }
 
 module.exports = {
