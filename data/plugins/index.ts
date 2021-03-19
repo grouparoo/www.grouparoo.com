@@ -8,6 +8,7 @@ import { Iterable } from "./iterable";
 import { Mailchimp } from "./mailchimp";
 import { Marketo } from "./marketo";
 import { MySQL } from "./mysql";
+import { OneSignal } from "./onesignal";
 import { Postgres } from "./postgres";
 import { Redshift } from "./redshift";
 import { Sailthru } from "./sailthru";
@@ -60,6 +61,7 @@ export const PluginData: Plugin[] = [
   Mailchimp,
   Marketo,
   MySQL,
+  OneSignal,
   Postgres,
   Redshift,
   Sailthru,
