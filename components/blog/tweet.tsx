@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 export default function Tweet({ height, nojs, children }) {
   if (!nojs) {
