@@ -8,7 +8,7 @@ import IntegrationDestinations from "../../../components/home/integrationDestina
 import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
-import { PluginData } from "../../../data/plugins";
+import { PluginData, getUseCasePaths } from "../../../data/plugins";
 
 export default function IntegrationsPage({
   pageProps,
@@ -192,14 +192,7 @@ export async function getStaticProps(ctx) {
 }
 
 export async function getStaticPaths() {
-  const paths = PluginData.filter((p) => p.useCases).map(
-    (p) => `/integrations/${p.primaryType}s/${p.slug}`
-  );
-
-  return {
-    paths,
-    fallback: false,
-  };
+  return getUseCasePaths();
 }
 
 function DestionationHeaderArrow({ data }) {

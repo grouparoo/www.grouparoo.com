@@ -88,3 +88,14 @@ export function randomHomepagePlugin() {
 
   return pluginName;
 }
+
+export async function getUseCasePaths() {
+  const paths = PluginData.filter((p) => p.useCases).map(
+    (p) => `/integrations/${p.primaryType}s/${p.slug}`
+  );
+
+  return {
+    paths,
+    fallback: false,
+  };
+}

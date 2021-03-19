@@ -42,4 +42,9 @@ describe("sitemap integration", () => {
     const docsUrls = urls.filter((url) => url.loc[0].match("/docs"));
     expect(docsUrls.length).toBeGreaterThan(2);
   });
+
+  test("it includes the integrations", async () => {
+    const docsUrls = urls.filter((url) => url.loc[0].match("/integrations"));
+    expect(docsUrls.length).toBeGreaterThan(2);
+  });
 });
