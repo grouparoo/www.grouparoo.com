@@ -1,14 +1,24 @@
 import { loadEntries, loadMdxFile, getStaticMdxPaths } from "./mdxUtils";
 import getAuthor from "./getAuthor";
 import BlogImage from "../components/blog/image";
+import Tweet from "../components/blog/tweet";
 import { Alert, Card } from "react-bootstrap";
 import { Feed } from "feed";
 
-function RelativeImage(props) {
+function PermanentImage(props) {
   return BlogImage({ ...props, permalink: true });
 }
+function StaticTweet(props) {
+  return Tweet({ ...props, nojs: true });
+}
 // These keys need to match the one in blog/[post]
-const components = { Image: RelativeImage, Alert, Card, CardBody: Card.Body };
+const components = {
+  Image: PermanentImage,
+  Alert,
+  Card,
+  CardBody: Card.Body,
+  Tweet: StaticTweet,
+};
 
 export interface BlogEntry {
   title: string;

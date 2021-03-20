@@ -7,9 +7,10 @@ import { ReleaseNote, getReleaseNotes } from "../../utils/releaseNotes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Moment from "react-moment";
 import BlogImage from "../../components/blog/image";
+import Tweet from "../../components/blog/tweet";
 import { PaginationHelper } from "../../components/paginationHelper";
 
-export const components = { Image: BlogImage };
+export const components = { Image: BlogImage, Tweet };
 
 export default function ReleaseIndex({ pageProps }) {
   let notes: ReleaseNote[] = pageProps.notes;

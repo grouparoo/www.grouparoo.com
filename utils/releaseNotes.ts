@@ -1,5 +1,6 @@
 import { loadEntries, loadMdxFilePath, getStaticMdxPaths } from "./mdxUtils";
 import BlogImage from "../components/blog/image";
+import Tweet from "../components/blog/tweet";
 import { Feed } from "feed";
 
 export type ReleaseNote = {
@@ -19,8 +20,11 @@ const LIMIT = 10;
 function PermanentImage(props) {
   return BlogImage({ ...props, permalink: true });
 }
+function StaticTweet(props) {
+  return Tweet({ ...props, nojs: true });
+}
 // These keys need to match the one in whats-new/index
-const components = { Image: PermanentImage };
+const components = { Image: PermanentImage, Tweet: StaticTweet };
 
 async function getNote(filePath): Promise<ReleaseNote> {
   const { source, frontMatter, slug } = await loadMdxFilePath(
