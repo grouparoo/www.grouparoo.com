@@ -38,7 +38,9 @@ Grouparoo uses Redis as both a cache and as a background job queue via node-resq
 
 - `REDIS_URL="redis://localhost:6379/0"`
 
-The full set of options is: `REDIS_URL="redis://{user}:{password}@{host}:{port}/{database}"`. To use an in-memory redis, set `REDIS_URL="redis://mock"`
+The full set of options you can provide to `REDIS_URL` is: `REDIS_URL="redis://{user}:{password}@{host}:{port}/{database}"`. Note that you cannot use an `@` or `:` in your username or password when using `REDIS_URL`. Alternatively to `REDIS_URL`, you can set the following environment variables directly: `REDIS_HOST`, `REDIS_PORT`, `REDIS_DB`, and `REDIS_USER`, `REDIS_PASS` which do allow all special characters.
+
+To use an in-memory redis, set `REDIS_URL="redis://mock"`.
 
 **Database**
 
@@ -46,7 +48,9 @@ Grouparoo stores all of your data in a database. You can use a Postgres or SQLIT
 
 - `DATABASE_URL="postgresql://localhost:5432/grouparoo_development"`
 
-The full set of options is: `DATABASE_URL="postgresql://{user}:{password}@{host}:{port}/{database}?{ssl=true}"`. You can also modify the SSL connection options to your postgres database with these environment variables:
+The full set of options you can provide to `DATABASE_URL` is: `DATABASE_URL="postgresql://{user}:{password}@{host}:{port}/{database}?{ssl=true}"`. Note that you cannot use an `@` or `:` in your username or password when using `DATABASE_URL`. Alternatively to `DATABASE_URL`, you can set the following environment variables directly: `DB_DIALECT=postgres`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, and `DB_USER`, `DB_PASS` which do allow all special characters.
+
+You can also modify the SSL connection options to your postgres database with these environment variables:
 
 - `DATABASE_SSL=true`
 - `DATABASE_SSL_SELF_SIGNED=true`
