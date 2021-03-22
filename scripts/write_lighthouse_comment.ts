@@ -2,7 +2,7 @@ import "../setup";
 import path from "path";
 import fs from "fs";
 import glob from "glob";
-import makeTable from "markdown-table";
+import { markdownTable } from "markdown-table";
 import { URL } from "url";
 
 const lighthousePath = path.resolve(
@@ -90,7 +90,7 @@ function getComment(urlData, urlReport) {
     table.push([title, performance, accessibility, practices, seo]);
   }
 
-  const output = makeTable(table);
+  const output = markdownTable(table);
   return output;
 }
 
