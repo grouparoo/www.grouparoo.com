@@ -21,8 +21,8 @@ export default function WhoWeAre() {
         className="homePageSection"
         style={{ textAlign: "center" }}
       >
-        <Row>
-          <Col md={4} lg={3} className="d-flex justify-content-center">
+        <Row className="justify-content-center">
+          <Col md={4} className="d-flex justify-content-center">
             <TeamMember
               name="Brian Leonard"
               image="brian_leonard.png"
@@ -49,7 +49,7 @@ export default function WhoWeAre() {
             />
           </Col>
 
-          <Col md={4} lg={3} className="d-flex justify-content-center">
+          <Col md={4} className="d-flex justify-content-center">
             <TeamMember
               name="Evan Tahler"
               image="evan_tahler.png"
@@ -85,7 +85,7 @@ export default function WhoWeAre() {
             />
           </Col>
 
-          <Col md={4} lg={3} className="d-flex justify-content-center">
+          <Col md={4} className="d-flex justify-content-center">
             <TeamMember
               name="Andy Jih"
               image="andy_jih.png"
@@ -120,7 +120,7 @@ export default function WhoWeAre() {
             />
           </Col>
 
-          <Col md={4} lg={3} className="d-flex justify-content-center">
+          <Col md={4} className="d-flex justify-content-center">
             <TeamMember
               name="Sean C Davis"
               image="sean_c_davis.jpg"
@@ -143,6 +143,32 @@ export default function WhoWeAre() {
               github="https://github.com/seancdavis"
               twitter="https://twitter.com/seancdavis29"
               linkedIn="https://www.linkedin.com/in/seancdavis29/"
+            />
+          </Col>
+
+          <Col md={4} className="d-flex justify-content-center">
+            <TeamMember
+              name="Pedro S Lopez"
+              image="pedro_lopez.png"
+              title="Full Stack Software Engineer"
+              description={
+                <span>
+                  🤖 🎹 👨🏽‍💻 🎮
+                  <br /> Previously:
+                  <br />
+                  Engineering and Technical Vetting{" "}
+                  <a
+                    href="https://www.g2i.co/"
+                    target="_blank"
+                    rel="noreferrer nofollow"
+                  >
+                    @G2i
+                  </a>
+                </span>
+              }
+              github="https://github.com/pedroslopez"
+              twitter="https://twitter.com/pedroslopez"
+              linkedIn="https://www.linkedin.com/in/pedroslopez/"
             />
           </Col>
         </Row>
