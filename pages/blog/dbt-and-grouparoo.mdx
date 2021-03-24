@@ -1,0 +1,84 @@
+---
+title: "dbt and Grouparoo"
+date: "2021-03-25"
+author: "Brian Leonard"
+pullQuote: "Grouparoo integrates with dbt. Transform your data with dbt and sync it with Grouparoo."
+image: "dbt-and-grouparoo/workflow.png"
+twitter_card: "summary_large_image"
+tags: [engineering, product]
+---
+
+Teams are centralizing their data in their data warehouse by loading data in and transforming it as necessary. Increasingly, we are seeing teams turn to [dbt](https://www.getdbt.com) to do this transforming. The idea is to write \*.sql files that, when run in the right order, creates useful rollup tables or materialized views of the data.
+
+We've been asked by teams using dbt how Grouparoo can then sync their data to their cloud-based apps. This is what some are calling [Reverse ETL](https://medium.com/memory-leak/reverse-etl-a-primer-4e6694dcc7fb). Reverse ETL is taking data from the warehouse and writing it back to line-of-business tools.
+
+<Image
+  alt="Data stack workflow with dbt doing transform and Grouparoo doing reverse ETL sync."
+  src="dbt-and-grouparoo/workflow.png"
+  centered
+  height={265}
+  width={876}
+/>
+
+I've created an [example project](https://www.github.com/grouparoo/app-example-dbt) to show how the tools work together.
+
+## Approach
+
+A beautiful thing about dbt is its simplicity. All it takes to apply the SQL transforms is to execute `dbt run`. This can be scheduled to run every so often as a cron job.
+
+While Grouparoo can run as an application to continuously sync and serve its web UI, you can also execute `grouparoo run`. This will execute everything that needs to sync and exit.
+
+By putting these two commands together, we can transform the data and sync it to the configured tools. In the [example project](https://www.github.com/grouparoo/app-example-dbt), this means putting `./transform_and_sync` in your cron instead of `dbt run`. The right data ends up in the destionation(s) of our choosing.
+
+That's it!
+
+## Example project
+
+The example project has instructions to seed `users` and `purchases` into an test warehouse like Postgres. Then it has a few transforms to roll up customer data into a few materialized views. One of these views is who we should sync to a destination, Mailchimp.
+
+The configuration in the Grouparoo project sets up the sync pipeline:
+
+- declares the [source](https://github.com/grouparoo/app-example-dbt/blob/22b6245d827b5450169f4545c574df462c10327c/grouparoo/config/sources/mailchimp_data.js) of the data as the [warehouse](https://github.com/grouparoo/app-example-dbt/blob/22b6245d827b5450169f4545c574df462c10327c/grouparoo/config/apps/warehouse.js)
+- notes which columns create [properties](https://github.com/grouparoo/app-example-dbt/blob/22b6245d827b5450169f4545c574df462c10327c/grouparoo/config/properties/email.js)
+- creates segmentation groups like [high value Spanish speakers](https://github.com/grouparoo/app-example-dbt/blob/22b6245d827b5450169f4545c574df462c10327c/grouparoo/config/groups/high_value_spanish_speakers.js) from these properties
+- maps the profile data and groups to be [Mailchimp](https://github.com/grouparoo/app-example-dbt/blob/22b6245d827b5450169f4545c574df462c10327c/grouparoo/config/destinations/mailchimp_destination.js) contacts and tags
+
+<Image
+  alt="Demo users are in sync with Mailchimp by using Grouparoo."
+  src="dbt-and-grouparoo/mailchimp.png"
+  centered
+  height={515}
+  width={876}
+/>
+
+After running the cron job, all 1000 users are in Mailchimp CRM based on the mappings defined. In this case, they have their first names filled out and are tagged with they are a high value Spanish speaker.
+
+## dbt plugin
+
+In order to make this work smoothly, we created a [dbt plugin](https://github.com/grouparoo/grouparoo/tree/677e45a928a9941239f3515aea08d832e63b8907/plugins/%40grouparoo/dbt) for Grouparoo.
+
+Grouparoo configuration files can be JSON and completely declarative, but they can also be any Javascript code. With this in mind, we created dbt helpers to make Grouparoo smarter about how to connect to the data warehouse.
+
+Instead of repeating the credentials, the [app](https://github.com/grouparoo/app-example-dbt/blob/22b6245d827b5450169f4545c574df462c10327c/grouparoo/config/apps/warehouse.js) knows how to read them from the various ways that dbt can be set up.
+
+```javascript
+const { dbtProfile } = require("@grouparoo/dbt");
+
+exports.default = async function buildConfig() {
+  // fetch warehouse connection details from parent dbt profile
+  const { type, options } = await dbtProfile({});
+  return [
+    {
+      class: "app",
+      id: "warehouse",
+      name: "Warehouse",
+      type,
+      options,
+    },
+  ];
+};
+```
+
+This also includes the ability to automatically change environments based on the dbt setup, so if you have different `dev` and `prod` databases or warehouses, Grouparoo will use the right one using the current dbt profile.
+
+We look forward to expanding on this plugin based on how people use it. Let us know in [Github](https://www.grouparoo.com/feature-request) or [Slack](https://www.grouparoo.com/chat) how else you want to integrate.
