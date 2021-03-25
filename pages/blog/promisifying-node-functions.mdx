@@ -97,6 +97,6 @@ When we're dealing with an instance of a class or object, we have to bind that o
 
 ```js
 const instance = new Thing();
-const doThingAsync = promifiy(instance.doThing).bind(instance);
+const doThingAsync = promisify(instance.doThing).bind(instance);
 const result = await doThingAsync("theThing");
 ```
