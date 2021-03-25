@@ -28,7 +28,7 @@ doThing('theThing', function(error, result) {
 }
 ```
 
-This pattern isn't compatible with the new approach where I want to wait for each asynchronously function to resolve so I can predict the order in which my code is executed.
+This pattern isn't compatible with the new approach where I want to wait for each asynchronous function to resolve so I can predict the order in which my code is executed.
 
 Every once in awhile we'll come across a library that follows this old pattern. We'll have to figure out a way to make it work with our code. There are three approaches you can take in many cases:
 
