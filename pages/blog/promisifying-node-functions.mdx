@@ -93,6 +93,16 @@ const result = await doThingAsync("theThing");
 
 That's super simple! And that's why this is my preferred approach when it can be implemented cleanly.
 
+Part of the reason this is so simple is also because it is opinionated. There are two gotchas that you should lookout for when using this utility:
+
+### Gotcha #1: Callback Pattern
+
+For this to work right, the callbacks must follow a strict parameter structure. The callback functions must pass an `error` argument first (which is `null` or `undefined` if there is no error), and the `result` object second.
+
+This is the structure I've shown in the examples here. But if the library you're dealing with has a different callback structure, you won't be able to use `util.promisify()` with it.
+
+### Gotcha #2: Binding Instances
+
 When we're dealing with an instance of a class or object, we have to bind that object to `promisify`. Here's an example:
 
 ```js
