@@ -8,8 +8,11 @@ import { loadMdxFile } from "../utils/mdxUtils";
 const components = {};
 
 export default function DataSync({ pageProps }) {
+  const headerContent = hydrate(pageProps.header.source, { components });
   const dataRows = pageProps.data.tableOfContents;
   const dataContent = hydrate(pageProps.data.source, { components });
+  const orgRows = pageProps.organization.tableOfContents;
+  const orgContent = hydrate(pageProps.organization.source, { components });
 
   return (
     <>
@@ -30,33 +33,21 @@ export default function DataSync({ pageProps }) {
         </Row>
         <Row>
           <Col md={9}>
-            <div className="mdxContent">
-              <p>
-                A data sync app connects customer data to one or more external
-                systems, keeping them up-to-date.
-              </p>
-              <p>
-                One or more data sync apps are built in every company by the
-                time it reaches the scale to focus on the efficiency of the
-                teams that require this data. For example, your Marketing team
-                can do their job better if they know who has made a purchase.
-                Sales, Customer Success, and Operations have similar needs.
-              </p>
-              <p>
-                We have met with many of these companies and have distilled the
-                best practices here.
-              </p>
-            </div>
+            <div className="mdxContent">{headerContent}</div>
           </Col>
         </Row>
         <Row style={{ marginTop: 20, marginBottom: 50 }}>
           <Col md={9} className="d-flex justify-content-center">
-            <TableOfContents data={dataRows} />
+            <TableOfContents data={dataRows} organization={orgRows} />
           </Col>
         </Row>
         <Row>
           <Col md={9}>
-            <div className="mdxContent">{dataContent}</div>
+            <div className="mdxContent">
+              {dataContent}
+              <br />
+              {orgContent}
+            </div>
           </Col>
         </Row>
       </Container>
@@ -64,9 +55,13 @@ export default function DataSync({ pageProps }) {
   );
 }
 
-function TableOfContents({ data }) {
-  console.log(data);
+function TableOfContents({ data, organization }) {
   const dataRows = data.map((row) => (
+    <li>
+      <a href={row.href}>{row.text}</a>
+    </li>
+  ));
+  const orgRows = organization.map((row) => (
     <li>
       <a href={row.href}>{row.text}</a>
     </li>
@@ -82,17 +77,25 @@ function TableOfContents({ data }) {
       className="border border-primary"
     >
       <>
-        <strong>Data</strong>
+        <strong>
+          <a href="#data">Data</a>
+        </strong>
         <ul>{dataRows}</ul>
+        <strong>
+          <a href="#organization">Organization</a>
+        </strong>
+        <ul>{orgRows}</ul>
       </>
     </div>
   );
 }
 
 export async function getStaticProps() {
+  const header = await getDocument("data-sync-header.mdx");
   const data = await getDocument("data-sync-data.mdx");
+  const organization = await getDocument("data-sync-organization.mdx");
   return {
-    props: { data },
+    props: { header, data, organization },
   };
 }
 
