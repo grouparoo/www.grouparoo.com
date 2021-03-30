@@ -5,14 +5,21 @@ import cheerio from "cheerio";
 import hydrate from "next-mdx-remote/hydrate";
 import { loadMdxFile } from "../utils/mdxUtils";
 
-const components = {};
+const components = {
+  TableOfContents: function () {
+    return null;
+  },
+};
 
 export default function DataSync({ pageProps }) {
-  const headerContent = hydrate(pageProps.header.source, { components });
-  const dataRows = pageProps.data.tableOfContents;
-  const dataContent = hydrate(pageProps.data.source, { components });
-  const orgRows = pageProps.organization.tableOfContents;
-  const orgContent = hydrate(pageProps.organization.source, { components });
+  const toc = pageProps.tableOfContents;
+  function dataTOC() {
+    return <TOC tableOfContents={toc} />;
+  }
+
+  const content = hydrate(pageProps.source, {
+    components: Object.assign({}, components, { TableOfContents: dataTOC }),
+  });
 
   return (
     <>
@@ -33,21 +40,7 @@ export default function DataSync({ pageProps }) {
         </Row>
         <Row>
           <Col md={9}>
-            <div className="mdxContent">{headerContent}</div>
-          </Col>
-        </Row>
-        <Row style={{ marginTop: 20, marginBottom: 50 }}>
-          <Col md={9} className="d-flex justify-content-center">
-            <TableOfContents data={dataRows} organization={orgRows} />
-          </Col>
-        </Row>
-        <Row>
-          <Col md={9}>
-            <div className="mdxContent">
-              {dataContent}
-              <br />
-              {orgContent}
-            </div>
+            <div className="mdxContent">{content}</div>
           </Col>
         </Row>
       </Container>
@@ -55,73 +48,78 @@ export default function DataSync({ pageProps }) {
   );
 }
 
-function TableOfContents({ data, organization }) {
-  const dataRows = data.map((row) => (
-    <li>
-      <a href={row.href}>{row.text}</a>
-    </li>
-  ));
-  const orgRows = organization.map((row) => (
-    <li>
-      <a href={row.href}>{row.text}</a>
-    </li>
-  ));
-
-  return (
-    <div
-      style={{
-        padding: "10px 25px 10px 25px",
-        lineHeight: 2,
-        display: "inline-block",
-      }}
-      className="border border-primary"
-    >
-      <>
-        <strong>
-          <a href="#data">Data</a>
-        </strong>
-        <ul>{dataRows}</ul>
-        <strong>
-          <a href="#organization">Organization</a>
-        </strong>
-        <ul>{orgRows}</ul>
-      </>
-    </div>
-  );
-}
-
 export async function getStaticProps() {
-  const header = await getDocument("data-sync-header.mdx");
-  const data = await getDocument("data-sync-data.mdx");
-  const organization = await getDocument("data-sync-organization.mdx");
-  return {
-    props: { header, data, organization },
-  };
-}
-
-async function getDocument(fileName) {
   const { source } = await loadMdxFile(
-    ["components", "documents", fileName],
+    ["components", "documents", "data-sync-apps.mdx"],
     components
   );
-
   const tableOfContents = parseTableOfContents(source);
-  return { tableOfContents, source };
+
+  return {
+    props: { tableOfContents, source },
+  };
 }
 
 function parseTableOfContents(source) {
   const html = source.renderedOutput;
-  const table = [];
+  const tableOfContents = [];
 
   const $ = cheerio.load(html);
-  const headers = $("h3 a");
+  const headers = $("h2, h3");
+  let h2 = null;
   for (let i = 0; i < headers.length; i++) {
     const header = $(headers[i]);
-    const href = header.attr("href");
+    const name = header.prop("tagName");
+    const id = header.attr("id");
     const text = header.text();
-    if (href && text) {
-      table.push({ href, text });
+    if (!name || !id || !text) {
+      continue;
+    }
+    const href = `#${id}`;
+    const elem = {
+      text,
+      href,
+    };
+    if (name === "H2") {
+      h2 = Object.assign(elem, { children: [] });
+      tableOfContents.push(h2);
+    } else if (h2) {
+      h2.children.push(elem);
     }
   }
-  return table;
+  return tableOfContents;
+}
+
+function TOC({ tableOfContents }) {
+  return (
+    <Row style={{ marginTop: 20, marginBottom: 50 }}>
+      <Col className="d-flex justify-content-center">
+        <div
+          style={{
+            padding: "10px 25px 10px 25px",
+            lineHeight: 2,
+            display: "inline-block",
+          }}
+          className="border border-primary"
+        >
+          <>
+            {tableOfContents.map(({ href, text, children }) => (
+              <>
+                <strong>
+                  <a href={href}>{text}</a>
+                </strong>
+                <ul>
+                  {children.map(({ href, text }) => (
+                    <li>
+                      <a href={href}>{text}</a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ))}
+          </>
+        </div>
+      </Col>
+    </Row>
+  );
 }
