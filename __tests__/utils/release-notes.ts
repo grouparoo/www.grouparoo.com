@@ -4,7 +4,7 @@ import { loadEntries } from "../../utils/mdxUtils";
 const LIMIT = 25;
 
 describe("utils/releaseNotes", () => {
-  const entries = loadEntries(["whats-new"]);
+  const entries = loadEntries(["pages", "whats-new"]);
   test("has entries", () => {
     expect(entries.length).toBeGreaterThan(10);
   });

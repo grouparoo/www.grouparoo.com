@@ -3,7 +3,7 @@ import { loadEntries } from "../../utils/mdxUtils";
 import getAuthor from "../../utils/getAuthor";
 
 describe("utils/blogPosts", () => {
-  const entries = loadEntries(["blog"]);
+  const entries = loadEntries(["pages", "blog"]);
   test("has entries", () => {
     expect(entries.length).toBeGreaterThan(10);
   });
