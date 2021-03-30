@@ -105,6 +105,18 @@ const DocsNav: NavItem[] = [
     ],
   },
 
+  // -- Tutorials --
+  {
+    title: "Tutorials",
+    path: "/docs/tutorials",
+    children: [
+      {
+        title: "App Example: Declarative Sync",
+        path: "/docs/tutorials/app-example-config",
+      },
+    ],
+  },
+
   // -- Development --
   {
     title: "Development",
