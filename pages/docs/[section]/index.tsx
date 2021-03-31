@@ -75,7 +75,7 @@ export default function DocPage({ pageProps }) {
 }
 
 export async function getStaticProps({ params }) {
-  let dirParts = ["docs", params.section, params.page, params.subpage];
+  let dirParts = ["pages", "docs", params.section, params.page, params.subpage];
   dirParts = `${dirParts.filter((x) => x).join("/")}.mdx`.split("/");
 
   const { source, frontMatter, path, breadcrumbs } = await loadMdxFile(
@@ -88,5 +88,5 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths(args: { depth: number }) {
   const depth = args.depth || 1;
-  return getStaticMdxPaths(["docs"], depth);
+  return getStaticMdxPaths(["pages", "docs"], depth);
 }

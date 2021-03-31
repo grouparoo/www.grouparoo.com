@@ -52,7 +52,7 @@ async function getNote(filePath): Promise<ReleaseNote> {
 
 export async function getReleaseNotes(pageNumber: number = 1, limit = LIMIT) {
   const offset = (pageNumber - 1) * limit;
-  const notes = loadEntries(["whats-new"]);
+  const notes = loadEntries(["pages", "whats-new"]);
 
   notes.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
@@ -90,18 +90,18 @@ export async function getReleaseNotes(pageNumber: number = 1, limit = LIMIT) {
 }
 
 export async function getReleaseNote(slug: string) {
-  const notes = loadEntries(["whats-new"]);
+  const notes = loadEntries(["pages", "whats-new"]);
   const release = notes.find((n) => n.slug === slug);
   const { filePath } = release;
   return getNote(filePath);
 }
 
 export async function getReleasePaths() {
-  return getStaticMdxPaths(["whats-new"]);
+  return getStaticMdxPaths(["pages", "whats-new"]);
 }
 
 export async function getFeed(): Promise<Feed> {
-  const total = loadEntries(["whats-new"]).length;
+  const total = loadEntries(["pages", "whats-new"]).length;
   const { notes } = await getReleaseNotes(1, total);
   const feed = new Feed({
     title: "Grouparoo: What's New",
