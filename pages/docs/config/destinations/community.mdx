@@ -120,7 +120,7 @@ Notice the odd structure of the keys. That's specific to Mailchimp. Each Destina
 
 ### Destination Group Membership
 
-Grouparoo also provides the ability to attach group membership to the exported data. How this looks within the Destination is specific to the Destination. But the shape of the config file largely remains the same.
+Grouparoo also provides the ability to attach group membership to the exported data. How this looks within the Destination is specific to the Destination. But the shape of the config file largely remains the same. In most Destinations, Destinations Group Memberships become either tags (Mailchimp), lists (Hubspot), or appended as additional properties to the profile (Customer.io).
 
 `destinationGroupMemberships` are a set of key-value pairs that tell Grouparoo which memberships to publish to the Destination. For example, you may have sent all your users to a Mailchimp Destination, but you wanted to tag high-value customers. That config might look something like this:
 
