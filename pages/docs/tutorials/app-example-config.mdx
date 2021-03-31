@@ -1,0 +1,698 @@
+---
+title: "App Example: Declarative Sync"
+date: "2020-03-30"
+pullQuote: "Learn how to sync data from a SQLite customer database to a Mailchimp audience."
+pageNavSelector: "h2"
+image: docs/tutorials/210331-app-example-config.png
+---
+
+<Image
+  src="docs/tutorials/210331-app-example-config.png"
+  alt="App Example: Declarative Sync"
+  width={1400}
+  height={735}
+/>
+
+In this tutorial we're going to look at how we built our [app-example-config project](https://github.com/grouparoo/app-example-config). We'll start from scratch (with some seeded data) and sync our customer data from a SQLite database Source to a Mailchimp Destination.
+
+<Button
+  href="https://github.com/grouparoo/app-example-config"
+  target="_blank"
+  rel="noreferrer"
+>
+  View the Code
+</Button>
+
+## Step 1: Install Grouparoo
+
+First, make sure you have the [Grouparoo CLI tool](/docs/cli) installed.
+
+    $ npm install -g grouparoo
+
+You can check to make sure it worked by checking the version.
+
+    $ grouparoo --version
+
+## Step 2: Create Project
+
+Next, make a new directory for your Grouparoo project, then run the `init` command. Let's say we wanted our project to be called `app-example-config`. We might do something like this:
+
+    $ cd /path/to/workspace
+    $ grouparoo init app-example-config
+    $ cd app-example-config
+
+_Note: If the directory for your project exists, you can run `grouparoo init .` and Grouparoo will create the project inside that directory._
+
+## Step 3: Add Source Database
+
+We have some seed data for you to work with for this example. You can download the database directly [here](/downloads/sqlite-source.sqlite). This SQLite database contains the contents of [a users CSV file](/downloads/users-source-data.csv) and [a purchases CSV file](/downloads/purchases-source-data.csv), to represent a prototypical e-commerce example.
+
+Place that file anywhere on your file system that your current user can read.
+
+<Button href="/downloads/sqlite-source.sqlite" variant="outline-primary">
+  Download Seed Data
+</Button>
+
+## Step 4: Install SQLite App
+
+Most of the rest of our tutorial is going to be generating our config objects, which tell Grouparoo where our data is and what to do with it. We'll be spending a lot of time using [the `generate` command](/docs/cli/config).
+
+To see a list of available generators at any time, use the `--list` flag.
+
+    $ grouparoo generate --list
+
+    🦘 Grouparoo: generate
+
+    Available Templates:
+
+      apikey (id) - Config for a Grouparoo API Key
+      events:app (id) - Config for a Grouparoo App based on Events
+      events:property (id, parent) - Config for a Grouparoo Property based on an Events Source
+      events:source (id, parent) - Config for a Grouparoo Source based on an Events App
+      group:calculated (id) - Config for a calculated Grouparoo Group
+      group:manual (id) - Config for a manual Grouparoo Group
+      manual:app (id) - Config for a Grouparoo App with manual property values
+      manual:property (id, parent) - Config for a Grouparoo Property based on a Manual Source
+      manual:source (id, parent) - Config for a Grouparoo Source based on a Manual App
+      setting (plugin-name, key, value, id) - Config for a Grouparoo Setting
+      team (id) - Config for a Grouparoo Team
+      team:member (id, parent) - Config for a Grouparoo Team Member
+
+    You can filter this list by providing a (partial) template to match template names against. (e.g. `grouparoo generate postgres --list`)
+
+    You can add plugins to this project to connect to new Sources and Destinations and add additional commands with the `grouparoo install` command.
+
+If you ran this from within the project, you probably saw that first Grouparoo ran through its database migrations, then printed out a list of templates. Most of them likely don't look helpful to our task here, which is to install a SQLite App.
+
+In Grouparoo, [Apps](/docs/config/apps/community) are _connection definitions_. They tell Grouparoo how to connect to the various services used to sync your data. Every Source and Destination requires an App.
+
+### Install SQLite Plugin
+
+But we didn't see SQLite mentioned in the list of available generator templates. That's because Grouparoo is also plugin-focused, so that you're instance only carries what it really needs. That means we have to install the SQLite plugin to have access to SQLite generator templates. Let's do that!
+
+    $ grouparoo install @grouparoo/sqlite
+
+Now take a look and what's available using a "sqlite" filter as the argument passed to `generate`:
+
+    $ grouparoo generate sqlite --list
+
+    🦘 Grouparoo: generate sqlite
+
+    Available Templates: matching "sqlite"
+
+      sqlite:app (id) - Config for a Grouparoo sqlite App
+      sqlite:destination (id, parent) - Config for a sqlite Destination
+      sqlite:query:property (id, parent) - Config for a sqlite Query Property
+      sqlite:query:source (id, parent) - Config for a sqlite query Source. Work with multiple tables and build custom queries for its properties.
+      sqlite:table:property (id, parent) - Config for a sqlite Table Property
+      sqlite:table:source (id, parent, from, mapping, with, high-water-mark) - Config for a sqlite table Source. Construct Sources and Properties without writing SQL.
+
+    You can add plugins to this project to connect to new Sources and Destinations and add additional commands with the `grouparoo install` command.
+
+### Configure SQLite App
+
+Great! We can learn a little more about each template using the `--describe` flag. Let's try that for the `sqlite:app` template:
+
+    $ grouparoo generate sqlite:app --describe
+
+    Required Arguments:
+      * id (required) - The name of this new App
+
+    Required Options:
+      None
+
+    Optional Options:
+      None
+
+We see that we need an `id` that we can pass directly as an argument. An `id` is a unique value that represents a config object. Every object has one and it should be unique. (_Technically_, they only have to be unique by _type_, but it's a good practice to make them globally unique within your Grouparoo instance.)
+
+Let's use an `id` value of `product_db` for our SQLite App:
+
+    $ grouparoo generate sqlite:app product_db
+
+    🦘 Grouparoo: generate sqlite:app product_db
+
+    ✅ wrote /private/tmp/my-sync-project/config/apps/product_db.js
+
+Take a look at the output. Grouparoo generated a config file for you in `config/apps/product_db.js`! Before we look at that, let's use [the `validate` command](/docs/cli/config#validate) to see if everything is working right:
+
+    $ grouparoo validate
+
+    🦘 Grouparoo: validate
+
+    Validating 1 objects...
+    notice: [ app ] testing app product_db (product_db) threw error: Could not find SQLite database: /path/to/app-config-example/...
+    warning: [ config ] error with app `product_db` (product_db): Error: error testing app product_db (product_db) - Could not find SQLite database: /path/to/app-config-example/...
+
+    ❌ Validation failed - 1 validation error
+
+Well, shoot! It didn't work. But that's actually a good thing – it means our validator is working. Because we haven't told Grouparoo where our database is.
+
+Open up that config file. The only thing you should have to adjust is [the `file` option](https://github.com/grouparoo/app-example-config/blob/a7eda5b16fe8ab15e9dc5cf49f389d43bfba9a19/config/apps/product_db.js#L9). This should be the path to your database. It can be absolute or relative to the root of your Grouparoo project.
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      class: "app",
+      id: "product_db",
+      name: "product_db",
+      type: "sqlite",
+      options: {
+        // Change this!
+        file: "/path/to/sqlite/database.sqlite",
+      },
+    },
+  ];
+};
+```
+
+If you want it to match the example project exactly, first move the `sqlite-source.sqlite` file you downloaded into a `data` directory within your project, and then rename it to `source.sqlite`. Otherwise, you can determine the path to the Grouparoo database and add it directly.
+
+### Validate and Apply Config Changes
+
+Keep using the `validate` command until you have a working connection. Eventually you should see it working as expected.
+
+    $ grouparoo validate
+
+    🦘 Grouparoo: validate
+
+    Validating 1 objects...
+    info: [ config ] validated App `product_db` (product_db)
+
+    ✅ Validation succeeded - 1 config objects OK!
+
+Hooray! When you're ready let's [apply those changes](/docs/cli/config#apply), which means we're saving them to the database.
+
+    $ grouparoo apply
+
+    🦘 Grouparoo: apply
+
+    Applying 1 objects...
+    notice: [ config ] created App `product_db` (product_db)
+
+    ✅ Config applied - 1 config objects up-to-date!
+
+Now we have an app and we can add some Sources!
+
+## Step 5: Add Users Source and Properties
+
+Next, it's time to add our Sources and their Properties. A Source is the place your customer data lives. In this case, we're mocking a data warehouse type of setup for an e-commerce site. Properties are attributes for your Profiles (in Grouparoo, we refer to users as _Profiles_).
+
+From our list of generators, you may have noticed that there are two types of sources for SQLite: _query_ and _table_. (If you didn't catch that, run `grouparoo generate sqlite --list` again.)
+
+A query source enables you to pull data from one or more tables by writing custom SQL queries. Table sources are much simpler. They provide a means to pull data from a column directly, without writing any custom SQL.
+
+### Add SQLite Users Table Source and Properties
+
+Let's first see what options we have available to us with the table source template:
+
+    $ grouparoo generate sqlite:table:source --describe
+
+    🦘 Grouparoo: generate sqlite:table:source
+
+    Config for a sqlite table Source. Construct Sources and Properties without writing SQL.
+
+    Required Arguments:
+      * id (required) - The id of this new Source
+
+    Required Options:
+      * parent (required) - The id of the sqlite App to use for this Source, e.g: `--parent data_warehouse`
+
+    Optional Options:
+      * from - The table to use for this source, e.g: `--from users`
+      * high-water-mark - The name of the column to uses for this Source's Schedule, e.g: `--high-water-mark updated_at`.
+      * mapping - The mapping between a column in this table and a Grouparoo Property, e.g: `--mapping "id=user_id"`
+      * with - The names of the columns to create properties from, e.g: `--with users,id,first_name,last_name`. Defaults to '*'
+
+There's a lot going on here. That's because the table source generator is pretty smart and can actually generate a handful of Properties for us, too! Otherwise we'd have to create these Properties individually. Let's do that. From our database, let's create a source with an `id` of `users` that pulls `email`, `first_name`, `last_name`, and `language` from the database.
+
+    $ grouparoo generate sqlite:table:source users --parent product_db --from users --high-water-mark updated_at --with id,email,first_name,last_name,language --mapping 'id=user_id'
+
+That generated your Source config (`apps/sources/users.js`), along with the specified Properties (`app/properties/...`).
+
+A few other items to note with this command:
+
+- We're using `updated_at` as the high watermark, which tells Grouparoo which records to target when looking for updates.
+- Because we included the `high-water-mark` option, the generator also created a Schedule object that is included with the Source config file (`config/sources/users.js`). This defines how often the users Source import will run after starting Grouparoo.
+- The `mapping` tells Grouparoo to point the `id` column from the `users` table to a `user_id` Property in Grouparoo. However, there is not a config file for this Property. It's what we call a _Bootstrapped Property_, which means it's the first Property in Grouparoo. It acts as the primary key for all profiles moving forward.
+
+### Validate and Apply Config Changes
+
+Believe it or not, that generator gave you the files _exactly_ as it should have. They are all ready to go. Go ahead and validate:
+
+    $ grouparoo validate
+
+    🦘 Grouparoo: validate
+
+    Validating 7 objects...
+    info: [ config ] validated App `product_db` (product_db)
+    info: [ config ] validated Source `users` (users)
+    info: [ config ] validated Property `user_id` (user_id)
+    info: [ config ] validated Property `email` (email)
+    info: [ config ] validated Property `first_name` (first_name)
+    info: [ config ] validated Property `language` (language)
+    info: [ config ] validated Property `last_name` (last_name)
+    info: [ config ] validated Schedule `users_schedule` (users_schedule)
+
+    ✅ Validation succeeded - 7 config objects OK!
+
+Then apply the changes:
+
+    $ grouparoo apply
+
+    🦘 Grouparoo: apply
+
+    Applying 7 objects...
+    info: [ config ] updated App `product_db` (product_db)
+    notice: [ run ] starting run run_40bcf695-5cc3-4b20-9e20-dc93e664d662 for property user_id (user_id)
+    notice: [ config ] created Source `users` (users)
+    notice: [ config ] created Property `user_id` (user_id)
+    notice: [ run ] starting run run_a838552b-643d-4170-821e-2a451d1aff12 for property email (email)
+    notice: [ config ] created Property `email` (email)
+    notice: [ run ] starting run run_d80dc946-82eb-417f-9380-8149c1a99bc7 for property first_name (first_name)
+    notice: [ config ] created Property `first_name` (first_name)
+    notice: [ run ] starting run run_7fb8183b-601f-4c29-9e0a-fea6bc762c4a for property language (language)
+    notice: [ config ] created Property `language` (language)
+    notice: [ run ] starting run run_efb64f57-5cc5-4684-8f39-5815cdcb22d9 for property last_name (last_name)
+    notice: [ config ] created Property `last_name` (last_name)
+    notice: [ config ] created Schedule `users_schedule` (users_schedule)
+
+    ✅ Config applied - 7 config objects up-to-date!
+
+## Add Purchases Source and Properties
+
+Our `users` table provided us basic user information. Now we want to pull from our `purchases` table to bring in relevant customer data.
+
+### Add SQLite Purchases Table Source
+
+Let's begin by adding another table-based Source.
+
+    $ grouparoo generate sqlite:table:source purchases --parent product_db --from purchases
+    --mapping 'user_id=user_id' --high-water-mark created_at
+
+Notice a few changes here:
+
+- We're not automatically bringing in any columns (to be made into Properties). We'll do that manually next.
+- The mapping is `user_id=user_id`. This is because the `purchases` table has a `user_id` field and that field will map to the `user_id` Property (Bootstrapped Property) we created in Grouparoo.
+- The high watermark here is `created_at`, which will also enable the Schedule, by default.
+
+These changes should have been applied automatically to your config file. You shouldn't have to edit the generated config file.
+
+### Add `ltv` and `purchase_count` Properties
+
+Next, let's add a couple Properties. The first will be `ltv`, which we'll use to calculate the lifetime value of each customer. The second will be `purchase_count` in which we'll count the number of successful purchases.
+
+    $ grouparoo generate sqlite:table:property ltv --parent purchases
+    $ grouparoo generate sqlite:table:property purchase_count --parent purchases
+
+We'll want to edit the configuration for each of these. [Here's the config for `ltv`](https://github.com/grouparoo/app-example-config/blob/a7eda5b16fe8ab15e9dc5cf49f389d43bfba9a19/config/properties/ltv.js), with comments where default values were adjusted:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      id: "ltv",
+      name: "ltv",
+      class: "property",
+      sourceId: "purchases",
+      // The value should be recorded as a float.
+      type: "float",
+      unique: false,
+      identifying: false,
+      isArray: false,
+      options: {
+        // Target the price column.
+        column: "price",
+        // Sum the `price` column.
+        aggregationMethod: "sum",
+        sort: null,
+      },
+      // Only use successful purchases.
+      filters: [{ key: "state", op: "equals", match: "successful" }],
+    },
+  ];
+};
+```
+
+Then we can do the same for [the `config/properties/purchase_count.js` object](https://github.com/grouparoo/app-example-config/blob/a7eda5b16fe8ab15e9dc5cf49f389d43bfba9a19/config/properties/ltv.js):
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      id: "purchase_count",
+      name: "purchase_count",
+      class: "property",
+      sourceId: "purchases",
+      // The value should be recorded as an integer (number of purchases).
+      type: "integer",
+      unique: false,
+      identifying: false,
+      isArray: false,
+      options: {
+        // Target the price column.
+        column: "price",
+        // Count the number of `price` column occurrences.
+        aggregationMethod: "count",
+        sort: null,
+      },
+      // Only use successful purchases.
+      filters: [{ key: "state", op: "equals", match: "successful" }],
+    },
+  ];
+};
+```
+
+### Validate and Apply Config Changes
+
+Make sure everything is in place:
+
+    $ grouparoo validate
+
+    🦘 Grouparoo: validate
+
+    Validating 11 objects...
+    info: [ config ] validated App `product_db` (product_db)
+    ...
+    info: [ config ] validated Source `purchases` (purchases)
+    info: [ config ] validated Property `ltv` (ltv)
+    info: [ config ] validated Property `purchase_count` (purchase_count)
+    info: [ config ] validated Schedule `purchases_schedule` (purchases_schedule)
+    ...
+
+    ✅ Validation succeeded - 11 config objects OK!
+
+And then load up the database with your new config objects:
+
+    $ grouparoo apply
+
+    🦘 Grouparoo: apply
+
+    Applying 11 objects...
+    info: [ config ] updated App `product_db` (product_db)
+    ...
+    notice: [ config ] created Source `purchases` (purchases)
+    notice: [ run ] starting run run_335a7f06-3b53-4ad5-8445-8c6067a8737b for property ltv (ltv)
+    notice: [ run ] starting run run_84a35270-476d-488e-9063-c32ae13c0ca4 for property ltv (ltv)
+    notice: [ config ] created Property `ltv` (ltv)
+    notice: [ run ] starting run run_98c3cf5d-bf8e-4aac-bca5-42d0b69f7426 for property purchase_count (purchase_count)
+    notice: [ run ] starting run run_13a26ffd-c2f9-48c5-8866-8594c3efd871 for property purchase_count (purchase_count)
+    notice: [ config ] created Property `purchase_count` (purchase_count)
+    notice: [ config ] created Schedule `purchases_schedule` (purchases_schedule)
+    ...
+
+    ✅ Config applied - 11 config objects up-to-date!
+
+## Step 6: Add Groups
+
+[Groups](/docs/config/groups/community) are where the power really comes into play with Grouparoo. Groups let us create cohorts of users that we then use to send to one or more Destinations (e.g. Mailchimp). Many Destinations also enable us to use Groups as tags on the object that gets synced. We'll see an example of that later.
+
+We're going to create two groups:
+
+- `all_emails`: Includes any users with a valid `email` Property.
+- `high_value_spanish_speakers`: Users who have spent more than $100 in successful purchases, whose primary language is Spanish.
+
+### Add `all_emails` Group
+
+Let's generate those config objects, beginning with the `all_emails` Group:
+
+    $ grouparoo generate group:calculated all_emails
+
+We can then edit [the file at `config/groups/all_emails.js`](https://github.com/grouparoo/app-example-config/blob/a7eda5b16fe8ab15e9dc5cf49f389d43bfba9a19/config/groups/all_emails.js):
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      class: "group",
+      id: "all_emails",
+      name: "all_emails",
+      type: "calculated",
+      // Include profiles where there is a value for `email`.
+      rules: [
+        {
+          propertyId: "email",
+          operation: { op: "exists" },
+        },
+      ],
+    },
+  ];
+};
+```
+
+### Add `high_value_spanish_speakers` Group
+
+Then let's do the same for `high_value_spanish_speakers`:
+
+    $ grouparoo generate group:calculated high_value_spanish_speakers
+
+And its file should look something like this:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      class: "group",
+      id: "high_value_spanish_speakers",
+      name: "high_value_spanish_speakers",
+      type: "calculated",
+      // Inlcude Profiles with an `ltv` above 100 who have a value of `Spanish`
+      // for `language`.
+      rules: [
+        {
+          propertyId: "ltv",
+          operation: { op: "gt" },
+          match: 100,
+        },
+        {
+          propertyId: "language",
+          operation: { op: "eq" },
+          match: "Spanish",
+        },
+      ],
+    },
+  ];
+};
+```
+
+### Validate and Apply Config Changes
+
+Let's make sure everything looks good:
+
+    $ grouparoo validate
+
+Then we can apply our changes:
+
+    $ grouparoo apply
+
+## Step 7: Install Mailchimp
+
+Now we're ready to setup our Destination, [Mailchimp](https://mailchimp.com/). Consider that we want to send everyone with a valid email address to some specific audience, but we want to tag them as "High Value Spanish Speaker" if they meet the criteria.
+
+### Install Mailchimp Plugin
+
+As we know now, whenever we want a new type of Source or Destination, we first need an App. But to be able to generate the App, we need its plugin. So let's begin by installing the plugin:
+
+    $ grouparoo install @grouparoo/mailchimp
+
+Then we can see the generators it gave us:
+
+    $ grouparoo generate mailchimp --list
+
+    🦘 Grouparoo: generate mailchimp
+
+    Available Templates: matching "mailchimp"
+
+      mailchimp:app (id) - Config for a Mailchimp App
+      mailchimp:email:destination (id, parent) - Config for a Mailchimp Email Destination
+      mailchimp:id:destination (id, parent) - Config for a Mailchimp ID Destination. Note: Use the email destination unless you know you need this.
+      mailchimp:property (id, parent) - Config for a Mailchimp Property
+      mailchimp:source (id, parent) - Config for a Mailchimp Source
+
+### Generate and Configure Mailchimp App
+
+Cool, so we can generate our App will this command:
+
+    $ grouparoo generate mailchimp:app mailchimp
+
+Notice there that the `id` for the App is `mailchimp`.
+
+If you tried to validate now, it will fail because Grouparoo doesn't know how to connect to Mailchimp or what list `id` value to use.
+
+We like to use sensitive (or even semi-sensitive) values via environment variables. Therefore, add the following to your `.env` file:
+
+```
+MAILCHIMP_API_KEY="..."
+MAILCHIMP_LIST_ID="..."
+```
+
+Replace the `...` with your API key and list ID. You will need to [generate an API key](https://mailchimp.com/help/about-api-keys/) if you have not already done so. And [here's how to find your list ID](https://mailchimp.com/help/find-audience-id/).
+
+<Alert variant="danger">
+  <p className="mb-0">
+    <strong>WARNING!</strong>
+  </p>
+  <p className="mb-0">
+    <strong>
+      Be sure to add <code>.env</code> to your <code>.gitignore</code> file so
+      you do not commit or publish sensitive values.
+    </strong>
+  </p>
+</Alert>
+
+When you have the correct values in `.env`, you can adjust the config file (`config/apps/mailchimp.js`) like so:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      class: "app",
+      id: "mailchimp",
+      name: "mailchimp",
+      type: "mailchimp",
+      options: {
+        // Use environment variables for API key setting.
+        apiKey: process.env.MAILCHIMP_API_KEY,
+      },
+    },
+  ];
+};
+```
+
+### Validate and Apply Config Changes
+
+Now you can validate:
+
+    $ grouparoo validate
+
+    🦘 Grouparoo: validate
+
+    Validating 14 objects...
+    info: [ config ] validated App `mailchimp` (mailchimp)
+    ...
+
+    ✅ Validation succeeded - 14 config objects OK!
+
+And apply:
+
+    $ grouparoo apply
+
+    🦘 Grouparoo: apply
+
+    Applying 14 objects...
+    notice: [ config ] created App `mailchimp` (mailchimp)
+    ...
+
+    ✅ Config applied - 14 config objects up-to-date!
+
+## Step 8: Add Mailchimp Destination
+
+Now we're ready to add the Mailchimp Destination. Let's call our Destination `newsletter`, which will be a generic newsletter we send to all customers who can receive email.
+
+    $ grouparoo generate mailchimp:email:destination newsletter --parent mailchimp
+
+We'll change a few values in the config file (`config/destinations/mailchimp.js`). We want to set:
+
+- Group ID for the Group of Profiles to export.
+- Mailchimp's list ID
+- The fields to include in the Mailchimp contact.
+- Any tags (as Grouparoo Groups) to attach to the Mailchimp contact.
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      id: "newsletter",
+      name: "newsletter",
+      class: "destination",
+      type: "mailchimp-export",
+      appId: "mailchimp",
+      // Send everyone with a valid email address.
+      groupId: "all_emails",
+      options: {
+        // The list ID we set in .env.
+        listId: process.env.MAILCHIMP_LIST_ID,
+      },
+      // The properties to send to Mailchimp with the Profile. Mailchimp has a
+      // few predetermined fields, which is why `FNAME` and `LNAME` have a
+      // different structure than the others.
+      mapping: {
+        email_address: "email",
+        FNAME: "first_name",
+        LNAME: "last_name",
+        language: "language",
+      },
+      // This tells Grouparoo to tag Profiles in the
+      // `high_value_spanish_speakers` group with "High Value Spanish Speaker"
+      // in Mailchimp.
+      destinationGroupMemberships: {
+        "High Value Spanish Speaker": "high_value_spanish_speakers",
+      },
+    },
+  ];
+};
+```
+
+### Validate and Apply Config Changes
+
+You should now be all set to validate:
+
+    $ grouparoo validate
+
+    🦘 Grouparoo: validate
+
+    Validating 15 objects...
+    info: [ config ] validated App `mailchimp` (mailchimp)
+    ...
+    info: [ config ] validated Destination `newsletter` (newsletter)
+    ...
+
+    ✅ Validation succeeded - 15 config objects OK!
+
+And apply:
+
+    $ grouparoo apply
+
+    🦘 Grouparoo: apply
+
+    Applying 15 objects...
+    info: [ config ] updated App `mailchimp` (mailchimp)
+    ...
+    info: [ config ] updated Group `high_value_spanish_speakers` (high_value_spanish_speakers)
+    notice: [ run ] starting run run_fb4eba09-20cc-40f7-a462-93a0b66a72bf for group all_emails (all_emails)
+    ...
+
+    ✅ Config applied - 15 config objects up-to-date!
+
+## Step 9: Run
+
+Now you're all configured. Yay! 🎉
+
+We are now at the point where we have _essentially_ everything included in [the app-example-config project](https://github.com/grouparoo/app-example-config). The only thing we're missing is writing any tests to add confidence to the data you're exporting. More on that below.
+
+You're ready to run Grouparoo! Do it!
+
+    $ grouparoo start
+
+This will begin the process of importing data from SQLite into Grouparoo and exporting it to Mailchimp.
+
+After you run the command the server will go wild, and that's a good thing. But it's tough to follow. You can open your browser and run the web app for some visibility and observability into what's happening under the hood. The app is available at http://localhost:3000/.
+
+## Next Steps
+
+If you want to keep going, the next steps are to write tests to validate your data and then deploy your Grouparoo instance. We won't cover these here. Instead here are some useful guides and other resources that you may want to peruse:
+
+- [app-example-config](https://github.com/grouparoo/app-example-config)
+- [Testing Grouparoo](/docs/running/testing)
+- [Deploying Grouparoo](/docs/deployment)
+- [Get Help](/docs/support)
+- [Join the Community](/docs/community)
+
+<Button
+  href="https://github.com/grouparoo/app-example-config"
+  target="_blank"
+  rel="noreferrer"
+>
+  View the Code
+</Button>

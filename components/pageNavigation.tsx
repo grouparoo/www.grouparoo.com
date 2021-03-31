@@ -9,8 +9,10 @@ interface pageNavItem {
 
 export function PageNavigation({
   includeLineBreak,
+  pageNavSelector,
 }: {
   includeLineBreak?: boolean;
+  pageNavSelector?: string;
 }) {
   const router = useRouter();
   const [pageNav, setPageNav] = useState<pageNavItem[]>([]);
@@ -21,7 +23,7 @@ export function PageNavigation({
 
   function buildPageNavigation() {
     const headerElements = globalThis.document.querySelectorAll(
-      "h1, h2, h3, h4, h5, h6"
+      pageNavSelector || "h1, h2, h3, h4, h5, h6"
     );
     const _pageNav: pageNavItem[] = Array.from(headerElements)
       .filter((e) => e.id)
@@ -46,7 +48,7 @@ export function PageNavigation({
           <small className="docsTableOfContents">
             <ul>
               {pageNav.map((section) => (
-                <li key={`nav-${section.title}`}>
+                <li key={`nav-${section.href}`}>
                   <a href={section.href}>{section.title}</a>
                 </li>
               ))}
