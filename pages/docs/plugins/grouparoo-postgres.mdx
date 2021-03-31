@@ -1,6 +1,6 @@
 ---
 title: "@grouparoo/postgres"
-date: "2021-03-10"
+date: "2021-03-31"
 pullQuote: "Learn how to work with the Postgres plugin as a Source or a Destination."
 ---
 
@@ -89,14 +89,13 @@ There is only one option:
 
 #### Table Source Mappings
 
-Mapping is a section of key-value pairs which represents how Grouparoo should match source columns to properties in Grouparoo.
+Mapping is a section of key-value pairs which represents how Grouparoo should match a column from the Source table to a Profile in Grouparoo.
 
-For example, let's say your database has a column named `email` and `first_name`, while the Property `id` values in Grouparoo are `emailAddress` and `firstName`. Your mapping would look like this:
+For example, let's say your database has a column named `email` and that maps directly to a _unique_ Property on the Profile in Grouparoo called `emailAddress`. In that case, your mapping would look like this:
 
 ```js
 mapping: {
   email: "emailAddress",
-  first_name: "firstName"
 }
 ```
 
@@ -106,7 +105,9 @@ A schedule is attached to every Source config file by default, commented out. If
 
 [You can read more about the common options here](/docs/config/sources/community#adding-a-schedule). The Postgres-specific options (those in the `options` object) are:
 
-- `column`: (**required**) The name of the column to use as the high water mark. This is a date column.
+- `column`: (**required**) The name of the column to use as the high watermark.
+
+A _high watermark_ is a value used for comparison. Grouparoo will only import items where the high watermark column is greater than the largest previously imported high watermark value. For example, let's say you use `updated_at` as your high watermark. Grouparoo will run an import and record the highest value from that column (presumably from the most recently updated record). The next time the import runs, Grouparoo will only consider records where `updated_at` is greater than the previous high watermark value. And it doesn't have to be a date, it just has to be comparable. Another example would be a numeric field, like `version`, in which the value is incremented when changes are made to the record in the Source database.
 
 #### Table Source Properties
 
@@ -149,6 +150,8 @@ Like a [Table Source Schedule](#table-source-schedule), a Query Source Schedule 
 - `query`: A SQL query to return that tells Grouparoo which Profiles to check each time the interval occurs.
 - `propertyId`: The `id` of the Grouparoo Property whose data is returned by `options.query`.
 
+**Be sure that your query only returns one column of data, and that it maps to the Grouparoo Property you set with `options.propertyId`.**
+
 Here's an example:
 
 ```js
@@ -170,7 +173,7 @@ This will drop a file at `config/properties/lifetime_value.js`. Edit this file t
 
 There is one unique option for Query Source Properties:
 
-- `query`: The query to extract the Property. You can use [mustache variables](https://github.com/janl/mustache.js#variables) to represent the keys of other Properties in the system.
+- `query`: The query to extract the Property. You can use [mustache variables](https://github.com/janl/mustache.js#variables) to represent the keys of other Properties in the system. You can use the `id` of any other Properties you created in Grouparoo.
 
 Here's an example that sums the values in the `price` column for rows in which the `user_id` column's value matches the value of the Grouparoo Profile's `userId` field (i.e. `userId` is the `id` for the Property in Grouparoo):
 
