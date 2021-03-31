@@ -1,10 +1,10 @@
-import Head from "next/head";
 import { Container, Row, Col, Breadcrumb } from "react-bootstrap";
 import hydrate from "next-mdx-remote/hydrate";
 import { TableOfContents } from "../../../components/docs/tableOfContents";
 import { PageNavigation } from "../../../components/pageNavigation";
 import * as components from "../../../components/docs";
 import { loadMdxFile, getStaticMdxPaths } from "../../../utils/mdxUtils";
+import SEO from "../../../components/seo";
 
 export default function DocPage({ pageProps }) {
   const { source, frontMatter, path, breadcrumbs } = pageProps;
@@ -12,11 +12,13 @@ export default function DocPage({ pageProps }) {
 
   return (
     <>
-      <Head>
-        <title>Grouparoo Docs: {frontMatter.title}</title>
-        <meta name="description" content={frontMatter.pullQuote} />
-        <link rel="canonical" href={`https://www.grouparoo.com${path}`} />
-      </Head>
+      <SEO
+        canonical={true}
+        description={frontMatter.pullQuote}
+        image={frontMatter.image}
+        path={path}
+        title={`${frontMatter.title} | Grouparoo`}
+      />
 
       <Container>
         {path !== "/docs/index" ? (
