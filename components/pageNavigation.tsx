@@ -48,7 +48,7 @@ export function PageNavigation({
           <small className="docsTableOfContents">
             <ul>
               {pageNav.map((section) => (
-                <li key={`nav-${section.title}`}>
+                <li key={`nav-${section.href}`}>
                   <a href={section.href}>{section.title}</a>
                 </li>
               ))}
