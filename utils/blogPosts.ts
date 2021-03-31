@@ -38,7 +38,7 @@ export interface BlogPost extends BlogEntry {
 }
 
 export async function getBlogPaths() {
-  return getStaticMdxPaths(["blog"]);
+  return getStaticMdxPaths(["pages", "blog"]);
 }
 
 export async function getBlogEntries(
@@ -48,7 +48,7 @@ export async function getBlogEntries(
   limit = LIMIT
 ) {
   const offset = (pageNumber - 1) * limit;
-  const entries: BlogEntry[] = loadEntries(["blog"])
+  const entries: BlogEntry[] = loadEntries(["pages", "blog"])
     .filter((entry) => {
       if (!author) return true;
       return getAuthor(author) === getAuthor(entry.author);
@@ -72,13 +72,13 @@ export async function getBlogEntries(
 }
 
 export async function pagesCount(limit = LIMIT) {
-  const entries: BlogEntry[] = loadEntries(["blog"]);
+  const entries: BlogEntry[] = loadEntries(["pages", "blog"]);
   return Math.ceil(entries.length / limit);
 }
 
 export async function getBlogPost(slugName): Promise<BlogPost> {
   const { source, frontMatter, path, slug } = await loadMdxFile(
-    ["blog", `${slugName}.mdx`],
+    ["pages", "blog", `${slugName}.mdx`],
     components
   );
   const { title, date, author, pullQuote, tags, twitter_card } = frontMatter;
@@ -102,7 +102,7 @@ export async function getBlogPost(slugName): Promise<BlogPost> {
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  const total = loadEntries(["blog"]).length;
+  const total = loadEntries(["pages", "blog"]).length;
   const { entries } = await getBlogEntries(1, null, null, total);
   const posts = [];
   for (const entry of entries) {

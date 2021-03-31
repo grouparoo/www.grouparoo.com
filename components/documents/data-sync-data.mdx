@@ -1,0 +1,70 @@
+## Data
+
+The first set of tenants are about the data. They focus on ease, reliability, observability, and smart integration to build confidence in the toolset.
+
+### Query the source of truth
+
+Every piece of data has a source of truth. For example, a customer’s lifetime value lives in your product database or data warehouse in the _purchases_ table. You should use that table when calculating the value.
+
+Specifically, it’s important to not rely on querying artifacts that are a side effect. You might also have an event stream of clicks on the _Purchase_ button. Don’t use this.
+
+Querying the source of truth gives your more flexibility to change the definition. Next month, you might want to subtract returns from that lifetime value number. It will evolve with the product because it’s the primary artifact. You will also be able to use the history when you get a new idea that wasn’t part of those early events.
+
+### Be incremental
+
+It’s untenable to process every user every time. Intelligently monitoring the source of truth for changes will allow your app to grow with the company while maintaining near real-time service level agreements (SLAs).
+
+The most tried and true approach is for critical tables in your database to have a timestamp indicating the last time it has changed. You can use these values to maintain a high-water mark to use the next time to calculate a change set.
+
+There are other event-driven approaches like subscribing to a message bus system or change data capture (CDC) approaches.
+
+In all cases, the goal is to reliably know which records have changed (or may have changed), so you can query the source of truth to get the new values.
+
+### Be idempotent
+
+It is tempting to take the incremental approach when calculating property values. For example, you might receive an event that the user has bought a $30 item. You could simply add $30 to the previous lifetime value. Resist this temptation.
+
+The source of the truth can answer this question idempotently. This means you don’t need to rely on previous information. Always doing that query allows you to have reliable data. The benefit starts with the full history from the beginning and continues through to flexibility to make changes later.
+
+You will also be able to handle adjacent triggers from your incremental change sets. For example, maybe you have discovered a new purchase was made. You’ll want to recalculate that lifetime value. But a new purchase means you might also need to recalculate the user’s current address, their number of purchases, and their favorite products. Don’t be scared to make those queries. Reliable and consistent data is worth it.
+
+### Batch when possible
+
+You should be willing to query a lot in order to get correct data, but batching multiple users together allows you to offset that approach and use resources efficiently.
+
+Not all data needs to be synced in real-time. For that matter, “real-time” might mean something different for each piece of data. For example, it is likely acceptable to update a customer’s lifetime value in Salesforce within 30 minutes of the purchase.
+
+In this case, you can discover new purchases with that frequency to determine the users that need to be updated. Then, you can fetch all of those users’ lifetime value at once with a query like this: `SELECT userId, SUM(price) FROM purchases WHERE userId IN (long, list, of, user, ids) GROUP BY userId;`
+
+### Groups matter
+
+Cohorts (or audiences, or groups, or segments) are a key outcome of data sync, particularly for marketing tools. A customer’s membership in a group like “High Value” will determine how the company interacts with them. It is valuable to share this definition, even as it changes, across multiple apps to create a consistent customer experience.
+
+As it is calculating the property values, a data sync app should also read from shared definitions and calculate these group memberships. It can then synchronize the memberships to multiple tools. For example, a “High Value” user might be on a special marketing mailing list and also have their tickets routed more quickly in customer support.
+
+### Minimize data out
+
+In many cases, the specific property value for a user is not relevant; however, that value is a factor in cohort creation. In the lifetime value example, it is unlikely that an email tool literally needs the number of dollars spent; however, bucketing users into groups is critically important.
+
+At the same time, personally identifiable information (PII) can be dangerous. Policies like GDPR, CCPA, and others make it important to limit the PII flowing out of your internal system.
+
+The opportunity for your data sync app is to minimize what is sent to external tools in the first place. If you are calculating a group called “High Value California Customers” for use in a marketing campaign, only sync over a user’s membership in that group. Keep their lifetime value and their address within your environment.
+
+### Destinations have nuances
+
+Every destination service is unique. For sanity, you will want to standardize how you interact with each one, but there will always be deviations.
+
+The mapping difference is how to project your customers and group into that system. For Mailchimp, this means contacts with merge vars that have tags. Marketo has users with fields on lists. Salesforce has many customized options. Research the available APIs and decide on how the data gets mapped.
+
+APIs have differences around data formatting. For example, datetimes are often formatted in different ways. Intercom sends seconds since the epoch. Pipedrive uses the full ISO value. Hubspot requires epoch milliseconds at midnight UTC.
+
+Finally, each service has its own approach towards rate limiting. Understand the limits in order to make best use of your allotment. Iterable has 500 calls per second. Pardot gives you 25,000 per day. Sailthru varies depending on the endpoint.
+
+### Record the data flow
+
+Log the values, the time, and the destination of all data leaving your system. This serves many purposes across observability, compliance, and efficiency.
+
+It is inevitable that you will be asked something along the lines of, "Why did I receive this push notification yesterday at noon?
+"Everyone will be perplexed because only customers without a purchase should have been sent that notification and this user clearly has a purchase. A record of the data flow will show you that they moved out of that cohort just after noon. Similar questions are often asked around PII compliance and the log will help.
+
+You will also be able to use the record to be more efficient with your destination systems. For example, if the data this destination is to receive does not change, you can skip the API call and use your rate limit more wisely.

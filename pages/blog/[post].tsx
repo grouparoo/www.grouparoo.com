@@ -83,9 +83,7 @@ export default function BlogPage({ pageProps }) {
         <Row>
           <Col md={9}>
             <br />
-            <div style={{ lineHeight: "150%" }} id="blogContent">
-              {content}
-            </div>
+            <div className="mdxContent">{content}</div>
             <br />
             <AuthorBox author={author} entry={post} />
           </Col>

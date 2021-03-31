@@ -13,12 +13,13 @@ import externalLinks from "remark-external-links";
 import { titleize } from "../utils/inflectors";
 
 const dirname = __dirname;
-let pagesDir;
+let rootDir;
 if (!dirname || dirname === "/") {
-  pagesDir = path.resolve(path.join(process.cwd(), "pages"));
+  rootDir = path.resolve(path.join(process.cwd()));
 } else {
-  pagesDir = path.resolve(path.join(__dirname, "..", "pages"));
+  rootDir = path.resolve(path.join(__dirname, ".."));
 }
+const pagesDir = path.join(rootDir, "pages");
 
 export const mdxOptions = {
   remarkPlugins: [[externalLinks, { target: "_blank" }]],
@@ -30,7 +31,7 @@ export const mdxOptions = {
 };
 
 export async function loadMdxFile(dirParts: string[], components) {
-  const fullPath = path.resolve(path.join(pagesDir, ...dirParts));
+  const fullPath = path.resolve(path.join(rootDir, ...dirParts));
   return loadMdxFilePath(fullPath, components);
 }
 
@@ -62,7 +63,7 @@ export async function loadMdxFilePath(fullPath, components) {
 
 export function loadEntries(dirParts: string[]) {
   const entries = [];
-  const rootPath = path.resolve(path.join(pagesDir, ...dirParts));
+  const rootPath = path.resolve(path.join(rootDir, ...dirParts));
   if (!fs.existsSync(rootPath)) {
     throw new Error(`entries path does not exist: ${rootPath}`);
   }
@@ -77,11 +78,11 @@ export function loadEntries(dirParts: string[]) {
 }
 
 export async function getStaticMdxPaths(dirParts: string[], depth = 1) {
-  if (!fs.existsSync(pagesDir)) {
-    throw new Error(`mdx paths does not exist: ${pagesDir}`);
+  if (!fs.existsSync(rootDir)) {
+    throw new Error(`mdx paths does not exist: ${rootDir}`);
   }
   const paths = glob
-    .sync(path.join(pagesDir, ...dirParts, "**", "*.mdx"))
+    .sync(path.join(rootDir, ...dirParts, "**", "*.mdx"))
     .map((p) => p.replace(pagesDir, ""))
     .map((p) => p.split(".")[0])
     .filter((p) => p.split("/").length === depth + 2);
