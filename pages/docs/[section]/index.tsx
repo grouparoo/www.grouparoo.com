@@ -37,7 +37,7 @@ export default function DocPage({ pageProps }) {
                 top: 10,
               }}
             >
-              <PageNavigation />
+              <PageNavigation pageNavSelector={frontMatter.pageNavSelector} />
             </div>
           </Col>
 
