@@ -5,7 +5,22 @@ pullQuote: "Learn how to sync data from a SQLite customer database to a Mailchim
 pageNavSelector: "h2"
 ---
 
+<Image
+  src="docs/tutorials/210331-app-example-config.png"
+  alt="App Example: Declarative Sync"
+  width={1400}
+  height={735}
+/>
+
 In this tutorial we're going to look at how we built our [app-example-config project](https://github.com/grouparoo/app-example-config). We'll start from scratch (with some seeded data) and sync our customer data from a SQLite database Source to a Mailchimp Destination.
+
+<Button
+  href="https://github.com/grouparoo/app-example-config"
+  target="_blank"
+  rel="noreferrer"
+>
+  View the Code
+</Button>
 
 ## Step 1: Install Grouparoo
 
@@ -29,7 +44,9 @@ _Note: If the directory for your project exists, you can run `grouparoo init .` 
 
 ## Step 3: Add Source Database
 
-We have some seed data for you to work with for this example. You can download the database directly [here](/downloads/sqlite-source.sqlite). Place that file anywhere on your file system that your current user can read.
+We have some seed data for you to work with for this example. You can download the database directly [here](/downloads/sqlite-source.sqlite). This SQLite database contains the contents of [a users CSV file](/downloads/users-source-data.csv) and [a purchases CSV file](/downloads/purchases-source-data.csv), to represent a prototypical e-commerce example.
+
+Place that file anywhere on your file system that your current user can read.
 
 <Button href="/downloads/sqlite-source.sqlite" variant="outline-primary">
   Download Seed Data
@@ -149,7 +166,7 @@ exports.default = async function buildConfig() {
 };
 ```
 
-If you want it to match the example project exactly, first move the `sqlite-source.sqlite` file you downloaded into a `data` directory within your project, and then rename it to `source.sqlite`. Otherwise, you can determine the path to the database and add it directly.
+If you want it to match the example project exactly, first move the `sqlite-source.sqlite` file you downloaded into a `data` directory within your project, and then rename it to `source.sqlite`. Otherwise, you can determine the path to the Grouparoo database and add it directly.
 
 ### Validate and Apply Config Changes
 
@@ -179,7 +196,7 @@ Now we have an app and we can add some Sources!
 
 ## Step 5: Add Users Source and Properties
 
-Next, it's time to add our Sources and their Properties. A Source is the place your customer data lives. In this case, we're mocking a local data warehouse type of setup. Properties are attributes for your Profiles (in Grouparoo, we refer to users as _Profiles_).
+Next, it's time to add our Sources and their Properties. A Source is the place your customer data lives. In this case, we're mocking a data warehouse type of setup for an e-commerce site. Properties are attributes for your Profiles (in Grouparoo, we refer to users as _Profiles_).
 
 From our list of generators, you may have noticed that there are two types of sources for SQLite: _query_ and _table_. (If you didn't catch that, run `grouparoo generate sqlite --list` again.)
 
@@ -659,7 +676,7 @@ You're ready to run Grouparoo! Do it!
 
 This will begin the process of importing data from SQLite into Grouparoo and exporting it to Mailchimp.
 
-After you run the command the server will go wild, and that's a good thing. But it's tough to follow. You can open your browser and run the web app for some visibility and observability into what's happening under the hood. The app is available at [localhost:3000](http://localhost:3000/).
+After you run the command the server will go wild, and that's a good thing. But it's tough to follow. You can open your browser and run the web app for some visibility and observability into what's happening under the hood. The app is available at http://localhost:3000/.
 
 ## Next Steps
 
@@ -670,3 +687,11 @@ If you want to keep going, the next steps are to write tests to validate your da
 - [Deploying Grouparoo](/docs/deployment)
 - [Get Help](/docs/support)
 - [Join the Community](/docs/community)
+
+<Button
+  href="https://github.com/grouparoo/app-example-config"
+  target="_blank"
+  rel="noreferrer"
+>
+  View the Code
+</Button>
