@@ -48,7 +48,7 @@ async function getNote(filePath): Promise<ReleaseNote> {
     github: github || null,
     blog: blog || null,
     source,
-    twitterCard,
+    twitterCard: twitterCard || null,
   };
 }
 
