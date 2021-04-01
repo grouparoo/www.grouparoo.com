@@ -33,7 +33,7 @@ async function getNote(filePath): Promise<ReleaseNote> {
     components
   );
   const { title, date, description, tags, blog, github } = frontMatter;
-  let { image } = frontMatter;
+  let { image, twitterCard } = frontMatter;
   if (image && !image.startsWith("http")) {
     image = `https://www.grouparoo.com/posts/${image}`;
   }
@@ -48,6 +48,7 @@ async function getNote(filePath): Promise<ReleaseNote> {
     github: github || null,
     blog: blog || null,
     source,
+    twitterCard,
   };
 }
 
