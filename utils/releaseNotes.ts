@@ -13,6 +13,7 @@ export type ReleaseNote = {
   blog: string;
   github: string;
   source: any;
+  twitterCard?: string;
 };
 
 const LIMIT = 10;
