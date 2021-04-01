@@ -9,38 +9,23 @@ import {
 } from "../../utils/releaseNotes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { releaseBadges, releaseDate, components } from "./index";
+import SEO from "../../components/seo";
 
-export default function ReleaseNotePage({ pageProps }) {
+export default function ReleaseNotePage({ pageProps, ...props }) {
   const feature: ReleaseNote = pageProps.feature;
   const title = `Grouparoo: What's New - ${feature.title}`;
   const content = hydrate(feature.source, { components: components });
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <link
-          rel="canonical"
-          href={`https://www.grouparoo.com/whats-new${
-            feature ? `/${feature.slug}` : ""
-          }`}
-        />
-
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@grouparoo" />
-        <meta name="twitter:creator" content="@grouparoo" />
-        <meta
-          property="og:url"
-          content={`https://www.grouparoo.com/whats-new/${feature.slug}`}
-        />
-        <meta property="og:title" content={feature.title} />
-        {feature.description ? (
-          <meta property="og:description" content={feature.description} />
-        ) : null}
-        {feature.image ? (
-          <meta property="og:image" content={feature.image} />
-        ) : null}
-      </Head>
+      <SEO
+        canonical={true}
+        path={`/whats-new/${feature.slug}`}
+        title={title}
+        description={feature.description}
+        twitterCard={feature.twitterCard || "summary"}
+        image={feature.image}
+      />
 
       <Container className="releasePage">
         <Row>

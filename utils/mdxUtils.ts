@@ -121,7 +121,7 @@ export function getBreadcrumbs(fullPath: string) {
     if (fs.existsSync(filePath)) {
       // Read it.
       const content = fs.readFileSync(filePath);
-      // Extract the frontmattter.
+      // Extract the frontmatter.
       const { data } = matter(content);
       // Look for a title value, and set the title if it's there.
       if (data.breadcrumb_label || data.title) {

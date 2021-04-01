@@ -11,6 +11,18 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2021-04-01-sqlite-plugin",
+      "content_html": "<p>Grouparoo <a href=\"/docs/installation/plugins\">has a new plugin</a>: <a href=\"https://www.npmjs.com/package/@grouparoo/sqlite\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">SQLite</a>!</p><p><a href=\"https://www.sqlite.org/index.html\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">SQLite</a> is a lightweight database that holds its data in a single <code>.sqlite </code>file on disk. Up until now, Grouparoo has supported SQLite as its application database, but not as a Source or Destination for your customer data.</p><p>With this addition, you can now use SQLite as a <a href=\"/docs/config/sources/community\">Source</a> — to import your customer data — or a <a href=\"/docs/config/destinations/community\">Destination</a> – to export your Grouparoo Profiles and Groups.</p><p>This new plugin will make it easier to get up and running with real-world examples, as we&#x27;ll demonstrate in future tutorials and blog posts. Stay tuned!</p><div style=\"margin-bottom:20px\"><img alt=\"SQLite Plugin\" src=\"https://www.grouparoo.com/posts/releases/2021-04-01-sqlite-plugin.png\" width=\"1400\" height=\"735\" style=\"height:735px;width:1400px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
+      "url": "https://www.grouparoo.com/whats-new#2021-04-01-sqlite-plugin",
+      "title": "SQLite Plugin",
+      "image": "https://www.grouparoo.com/posts/releases/2021-04-01-sqlite-plugin.png",
+      "date_modified": "2021-04-01T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-03-18-next-precompile",
       "content_html": "<p>The Grouparoo UI packages, <code>@grouparoo/ui-community</code> and <code>@grouparoo/ui-enterprise</code> now install faster and require fewer dependencies on your machines!</p><p>Previously, we were shipping the raw Typescript/Javascript files for our React frontend to our customers, and every time you ran <code>npm install</code>, you were also building the webpack bundle. Now, we do this all for you on our build servers. This leads to larger download sizes, but a faster overall install experience as there is no &quot;build&quot; step. Under the hood, we rely on <a href=\"https://nextjs.org\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">next.js</a> to build and package our UIs.</p>",
       "url": "https://www.grouparoo.com/whats-new#2021-03-18-next-precompile",
@@ -58,7 +70,7 @@
     },
     {
       "id": "grouparoo-release-note-2021-03-10-sendgrid",
-      "content_html": "<p>We have added <a href=\"https://www.sendgrid.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Sendgrid</a> as a destination. Sendgrid is a very popular transactional email tool in the developer community, and they&#x27;re starting to build more CRM-esque features into their offering. Our integration allows you to easily connect your product database (Postgres, MySQL) or data warehouse (Snowflake) to Sendgrid with just a few clicks or lines of code.</p><div style=\"margin-bottom:20px\"><img alt=\"Sendgrid List populated by Grouparoo\" src=\"https://www.grouparoo.com/posts/releases/2021-03-10-sendgrid-lists.png\" width=\"919\" height=\"682\" style=\"height:682px;width:919px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
+      "content_html": "<p>We have added <a href=\"https://www.sendgrid.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Sendgrid</a> as a destination. Sendgrid is a very popular transactional email tool in the developer community, and they&#x27;re starting to build more CRM-esque features into their offering. Our integration allows you to easily connect your product database (Postgres, MySQL) or data warehouse (Snowflake) to Sendgrid with just a few clicks or lines of code.</p><div style=\"margin-bottom:20px\"><img alt=\"Sendgrid List populated by Grouparoo\" src=\"https://www.grouparoo.com/posts/releases/2021-03-10-sendgrid-lists.png\" width=\"919\" height=\"727\" style=\"height:727px;width:919px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
       "url": "https://www.grouparoo.com/whats-new#2021-03-10-sendgrid",
       "title": "Sendgrid Destination",
       "image": "https://www.grouparoo.com/posts/releases/2021-03-10-sendgrid-lists.png",

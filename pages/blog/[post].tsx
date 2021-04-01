@@ -48,7 +48,7 @@ export default function BlogPage({ pageProps }) {
           href="https://www.grouparoo.com/feeds/blog.xml"
         />
 
-        <meta name="twitter:card" content={post.twitter_card || "summary"} />
+        <meta name="twitter:card" content={post.twitterCard || "summary"} />
         <meta name="twitter:site" content="@grouparoo" />
         <meta name="twitter:creator" content={author.twitter || "@grouparoo"} />
         <meta property="og:url" content={url} />
