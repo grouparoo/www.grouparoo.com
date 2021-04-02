@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 const url = "https://registry.npmjs.com/-/v1/search";
+import DocsNav from "../../data/docs-nav";
 
 interface NPMPackage {
   name: string;
@@ -43,11 +44,16 @@ export default function PluginsList() {
 
     if (!response.objects) return;
 
-    const pluginDocsUrl = (pkg: { name: string }) => {
+    const isPluginDoc = (plugin) => plugin.title === "Plugins";
+    const pluginPath = (plugin) => plugin.path;
+    const localPluginPaths = DocsNav.find(isPluginDoc).children.map(pluginPath);
+
+    const pluginDocsUrl = (pkg: { name: string; links: { npm: string } }) => {
       const name = pkg.name
         .replace(/\@/g, "") // Characters to remove
         .replace(/[\ \/]/g, "-"); // Characters to replace with a hyphen
-      return `/docs/plugins/${name}`;
+      const localPath = `/docs/plugins/${name}`;
+      return localPluginPaths.includes(localPath) ? localPath : pkg.links.npm;
     };
 
     const packages: NPMPackage[] = response.objects
