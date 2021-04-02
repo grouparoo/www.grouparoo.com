@@ -289,6 +289,8 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/plugins/grouparoo-postgres</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/plugins/grouparoo-sqlite</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/running/testing</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/support/common-issues</loc><changefreq
