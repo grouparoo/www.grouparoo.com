@@ -109,7 +109,10 @@ const DocsNav: NavItem[] = [
   {
     title: "Plugins",
     path: "/docs/plugins",
-    children: [{ title: "Postgres", path: "/docs/plugins/grouparoo-postgres" }],
+    children: [
+      { title: "Postgres", path: "/docs/plugins/grouparoo-postgres" },
+      { title: "SQLite", path: "/docs/plugins/grouparoo-sqlite" },
+    ],
   },
 
   // -- Tutorials --

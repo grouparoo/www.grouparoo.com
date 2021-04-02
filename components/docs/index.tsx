@@ -10,6 +10,7 @@ import {
 import CLICommand from "./CLICommands";
 import Image from "./image";
 import PluginsList from "./pluginsList";
+import { PluginDocsInstallation, PluginDocsLinks } from "./plugins";
 import RuleOpsTable from "./ruleOpsTable";
 import Tabs from "./tabs";
 import ValidateAndApplyConfig from "./validateAndApplyConfig";
@@ -24,6 +25,8 @@ export {
   HavingProblems,
   Image,
   Link,
+  PluginDocsInstallation,
+  PluginDocsLinks,
   PluginsList,
   RuleOpsTable,
   Tab,
