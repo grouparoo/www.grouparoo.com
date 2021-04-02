@@ -17,7 +17,16 @@ import { Sailthru } from "./sailthru";
 import { Salesforce } from "./salesforce";
 import { Sendgrid } from "./sendgrid";
 import { Snowflake } from "./snowflake";
+import { SQLite } from "./sqlite";
 import { Zendesk } from "./zendesk";
+
+export interface PluginConfigOptions {
+  [key: string]: {
+    required?: boolean;
+    default?: string;
+    description: string;
+  };
+}
 
 export interface Plugin {
   name: string;
@@ -50,6 +59,7 @@ export interface Plugin {
     imageWidth: number;
     imageHeight: number;
   }[];
+  configOptions?: PluginConfigOptions;
 }
 
 export const PluginData: Plugin[] = [
@@ -72,6 +82,7 @@ export const PluginData: Plugin[] = [
   Salesforce,
   Sendgrid,
   Snowflake,
+  SQLite,
   Zendesk,
 ];
 
