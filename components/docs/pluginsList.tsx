@@ -86,7 +86,13 @@ export default function PluginsList() {
           plugins.map((plugin) => (
             <tr key={plugin.name}>
               <td style={{ width: 210 }}>
-                <a href={plugin.url}>{plugin.name}</a>
+                <a
+                  href={plugin.url}
+                  target={plugin.url.startsWith("http") ? "_blank" : null}
+                  rel={plugin.url.startsWith("http") ? "noreferrer" : null}
+                >
+                  {plugin.name}
+                </a>
               </td>
               <td>{plugin.version}</td>
               <td>{plugin.description}</td>
