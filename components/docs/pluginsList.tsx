@@ -16,7 +16,11 @@ interface NPMPackage {
   };
 }
 
-const ignoredPlugins = ["@grouparoo/ui-components", "@grouparoo/client-web"];
+const ignoredPlugins = [
+  "@grouparoo/ui",
+  "@grouparoo/ui-components",
+  "@grouparoo/client-web",
+];
 
 export default function PluginsList() {
   const [plugins, setPlugins] = useState<NPMPackage[]>([]);
@@ -28,7 +32,9 @@ export default function PluginsList() {
 
   async function load(query = "@grouparoo") {
     setLoading(true);
-    const response = await fetch(`${url}?text=${query}`).then((r) => r.json());
+    const response = await fetch(`${url}?text=${query}&size=250`).then((r) =>
+      r.json()
+    );
     setLoading(false);
 
     if (!response.objects) return;
