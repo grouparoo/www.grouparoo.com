@@ -7,17 +7,28 @@ pageNavSelector: "h2"
 
 Welcome to the Grouparoo Dictionary! This is the collection of terms we use throughout the Grouparoo application to help you sync customer data between your source(s) of truth and business applications.
 
+<Alert variant="primary">
+  Are we missing a term that you expected to see here?{" "}
+  <Link href="/meet">Let us know</Link>.
+</Alert>
+
 ### Table of Contents
 
+- [App](#app)
 - [Calculated Group](#calculated-group)
 - [Destination](#destination)
 - [Event](#event)
 - [Group](#group)
 - [Manual Group](#manual-group)
+- [Plugin](#plugin)
 - [Profile](#profile)
 - [Profile Property](#profile-property)
 - [Profile Property Rule](#profile-property-rule)
 - [Source](#source)
+
+## App
+
+An App in Grouparoo represents a _integration_, or a _connection_ to some service. Every [Source](#source) and [Destination](#destination) requires an App. [See this page](/integrations) for a full list of available integrations.
 
 ## Calculated Group
 
@@ -59,6 +70,14 @@ There are 2 types of groups: [**Calculated**](#calculated-group) and [**Manual**
 ## Manual Group
 
 Manual Groups are a type of [Group](#group) that only change when you add or remove Profiles.
+
+## Plugin
+
+The core Grouparoo application is the engine that drives syncing data from [Sources](#source) to [Destinations](#destination). The application relies on plugins to provide you with only the functionality you require to sync data between your preferred services.
+
+Being that Grouparoo is a Node.js application, the plugins are available as JavaScript packages through [NPM](https://www.npmjs.com/). The majority of plugins are open-source and available for free, though we do have also have [paid plugins](/docs/plugins#paid-plugins).
+
+Learn more about [existing plugins](/docs/plugins), or [develop your own plugin](/docs/development/plugins).
 
 ## Profile
 
