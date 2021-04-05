@@ -29,7 +29,9 @@ const PluginDocsColumnarDestination = ({ plugin }: { plugin: string }) => {
 
   return (
     <>
-      <h2 id={`create-${slug}-destination`}>Creating a {plugin} Destination</h2>
+      <h2 id={`creating-a-${slug}-destination`}>
+        Creating a {plugin} Destination
+      </h2>
 
       <p>
         {plugin} is one of the few integrations that can be both a Source and a
