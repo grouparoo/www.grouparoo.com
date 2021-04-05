@@ -2,13 +2,23 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 
 export interface CodeBlockProps {
   code: string;
-  language?: "cli" | "json";
+  language?: "cli" | "json" | "js";
 }
 
 const CommandLineBlock = ({ code }) => {
   return (
     <pre>
-      <code>$ {code}</code>
+      <code>
+        {code
+          .trim()
+          .split("\n")
+          .map((line, idx) => (
+            <span key={idx}>
+              {idx !== 0 ? <br /> : null}
+              <span>$ {line.trim()}</span>
+            </span>
+          ))}
+      </code>
     </pre>
   );
 };

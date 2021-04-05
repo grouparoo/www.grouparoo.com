@@ -11,6 +11,7 @@ import CLICommand from "./CLICommands";
 import Image from "./image";
 import PluginsList from "./pluginsList";
 import {
+  PluginDocsColumnarSourceIntro,
   PluginDocsCreateApp,
   PluginDocsInstallation,
   PluginDocsLinks,
@@ -29,6 +30,7 @@ export {
   HavingProblems,
   Image,
   Link,
+  PluginDocsColumnarSourceIntro,
   PluginDocsCreateApp,
   PluginDocsInstallation,
   PluginDocsLinks,

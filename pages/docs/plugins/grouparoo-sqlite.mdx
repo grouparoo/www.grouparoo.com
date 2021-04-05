@@ -15,55 +15,15 @@ This guide will show you how to work with the SQLite plugin to [create a Source]
 
 <PluginDocsCreateApp plugin="SQLite" />
 
+<ValidateAndApplyConfig />
+
+<PluginDocsColumnarSourceIntro plugin="SQLite" />
+
 ---
 
 STOPPED HERE
 
 ---
-
-<ValidateAndApplyConfig />
-
-## Creating a SQLite Source
-
-A Source is how you import data into Grouparoo. For columnar sources, like SQLite, there are two _types_ of sources:
-
-- A _Table Source_ targets specific columns within a single table and can perform aggregation methods on that column.
-- A _Query Source_ provides the ability to write custom SQL code to extract data from one or more tables and import the result into Grouparoo.
-
-You can generate each type of source using the `generate` command. Each requires that you specify a `parent`, which should match the `id` of the App you created.
-
-    $ grouparoo generate sqlite:table:source users --parent my_data_warehouse
-    $ grouparoo generate sqlite:query:source purchases --parent my_data_warehouse
-
-Each generator has additional options for speeding up the config process. You can use the `--describe` flag to learn more about each command. For example:
-
-    $ grouparoo generate sqlite:table:source --describe
-
-Some generators have a way to batch multiple generated config files together. [Read more here](/docs/cli/config#batch-generation).
-
-All Sources have a common set of options, [which you can read about here](/docs/config/sources/community#configuring-your-source). Type-specific options are listed below.
-
-### Table Source
-
-There are two objects in the Table Source config file that are unique to this type: `options` and `mappings`. More on these and other related items below.
-
-#### Table Source Options
-
-There is only one option:
-
-- `table`: (**required**) Name of the table in the SQLite database.
-
-#### Table Source Mappings
-
-Mapping is a section of key-value pairs which represents how Grouparoo should match a column from the Source table to a Profile in Grouparoo.
-
-For example, let's say your database has a column named `email` and that maps directly to a _unique_ Property on the Profile in Grouparoo called `emailAddress`. In that case, your mapping would look like this:
-
-```js
-mapping: {
-  email: "emailAddress",
-}
-```
 
 #### Table Source Schedule
 
