@@ -1,10 +1,12 @@
-import PluginDocsColumnarSourceIntro from "./columnarSourceIntro";
+import PluginDocsColumnarDestination from "./columnarDestination";
+import PluginDocsColumnarSource from "./columnarSource";
 import PluginDocsCreateApp from "./createApp";
 import PluginDocsInstallation from "./installation";
 import PluginDocsLinks from "./links";
 
 export {
-  PluginDocsColumnarSourceIntro,
+  PluginDocsColumnarDestination,
+  PluginDocsColumnarSource,
   PluginDocsCreateApp,
   PluginDocsInstallation,
   PluginDocsLinks,

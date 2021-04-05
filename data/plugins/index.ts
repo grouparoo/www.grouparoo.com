@@ -18,12 +18,15 @@ import { Snowflake } from "./snowflake";
 import { SQLite } from "./sqlite";
 import { Zendesk } from "./zendesk";
 
+export interface PluginConfigOption {
+  default?: string;
+  description?: string;
+  name?: string;
+  required?: boolean;
+}
+
 export interface PluginConfigOptions {
-  [key: string]: {
-    required?: boolean;
-    default?: string;
-    description: string;
-  };
+  [key: string]: PluginConfigOption;
 }
 
 export interface Plugin {
