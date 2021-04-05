@@ -1,7 +1,22 @@
 import Link from "next/link";
 
 import CodeBlock from "./codeBlock";
-import { packageJsonAfterInstallation } from "./codeExamples";
+
+const packageJsonAfterInstallation = (pkgName) => `
+{
+  // ...
+  "dependencies": {
+    "${pkgName}": "...",
+    // ...
+  },
+  "grouparoo": {
+    "plugins": [
+      "${pkgName}",
+      // ...
+    ]
+  }
+}
+`;
 
 const PluginDocsInstallation = ({ plugin }: { plugin: string }) => {
   if (!plugin) return null;
@@ -30,7 +45,7 @@ const PluginDocsInstallation = ({ plugin }: { plugin: string }) => {
         <code>grouparoo.plugins</code> section in that same file, which enables
         it.
       </p>
-      <CodeBlock {...packageJsonAfterInstallation(pkgName)} />
+      <CodeBlock code={packageJsonAfterInstallation(pkgName)} language="json" />
       <p>
         Once the plugin is installed, you'll be working primarily with{" "}
         <Link href="/docs/cli/config">the CLI's configuration commands</Link> to

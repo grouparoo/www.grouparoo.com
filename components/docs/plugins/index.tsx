@@ -1,5 +1,11 @@
+import PluginDocsColumnarSourceIntro from "./columnarSourceIntro";
 import PluginDocsCreateApp from "./createApp";
 import PluginDocsInstallation from "./installation";
 import PluginDocsLinks from "./links";
 
-export { PluginDocsCreateApp, PluginDocsInstallation, PluginDocsLinks };
+export {
+  PluginDocsColumnarSourceIntro,
+  PluginDocsCreateApp,
+  PluginDocsInstallation,
+  PluginDocsLinks,
+};
