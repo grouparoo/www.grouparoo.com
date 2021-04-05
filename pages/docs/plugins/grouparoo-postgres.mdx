@@ -1,208 +1,26 @@
 ---
 title: "@grouparoo/postgres"
-date: "2021-03-31"
+date: "2021-04-05"
 pullQuote: "Learn how to work with the Postgres plugin as a Source or a Destination."
+pageNavSelector: "h2"
 ---
 
-**NPM:** [@grouparoo/postgres](https://www.npmjs.com/package/@grouparoo/postgres) <br />
-**GitHub:** [@grouparoo/postgres](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/postgres)
+<PluginDocsLinks plugin="Postgres" />
 
-Grouparoo's Postgres plugin enables you to import data from one or more PostgreSQL databases or to export data to a PostgreSQL database.
+Grouparoo's [Postgres](https://www.postgresql.org/) plugin enables you to import data from one or more Postgres databases or to export data to a Postgres database.
 
-To get started, you want to first [install the plugin](#installing-the-postgres-plugin) and then [create an App](#creating-a-postgres-app). From there, you can use the App to [create a source](#creating-a-postgres-source) or a [destination](#creating-a-postgres-destination).
+This guide will show you how to work with the Postgres plugin to [create a Source](#creating-a-postgres-source) to import your data, or to [create a Destination](#creating-a-postgres-destination) to export your data.
 
-## Installing the Postgres Plugin
+<PluginDocsInstallation plugin="Postgres" />
 
-To work with the Postgres plugin, you must first install it in an existing Grouparoo project. You can do this using [the `install` command](/docs/cli/setup#install) from [our CLI](/docs/cli):
-
-    $ grouparoo install @grouparoo/postgres
-
-This adds the package to your `package.json` file as a dependency, and also drops the plugin in the `grouparoo.plugins` section in that same file, which enables it.
-
-Once the plugin is installed, you'll be working primarily with [the CLI's configuration commands](/docs/cli/config) to get everything set up.
-
-## Creating a Postgres App
-
-With Grouparoo, an App is how we establish a connection with a source or destination. Add this connection by generating an App:
-
-    $ grouparoo generate postgress:app my_data_warehouse
-
-<Alert variant="primary">
-  <p className="mb-0">
-    Note that every generator requires an <code>id</code> argument. It is a
-    unique value describing the App you just created. It should be alphanumeric,
-    lower case, without spaces, and unique among other objects of the same type
-    (Apps).
-  </p>
-</Alert>
-
-Here our `id` is `my_data_warehouse`. [Learn more about the `generate` command](/docs/cli/config#generate).
-
-This will generate a file at `config/apps/my_data_warehouse.js`. Open this file and **edit the connection details to match your desired configuration**.
-
-Every config object has a similar starting shape. [Learn more about config object shapes](/docs/config/code-config#config-object-shapes).
-
-Here are the Postgres-specific options available to you in the `options` section of the config file:
-
-- `host` (**required**, default: `"localhost"`): The host at which your database lives.
-- `port` (**required**, default: `5432`): The port used to connect to the database.
-- `database`: (**required**) The name of your database.
-- `schema`: (**required**, default: `"public"`) The database schema you want to target, which usually doesn't have to be changed.
-- `user`: The user is the user connecting to your database. Note that if you are connecting to localhost (if you don't need a user), you should comment out or delete this line.
-- `password`: Password is the user's password. You may also want to delete this or set it to `undefined` if working with localhost.
-- `ssl`: (**required**, default: `false`) Enforce SSL connections only. Grouparoo will use SSL optionally if supported by the server. If using SSL, you can also pass the following options:
-  - `ssl_cert`
-  - `ssl_key`
-  - `ssl_ca`
+<PluginDocsCreateApp plugin="Postgres" />
 
 <ValidateAndApplyConfig />
 
-## Creating a Postgres Source
+<PluginDocsColumnarSource plugin="Postgres" />
 
-A Source is how you import data into Grouparoo. For columnar sources, like Postgres, there are two _types_ of sources:
+<PluginDocsColumnarDestination plugin="Postgres" />
 
-- A _Table Source_ targets specific columns within a single table and can perform aggregation methods on that column.
-- A _Query Source_ provides the ability to write custom SQL code to extract data from one or more tables and import the result into Grouparoo.
-
-You can generate each type of source using the `generate` command. Each requires that you specify a `parent`, which should match the `id` of the App you created.
-
-    $ grouparoo generate postgres:table:source users --parent my_data_warehouse
-    $ grouparoo generate postgres:query:source purchases --parent my_data_warehouse
-
-Each generator has additional options for speeding up the config process. You can use the `--describe` flag to learn more about each command. For example:
-
-    $ grouparoo generate postgres:table:source --describe
-
-Some generators have a way to batch multiple generated config files together. [Read more here](/docs/cli/config#batch-generation).
-
-All Sources have a common set of options, [which you can read about here](/docs/config/sources/community#configuring-your-source). Type-specific options are listed below.
-
-### Table Source
-
-There are two objects in the Table Source config file that are unique to this type: `options` and `mappings`. More on these and other related items below.
-
-#### Table Source Options
-
-There is only one option:
-
-- `table`: (**required**) Name of the table in the Postgres database.
-
-#### Table Source Mappings
-
-Mapping is a section of key-value pairs which represents how Grouparoo should match a column from the Source table to a Profile in Grouparoo.
-
-For example, let's say your database has a column named `email` and that maps directly to a _unique_ Property on the Profile in Grouparoo called `emailAddress`. In that case, your mapping would look like this:
-
-```js
-mapping: {
-  email: "emailAddress",
-}
-```
-
-#### Table Source Schedule
-
-A schedule is attached to every Source config file by default, commented out. If you want to import data from the source on a schedule (which is the typical behavior), then you should remove the comments and apply the necessary values.
-
-[You can read more about the common options here](/docs/config/sources/community#adding-a-schedule). The Postgres-specific options (those in the `options` object) are:
-
-- `column`: (**required**) The name of the column to use as the high watermark.
-
-A _high watermark_ is a value used for comparison. Grouparoo will only import items where the high watermark column is greater than the largest previously imported high watermark value. For example, let's say you use `updated_at` as your high watermark. Grouparoo will run an import and record the highest value from that column (presumably from the most recently updated record). The next time the import runs, Grouparoo will only consider records where `updated_at` is greater than the previous high watermark value. And it doesn't have to be a date, it just has to be comparable. Another example would be a numeric field, like `version`, in which the value is incremented when changes are made to the record in the Source database.
-
-#### Table Source Properties
-
-After you generate a Source, you'll likely want to add Properties to it. You can do this through the CLI:
-
-    $ grouparoo generate postgres:table:property first_name --parent users
-
-You can also create properties in a batch when creating the Table Source [using the `--with` option while running the `generate` command](/docs/cli/config#batch-generation).
-
-The Property generator will drop individual files in the `config/properties` directory. Edit these files to match your desired configuration.
-
-The Property config object has several options. [Some are share across all Properties](/docs/config/properties/community#configuring-your-property), while others are more specific to the type of Property generated. A Postgres Table Source has a few unique options. These can be found in the `options` object in the config file. They are:
-
-- `column`: (**required**) The name of the column to use for the Property.
-- `aggregationMethod`: (**required**, default: `"exact"`) The type of aggregation method to use when extracting the data. The available options will be added to the generated config file as a comment.
-- `sort`: (**required**, default: `null`), // You can sort the results by another column in this table.
-
-A Postgres Table Source also provides the ability to filter your data via the `filters` option. This is a series of rules that will filter data in the database table to find the appropriate value for each Profile for a given Property.
-
-For example, let's say you had a property called `lifetime_value` which summed all the purchases for a given user. Your Source is a `purchases` table that has a `state` column set to either `successful` or `returned`. You may only want to include `successful` purchases. Your `filters` config might look like this:
-
-```js
-{
-  filters: [{ key: "state", op: "equals", match: "successful" }],
-}
-```
-
-The available operators (`op`) will be added to the generated config file as a comment near the `filters` section.
-
-### Query Source
-
-A Query Source is a more flexible way to build properties. With a Query Source, you can add custom SQL commands to your Properties, which could pull data from one or more tables in your database.
-
-The unique thing about the way a Query Source works is that there aren't any unique options for the Source itself. But the Schedule and Properties look a little different.
-
-#### Query Source Schedule
-
-Like a [Table Source Schedule](#table-source-schedule), a Query Source Schedule is included with the generated config file, commented. It has a couple unique options:
-
-- `query`: A SQL query to return that tells Grouparoo which Profiles to check each time the interval occurs.
-- `propertyId`: The `id` of the Grouparoo Property whose data is returned by `options.query`.
-
-**Be sure that your query only returns one column of data, and that it maps to the Grouparoo Property you set with `options.propertyId`.**
-
-Here's an example:
-
-```js
-{
-  options: {
-    query: "SELECT id FROM users WHERE updated_at >= (NOW() - INTERVAL '2 day')",
-    propertyId: "userId"
-  }
-}
-```
-
-#### Query Source Properties
-
-Query Sources are a little simpler when it comes to Properties. You can generate a Property using the CLI:
-
-    $ grouparoo generate postgres:query:property lifetime_value --parent purchases
-
-This will drop a file at `config/properties/lifetime_value.js`. Edit this file to match your desired configuration.
-
-There is one unique option for Query Source Properties:
-
-- `query`: The query to extract the Property. You can use [mustache variables](https://github.com/janl/mustache.js#variables) to represent the keys of other Properties in the system. You can use the `id` of any other Properties you created in Grouparoo.
-
-Here's an example that sums the values in the `price` column for rows in which the `user_id` column's value matches the value of the Grouparoo Profile's `userId` field (i.e. `userId` is the `id` for the Property in Grouparoo):
-
-```js
-{
-  options: {
-    query: "SELECT SUM(price) from purchases where user_id = {{userId}}";
-  }
-}
-```
-
-## Creating a Postgres Destination
-
-Postgres is one of the few integrations that can be both a Source and a Destination. You can use Grouparoo to export data to a Postgres database. Like a Source, a Destination requires that you've already configured an App to describe the connection details to you Postgres database.
-
-Once your App exists, you can generate the config file for the Destination:
-
-    $ grouparoo generate postgres:destination my_exports
-
-This would generate a config file at `config/destinations/my_export.js` in your Grouparoo project. Edit this file to match your desired configuration.
-
-The Postgres Destination has a few unique options:
-
-- `table`: The name of the table which Grouparoo which use to export **Profiles**.
-- `primaryKey`: The primary key for the specified table.
-- `groupsTable`: Grouparoo also exports group memberships. This is the table used to export Group data.
-- `groupForeignKey`: The foreign key that the groups table uses to reference the profiles table.
-- `groupColumnName`: The column name used to store the Group name values.
-
-## Import and Export Postgres Data
+## Postgres Next Steps
 
 Once you have the plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
