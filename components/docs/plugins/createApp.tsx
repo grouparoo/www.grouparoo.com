@@ -5,43 +5,7 @@ import { PluginData, PluginConfigOptions } from "../../../data/plugins";
 import { Alert } from "../";
 import CodeBlock from "./codeBlock";
 import Markdown from "./markdown";
-
-const PluginDocsAppOptions = ({
-  options,
-}: {
-  options: PluginConfigOptions;
-}) => {
-  if (!options) return null;
-
-  return (
-    <dl>
-      {Object.entries(options).map(([name, option], idx) => {
-        return (
-          <span key={idx}>
-            <dt>
-              <code>{name}</code>
-              {option.required && (
-                <span>
-                  {" "}
-                  <strong>[required]</strong>
-                </span>
-              )}
-              {option.default && (
-                <span>
-                  {" "}
-                  (default: <code>{option.default}</code>)
-                </span>
-              )}
-            </dt>
-            <dd>
-              <Markdown>{option.description}</Markdown>
-            </dd>
-          </span>
-        );
-      })}
-    </dl>
-  );
-};
+import OptionsList from "./optionsList";
 
 const PluginDocsCreateApp = ({ plugin }: { plugin: string }) => {
   if (!plugin) return null;
@@ -100,7 +64,7 @@ const PluginDocsCreateApp = ({ plugin }: { plugin: string }) => {
             Here are the {plugin}-specific options available to you in the{" "}
             <code>options</code> section of the config file:
           </p>
-          <PluginDocsAppOptions options={pluginData.configOptions} />
+          <OptionsList options={pluginData.configOptions} />
         </>
       )}
     </div>
