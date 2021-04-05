@@ -86,6 +86,8 @@ export const PluginData: Plugin[] = [
   Zendesk,
 ];
 
+export const PluginPageData: Plugin[] = PluginData.filter((p) => p.useCases);
+
 export function randomHomepagePlugin() {
   // This is a fixed list of plugins rather than any random plugin as we want to focus on the popular ones.
   // Some entries are duplicated to bias the likelihood they appear
@@ -105,7 +107,7 @@ export function randomHomepagePlugin() {
 }
 
 export async function getUseCasePaths() {
-  const paths = PluginData.filter((p) => p.useCases).map(
+  const paths = PluginPageData.map(
     (p) => `/integrations/${p.primaryType}s/${p.slug}`
   );
 
