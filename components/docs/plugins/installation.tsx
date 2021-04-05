@@ -3,6 +3,8 @@ import Link from "next/link";
 import CodeBlock from "./codeBlock";
 
 const packageJsonAfterInstallation = (pkgName) => `
+// package.json
+
 {
   // ...
   "dependencies": {
@@ -29,8 +31,10 @@ const PluginDocsInstallation = ({ plugin }: { plugin: string }) => {
         Installing the {plugin} Plugin
       </h2>
       <p>
-        To work with the {plugin} plugin, you must first install it in an
-        existing Grouparoo project. You can do this using{" "}
+        To work with the {plugin}{" "}
+        <Link href="/docs/getting-started/product-concepts#plugin">plugin</Link>
+        , you must first install it in an existing Grouparoo project. You can do
+        this using{" "}
         <Link href="/docs/cli/setup#install">
           <span>
             the <code>install</code> command
