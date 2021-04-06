@@ -3,14 +3,20 @@ import Link from "next/link";
 import { Alert } from ".";
 import CodeBlock from "./plugins/codeBlock";
 
-export default function ValidateAndApplyConfig() {
+export default function ValidateAndApplyConfig({
+  headingLevel,
+}: {
+  headingLevel: "h2" | "h3";
+}) {
+  const HeadingTag = headingLevel || "h2";
+
   return (
     <>
-      <h2 id="validating-and-applying-your-config">
+      <HeadingTag id="validating-and-applying-your-config">
         <a href="#validating-and-applying-your-config">
           Validating &amp; Applying Your Config
         </a>
-      </h2>
+      </HeadingTag>
 
       <p>
         You can validate your config at any time using{" "}

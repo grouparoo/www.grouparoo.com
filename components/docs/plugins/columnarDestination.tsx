@@ -29,9 +29,7 @@ const PluginDocsColumnarDestination = ({ plugin }: { plugin: string }) => {
 
   return (
     <>
-      <h2 id={`creating-a-${slug}-destination`}>
-        Creating a {plugin} Destination
-      </h2>
+      <h2 id={`create-${slug}-destination`}>Create a {plugin} Destination</h2>
 
       <p>
         {plugin} is one of the few integrations that can be both a Source and a
@@ -52,7 +50,8 @@ const PluginDocsColumnarDestination = ({ plugin }: { plugin: string }) => {
       />
 
       <p>
-        This would generate a config file at `config/destinations/my_export.js`
+        This would generate a config file at{" "}
+        <code>config/destinations/my_export.js</code>
         in your Grouparoo project. Edit this file to match your desired
         configuration.
       </p>

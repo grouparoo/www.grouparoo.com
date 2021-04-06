@@ -37,7 +37,7 @@ exports.default = async function buildConfig() {
 
   return (
     <div>
-      <h2 id={`creating-a-${plugin}-app`}>Creating a {plugin} App</h2>
+      <h2 id={`create-${plugin}-app`}>Create a {plugin} App</h2>
       <p>
         With Grouparoo, an{" "}
         <Link href="/docs/getting-started/product-concepts#app">App</Link> is
