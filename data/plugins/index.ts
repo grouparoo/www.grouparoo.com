@@ -21,7 +21,7 @@ import { SQLite } from "./sqlite";
 import { Zendesk } from "./zendesk";
 
 export interface PluginConfigOption {
-  default?: string;
+  default?: string | number | boolean;
   description?: string;
   name?: string;
   required?: boolean;

@@ -1,65 +1,92 @@
 import Link from "next/link";
 
-import { PluginData, PluginConfigOptions } from "../../../data/plugins";
+import { PluginData } from "../../../data/plugins";
 
 import { Alert } from "../";
 import CodeBlock from "./codeBlock";
-import Markdown from "./markdown";
 import OptionsList from "./optionsList";
 
 const PluginDocsCreateApp = ({ plugin }: { plugin: string }) => {
   if (!plugin) return null;
 
   const cmdName = plugin.toLowerCase();
-  const pkgName = `@grouparoo/${cmdName}`;
-
+  const appId = `my_${cmdName}_app`;
   const pluginData = PluginData.find(({ name }) => name === plugin);
+  const appConfigPath = `config/apps/${appId}.js`;
+
+  const appConfigCode: string = `
+// ${appConfigPath}
+
+exports.default = async function buildConfig() {
+  return [
+    {
+      class: "app",
+      id: "${appId}",
+      name: "${appId}",
+      type: "${cmdName}",
+      options: {
+        ${Object.entries(pluginData.configOptions || {})
+          .map(([name, option]) => `${name}: ${option.default || '"..."'},`)
+          .join("\n        ")}
+      }
+    },
+  ];
+};
+
+  `;
 
   return (
     <div>
       <h2 id={`creating-a-${plugin}-app`}>Creating a {plugin} App</h2>
       <p>
-        With Grouparoo, an App is how we establish a connection with a source or
-        destination. Add this connection by generating an App:
+        With Grouparoo, an{" "}
+        <Link href="/docs/getting-started/product-concepts#app">App</Link> is
+        how we establish a connection with a source or destination. Add this
+        connection by generating an App:
       </p>
       <CodeBlock
-        code={`grouparoo generate ${cmdName}:app my_${cmdName}_app`}
+        code={`grouparoo generate ${cmdName}:app ${appId}`}
         language="cli"
       />
       <Alert variant="primary">
-        <p className="mb-0">
+        <p>
           Note that every generator requires an <code>id</code> argument. It is
           a unique value describing the App you just created. It should be
           alphanumeric, lower case, without spaces, and unique among other
           objects of the same type (Apps).
         </p>
+        <p className="mb-0">
+          Here our <code>id</code> is <code>{appId}</code>.{" "}
+          <Link href="/docs/cli/config#generate" passHref>
+            <a>
+              Learn more about the <code>generate</code> command
+            </a>
+          </Link>
+          .
+        </p>
       </Alert>
       <p>
-        Here our <code>id</code> is <code>my_data_warehouse</code>.{" "}
-        <Link href="/docs/cli/config#generate">
-          <span>
-            Learn more about the <code>generate</code> command
-          </span>
-        </Link>
-        .
-      </p>
-      <p>
-        This will generate a file at{" "}
-        <code>config/apps/my_data_warehouse.js</code>. Open this file and{" "}
+        This will generate a file at <code>{appConfigPath}</code>. Open this
+        file and{" "}
         <strong>
           edit the connection details to match your desired configuration
         </strong>
-        .
+        . Here is an example of what this config object will look like after
+        generation:
       </p>
-      <p>
-        Every config object has a similar starting shape.{" "}
-        <Link href="/docs/config/code-config#config-object-shapes">
-          Learn more about config object shapes
-        </Link>
-        .
-      </p>
+      <CodeBlock code={appConfigCode} language="js" />
+      <Alert variant="primary">
+        <p className="mb-0">
+          Every config object has a similar starting shape.{" "}
+          <Link href="/docs/config/code-config#config-object-shapes">
+            Learn more about config object shapes
+          </Link>
+          .
+        </p>
+      </Alert>
       {pluginData.configOptions && (
         <>
+          <h3 id={`${cmdName}-app-options`}>{plugin} App Options</h3>
           <p>
             Here are the {plugin}-specific options available to you in the{" "}
             <code>options</code> section of the config file:

@@ -60,4 +60,53 @@ export const Postgres: Plugin = {
       imageHeight: 619,
     },
   ],
+  configOptions: {
+    host: {
+      default: "localhost",
+      required: true,
+      description: "Database host.",
+    },
+    port: {
+      default: 5432,
+      required: true,
+      description: "Port on which to open database connection.",
+    },
+    database: {
+      required: true,
+      description: 'The database name - e.g. `database: "data_warehouse"`',
+    },
+    schema: {
+      default: "public",
+      required: true,
+      description:
+        "Schema used to read tables. The plugin works inside a single schema.",
+    },
+    user: {
+      default: undefined,
+      description:
+        'The user to connect to the database - e.g. `user: "grouparoo_user"`.  If you are connecting to localhost, leave as `undefined`.',
+    },
+    password: {
+      description:
+        'The database password - e.g. `password: "P@assword"`.  If you don\'t have a password, leave as `undefined`.',
+    },
+    ssl: {
+      default: "false",
+      description:
+        "Enforce SSL connections only.  Default `false` will use ssl optionally if supported by the server.",
+    },
+    ssl_cert: {
+      default: "null",
+      description: "...",
+    },
+    ssl_key: {
+      default: "null",
+      description: "...",
+    },
+
+    ssl_ca: {
+      default: "null",
+      description: "...",
+    },
+  },
 };
