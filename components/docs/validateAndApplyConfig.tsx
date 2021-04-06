@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import { Alert } from ".";
+import CodeBlock from "./plugins/codeBlock";
+
 export default function ValidateAndApplyConfig() {
   return (
     <>
@@ -19,28 +22,29 @@ export default function ValidateAndApplyConfig() {
         :
       </p>
 
-      <pre>
-        <code>grouparoo validate</code>
-      </pre>
+      <CodeBlock code="grouparoo validate" language="cli" />
 
       <p>
-        And you can apply that config (save it to your Grouparoo application's
-        database) using{" "}
+        And you can apply that config (save it to your{" "}
+        <Link href="/docs/getting-started/product-concepts#application-database">
+          Grouparoo application's database
+        </Link>
+        ) using{" "}
         <a href="/docs/cli/config#apply">
           the <code>apply</code> command
         </a>
         :
       </p>
 
-      <pre>
-        <code>grouparoo apply</code>
-      </pre>
+      <CodeBlock code="grouparoo apply" language="cli" />
 
-      <p>
-        Note that <code>apply</code> will run <code>validate</code>, but it's
-        recommended to run <code>validate</code> on its own first, just to be
-        safe.
-      </p>
+      <Alert variant="primary">
+        <p className="mb-0">
+          Note that <code>apply</code> will run <code>validate</code>, but it's
+          recommended to run <code>validate</code> on its own first, just to be
+          safe.
+        </p>
+      </Alert>
     </>
   );
 }
