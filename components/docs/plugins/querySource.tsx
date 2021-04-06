@@ -96,7 +96,7 @@ mapping: {
 
       <CodeBlock
         code={`grouparoo generate ${slug}:query:source users --parent my_${slug}_app`}
-        language="cli"
+        cli={true}
       />
 
       <p>
@@ -150,7 +150,7 @@ mapping: {
 
       <CodeBlock
         code={`grouparoo generate ${slug}:query:property lifetime_value --parent users`}
-        language="cli"
+        cli={true}
       />
 
       <p>

@@ -124,7 +124,7 @@ bootstrappedProperty: {
 
       <CodeBlock
         code={`grouparoo generate ${slug}:table:source users --parent my_${slug}_app`}
-        language="cli"
+        cli={true}
       />
 
       <p>
@@ -157,7 +157,7 @@ bootstrappedProperty: {
         </p>
         <CodeBlock
           code={`grouparoo generate ${slug}:table:source --describe`}
-          language="cli"
+          cli={true}
         />
         <p>
           The configuration example above could have been completely generated
@@ -274,7 +274,7 @@ bootstrappedProperty: {
 
       <CodeBlock
         code={`grouparoo generate ${slug}:table:property first_name --parent users`}
-        language="cli"
+        cli={true}
       />
 
       <Alert variant="primary">

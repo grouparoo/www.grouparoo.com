@@ -46,7 +46,7 @@ const PluginDocsColumnarDestination = ({ plugin }: { plugin: string }) => {
 
       <CodeBlock
         code={`grouparoo generate ${slug}:destination my_exports`}
-        language="cli"
+        cli={true}
       />
 
       <p>

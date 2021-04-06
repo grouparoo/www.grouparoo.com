@@ -28,7 +28,7 @@ export default function ValidateAndApplyConfig({
         :
       </p>
 
-      <CodeBlock code="grouparoo validate" language="cli" />
+      <CodeBlock code="grouparoo validate" cli={true} />
 
       <p>
         And you can apply that config (save it to your{" "}
@@ -42,7 +42,7 @@ export default function ValidateAndApplyConfig({
         :
       </p>
 
-      <CodeBlock code="grouparoo apply" language="cli" />
+      <CodeBlock code="grouparoo apply" cli={true} />
 
       <Alert variant="primary">
         <p className="mb-0">

@@ -46,7 +46,7 @@ exports.default = async function buildConfig() {
       </p>
       <CodeBlock
         code={`grouparoo generate ${cmdName}:app ${appId}`}
-        language="cli"
+        cli={true}
       />
       <Alert variant="primary">
         <p>
