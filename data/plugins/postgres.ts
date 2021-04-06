@@ -73,7 +73,7 @@ export const Postgres: Plugin = {
     },
     database: {
       required: true,
-      description: 'The database name - e.g. `database: "data_warehouse"`',
+      description: 'The database name - e.g. `"data_warehouse"`.',
     },
     schema: {
       default: "public",
@@ -84,11 +84,11 @@ export const Postgres: Plugin = {
     user: {
       default: undefined,
       description:
-        'The user to connect to the database - e.g. `user: "grouparoo_user"`.  If you are connecting to localhost, leave as `undefined`.',
+        'The user to connect to the database - e.g. `"grouparoo_user"`.  If you are connecting to localhost, leave as `undefined`.',
     },
     password: {
       description:
-        'The database password - e.g. `password: "P@assword"`.  If you don\'t have a password, leave as `undefined`.',
+        'The database password - e.g. `"P@assword"`.  If you don\'t have a password, leave as `undefined`.',
     },
     ssl: {
       default: "false",
@@ -97,16 +97,19 @@ export const Postgres: Plugin = {
     },
     ssl_cert: {
       default: "null",
-      description: "...",
+      description:
+        "If using SSL, this is the SSL certificate used for the connection.",
     },
     ssl_key: {
       default: "null",
-      description: "...",
+      description:
+        "If using SSL, this is the SSL certificate key used for the connection.",
     },
 
     ssl_ca: {
       default: "null",
-      description: "...",
+      description:
+        "If using SSL, this is the SSL certificate authority for the connection.",
     },
   },
 };
