@@ -140,7 +140,7 @@ bootstrappedProperty: {
         the unique pieces below.
       </p>
 
-      <CodeBlock code={codeBlocks.config} language="js" />
+      <CodeBlock code={codeBlocks.config} language="javascript" />
 
       <Alert variant="primary">
         <p className="mb-1">
@@ -204,7 +204,7 @@ bootstrappedProperty: {
         case, your mapping would look like this:
       </p>
 
-      <CodeBlock code={codeBlocks.mapping} language="js" />
+      <CodeBlock code={codeBlocks.mapping} language="javascript" />
 
       {/* --- Bootstrapped Property --- */}
 
@@ -226,7 +226,7 @@ bootstrappedProperty: {
         your config might look something like this.
       </p>
 
-      <CodeBlock code={codeBlocks.bootstrappedProperty} language="js" />
+      <CodeBlock code={codeBlocks.bootstrappedProperty} language="javascript" />
 
       <Alert variant="primary">
         <p className="mb-1">
@@ -338,7 +338,7 @@ bootstrappedProperty: {
         config might look like this:
       </p>
 
-      <CodeBlock code={codeBlocks.propertyFilters} language="js" />
+      <CodeBlock code={codeBlocks.propertyFilters} language="javascript" />
 
       <p>
         The available operators (<code>op</code>) will be added to the generated

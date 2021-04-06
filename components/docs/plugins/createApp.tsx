@@ -74,7 +74,7 @@ exports.default = async function buildConfig() {
         . Here is an example of what this config object will look like after
         generation:
       </p>
-      <CodeBlock code={appConfigCode} language="js" />
+      <CodeBlock code={appConfigCode} language="javascript" />
       <Alert variant="primary">
         <p className="mb-0">
           Every config object has a similar starting shape.{" "}
