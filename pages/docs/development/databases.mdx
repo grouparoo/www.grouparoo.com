@@ -17,6 +17,7 @@ This document is a collection of the guidelines Grouparoo uses when dealing with
 - Do not use compound indexes for SQLite. There's a [Seqeulzie bug](https://github.com/sequelize/sequelize/issues/12823)
   - Instead, do the uniqueness validation in the model in a `@BeforeSave` hook
   - You can continue to add compound indexes for Postgres (do so with a check against `config.seqeulize.dialect === 'postgres'`)
+- All migrations should be within a transation.  If part of the migration fails, the whole migration will be rolled back.
 
 ## Grouparoo Model Guidelines
 
