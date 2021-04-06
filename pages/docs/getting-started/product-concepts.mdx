@@ -16,16 +16,25 @@ Welcome to the Grouparoo Dictionary! This is the collection of terms we use thro
 
 - [App](#app)
 - [Application Database](#application-database)
+- [Batch Generation](#batch-generation)
+- [Bootstrapped Property](#bootstrapped-property)
 - [Calculated Group](#calculated-group)
+- [Columnar Source](#columnar-source)
 - [Destination](#destination)
 - [Event](#event)
+- [Filter](#filter)
+- [Generator](#generator)
 - [Group](#group)
+- [High Watermark](#high-watermark)
 - [Manual Group](#manual-group)
+- [Mapping](#mapping)
 - [Plugin](#plugin)
 - [Profile](#profile)
 - [Profile Property](#profile-property)
 - [Profile Property Rule](#profile-property-rule)
+- [Query Source](#query-source)
 - [Source](#source)
+- [Table Source](#table-source)
 
 ## App
 
@@ -35,9 +44,23 @@ An App in Grouparoo represents a _integration_, or a _connection_ to some servic
 
 The application database, sometimes referred to as the Grouparoo database, is the database created and used by the Grouparoo application. This is not to be confused with any database source that in which you store customer data.
 
+## Batch Generation
+
+Some versions of [the `generate` command](/docs/cli/config#generate) support creating multiple config files from a single command. This is what we call Batch Generation.
+
+## Bootstrapped Property
+
+A Bootstrapped [Property](#profile-property) is a special type of property. It acts as the primary key for your profiles and must be unique. This is most often some form of an ID value.
+
+This idea is somewhat related to a [Mapping](#mapping). A Bootstrapped Property must exist before you can map data from a [Source](#source) to a [Profile](#profile) in Grouparoo.
+
 ## Calculated Group
 
 Calculated Groups are a type of [Group](#group) that are always kept up to date for you by Grouparoo. As new Profiles are created, or the Profile Properties of existing Profiles are changed, Group membership will automatically be adjusted.
+
+## Columnar Source
+
+A Columnar Source is a specific type of [Source](#source) that imports data from a column-based mechanism, like a database. Sources of this type share most of their behavior in common.
 
 ## Destination
 
@@ -59,6 +82,16 @@ Grouparoo supports Events through our various client-side libraries. Events are 
 
 Grouparoo Events are flexible and allow you to track all kinds of behaviors. Once you start tracking Events, you can then create Profile Property Rules based on Events to associate them with Profiles. [Learn more about Events here](/docs/development/events).
 
+## Filter
+
+Filters are a series of rules used to filter data into some desired subset.
+
+## Generator
+
+A Generator is an engine that builds config files for you, based on some input. Generators are accessed via [the CLI's `generate` command](/docs/cli/config#generate). Generators use templates from [Plugins](#plugins) to build the appropriate configuration files for you.
+
+You can learn more about Generators by reading through [the Code Config docs](/docs/config/code-config).
+
 ## Group
 
 Groups are a collection of [Profiles](#profile) that you can define and filter. These filters (or _rules_) are built to be easy-to-understand by non-technical users.
@@ -72,9 +105,21 @@ With these rules, you have a Group consisting of every user who has purchased mo
 
 There are 2 types of groups: [**Calculated**](#calculated-group) and [**Manual**](#manual-group)
 
+## High Watermark
+
+A High Watermark is a value used for comparison during [Runs](#run) that are [scheduled](#schedule). Grouparoo will only import items where the high watermark column is greater than the largest previously imported high watermark value. For example, let's say you use `updated_at` as your high watermark. Grouparoo will run an import and record the highest value from that column (presumably from the most recently updated record). The next time the import runs, Grouparoo will only consider records where `updated_at` is greater than the previous high watermark value. And it doesn't have to be a date, it just has to be comparable. Another example would be a numeric field, like `version`, in which the value is incremented when changes are made to the record in the Source database.
+
 ## Manual Group
 
 Manual Groups are a type of [Group](#group) that only change when you add or remove Profiles.
+
+## Mapping
+
+When importing data from a [Source](#source), Grouparoo needs to know how to relate the data its importing to the [Profiles](#profiles) already in Grouparoo. This is what we call a Mapping. It operates like a foreign key in a database.
+
+Consider that you have a [Property](#profile-property) called `email`, while your Source has an attribute called `emailAddress`, which is a unique field in that Source. You could map `emailAddress` from your source to `email` in Grouparoo. This tells Grouparoo that when anything changes on the Source, it knows which profile to update.
+
+Every Source needs a Mapping, as Grouparoo must know how to associate imported information.
 
 ## Plugin
 
@@ -118,6 +163,18 @@ Profile Property Rules define how a property gets pulled from a Source. Every So
 
 For example, you might define a Profile Property Rule called `first_name` which you are pulling from your product database via the `@grouparoo/postgres` plugin, or you might define `number_of_purchases`, which you are using the Grouparoo Event system to count up.
 
+## Query Source
+
+A Query Source is an implementation of a [Columnar Source](#columnar-source) that enables you to write custom queries to extract information from your database. This is a more flexible version when compared with a [Table Source](#table-source).
+
+## Run
+
+A Run is a series of imports and/or exports. Runs are triggered by actions in Grouparoo, such as creating a new [Group](#group). Runs can also be triggered by [Schedules](#schedule).
+
+## Schedule
+
+A Schedule defines some interval by which to process a [Run](#run). Though technically separate objects, Schedules are often used in conjunction with [Sources](#sources).
+
 ## Source
 
 Sources are the tools that Grouparoo will connect with to pull in customer data. A Source can be anything that contains customer data such as data warehouses, databases, and CRMs.
@@ -125,3 +182,7 @@ Sources are the tools that Grouparoo will connect with to pull in customer data.
 When you add a new Source, you will define how that Source connects with the [Profiles](#profile) that already exist in Grouparoo through a `Unique` [Profile Property](#profile-property).
 
 See [our Integrations page](/integrations) for an up-to-date list of our supported Sources. We are always adding support for more Sources. If you have a request, please [let us know](/meet)!
+
+## Table Source
+
+A Query Source is an implementation of a [Columnar Source](#columnar-source) that makes it easy to import data from a database by using aggregation methods to extract data from a column in your database. This is a more rigid version when compared with a [Query Source](#query-source), but often enables you to move faster when you either want to import data directly or perform minor operations or transformations of that data.

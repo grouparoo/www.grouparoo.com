@@ -27,9 +27,7 @@ const PluginDocsInstallation = ({ plugin }: { plugin: string }) => {
 
   return (
     <>
-      <h2 id={`installing-the-${plugin}-plugin`}>
-        Installing the {plugin} Plugin
-      </h2>
+      <h2 id={`installing-${plugin}-plugin`}>Install the {plugin} Plugin</h2>
       <p>
         To work with the {plugin}{" "}
         <Link href="/docs/getting-started/product-concepts#plugin">plugin</Link>
