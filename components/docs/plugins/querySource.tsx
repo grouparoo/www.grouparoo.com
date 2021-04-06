@@ -139,7 +139,7 @@ mapping: {
 
       <p>Here's an example:</p>
 
-      <CodeBlock code={codeBlocks.querySchedule} language="js" />
+      <CodeBlock code={codeBlocks.querySchedule} language="javascript" />
 
       <h3 id="query-source-properties">Query Source Properties</h3>
 
@@ -171,7 +171,7 @@ mapping: {
         Grouparoo):
       </p>
 
-      <CodeBlock code={codeBlocks.queryProperties} language="js" />
+      <CodeBlock code={codeBlocks.queryProperties} language="javascript" />
     </>
   );
 };
