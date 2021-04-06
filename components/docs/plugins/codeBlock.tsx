@@ -1,8 +1,9 @@
-import Highlight, { defaultProps } from "prism-react-renderer";
+import Highlight, { defaultProps, Language } from "prism-react-renderer";
 
 export interface CodeBlockProps {
   code: string;
-  language?: "cli" | "json" | "js";
+  language?: Language;
+  cli?: boolean;
 }
 
 const CommandLineBlock = ({ code }) => {
@@ -23,8 +24,8 @@ const CommandLineBlock = ({ code }) => {
   );
 };
 
-const PluginDocsCodeBlock = ({ code, language }: CodeBlockProps) => {
-  if (language === "cli") return <CommandLineBlock code={code} />;
+const PluginDocsCodeBlock = ({ cli, code, language }: CodeBlockProps) => {
+  if (cli) return <CommandLineBlock code={code} />;
 
   return (
     <Highlight Prism={defaultProps.Prism} code={code} language={language}>

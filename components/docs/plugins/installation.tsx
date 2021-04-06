@@ -40,7 +40,7 @@ const PluginDocsInstallation = ({ plugin }: { plugin: string }) => {
         </Link>{" "}
         from <Link href="/docs/cli">our CLI</Link>:
       </p>
-      <CodeBlock code={`grouparoo install ${pkgName}`} language="cli" />
+      <CodeBlock code={`grouparoo install ${pkgName}`} cli={true} />
       <p>
         This adds the package to your <code>package.json</code> file as a
         dependency, and also drops the plugin in the{" "}
