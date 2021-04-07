@@ -11,6 +11,18 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2021-04-06-tutorial-docs",
+      "content_html": "<p>Grouparoo has launched a new section in our documentation: <a href=\"/docs/tutorials\">Tutorials</a>!</p><p>This new section will be focused on providing you with real-world, step-by-step examples that you can follow to become more familiar with Grouparoo.</p><p>We currently have a single tutorial on <a href=\"/docs/tutorials/app-example-config\">Declarative Sync</a>, which walks through a basic e-commerce example that syncs data between a SQLite product database Source and Mailchimp as the Destination.</p><div style=\"margin-bottom:20px\"><img alt=\"Tutorial Docs\" src=\"https://www.grouparoo.com/posts/releases/2021-04-06-tutorial-docs.png\" width=\"1400\" height=\"735\" style=\"height:735px;width:1400px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
+      "url": "https://www.grouparoo.com/whats-new#2021-04-06-tutorial-docs",
+      "title": "New Doc Section: Tutorials",
+      "image": "https://www.grouparoo.com/posts/releases/2021-04-06-tutorial-docs.png",
+      "date_modified": "2021-04-06T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-04-01-sqlite-plugin",
       "content_html": "<p>Grouparoo <a href=\"/docs/installation/plugins\">has a new plugin</a>: <a href=\"https://www.npmjs.com/package/@grouparoo/sqlite\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">SQLite</a>!</p><p><a href=\"https://www.sqlite.org/index.html\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">SQLite</a> is a lightweight database that holds its data in a single <code>.sqlite </code>file on disk. Up until now, Grouparoo has supported SQLite as its application database, but not as a Source or Destination for your customer data.</p><p>With this addition, you can now use SQLite as a <a href=\"/docs/config/sources/community\">Source</a> — to import your customer data — or a <a href=\"/docs/config/destinations/community\">Destination</a> – to export your Grouparoo Profiles and Groups.</p><p>This new plugin will make it easier to get up and running with real-world examples, as we&#x27;ll demonstrate in future tutorials and blog posts. Stay tuned!</p><div style=\"margin-bottom:20px\"><img alt=\"SQLite Plugin\" src=\"https://www.grouparoo.com/posts/releases/2021-04-01-sqlite-plugin.png\" width=\"1400\" height=\"735\" style=\"height:735px;width:1400px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
       "url": "https://www.grouparoo.com/whats-new#2021-04-01-sqlite-plugin",
