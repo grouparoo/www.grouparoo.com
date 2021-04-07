@@ -8,7 +8,7 @@ export const Snowflake: Plugin = {
   slug: "snowflake",
   logo: "snowflake.png",
   primaryType: "source",
-  otherTypes: ["destination"],
+  otherTypes: [],
   category: "data warehouse",
   badge: "",
   showLink: true,
