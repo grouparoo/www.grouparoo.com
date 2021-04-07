@@ -8,7 +8,7 @@ export const GoogleBigQuery: Plugin = {
   slug: "bigquery",
   logo: "bigquery.png",
   primaryType: "source",
-  otherTypes: ["destination"],
+  otherTypes: [],
   category: "data warehouse",
   badge: "",
   showLink: true,
