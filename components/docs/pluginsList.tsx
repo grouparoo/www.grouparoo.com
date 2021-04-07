@@ -20,6 +20,9 @@ const ignoredPlugins = [
   "@grouparoo/ui",
   "@grouparoo/ui-components",
   "@grouparoo/client-web",
+  "@grouparoo/app-templates",
+  "@grouparoo/email-authentication",
+  "@grouparoo/logger",
 ];
 
 export default function PluginsList() {
