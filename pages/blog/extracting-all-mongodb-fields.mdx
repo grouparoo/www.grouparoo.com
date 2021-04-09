@@ -20,7 +20,7 @@ Recently, working on the Grouparoo source [plugin](https://github.com/grouparoo/
   height={610}
 />
 
-This image shows a sample data obtained using the all the fields retrieved from the "profiles" collection with the technique we're going to explore.
+This image shows a data sample obtained using the all the fields retrieved from the "profiles" collection with the technique we're going to explore.
 
 Before starting to get into the solution for this, let's discuss a couple of complicators of using a flexible schema database. Since there is no restriction for adding new fields it is impossible to guarantee that all documents have the same fields without reading all of them. Also, MongoDB allows related data to be nested within a single data structure and this fact increases the complexity of each document and, consequently, its queries. So, dealing with such a type of schema organization demands different thinking of how to store and retrieve data.
 
