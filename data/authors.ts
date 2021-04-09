@@ -66,7 +66,7 @@ const Authors: Author[] = [
     name: "Paulo Ouriques",
     slug: "pauloouriques",
     image: "paulo_ouriques.jpg",
-    url: "https://pauloouriques.com/",
+    url: "https://www.pauloouriques.com/",
     twitter: "@PauloOuriques",
     description:
       "Paulo is a passionate Software Engineer who loves to solve problems, especially those that have a positive impact on people's lives. Paulo is also an enthusiast of astronomy, physics and a great defender of scientific divulgation. Cooking and playing percussion are some of his hobbies.",
