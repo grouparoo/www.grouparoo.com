@@ -43,8 +43,9 @@ export default function GrouparooWWW(props) {
   ) {
     const tmp = query[key];
     const value = Array.isArray(tmp) ? tmp[0] : tmp;
+    if (!value) return;
     const existing = storage.getItem(key);
-    if (!existing && value) storage.setItem(key, value);
+    if (!existing) storage.setItem(key, value);
   }
 
   return (
