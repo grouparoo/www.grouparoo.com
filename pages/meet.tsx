@@ -43,18 +43,32 @@ export default function Meet() {
   const onSubmit = async (data) => {
     setLoading(true);
 
+    // defaults
+    let source = "/meet";
+    let medium = "web";
     let campaign = globalThis?.document?.referrer;
-    const storage = globalThis?.sessionStorage;
-    if (storage) campaign = storage.getItem("prevPath");
 
-    data.source = "/meet";
-    data.medium = "web";
+    const storage = globalThis?.sessionStorage;
+    if (storage) {
+      source = storage.getItem("utm_source")
+        ? storage.getItem("utm_source")
+        : storage.getItem("prevPath")
+        ? storage.getItem("prevPath")
+        : source;
+      medium = storage.getItem("utm_medium")
+        ? storage.getItem("utm_medium")
+        : medium;
+      campaign = storage.getItem("utm_campaign")
+        ? storage.getItem("utm_campaign")
+        : campaign;
+    }
+
+    data.source = source;
+    data.medium = medium;
     data.campaign = campaign;
 
     const response = await execApi("post", `/api/v1/demo-request`, data);
-    if (response?.demoRequest) {
-      setRequested(true);
-    }
+    if (response?.demoRequest) setRequested(true);
     setLoading(false);
   };
 

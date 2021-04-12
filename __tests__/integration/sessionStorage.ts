@@ -34,4 +34,34 @@ describe("integration", () => {
     expect(await getSessionItem("prevPath")).toBe("/docs/config");
     expect(await getSessionItem("currentPath")).toBe("/meet");
   });
+
+  test("stores UTM_* tracking variables on any page", async () => {
+    await browser.get(
+      url +
+        `/docs?utm_source=test_source&utm_campaign=test_campaign&utm_medium=test_medium`
+    );
+
+    // change page without UTM variables
+    await browser.get(url + "/");
+
+    // the UTM variables are stored
+    expect(await getSessionItem("utm_source")).toBe("test_source");
+    expect(await getSessionItem("utm_campaign")).toBe("test_campaign");
+    expect(await getSessionItem("utm_medium")).toBe("test_medium");
+  });
+
+  test("will not replace original UTM_* tracking variables with new ones", async () => {
+    await browser.get(
+      url +
+        `/docs?utm_source=test_source&utm_campaign=test_campaign&utm_medium=test_medium`
+    );
+    await browser.get(
+      url +
+        `/integrations?utm_source=new_source&utm_campaign=new_campaign&utm_medium=new_medium`
+    );
+
+    expect(await getSessionItem("utm_source")).toBe("test_source");
+    expect(await getSessionItem("utm_campaign")).toBe("test_campaign");
+    expect(await getSessionItem("utm_medium")).toBe("test_medium");
+  });
 });
