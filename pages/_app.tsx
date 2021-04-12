@@ -3,7 +3,6 @@ import "../components/icons"; // this is needed to load the library
 import Layout from "../components/layouts/main";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { ParsedUrlQuery } from "querystring";
 
 export default function GrouparooWWW(props) {
   const { Component } = props;
@@ -27,22 +26,20 @@ export default function GrouparooWWW(props) {
     storage.setItem("prevPath", prevPath);
     storage.setItem("currentPath", globalThis.location.pathname);
 
-    ["utm_source", "utm_medium", "utm_campaign"].forEach((q) =>
-      storeQueryToSession(router.query, storage, q)
-    );
+    Object.keys(router.query)
+      .filter((k) => k.match(/^utm_*/))
+      .forEach((k) => {
+        const tmp = router.query[k];
+        const value = Array.isArray(tmp) ? tmp[0] : tmp;
+        storeQueryToSession(storage, k, value);
+      });
   }
 
   function scrollToTop() {
     globalThis.scrollTo(0, 0);
   }
 
-  function storeQueryToSession(
-    query: ParsedUrlQuery,
-    storage: Storage,
-    key: string
-  ) {
-    const tmp = query[key];
-    const value = Array.isArray(tmp) ? tmp[0] : tmp;
+  function storeQueryToSession(storage: Storage, key: string, value: string) {
     if (!value) return;
     const existing = storage.getItem(key);
     if (!existing) storage.setItem(key, value);
