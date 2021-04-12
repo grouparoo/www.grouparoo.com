@@ -76,7 +76,7 @@ const firstLevelFieldsResult = await db.my_collection.aggregate([
 ]);
 ```
 
-There are several other ways to achieve the same result, but the aggregation pipeline solution provides better performance (at compared to the map-reduce solution) and consistent usability than the other ones.
+There are several other ways to achieve the same result, but the aggregation pipeline solution provides better performance (as compared to the map-reduce solution) and consistent usability than the other ones.
 
 Great!! The first part of our problem is solved. Now, how can we get the nested fields? To solve this, we’re going to get deep into these nested fields and extract all the names one by one. Yup, you’re right, this is a very expensive task and we need to limit the number of documents to get into.
 
