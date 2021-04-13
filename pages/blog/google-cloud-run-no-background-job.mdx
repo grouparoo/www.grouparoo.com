@@ -22,7 +22,7 @@ After some digging, we learned that Google Cloud Run throttled based on HTTP req
 
 > When an application running on Cloud Run finishes handling a request, the container instance's access to CPU will be disabled or severely limited. Therefore, you should not start background threads or routines that run outside the scope of the request handlers.
 
-This makes Google Cloud Run a poor platform choice for an application like grouparoo which manages its own background jobs, and expects at least one instance to always be available for scheduling. You can learn more [here](https://cloud.google.com/run/docs/tips/general#avoiding_background_activities). That explains why when we visited the site, things started working again, and stopped after that.
+This makes Google Cloud Run a poor platform choice for an application like Grouparoo which manages its own background jobs, and expects at least one instance to always be available for scheduling. You can learn more [here](https://cloud.google.com/run/docs/tips/general#avoiding_background_activities). That explains why when we visited the site, things started working again, and stopped after that.
 
 ---
 
