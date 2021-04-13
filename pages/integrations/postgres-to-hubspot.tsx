@@ -218,7 +218,7 @@ export default function PostgresToHubspot() {
                 src="/images/home/integrations/hubspot/grouparoo-to-hubspot.png"
                 alt="Map data to Hubspot"
                 width={742}
-                height={487}
+                height={506}
               />
             </Col>
           </Row>
