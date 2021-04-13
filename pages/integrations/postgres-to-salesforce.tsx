@@ -1,15 +1,8 @@
 import { Container, Row, Col, ButtonGroup, Button } from "react-bootstrap";
 import Image from "../../components/Image";
 import IntegrationCard from "../../components/home/integrationCard";
-import IntegrationMappings from "../../components/home/integrationMappings";
-import IntegrationInstallation from "../../components/home/integrationInstallation";
-import IntegrationSources from "../../components/home/integrationSources";
-import IntegrationDestinations from "../../components/home/integrationDestinations";
 import SEO from "../../components/seo";
-import GetStarted from "../../components/home/getStarted";
-import SmallIntegration from "../../components/home/smallIntegration";
 import BigArrow from "../../components/bigArrow";
-import { PluginData, getUseCasePaths } from "../../data/plugins";
 
 export default function PostgresToSalesforce() {
   return (
@@ -39,7 +32,7 @@ export default function PostgresToSalesforce() {
               name="Postgres"
               slug="postgres"
               image="postgres.svg"
-              showLink={true}
+              showLink={false}
             />
           </Col>
           <Col lg={1} md={2} sm={2} xs={2} style={{ textAlign: "center" }}>
@@ -54,12 +47,31 @@ export default function PostgresToSalesforce() {
               name="Salesforce"
               slug="salesforce"
               image="salesforce.png"
-              showLink={true}
+              showLink={false}
             />
           </Col>
         </Row>
       </Container>
-
+      <div
+        id={`Postgres to Salesforce Use Cases`}
+        style={{ textAlign: "center", paddingTop: 50, paddingBottom: 50 }}
+      >
+        <Container>
+          <Row>
+            <Col>
+              <Button
+                size="lg"
+                variant="primary"
+                style={{ padding: ".5rem 1rem" }}
+                href="/meet"
+                className="ml-auto"
+              >
+                Get a demo
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+      </div>
       <br />
       <div
         id={`Postgres to Salesforce Use Cases`}
