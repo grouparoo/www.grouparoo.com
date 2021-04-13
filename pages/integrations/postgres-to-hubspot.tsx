@@ -4,34 +4,33 @@ import IntegrationCard from "../../components/home/integrationCard";
 import SEO from "../../components/seo";
 import BigArrow from "../../components/bigArrow";
 
-export default function BigQueryToSalesforce() {
+export default function PostgresToHubspot() {
   return (
     <>
       <SEO
         canonical={true}
-        path={`/integrations/bigquery-to-salesforce`}
-        title="BigQuery to Salesforce Integrations"
-        description="Connect your BigQuery database or warehouse to your Salesforce instance using Grouparoo. Grouparoo keeps your Salesforce data updated as new data gets added or changed in your BigQuery warehouse"
+        path={`/integrations/postgres-to-hubspot`}
+        title="Postgres to Hubspot Integrations"
+        description="Connect your Postgres database or warehouse to your Hubspot instance using Grouparoo. Grouparoo keeps your Hubspot data updated as new data gets added or changed in your Postgres warehouse"
         twitterCard={"summary"}
       />
       <Container>
         <Row>
           <Col lg={5} md={12}>
             <br />
-            <h1>Connect BigQuery with Salesforce</h1>
+            <h1>Connect Postgres with Hubspot</h1>
             <p>
-              Grouparoo connects data in your BigQuery database to your
-              Salesforce instance. Use our prebuilt connectors so you don't have
-              to write code yourself. Connect your data in minutes instead of
-              weeks.
+              Grouparoo connects data in your Postgres database to your Hubspot
+              instance. Use our prebuilt connectors so you don't have to write
+              code yourself. Connect your data in minutes instead of weeks.
             </p>
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
             <IntegrationCard
-              name="Google BigQuery"
-              slug="bigquery"
-              image="bigquery.png"
+              name="Postgres"
+              slug="postgres"
+              image="postgres.svg"
               showLink={false}
             />
           </Col>
@@ -44,16 +43,16 @@ export default function BigQueryToSalesforce() {
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
             <IntegrationCard
-              name="Salesforce"
-              slug="salesforce"
-              image="salesforce.png"
+              name="Hubspot"
+              slug="hubspot"
+              image="hubspot.svg"
               showLink={false}
             />
           </Col>
         </Row>
       </Container>
       <div
-        id={`BigQuery to Salesforce Use Cases`}
+        id={`Postgres to Hubspot Use Cases`}
         style={{ textAlign: "center", paddingTop: 50, paddingBottom: 50 }}
       >
         <Container>
@@ -74,7 +73,7 @@ export default function BigQueryToSalesforce() {
       </div>
       <br />
       <div
-        id={`BigQuery to Salesforce Use Cases`}
+        id={`Postgres to Hubspot Use Cases`}
         className="bg-dark text-white"
         style={{ paddingTop: 50, paddingBottom: 50 }}
       >
@@ -96,8 +95,8 @@ export default function BigQueryToSalesforce() {
                 }}
               >
                 <Image
-                  src={`/images/home/integrations/bigquery/bigquery.png`}
-                  alt="bigquery"
+                  src={`/images/home/integrations/postgres/postgres.svg`}
+                  alt="postgres"
                   height={80}
                   width={80}
                 />
@@ -117,8 +116,8 @@ export default function BigQueryToSalesforce() {
                 }}
               >
                 <Image
-                  src={`/images/home/integrations/salesforce/salesforce.png`}
-                  alt="salesforce"
+                  src={`/images/home/integrations/hubspot/hubspot.svg`}
+                  alt="hubspot"
                   height={80}
                   width={80}
                 />
@@ -127,29 +126,22 @@ export default function BigQueryToSalesforce() {
             <Col lg={9} md={9} xs={9}>
               <h2>Use Cases</h2>
               <ul>
+                <li>Add Contacts to Hubspot for new Postgres rows</li>
                 <li>
-                  Add Leads and Contacts to Salesforce for new BigQuery rows
+                  Enrich Hubspot Contacts with additional user data from your
+                  Postgres database
                 </li>
                 <li>
-                  Enrich Salesforce Contacts with additional user data from your
-                  BigQuery data
+                  Take product usage data in Postgres and add that data to
+                  Contacts in Hubspot
                 </li>
                 <li>
-                  Take product usage data in BigQuery and that data to Contacts
-                  and Leads in Salesforce
+                  Add Contacts to Hubspot for new or updated Postgres rows
                 </li>
                 <li>
-                  Add Leads and Contacts to Salesforce for new or updated
-                  BigQuery rows
-                </li>
-                <li>
-                  Update all profileObjects including Contacts, Leads, and
-                  Individuals in Salesforce automatically{" "}
-                </li>
-                <li>
-                  Update existing Fields on people objects such as email and
-                  first name and also create new custom Fields based on data
-                  updates in your BigQuery db
+                  Update existing Fields on Contacts such as email and first
+                  name and also create new custom Fields based on data updates
+                  in your Postgres database
                 </li>
               </ul>
             </Col>
@@ -161,25 +153,25 @@ export default function BigQueryToSalesforce() {
       <Container>
         <div id="how-it-works" className="integrationsPageSection">
           <h2 style={{ textAlign: "center" }}>
-            How Grouparoo connects BigQuery and Salesforce
+            How Grouparoo connects Postgres and Hubspot
           </h2>
           <br />
           <Row className="align-items-center">
             <Col md={4}>
               <br />
               <h3 className="integrationsBlueH3">
-                Easily connect to your BigQuery data
+                Easily connect to your Postgres data
               </h3>
               <p>
-                Connect Grouparoo to any number of BigQuery databases you may
+                Connect Grouparoo to any number of Postgres databases you may
                 have running.
               </p>
             </Col>
             <Col md={8}>
               <Image
                 className="productScreenshots border"
-                src="/images/home/integrations/bigquery/add-bigquery-app.png"
-                alt="Grouparoo BigQuery settings"
+                src="/images/home/integrations/postgres/add-postgres-app.png"
+                alt="Grouparoo Postgres settings"
                 width={742}
                 height={506}
               />
@@ -190,19 +182,19 @@ export default function BigQueryToSalesforce() {
             <Col md={8}>
               <Image
                 className="productScreenshots border"
-                src="/images/home/integrations/bigquery/bigquery-table-mode.png"
+                src="/images/home/integrations/postgres/postgres-table-mode.png"
                 alt="Grouparoo table source settings"
                 width={742}
-                height={506}
+                height={614}
               />
             </Col>
             <Col md={4}>
               <br />
               <h3 className="integrationsBlueH3">
-                Define the customer data you want to pull from BigQuery
+                Define the customer data you want to pull from Postgres
               </h3>
               <p>
-                Connect Grouparoo to any number of BigQuery databases you may
+                Connect Grouparoo to any number of Postgres databases you may
                 have running.
               </p>
             </Col>
@@ -212,7 +204,7 @@ export default function BigQueryToSalesforce() {
             <Col md={4}>
               <br />
               <h3 className="integrationsBlueH3">
-                Define what customer data you want in Salesforce
+                Define what customer data you want in Hubspot
               </h3>
               <p>
                 Grouparoo can be configured either in code or in our web UI, so
@@ -223,8 +215,8 @@ export default function BigQueryToSalesforce() {
             <Col md={8}>
               <Image
                 className="productScreenshots border"
-                src="/images/home/integrations/salesforce/grouparoo-to-salesforce.png"
-                alt="Map data to Salesforce"
+                src="/images/home/integrations/hubspot/grouparoo-to-hubspot.png"
+                alt="Map data to Hubspot"
                 width={742}
                 height={487}
               />
@@ -242,7 +234,7 @@ export default function BigQueryToSalesforce() {
           <Col>
             <br />
             <br />
-            <h2>Use Grouparoo to connect BigQuery to Salesforce</h2>
+            <h2>Use Grouparoo to connect Postgres to Hubspot</h2>
             <p>Get a demo or try the Grouparoo application locally</p>
             <ButtonGroup>
               <Button variant="primary" href="/meet" className="ml-auto">

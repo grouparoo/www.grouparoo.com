@@ -135,8 +135,8 @@ export default function PostgresToSalesforce() {
                   Postgres data
                 </li>
                 <li>
-                  Take product usage data in Postgres and that to Contacts and
-                  Leads in Salesforce
+                  Take product usage data in Postgres and that data to Contacts
+                  and Leads in Salesforce
                 </li>
                 <li>
                   Add Leads and Contacts to Salesforce for new or updated
