@@ -1,0 +1,67 @@
+---
+title: "Sync Modes"
+date: "2021-04-13"
+author: "Pedro S Lopez"
+pullQuote: "Syncing ain't easy."
+image: "sync-modes/sync-modes-breakdown.png"
+tags: [engineering]
+---
+
+Grouparoo supports syncing data to an ever-growing number of destinations. While building these integrations and talking to our users, we have found certain situations come up with regards to how exactly profiles are synced to the destinations.
+
+For example, our Salesforce plugin has a "Sync Mode" option that allows you to control whether contacts will be created, deleted or only updated. Similarly, our Intercom plugin has an option for skipping contact removals and another for opting out of contact creation. Our Facebook integration also has an option to avoid deleting people from Audiences, due to limitations on the amount of people that can be deleted. This doesn't stop here and this notion of "Sync modes" is one that can be applicable throughout all destinations.
+
+<Image
+  centered
+  alt="Sync modes breakdown"
+  src="sync-modes/sync-modes-breakdown.png"
+  width={2019}
+  height={996}
+/>
+
+Ultimately, these can be summarized in three main cases or modes:
+
+- **Sync**: Add, update and remove profiles from the destination as needed so it
+  matches.
+
+- **Additive**: Add new profiles and update those that already exist in
+  the destination, but never remove anyone.
+
+- **Enrich**: Update profiles that already
+  exist in the destinations, _enriching_ them with additional data and group membership
+  information. No profiles are added or removed.
+
+There are a few main use cases where we've seen these sync modes be useful, that we'll highlight in this post.
+
+### Syncing for the first time
+
+In the early stages of an integration, users may want to Enrich profiles that are already present in the destination. This is mainly the case with sales and customer support tools like Salesforce and Intercom that often have source-of-truth data, such as tickets that customers have filed or notes about sales meetings. Unintentionally deleting these profiles would represent a loss of that important information.
+
+To feel more comfortable with syncing to the destination, we've seen users start out with Enriching so that no major changes are made to the sales team's workflow, and then switch to Additive to start feeding them new Leads from the product.
+
+It's interesting to note that this is somewhat different than when integrating with marketing tools like Marketo or Mailchimp, where the focus is to push contacts to the destination and communicate with them, instead of holding additional related data.
+
+### Supporting more complex workflows
+
+These sync modes can also be used throughout multiple destinations to support more complex workflows. For example, when integrating with Salesforce you could define two destinations, one for each stage of the lifecycle:
+
+1. A destination set up in **Additive** mode would make sure to create new Leads as people sign up, which salespeople would look for and claim.
+2. When Leads become upgraded to Contacts and have the salesperson assigned, another destination set up in **Enrich** mode keeps the Contact's information up to date as they interact with the product.
+
+### Clarifying destination behavior
+
+Due to the nature of certain destinations and how they work, not all of them will be able to support all sync modes.
+
+While OneSignal's API _technically_ allows creating and deleting users (referred to as "devices"), this is discouraged and you're greeted by this warning when reading their documentation:
+
+<Image
+  centered
+  alt="OneSignal add devices warning"
+  src="sync-modes/onesignal-warning.png"
+  width={674}
+  height={250}
+/>
+
+Because their SDK is intended to be the one adding people, OneSignal works in **Enrich** mode, only enhancing users with properties and groups through the creation of tags on already existing devices.
+
+Syncing to Facebook's custom audiences also exhibits a similar case. Audiences have a minimum of 100 people, so removing users can often hit that limit and cause errors. Because of this, we have added options for **Sync** and **Additive** modes, allowing you to choose whether or not we should try to delete.
