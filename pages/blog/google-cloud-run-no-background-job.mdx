@@ -1,0 +1,29 @@
+---
+title: "Google Cloud Run does not support Background Jobs"
+date: "2021-04-13"
+author: "Evan Tahler"
+pullQuote: "Google Cloud Run is a great platform as a service, but not for background jobs"
+tags: [engineering, notes]
+---
+
+Grouparoo is a self-hosted product, so we are always looking for the simplest ways to help our customers run the application. A new member of the Google Cloud Platform (GCP) family is [Google Cloud Run](https://cloud.google.com/run) - which is the closest Google has come yet to a Heroku-like "Git-Ops" way to deploy your applications. It handles load balancing, scaling, and more for you and is a really compelling product. Combined with [Google Cloud Build](https://cloud.google.com/build), you can wire up your service to (re)deploy automatically when your git repository changes.
+
+Grouparoo was easy to run on Google Cloud Run, with a few caveats:
+
+1. You'll need a VPC connector to bridge the Cloud Run networks and any other services you might be running (like a postgres database or redis service). [learn more](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access#creating_a_connector)
+2. When configuring hosted Redis for Grouparoo (via Google Memorystore), be sure to enable an authentication string, but not encryption in transit.
+3. You'll be using "Google Cloud Build" to manage deployments. The Cloud Build service will also need access the `Serverless VPC Access User` and `Compute Network Admin` IAM roles.
+
+After those steps, and setting our environment variables, we had Grouparoo running on Google Cloud Run!
+
+But... it didn't last long. Every few hours, we would notice that our job throughput would grind to 0. We would then visit the site to look for failures, but everything appeared to be OK, and would start working again. However, only a few hours later, things would slow down again. What was going on?
+
+After some digging, we learned that Google Cloud Run throttled based on HTTP requests, and _only_ HTTP requests.
+
+> When an application running on Cloud Run finishes handling a request, the container instance's access to CPU will be disabled or severely limited. Therefore, you should not start background threads or routines that run outside the scope of the request handlers.
+
+This makes Google Cloud Run a poor platform choice for an application like Grouparoo which manages its own background jobs, and expects at least one instance to always be available for scheduling. You can learn more [here](https://cloud.google.com/run/docs/tips/general#avoiding_background_activities). That explains why when we visited the site, things started working again, and stopped after that.
+
+---
+
+If you are looking to run Grouparoo on GCP, check out our [Google Cloud example project](https://github.com/grouparoo/app-example-gcp) which uses node.js natively, and connects to a hosted Redis and Postgres database.

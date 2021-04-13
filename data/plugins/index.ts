@@ -9,6 +9,8 @@ import { Mailchimp } from "./mailchimp";
 import { Marketo } from "./marketo";
 import { MySQL } from "./mysql";
 import { OneSignal } from "./onesignal";
+import { Customerio } from "./customerio";
+import { Pipedrive } from "./pipedrive";
 import { Postgres } from "./postgres";
 import { Redshift } from "./redshift";
 import { Sailthru } from "./sailthru";
@@ -52,6 +54,7 @@ export interface Plugin {
 
 export const PluginData: Plugin[] = [
   CSV,
+  Customerio,
   Facebook,
   GoogleBigQuery,
   GoogleSheets,
@@ -62,6 +65,7 @@ export const PluginData: Plugin[] = [
   Marketo,
   MySQL,
   OneSignal,
+  Pipedrive,
   Postgres,
   Redshift,
   Sailthru,
