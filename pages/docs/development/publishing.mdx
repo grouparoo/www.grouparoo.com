@@ -27,12 +27,13 @@ The normal path to publishing the packages in this monorepo is:
 Please update the `stable` branch with a _rebase_ from `main`, ie:
 
 ```
-git checkout main && \
-git pull && \
-git checkout stable && \
-git pull && \
-git rebase main && \
-git push
+git fetch 
+git checkout main
+git reset --hard origin/main
+git checkout stable
+git reset --hard origin/stable
+git rebase main
+git push origin stable
 ```
 
 Both methods of publishing will also create a new Github release and generate release notes from our Pull Requests. This is done by the `lerna-changelog` package. Only Pull Requests with [labels](https://github.com/lerna/lerna-changelog) will be included. Release Notes can be viewed at [github.com/grouparoo/grouparoo/releases](https://github.com/grouparoo/grouparoo/releases).
