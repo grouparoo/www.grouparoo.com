@@ -1,0 +1,20 @@
+name: Performance
+on: pull_request
+jobs:
+  scan-links:
+    name: Scan Links
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'grouparoo/www.grouparoo.com' && github.actor != 'dependabot[bot]' }}
+    steps:
+      - name: echo actor
+        run: |
+          echo ${{github.actor}}
+      - uses: actions/checkout@master
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Start Server
+        run: |
+          npm run dev &
+      - name: Scan Links
+        run: |
+          node ./scripts/scanLinks.js

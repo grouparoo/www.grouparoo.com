@@ -99,7 +99,7 @@ const validatePage = async (path) => {
     return pageCache[path];
   }
 
-  console.log(`Validating page: ${path}`);
+  console.log(`Page: ${path}`);
   const { body } = await request(path);
   const links = extractLinksFromHtml(body);
 
