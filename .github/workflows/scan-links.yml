@@ -1,4 +1,4 @@
-name: Performance
+name: Scan Links
 on: pull_request
 jobs:
   scan-links:
