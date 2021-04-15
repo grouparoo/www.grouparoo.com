@@ -11,7 +11,8 @@ Hello Grouparoo Community! v0.3 introduces the core concept of "Sync Modes" and 
 **Upgrading Grouparoo**
 
 1. Update Grouparoo to the latest version through the usual steps by updating all the package version numbers to the latest version. More information is documented in [Installing updates](/docs/support/upgrading-grouparoo#installing-updates).
-2. Depending on how you've been configuring destinations, some extra steps may be needed:
+2. If you are using the **customer.io** plugin with code config, you will need to edit the app's configuration file and change the `type` from `customer.io` to `customerio`.
+3. Depending on how you've been configuring destinations, some extra steps may be needed:
    - If using the **Enterprise UI**, no additional steps are required. We have provided migrations for affected plugins that will be automatically applied the next time Grouparoo starts up.
    - If using **Code Config**, you may need to specify which `syncMode` your destinations will be operating in. For more information, keep reading the following sections.
 
