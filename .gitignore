@@ -26,6 +26,3 @@ dist
 .next
 .mdx-data
 web/out
-
-# Temp files
-tmp/
