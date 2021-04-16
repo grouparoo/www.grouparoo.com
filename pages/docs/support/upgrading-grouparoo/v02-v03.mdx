@@ -4,17 +4,18 @@ date: "2021-04-16"
 pullQuote: "v0.3 is an exciting release with some breaking changes! Learn how to upgrade to v0.3."
 ---
 
-Hello Grouparoo Community! v0.3 introduces the core concept of "Sync Modes" and lays the groundwork for adding sync modes across all current and future destinations. We only expect these breaking changes to affect a subset of our users.
+Hello Grouparoo Community! v0.3 introduces the core concept of [Sync Modes](/blog/sync-modes) and lays the groundwork for adding sync modes across all current and future destinations. We only expect these breaking changes to affect a subset of our users, specifically those who are configuring Grouparoo via code.
 
 ## Migration Guide
 
 **Upgrading Grouparoo**
 
 1. Update Grouparoo to the latest version through the usual steps by updating all the package version numbers to the latest version. More information is documented in [Installing updates](/docs/support/upgrading-grouparoo#installing-updates).
-2. If you are using the **customer.io** plugin with code config, you will need to edit the app's configuration file and change the `type` from `customer.io` to `customerio`.
-3. Depending on how you've been configuring destinations, some extra steps may be needed:
-   - If using the **Enterprise UI**, no additional steps are required. We have provided migrations for affected plugins that will be automatically applied the next time Grouparoo starts up.
-   - If using **Code Config**, you may need to specify which `syncMode` your destinations will be operating in. For more information, keep reading the following sections.
+2. Depending on how you've been configuring destinations, some extra steps may be needed:
+   - If using the **Enterprise UI**, no additional steps are required. We have provided migrations for affected plugins that will be automatically applied the next time Grouparoo starts up. You will see a new `syncMode` option for each supported Destination you already have clarifying the behavior in use. As we continue to update our plugins, you may be able to change the syncMode used.
+   - If using **Code Config**:
+     - The **customer.io** app has been renamed to **customerio**. If using this plugin, you will need to edit the app's configuration file and change the `type` from `customer.io` to `customerio`.
+     - You may need to specify which `syncMode` your destinations will be operating in. More information can be found below.
 
 ### Setting sync modes in code config
 
@@ -45,7 +46,7 @@ Most destinations have default sync modes that will keep your destinations worki
 warning: Using default sync mode "sync" for destination "pipedrive". You should explicitly set a sync mode for the destination to prevent unintended behavior.
 ```
 
-### Choosing a sync mode
+#### Choosing a sync mode
 
 It's important to understand what these sync modes mean. Our [blog post on Sync Modes](/blog/sync-modes) introduces the concept and explains what each available mode does.
 
@@ -70,7 +71,7 @@ Optional Options:
 
 The last line of the previous example shows available options and default sync mode for the Pipedrive destination.
 
-### Migrating plugins that previously supported sync modes
+#### Migrating plugins that previously supported sync modes
 
 Before this update, some plugins (specifically **Salesforce**, **Intercom**, and **Facebook**) had their own way of configuring sync modes through their destination options. Since this has now been standardized accross all plugins, you'll need to migrate your current options before starting Grouparoo.
 
