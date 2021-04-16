@@ -9,6 +9,13 @@ const tmpDir = path.join(__dirname, `../tmp`);
 const logFile = path.join(tmpDir, `scan-links-${Date.now()}.json`);
 fs.mkdirSync(tmpDir, { recursive: true });
 
+// TODO:
+// - [ ] Cache links and anchors when making first request for a page.
+// - [ ] Exit with a non-zero exit code when there is at least one invalid link.
+// - [ ] Consider a scenario in which a redirect fails — "strict mode" that
+//   requires all links to return 200.
+// - [ ] List the invalid links and their pages.
+
 const hostname = "localhost";
 const port = 3001;
 
