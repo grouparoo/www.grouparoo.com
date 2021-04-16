@@ -2,6 +2,7 @@ import * as helper from "../helpers/specHelper";
 import cheerio from "cheerio";
 import fetch from "isomorphic-fetch";
 import { readSitemap } from "../../scripts/readSitemap";
+import path from "path";
 
 let url: string;
 
@@ -21,6 +22,7 @@ describe("sitemap integration", () => {
 
   // parse sitemap and make a test for each
   const pages = readSitemap();
+  const pagePaths = pages.map((page) => new URL(page).pathname);
 
   test("read sitemap", async () => {
     expect(pages.length).toBeGreaterThan(10);
@@ -87,13 +89,19 @@ describe("sitemap integration", () => {
       });
 
       test("links", async () => {
-        const missingRefOnBlank = [];
+        let localPagesNotFound = [];
+        let missingRefOnBlank = [];
+
         $("a").each(function () {
           const tag = $(this);
           const href = tag.attr("href");
           const id = tag.attr("id");
           const name = href || id;
           expect(name).toBeTruthy();
+
+          if (typeof href === "string" && path.isAbsolute(href)) {
+            if (!pagePaths.includes(href)) localPagesNotFound.push(href);
+          }
 
           const target = tag.attr("target");
           const rel = tag.attr("rel") || "";
@@ -104,6 +112,7 @@ describe("sitemap integration", () => {
           }
         });
 
+        expect(localPagesNotFound).toEqual([]);
         expect(missingRefOnBlank).toEqual([]);
       });
     });
