@@ -67,6 +67,21 @@ In most cases, all that is needed to update your Grouparoo application is update
   height={483}
 />
 
+The [`grouparoo update`](/docs/cli/setup#update) command can help you with this process and update all of your plugins to the latest versions;
+
+```bash
+$ grouparoo update
+🦘 Upgrading Grouparoo Project
+
+ℹ path: /private/tmp/groo
+ℹ Upgrading dependencies...
+✔ Updated @grouparoo/core to version 0.2.12
+✔ Updated @grouparoo/mailchimp to version 0.2.12
+✔ Updated @grouparoo/postgres to version 0.2.12
+✔ Updated @grouparoo/ui-community to version 0.2.12
+✔ Installation Complete!
+```
+
 Depending on your method of deployment, you will need to either re-deploy your application, `git push` to Heroku, or publish a new Docker image.
 
 Some cases will require additional effort. See our Upgrade Guides (listed above) for more info.
