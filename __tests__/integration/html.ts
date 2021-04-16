@@ -94,13 +94,18 @@ describe("sitemap integration", () => {
 
         $("a").each(function () {
           const tag = $(this);
-          const href = tag.attr("href");
+          let href = tag.attr("href");
           const id = tag.attr("id");
           const name = href || id;
           expect(name).toBeTruthy();
 
           if (typeof href === "string" && path.isAbsolute(href)) {
-            if (!pagePaths.includes(href)) localPagesNotFound.push(href);
+            const pathname = href.includes("#")
+              ? href.slice(0, href.indexOf("#"))
+              : href;
+            if (pathname.length > 0 && !pagePaths.includes(pathname)) {
+              localPagesNotFound.push(pathname);
+            }
           }
 
           const target = tag.attr("target");
