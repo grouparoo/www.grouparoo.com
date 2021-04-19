@@ -2,7 +2,14 @@ import BlogIndex, { getStaticProps as blogIndexStaticProps } from "../../index";
 import { getBlogCategoryPaths } from "../../../../utils/sitemap";
 
 export default function BlogIndexWithCategory({ pageProps }) {
-  return <BlogIndex pageProps={pageProps} />;
+  return (
+    <BlogIndex
+      pageProps={{
+        ...pageProps,
+        canonicalUrl: `https://www.grouparoo.com/blog/category/${pageProps.category}`,
+      }}
+    />
+  );
 }
 
 export async function getStaticProps(ctx) {
