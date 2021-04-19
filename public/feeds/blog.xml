@@ -9,7 +9,7 @@
         <title>Grouparoo: Blog</title>
         <link>https://www.grouparoo.com/blog</link>
         <description>Articles and updates from Grouparoo.</description>
-        <lastBuildDate>Tue, 13 Apr 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 19 Apr 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,19 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Welcome, Pedro!]]></title>
+            <link>https://www.grouparoo.com/blog/welcome-pedro</link>
+            <guid>grouparoo-blog-post-welcome-pedro</guid>
+            <pubDate>Mon, 19 Apr 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Building an open source tool to connect data to many different services means a lot of integrations.</p><p>It can be pretty tricky, so we were lucky to meet <a href="https://twitter.com/pedroslopez" target="_blank" rel="nofollow noopener noreferrer">Pedro S Lopez</a> a few weeks back when he started <a href="https://github.com/grouparoo/grouparoo/pulls?q=is%3Apr+author%3Apedroslopez+" target="_blank" rel="nofollow noopener noreferrer">adding</a> several plugins to that integration list. He has now come aboard officially and will work more on the core product.</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Pedro Lopez profile picture" src="https://www.grouparoo.com/posts/welcome-pedro/profile.png" width="300" height="301" style="height:301px;width:300px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>Pedro makes the Grouparoo team an international one. Working with great people all over the world is a key benefit of having a distributed team.</p><p>The first thing I noticed about Pedro was his Node.js <a href="https://github.com/pedroslopez/whatsapp-web.js" target="_blank" rel="nofollow noopener noreferrer">app</a> that reverse engineers the WhatsApp web app to help people communicate. What dedication to messaging automation!</p><p>Welcome, Pedro! We are so excited to have you here.</p>]]></content:encoded>
+            <enclosure
+        url="https://www.grouparoo.com/posts/welcome-pedro/profile.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title
       ><![CDATA[Google Cloud Run does not support Background Jobs]]></title>
