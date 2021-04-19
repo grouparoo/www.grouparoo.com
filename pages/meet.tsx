@@ -111,31 +111,30 @@ export default function Meet() {
                   <Form.Group>
                     <Form.Label>First Name</Form.Label>
                     <Form.Control
+                      {...register("firstName")}
                       type="text"
                       name="firstName"
                       defaultValue=""
-                      ref={register}
                       disabled={disabled}
                     />
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Last Name</Form.Label>
                     <Form.Control
+                      {...register("lastName")}
                       type="text"
                       name="lastName"
                       defaultValue=""
-                      ref={register}
                       disabled={disabled}
                     />
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Work Email *</Form.Label>
                     <Form.Control
-                      required
+                      {...(register("email"), { required: true })}
                       type="email"
                       name="email"
                       defaultValue=""
-                      ref={register}
                       disabled={disabled}
                     />
                     <Error message={error.email} />
@@ -143,10 +142,10 @@ export default function Meet() {
                   <Form.Group>
                     <Form.Label>Company Name</Form.Label>
                     <Form.Control
+                      {...register("companyName")}
                       type="text"
                       name="companyName"
                       defaultValue=""
-                      ref={register}
                       disabled={disabled}
                     />
                   </Form.Group>

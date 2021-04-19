@@ -16,11 +16,11 @@ export default function PartialMeet() {
         <Col md={4} style={{ margin: 0 }}>
           <Form.Group className="mr-auto">
             <Form.Control
+              {...register("email")}
               type="email"
               placeholder="Enter your email"
               name="email"
               defaultValue=""
-              ref={register}
             />
           </Form.Group>
         </Col>
