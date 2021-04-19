@@ -182,9 +182,13 @@ export default function WhoWeAre() {
                   🚴🏼 📚 🏔 ☕️
                   <br /> Previously:
                   <br />
-                  ///{" "}
-                  <a href="https:///" target="_blank" rel="noreferrer nofollow">
-                    ///
+                  Freelance{" "}
+                  <a
+                    href="https://www.tealjulia.com/"
+                    target="_blank"
+                    rel="noreferrer nofollow"
+                  >
+                    Full Stack Engineer
                   </a>
                 </span>
               }
