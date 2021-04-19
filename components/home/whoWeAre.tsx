@@ -179,15 +179,11 @@ export default function WhoWeAre() {
               title="Full Stack Software Engineer"
               description={
                 <span>
-                  🚴🏼 📚 🏔 ☕️ 
+                  🚴🏼 📚 🏔 ☕️
                   <br /> Previously:
                   <br />
                   ///{" "}
-                  <a
-                    href="https:///"
-                    target="_blank"
-                    rel="noreferrer nofollow"
-                  >
+                  <a href="https:///" target="_blank" rel="noreferrer nofollow">
                     ///
                   </a>
                 </span>
@@ -197,7 +193,6 @@ export default function WhoWeAre() {
               linkedIn="www.linkedin.com/in/teal-larson"
             />
           </Col>
-
         </Row>
       </div>
     </>
