@@ -41,7 +41,7 @@ export default function ReleaseNotePage({ pageProps, ...props }) {
               <Col>
                 <h1 style={{ paddingBottom: 0 }}>
                   {feature.title}
-                  <a id={feature.slug} />
+                  <a id={feature.slug} href={`#${feature.slug}`} />
                 </h1>
               </Col>
               <Col style={{ textAlign: "right" }} xs={2}>
