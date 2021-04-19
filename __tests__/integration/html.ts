@@ -10,6 +10,18 @@ const EDGE_CASES = {
   "/solutions/engineers": { canonical: "https://www.grouparoo.com/" },
 };
 
+const allowedMissingLinks = [
+  /^\/docs\/config\/apps$/, // Used in breadcrumbs and properly redirects.
+  /^\/docs\/config\/destinations$/, // Used in breadcrumbs and properly redirects.
+  /^\/docs\/config\/groups$/, // Used in breadcrumbs and properly redirects.
+  /^\/docs\/config\/properties$/, // Used in breadcrumbs and properly redirects.
+  /^\/docs\/config\/sources$/, // Used in breadcrumbs and properly redirects.
+  /^\/downloads\/([a-z0-9\-\_\.]+)?$/, // Dumping ground for downloadable sample files.
+  /^\/jobs(\/[a-z0-9\-\_\.]+)?$/, // Dynamically-generated routes for Lever posts.
+  /^\/roadmap$/, // Redirects to GitHub.
+  /^\/support$/, // Redirects to docs page, but we want to keep the reference around.
+];
+
 describe("sitemap integration", () => {
   beforeAll(async () => {
     const env = await helper.prepareForIntegrationTest();
@@ -23,6 +35,28 @@ describe("sitemap integration", () => {
   // parse sitemap and make a test for each
   const pages = readSitemap();
   const pagePaths = pages.map((page) => new URL(page).pathname);
+
+  const linkIsValid = (link): boolean => {
+    // Null values are not accepted.
+    if (!link) return false;
+    // Links must be strings.
+    if (typeof link !== "string") return false;
+    // Skip external links. Note: This also lets relative links through, which
+    // is not ideal, but is an accepted risk.
+    if (!path.isAbsolute(link)) return true;
+    // Remove anchor from link.
+    if (link.indexOf("#") > 0) link = link.slice(0, link.indexOf("#"));
+    //  In-page links are valid.
+    if (link.length === 0) return true;
+    // If page is included in sitemap, it is valid.
+    if (pagePaths.includes(link)) return true;
+    // Check for allowed overrides and consider valid if we find a match.
+    for (let pattern of allowedMissingLinks) {
+      if (link.match(pattern)) return true;
+    }
+    // If not matching any of the above conditions, link is invalid.
+    return false;
+  };
 
   test("read sitemap", async () => {
     expect(pages.length).toBeGreaterThan(10);
@@ -99,14 +133,7 @@ describe("sitemap integration", () => {
           const name = href || id;
           expect(name).toBeTruthy();
 
-          if (typeof href === "string" && path.isAbsolute(href)) {
-            const pathname = href.includes("#")
-              ? href.slice(0, href.indexOf("#"))
-              : href;
-            if (pathname.length > 0 && !pagePaths.includes(pathname)) {
-              localPagesNotFound.push(pathname);
-            }
-          }
+          if (!linkIsValid(href)) localPagesNotFound.push(href);
 
           const target = tag.attr("target");
           const rel = tag.attr("rel") || "";
