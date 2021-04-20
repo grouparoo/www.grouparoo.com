@@ -156,7 +156,11 @@
     >https://www.grouparoo.com/solutions/marketers</loc><changefreq
     >daily</changefreq><priority>1.0</priority></url><url><loc
     >https://www.grouparoo.com/solutions/segment-alternative</loc><changefreq
-    >daily</changefreq><priority>1.0</priority></url><url><loc
+    >daily</changefreq><priority>1.0</priority></url>
+    <url><loc
+    >https://www.grouparoo.com/solutions/census-alternative</loc><changefreq
+    >daily</changefreq><priority>1.0</priority></url>
+    <url><loc
     >https://www.grouparoo.com/whats-new/2020-03-26-mailchimp</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/whats-new/2020-04-10-updates</loc><changefreq
