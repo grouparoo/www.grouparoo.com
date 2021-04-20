@@ -54,12 +54,11 @@ export default function Subscribe() {
           <Col md={12} style={{ padding: 0 }}>
             <Form.Group>
               <Form.Control
-                required
+                {...register("email", { required: true })}
                 type="email"
                 placeholder="Email"
                 name="email"
                 defaultValue=""
-                ref={register}
                 {...controlProps}
               />
               <div style={{ fontSize: "smaller", color: "red" }}>{error}</div>
