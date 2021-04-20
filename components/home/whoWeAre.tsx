@@ -194,7 +194,7 @@ export default function WhoWeAre() {
               }
               github="https://github.com/tealjulia"
               twitter="https://twitter.com/tealdoestech"
-              linkedIn="www.linkedin.com/in/teal-larson"
+              linkedIn="https://www.linkedin.com/in/teal-larson"
             />
           </Col>
         </Row>
