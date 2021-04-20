@@ -193,13 +193,13 @@ The `@grouparoo/demo` plugin makes it easy to generate sample data! You can use 
 ```bash
 cd apps/staging-community
 # populate the system with 1000 profiles, properties, 1000 purchases, groups, and some events
-grouparoo demo-data-purchases
+grouparoo demo purchases
 
 # including the --scale param allows you to control how many profiles you make. e.g. --scale 10 makes 10,000 extra profiles.
-grouparoo demo-data-purchases --scale 10
+grouparoo demo purchases --scale 10
 
 # populate the system with events
-grouparoo demo-event-stream
+grouparoo demo events
 ```
 
 **Note: This will clear all existing data, replacing it with the sample data.**
