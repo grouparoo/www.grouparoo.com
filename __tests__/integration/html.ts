@@ -18,6 +18,9 @@ const allowedMissingLinks = [
   /^\/docs\/config\/sources$/, // Used in breadcrumbs and properly redirects.
   /^\/downloads\/([a-z0-9\-\_\.]+)?$/, // Dumping ground for downloadable sample files.
   /^\/jobs(\/[a-z0-9\-\_\.]+)?$/, // Dynamically-generated routes for Lever posts.
+  /^\/blog\/author\/([a-z\-\_]+)?$/, // Blog author pages have duplicate content and are not in sitemap.
+  /^\/blog\/category\/([a-z\-\_]+)?$/, // Blog category pages have duplicate content and are not in sitemap.
+  /^\/jobs(\/[a-z0-9\-\_\.]+)?$/, // Dynamically-generated routes for Lever posts.
   /^\/roadmap$/, // Redirects to GitHub.
   /^\/support$/, // Redirects to docs page, but we want to keep the reference around.
 ];

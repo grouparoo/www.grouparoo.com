@@ -44,7 +44,7 @@ async function getPagePaths() {
 }
 
 async function getStaticPaths() {
-  const methods = [getUseCasePaths, getAuthorPaths, getBlogCategoryPaths];
+  const methods = [getUseCasePaths];
   let allPaths = [];
   for (const method of methods) {
     const { paths } = await method();
