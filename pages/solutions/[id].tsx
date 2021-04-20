@@ -30,7 +30,7 @@ export default function Comparison({ pageProps }) {
         />
         <link
           rel="canonical"
-          href={`https://www.grouparoo.com/solutions/${comp.competitor}`}
+          href={`https://www.grouparoo.com/solutions/${comp.competitor.toLowerCase()}`}
         />
       </Head>
 
