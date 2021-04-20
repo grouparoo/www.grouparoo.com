@@ -131,7 +131,7 @@ export default function Meet() {
                   <Form.Group>
                     <Form.Label>Work Email *</Form.Label>
                     <Form.Control
-                      {...(register("email"), { required: true })}
+                      {...register("email", { required: true })}
                       type="email"
                       name="email"
                       defaultValue=""

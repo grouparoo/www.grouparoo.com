@@ -54,7 +54,7 @@ export default function Subscribe() {
           <Col md={12} style={{ padding: 0 }}>
             <Form.Group>
               <Form.Control
-                {...(register("email"), { required: true })}
+                {...register("email", { required: true })}
                 type="email"
                 placeholder="Email"
                 name="email"
