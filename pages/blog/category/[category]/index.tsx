@@ -1,8 +1,15 @@
 import BlogIndex, { getStaticProps as blogIndexStaticProps } from "../../index";
-import { badgeTypes } from "../../../../utils/blogTags";
+import { getBlogCategoryPaths } from "../../../../utils/sitemap";
 
 export default function BlogIndexWithCategory({ pageProps }) {
-  return <BlogIndex pageProps={pageProps} />;
+  return (
+    <BlogIndex
+      pageProps={{
+        ...pageProps,
+        canonicalUrl: `https://www.grouparoo.com/blog/category/${pageProps.category}`,
+      }}
+    />
+  );
 }
 
 export async function getStaticProps(ctx) {
@@ -10,10 +17,6 @@ export async function getStaticProps(ctx) {
 }
 
 export async function getStaticPaths() {
-  const paths = Object.keys(badgeTypes).map((tag) => `/blog/category/${tag}`);
-
-  return {
-    paths,
-    fallback: false,
-  };
+  const { paths, fallback } = await getBlogCategoryPaths();
+  return { paths, fallback };
 }

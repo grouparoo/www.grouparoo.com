@@ -2,12 +2,29 @@ import { SitemapStream, streamToPromise } from "sitemap";
 import glob from "glob";
 import path from "path";
 import { getUseCasePaths } from "../data/plugins";
+import Authors from "../data/authors";
+import { badgeTypes } from "../data/blogTags";
 
 let pagesDir;
 if (!__dirname || __dirname === "/") {
   pagesDir = path.resolve(path.join(process.cwd(), "pages"));
 } else {
   pagesDir = path.resolve(path.join(__dirname, "..", "pages"));
+}
+
+interface PagePathsResponse {
+  paths: string[];
+  fallback: boolean;
+}
+
+export async function getAuthorPaths(): Promise<PagePathsResponse> {
+  const paths = Authors.map((a) => `/blog/author/${a.slug}`);
+  return { paths, fallback: false };
+}
+
+export async function getBlogCategoryPaths(): Promise<PagePathsResponse> {
+  const paths = Object.keys(badgeTypes).map((tag) => `/blog/category/${tag}`);
+  return { paths, fallback: false };
 }
 
 async function getPagePaths() {

@@ -61,7 +61,7 @@ export default function ReleaseIndex({ pageProps }) {
                       <Col>
                         <h4 style={{ paddingBottom: 0 }}>
                           {title}
-                          <a id={slug} />
+                          <a id={slug} href={`#${slug}`} />
                         </h4>
                       </Col>
 

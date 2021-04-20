@@ -2,16 +2,7 @@ import { Fragment } from "react";
 import { Badge } from "react-bootstrap";
 import Link from "next/link";
 
-export const badgeTypes = {
-  marketing: "primary",
-  engineering: "success",
-  connections: "info",
-  notes: "warning",
-  product: "danger",
-  operations: "secondary",
-  company: "info",
-  sync: "danger",
-};
+import { badgeTypes } from "../data/blogTags";
 
 export default function blogTags(tags: string[]) {
   return (

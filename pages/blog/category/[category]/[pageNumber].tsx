@@ -1,4 +1,4 @@
-import { badgeTypes } from "../../../../utils/blogTags";
+import { badgeTypes } from "../../../../data/blogTags";
 export { default, getStaticProps } from "./index";
 
 export async function getStaticPaths() {

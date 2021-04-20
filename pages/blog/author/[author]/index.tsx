@@ -1,8 +1,15 @@
 import BlogIndex, { getStaticProps as blogIndexStaticProps } from "../../index";
-import Authors from "../../../../data/authors";
+import { getAuthorPaths } from "../../../../utils/sitemap";
 
 export default function BlogIndexWithCategory({ pageProps }) {
-  return <BlogIndex pageProps={pageProps} />;
+  return (
+    <BlogIndex
+      pageProps={{
+        ...pageProps,
+        canonicalUrl: `https://www.grouparoo.com/blog/author/${pageProps.author}`,
+      }}
+    />
+  );
 }
 
 export async function getStaticProps(ctx) {
@@ -10,10 +17,6 @@ export async function getStaticProps(ctx) {
 }
 
 export async function getStaticPaths() {
-  const paths = Authors.map((a) => `/blog/author/${a.slug}`);
-
-  return {
-    paths,
-    fallback: false,
-  };
+  const { paths, fallback } = await getAuthorPaths();
+  return { paths, fallback };
 }

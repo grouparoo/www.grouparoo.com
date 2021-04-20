@@ -59,13 +59,6 @@ export default function DocsIndex() {
                     >
                       Docker
                     </Button>
-                    <Button
-                      size="sm"
-                      variant="outline-primary"
-                      href="/docs/deployment/heroku"
-                    >
-                      Heroku
-                    </Button>
                   </ButtonGroup>
                 </Col>
               </Row>
