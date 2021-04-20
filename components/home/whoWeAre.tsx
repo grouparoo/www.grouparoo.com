@@ -171,6 +171,32 @@ export default function WhoWeAre() {
               linkedIn="https://www.linkedin.com/in/pedroslopez/"
             />
           </Col>
+
+          <Col md={4} className="d-flex justify-content-center">
+            <TeamMember
+              name="Teal Larson"
+              image="teal_larson.jpg"
+              title="Full Stack Software Engineer"
+              description={
+                <span>
+                  🚴🏼 📚 🏔 ☕️
+                  <br /> Previously:
+                  <br />
+                  Freelance{" "}
+                  <a
+                    href="https://www.tealjulia.com/"
+                    target="_blank"
+                    rel="noreferrer nofollow"
+                  >
+                    Full Stack Engineer
+                  </a>
+                </span>
+              }
+              github="https://github.com/tealjulia"
+              twitter="https://twitter.com/tealdoestech"
+              linkedIn="https://www.linkedin.com/in/teal-larson"
+            />
+          </Col>
         </Row>
       </div>
     </>
