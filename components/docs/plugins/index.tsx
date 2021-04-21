@@ -11,5 +11,5 @@ export {
   PluginDocsCreateApp,
   PluginDocsInstallation,
   PluginDocsLinks,
-  OptionsList
+  OptionsList,
 };

@@ -25,7 +25,7 @@ const PluginDocsOption = (option: PluginConfigOption) => {
       </dd>
       {option.options && (
         <dd>
-          <strong>Options:</strong> {option.options.join(', ')}
+          <strong>Options:</strong> {option.options.join(", ")}
         </dd>
       )}
     </span>

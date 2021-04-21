@@ -16,7 +16,7 @@ import {
   PluginDocsCreateApp,
   PluginDocsInstallation,
   PluginDocsLinks,
-  OptionsList
+  OptionsList,
 } from "./plugins";
 import RuleOpsTable from "./ruleOpsTable";
 import Tabs from "./tabs";
