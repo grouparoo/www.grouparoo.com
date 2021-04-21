@@ -13,7 +13,7 @@
  declare var by: any;
 
  // comparison pages to test
- const cases = ["census", "segment"];
+ const cases = ["census", "segment", "hightouch"];
 
  
  describe("integration/comparisons", () => {

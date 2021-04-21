@@ -158,7 +158,11 @@ export async function getStaticProps({ params }) {
 // What URLs should I work for?
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { id: "census" } }, { params: { id: "segment" } }],
+    paths: [
+      { params: { id: "census" } },
+      { params: { id: "segment" } },
+      { params: { id: "hightouch" } },
+    ],
     fallback: false,
   };
 }
