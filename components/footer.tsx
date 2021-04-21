@@ -124,6 +124,10 @@ export default function Footer() {
                 <Link href="/solutions/census">
                   <a>Census Alternative</a>
                 </Link>
+                <br />
+                <Link href="/solutions/hightouch">
+                  <a>Hightouch Alternative</a>
+                </Link>
               </Col>
               <Col>
                 <strong>Product</strong>
