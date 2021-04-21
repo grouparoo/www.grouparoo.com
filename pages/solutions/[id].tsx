@@ -5,6 +5,7 @@ import GetStarted from "../../components/home/getStarted";
 import hydrate from "next-mdx-remote/hydrate";
 import { useRouter } from "next/router";
 import { ComparisonInfo, getComparison } from "../../utils/comparisonPages";
+import { arrayToReadableList, possessiveNoun } from "../../utils/inflectors";
 
 const components = {};
 
@@ -12,13 +13,6 @@ export default function Comparison({ pageProps }) {
   const router = useRouter();
   const comp: ComparisonInfo = pageProps.comparison;
   const content = hydrate(comp.source, { components });
-  let possessive = "";
-
-  if (comp.competitor.charAt(comp.competitor.length - 1) == "s") {
-    possessive = "'";
-  } else {
-    possessive = "'s";
-  }
 
   return (
     <>
@@ -26,7 +20,9 @@ export default function Comparison({ pageProps }) {
         <title>Grouparoo: {comp.competitor} Alternative</title>
         <meta
           name="description"
-          content={`Grouparoo is comparable to ${comp.competitor} but wins on ${comp.pro1}, ${comp.pro2}, ${comp.pro3}, and ${comp.pro4}.`}
+          content={`Grouparoo is comparable to ${
+            comp.competitor
+          } but wins on ${arrayToReadableList(comp.pros)}.`}
         />
         <link
           rel="canonical"
@@ -44,11 +40,10 @@ export default function Comparison({ pageProps }) {
             <Col>
               <h1>Grouparoo vs. {comp.competitor}</h1>
               <p className="text-big-muted">
-                {comp.competitor}
-                {possessive} {comp.comp1} and {comp.comp2} can be powerful,
+                {possessiveNoun(comp.competitor)}{" "}
+                {arrayToReadableList(comp.competitorPros)} can be powerful,
                 <br />
-                but Grouparoo wins on {comp.pro1}, {comp.pro2}, {comp.pro3}, and{" "}
-                {comp.pro4}.
+                but Grouparoo wins on {arrayToReadableList(comp.pros)}.
               </p>
             </Col>
           </Row>
