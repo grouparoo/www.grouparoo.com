@@ -11,6 +11,18 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2021-04-20-app-example-config",
+      "content_html": "<p>Following our release of <a href=\"/docs/tutorials/app-example-config\">Declarative Sync</a>, we created <a href=\"https://github.com/grouparoo/app-example-config\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">an example Grouparoo instance</a> to give Grouparoo a try before adding your data.</p><p>While this example app has been around for a bit, we gave it a few updates recently to make it easier to tinker with. It now uses SQLite as a data source. And it comes with instructions on how to load fake data into a SQLite database prior to running the application. This enables you to try Grouparoo in an end-to-end instance without needing to use your production data.</p><p>We will continue to iterate on this example and others as <a href=\"/docs/tutorials\">we add more tutorials</a>. As always, <a href=\"/meet\">we&#x27;d love to chat</a> about your ideas for making Grouparoo better.</p><div style=\"margin-bottom:20px\"><img alt=\"Declarative Sync Example App\" src=\"https://www.grouparoo.com/posts/releases/2021-04-06-tutorial-docs.png\" width=\"1400\" height=\"735\" style=\"height:735px;width:1400px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
+      "url": "https://www.grouparoo.com/whats-new#2021-04-20-app-example-config",
+      "title": "Declarative Sync Example App",
+      "image": "https://www.grouparoo.com/posts/releases/2021-04-06-tutorial-docs.png",
+      "date_modified": "2021-04-20T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-04-07-mongo-source",
       "content_html": "<p>Grouparoo can now import data from MongoDB!</p><p>The <code>@grouparoo/mongo</code> plugin can be added to your project to import Profiles and Properties from your MongoDB application database. MongoDB is the first NoSQL database supported by Grouparoo, and all of the same Source features available for relational databases are available for MongoDB - including aggregation Properties, query Properties, and scheduled imports.</p><p>Learn how to install plugins by visiting <a href=\"/docs/installation/plugins\">the Grouparoo documentation</a>.</p><div style=\"margin-bottom:20px\"><img alt=\"Tutorial Docs\" src=\"https://www.grouparoo.com/posts/releases/2021-04-07-mongo.png\" width=\"1400\" height=\"735\" style=\"height:735px;width:1400px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
       "url": "https://www.grouparoo.com/whats-new#2021-04-07-mongo-source",
