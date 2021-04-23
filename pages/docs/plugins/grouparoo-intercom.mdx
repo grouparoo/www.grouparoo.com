@@ -1,0 +1,152 @@
+---
+title: "@grouparoo/intercom"
+date: "2021-04-21"
+pullQuote: "Learn how to work with the Intercom plugin as a Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Intercom" />
+
+Grouparoo's [Intercom](https://www.intercom.com/) plugin enables you to export contacts and tags to Intercom.
+
+This guide will show you how to work with the Intercom plugin to [create a Destination](#create-an-intercom-destination) to export your data.
+
+<PluginDocsInstallation plugin="Intercom" />
+
+<PluginDocsCreateApp plugin="Intercom" />
+
+<ValidateAndApplyConfig headingLevel="h3" />
+
+## Create an Intercom Destination
+
+Once your App exists, you can generate an Intercom Destination using the `generate` command. You must specify a `parent`, which should match the `id` of the App you just created.
+
+This is the simplest form of [Generator](/docs/getting-started/product-concepts#generator) for Destinations:
+
+```
+$ grouparoo generate intercom:destination intercom_destination --parent my_intercom_app
+```
+
+This would generate a config file at `config/destinations/intercom_destination.js` in your Grouparoo project. You can then edit this file to match your desired configuration. Here is an example of what this config object will look like after generation:
+
+```js
+// config/destinations/intercom_destination.js
+
+exports.default = async function buildConfig() {
+  return [
+    {
+      id: "intercom_destination",
+      name: "intercom_destination",
+      class: "destination",
+      type: "intercom-export",
+      appId: "my_intercom_app",
+      groupId: "...",
+      syncMode: "...",
+
+      options: {
+        creationMode: "User",
+        removalMode: "Archive",
+      },
+
+      mapping: {
+        email: "email",
+        firstname: "firstName",
+        lastname: "lastName",
+      },
+
+      destinationGroupMemberships: {
+        "High Value Customers": "highValueCustomers",
+      },
+    },
+  ];
+};
+```
+
+For more information on what all these properties mean and how to configure them, see [Configuring your Destination](/docs/config/destinations/community#configuring-your-destination).
+
+### Sync Modes
+
+The Intercom Destination supports all three sync modes:
+
+- **Sync** (`sync`): Add, update, and remove profiles as needed.
+- **Additive** (`additive`): Add and update profiles as needed, but do not remove anybody.
+- **Enrich** (`enrich`): Only update profiles that already exist in the Destination. Do not add or remove anybody.
+
+You can set the desired sync mode through the `syncMode` property in the config file:
+
+```js
+syncMode: "additive",
+```
+
+### Destination Options
+
+Here are the available options for an Intercom Destination:
+
+<OptionsList
+  options={{
+    creationMode: {
+      options: ["User", "Lead", "Lifecycle"],
+      description:
+        "How should Grouparoo create Intercom contacts? Note that this only applies if using a `syncMode` that can add new contacts.",
+    },
+    removalMode: {
+      displayName: "Removal",
+      options: ["Archive", "Delete"],
+      description:
+        "How should Grouparoo remove Intercom contacts? Note that this only applies if using a `syncMode` that can remove existing contacts.",
+    },
+  }}
+/>
+
+You can configure these options by setting them inside the `options` object of the config file:
+
+```js
+
+options: {
+    creationMode: "Lifecycle",
+    removalMode: "Archive"
+},
+
+```
+
+### Property Mappings
+
+These mappings are what tell Grouparoo which Properties you want to sync to the Destination and what they should be called. For this plugin, **Grouparoo Properties** map to **Intercom People Attributes**.
+
+For Intercom, mapping the `email` property is always required. If `creationMode` is set to `User` or `Lifecycle`, `email` is also a required mapping.
+
+You can also map to custom attributes that you've defined on Intercom by adding the `custom_attributes` prefix (e.g. `custom_attributes.my_custom_attribute`).
+
+Here's an example of how this would look in the config file. Note that the keys refer to Intercom Attribute names and values refer to Grouparoo Property IDs.
+
+```js
+
+mapping: {
+    email: "email",
+    name: "firstName",
+    "custom_attributes.lifetime_value": "ltv",
+},
+
+```
+
+### Group Mappings
+
+You can use **Group Memberships** to automatically add **Intercom Tags** to your contacts.
+
+Here's an example of how to configure this in the config file. Keys refer to the name of the tag to be shown on Intercom and values refer to the Grouparoo Group ID.
+
+```js
+
+destinationGroupMemberships: {
+    "High Value Customers": "highValueCustomers",
+},
+
+```
+
+## Intercom Next Steps
+
+Once you have the plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
+
+```
+
+```

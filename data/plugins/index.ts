@@ -25,6 +25,7 @@ export interface PluginConfigOption {
   description?: string;
   name?: string;
   required?: boolean;
+  options?: string[];
 }
 
 export interface PluginConfigOptions {

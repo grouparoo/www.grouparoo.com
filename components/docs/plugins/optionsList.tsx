@@ -23,6 +23,11 @@ const PluginDocsOption = (option: PluginConfigOption) => {
       <dd>
         <Markdown>{option.description}</Markdown>
       </dd>
+      {option.options && (
+        <dd>
+          <strong>Options:</strong> {option.options.join(", ")}
+        </dd>
+      )}
     </span>
   );
 };
