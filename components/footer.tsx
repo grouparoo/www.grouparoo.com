@@ -117,8 +117,16 @@ export default function Footer() {
                   <a>Healthcare</a>
                 </Link>
                 <br />
-                <Link href="/solutions/segment-alternative">
+                <Link href="/solutions/segment">
                   <a>Segment Alternative</a>
+                </Link>
+                <br />
+                <Link href="/solutions/census">
+                  <a>Census Alternative</a>
+                </Link>
+                <br />
+                <Link href="/solutions/hightouch">
+                  <a>Hightouch Alternative</a>
                 </Link>
               </Col>
               <Col>

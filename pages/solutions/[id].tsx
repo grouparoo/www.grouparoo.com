@@ -3,24 +3,30 @@ import { Container, Button, Row, Col } from "react-bootstrap";
 import Head from "next/head";
 import GetStarted from "../../components/home/getStarted";
 import hydrate from "next-mdx-remote/hydrate";
-import { loadMdxFile } from "../../utils/mdxUtils";
+import { useRouter } from "next/router";
+import { ComparisonInfo, getComparison } from "../../utils/comparisonPages";
+import { arrayToReadableList, possessiveNoun } from "../../utils/inflectors";
 
 const components = {};
 
-export default function VsSegment({ pageProps }) {
-  const mdxContent = hydrate(pageProps.source, { components });
+export default function Comparison({ pageProps }) {
+  const router = useRouter();
+  const comp: ComparisonInfo = pageProps.comparison;
+  const content = hydrate(comp.source, { components });
 
   return (
     <>
       <Head>
-        <title>Grouparoo: Segment Alternative</title>
+        <title>Grouparoo: {comp.competitor} Alternative</title>
         <meta
           name="description"
-          content="Grouparoo is comparable to Segment but wins on developer workflow, data approach, privacy, and cost."
+          content={`Grouparoo is comparable to ${
+            comp.competitor
+          } but wins on ${arrayToReadableList(comp.pros)}.`}
         />
         <link
           rel="canonical"
-          href="https://www.grouparoo.com/solutions/segment-alternative"
+          href={`https://www.grouparoo.com/solutions/${comp.competitor.toLowerCase()}`}
         />
       </Head>
 
@@ -32,12 +38,12 @@ export default function VsSegment({ pageProps }) {
         <Container>
           <Row>
             <Col>
-              <h1>Grouparoo vs. Segment</h1>
+              <h1>Grouparoo vs. {comp.competitor}</h1>
               <p className="text-big-muted">
-                Segment’s events and customer data platform can be powerful,
+                {possessiveNoun(comp.competitor)}{" "}
+                {arrayToReadableList(comp.competitorPros)} can be powerful,
                 <br />
-                but Grouparoo wins on developer workflow, data approach,
-                privacy, and cost.
+                but Grouparoo wins on {arrayToReadableList(comp.pros)}.
               </p>
             </Col>
           </Row>
@@ -72,7 +78,6 @@ export default function VsSegment({ pageProps }) {
           <br />
         </Container>
       </div>
-
       <div id="value-prop" className="bg-dark text-white homePageSection">
         <Container>
           <Row style={{ textAlign: "center" }}>
@@ -102,6 +107,7 @@ export default function VsSegment({ pageProps }) {
               <br />
             </Col>
           </Row>
+
           <Row>
             <Col md={6}>
               <h3>🔒 Keep private data in house</h3>
@@ -127,7 +133,7 @@ export default function VsSegment({ pageProps }) {
         <Container>
           <Row>
             <Col>
-              <div className="mdxContent">{mdxContent}</div>
+              <div className="mdxContent">{content}</div>
             </Col>
           </Row>
         </Container>
@@ -138,11 +144,20 @@ export default function VsSegment({ pageProps }) {
   );
 }
 
-export async function getStaticProps() {
-  const { source } = await loadMdxFile(
-    ["components", "documents", "vs-segment.mdx"],
-    components
-  );
+// get initial props for react
+export async function getStaticProps({ params }) {
+  const comparison = await getComparison(params.id);
+  return { props: { comparison } };
+}
 
-  return { props: { source } };
+// What URLs should I work for?
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { id: "census" } },
+      { params: { id: "segment" } },
+      { params: { id: "hightouch" } },
+    ],
+    fallback: false,
+  };
 }
