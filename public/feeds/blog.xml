@@ -152,7 +152,7 @@ $ npm init -y
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre><p>Delete the database <code>mydb.sqlite</code> and run the script:</p><pre><code>$ node index.js
-</code></pre><p>Notice what you see on the console. Before the data when into the database, each of our new values was a <code>number</code>:</p><pre><code>a: number
+</code></pre><p>Notice what you see on the console. Before the data went into the database, each of our new values was a <code>number</code>:</p><pre><code>a: number
 b: number
 c: number
 </code></pre><p>That&#x27;s what we should have expected, considering we set those attributes as random numbers.</p><p>For me, when they came out of the database, they looked different:</p><pre><code>a: &#x27;91057&#x27; (string)
