@@ -28,11 +28,10 @@
     "description": "Apply changes from code config",
     "example": "",
     "inputs": {
-      "local": {
+      "local [ids...]": {
         "default": false,
-        "description": "Disable external validation",
-        "letter": "l",
-        "flag": true
+        "description": "Disable external validation. You can optionally pass object IDs to only disable external validation for those specific config objects (`--local mailchimp salesforce`)",
+        "letter": "l"
       },
       "timestamps": {
         "default": false,
