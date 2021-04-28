@@ -2,6 +2,48 @@
 competitor: Census
 pros: ["flexibility", "data approach", "Events support", "cost"]
 competitorPros: ["analytics", "customer data platform"]
+comparisonData:
+  {
+    competitor: "Census",
+    data:
+      [
+        { feature: "Open source offering", grouparoo: true, comp: false },
+        {
+          feature: "Free tier",
+          grouparoo: "Community edition is free. Period.",
+          comp: "Limited to 100 visitors, 2 sources, and 300 integrations",
+        },
+        {
+          feature: "Data architecture",
+          grouparoo: "Query-based (with events)",
+          comp: "Events-based",
+        },
+        {
+          feature: "Define customer profiles from historical data",
+          grouparoo: true,
+          comp: false,
+        },
+        {
+          feature: "Support for real-time Events",
+          grouparoo: true,
+          comp: true,
+        },
+        {
+          feature: "Easy to configure private vs. shareable data",
+          grouparoo: true,
+          comp: false,
+        },
+        {
+          feature: "Configurable via UI",
+          grouparoo: [true, "(enterprise edition)"],
+          comp: false,
+        },
+        { feature: "Configurable via CLI", grouparoo: true, comp: false },
+        { feature: "Custom profiles", grouparoo: true, comp: "Add on" },
+        { feature: "Self-hosted option", grouparoo: true, comp: false },
+      ],
+  }
+featureBanner: [{}, {}, {}, {}]
 ---
 
 ## How Grouparoo is different (and better) than Census
@@ -17,6 +59,8 @@ Census is a Reverse ETL tool, and so is Grouparoo, but Grouparoo is so much more
 <SectionDivider
   imagePath="/images/solutions/bowtie.png"
   heading="Easily define profiles, no matter your data."
+  width="600"
+  height="320"
   content="Grouparoo's queryable data structure makes it easy to create profiles -- even from historical data.  You can configure customer profiles from the command line on our community edition, or straight from the UI with our enterprise product."
   imageLeft="true"
 />
@@ -33,6 +77,8 @@ There are some user behaviors that you’re unlikely to track, such as every sin
 
 <SectionDivider
   imagePath="/images/solutions/locked-cloud.svg"
+  height="300"
+  width="420"
   heading="Grouparoo keeps your data right where you want it"
   content="Grouparoo’s open source edition makes it easy for anyone to give us a try.  Setup is simple, and your data can stay right where it is in the cloud."
 />
@@ -48,6 +94,8 @@ Another appealing attribute of Grouparoo is cost. Grouparoo is free to try, and 
 <SectionDivider
   imagePath="/images/solutions/money-stacks.svg"
   heading="Community edition is free forever"
+  width="600"
+  height="298"
   content="And our enterprise edition is priced to scale with your business, not against it."
   imageLeft="true"
 />

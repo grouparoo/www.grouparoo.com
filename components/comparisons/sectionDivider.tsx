@@ -5,11 +5,15 @@ export default function SectionDivider({
   heading,
   content,
   imagePath,
+  height,
+  width,
   imageLeft,
 }: {
   heading: string;
   content: string;
   imagePath: string;
+  height: number;
+  width: number;
   imageLeft: boolean;
 }) {
   let dividerContent;
@@ -22,8 +26,8 @@ export default function SectionDivider({
             className="centered"
             src={imagePath}
             alt="Grouparoo destination"
-            width={650}
-            height={398}
+            width={width}
+            height={height}
           />
         </Col>
         <Col md={6}>
@@ -39,8 +43,8 @@ export default function SectionDivider({
           <h3 className="homepageBlueH3">{heading}</h3>
           <p>{content}</p>
         </Col>
-        <Col className="" md={6}>
-          <Image src={imagePath} alt={heading} width={700} height={398} />
+        <Col className="justify-content-center" md={6}>
+          <Image src={imagePath} alt={heading} width={width} height={height} />
         </Col>
       </Row>
     );
