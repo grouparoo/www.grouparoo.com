@@ -1,6 +1,5 @@
 import { loadEntries, loadMdxFile, getStaticMdxPaths } from "./mdxUtils";
 
-const component = {};
 
 export interface ComparisonInfo {
     competitor: string;
@@ -10,9 +9,8 @@ export interface ComparisonInfo {
 }
 
 
-export async function getComparison(slugId): Promise<ComparisonInfo> {
-    const { source, frontMatter, path, slug } = await loadMdxFile(["pages", "solutions", `${slugId}.mdx`], component);
-    console.log(frontMatter);
+export async function getComparison(slugId, components): Promise<ComparisonInfo> {
+    const { source, frontMatter, path, slug } = await loadMdxFile(["pages", "solutions", `${slugId}.mdx`], components);
     const { competitor, pros, competitorPros } = frontMatter;
 
     return {
