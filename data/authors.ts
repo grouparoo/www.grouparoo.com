@@ -71,6 +71,15 @@ const Authors: Author[] = [
     description:
       "Paulo is a passionate Software Engineer who loves to solve problems, especially those that have a positive impact on people's lives. Paulo is also an enthusiast of astronomy, physics and a great defender of scientific divulgation. Cooking and playing percussion are some of his hobbies.",
   },
+  {
+    name: "Teal Larson",
+    slug: "teal_larson",
+    image: "teal_larson.jpg",
+    url: "https://www.tealjulia.com",
+    twitter: "@tealdoestech",
+    description:
+      "Teal is a Full Stack Engineer at Grouparoo, an open source data framework that easily connects your data to business tools.  Teal loves building products that solve real-world needs.  If she isn't coding, Teal is probably riding her bike or nose-deep in a book",
+  },
 ];
 
 export default Authors;

@@ -1,0 +1,91 @@
+---
+title: "Apple Migration Tips for M1 Macs"
+date: "2021-04-28"
+author: "Teal Larson"
+pullQuote: "Working through the quirks of migrating between Apple M1 Macs."
+image: "macbook-pro.jpeg"
+tags: [engineering, notes]
+---
+
+Last week, I upgraded to a M1 Macbook Pro. I got it configured for development and 48 hours later, through a series of unfortunate events and hardware failure, I ended up with a _second_ M1 Macbook Pro instead. The transition between computers wasn’t too bad thanks to Apple’s [Migration Assistant](https://support.apple.com/en-us/HT204350).
+
+I ran into an interesting situation, though. About 90% of the migration worked as expected or better, but the other 10% presented some puzzling blockers. Luckily, I worked through all the weirdness so you don’t have to! Let’s chat the good, the bad, and the ugly of migrating between Apple M1 Macs using Apple Migration Assistant.
+
+<Image
+  centered
+  alt="Apple Migration Assistant"
+  src="migration-tips-for-m1-macs/macos-big-sur-migration-assistant-transfer-from-mac.jpeg"
+  width={600}
+  height={450}
+/>
+<small>
+  <i>Apple Migration Assistant makes switching machines nearly seamless.</i>
+</small>
+<br />
+<br />
+
+## The Good: Applications and data stay mostly intact
+
+I mean, this is what Apple Migration Assistant bills itself as doing, so I’m not sure if you get points for doing what is expected of you, but it’s truly great.
+
+While most of my work is regularly backed up online, I do run a few programs locally. More on apps to come, but I was happy to see that, at the very least, VSCode and Homebrew were still alive and kicking. My SSH configurations were good to go which was really nice. Even my databases, which were installed via Homebrew, were up and running!
+
+I was pleasantly surprised to open Terminal on my new machine and see my most recent tabs still there. What’s more, they still had the same code I’d left them with which felt somehow cozy in a weird, nerdy way.
+
+<br />
+
+## The Bad: Get ready to re-set a lot of permissions
+
+Why on earth Apple remembered that I ran `pnpm install` two days ago, but not that Chrome has permission to share my desktop and camera, I have no idea. I also had to sign back into iCloud a <i>lot</i> of times. Fairly annoying? Yeah. But doable.
+
+<br />
+
+## The Ugly: Apple Migration Application Purgatory
+
+While all my apps transferred over correctly, a few had some bizarre behavior. Bizarre as in when I clicked on them **nothing** happened. Nothing on the screen, nothing on the Activity Monitor, zilch. I rebooted, uninstalled, deleted cached files, and reinstalled multiple times. Still no activity.
+
+Before I move on, it’s important to know about an application called Rosetta. You can’t run software built for an Intel chip on the new M1 chips. Rosetta acts as a middle man. According to [Apple](https://support.apple.com/en-us/HT211861), “Rosetta 2 works in the background whenever you use an app built only for Mac computers with an Intel processor. It automatically translates the app for use with Apple silicon.” In an ideal case, you won’t even know Rosetta is there aside from maybe a slower launch time.
+
+<Image
+  centered
+  source="https://cdn.osxdaily.com/wp-content/uploads/2020/11/install-rosetta-on-apple-silicon-mac.jpg"
+  alt="Rosetta 2 install alert"
+  src="migration-tips-for-m1-macs/install-rosetta.jpeg"
+  width={600}
+  height={295}
+/>
+<small>
+  <i>This alert would have been handy!</i>
+</small>
+<br />
+<br />
+
+When you go to launch an app that needs Rosetta, MacOS <i>should</i> prompt you to install Rosetta2 if you don't have it yet. And it does! Except after a migration. I ran into this with a screen sharing tool we use daily here at Grouparoo.
+
+I’m not entirely sure why Rosetta doesn’t migrate (or come native) if it’s used by so many apps right now, but it doesn’t.
+
+What was happening with my mysteriously inactive apps was that they migrated just fine, but couldn’t be executed. MacOS wasn’t registering that it was my first time running the application, either, so I didn't get a prompt to install Rosetta2. This is what I’ve come to term "Apple Migration Purgatory ™ ". The program ends up just… sitting there. Doing nothing. Fully installed, but fully unreadable, having its own little existential crisis.
+
+<Image
+  centered
+  source="https://media.giphy.com/media/1I6HRxR7pQojS/giphy.gif"
+  alt="Zoolander's existential crisis"
+  src="migration-tips-for-m1-macs/zoolander.gif"
+  width={342}
+  height={128}
+/>
+
+I made this discovery a few headaches later, when I went to install [App Cleaner](https://freemacsoft.net/appcleaner/). App Cleaner is a handy tool that can show you every file associated with a given application. And guess what popped up when I installed it… an alert to install Rosetta2. Just like that, my other software was suddenly usable now too!
+
+There were a few other small, similar hiccups. While Homebrew migrated over, for some reason my XCode CLI tools did not (and again, no prompt… they just didn’t work).
+
+Overall, if you’re running into issues with your Mac after migrating, take a look at whether you need to install or update Rosetta or XCode.
+
+## TL;DR
+
+If applications are not running as expected after migrating your computer, check that Rosetta2 and XCode CLI tools are installed and up-to-date:
+
+```
+sudo xcode-select --install  # install xcode tools
+softwareupdate --install-rosetta  # install rosetta
+```
