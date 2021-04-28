@@ -30,7 +30,7 @@
    test.each(cases)("it renders the comparison page for %p", async (pageSlug) => {
      const company = pageSlug.charAt(0).toUpperCase() + pageSlug.slice(1);
 
-     const testUrl = url + `/solutions/${pageSlug}`;
+     const testUrl = url + `/solutions/${pageSlug}-alternative`;
      await browser.get(testUrl);
      const header = await browser.findElement(by.tagName("h1")).getText();
      expect(header).toContain(`Grouparoo vs. ${company}`);
