@@ -9,6 +9,7 @@ import { arrayToReadableList, possessiveNoun } from "../../utils/inflectors";
 import * as components from "../../components/comparisons";
 // import { TableOfContents } from "../../components/docs/tableOfContents";
 
+
 export default function Comparison({ pageProps }) {
   const router = useRouter();
   const comp: ComparisonInfo = pageProps.comparison;
@@ -135,6 +136,7 @@ export default function Comparison({ pageProps }) {
             <div className="mdxContent justify-content-center comparisonContent">
               {content}
             </div>
+
           </Row>
         </Container>
       </div>
@@ -147,6 +149,7 @@ export default function Comparison({ pageProps }) {
 // get initial props for react
 export async function getStaticProps({ params }) {
   const comparison = await getComparison(params.id, components);
+
   return { props: { comparison } };
 }
 
