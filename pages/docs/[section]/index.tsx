@@ -8,7 +8,7 @@ import SEO from "../../../components/seo";
 
 export default function DocPage({ pageProps }) {
   const { source, frontMatter, path, breadcrumbs } = pageProps;
-  const content = hydrate(source, { components });
+  const content = hydrate(source, { ...components });
 
   return (
     <>
