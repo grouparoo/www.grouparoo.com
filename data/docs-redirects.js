@@ -111,19 +111,12 @@ const configRedirects = [
   },
 ];
 
-/* --- Installation --- */
-
-const installationRedirects = [
-  { src: "/docs/installation/plugins", dest: "/docs/plugins" },
-];
-
 const combinedRedirects = [
   ...guidesRedirects,
   ...deploymentRedirects,
   ...developmentRedirects,
   ...communityRedirects,
   ...configRedirects,
-  ...installationRedirects,
 ];
 
 module.exports = combinedRedirects.map(({ src, dest, permanent }) => ({
