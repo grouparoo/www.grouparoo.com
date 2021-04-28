@@ -23,6 +23,7 @@ const ignoredPlugins = [
   "@grouparoo/app-templates",
   "@grouparoo/email-authentication",
   "@grouparoo/logger",
+  "@grouparoo/node-marketo-rest",
 ];
 
 export default function PluginsList() {
