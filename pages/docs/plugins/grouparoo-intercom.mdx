@@ -101,12 +101,10 @@ Here are the available options for an Intercom Destination:
 You can configure these options by setting them inside the `options` object of the config file:
 
 ```js
-
 options: {
-    creationMode: "Lifecycle",
-    removalMode: "Archive"
+  creationMode: "Lifecycle",
+  removalMode: "Archive"
 },
-
 ```
 
 ### Property Mappings
@@ -120,13 +118,11 @@ You can also map to custom attributes that you've defined on Intercom by adding 
 Here's an example of how this would look in the config file. Note that the keys refer to Intercom Attribute names and values refer to Grouparoo Property IDs.
 
 ```js
-
 mapping: {
-    email: "email",
-    name: "firstName",
-    "custom_attributes.lifetime_value": "ltv",
+  email: "email",
+  name: "firstName",
+  "custom_attributes.lifetime_value": "ltv",
 },
-
 ```
 
 ### Group Mappings
@@ -136,17 +132,11 @@ You can use **Group Memberships** to automatically add **Intercom Tags** to your
 Here's an example of how to configure this in the config file. Keys refer to the name of the tag to be shown on Intercom and values refer to the Grouparoo Group ID.
 
 ```js
-
 destinationGroupMemberships: {
-    "High Value Customers": "highValueCustomers",
+  "High Value Customers": "highValueCustomers",
 },
-
 ```
 
 ## Intercom Next Steps
 
 Once you have the plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
-
-```
-
-```
