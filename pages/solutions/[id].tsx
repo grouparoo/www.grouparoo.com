@@ -9,7 +9,6 @@ import { arrayToReadableList, possessiveNoun } from "../../utils/inflectors";
 import * as components from "../../components/comparisons";
 // import { TableOfContents } from "../../components/docs/tableOfContents";
 
-
 export default function Comparison({ pageProps }) {
   const router = useRouter();
   const comp: ComparisonInfo = pageProps.comparison;
