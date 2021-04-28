@@ -1,0 +1,88 @@
+---
+title: "Upgrading Grouparoo from v0.2 to v0.3"
+date: "2021-04-16"
+pullQuote: "v0.3 is an exciting release with some breaking changes! Learn how to upgrade to v0.3."
+---
+
+Hello Grouparoo Community! v0.3 introduces the core concept of [Sync Modes](/blog/sync-modes) and lays the groundwork for adding sync modes across all current and future destinations. We only expect these breaking changes to affect a subset of our users, specifically those who are configuring Grouparoo via code.
+
+## Migration Guide
+
+**Upgrading Grouparoo**
+
+1. Update Grouparoo to the latest version through the usual steps by updating all the package version numbers to the latest version. More information is documented in [Installing updates](/docs/support/upgrading-grouparoo#installing-updates).
+2. Depending on how you've been configuring destinations, some extra steps may be needed:
+   - If using the **Enterprise UI**, no additional steps are required. We have provided migrations for affected plugins that will be automatically applied the next time Grouparoo starts up. You will see a new `syncMode` option for each supported Destination you already have clarifying the behavior in use. As we continue to update our plugins, you may be able to change the syncMode used.
+   - If using **Code Config**:
+     - The **customer.io** app has been renamed to **customerio**. If using this plugin, you will need to edit the app's configuration file and change the `type` from `customer.io` to `customerio`.
+     - You may need to specify which `syncMode` your destinations will be operating in. More information can be found below.
+
+### Setting sync modes in code config
+
+Config files for destinations now have an additional `syncMode` property to specify which mode the destination should operate in. From this point onwards, generating new destinations that support sync modes should automatically include the `syncMode` property in their config file. However, setting a sync mode for pre-existing destinations requires adding the property to the config file manually.
+
+Below is an example of the `syncMode` property being added to a Salesforce destination:
+
+```js
+{
+      id: "...",
+      name: "...",
+      class: "destination",
+      type: "salesforce-objects-export",
+      appId: "...",
+      groupId: "...",
+
+      syncMode: "sync", // How should Grouparoo sync with this destination? Options: "sync", "additive", "enrich"
+
+      options: {
+        profileObject: "Contact",
+        profileMatchField: "Email",
+        ...
+```
+
+Most destinations have default sync modes that will keep your destinations working just as before without any intervention from you. However, if the destination supports sync modes we generally recommend setting it explicitly in its configuration file. If a destination has multiple options for sync modes and it's falling back to a default, you may see warnings like these in the logs to remind you to set a sync mode:
+
+```
+warning: Using default sync mode "sync" for destination "pipedrive". You should explicitly set a sync mode for the destination to prevent unintended behavior.
+```
+
+#### Choosing a sync mode
+
+It's important to understand what these sync modes mean. Our [blog post on Sync Modes](/blog/sync-modes) introduces the concept and explains what each available mode does.
+
+Not all destinations support all sync modes. To check which options are available and what the default mode is for a destination, you can use our cli with `--describe`:
+
+```
+$ grouparoo generate pipedrive:destination --describe
+
+🦘 Grouparoo: generate pipedrive:destination
+
+Config for a pipedrive Destination
+
+Required Arguments:
+  * id (required) - The id of this new Destination
+
+Required Options:
+  * parent (required) - The id of the pipedrive App to use for this Destination, e.g: `--parent data_warehouse`
+
+Optional Options:
+  * syncMode - How should profiles sync to the destination? e.g. `--sync-mode additive`. Options: sync, additive, enrich (default: "sync")
+```
+
+The last line of the previous example shows available options and default sync mode for the Pipedrive destination.
+
+#### Migrating plugins that previously supported sync modes
+
+Before this update, some plugins (specifically **Salesforce**, **Intercom**, and **Facebook**) had their own way of configuring sync modes through their destination options. Since this has now been standardized accross all plugins, you'll need to migrate your current options before starting Grouparoo.
+
+**Note that these steps are automatically performed for you if you have been using the UI to configure your destinations.**
+
+1. Determine which sync mode corresponds to your current options.
+   - For **Salesforce** and **Facebook**, there's a 1 to 1 correlation between the old and new sync modes. For example, if `options.syncMode` was set to `Additive`, the new sync mode would be `additive`.
+   - For **Intercom**, the sync mode is split between two options: `creationMode` and `removalMode`. If `creationMode` is `Enrich`, the new sync mode would be `enrich`. If `removalMode` is `Skip`, the new sync mode would be `additive`. Otherwise, the new sync mode would be `sync`.
+2. Add the `syncMode` property to the configuration file with the value determined from the previous step. For an example on how this looks, see [Setting sync modes in code config](#setting-sync-modes-in-code-config).
+3. Remove the old options from the configuration file, as needed.
+   - For **Salesforce** and **Facebook** this would be `options.syncMode`.
+   - For **Intercom** this would be `options.creationMode` and `options.removalMode` if their values were set to "Enrich" or "Skip".
+
+Now you can run your Grouparoo application (`grouparoo start`)!
