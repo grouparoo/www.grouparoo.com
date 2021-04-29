@@ -16,29 +16,6 @@ export default function Comparison({ pageProps }) {
   const comp: ComparisonInfo = pageProps.comparison;
   const content = hydrate(comp.source, { components });
 
-  let sampleFeatures = [
-    {
-      title: "🙃 ut labore et dolore magna aliqua.",
-      text:
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      title: "💰 Duis aute irure dolor in reprehenderit",
-      text:
-        "in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint",
-    },
-    {
-      title: "⏱ Dignissim diam quis enim lobortis scelerisque.",
-      text:
-        "Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis.",
-    },
-    {
-      title: "✅ Ipsum dolor sit amet consectetur",
-      text:
-        "Mollis aliquam ut porttitor leo a diam sollicitudin tempor. At varius vel",
-    },
-  ];
-
   return (
     <>
       <Head>
@@ -58,7 +35,7 @@ export default function Comparison({ pageProps }) {
       <div
         id="headline"
         className="homePageSection"
-        style={{ textAlign: "center", paddingTop: 100, paddingBottom: 100 }}
+        style={{ textAlign: "center", paddingBottom: 100 }}
       >
         <Container>
           <Row>
@@ -103,7 +80,7 @@ export default function Comparison({ pageProps }) {
           <br />
         </Container>
       </div>
-      <FeatureBanner features={sampleFeatures} />
+      <FeatureBanner features={comp.features} />
       <div className="homePageSection">
         <Container fluid>
           <Row className="d-flex justify-content-center">

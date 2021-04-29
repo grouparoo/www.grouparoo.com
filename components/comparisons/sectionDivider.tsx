@@ -14,23 +14,23 @@ export default function SectionDivider({
   imagePath: string;
   height: number;
   width: number;
-  imageLeft: boolean;
+  imageLeft: string;
 }) {
   let dividerContent;
 
-  if (imageLeft) {
+  if (imageLeft === "true") {
     dividerContent = (
-      <Row className="align-items-center mx-auto col-9">
-        <Col className="justify-content-center" md={6}>
+      <Row className="align-items-center justify-content-center mx-auto col-md-9 featureBanner">
+        <Col className="px-5-md" md={6} xs={12}>
           <Image
             className="centered"
             src={imagePath}
-            alt="Grouparoo destination"
+            alt={heading}
             width={width}
             height={height}
           />
         </Col>
-        <Col md={6}>
+        <Col md={6} xs={12}>
           <h3 className="homepageBlueH3">{heading}</h3>
           <p>{content}</p>
         </Col>
@@ -38,12 +38,12 @@ export default function SectionDivider({
     );
   } else {
     dividerContent = (
-      <Row className="align-items-center mx-auto col-9">
-        <Col className="px-5" md={6}>
+      <Row className="align-items-center justify-content-center mx-auto col-md-9 featureBanner">
+        <Col className="px-5-md" md={6} xs={12}>
           <h3 className="homepageBlueH3">{heading}</h3>
           <p>{content}</p>
         </Col>
-        <Col className="justify-content-center" md={6}>
+        <Col className="justify-content-center" md={6} xs={12}>
           <Image src={imagePath} alt={heading} width={width} height={height} />
         </Col>
       </Row>

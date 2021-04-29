@@ -85,11 +85,35 @@ header {
   h4,
   h5,
   h6 {
-    max-width: 700px;
+    max-width: 740px;
     margin-left: auto;
     margin-right: auto;
-    padding: 15;
+    padding: 15px 40px 15px 40px;
   }
+  ol {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 40px 15px 40px;
+  }
+}
+
+.featureBanner {
+  h3,
+  p {
+    padding: 0px;
+  }
+}
+.comparisonTableText {
+  font-size: 80%;
+}
+
+.comparisonTableCell {
+  width: 35%;
+}
+
+.comparisonTableLabelCell {
+  width: 30%;
 }
 // -- Integrations Pages --
 .productScreenshots {

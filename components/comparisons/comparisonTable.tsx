@@ -11,8 +11,6 @@ export default function ComparisonTable({ comparisonData }) {
   // },]
   // }]
 
-  //TODO: allow cells to have string and boolean (as array)
-
   let tableRows = comparisonData.data.map((feature) => (
     <ComparisonRow key={feature.feature} rowData={feature} />
   ));
@@ -22,10 +20,7 @@ export default function ComparisonTable({ comparisonData }) {
       <Container>
         <Row>
           <Col>
-            <Table
-              className="mx-auto"
-              style={{ textAlign: "center", width: "700px" }}
-            >
+            <Table className="mx-auto col-xs-9" style={{ textAlign: "center" }}>
               <thead>
                 <tr>
                   <th></th>

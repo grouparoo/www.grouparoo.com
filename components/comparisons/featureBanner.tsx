@@ -2,12 +2,12 @@ import { Interface } from "node:readline";
 import { Row, Col, Container } from "react-bootstrap";
 import Image from "../Image";
 
-interface Feature {
+export interface Feature {
   title: string;
   text: string;
 }
 
-interface FeatureArray extends Array<Feature> {}
+export interface FeatureArray extends Array<Feature> {}
 
 export default function SectionDivider({
   features,

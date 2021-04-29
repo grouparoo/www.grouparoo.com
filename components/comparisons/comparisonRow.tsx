@@ -16,7 +16,7 @@ export default function ComparisonRow({ rowData }) {
     } else {
       cellContents = makeMark(cellData, cellId);
     }
-    return <td>{cellContents}</td>;
+    return <td className="align-middle comparisonTableCell">{cellContents}</td>;
   }
 
   function makeMark(hasFeature, cellId, index = 0) {
@@ -42,7 +42,12 @@ export default function ComparisonRow({ rowData }) {
       );
     } else if (typeof hasFeature === "string") {
       return (
-        <span key={`${rowData.feature}-${cellId}-${index}`}>{hasFeature}</span>
+        <span
+          className="comparisonTableText align-middle"
+          key={`${rowData.feature}-${cellId}-${index}`}
+        >
+          {hasFeature}
+        </span>
       );
     }
   }
@@ -50,7 +55,9 @@ export default function ComparisonRow({ rowData }) {
   return (
     <>
       <tr>
-        <td style={{ textAlign: "left" }}>{rowData.feature}</td>
+        <td className="text-left align-middle comparisonTableLabelCell">
+          {rowData.feature}
+        </td>
         {createCell(rowData.grouparoo, "grouparoo")}
         {createCell(rowData.comp, "comp")}
       </tr>
