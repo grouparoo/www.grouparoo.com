@@ -33,8 +33,12 @@ export default function Navigation() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto" style={{ marginTop: 30 }}>
               <Dropdown className="nav-link align-text-top">
-                <Dropdown.Toggle variant="none" id="dropdown-basic">
-                  Solutions
+                <Dropdown.Toggle
+                  variant=""
+                  className="px-0 pt-0 pb-2 mt-0"
+                  id="dropdown-basic"
+                >
+                  <a>Solutions</a>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className="solutionsNav">
@@ -50,9 +54,14 @@ export default function Navigation() {
                           />
                           Industries
                         </Dropdown.Header>
-                        <Dropdown.Item>Healthcare</Dropdown.Item>
-                        <Dropdown.Item>Fintech</Dropdown.Item>
-                        <Dropdown.Item>Education</Dropdown.Item>
+                        <Dropdown.Item>
+                          <Link href="/solutions/healthcare">
+                            <a className="nav-link" role="button">
+                              Healthcare
+                            </a>
+                          </Link>
+                        </Dropdown.Item>
+
                         <Dropdown.Divider />
                         <Dropdown.Header>
                           <FontAwesomeIcon
@@ -63,9 +72,27 @@ export default function Navigation() {
                           />
                           Comparisons
                         </Dropdown.Header>
-                        <Dropdown.Item>vs Census</Dropdown.Item>
-                        <Dropdown.Item>vs Hightouch</Dropdown.Item>
-                        <Dropdown.Item>vs Rudderstack</Dropdown.Item>
+                        <Dropdown.Item>
+                          <Link href="/solutions/census-alternative">
+                            <a className="nav-link" role="button">
+                              vs. Census
+                            </a>
+                          </Link>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                          <Link href="/solutions/segment-alternative">
+                            <a className="nav-link" role="button">
+                              vs. Segment
+                            </a>
+                          </Link>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                          <Link href="/solutions/hightouch-alternative">
+                            <a className="nav-link" role="button">
+                              vs. Hightouch
+                            </a>
+                          </Link>
+                        </Dropdown.Item>
                       </Col>
 
                       <Col xs lg="6">
@@ -78,8 +105,20 @@ export default function Navigation() {
                           />
                           Departments
                         </Dropdown.Header>
-                        <Dropdown.Item>Engineering</Dropdown.Item>
-                        <Dropdown.Item>Marketing</Dropdown.Item>
+                        <Dropdown.Item>
+                          <Link href="/">
+                            <a className="nav-link" role="button">
+                              Engineering
+                            </a>
+                          </Link>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                          <Link href="/solutions/marketers">
+                            <a className="nav-link" role="button">
+                              Marketing
+                            </a>
+                          </Link>
+                        </Dropdown.Item>
                         <Dropdown.Divider />
 
                         <Dropdown.Header>
@@ -91,10 +130,34 @@ export default function Navigation() {
                           />
                           Integrations
                         </Dropdown.Header>
-                        <Dropdown.Item>Salesforce</Dropdown.Item>
-                        <Dropdown.Item>Redshift</Dropdown.Item>
-                        <Dropdown.Item>Hubspot</Dropdown.Item>
-                        <Dropdown.Item>See More...</Dropdown.Item>
+                        <Dropdown.Item>
+                          <Link href="/integrations/destinations/salesforce">
+                            <a className="nav-link" role="button">
+                              Salesforce
+                            </a>
+                          </Link>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                          <Link href="/integrations/destinations/redshift">
+                            <a className="nav-link" role="button">
+                              Redshift
+                            </a>
+                          </Link>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                          <Link href="/integrations/destinations/hubspot">
+                            <a className="nav-link" role="button">
+                              Hubspot
+                            </a>
+                          </Link>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                          <Link href="/integrations">
+                            <a className="nav-link" role="button">
+                              See More...
+                            </a>
+                          </Link>
+                        </Dropdown.Item>
                       </Col>
                     </Row>
                   </Container>

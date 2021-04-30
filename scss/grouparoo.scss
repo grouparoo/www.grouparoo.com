@@ -57,6 +57,12 @@ header {
 }
 
 // -- Nav Bar--
+
+#dropdown-basic a {
+  font-size: 18px;
+  color: #00000080;
+}
+
 @media only screen and (min-width: 600px) {
   .solutionsNav {
     min-width: 25em;
