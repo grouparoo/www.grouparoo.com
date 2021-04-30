@@ -1,4 +1,14 @@
-import { Nav, Navbar, Container, Button, Image } from "react-bootstrap";
+import {
+  Nav,
+  Navbar,
+  Container,
+  Button,
+  Image,
+  Dropdown,
+  Col,
+  Row,
+} from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
 export default function Navigation() {
@@ -22,11 +32,74 @@ export default function Navigation() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto" style={{ marginTop: 30 }}>
-              <Link href="/integrations">
-                <a className="nav-link" role="button">
-                  Integrations
-                </a>
-              </Link>
+              <Dropdown className="nav-link align-text-top">
+                <Dropdown.Toggle variant="none" id="dropdown-basic">
+                  Solutions
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu className="solutionsNav">
+                  <Container>
+                    <Row>
+                      <Col xs md="6">
+                        <Dropdown.Header>
+                          <FontAwesomeIcon
+                            color="black"
+                            icon={"building"}
+                            size="1x"
+                            className="pr-1"
+                          />
+                          Industries
+                        </Dropdown.Header>
+                        <Dropdown.Item>Healthcare</Dropdown.Item>
+                        <Dropdown.Item>Fintech</Dropdown.Item>
+                        <Dropdown.Item>Education</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Header>
+                          <FontAwesomeIcon
+                            color="black"
+                            icon={"balance-scale-left"}
+                            size="1x"
+                            className="pr-1"
+                          />
+                          Comparisons
+                        </Dropdown.Header>
+                        <Dropdown.Item>vs Census</Dropdown.Item>
+                        <Dropdown.Item>vs Hightouch</Dropdown.Item>
+                        <Dropdown.Item>vs Rudderstack</Dropdown.Item>
+                      </Col>
+
+                      <Col xs lg="6">
+                        <Dropdown.Header>
+                          <FontAwesomeIcon
+                            color="black"
+                            icon={"user-tie"}
+                            size="1x"
+                            className="pr-1"
+                          />
+                          Departments
+                        </Dropdown.Header>
+                        <Dropdown.Item>Engineering</Dropdown.Item>
+                        <Dropdown.Item>Marketing</Dropdown.Item>
+                        <Dropdown.Divider />
+
+                        <Dropdown.Header>
+                          <FontAwesomeIcon
+                            color="black"
+                            icon={"plug"}
+                            size="1x"
+                            className="pr-1"
+                          />
+                          Integrations
+                        </Dropdown.Header>
+                        <Dropdown.Item>Salesforce</Dropdown.Item>
+                        <Dropdown.Item>Redshift</Dropdown.Item>
+                        <Dropdown.Item>Hubspot</Dropdown.Item>
+                        <Dropdown.Item>See More...</Dropdown.Item>
+                      </Col>
+                    </Row>
+                  </Container>
+                </Dropdown.Menu>
+              </Dropdown>
 
               <Link href="/pricing">
                 <a className="nav-link" role="button">

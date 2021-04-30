@@ -88,7 +88,7 @@ export default function Comparison({ pageProps }) {
           <PageNavigation />
         </div> */}
         <Container fluid>
-          <Row className="d-flex justify-content-center">
+          <Row>
             <div className="mdxContent justify-content-center comparisonContent">
               {/* copy and dividers */}
               {content}

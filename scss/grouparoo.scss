@@ -56,6 +56,13 @@ header {
   font-weight: 400;
 }
 
+// -- Nav Bar--
+@media only screen and (min-width: 600px) {
+  .solutionsNav {
+    min-width: 25em;
+  }
+}
+
 // -- Homepage --
 .homePageSection {
   padding-top: 50px;
