@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Head from "next/head";
 import Link from "next/link";
 import IntegrationCard from "../components/home/integrationCard";
-import { PluginData } from "../data/plugins";
+import { PluginPageData } from "../data/plugins";
 
 export default function IntegrationsPage() {
   return (
@@ -49,8 +49,8 @@ export default function IntegrationsPage() {
       >
         <Container>
           <Row>
-            {PluginData.length > 0
-              ? PluginData.sort((a, b) => {
+            {PluginPageData.length > 0
+              ? PluginPageData.sort((a, b) => {
                   return b.priority - a.priority;
                 }).map((plugin) => {
                   return (

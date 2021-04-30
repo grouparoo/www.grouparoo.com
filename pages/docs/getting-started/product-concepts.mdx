@@ -1,20 +1,135 @@
 ---
 title: "Product Concepts"
-date: "2020-08-01"
-pullQuote: "Learn about the terminology that Grouparoo uses"
+date: "2021-04-05"
+pullQuote: "Learn about the terminology that Grouparoo uses."
+pageNavSelector: "h2"
 ---
 
-There are 7 main Objects within Grouparoo:
+Welcome to the Grouparoo Dictionary! This is the collection of terms we use throughout the Grouparoo application to help you sync customer data between your source(s) of truth and business applications.
 
-- Profiles
-- Profile Properties
-- Profile Property Rules
-- Events
-- Groups
-- Destinations
-- Sources
+<Alert variant="primary">
+  Are we missing a term that you expected to see here?{" "}
+  <Link href="/meet">Let us know</Link>.
+</Alert>
 
-## Profiles
+### Table of Contents
+
+- [App](#app)
+- [Application Database](#application-database)
+- [Batch Generation](#batch-generation)
+- [Bootstrapped Property](#bootstrapped-property)
+- [Calculated Group](#calculated-group)
+- [Columnar Source](#columnar-source)
+- [Destination](#destination)
+- [Event](#event)
+- [Filter](#filter)
+- [Generator](#generator)
+- [Group](#group)
+- [High Watermark](#high-watermark)
+- [Manual Group](#manual-group)
+- [Mapping](#mapping)
+- [Plugin](#plugin)
+- [Profile](#profile)
+- [Profile Property](#profile-property)
+- [Profile Property Rule](#profile-property-rule)
+- [Query Source](#query-source)
+- [Source](#source)
+- [Table Source](#table-source)
+
+## App
+
+An App in Grouparoo represents a _integration_, or a _connection_ to some service. Every [Source](#source) and [Destination](#destination) requires an App. [See this page](/integrations) for a full list of available integrations.
+
+## Application Database
+
+The application database, sometimes referred to as the Grouparoo database, is the database created and used by the Grouparoo application. This is not to be confused with any database source that in which you store customer data.
+
+## Batch Generation
+
+Some versions of [the `generate` command](/docs/cli/config#generate) support creating multiple config files from a single command. This is what we call Batch Generation.
+
+## Bootstrapped Property
+
+A Bootstrapped [Property](#profile-property) is a special type of property. It acts as the primary key for your profiles and must be unique. This is most often some form of an ID value.
+
+This idea is somewhat related to a [Mapping](#mapping). A Bootstrapped Property must exist before you can map data from a [Source](#source) to a [Profile](#profile) in Grouparoo.
+
+## Calculated Group
+
+Calculated Groups are a type of [Group](#group) that are always kept up to date for you by Grouparoo. As new Profiles are created, or the Profile Properties of existing Profiles are changed, Group membership will automatically be adjusted.
+
+## Columnar Source
+
+A Columnar Source is a specific type of [Source](#source) that imports data from a column-based mechanism, like a database. Sources of this type share most of their behavior in common.
+
+## Destination
+
+Destinations are where you want [Grouparoo Profiles](#profile) and [Groups](#group) to be sent. Often Destinations are customer marketing tools such as email marketing or push notification services, though databases and data warehouses can also function at Destinations.
+
+When you set up a Destination in Grouparoo, you will choose which Groups as well as which [Profile Properties](#profile-properties) you will send to each Destination. You will have control and visibility over what data gets sent to each Destination.
+
+Grouparoo will keep the Profile and Group data in your Destinations up-to-date in real time.
+
+See [our Integrations page](/integrations) for an up-to-date list of our supported Destinations. We are always adding support for more Destinations. If you have a request, please [let us know](/meet)!
+
+## Event
+
+Grouparoo supports Events through our various client-side libraries. Events are best used for tracking user behavior that you usually wouldn't keep in a data warehouse or database such as:
+
+- Page Viewed
+- Button Clicked
+- Session Created
+
+Grouparoo Events are flexible and allow you to track all kinds of behaviors. Once you start tracking Events, you can then create Profile Property Rules based on Events to associate them with Profiles. [Learn more about Events here](/docs/development/events).
+
+## Filter
+
+Filters are a series of rules used to filter data into some desired subset.
+
+## Generator
+
+A Generator is an engine that builds config files for you, based on some input. Generators are accessed via [the CLI's `generate` command](/docs/cli/config#generate). Generators use templates from [Plugins](#plugins) to build the appropriate configuration files for you.
+
+You can learn more about Generators by reading through [the Code Config docs](/docs/config/code-config).
+
+## Group
+
+Groups are a collection of [Profiles](#profile) that you can define and filter. These filters (or _rules_) are built to be easy-to-understand by non-technical users.
+
+Let's say we wanted to make a Group of high-value customers who recently abandoned the checkout process. Here is an example of the rules to define this group:
+
+- `[Total Customer Value] [is greater than] [$50]`
+- `[Abandoned Cart] [in the last] [3 days]`
+
+With these rules, you have a Group consisting of every user who has purchased more than $50 and recently abandoned their cart. You can then synchronize that group in real-time to all of your Destinations to then communicate with them.
+
+There are 2 types of groups: [**Calculated**](#calculated-group) and [**Manual**](#manual-group)
+
+## High Watermark
+
+A High Watermark is a value used for comparison during [Runs](#run) that are [scheduled](#schedule). Grouparoo will only import items where the high watermark column is greater than the largest previously imported high watermark value. For example, let's say you use `updated_at` as your high watermark. Grouparoo will run an import and record the highest value from that column (presumably from the most recently updated record). The next time the import runs, Grouparoo will only consider records where `updated_at` is greater than the previous high watermark value. And it doesn't have to be a date, it just has to be comparable. Another example would be a numeric field, like `version`, in which the value is incremented when changes are made to the record in the Source database.
+
+## Manual Group
+
+Manual Groups are a type of [Group](#group) that only change when you add or remove Profiles.
+
+## Mapping
+
+When importing data from a [Source](#source), Grouparoo needs to know how to relate the data its importing to the [Profiles](#profiles) already in Grouparoo. This is what we call a Mapping. It operates like a foreign key in a database.
+
+Consider that you have a [Property](#profile-property) called `email`, while your Source has an attribute called `emailAddress`, which is a unique field in that Source. You could map `emailAddress` from your source to `email` in Grouparoo. This tells Grouparoo that when anything changes on the Source, it knows which profile to update.
+
+Every Source needs a Mapping, as Grouparoo must know how to associate imported information.
+
+## Plugin
+
+The core Grouparoo application is the engine that drives syncing data from [Sources](#source) to [Destinations](#destination). The application relies on plugins to provide you with only the functionality you require to sync data between your preferred services.
+
+Being that Grouparoo is a Node.js application, the plugins are available as JavaScript packages through [NPM](https://www.npmjs.com/). The majority of plugins are open-source and available for free, though we do have also have [paid plugins](/docs/plugins#paid-plugins).
+
+Learn more about [existing plugins](/docs/plugins), or [develop your own plugin](/docs/development/plugins).
+
+## Profile
 
 Profiles represent individual people. For your specific company or organization, that may mean:
 
@@ -23,7 +138,7 @@ Profiles represent individual people. For your specific company or organization,
 - Users
 - Visitors to your site or app
 
-## Profile Properties
+## Profile Property
 
 Profile Properties are data associated with a profile. You can define Profile Properties based on data that exists in your data Sources.
 
@@ -42,70 +157,32 @@ Common examples of **Not Unique** Profile Properties are:
 - `Last Name`
 - `Date of Last Purchase`
 
-## Profile Property Rules
+## Profile Property Rule
 
 Profile Property Rules define how a property gets pulled from a Source. Every Source might be structured in slightly different ways, so Grouparoo plugins make it easy for you to define Profile Property Rules.
 
 For example, you might define a Profile Property Rule called `first_name` which you are pulling from your product database via the `@grouparoo/postgres` plugin, or you might define `number_of_purchases`, which you are using the Grouparoo Event system to count up.
 
-## Events
+## Query Source
 
-Grouparoo also supports Events through our various client-side libraries. Events are best used for tracking user behavior that you usually wouldn't keep in a data warehouse or database such as:
+A Query Source is an implementation of a [Columnar Source](#columnar-source) that enables you to write custom queries to extract information from your database. This is a more flexible version when compared with a [Table Source](#table-source).
 
-- `Page Viewed`
-- `Button Clicked`
-- `Session Created`
+## Run
 
-Grouparoo Events are flexible and allow you to track all kinds of behaviors. Once you start tracking Events, you can then create Profile Property Rules based on Events to associate them with Profiles.
+A Run is a series of imports and/or exports. Runs are triggered by actions in Grouparoo, such as creating a new [Group](#group). Runs can also be triggered by [Schedules](#schedule).
 
-## Groups
+## Schedule
 
-Groups are a collection of Profiles that you can define and filter. These filters and rules are built to be easy-to-understand by non-technical users.
+A Schedule defines some interval by which to process a [Run](#run). Though technically separate objects, Schedules are often used in conjunction with [Sources](#sources).
 
-Let's say we wanted to make a Group of high-value customers who recently abandoned the checkout process. Here is an example of the rules to define this group:
-
-- `[Total Customer Value] [is greater than] [$50]`
-- `[Abandoned Cart] [in the last] [3 days]`
-
-With these rules, you have a Group consisting of every user who has purchased more than \$50 and recently abandoned their cart. You can then synchronize that group in real-time to all of your Destinations to then communicate with them.
-
-There are 2 types of groups: **Calculated** and **Manual**
-
-**Calculated Groups** are always kept up to date for you by Grouparoo. As new Profiles are created, or the Profile Properties of existing Profiles are changed, Group membership will automatically be adjusted.
-
-**Manual Groups** only change when you add or remove Profiles.
-
-## Destinations
-
-Destinations are where you want Grouparoo Profiles and Groups to be sent. Often Destinations are customer marketing tools such as email marketing or push notification services, though databases and data warehouses can also function at Destinations.
-
-When you set up a Destination in Grouparoo, you will choose which Groups as well as which Profile Properties you will send to each Destination. You will have control and visibility over what data gets sent to each Destination.
-
-Grouparoo will keep the Profile and Group data in your Destinations up-to-date in real time.
-
-Some of our current Destinations include:
-
-- Mailchimp
-- Marketo
-- Hubspot
-- Salesforce
-- MySQL
-- PostgreSQL
-
-We are always adding support for more Destinations. If you have a request, please let us know [here](/meet)!
-
-## Sources
+## Source
 
 Sources are the tools that Grouparoo will connect with to pull in customer data. A Source can be anything that contains customer data such as data warehouses, databases, and CRMs.
 
-When you add a new Source, you will define how that Source connects with the Profiles that already exist in Grouparoo through a `Unique` Profile Property.
+When you add a new Source, you will define how that Source connects with the [Profiles](#profile) that already exist in Grouparoo through a `Unique` [Profile Property](#profile-property).
 
-Some of our current Sources include:
+See [our Integrations page](/integrations) for an up-to-date list of our supported Sources. We are always adding support for more Sources. If you have a request, please [let us know](/meet)!
 
-- PostgreSQL
-- MySQL
-- Snowflake
-- Google BigQuery
-- Google Sheets
+## Table Source
 
-We are always adding support for more Sources. If you have a request, please let us know [here](/meet)!
+A Query Source is an implementation of a [Columnar Source](#columnar-source) that makes it easy to import data from a database by using aggregation methods to extract data from a column in your database. This is a more rigid version when compared with a [Query Source](#query-source), but often enables you to move faster when you either want to import data directly or perform minor operations or transformations of that data.

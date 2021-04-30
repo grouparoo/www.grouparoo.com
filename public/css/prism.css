@@ -58,7 +58,12 @@ pre {
 	color: slategray;
 }
 
-.token.punctuation {
+.token.plain {
+	color: #f8f8f2;
+}
+
+.token.punctuation,
+.token.tag.punctuation {
 	color: #f8f8f2;
 }
 
