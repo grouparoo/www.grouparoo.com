@@ -1,13 +1,22 @@
 import Link from "next/link";
 
-export default function ValidateAndApplyConfig() {
+import { Alert } from ".";
+import CodeBlock from "./plugins/codeBlock";
+
+export default function ValidateAndApplyConfig({
+  headingLevel,
+}: {
+  headingLevel: "h2" | "h3";
+}) {
+  const HeadingTag = headingLevel || "h2";
+
   return (
     <>
-      <h2 id="validating-and-applying-your-config">
+      <HeadingTag id="validating-and-applying-your-config">
         <a href="#validating-and-applying-your-config">
           Validating &amp; Applying Your Config
         </a>
-      </h2>
+      </HeadingTag>
 
       <p>
         You can validate your config at any time using{" "}
@@ -19,28 +28,29 @@ export default function ValidateAndApplyConfig() {
         :
       </p>
 
-      <pre>
-        <code>grouparoo validate</code>
-      </pre>
+      <CodeBlock code="grouparoo validate" cli={true} />
 
       <p>
-        And you can apply that config (save it to your Grouparoo application's
-        database) using{" "}
+        And you can apply that config (save it to your{" "}
+        <Link href="/docs/getting-started/product-concepts#application-database">
+          Grouparoo application's database
+        </Link>
+        ) using{" "}
         <a href="/docs/cli/config#apply">
           the <code>apply</code> command
         </a>
         :
       </p>
 
-      <pre>
-        <code>grouparoo apply</code>
-      </pre>
+      <CodeBlock code="grouparoo apply" cli={true} />
 
-      <p>
-        Note that <code>apply</code> will run <code>validate</code>, but it's
-        recommended to run <code>validate</code> on its own first, just to be
-        safe.
-      </p>
+      <Alert variant="primary">
+        <p className="mb-0">
+          Note that <code>apply</code> will run <code>validate</code>, but it's
+          recommended to run <code>validate</code> on its own first, just to be
+          safe.
+        </p>
+      </Alert>
     </>
   );
 }

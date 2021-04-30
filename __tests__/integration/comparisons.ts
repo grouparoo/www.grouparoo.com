@@ -75,8 +75,6 @@
      expect(cellTexts).toContain(`Free tier`)
  
    });
- 
-   
    
  });
  

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 const url = "https://registry.npmjs.com/-/v1/search";
+import DocsNav from "../../data/docs-nav";
 
 interface NPMPackage {
   name: string;
@@ -14,6 +15,7 @@ interface NPMPackage {
     repository: string;
     bugs: string;
   };
+  url: string;
 }
 
 const ignoredPlugins = [
@@ -23,6 +25,7 @@ const ignoredPlugins = [
   "@grouparoo/app-templates",
   "@grouparoo/email-authentication",
   "@grouparoo/logger",
+  "@grouparoo/node-marketo-rest",
 ];
 
 export default function PluginsList() {
@@ -42,9 +45,21 @@ export default function PluginsList() {
 
     if (!response.objects) return;
 
+    const isPluginDoc = (plugin) => plugin.title === "Plugins";
+    const pluginPath = (plugin) => plugin.path;
+    const localPluginPaths = DocsNav.find(isPluginDoc).children.map(pluginPath);
+
+    const pluginDocsUrl = (pkg: { name: string; links: { npm: string } }) => {
+      const name = pkg.name
+        .replace(/\@/g, "") // Characters to remove
+        .replace(/[\ \/]/g, "-"); // Characters to replace with a hyphen
+      const localPath = `/docs/plugins/${name}`;
+      return localPluginPaths.includes(localPath) ? localPath : pkg.links.npm;
+    };
+
     const packages: NPMPackage[] = response.objects
       .filter((o) => o.package)
-      .map((o) => o.package)
+      .map((o) => ({ ...o.package, url: pluginDocsUrl(o.package) }))
       .filter((o) => !ignoredPlugins.includes(o.name))
       .sort((a, b) => {
         if (a.name > b.name) return 1;
@@ -75,7 +90,11 @@ export default function PluginsList() {
           plugins.map((plugin) => (
             <tr key={plugin.name}>
               <td style={{ width: 210 }}>
-                <a target="_blank" href={plugin.links.npm}>
+                <a
+                  href={plugin.url}
+                  target={plugin.url.startsWith("http") ? "_blank" : null}
+                  rel={plugin.url.startsWith("http") ? "noreferrer" : null}
+                >
                   {plugin.name}
                 </a>
               </td>

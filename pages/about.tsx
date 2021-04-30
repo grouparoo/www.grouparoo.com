@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "../components/Image";
@@ -6,18 +5,18 @@ import WhoWeAre from "../components/home/whoWeAre";
 import JobBoard from "../components/jobs/jobBoard";
 import WorkingAtGrouparooCard from "../components/jobs/workingAtGrouparoo";
 import { getJobs } from "../utils/jobPosts";
+import SEO from "../components/seo";
 
 export default function About({ pageProps }) {
   return (
     <>
-      <Head>
-        <title>About Grouparoo</title>
-        <meta
-          name="description"
-          content="Join Grouparoo Open Positions Engineering Marketing Automation Support"
-        />
-        <link rel="canonical" href="https://www.grouparoo.com/about" />
-      </Head>
+      <SEO
+        canonical={true}
+        description="Join Grouparoo Open Positions Engineering Marketing Automation Support"
+        image="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
+        path="/about"
+        title="About Grouparoo"
+      />
 
       <Container>
         <Row>
