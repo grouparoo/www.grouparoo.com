@@ -83,12 +83,14 @@ export default function Comparison({ pageProps }) {
       </div>
       <FeatureBanner features={comp.features} />
       <div className="homePageSection">
+        {/* TODO: in-page navigation */}
         {/* <div className="col-3">
           <PageNavigation />
         </div> */}
         <Container fluid>
           <Row className="d-flex justify-content-center">
             <div className="mdxContent justify-content-center comparisonContent">
+              {/* copy and dividers */}
               {content}
             </div>
           </Row>
