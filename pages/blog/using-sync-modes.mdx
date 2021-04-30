@@ -1,10 +1,10 @@
 ---
 title: "Using Sync Modes in Grouparoo"
-date: "2021-04-29"
+date: "2021-04-30"
 author: "Pedro S Lopez"
 pullQuote: "Sync Modes are now a core part of Grouparoo. Here's how you can use them to better control how your data is synced to destinations."
 image: "sync-modes/sync-modes-breakdown.png"
-tags: [engineering]
+tags: [engineering, product]
 ---
 
 A few weeks ago we [wrote about Sync Modes](/blog/sync-modes) and why they may be useful when it comes to syncing data to a destination. In short, Sync Modes allow you to have more control over what operations are performed and how Grouparoo interacts with contacts that may already exist in the destination system.
@@ -14,7 +14,7 @@ In Grouparoo v0.3, we're introducing Sync Modes as a core concept and making the
 <Image
   centered
   alt="Hubspot destination configuration"
-  src="sync-modes-released/hubspot-destination-config.png"
+  src="using-sync-modes/hubspot-destination-config.png"
   width={1630}
   height={996}
 />
@@ -26,7 +26,7 @@ Because we've standardized sync modes across the board, you'll be able to easily
 <Image
   centered
   alt="Sync mode selection dropdown"
-  src="sync-modes-released/sync-mode-select.png"
+  src="using-sync-modes/sync-mode-select.png"
   width={1228}
   height={250}
 />
@@ -88,9 +88,19 @@ As you start sending data to your destinations, depending on which sync mode you
 <Image
   centered
   alt="Destination sync mode does not allow creating new profiles"
-  src="sync-modes-released/export-no-create.png"
+  src="using-sync-modes/export-no-create.png"
   width={1009}
   height={295}
 />
 
 In the example above, we set a Hubspot destination to `enrich` mode. This mode does not allow any new profiles to be added to the destination, so an info message was added to the export.
+
+If you're using a sync mode that does not delete anybody from the destination (e.g. `enrich`, `additive`), you'll see Grouparoo remove them from any groups they may have been in, but the contact itself will be left in place:
+
+<Image
+  centered
+  alt="Removing groups from the profile on export"
+  src="using-sync-modes/remove-groups.png"
+  width={2343}
+  height={295}
+/>
