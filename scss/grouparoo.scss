@@ -76,7 +76,45 @@ header {
   border-width: 2px;
   border-style: solid;
 }
+// -- Comparison Pages --
+.comparisonContent {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 40px 15px 40px;
+  }
+  ol {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 40px 15px 40px;
+  }
+}
 
+.featureBanner {
+  h3,
+  p {
+    padding: 0px;
+  }
+}
+.comparisonTableText {
+  font-size: 80%;
+}
+
+.comparisonTableCell {
+  width: 35%;
+}
+
+.comparisonTableLabelCell {
+  width: 30%;
+}
 // -- Integrations Pages --
 .productScreenshots {
   box-shadow: 7px 6px 13px rgba(0, 0, 0, 0.12);

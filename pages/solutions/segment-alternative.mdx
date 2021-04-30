@@ -2,6 +2,65 @@
 competitor: Segment
 pros: ["developer workflow", "data approach", "privacy", "cost"]
 competitorPros: ["events", "customer data platform"]
+comparisonData:
+  {
+    competitor: "Segment",
+    data:
+      [
+        { feature: "Open source offering", grouparoo: true, comp: false },
+        {
+          feature: "Free tier",
+          grouparoo: "Community edition is free. Period.",
+          comp: "Limited to 1 destination and 10k monthly active records",
+        },
+        {
+          feature: "Data requirements",
+          grouparoo: "Query-based (with events capabilities)",
+          comp: "Requires formal, normalized data warehouse",
+        },
+        {
+          feature: "Use existing data definitions from your data warehouse",
+          grouparoo: true,
+          comp: false,
+        },
+        {
+          feature: "Configurable data sync time",
+          grouparoo: "Fully customizable -- including real-time",
+          comp: "Manual, hourly, daily, or weekly",
+        },
+        {
+          feature: "Configurable via UI",
+          grouparoo: [true, "(enterprise edition)"],
+          comp: true,
+        },
+        { feature: "Configurable via CLI", grouparoo: true, comp: false },
+        { feature: "Hosted option", grouparoo: true, comp: "true" },
+        { feature: "Self-hosted option", grouparoo: true, comp: false },
+      ],
+  }
+features:
+  [
+    {
+      title: "🖥  Use your normal workflow",
+      text: "Build your data infrastructure the way you do with other apps. Grouparoo’s git-based workflow makes it easy",
+    },
+    {
+      title: "🔐  Keep private data in house",
+      text:
+        "Increase privacy by limiting the data that leaves your infrastructure without sacrificing your customer experience.
+        ",
+    },
+    {
+      title: "💰  Save bags of money",
+      text: "Grouparoo is open source and free to run. Stop being charged by event volume and focus on what you want to build.",
+    },
+    {
+      title: "📊  Explore and analyze user segments",
+      text:
+        "Grouparoo is a lightweight customer data platform. Your team can explore your customer data and build cohorts and segments of your users.
+        ",
+    },
+  ]
 ---
 
 ## How Grouparoo is different (and better) than Segment
@@ -10,11 +69,20 @@ Segment is a Customer Data Platform (CDP) that was founded in 2011 and quickly b
 
 Grouparoo is a newer entrant, having started in early 2020, but is a customer data platform built on top of the modern data stack and trends that have emerged. Here’s a deeper look into how Grouparoo’s approach is different from Segment.
 
-### Queryable data vs. events
+### 📈 <span style={{ width:".5em", display:"inline-block" }} />Queryable data vs. events
 
 Grouparoo’s fundamental model is built upon querying source-of-truth data that already exists. Whether this data lives in a data warehouse like Snowflake or Redshift or in a product database like MySQL or MongoDB, Grouparoo defines customer profiles based on the data that already exists in those data sources. The truly important data in your user experience and product funnel is already stored in your database, and Grouparoo lets you use it directly. When did your customers sign up? What products did they purchase? Where are they located?
 
-When you configure Grouparoo, you’re defining how you want to query that data from your databases and data warehouses. Unlike Segment’s Event-based architecture, Grouparoo's approach makes it possible to define customer profiles and properties based on historical data. One of the biggest challenges with Event-based data tools is that you only have data from when you first started instrumenting these Events. If you just implemented Segment six months ago, you likely only have six months worth of data. Why not just query your full history instead? This also allows you to update your property definitions without losing any history.
+<SectionDivider
+  imagePath="/images/docs/guides/add-profile-property.png"
+  heading="Easily define profiles, no matter your data."
+  width="600"
+  height="303"
+  content="Grouparoo's queryable data structure makes it easy to create profiles -- even from historical data.  You can configure customer profiles from the command line on our community edition, or straight from the UI with our enterprise product."
+  imageLeft="false"
+/>
+
+When you configure Grouparoo, you’re defining how you want to query that data from your databases and data warehouses. Unlike Segment’s Event-based architecture, Grouparoo’s approach makes it possible to define customer profiles and properties based on historical data. One of the biggest challenges with Event-based data tools is that you only have data from when you first started instrumenting these Events. If you just implemented Segment six months ago, you likely only have six months worth of data. Why not just query your full history instead? This also allows you to update your property definitions without losing any history.
 
 Events are often a pain for engineers as well. When product engineers are building new features, they’re already figuring out how to store and represent this data in their product database. Asking them to wire up Events for every action, button-click, or server-side change is a waste of energy for three reasons:
 
@@ -22,24 +90,42 @@ Events are often a pain for engineers as well. When product engineers are buildi
 2. The data being streamed already exists elsewhere.
 3. This source of data is less reliable.
 
-### But Grouparoo also supports Events
+### ⏱ <span style={{ width:".5em", display:"inline-block" }} />But Grouparoo also supports Events
 
 Even though we’ve railed against Events, there are some instances where Events are a good model, and Grouparoo supports those use cases! While Grouparoo has automated data syncing, we query your data sources on a schedule that you can set (every 10 minutes, every hour, etc.). In some cases, you really want your customer data in Grouparoo (and all of your destinations) in real-time. In those cases, you can use Grouparoo’s Events API to update customer profiles and properties.
 
 Some user behavior that you’re unlikely to track as well includes every single page view or button click. You can also track those as properties on customer profiles in Grouparoo.
 
-### Open source
+<SectionDivider
+  imagePath="/images/home/integrations/salesforce/grouparoo-to-salesforce.png"
+  heading="Connect your customer profiles to all your SaaS tools"
+  width="600"
+  height="393"
+  content="With the profiles and properties you’ve defined in Grouparoo, you can then sync that data to Salesforce and other tools that your team uses. "
+  imageLeft="true"
+/>
+
+### 🧑‍💻 <span style={{ width:".5em", display:"inline-block" }} />Open source
 
 One major difference between Segment and Grouparoo is that Grouparoo is open source (MPL v2.0 licensed), and [available](https://www.github.com/grouparoo/grouparoo) for anyone in the world to download and give it a try. Given our open source approach, Grouparoo is focused on making the developer experience as easy as possible. All of your customer data can stay within your own virtual private cloud, so you have complete control.
 
-### Privacy and security
+### 🔐 <span style={{ width:".5em", display:"inline-block" }} />Privacy and security
 
 Segment’s growth was partially driven by the explosion in SaaS-based tools that have emerged over the past decade. As teams want to empower marketing, sales, growth, and support, Segment made it easy to spray that data all over the place. This created an anti-pattern though: Segment’s system sends all of your customer events to all of your marketing, sales, and customer support tools. These business teams then had to segment their users in each of their own tools, resulting in different definitions, different segmentations, and jarring user experiences.
 
 The tides are shifting though — as GDPR, CCPA, and other privacy-focused legislation comes into play, savvy companies (and their customers) are requiring stricter controls over data privacy.
 
+<SectionDivider
+  imagePath="/images/home/solutions/comparisons/install-code.svg"
+  heading="Free and Easy to Install"
+  width="600"
+  height="146"
+  content="Try Grouparoo on your computer today or install it on your company’s servers. Your data stays private on your servers. No usage or storage limits."
+  imageLeft="false"
+/>
+
 Grouparoo makes it much easier for privacy-conscious teams to keep their sensitive customer data, Personally Identifiable Information (PII), and Private Health Information (PHI), in their own virtual private clouds such as Amazon Web Services (AWS) and Google Cloud Platform (GCP). Additionally, instead of sending every single piece of data to every single SaaS tool you use, instead you can segment and group your users in Grouparoo, and just send the data about what groups your users are in to these different tools. Instead of sending Jane Kim’s full customer record, address, purchase history, and activity log to Marketo, you can just send Jane’s first name, email, and that she’s in your “High-Value Customers in NY” segment. Jane still gets the correct, personalized email, but without letting Marketo know exactly how much she’s spent with you and her address.
 
-### Cost
+### 💰 <span style={{ width:".5em", display:"inline-block" }} />Cost
 
 One major difference is cost. Grouparoo is free to try, and if you use our Community Edition and self-host it, it’s free for you to use forever. Segment, on the other-hand, charges quite a bit based on how many events you track. There’s a dance that we hear from Segment customers where their integration seems great to start, but as their business grows, their Segment bill also grows tremendously. They then have a challenging project for themselves where they’ll need to decide to keep or cull certain events. And good luck if you end up culling the wrong events.

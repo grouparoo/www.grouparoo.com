@@ -1,0 +1,109 @@
+---
+competitor: Hightouch
+pros:
+  [
+    "flexibility",
+    "data approach",
+    "no-code configuration",
+    "open source availability",
+  ]
+competitorPros: ["customization", "customer data platform"]
+comparisonData:
+  {
+    competitor: "Hightouch",
+    data:
+      [
+        { feature: "Open source offering", grouparoo: true, comp: false },
+        {
+          feature: "Free tier",
+          grouparoo: "Community edition is free. Period.",
+          comp: "Limited to 1 destination and 10k monthly active records",
+        },
+        {
+          feature: "Data requirements",
+          grouparoo: '"Come as you are" with your data',
+          comp: "Requires formal, normalized data warehouse",
+        },
+        {
+          feature: "Use existing data definitions from your data warehouse",
+          grouparoo: true,
+          comp: false,
+        },
+        {
+          feature: "Configurable data sync time",
+          grouparoo: "Fully customizable -- including real-time",
+          comp: "Manual, hourly, daily, or weekly",
+        },
+        {
+          feature: "Configurable via UI",
+          grouparoo: [true, "(enterprise edition)"],
+          comp: true,
+        },
+        { feature: "Configurable via CLI", grouparoo: true, comp: false },
+        { feature: "Hosted option", grouparoo: true, comp: "true" },
+        { feature: "Self-hosted option", grouparoo: true, comp: false },
+      ],
+  }
+features:
+  [
+    {
+      title: "🖥  Use your normal workflow",
+      text: "Build your data infrastructure the way you do with other apps. Grouparoo’s git-based workflow makes it easy.",
+    },
+    {
+      title: "🔒  Keep private data in house",
+      text:
+        "Increase privacy by limiting the data that leaves your infrastructure without sacrificing your customer experience.
+
+        ",
+    },
+    {
+      title: "📈  Query the source of truth",
+      text: "Don’t rely on events to understand your customers. Use the data from your product database or data warehouse.",
+    },
+    {
+      title: "💰  Save bags of money",
+      text: "Grouparoo is open source and free to run. Stop being charged by event volume and focus on what you want to build.",
+    },
+  ]
+---
+
+## How Grouparoo is different (and better) than Hightouch
+
+Hightouch is a SaaS-based data syncing tool that started in 2020.
+
+Grouparoo also started in early 2020, and is also a data syncing tool built for the modern data stack. Here’s a deeper look into how Grouparoo is different from Hightouch.
+
+### 🚀 Reverse ETL
+
+Hightouch is a Reverse ETL tool, and so is Grouparoo, but Grouparoo is so much more. Hightouch requires that all of your data already be normalized in a formal data warehouse, and that you have a team to manage it. Grouparoo works great with data warehouses, but we also know that your business is still growing, and not all of your data has been brought into your data warehouse and is regularly updated. What about your customer support data in Zendesk? What about your NPS scores or onboarding surveys? Grouparoo’s library of sources is ready to help everyone, from the data warehouse engineer to the scrappy growth engineer, use their data, wherever it lives.
+
+<SectionDivider
+  imagePath="/images/docs/guides/add-profile-property.png"
+  heading="Easily define profiles, no matter your data."
+  width="600"
+  height="303"
+  content="Grouparoo's queryable data structure makes it easy to create profiles -- even from historical data.  You can configure customer profiles from the command line on our community edition, or straight from the UI with our enterprise product."
+  imageLeft="true"
+/>
+
+### 👥 Customer Data Platform
+
+Hightouch can point at your data warehouse, while Grouparoo is more flexible. Grouparoo can query your data warehouse and use the data definitions you already have there. If you don’t have a data warehouse though, Grouparoo can also be a Customer Data Platform for you by stitching data together from all of your different data sources.
+
+### 📈 SQL-based vs. web-based
+
+In Hightouch, the primary method for building your models and querying your data sources is with SQL. That’s great for folks who know SQL, but many aren’t familiar with SQL or would prefer a no-code or low-code approach. Grouparoo’s enterprise product allows people to define Profile Properties in our web-UI without having to write SQL queries. Once your Grouparoo instance is connected to a source, you can start to define Properties and Groups in the UI. For folks who are comfortable with code and command-line tools though, you can also configure your Grouparoo instance entirely in code, so your team has flexibility across different skill levels.
+
+<SectionDivider
+  imagePath="/images/home/integrations/hubspot/grouparoo-to-hubspot.png"
+  heading="Connect your customer profiles to all your SaaS tools"
+  width="600"
+  height="409"
+  content="With the profiles and properties you’ve defined in Grouparoo, you can then sync that data to Hubspot and other tools that your team uses."
+  imageLeft="true"
+/>
+
+### 🧑‍💻 Open source
+
+One major difference between Hightouch and Grouparoo is that Grouparoo is open source (MPL v2.0 licensed), and available for anyone in the world to download and give it a try. Given our open source approach, Grouparoo is really focused on making the developer experience as easy as possible. All of your customer data can stay within your own virtual private cloud, so you have complete control.

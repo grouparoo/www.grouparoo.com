@@ -2,12 +2,15 @@ import React from "react";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import Head from "next/head";
 import GetStarted from "../../components/home/getStarted";
+import ComparisonTable from "../../components/comparisons/comparisonTable";
+import FeatureBanner from "../../components/comparisons/featureBanner";
 import hydrate from "next-mdx-remote/hydrate";
 import { useRouter } from "next/router";
+import { PageNavigation } from "../../components/pageNavigation";
 import { ComparisonInfo, getComparison } from "../../utils/comparisonPages";
 import { arrayToReadableList, possessiveNoun } from "../../utils/inflectors";
-
-const components = {};
+import * as components from "../../components/comparisons";
+// import { TableOfContents } from "../../components/docs/tableOfContents";
 
 export default function Comparison({ pageProps }) {
   const router = useRouter();
@@ -26,14 +29,14 @@ export default function Comparison({ pageProps }) {
         />
         <link
           rel="canonical"
-          href={`https://www.grouparoo.com/solutions/${comp.competitor.toLowerCase()}`}
+          href={`https://www.grouparoo.com/solutions/${comp.competitor.toLowerCase()}-alternative`}
         />
       </Head>
 
       <div
         id="headline"
         className="homePageSection"
-        style={{ textAlign: "center", paddingTop: 100, paddingBottom: 100 }}
+        style={{ textAlign: "center", paddingBottom: 100 }}
       >
         <Container>
           <Row>
@@ -78,67 +81,22 @@ export default function Comparison({ pageProps }) {
           <br />
         </Container>
       </div>
-      <div id="value-prop" className="bg-dark text-white homePageSection">
-        <Container>
-          <Row style={{ textAlign: "center" }}>
-            <Col md={12}>
-              <h2>
-                Grouparoo is the customer data platform that meets you where you
-                are at.
-              </h2>
-            </Col>
-          </Row>
-          <br />
-          <Row>
-            <Col md={6}>
-              <h3>🖥 Use your normal workflow</h3>
-              <p>
-                Build your data infrastructure the way you do with other apps.
-                Grouparoo’s git-based workflow makes it easy.
-              </p>
-              <br />
-            </Col>
-            <Col md={6}>
-              <h3>📈 Query the source of truth</h3>
-              <p>
-                Don’t rely on events to understand your customers. Use the data
-                from your product database or data warehouse.
-              </p>
-              <br />
-            </Col>
-          </Row>
-
-          <Row>
-            <Col md={6}>
-              <h3>🔒 Keep private data in house</h3>
-              <p>
-                Increase privacy by limiting the data that leaves your
-                infrastructure without sacrificing your customer experience.
-              </p>
-              <br />
-            </Col>
-            <Col>
-              <h3>💰 Save bags of money</h3>
-              <p>
-                Grouparoo is open source and free to run. Stop being charged by
-                event volume and focus on what you want to build.
-              </p>
-              <br />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-
+      <FeatureBanner features={comp.features} />
       <div className="homePageSection">
-        <Container>
-          <Row>
-            <Col>
-              <div className="mdxContent">{content}</div>
-            </Col>
+        {/* TODO: in-page navigation */}
+        {/* <div className="col-3">
+          <PageNavigation />
+        </div> */}
+        <Container fluid>
+          <Row className="d-flex justify-content-center">
+            <div className="mdxContent justify-content-center comparisonContent">
+              {/* copy and dividers */}
+              {content}
+            </div>
           </Row>
         </Container>
       </div>
-
+      <ComparisonTable comparisonData={comp.comparisonData} />
       <GetStarted />
     </>
   );
@@ -146,7 +104,7 @@ export default function Comparison({ pageProps }) {
 
 // get initial props for react
 export async function getStaticProps({ params }) {
-  const comparison = await getComparison(params.id);
+  const comparison = await getComparison(params.id, components);
   return { props: { comparison } };
 }
 
@@ -154,9 +112,9 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   return {
     paths: [
-      { params: { id: "census" } },
-      { params: { id: "segment" } },
-      { params: { id: "hightouch" } },
+      { params: { id: "census-alternative" } },
+      { params: { id: "segment-alternative" } },
+      { params: { id: "hightouch-alternative" } },
     ],
     fallback: false,
   };
