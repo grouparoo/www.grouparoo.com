@@ -17,7 +17,20 @@ import { Sailthru } from "./sailthru";
 import { Salesforce } from "./salesforce";
 import { Sendgrid } from "./sendgrid";
 import { Snowflake } from "./snowflake";
+import { SQLite } from "./sqlite";
 import { Zendesk } from "./zendesk";
+
+export interface PluginConfigOption {
+  default?: string | number | boolean;
+  description?: string;
+  name?: string;
+  required?: boolean;
+  options?: string[];
+}
+
+export interface PluginConfigOptions {
+  [key: string]: PluginConfigOption;
+}
 
 export interface Plugin {
   name: string;
@@ -50,6 +63,7 @@ export interface Plugin {
     imageWidth: number;
     imageHeight: number;
   }[];
+  configOptions?: PluginConfigOptions;
 }
 
 export const PluginData: Plugin[] = [
@@ -72,8 +86,11 @@ export const PluginData: Plugin[] = [
   Salesforce,
   Sendgrid,
   Snowflake,
+  SQLite,
   Zendesk,
 ];
+
+export const PluginPageData: Plugin[] = PluginData.filter((p) => p.useCases);
 
 export function randomHomepagePlugin() {
   // This is a fixed list of plugins rather than any random plugin as we want to focus on the popular ones.
@@ -94,7 +111,7 @@ export function randomHomepagePlugin() {
 }
 
 export async function getUseCasePaths() {
-  const paths = PluginData.filter((p) => p.useCases).map(
+  const paths = PluginPageData.map(
     (p) => `/integrations/${p.primaryType}s/${p.slug}`
   );
 

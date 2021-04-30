@@ -98,7 +98,7 @@ const communityRedirects = [
   },
 ];
 
-/* --- Config (Temp) --- */
+/* --- Config --- */
 
 const configRedirects = [
   { src: "/docs/config/apps", dest: "/docs/config/apps/community" },
