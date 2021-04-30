@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "../components/Image";
@@ -15,7 +14,7 @@ export default function About({ pageProps }) {
         canonical={true}
         description="Join Grouparoo Open Positions Engineering Marketing Automation Support"
         image="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
-        path="https://www.grouparoo.com/about"
+        path="/about"
         title="About Grouparoo"
       />
 
