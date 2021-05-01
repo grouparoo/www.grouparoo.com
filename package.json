@@ -57,7 +57,7 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@lhci/cli": "0.7.1",
+    "@lhci/cli": "0.7.2",
     "@prettier/plugin-xml": "0.13.1",
     "@types/jest": "26.0.22",
     "@types/node": "14.14.41",
