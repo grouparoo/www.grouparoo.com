@@ -34,7 +34,7 @@
     "cheerio": "1.0.0-rc.6",
     "feed": "4.2.2",
     "glob": "7.1.6",
-    "gray-matter": "4.0.2",
+    "gray-matter": "4.0.3",
     "image-size": "1.0.0",
     "moment": "2.29.1",
     "next": "10.1.3",
