@@ -83,17 +83,11 @@ export default function Comparison({ pageProps }) {
       </div>
       <FeatureBanner features={comp.features} />
       <div className="homePageSection">
-        {/* TODO: in-page navigation */}
-        {/* <div className="col-3">
-          <PageNavigation />
-        </div> */}
-        <Container fluid>
-          <Row>
-            <div className="mdxContent justify-content-center comparisonContent">
-              {/* copy and dividers */}
-              {content}
-            </div>
-          </Row>
+        <Container fluid className="p-0">
+          <div className="mdxContent justify-content-center comparisonContent">
+            {/* copy and dividers */}
+            {content}
+          </div>
         </Container>
       </div>
       <ComparisonTable comparisonData={comp.comparisonData} />
