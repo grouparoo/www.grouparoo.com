@@ -89,7 +89,6 @@ export default function Comparison({ pageProps }) {
         </div> */}
         <Container fluid>
           <Row>
-
             <div className="mdxContent justify-content-center comparisonContent">
               {/* copy and dividers */}
               {content}

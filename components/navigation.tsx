@@ -38,7 +38,7 @@ export default function Navigation() {
                   className="px-0 pt-0 pb-2 mt-0"
                   id="dropdown-basic"
                 >
-                  <a>Solutions</a>
+                  Solutions
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className="solutionsNav">
