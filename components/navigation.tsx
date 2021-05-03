@@ -38,7 +38,7 @@ export default function Navigation() {
                   className="px-0 pt-0 pb-2 mt-0"
                   id="dropdown-basic"
                 >
-                  Solutions
+                  <span>Solutions</span>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className="solutionsNav">
@@ -138,7 +138,7 @@ export default function Navigation() {
                           </Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          <Link href="/integrations/destinations/redshift">
+                          <Link href="/integrations/sources/redshift">
                             <a className="nav-link" role="button">
                               Redshift
                             </a>
