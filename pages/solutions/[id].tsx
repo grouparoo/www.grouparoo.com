@@ -80,7 +80,6 @@ export default function Comparison({ pageProps }) {
         </Container>
       </div>
       <FeatureBanner features={comp.features} />
-      <Container className="col-9 col-md-4"></Container>
       <div className="homePageSection">
         <Container fluid className="p-0">
           <div className="mdxContent justify-content-center comparisonContent">
