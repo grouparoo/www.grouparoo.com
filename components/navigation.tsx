@@ -138,7 +138,7 @@ export default function Navigation() {
                           </Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          <Link href="/integrations/destinations/redshift">
+                          <Link href="/integrations/sources/redshift">
                             <a className="nav-link" role="button">
                               Redshift
                             </a>
