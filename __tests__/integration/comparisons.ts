@@ -55,8 +55,8 @@
    test.each(cases)("it renders section dividers for %p", async (pageSlug) => {
  
      const testUrl = url + `/solutions/${pageSlug}-alternative`;
-     const page = await browser.get(testUrl);
-     const H3s = await page.findElements(by.tagName("h3"))
+     await browser.get(testUrl);
+     const H3s = await browser.findElements(by.tagName("h3"))
      const H3Texts = await Promise.all(H3s.map(element => element.getText()));
      expect(H3Texts).toContain(`Easily define profiles, no matter your data.`)
  
