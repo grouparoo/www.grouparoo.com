@@ -78,6 +78,17 @@ header {
   }
 }
 
+#seeMoreLink {
+  color: $grouparoo-blue-gray;
+}
+
+.dropdown-item:hover {
+  outline: none;
+  box-shadow: none;
+  opacity: 50%;
+  font-weight: 400;
+}
+
 @media only screen and (min-width: 600px) {
   .solutionsNav {
     min-width: 25em;

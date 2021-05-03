@@ -32,10 +32,10 @@ export default function Navigation() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto" style={{ marginTop: 30 }}>
-              <Dropdown className="nav-link align-text-top">
+              <Dropdown className="pr-2 py-2 pl-0 align-text-top">
                 <Dropdown.Toggle
                   variant=""
-                  className="px-0 pt-0 pb-2 mt-0"
+                  className="nav-link align-text-top p-0"
                   id="dropdown-basic"
                 >
                   <span>Solutions</span>
@@ -138,7 +138,7 @@ export default function Navigation() {
                           </Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          <Link href="/integrations/sources/redshift">
+                          <Link href="/integrations/destinations/redshift">
                             <a className="nav-link" role="button">
                               Redshift
                             </a>
@@ -153,7 +153,11 @@ export default function Navigation() {
                         </Dropdown.Item>
                         <Dropdown.Item>
                           <Link href="/integrations">
-                            <a className="nav-link" role="button">
+                            <a
+                              className="nav-link"
+                              role="button"
+                              id="seeMoreLink"
+                            >
                               See More...
                             </a>
                           </Link>
