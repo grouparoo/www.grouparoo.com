@@ -10,7 +10,6 @@ import { PageNavigation } from "../../components/pageNavigation";
 import { ComparisonInfo, getComparison } from "../../utils/comparisonPages";
 import { arrayToReadableList, possessiveNoun } from "../../utils/inflectors";
 import * as components from "../../components/comparisons";
-// import { TableOfContents } from "../../components/docs/tableOfContents";
 
 export default function Comparison({ pageProps }) {
   const router = useRouter();
@@ -82,10 +81,12 @@ export default function Comparison({ pageProps }) {
         </Container>
       </div>
       <FeatureBanner features={comp.features} />
+      <Container className="col-9 col-md-4">
+        <PageNavigation />
+      </Container>
       <div className="homePageSection">
         <Container fluid className="p-0">
           <div className="mdxContent justify-content-center comparisonContent">
-            {/* copy and dividers */}
             {content}
           </div>
         </Container>
@@ -96,13 +97,11 @@ export default function Comparison({ pageProps }) {
   );
 }
 
-// get initial props for react
 export async function getStaticProps({ params }) {
   const comparison = await getComparison(params.id, components);
   return { props: { comparison } };
 }
 
-// What URLs should I work for?
 export async function getStaticPaths() {
   return {
     paths: [
