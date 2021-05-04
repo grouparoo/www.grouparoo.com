@@ -12,7 +12,7 @@
   "items": [
     {
       "id": "grouparoo-release-note-2021-05-04-pardot",
-      "content_html": "<p>Grouparoo has extended our integration with the Salesforce family of tools by adding support for <a href=\"https://www.pardot.com/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Pardot</a> as a Destination! Pardot is a powerful B2B marketing suite, deeply integrated with the rest of the Salesforce platform.</p><p>Grouparoo makes it simple to sync over your Profiles and build Pardot Lists from your product data.</p><div style=\"margin-bottom:20px\"><img alt=\"Grouparoo and Pardot\" src=\"https://www.grouparoo.com/posts/releases/2021-05-04-pardot.png\" width=\"1400\" height=\"735\" style=\"height:735px;width:1400px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
+      "content_html": "<p>Grouparoo has extended our integration with the Salesforce family of tools by adding support for <a href=\"https://www.pardot.com/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Pardot</a> as a Destination! Pardot is a powerful B2B marketing suite, tightly integrated with the rest of the Salesforce platform.</p><p>Grouparoo makes it simple to sync over your Profiles and build Pardot Lists from your product data.</p><div style=\"margin-bottom:20px\"><img alt=\"Grouparoo and Pardot\" src=\"https://www.grouparoo.com/posts/releases/2021-05-04-pardot.png\" width=\"1400\" height=\"735\" style=\"height:735px;width:1400px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
       "url": "https://www.grouparoo.com/whats-new#2021-05-04-pardot",
       "title": "Pardot Destination",
       "image": "https://www.grouparoo.com/posts/releases/2021-05-04-pardot.png",
