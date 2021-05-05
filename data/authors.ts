@@ -60,7 +60,7 @@ const Authors: Author[] = [
     url: "https://pedroslopez.me/",
     twitter: "@pedroslopez",
     description:
-      "Pedro is a full-stack Software Engineer that fell in love with programming at an early age. He's a tinkerer that enjoys reverse engineering, automation and technology in general. When he's not programming, Pedro spends his time playing and listening to music.",
+      "Pedro is a full-stack Software Engineer working on Grouparoo, an open source data framework that easily connects your data to business tools. He's a tinkerer that enjoys reverse engineering, automation and technology in general. When he's not programming, Pedro spends his time playing and listening to music.",
   },
   {
     name: "Paulo Ouriques",

@@ -1,0 +1,118 @@
+---
+title: "Using Sync Modes in Grouparoo"
+date: "2021-05-05"
+author: "Pedro S Lopez"
+pullQuote: "Sync Modes are now a core part of Grouparoo. Here's how you can use them to better control how your data is synced to destinations."
+image: "using-sync-modes/210505-sync-modes.png"
+tags: [engineering, product]
+---
+
+<Image
+  centered
+  alt="Using sync modes in Grouparoo"
+  src="using-sync-modes/210505-sync-modes.png"
+  width={1650}
+  height={866}
+/>
+
+A few weeks ago we [wrote about Sync Modes](/blog/sync-modes) and why they may be useful when it comes to syncing data to a destination. In short, Sync Modes allow you to have more control over what operations are performed and how Grouparoo interacts with contacts that may already exist in the destination system.
+
+In Grouparoo v0.3, we're introducing Sync Modes as a core concept and making them available throughout all destinations. In this initial release, we're rolling out sync modes for [Salesforce](/integrations/destinations/salesforce), [Intercom](/integrations/destinations/intercom), [Hubspot](/integrations/destinations/hubspot), [Mailchimp](/integrations/destinations/mailchimp), [Pipedrive](/integrations/destinations/pipedrive), [Marketo](/integrations/destinations/marketo), [Facebook](/integrations/destinations/facebook), [Iterable](/integrations/destinations/iterable), and [Zendesk](/integrations/destinations/zendesk). We'll continue adding to this list by updating remaining plugins and build them into new destinations going forward.
+
+<Image
+  centered
+  alt="Hubspot destination configuration"
+  src="using-sync-modes/hubspot-destination-config.png"
+  width={1630}
+  height={996}
+/>
+
+## Supported Sync Modes
+
+Because we've standardized sync modes across the board, you'll be able to easily see which sync modes are supported by the destination and select the right one depending on intended behavior. This gives you more control and clarity over what's going to happen with your data.
+
+<Image
+  centered
+  alt="Sync mode selection dropdown"
+  src="using-sync-modes/sync-mode-select.png"
+  width={1228}
+  height={250}
+/>
+
+As a quick refresher, here's what each mode does:
+
+- **Sync**: Add, update and remove profiles from the destination as needed.
+- **Additive**: Add new profiles and update those that already exist in the destination, but never remove anyone.
+- **Enrich**: Update profiles that already exist in the destination, *enriching* them with additional data and group membership information. No profiles are added or removed.
+
+## Using Sync Modes in a Declarative Config Workflow
+
+If you're using the declarative configuration approach, you can use the Grouparoo CLI to check out which sync modes are supported by each Destination. Using the `--describe` flag on a destination generator displays the available options.
+
+For example, here's the output when describing the Pipedrive destination template:
+
+```
+$ grouparoo generate pipedrive:destination --describe
+
+🦘 Grouparoo: generate pipedrive:destination
+
+Config for a pipedrive Destination
+
+Required Arguments:
+  * id (required) - The id of this new Destination
+
+Required Options:
+  * parent (required) - The id of the pipedrive App to use for this Destination, e.g: `--parent data_warehouse`
+
+Optional Options:
+  * syncMode - How should profiles sync to the destination? e.g. `--sync-mode additive`. Options: sync, additive, enrich (default: "sync")
+```
+
+The last line of the previous example shows which sync modes are available to you, as well as which sync mode the destination operates in by default.
+
+Then, you can set the desired sync mode in your config file by using the `syncMode` property. Here's how you would set up a Salesforce destination to work in `enrich` mode:
+
+```json
+{
+      id: "...",
+      name: "...",
+      class: "destination",
+      type: "salesforce-objects-export",
+      appId: "...",
+      groupId: "...",
+
+      syncMode: "enrich", // How should Grouparoo sync with this destination? Options: "sync", "additive", "enrich"
+
+      options: {
+        profileObject: "Contact",
+        profileMatchField: "Email",
+// ...
+```
+
+## See it in action
+
+As you start sending data to your destinations, depending on which sync mode you've selected you may notice some messages on your exports letting you know what's going on.
+
+<Image
+  centered
+  alt="Destination sync mode does not allow creating new profiles"
+  src="using-sync-modes/export-no-create.png"
+  width={1009}
+  height={295}
+/>
+
+In the example above, we set a Hubspot destination to `enrich` mode. This mode does not allow any new profiles to be added to the destination, so an info message was added to the export.
+
+If you're using a sync mode that does not delete anybody from the destination (e.g. `enrich`, `additive`), you'll see Grouparoo remove them from any groups they may have been in, but the contact itself will be left in place:
+
+<Image
+  centered
+  alt="Removing groups from the profile on export"
+  src="using-sync-modes/remove-groups.png"
+  width={2343}
+  height={295}
+/>
+
+---
+
+You can start using sync modes today and have better control over how your data is synced. If you're running an older version of Grouparoo, [check out our v0.2 to v0.3 upgrade guide](/docs/support/upgrading-grouparoo/v02-v03).
