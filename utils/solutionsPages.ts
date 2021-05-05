@@ -2,6 +2,7 @@ import { loadEntries, loadMdxFile, getStaticMdxPaths } from "./mdxUtils";
 import { FeatureArray } from '../components/solutions/featureBanner'
 
 export interface ComparisonChartData {
+
     competitor: string,
     data: [
         {
@@ -25,7 +26,6 @@ export interface CategoryInfo {
     category: string;
     pros: string[];
     bonuses: string[];
-    // features: FeatureArray;
     source: any;
 }
 
@@ -33,6 +33,7 @@ export async function getSolutionsData(slugId, components): Promise<ComparisonIn
     const { source, frontMatter, path, slug } = await loadMdxFile(["pages", "solutions", `${slugId}.mdx`], components);
     if (slugId.includes('alternative')){
         const { competitor, pros, competitorPros, comparisonChartData, features } = frontMatter;
+
         return {
             competitor,
             pros,
@@ -47,7 +48,6 @@ export async function getSolutionsData(slugId, components): Promise<ComparisonIn
             category,
             pros,
             bonuses,
-            // features,
             source
         }
     }
