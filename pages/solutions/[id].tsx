@@ -1,10 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import {
-  ComparisonInfo,
-  CategoryInfo,
-  getSolutionsData,
-} from "../../utils/solutionsPages";
+import { getSolutionsData } from "../../utils/solutionsPages";
 import ComparisonPage from "../../components/solutions/comparisonPage";
 import CategoryPage from "../../components/solutions/categoryPage";
 import * as components from "../../components/solutions";
@@ -14,9 +10,9 @@ export default function SolutionsPage({ pageProps }) {
   const { solutionData } = pageProps;
 
   let pageContent = solutionData.hasOwnProperty("category") ? (
-    <CategoryPage {...(solutionData as CategoryInfo)} />
+    <CategoryPage {...solutionData} />
   ) : (
-    <ComparisonPage {...(solutionData as ComparisonInfo)} />
+    <ComparisonPage {...solutionData} />
   );
 
   return <>{pageContent}</>;
