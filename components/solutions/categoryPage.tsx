@@ -4,11 +4,8 @@ import Head from "next/head";
 import GetStarted from "../home/getStarted";
 import hydrate from "next-mdx-remote/hydrate";
 import { CategoryInfo } from "../../utils/solutionsPages";
-import {
-  arrayToReadableList,
-  possessiveNoun,
-  urlize,
-} from "../../utils/inflectors";
+import { arrayToReadableList, urlize } from "../../utils/inflectors";
+import { PageNavigation } from "../pageNavigation";
 import * as components from ".";
 // import { TableOfContents } from "../../components/docs/tableOfContents";
 
@@ -43,8 +40,6 @@ export default function CategoryPage(category: CategoryInfo) {
               <h1>{category.category}</h1>
               <p className="text-big-muted">
                 {category.category}s {arrayToReadableList(category.pros)}.
-                <br />
-                With Grouparoo, you can {arrayToReadableList(category.bonuses)}.
               </p>
             </Col>
           </Row>
@@ -81,6 +76,9 @@ export default function CategoryPage(category: CategoryInfo) {
       </div>
 
       <Container fluid>
+        <Row className="d-flex justify-content-center pb-4">
+          <PageNavigation />
+        </Row>
         <Row className="d-flex justify-content-center">
           <div className="mdxContent justify-content-center comparisonContent">
             {content}
