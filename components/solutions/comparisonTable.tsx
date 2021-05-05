@@ -2,16 +2,8 @@ import { Container, Row, Col, Table } from "react-bootstrap";
 import Image from "../Image";
 import ComparisonRow from "./comparisonRow";
 
-export default function ComparisonTable({ comparisonData }) {
-  // comparisonData = [{
-  // category: [{
-  //   feature: featureName,
-  //   grouparoo: true,
-  //   comp: false
-  // },]
-  // }]
-
-  let tableRows = comparisonData.data.map((feature) => (
+export default function ComparisonTable({ comparisonChartData }) {
+  let tableRows = comparisonChartData.data.map((feature) => (
     <ComparisonRow key={feature.feature} rowData={feature} />
   ));
 
@@ -25,7 +17,7 @@ export default function ComparisonTable({ comparisonData }) {
                 <tr>
                   <th></th>
                   <th>Grouparoo</th>
-                  <th>{comparisonData.competitor}</th>
+                  <th>{comparisonChartData.competitor}</th>
                 </tr>
               </thead>
               <tbody>{tableRows}</tbody>

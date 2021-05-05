@@ -2,11 +2,8 @@ import React from "react";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import Head from "next/head";
 import GetStarted from "../home/getStarted";
-import FeatureBanner from "./featureBanner";
 import hydrate from "next-mdx-remote/hydrate";
-import { useRouter } from "next/router";
-import { PageNavigation } from "../pageNavigation";
-import { CategoryInfo, getSolutionsData } from "../../utils/solutionsPages";
+import { CategoryInfo } from "../../utils/solutionsPages";
 import {
   arrayToReadableList,
   possessiveNoun,
@@ -16,7 +13,6 @@ import * as components from ".";
 // import { TableOfContents } from "../../components/docs/tableOfContents";
 
 export default function CategoryPage(category: CategoryInfo) {
-  // const category: CategoryInfo = pageProps.solutionData;
   const content = hydrate(category.source, { components });
 
   return (
@@ -36,7 +32,61 @@ export default function CategoryPage(category: CategoryInfo) {
           )}`}
         />
       </Head>
+      <div
+        id="headline"
+        className="homePageSection"
+        style={{ textAlign: "center", paddingBottom: 100 }}
+      >
+        <Container>
+          <Row>
+            <Col>
+              <h1>{category.category}</h1>
+              <p className="text-big-muted">
+                {category.category}s {arrayToReadableList(category.pros)}.
+                <br />
+                With Grouparoo, you can {arrayToReadableList(category.bonuses)}.
+              </p>
+            </Col>
+          </Row>
 
+          <br />
+
+          <Row>
+            <Col>
+              <Button variant="primary" href="/meet" className="ml-auto">
+                Get a Demo →
+              </Button>
+            </Col>
+          </Row>
+
+          <br />
+
+          <Row>
+            <Col>
+              <p>
+                or try it free. We’re open source!&nbsp;&nbsp;&nbsp;
+                <Button
+                  size="sm"
+                  variant="outline-primary"
+                  style={{ padding: ".5rem 1rem" }}
+                  href="/docs/getting-started"
+                >
+                  Install Now
+                </Button>
+              </p>
+            </Col>
+          </Row>
+          <br />
+        </Container>
+      </div>
+
+      <Container fluid>
+        <Row className="d-flex justify-content-center">
+          <div className="mdxContent justify-content-center comparisonContent">
+            {content}
+          </div>
+        </Row>
+      </Container>
       <GetStarted />
     </>
   );

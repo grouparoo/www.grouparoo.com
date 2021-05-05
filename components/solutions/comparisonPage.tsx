@@ -5,9 +5,7 @@ import GetStarted from "../home/getStarted";
 import ComparisonTable from "./comparisonTable";
 import FeatureBanner from "./featureBanner";
 import hydrate from "next-mdx-remote/hydrate";
-import { useRouter } from "next/router";
-import { PageNavigation } from "../pageNavigation";
-import { ComparisonInfo, getSolutionsData } from "../../utils/solutionsPages";
+import { ComparisonInfo } from "../../utils/solutionsPages";
 import { arrayToReadableList, possessiveNoun } from "../../utils/inflectors";
 import * as components from ".";
 
@@ -80,19 +78,15 @@ export default function ComparisonPage(comp: ComparisonInfo) {
       </div>
       <FeatureBanner features={comp.features} />
       <div className="homePageSection">
-        {/* <div className="col-3">
-          <PageNavigation />
-        </div> */}
         <Container fluid>
           <Row className="d-flex justify-content-center">
             <div className="mdxContent justify-content-center comparisonContent">
-              {/* copy and dividers */}
               {content}
             </div>
           </Row>
         </Container>
       </div>
-      <ComparisonTable comparisonData={comp.comparisonData} />
+      <ComparisonTable comparisonChartData={comp.comparisonChartData} />
       <GetStarted />
     </>
   );
