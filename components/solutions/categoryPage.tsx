@@ -15,7 +15,7 @@ import {
 import * as components from ".";
 // import { TableOfContents } from "../../components/docs/tableOfContents";
 
-export default function CategoryPage({ category }) {
+export default function CategoryPage(category: CategoryInfo) {
   // const category: CategoryInfo = pageProps.solutionData;
   const content = hydrate(category.source, { components });
 
