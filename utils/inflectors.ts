@@ -13,9 +13,8 @@ export function titleize(str:string) {
 
 export function urlize(str:string): string {
 
-  return str.replaceAll(' ', '-').toLowerCase();
+  return str.replace(/\ /g, '-').toLowerCase();
 }
-
 
 /**
  * Take an array of strings and do the right thing with commas
