@@ -5,6 +5,7 @@ import { useApi } from "./../hooks/useApi";
 import { useForm } from "react-hook-form";
 import { Container, Alert, Row, Col, Form, Button } from "react-bootstrap";
 import { ErrorHandler } from "../utils/errorHandler";
+import { isBrowser } from "../utils/isBrowser";
 
 interface FormError {
   email: string;
@@ -66,6 +67,13 @@ export default function Meet() {
     data.source = source;
     data.medium = medium;
     data.campaign = campaign;
+
+    if (isBrowser() && globalThis?.gtag) {
+      globalThis.gtag("event", "conversion", {
+        send_to: "AW-467110449/NGnKCL62zY8CELGU3t4B", // demoRequest conversion
+        event_callback: () => {},
+      });
+    }
 
     const response = await execApi("post", `/api/v1/demo-request`, data);
     if (response?.demoRequest) setRequested(true);
