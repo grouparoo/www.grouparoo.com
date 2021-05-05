@@ -9,6 +9,14 @@ export function titleize(str:string) {
     });
 }
 
+// Take a title string and replace all spaces with commas, convert to lowercase
+
+export function urlize(str:string): string {
+
+  return str.replaceAll(' ', '-').toLowerCase();
+}
+
+
 /**
  * Take an array of strings and do the right thing with commas
  */
