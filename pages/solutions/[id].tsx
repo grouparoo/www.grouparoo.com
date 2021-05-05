@@ -23,11 +23,11 @@ import {
 import * as components from "../../components/solutions";
 // import { TableOfContents } from "../../components/docs/tableOfContents";
 
-export default function Comparison({ pageProps }) {
+export default function SolutionsPage({ pageProps }) {
   const router = useRouter();
   const { solutionData } = pageProps;
 
-  let pageContent = pageProps.hasOwnProperty("category") ? (
+  let pageContent = solutionData.hasOwnProperty("category") ? (
     <CategoryPage {...(solutionData as CategoryInfo)} />
   ) : (
     <ComparisonPage {...(solutionData as ComparisonInfo)} />
@@ -47,6 +47,7 @@ export async function getStaticPaths() {
       { params: { id: "census-alternative" } },
       { params: { id: "segment-alternative" } },
       { params: { id: "hightouch-alternative" } },
+      { params: { id: "reverse-etl" } },
     ],
     fallback: false,
   };
