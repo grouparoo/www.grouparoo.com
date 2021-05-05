@@ -27,9 +27,9 @@ export default function Comparison({ pageProps }) {
   const { solutionData } = pageProps;
 
   let pageContent = pageProps.hasOwnProperty("category") ? (
-    <CategoryPage category={solutionData as CategoryInfo} />
+    <CategoryPage {...(solutionData as CategoryInfo)} />
   ) : (
-    <ComparisonPage comp={solutionData as ComparisonInfo} />
+    <ComparisonPage {...(solutionData as ComparisonInfo)} />
   );
 
   return <>{pageContent}</>;

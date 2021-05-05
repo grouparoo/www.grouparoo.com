@@ -11,7 +11,7 @@ import { ComparisonInfo, getSolutionsData } from "../../utils/solutionsPages";
 import { arrayToReadableList, possessiveNoun } from "../../utils/inflectors";
 import * as components from ".";
 
-export default function ComparisonPage({ comp }) {
+export default function ComparisonPage(comp: ComparisonInfo) {
   const content = hydrate(comp.source, { components });
 
   return (

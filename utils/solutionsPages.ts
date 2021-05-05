@@ -31,7 +31,6 @@ export interface CategoryInfo {
 
 export async function getSolutionsData(slugId, components): Promise<ComparisonInfo | CategoryInfo> {
     const { source, frontMatter, path, slug } = await loadMdxFile(["pages", "solutions", `${slugId}.mdx`], components);
-    console.log(slugId)
     if (slugId.includes('alternative')){
         const { competitor, pros, competitorPros, comparisonData, features } = frontMatter;
         return {
