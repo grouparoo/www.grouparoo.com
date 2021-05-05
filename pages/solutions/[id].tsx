@@ -6,11 +6,9 @@ import ComparisonTable from "../../components/comparisons/comparisonTable";
 import FeatureBanner from "../../components/comparisons/featureBanner";
 import hydrate from "next-mdx-remote/hydrate";
 import { useRouter } from "next/router";
-import { PageNavigation } from "../../components/pageNavigation";
 import { ComparisonInfo, getComparison } from "../../utils/comparisonPages";
 import { arrayToReadableList, possessiveNoun } from "../../utils/inflectors";
 import * as components from "../../components/comparisons";
-// import { TableOfContents } from "../../components/docs/tableOfContents";
 
 export default function Comparison({ pageProps }) {
   const router = useRouter();
@@ -83,17 +81,10 @@ export default function Comparison({ pageProps }) {
       </div>
       <FeatureBanner features={comp.features} />
       <div className="homePageSection">
-        {/* TODO: in-page navigation */}
-        {/* <div className="col-3">
-          <PageNavigation />
-        </div> */}
-        <Container fluid>
-          <Row className="d-flex justify-content-center">
-            <div className="mdxContent justify-content-center comparisonContent">
-              {/* copy and dividers */}
-              {content}
-            </div>
-          </Row>
+        <Container fluid className="p-0">
+          <div className="mdxContent justify-content-center comparisonContent">
+            {content}
+          </div>
         </Container>
       </div>
       <ComparisonTable comparisonData={comp.comparisonData} />
@@ -102,13 +93,11 @@ export default function Comparison({ pageProps }) {
   );
 }
 
-// get initial props for react
 export async function getStaticProps({ params }) {
   const comparison = await getComparison(params.id, components);
   return { props: { comparison } };
 }
 
-// What URLs should I work for?
 export async function getStaticPaths() {
   return {
     paths: [
