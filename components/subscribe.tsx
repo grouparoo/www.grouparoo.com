@@ -3,6 +3,7 @@ import { useApi } from "./../hooks/useApi";
 import { useForm } from "react-hook-form";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { ErrorHandler } from "../utils/errorHandler";
+import { isBrowser } from "../utils/isBrowser";
 
 export default function Subscribe() {
   const { handleSubmit, register } = useForm();
@@ -24,6 +25,13 @@ export default function Subscribe() {
 
   const onSubmit = async (data) => {
     setLoading(true);
+
+    if (isBrowser() && globalThis?.gtag) {
+      globalThis.gtag("event", "conversion", {
+        send_to: "AW-467110449/kY5uCK_Yg44CELGU3t4B", // subscribe conversion
+        event_callback: () => {},
+      });
+    }
 
     data.source = window?.location?.hostname || "grouparoo website";
     data.medium = "web";

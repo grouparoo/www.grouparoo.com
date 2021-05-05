@@ -1,6 +1,7 @@
 import { useState, useEffect, Children, cloneElement } from "react";
 import Head from "next/head";
 import PlausibleAnalytics from "../plausibleAnalytics";
+import AdConversionScript from "../adConversionsScript";
 import Navigation from "../navigation";
 import Footer from "../footer";
 import { Alert } from "react-bootstrap";
@@ -146,6 +147,7 @@ function PageTemplate({ children }) {
       </div>
 
       <PlausibleAnalytics />
+      <AdConversionScript />
     </>
   );
 }
