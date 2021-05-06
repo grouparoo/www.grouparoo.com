@@ -58,26 +58,6 @@ header {
 
 // -- Nav Bar--
 
-#dropdown-basic span {
-  font-size: 18px;
-  color: #00000080;
-  font-weight: 400;
-}
-
-#dropdown-basic::after {
-  content: none !important;
-}
-
-#dropdown-basic:focus,
-#dropdown-basic:hover {
-  outline: none;
-  box-shadow: none;
-  span {
-    color: black;
-    font-weight: 400;
-  }
-}
-
 .nav-link {
   padding-bottom: 20px;
 }

@@ -16,8 +16,8 @@ export default function Navigation() {
   return (
     <header>
       <Container>
-        <Navbar variant="light" expand="md">
-          <Navbar.Brand>
+        <Navbar variant="light" expand="lg">
+          <Navbar.Brand className="pt-2">
             <Link href="/">
               <a>
                 <Image
@@ -32,7 +32,7 @@ export default function Navigation() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto" style={{ marginTop: 10 }}>
+            <Nav className="ml-auto" style={{ marginTop: 30 }}>
               <Nav.Link>
                 <Link href="/integrations">
                   <a className="nav-link" role="button">
@@ -42,11 +42,11 @@ export default function Navigation() {
               </Nav.Link>
 
               <NavDropdown
-                className="pr-2 py-2 pl-0 align-text-top"
+                className="pr-2 py-2 align-text-top"
                 title="Solutions"
                 id="basic-nav-dropdown"
               >
-                <Container className="solutionsNav">
+                <Container className="solutionsNav pt-0 mt-0">
                   <Row>
                     <Col xs md="6">
                       <Dropdown.Header>
@@ -204,25 +204,24 @@ export default function Navigation() {
                 </Link>
               </Nav.Link>
             </Nav>
-            <Nav.Link className="d-md-none d-lg-block pl-0 col-sm-12">
-              <div style={{ paddingTop: 4 }} className="ml-0">
-                <iframe
-                  src="https://ghbtns.com/github-btn.html?user=grouparoo&repo=grouparoo&type=star&count=false"
-                  frameBorder="0"
-                  scrolling="0"
-                  width="65"
-                  className=""
-                  height="20"
-                  title="GitHub"
-                ></iframe>
-              </div>
-            </Nav.Link>
+            <Button
+              variant="outline-light"
+              href="/docs/getting-started"
+              size="sm"
+              style={{
+                marginTop: 20,
+                marginBottom: 20,
+              }}
+              className="col-sm-12 col-lg-1 mx-lg-1 mx-0"
+            >
+              <FontAwesomeIcon icon={["fab", "github"]} size="xs" /> Github
+            </Button>
             <Button
               variant="primary"
               href="/docs/getting-started"
               size="sm"
-              style={{ marginTop: 5, marginBottom: 20 }}
-              className="col-sm-12 col-md-2"
+              style={{ marginTop: 20, marginBottom: 20 }}
+              className="col-sm-12 col-lg-2 mx-0 mr-lg-2 ml-lg-2"
             >
               Get Started
             </Button>
