@@ -9,7 +9,7 @@
         <title>Grouparoo: Blog</title>
         <link>https://www.grouparoo.com/blog</link>
         <description>Articles and updates from Grouparoo.</description>
-        <lastBuildDate>Wed, 05 May 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 06 May 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,19 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Welcome, Teal!]]></title>
+            <link>https://www.grouparoo.com/blog/welcome-teal</link>
+            <guid>grouparoo-blog-post-welcome-teal</guid>
+            <pubDate>Thu, 06 May 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We are excited to have <a href="https://twitter.com/tealdoestech" target="_blank" rel="nofollow noopener noreferrer">Teal Larson</a> come aboard Grouparoo as an engineer.</p><p>Teal has already started <a href="https://github.com/grouparoo/www.grouparoo.com/pulls?q=+is%3Apr+author%3Atealjulia+" target="_blank" rel="nofollow noopener noreferrer">working on</a> our www site, building out pages that help communicate what we are building and for whom.</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Teal Larson profile picture" src="https://www.grouparoo.com/posts/welcome-teal/profile.jpg" width="300" height="300" style="height:300px;width:300px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>We have doubled our Pacific Northwest cohort. I think that means that we will have to plan a trip up there for a hiking offsite.</p><p>The first thing I noticed about Teal was her time outside of tech as a language arts teacher. Working with people that have a full-range of experiences makes us so much better. In fact, she has even made this blog post better because I just remembered that it&#x27;s &quot;whom&quot; above. I think.</p><p>Welcome, Teal! We are so glad to have you here.</p>]]></content:encoded>
+            <enclosure
+        url="https://www.grouparoo.com/posts/welcome-teal/profile.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title><![CDATA[Using Sync Modes in Grouparoo]]></title>
             <link>https://www.grouparoo.com/blog/using-sync-modes</link>
