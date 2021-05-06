@@ -123,49 +123,6 @@ export default function Navigation() {
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Divider />
-
-                      <Dropdown.Header>
-                        <FontAwesomeIcon
-                          color="black"
-                          icon={"plug"}
-                          size="1x"
-                          className="pr-1"
-                        />
-                        Integrations
-                      </Dropdown.Header>
-                      <Dropdown.Item>
-                        <Link href="/integrations/destinations/salesforce">
-                          <a className="nav-link" role="button">
-                            Salesforce
-                          </a>
-                        </Link>
-                      </Dropdown.Item>
-                      <Dropdown.Item>
-                        <Link href="/integrations/sources/redshift">
-                          <a className="nav-link" role="button">
-                            Redshift
-                          </a>
-                        </Link>
-                      </Dropdown.Item>
-                      <Dropdown.Item>
-                        <Link href="/integrations/destinations/hubspot">
-                          <a className="nav-link" role="button">
-                            Hubspot
-                          </a>
-                        </Link>
-                      </Dropdown.Item>
-                      <Dropdown.Item>
-                        <Link href="/integrations">
-                          <a
-                            className="nav-link"
-                            role="button"
-                            id="seeMoreLink"
-                          >
-                            See More...
-                          </a>
-                        </Link>
-                      </Dropdown.Item>
                     </Col>
                   </Row>
                 </Container>
