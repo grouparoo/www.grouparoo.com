@@ -25,9 +25,7 @@ export default function FeatureBanner({
         <Container>
           <Row style={{ textAlign: "center" }}>
             <Col md={12}>
-              <h2>
-                Grouparoo is the {category} that meets you where you are.
-              </h2>
+              <h2>Grouparoo is the {category} that meets you where you are.</h2>
             </Col>
           </Row>
           <br />
