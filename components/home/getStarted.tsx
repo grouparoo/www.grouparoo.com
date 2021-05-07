@@ -8,11 +8,7 @@ export default function GetStarted({
 }) {
   return (
     <>
-      <div
-        id="stay-up-to-date"
-        className="homePageSection"
-        style={{ textAlign: "center" }}
-      >
+      <div id="stay-up-to-date" className="homePageSection text-center w-auto">
         <Container>
           <Row>
             <Col>
