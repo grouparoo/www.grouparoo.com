@@ -74,7 +74,7 @@ export default function CategoryPage(category: CategoryInfo) {
         </Container>
       </div>
       <FeatureBanner
-        category={category.category}
+        category={`${category.category} tool`}
         features={category.features}
       />
 
