@@ -17,7 +17,7 @@ export default function Navigation() {
     <header>
       <Container>
         <Navbar variant="light" expand="lg">
-          <Navbar.Brand className="pt-2">
+          <Navbar.Brand className="pt-3">
             <Link href="/">
               <a>
                 <Image
@@ -32,7 +32,7 @@ export default function Navigation() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto" style={{ marginTop: 30 }}>
+            <Nav className="ml-auto mt-3">
               <NavDropdown
                 className="pr-2 py-2 align-text-top"
                 title="Integrations"
@@ -227,47 +227,31 @@ export default function Navigation() {
               </Nav.Link>
 
               <Nav.Link>
-                <Link href="/docs">
-                  <a className="nav-link" role="button">
-                    Docs
-                  </a>
-                </Link>
-              </Nav.Link>
-
-              <Nav.Link>
                 <Link href="/blog">
                   <a className="nav-link" role="button">
                     Blog
                   </a>
                 </Link>
               </Nav.Link>
-
-              <Nav.Link>
-                <Link href="/docs/community">
-                  <a className="nav-link d-md-none d-lg-block" role="button">
-                    Community
-                  </a>
-                </Link>
-              </Nav.Link>
             </Nav>
             <Button
               variant="outline-light"
-              href="/docs/getting-started"
+              href="https://github.com/grouparoo/grouparoo"
               size="sm"
-              style={{
-                marginTop: 20,
-                marginBottom: 20,
-              }}
-              className="col-sm-12 col-lg-1 mx-lg-1 mx-0"
+              className="col-sm-12 col-lg-1 mx-lg-1 mx-0 mt-3"
             >
-              <FontAwesomeIcon icon={["fab", "github"]} size="xs" /> Github
+              <FontAwesomeIcon
+                icon={["fab", "github"]}
+                size="xs"
+                className="d-lg-none d-xl-inline"
+              />{" "}
+              Github
             </Button>
             <Button
               variant="primary"
               href="/docs/getting-started"
               size="sm"
-              style={{ marginTop: 20, marginBottom: 20 }}
-              className="col-sm-12 col-lg-2 mx-0 mr-lg-2 ml-lg-2"
+              className="col-sm-12 col-lg-2 mx-0 mr-lg-2 ml-lg-2 mt-3"
             >
               Get Started
             </Button>
