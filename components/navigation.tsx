@@ -40,7 +40,7 @@ export default function Navigation() {
               >
                 <Container className="solutionsNav pt-0 mt-0">
                   <Row>
-                    <Col xs md="6">
+                    <Col xs md="6" className="text-left">
                       <Dropdown.Header>
                         <FontAwesomeIcon
                           color="black"
@@ -82,9 +82,10 @@ export default function Navigation() {
                           </a>
                         </Link>
                       </Dropdown.Item>
+                      <Dropdown.Divider className="d-lg-none" />
                     </Col>
 
-                    <Col xs lg="6">
+                    <Col xs lg="6" className="text-left">
                       <Dropdown.Header>
                         <FontAwesomeIcon
                           color="black"
@@ -138,7 +139,7 @@ export default function Navigation() {
               >
                 <Container className="solutionsNav pt-0 mt-0">
                   <Row>
-                    <Col xs md="6">
+                    <Col xs md="6" className="text-left">
                       <Dropdown.Header>
                         <FontAwesomeIcon
                           color="black"
@@ -187,9 +188,10 @@ export default function Navigation() {
                           </a>
                         </Link>
                       </Dropdown.Item>
+                      <Dropdown.Divider className="d-lg-none" />
                     </Col>
 
-                    <Col xs lg="6">
+                    <Col xs lg="6" className="text-left">
                       <Dropdown.Header>
                         <FontAwesomeIcon
                           color="black"
