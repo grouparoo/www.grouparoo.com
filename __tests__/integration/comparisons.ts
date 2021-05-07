@@ -47,7 +47,7 @@
      await browser.get(testUrl);
      await sleep();
      const header = await browser.findElement(by.tagName("h2")).getText();
-     expect(header).toContain("Grouparoo is the customer data platform that meets you where you are at");
+     expect(header).toContain("that meets you where you are at");
      const H3s = await browser.findElements(by.tagName("h3"))
      const H3Texts = await Promise.all(H3s.map(element => element.getText()));
      expect(H3Texts).toContain(`🖥 Use your normal workflow`)
