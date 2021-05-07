@@ -25,6 +25,7 @@ export interface ComparisonInfo {
 export interface CategoryInfo {
     category: string;
     pros: string[];
+    features: FeatureArray;
     source: any;
 }
 
@@ -42,10 +43,11 @@ export async function getSolutionsData(slugId, components): Promise<ComparisonIn
             source
         }
     } else {
-        const { category, pros, bonuses } = frontMatter;
+        const { category, pros, bonuses, features } = frontMatter;
         return {
             category,
             pros,
+            features,
             source
         }
     }
