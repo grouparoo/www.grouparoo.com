@@ -81,7 +81,7 @@ export default function ComparisonPage(comp: ComparisonInfo) {
         features={comp.features}
       />
       <div className="homePageSection">
-        <Container fluid>
+        <Container fluid className="p-0">
           <Row className="d-flex justify-content-center">
             <div className="mdxContent justify-content-center comparisonContent">
               {content}

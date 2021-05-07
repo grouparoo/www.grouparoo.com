@@ -78,9 +78,7 @@ export default function CategoryPage(category: CategoryInfo) {
         features={category.features}
       />
 
-      <Container fluid>
-        <Row className="d-flex justify-content-center pb-4"></Row>
-        <Row className="d-flex justify-content-center pb-4"></Row>
+      <Container fluid className="p-0">
         <Row className="d-flex justify-content-center">
           <div className="mdxContent justify-content-center comparisonContent">
             {content}
