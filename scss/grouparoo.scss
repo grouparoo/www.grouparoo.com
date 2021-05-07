@@ -71,7 +71,6 @@ header {
 }
 .dropdown-menu {
   padding: 1em;
-  border: red 2px solid;
 }
 
 .dropdown-item:hover {
@@ -83,15 +82,17 @@ header {
 
 .dropdown-item {
   height: 2em;
+  padding-left: 0em;
 }
 
 .dropdown-header {
   font-weight: 600;
+  padding-left: 0em;
 }
 
 @media only screen and (min-width: 600px) {
   .solutionsNav {
-    min-width: 25em;
+    min-width: 20em;
     padding-bottom: 1em;
   }
 }
