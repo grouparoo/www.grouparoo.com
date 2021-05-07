@@ -5,9 +5,8 @@ import GetStarted from "../home/getStarted";
 import hydrate from "next-mdx-remote/hydrate";
 import { CategoryInfo } from "../../utils/solutionsPages";
 import { arrayToReadableList, urlize } from "../../utils/inflectors";
-import { PageNavigation } from "../pageNavigation";
+import FeatureBanner from "./featureBanner";
 import * as components from ".";
-// import { TableOfContents } from "../../components/docs/tableOfContents";
 
 export default function CategoryPage(category: CategoryInfo) {
   const content = hydrate(category.source, { components });
@@ -74,11 +73,14 @@ export default function CategoryPage(category: CategoryInfo) {
           <br />
         </Container>
       </div>
+      <FeatureBanner
+        category={category.category}
+        features={category.features}
+      />
 
       <Container fluid>
-        <Row className="d-flex justify-content-center pb-4">
-          <PageNavigation />
-        </Row>
+        <Row className="d-flex justify-content-center pb-4"></Row>
+        <Row className="d-flex justify-content-center pb-4"></Row>
         <Row className="d-flex justify-content-center">
           <div className="mdxContent justify-content-center comparisonContent">
             {content}
