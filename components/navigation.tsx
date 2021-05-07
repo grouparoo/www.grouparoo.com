@@ -33,13 +33,103 @@ export default function Navigation() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto" style={{ marginTop: 30 }}>
-              <Nav.Link>
-                <Link href="/integrations">
-                  <a className="nav-link" role="button">
-                    Integrations
-                  </a>
-                </Link>
-              </Nav.Link>
+              <NavDropdown
+                className="pr-2 py-2 align-text-top"
+                title="Integrations"
+                id="basic-nav-dropdown"
+              >
+                <Container className="solutionsNav pt-0 mt-0">
+                  <Row>
+                    <Col xs md="6">
+                      <Dropdown.Header>
+                        <FontAwesomeIcon
+                          color="black"
+                          icon={"arrow-down"}
+                          size="1x"
+                          className="pr-1"
+                        />{" "}
+                        Sources
+                      </Dropdown.Header>
+                      <Dropdown.Item>
+                        <Link href="/integrations/sources/snowflake">
+                          <a className="nav-link" role="button">
+                            Snowflake
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/integrations/sources/postgres">
+                          <a className="nav-link" role="button">
+                            Postgres
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/integrations/sources/mysql">
+                          <a className="nav-link" role="button">
+                            MySQL
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/integrations">
+                          <a
+                            className="nav-link"
+                            role="button"
+                            id="seeMoreLink"
+                          >
+                            See More...
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                    </Col>
+
+                    <Col xs lg="6">
+                      <Dropdown.Header>
+                        <FontAwesomeIcon
+                          color="black"
+                          icon={"arrow-up"}
+                          size="1x"
+                          className="pr-1"
+                        />{" "}
+                        Destinations
+                      </Dropdown.Header>
+                      <Dropdown.Item>
+                        <Link href="/integrations/destinations/salesforce">
+                          <a className="nav-link" role="button">
+                            Salesforce
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/integrations/destinations/marketo">
+                          <a className="nav-link" role="button">
+                            Marketo
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/integrations/destinations/zendexk">
+                          <a className="nav-link" role="button">
+                            Zendesk
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/integrations">
+                          <a
+                            className="nav-link"
+                            role="button"
+                            id="seeMoreLink"
+                          >
+                            See More...
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                    </Col>
+                  </Row>
+                </Container>
+              </NavDropdown>
 
               <NavDropdown
                 className="pr-2 py-2 align-text-top"
@@ -126,7 +216,6 @@ export default function Navigation() {
                     </Col>
                   </Row>
                 </Container>
-                {/* </Dropdown.Menu> */}
               </NavDropdown>
 
               <Nav.Link>
