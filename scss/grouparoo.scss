@@ -59,7 +59,11 @@ header {
 // -- Nav Bar--
 
 .nav-link {
-  padding-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+#basic-nav-dropdown {
+  font-size: 0.95rem;
 }
 
 #seeMoreLink {
@@ -67,6 +71,7 @@ header {
 }
 .dropdown-menu {
   padding: 1em;
+  border: red 2px solid;
 }
 
 .dropdown-item:hover {
