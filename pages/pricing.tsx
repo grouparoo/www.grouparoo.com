@@ -149,14 +149,14 @@ export default function PricingPage() {
       <div id="featureComparisons" className="featureTableSection">
         <Container>
           <Row>
-            <Col>
-              <Table style={{ textAlign: "center" }}>
+            <Col className="mw-95vw">
+              <Table className="text-center w-auto">
                 <thead>
                   <tr>
                     <th></th>
                     <th>Community</th>
                     <th>Enterprise</th>
-                    <th>Hosted</th>
+                    <th className="d-none d-md-table-cell">Hosted</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -166,7 +166,7 @@ export default function PricingPage() {
                     </td>
                     <td></td>
                     <td></td>
-                    <td></td>
+                    <td className="d-none d-md-table-cell"></td>
                   </tr>
                   <tr>
                     <td style={{ textAlign: "left" }}>
@@ -188,7 +188,7 @@ export default function PricingPage() {
                         height={24}
                       />
                     </td>
-                    <td>
+                    <td className="d-none d-md-table-cell">
                       <Image
                         src="/images/grouparoo-blue-checkmark.svg"
                         alt="Grouparoo blue checkmark"
@@ -203,7 +203,7 @@ export default function PricingPage() {
                     </td>
                     <td>All</td>
                     <td>All</td>
-                    <td>All</td>
+                    <td className="d-none d-md-table-cell">All</td>
                   </tr>
                   <tr>
                     <td style={{ textAlign: "left" }}>
@@ -225,7 +225,7 @@ export default function PricingPage() {
                         height={24}
                       />
                     </td>
-                    <td>
+                    <td className="d-none d-md-table-cell">
                       <Image
                         src="/images/grouparoo-blue-checkmark.svg"
                         alt="Grouparoo blue checkmark"
@@ -254,7 +254,7 @@ export default function PricingPage() {
                         height={24}
                       />
                     </td>
-                    <td>
+                    <td className="d-none d-md-table-cell">
                       <Image
                         src="/images/grouparoo-blue-checkmark.svg"
                         alt="Grouparoo blue checkmark"
@@ -276,7 +276,7 @@ export default function PricingPage() {
                         height={24}
                       />
                     </td>
-                    <td>
+                    <td className="d-none d-md-table-cell">
                       <Image
                         src="/images/grouparoo-blue-checkmark.svg"
                         alt="Grouparoo blue checkmark"
@@ -298,7 +298,7 @@ export default function PricingPage() {
                         height={24}
                       />
                     </td>
-                    <td>
+                    <td className="d-none d-md-table-cell">
                       <Image
                         src="/images/grouparoo-blue-checkmark.svg"
                         alt="Grouparoo blue checkmark"
@@ -320,7 +320,7 @@ export default function PricingPage() {
                         height={24}
                       />
                     </td>
-                    <td>
+                    <td className="d-none d-md-table-cell">
                       <Image
                         src="/images/grouparoo-blue-checkmark.svg"
                         alt="Grouparoo blue checkmark"
@@ -342,7 +342,7 @@ export default function PricingPage() {
                         height={24}
                       />
                     </td>
-                    <td>
+                    <td className="d-none d-md-table-cell">
                       <Image
                         src="/images/grouparoo-blue-checkmark.svg"
                         alt="Grouparoo blue checkmark"
@@ -357,7 +357,7 @@ export default function PricingPage() {
                     </td>
                     <td></td>
                     <td></td>
-                    <td></td>
+                    <td className="d-none d-md-table-cell"></td>
                   </tr>
                   <tr>
                     <td style={{ textAlign: "left" }}>
@@ -379,7 +379,7 @@ export default function PricingPage() {
                         height={24}
                       />
                     </td>
-                    <td>
+                    <td className="d-none d-md-table-cell">
                       <Image
                         src="/images/grouparoo-blue-checkmark.svg"
                         alt="Grouparoo blue checkmark"
@@ -406,7 +406,7 @@ export default function PricingPage() {
                         height={24}
                       />
                     </td>
-                    <td>
+                    <td className="d-none d-md-table-cell">
                       <Image
                         src="/images/grouparoo-blue-checkmark.svg"
                         alt="Grouparoo blue checkmark"
@@ -428,7 +428,7 @@ export default function PricingPage() {
                         height={24}
                       />
                     </td>
-                    <td>
+                    <td className="d-none d-md-table-cell">
                       <Image
                         src="/images/grouparoo-blue-checkmark.svg"
                         alt="Grouparoo blue checkmark"
@@ -441,7 +441,7 @@ export default function PricingPage() {
                     <td style={{ textAlign: "left" }}>Enhanced Support SLAs</td>
                     <td> - </td>
                     <td>add-on</td>
-                    <td>add-on</td>
+                    <td className="d-none d-md-table-cell">add-on</td>
                   </tr>
                 </tbody>
               </Table>
