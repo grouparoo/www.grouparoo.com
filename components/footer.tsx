@@ -128,9 +128,13 @@ export default function Footer() {
                 <Link href="/solutions/hightouch-alternative">
                   <a>Hightouch Alternative</a>
                 </Link>
+                <br />
+
                 <Link href="/solutions/reverse-etl">
                   <a>Reverse ETL</a>
                 </Link>
+                <br />
+
                 <Link href="/solutions/customer-data-platform">
                   <a>Customer Data Platform</a>
                 </Link>
