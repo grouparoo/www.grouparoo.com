@@ -9,10 +9,12 @@ export interface Feature {
 
 export interface FeatureArray extends Array<Feature> {}
 
-export default function SectionDivider({
+export default function FeatureBanner({
   features,
+  category = "Customer Data Platform",
 }: {
   features: FeatureArray;
+  category: string;
 }) {
   return (
     <>
@@ -23,10 +25,7 @@ export default function SectionDivider({
         <Container>
           <Row style={{ textAlign: "center" }}>
             <Col md={12}>
-              <h2>
-                Grouparoo is the customer data platform that meets you where you
-                are at.
-              </h2>
+              <h2>Grouparoo is the {category} that meets you where you are.</h2>
             </Col>
           </Row>
           <br />

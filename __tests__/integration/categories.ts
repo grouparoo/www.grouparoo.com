@@ -5,7 +5,6 @@
  */
 
  import * as helper from "../helpers/specHelper";
-
  let url: string;
  
  // stub the selenium injected variables
@@ -13,7 +12,7 @@
  declare var by: any;
 
  // comparison pages to test
- const cases = ["census", "segment", "hightouch"];
+ const cases = ["reverse-etl", "customer-data-platform"];
 
  
  describe("integration/comparisons", () => {
@@ -28,48 +27,38 @@
 
 
     test.each(cases)("it renders the copy for %p", async (pageSlug) => {
-      const company = pageSlug.charAt(0).toUpperCase() + pageSlug.slice(1);
- 
-      const testUrl = url + `/solutions/${pageSlug}-alternative`;
+    
+      const testUrl = url + `/solutions/${pageSlug}`;
       await browser.get(testUrl);
       await sleep();
-      const header = await browser.findElement(by.tagName("h1")).getText();
-      expect(header).toContain(`Grouparoo vs. ${company}`);
       const H2s = await browser.findElements(by.tagName("h2"))
       const H2Texts = await Promise.all(H2s.map(element => element.getText()));
-      expect(H2Texts).toContain(`How Grouparoo is different (and better) than ${company}`)
+      expect(H2Texts).toContain(`Get Started with Grouparoo`)
  
     });
  
     test.each(cases)("it renders the features banner for %p", async (pageSlug) => {
  
-     const testUrl = url + `/solutions/${pageSlug}-alternative`;
+     const testUrl = url + `/solutions/${pageSlug}`;
      await browser.get(testUrl);
      await sleep();
      const header = await browser.findElement(by.tagName("h2")).getText();
      expect(header).toContain("that meets you where you are");
      const H3s = await browser.findElements(by.tagName("h3"))
      const H3Texts = await Promise.all(H3s.map(element => element.getText()));
-     expect(H3Texts).toContain(`🖥 Use your normal workflow`)
+     expect(H3Texts).toContain(`🛍 Market more meaningfully`)
  
    });
  
    test.each(cases)("it renders section dividers for %p", async (pageSlug) => {
  
-     const testUrl = url + `/solutions/${pageSlug}-alternative`;
+     const testUrl = url + `/solutions/${pageSlug}`;
      await browser.get(testUrl);
      await sleep();
      const H3s = await browser.findElements(by.tagName("h3"))
      const H3Texts = await Promise.all(H3s.map(element => element.getText()));
-     expect(H3Texts).toContain(`Easily define profiles, no matter your data.`)
- 
-   });
- 
-   test.each(cases)("it renders a comparison chart for %p", async (pageSlug) => {
-     const table = await browser.findElement(by.id("featureComparisons"));
-     const cells = await table.findElements(by.tagName("td"))
-     const cellTexts = await Promise.all(cells.map(element => element.getText()));
-     expect(cellTexts).toContain(`Free tier`)
+
+     expect(H3Texts.length).toBeGreaterThan(0)
  
    });
    

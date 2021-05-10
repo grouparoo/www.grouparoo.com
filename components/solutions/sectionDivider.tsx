@@ -8,6 +8,7 @@ export default function SectionDivider({
   height,
   width,
   imageLeft,
+  background,
 }: {
   heading: string;
   content: string;
@@ -15,6 +16,7 @@ export default function SectionDivider({
   height: number;
   width: number;
   imageLeft: string;
+  background: string;
 }) {
   let dividerContent;
 
@@ -50,12 +52,15 @@ export default function SectionDivider({
     );
   }
 
+  const setBackground =
+    background === "none" ? "none" : "linear-gradient(#242436,#43435F)";
+  const classes =
+    background === "none"
+      ? "homePageSection my-5"
+      : "bg-dark text-white homePageSection my-5";
   return (
     <>
-      <div
-        style={{ backgroundImage: "linear-gradient(#242436,#43435F)" }}
-        className="bg-dark text-white homePageSection my-5"
-      >
+      <div style={{ backgroundImage: setBackground }} className={classes}>
         <Container fluid>{dividerContent}</Container>
       </div>
     </>

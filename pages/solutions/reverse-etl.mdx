@@ -1,0 +1,180 @@
+---
+category: "Reverse ETL"
+pros:
+  [
+    "help sales and marketing teams understand their data",
+    "allow your data to move between sources with ease",
+  ]
+features:
+  [
+    {
+      title: "🔎 Use the profiles and segments you already have",
+      text: "Reverse ETLs let you use the robust profile data you've already made in your data warehouse.",
+    },
+    {
+      title: "💼  Make informed business decisions with operational analytics",
+      text:
+        "Reverse ETL tools help you make informed decisions that benefit your business.
+
+        ",
+    },
+    {
+      title: "📈  Improve advertising impact",
+      text: "With a Reverse ETL, you can automate list creation for effective advertising campaigns -- saving you advertising dollars and time.",
+    },
+    {
+      title: "🛍  Market more meaningfully",
+      text: "Help your marketing team create campaigns based on real, meaningful data.",
+    },
+  ]
+---
+
+## What is Reverse ETL and why is it important?
+
+Reverse ETL is a new data engineering term that has been picking up attention in recent months.
+
+At Grouparoo, we’re helping to lead that trend, so we thought we’d share an overview of what Reverse ETL is, and how Grouparoo enables businesses to use their data to the fullest extent.
+
+### What is Reverse ETL?
+
+Before we discuss Reverse ETL, let’s talk about “regular” ETL.
+
+ETL is a data warehouse term which stands for Extract, Transform, and Load. ETL describes the process of taking data from a database or source (Extract), modifying it or cleaning it up (Transform), and then putting it in a data warehouse (Load).
+
+<SectionDivider
+  imagePath="/images/home/solutions/categories/etl.svg"
+  heading="ETL: Extract, Transform, Load"
+  width="600"
+  height="394"
+  content="With your data in a unified location, there's no need to write costly join queries or hunt down data between sources."
+  imageLeft="false"
+/>
+
+With the data now living in a data warehouse, teams can analyze their data without writing costly (and often impossible) queries that require joining different data sources.
+
+Additionally, because the data has been transformed by a data owner, there is a shared, canonical definition for how data is structured.
+
+#### Okay, so what about reverse ETL?
+
+Reverse ETL, on the other hand, is the process that takes data from a data warehouse and sends that data to any number of different destinations or tools, finally letting you use your data warehouse for more than just analysis.
+
+<SectionDivider
+  imagePath="/images/home/solutions/categories/reverse-etl.svg"
+  heading="Reverse ETL: Sync your data to destinations"
+  width="600"
+  height="394"
+  content="Reversing the ETL process means your data can be synced to the destinations you use it most."
+  imageLeft="true"
+/>
+
+### Why did Reverse ETL come about?
+
+Reverse ETL has emerged as companies use more tools that require customer data.
+
+Your Sales team is using CRMs like [Hubspot](http://hubspot.com) and [Salesforce](http://salesforce.com) to keep track of all of their leads and deals. As they try to close more deals, they need better data in Hubspot and Salesforce to better understand who these leads or customers are, how they’re using the product, whether they’re likely to churn, and everything else.
+
+_Is someone a highly-active user who might be a great fit for a new product you just launched? _
+
+Your Marketing team is trying to run great campaigns that engage with your email list and subscribers. They need personalized, tailored data in Marketo or Mailchimp to be effective.
+
+Thankfully, the data that your revenue and operational teams need already lives in your data warehouse.
+
+<SectionDivider
+  imagePath="/images/home/hero-diagram.svg"
+  heading="Reverse ETL allows you to sync profiles and groups across your tools"
+  width="600"
+  height="255"
+  content="You already have the data you need in your warehouse, Reverse ETLs allow you to sync that tailored data to tools such as Salesforce, Zendesk, or Marketo where you can put it to use."
+  imageLeft="false"
+/>
+
+The tricky part is getting that data to all of your different tools. Often for an
+engineering team, integrating with a single email tool or CRM isn’t too tricky at
+first.
+
+Someone on the marketing team or their manager asks them to connect a customer list to their email tool of choice, let’s say Mailchimp. No big deal. The engineer looks up the Mailchimp API and learns about the endpoints at play. They build something custom, probably a cron job, that takes information from their users database and sends some data to Mailchimp like email, first name, and last name.
+
+No sweat, right?
+
+Well, things get more complicated quickly. What happens when a user record changes? Or new users get added?
+
+What happens when marketing or sales wants more user information in Mailchimp?
+
+What happens when Mailchimp’s API is down or you hit a rate limit?
+
+The minute another team wants to use a different tool, the engineering team will need to figure out whether to build another one-off integration with this different tool, or if they will create some internal data synchronizing tool.
+
+With these challenges multiplying, robust reverse ETL tools come to the rescue.
+
+### How does Reverse ETL work?
+
+Reverse ETL tools, at their core, make it easy to take data that already lives in your data warehouse or database, and connects that data to the different SaaS tools you’re using.
+
+#### Define the customer data you want
+
+The first step in Reverse ETL is defining what data you want to pull from your source of truth.
+
+In Grouparoo terms, that means connecting to a Source like a database or data warehouse and defining Profile Properties.
+
+Profile Properties are customer data, such as identifying information like email or _user_id_ to product usage data like _lifetime_value_ or _last_login_at_.
+
+<SectionDivider
+  imagePath="/images/home/how-it-works-1.png"
+  heading="Defining profiles with Grouparoo is simple"
+  width="600"
+  height="368"
+  content="You can use our enterprise UI or our community edition CLI tools to generate properties efficiently."
+  imageLeft="true"
+/>
+
+In Grouparoo, you can define these profile properties using our no-code web interface
+or in code with our community edition.
+
+Both of these options result in efficient queries to your database that then creates Properties in Grouparoo.
+
+#### Define how you want to export your data
+
+From here, Grouparoo allows you to define what Profile and Property data you want to send to your business tools like CRMs, marketing automation platforms, and others. We call these Destinations, and we’ve built 20+ integrations (and we’re launching more all the time!).
+
+With our pre-built integrations, your engineering team doesn’t need to learn the ins and outs of every tool’s API.
+
+Grouparoo handles all of the tricky nuances of every API, whether it’s about using different [Batch APIs](https://www.grouparoo.com/blog/batching-api-requests) or managing requests so you don’t hit [rate limits](https://www.grouparoo.com/blog/crm-system-rate-limiting).
+
+Connecting to a new integration just requires installing the plugin and adding some connection details such as an API key. Once that’s set, anyone on your team can connect your customer data to your destinations.
+
+<SectionDivider
+  imagePath="/images/home/how-it-works-3.png"
+  heading="Map your data to any one of our 20+ destinations"
+  width="600"
+  height="368"
+  content="No need for your team to know every quirk of your destination's API.  Grouparoo handles all that for you."
+  imageLeft="false"
+/>
+
+#### Set schedules for how often to update this data
+
+Once you’ve defined these connections, Grouparoo regularly queries your data for updates., Aand as you gethave new customer data, Grouparoo will automatically sync that data to your destinations.
+
+If you want to send new data to your destination, anyone on your team can update the destination mappings.
+
+Grouparoo also keeps all of your profile data up-to-date and ensures that everything we send to a destination was recently checked against the source of truth.
+
+<SectionDivider
+  imagePath="/images/home/solutions/categories/schedules.png"
+  heading="Schedule your profiles to sync automatically"
+  width="600"
+  height="427"
+  content="With Grouparoo, runs can be triggered every hour, every day, every week, or in real-time."
+  imageLeft="true"
+/>
+
+### Why is Reverse ETL important?
+
+The key purpose behind Reverse ETL is to empower business teams to take action with verified and trustworthy data. This practice is called **Operational Analytics. **Operational analytics is the practice of taking your data and turning it into action.
+
+With better, trustworthy data in your Marketing tools, you can drive better growth, have more targeted emails and communications, and create better experiences for your users.
+
+Sales teams are able to better personalize their sales discussions based on how their leads and accounts are using the product.
+
+**Grouparoo provides best-in-class Reverse ETL. It’s easy for engineers to set up, and even easier for revenue teams to use.
+Get started today!**
