@@ -110,7 +110,7 @@ export default function Navigation() {
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <Link href="/integrations/destinations/zendexk">
+                        <Link href="/integrations/destinations/zendesk">
                           <a className="nav-link" role="button">
                             Zendesk
                           </a>
