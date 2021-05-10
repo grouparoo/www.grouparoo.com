@@ -215,6 +215,30 @@ export default function Navigation() {
                           </a>
                         </Link>
                       </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Header>
+                        <FontAwesomeIcon
+                          color="black"
+                          icon={"check"}
+                          size="1x"
+                          className="pr-1"
+                        />
+                        Categories
+                      </Dropdown.Header>
+                      <Dropdown.Item>
+                        <Link href="/solutions/reverse-etl">
+                          <a className="nav-link" role="button">
+                            Reverse ETL
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/solutions/customer-data-platform">
+                          <a className="nav-link text-wrap" role="button">
+                            Customer Data Platform
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
                     </Col>
                   </Row>
                 </Container>
