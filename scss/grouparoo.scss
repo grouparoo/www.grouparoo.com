@@ -99,7 +99,11 @@ header {
 
 @media only screen and (min-width: 600px) {
   .solutionsNav {
-    min-width: 25em;
+    width: 22em;
+    padding-bottom: 1em;
+  }
+  .integrationsNav {
+    width: 18em;
     padding-bottom: 1em;
   }
 }

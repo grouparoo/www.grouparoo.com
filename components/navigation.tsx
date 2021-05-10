@@ -16,7 +16,7 @@ export default function Navigation() {
   return (
     <header>
       <Container>
-        <Navbar variant="light" expand="lg">
+        <Navbar variant="light" expand="md">
           <Navbar.Brand className="pt-3">
             <Link href="/">
               <a>
@@ -38,7 +38,7 @@ export default function Navigation() {
                 title="Integrations"
                 id="basic-nav-dropdown"
               >
-                <Container className="solutionsNav pt-0 mt-0">
+                <Container className="integrationsNav pt-0 mt-0">
                   <Row>
                     <Col xs md="6" className="text-left">
                       <Dropdown.Header>
@@ -85,7 +85,7 @@ export default function Navigation() {
                       <Dropdown.Divider className="d-lg-none" />
                     </Col>
 
-                    <Col xs lg="6" className="text-left">
+                    <Col xs md="6" className="text-left">
                       <Dropdown.Header>
                         <FontAwesomeIcon
                           color="black"
@@ -264,7 +264,7 @@ export default function Navigation() {
               variant="outline-light"
               href="https://github.com/grouparoo/grouparoo"
               size="sm"
-              className="col-sm-12 col-lg-1 mx-lg-1 mx-0 mt-3"
+              className="col-sm-12 d-md-none d-lg-inline-block col-lg-1 mx-lg-1 mx-0 mt-3"
             >
               <FontAwesomeIcon
                 icon={["fab", "github"]}
@@ -277,7 +277,7 @@ export default function Navigation() {
               variant="primary"
               href="/docs/getting-started"
               size="sm"
-              className="col-sm-12 col-lg-2 mx-0 mr-lg-2 ml-lg-2 mt-3"
+              className="col-sm-12 col-md-3 col-lg-2 mx-0 mr-lg-2 ml-lg-2 mt-3"
             >
               Get Started
             </Button>
