@@ -261,7 +261,7 @@ export default function Navigation() {
               </Nav.Link>
             </Nav>
             <Button
-              variant="outline-light"
+              variant="outline-dark"
               href="https://github.com/grouparoo/grouparoo"
               size="sm"
               className="col-sm-12 d-md-none d-lg-inline-block col-lg-1 mx-lg-1 mx-0 mt-3"
@@ -271,7 +271,7 @@ export default function Navigation() {
                 size="xs"
                 className="d-lg-none d-xl-inline"
               />{" "}
-              Github
+              Star
             </Button>
             <Button
               variant="primary"
