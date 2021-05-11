@@ -19,6 +19,7 @@ const components = {
   Card,
   CardBody: Card.Body,
   Tweet,
+  Link,
 };
 
 export default function BlogPage({ pageProps }) {
