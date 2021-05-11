@@ -260,21 +260,16 @@ export default function Navigation() {
                 </Link>
               </Nav.Link>
             </Nav>
-            <Button
-              variant="outline-dark"
+            <a
               href="https://github.com/grouparoo/grouparoo"
               target="_blank"
               rel="noreferrer"
-              size="sm"
-              className="col-sm-12 d-md-none d-lg-inline-block col-lg-1 mx-lg-1 mx-0 mt-3"
+              className="col-sm-12 d-md-none d-lg-inline-block col-lg-1 p-0 mx-lg-1 mx-0 mt-3"
             >
-              <FontAwesomeIcon
-                icon={["fab", "github"]}
-                size="xs"
-                className="d-lg-none d-xl-inline"
-              />{" "}
-              Star
-            </Button>
+              <Button variant="outline-dark" size="sm" className="w-100">
+                <FontAwesomeIcon icon={["fab", "github"]} size="xs" /> Star
+              </Button>
+            </a>
             <Button
               variant="primary"
               href="/docs/getting-started"
