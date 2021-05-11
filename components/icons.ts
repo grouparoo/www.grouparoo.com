@@ -1,10 +1,13 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 // Add new Icons you want to use in the Grouparoo app here
-import { faBalanceScaleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faBalanceScaleLeft } from "@fortawesome/free-solid-svg-icons";
 import { faBatteryFull } from "@fortawesome/free-solid-svg-icons";
 import { faBuilding } from "@fortawesome/free-solid-svg-icons";
 import { faChartLine } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faLayerGroup } from "@fortawesome/free-solid-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
@@ -18,10 +21,13 @@ import { faVial } from "@fortawesome/free-solid-svg-icons";
 import { faWrench } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
+  faArrowDown,
+  faArrowUp,
   faBalanceScaleLeft,
   faBatteryFull,
   faBuilding,
   faChartLine,
+  faCheck,
   faGithub,
   faLayerGroup,
   faLink,
@@ -32,5 +38,5 @@ library.add(
   faTasks,
   faUserTie,
   faVial,
-  faWrench,
+  faWrench
 );
