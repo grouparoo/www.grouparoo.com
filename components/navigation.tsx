@@ -5,6 +5,7 @@ import {
   Button,
   Image,
   Dropdown,
+  NavDropdown,
   Col,
   Row,
 } from "react-bootstrap";
@@ -16,7 +17,7 @@ export default function Navigation() {
     <header>
       <Container>
         <Navbar variant="light" expand="md">
-          <Navbar.Brand>
+          <Navbar.Brand className="pt-3">
             <Link href="/">
               <a>
                 <Image
@@ -31,189 +32,255 @@ export default function Navigation() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto" style={{ marginTop: 30 }}>
-              <Dropdown className="pr-2 py-2 pl-0 align-text-top">
-                <Dropdown.Toggle
-                  variant=""
-                  className="nav-link align-text-top p-0"
-                  id="dropdown-basic"
-                >
-                  <span>Solutions</span>
-                </Dropdown.Toggle>
+            <Nav className="ml-auto mt-3">
+              <NavDropdown
+                className="pr-2 py-2 align-text-top"
+                title="Integrations"
+                id="basic-nav-dropdown"
+              >
+                <Container className="integrationsNav pt-0 mt-0">
+                  <Row>
+                    <Col xs="12" md="6" className="text-left">
+                      <Dropdown.Header>
+                        <FontAwesomeIcon
+                          color="black"
+                          icon={"arrow-down"}
+                          size="1x"
+                          className="pr-1"
+                        />{" "}
+                        Sources
+                      </Dropdown.Header>
+                      <Dropdown.Item>
+                        <Link href="/integrations/sources/snowflake">
+                          <a className="nav-link" role="button">
+                            Snowflake
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/integrations/sources/postgres">
+                          <a className="nav-link" role="button">
+                            Postgres
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/integrations/sources/mysql">
+                          <a className="nav-link" role="button">
+                            MySQL
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/integrations">
+                          <a
+                            className="nav-link"
+                            role="button"
+                            id="seeMoreLink"
+                          >
+                            See More...
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Divider className="d-lg-none" />
+                    </Col>
 
-                <Dropdown.Menu className="solutionsNav">
-                  <Container>
-                    <Row>
-                      <Col xs md="6">
-                        <Dropdown.Header>
-                          <FontAwesomeIcon
-                            color="black"
-                            icon={"building"}
-                            size="1x"
-                            className="pr-1"
-                          />
-                          Industries
-                        </Dropdown.Header>
-                        <Dropdown.Item>
-                          <Link href="/solutions/healthcare">
-                            <a className="nav-link" role="button">
-                              Healthcare
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
+                    <Col xs="12" md="6" className="text-left">
+                      <Dropdown.Header>
+                        <FontAwesomeIcon
+                          color="black"
+                          icon={"arrow-up"}
+                          size="1x"
+                          className="pr-1"
+                        />{" "}
+                        Destinations
+                      </Dropdown.Header>
+                      <Dropdown.Item>
+                        <Link href="/integrations/destinations/salesforce">
+                          <a className="nav-link" role="button">
+                            Salesforce
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/integrations/destinations/marketo">
+                          <a className="nav-link" role="button">
+                            Marketo
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/integrations/destinations/zendesk">
+                          <a className="nav-link" role="button">
+                            Zendesk
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/integrations">
+                          <a
+                            className="nav-link"
+                            role="button"
+                            id="seeMoreLink"
+                          >
+                            See More...
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                    </Col>
+                  </Row>
+                </Container>
+              </NavDropdown>
 
-                        <Dropdown.Divider />
-                        <Dropdown.Header>
-                          <FontAwesomeIcon
-                            color="black"
-                            icon={"balance-scale-left"}
-                            size="1x"
-                            className="pr-1"
-                          />
-                          Comparisons
-                        </Dropdown.Header>
-                        <Dropdown.Item>
-                          <Link href="/solutions/census-alternative">
-                            <a className="nav-link" role="button">
-                              vs. Census
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link href="/solutions/segment-alternative">
-                            <a className="nav-link" role="button">
-                              vs. Segment
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link href="/solutions/hightouch-alternative">
-                            <a className="nav-link" role="button">
-                              vs. Hightouch
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                      </Col>
+              <NavDropdown
+                className="pr-2 py-2 align-text-top"
+                title="Solutions"
+                id="basic-nav-dropdown"
+              >
+                <Container className="solutionsNav pt-0 mt-0">
+                  <Row>
+                    <Col xs="12" md="6" className="text-left">
+                      <Dropdown.Header>
+                        <FontAwesomeIcon
+                          color="black"
+                          icon={"building"}
+                          size="1x"
+                          className="pr-1"
+                        />
+                        Industries
+                      </Dropdown.Header>
+                      <Dropdown.Item>
+                        <Link href="/solutions/healthcare">
+                          <a className="nav-link" role="button">
+                            Healthcare
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
 
-                      <Col xs lg="6">
-                        <Dropdown.Header>
-                          <FontAwesomeIcon
-                            color="black"
-                            icon={"user-tie"}
-                            size="1x"
-                            className="pr-1"
-                          />
-                          Departments
-                        </Dropdown.Header>
-                        <Dropdown.Item>
-                          <Link href="/">
-                            <a className="nav-link" role="button">
-                              Engineering
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link href="/solutions/marketers">
-                            <a className="nav-link" role="button">
-                              Marketing
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Divider />
+                      <Dropdown.Divider />
+                      <Dropdown.Header>
+                        <FontAwesomeIcon
+                          color="black"
+                          icon={"balance-scale-left"}
+                          size="1x"
+                          className="pr-1"
+                        />
+                        Comparisons
+                      </Dropdown.Header>
+                      <Dropdown.Item>
+                        <Link href="/solutions/census-alternative">
+                          <a className="nav-link" role="button">
+                            vs. Census
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/solutions/segment-alternative">
+                          <a className="nav-link" role="button">
+                            vs. Segment
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/solutions/hightouch-alternative">
+                          <a className="nav-link" role="button">
+                            vs. Hightouch
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Divider className="d-lg-none" />
+                    </Col>
 
-                        <Dropdown.Header>
-                          <FontAwesomeIcon
-                            color="black"
-                            icon={"plug"}
-                            size="1x"
-                            className="pr-1"
-                          />
-                          Integrations
-                        </Dropdown.Header>
-                        <Dropdown.Item>
-                          <Link href="/integrations/destinations/salesforce">
-                            <a className="nav-link" role="button">
-                              Salesforce
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link href="/integrations/sources/redshift">
-                            <a className="nav-link" role="button">
-                              Redshift
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link href="/integrations/destinations/hubspot">
-                            <a className="nav-link" role="button">
-                              Hubspot
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link href="/integrations">
-                            <a
-                              className="nav-link"
-                              role="button"
-                              id="seeMoreLink"
-                            >
-                              See More...
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                      </Col>
-                    </Row>
-                  </Container>
-                </Dropdown.Menu>
-              </Dropdown>
+                    <Col xs="12" md="6" className="text-left">
+                      <Dropdown.Header>
+                        <FontAwesomeIcon
+                          color="black"
+                          icon={"user-tie"}
+                          size="1x"
+                          className="pr-1"
+                        />
+                        Departments
+                      </Dropdown.Header>
+                      <Dropdown.Item>
+                        <Link href="/">
+                          <a className="nav-link" role="button">
+                            Engineering
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/solutions/marketers">
+                          <a className="nav-link" role="button">
+                            Marketing
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Header>
+                        <FontAwesomeIcon
+                          color="black"
+                          icon={"check"}
+                          size="1x"
+                          className="pr-1"
+                        />
+                        Categories
+                      </Dropdown.Header>
+                      <Dropdown.Item>
+                        <Link href="/solutions/reverse-etl">
+                          <a className="nav-link" role="button">
+                            Reverse ETL
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/solutions/customer-data-platform">
+                          <a className="nav-link text-wrap" role="button">
+                            Customer Data Platform
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                    </Col>
+                  </Row>
+                </Container>
+              </NavDropdown>
 
-              <Link href="/pricing">
-                <a className="nav-link" role="button">
-                  Pricing
-                </a>
-              </Link>
-
-              <Link href="/docs">
-                <a className="nav-link" role="button">
-                  Docs
-                </a>
-              </Link>
-
-              <Link href="/blog">
-                <a className="nav-link" role="button">
-                  Blog
-                </a>
-              </Link>
-
-              <Link href="/docs/community">
-                <a className="nav-link d-md-none d-lg-block" role="button">
-                  Community
-                </a>
-              </Link>
-
-              <Nav.Link className="d-md-none d-lg-block">
-                <div style={{ paddingTop: 4 }}>
-                  <iframe
-                    src="https://ghbtns.com/github-btn.html?user=grouparoo&repo=grouparoo&type=star&count=false"
-                    frameBorder="0"
-                    scrolling="0"
-                    width="65"
-                    height="20"
-                    title="GitHub"
-                  ></iframe>
-                </div>
+              <Nav.Link>
+                <Link href="/pricing">
+                  <a className="nav-link" role="button">
+                    Pricing
+                  </a>
+                </Link>
               </Nav.Link>
 
-              <Button
-                variant="primary"
-                href="/docs/getting-started"
-                size="sm"
-                style={{ marginTop: 7, marginBottom: 20 }}
-              >
-                Get Started
-              </Button>
+              <Nav.Link>
+                <Link href="/blog">
+                  <a className="nav-link" role="button">
+                    Blog
+                  </a>
+                </Link>
+              </Nav.Link>
             </Nav>
+            <Button
+              variant="outline-light"
+              href="https://github.com/grouparoo/grouparoo"
+              size="sm"
+              className="col-sm-12 d-md-none d-lg-inline-block col-lg-1 mx-lg-1 mx-0 mt-3"
+            >
+              <FontAwesomeIcon
+                icon={["fab", "github"]}
+                size="xs"
+                className="d-lg-none d-xl-inline"
+              />{" "}
+              Github
+            </Button>
+            <Button
+              variant="primary"
+              href="/docs/getting-started"
+              size="sm"
+              className="col-sm-12 col-md-3 col-lg-2 mx-0 mr-lg-2 ml-lg-2 mt-3"
+            >
+              Get Started
+            </Button>
           </Navbar.Collapse>
         </Navbar>
       </Container>
