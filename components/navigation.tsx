@@ -263,6 +263,7 @@ export default function Navigation() {
             <Button
               variant="outline-dark"
               href="https://github.com/grouparoo/grouparoo"
+              target="_blank"
               size="sm"
               className="col-sm-12 d-md-none d-lg-inline-block col-lg-1 mx-lg-1 mx-0 mt-3"
             >
