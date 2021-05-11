@@ -264,6 +264,7 @@ export default function Navigation() {
               variant="outline-dark"
               href="https://github.com/grouparoo/grouparoo"
               target="_blank"
+              rel="noreferrer"
               size="sm"
               className="col-sm-12 d-md-none d-lg-inline-block col-lg-1 mx-lg-1 mx-0 mt-3"
             >
