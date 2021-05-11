@@ -156,6 +156,13 @@ export default function Navigation() {
                           </a>
                         </Link>
                       </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/solutions/education">
+                          <a className="nav-link" role="button">
+                            Education
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
 
                       <Dropdown.Divider />
                       <Dropdown.Header>
