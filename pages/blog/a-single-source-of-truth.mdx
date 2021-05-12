@@ -17,7 +17,13 @@ tags: [connections, engineering]
 
 We've all been there at one point or another. The client is asking for some feature that they think is simple, but really isn't. All the client really wanted was to keep her mailing list in Google Sheets! In an ideal world, the flow would look something like this:
 
-![The straightforward, ideal flow of our little mailing list system. Google Sheets straight to Mailchimp.](single-source-of-truth/diagram_1.jpg)
+<Image
+  alt="The straightforward, ideal flow of our little mailing list system. Google Sheets straight to Mailchimp."
+  src="single-source-of-truth/diagram_1.webp"
+  centered
+  height={365}
+  width={1200}
+/>
 
 The straightforward, ideal flow of our little mailing list system. Google Sheets straight to Mailchimp.
 
@@ -25,7 +31,14 @@ But alas, our poor web developer Dylan knows that this isn't so easy. After all,
 
 In practice, one does not simply connect Sheets and Mailchimp:
 
-![The pipeline isn't so easy to create](single-source-of-truth/diagram_2.jpg)
+
+<Image
+  alt="The pipeline isn't so easy to create"
+  src="single-source-of-truth/diagram_2.webp"
+  centered
+  height={443}
+  width={1200}
+/>
 
 There's a disconnect here; it's not so point-and-shoot to get data flowing across this pipeline.
 
@@ -35,7 +48,13 @@ Why don't we help Dylan out a bit? Let's build him a pipeline to get data from G
 
 Because Grouparoo can handle most of this, the task actually becomes quite simple. We just insert it between our data source and destination (Sheets and Mailchimp) and then *it just works*. If the pipeline was our veins, Grouparoo acts like the heart, pulling from where data is available and pushing to where it's needed:
 
-![Our final workflow: Sheets to Grouparoo to Mailchimp.](single-source-of-truth/diagram_3.jpg)
+<Image
+  alt="Our final workflow: Sheets to Grouparoo to Mailchimp."
+  src="single-source-of-truth/diagram_3.webp"
+  centered
+  height={365}
+  width={1200}
+/>
 
 Our final workflow: Sheets to Grouparoo to Mailchimp.
 
