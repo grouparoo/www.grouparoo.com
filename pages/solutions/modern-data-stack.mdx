@@ -1,0 +1,115 @@
+---
+category: "Modern Data Stack"
+header: "Learn more about how data teams are evolving their data pipelines"
+features:
+  [
+    {
+      title: "🔎 Use the profiles and segments you already have",
+      text: "The modern data stack lets you use the robust profile data you've already made in your data warehouse.",
+    },
+    {
+      title: "🎁 You own your source of truth",
+      text: "In the modern data stack, all of your relevant data is housed in your data warehouse.",
+    },
+    {
+      title: "🧭  Connect products, analytics, and operations",
+      text: "Having your data in a data warehouse is powerful.  Making it accessible in the tools you use every day is even more powerful.",
+    },
+    {
+      title: "📈  Quick and predictable data flow",
+      text: "The modern data stack provides solutions that are predictable and simple, keeping your data flow clear.",
+    },
+  ]
+---
+
+## What is the modern data stack and why is it important?
+
+The modern stack stack is an approach and mindset regarding your data architecture. The most important concept is that you own the source of truth by storing everything of relevance to your business in your data warehouse. This warehouse sits in the middle of a pipeline that connects your product, analytics, and operational tools.
+
+### What is the modern data stack?
+
+Maybe it sounds obvious that data should live in the data warehouse, but that has not always been the case.
+
+In the past, there were often many sources of truth. Even if you had a data warehouse with some related data, the Sales team often used Salesforce as their _real_ foundation. Marketing did the same for Marketo.
+
+They interacted with the data in those operational tools, so it was most important for them to be correct there. This remains true today, of course. However, this mindset often resulted in problems because all of the integrations are point-to-point and ad hoc.
+
+#### Why did the modern data stack emerge?
+
+Problems arise when people can not trust the data.
+
+Over time, these ad hoc solutions inevitably fail in some way. It surfaces when a Marketing team sends out an email promoting a product that the customer had already bought. Or Sales uses information on their dashboard to make a decision about an account, but the data isn’t accurate.
+
+This situation leads to double-checking all the data every time, which slows the teams down. Worse, they would have to compare reports from each system and it never would line up just right. Those discussions are fun, right?
+
+#### Rally around a single source of truth
+
+The solution is to have that single source of truth. By storing everything in one place and making a continuous pipeline in and out, we can add trust back to the system.
+
+<SectionDivider
+  imagePath="/images/home/solutions/categories/etl.svg"
+  heading="Traditional data practices: Extract, Transform, Load"
+  width="600"
+  height="394"
+  content="With your data in a unified location, there's no need to write costly join queries or hunt down data between sources."
+  imageLeft="false"
+/>
+
+Let’s take a look at the key components of the modern data stack working with the data warehouse:
+
+- **Product:** Copy raw product data and events in your warehouse in their original form.
+- **Load:** Extract and load (the EL in ELT) data from any other systems/tools into the warehouse as well using tools like Fivetran, Stitch, or Meltano. This data should also be in its original form and not transformed in any way.
+- **Transform:** Combine and transform (the T in ELT) the data within the warehouse into more usable schemas using tools like dbt.
+- **Analyze: **Use these transformed tables in your business intelligence (BI) tools such as Looker, Mode, or Tableau.
+- **(_New Opportunity_) Sync: **Extract, transform, and load ([Reverse ETL](https://www.grouparoo.com/solutions/reverse-etl)) data from your warehouse back into the tools your business uses. Use the combined data to make these systems smarter with tools like Grouparoo.
+
+<SectionDivider
+  imagePath="/images/home/solutions/categories/reverse-etl.svg"
+  heading="Modern data stack: Sync your data to destinations"
+  width="600"
+  height="394"
+  content="Reversing the ETL process means your data can be synced to the destinations you use it most."
+  imageLeft="true"
+/>
+
+The key here is that, at any given time, the data warehouse has a full picture of all business data. Everything else is about reading or writing that data. A gravity forms around that source of truth and each new source or destination makes all the rest better.
+
+### Why is the modern data stack important?
+
+By centralizing your data initiatives into this single pipeline, you make the process more predictable and add trust as noted. You also unlock value, improve experiences, and do it all much more quickly.
+
+#### Data ownership
+
+Your data no longer uniquely lives in customer support, sales, or marketing tools. You now have the full record of what has been going on inside of those tools in a format that is queryable.
+
+This makes it easier to use for business intelligence and combine with data from across sources. For example, in Grouparoo, you could use the combined data to make a campaign for customers that have spent $100 in your product, tend to open your emails, and have recently created a customer support ticket.
+
+Owning the data also makes it easier to switch tools. You are no longer locked into the one CRM. In fact, Grouparoo can get a new one up and running in a few minutes so you can try it out. Just add a new destination.
+
+#### Shared definitions
+
+It’s time to stop having those conversations about why different tools are reporting different numbers. With one source of truth, we can define our metrics once and use those in multiple places. The executive dashboard and the Salesforce records use the same data.
+
+<SectionDivider
+  imagePath="/images/home/hero-diagram.svg"
+  heading="Reverse ETL allows you to sync profiles and groups across your tools"
+  width="600"
+  height="255"
+  content="You already have the data you need in your warehouse, Reverse ETLs allow you to sync that tailored data to tools such as Salesforce, Zendesk, or Marketo where you can put it to use."
+  imageLeft="false"
+/>
+
+By defining key concepts once, you can also improve the customer experience. You can define what it means to be a “high value, engaged customer” and see their numbers going up in your analytics tool. That’s great.
+
+But now, Grouparoo allows you to take that concept to the next level and put the data into action. With a shared definition, that concept can be coordinated across the emails they receive, how quickly they are served by customer support, and even what is on their product dashboard. It all lines up with those reports and across all these systems.
+
+#### Speed and simplicity
+
+When compared to the ad hoc solutions, there are less moving pieces in the modern data stack. The data flow is more predictable.
+
+This simplicity leads to speed. There are less questions about how things work and teams can operate more quickly and independently. The patterns are clear. There is less to break and each tool has a clear job. For example, Grouparoo can be purely focused on connecting to your tools and make sure those syncs succeed, even in the face of inevitable API edge cases.
+
+If something does go wrong, it is easy to see which hand-off was missed. Is the data there to begin with? Did the dbt transform occur correctly? Grouparoo adds observability by logging all data sent to external tools. You can find the issue and fix that piece of the pipeline more quickly.
+
+**Grouparoo is a key piece of the modern data stack. Don’t stop at making great reports. Put your data into action. It’s easy for engineers to set up, and even easier for revenue teams to use.
+Get started today!**
