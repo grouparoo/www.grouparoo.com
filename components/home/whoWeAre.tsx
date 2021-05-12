@@ -92,7 +92,7 @@ export default function WhoWeAre() {
               title="COO"
               description={
                 <span>
-                  🏳️‍🌈 🏃🏻‍♂️ 👨🏻‍🤝‍👨🏼
+                  🏳️‍🌈 🏃🏻‍♂️ 🎻
                   <br /> Previously:
                   <br />
                   Product{" "}
