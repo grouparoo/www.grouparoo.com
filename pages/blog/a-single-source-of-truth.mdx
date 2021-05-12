@@ -1,0 +1,133 @@
+---
+title: "A Single Source of Truth with Grouparoo, Mailchimp, and Google Sheets"
+date: "2021-05-12"
+author: "Jaden Baptista"
+pullQuote: "Let's help our friend, Web Developer Dylan, to build a pipeline with Grouparoo to sync a mailing list from Sheets to Mailchimp."
+image: "google-sheets-source/source-data-preview.png"
+tags: [connections, engineering]
+---
+
+***Web Developer Dylan***: Hey there Mama's Travel, are you enjoying your new website?
+
+***Client***: Absolutely! There's just one more thing: I need a way to subscribe new people to my mailing list manually. I meet a lot of people at travel shows who want to get on that list right away.
+
+***Web Developer Dylan***: OK, well we're using this mailer API called Mailchimp. I can show you how to add people directly in their web interface. You just click here...
+
+***Client***: No way, I'm not dealing with any of your fancy database nonsense. I've got this Google Sheet here with all my data, can't you just use that for my mailing list?
+
+We've all been there at one point or another. The client is asking for some feature that they think is simple, but really isn't. All the client really wanted was to keep her mailing list in Google Sheets! In an ideal world, the flow would look something like this:
+
+<Image
+  alt="The straightforward, ideal flow of our little mailing list system. Google Sheets straight to Mailchimp."
+  src="single-source-of-truth/diagram_1.webp"
+  centered
+  height={365}
+  width={1200}
+/>
+
+The straightforward, ideal flow of our little mailing list system. Google Sheets straight to Mailchimp.
+
+But alas, our poor web developer Dylan knows that this isn't so easy. After all, how could one keep Google Sheets in sync with Mailchimp? Sheets has [an impressive API](https://developers.google.com/sheets/api), but it's not event driven. It won't easily let him know when the data changes, so he'd probably end up polling it for changes every now and again. But then Mailchimp would be out of date quite often and he'd probably end up with thousands of requests to the Sheets API that ended up doing nothing.
+
+In practice, one does not simply connect Sheets and Mailchimp:
+
+
+<Image
+  alt="The pipeline isn't so easy to create"
+  src="single-source-of-truth/diagram_2.webp"
+  centered
+  height={443}
+  width={1200}
+/>
+
+There's a disconnect here; it's not so point-and-shoot to get data flowing across this pipeline.
+
+Why don't we help Dylan out a bit? Let's build him a pipeline to get data from Google Sheets to flow automatically into Mailchimp. If I were tackling this problem, my first thought would be that we need a middleman. Neither Sheets nor Mailchimp supports this, so we'd need something to stand between them and get the data to flow freely.
+
+**[Grouparoo](http://www.grouparoo.com) to the rescue!**
+
+Because Grouparoo can handle most of this, the task actually becomes quite simple. We just insert it between our data source and destination (Sheets and Mailchimp) and then *it just works*. If the pipeline was our veins, Grouparoo acts like the heart, pulling from where data is available and pushing to where it's needed:
+
+<Image
+  alt="Our final workflow: Sheets to Grouparoo to Mailchimp."
+  src="single-source-of-truth/diagram_3.webp"
+  centered
+  height={365}
+  width={1200}
+/>
+
+Our final workflow: Sheets to Grouparoo to Mailchimp.
+
+I usually chuckle when someone writes one of those clickbaity in-5-minutes-or-less articles, but this seriously is a 5-minute thing. In fact, it might've taken me longer to make those super-masterful, immersive doodles above. I made a video to prove it, too! If you're not into videos, that's alright. I've got a rough transcription in tutorial form below it, but you'll probably have that 'aha' moment faster if you watch the video.
+
+*Note that the open-source version of Grouparoo needs to run on a server. That can be your local machine, but you'd have to keep it running constantly to keep everything in sync, so it's probably more practical in my case to spin up an instance of Heroku or Docker [(examples here)](https://github.com/grouparoo/app-examples). We'll make the assumption that Dylan already has a server available, so I'm just going to demo this on my local machine for simplicity. The instructions and concepts easily transfer to wherever you want to run Grouparoo.*
+
+<iframe style={"margin:auto;display:block;width:min(100%, 500px);aspect-ratio:1.8;"} src={"https://www.youtube.com/embed/YtSdup37Sn8"}></iframe>
+
+1. First, we've got to do some setup. Start by installing the `grouparoo` package from NPM globally, moving to whatever folder you want the project to live in, and initiating a new project.
+
+    ```bash
+    npm install grouparoo -g
+    cd ./the-folder-that-my-grouparoo-project-will-live-in
+    grouparoo init .
+    ```
+
+2. That was simple enough. Next step: we have to install the Google Sheets and Mailchimp plugins.
+
+    ```bash
+    grouparoo install @grouparoo/google-sheets
+    grouparoo install @grouparoo/mailchimp
+    ```
+
+3. OK, we're chugging along nicely here. The point is to create an application to pipe data from Sheets to Mailchimp, right? It follows then that we need to create an `app` for both (I'm calling them `sheetsapp` and `mailchimpapp`). Let designate the `sheetsapp` as a `source` (I'm calling this `src`), and the `mailchimpapp` as a `destination` (I'm calling this `dest`). I think I should get an award for my creative naming, right?
+
+     The syntax goes something like `grouparoo generate plugin-name:command arguments`, which is pretty standard. There are some more [examples in the documentation on sources](https://www.grouparoo.com/docs/config/sources/community) that might smooth the learning curve a bit. Or just watch the video above.
+
+    ```bash
+    grouparoo generate google-sheets:app sheetsapp
+    grouparoo generate mailchimp:app mailchimpapp
+    grouparoo generate google-sheets:source src --parent sheetsapp
+    grouparoo generate mailchimp:email:destination dest --parent mailchimpapp
+    ```
+
+4. We're halfway done! We've got the source and destination connected, so the pipeline is pretty much set up. Now we've just got to define what data is flowing through that pipeline, which Grouparoo splits up by `property`. We only have one `property` to deal with here: `email`.
+
+    ```bash
+    grouparoo generate google-sheets:property email --parent src
+    ```
+
+5. We're also going to create a `group`, which just compiles all of the rows from our `source` and filters them by `property`. It's nice to have that functionality, and it really comes in handy later on with more complex setups, but in this scenario, our group is just going to be made up of every row from our `source`, so we're not going to make use of the filtering rules. If you're interested in learning more about them for your project, there's a detailed table on [this page in the docs.](https://www.grouparoo.com/docs/config/groups/community)
+
+    ```bash
+    grouparoo generate group:calculated allemails
+    ```
+
+6. Let's step out of the terminal for a moment. The astute among you might've noticed that we haven't given Grouparoo enough information yet to make the connection. For example, we haven't told it where to put the emails in Mailchimp, or even which Google Sheet to get the data from, let alone what column. The even more astute among you might've noticed that Grouparoo has been creating JavaScript files in our current working directory.
+
+Take a gander through those files (they're under the `config` subfolder, under the various types of things we just created). Every time you see an ellipsis (that's a `...`. Yeah, I forgot there was a word for that too), just replace it with the appropriate data. There's a helpful comment next to each field detailing exactly what it does, so it shouldn't be difficult to populate the right data. Make sure to read these comments and follow their instructions (especially in the `source` JavaScript file), so that everything runs smoothly when you turn it on.
+
+7. Back in the terminal, we've got to apply our changes so Grouparoo knows we messed around with the JavaScript. This will validate all of our changes too, so it should let you know if there's a typo.
+
+    ```bash
+    grouparoo apply
+    ```
+
+8. Now comes the fun part. We've just got to turn it on and watch it do its thing!
+
+    ```bash
+    grouparoo start
+    ```
+
+And we're done! Grouparoo is hard at work syncing your source (the Google Sheet) to your destination (Mailchimp), so you should soon see all that data pulled over in your Mailchimp dashboard.
+
+Really, there were plenty of ways we could have handled this problem, and really, a competent developer can make anything work. However, what I like most about using a solution like Grouparoo is the modularity and repeatability. If later on, you wanted to keep track of the names of the people on the mailing list, Grouparoo makes that easy: just add another `property`. In contrast, that would require a massive rewrite with a home-baked solution. And if soon, the pizzeria down the street wants a similar system, you couldn't just copy the code over, since it would be purposely built to handle specifically data for Mama's Travel. Grouparoo is portable though, so you could just follow this spectacular tutorial again... 😉
+
+If I'm being honest, it took me a bit to wrap my mind around the process. But now that I have, I'm fully sold. The way Grouparoo breaks everything down into these manageable pieces makes the whole project manageable. If you're still waiting for that 'aha' moment, I'd say your best bet is to start at [the docs](https://www.grouparoo.com/docs). There's a fantastic series of articles in there called "Getting Started"; it walks you through the whole process in even more detail than I did above.
+
+Till I find another opportunity to ramble,
+
+Jaden Baptista
+
+jaden@baptista.dev
+
+https://jaden.baptista.dev
