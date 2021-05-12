@@ -80,6 +80,15 @@ const Authors: Author[] = [
     description:
       "Teal is a Full Stack Engineer at Grouparoo, an open source data framework that easily connects your data to business tools.  Teal loves building products that solve real-world needs.  If she isn't coding, Teal is probably riding her bike or nose-deep in a book",
   },
+  {
+    name: "Jaden Baptista",
+    slug: "jaden_baptista",
+    image: "jadenbaptista.jpg",
+    url: "https://jaden.baptista.dev",
+    twitter: "@jadenguitarman",
+    description:
+      "Jaden is the dev advocate at TakeShape.io and a caffeine-powered freelance Jamstack and full-stack web developer. When I'm not behind a computer screen, I'm usually just playing the guitar and simultaneously thinking about programming.",
+  },
 ];
 
 export default Authors;
