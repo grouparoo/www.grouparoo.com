@@ -200,7 +200,8 @@ export default function Education() {
               <p>
                 Integrations make it easy to send the right data to each tool
                 you use. No code is necessary to change what data gets sent. You
-                control exactly what data gets sent.
+                control exactly what data gets sent. And we're adding new
+                integrations all the time.
               </p>
             </Col>
             <Col md={8}>
@@ -324,8 +325,8 @@ export default function Education() {
               <Col md={6}>
                 <h3>Email marketing</h3>
                 <p>
-                  Segment patients and give them relevant, personalized emails
-                  all while keeping their patient data safe.
+                  Segment students and teachers to give them relevant,
+                  personalized emails all while keeping their data safe.
                 </p>
               </Col>
               <Col md={6}>
