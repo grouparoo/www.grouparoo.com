@@ -87,7 +87,7 @@ const Authors: Author[] = [
     url: "https://jaden.baptista.dev",
     twitter: "@jadenguitarman",
     description:
-      "Jaden is the dev advocate at TakeShape.io and a caffeine-powered freelance Jamstack and full-stack web developer. When I'm not behind a computer screen, I'm usually just playing the guitar and simultaneously thinking about programming.",
+      "Jaden is the dev advocate at TakeShape.io and a caffeine-powered freelance Jamstack and full-stack web developer. When he is not behind a computer screen, he is usually just playing the guitar and simultaneously thinking about programming.",
   },
 ];
 
