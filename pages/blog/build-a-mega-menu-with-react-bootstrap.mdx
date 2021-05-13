@@ -1,5 +1,5 @@
 ---
-title: "Build a Navbar Mega Menu Using React Bootstrap"
+title: "Build a Responsive Mega Menu Using React Bootstrap"
 date: "2021-05-13"
 author: "Teal Larson"
 pullQuote: "A little creativity and a little Bootstrap go a long way creating custom front end components"
@@ -222,7 +222,7 @@ with Bootstrap as it can make debugging more difficult. However, sometimes, to s
 override the Bootstrap styles, it's necessary. Add the following to `/styles/styles.scss`
 :
 
-```
+```css
 .nav-link {
   font-size: 0.95rem;
 }
@@ -268,7 +268,6 @@ override the Bootstrap styles, it's necessary. Add the following to `/styles/sty
     padding-bottom: 1em;
   }
 }
-
 ```
 
 Most of those rules are just visual adjustments to match fonts, remove text decorations, etc. The ultra important rule there is the final `@media` query that sets the width of `.eventsNav`. That rule is how we tell Bootstra we want our dropdown menu's container a specific size.
