@@ -2,7 +2,7 @@
 title: "Build a Navbar Mega Menu Using React Bootstrap"
 date: "2021-05-13"
 author: "Teal Larson"
-pullQuote: "Syncing ain't easy."
+pullQuote: ""
 image: "build-a-mega-menu-with-react-bootstrap/210512-mega-menu.png"
 tags: [engineering]
 ---
@@ -42,14 +42,21 @@ For this tutorial, we'll be building this copycat mega menu:
   height={269}
 />
 
-Coffee themed, because of course. I've created a [basic boilerplate](https://github.com/grouparoo/nextjs-react-bootstrap-boilerplate)
-project with [NextJS](https://nextjs.org/), [React Bootstrap](https://react-bootstrap.github.io/),
+We'll be working off a [boilerplate project](https://github.com/grouparoo/nextjs-react-bootstrap-boilerplate)
+with [NextJS](https://nextjs.org/), [React Bootstrap](https://react-bootstrap.github.io/),
 [SASS](https://sass-lang.com/), and [Fort Awesome](https://github.com/FortAwesome)
-already hooked up for you to follow along.
+already imported and ready to go. Coffee themed, because of course.
 
-React Bootstrap, and Bootstrap in general are great. The built-in component, classes, and utilities save me a lot of time building responsive layouts, and they're accessible by default. They’re also super flexible. For those less comfortable with front end, Bootstrap's [documentation](http://www.getbootstrap.com) is full of copy-and-pasteable examples to get started making modern, accessible sites. And once you've been working with Bootstrap for a while, it becomes almost second nature to Frankenstein pieces together like we're about to do.
+React Bootstrap, and Bootstrap in general are great. The built-in components, classes, and utilities save a lot of time building responsive layouts, and they're accessible by default. They’re also super flexible. For those less comfortable with front end, Bootstrap's [documentation](http://www.getbootstrap.com) is full of copy-and-pasteable examples to get started making modern, accessible sites. And once you've been working with Bootstrap for a while, it becomes almost second nature to Frankenstein pieces together like we're about to do.
 
-This is our `Navbar` element starting out:
+<Alert variant="primary" className="text-center my-4">
+
+💡 To get started, fork [this
+repo](https://github.com/grouparoo/nextjs-react-bootstrap-boilerplate) and `npm install`!
+
+</Alert>
+
+Here is our `Navbar` element starting out:
 
 <Image
   centered
@@ -73,7 +80,7 @@ We're going to build something similar where the "events" link currently lives o
 
 Let's start by adding the following into `/components/navigation.js` in place of the current `Nav.Link` for events:
 
-```
+```tsx
 <NavDropdown
   className="pr-2 py-2 align-text-top"
   title="Events"
@@ -277,7 +284,7 @@ Et voila! A mega menu showcasing multiple categories worth of pages (all the lin
 />
 
 And on mobile additional divider divs appear and the columns expand to full container
-width. Again, Bootsrap's utilities for working with screen size breakpoints is 👌:
+width. Again, Bootsrap's utilities for working with screen size breakpoints are 👌:
 
 <Image
   centered
@@ -289,4 +296,4 @@ width. Again, Bootsrap's utilities for working with screen size breakpoints is �
 
 Check out the original version live [here](http://www.grouparoo.com) or star our
 [site repo](https://github.com/grouparoo/www.grouparoo.com) or [core product](https://github.com/grouparoo/grouparoo) to
-see more. Or better yet, drop us a PR! We're open source!
+see more. Better yet, drop us a PR! We're open source!
