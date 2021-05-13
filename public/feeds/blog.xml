@@ -9,7 +9,7 @@
         <title>Grouparoo: Blog</title>
         <link>https://www.grouparoo.com/blog</link>
         <description>Articles and updates from Grouparoo.</description>
-        <lastBuildDate>Tue, 11 May 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 13 May 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,201 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title
+      ><![CDATA[Build a Navbar Mega Menu Using React Bootstrap]]></title>
+            <link
+      >https://www.grouparoo.com/blog/build-a-mega-menu-with-react-bootstrap</link>
+            <guid
+      >grouparoo-blog-post-build-a-mega-menu-with-react-bootstrap</guid>
+            <pubDate>Thu, 13 May 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Having clear and accessible navigation is huge for website conversions. Sites with poor navigation are frustrating to use. Nested navigation menus are a common way to help keep top-level navigation to a minimum, but they can have major usability issues. A better way to handle a large number of links in a dropdown is to create a <a href="https://www.nngroup.com/articles/mega-menus-work-well/" target="_blank" rel="nofollow noopener noreferrer">mega menu</a>. Recently, we gave our site navigation a face lift using mega menus.</p><p>Since both our <a href="https://github.com/grouparoo/grouparoo" target="_blank" rel="nofollow noopener noreferrer">core product</a> and our <a href="https://github.com/grouparoo/www.grouparoo.com" target="_blank" rel="nofollow noopener noreferrer">website</a> are open source here at Grouparoo, let’s dive in and take a look at how we built out a mega menu using our stack.</p><h2 id="first-whats-a-mega-menu"><a href="#first-whats-a-mega-menu">First, What’s a Mega Menu?</a></h2><p>This!</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Completed Navbar at grouparoo.com" src="https://www.grouparoo.com/posts/build-a-mega-menu-with-react-bootstrap/final-on-www.png" width="845" height="277" style="height:277px;width:845px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>A mega menu is a way to have multiple columns (or more!) of items within your dropdown menu. Some key things to consider:</p><ol><li>Make sure you have enough items within your dropdown to warrant a mega menu</li><li>Figure out how you want to arrange the items within your menu</li></ol><p>Recently, we’ve been adding a lot of content to our site. We wanted to link more pages in our navigation, but still keep the top level navigation bar minimal. So we went with a mega menu.</p><h2 id="lets-build"><a href="#lets-build">Let’s Build</a></h2><p>For this tutorial, we&#x27;ll be building this copycat mega menu:</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Copycat Navbar we&#x27;ll be making" src="https://www.grouparoo.com/posts/build-a-mega-menu-with-react-bootstrap/finished-tutorial.png" width="845" height="269" style="height:269px;width:845px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>Coffee themed, because of course. I&#x27;ve created a <a href="https://github.com/grouparoo/nextjs-react-bootstrap-boilerplate" target="_blank" rel="nofollow noopener noreferrer">basic boilerplate</a>
+project with <a href="https://nextjs.org/" target="_blank" rel="nofollow noopener noreferrer">NextJS</a>, <a href="https://react-bootstrap.github.io/" target="_blank" rel="nofollow noopener noreferrer">React Bootstrap</a>,
+<a href="https://sass-lang.com/" target="_blank" rel="nofollow noopener noreferrer">SASS</a>, and <a href="https://github.com/FortAwesome" target="_blank" rel="nofollow noopener noreferrer">Fort Awesome</a>
+already hooked up for you to follow along.</p><p>React Bootstrap, and Bootstrap in general are great. The built-in component, classes, and utilities save me a lot of time building responsive layouts, and they&#x27;re accessible by default. They’re also super flexible. For those less comfortable with front end, Bootstrap&#x27;s <a href="http://www.getbootstrap.com" target="_blank" rel="nofollow noopener noreferrer">documentation</a> is full of copy-and-pasteable examples to get started making modern, accessible sites. And once you&#x27;ve been working with Bootstrap for a while, it becomes almost second nature to Frankenstein pieces together like we&#x27;re about to do.</p><p>This is our <code>Navbar</code> element starting out:</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Starting tutorial navbar" src="https://www.grouparoo.com/posts/build-a-mega-menu-with-react-bootstrap/before-tutorial.png" width="845" height="234" style="height:234px;width:845px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>When developing our mega menu for Grouparoo, I started with this Figma mockup. From there, I looked at what React Bootstrap components to use. We did end up making a few design changes further into the process, but it all started with:</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Mockups on Figma for our original" src="https://www.grouparoo.com/posts/build-a-mega-menu-with-react-bootstrap/mockups-screenshot.png" width="845" height="251" style="height:251px;width:845px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>We&#x27;re going to build something similar where the &quot;events&quot; link currently lives on our template.</p><p>Let&#x27;s start by adding the following into <code>/components/navigation.js</code> in place of the current <code>Nav.Link</code> for events:</p><pre><code>&lt;NavDropdown
+  className=&quot;pr-2 py-2 align-text-top&quot;
+  title=&quot;Events&quot;
+  id=&quot;basic-nav-dropdown&quot;
+&gt;
+  &lt;Container className=&quot;eventsNav pt-0 mt-0&quot;&gt;
+    &lt;Row&gt;
+      &lt;Col xs=&quot;12&quot; md=&quot;6&quot; className=&quot;text-left&quot;&gt;
+        &lt;Dropdown.Header&gt;
+          &lt;FontAwesomeIcon
+            color=&quot;black&quot;
+            icon={&quot;concierge-bell&quot;}
+            size=&quot;1x&quot;
+            className=&quot;pr-1&quot;
+          /&gt;
+          {&quot;  &quot;}
+          Catering
+        &lt;/Dropdown.Header&gt;
+        &lt;Dropdown.Item&gt;
+          &lt;Link href=&quot;/&quot;&gt;
+            &lt;a className=&quot;nav-link&quot; role=&quot;button&quot;&gt;
+              Corporate
+            &lt;/a&gt;
+          &lt;/Link&gt;
+        &lt;/Dropdown.Item&gt;
+        &lt;Dropdown.Item&gt;
+          &lt;Link href=&quot;/&quot;&gt;
+            &lt;a className=&quot;nav-link&quot; role=&quot;button&quot;&gt;
+              Private
+            &lt;/a&gt;
+          &lt;/Link&gt;
+        &lt;/Dropdown.Item&gt;
+
+        &lt;Dropdown.Divider /&gt;
+        &lt;Dropdown.Header&gt;
+          &lt;FontAwesomeIcon
+            color=&quot;black&quot;
+            icon={&quot;chalkboard-teacher&quot;}
+            size=&quot;1x&quot;
+            className=&quot;pr-1&quot;
+          /&gt;
+          {&quot;  &quot;}
+          Classes
+        &lt;/Dropdown.Header&gt;
+        &lt;Dropdown.Item&gt;
+          &lt;Link href=&quot;/&quot;&gt;
+            &lt;a className=&quot;nav-link&quot; role=&quot;button&quot;&gt;
+              Barista 101
+            &lt;/a&gt;
+          &lt;/Link&gt;
+        &lt;/Dropdown.Item&gt;
+        &lt;Dropdown.Item&gt;
+          &lt;Link href=&quot;/&quot;&gt;
+            &lt;a className=&quot;nav-link&quot; role=&quot;button&quot;&gt;
+              History of Coffee
+            &lt;/a&gt;
+          &lt;/Link&gt;
+        &lt;/Dropdown.Item&gt;
+        &lt;Dropdown.Item&gt;
+          &lt;Link href=&quot;/&quot;&gt;
+            &lt;a className=&quot;nav-link&quot; role=&quot;button&quot;&gt;
+              Intro to Cafe Snobbery
+            &lt;/a&gt;
+          &lt;/Link&gt;
+        &lt;/Dropdown.Item&gt;
+        &lt;Dropdown.Divider className=&quot;d-md-none&quot; /&gt;
+      &lt;/Col&gt;
+
+      &lt;Col xs=&quot;12&quot; md=&quot;6&quot; className=&quot;text-left&quot;&gt;
+        &lt;Dropdown.Header&gt;
+          &lt;FontAwesomeIcon
+            color=&quot;black&quot;
+            icon={&quot;building&quot;}
+            size=&quot;1x&quot;
+            className=&quot;pr-1&quot;
+          /&gt;
+          {&quot;  &quot;}
+          Rentals
+        &lt;/Dropdown.Header&gt;
+        &lt;Dropdown.Item&gt;
+          &lt;Link href=&quot;/&quot;&gt;
+            &lt;a className=&quot;nav-link&quot; role=&quot;button&quot;&gt;
+              Fireside Room
+            &lt;/a&gt;
+          &lt;/Link&gt;
+        &lt;/Dropdown.Item&gt;
+        &lt;Dropdown.Item&gt;
+          &lt;Link href=&quot;/&quot;&gt;
+            &lt;a className=&quot;nav-link&quot; role=&quot;button&quot;&gt;
+              Roasting Room
+            &lt;/a&gt;
+          &lt;/Link&gt;
+        &lt;/Dropdown.Item&gt;
+        &lt;Dropdown.Divider /&gt;
+        &lt;Dropdown.Header&gt;
+          &lt;FontAwesomeIcon
+            color=&quot;black&quot;
+            icon={&quot;sun&quot;}
+            size=&quot;1x&quot;
+            className=&quot;pr-1&quot;
+          /&gt;
+          {&quot;  &quot;}
+          Seasonal
+        &lt;/Dropdown.Header&gt;
+        &lt;Dropdown.Item&gt;
+          &lt;Link href=&quot;/&quot;&gt;
+            &lt;a className=&quot;nav-link&quot; role=&quot;button&quot;&gt;
+              Coldbrew Night
+            &lt;/a&gt;
+          &lt;/Link&gt;
+        &lt;/Dropdown.Item&gt;
+        &lt;Dropdown.Item&gt;
+          &lt;Link href=&quot;/&quot;&gt;
+            &lt;a className=&quot;nav-link text-wrap&quot; role=&quot;button&quot;&gt;
+              Campfire Coffee Class
+            &lt;/a&gt;
+          &lt;/Link&gt;
+        &lt;/Dropdown.Item&gt;
+      &lt;/Col&gt;
+    &lt;/Row&gt;
+  &lt;/Container&gt;
+&lt;/NavDropdown&gt;
+</code></pre><p>Here&#x27;s where we&#x27;re at:</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Still a work in progress" src="https://www.grouparoo.com/posts/build-a-mega-menu-with-react-bootstrap/in-process-tutorial.png" width="845" height="340" style="height:340px;width:845px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>It&#x27;s all there... but obviously in need of some help. I applied a custom <code>className</code>
+of <code>eventsNav</code> to the dropdown container knowing I&#x27;d need to add some SASS. It is
+wise to avoid custom styles (inline or on a stylesheet) if possible when working
+with Bootstrap as it can make debugging more difficult. However, sometimes, to strictly
+override the Bootstrap styles, it&#x27;s necessary. Add the following to <code>/styles/styles.scss</code>
+:</p><pre><code>.nav-link {
+  font-size: 0.95rem;
+}
+
+#basic-nav-dropdown {
+  font-size: 0.95rem;
+}
+
+#seeMoreLink {
+  color: #607d8b;
+}
+
+#seeMoreLink:hover {
+  color: black;
+  font-weight: 400;
+}
+.dropdown-menu {
+  padding: 1em;
+}
+
+.dropdown-item:hover {
+  outline: none;
+  box-shadow: none;
+  background: none;
+}
+.dropdown-item a:hover {
+  color: black;
+}
+
+.dropdown-item {
+  height: 2em;
+  padding-left: 0em;
+}
+
+.dropdown-header {
+  font-weight: 600;
+  padding-left: 0em;
+}
+
+@media only screen and (min-width: 600px) {
+  .eventsNav {
+    width: 22em;
+    padding-bottom: 1em;
+  }
+}
+
+</code></pre><p>Most of those rules are just visual adjustments to match fonts, remove text decorations, etc. The ultra important rule there is the final <code>@media</code> query that sets the width of <code>.eventsNav</code>. That rule is how we tell Bootstra we want our dropdown menu&#x27;s container a specific size.</p><p>Et voila! A mega menu showcasing multiple categories worth of pages (all the links currently point to home, but they work!):</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Starting tutorial navbar" src="https://www.grouparoo.com/posts/build-a-mega-menu-with-react-bootstrap/finished-tutorial.png" width="845" height="269" style="height:269px;width:845px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>And on mobile additional divider divs appear and the columns expand to full container
+width. Again, Bootsrap&#x27;s utilities for working with screen size breakpoints is 👌:</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Starting tutorial navbar" src="https://www.grouparoo.com/posts/build-a-mega-menu-with-react-bootstrap/finished-mobile-tutorial.png" width="314" height="556" style="height:556px;width:314px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>Check out the original version live <a href="http://www.grouparoo.com" target="_blank" rel="nofollow noopener noreferrer">here</a> or star our
+<a href="https://github.com/grouparoo/www.grouparoo.com" target="_blank" rel="nofollow noopener noreferrer">site repo</a> or <a href="https://github.com/grouparoo/grouparoo" target="_blank" rel="nofollow noopener noreferrer">core product</a> to
+see more. Or better yet, drop us a PR! We&#x27;re open source!</p>]]></content:encoded>
+            <enclosure
+        url="https://www.grouparoo.com/posts/build-a-mega-menu-with-react-bootstrap/210512-mega-menu.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title
       ><![CDATA[Change the Primary Key Data Type with Sequelize]]></title>
