@@ -11,6 +11,17 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2021-05-13-customerio-new-app-api-key",
+      "content_html": "<p><a href=\"https://customer.io/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Customer.io</a> separates their API into 2 the <code>TRACK API</code> and the <code>APP API</code> and you cannot access the Track API with the App API key nor access the App API with the track API key. In order to perform requests to the APP API required by the newest Sync Modes concept, Grouparoo now asks for the App API key.</p>",
+      "url": "https://www.grouparoo.com/whats-new#2021-05-13-customerio-new-app-api-key",
+      "title": "Accessing Customer.io APP API",
+      "date_modified": "2021-05-13T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-05-04-pardot",
       "content_html": "<p>Grouparoo has extended our integration with the Salesforce family of tools by adding support for <a href=\"https://www.pardot.com/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Pardot</a> as a Destination! Pardot is a powerful B2B marketing suite, tightly integrated with the rest of the Salesforce platform.</p><p>Grouparoo makes it simple to sync over your Profiles and build Pardot Lists from your product data.</p><div style=\"margin-bottom:20px\"><img alt=\"Grouparoo and Pardot\" src=\"https://www.grouparoo.com/posts/releases/2021-05-04-pardot.png\" width=\"1400\" height=\"735\" style=\"height:735px;width:1400px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
       "url": "https://www.grouparoo.com/whats-new#2021-05-04-pardot",
