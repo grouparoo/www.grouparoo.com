@@ -48,9 +48,9 @@ grouparoo generate mailchimp:email:destination dest --parent mailchimpapp
 </code></pre><br/></li><li><p>Now comes the fun part. We&#x27;ve just got to turn it on and watch it do its thing!</p><pre class="language-bash"><code class="language-bash">grouparoo start
 </code></pre><br/></li></ol><h2 id="results"><a href="#results">Results</a></h2><br/><p>And we&#x27;re done! Grouparoo is hard at work syncing your source (the Google Sheet) to your destination (Mailchimp), so you should soon see all that data pulled over in your Mailchimp dashboard.</p><p>Really, there were plenty of ways we could have handled this problem, and really, a competent developer can make anything work. However, what I like most about using a solution like Grouparoo is the modularity and repeatability. If later on, you wanted to keep track of the names of the people on the mailing list, Grouparoo makes that easy: just add another <code>property</code>. In contrast, that would require a massive rewrite with a home-baked solution. And if soon, the pizzeria down the street wants a similar system, you couldn&#x27;t just copy the code over, since it would be purposely built to handle specifically data for Mama&#x27;s Travel. Grouparoo is portable though, so you could just follow this spectacular tutorial again... 😉</p><p>If I&#x27;m being honest, it took me a bit to wrap my mind around the process. But now that I have, I&#x27;m fully sold. The way Grouparoo breaks everything down into these manageable pieces makes the whole project manageable. If you&#x27;re still waiting for that &#x27;aha&#x27; moment, I&#x27;d say your best bet is to start at <a href="/docs">the docs</a>. There&#x27;s a fantastic series of articles in there called &quot;Getting Started&quot;; it walks you through the whole process in even more detail than I did above.</p>]]></content:encoded>
             <enclosure
-        url="https://www.grouparoo.com/posts/google-sheets-source/source-data-preview.png"
+        url="https://www.grouparoo.com/posts/single-source-of-truth/diagram_3.webp"
         length="0"
-        type="image/png"
+        type="image/webp"
       />
         </item>
         <item>
