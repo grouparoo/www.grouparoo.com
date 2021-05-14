@@ -12,8 +12,8 @@
   "items": [
     {
       "id": "grouparoo-release-note-2021-05-13-customerio-app-api-key",
-      "content_html": "<p><a href=\"https://customer.io/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Customer.io</a> separates their API into 2 the TRACK API and the APP API and you cannot access the Track API with the App API key nor access the App API with the track API key. In order to perform requests to the APP API required by the newest Sync Modes concept, Grouparoo now asks for the App API key.</p>",
-      "url": "https://www.grouparoo.com/whats-new#2021-05-04-pardot",
+      "content_html": "<p><a href=\"https://customer.io/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Customer.io</a> separates their API into 2 the <code>TRACK API</code> and the <code>APP API</code> and you cannot access the Track API with the App API key nor access the App API with the track API key. In order to perform requests to the APP API required by the newest Sync Modes concept, Grouparoo now asks for the App API key.</p>",
+      "url": "https://www.grouparoo.com/whats-new#2021-05-13-customerio-app-api-key",
       "title": "Accessing Customer.io APP API",
       "date_modified": "2021-05-13T00:00:00.000Z",
       "author": {
