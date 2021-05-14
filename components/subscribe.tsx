@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { ErrorHandler } from "../utils/errorHandler";
 import { isBrowser } from "../utils/isBrowser";
+import posthog from "posthog-js";
 
 export default function Subscribe() {
   const { handleSubmit, register } = useForm();
@@ -26,6 +27,10 @@ export default function Subscribe() {
   const onSubmit = async (data) => {
     setLoading(true);
 
+    data.source = window?.location?.hostname || "grouparoo website";
+    data.medium = "web";
+    data.campaign = "blog-subscribe";
+
     if (isBrowser() && globalThis?.gtag) {
       globalThis.gtag("event", "conversion", {
         send_to: "AW-467110449/kY5uCK_Yg44CELGU3t4B", // subscribe conversion
@@ -33,15 +38,12 @@ export default function Subscribe() {
       });
     }
 
-    data.source = window?.location?.hostname || "grouparoo website";
-    data.medium = "web";
-    data.campaign = "blog-subscribe";
-
     const response = await execApi("post", `/api/v1/subscribers`, data);
     if (response?.subscriber) {
-      // TODO: should we set a cookie to hide this later?
-      setSubscribed(true);
+      posthog.identify(response.subscriber.id, { email: data.email }, data);
+      setSubscribed(true); // TODO: should we set a cookie to hide this later?
     }
+
     setLoading(false);
   };
 
