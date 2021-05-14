@@ -251,21 +251,21 @@ export default function Navigation() {
                 </Container>
               </NavDropdown>
 
-              <Nav.Link>
+              <div className="nav-link">
                 <Link href="/pricing">
                   <a className="nav-link" role="button">
                     Pricing
                   </a>
                 </Link>
-              </Nav.Link>
+              </div>
 
-              <Nav.Link>
+              <div className="nav-link">
                 <Link href="/blog">
                   <a className="nav-link" role="button">
                     Blog
                   </a>
                 </Link>
-              </Nav.Link>
+              </div>
             </Nav>
             <a
               href="https://github.com/grouparoo/grouparoo"
