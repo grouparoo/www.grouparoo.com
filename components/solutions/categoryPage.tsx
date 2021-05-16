@@ -17,9 +17,7 @@ export default function CategoryPage(category: CategoryInfo) {
         <title>Grouparoo: A {category.category}</title>
         <meta
           name="description"
-          content={`Grouparoo is a ${
-            category.category
-          } tool, featuring ${arrayToReadableList(category.pros)}.`}
+          content={`Grouparoo is a ${category.category} tool.`}
         />
         <link
           rel="canonical"
@@ -37,9 +35,7 @@ export default function CategoryPage(category: CategoryInfo) {
           <Row>
             <Col>
               <h1>{category.category}</h1>
-              <p className="text-big-muted">
-                {category.category}s {arrayToReadableList(category.pros)}.
-              </p>
+              <p className="text-big-muted">{category.header}.</p>
             </Col>
           </Row>
 
