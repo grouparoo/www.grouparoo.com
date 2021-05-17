@@ -59,7 +59,7 @@ With a 256 character limit in mind, the MySQL developers felt comfortable furthe
 
 The way `innodb` MySQL databases worked was that you can only have 767 bytes for an index - enough to store 255 3-byte characters (`767/3 = 255`). This is an extreme example of index optimization where knowing the size of the data you are indexing matters! So if the characters took more space to store, then the number of characters you could index had to get smaller. Specifically, `767/4 = 191` characters! As more software supported an international audience, `varchar(191)` replaced `varchar(255)` as the default.
 
-[^1]: "International" is an odd way to talk about the languages that most of the world uses, specifically those using non-latin asian characters. However, operating systems and databases had thoroughly english-centric origins, and the legacy of those early choices is still rippling though our code today.
+[^1]: "International" is an odd way to talk about the languages that most of the world uses, specifically those using non-Latin characters. However, operating systems and databases had thoroughly english-centric origins, and the legacy of those early choices is still rippling though our code today.
 [^2]: Throughout this post, I've use the word "character" rather than "letter", and this is why - depending on your language, each character in a string might be a letter, a whole word, or even a pictogram like an emoji.
 
 ## Today
