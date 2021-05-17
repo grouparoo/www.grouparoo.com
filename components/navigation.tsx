@@ -260,9 +260,9 @@ export default function Navigation() {
               </div>
 
               <div className="nav-link">
-                <Link href="/blog">
+                <Link href="/docs">
                   <a className="nav-link" role="button">
-                    Blog
+                    Docs
                   </a>
                 </Link>
               </div>
