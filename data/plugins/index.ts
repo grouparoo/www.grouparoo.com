@@ -92,7 +92,7 @@ export const PluginData: Plugin[] = [
 
 export const PluginPageData: Plugin[] = PluginData.filter((p) => p.useCases);
 
-export function randomHomepagePlugin() {
+export function randomHomepagePlugins() {
   // This is a fixed list of plugins rather than any random plugin as we want to focus on the popular ones.
   // Some entries are duplicated to bias the likelihood they appear
   const pluginNames = [
@@ -104,10 +104,7 @@ export function randomHomepagePlugin() {
     "Mailchimp",
   ];
 
-  const pluginName =
-    pluginNames[Math.floor(Math.random() * pluginNames.length)];
-
-  return pluginName;
+  return pluginNames;
 }
 
 export async function getUseCasePaths() {
