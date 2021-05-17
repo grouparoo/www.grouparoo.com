@@ -35,7 +35,7 @@ select id from users where email = 'foo@example.com';
 
 As your table gets bigger, searches get slower because your database has to check every row to find a match. However, if you add a **search index**, you are telling your database to essentially "pre-compute" popular search patterns with a tree so the next search is much faster. In essence, indexes spend computation time (and a little bit of disk space) making writes to the database slower, to speed up reads later. For most applications this is a great tradeoff, since they are "read heavy" and "write lite".
 
-So, why use `varchar`? Indexes can be made to preform better when assumptions can be made about the type of data they store. Knowing how long the strings in the index are is one of the best ways speed things up. For some databases, you aren’t allowed to add a search index to columns of type `text` becaus this optimization can't be done, while in others, the index just won’t preform as well. In fact, historically, databases were constructed with limits on how big an index could be to optimize search and how they stored data on disk.
+So, why use `varchar`? Indexes can be made to perform better when assumptions can be made about the type of data they store. Knowing how long the strings in the index are is one of the best ways speed things up. For some databases, you aren’t allowed to add a search index to columns of type `text` because this optimization can't be done, while in others, the index just won’t perform as well. In fact, historically, databases were constructed with limits on how big an index could be to optimize search and how they stored data on disk.
 
 ## It’s MySQL’s fault
 
