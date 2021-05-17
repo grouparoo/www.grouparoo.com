@@ -1,0 +1,79 @@
+---
+title: "Why do database columns have a character length of 191?"
+date: "2021-05-14"
+author: "Evan Tahler"
+pullQuote: "`varchar(191)` is such an odd number - how did we get here?"
+image: "varchar-191/210515-varchar191.png"
+tags: [engineering, notes]
+---
+
+<Image
+  centered
+  alt="A Database symbol over a library"
+  src="varchar-191/210515-varchar191.png"
+  width={1015}
+  height={533}
+/>
+
+Sometimes, when you are looking at a database’s schema, you see that there are text fields defined like this:
+
+```sql
+email_address varchar(191) NOT NULL
+```
+
+This means that the column supports strings with a maximum length of 191 characters, and can’t be `null`. 191 is such an odd number - where did it come from? In this post, we’ll look at the historical reasons for the 191 character limit as a default in most relational databases.
+
+## Why `varchar` and not `text`?
+
+The first question you might ask is why limit the length of the strings you can store in a database at all? All modern popular relational database support (almost) unlimited sized strings with a `text` or `blob`-type column, so why not use that? The reason is **indexes**.
+
+If you are going to search by a column, say `email_address`, you probably want to add an index to it to speed things up when you do the following:
+
+```sql
+select id from users where email = 'foo@example.com';
+```
+
+As your table gets bigger, searches get slower because your database has to check every row to find a match. However, if you add a **search index**, you are telling your database to essentially "pre-compute" popular search patterns with a tree so the next search is much faster. In essence, indexes spend computation time (and a little bit of disk space) making writes to the database slower, to speed up reads later. For most applications this is a great tradeoff, since they are "read heavy" and "write lite".
+
+So, why use `varchar`? Indexes can be made to perform better when assumptions can be made about the type of data they store. Knowing how long the strings in the index are is one of the best ways speed things up. For some databases, you aren’t allowed to add a search index to columns of type `text` because this optimization can't be done, while in others, the index just won’t perform as well. In fact, historically, databases were constructed with limits on how big an index could be to optimize search and how they stored data on disk.
+
+## It’s MySQL’s fault
+
+Ok, so indexes are good. But, generically, it seems that an index of _any_ size should work, and while that’s true today, it wasn't always possible. The next stop on our journey is to look at what the default column size was far in the past, and that was 255 characters, e.g.:
+
+```sql
+email_address varchar(255) NOT NULL
+```
+
+MySQL, the most popular open source database of the early 2000s had a limit of 255 characters in indexed fields. The history is fuzzy as to why MySQL chose a 255 character limit (see the articles linked below), but the most popular theories include:
+
+- 256 is the largest number you can represent with an 8-bit integer. MySQL being very concerned with speed and memory usage, wanted to store things with the smallest possible data types.
+- MySQL was itself trying to be compatible with even older databases (sybase/SAP), and they had a 255 character limit.
+- MySQL wanted to ensure that its index files could fit within a single page block on older file systems.
+
+With a 256 character limit in mind, the MySQL developers felt comfortable further optimizing many parts of the database against that 255-character limit (more on this later). Since many popular open source application frameworks launched in that time period (Wordpress, Django, and Rails to name a few), they all followed MySQL’s defaults, even when they could run on multiple database types, like postgres. This formed a common default for most ORMs ([Object–relational mapping - Wikipedia](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping)) to use `varchar(255)`, regardless of the database in use.
+
+## It’s 🐟’s fault
+
+255 makes a lot more sense than 191. How did we get to 191? I’m going to blame emoji 😜. Seriously. Well, `utf8mb4` at least, the charter set that allows for "international" [^1] characters, and included the first emoji. MySQL in the early 2000s was happy supporting 255 characters in `varchar` columns and indexing them. However, the the most popular text encoding (`Latin1` or `utf8` ) on the most popular MySQL database engine (`innodb`) assumed that 3 bytes was enough to store every character [^2], and once `utf8mb4` came along with characters like 𠼭[^3] and 🐟, 4 bytes were needed to store each character. There were [more character to choose from](https://www.fileformat.info/info/charset/UTF-8/list.htm), so referencing them took more bytes.
+
+The way `innodb` MySQL databases worked was that you can only have 767 bytes for an index - enough to store 255 3-byte characters (`767/3 = 255`). This is an extreme example of index optimization based on knowing the size of the data you are indexing! So if the characters took more space to store, then the number of characters you could index had to get smaller. Specifically, `767/4 = 191` characters! As more software supported an international audience, `varchar(191)` replaced `varchar(255)` as the default. For those software applications that didn't need to support international users, they also needed to upgrade once users started expecting emoji support (often linked to the rise of smartphones) in the early 2010s.
+
+[^1]: "International" is an odd way to talk about the languages that most of the world uses, specifically those using non-Latin characters. However, operating systems and databases had thoroughly english-centric origins, and the legacy of those early choices is still rippling though our code today.
+[^2]: Throughout this post, I've use the word "character" rather than "letter", and this is why - depending on your language, each character in a string might be a letter, a whole word, or even a pictogram like an emoji.
+[^3]: "To Honk" (like from a car) - https://words.hk/zidin/%F0%A0%BC%AD
+
+## Today
+
+These days, with modern databases, character encodings like `utf8mb4` and others which can support "all" characters are the default, and the fixed-length index is a thing of the past. However, we still have these 191-character defaults in many applications to ensure compatibility. Regardless, indexes still work best when they know the size of the the strings they are comparing, so we still want to have _some_ limit on our column length for speed reasons, and thanks to history and inertia, the 191 limit is still with us.
+
+## Thank you
+
+Thanks to all the reference articles I checked when putting together this history, specifically:
+
+- [mysql - Wordpress using varchar(255) for index with InnoDB and utf8mb4_unicode_ci? - Database Administrators Stack Exchange](https://dba.stackexchange.com/questions/141149/wordpress-using-varchar255-for-index-with-innodb-and-utf8mb4-unicode-ci)
+- [Why do some fields have a varchar precision of 191 for modUserProfile in the modx schema? - #4 by jeffmiranda - Development - MODX Community](https://community.modx.com/t/why-do-some-fields-have-a-varchar-precision-of-191-for-moduserprofile-in-the-modx-schema/940/4)
+- [utf 8 - Mysql four byte chinese characters support - Stack Overflow](https://stackoverflow.com/questions/17680237/mysql-four-byte-chinese-characters-support)
+- [Varchar fields on MySQL 5.7 – gabi.dev](https://gabi.dev/2016/09/08/varchar-fields-on-mysql-5-7/)
+- [mysql - Why are InnoDB’s index keys limited to 767 bytes? - Database Administrators Stack Exchange](https://dba.stackexchange.com/questions/57005/why-are-innodbs-index-keys-limited-to-767-bytes)
+- [database - Is there a good reason I see VARCHAR(255) used so often (as opposed to another length)? - Stack Overflow](https://stackoverflow.com/questions/1217466/is-there-a-good-reason-i-see-varchar255-used-so-often-as-opposed-to-another-l)
