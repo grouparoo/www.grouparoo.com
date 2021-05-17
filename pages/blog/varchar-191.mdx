@@ -45,7 +45,7 @@ Ok, so indexes are good. But, generically, it seems that an index of _any_ size 
 email_address varchar(255) NOT NULL
 ```
 
-MySQL, the most popular open source database of the early 2000’s had a limit of 255 characters in indexed fields. The history is fuzzy as to why MySQL chose a 255 character limit (see the articles linked below), but the most popular theories include:
+MySQL, the most popular open source database of the early 2000s had a limit of 255 characters in indexed fields. The history is fuzzy as to why MySQL chose a 255 character limit (see the articles linked below), but the most popular theories include:
 
 - 256 is the largest number you can represent with an 8-bit integer. MySQL being very concerned with speed and memory usage, wanted to store things with the smallest possible data types.
 - MySQL was itself trying to be compatible with even older databases (sybase/SAP), and they had a 255 character limit.
