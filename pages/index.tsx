@@ -9,18 +9,20 @@ import SmallIntegration from "../components/home/smallIntegration";
 import GetStarted from "../components/home/getStarted";
 import WhyOpenSource from "../components/home/whyOpenSource";
 import CustomerTestimonials from "../components/home/customerTestimonials";
-import { randomHomepagePlugin } from "../data/plugins";
+import { randomHomepagePlugins } from "../data/plugins";
 import { getReleaseNotes } from "../utils/releaseNotes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function IndexPage({ pageProps, setReleaseNote }) {
   const {
-    pluginName,
+    pluginNames,
     releaseNote,
-  }: { pluginName: string; releaseNote: any } = pageProps;
+  }: { pluginNames: string[]; releaseNote: any } = pageProps;
   const title = "Grouparoo: Open Source Data Synchronization Framework";
   const description =
     "Grouparoo is an open source framework that helps you move data between your database and all of your cloud-based tools.";
+  const pluginName =
+    pluginNames[Math.floor(Math.random() * pluginNames.length)];
   const tagline = `Stop writing code to sync data to ${pluginName}*`;
 
   useEffect(() => setReleaseNote(releaseNote), []);
@@ -68,7 +70,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
         <Container>
           <Row>
             <Col>
-              <h1>{tagline}</h1>
+              <h1 suppressHydrationWarning={true}>{tagline}</h1>
             </Col>
           </Row>
           <Row>
@@ -126,7 +128,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
                     <Link
                       href={`/integrations/destinations/${pluginName.toLowerCase()}`}
                     >
-                      <a>{pluginName}</a>
+                      <a suppressHydrationWarning={true}>{pluginName}</a>
                     </Link>{" "}
                     - we don't mean to pick on you specifically. We integrate
                     with{" "}
@@ -609,8 +611,8 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
   );
 }
 
-export async function getServerSideProps() {
-  const pluginName = randomHomepagePlugin();
+export async function getStaticProps() {
+  const pluginNames = randomHomepagePlugins();
   const { notes } = await getReleaseNotes(1, 1);
-  return { props: { pluginName, releaseNote: notes[0] } };
+  return { props: { pluginNames, releaseNote: notes[0] } };
 }
