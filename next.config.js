@@ -3,6 +3,7 @@ const docsRedirects = require("./data/docs-redirects");
 module.exports = {
   env: {
     ROBOTS_DISABLED: process.env.ROBOTS_DISABLED,
+    GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
   },
   webpack: (config) => {
     config.module.rules.push({ test: /\.md$/, use: "raw-loader" });

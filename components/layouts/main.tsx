@@ -1,6 +1,7 @@
 import { useState, useEffect, Children, cloneElement } from "react";
 import Head from "next/head";
 import PlausibleAnalytics from "../plausibleAnalytics";
+import GoogleAnalytics from "../googleAnalytics";
 import Posthog from "../posthog";
 import AdConversionScript from "../adConversionsScript";
 import Navigation from "../navigation";
@@ -148,6 +149,7 @@ function PageTemplate({ children }) {
         <Footer />
       </div>
 
+      <GoogleAnalytics />
       <PlausibleAnalytics />
       <Posthog />
       <AdConversionScript />

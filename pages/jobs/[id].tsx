@@ -44,6 +44,7 @@ export default function JobPage({ pageProps }) {
           name="twitter:image"
           content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
         />
+        <title>Grouparoo | {job.text}</title>
       </Head>
 
       <Container>
