@@ -2,24 +2,39 @@ import { Row, Col, Container } from "react-bootstrap";
 import Image from "../Image";
 
 export default function SectionDivider({
-  heading,
-  content,
   imagePath,
   height,
   width,
-  imageLeft,
   background,
+  heading,
+  content,
+  imageLeft,
 }: {
-  heading: string;
-  content: string;
   imagePath: string;
   height: number;
   width: number;
   imageLeft: string;
   background: string;
+  heading: string;
+  content: string;
 }) {
   let dividerContent;
 
+  if (heading.length === 0 && content.length === 0) {
+    dividerContent = (
+      <Row className="align-items-center justify-content-center mx-auto featureBanner">
+        <Col className="col-5">
+          <Image
+            className="centered"
+            src={imagePath}
+            alt={heading}
+            width={width}
+            height={height}
+          />
+        </Col>
+      </Row>
+    );
+  }
   if (imageLeft === "true") {
     dividerContent = (
       <Row className="align-items-center justify-content-center mx-auto col-md-9 featureBanner">
@@ -38,7 +53,7 @@ export default function SectionDivider({
         </Col>
       </Row>
     );
-  } else {
+  } else if (imageLeft === "false") {
     dividerContent = (
       <Row className="align-items-center justify-content-center mx-auto col-md-9 featureBanner">
         <Col className="px-5-md" md={6} xs={12}>
@@ -56,7 +71,7 @@ export default function SectionDivider({
     background === "none" ? "none" : "linear-gradient(#242436,#43435F)";
   const classes =
     background === "none"
-      ? "homePageSection my-5"
+      ? "homePageSection"
       : "bg-dark text-white homePageSection my-5";
   return (
     <>
