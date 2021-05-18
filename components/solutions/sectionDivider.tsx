@@ -20,7 +20,7 @@ export default function SectionDivider({
 }) {
   let dividerContent;
 
-  if (heading.length === 0 && content.length === 0) {
+  if (content.length === 0) {
     dividerContent = (
       <Row className="align-items-center justify-content-center mx-auto featureBanner">
         <Col className="col-5">
