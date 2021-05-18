@@ -199,8 +199,7 @@ mapping: {
           Profiles
         </Link>
         . In most cases, this is an ID or an e-mail address. Grouparoo will
-        automatically determine what field is used for a primary key depending
-        on the source and automatically generate one Profile per unique value in
+        automatically determine what field is used for a primary key based on the mapping and automatically generate one Profile per unique value in
         that field.
       </p>
 
