@@ -68,7 +68,7 @@ grouparoo generate postgres:table:source users_table \
   --parent data_warehouse \
   --from users \ # The table to use
   --with id,first_name,email,last_name \  # The columns to make into properties (default *)
-  --mapping 'id=user_id' \ # How the mapping should shake out + Bootstrapping if the column is in the `--with` list
+  --mapping 'id=user_id' \ # How the mapping should shake out
   --high-water-mark updated_at
 ```
 
