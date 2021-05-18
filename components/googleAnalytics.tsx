@@ -19,11 +19,13 @@ gtag('config', '${GoogleAnalyticsTrackingID}');
     script.innerHTML = scriptContent;
     document.body.appendChild(script);
 
-    Router.events.on("routeChangeComplete", () => {
-      // @ts-ignore
-      gtag("event", "page_view", { send_to: GoogleAnalyticsTrackingID });
-    });
+    Router.events.on("routeChangeComplete", () => pageView());
   }, []);
+
+  function pageView() {
+    // @ts-ignore
+    gtag("event", "page_view", { send_to: GoogleAnalyticsTrackingID });
+  }
 
   if (!GoogleAnalyticsTrackingID) return null;
 
