@@ -86,24 +86,11 @@ Each Source has a common set of options, while other options are specific to the
 
 The generator makes a _reasonable_ guess at the values in the config file it generated (in the `config/sources` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Postgres Source, all but `appId` and `options.table` were pre-populated.
 
-Other sections may be commented out but require some action by you. The best practice when configuring an Source is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Source.
+Other sections may be commented out but require some action by you. The best practice when configuring a Source is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Source.
 
-### Bootstrapped Properties
+### Configuring Your First Source
 
-The very first Source you create in Grouparoo requires a Bootstrapped Property. Think of this as the primary key for all Profiles. Source config files provide you the ability to define this Bootstrapped Property. It will look like a simplified version of [a Property](/docs/config/properties/community). This Bootstrapped Property must be unique to all of your Profiles, and is commonly a user ID or email address.
-
-If this is the first Source you've created, uncomment this section and fill in the appropriate values. It'll look something like this:
-
-```js
-bootstrappedProperty: {
-  id: "user_id", // The unique ID for the Property.
-  name: "User Id", // Display name for the Property.
-  type: "integer", // The data type.
-  options: {
-    column: "id", // The field to use from the data source.
-  }
-}
-```
+The very first Source you create in Grouparoo generates primary key for all Profiles. This [Property](/docs/config/properties/community) must be unique to all of your Profiles, and is commonly a user ID or email address. Grouparoo will generate one Profile per unique value for this Property.
 
 ## Batch Source Generation
 

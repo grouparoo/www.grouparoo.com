@@ -206,37 +206,20 @@ bootstrappedProperty: {
 
       <CodeBlock code={codeBlocks.mapping} language="javascript" />
 
-      {/* --- Bootstrapped Property --- */}
+      {/* --- First Source --- */}
 
-      <h3 id="table-bootstrapped-property">Bootstrapped Property</h3>
+      <h3 id="table-first-source">Configuring your First Source</h3>
 
       <p>
-        Before you can define a Mapping, you must have a{" "}
-        <Link href="/docs/getting-started/product-concepts#bootstrapped-property">
-          Bootstrapped Property
-        </Link>
-        . This acts as your primary key for{" "}
+        Before you can define a Mapping, you must have a primary key for{" "}
         <Link href="/docs/getting-started/product-concepts#profile">
           Profiles
         </Link>
-        . In many cases, this is an ID type of value. Let's say you have a
-        column called <code>id</code> in your database, and you wanted to create
-        a Property called <code>user_id</code> in Grouparoo. And that Property (
-        <code>user_id</code>) would be the primary key for all Profiles. Then
-        your config might look something like this.
+        In most cases, this is an ID or an e-mail address. Grouparoo will
+        automatically determine what field is used for a primary key depending
+        on the source and automatically generate one Profile per unique value in
+        that field.
       </p>
-
-      <CodeBlock code={codeBlocks.bootstrappedProperty} language="javascript" />
-
-      <Alert variant="primary">
-        <p className="mb-1">
-          <strong>Note!</strong>
-        </p>
-        <p className="mb-0">
-          You only need one Bootstrapped Property in all of Grouparoo. Define it
-          for your first Source and then you're good to go!
-        </p>
-      </Alert>
 
       {/* --- Schedule --- */}
 

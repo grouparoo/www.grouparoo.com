@@ -235,7 +235,7 @@ A few other items to note with this command:
 
 - We're using `updated_at` as the high watermark, which tells Grouparoo which records to target when looking for updates.
 - Because we included the `high-water-mark` option, the generator also created a Schedule object that is included with the Source config file (`config/sources/users.js`). This defines how often the users Source import will run after starting Grouparoo.
-- The `mapping` tells Grouparoo to point the `id` column from the `users` table to a `user_id` Property in Grouparoo. However, there is not a config file for this Property. It's what we call a _Bootstrapped Property_, which means it's the first Property in Grouparoo. It acts as the primary key for all profiles moving forward.
+- The `mapping` tells Grouparoo to point the `id` column from the `users` table to a `user_id` Property in Grouparoo.
 
 ### Validate and Apply Config Changes
 
@@ -294,7 +294,7 @@ Let's begin by adding another table-based Source.
 Notice a few changes here:
 
 - We're not automatically bringing in any columns (to be made into Properties). We'll do that manually next.
-- The mapping is `user_id=user_id`. This is because the `purchases` table has a `user_id` field and that field will map to the `user_id` Property (Bootstrapped Property) we created in Grouparoo.
+- The mapping is `user_id=user_id`. This is because the `purchases` table has a `user_id` field and that field will map to the `user_id` Property we created in Grouparoo.
 - The high watermark here is `created_at`, which will also enable the Schedule, by default.
 
 These changes should have been applied automatically to your config file. You shouldn't have to edit the generated config file.
