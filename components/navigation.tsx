@@ -239,10 +239,20 @@ export default function Navigation() {
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item className="mb-md-4">
                         <Link href="/solutions/customer-data-platform">
-                          <a className="nav-link text-wrap" role="button">
+                          <a
+                            className="nav-link text-wrap overflow-none"
+                            role="button"
+                          >
                             Customer Data Platform
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link href="/solutions/modern-data-stack">
+                          <a className="nav-link" role="button">
+                            Modern Data Stack
                           </a>
                         </Link>
                       </Dropdown.Item>
