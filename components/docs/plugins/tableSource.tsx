@@ -26,13 +26,6 @@ exports.default = async function buildConfig() {
       mapping: {
         id: "user_id",
       },
-      bootstrappedProperty: {
-        id: "user_id",
-        name: "user_id",
-        type: "integer",
-        options: {
-          column: "id",
-        },
       },
     },
     // --- Schedule ---
@@ -54,16 +47,6 @@ exports.default = async function buildConfig() {
 mapping: {
   email: "emailAddress",
 }
-  `,
-    bootstrappedProperty: `
-bootstrappedProperty: {
-  id: "user_id",
-  name: "user_id",
-  type: "integer",
-  options: {
-    column: "id",
-  },
-},
   `,
     propertyFilters: `
 {
@@ -215,7 +198,7 @@ bootstrappedProperty: {
         <Link href="/docs/getting-started/product-concepts#profile">
           Profiles
         </Link>
-        In most cases, this is an ID or an e-mail address. Grouparoo will
+        . In most cases, this is an ID or an e-mail address. Grouparoo will
         automatically determine what field is used for a primary key depending
         on the source and automatically generate one Profile per unique value in
         that field.
