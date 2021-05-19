@@ -1,6 +1,6 @@
 ---
 title: "Product Concepts"
-date: "2021-04-05"
+date: "2021-05-19"
 pullQuote: "Learn about the terminology that Grouparoo uses."
 pageNavSelector: "h2"
 ---
@@ -33,6 +33,8 @@ Welcome to the Grouparoo Dictionary! This is the collection of terms we use thro
 - [Profile Property Rule](#profile-property-rule)
 - [Query Source](#query-source)
 - [Source](#source)
+- [Schedule](#schedule)
+- [Sync Mode](#sync-mode)
 - [Table Source](#table-source)
 
 ## App
@@ -175,6 +177,16 @@ Sources are the tools that Grouparoo will connect with to pull in customer data.
 When you add a new Source, you will define how that Source connects with the [Profiles](#profile) that already exist in Grouparoo through a `Unique` [Profile Property](#profile-property).
 
 See [our Integrations page](/integrations) for an up-to-date list of our supported Sources. We are always adding support for more Sources. If you have a request, please [let us know](/meet)!
+
+## Sync Mode
+
+When creating a Grouparoo [Destination](#destination), you will be asked to choose a Sync Mode. A Sync Mode tells the Grouparoo application how to create and delete Profiles on this destination. The types of Sync Modes are:
+
+- **Sync**: Add, update and remove profiles from the destination as needed.
+- **Additive**: Add new profiles and update those that already exist in the destination, but never remove anyone.
+- **Enrich**: Update profiles that already exist in the destination, _enriching_ them with additional data and group membership information. No profiles are added or removed.
+
+You can learn more about in our blog posts [introducing Sync Modes](/blog/sync-modes) and [how to use Sync Modes](/blog/using-sync-modes)
 
 ## Table Source
 
