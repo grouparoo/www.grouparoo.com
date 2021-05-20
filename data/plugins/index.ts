@@ -7,9 +7,11 @@ import { Intercom } from "./intercom";
 import { Iterable } from "./iterable";
 import { Mailchimp } from "./mailchimp";
 import { Marketo } from "./marketo";
+import { MongoDB } from "./mongodb";
 import { MySQL } from "./mysql";
 import { OneSignal } from "./onesignal";
 import { Customerio } from "./customerio";
+import { Pardot } from "./pardot";
 import { Pipedrive } from "./pipedrive";
 import { Postgres } from "./postgres";
 import { Redshift } from "./redshift";
@@ -77,8 +79,10 @@ export const PluginData: Plugin[] = [
   Iterable,
   Mailchimp,
   Marketo,
+  MongoDB,
   MySQL,
   OneSignal,
+  Pardot,
   Pipedrive,
   Postgres,
   Redshift,
