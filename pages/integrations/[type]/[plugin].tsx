@@ -9,6 +9,7 @@ import IntegrationsHead from "../../../components/home/integrationsHead";
 import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
 import { PluginData, getUseCasePaths } from "../../../data/plugins";
+import ImageInBrowserFrame from "../../../components/imageInBrowserFrame";
 
 export default function IntegrationsPage({
   pageProps,
@@ -49,8 +50,7 @@ export default function IntegrationsPage({
                 <p>{screenshot.description}</p>
               </Col>
               <Col md={8}>
-                <Image
-                  className="productScreenshots border"
+                <ImageInBrowserFrame
                   src={screenshot.imageSrc}
                   alt={screenshot.imageAlt}
                   width={screenshot.imageWidth}
@@ -70,8 +70,7 @@ export default function IntegrationsPage({
                 <p>{screenshot.description}</p>
               </Col>
               <Col md={8} className="order-2 order-md-1">
-                <Image
-                  className="productScreenshots border"
+                <ImageInBrowserFrame
                   src={screenshot.imageSrc}
                   alt={screenshot.imageAlt}
                   width={screenshot.imageWidth}

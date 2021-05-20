@@ -3,6 +3,7 @@ import Image from "../../components/Image";
 import IntegrationCard from "../../components/home/integrationCard";
 import SEO from "../../components/seo";
 import BigArrow from "../../components/bigArrow";
+import ImageInBrowserFrame from "../../components/imageInBrowserFrame";
 
 export default function PostgresToHubspot() {
   return (
@@ -168,8 +169,7 @@ export default function PostgresToHubspot() {
               </p>
             </Col>
             <Col md={8}>
-              <Image
-                className="productScreenshots border"
+              <ImageInBrowserFrame
                 src="/images/home/integrations/postgres/add-postgres-app.png"
                 alt="Grouparoo Postgres settings"
                 width={742}
@@ -180,8 +180,7 @@ export default function PostgresToHubspot() {
           <br />
           <Row className="align-items-center">
             <Col md={8}>
-              <Image
-                className="productScreenshots border"
+              <ImageInBrowserFrame
                 src="/images/home/integrations/postgres/postgres-table-mode.png"
                 alt="Grouparoo table source settings"
                 width={742}
@@ -213,8 +212,7 @@ export default function PostgresToHubspot() {
               </p>
             </Col>
             <Col md={8}>
-              <Image
-                className="productScreenshots border"
+              <ImageInBrowserFrame
                 src="/images/home/integrations/hubspot/grouparoo-to-hubspot.png"
                 alt="Map data to Hubspot"
                 width={742}
