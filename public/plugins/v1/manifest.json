@@ -1,0 +1,170 @@
+[
+  {
+    "name": "CSV",
+    "description": "",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/csv/csv.svg",
+    "packageName": "@grouparoo/csv",
+    "source": true,
+    "destination": false
+  },
+  {
+    "name": "CustomerIO",
+    "description": "Grouparoo's CustomerIO integration allows you to sync all of your customer data that lives in various sources into CustomerIO.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/customerio/customerio.png",
+    "packageName": "@grouparoo/customerio",
+    "source": false,
+    "destination": true
+  },
+  {
+    "name": "Facebook",
+    "description": "Grouparoo's Facebook integration allows you to sync all of your customer data that lives in various sources into Facebook.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/facebook/facebook.png",
+    "packageName": "@grouparoo/facebook",
+    "source": false,
+    "destination": true
+  },
+  {
+    "name": "Google BigQuery",
+    "description": "Grouparoo's Google BigQuery integration allows you to sync all of your customer data that lives in your Google BigQuery data warehouse with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/bigquery/bigquery.png",
+    "packageName": "@grouparoo/bigquery",
+    "source": true,
+    "destination": false
+  },
+  {
+    "name": "Google Sheets",
+    "description": "",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/google-sheets/google-sheets.png",
+    "packageName": "@grouparoo/google-sheets",
+    "source": true,
+    "destination": false
+  },
+  {
+    "name": "Hubspot",
+    "description": "Grouparoo's Hubspot integration allows you to sync all of your customer data that lives in various sources into Hubspot.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/hubspot/hubspot.svg",
+    "packageName": "@grouparoo/hubspot",
+    "source": false,
+    "destination": true
+  },
+  {
+    "name": "Intercom",
+    "description": "Grouparoo's Intercom integration allows you to sync all of your customer data that lives in various sources into Intercom.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/intercom/intercom.png",
+    "packageName": "@grouparoo/intercom",
+    "source": false,
+    "destination": true
+  },
+  {
+    "name": "Iterable",
+    "description": "Grouparoo's Iterable integration allows you to sync all of your customer data that lives in various sources into Iterable.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/iterable/iterable.png",
+    "packageName": "@grouparoo/iterable",
+    "source": false,
+    "destination": true
+  },
+  {
+    "name": "Mailchimp",
+    "description": "Grouparoo's Mailchimp integration allows you to sync all of your customer data that lives in various sources into Mailchimp.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/mailchimp/mailchimp.svg",
+    "packageName": "@grouparoo/mailchimp",
+    "source": false,
+    "destination": true
+  },
+  {
+    "name": "Marketo",
+    "description": "Grouparoo's Marketo integration allows you to sync all of your customer data that lives in various sources into Marketo.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/marketo/marketo.png",
+    "packageName": "@grouparoo/marketo",
+    "source": false,
+    "destination": true
+  },
+  {
+    "name": "MySQL",
+    "description": "Grouparoo's MySQL integration allows you to sync all of your customer data that lives in your MySQL database with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/mysql/mysql.png",
+    "packageName": "@grouparoo/mysql",
+    "source": true,
+    "destination": true
+  },
+  {
+    "name": "OneSignal",
+    "description": "Grouparoo's OneSignal integration allows you to sync all of your customer data that lives in various sources into OneSignal.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/onesignal/onesignal.png",
+    "packageName": "@grouparoo/onesignal",
+    "source": false,
+    "destination": true
+  },
+  {
+    "name": "Pipedrive",
+    "description": "Grouparoo's Pipedrive integration allows you to sync all of your customer data that lives in various sources into Pipedrive.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/pipedrive/pipedrive.png",
+    "packageName": "@grouparoo/pipedrive",
+    "source": false,
+    "destination": true
+  },
+  {
+    "name": "Postgres",
+    "description": "Grouparoo's Postgres integration allows you to sync all of your customer data that lives in your Postgres DB with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/postgres/postgres.svg",
+    "packageName": "@grouparoo/postgres",
+    "source": true,
+    "destination": true
+  },
+  {
+    "name": "Redshift",
+    "description": "Grouparoo's Redshift integration allows you to sync all of your customer data that lives in your Redshift data warehouse with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/redshift/redshift.svg",
+    "packageName": "@grouparoo/redshift",
+    "source": true,
+    "destination": true
+  },
+  {
+    "name": "SQLite",
+    "description": "Grouparoo's SQLite integration allows you to sync all of your customer data that lives in your SQLite database with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/sqlite/sqlite.svg",
+    "packageName": "@grouparoo/sqlite",
+    "source": true,
+    "destination": true
+  },
+  {
+    "name": "Sailthru",
+    "description": "Grouparoo's Sailthru integration allows you to sync all of your customer data that lives in various sources into Sailthru.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/sailthru/sailthru.png",
+    "packageName": "@grouparoo/sailthru",
+    "source": false,
+    "destination": true
+  },
+  {
+    "name": "Salesforce",
+    "description": "Grouparoo's Salesforce integration allows you to sync all of your customer data that lives in various sources into Salesforce.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/salesforce/salesforce.png",
+    "packageName": "@grouparoo/salesforce",
+    "source": false,
+    "destination": true
+  },
+  {
+    "name": "Sendgrid",
+    "description": "Grouparoo's Sendgrid integration allows you to sync all of your customer data that lives in various sources into Sendgrid.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/sendgrid/sendgrid.png",
+    "packageName": "@grouparoo/sendgrid",
+    "source": false,
+    "destination": true
+  },
+  {
+    "name": "Snowflake",
+    "description": "Grouparoo's Snowflake integration allows you to sync all of your customer data that lives in your Snowflake data warehouse with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/snowflake/snowflake.png",
+    "packageName": "@grouparoo/snowflake",
+    "source": true,
+    "destination": false
+  },
+  {
+    "name": "Zendesk",
+    "description": "Grouparoo's Zendesk integration allows you to sync all of your customer data that lives in various sources into Zendesk.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/zendesk/zendesk.svg",
+    "packageName": "@grouparoo/zendesk",
+    "source": false,
+    "destination": true
+  }
+]
