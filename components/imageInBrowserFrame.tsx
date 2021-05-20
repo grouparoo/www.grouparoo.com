@@ -20,6 +20,7 @@ export default function ImageInBrowserFrame({
     <div
       style={{
         padding: "20px 0 0",
+        margin: 10,
         borderRadius: thickness,
         borderBottom: `${thickness}px solid ${borderColor}`,
         borderLeft: `${thickness}px solid ${borderColor}`,
