@@ -14,6 +14,7 @@ export default function ImageInBrowserFrame({
   const borderColor = "#cccccc";
   const buttonBorderColor = "#dadada";
   const thickness = 4;
+  const sideThickness = 1;
   const buttons = ["red", "yellow", "green"];
 
   return (
@@ -23,8 +24,8 @@ export default function ImageInBrowserFrame({
         margin: 10,
         borderRadius: thickness,
         borderBottom: `${thickness}px solid ${borderColor}`,
-        borderLeft: `${thickness}px solid ${borderColor}`,
-        borderRight: `${thickness}px solid ${borderColor}`,
+        borderLeft: `${sideThickness}px solid ${borderColor}`,
+        borderRight: `${sideThickness}px solid ${borderColor}`,
         background: `${borderColor}`,
         display: "inline-block",
         position: "relative",
