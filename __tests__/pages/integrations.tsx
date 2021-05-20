@@ -33,17 +33,7 @@ describe("page/integrations", () => {
     });
 
   PluginData.filter((p) => !p.useCases).map((plugin) => {
-    test(`pages does not exist for ${plugin.name}`, async () => {
-      expect(() =>
-        shallow(<IntegrationsPage pageProps={{ plugin: plugin.slug }} />)
-      ).toThrow();
-    });
-  });
-
-  PluginData.filter(
-    (p) => p.useCases && p.useCases.paragraphOne.length < 1
-  ).map((plugin) => {
-    test(`pages does not exist for ${plugin.name}`, async () => {
+    test(`page does not exist for ${plugin.name}`, async () => {
       expect(() =>
         shallow(<IntegrationsPage pageProps={{ plugin: plugin.slug }} />)
       ).toThrow();

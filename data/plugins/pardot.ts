@@ -12,8 +12,4 @@ export const Pardot: Plugin = {
   badge: "",
   showLink: false,
   packageName: "@grouparoo/pardot",
-  useCases: {
-    paragraphOne: "",
-    paragraphTwo: "",
-  },
 };

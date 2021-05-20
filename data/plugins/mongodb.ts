@@ -12,8 +12,4 @@ export const MongoDB: Plugin = {
   badge: "",
   showLink: false,
   packageName: "@grouparoo/mongodb",
-  useCases: {
-    paragraphOne: "",
-    paragraphTwo: "",
-  },
 };

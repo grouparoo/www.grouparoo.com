@@ -94,13 +94,7 @@ export const PluginData: Plugin[] = [
   Zendesk,
 ];
 
-export const IntegrationsPageData: Plugin[] = PluginData.filter(
-  (p) => p.useCases
-);
-
-export const PluginPageData: Plugin[] = PluginData.filter(
-  (p) => p.useCases && p.useCases.paragraphOne.length > 1
-);
+export const PluginPageData: Plugin[] = PluginData.filter((p) => p.useCases);
 
 export function randomHomepagePlugins() {
   // This is a fixed list of plugins rather than any random plugin as we want to focus on the popular ones.
