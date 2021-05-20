@@ -146,7 +146,7 @@ export default function Meet() {
           </Col>
           <Col md={6}>
             <Error message={error.generic} />
-            <Container className="bg-light p-4">
+            <Container className="bg-light p-4 mt-4 mt-md-0">
               <h3 className="mx-auto text-center">Schedule a 30 minute demo</h3>
               <Form id="form" onSubmit={handleSubmit(onSubmit)}>
                 {!requested ? (
