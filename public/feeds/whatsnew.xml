@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Tue, 04 May 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 13 May 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,17 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Enhancing Grouparoo's Customer.io plugin]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-05-13-customerio-app-api-key</link>
+            <guid
+      >grouparoo-release-note-2021-05-13-customerio-app-api-key</guid>
+            <pubDate>Thu, 13 May 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>In order to perform requests to the APP API required by the newest <a href="https://www.grouparoo.com/blog/using-sync-modes" target="_blank" rel="nofollow noopener noreferrer">Sync Modes</a> concept, Grouparoo now asks for the App API key. <a href="https://customer.io/" target="_blank" rel="nofollow noopener noreferrer">Customer.io</a> separates their API into 2 different parts, the <code>TRACK API</code> and the <code>APP API</code>. However, you cannot access the Track API with the App API key nor, access the App API with the track API key.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
         <item>
             <title><![CDATA[Pardot Destination]]></title>
             <link>https://www.grouparoo.com/whats-new#2021-05-04-pardot</link>
