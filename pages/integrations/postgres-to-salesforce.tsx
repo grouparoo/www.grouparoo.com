@@ -3,6 +3,7 @@ import Image from "../../components/Image";
 import IntegrationCard from "../../components/home/integrationCard";
 import SEO from "../../components/seo";
 import BigArrow from "../../components/bigArrow";
+import ImageInBrowserFrame from "../../components/imageInBrowserFrame";
 
 export default function PostgresToSalesforce() {
   return (
@@ -176,8 +177,7 @@ export default function PostgresToSalesforce() {
               </p>
             </Col>
             <Col md={8}>
-              <Image
-                className="productScreenshots border"
+              <ImageInBrowserFrame
                 src="/images/home/integrations/postgres/add-postgres-app.png"
                 alt="Grouparoo Postgres settings"
                 width={742}
@@ -188,8 +188,7 @@ export default function PostgresToSalesforce() {
           <br />
           <Row className="align-items-center">
             <Col md={8}>
-              <Image
-                className="productScreenshots border"
+              <ImageInBrowserFrame
                 src="/images/home/integrations/postgres/postgres-table-mode.png"
                 alt="Grouparoo table source settings"
                 width={742}
@@ -221,8 +220,7 @@ export default function PostgresToSalesforce() {
               </p>
             </Col>
             <Col md={8}>
-              <Image
-                className="productScreenshots border"
+              <ImageInBrowserFrame
                 src="/images/home/integrations/salesforce/grouparoo-to-salesforce.png"
                 alt="Map data to Salesforce"
                 width={742}

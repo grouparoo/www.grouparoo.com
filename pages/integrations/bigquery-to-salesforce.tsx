@@ -3,6 +3,7 @@ import Image from "../../components/Image";
 import IntegrationCard from "../../components/home/integrationCard";
 import SEO from "../../components/seo";
 import BigArrow from "../../components/bigArrow";
+import ImageInBrowserFrame from "../../components/imageInBrowserFrame";
 
 export default function BigQueryToSalesforce() {
   return (
@@ -176,8 +177,7 @@ export default function BigQueryToSalesforce() {
               </p>
             </Col>
             <Col md={8}>
-              <Image
-                className="productScreenshots border"
+              <ImageInBrowserFrame
                 src="/images/home/integrations/bigquery/add-bigquery-app.png"
                 alt="Grouparoo BigQuery settings"
                 width={742}
@@ -188,8 +188,7 @@ export default function BigQueryToSalesforce() {
           <br />
           <Row className="align-items-center">
             <Col md={8}>
-              <Image
-                className="productScreenshots border"
+              <ImageInBrowserFrame
                 src="/images/home/integrations/bigquery/bigquery-table-mode.png"
                 alt="Grouparoo table source settings"
                 width={742}
@@ -221,8 +220,7 @@ export default function BigQueryToSalesforce() {
               </p>
             </Col>
             <Col md={8}>
-              <Image
-                className="productScreenshots border"
+              <ImageInBrowserFrame
                 src="/images/home/integrations/salesforce/grouparoo-to-salesforce.png"
                 alt="Map data to Salesforce"
                 width={742}

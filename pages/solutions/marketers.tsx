@@ -5,6 +5,7 @@ import Head from "next/head";
 import IntegrationsSection from "../../components/home/integrationsSection";
 import GetStarted from "../../components/home/getStarted";
 import WhyOpenSource from "../../components/home/whyOpenSource";
+import ImageInBrowserFrame from "../../components/imageInBrowserFrame";
 
 export default function IndexPage() {
   return (
@@ -166,8 +167,7 @@ export default function IndexPage() {
               </div>
             </Col>
             <Col md={8}>
-              <Image
-                className="howItWorksImage"
+              <ImageInBrowserFrame
                 src="/images/home/how-it-works-1.png"
                 alt="Grouparoo profile"
                 width={650}
@@ -186,8 +186,7 @@ export default function IndexPage() {
               </p>
             </Col>
             <Col md={8}>
-              <Image
-                className="howItWorksImage"
+              <ImageInBrowserFrame
                 src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
                 width={650}
@@ -205,8 +204,7 @@ export default function IndexPage() {
               </p>
             </Col>
             <Col md={8}>
-              <Image
-                className="howItWorksImage"
+              <ImageInBrowserFrame
                 src="/images/home/how-it-works-3.png"
                 alt="Grouparoo destination"
                 width={650}
@@ -225,8 +223,7 @@ export default function IndexPage() {
               </p>
             </Col>
             <Col md={8}>
-              <Image
-                className="howItWorksImage"
+              <ImageInBrowserFrame
                 src="/images/home/how-it-works-4.png"
                 alt="Data synced to destination"
                 width={650}

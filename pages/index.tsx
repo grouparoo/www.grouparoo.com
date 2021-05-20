@@ -12,6 +12,7 @@ import CustomerTestimonials from "../components/home/customerTestimonials";
 import { randomHomepagePlugins } from "../data/plugins";
 import { getReleaseNotes } from "../utils/releaseNotes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ImageInBrowserFrame from "../components/imageInBrowserFrame";
 
 export default function IndexPage({ pageProps, setReleaseNote }) {
   const {
@@ -451,8 +452,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               </div>
             </Col>
             <Col md={8}>
-              <Image
-                className="howItWorksImage"
+              <ImageInBrowserFrame
                 src="/images/home/how-it-works-1.png"
                 alt="Grouparoo profile"
                 width={650}
@@ -471,8 +471,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               </p>
             </Col>
             <Col md={8}>
-              <Image
-                className="howItWorksImage"
+              <ImageInBrowserFrame
                 src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
                 width={650}
@@ -490,8 +489,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               </p>
             </Col>
             <Col md={8}>
-              <Image
-                className="howItWorksImage"
+              <ImageInBrowserFrame
                 src="/images/home/how-it-works-3.png"
                 alt="Grouparoo destination"
                 width={650}
@@ -513,8 +511,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               </p>
             </Col>
             <Col md={8}>
-              <Image
-                className="howItWorksImage"
+              <ImageInBrowserFrame
                 src="/images/home/how-it-works-4.png"
                 alt="Data synced to destination"
                 width={650}
