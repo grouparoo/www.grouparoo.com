@@ -12,10 +12,9 @@ export default function ImageInBrowserFrame({
   alt: string;
 }) {
   const borderColor = "#cccccc";
-  const buttonBorderColor = "#dadada";
   const thickness = 4;
   const sideThickness = 1;
-  const buttons = ["red", "yellow", "green"];
+  const buttons = ["#FF544D", "#FEB429", "#24C339"];
 
   return (
     <div
@@ -49,7 +48,6 @@ export default function ImageInBrowserFrame({
               height: 8,
               width: 8,
               borderRadius: 8,
-              border: `1px solid ${buttonBorderColor}`,
               float: "left",
               margin: "0 0 0 4px",
               backgroundColor: button,
