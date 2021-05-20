@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useApi } from "./../hooks/useApi";
 import { useForm } from "react-hook-form";
 import { Container, Alert, Row, Col, Form, Button } from "react-bootstrap";
+import Image from "../components/Image";
 import { ErrorHandler } from "../utils/errorHandler";
 import { isBrowser } from "../utils/isBrowser";
 import posthog from "posthog-js";
@@ -107,74 +108,124 @@ export default function Meet() {
       <Container>
         <Row>
           <Col md={6}>
-            <h1>Meet Grouparoo</h1>
+            <h1 className="mb-4">Make your customer data actionable</h1>
+            <h2 className="h5">Sync customer data to your business tools</h2>
             <p>
-              See how Grouparoo can help you with your data synchronization
-              needs.
+              Use Grouparoo to quickly and easily sync customer data to all of
+              your business tools
             </p>
-            <p>We will get back to you soon and schedule a quick call.</p>
+            <h2 className="h5">Use Source-of-truth data</h2>
+            <p>
+              Pull data from trusted sources like data warehouses instead of
+              instrumenting Event streams.
+            </p>
+
+            <Container className="mt-4">
+              <Row>
+                <p className="small">Trusted by data-driven teams</p>
+              </Row>
+              <Row>
+                <Col>
+                  <Image
+                    src="/images/home/customer-logos/chipax-logo@2x.png"
+                    width="210"
+                    height="67"
+                    alt="Chipax logo"
+                  />
+                </Col>
+                <Col>
+                  <Image
+                    src="/images/home/customer-logos/Sendoso-Logo-1.svg"
+                    width="210"
+                    height="47"
+                    alt="Sendoso logo"
+                  />
+                </Col>
+              </Row>
+            </Container>
           </Col>
           <Col md={6}>
             <Error message={error.generic} />
+            <Container className="bg-light p-4">
+              <h3 className="mx-auto text-center">Schedule a 30 minute demo</h3>
+              <Form id="form" onSubmit={handleSubmit(onSubmit)}>
+                {!requested ? (
+                  <>
+                    {" "}
+                    <Form.Group>
+                      <Form.Label>First Name</Form.Label>
+                      <Form.Control
+                        {...register("firstName")}
+                        type="text"
+                        name="firstName"
+                        defaultValue=""
+                        disabled={disabled}
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>Last Name</Form.Label>
+                      <Form.Control
+                        {...register("lastName")}
+                        type="text"
+                        name="lastName"
+                        defaultValue=""
+                        disabled={disabled}
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>Work Email *</Form.Label>
+                      <Form.Control
+                        {...register("email", { required: true })}
+                        type="email"
+                        name="email"
+                        defaultValue=""
+                        disabled={disabled}
+                      />
+                      <Error message={error.email} />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>Company Name</Form.Label>
+                      <Form.Control
+                        {...register("companyName")}
+                        type="text"
+                        name="companyName"
+                        defaultValue=""
+                        disabled={disabled}
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>
+                        What tools/products are you hoping to connect with
+                        Grouparoo? (e. g. MySQL, Snowflake, Salesforce, Hubspot)
+                      </Form.Label>
+                      <Form.Control
+                        {...register("requestDetails")}
+                        as="textarea"
+                        name="requestDetails"
+                        defaultValue=""
+                        disabled={disabled}
+                        rows={3}
+                      />
+                    </Form.Group>
+                  </>
+                ) : null}
 
-            <Form id="form" onSubmit={handleSubmit(onSubmit)}>
-              {!requested ? (
-                <>
-                  {" "}
-                  <Form.Group>
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control
-                      {...register("firstName")}
-                      type="text"
-                      name="firstName"
-                      defaultValue=""
+                <Form.Group className="text-center">
+                  {requested ? (
+                    <Alert variant="success">Talk to you soon!</Alert>
+                  ) : (
+                    <Button
+                      variant="primary"
+                      type="submit"
+                      className="btn-lg"
                       disabled={disabled}
-                    />
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control
-                      {...register("lastName")}
-                      type="text"
-                      name="lastName"
-                      defaultValue=""
-                      disabled={disabled}
-                    />
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Label>Work Email *</Form.Label>
-                    <Form.Control
-                      {...register("email", { required: true })}
-                      type="email"
-                      name="email"
-                      defaultValue=""
-                      disabled={disabled}
-                    />
-                    <Error message={error.email} />
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Label>Company Name</Form.Label>
-                    <Form.Control
-                      {...register("companyName")}
-                      type="text"
-                      name="companyName"
-                      defaultValue=""
-                      disabled={disabled}
-                    />
-                  </Form.Group>
-                </>
-              ) : null}
-
-              <Form.Group>
-                {requested ? (
-                  <Alert variant="success">Talk to you soon!</Alert>
-                ) : (
-                  <Button variant="primary" type="submit" disabled={disabled}>
-                    Submit
-                  </Button>
-                )}
-              </Form.Group>
-            </Form>
+                    >
+                      Submit
+                    </Button>
+                  )}
+                </Form.Group>
+              </Form>
+            </Container>
           </Col>
         </Row>
 
