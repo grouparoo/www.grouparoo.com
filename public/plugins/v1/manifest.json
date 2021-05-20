@@ -5,7 +5,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/csv/csv.svg",
     "packageName": "@grouparoo/csv",
     "source": true,
-    "destination": false
+    "destination": false,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/csv",
+    "docsUrl": null
   },
   {
     "name": "CustomerIO",
@@ -13,7 +15,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/customerio/customerio.png",
     "packageName": "@grouparoo/customerio",
     "source": false,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/customerio",
+    "docsUrl": null
   },
   {
     "name": "Facebook",
@@ -21,7 +25,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/facebook/facebook.png",
     "packageName": "@grouparoo/facebook",
     "source": false,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/facebook",
+    "docsUrl": null
   },
   {
     "name": "Google BigQuery",
@@ -29,7 +35,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/bigquery/bigquery.png",
     "packageName": "@grouparoo/bigquery",
     "source": true,
-    "destination": false
+    "destination": false,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/bigquery",
+    "docsUrl": null
   },
   {
     "name": "Google Sheets",
@@ -37,7 +45,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/google-sheets/google-sheets.png",
     "packageName": "@grouparoo/google-sheets",
     "source": true,
-    "destination": false
+    "destination": false,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/google-sheets",
+    "docsUrl": null
   },
   {
     "name": "Hubspot",
@@ -45,7 +55,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/hubspot/hubspot.svg",
     "packageName": "@grouparoo/hubspot",
     "source": false,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/hubspot",
+    "docsUrl": null
   },
   {
     "name": "Intercom",
@@ -53,7 +65,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/intercom/intercom.png",
     "packageName": "@grouparoo/intercom",
     "source": false,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/intercom",
+    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-intercom"
   },
   {
     "name": "Iterable",
@@ -61,7 +75,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/iterable/iterable.png",
     "packageName": "@grouparoo/iterable",
     "source": false,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/iterable",
+    "docsUrl": null
   },
   {
     "name": "Mailchimp",
@@ -69,7 +85,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/mailchimp/mailchimp.svg",
     "packageName": "@grouparoo/mailchimp",
     "source": false,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/mailchimp",
+    "docsUrl": null
   },
   {
     "name": "Marketo",
@@ -77,7 +95,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/marketo/marketo.png",
     "packageName": "@grouparoo/marketo",
     "source": false,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/marketo",
+    "docsUrl": null
   },
   {
     "name": "MySQL",
@@ -85,7 +105,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/mysql/mysql.png",
     "packageName": "@grouparoo/mysql",
     "source": true,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/mysql",
+    "docsUrl": null
   },
   {
     "name": "OneSignal",
@@ -93,7 +115,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/onesignal/onesignal.png",
     "packageName": "@grouparoo/onesignal",
     "source": false,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/onesignal",
+    "docsUrl": null
   },
   {
     "name": "Pipedrive",
@@ -101,7 +125,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/pipedrive/pipedrive.png",
     "packageName": "@grouparoo/pipedrive",
     "source": false,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/pipedrive",
+    "docsUrl": null
   },
   {
     "name": "Postgres",
@@ -109,7 +135,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/postgres/postgres.svg",
     "packageName": "@grouparoo/postgres",
     "source": true,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/postgres",
+    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-postgres"
   },
   {
     "name": "Redshift",
@@ -117,7 +145,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/redshift/redshift.svg",
     "packageName": "@grouparoo/redshift",
     "source": true,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/redshift",
+    "docsUrl": null
   },
   {
     "name": "SQLite",
@@ -125,7 +155,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/sqlite/sqlite.svg",
     "packageName": "@grouparoo/sqlite",
     "source": true,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/sqlite",
+    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-sqlite"
   },
   {
     "name": "Sailthru",
@@ -133,7 +165,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/sailthru/sailthru.png",
     "packageName": "@grouparoo/sailthru",
     "source": false,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/sailthru",
+    "docsUrl": null
   },
   {
     "name": "Salesforce",
@@ -141,7 +175,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/salesforce/salesforce.png",
     "packageName": "@grouparoo/salesforce",
     "source": false,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/salesforce",
+    "docsUrl": null
   },
   {
     "name": "Sendgrid",
@@ -149,7 +185,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/sendgrid/sendgrid.png",
     "packageName": "@grouparoo/sendgrid",
     "source": false,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/sendgrid",
+    "docsUrl": null
   },
   {
     "name": "Snowflake",
@@ -157,7 +195,9 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/snowflake/snowflake.png",
     "packageName": "@grouparoo/snowflake",
     "source": true,
-    "destination": false
+    "destination": false,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/snowflake",
+    "docsUrl": null
   },
   {
     "name": "Zendesk",
@@ -165,6 +205,8 @@
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/zendesk/zendesk.svg",
     "packageName": "@grouparoo/zendesk",
     "source": false,
-    "destination": true
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/zendesk",
+    "docsUrl": null
   }
 ]
