@@ -3,7 +3,7 @@ title: "We've gone too far into the frontend"
 date: "2021-05-21"
 author: "Pedro S Lopez"
 pullQuote: "A lesson in API design and separation of concerns"
-image: "weve-gone-too-far-into-the-frontend/select-group.png"
+image: "weve-gone-too-far-into-the-frontend/210521-save-actions.png"
 tags: [engineering, notes]
 ---
 
@@ -30,6 +30,14 @@ To support this, our API had exposed three endpoints:
 - Another for removing the previously-tracked group from the destination and kicking off an export to remove the profiles for the destination, if needed.
 
 Our simple button at the bottom of the page to save destination data now had to determine if the group had been changed and execute a number of API requests.
+
+<Image
+  centered
+  alt="Save button calling many actions"
+  src="weve-gone-too-far-into-the-frontend/210521-save-actions.png"
+  width={1015}
+  height={533}
+/>
 
 ## What could possibly go wrong?
 
