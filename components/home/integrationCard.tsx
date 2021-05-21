@@ -30,7 +30,7 @@ export default function IntegrationCard({
         text="white"
         className={showLink ? "integrationCard" : ""}
       >
-        <Card.Body>
+        <Card.Body className="">
           <SmallIntegration
             fillWidth={true}
             image={image}
@@ -64,7 +64,7 @@ export default function IntegrationCard({
           )}
           {category ? (
             <>
-              <Badge pill variant="primary">
+              <Badge pill variant="primary" className="text-wrap m-1">
                 {" "}
                 {category.toUpperCase()}
               </Badge>
