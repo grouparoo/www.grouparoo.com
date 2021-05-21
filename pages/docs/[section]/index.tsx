@@ -3,6 +3,7 @@ import hydrate from "next-mdx-remote/hydrate";
 import { TableOfContents } from "../../../components/docs/tableOfContents";
 import { PageNavigation } from "../../../components/pageNavigation";
 import * as components from "../../../components/docs";
+import GetStarted from "../../../components/home/getStarted";
 import { loadMdxFile, getStaticMdxPaths } from "../../../utils/mdxUtils";
 import SEO from "../../../components/seo";
 
@@ -72,6 +73,7 @@ export default function DocPage({ pageProps }) {
       </Container>
       <br />
       <br />
+      <GetStarted />
     </>
   );
 }
