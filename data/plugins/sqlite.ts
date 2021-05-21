@@ -11,13 +11,13 @@ export const SQLite: Plugin = {
   otherTypes: ["destination"],
   category: "database",
   badge: "",
-  showLink: true,
+  showLink: false,
   packageName: "@grouparoo/sqlite",
   // useCases: {
   //   paragraphOne:
-  //     "Grouparoo is open source data infrastructure to keep your customer data in-sync with 3rd party tools.",
-  //   paragraphTwo:
-  //     "Grouparoo pulls customer data in real-time from your database, data warehouse, and other data sources.",
+  // "Grouparoo is open source data infrastructure to keep your customer data in-sync with 3rd party tools.",
+  // paragraphTwo:
+  // "Grouparoo pulls customer data in real-time from your database, data warehouse, and other data sources.",
   // },
   // useCasesList: [
   //   "Easily connect your production data with 3rd party tools",
