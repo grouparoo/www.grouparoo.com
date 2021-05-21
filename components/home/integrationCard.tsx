@@ -24,13 +24,14 @@ export default function IntegrationCard({
   const card = (
     <div
       style={{ borderRadius: "5px", boxShadow: "5px 5px 5px 5px lightgrey" }}
+      className="h-100"
     >
       <Card
         bg="dark"
         text="white"
-        className={showLink ? "integrationCard" : ""}
+        className={showLink ? "integrationCard h-100" : "h-100"}
       >
-        <Card.Body className="">
+        <Card.Body>
           <SmallIntegration
             fillWidth={true}
             image={image}
