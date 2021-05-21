@@ -24,11 +24,12 @@ export default function IntegrationCard({
   const card = (
     <div
       style={{ borderRadius: "5px", boxShadow: "5px 5px 5px 5px lightgrey" }}
+      className="h-100"
     >
       <Card
         bg="dark"
         text="white"
-        className={showLink ? "integrationCard" : ""}
+        className={showLink ? "integrationCard h-100" : "h-100"}
       >
         <Card.Body>
           <SmallIntegration
@@ -64,7 +65,7 @@ export default function IntegrationCard({
           )}
           {category ? (
             <>
-              <Badge pill variant="primary">
+              <Badge pill variant="primary" className="text-wrap m-1">
                 {" "}
                 {category.toUpperCase()}
               </Badge>

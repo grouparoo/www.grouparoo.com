@@ -60,6 +60,7 @@ export default function IntegrationsPage() {
                       sm={6}
                       xs={6}
                       key={`plugin-${plugin.name}`}
+                      className="py-4"
                     >
                       <IntegrationCard
                         name={plugin.name}
