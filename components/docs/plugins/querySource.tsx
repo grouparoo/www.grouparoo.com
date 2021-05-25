@@ -14,6 +14,7 @@ const PluginDocsQuerySource = ({
   isTablesUpperCase?: boolean;
 }) => {
   const slug = plugin.toLowerCase();
+
   const codeBlocks = {
     tableSourceMapping: `
 mapping: {
@@ -28,19 +29,24 @@ mapping: {
     querySchedule: `
 {
   options: {
-    query: "SELECT id FROM ${
+    query: "SELECT ${isTablesUpperCase ? "id".toUpperCase() : "id"} FROM ${
       isTablesUpperCase ? "users".toUpperCase() : "users"
-    } WHERE updated_at >= (NOW() - INTERVAL '2 day')",
-    propertyId: "userId"
+    } WHERE ${
+      isTablesUpperCase ? "updated_at".toUpperCase() : "updated_at"
+    } >= (NOW() - INTERVAL '2 day')", propertyId: "userId"
   }
 }
   `,
     queryProperties: `
 {
   options: {
-    query: "SELECT SUM(price) from ${
+    query: "SELECT SUM(${
+      isTablesUpperCase ? "price".toUpperCase() : "price"
+    }) from ${
       isTablesUpperCase ? "purchases".toUpperCase() : "purchases"
-    } where user_id = {{userId}}";
+    } where ${
+      isTablesUpperCase ? "user_id".toUpperCase() : "user_id"
+    } = {{userId}}";
   }
 }
   `,
