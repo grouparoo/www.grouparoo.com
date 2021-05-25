@@ -60,4 +60,31 @@ export const Snowflake: Plugin = {
       imageHeight: 492,
     },
   ],
+  configOptions: {
+    account: {
+      required: true,
+      description:
+        "The full name of the account (provided by Snowflake). It is the subdomain you use to access Snowflake.",
+    },
+    username: {
+      required: true,
+      description: "Snowflake user login name to connect with.",
+    },
+    password: {
+      required: true,
+      description: "Password for the given username.",
+    },
+    warehouse: {
+      required: true,
+      description: "The Snowflake warehouse to use.",
+    },
+    database: {
+      required: true,
+      description: "The Snowflake database to use.",
+    },
+    schema: {
+      required: false,
+      description: "The Snowflake schema (default: PUBLIC)",
+    },
+  },
 };
