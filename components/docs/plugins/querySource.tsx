@@ -6,9 +6,14 @@ import { Alert } from "..";
 import CodeBlock from "./codeBlock";
 import OptionsList from "./optionsList";
 
-const PluginDocsQuerySource = ({ plugin }: { plugin: string }) => {
+const PluginDocsQuerySource = ({
+  plugin,
+  isTablesUpperCase = false,
+}: {
+  plugin: string;
+  isTablesUpperCase?: boolean;
+}) => {
   const slug = plugin.toLowerCase();
-
   const codeBlocks = {
     tableSourceMapping: `
 mapping: {
@@ -23,7 +28,9 @@ mapping: {
     querySchedule: `
 {
   options: {
-    query: "SELECT id FROM users WHERE updated_at >= (NOW() - INTERVAL '2 day')",
+    query: "SELECT id FROM ${
+      isTablesUpperCase ? "users".toUpperCase() : "users"
+    } WHERE updated_at >= (NOW() - INTERVAL '2 day')",
     propertyId: "userId"
   }
 }
@@ -31,7 +38,9 @@ mapping: {
     queryProperties: `
 {
   options: {
-    query: "SELECT SUM(price) from purchases where user_id = {{userId}}";
+    query: "SELECT SUM(price) from ${
+      isTablesUpperCase ? "purchases".toUpperCase() : "purchases"
+    } where user_id = {{userId}}";
   }
 }
   `,

@@ -17,7 +17,16 @@ This guide will show you how to work with the Snowflake plugin to [create a Sour
 
 <ValidateAndApplyConfig headingLevel="h3" />
 
-<PluginDocsColumnarSource plugin="Snowflake" />
+<Alert variant="warning">
+  <p className="mb-1">
+    <strong>Important!</strong>
+  </p>
+  <p className="mb-0">
+    All table names should be represented in UPPER CASE in Snowflake databases.
+  </p>
+</Alert>
+
+<PluginDocsColumnarSource plugin="Snowflake" isTablesUpperCase={true} />
 
 ## Snowflake Next Steps
 
