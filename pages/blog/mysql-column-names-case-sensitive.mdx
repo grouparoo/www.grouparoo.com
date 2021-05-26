@@ -1,0 +1,110 @@
+---
+title: "Are MySQL columns names sometimes case sensitive?"
+date: "2021-05-26"
+author: "Brian Leonard"
+pullQuote: "It turns out you have to be a little bit careful here"
+image: "mysql-column-names-case-sensitive/cases.jpg"
+tags: [engineering, notes]
+---
+
+There is a debate among a very specific set of people about what case to use in SQL queries. This debate is made possible by the fact that, generally, it does not matter. I believed this to be true even about [identifiers](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html) like columns names.
+
+For example, both of these queries returns the same data even though the "real" column is defined in lowercase.
+
+- `SELECT first_name FROM users`
+- `SELECT FIRST_NAME FROM USERS`
+
+Let's try in the MySQL console.
+
+```
+mysql> SELECT first_name FROM users;
++------------+
+| first_name |
++------------+
+| John       |
+| Sarah      |
++------------+
+2 rows in set (0.00 sec)
+```
+
+```
+mysql> SELECT FIRST_NAME FROM USERS;
++------------+
+| FIRST_NAME |
++------------+
+| John       |
+| Sarah      |
++------------+
+2 rows in set (0.00 sec)
+```
+
+Notice that the data is the same, but the "header" is different in each case.
+
+So let's say I had code like this:
+
+```js
+connection.query(
+  "SELECT first_name FROM users",
+  function (error, results, fields) {
+    console.log("The user is: ", results[0].first_name);
+  }
+);
+```
+
+This would output `The user is: John` as expected. However, if the uppercase query was used (`SELECT FIRST_NAME FROM USERS`) instead, it would output `The user is: undefined`.
+
+So you have to be a little careful here, but often, the same code is doing the query and using it. Its tends to work out.
+
+## But not always?
+
+Our tool, [Grouparoo](https://www.grouparoo.com) connects to sources like MySQL to learn about customers and sync that data to destinations like Salesforce. In this process, we have to introspect the database.
+
+We do a query that looks something like this:
+
+```
+mysql> SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS
+    ->   WHERE table_schema = 'db' AND table_name = 'users';
++-------------+
+| COLUMN_NAME |
++-------------+
+| first_name  |
+| id          |
++-------------+
+2 rows in set (0.00 sec)
+```
+
+Do you see what has happened here? I asked for lowercase `column_name` like before, but I got back uppercase `COLUMN_NAME`.
+
+I have not been able to figure what is going on other than to assume the `INFORMATION_SCHEMA` is just different. I previously believed it was the same as all other tables in all respects.
+
+We had only encountered lowercase values returned, but then ran across this one with a new user. Our code with `row.column_name` failed because it was `undefined`.
+
+## So what to do?
+
+Having seen this, I was lacking the confidence to assume it was either way. The solution that I came up in the [pull request](https://github.com/grouparoo/grouparoo/pull/1809) was to be more explicit.
+
+The code now does this query:
+
+```
+mysql> SELECT column_name AS column_name FROM INFORMATION_SCHEMA.COLUMNS
+    ->   WHERE table_schema = 'db' AND table_name = 'users';
++-------------+
+| column_name |
++-------------+
+| first_name  |
+| id          |
++-------------+
+2 rows in set (0.00 sec)
+```
+
+I don't feel like this should be necessary, but you can't argue with (database) results.
+
+Now, the `row.column_name` works as expected and we can help users pick the column(s) they want to sync to their tools.
+
+<Image
+  centered
+  alt="Some sensitive cases"
+  src="mysql-column-names-case-sensitive/cases.jpg"
+  width={827}
+  height={620}
+/>
