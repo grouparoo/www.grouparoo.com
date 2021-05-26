@@ -9,7 +9,7 @@
         <title>Grouparoo: Blog</title>
         <link>https://www.grouparoo.com/blog</link>
         <description>Articles and updates from Grouparoo.</description>
-        <lastBuildDate>Fri, 21 May 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 26 May 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,61 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title
+      ><![CDATA[Are MySQL columns names sometimes case sensitive?]]></title>
+            <link
+      >https://www.grouparoo.com/blog/mysql-column-names-case-sensitive</link>
+            <guid>grouparoo-blog-post-mysql-column-names-case-sensitive</guid>
+            <pubDate>Wed, 26 May 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>There is a debate among a very specific set of people about what case to use in SQL queries. This debate is made possible by the fact that, generally, it does not matter. I believed this to be true even about <a href="https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html" target="_blank" rel="nofollow noopener noreferrer">identifiers</a> like columns names.</p><p>For example, both of these queries returns the same data even though the &quot;real&quot; column is defined in lowercase.</p><ul><li><code>SELECT first_name FROM users</code></li><li><code>SELECT FIRST_NAME FROM USERS</code></li></ul><p>Let&#x27;s try in the MySQL console.</p><pre><code>mysql&gt; SELECT first_name FROM users;
++------------+
+| first_name |
++------------+
+| John       |
+| Sarah      |
++------------+
+2 rows in set (0.00 sec)
+</code></pre><pre><code>mysql&gt; SELECT FIRST_NAME FROM USERS;
++------------+
+| FIRST_NAME |
++------------+
+| John       |
+| Sarah      |
++------------+
+2 rows in set (0.00 sec)
+</code></pre><p>Notice that the data is the same, but the &quot;header&quot; is different in each case.</p><p>So let&#x27;s say I had code like this:</p><pre class="language-js"><code class="language-js">connection<span class="token punctuation">.</span><span class="token method function property-access">query</span><span class="token punctuation">(</span>
+  <span class="token string">&quot;SELECT first_name FROM users&quot;</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">error<span class="token punctuation">,</span> results<span class="token punctuation">,</span> fields</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;The user is: &quot;</span><span class="token punctuation">,</span> results<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token property-access">first_name</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p>This would output <code>The user is: John</code> as expected. However, if the uppercase query was used (<code>SELECT FIRST_NAME FROM USERS</code>) instead, it would output <code>The user is: undefined</code>.</p><p>So you have to be a little careful here, but often, the same code is doing the query and using it. Its tends to work out.</p><h2 id="but-not-always"><a href="#but-not-always">But not always?</a></h2><p>Our tool, <a href="https://www.grouparoo.com" target="_blank" rel="nofollow noopener noreferrer">Grouparoo</a> connects to sources like MySQL to learn about customers and sync that data to destinations like Salesforce. In this process, we have to introspect the database.</p><p>We do a query that looks something like this:</p><pre><code>mysql&gt; SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS
+    -&gt;   WHERE table_schema = &#x27;db&#x27; AND table_name = &#x27;users&#x27;;
++-------------+
+| COLUMN_NAME |
++-------------+
+| first_name  |
+| id          |
++-------------+
+2 rows in set (0.00 sec)
+</code></pre><p>Do you see what has happened here? I asked for lowercase <code>column_name</code> like before, but I got back uppercase <code>COLUMN_NAME</code>.</p><p>I have not been able to figure what is going on other than to assume the <code>INFORMATION_SCHEMA</code> is just different. I previously believed it was the same as all other tables in all respects.</p><p>We had only encountered lowercase values returned, but then ran across this one with a new user. Our code with <code>row.column_name</code> failed because it was <code>undefined</code>.</p><h2 id="so-what-to-do"><a href="#so-what-to-do">So what to do?</a></h2><p>Having seen this, I was lacking the confidence to assume it was either way. The solution that I came up in the <a href="https://github.com/grouparoo/grouparoo/pull/1809" target="_blank" rel="nofollow noopener noreferrer">pull request</a> was to be more explicit.</p><p>The code now does this query:</p><pre><code>mysql&gt; SELECT column_name AS column_name FROM INFORMATION_SCHEMA.COLUMNS
+    -&gt;   WHERE table_schema = &#x27;db&#x27; AND table_name = &#x27;users&#x27;;
++-------------+
+| column_name |
++-------------+
+| first_name  |
+| id          |
++-------------+
+2 rows in set (0.00 sec)
+</code></pre><p>I don&#x27;t feel like this should be necessary, but you can&#x27;t argue with (database) results.</p><p>Now, the <code>row.column_name</code> works as expected and we can help users pick the column(s) they want to sync to their tools.</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Some sensitive cases" src="https://www.grouparoo.com/posts/mysql-column-names-case-sensitive/cases.jpg" width="827" height="620" style="height:620px;width:827px;max-height:100%;max-width:100%" class="imageOutline"/></div></div>]]></content:encoded>
+            <enclosure
+        url="https://www.grouparoo.com/posts/mysql-column-names-case-sensitive/cases.jpg"
+        length="0"
+        type="image/jpg"
+      />
+        </item>
         <item>
             <title><![CDATA[Your smart frontend is doing too much]]></title>
             <link
