@@ -1,7 +1,16 @@
 import { Fragment } from "react";
-import { Accordion, Button, Tabs, Tab, Table } from "react-bootstrap";
+import {
+  Alert,
+  Accordion,
+  Button,
+  Tabs,
+  Tab,
+  Table,
+  NavItem,
+} from "react-bootstrap";
 import pgRuleOps from "../../data/property-ops-dictionary--postgres.json";
 import sqliteRuleOps from "../../data/property-ops-dictionary--sqlite.json";
+import CodeBlock from "../code";
 
 const propertyTypes = [
   "boolean",
@@ -64,14 +73,27 @@ const DataTable = ({ data, heading, eventKey }) => {
       <Accordion.Collapse eventKey={eventKey}>
         <Fragment>
           <p>
+            {heading === "date" ? (
+              <Alert variant="primary">
+                💡 Dates used for calculated groups should use full ISO-8601
+                format: <br />
+                <span className="pl-4">
+                  <b>YYYY-MM-DDThh:mm:ss.mmm+TZD</b>{" "}
+                  ("2020-09-01T08:15:00-8:00")
+                </span>
+                A date passed as YYYY-MM-DD will pass validation, but may result
+                in less accurate group results.
+              </Alert>
+            ) : null}
             The following operators are available on <code>{heading}</code>{" "}
             properties:
           </p>
           <Table>
             <thead>
               <tr>
-                <th>Operator</th>
-                <th>Description</th>
+                <th scope="col">Operator</th>
+                <th scope="col">Description</th>
+                {heading === "date" ? <th scope="col">Example</th> : null}
               </tr>
             </thead>
             <tbody>
@@ -81,6 +103,17 @@ const DataTable = ({ data, heading, eventKey }) => {
                     <code>{item.op}</code>
                   </td>
                   <td>{item.description}</td>
+                  <td>
+                    {" "}
+                    {item.example ? (
+                      <>
+                        <div className="col-10">
+                          <CodeBlock value={item.example} />
+                          <p className="pl-2">{item.caption}</p>
+                        </div>
+                      </>
+                    ) : null}
+                  </td>
                 </tr>
               ))}
             </tbody>

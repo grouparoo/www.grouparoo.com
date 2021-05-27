@@ -20,11 +20,15 @@
   "date": [
     {
       "op": "exists",
-      "description": "exists with any value"
+      "description": "exists with any value",
+      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"exists\" }\n}",
+      "caption": "All users who have made a purchase"
     },
     {
       "op": "notExists",
-      "description": "does not exist"
+      "description": "does not exist",
+      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"notExists\" }\n}",
+      "caption": "All users who have not made a purchase"
     },
     {
       "op": "eq",
@@ -36,27 +40,39 @@
     },
     {
       "op": "gt",
-      "description": "is after"
+      "description": "is after",
+      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"lt\" }\n  \"match\": \"2020-12-25T04:45:00-7:00\"\n}",
+      "caption": "All users whose most recent purchase is after December 25, 2020 at 04:45:00 PDT."
     },
     {
       "op": "lt",
-      "description": "is before"
+      "description": "is before",
+      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"lt\" }\n  \"match\": \"2021-05-25T09:30:00-7:00\"\n}",
+      "caption": "All users whose most recent purchase is prior to May 25, 2021 9:30:00 AM PDT."
     },
     {
       "op": "gte",
-      "description": "is on or after"
+      "description": "is on or after",
+      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"gte\" }\n  \"match\": \"2019-06-14T18:16:00.000-07:00\"\n}",
+      "caption": "All users whose most recent purchase is exactly at or after June 14, 2019 at 6:16 PM PDT"
     },
     {
       "op": "lte",
-      "description": "is on or before"
+      "description": "is on or before",
+      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"lte\" }\n  \"match\": \"2020-12-25T04:45:00-7:00\"\n}",
+      "caption": "All users whose most recent purchase is exactly at or before December 25, 2020 at 04:45:00 PDT."
     },
     {
       "op": "relative_gt",
-      "description": "is in the past"
+      "description": "is in the past",
+      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"relative_gt\" },\n  \"relativeMatchNumber\": \"60\",\n  \"relativeMatchUnit\": \"days\"\n}",
+      "caption": "All users whose most recent purchase is within the last 60 days"
     },
     {
       "op": "relative_lt",
-      "description": "is in the future"
+      "description": "is in the future",
+      "example": "{\n  \"propertyId\": \"subscription_ends\", \n  \"operation\": {\"op\": \"relative_lt\" },\n  \"relativeMatchNumber\": \"30\",\n  \"relativeMatchUnit\": \"days\"\n}",
+      "caption": "All users whose subscription ends within the next 30 days"
     }
   ],
   "email": [
@@ -311,13 +327,7 @@
       "description": "is not like (case insensitive)"
     }
   ],
-  "_relativeMatchUnits": [
-    "days",
-    "weeks",
-    "months",
-    "quarters",
-    "years"
-  ],
+  "_relativeMatchUnits": ["days", "weeks", "months", "quarters", "years"],
   "_convenientRules": {
     "exists": {
       "operation": {
