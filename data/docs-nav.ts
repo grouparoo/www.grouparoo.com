@@ -112,6 +112,7 @@ const DocsNav: NavItem[] = [
     children: [
       { title: "Intercom", path: "/docs/plugins/grouparoo-intercom" },
       { title: "Postgres", path: "/docs/plugins/grouparoo-postgres" },
+      { title: "Snowflake", path: "/docs/plugins/grouparoo-snowflake" },
       { title: "SQLite", path: "/docs/plugins/grouparoo-sqlite" },
     ],
   },
