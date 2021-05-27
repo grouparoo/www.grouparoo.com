@@ -60,4 +60,38 @@ export const Redshift: Plugin = {
       imageHeight: 619,
     },
   ],
+  configOptions: {
+    host: {
+      default: "localhost",
+      required: false,
+      description: "Database host.",
+    },
+    port: {
+      default: 5439,
+      required: false,
+      description: "Port on which to open database connection.",
+    },
+    database: {
+      required: true,
+      description: 'The database name - e.g. `"data_warehouse"`.',
+    },
+    schema: {
+      default: "public",
+      required: false,
+      description:
+        "Schema used to read tables. The plugin works inside a single schema.",
+    },
+    user: {
+      required: false,
+      default: undefined,
+      description:
+        'The user to connect to the database - e.g. `"grouparoo_user"`.  If you are connecting to localhost, leave as `undefined`.',
+    },
+    password: {
+      required: false,
+      default: undefined,
+      description:
+        'The database password - e.g. `"P@assword"`.  If you don\'t have a password, leave as `undefined`.',
+    },
+  },
 };
