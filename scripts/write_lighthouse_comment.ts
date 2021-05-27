@@ -92,8 +92,11 @@ function getComment(urlData, urlReport) {
 
   const output = `
 **Lighthouse Performance Results**
-<details><summary>Click to Expand</summary>
+<details>
+<summary>Click to Expand</summary>
+
 ${makeTable(table)}
+
 </details>
   `;
 
