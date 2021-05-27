@@ -113,6 +113,7 @@ const DocsNav: NavItem[] = [
       { title: "Intercom", path: "/docs/plugins/grouparoo-intercom" },
       { title: "MySQL", path: "/docs/plugins/grouparoo-mysql" },
       { title: "Postgres", path: "/docs/plugins/grouparoo-postgres" },
+      { title: "Redshift", path: "/docs/plugins/grouparoo-redshift" },
       { title: "Snowflake", path: "/docs/plugins/grouparoo-snowflake" },
       { title: "SQLite", path: "/docs/plugins/grouparoo-sqlite" },
     ],
