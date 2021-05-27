@@ -90,7 +90,16 @@ function getComment(urlData, urlReport) {
     table.push([title, performance, accessibility, practices, seo]);
   }
 
-  const output = makeTable(table);
+  const output = `
+**Lighthouse Performance Results**
+<details>
+<summary>Click to Expand</summary>
+
+${makeTable(table)}
+
+</details>
+  `;
+
   return output;
 }
 
