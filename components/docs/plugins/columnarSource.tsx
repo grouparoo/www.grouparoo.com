@@ -3,7 +3,13 @@ import Link from "next/link";
 import TableSource from "./tableSource";
 import QuerySource from "./querySource";
 
-const PluginDocsColumnarSource = ({ plugin }: { plugin: string }) => {
+const PluginDocsColumnarSource = ({
+  plugin,
+  isTablesUpperCase = false,
+}: {
+  plugin: string;
+  isTablesUpperCase?: boolean;
+}) => {
   const slug = plugin.toLowerCase();
 
   return (
@@ -40,7 +46,7 @@ const PluginDocsColumnarSource = ({ plugin }: { plugin: string }) => {
       </ul>
 
       <TableSource plugin={plugin} />
-      <QuerySource plugin={plugin} />
+      <QuerySource plugin={plugin} isTablesUpperCase={isTablesUpperCase} />
     </>
   );
 };
