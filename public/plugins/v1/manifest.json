@@ -100,6 +100,16 @@
     "docsUrl": null
   },
   {
+    "name": "MongoDB",
+    "description": "",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/mongodb/mongodb.svg",
+    "packageName": "@grouparoo/mongodb",
+    "source": true,
+    "destination": false,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/mongodb",
+    "docsUrl": null
+  },
+  {
     "name": "MySQL",
     "description": "Grouparoo's MySQL integration allows you to sync all of your customer data that lives in your MySQL database with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/mysql/mysql.png",
@@ -107,7 +117,7 @@
     "source": true,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/mysql",
-    "docsUrl": null
+    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-mysql"
   },
   {
     "name": "OneSignal",
@@ -117,6 +127,16 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/onesignal",
+    "docsUrl": null
+  },
+  {
+    "name": "Pardot",
+    "description": "",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/pardot/pardot.svg",
+    "packageName": "@grouparoo/pardot",
+    "source": false,
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/pardot",
     "docsUrl": null
   },
   {
@@ -197,7 +217,7 @@
     "source": true,
     "destination": false,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/snowflake",
-    "docsUrl": null
+    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-snowflake"
   },
   {
     "name": "Zendesk",
