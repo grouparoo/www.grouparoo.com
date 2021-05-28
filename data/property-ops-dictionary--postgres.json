@@ -32,22 +32,26 @@
     },
     {
       "op": "eq",
-      "description": "is equal to"
+      "description": "is equal to",
+      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"eq\" }\n  \"match\": \"2021-05-25T04:45:00.000-7:00\"\n}",
+      "caption": "All users whose most recent purchase was on May 25, 2021 at exactly 4:45AM PDT."
     },
     {
       "op": "ne",
-      "description": "is not equal to"
+      "description": "is not equal to",
+      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"ne\" }\n  \"match\": \"2021-05-25T04:45:00.000-7:00\"\n}",
+      "caption": "All users whose most recent purchase was anytime except May 25, 2021 at exactly 4:45AM PDT."
     },
     {
       "op": "gt",
       "description": "is after",
-      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"lt\" }\n  \"match\": \"2020-12-25T04:45:00-7:00\"\n}",
+      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"lt\" }\n  \"match\": \"2020-12-25T04:45:00.000-7:00\"\n}",
       "caption": "All users whose most recent purchase is after December 25, 2020 at 04:45:00 PDT."
     },
     {
       "op": "lt",
       "description": "is before",
-      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"lt\" }\n  \"match\": \"2021-05-25T09:30:00-7:00\"\n}",
+      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"lt\" }\n  \"match\": \"2021-05-25T09:30:00.000-7:00\"\n}",
       "caption": "All users whose most recent purchase is prior to May 25, 2021 9:30:00 AM PDT."
     },
     {
@@ -59,7 +63,7 @@
     {
       "op": "lte",
       "description": "is on or before",
-      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"lte\" }\n  \"match\": \"2020-12-25T04:45:00-7:00\"\n}",
+      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"lte\" }\n  \"match\": \"2020-12-25T04:45:00.000-7:00\"\n}",
       "caption": "All users whose most recent purchase is exactly at or before December 25, 2020 at 04:45:00 PDT."
     },
     {
