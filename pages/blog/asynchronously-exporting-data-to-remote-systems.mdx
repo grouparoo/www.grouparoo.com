@@ -1,0 +1,73 @@
+---
+title: "Asynchronously Exporting Data to Remote Systems"
+date: "2021-05-28"
+author: "Pedro S Lopez"
+pullQuote: "Some batch import APIs work asynchronously and don't process your requests right away."
+image: "asynchronously-exporting-data-to-remote-systems/bus-stop.jpeg"
+tags: [engineering]
+---
+
+When integrating with [Destinations](/docs/getting-started/product-concepts#destination), there are generally two main approaches made available by API providers: **single** or **batched**. With the "single" approach, one API request usually affects a single profile in the destination. The "batched" approach, which you can read more about [here](https://www.grouparoo.com/blog/batching-api-requests), allows you to affect multiple profiles in a single API request. This is usually preferred due to rate limits put in place and because they are often faster in aggregate than their single counterparts when dealing with a large number of profiles.
+
+However, within the world of batched APIs you may find a few different approaches. In most cases, issuing an API request to import a batch of profiles to a destination resolves right away and immediately gives a response with information about whether the action was successful or not, as well as which profiles had errors.
+
+On the other side, some APIs enqueue the action to be processed later and instead require you to check back on its status to know if it was successful. This is because these APIs are designed to support high volume data transfers, which can take longer to process. The asynchronous approach adds resiliency, minimizing the issues that could occur with leaving a request open for a long time while processing the data.
+
+## Working with Asynchronous Destinations
+
+Because these APIs are designed to support high volume data transfers, which
+
+[Eloqua's Bulk API](https://docs.oracle.com/en/cloud/saas/marketing/eloqua-develop/Developers/BulkAPI/bulk-API.htm) is an example of a destination that operates in this "asynchronous" fashion. Importing data to Eloqua involves a few steps:
+
+1. **Create an import**. This involves specifying which fields you want to import, and gives you a URI that you can use to upload the data.
+2. **Upload the data.** Using the URI retrieved in the previous step, the data you want to import is uploaded to a "staging area".
+3. **Initiate the import.** This request actually triggers the import to be executed. Instead of directly receiving a response with the results of the import, you're given a URI that can be used to check on the status import later on.
+
+<Image
+  alt="Eloqua Bulk API Asynchronous Flow Diagram"
+  src="asynchronously-exporting-data-to-remote-systems/eloqua_asyncflow_diagram.png"
+  source="https://docs.oracle.com/en/cloud/saas/marketing/eloqua-develop/Developers/GettingStarted/FAQs/bulk-FAQs.htm"
+  centered
+  width={617}
+  height={350}
+/>
+<small>
+  <center>
+    <em>Eloqua Asynchronous Flow Diagram</em>
+  </center>
+</small>
+<br />
+
+Similarly, [SendGrid](https://sendgrid.api-docs.io/v3.0/contacts/add-or-update-a-contact)
+can also work like this, though it's a bit more streamlined and only requires a single
+request to set up the import. The result of this request, much like Eloqua, includes
+a `job_id` that you can use to check on the status of the import.
+
+### Size limits
+
+Something to note about these imports is that they usually have a limit on the size of the request that can be issued. For example, Eloqua has a hard limit of 32MB per request, though it allows you to issue multiple upload requests up to a recommended 250MB in total. SendGrid is a bit more limiting, only allowing 6MB of data to be sent per job. However, SendGrid also supports uploading the data [by using CSV](https://sendgrid.api-docs.io/v3.0/contacts/import-contacts), which gives you a more generous 5GB limit.
+
+### Checking on completion
+
+Some of these APIs allow you to give them a `callbackUrl` that will be called once an import is complete. This may be a good option if you're able to expose an endpoint that the remote system can call, but this isn't always possible or convenient depending on your setup.
+
+The more common approach is to receive an ID that can be used to check on how the import is doing via some status endpoint. This requires you to implement a recurring polling solution to keep checking until it's done.
+
+These endpoints usually return a `status` that indicates where in the process a given import is at. For example, Eloqua's imports can be `pending`, `active`, `success`, `warning` or `errored`.
+
+### Handling errors
+
+An interesting consequence of having this two-step process is that now errors need to be handled at different stages. In the initial upload of the data, some APIs can return validation errors for some profiles. Then, when the import is actually completed, some profiles may have failed, which also needs to be handled. The action of checking on the import could also potentially fail, which also needs to be considered.
+
+## Grouparoo
+
+As a tool to keep your data synchronized between systems, Grouparoo has support for all types of destinations, including asynchronous destinations, built-in. Take a look at our available [integrations](/integrations), or make your own plugin to leverage the platform. Best of all, we're open source!
+
+<Image
+  alt="Waiting at the bus stop"
+  src="asynchronously-exporting-data-to-remote-systems/bus-stop.jpeg"
+  source="https://yourteenmag.com/family-life/communication/waiting-at-the-bus-stop"
+  centered
+  width={1051}
+  height={500}
+/>
