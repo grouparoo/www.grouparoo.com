@@ -1,5 +1,15 @@
 [
   {
+    "name": "BigQuery",
+    "description": "Grouparoo's Google BigQuery integration allows you to sync all of your customer data that lives in your Google BigQuery data warehouse with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/bigquery/bigquery.png",
+    "packageName": "@grouparoo/bigquery",
+    "source": true,
+    "destination": false,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/bigquery",
+    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-bigquery"
+  },
+  {
     "name": "CSV",
     "description": "",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/csv/csv.svg",
@@ -27,16 +37,6 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/facebook",
-    "docsUrl": null
-  },
-  {
-    "name": "Google BigQuery",
-    "description": "Grouparoo's Google BigQuery integration allows you to sync all of your customer data that lives in your Google BigQuery data warehouse with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/bigquery/bigquery.png",
-    "packageName": "@grouparoo/bigquery",
-    "source": true,
-    "destination": false,
-    "npmUrl": "https://www.npmjs.com/package/@grouparoo/bigquery",
     "docsUrl": null
   },
   {
