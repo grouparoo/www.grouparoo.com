@@ -1,0 +1,18 @@
+---
+title: "Upgrading Grouparoo from v0.3 to v0.4"
+date: "2021-06-01"
+pullQuote: "v0.3 focuses on performance."
+---
+
+Hello Grouparoo Community! v0.4 is a release focused on performance. There aren't many new features, but everything Grouparoo does is faster now!
+
+## Upgrade Guide
+
+1. Update Grouparoo to the latest version through the usual steps by updating all the package version numbers to the latest version. More information is documented in [Installing updates](/docs/support/upgrading-grouparoo#installing-updates).
+2. Deploy the application!
+
+## Slow Database Migrations
+
+There are no special steps needed to upgrade to Grouparoo v0.4, but there are a few database migrations involved in this release which may be slow to apply depending on the volume of your data. Depending on how you deploy Grouparoo, you may need to take extra care to ensure that the migrations complete. For example, if your Docker deployments only allow 30s for the application to boot before considering it failed... you will need to adjust that.
+
+You can learn how to [manually apply Grouparoo migrations here](/docs/support/common-issues#slow-migrations).
