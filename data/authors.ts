@@ -89,6 +89,15 @@ const Authors: Author[] = [
     description:
       "Jaden is the dev advocate at TakeShape.io and a caffeine-powered freelance Jamstack and full-stack web developer. When he is not behind a computer screen, he is usually just playing the guitar and simultaneously thinking about programming.",
   },
+  {
+    name: "Yashovardhan Agrawal",
+    slug: "yashovardhan",
+    image: "yashovardhan.jpg",
+    url: "https://yashovardhan.dev",
+    twitter: "@yashovardhan",
+    description:
+      "Yash is an Open Source Developer Evangelist and a total Javascript nerd. He loves sharing his ideas, through writings, talks or just being around at hackathons and tech events. While not coding, you can always find Yash singing some random Indian bollywood song!",
+  },
 ];
 
 export default Authors;
