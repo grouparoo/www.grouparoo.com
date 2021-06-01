@@ -31,7 +31,7 @@ module.exports = {
       {
         source: "/docker-compose",
         destination:
-          "https://raw.githubusercontent.com/grouparoo/app-example-docker/main/docker-compose.published.yml",
+          "https://raw.githubusercontent.com/grouparoo/omnibus/main/docker-compose.yml",
         statusCode: 301,
       },
       {
