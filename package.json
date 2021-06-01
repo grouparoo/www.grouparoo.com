@@ -52,7 +52,7 @@
     "rehype-slug": "4.0.1",
     "remark-external-links": "8.0.0",
     "remark-react": "^8.0.0",
-    "sass": "1.32.12",
+    "sass": "1.34.0",
     "sharp": "0.28.1",
     "sitemap": "6.4.0",
     "typescript": "4.2.4",
