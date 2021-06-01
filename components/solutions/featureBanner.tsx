@@ -1,6 +1,4 @@
-import { Interface } from "node:readline";
 import { Row, Col, Container } from "react-bootstrap";
-import Image from "../Image";
 
 export interface Feature {
   title: string;
