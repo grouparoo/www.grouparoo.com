@@ -27,11 +27,20 @@ The quickest way to see Grouparoo in action is try it locally with Node.js.
 
 Assuming you have [Node.js](https://nodejs.org/en/download/) (v12+) installed, all you have to do to get started is:
 
-```
+```shell
 # in a new directory
 npm install -g grouparoo
 grouparoo init .
 grouparoo start
+```
+
+You can also try the [`grouparoo/omnibus` docker image](https://github.com/grouparoo/omnibus). This Docker image contains a number of popular Grouparoo plugins, including commercially licensed `@grouparoo/ui-enterprise` package. You can trial this docker image for a 1-month period before [contacting us for a license](/meet).
+
+```shell
+curl -L https://www.grouparoo.com/docker-compose --output docker-compose.yml
+docker compose up
+# wait for boot
+# visit http://localhost:3000
 ```
 
 ## Getting Started with Grouparoo
