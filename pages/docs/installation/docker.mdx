@@ -60,3 +60,16 @@ docker build .
 ### Step 4: Run Your Image
 
 Push and run your docker image!
+
+## `grouparoo/omnibus`
+
+You can also try the [`grouparoo/omnibus` docker image](https://github.com/grouparoo/omnibus). This Docker image contains a number of popular Grouparoo plugins, including commercially licensed `@grouparoo/ui-enterprise` package. You can trial this docker image for a 1-month period before [contacting us for a license](/meet).
+
+```shell
+curl -L https://www.grouparoo.com/docker-compose --output docker-compose.yml
+docker compose up
+# wait for boot
+# visit http://localhost:3000
+```
+
+This project may be a good reference if you need to install private NPM packages within your Docker image.
