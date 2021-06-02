@@ -79,7 +79,7 @@ const DataTable = ({ data, heading, eventKey }) => {
                 format: <br />
                 <span className="pl-4">
                   <b>YYYY-MM-DDThh:mm:ss.mmm+TZD</b>{" "}
-                  ("2020-09-01T08:15:00-8:00")
+                  ("2020-09-01T08:15:00+00:00")
                 </span>
                 A date passed as YYYY-MM-DD will pass validation, but may result
                 in less accurate group results.
@@ -88,36 +88,40 @@ const DataTable = ({ data, heading, eventKey }) => {
             The following operators are available on <code>{heading}</code>{" "}
             properties:
           </p>
-          <Table>
-            <thead>
-              <tr>
-                <th scope="col">Operator</th>
-                <th scope="col">Description</th>
-                {heading === "date" ? <th scope="col">Example</th> : null}
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((item, idx) => (
-                <tr key={idx}>
-                  <td>
-                    <code>{item.op}</code>
-                  </td>
-                  <td>{item.description}</td>
-                  <td>
-                    {" "}
-                    {item.example ? (
-                      <>
-                        <div className="col-10">
-                          <CodeBlock value={item.example} />
-                          <p className="pl-2">{item.caption}</p>
-                        </div>
-                      </>
-                    ) : null}
-                  </td>
+          <div className="table-responsive">
+            <Table>
+              <thead>
+                <tr>
+                  <th scope="col">Operator</th>
+                  <th scope="col">Description</th>
+                  <th scope="col" className="d-none d-md-table-cell">
+                    Example
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
+              </thead>
+              <tbody>
+                {data.map((item, idx) => (
+                  <tr key={idx}>
+                    <td className="col-6 col-md-3">
+                      <code>{item.op}</code>
+                    </td>
+                    <td className="col-6 col-md-3">{item.description}</td>
+                    <td className="col-12 col-md-6">
+                      {" "}
+                      {item.example ? (
+                        <>
+                          <div>
+                            <CodeBlock value={item.example} />
+                            <p className="pl-2">{item.caption}</p>
+                          </div>
+                        </>
+                      ) : null}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </Fragment>
       </Accordion.Collapse>
     </Fragment>
