@@ -35,15 +35,15 @@ exports.default = async function buildConfig() {
 };
 ```
 
-which you can customize with rules:
+which you can customize with rules such as:
 
 ```js
 exports.default = async function buildConfig() {
   return [
     {
       class: "group",
-      id: "new_high_value_customers",
-      name: "New High Value Customers",
+      id: "recent_high_value_customers",
+      name: "Recent High Value Customers",
       type: "calculated",
       rules: [
         {

@@ -6,6 +6,8 @@ import {
   Tabs,
   Tab,
   Table,
+  Row,
+  Col,
   NavItem,
 } from "react-bootstrap";
 import pgRuleOps from "../../data/property-ops-dictionary--postgres.json";
@@ -79,7 +81,7 @@ const DataTable = ({ data, heading, eventKey }) => {
                 format: <br />
                 <span className="pl-4">
                   <b>YYYY-MM-DDThh:mm:ss.mmm+TZD</b>{" "}
-                  ("2020-09-01T08:15:00+00:00")
+                  ("2020-09-01T08:15:00+00:00"){" "}
                 </span>
                 A date passed as YYYY-MM-DD will pass validation, but may result
                 in less accurate group results.
@@ -88,40 +90,26 @@ const DataTable = ({ data, heading, eventKey }) => {
             The following operators are available on <code>{heading}</code>{" "}
             properties:
           </p>
-          <div className="table-responsive">
-            <Table>
-              <thead>
-                <tr>
-                  <th scope="col">Operator</th>
-                  <th scope="col">Description</th>
-                  <th scope="col" className="d-none d-md-table-cell">
-                    Example
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map((item, idx) => (
-                  <tr key={idx}>
-                    <td className="col-6 col-md-3">
-                      <code>{item.op}</code>
-                    </td>
-                    <td className="col-6 col-md-3">{item.description}</td>
-                    <td className="col-12 col-md-6">
-                      {" "}
-                      {item.example ? (
-                        <>
-                          <div>
-                            <CodeBlock value={item.example} />
-                            <p className="pl-2">{item.caption}</p>
-                          </div>
-                        </>
-                      ) : null}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </div>
+
+          {data.map((item, idx) => (
+            <Row
+              key={idx}
+              className="border border-top-light border-bottom-light pt-3 pb-2  align-items-center pl-lg-5 pr-lg-3"
+            >
+              <Col className="text-center col-lg-4 mx-auto mx-0 pl-4 pl-lg-0">
+                <Row>
+                  <code className="h5">{item.op}</code>
+                </Row>
+                <Row>{item.description}</Row>
+              </Col>
+              <Col className="col-12 col-lg-8 mx-auto">
+                <div className="overflow-hidden">
+                  <CodeBlock value={item.example} />
+                </div>
+                <small className="pl-2">{item.caption}</small>
+              </Col>
+            </Row>
+          ))}
         </Fragment>
       </Accordion.Collapse>
     </Fragment>

@@ -21,7 +21,7 @@
     {
       "op": "ne",
       "description": "is not equal to",
-      "example": "{\n  \"subscribed\": \"?????\", \n  \"operation\": {\"ne\": \"true\" }\n}",
+      "example": "{\n  \"propertyId\": \"subscribed\", \n  \"operation\": {\"ne\": \"true\" }\n}",
       "caption": "All non-subscribers"
     }
   ],
