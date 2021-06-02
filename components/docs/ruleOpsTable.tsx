@@ -106,7 +106,9 @@ const DataTable = ({ data, heading, eventKey }) => {
                 <div className="overflow-hidden">
                   <CodeBlock value={item.example} />
                 </div>
-                <small className="pl-2">{item.caption}</small>
+                <div className="pl-2">
+                  <small>{item.caption}</small>
+                </div>
               </Col>
             </Row>
           ))}
