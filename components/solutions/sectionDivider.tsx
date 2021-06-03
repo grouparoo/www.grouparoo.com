@@ -1,5 +1,6 @@
 import { Row, Col, Container } from "react-bootstrap";
 import Image from "../Image";
+import ImageInBrowserFrame from "../imageInBrowserFrame";
 
 export default function SectionDivider({
   imagePath,
@@ -9,6 +10,7 @@ export default function SectionDivider({
   heading,
   content,
   imageLeft,
+  browser,
 }: {
   imagePath: string;
   height: number;
@@ -17,6 +19,7 @@ export default function SectionDivider({
   background: string;
   heading: string;
   content: string;
+  browser: string;
 }) {
   let dividerContent;
 
@@ -24,13 +27,21 @@ export default function SectionDivider({
     dividerContent = (
       <Row className="align-items-center justify-content-center mx-auto featureBanner">
         <Col className="col-5">
-          <Image
-            className="centered"
-            src={imagePath}
-            alt={heading}
-            width={width}
-            height={height}
-          />
+          {browser === "true" ? (
+            <ImageInBrowserFrame
+              src={imagePath}
+              alt={heading}
+              width={width}
+              height={height}
+            />
+          ) : (
+            <Image
+              src={imagePath}
+              alt={heading}
+              width={width}
+              height={height}
+            />
+          )}
         </Col>
       </Row>
     );
@@ -39,13 +50,21 @@ export default function SectionDivider({
     dividerContent = (
       <Row className="align-items-center justify-content-center mx-auto col-md-9 featureBanner">
         <Col className="px-5-md" md={6} xs={12}>
-          <Image
-            className="centered"
-            src={imagePath}
-            alt={heading}
-            width={width}
-            height={height}
-          />
+          {browser === "true" ? (
+            <ImageInBrowserFrame
+              src={imagePath}
+              alt={heading}
+              width={width}
+              height={height}
+            />
+          ) : (
+            <Image
+              src={imagePath}
+              alt={heading}
+              width={width}
+              height={height}
+            />
+          )}
         </Col>
         <Col md={6} xs={12}>
           <h3 className="homepageBlueH3">{heading}</h3>
@@ -61,7 +80,21 @@ export default function SectionDivider({
           <p>{content}</p>
         </Col>
         <Col className="justify-content-center" md={6} xs={12}>
-          <Image src={imagePath} alt={heading} width={width} height={height} />
+          {browser === "true" ? (
+            <ImageInBrowserFrame
+              src={imagePath}
+              alt={heading}
+              width={width}
+              height={height}
+            />
+          ) : (
+            <Image
+              src={imagePath}
+              alt={heading}
+              width={width}
+              height={height}
+            />
+          )}
         </Col>
       </Row>
     );
