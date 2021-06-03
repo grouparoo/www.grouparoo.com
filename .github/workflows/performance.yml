@@ -10,8 +10,6 @@ jobs:
         run: |
           echo ${{github.actor}}
       - uses: actions/checkout@master
-        with:
-          ref: ${{ github.head_ref }}
       - name: Calculate performance
         run: |
           ./scripts/performance_action
