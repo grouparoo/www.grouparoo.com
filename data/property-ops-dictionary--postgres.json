@@ -3,25 +3,39 @@
     {
       "op": "exists",
       "description": "exists with any value",
-      "example": "{\n  \"propertyId\": \"subscribed\", \n  \"operation\": {\"op\": \"exists\" }\n}",
+      "example": {
+        "propertyId": "subscribed",
+        "operation": { "op": "exists" }
+      },
       "caption": "All profiles that do not have data about subscription status"
     },
     {
       "op": "notExists",
       "description": "does not exist",
-      "example": "{\n  \"propertyId\": \"subscribed\", \n  \"operation\": {\"op\": \"notExists\" }\n}",
+      "example": {
+        "propertyId": "subscribed",
+        "operation": { "op": "notExists" }
+      },
       "caption": "All profiles that have data about subscription status"
     },
     {
       "op": "eq",
       "description": "is equal to",
-      "example": "{\n  \"propertyId\": \"subscribed\", \n  \"operation\": {\"eq\": \"true\" }\n}",
+      "example": {
+        "propertyId": "subscribed",
+        "operation": { "op": "eq" },
+        "match": "true"
+      },
       "caption": "All subscribers"
     },
     {
       "op": "ne",
       "description": "is not equal to",
-      "example": "{\n  \"propertyId\": \"subscribed\", \n  \"operation\": {\"ne\": \"true\" }\n}",
+      "example": {
+        "propertyId": "subscribed",
+        "operation": { "op": "ne" },
+        "match": "true"
+      },
       "caption": "All non-subscribers"
     }
   ],
@@ -29,61 +43,109 @@
     {
       "op": "exists",
       "description": "exists with any value",
-      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"exists\" }\n}",
+      "example": {
+        "propertyId": "last_purchase_date",
+        "operation": { "op": "exists" }
+      },
       "caption": "All profiles who have made a purchase"
     },
     {
       "op": "notExists",
       "description": "does not exist",
-      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"notExists\" }\n}",
+      "example": {
+        "propertyId": "last_purchase_date",
+        "operation": { "op": "notExists" }
+      },
       "caption": "All profiles who have not made a purchase"
     },
     {
       "op": "eq",
       "description": "is equal to",
-      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"eq\" }\n  \"match\": \"2021-05-25T04:45:00.000+00:00\"\n  \"type\": \"date\" \n}",
+      "example": {
+        "propertyId": "last_purchase_date",
+        "operation": { "op": "eq" },
+        "match": "2021-05-25T04:45:00.000+00:00",
+        "type": "date"
+      },
       "caption": "All profiles whose most recent purchase was on May 25, 2021 at exactly 4:45AM UTC."
     },
     {
       "op": "ne",
       "description": "is not equal to",
-      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"ne\" }\n  \"match\": \"2021-05-25T04:45:00.000+00:00\"\n  \"type\": \"date\" \n}",
+      "example": {
+        "propertyId": "last_purchase_date",
+        "operation": { "op": "ne" },
+        "match": "2021-05-25T04:45:00.000+00:00",
+        "type": "date"
+      },
       "caption": "All profiles whose most recent purchase was anytime except May 25, 2021 at exactly 4:45AM UTC."
     },
     {
       "op": "gt",
       "description": "is after",
-      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"lt\" }\n  \"match\": \"2020-12-25T04:45:00.00+00:00\"\n  \"type\": \"date\" \n}",
+      "example": {
+        "propertyId": "last_purchase_date",
+        "operation": { "op": "lt" },
+        "match": "2020-12-25T04:45:00.00+00:00",
+        "type": "date"
+      },
       "caption": "All profiles whose most recent purchase is after December 25, 2020 at 04:45:00 UTC."
     },
     {
       "op": "lt",
       "description": "is before",
-      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"lt\" }\n  \"match\": \"2021-05-25T09:30:00.000+00:00\"\n  \"type\": \"date\" \n}",
+      "example": {
+        "propertyId": "last_purchase_date",
+        "operation": { "op": "lt" },
+        "match": "2021-05-25T09:30:00.000+00:00",
+        "type": "date"
+      },
       "caption": "All profiles whose most recent purchase is prior to May 25, 2021 9:30:00 AM UTC."
     },
     {
       "op": "gte",
       "description": "is on or after",
-      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"gte\" }\n  \"match\": \"2019-06-14T18:16:00.000+00:00\"\n  \"type\": \"date\" \n}",
+      "example": {
+        "propertyId": "last_purchase_date",
+        "operation": { "op": "gte" },
+        "match": "2019-06-14T18:16:00.000+00:00",
+        "type": "date"
+      },
       "caption": "All profiles whose most recent purchase is exactly at or after June 14, 2019 at 6:16 PM UTC"
     },
     {
       "op": "lte",
       "description": "is on or before",
-      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"lte\" }\n  \"match\": \"2020-12-25T04:45:00.000+00:00\"\n  \"type\": \"date\" \n}",
+      "example": {
+        "propertyId": "last_purchase_date",
+        "operation": { "op": "lte" },
+        "match": "2020-12-25T04:45:00.000+00:00",
+        "type": "date"
+      },
       "caption": "All profiles whose most recent purchase is exactly at or before December 25, 2020 at 04:45:00 UTC."
     },
     {
       "op": "relative_gt",
       "description": "is in the past",
-      "example": "{\n  \"propertyId\": \"last_purchase_date\", \n  \"operation\": {\"op\": \"relative_gt\" },\n  \"relativeMatchNumber\": \"60\",\n  \"relativeMatchUnit\": \"days\"\n  \"type\": \"date\" \n}",
+      "example": {
+        "propertyId": "last_purchase_date",
+        "operation": { "op": "relative_gt" },
+        "relativeMatchNumber": "60",
+        "relativeMatchUnit": "days",
+        "type": "date"
+      },
       "caption": "All profiles whose most recent purchase is within the last 60 days"
     },
     {
       "op": "relative_lt",
       "description": "is in the future",
-      "example": "{\n  \"propertyId\": \"subscription_ends\", \n  \"operation\": {\"op\": \"relative_lt\" },\n  \"relativeMatchNumber\": \"30\",\n  \"relativeMatchUnit\": \"days\"\n  \"type\": \"date\" \n}",
+      "example": {
+        "propertyId": "subscription_ends",
+        "operation": { "op": "relative_lt" },
+        "relativeMatchNumber": "30",
+        "relativeMatchUnit": "days",
+        "type": "date"
+      },
       "caption": "All profiles whose subscription ends within the next 30 days"
     }
   ],
@@ -91,67 +153,103 @@
     {
       "op": "exists",
       "description": "exists with any value",
-      "example": "{\n  \"propertyId\": \"email\", \n  \"operation\": {\"op\": \"exists\" },\n \n}",
+      "example": { "propertyId": "email", "operation": { "op": "exists" } },
       "caption": "All profiles with an email address listed."
     },
     {
       "op": "notExists",
       "description": "does not exist",
-      "example": "{\n  \"propertyId\": \"email\", \n  \"operation\": {\"op\": \"notExists\" },\n \n}",
+      "example": { "propertyId": "email", "operation": { "op": "notExists" } },
       "caption": "All profiles without an email address listed."
     },
     {
       "op": "eq",
       "description": "is equal to",
-      "example": "{\n  \"propertyId\": \"email\", \n  \"operation\": {\"op\": \"eq\" },\n  \"match\": \"hello@grouparoo.com\",\n}",
+      "example": {
+        "propertyId": "email",
+        "operation": { "op": "eq" },
+        "match": "hello@grouparoo.com"
+      },
       "caption": "All profiles with an email address exactly equal to hello@grouparoo.com."
     },
     {
       "op": "ne",
       "description": "is not equal to",
-      "example": "{\n  \"propertyId\": \"email\", \n  \"operation\": {\"op\": \"ne\" },\n  \"match\": \"hello@grouparoo.com\",\n}",
+      "example": {
+        "propertyId": "email",
+        "operation": { "op": "ne" },
+        "match": "hello@grouparoo.com"
+      },
       "caption": "All profiles without an email address exactly equal to hello@grouparoo.com."
     },
     {
       "op": "like",
       "description": "is like (case sensitive)",
-      "example": "{\n  \"propertyId\": \"email\", \n  \"operation\": {\"op\": \"like\" },\n  \"match\": \"%smith%\",\n}",
+      "example": {
+        "propertyId": "email",
+        "operation": { "op": "like" },
+        "match": "%smith%"
+      },
       "caption": "All profiles with an email address containing smith (case sensitive)."
     },
     {
       "op": "notLike",
       "description": "is not like (case sensitive)",
-      "example": "{\n  \"propertyId\": \"email\", \n  \"operation\": {\"op\": \"notLike\" },\n  \"match\": \"%smith%\",\n}",
+      "example": {
+        "propertyId": "email",
+        "operation": { "op": "notLike" },
+        "match": "%smith%"
+      },
       "caption": "All profiles without an email address containing smith (case sensitive)."
     },
     {
       "op": "startsWith",
       "description": "starts with",
-      "example": "{\n  \"propertyId\": \"email\", \n  \"operation\": {\"op\": \"startsWith\" },\n  \"match\": \"test\",\n}",
+      "example": {
+        "propertyId": "email",
+        "operation": { "op": "startsWith" },
+        "match": "test"
+      },
       "caption": "All profiles with an email address starting with \"test\" (case sensitive)."
     },
     {
       "op": "endsWith",
       "description": "ends with",
-      "example": "{\n  \"propertyId\": \"email\", \n  \"operation\": {\"op\": \"endsWith\" },\n  \"match\": \"grouparoo.com\",\n}",
+      "example": {
+        "propertyId": "email",
+        "operation": { "op": "endsWith" },
+        "match": "grouparoo.com"
+      },
       "caption": "All profiles with an email address ending with \"@grouparoo.com\" (case sensitive)."
     },
     {
       "op": "substring",
       "description": "includes the string",
-      "example": "{\n  \"propertyId\": \"email\", \n  \"operation\": {\"op\": \"substring\" },\n  \"match\": \"grouparoo\",\n}",
+      "example": {
+        "propertyId": "email",
+        "operation": { "op": "substring" },
+        "match": "grouparoo"
+      },
       "caption": "All profiles with an email address containing \"grouparoo\"."
     },
     {
       "op": "iLike",
       "description": "is like (case insensitive)",
-      "example": "{\n  \"propertyId\": \"email\", \n  \"operation\": {\"op\": \"like\" },\n  \"match\": \"%smith%\",\n}",
+      "example": {
+        "propertyId": "email",
+        "operation": { "op": "like" },
+        "match": "%smith%"
+      },
       "caption": "All profiles with an email address containing smith (case insensitive)."
     },
     {
       "op": "notILike",
       "description": "is not like (case insensitive)",
-      "example": "{\n  \"propertyId\": \"email\", \n  \"operation\": {\"op\": \"notILike\" },\n  \"match\": \"%smith%\",\n}",
+      "example": {
+        "propertyId": "email",
+        "operation": { "op": "notILike" },
+        "match": "%smith%"
+      },
       "caption": "All profiles without an email address containing smith (case insensitive))."
     }
   ],
@@ -159,49 +257,73 @@
     {
       "op": "exists",
       "description": "exists with any value",
-      "example": "{\n  \"propertyId\": \"ltv\", \n  \"operation\": {\"op\": \"exists\" },\n}",
+      "example": { "propertyId": "ltv", "operation": { "op": "exists" } },
       "caption": "All profiles with an LTV value."
     },
     {
       "op": "notExists",
       "description": "does not exist",
-      "example": "{\n  \"propertyId\": \"ltv\", \n  \"operation\": {\"op\": \"notExists\" }\n}",
+      "example": { "propertyId": "ltv", "operation": { "op": "notExists" } },
       "caption": "All profiles without an LTV value."
     },
     {
       "op": "eq",
       "description": "is equal to",
-      "example": "{\n  \"propertyId\": \"ltv\", \n  \"operation\": {\"op\": \"eq\" }\n  \"match\": \"113932.97\"\n}",
+      "example": {
+        "propertyId": "ltv",
+        "operation": { "op": "eq" },
+        "match": "113932.97"
+      },
       "caption": "All profiles with an LTV of exactly $113,932.97."
     },
     {
       "op": "ne",
       "description": "is not equal to",
-      "example": "{\n  \"propertyId\": \"ltv\", \n  \"operation\": {\"op\": \"ne\" }\n  \"match\": \"113932.97\"\n}",
+      "example": {
+        "propertyId": "ltv",
+        "operation": { "op": "ne" },
+        "match": "113932.97"
+      },
       "caption": "All profiles without an LTV of exactly $113,932.97."
     },
     {
       "op": "gt",
       "description": "is greater than",
-      "example": "{\n  \"propertyId\": \"ltv\", \n  \"operation\": {\"op\": \"gt\" }\n  \"match\": \"113932.97\"\n}",
+      "example": {
+        "propertyId": "ltv",
+        "operation": { "op": "gt" },
+        "match": "113932.97"
+      },
       "caption": "All profiles without an LTV of greater than $113,932.97."
     },
     {
       "op": "lt",
       "description": "is less than",
-      "example": "{\n  \"propertyId\": \"ltv\", \n  \"operation\": {\"op\": \"lt\" }\n  \"match\": \"113932.97\"\n}",
+      "example": {
+        "propertyId": "ltv",
+        "operation": { "op": "lt" },
+        "match": "113932.97"
+      },
       "caption": "All profiles without an LTV of less than $113,932.97."
     },
     {
       "op": "gte",
       "description": "is greater than or equal to",
-      "example": "{\n  \"propertyId\": \"ltv\", \n  \"operation\": {\"op\": \"gte\" }\n  \"match\": \"113932.97\"\n}",
+      "example": {
+        "propertyId": "ltv",
+        "operation": { "op": "gte" },
+        "match": "113932.97"
+      },
       "caption": "All profiles without an LTV of exactly $113,932.97. or more"
     },
     {
       "op": "lte",
       "description": "is less than or equal to",
-      "example": "{\n  \"propertyId\": \"ltv\", \n  \"operation\": {\"op\": \"lte\" }\n  \"match\": \"113932.97\"\n}",
+      "example": {
+        "propertyId": "ltv",
+        "operation": { "op": "lte" },
+        "match": "113932.97"
+      },
       "caption": "All profiles without an LTV of exactly $113,932.97. or less"
     }
   ],
@@ -209,49 +331,73 @@
     {
       "op": "exists",
       "description": "exists with any value",
-      "example": "{\n  \"propertyId\": \"visits\", \n  \"operation\": {\"op\": \"notExists\" }\n}",
+      "example": { "propertyId": "visits", "operation": { "op": "notExists" } },
       "caption": "All profiles with any value in the \"visits\" field."
     },
     {
       "op": "notExists",
       "description": "does not exist",
-      "example": "{\n  \"propertyId\": \"visits\", \n  \"operation\": {\"op\": \"notExists\" }\n}",
+      "example": { "propertyId": "visits", "operation": { "op": "notExists" } },
       "caption": "All profiles with an empty \"visits\" field."
     },
     {
       "op": "eq",
       "description": "is equal to",
-      "example": "{\n  \"propertyId\": \"visits\", \n  \"operation\": {\"op\": \"eq\" },\n  \"match\": \"6\"\n}",
+      "example": {
+        "propertyId": "visits",
+        "operation": { "op": "eq" },
+        "match": "6"
+      },
       "caption": "All profiles with exactly six visits."
     },
     {
       "op": "ne",
       "description": "is not equal to",
-      "example": "{\n  \"propertyId\": \"visits\", \n  \"operation\": {\"op\": \"ne\" },\n  \"match\": \"6\"\n}",
+      "example": {
+        "propertyId": "visits",
+        "operation": { "op": "ne" },
+        "match": "6"
+      },
       "caption": "All profiles with any number of visits except six."
     },
     {
       "op": "gt",
       "description": "is greater than",
-      "example": "{\n  \"propertyId\": \"visits\", \n  \"operation\": {\"op\": \"gt\" },\n  \"match\": \"6\"\n}",
+      "example": {
+        "propertyId": "visits",
+        "operation": { "op": "gt" },
+        "match": "6"
+      },
       "caption": "All profiles with more than six visits."
     },
     {
       "op": "lt",
       "description": "is less than",
-      "example": "{\n  \"propertyId\": \"visits\", \n  \"operation\": {\"op\": \"ne\" },\n  \"match\": \"6\"\n}",
+      "example": {
+        "propertyId": "visits",
+        "operation": { "op": "ne" },
+        "match": "6"
+      },
       "caption": "All profiles with less than six visits."
     },
     {
       "op": "gte",
       "description": "is greater than or equal to",
-      "example": "{\n  \"propertyId\": \"visits\", \n  \"operation\": {\"op\": \"gte\" },\n  \"match\": \"6\"\n}",
+      "example": {
+        "propertyId": "visits",
+        "operation": { "op": "gte" },
+        "match": "6"
+      },
       "caption": "All profiles with six or more visits."
     },
     {
       "op": "lte",
       "description": "is less than or equal to",
-      "example": "{\n  \"propertyId\": \"visits\", \n  \"operation\": {\"op\": \"lte\" },\n  \"match\": \"6\"\n}",
+      "example": {
+        "propertyId": "visits",
+        "operation": { "op": "lte" },
+        "match": "6"
+      },
       "caption": "All profiles with 6 or fewer visits."
     }
   ],
@@ -259,67 +405,103 @@
     {
       "op": "exists",
       "description": "exists with any value",
-      "example": "{\n  \"propertyId\": \"phone\", \n  \"operation\": {\"op\": \"exists\" },\n}",
+      "example": { "propertyId": "phone", "operation": { "op": "exists" } },
       "caption": "All profiles with a phone number listed."
     },
     {
       "op": "notExists",
       "description": "does not exist",
-      "example": "{\n  \"propertyId\": \"phone\", \n  \"operation\": {\"op\": \"notExists\" },\n}",
+      "example": { "propertyId": "phone", "operation": { "op": "notExists" } },
       "caption": "All profiles without a phone number listed."
     },
     {
       "op": "eq",
       "description": "is equal to",
-      "example": "{\n  \"propertyId\": \"phone\", \n  \"operation\": {\"op\": \"eq\" },\n  \"match\": \"+1-555-555-5555\" }",
-      "caption": "All profiles with a phone number of +1-555-555-5555.  Note that the format you enter your match term in must exactly match the format used in your data set."
+      "example": {
+        "propertyId": "phone",
+        "operation": { "op": "eq" },
+        "match": "+1-555-555-5555"
+      },
+      "caption": "All profiles with a phone number of +1-555-555-5555."
     },
     {
       "op": "ne",
       "description": "is not equal to",
-      "example": "{\n  \"propertyId\": \"phone\", \n  \"operation\": {\"op\": \"ne\" },\n  \"match\": \"+1-555-555-5555\" }",
-      "caption": "All profiles without a phone number of +1-555-555-5555.  Note that the format you enter your match term in must exactly match the format used in your data set."
+      "example": {
+        "propertyId": "phone",
+        "operation": { "op": "ne" },
+        "match": "+1-555-555-5555"
+      },
+      "caption": "All profiles without a phone number of +1-555-555-5555."
     },
     {
       "op": "like",
       "description": "is like (case sensitive)",
-      "example": "{\n  \"propertyId\": \"phone\", \n  \"operation\": {\"op\": \"like\" },\n  \"match\": \"%780%\" }",
+      "example": {
+        "propertyId": "phone",
+        "operation": { "op": "like" },
+        "match": "%780%"
+      },
       "caption": "All profiles with a phone number containing 780."
     },
     {
       "op": "notLike",
       "description": "is not like (case sensitive)",
-      "example": "{\n  \"propertyId\": \"phone\", \n  \"operation\": {\"op\": \"notLike\" },\n  \"match\": \"%780%\" }",
+      "example": {
+        "propertyId": "phone",
+        "operation": { "op": "notLike" },
+        "match": "%780%"
+      },
       "caption": "All profiles without a phone number containing 780."
     },
     {
       "op": "startsWith",
       "description": "starts with",
-      "example": "{\n  \"propertyId\": \"phone\", \n  \"operation\": {\"op\": \"startsWith\" },\n  \"match\": \"+1\" }",
+      "example": {
+        "propertyId": "phone",
+        "operation": { "op": "startsWith" },
+        "match": "+1"
+      },
       "caption": "All profiles with a phone number starting with +1."
     },
     {
       "op": "endsWith",
       "description": "ends with",
-      "example": "{\n  \"propertyId\": \"phone\", \n  \"operation\": {\"op\": \"startsWith\" },\n  \"match\": \"80\" }",
+      "example": {
+        "propertyId": "phone",
+        "operation": { "op": "startsWith" },
+        "match": "80"
+      },
       "caption": "All profiles with a phone number ending with 80."
     },
     {
       "op": "substring",
       "description": "includes the string",
-      "example": "{\n  \"propertyId\": \"phone\", \n  \"operation\": {\"op\": \"startsWith\" },\n  \"match\": \"80\" }",
+      "example": {
+        "propertyId": "phone",
+        "operation": { "op": "startsWith" },
+        "match": "80"
+      },
       "caption": "All profiles with a phone number containing the substring 80."
     },
     {
       "op": "iLike",
       "description": "is like (case insensitive)",
-      "example": "{\n  \"propertyId\": \"phone\", \n  \"operation\": {\"op\": \"notLike\" },\n  \"match\": \"%780%\" }",
+      "example": {
+        "propertyId": "phone",
+        "operation": { "op": "notLike" },
+        "match": "%780%"
+      },
       "caption": "All profiles without a phone number containing 780."
     },
     {
       "op": "notILike",
       "description": "is not like (case insensitive)",
-      "example": "{\n  \"propertyId\": \"phone\", \n  \"operation\": {\"op\": \"notLike\" },\n  \"match\": \"%780%\" }",
+      "example": {
+        "propertyId": "phone",
+        "operation": { "op": "notLike" },
+        "match": "%780%"
+      },
       "caption": "All profiles without a phone number containing 780."
     }
   ],
@@ -327,67 +509,106 @@
     {
       "op": "exists",
       "description": "exists with any value",
-      "example": "{\n  \"propertyId\": \"lastName\", \n  \"operation\": {\"op\": \"exists\" },\n}",
+      "example": { "propertyId": "lastName", "operation": { "op": "exists" } },
       "caption": "All profiles with a last name listed."
     },
     {
       "op": "notExists",
       "description": "does not exist",
-      "example": "{\n  \"propertyId\": \"lastName\", \n  \"operation\": {\"op\": \"notExists\" },\n}",
+      "example": {
+        "propertyId": "lastName",
+        "operation": { "op": "notExists" }
+      },
       "caption": "All profiles without a last name listed."
     },
     {
       "op": "eq",
       "description": "is equal to",
-      "example": "{\n  \"propertyId\": \"lastName\", \n  \"operation\": {\"op\": \"eq\" },\n  \"match\": \"Ramirez\" }",
+      "example": {
+        "propertyId": "lastName",
+        "operation": { "op": "eq" },
+        "match": "Ramirez"
+      },
       "caption": "All profiles with a last name of exactly Ramirez."
     },
     {
       "op": "ne",
       "description": "is not equal to",
-      "example": "{\n  \"propertyId\": \"lastName\", \n  \"operation\": {\"op\": \"ne\" },\n  \"match\": \"Ramirez\" }",
+      "example": {
+        "propertyId": "lastName",
+        "operation": { "op": "ne" },
+        "match": "Ramirez"
+      },
       "caption": "All profiles without a last name of exactly Ramirez."
     },
     {
       "op": "like",
       "description": "is like (case sensitive)",
-      "example": "{\n  \"propertyId\": \"lastName\", \n  \"operation\": {\"op\": \"like\" },\n  \"match\": \"__m%\" }",
+      "example": {
+        "propertyId": "lastName",
+        "operation": { "op": "like" },
+        "match": "__m%"
+      },
       "caption": "All profiles with a last name that has a third letter of m."
     },
     {
       "op": "notLike",
       "description": "is not like (case sensitive)",
-      "example": "{\n  \"propertyId\": \"lastName\", \n  \"operation\": {\"op\": \"notLike\" },\n  \"match\": \"__m%\" }",
+      "example": {
+        "propertyId": "lastName",
+        "operation": { "op": "notLike" },
+        "match": "__m%"
+      },
       "caption": "All profiles without a last name that has a third letter of m."
     },
     {
       "op": "startsWith",
       "description": "starts with",
-      "example": "{\n  \"propertyId\": \"lastName\", \n  \"operation\": {\"op\": \"startsWith\" },\n  \"match\": \"Mc\" }",
+      "example": {
+        "propertyId": "lastName",
+        "operation": { "op": "startsWith" },
+        "match": "Mc"
+      },
       "caption": "All profiles with a last name starting with Mc (case sensitive)"
     },
     {
       "op": "endsWith",
       "description": "ends with",
-      "example": "{\n  \"propertyId\": \"lastName\", \n  \"operation\": {\"op\": \"endsWith\" },\n  \"match\": \"son\" }",
+      "example": {
+        "propertyId": "lastName",
+        "operation": { "op": "endsWith" },
+        "match": "son"
+      },
       "caption": "All profiles with a last name ending with son (case sensitive)."
     },
     {
       "op": "substring",
       "description": "includes the string",
-      "example": "{\n  \"propertyId\": \"lastName\", \n  \"operation\": {\"op\": \"substring\" },\n  \"match\": \"al\" }",
+      "example": {
+        "propertyId": "lastName",
+        "operation": { "op": "substring" },
+        "match": "al"
+      },
       "caption": "All profiles with a last name containing al (case sensitive)."
     },
     {
       "op": "iLike",
       "description": "is like (case insensitive)",
-      "example": "{\n  \"propertyId\": \"lastName\", \n  \"operation\": {\"op\": \"iLike\" },\n  \"match\": \"%al%\" }",
+      "example": {
+        "propertyId": "lastName",
+        "operation": { "op": "iLike" },
+        "match": "%al%"
+      },
       "caption": "All profiles with a last name containing al (case insensitive)."
     },
     {
       "op": "notILike",
       "description": "is not like (case insensitive)",
-      "example": "{\n  \"propertyId\": \"lastName\", \n  \"operation\": {\"op\": \"iLike\" },\n  \"match\": \"%al%\" }",
+      "example": {
+        "propertyId": "lastName",
+        "operation": { "op": "iLike" },
+        "match": "%al%"
+      },
       "caption": "All profiles without a last name containing al (case insensitive)."
     }
   ],
@@ -395,67 +616,109 @@
     {
       "op": "exists",
       "description": "exists with any value",
-      "example": "{\n  \"propertyId\": \"company_url\", \n  \"operation\": {\"op\": \"exists\" },\n}",
+      "example": {
+        "propertyId": "company_url",
+        "operation": { "op": "exists" }
+      },
       "caption": "All profiles with a company URL listed."
     },
     {
       "op": "notExists",
       "description": "does not exist",
-      "example": "{\n  \"propertyId\": \"company_url\", \n  \"operation\": {\"op\": \"notExists\" },\n}",
+      "example": {
+        "propertyId": "company_url",
+        "operation": { "op": "notExists" }
+      },
       "caption": "All profiles without a company URL listed."
     },
     {
       "op": "eq",
       "description": "is equal to",
-      "example": "{\n  \"propertyId\": \"company_url\", \n  \"operation\": {\"op\": \"eq\" },\n  \"match\": \"https://www.grouparoo.com\" }",
+      "example": {
+        "propertyId": "company_url",
+        "operation": { "op": "eq" },
+        "match": "https://www.grouparoo.com"
+      },
       "caption": "All profiles with a company URL exactly equal to https://www.grouparoo.com."
     },
     {
       "op": "ne",
       "description": "is not equal to",
-      "example": "{\n  \"propertyId\": \"company_url\", \n  \"operation\": {\"op\": \"ne\" },\n  \"match\": \"https://www.grouparoo.com\" }",
+      "example": {
+        "propertyId": "company_url",
+        "operation": { "op": "ne" },
+        "match": "https://www.grouparoo.com"
+      },
       "caption": "All profiles without a company URL exactly equal to https://www.grouparoo.com."
     },
     {
       "op": "like",
       "description": "is like (case sensitive)",
-      "example": "{\n  \"propertyId\": \"company_url\", \n  \"operation\": {\"op\": \"like\" },\n  \"match\": \"%grouparoo.com\" }",
+      "example": {
+        "propertyId": "company_url",
+        "operation": { "op": "like" },
+        "match": "%grouparoo.com"
+      },
       "caption": "All profiles with a company URL containing anything and then grouparoo.com (case sensitive)."
     },
     {
       "op": "notLike",
       "description": "is not like (case sensitive)",
-      "example": "{\n  \"propertyId\": \"company_url\", \n  \"operation\": {\"op\": \"like\" },\n  \"match\": \"%grouparoo.com\" }",
+      "example": {
+        "propertyId": "company_url",
+        "operation": { "op": "like" },
+        "match": "%grouparoo.com"
+      },
       "caption": "All profiles without a company URL containing anything and then grouparoo.com (case sensitive)."
     },
     {
       "op": "startsWith",
       "description": "starts with",
-      "example": "{\n  \"propertyId\": \"company_url\", \n  \"operation\": {\"op\": \"startsWith\" },\n  \"match\": \"https\" }",
+      "example": {
+        "propertyId": "company_url",
+        "operation": { "op": "startsWith" },
+        "match": "https"
+      },
       "caption": "All profiles with a company URL starting with https (case sensitive)."
     },
     {
       "op": "endsWith",
       "description": "ends with",
-      "example": "{\n  \"propertyId\": \"company_url\", \n  \"operation\": {\"op\": \"startsWith\" },\n  \"match\": \".com\" }",
+      "example": {
+        "propertyId": "company_url",
+        "operation": { "op": "startsWith" },
+        "match": ".com"
+      },
       "caption": "All profiles with a company URL ending with .com (case sensitive)"
     },
     {
       "op": "substring",
       "description": "includes the string",
-      "example": "{\n  \"propertyId\": \"company_url\", \n  \"operation\": {\"op\": \"substring\" },\n  \"match\": \"grouparoo\" }",
+      "example": {
+        "propertyId": "company_url",
+        "operation": { "op": "substring" },
+        "match": "grouparoo"
+      },
       "caption": "All profiles with a company URL containing grouparoo (case sensitive)"
     },
     {
       "op": "iLike",
       "description": "is like (case insensitive)",
-      "example": "{\n  \"propertyId\": \"company_url\", \n  \"operation\": {\"op\": \"substring\" },\n  \"match\": \"%Grouparoo.com\" }",
+      "example": {
+        "propertyId": "company_url",
+        "operation": { "op": "substring" },
+        "match": "%Grouparoo.com"
+      },
       "caption": "All profiles with a company URL containing anything followed by Grouparoo.com (case insensitive)."
     },
     {
       "op": "notILike",
       "description": "is not like (case insensitive)",
-      "example": "{\n  \"propertyId\": \"company_url\", \n  \"operation\": {\"op\": \"substring\" },\n  \"match\": \"%Grouparoo.com\" }",
+      "example": {
+        "propertyId": "company_url",
+        "operation": { "op": "substring" },
+        "match": "%Grouparoo.com"
+      },
       "caption": "All profiles without a company URL containing anything followed by Grouparoo.com (case insensitive)."
     }
   ],

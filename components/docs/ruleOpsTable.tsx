@@ -28,6 +28,16 @@ const propertyTypes = [
 interface PropertyOperations {
   description: string;
   op: string;
+  example: {
+    propertyId: string;
+    operation: {
+      op: string;
+    };
+    match?: string;
+    relativeMatch?: string;
+    relativeMatchUnit?: string;
+  };
+  caption: string;
 }
 
 interface RuleOpsDbTypeData {
@@ -104,7 +114,10 @@ const DataTable = ({ data, heading, eventKey }) => {
               </Col>
               <Col className="col-12 col-lg-8 mx-auto">
                 <div className="overflow-hidden">
-                  <CodeBlock value={item.example} />
+                  <CodeBlock
+                    value={JSON.stringify(item.example, null, 2)}
+                    language="json"
+                  />
                 </div>
                 <div className="pl-2">
                   <small>{item.caption}</small>
