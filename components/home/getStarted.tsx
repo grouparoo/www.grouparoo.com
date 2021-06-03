@@ -8,7 +8,7 @@ export default function GetStarted({
 }) {
   return (
     <>
-      <div id="stay-up-to-date" className="homePageSection text-center w-auto">
+      <div id="stay-up-to-date" className="text-center w-auto">
         <Container>
           <Row>
             <Col>

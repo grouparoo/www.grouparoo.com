@@ -91,10 +91,7 @@ export default function Footer() {
   const router = useRouter();
 
   return (
-    <footer
-      style={{ paddingTop: 100, marginTop: 50, paddingBottom: 80 }}
-      className="footer"
-    >
+    <footer className="footer py-5 mt-4">
       <Container>
         <Row>
           <Col md={6} className="d-none d-lg-block">

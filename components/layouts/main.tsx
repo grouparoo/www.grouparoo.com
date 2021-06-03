@@ -8,6 +8,7 @@ import Footer from "../footer";
 import { Alert } from "react-bootstrap";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import GetStarted from "../home/getStarted";
 
 function PageTemplate({ children }) {
   const router = useRouter();
@@ -144,6 +145,9 @@ function PageTemplate({ children }) {
           {Children.map(children, (child) =>
             cloneElement(child, { setReleaseNote })
           )}
+        </div>
+        <div className="col-9 border-top border-light mx-auto">
+          <GetStarted />
         </div>
         <Footer />
       </div>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import Head from "next/head";
-import GetStarted from "../home/getStarted";
 import hydrate from "next-mdx-remote/hydrate";
 import { CategoryInfo } from "../../utils/solutionsPages";
 import { arrayToReadableList, urlize } from "../../utils/inflectors";
@@ -81,7 +80,6 @@ export default function CategoryPage(category: CategoryInfo) {
           </div>
         </Row>
       </Container>
-      <GetStarted />
     </>
   );
 }
