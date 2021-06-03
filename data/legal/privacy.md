@@ -92,7 +92,7 @@ The Site may contain links to other websites not operated or controlled by Group
 
 You use the Site at your own risk. We implement commercially reasonable technical, administrative, and organizational measures to protect personal information both online and offline from loss, misuse, and unauthorized access, disclosure, alteration, or destruction. However, no Internet or e-mail transmission is ever fully secure or error free. In particular, e-mail sent to or from us may not be secure. Therefore, you should take special care in deciding what information you send to us via the Site or e-mail. Please keep this in mind when disclosing any personal information to Grouparoo via the Internet. In addition, we are not responsible for circumvention of any privacy settings or security measures contained on the Site, or third party websites.
 
-### 7 INTERNATIONAL USERS
+### 7. INTERNATIONAL USERS
 
 By using our Site, you understand and acknowledge that your Personal Data will be transferred from your location to our facilities and servers in the United States, where data protection laws may differ from those in your jurisdiction.
 
