@@ -96,4 +96,107 @@ The generator attempts to make a _reasonable_ guess at the values in the config 
 
 Other sections may be commented out but require some action by you. The best practice when configuring an Property is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Property.
 
+### Aggregation Method and Filters
+
+Your Property config file will also contain `aggregationMethod` and `filter` options. Options for these may vary depending on your source type. All available options for your source will be listed in your config file template created when you run [grouparoo generate](/docs/cli/config#generate). Some common examples are:
+
+#### aggregationMethods
+
+- `"exact"`
+- `"sum"`
+- `"average"`
+- `"count"`
+- `"min"`
+- `"max"`
+- `"most recent value"`
+- `"least recent value"`
+
+#### filters
+
+- `"equals"`
+- `"does not equal"`
+- `"greater than"`
+- `"greater than or equal to"`
+- `"less than"`
+- `"less than or equal to"`
+- `"contains"`
+- `"does not contain"`
+- `"in"`
+
+These can be combined to create more complex properties such as:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      id: "active_paid_subscriptions",
+      name: "Active Paid Subscriptions",
+      class: "property",
+      sourceId: "users_table",
+      type: "integer",
+      unique: false,
+      identifying: false,
+      isArray: false,
+      options: {
+        column: "subscription_id",
+        aggregationMethod: "count",
+        sort: null,
+      },
+
+      filters: [
+        {
+          key: "status",
+          op: "equals",
+          match: "active",
+        },
+        {
+          key: "subscription_type",
+          op: "does not equal",
+          match: "trial",
+        },
+      ],
+    },
+  ];
+};
+```
+
+Which would count every subscription per profile, but leave out any trial subscriptions. Or:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      id: "annual_purhcases_2020",
+      name: "Annual Purchases 2020",
+      class: "property",
+      sourceId: "purhcases_table",
+      type: "float",
+      unique: false,
+      identifying: false,
+      isArray: false,
+      options: {
+        column: "purhcase_amount",
+        aggregationMethod: "sum",
+        sort: null,
+      },
+
+      filters: [
+        {
+          key: "created_at",
+          op: "greater than",
+          match: "2019-12-31T11:59:59.999+00.00",
+        },
+        {
+          key: "created_at",
+          op: "lt",
+          match: "2021-01-01T00:00:00.000+00:00",
+        },
+      ],
+    },
+  ];
+};
+```
+
+which would return the sum of a profile's purchases in 2020.
+
 <ValidateAndApplyConfig />
