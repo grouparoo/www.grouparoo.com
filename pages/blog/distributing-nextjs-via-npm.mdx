@@ -46,15 +46,15 @@ Grouparoo uses [Next.js](https://nextjs.org/) to build our web frontend(s), and 
 
 Here is how we bundle up our Next.js applications so that our customers can use them out of the box.
 
-## "`next build`" and "`npm run prepare`"
+## `next build` and `npm run prepare`
 
 The first step in “compiling” your Next.js projects is to use the [`next build`](https://nextjs.org/docs/deployment) command. We alias this to the [“prepare” npm lifecyle command](https://docs.npmjs.com/cli/v7/using-npm/scripts#prepare-and-prepublish) so that this command will be run automatically before `npm publish`. In this way we can ensure that we always have a freshly built bundle to use when we publish our packages.
 
-This is different from Next’s recommendation to alias `next build` to `npm buld` because we are not “deploying” our sites - we are publishing them. Many hosting providers look for a `build` script in your `pacakge.json` to run when the deploy, hence Next.js’ recommendation.
+This is different from Next’s recommendation to alias `next build` to `npm build` because we are not “deploying” our sites - we are publishing them. Many hosting providers look for a `build` script in your `pacakge.json` to run when the deploy, hence Next.js’ recommendation.
 
-## "`.npmignore`" vs "`.gitignore`"
+## `.npmignore` vs `.gitignore`
 
-The next step in bundling up a Next.js application for deployment via NPM is to include the build files. In all Next.js projects, you want to ignore the `.next` folder in your `.gitignore`. The `.next` folder is where Next.js keeps all the build artifacts it creates - minified javascript, css chunks, etc. Assuming your “source code” is Typescript and SCSS, everything in the `.next` folder should be ignored, and rebuilt as needed from the source.
+The next step in bundling up a Next.js application for deployment via NPM is to include the build files. In all Next.js projects, you want to ignore the `.next` folder in your `.gitignore`. The `.next` folder is where Next.js keeps all the build artifacts it creates — minified javascript, css chunks, etc. Assuming your “source code” is Typescript and SCSS, everything in the `.next` folder should be ignored, and rebuilt as needed from the source.
 
 BUT… the content of `.next` is actually what the visitors to your site really load - that’s the HTML, CSS, and Javascript that ends up in the browser. Since we are trying to package up a usable site, we need to bundle the contents of `.next` into our NPM bundles. However, we still want to exclude these rapidly changing files from `git`’s history.
 
