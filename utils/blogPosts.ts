@@ -4,6 +4,7 @@ import BlogImage from "../components/blog/image";
 import Tweet from "../components/blog/tweet";
 import { Alert, Card } from "react-bootstrap";
 import { Feed } from "feed";
+import Link from "next/link";
 
 function PermanentImage(props) {
   return BlogImage({ ...props, permalink: true });
@@ -13,6 +14,7 @@ function StaticTweet(props) {
 }
 // These keys need to match the one in blog/[post]
 const components = {
+  Link,
   Image: PermanentImage,
   Alert,
   Card,
