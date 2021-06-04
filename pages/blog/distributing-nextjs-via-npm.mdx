@@ -1,0 +1,91 @@
+---
+title: "Bundling and Distributing Next.js Sites via NPM"
+date: "2021-06-03"
+author: "Evan Tahler"
+pullQuote: "Or, how to make your NPM packages 300mb smaller with this one strange trick!"
+image: "distributing-nextjs-via-npm/210603-npm-nextjs.png"
+tags: [engineering]
+---
+
+<Image
+  centered
+  alt="Next.js and NPM"
+  src="distributing-nextjs-via-npm/210603-npm-nextjs.png"
+  width={1015}
+  height={533}
+/>
+
+Grouparoo uses [Next.js](https://nextjs.org/) to build our web frontend(s), and we distribute these frontend User Interfaces (UIs) via NPM as packages, e.g. [`@grouparoo/ui-community`](https://www.npmjs.com/package/@grouparoo/ui-community). This allows Grouparoo users to choose which UI they want to use (or none) by changing their `package.json`:
+
+**Example `package.json` for a Grouparoo project:**
+
+```json
+{
+  "author": "Your Name <email@example.com>",
+  "name": "grouparoo-application",
+  "description": "A Grouparoo Deployment",
+  "version": "0.0.1",
+  "dependencies": {
+    "@grouparoo/core": "0.3.3",
+    "@grouparoo/postgres": "0.3.3",
+    "@grouparoo/mailchimp": "0.3.3",
+    "@grouparoo/ui-community": "0.3.3" // <-- Choose UI Package to install
+  },
+  "scripts": {
+    "start": "cd node_modules/@grouparoo/core && ./bin/start"
+  },
+  "grouparoo": {
+    "plugins": [
+      "@grouparoo/postgres",
+      "@grouparoo/mailchimp",
+      "@grouparoo/ui-community" // <-- Choose UI Package to load
+    ]
+  }
+}
+```
+
+Here is how we bundle up our Next.js applications so that our customers can use them out of the box.
+
+## `next build` and `npm run prepare`
+
+The first step in “compiling” your Next.js projects is to use the [`next build`](https://nextjs.org/docs/deployment) command. We alias this to the [“prepare” npm lifecyle command](https://docs.npmjs.com/cli/v7/using-npm/scripts#prepare-and-prepublish) so that this command will be run automatically before `npm publish`. In this way we can ensure that we always have a freshly built bundle to use when we publish our packages.
+
+This is different from Next’s recommendation to alias `next build` to `npm build` because we are not “deploying” our sites - we are publishing them. Many hosting providers look for a `build` script in your `pacakge.json` to run when the deploy, hence Next.js’ recommendation.
+
+## `.npmignore` vs `.gitignore`
+
+The next step in bundling up a Next.js application for deployment via NPM is to include the build files. In all Next.js projects, you want to ignore the `.next` folder in your `.gitignore`. The `.next` folder is where Next.js keeps all the build artifacts it creates — minified javascript, css chunks, etc. Assuming your “source code” is Typescript and SCSS, everything in the `.next` folder should be ignored, and rebuilt as needed from the source.
+
+BUT… the content of `.next` is actually what the visitors to your site really load - that’s the HTML, CSS, and Javascript that ends up in the browser. Since we are trying to package up a usable site, we need to bundle the contents of `.next` into our NPM bundles. However, we still want to exclude these rapidly changing files from `git`’s history.
+
+The solution is a `.npmignore` file! By default, [NPM will use a `.gitignore`](https://zellwk.com/blog/ignoring-files-from-npm-package/) file to determine which files it packs up into your packages, and which files it ignores. But, you can override this behavior by placing a `.npmignore` in your project. For example:
+
+**.gitignore**
+
+```
+.DS_Store
+node_modules
+.next
+```
+
+**.npmignore**
+
+```
+.DS_Store
+node_modules
+# .next is included
+```
+
+## Skip the `.pack` files
+
+The final thing we learned is that while the contents of the `.next` directory are needed for your visitors, not _everything_ is needed. We saw that we were shipping [300mb packages to NPM](https://www.npmjs.com/package/@grouparoo/ui-community/v/0.3.1) for our Next.js UIs. We dug into the `.next` folder and learned that if you [opt-into Webpack v5 for your Next.js site](https://nextjs.org/docs/messages/webpack5), large `.next/cache/*.pack` files will be created to speed up how Webpack works. This is normal behavior, but we were inadvertently publishing these large files to NPM! We [added](https://github.com/grouparoo/grouparoo/pull/1807) the `.next/cache/*` directory to our `.npmignore` and our build sizes went down to a more reasonable [20mb](https://www.npmjs.com/package/@grouparoo/ui-community/v/0.3.3).
+
+Our final `.npmignore` looks like this:
+
+**.npmignore**
+
+```
+.DS_Store
+node_modules
+.next/cache/*
+```

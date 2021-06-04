@@ -9,7 +9,7 @@
         <title>Grouparoo: Blog</title>
         <link>https://www.grouparoo.com/blog</link>
         <description>Articles and updates from Grouparoo.</description>
-        <lastBuildDate>Fri, 28 May 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 03 Jun 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,52 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title
+      ><![CDATA[Bundling and Distributing Next.js Sites via NPM]]></title>
+            <link
+      >https://www.grouparoo.com/blog/distributing-nextjs-via-npm</link>
+            <guid>grouparoo-blog-post-distributing-nextjs-via-npm</guid>
+            <pubDate>Thu, 03 Jun 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Next.js and NPM" src="https://www.grouparoo.com/posts/distributing-nextjs-via-npm/210603-npm-nextjs.png" width="1015" height="533" style="height:533px;width:1015px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>Grouparoo uses <a href="https://nextjs.org/" target="_blank" rel="nofollow noopener noreferrer">Next.js</a> to build our web frontend(s), and we distribute these frontend User Interfaces (UIs) via NPM as packages, e.g. <a href="https://www.npmjs.com/package/@grouparoo/ui-community" target="_blank" rel="nofollow noopener noreferrer"><code>@grouparoo/ui-community</code></a>. This allows Grouparoo users to choose which UI they want to use (or none) by changing their <code>package.json</code>:</p><p><strong>Example <code>package.json</code> for a Grouparoo project:</strong></p><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;author&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Your Name &lt;email@example.com&gt;&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;grouparoo-application&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token string">&quot;A Grouparoo Deployment&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;0.0.1&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;dependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;@grouparoo/core&quot;</span><span class="token operator">:</span> <span class="token string">&quot;0.3.3&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;@grouparoo/postgres&quot;</span><span class="token operator">:</span> <span class="token string">&quot;0.3.3&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;@grouparoo/mailchimp&quot;</span><span class="token operator">:</span> <span class="token string">&quot;0.3.3&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;@grouparoo/ui-community&quot;</span><span class="token operator">:</span> <span class="token string">&quot;0.3.3&quot;</span> <span class="token comment">// &lt;-- Choose UI Package to install</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;start&quot;</span><span class="token operator">:</span> <span class="token string">&quot;cd node_modules/@grouparoo/core &amp;&amp; ./bin/start&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;grouparoo&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;plugins&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">&quot;@grouparoo/postgres&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;@grouparoo/mailchimp&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;@grouparoo/ui-community&quot;</span> <span class="token comment">// &lt;-- Choose UI Package to load</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>Here is how we bundle up our Next.js applications so that our customers can use them out of the box.</p><h2 id="next-build-and-npm-run-prepare"><a href="#next-build-and-npm-run-prepare"><code>next build</code> and <code>npm run prepare</code></a></h2><p>The first step in “compiling” your Next.js projects is to use the <a href="https://nextjs.org/docs/deployment" target="_blank" rel="nofollow noopener noreferrer"><code>next build</code></a> command. We alias this to the <a href="https://docs.npmjs.com/cli/v7/using-npm/scripts#prepare-and-prepublish" target="_blank" rel="nofollow noopener noreferrer">“prepare” npm lifecyle command</a> so that this command will be run automatically before <code>npm publish</code>. In this way we can ensure that we always have a freshly built bundle to use when we publish our packages.</p><p>This is different from Next’s recommendation to alias <code>next build</code> to <code>npm build</code> because we are not “deploying” our sites - we are publishing them. Many hosting providers look for a <code>build</code> script in your <code>pacakge.json</code> to run when the deploy, hence Next.js’ recommendation.</p><h2 id="npmignore-vs-gitignore"><a href="#npmignore-vs-gitignore"><code>.npmignore</code> vs <code>.gitignore</code></a></h2><p>The next step in bundling up a Next.js application for deployment via NPM is to include the build files. In all Next.js projects, you want to ignore the <code>.next</code> folder in your <code>.gitignore</code>. The <code>.next</code> folder is where Next.js keeps all the build artifacts it creates — minified javascript, css chunks, etc. Assuming your “source code” is Typescript and SCSS, everything in the <code>.next</code> folder should be ignored, and rebuilt as needed from the source.</p><p>BUT… the content of <code>.next</code> is actually what the visitors to your site really load - that’s the HTML, CSS, and Javascript that ends up in the browser. Since we are trying to package up a usable site, we need to bundle the contents of <code>.next</code> into our NPM bundles. However, we still want to exclude these rapidly changing files from <code>git</code>’s history.</p><p>The solution is a <code>.npmignore</code> file! By default, <a href="https://zellwk.com/blog/ignoring-files-from-npm-package/" target="_blank" rel="nofollow noopener noreferrer">NPM will use a <code>.gitignore</code></a> file to determine which files it packs up into your packages, and which files it ignores. But, you can override this behavior by placing a <code>.npmignore</code> in your project. For example:</p><p><strong>.gitignore</strong></p><pre><code>.DS_Store
+node_modules
+.next
+</code></pre><p><strong>.npmignore</strong></p><pre><code>.DS_Store
+node_modules
+# .next is included
+</code></pre><h2 id="skip-the-pack-files"><a href="#skip-the-pack-files">Skip the <code>.pack</code> files</a></h2><p>The final thing we learned is that while the contents of the <code>.next</code> directory are needed for your visitors, not <em>everything</em> is needed. We saw that we were shipping <a href="https://www.npmjs.com/package/@grouparoo/ui-community/v/0.3.1" target="_blank" rel="nofollow noopener noreferrer">300mb packages to NPM</a> for our Next.js UIs. We dug into the <code>.next</code> folder and learned that if you <a href="https://nextjs.org/docs/messages/webpack5" target="_blank" rel="nofollow noopener noreferrer">opt-into Webpack v5 for your Next.js site</a>, large <code>.next/cache/*.pack</code> files will be created to speed up how Webpack works. This is normal behavior, but we were inadvertently publishing these large files to NPM! We <a href="https://github.com/grouparoo/grouparoo/pull/1807" target="_blank" rel="nofollow noopener noreferrer">added</a> the <code>.next/cache/*</code> directory to our <code>.npmignore</code> and our build sizes went down to a more reasonable <a href="https://www.npmjs.com/package/@grouparoo/ui-community/v/0.3.3" target="_blank" rel="nofollow noopener noreferrer">20mb</a>.</p><p>Our final <code>.npmignore</code> looks like this:</p><p><strong>.npmignore</strong></p><pre><code>.DS_Store
+node_modules
+.next/cache/*
+</code></pre>]]></content:encoded>
+            <enclosure
+        url="https://www.grouparoo.com/posts/distributing-nextjs-via-npm/210603-npm-nextjs.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title
       ><![CDATA[Asynchronous API patterns in CRMs and marketing tools]]></title>
