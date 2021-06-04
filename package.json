@@ -31,7 +31,7 @@
     "axios": "0.21.1",
     "babel-plugin-import-glob-array": "0.2.0",
     "babel-plugin-transform-define": "2.0.0",
-    "bootstrap": "4.6.0",
+    "bootstrap": "5.0.1",
     "cheerio": "1.0.0-rc.9",
     "feed": "4.2.2",
     "glob": "7.1.7",
