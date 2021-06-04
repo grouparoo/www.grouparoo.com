@@ -599,8 +599,6 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
           </Row>
         </Container>
       </div>
-      <br />
-      <br />
     </>
   );
 }

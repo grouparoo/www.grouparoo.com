@@ -438,7 +438,6 @@ export default function PricingPage() {
           </Col>
         </Row>
       </Container>
-      <br />
     </>
   );
 }

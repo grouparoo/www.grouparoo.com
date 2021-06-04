@@ -15,12 +15,7 @@ export default function SolutionsPage({ pageProps }) {
     <ComparisonPage {...solutionData} />
   );
 
-  return (
-    <>
-      {pageContent}
-      <br /> <br />
-    </>
-  );
+  return <>{pageContent}</>;
 }
 
 export async function getStaticProps({ params }) {

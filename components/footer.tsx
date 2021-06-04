@@ -91,7 +91,7 @@ export default function Footer() {
   const router = useRouter();
 
   return (
-    <footer className="footer py-5 mt-4">
+    <footer className="footer py-5">
       <Container>
         <Row>
           <Col md={6} className="d-none d-lg-block">
