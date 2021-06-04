@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { ErrorHandler } from "../utils/errorHandler";
 import { isBrowser } from "../utils/isBrowser";
-import posthog from "posthog-js";
 
 export default function Subscribe() {
   const { handleSubmit, register } = useForm();
@@ -39,10 +38,7 @@ export default function Subscribe() {
     }
 
     const response = await execApi("post", `/api/v1/subscribers`, data);
-    if (response?.subscriber) {
-      posthog.identify(response.subscriber.id, { email: data.email }, data);
-      setSubscribed(true); // TODO: should we set a cookie to hide this later?
-    }
+    if (response?.subscriber) setSubscribed(true); // TODO: should we set a cookie to hide this later?
 
     setLoading(false);
   };

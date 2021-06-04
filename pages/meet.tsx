@@ -7,7 +7,6 @@ import { Container, Alert, Row, Col, Form, Button } from "react-bootstrap";
 import Image from "../components/Image";
 import { ErrorHandler } from "../utils/errorHandler";
 import { isBrowser } from "../utils/isBrowser";
-import posthog from "posthog-js";
 
 interface FormError {
   email: string;
@@ -78,11 +77,7 @@ export default function Meet() {
     }
 
     const response = await execApi("post", `/api/v1/demo-request`, data);
-    if (response?.demoRequest) {
-      posthog.identify(response.demoRequest.id, { email: data.email }, data);
-      setRequested(true);
-    }
-
+    if (response?.demoRequest) setRequested(true);
     setLoading(false);
   };
 
