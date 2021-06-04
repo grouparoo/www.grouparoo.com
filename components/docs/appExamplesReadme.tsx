@@ -22,9 +22,5 @@ export default function AppExamplesReadme() {
 
   if (loading) return <Spinner animation={"grow"} />;
 
-  return (
-    <p>
-      <ReactMarkdown>{content}</ReactMarkdown>
-    </p>
-  );
+  return <ReactMarkdown>{content}</ReactMarkdown>;
 }
