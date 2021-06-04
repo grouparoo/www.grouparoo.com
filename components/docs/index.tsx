@@ -21,6 +21,7 @@ import {
 import RuleOpsTable from "./ruleOpsTable";
 import Tabs from "./tabs";
 import ValidateAndApplyConfig from "./validateAndApplyConfig";
+import AppExamplesReadme from "./appExamplesReadme";
 
 // The exported components are available for use in docs MDX files.
 export {
@@ -44,4 +45,5 @@ export {
   Tabs,
   UIConfigPrereqs,
   ValidateAndApplyConfig,
+  AppExamplesReadme,
 };
