@@ -3,86 +3,113 @@ title: "Integrating MailChimp with your Node.js App"
 date: "2021-06-01"
 author: "Yashovardhan Agrawal"
 pullQuote: "A step by step guide of integrating your MailChimp Audiences with your Node.js app"
-image: "integrating-mailchimp-with-your-nodejs-app/mailchimp_node.png"
+image: "integrating-mailchimp-with-your-nodejs-app/mc4.png"
 tags: [connections, engineering]
 ---
 
 # Integrating MailChimp with your Node.js App
 
-If you’re reading this blog right now, chances are that you’re finding your way to add a MailChimp integration into your Node.js application. Don’t worry, we have you covered! This is a step by step guide which will help you build a sample Node.js backend for your webpage and help you integrate it with the MailChimp API. 
-
-In this tutorial, we will talk about all the different things you need to look for within MailChimp with references to their awesome API documentation, talk about a few edge cases you need to consider and finally talk about an alternative method using Grouparoo which will do all the heavy lifting for you!
+If you're reading this blog right now, the chances are that you're finding your way to add a MailChimp integration into your Node.js application. Don't worry; we have you covered! This is a step by step guide that will help you build a sample Node.js backend for your webpage and help you integrate it with the MailChimp API.
+This tutorial will discuss all the different things you need to look for within MailChimp with references to their excellent API documentation. We'll also talk about an alternative method using Grouparoo, which will do all the heavy lifting for you!
 
 ## Getting started
 
-To get started you’ll be needing the following things prepared:
-A Mailchimp Account
-Node.js & npm installed on your machine
-A basic frontend application to send requests to your Node.js application
+To get started, you'll be needing the following things prepared: 
+- A MailChimp Account 
+- Node.js & npm installed on your machine 
+- A basic frontend application to send requests to your Node.js application.
 
 This guide will help you make a sample Node.js application with Express to send and receive API requests and responses. Although a basic knowledge of Node.js would be helpful, you can easily follow the steps given and get started with your application.
 
 ## Setting up your MailChimp account
 
-Setting up your MailChimp account is a fairly simple process. In this tutorial we’re assuming that you have created a free MailChimp account and are looking to integrate it within your application. For premium accounts, the process is fairly similar, just that you have the ability to create multiple audiences, each having their separate Audience ID.
-To integrate your app with Mailchimp, we need to pieces of information from your account:
-
-1. Mailchimp Account API Key
+Setting up your MailChimp account is a relatively simple process. In this tutorial, we're assuming that you have created a free MailChimp account and are looking to integrate it within your application. The process is pretty similar for premium accounts, just that you can create multiple audiences, each having their separate Audience ID. To integrate your app with Mailchimp, we need to pieces of information from your account:
+1. MailChimp Account API Key
 2. Audience ID
 
 ### Getting your API Key
 
-For integrating your app, the first and most important thing needed is an API Key. This is a fairly easy step, just have a look at the steps below.
+For integrating your app, the first and most important thing needed is an API Key. This is a relatively easy step; have a look at the steps below.
 
-1. Go to the bottom left corner of the screen and click on the Account option
+1. Go to the bottom left corner of the screen and click on the **Account** option.
 
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc1.png"
+  alt="MailChimp Profile"
+  width={216}
+  height={94}
 />
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc2.png"
+  alt="MailChimp Account Menu"
+  width={297}
+  height={320}
 />
 
-2. On the Account page, you’ll find a menu. Click on Extras and find the API Keys option
+2. On the Account page, you’ll find a menu. Click on **Extras** and find the **API Keys** option.
 
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc3.png"
+  alt="API Key option in MailChimp Account"
+  width={157}
+  height={193}
 />
-3. If you’re opening this up for the first time, you’ll see a screen similar to this one here. You need to have an API key to integrate your MailChimp account to your NodeJS application. To do this, click on Create A Key
+
+3. If you’re opening this up for the first time, you’ll see a screen similar to this one here. You need to have an API key to integrate your MailChimp account to your NodeJS application. To do this, click on **Create A Key**.
 
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc4.png"
+  alt="Generating API Keys"
+  width={1276}
+  height={603}
 />
-4. Once you click on it, you’ll see that mailchimp had created an API key for you! It will look something similar to this hereWe have displayed the later portion of our API Key here. One thing to note here are the last 3 characters after the - data center corresponding to your account. Each account has its own corresponding data center for all the API calls one can make. For us, it is us6. This might be totally different for you, make sure to note this separately
 
+4. Once you click on it, you’ll see that MailChimp has created an API key for you! It will look something similar to this here
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc5.png"
+  alt="Active API Keys"
+  width={1268}
+  height={317}
 />
+
+We have displayed the latter portion of our API Key in the image above. One thing to note here are the last three characters after the `-`. This represents the data center corresponding to your account, which is for all the API calls one can make. For us, it is us6. This might be different for you, so make sure to note this separately.
 
 ### Finding your Audience ID
 
 Next up, we need to find our Audience ID. For this, just follow this 2 step process :)
-1. Go to the audience tab and click on All contacts
+
+1. Go to the audience tab and click on **All contacts**.
 
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc6.png"
+  alt="MailChimp Audience Tab"
+  width={553}
+  height={499}
 />
-2. You’ll see a screen with all your contact details mentioned. Go to the settings tab and click on Audience name and defaults.
+
+2. You'll see a screen with all your contact details mentioned. Go to the settings tab and click on **Audience name and defaults**.
 
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc7.png"
+  alt="MailChimp Audience Settings"
+  width={338}
+  height={430}
 />
-3. You can find your Audience ID, which will look something similar to this here!
+
+3. You can find your **Audience ID**, which will look something similar to this here!
 
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc8.png"
+  alt="MailChimp Audience ID"
+  width={483}
+  height={116}
 />
 
 ## Setting up your Node.js Application
 
-For this tutorial, we’re assuming that you have a sample frontend application, where users can easily enter their email and click on the signup button to register on your mailing list.
+We're assuming that you have a sample frontend application for this tutorial, where users can quickly enter their email and click on the signup button to register on your mailing list.
 
-Here’s what a sample request from the frontend might look like:
+Here's what a sample request from the frontend might look like:
 
 ```
 cta.addEventListener('click', (event) => {
@@ -108,13 +135,13 @@ cta.addEventListener('click', (event) => {
   })
 ```
 
-Here, on click the function checks for the validity of email and accordingly places a POST request on the ‘/subscribe’ endpoint of our application with the body containing the email value entered by the user.
+Here, on click, the function checks for the validity of email and accordingly places a `POST request` on the '/subscribe' endpoint of our application with the body containing the `email` value entered by the user.
 
-All the error messages are being logged into the browser console.
+For simplicity, we're logging in all the error messages into the browser console.
 
-Now, when we have set up our frontend, it is time to create our backend
+Now, when we have set up our frontend, let's create our backend!
 
-In your repository, it is time to create a package.json file to capture all the necessary modules required by our project
+It is time to make a `package.json` file to capture all the necessary modules required by our project in your repository.
 
 ```
 $ npm init
@@ -122,10 +149,10 @@ $ npm init
 
 This will ask you for a few project details and initiate a package.json file inside your repository.
 
-Now it is time to install all our necessary modules for the project. We will be requiring the following modules:
-express:
-body-parser:
-request:
+Now it is time to install all our necessary modules for the project. We will require the following modules:
+- `express`: Helps us define the routing table and set up middlewares to respond to HTTP Requests 
+- `body-parser`: It is responsible for parsing the incoming request bodies in a middleware before we handle it.
+- `request`: Helps us make HTTP requests
 
 ```
 $ npm install express body-parser request
@@ -133,11 +160,11 @@ $ npm install express body-parser request
 
 Perfect, so now we can go ahead and get our hands dirty to write some actual code!
 
-Inside your project, create a new app.js file
+Inside your project, create a new `app.js` file.
 
-Let’s do some basic setup here as well, getting our modules imported and connecting the middlewares
+Let’s do some basic setup here as well, getting our modules imported and connecting the middlewares.
 
-As a first step, let’s import all the modules we just installed
+As a first step, let’s import all the modules we just installed:
 
 ```
 const express = require("express");
@@ -145,13 +172,13 @@ const bodyParser = require("body-parser");
 const request = require("request");
 ```
 
-We’ll be needing path as well
+We’ll be needing the `path` as well.
 
 ```
 const path = require("path");
 ```
 
-Now, let’s define our application quickly
+Now, let’s define our application quickly.
 
 ```
 const app = express();
@@ -159,25 +186,25 @@ const app = express();
 
 Now, we need to define our middleware. 
 
-1. To send the JSON data from the client, we will be using the Express JSON middleware 
+1. To send the JSON data from the client, we will be using the `express.json()` middleware. 
 ```
 app.use(express.json());
 ```
 
-2. In order to parse the data that is coming from the POST request, we will be using body-parser
+2. To parse the data that is coming from the POST request, we will be using `body-parser`
 ```
 app.use(bodyParser.urlencoded({extended: false}));
 ```
 
-Note that we have set extended to false, which means that the values can only be strings or arrays which is what we need for now.
+Note that we have set `extended` to `false`, which means that the values can only be `strings` or `arrays` which is what we need for now.
 
-3. Next up, we need to specify the folder which contains your frontend application and connect it to the express server. Here, we’re having a folder named `public`, which contains all our frontend code.
+3. Next up, we need to specify the folder which contains your frontend application and connect it to the express server. Here, we’re having a folder named `public`, which includes all our frontend code.
 
 ```
 app.use(express.static(path.join(__dirname, 'public')))
 ```
 
-4. Perfect, let’s create our POST request quickly. We’re just setting it up so just adding a console log to check if everything’s working as expected.
+4. Perfect, let's create our `POST` request quickly. We're just setting it up to add a `console.log()` to check if everything's working as expected.
 
 ```
 app.post('/subscribe', (req, res) => {
@@ -185,20 +212,20 @@ app.post('/subscribe', (req, res) => {
 })
 ```
 
-5. Now let’s define the PORT on which our application will hosted
+5. Now let's define the `PORT` which will host our application. 
 
 ```
 const PORT = process.env.PORT || 8888;
 ```
 
-This sets the value to the environment PORT value in case we’re using a cloud hosting or default it to 5000 which is our local machine endpoint.
+This sets the value to the environment `PORT` value in case we're using a cloud hosting or default it to 8888, which is our local machine endpoint.
 
-6. Finally, for all this to work, let’s start a socket that listens for our connections on the PORT
+6. Finally, for all this to work, let's start a socket that listens for our connections on the `PORT`.
 ```
 app.listen(PORT, console.log('The server has started!'));
 ```
 
-7. Woof! That's a lot of setup for just a basic API request. Let’s test our setup uptill now. We’ll be using the node command for this
+7. Woof! That's so much setup for just a basic API request. Let's test our setup up till now. We'll be using the node command for this.
 
 ```
 node app
@@ -210,37 +237,38 @@ As soon as you run it, you will notice that the terminal says
 The server has started!
 ```
 
-You can also go and check your frontend for starting a post request by entering in the email field. As soon as you do that, you’ll notice the terminal says
+You can also check your frontend to start a post request by entering the email field. As soon as you do that, you'll notice the terminal says
+
 ```
 I am listening
 ```
 
-This proves that our server is up and running and the post request has also gone through. In case you do not have a frontend and want to test this, you can easily use a tool like postman and send a post request similar to the one we have mentioned above for the frontend application.
+This proves that our server is up and running, and the post request has also gone through. If you do not have a frontend and want to test this, you can easily use a tool like Postman and send a `POST` request similar to the one we have mentioned above for the frontend application.
 
-Now finally, it is time to do some actual fun stuff! Let’s integrate this with MailChimp!
+Now finally, it is time to do some real fun stuff! Let’s integrate this with MailChimp!
 
 ## Connecting your Node.js App to MailChimp
 
-For this whole process, we’re directly referring to the [MailChimp API Documentation](https://mailchimp.com/developer/marketing/api/list-activity/). They have excellent documentation stating all the different things you need to be aware of with extremely detailed resources available. Make sure to check that out in case you need any additional information that is not mentioned here directly.
+For this whole process, we’re directly referring to the [MailChimp API Documentation](https://mailchimp.com/developer/marketing/api/list-activity/). They have excellent documentation stating all the different things you need to be aware of with extremely detailed resources. Make sure to check that out if you need any additional information that is not mentioned here directly.
 
-We’re using the standard URL route here, if you want to download the [MailChimp NodeJS module](https://www.npmjs.com/package/mailchimp-api-v3), you can definitely do that as well. Although it makes your life easier in terms of implementing the API, it definitely adds a bunch of other things which we do not need for this particular project. 
+We’re using the standard URL route here. You can also download the [MailChimp NodeJS module](https://www.npmjs.com/package/mailchimp-api-v3) if you want to as well. Although this makes your life easier in implementing the API, it adds many other modules that we do not need for this particular project. 
 
 ### Getting your API Endpoint
 
 So the first thing here is to get the URL of your API. If you check the documentation, the URL looks something like `https://<dc>.api.mailchimp.com/3.0`
 
-Here the `<dc>` corresponds to the data center applicable for your account. If you go back to step 4 of “Getting your API Key”, you can see that for us, the data center is `us6`. Hence for us the URL looks something like: `https://us6.api.mailchimp.com/3.0`
+Here the `<dc>` corresponds to the data center applicable for your account. If you go back to *step 4* of **Getting your API Key**, you can see that for us, the data center is `us6`. Hence for us, the URL looks something like `https://us6.api.mailchimp.com/3.0`
 
-Now we have to navigate to the particular list where this API will go and hit, before we can start doing operations in it. You can see from step 4 of “Finding your Audience ID” that our Audience/ List Id is `ac7ad45fa0`. So finally out endpoint URL will look something like
+Now we have to navigate to the particular list where this API will go and hit before we can start doing operations in it. You can see from *step 4* of **Finding your Audience ID** that our **Audience/ List Id** is `ac7ad45fa0`. So finally out endpoint URL will look something like
 ```
 https://us6.api.mailchimp.com/3.0/lists/ac7ad45fa0
 ```
 
 ### Signing up a user to your mailing list
 
-So currently as we can see from our earlier setup that our server is listening to `/subscribe` but it is not doing anything actually other than just letting us know in the console that it is working. Now, we’ll be grabbing the request from here and directing it later to the MailChimp API.
+So currently, as we can see from our earlier setup, our server is listening to `/subscribe`. However, it is not doing anything other than just letting us know, in the console, that it is working. Now, we’ll be grabbing the request from here and directing it later to the MailChimp API.
 
-So, let’s grab our email from the request really quickly.
+So, let’s grab our email from the request quickly.
 
 ```
 app.post('/subscribe', (req, res) => {
@@ -266,19 +294,19 @@ app.post('/subscribe', (req, res) => {
 })
 ```
 
-So finally, we need to JSON.stringify() this so that it can be passed on to the MailChimp API. 
+So finally, we need to `JSON.stringify()` this so that it can be passed on to the MailChimp API. 
 
 ```
 addDataJson = JSON.stringify(addData);
 ```
 
 Perfect, so this is done. But this was just the data. Let’s structure the request to be sent as well. We will be making an `options` object for this. This contains the following properties:
-- `url`: The API Endpoint we created above containing your List ID as well
-- `method`: This is a post request, so `POST`
-- `headers`: This contains all the important information like Authorization. We’ll be passing over your API Key here.
-- `body`: Here we’ll be passing over the actual body, ie `addDataJson`
+- `url`: The API Endpoint we created above containing your `List ID` as well.
+- `method`: This is a post request, so `POST`.
+- `headers`: This contains all the important information like Authorization. We’ll be passing over your `API Key` here.
+- `body`: Here we’ll be passing over the actual body, ie `addDataJson`.
 
-The code will look something like this
+The code will look something like this:
 
 ```
 const options = {
@@ -304,4 +332,10 @@ request (options, (error, response, body) => {
 })
 ```
 
-And that’s it! We’re totally done with the code here! You have successfully made a way for people to opt in for your mailing list!
+And that’s it! We’re done with the code here! You have successfully made way for people to opt-in for your mailing list!
+
+## Alternative Method - Using an off the shelf solution
+
+As you can see, just to configure a single API function, we needed to go through a considerable integration pain, which again is a code you need to maintain regularly. What I generally use and recommend to you all is definitely, Grouparoo. 
+
+Grouparoo is a data syncing platform that connects directly to your product database, allows you and your team to define what customer data you care about, and then syncs that data to Mailchimp. The best part, the tool is fully open source! You can easily choose between a self-hosted or a cloud offering. Using this will be just a matter of minutes to build this integration, and anyone can easily use the GUI to configure it!
