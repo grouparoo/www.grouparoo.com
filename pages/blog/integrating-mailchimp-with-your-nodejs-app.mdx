@@ -14,9 +14,10 @@ This tutorial will discuss all the different things you need to look for within 
 
 ## Getting started
 
-To get started, you'll be needing the following things prepared: 
-- A MailChimp Account 
-- Node.js & npm installed on your machine 
+To get started, you'll be needing the following things prepared:
+
+- A MailChimp Account
+- Node.js & npm installed on your machine
 - A basic frontend application to send requests to your Node.js application.
 
 This guide will help you make a sample Node.js application with Express to send and receive API requests and responses. Although a basic knowledge of Node.js would be helpful, you can easily follow the steps given and get started with your application.
@@ -24,6 +25,7 @@ This guide will help you make a sample Node.js application with Express to send 
 ## Setting up your MailChimp account
 
 Setting up your MailChimp account is a relatively simple process. In this tutorial, we're assuming that you have created a free MailChimp account and are looking to integrate it within your application. The process is pretty similar for premium accounts, just that you can create multiple audiences, each having their separate Audience ID. To integrate your app with Mailchimp, we need to pieces of information from your account:
+
 1. MailChimp Account API Key
 2. Audience ID
 
@@ -65,12 +67,12 @@ For integrating your app, the first and most important thing needed is an API Ke
 />
 
 4. Once you click on it, you’ll see that MailChimp has created an API key for you! It will look something similar to this here
-<Image
-  src="integrating-mailchimp-with-your-nodejs-app/mc5.png"
-  alt="Active API Keys"
-  width={1268}
-  height={317}
-/>
+   <Image
+     src="integrating-mailchimp-with-your-nodejs-app/mc5.png"
+     alt="Active API Keys"
+     width={1268}
+     height={317}
+   />
 
 We have displayed the latter portion of our API Key in the image above. One thing to note here are the last three characters after the `-`. This represents the data center corresponding to your account, which is for all the API calls one can make. For us, it is us6. This might be different for you, so make sure to note this separately.
 
@@ -150,7 +152,8 @@ $ npm init
 This will ask you for a few project details and initiate a package.json file inside your repository.
 
 Now it is time to install all our necessary modules for the project. We will require the following modules:
-- `express`: Helps us define the routing table and set up middlewares to respond to HTTP Requests 
+
+- `express`: Helps us define the routing table and set up middlewares to respond to HTTP Requests
 - `body-parser`: It is responsible for parsing the incoming request bodies in a middleware before we handle it.
 - `request`: Helps us make HTTP requests
 
@@ -184,14 +187,16 @@ Now, let’s define our application quickly.
 const app = express();
 ```
 
-Now, we need to define our middleware. 
+Now, we need to define our middleware.
 
-1. To send the JSON data from the client, we will be using the `express.json()` middleware. 
+1. To send the JSON data from the client, we will be using the `express.json()` middleware.
+
 ```
 app.use(express.json());
 ```
 
 2. To parse the data that is coming from the POST request, we will be using `body-parser`
+
 ```
 app.use(bodyParser.urlencoded({extended: false}));
 ```
@@ -212,7 +217,7 @@ app.post('/subscribe', (req, res) => {
 })
 ```
 
-5. Now let's define the `PORT` which will host our application. 
+5. Now let's define the `PORT` which will host our application.
 
 ```
 const PORT = process.env.PORT || 8888;
@@ -221,6 +226,7 @@ const PORT = process.env.PORT || 8888;
 This sets the value to the environment `PORT` value in case we're using a cloud hosting or default it to 8888, which is our local machine endpoint.
 
 6. Finally, for all this to work, let's start a socket that listens for our connections on the `PORT`.
+
 ```
 app.listen(PORT, console.log('The server has started!'));
 ```
@@ -251,15 +257,16 @@ Now finally, it is time to do some real fun stuff! Let’s integrate this with M
 
 For this whole process, we’re directly referring to the [MailChimp API Documentation](https://mailchimp.com/developer/marketing/api/list-activity/). They have excellent documentation stating all the different things you need to be aware of with extremely detailed resources. Make sure to check that out if you need any additional information that is not mentioned here directly.
 
-We’re using the standard URL route here. You can also download the [MailChimp NodeJS module](https://www.npmjs.com/package/mailchimp-api-v3) if you want to as well. Although this makes your life easier in implementing the API, it adds many other modules that we do not need for this particular project. 
+We’re using the standard URL route here. You can also download the [MailChimp NodeJS module](https://www.npmjs.com/package/mailchimp-api-v3) if you want to as well. Although this makes your life easier in implementing the API, it adds many other modules that we do not need for this particular project.
 
 ### Getting your API Endpoint
 
 So the first thing here is to get the URL of your API. If you check the documentation, the URL looks something like `https://<dc>.api.mailchimp.com/3.0`
 
-Here the `<dc>` corresponds to the data center applicable for your account. If you go back to *step 4* of **Getting your API Key**, you can see that for us, the data center is `us6`. Hence for us, the URL looks something like `https://us6.api.mailchimp.com/3.0`
+Here the `<dc>` corresponds to the data center applicable for your account. If you go back to _step 4_ of **Getting your API Key**, you can see that for us, the data center is `us6`. Hence for us, the URL looks something like `https://us6.api.mailchimp.com/3.0`
 
-Now we have to navigate to the particular list where this API will go and hit before we can start doing operations in it. You can see from *step 4* of **Finding your Audience ID** that our **Audience/ List Id** is `ac7ad45fa0`. So finally out endpoint URL will look something like
+Now we have to navigate to the particular list where this API will go and hit before we can start doing operations in it. You can see from _step 4_ of **Finding your Audience ID** that our **Audience/ List Id** is `ac7ad45fa0`. So finally out endpoint URL will look something like
+
 ```
 https://us6.api.mailchimp.com/3.0/lists/ac7ad45fa0
 ```
@@ -277,6 +284,7 @@ app.post('/subscribe', (req, res) => {
 ```
 
 Perfect, now with that in place, let’s make the data we’ll be passing to our MailChimp. We’ll be naming the object as `addData`. As per the MailChimp Documentation, this object accepts a property called `members`. The `members` property accepts multiple objects, but here we’ll be just looking for two,
+
 - `email_address`: Email address for a subscriber.
 - `status`: Subscriber's current status. Possible values: `subscribed`, `unsubscribed`, `cleaned`, or `pending`. We’ll be using `pending` as the status here since it helps us create a double opt-in list. MailChimp on our behalf will automatically send out the confirmation email if the status is pending. Once a person clicks the link and verifies, their email will show up in your Audience List!
 
@@ -294,13 +302,14 @@ app.post('/subscribe', (req, res) => {
 })
 ```
 
-So finally, we need to `JSON.stringify()` this so that it can be passed on to the MailChimp API. 
+So finally, we need to `JSON.stringify()` this so that it can be passed on to the MailChimp API.
 
 ```
 addDataJson = JSON.stringify(addData);
 ```
 
 Perfect, so this is done. But this was just the data. Let’s structure the request to be sent as well. We will be making an `options` object for this. This contains the following properties:
+
 - `url`: The API Endpoint we created above containing your `List ID` as well.
 - `method`: This is a post request, so `POST`.
 - `headers`: This contains all the important information like Authorization. We’ll be passing over your `API Key` here.
@@ -336,6 +345,6 @@ And that’s it! We’re done with the code here! You have successfully made way
 
 ## Alternative Method - Using an off the shelf solution
 
-As you can see, just to configure a single API function, we needed to go through a considerable integration pain, which again is a code you need to maintain regularly. What I generally use and recommend to you all is definitely, Grouparoo. 
+As you can see, just to configure a single API function, we needed to go through a considerable integration pain, which again is a code you need to maintain regularly. What I generally use and recommend to you all is definitely, Grouparoo.
 
 Grouparoo is a data syncing platform that connects directly to your product database, allows you and your team to define what customer data you care about, and then syncs that data to Mailchimp. The best part, the tool is fully open source! You can easily choose between a self-hosted or a cloud offering. Using this will be just a matter of minutes to build this integration, and anyone can easily use the GUI to configure it!
