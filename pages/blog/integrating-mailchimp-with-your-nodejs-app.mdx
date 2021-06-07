@@ -1,32 +1,29 @@
 ---
-title: "Integrating MailChimp with your Node.js App"
-date: "2021-06-01"
+title: "Integrating Mailchimp with your Node.js App"
+date: "2021-06-07"
 author: "Yashovardhan Agrawal"
-pullQuote: "A step by step guide of integrating your MailChimp Audiences with your Node.js app"
+pullQuote: "A step by step guide of integrating your Mailchimp Audiences with your Node.js app"
 image: "integrating-mailchimp-with-your-nodejs-app/mc4.png"
 tags: [connections, engineering]
 ---
 
-# Integrating MailChimp with your Node.js App
-
-If you're reading this blog right now, the chances are that you're finding your way to add a MailChimp integration into your Node.js application. Don't worry; we have you covered! This is a step by step guide that will help you build a sample Node.js backend for your webpage and help you integrate it with the MailChimp API.
-This tutorial will discuss all the different things you need to look for within MailChimp with references to their excellent API documentation. We'll also talk about an alternative method using Grouparoo, which will do all the heavy lifting for you!
+This is a step-by-step guide that will help you integrate Mailchimp with your Node.js application using Mailchimp's API. We'll begin by walking through the process manually, and end by showing you an easier approach that lets Grouparoo do all the heavy lifting for you.
 
 ## Getting started
 
 To get started, you'll be needing the following things prepared:
 
-- A MailChimp Account
-- Node.js & npm installed on your machine
-- A basic frontend application to send requests to your Node.js application.
+- A [Mailchimp](https://mailchimp.com/help/create-an-account/) Account
+- [Node.js & npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed on your machine
+- A [basic frontend application](https://www.w3schools.com/howto/howto_css_newsletter.asp) to send requests to your Node.js application.
 
 This guide will help you make a sample Node.js application with Express to send and receive API requests and responses. Although a basic knowledge of Node.js would be helpful, you can easily follow the steps given and get started with your application.
 
-## Setting up your MailChimp account
+## Setting up your Mailchimp account
 
-Setting up your MailChimp account is a relatively simple process. In this tutorial, we're assuming that you have created a free MailChimp account and are looking to integrate it within your application. The process is pretty similar for premium accounts, just that you can create multiple audiences, each having their separate Audience ID. To integrate your app with Mailchimp, we need to pieces of information from your account:
+Setting up your Mailchimp account is a relatively simple process. In this tutorial, we're assuming that you have created a free Mailchimp account and are looking to integrate it within your application. The process is pretty similar for premium accounts, just that you can create multiple audiences, each having their separate Audience ID. To integrate your app with Mailchimp, we need two pieces of information from your account:
 
-1. MailChimp Account API Key
+1. Mailchimp Account API Key
 2. Audience ID
 
 ### Getting your API Key
@@ -37,13 +34,13 @@ For integrating your app, the first and most important thing needed is an API Ke
 
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc1.png"
-  alt="MailChimp Profile"
+  alt="Mailchimp Profile"
   width={216}
   height={94}
 />
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc2.png"
-  alt="MailChimp Account Menu"
+  alt="Mailchimp Account Menu"
   width={297}
   height={320}
 />
@@ -52,12 +49,12 @@ For integrating your app, the first and most important thing needed is an API Ke
 
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc3.png"
-  alt="API Key option in MailChimp Account"
+  alt="API Key option in Mailchimp Account"
   width={157}
   height={193}
 />
 
-3. If you’re opening this up for the first time, you’ll see a screen similar to this one here. You need to have an API key to integrate your MailChimp account to your NodeJS application. To do this, click on **Create A Key**.
+3. If you’re opening this up for the first time, you’ll see a screen similar to this one here. You need to have an API key to integrate your Mailchimp account to your NodeJS application. To do this, click on **Create A Key**.
 
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc4.png"
@@ -66,13 +63,14 @@ For integrating your app, the first and most important thing needed is an API Ke
   height={603}
 />
 
-4. Once you click on it, you’ll see that MailChimp has created an API key for you! It will look something similar to this here
-   <Image
-     src="integrating-mailchimp-with-your-nodejs-app/mc5.png"
-     alt="Active API Keys"
-     width={1268}
-     height={317}
-   />
+4. Once you click on it, you’ll see that Mailchimp has created an API key for you! It will look something similar to this here
+
+<Image
+  src="integrating-mailchimp-with-your-nodejs-app/mc5.png"
+  alt="Active API Keys"
+  width={1268}
+  height={317}
+/>
 
 We have displayed the latter portion of our API Key in the image above. One thing to note here are the last three characters after the `-`. This represents the data center corresponding to your account, which is for all the API calls one can make. For us, it is us6. This might be different for you, so make sure to note this separately.
 
@@ -84,7 +82,7 @@ Next up, we need to find our Audience ID. For this, just follow this 2 step proc
 
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc6.png"
-  alt="MailChimp Audience Tab"
+  alt="Mailchimp Audience Tab"
   width={553}
   height={499}
 />
@@ -93,7 +91,7 @@ Next up, we need to find our Audience ID. For this, just follow this 2 step proc
 
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc7.png"
-  alt="MailChimp Audience Settings"
+  alt="Mailchimp Audience Settings"
   width={338}
   height={430}
 />
@@ -102,7 +100,7 @@ Next up, we need to find our Audience ID. For this, just follow this 2 step proc
 
 <Image
   src="integrating-mailchimp-with-your-nodejs-app/mc8.png"
-  alt="MailChimp Audience ID"
+  alt="Mailchimp Audience ID"
   width={483}
   height={116}
 />
@@ -143,6 +141,8 @@ For simplicity, we're logging in all the error messages into the browser console
 
 Now, when we have set up our frontend, let's create our backend!
 
+### Initiate your `package.json`
+
 It is time to make a `package.json` file to capture all the necessary modules required by our project in your repository.
 
 ```
@@ -150,6 +150,8 @@ $ npm init
 ```
 
 This will ask you for a few project details and initiate a package.json file inside your repository.
+
+### Install dependencies
 
 Now it is time to install all our necessary modules for the project. We will require the following modules:
 
@@ -160,6 +162,8 @@ Now it is time to install all our necessary modules for the project. We will req
 ```
 $ npm install express body-parser request
 ```
+
+### Setting up your app.js file
 
 Perfect, so now we can go ahead and get our hands dirty to write some actual code!
 
@@ -255,9 +259,9 @@ Now finally, it is time to do some real fun stuff! Let’s integrate this with M
 
 ## Connecting your Node.js App to MailChimp
 
-For this whole process, we’re directly referring to the [MailChimp API Documentation](https://mailchimp.com/developer/marketing/api/list-activity/). They have excellent documentation stating all the different things you need to be aware of with extremely detailed resources. Make sure to check that out if you need any additional information that is not mentioned here directly.
+For this whole process, we’re directly referring to the [Mailchimp API Documentation](https://mailchimp.com/developer/marketing/api/list-activity/). They have excellent documentation stating all the different things you need to be aware of with extremely detailed resources. Make sure to check that out if you need any additional information that is not mentioned here directly.
 
-We’re using the standard URL route here. You can also download the [MailChimp NodeJS module](https://www.npmjs.com/package/mailchimp-api-v3) if you want to as well. Although this makes your life easier in implementing the API, it adds many other modules that we do not need for this particular project.
+We’re using the standard URL route here. You can also download the [Mailchimp NodeJS module](https://www.npmjs.com/package/mailchimp-api-v3) if you want to as well. Although this makes your life easier in implementing the API, it adds many other modules that we do not need for this particular project.
 
 ### Getting your API Endpoint
 
@@ -273,7 +277,7 @@ https://us6.api.mailchimp.com/3.0/lists/ac7ad45fa0
 
 ### Signing up a user to your mailing list
 
-So currently, as we can see from our earlier setup, our server is listening to `/subscribe`. However, it is not doing anything other than just letting us know, in the console, that it is working. Now, we’ll be grabbing the request from here and directing it later to the MailChimp API.
+So currently, as we can see from our earlier setup, our server is listening to `/subscribe`. However, it is not doing anything other than just letting us know, in the console, that it is working. Now, we’ll be grabbing the request from here and directing it later to the Mailchimp API.
 
 So, let’s grab our email from the request quickly.
 
@@ -283,10 +287,10 @@ app.post('/subscribe', (req, res) => {
 })
 ```
 
-Perfect, now with that in place, let’s make the data we’ll be passing to our MailChimp. We’ll be naming the object as `addData`. As per the MailChimp Documentation, this object accepts a property called `members`. The `members` property accepts multiple objects, but here we’ll be just looking for two,
+Perfect, now with that in place, let’s make the data we’ll be passing to our MailChimp. We’ll be naming the object as `addData`. As per the Mailchimp Documentation, this object accepts a property called `members`. The `members` property accepts multiple objects, but here we’ll be just looking for two,
 
 - `email_address`: Email address for a subscriber.
-- `status`: Subscriber's current status. Possible values: `subscribed`, `unsubscribed`, `cleaned`, or `pending`. We’ll be using `pending` as the status here since it helps us create a double opt-in list. MailChimp on our behalf will automatically send out the confirmation email if the status is pending. Once a person clicks the link and verifies, their email will show up in your Audience List!
+- `status`: Subscriber's current status. Possible values: `subscribed`, `unsubscribed`, `cleaned`, or `pending`. We’ll be using `pending` as the status here since it helps us create a double opt-in list. Mailchimp on our behalf will automatically send out the confirmation email if the status is pending. Once a person clicks the link and verifies, their email will show up in your Audience List!
 
 ```
 app.post('/subscribe', (req, res) => {
@@ -302,7 +306,7 @@ app.post('/subscribe', (req, res) => {
 })
 ```
 
-So finally, we need to `JSON.stringify()` this so that it can be passed on to the MailChimp API.
+So finally, we need to `JSON.stringify()` this so that it can be passed on to the Mailchimp API.
 
 ```
 addDataJson = JSON.stringify(addData);
