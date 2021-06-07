@@ -7,9 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.repository == 'grouparoo/www.grouparoo.com' }}
     steps:
+      - name: echo actor
+        run: |
+          echo ${{github.actor}}
       - uses: actions/checkout@master
-        with:
-          ref: ${{ github.head_ref }}
       - name: Update files
         run: |
           ./scripts/github_action

@@ -60,4 +60,29 @@ export const MySQL: Plugin = {
       imageHeight: 506,
     },
   ],
+  configOptions: {
+    host: {
+      default: "localhost",
+      required: true,
+      description: "Database host.",
+    },
+    port: {
+      default: 3306,
+      required: true,
+      description: "Port on which to open database connection.",
+    },
+    database: {
+      required: true,
+      description: 'The database name - e.g. `"data_warehouse"`.',
+    },
+    user: {
+      default: undefined,
+      description:
+        'The user to connect to the database - e.g. `"grouparoo_user"`.  If you are connecting to localhost, leave as `undefined`.',
+    },
+    password: {
+      description:
+        'The database password - e.g. `"P@assword"`.  If you don\'t have a password, leave as `undefined`.',
+    },
+  },
 };

@@ -5,7 +5,9 @@ cd ../
 npm install
 cd `dirname "$0"`
 ../node_modules/.bin/ts-node ./generate_static_files.ts
+../node_modules/.bin/ts-node ./generate_plugin_json.ts
 cd ../
 ./node_modules/.bin/prettier ./public/feeds --write
 ./node_modules/.bin/prettier ./public/sitemap.xml --write
+./node_modules/.bin/prettier ./public/plugins/v1/manifest.json --write
 git checkout package-lock.json

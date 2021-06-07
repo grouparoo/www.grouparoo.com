@@ -1,7 +1,6 @@
 import { useState, useEffect, Children, cloneElement } from "react";
 import Head from "next/head";
 import GoogleAnalytics from "../googleAnalytics";
-import Posthog from "../posthog";
 import AdConversionScript from "../adConversionsScript";
 import Navigation from "../navigation";
 import Footer from "../footer";
@@ -153,7 +152,6 @@ function PageTemplate({ children }) {
       </div>
 
       <GoogleAnalytics />
-      <Posthog />
       <AdConversionScript />
     </>
   );

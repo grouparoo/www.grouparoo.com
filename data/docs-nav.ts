@@ -110,8 +110,12 @@ const DocsNav: NavItem[] = [
     title: "Plugins",
     path: "/docs/plugins",
     children: [
+      { title: "BigQuery", path: "/docs/plugins/grouparoo-bigquery" },
       { title: "Intercom", path: "/docs/plugins/grouparoo-intercom" },
+      { title: "MySQL", path: "/docs/plugins/grouparoo-mysql" },
       { title: "Postgres", path: "/docs/plugins/grouparoo-postgres" },
+      { title: "Redshift", path: "/docs/plugins/grouparoo-redshift" },
+      { title: "Snowflake", path: "/docs/plugins/grouparoo-snowflake" },
       { title: "SQLite", path: "/docs/plugins/grouparoo-sqlite" },
     ],
   },
@@ -182,6 +186,10 @@ const DocsNav: NavItem[] = [
         title: "Upgrade Guides",
         path: "/docs/support/upgrading-grouparoo",
         children: [
+          {
+            title: "v0.3 to v0.4",
+            path: "/docs/support/upgrading-grouparoo/v03-v04",
+          },
           {
             title: "v0.2 to v0.3",
             path: "/docs/support/upgrading-grouparoo/v02-v03",

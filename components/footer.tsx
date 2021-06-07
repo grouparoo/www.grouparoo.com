@@ -198,6 +198,10 @@ export default function Footer() {
                 <Link href="/about#careers">
                   <a>Careers</a>
                 </Link>
+                <br />
+                <Link href="/legal/privacy">
+                  <a>Privacy Policy</a>
+                </Link>
               </Col>
             </Row>
           </Col>

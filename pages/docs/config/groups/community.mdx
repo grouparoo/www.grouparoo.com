@@ -17,23 +17,67 @@ To generate a new Calculated Group for your Grouparoo application, run [the `gen
 
     grouparoo generate group:calculated all_emails
 
-Note here that `all_emails` is the ID for the Group. An ID is always required when generating a config object.
+Note here that `new_high_value_customers` is the ID for the Group. An ID is always required when generating a config object.
 
-This command will generate a file in your application directory at `config/groups/all_emails.js` that looks something like this:
+This command will generate a file in your application directory at `config/groups/new_high_value_customers.js` that looks something like this:
 
 ```js
 exports.default = async function buildConfig() {
   return [
     {
       class: "group",
-      id: "all_emails",
-      name: "all_emails",
+      id: "new_high_value_customers",
+      name: "New High Value Customers",
       type: "calculated",
       rules: [],
     },
   ];
 };
 ```
+
+which you can customize with rules such as:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      class: "group",
+      id: "recent_high_value_customers",
+      name: "Recent High Value Customers",
+      type: "calculated",
+      rules: [
+        {
+          propertyId: "email",
+          operation: { op: "exists" },
+        },
+        {
+          propertyId: "email",
+          operation: { op: "notILike" },
+          match: "%grouparoo.com",
+        },
+        {
+          propertyId: "last_purchase_date",
+          operation: { op: "relative_gt" },
+          relativeMatch: "15",
+          relativeMatchUnit: "days",
+        },
+        {
+          propertyId: "ltv",
+          operation: { op: "gt" },
+          match: "3000",
+        },
+        {
+          propertyId: "subscribed",
+          operation: { op: "eq" },
+          match: "true",
+        },
+      ],
+    },
+  ];
+};
+```
+
+This group would contain profiles with an email address that is not `@grouparoo.com` that have made a purchase in the last 15 days, have a lifetime value over $3000, and are subscribed to our newsletter.
 
 More info this below.
 
@@ -42,6 +86,8 @@ More info this below.
 Configuring a Calculated Group is all about adding Rules to the group. A Rule is some logical operator to filter Properties. A profile must match every Rule to be included in the Group.
 
 Available operations depends on both the _type_ of Property and the underlying Grouparoo database (SQLite vs. Postgres). See below for a list of rules. (If in doubt, choose Postgres.)
+
+Note you can use SQL wildcard characters (%, \_, [ ], ^, -) in your group rule match values as appropriate and necessary.
 
 <RuleOpsTable />
 
