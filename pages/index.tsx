@@ -6,7 +6,6 @@ import Link from "next/link";
 import HomepageCodeBox from "../components/home/homepageCodeBox";
 import IntegrationsSection from "../components/home/integrationsSection";
 import SmallIntegration from "../components/home/smallIntegration";
-import GetStarted from "../components/home/getStarted";
 import WhyOpenSource from "../components/home/whyOpenSource";
 import CustomerTestimonials from "../components/home/customerTestimonials";
 import { randomHomepagePlugins } from "../data/plugins";
@@ -600,10 +599,6 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
           </Row>
         </Container>
       </div>
-
-      <br />
-
-      <GetStarted />
     </>
   );
 }

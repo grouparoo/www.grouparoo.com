@@ -231,32 +231,6 @@ export default function BigQueryToSalesforce() {
           <br />
         </div>
       </Container>
-      <div
-        id="call-to-action"
-        className="integrationsPageSection"
-        style={{ textAlign: "center" }}
-      >
-        <Row>
-          <Col>
-            <br />
-            <br />
-            <h2>Use Grouparoo to connect BigQuery to Salesforce</h2>
-            <p>Get a demo or try the Grouparoo application locally</p>
-            <ButtonGroup>
-              <Button variant="primary" href="/meet" className="ml-auto">
-                Get a Demo
-              </Button>
-              <Button
-                variant="outline-primary"
-                href="/docs/getting-started"
-                className="ml-auto"
-              >
-                Try it locally
-              </Button>
-            </ButtonGroup>
-          </Col>
-        </Row>
-      </div>
       <br />
 
       <br />

@@ -3,7 +3,6 @@ import { Container, Button, Tab, Nav, Row, Col } from "react-bootstrap";
 import Image from "../../components/Image";
 import Head from "next/head";
 import IntegrationsSection from "../../components/home/integrationsSection";
-import GetStarted from "../../components/home/getStarted";
 import ImageInBrowserFrame from "../../components/imageInBrowserFrame";
 
 export default function Healthcare() {
@@ -378,7 +377,6 @@ export default function Healthcare() {
       </div>
 
       <IntegrationsSection />
-      <GetStarted />
     </>
   );
 }

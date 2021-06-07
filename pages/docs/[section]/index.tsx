@@ -70,8 +70,6 @@ export default function DocPage({ pageProps }) {
           </Col>
         </Row>
       </Container>
-      <br />
-      <br />
     </>
   );
 }

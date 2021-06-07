@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import Head from "next/head";
-import GetStarted from "../home/getStarted";
 import ComparisonTable from "./comparisonTable";
 import FeatureBanner from "./featureBanner";
 import hydrate from "next-mdx-remote/hydrate";
@@ -90,7 +89,6 @@ export default function ComparisonPage(comp: ComparisonInfo) {
         </Container>
       </div>
       <ComparisonTable comparisonChartData={comp.comparisonChartData} />
-      <GetStarted />
     </>
   );
   return <>"abc"</>;

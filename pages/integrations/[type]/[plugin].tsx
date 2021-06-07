@@ -6,7 +6,6 @@ import IntegrationInstallation from "../../../components/home/integrationInstall
 import IntegrationSources from "../../../components/home/integrationSources";
 import IntegrationDestinations from "../../../components/home/integrationDestinations";
 import IntegrationsHead from "../../../components/home/integrationsHead";
-import GetStarted from "../../../components/home/getStarted";
 import BigArrow from "../../../components/bigArrow";
 import { PluginData, getUseCasePaths } from "../../../data/plugins";
 import ImageInBrowserFrame from "../../../components/imageInBrowserFrame";
@@ -178,9 +177,6 @@ export default function IntegrationsPage({
           </Row>
         </Container>
       </div>
-      <Container>
-        <GetStarted showLearnMore={false} />
-      </Container>
     </>
   );
 }
@@ -237,7 +233,7 @@ function DestionationHeaderArrow({ data }) {
 function SourceHeaderArrow({ data }) {
   return (
     <>
-      <Row>
+      <Row className="mb-3">
         <Col lg={5} md={12}>
           <br />
           <h1>
@@ -245,7 +241,7 @@ function SourceHeaderArrow({ data }) {
           </h1>
           <p>{data.description}</p>
         </Col>
-        <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
+        <Col lg={3} md={5} sm={5} xs={5} className="text-center">
           <br />
           <IntegrationCard
             name={data.name}
@@ -254,13 +250,13 @@ function SourceHeaderArrow({ data }) {
             showLink={false}
           />
         </Col>
-        <Col lg={1} md={2} sm={2} xs={2} style={{ textAlign: "center" }}>
+        <Col lg={1} md={2} sm={2} xs={2} className="text-center">
           <br />
           <br />
           <br />
           <BigArrow />
         </Col>
-        <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
+        <Col lg={3} md={5} sm={5} xs={5} className="text-center">
           <br />
           <IntegrationCard
             name="Grouparoo"
@@ -270,7 +266,6 @@ function SourceHeaderArrow({ data }) {
           />
         </Col>
       </Row>
-      <br />
     </>
   );
 }

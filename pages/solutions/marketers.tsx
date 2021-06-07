@@ -3,7 +3,6 @@ import { Container, Button, Tab, Nav, Row, Col } from "react-bootstrap";
 import Image from "../../components/Image";
 import Head from "next/head";
 import IntegrationsSection from "../../components/home/integrationsSection";
-import GetStarted from "../../components/home/getStarted";
 import WhyOpenSource from "../../components/home/whyOpenSource";
 import ImageInBrowserFrame from "../../components/imageInBrowserFrame";
 
@@ -385,7 +384,6 @@ export default function IndexPage() {
 
       <IntegrationsSection />
       <WhyOpenSource />
-      <GetStarted />
     </>
   );
 }

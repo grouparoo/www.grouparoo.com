@@ -7,6 +7,7 @@ import Footer from "../footer";
 import { Alert } from "react-bootstrap";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import GetStarted from "../home/getStarted";
 
 function PageTemplate({ children }) {
   const router = useRouter();
@@ -19,6 +20,8 @@ function PageTemplate({ children }) {
   useEffect(() => {
     if (router.asPath !== "/") setReleaseNote(null);
   }, [router.asPath]);
+
+  const noGetStarted = ["/meet", "/docs", "/blog", "/jobs"];
 
   return (
     <>
@@ -144,6 +147,7 @@ function PageTemplate({ children }) {
             cloneElement(child, { setReleaseNote })
           )}
         </div>
+        {noGetStarted.indexOf(router.asPath) >= 0 ? null : <GetStarted />}
         <Footer />
       </div>
 

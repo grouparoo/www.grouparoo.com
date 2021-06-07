@@ -10,7 +10,6 @@ import {
   Image,
 } from "react-bootstrap";
 import Head from "next/head";
-import GetStarted from "../components/home/getStarted";
 
 export default function PricingPage() {
   const boxTextStyle = {
@@ -439,11 +438,6 @@ export default function PricingPage() {
           </Col>
         </Row>
       </Container>
-      <br />
-
-      <br />
-
-      <GetStarted />
     </>
   );
 }
