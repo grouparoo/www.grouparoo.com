@@ -64,8 +64,7 @@
       "example": {
         "propertyId": "last_purchase_date",
         "operation": { "op": "eq" },
-        "match": "2021-05-25T04:45:00.000+00:00",
-        "type": "date"
+        "match": "2021-05-25T04:45:00.000+00:00"
       },
       "caption": "All profiles whose most recent purchase was on May 25, 2021 at exactly 4:45AM UTC."
     },
@@ -75,8 +74,7 @@
       "example": {
         "propertyId": "last_purchase_date",
         "operation": { "op": "ne" },
-        "match": "2021-05-25T04:45:00.000+00:00",
-        "type": "date"
+        "match": "2021-05-25T04:45:00.000+00:00"
       },
       "caption": "All profiles whose most recent purchase was anytime except May 25, 2021 at exactly 4:45AM UTC."
     },
@@ -86,8 +84,7 @@
       "example": {
         "propertyId": "last_purchase_date",
         "operation": { "op": "lt" },
-        "match": "2020-12-25T04:45:00.00+00:00",
-        "type": "date"
+        "match": "2020-12-25T04:45:00.00+00:00"
       },
       "caption": "All profiles whose most recent purchase is after December 25, 2020 at 04:45:00 UTC."
     },
@@ -97,8 +94,7 @@
       "example": {
         "propertyId": "last_purchase_date",
         "operation": { "op": "lt" },
-        "match": "2021-05-25T09:30:00.000+00:00",
-        "type": "date"
+        "match": "2021-05-25T09:30:00.000+00:00"
       },
       "caption": "All profiles whose most recent purchase is prior to May 25, 2021 9:30:00 AM UTC."
     },
@@ -108,8 +104,7 @@
       "example": {
         "propertyId": "last_purchase_date",
         "operation": { "op": "gte" },
-        "match": "2019-06-14T18:16:00.000+00:00",
-        "type": "date"
+        "match": "2019-06-14T18:16:00.000+00:00"
       },
       "caption": "All profiles whose most recent purchase is exactly at or after June 14, 2019 at 6:16 PM UTC"
     },
@@ -119,8 +114,7 @@
       "example": {
         "propertyId": "last_purchase_date",
         "operation": { "op": "lte" },
-        "match": "2020-12-25T04:45:00.000+00:00",
-        "type": "date"
+        "match": "2020-12-25T04:45:00.000+00:00"
       },
       "caption": "All profiles whose most recent purchase is exactly at or before December 25, 2020 at 04:45:00 UTC."
     },
@@ -131,8 +125,7 @@
         "propertyId": "last_purchase_date",
         "operation": { "op": "relative_gt" },
         "relativeMatchNumber": "60",
-        "relativeMatchUnit": "days",
-        "type": "date"
+        "relativeMatchUnit": "days"
       },
       "caption": "All profiles whose most recent purchase is within the last 60 days"
     },
@@ -143,8 +136,7 @@
         "propertyId": "subscription_ends",
         "operation": { "op": "relative_lt" },
         "relativeMatchNumber": "30",
-        "relativeMatchUnit": "days",
-        "type": "date"
+        "relativeMatchUnit": "days"
       },
       "caption": "All profiles whose subscription ends within the next 30 days"
     }
