@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Thu, 13 May 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 10 Jun 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,21 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Destination Sync Modes]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-06-10-sync-modes</link>
+            <guid>grouparoo-release-note-2021-06-10-sync-modes</guid>
+            <pubDate>Thu, 10 Jun 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>All of Grouparoo&#x27;s Destinations now have support for sync modes!</p><p>This new concept allows you to have more control over what exactly happens when Grouparoo syncs data to Destinations and how it interacts with pre-existing data.</p><p>Learn more about what you can do with <a href="https://www.grouparoo.com/blog/sync-modes" target="_blank" rel="nofollow noopener noreferrer">Sync Modes</a> or check out <a href="https://www.grouparoo.com/blog/using-sync-modes" target="_blank" rel="nofollow noopener noreferrer">how you can use them in Grouparoo</a>.</p><div style="margin-bottom:20px"><img alt="Destination Sync Modes" src="https://www.grouparoo.com/posts/releases/2021-06-10-sync-modes.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+            <enclosure
+        url="https://www.grouparoo.com/posts/releases/2021-06-10-sync-modes.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title><![CDATA[Enhancing Grouparoo's Customer.io plugin]]></title>
             <link
