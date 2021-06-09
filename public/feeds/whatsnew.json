@@ -12,11 +12,35 @@
   "items": [
     {
       "id": "grouparoo-release-note-2021-06-09-sync-modes",
-      "content_html": "<p>All of Grouparoo&#x27;s Destinations now have support for sync modes!</p><p>This new concept allows you to have more control over what exactly happens when Grouparoo syncs data to Destinations and how it interacts with pre-existing data.</p><p>Learn more about what you can do with <a href=\"https://www.grouparoo.com/blog/sync-modes\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Sync Modes</a> or check out <a href=\"https://www.grouparoo.com/blog/using-sync-modes\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">how you can use them in Grouparoo</a>.</p><div style=\"margin-bottom:20px\"><img alt=\"Destination Sync Modes\" src=\"https://www.grouparoo.com/posts/releases/2021-06-10-sync-modes.png\" width=\"1400\" height=\"735\" style=\"height:735px;width:1400px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
+      "content_html": "<p>All of Grouparoo&#x27;s Destinations now have support for sync modes!</p><p>This new concept allows you to have more control over what exactly happens when Grouparoo syncs data to Destinations and how it interacts with pre-existing data.</p><p>Learn more about what you can do with <a href=\"https://www.grouparoo.com/blog/sync-modes\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Sync Modes</a> or check out <a href=\"https://www.grouparoo.com/blog/using-sync-modes\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">how you can use them in Grouparoo</a>.</p><div style=\"margin-bottom:20px\"><img alt=\"Destination Sync Modes\" src=\"https://www.grouparoo.com/posts/releases/2021-06-09-sync-modes.png\" width=\"1400\" height=\"735\" style=\"height:735px;width:1400px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
       "url": "https://www.grouparoo.com/whats-new#2021-06-09-sync-modes",
       "title": "Destination Sync Modes",
       "image": "https://www.grouparoo.com/posts/releases/2021-06-09-sync-modes.png",
       "date_modified": "2021-06-09T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
+      "id": "grouparoo-release-note-2021-05-28-pipedrive",
+      "content_html": "<p>If you are using <a href=\"https://www.pipedrive.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Pipedrive</a>, you can now use Grouparoo to empower your Sales team through the use of customer data in your database or warehouse.</p><div style=\"margin-bottom:20px\"><img alt=\"Pipedrive Destination\" src=\"https://www.grouparoo.com/posts/releases/2021-05-28-pipedrive.png\" width=\"1000\" height=\"432\" style=\"height:432px;width:1000px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
+      "url": "https://www.grouparoo.com/whats-new#2021-05-28-pipedrive",
+      "title": "Pipedrive Destination",
+      "image": "https://www.grouparoo.com/posts/releases/2021-05-20-pipedrive.png",
+      "date_modified": "2021-05-28T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
+      "id": "grouparoo-release-note-2021-05-20-onesignal",
+      "content_html": "<p>Grouparoo can now enrich profiles in <a href=\"https://www.onesignal.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">One Signal</a>.</p><p>Many mobile apps use OneSignal to understand and communicate with their customers. Now, you can add data to those devices from your Grouparoo profiles and groups.</p><div style=\"margin-bottom:20px\"><img alt=\"OneSignal Destination\" src=\"https://www.grouparoo.com/posts/releases/2021-05-20-onesignal.png\" width=\"1000\" height=\"428\" style=\"height:428px;width:1000px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
+      "url": "https://www.grouparoo.com/whats-new#2021-05-20-onesignal",
+      "title": "One Signal Destination",
+      "image": "https://www.grouparoo.com/posts/releases/2021-05-20-onesignal.png",
+      "date_modified": "2021-05-20T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
         "url": "https://www.grouparoo.com"
