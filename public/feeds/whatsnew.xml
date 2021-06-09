@@ -31,10 +31,40 @@
             <guid>grouparoo-release-note-2021-06-09-sync-modes</guid>
             <pubDate>Wed, 09 Jun 2021 00:00:00 GMT</pubDate>
             <content:encoded
-      ><![CDATA[<p>All of Grouparoo&#x27;s Destinations now have support for sync modes!</p><p>This new concept allows you to have more control over what exactly happens when Grouparoo syncs data to Destinations and how it interacts with pre-existing data.</p><p>Learn more about what you can do with <a href="https://www.grouparoo.com/blog/sync-modes" target="_blank" rel="nofollow noopener noreferrer">Sync Modes</a> or check out <a href="https://www.grouparoo.com/blog/using-sync-modes" target="_blank" rel="nofollow noopener noreferrer">how you can use them in Grouparoo</a>.</p><div style="margin-bottom:20px"><img alt="Destination Sync Modes" src="https://www.grouparoo.com/posts/releases/2021-06-10-sync-modes.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+      ><![CDATA[<p>All of Grouparoo&#x27;s Destinations now have support for sync modes!</p><p>This new concept allows you to have more control over what exactly happens when Grouparoo syncs data to Destinations and how it interacts with pre-existing data.</p><p>Learn more about what you can do with <a href="https://www.grouparoo.com/blog/sync-modes" target="_blank" rel="nofollow noopener noreferrer">Sync Modes</a> or check out <a href="https://www.grouparoo.com/blog/using-sync-modes" target="_blank" rel="nofollow noopener noreferrer">how you can use them in Grouparoo</a>.</p><div style="margin-bottom:20px"><img alt="Destination Sync Modes" src="https://www.grouparoo.com/posts/releases/2021-06-09-sync-modes.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
             <enclosure
         url="https://www.grouparoo.com/posts/releases/2021-06-09-sync-modes.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
+        <item>
+            <title><![CDATA[Pipedrive Destination]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-05-28-pipedrive</link>
+            <guid>grouparoo-release-note-2021-05-28-pipedrive</guid>
+            <pubDate>Fri, 28 May 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>If you are using <a href="https://www.pipedrive.com" target="_blank" rel="nofollow noopener noreferrer">Pipedrive</a>, you can now use Grouparoo to empower your Sales team through the use of customer data in your database or warehouse.</p><div style="margin-bottom:20px"><img alt="Pipedrive Destination" src="https://www.grouparoo.com/posts/releases/2021-05-28-pipedrive.png" width="1000" height="432" style="height:432px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+            <enclosure
+        url="https://www.grouparoo.com/posts/releases/2021-05-20-pipedrive.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
+        <item>
+            <title><![CDATA[One Signal Destination]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-05-20-onesignal</link>
+            <guid>grouparoo-release-note-2021-05-20-onesignal</guid>
+            <pubDate>Thu, 20 May 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Grouparoo can now enrich profiles in <a href="https://www.onesignal.com" target="_blank" rel="nofollow noopener noreferrer">One Signal</a>.</p><p>Many mobile apps use OneSignal to understand and communicate with their customers. Now, you can add data to those devices from your Grouparoo profiles and groups.</p><div style="margin-bottom:20px"><img alt="OneSignal Destination" src="https://www.grouparoo.com/posts/releases/2021-05-20-onesignal.png" width="1000" height="428" style="height:428px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+            <enclosure
+        url="https://www.grouparoo.com/posts/releases/2021-05-20-onesignal.png"
         length="0"
         type="image/png"
       />
