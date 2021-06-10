@@ -52,7 +52,7 @@ If you had an existing Next project, you may have a different command to start t
 
 Now that you're up and running, let's look at our first option for generating JSON pages: API routes.
 
-Okay, I lied. A little. Pages in next don't _have to be_ React components. Next also supports what they call [API routes](https://nextjs.org/docs/api-routes/introduction). These are methods that run on the server side and return data base to the user. That feels like a really good use case for our scenario.
+Okay, I lied. A little. Pages in next don't _have to be_ React components. Next also supports what they call [API routes](https://nextjs.org/docs/api-routes/introduction). These are methods that run on the server side and return data back to the user. That feels like a really good use case for our scenario.
 
 Let's pretend that we want to return a single random dad joke.
 
@@ -119,6 +119,8 @@ While we know we can't make pages as static JSON files, we could _generate_ a st
 ### Generate Script
 
 To do that, let's put together a little script at `scripts/getJoke.js` which retrieves the dad joke and then writes it to a file at `public/joke.json`.
+
+_Note: We're putting it in the `public` directory because these files get copied over directly. A file at `public/joke.json` would be available at `/joke.json` on our website._
 
 ```js
 // scripts/getJoke.js
