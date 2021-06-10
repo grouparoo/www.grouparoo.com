@@ -289,7 +289,7 @@ export default function Navigation() {
             </a>
             <Button
               variant="primary"
-              href="/docs/getting-started"
+              href="/get-started"
               size="sm"
               className="col-sm-12 col-md-3 col-lg-2 mx-0 mr-lg-2 ml-lg-2 mt-3"
             >
