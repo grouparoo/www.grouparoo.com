@@ -68,32 +68,15 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
         style={{ textAlign: "center", paddingTop: 0, paddingBottom: 20 }}
       >
         <Container>
-          <Row>
+          <Row className="pt-5 pb-2">
             <Col>
               <h1 suppressHydrationWarning={true}>{tagline}</h1>
             </Col>
           </Row>
-          <Row>
+          <Row className="pb-5">
             <Col lg={2} />
             <Col lg={8}>
               <p className="text-big-muted">{description}</p>
-            </Col>
-            <Col lg={2} />
-          </Row>
-
-          <Row>
-            <Col lg={2} />
-            <Col lg={8}>
-              <p className="video-responsive">
-                <iframe
-                  width="560"
-                  height="315"
-                  src="https://www.youtube.com/embed/kQ789gMXJB8?rel=0"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </p>
             </Col>
             <Col lg={2} />
           </Row>
@@ -119,7 +102,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
           <br />
           <br />
 
-          <Row>
+          <Row className="pb-5">
             <Col md={12}>
               <small>
                 <p>

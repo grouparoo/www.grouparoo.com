@@ -21,7 +21,7 @@ function PageTemplate({ children }) {
     if (router.asPath !== "/") setReleaseNote(null);
   }, [router.asPath]);
 
-  const noGetStarted = ["/meet", "/docs", "/blog", "/jobs"];
+  const noGetStarted = ["/meet", "/docs", "/blog", "/jobs", "/get-started"];
 
   return (
     <>
