@@ -77,38 +77,42 @@ export default function PricingPage() {
                     variant="outline-primary"
                     href="/docs/getting-started"
                   >
-                    Try free
+                    Try it now
                   </Button>
+                  <small> </small>
                 </Card.Footer>
               </Card>
             </Col>
             <Col className="mb-4">
               <Card
-                className="pricingCard py-5 shadow-lg h-100"
+                className="pricingCard pt-5 pb-4
+                 shadow-lg h-100"
                 border="primary"
                 bg="secondary"
                 text="white"
               >
                 <Card.Body>
-                  <Card.Title>Self-Managed Enterprise Edition</Card.Title>
-                  Empowers non-technical users and teams to use Grouparoo.
+                  <Card.Title>Standard Cloud</Card.Title>
+                  For companies who want to sync up to 100k Profiles to their
+                  destinations.
                   <br />
                   <br />
                   <div style={boxTextStyle}>
-                    <b>Everything in Community, plus:</b>
+                    <b>Features include:</b>
+                    <li>Up to 100k Profiles synced/month</li>
+                    <li>Access to all Sources and Destinations</li>
                     <li>
-                      A no-code web UI allowing team members to access data.
+                      A no-code web UI allowing team members to access data
                     </li>
-                    <li>Data governance (coming soon)</li>
-                    <li>Insights and analytics (coming soon)</li>
                     <li>Business hours support</li>
                   </div>
                 </Card.Body>
                 <Card.Footer style={{ borderTop: "none" }}>
-                  <Button variant="primary" href="/meet">
-                    Get a quote
+                  <Button variant="primary" href="/get-started">
+                    Start free trial
                   </Button>
                 </Card.Footer>
+                <small>No credit card required</small>
               </Card>
             </Col>
             <Col className="mb-4 offset-md-3 offset-xl-0">
@@ -119,25 +123,22 @@ export default function PricingPage() {
                 text="white"
               >
                 <Card.Body>
-                  <Card.Title>Hosted</Card.Title>
-                  Interested in using Grouparoo but don't want to host it
-                  yourself? Let's chat!
+                  <Card.Title>Enterprise Cloud</Card.Title>
+                  For enterprises with larger data sets or unique use cases.
                   <br />
                   <br />
                   <div style={boxTextStyle}>
-                    <b>Everything in Enterprise Edition, plus:</b>
-                    <li>Private single-tenant instance</li>
-                    <li>
-                      Keep the data in your databases or we can host it for you
-                    </li>
+                    <b>Features include:</b>
+                    <li> &gt; 100k Profiles synced/month</li>
                     <li>Business hours support</li>
                     <li>Enhanced support response time SLAs</li>
                   </div>
                 </Card.Body>
                 <Card.Footer style={{ borderTop: "none" }}>
                   <Button variant="primary" href="/meet">
-                    Get a quote
+                    Contact Sales
                   </Button>
+                  <small> </small>
                 </Card.Footer>
               </Card>
             </Col>
