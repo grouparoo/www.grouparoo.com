@@ -108,7 +108,7 @@ export default function PricingPage() {
                   </div>
                 </Card.Body>
                 <Card.Footer style={{ borderTop: "none" }}>
-                  <Button variant="primary" href="/get-started">
+                  <Button variant="primary" href="/trial">
                     Start free trial
                   </Button>
                 </Card.Footer>

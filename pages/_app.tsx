@@ -45,6 +45,14 @@ export default function GrouparooWWW(props) {
     if (!existing) storage.setItem(key, value);
   }
 
+  if (router.pathname === "/trial") {
+    return (
+      <>
+        <Component {...props} />{" "}
+      </>
+    );
+  }
+
   return (
     <Layout>
       <Component {...props} />
