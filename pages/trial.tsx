@@ -127,30 +127,6 @@ export default function Trial({ props }) {
     <>
       <Head>
         <title>{title}</title>
-        <meta name="og:title" content={title} />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:site" content="@grouparoo" />
-        <meta name="twitter:card" content="summary_large_image" />
-
-        {/* Image */}
-
-        <meta
-          property="og:image"
-          content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
-        />
-        <meta
-          name="twitter:image"
-          content="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
-        />
-        <meta name="twitter:image:alt" content={title} />
-
-        {/* Description */}
-
-        <meta name="description" content={description} />
-        <meta name="twitter:description" content={description} />
-        <meta name="og:description" content={description} />
-
-        <link rel="canonical" href="https://www.grouparoo.com/" />
       </Head>
 
       <Container
