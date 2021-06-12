@@ -11,6 +11,8 @@ jobs:
         run: |
           echo ${{github.actor}}
       - uses: actions/checkout@master
+        with:
+          ref: ${{ github.head_ref }}
       - name: Update files
         run: |
           ./scripts/github_action
