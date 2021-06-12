@@ -1,5 +1,7 @@
 name: Performance
-on: pull_request
+
+on: [pull_request]
+
 jobs:
   lhci:
     name: Lighthouse
