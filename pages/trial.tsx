@@ -119,9 +119,11 @@ export default function Trial({ props }) {
   const privacyPolicyLabel = (
     <>
       I agree to the{" "}
-      <a href="http://www.grouparoo.com/legal/privacy" target="_blank">
-        privacy policy
-      </a>
+      <Link href="http://www.grouparoo.com/legal/privacy" passHref>
+        <a target="_blank" rel="noopener noreferrer">
+          privacy policy
+        </a>
+      </Link>
     </>
   );
   const disabled = loading || registered;
@@ -130,6 +132,7 @@ export default function Trial({ props }) {
     <>
       <Head>
         <title>{title}</title>
+        <link rel="canonical" href="https://www.grouparoo.com/trial" />
       </Head>
 
       <Container

@@ -19,6 +19,7 @@ export default function GetStarted({ props }) {
     <>
       <Head>
         <title>{title}</title>
+        <link rel="canonical" href="https://www.grouparoo.com/get-started" />
       </Head>
 
       <div
