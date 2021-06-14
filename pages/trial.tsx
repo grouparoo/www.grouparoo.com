@@ -11,6 +11,7 @@ import extractDomain from "extract-domain";
 interface FormError {
   email: string;
   generic: string;
+  subdomain: string;
 }
 
 export default function Trial({ props }) {
@@ -24,7 +25,11 @@ export default function Trial({ props }) {
   const [registered, setRegistered] = useState(false);
   const [editSubdomain, setEditSubdomain] = useState(false);
   const [subdomain, setSubdomain] = useState("");
-  const [error, setError] = useState<FormError>({ email: null, generic: null });
+  const [error, setError] = useState<FormError>({
+    email: null,
+    generic: null,
+    subdomain: null,
+  });
   const urlPattern =
     /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
 
@@ -50,11 +55,13 @@ export default function Trial({ props }) {
   const errorHandler = new ErrorHandler();
 
   errorHandler.subscribe("result", (e) => {
-    const error: FormError = { email: null, generic: null };
+    const error: FormError = { email: null, generic: null, subdomain: null };
     const message = e?.error?.message || e?.message || e.toString();
     console.log("error", message);
     if (message.match(/email/i)) {
       error.email = "Invalid email address.";
+    } else if (message.includes("subdomain")) {
+      error.subdomain = message;
     } else {
       error.generic = message;
     }
@@ -101,7 +108,9 @@ export default function Trial({ props }) {
 
     const response = await execApi("post", `/api/v1/demo-request`, data);
     if (response?.demoRequest) console.log(data);
-    setRegistered(true);
+    if (response?.demoRequest) {
+      setRegistered(true);
+    }
     setLoading(false);
   };
 
@@ -210,7 +219,7 @@ export default function Trial({ props }) {
                     )}
                   </Form.Group>
                   <Form.Group>
-                    <Form.Label>Company Website</Form.Label>
+                    <Form.Label>Company Website *</Form.Label>
                     <Form.Control
                       {...register("companyName", {
                         required: true,
@@ -255,6 +264,8 @@ export default function Trial({ props }) {
                           </span>
                         </div>
                       )}
+                      <Error message={error.subdomain} />
+
                       {errors.requestDetails && (
                         <small style={{ color: "red" }}>
                           A valid subdomain is required.
