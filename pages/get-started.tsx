@@ -1,11 +1,12 @@
 import { Container, Button, Row, Col, Card } from "react-bootstrap";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "../components/Image";
 
 export default function GetStarted({ props }) {
-  const title = "Grouparoo: Start Trial";
+  const title = "Grouparoo: Get started";
   const description =
-    "Start your trial with Grouparoo, the open source framework that helps you move data between your database and all of your cloud-based tools.";
+    "Get started with Grouparoo, the open source framework that helps you move data between your database and all of your cloud-based tools.";
 
   const boxTextStyle = {
     fontSize: "14px",
@@ -33,44 +34,51 @@ export default function GetStarted({ props }) {
             </Col>
           </Row>
           <Row className="d-flex justify-content-center">
-            <Col className="mb-4 col-5">
+            <Col className="mb-4 col-12 col-xl-5 col-md-7">
               <Card
-                className="pricingCard mx-3 py-5 shadow-lg h-100 mb-4"
+                className="pricingCard mx-3 pt-3 pb-4 shadow-lg h-100 mb-4"
                 bg="white"
               >
+                <Card.Header className="bg-white border-0">
+                  <Card.Title>
+                    <div className="h3 pt-2  mb-2">Cloud</div>
+                    <hr className="col-9 mx-auto" />
+                  </Card.Title>
+                </Card.Header>
                 <Card.Body>
-                  <Card.Title className="pb-3">Grouparoo Cloud</Card.Title>
                   Get syncing from databases to SaaS tools right away.
                 </Card.Body>
-                <Card.Footer
-                  style={{ backgroundColor: "white", borderTop: "none" }}
-                >
-                  <Button variant="primary" className="my-4" href="/trial">
-                    Start Free Trial
+                <Card.Footer className="border-0 bg-white">
+                  <Button variant="primary" href="/trial" className="col-4">
+                    Start free trial
                   </Button>
-                  <p className="mb-0">No credit card required</p>
                 </Card.Footer>
+                <small>No credit card required</small>
               </Card>
               <Link href="/pricing">View pricing plans</Link>
             </Col>
-            <Col className="mb-4 col-5">
+
+            <Col className="mb-4 col-12 col-xl-5 col-md-7">
               <Card
-                className="pricingCard py-5 mx-3 shadow-lg h-100"
+                className="pricingCard mx-3 pt-3 pb-5 shadow-lg h-100 mb-4"
                 bg="white"
               >
+                <Card.Header className="bg-white border-0">
+                  <Card.Title>
+                    <div className="h3 pt-2  mb-2">Self-Hosted</div>
+                    <hr className="col-9 mx-auto" />
+                  </Card.Title>
+                </Card.Header>
                 <Card.Body>
-                  <Card.Title className="pb-3">Grouparoo Hosted</Card.Title>
                   Grouparoo is open source and free to run in your own cloud
                 </Card.Body>
-                <Card.Footer
-                  style={{ backgroundColor: "white", borderTop: "none" }}
-                >
+                <Card.Footer className="border-0 bg-white">
                   <Button
                     variant="outline-primary"
-                    className="my-4"
                     href="/docs/getting-started"
+                    className="col-4"
                   >
-                    Try it Now
+                    Try it now
                   </Button>
                 </Card.Footer>
               </Card>

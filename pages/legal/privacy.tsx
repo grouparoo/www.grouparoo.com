@@ -14,7 +14,7 @@ export default function Meet({ pageProps }) {
         <link rel="canonical" href="https://www.grouparoo.com/legal/privacy" />
       </Head>
 
-      <Container>
+      <Container className="mb-5">
         <Row>
           <Col md={9}>{content}</Col>
           <Col md={3}>

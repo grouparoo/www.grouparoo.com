@@ -32,7 +32,7 @@ export default function Trial({ props }) {
     e.preventDefault();
     let extractedDomain: string = "";
     if (e.target.name === "companyName") {
-      extractedDomain = extractDomain(e.target.value);
+      extractedDomain = extractDomain(encodeURIComponent(e.target.value));
       if (extractedDomain.includes(".")) {
         let toTrim = extractedDomain.indexOf(".");
         extractedDomain = extractedDomain.substring(0, toTrim);
@@ -118,7 +118,10 @@ export default function Trial({ props }) {
 
   const privacyPolicyLabel = (
     <>
-      I agree to the <Link href="/legal/privacy">privacy policy</Link>
+      I agree to the{" "}
+      <a href="http://www.grouparoo.com/legal/privacy" target="_blank">
+        privacy policy
+      </a>
     </>
   );
   const disabled = loading || registered;
@@ -139,13 +142,15 @@ export default function Trial({ props }) {
             xl={5}
             className="align-self-center pb-2 pb-lg-5 text-center mx-auto"
           >
-            <Image
-              src="/images/logo-and-wordmark-black-words.png"
-              alt="Grouparoo Logo"
-              width={150}
-              height={32}
-              className="mb-3"
-            />
+            <Link href="/">
+              <Image
+                src="/images/logo-and-wordmark-black-words.png"
+                alt="Grouparoo Logo"
+                width={150}
+                height={32}
+                className="mb-3"
+              />
+            </Link>
             <h1>Grouparoo Cloud</h1>
             <h2>Start Your Free 30 Day Trial</h2>
             <p>No credit card required.</p>

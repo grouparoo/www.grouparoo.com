@@ -117,7 +117,7 @@ export default function PricingPage() {
             </Col>
             <Col className="mb-4 offset-md-3 offset-xl-0">
               <Card
-                className="pricingCard py-5 shadow-lg h-100 "
+                className="pricingCard py-5 shadow-lg h-100"
                 border="primary"
                 bg="secondary"
                 text="white"
