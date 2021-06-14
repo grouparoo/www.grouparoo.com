@@ -236,6 +236,7 @@ export default function About({ pageProps }) {
           </Col>
         </Row>
       </Container>
+      <br />
     </>
   );
 }
