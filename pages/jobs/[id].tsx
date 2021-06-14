@@ -65,6 +65,7 @@ export default function JobPage({ pageProps }) {
           </Col>
         </Row>
       </Container>
+      <br />
     </>
   );
 }
