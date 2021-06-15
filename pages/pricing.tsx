@@ -91,6 +91,7 @@ export default function PricingPage() {
               >
                 <Card.Body>
                   <Card.Title>Standard Cloud</Card.Title>
+                  <h5>$150/month</h5>
                   For companies who want to sync up to 100k Profiles to their
                   destinations.
                   <br />
