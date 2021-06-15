@@ -89,7 +89,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
                 size="lg"
                 variant="primary"
                 style={{ padding: ".5rem 1rem" }}
-                href="docs/getting-started"
+                href="/get-started"
                 className="ml-auto"
               >
                 Get Started
