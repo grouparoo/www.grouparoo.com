@@ -245,7 +245,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <h3>Use Source-of-truth data</h3>
               <p>
                 Pull data from trusted sources like data warehouses instead of
-                instrumenting Event streams.
+                instrumenting buggy Event streams.
               </p>
             </Col>
             <Col md={6} className="d-md-none">

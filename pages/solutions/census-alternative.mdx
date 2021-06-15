@@ -1,6 +1,6 @@
 ---
 competitor: Census
-pros: ["flexibility", "data approach", "Events support", "cost"]
+pros: ["flexibility", "data approach", "cost"]
 competitorPros: ["analytics", "customer data platform"]
 comparisonChartData:
   {
@@ -15,18 +15,13 @@ comparisonChartData:
         },
         {
           feature: "Data architecture",
-          grouparoo: "Query-based (with events)",
+          grouparoo: "Query-based",
           comp: "Events-based",
         },
         {
           feature: "Define customer profiles from historical data",
           grouparoo: true,
           comp: false,
-        },
-        {
-          feature: "Support for real-time Events",
-          grouparoo: true,
-          comp: true,
         },
         {
           feature: "Easy to configure private vs. shareable data",
@@ -91,12 +86,6 @@ Census is a Reverse ETL tool, and so is Grouparoo, but Grouparoo is so much more
 ### 👥 Customer Data Platform
 
 Census can point at your data warehouse, while Grouparoo is more flexible. Grouparoo can query your data warehouse and use the data definitions you already have there. If you don’t have a data warehouse though, Grouparoo can also be a Customer Data Platform for you by stitching data together from all of your different data sources.
-
-### ⏱ Grouparoo also support Events
-
-Even though we’ve railed against overusing Events in the past, there are some instances where Events are a good data model, and Grouparoo supports those use cases! Grouparoo’s core product has automated data syncing. We query your data sources on a schedule that you can set (every 10 minutes, every hour, etc.). In some cases, you really want your customer data in Grouparoo (and all of your destinations) nearly real-time. In those cases, you can use Grouparoo’s Events API to update customer profiles and properties.
-
-There are some user behaviors that you’re unlikely to track, such as every single page view or button click. You can also track those as properties on customer profiles in Grouparoo.
 
 <SectionDivider
   imagePath="/images/home/integrations/mailchimp/grouparoo-to-mailchimp.png"

@@ -9,7 +9,7 @@ To ensure that you have a robust Grouparoo deployment, we recommend that you set
 ### Monitor the Application
 
 - Monitor the `/api/v1/status/private` endpoint from within your firewall. Doing so will let you know that the application is running in general. This endpoint reports on the resque queue length and the size of the backlog of jobs that need to be worked. The queue getting longer than normal can be an early indicator of a problem. This route requires authentication, so to monitor it, you'll need to create an APIKey with the `system:read` scope, e.g.: `curl "http://localhost:3000/api/v1/status/private?apiKey=abc123"`
-- Monitor the `/api/v1/status/public` endpoint from outside of your firewall (or from the vantage point of your end users). Doing so will ensure that your end users can use the Grouparoo application and that events can be recorded from user sites/devices.
+- Monitor the `/api/v1/status/public` endpoint from outside of your firewall (or from the vantage point of your end users). Doing so will ensure that your end users can use the Grouparoo application.
 - Monitor the Grouparoo application for errors. Use a tool like New Relic or Sentry to report and log errors to a central place. Check how often these errors happen. Be sure to check the Background Worker errors listed in the `/resque` interface, and retry or delete them accordingly. At this time, Grouparoo provides plugins for New Relic (`@grouparoo/newrelic`) and Sentry's (`@grouparoo/sentry`) Application Monitoring (APM) and Error Tracking services.
 
 ### Monitor the Tier

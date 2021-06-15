@@ -20,7 +20,6 @@ Welcome to the Grouparoo Dictionary! This is the collection of terms we use thro
 - [Calculated Group](#calculated-group)
 - [Columnar Source](#columnar-source)
 - [Destination](#destination)
-- [Event](#event)
 - [Filter](#filter)
 - [Generator](#generator)
 - [Group](#group)
@@ -66,16 +65,6 @@ When you set up a Destination in Grouparoo, you will choose which Groups as well
 Grouparoo will keep the Profile and Group data in your Destinations up-to-date in real time.
 
 See [our Integrations page](/integrations) for an up-to-date list of our supported Destinations. We are always adding support for more Destinations. If you have a request, please [let us know](/meet)!
-
-## Event
-
-Grouparoo supports Events through our various client-side libraries. Events are best used for tracking user behavior that you usually wouldn't keep in a data warehouse or database such as:
-
-- Page Viewed
-- Button Clicked
-- Session Created
-
-Grouparoo Events are flexible and allow you to track all kinds of behaviors. Once you start tracking Events, you can then create Profile Property Rules based on Events to associate them with Profiles. [Learn more about Events here](/docs/development/events).
 
 ## Filter
 
@@ -156,7 +145,7 @@ Common examples of **Not Unique** Profile Properties are:
 
 Profile Property Rules define how a property gets pulled from a Source. Every Source might be structured in slightly different ways, so Grouparoo plugins make it easy for you to define Profile Property Rules.
 
-For example, you might define a Profile Property Rule called `first_name` which you are pulling from your product database via the `@grouparoo/postgres` plugin, or you might define `number_of_purchases`, which you are using the Grouparoo Event system to count up.
+For example, you might define a Profile Property Rule called `first_name` which you are pulling from your product database via the `@grouparoo/postgres` plugin.
 
 ## Query Source
 
