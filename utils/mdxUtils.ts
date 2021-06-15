@@ -13,12 +13,14 @@ import externalLinks from "remark-external-links";
 import { titleize } from "../utils/inflectors";
 
 const dirname = __dirname;
-let rootDir;
+let rootDir: string;
 if (!dirname || dirname === "/") {
   rootDir = path.resolve(path.join(process.cwd()));
 } else {
   rootDir = path.resolve(path.join(__dirname, ".."));
 }
+rootDir = rootDir.split(`${path.sep}.next`)[0];
+
 const pagesDir = path.join(rootDir, "pages");
 
 export const mdxOptions = {

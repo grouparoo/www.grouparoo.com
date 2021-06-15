@@ -5,11 +5,6 @@ module.exports = {
     ROBOTS_DISABLED: process.env.ROBOTS_DISABLED,
     GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
   },
-  webpack: (config) => {
-    config.module.rules.push({ test: /\.md$/, use: "raw-loader" });
-    config.module.rules.push({ test: /\.excalidraw$/, use: "raw-loader" });
-    return config;
-  },
   async rewrites() {
     return [];
   },
