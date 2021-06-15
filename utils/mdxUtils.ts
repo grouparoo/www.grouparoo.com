@@ -17,7 +17,7 @@ let rootDir: string;
 if (!dirname || dirname === "/") {
   rootDir = path.resolve(path.join(process.cwd()));
 } else {
-  rootDir = path.resolve(path.join(__dirname, "..", ".."));
+  rootDir = path.resolve(path.join(__dirname, ".."));
 }
 rootDir = rootDir.split(`${path.sep}.next`)[0];
 
