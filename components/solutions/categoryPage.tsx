@@ -42,8 +42,8 @@ export default function CategoryPage(category: CategoryInfo) {
 
           <Row>
             <Col>
-              <Button variant="primary" href="/meet" className="ml-auto">
-                Get a Demo →
+              <Button variant="primary" href="/get-started" className="ml-auto">
+                Start Free Trial
               </Button>
             </Col>
           </Row>
@@ -65,7 +65,6 @@ export default function CategoryPage(category: CategoryInfo) {
               </p>
             </Col>
           </Row>
-          <br />
         </Container>
       </div>
       <FeatureBanner
