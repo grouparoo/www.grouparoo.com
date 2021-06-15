@@ -17,8 +17,9 @@ let rootDir;
 if (!dirname || dirname === "/") {
   rootDir = path.resolve(path.join(process.cwd()));
 } else {
-  rootDir = path.resolve(path.join(__dirname, ".."));
+  rootDir = path.resolve(path.join(__dirname, "..", ".."));
 }
+
 const pagesDir = path.join(rootDir, "pages");
 
 export const mdxOptions = {
