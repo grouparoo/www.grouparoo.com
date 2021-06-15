@@ -20,8 +20,8 @@ export default function GetStarted({ props }) {
         <Container>
           <Row className="pt-5 pb-3">
             <Col>
-              <h1>Sync data how you want</h1>
-              <h2>
+              <h1 className="pt-1 pb-3">Sync data how you want</h1>
+              <h2 className="pb-3 pb-xl-5">
                 Use Grouparoo to power your Reverse ETL pipelines and workflows
               </h2>
             </Col>
@@ -34,11 +34,11 @@ export default function GetStarted({ props }) {
               >
                 <Card.Header className="bg-white border-0">
                   <Card.Title>
-                    <div className="h3 pt-2  mb-2">Self-Hosted</div>
+                    <div className="h3 pt-2 mb-2">Self-Hosted</div>
                     <hr className="col-9 mx-auto" />
                   </Card.Title>
                 </Card.Header>
-                <Card.Body>
+                <Card.Body className="lead align-middle">
                   Grouparoo is open source and free to run in your own cloud
                 </Card.Body>
                 <Card.Footer className="border-0 bg-white">
@@ -63,7 +63,7 @@ export default function GetStarted({ props }) {
                     <hr className="col-9 mx-auto" />
                   </Card.Title>
                 </Card.Header>
-                <Card.Body>
+                <Card.Body className="lead">
                   Get syncing from databases to SaaS tools right away.
                 </Card.Body>
                 <Card.Footer className="border-0 bg-white">
