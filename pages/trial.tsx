@@ -148,9 +148,9 @@ export default function Trial({ props }) {
 
       <Container
         fluid
-        className="align-items-center justify-content-center d-flex my-5 my-lg-0 pb-lg-3 pb-xl-0 mx-0 trialContainer"
+        className="align-items-center justify-content-center d-flex my-5 my-xl-0 pb-lg-3 pb-xl-0 mx-0 trialContainer"
       >
-        <Row className="align-self-center m-0 ">
+        <Row className="align-self-center m-0">
           <Col
             md={9}
             xl={5}
