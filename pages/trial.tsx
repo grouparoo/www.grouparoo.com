@@ -2,8 +2,8 @@ import { Container, Button, Row, Col, Form, Image } from "react-bootstrap";
 import Head from "next/head";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-import router, { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import { useApi } from "./../hooks/useApi";
 import { ErrorHandler } from "../utils/errorHandler";
 import extractDomain from "extract-domain";
@@ -21,7 +21,6 @@ export default function Trial({ props }) {
     register,
     formState: { errors },
   } = useForm();
-  const { query } = useRouter();
   const [loading, setLoading] = useState(false);
   const [registered, setRegistered] = useState(false);
   const [editSubdomain, setEditSubdomain] = useState(false);
@@ -313,16 +312,20 @@ export default function Trial({ props }) {
                   </Row>
                   <Row>
                     <Col>
-                      You will receive an email with your login credentials and
-                      instructions on how to get started shortly. Meanwhile you
-                      can check out:
+                      Your request for a trial of Grouparoo Cloud was
+                      successful. You will receive an email with your login
+                      credentials and instructions on how to get started
+                      shortly. Meanwhile you can check out:
                     </Col>
                   </Row>
                   <div className="mt-3 mb-5">
                     <Row className="my-3">
                       <Col>
                         <p className="h4">Getting Started Video</p>
-                        <a href="https://www.youtube.com/embed/kQ789gMXJB8?rel=0">
+                        <a
+                          href="https://www.youtube.com/embed/kQ789gMXJB8?rel=0"
+                          target="_blank"
+                        >
                           A quick intro into the Grouparoo platform
                         </a>
                       </Col>
@@ -330,24 +333,30 @@ export default function Trial({ props }) {
                     <Row className="my-3">
                       <Col>
                         <p className="h4">Onboarding Support</p>
-                        <Link href="/meet">
-                          Schedule Time for an Onboarding Session
+                        <Link href="/meet" passHref>
+                          <a target="_blank" rel="noopener noreferrer">
+                            Schedule Time for an Onboarding Session
+                          </a>
                         </Link>
                       </Col>
                     </Row>
                     <Row className="my-3">
                       <Col>
                         <p className="h4">Join the Community</p>
-                        <Link href="/docs/community">
-                          The Grouparoo community hangs out in Slack.
+                        <Link href="/docs/community" passHref>
+                          <a target="_blank" rel="noopener noreferrer">
+                            The Grouparoo community hangs out in Slack.
+                          </a>
                         </Link>
                       </Col>
                     </Row>
                     <Row className="my-3">
                       <Col>
                         <p className="h4">Check out our Docs</p>
-                        <Link href="/docs">
-                          Get tips on how to get the most out of Grouparoo.
+                        <Link href="/docs" passHref>
+                          <a target="_blank" rel="noopener noreferrer">
+                            Get tips on how to get the most out of Grouparoo.
+                          </a>
                         </Link>
                       </Col>
                     </Row>

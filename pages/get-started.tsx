@@ -1,19 +1,9 @@
 import { Container, Button, Row, Col, Card } from "react-bootstrap";
 import Head from "next/head";
 import Link from "next/link";
-import Image from "../components/Image";
 
 export default function GetStarted({ props }) {
   const title = "Grouparoo: Get started";
-  const description =
-    "Get started with Grouparoo, the open source framework that helps you move data between your database and all of your cloud-based tools.";
-
-  const boxTextStyle = {
-    fontSize: "14px",
-    textAlign: "left" as "left",
-    paddingLeft: "1.4em",
-    textIndent: "-1.4em",
-  };
 
   return (
     <>
