@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useApi } from "./../hooks/useApi";
 import { ErrorHandler } from "../utils/errorHandler";
 import extractDomain from "extract-domain";
+import { isBrowser } from "../utils/isBrowser";
 
 interface FormError {
   email: string;
@@ -36,7 +37,7 @@ export default function Trial({ props }) {
   const onSubdomainChange = (e) => {
     e.preventDefault();
     let extractedDomain: string = "";
-    if (e.target.name === "companyName") {
+    if (e.target.name === "companyWebsite") {
       extractedDomain = extractDomain(encodeURIComponent(e.target.value));
       if (extractedDomain.includes(".")) {
         let toTrim = extractedDomain.indexOf(".");
@@ -71,6 +72,7 @@ export default function Trial({ props }) {
   const { execApi } = useApi(errorHandler);
 
   const onSubmit = async (data) => {
+    console.log(data);
     setLoading(true);
     console.log(errors);
     // defaults
@@ -93,22 +95,22 @@ export default function Trial({ props }) {
         : campaign;
     }
 
+    data.subdomain = subdomain;
     data.source = source;
     data.medium = medium;
     data.campaign = campaign;
-    data.requestDetails = subdomain;
 
     // TO DO: CONFIGURE GOOGLE ANALYTICS CONVERSION DATA
-    // if (isBrowser() && globalThis?.gtag) {
-    //   globalThis.gtag("event", "conversion", {
-    //     send_to: "AW-467110449/NGnKCL62zY8CELGU3t4B", // demoRequest conversion
-    //     event_callback: () => {},
-    //   });
-    // }
+    if (isBrowser() && globalThis?.gtag) {
+      globalThis.gtag("event", "conversion", {
+        send_to: "send_to': 'AW-467110449/dWjCCL2x78ICELGU3t4B", // demoRequest conversion
+        event_callback: () => {},
+      });
+    }
 
-    const response = await execApi("post", `/api/v1/demo-request`, data);
-    if (response?.demoRequest) console.log(data);
-    if (response?.demoRequest) {
+    const response = await execApi("post", `/api/v1/trial-request`, data);
+    if (response?.trialRequest) console.log(data);
+    if (response?.trialRequest) {
       setRegistered(true);
     }
     setLoading(false);
@@ -146,9 +148,9 @@ export default function Trial({ props }) {
 
       <Container
         fluid
-        className="align-items-center justify-content-center d-flex my-5 my-lg-0 pb-lg-3 pb-xl-0 mx-0 trialContainer"
+        className="align-items-center justify-content-center d-flex my-5 my-xl-0 pb-lg-3 pb-xl-0 mx-0 trialContainer"
       >
-        <Row className="align-self-center m-0 ">
+        <Row className="align-self-center m-0">
           <Col
             md={9}
             xl={5}
@@ -221,18 +223,18 @@ export default function Trial({ props }) {
                   <Form.Group>
                     <Form.Label>Company Website *</Form.Label>
                     <Form.Control
-                      {...register("companyName", {
+                      {...register("companyWebsite", {
                         required: true,
                         pattern: urlPattern,
                       })}
                       type="text"
-                      name="companyName"
+                      name="companyWebsite"
                       defaultValue=""
                       onChange={onSubdomainChange}
                       disabled={disabled}
                     />
                   </Form.Group>
-                  {errors.companyName && (
+                  {errors.companyWebsite && (
                     <small style={{ color: "red" }}>
                       A valid url is required.
                     </small>
@@ -244,11 +246,11 @@ export default function Trial({ props }) {
                         <>
                           <div className="text-break my-1 h5">
                             <Form.Control
-                              {...register("requestDetails", {
+                              {...register("subdomain", {
                                 required: true,
                               })}
                               type="text"
-                              name="requestDetails"
+                              name="subdomain"
                               onChange={onSubdomainChange}
                               defaultValue={subdomain}
                             />
@@ -266,7 +268,7 @@ export default function Trial({ props }) {
                       )}
                       <Error message={error.subdomain} />
 
-                      {errors.requestDetails && (
+                      {errors.subdomain && (
                         <small style={{ color: "red" }}>
                           A valid subdomain is required.
                         </small>
