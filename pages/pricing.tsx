@@ -4,12 +4,11 @@ import {
   Row,
   Col,
   Card,
-  CardDeck,
   Button,
   Table,
   Image,
 } from "react-bootstrap";
-import Head from "next/head";
+import SEO from "../components/seo";
 
 export default function PricingPage() {
   const boxTextStyle = {
@@ -21,14 +20,13 @@ export default function PricingPage() {
 
   return (
     <>
-      <Head>
-        <title>Grouparoo Pricing Options</title>
-        <meta
-          name="description"
-          content="Grouparoo is open-source, so you can use our product for free today! Features and services available to fit your needs."
-        />
-        <link rel="canonical" href="https://www.grouparoo.com/pricing" />
-      </Head>
+      <SEO
+        canonical={true}
+        description="Find Grouparoo pricing options to power your Reverse ETL pipelines. Open-source or cloud hosted options available."
+        image="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
+        path="/pricing"
+        title="Grouparoo Pricing Options"
+      />
 
       <div
         id="headline"
@@ -154,8 +152,8 @@ export default function PricingPage() {
                 <tr>
                   <th></th>
                   <th>Community</th>
-                  <th>Enterprise</th>
-                  <th className="d-none d-md-table-cell">Hosted</th>
+                  <th>Standard Cloud</th>
+                  <th className="d-none d-md-table-cell">Enterprise Cloud</th>
                 </tr>
               </thead>
               <tbody>
@@ -279,6 +277,26 @@ export default function PricingPage() {
                   </td>
                 </tr>
                 <tr>
+                  <td style={{ textAlign: "left" }}>SaaS Hosted</td>
+                  <td>-</td>
+                  <td className="d-none d-md-table-cell">
+                    <Image
+                      src="/images/grouparoo-blue-checkmark.svg"
+                      alt="Grouparoo blue checkmark"
+                      width={24}
+                      height={24}
+                    />
+                  </td>
+                  <td className="d-none d-md-table-cell">
+                    <Image
+                      src="/images/grouparoo-blue-checkmark.svg"
+                      alt="Grouparoo blue checkmark"
+                      width={24}
+                      height={24}
+                    />
+                  </td>
+                </tr>
+                <tr>
                   <td style={{ textAlign: "left" }}>
                     Teams, Team Members, and Permissions
                   </td>
@@ -344,6 +362,7 @@ export default function PricingPage() {
                     />
                   </td>
                 </tr>
+
                 <tr>
                   <td style={{ textAlign: "left" }}>
                     <b>Support</b>
