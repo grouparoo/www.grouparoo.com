@@ -139,7 +139,6 @@ const DocsNav: NavItem[] = [
     children: [
       { title: "Databases", path: "/docs/development/databases" },
       { title: "Data Flow", path: "/docs/development/dataflow" },
-      { title: "Events", path: "/docs/development/events" },
       { title: "Plugins: Overview", path: "/docs/development/plugins" },
       {
         title: "Plugins: Destinations",

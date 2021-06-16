@@ -66,7 +66,7 @@ The solution is to have that single source of truth. By storing everything in on
 
 Let’s take a look at the key components of the modern data stack working with the data warehouse:
 
-- **Product:** Copy raw product data and events in your warehouse in their original form.
+- **Product:** Copy raw product data and events into your warehouse in their original form.
 - **Load:** Extract and load (the EL in ELT) data from any other systems/tools into the warehouse as well using tools like Fivetran, Stitch, or Meltano. This data should also be in its original form and not transformed in any way.
 - **Transform:** Combine and transform (the T in ELT) the data within the warehouse into more usable schemas using tools like dbt.
 - **Analyze: **Use these transformed tables in your business intelligence (BI) tools such as Looker, Mode, or Tableau.

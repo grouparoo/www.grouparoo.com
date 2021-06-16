@@ -15,7 +15,7 @@ comparisonChartData:
         },
         {
           feature: "Data requirements",
-          grouparoo: "Query-based (with events capabilities)",
+          grouparoo: "Query-based",
           comp: "Requires formal, normalized data warehouse",
         },
         {
@@ -90,12 +90,6 @@ Events are often a pain for engineers as well. When product engineers are buildi
 1. It creates extra work for your engineers
 2. The data being streamed already exists elsewhere.
 3. This source of data is less reliable.
-
-### ⏱ <span style={{ width:".5em", display:"inline-block" }} />But Grouparoo also supports Events
-
-Even though we’ve railed against Events, there are some instances where Events are a good model, and Grouparoo supports those use cases! While Grouparoo has automated data syncing, we query your data sources on a schedule that you can set (every 10 minutes, every hour, etc.). In some cases, you really want your customer data in Grouparoo (and all of your destinations) in real-time. In those cases, you can use Grouparoo’s Events API to update customer profiles and properties.
-
-Some user behavior that you’re unlikely to track as well includes every single page view or button click. You can also track those as properties on customer profiles in Grouparoo.
 
 <SectionDivider
   imagePath="/images/home/integrations/salesforce/grouparoo-to-salesforce.png"

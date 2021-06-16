@@ -112,7 +112,7 @@ export default function Meet() {
             <h2 className="h5">Use Source-of-truth data</h2>
             <p>
               Pull data from trusted sources like data warehouses instead of
-              instrumenting Event streams.
+              instrumenting buggy Event streams.
             </p>
 
             <Container className="mt-4">

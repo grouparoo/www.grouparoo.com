@@ -1,10 +1,10 @@
 ---
 title: "Data Flow"
-date: "2020-08-01"
+date: "2021-06-14"
 pullQuote: "How data flows within the Grouparoo application."
 ---
 
-The Grouparoo Application's main job is to collect data from `Sources` and `Events`, store them to build a robust `Profile`, build `Groups` of `Profiles`, and finally syndicate this data with `Destination`s, your other marketing tools.
+The Grouparoo Application's main job is to collect data from `Sources`, store that data to build a robust `Profiles`, build `Groups` of `Profiles`, and finally syndicate this data with `Destination`s, your other marketing tools.
 
 This document is place to centrally describe how all of this works!
 
@@ -38,9 +38,9 @@ Profiles can be in many groups at once.
 
 Apps are how you define connections to your tools like your databases, email vendors, CRMs, etc. With each `App` you tell Grouparoo how to connect so we can import and export your data.
 
-### Profile Property Rules
+### Properties
 
-`Profile Property Rules` describe each `Profile Property` and how they work. It's a bit like a "Schema" for the `Profiles`:
+`Properties` describe each `Profile Property` and how they work. It's a bit like a "Schema" for the `Profiles`:
 
 - What `Profile Properties` exist? You cannot just add _any_ `Profile Property` to a `Profile`. You need to define it first.
 - Is this `Profile Property` unique? If it is, Grouparoo will make sure that no other Profile can have the same value for that `Profile Property`. Common examples would be `email` or `user_id`.
@@ -49,86 +49,60 @@ Apps are how you define connections to your tools like your databases, email ven
 
 Every `Profile Property` also includes a reference to an app (perhaps "MySQL-Datawarehouse") and a statement/query/option of how to get it for each Profile. Grouparoo will always be keeping your data in sync so we always need to know how to retrieve a `Profile`'s `Profile Properties`.
 
-- For an `App` "MySQL-Datawarehouse" which is linked to the `Profile Property Rule` for "First Name(string)" you might provide a SQL statement like `select first_name from users where users.id={{profile.user_id}}`.
-- You can also have more complex queries, like you could connect the `App` "MySQL-Datawarehouse" to the `Profile Property Rule` for "ltv(number)" which might do `select (sum(purchases.total) - sum(refunds.total)) as ltv from users join purchases on purchases.user_id = users.id join refunds.user_id = users.id where users.id={{profile.user_id}}`
-- For a an app `CSV` responsible for "VIP(boolean)" you might choose "column" from a dropdown indicating that any column labeled "VIP" should be allowed to set this `Profile Property`
+- For an `App` "MySQL-Datawarehouse" which is linked to the `Property` for "First Name (string)" you might provide a SQL statement like `select first_name from users where users.id={{ user_id }}`.
+- You can also have more complex queries, like you could connect the `App` "MySQL-Datawarehouse" to the `Property` for "ltv (number)" which might do `select (sum(purchases.total) - sum(refunds.total)) as ltv from users join purchases on purchases.user_id = users.id join refunds.user_id = users.id where users.id={{ user_id }}`
+- For a an app `CSV` responsible for "VIP (boolean)" you might choose "column" from a dropdown indicating that any column labeled "VIP" should be allowed to set this `Profile Property`
 
 ## Data into Grouparoo
 
-### Import Schedules and Runs
+### Sources, Schedules, and Runs
 
-When you add an `App` to Grouparoo, you can also configure if you want Grouparoo to periodically check that app for new data. This might be accomplished by checking a database table for new/updated rows or asking an API for recent changes. This is called an `Import Schedules`. You can create many `Import Schedules` from a single `App`.
+When you add an `App` to Grouparoo, you can also configure if you want Grouparoo to periodically check that app for new data. This might be accomplished by checking a database table for new/updated rows or asking an API for recent changes. This is called a `Schedule`. You can create many `Schedules` from a single `App`, against each `Source`. An `App` can have many `Sources`, often correlating to a logical collection in the `App`, e.g. Tables in a Database.
 
-Perhaps the `App` "MySQL-Datawarehouse" has 4 `Import Schedules`:
+Perhaps the `App` "MySQL-Datawarehouse" has 4 `Schedules`:
 
-1. "MySQL-Datawarehouse:users". This Rule checks the "users" table every 10 minutes for new or updated records
-2. "MySQL-Datawarehouse:carts". This Rule checks the "carts" table every hour for only new carts
-3. "MySQL-Datawarehouse:purchase". This Rule checks the "purchase" table every hour for only new purchases.
-4. "MySQL-Datawarehouse:refunds". This Rule checks the "refunds" table every hour for only new refunds
+1. "MySQL-Datawarehouse:users". This Schedule checks the "users" table every 10 minutes for new or updated records
+2. "MySQL-Datawarehouse:carts". This Schedule checks the "carts" table every hour for only new carts
+3. "MySQL-Datawarehouse:purchase". This Schedule checks the "purchase" table every hour for only new purchases.
+4. "MySQL-Datawarehouse:refunds". This Schedule checks the "refunds" table every hour for only new refunds
 
-Each `App` works a little differently, but you will be asked what to check for and how often. Each instance of a periodic check is called a `Run`. When new data is found, the `Run` will produce `Events`.
+Each `App` works a little differently, but you will be asked what to check for and how often. Each instance of a periodic check is called a `Run`. When new data is found, the `Run` will produce `Import`s.
 
-Some `Apps` are not able to be used as a recurring `Import Schedules`, and need to be triggered manually, such as uploading a CSV with profile data.
+### Imports
 
-### Inbound Events
+Imports are created when a `Schedules'` `Run` finds new or updated data. Either way, an `Import` tells Grouparoo that something has changed that we should take note of.
 
-Events are either sent directly to Grouparoo (via webhook or API), or created when a `Import Schedules'` `Run` finds new or updated data. Either way, an `Event` tells Grouparoo that something has changed that we should take note of.
+Most `Imports` trigger the update of a profile. An `Import` can be as simple as `{user_id: 3, firstName: 'Evan'}`. This tells us that we should update the `Profile` we have for user #3, and if we don't have a `Profile` for User #3, we should create one.
 
-Most events trigger the update of a profile. An event can be as simple as `{user_id: 3}`. This tells us that we should update the `Profile` we have for user #3, and if we don't have a `Profile` for User #3, we should create one. More advanced events can contain data to be saved on the profile directly like `{user_id: 3, first_name: 'Evan'}` or transient data to be exported to `Apps` that care about it, like `{user_id: 3, action: 'item_added_to_cart', items: ['red shirt']}`.
+We know that the `Import`'s data we get should be saved to the related profile if:
 
-We know that the event data we get should be saved to the related profile if:
+1. The `Import`'s payload contains a unique `Profile Property` as defined by the `Properties`
+2. The other data key-value pairs are also defined by the `Properties`.
 
-1. The event's payload contains a unique `Profile Property` as defined by the `Profile Property Rules`
-2. The other data key-value pairs are also defined by the `Profile Property Rules`.
-
-Events are stored in Grouparoo for later use. You can choose to delete old events after a period of time.
+`Imports` are stored in Grouparoo for later use. You can choose to delete old `Imports` after a period of time.
 
 ### Profile Hydration
 
-Any time an event is recorded by Grouparoo, and that event can be linked to a `Profile`, Grouparoo will fully update that profile, checking all the `Apps` that are connected to it via `Profile Property Rules` and asking for new data. In this way, you can be sure that your `Profiles` are always up to date, and we can recover quickly from any new or missed data/events. We call this step "Profile Hydration".
+Any time an `Import` is recorded by Grouparoo, and that `Import` can be linked to a `Profile`, Grouparoo will fully update that profile, checking all the `Apps` that are connected to it via `Profile Properties` and asking for new data. You can see which `Profile Properties` should be updated by checking if they are in the pending state or not. In this way, you can be sure that your `Profiles` are always up to date, and we can recover quickly from any new or missed data. We call this step "Profile Hydration".
 
-This means that if an event comes in from the "MySQL-Datawarehouse:purchase" `Import Schedules`, Grouparoo will automatically check all `Profile Properties`, including "ltv", "first_name" and everything else.
+This means that if an `Import` comes in from the "MySQL-Datawarehouse:purchase" `Import Schedules`, Grouparoo will automatically check all `Profile Properties`, including "ltv", "first_name" and everything else.
 
 ## Data out of Grouparoo
 
-### Export Schedules and Runs
+### Destinations
 
-Similar to `Import Schedules` running on a schedule, `Export Schedules` also run on a schedule, sending data out to a connected `App`, like your CRM tool. When configuring your `Export Schedules`, you'll be asked which `Groups` and `Profile Properties` you want to send (or all of them). You may want to sync "email" and "first_name" to your email tool for everyone in the `Groups` "lapsed customers" and "USA Customers" so you can send them a coupon as part of your re-engagement campaign. Oh, and the `Group` "lapsed customers" is Dynamic, based on LTV>0, and last_purchase at least 2 months ago, while "USA Customers" is Dynamic where locale=en-us... all of which Grouparoo is keeping up-to-date for you.
+When configuring your `Destinations`, you'll be asked which `Groups` and `Profile Properties` you want to send (or all of them). You may want to sync "email" and "first_name" to your email tool for everyone in the `Group` "lapsed customers" and "USA Customers" so you can send them a coupon as part of your re-engagement campaign. Oh, and the `Group` "lapsed customers" is Dynamic, based on LTV>0, and last_purchase at least 2 months ago, while "USA Customers" is Dynamic where locale=en-us... all of which Grouparoo is keeping up-to-date for you.
 
-To accomplish this you, would create an `Export Schedules` for the `App` "Mailchimp", toggle on the "lapsed-customers" and "USA Customers" groups, and finally the requested `Profile Properties` of "email" and "first_name".
+To accomplish this you, would create an `Destination` for the `App` "Mailchimp", toggle on the "lapsed-customers" and "USA Customers" groups, and finally the requested `Profile Properties` of "email" and "first_name".
 
-When Grouparoo sends data via an `Export Schedules`, this is also called a `Run`, in the "export" direction.
+When Grouparoo sends data via a `Destination`, `Exports` are created.
 
-### Outbound Events
+### Exports
 
-When configuring an `App`, you can also forward on Grouparoo events in addition to syncing profiles. This is useful if you have tools that need to respond to customer behavior in real time, or you want to integrate with other parts of your application that already send and process events. Grouparoo will forward on the event, but we will add all the data we know about the profile in question so your CRM tools can create more meaningful messages.
+The Grouparoo `App` for Mailchimp will handle using the Mailchimp API to send the `Export` for you. Exports keep track of the exact data which was sent to the `Destination`. Grouparoo will try to send data in bulk when possible, handle retries, and skip any updates that won't result in any new information being sent to the Destination.
 
-How you configure outbound events will be different for each `App`, but the following is a common example:
-
-For example, perhaps you have a `Import Schedules` called "MySQL-Datawarehouse:carts" that detects that user #3 created a cart last week, but still has an LTV of 0, meaning they haven't made a purchase yet.
-
-1. The `Import Schedules` creates a `Run` that creates an `Event` that looks like `{user_id: 3, cart_abandoned_at "Jan 5, 2019", cart_items: ['red shirt']}`
-2. The `Profile` for user #3 now has the `Profile Property` cart_abandoned_at set. cart_items is not saved onto the "Profile", as there is no "Profile Property Rule" for cart_items.
-3. Grouparoo Hydrates the `Profile`, ensuring that we know the customer's name, email address, and indeed that their LTV is still 0.
-4. The `App` "Mailchimp" is looking for all events that match "cart_abandoned_at" because it wants to send an email reminding the customer about the items in the cart.
-   - The `App` is subscribed to events that look like ""cart_abandoned_at".
-   - The `App` Mailchimp is already configured (above) to only ask for the "first_name" and "email" `Profile Properties` for folks in the `Groups` "lapsed-customers" and "USA Customers". User #3 happens to be in the "Customers USA" group, so we can continue sending this data to Mailchimp
-   - This means Grouparoo will pass the event onto Mailchimp, but we will add extra data about the `Profile`, and Grouparoo will wait until the Hydration step is complete. That means the final event Grouparoo sends to Mailchimp might look like:
-
-```json
-{
-  "cart_abandoned_at": "Jan 5, 2019",
-  "cart_items": ["red shirt"],
-  "profile": {
-    "user_id": 3,
-    "first_name": "Evan",
-    "email": "evan@grouparoo.com"
-  }
-}
-```
-
-The Grouparoo `App` for Mailchimp will handle using the Mailchimp API to send the event for you.
+You can choose to delete old `Exports` after a period of time.
 
 ## Plugins and the Grouparoo Marketplace
 
-Plugins are Grouparoo's way of providing more Apps to Grouparoo, allowing you to import and export data from more and more sources and destinations. Plugins can provide an `App`, which in turn can be used for `Schedules`, and able to handle `events` and `runs`, as well as testing the connection and providing sample data.
+Plugins are Grouparoo's way of providing more Apps to Grouparoo, allowing you to import and export data from more and more sources and destinations.
