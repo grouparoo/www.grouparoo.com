@@ -293,12 +293,13 @@ export default function Trial({ props }) {
                   </div>
                 </Form.Group>
                 <Form.Group>
-                  <div className="my-3">
+                  <div className="my-3 text-center">
                     <Form.Check
                       {...register("check", { required: true })}
                       type="checkbox"
                       id="privacy-policy-check"
                       defaultValue="false"
+                      className="small align-items-center m-0"
                       label={privacyPolicyLabel}
                     />
                     {errors.check && (
