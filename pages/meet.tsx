@@ -13,13 +13,18 @@ interface FormError {
   generic: string;
 }
 export default function Meet() {
-  const { handleSubmit, register } = useForm();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
   const { query } = useRouter();
   const [loading, setLoading] = useState(false);
   const [requested, setRequested] = useState(false);
   const [error, setError] = useState<FormError>({ email: null, generic: null });
 
   const errorHandler = new ErrorHandler();
+
   errorHandler.subscribe("result", (e) => {
     const error: FormError = { email: null, generic: null };
     const message = e?.error?.message || e?.message || e.toString();
@@ -176,6 +181,11 @@ export default function Meet() {
                         disabled={disabled}
                       />
                       <Error message={error.email} />
+                      {errors.email && (
+                        <small style={{ color: "red" }}>
+                          A valid email is required.
+                        </small>
+                      )}
                     </Form.Group>
                     <Form.Group>
                       <Form.Label>Company Name</Form.Label>
