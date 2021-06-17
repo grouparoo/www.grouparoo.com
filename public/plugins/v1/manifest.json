@@ -20,8 +20,8 @@
     "docsUrl": null
   },
   {
-    "name": "Customer.IO",
-    "description": "Grouparoo's CustomerIO integration allows you to sync all of your customer data that lives in various sources into CustomerIO.",
+    "name": "Customer.io",
+    "description": "Grouparoo's Customer.io integration allows you to sync all of your customer data that lives in various sources into Customer.io.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/customerio/customerio.png",
     "packageName": "@grouparoo/customerio",
     "source": false,
