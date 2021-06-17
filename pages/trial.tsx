@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { useApi } from "./../hooks/useApi";
 import { ErrorHandler } from "../utils/errorHandler";
-// import extractDomain from "extract-domain";
 import { isBrowser } from "../utils/isBrowser";
 
 interface FormError {
@@ -37,13 +36,11 @@ export default function Trial({ props }) {
 
     if (extractedDomain.includes(".")) {
       if (extractedDomain.match(/\./g).length === 1) {
-        console.log(`one period`);
         extractedDomain = extractedDomain.substring(
           0,
           extractedDomain.indexOf(".")
         );
       } else if (extractedDomain.match(/\./g).length === 2) {
-        console.log(`multiple periods`);
         extractedDomain = extractedDomain.substring(
           extractedDomain.indexOf(".") + 1,
           extractedDomain.lastIndexOf(".")
@@ -65,7 +62,6 @@ export default function Trial({ props }) {
   errorHandler.subscribe("result", (e) => {
     const error: FormError = { email: null, generic: null, subdomain: null };
     const message = e?.error?.message || e?.message || e.toString();
-    console.log("error", message);
 
     if (message.includes("subdomain")) {
       error.subdomain = "Subdomain already in use.";
@@ -82,9 +78,7 @@ export default function Trial({ props }) {
   const { execApi } = useApi(errorHandler);
 
   const onSubmit = async (data) => {
-    console.log(data);
     setLoading(true);
-    console.log(errors);
     // defaults
     let source = "/trial";
     let medium = "web";
@@ -113,16 +107,14 @@ export default function Trial({ props }) {
     data.companyWebsite = data.companyWebsite.toLowerCase();
     data.subdomain = data.subdomain.toLowerCase();
 
-    // TO DO: CONFIGURE GOOGLE ANALYTICS CONVERSION DATA
     if (isBrowser() && globalThis?.gtag) {
       globalThis.gtag("event", "conversion", {
-        send_to: "send_to': 'AW-467110449/dWjCCL2x78ICELGU3t4B", // demoRequest conversion
+        send_to: "send_to': 'AW-467110449/dWjCCL2x78ICELGU3t4B", // trialRequest conversion
         event_callback: () => {},
       });
     }
 
     const response = await execApi("post", `/api/v1/trial-request`, data);
-    if (response?.trialRequest) console.log(data);
     if (response?.trialRequest) {
       setRegistered(true);
     }
@@ -130,7 +122,6 @@ export default function Trial({ props }) {
   };
 
   const Error = function ({ message }) {
-    console.log(JSON.stringify(error));
     if (!message) {
       return null;
     }
@@ -160,10 +151,6 @@ export default function Trial({ props }) {
         <link rel="canonical" href="https://www.grouparoo.com/trial" />
       </Head>
 
-      {/* <Container
-        fluid
-        className="align-items-center justify-content-center d-flex my-5 my-xl-0 pb-lg-3 pb-xl-0 mx-0 trialContainer"
-      > */}
       <Row className="align-self-center m-0">
         <Col
           md={9}
@@ -385,7 +372,6 @@ export default function Trial({ props }) {
           )}
         </Col>
       </Row>
-      {/* </Container> */}
     </>
   );
 }

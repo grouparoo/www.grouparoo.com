@@ -3,11 +3,8 @@ import Head from "next/head";
 import GoogleAnalytics from "../googleAnalytics";
 import AdConversionScript from "../adConversionsScript";
 import { Container } from "react-bootstrap";
-// import { useRouter } from "next/router";
 
 function FloatingLayout({ children }) {
-  // const router = useRouter();
-
   return (
     <>
       <Head>
@@ -16,8 +13,6 @@ function FloatingLayout({ children }) {
         )}
 
         <title>Grouparoo</title>
-        {/* <link rel="stylesheet" href="/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/css/prism.css" /> */}
         <meta name="application-name" content="Grouparoo" />
         <link
           rel="apple-touch-icon-precomposed"
