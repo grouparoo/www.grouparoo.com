@@ -23,7 +23,6 @@ export default function Meet() {
   errorHandler.subscribe("result", (e) => {
     const error: FormError = { email: null, generic: null };
     const message = e?.error?.message || e?.message || e.toString();
-    console.log("error", message);
     if (message.match(/email/i)) {
       error.email = "Invalid email address.";
     } else {

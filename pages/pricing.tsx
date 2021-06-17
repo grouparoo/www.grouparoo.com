@@ -4,12 +4,11 @@ import {
   Row,
   Col,
   Card,
-  CardDeck,
   Button,
   Table,
   Image,
 } from "react-bootstrap";
-import Head from "next/head";
+import SEO from "../components/seo";
 
 export default function PricingPage() {
   const boxTextStyle = {
@@ -21,14 +20,13 @@ export default function PricingPage() {
 
   return (
     <>
-      <Head>
-        <title>Grouparoo Pricing Options</title>
-        <meta
-          name="description"
-          content="Grouparoo is open-source, so you can use our product for free today! Features and services available to fit your needs."
-        />
-        <link rel="canonical" href="https://www.grouparoo.com/pricing" />
-      </Head>
+      <SEO
+        canonical={true}
+        description="Find Grouparoo pricing options to power your Reverse ETL pipelines. Open-source or cloud hosted options available."
+        image="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
+        path="/pricing"
+        title="Grouparoo Pricing Options"
+      />
 
       <div
         id="headline"
@@ -77,12 +75,46 @@ export default function PricingPage() {
                     variant="outline-primary"
                     href="/docs/getting-started"
                   >
-                    Try free
+                    Try it now
                   </Button>
+                  <small> </small>
                 </Card.Footer>
               </Card>
             </Col>
             <Col className="mb-4">
+              <Card
+                className="pricingCard pt-5 pb-4
+                 shadow-lg h-100"
+                border="primary"
+                bg="secondary"
+                text="white"
+              >
+                <Card.Body>
+                  <Card.Title>Standard Cloud</Card.Title>
+                  <h5>Starting at $150/month</h5>
+                  For companies who want to sync up to 100k Profiles to their
+                  destinations.
+                  <br />
+                  <br />
+                  <div style={boxTextStyle}>
+                    <b>Features include:</b>
+                    <li>Up to 100k Profiles synced/month</li>
+                    <li>Access to all Sources and Destinations</li>
+                    <li>
+                      A no-code web UI allowing team members to access data
+                    </li>
+                    <li>Business hours support</li>
+                  </div>
+                </Card.Body>
+                <Card.Footer style={{ borderTop: "none" }}>
+                  <Button variant="primary" href="/trial">
+                    Start free trial
+                  </Button>
+                </Card.Footer>
+                <small>No credit card required</small>
+              </Card>
+            </Col>
+            <Col className="mb-4 offset-md-3 offset-xl-0">
               <Card
                 className="pricingCard py-5 shadow-lg h-100"
                 border="primary"
@@ -90,54 +122,22 @@ export default function PricingPage() {
                 text="white"
               >
                 <Card.Body>
-                  <Card.Title>Self-Managed Enterprise Edition</Card.Title>
-                  Empowers non-technical users and teams to use Grouparoo.
+                  <Card.Title>Enterprise Cloud</Card.Title>
+                  For enterprises with larger data sets or unique use cases.
                   <br />
                   <br />
                   <div style={boxTextStyle}>
-                    <b>Everything in Community, plus:</b>
-                    <li>
-                      A no-code web UI allowing team members to access data.
-                    </li>
-                    <li>Data governance (coming soon)</li>
-                    <li>Insights and analytics (coming soon)</li>
-                    <li>Business hours support</li>
-                  </div>
-                </Card.Body>
-                <Card.Footer style={{ borderTop: "none" }}>
-                  <Button variant="primary" href="/meet">
-                    Get a quote
-                  </Button>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col className="mb-4 offset-md-3 offset-xl-0">
-              <Card
-                className="pricingCard py-5 shadow-lg h-100 "
-                border="primary"
-                bg="secondary"
-                text="white"
-              >
-                <Card.Body>
-                  <Card.Title>Hosted</Card.Title>
-                  Interested in using Grouparoo but don't want to host it
-                  yourself? Let's chat!
-                  <br />
-                  <br />
-                  <div style={boxTextStyle}>
-                    <b>Everything in Enterprise Edition, plus:</b>
-                    <li>Private single-tenant instance</li>
-                    <li>
-                      Keep the data in your databases or we can host it for you
-                    </li>
+                    <b>Features include:</b>
+                    <li> &gt; 100k Profiles synced/month</li>
                     <li>Business hours support</li>
                     <li>Enhanced support response time SLAs</li>
                   </div>
                 </Card.Body>
                 <Card.Footer style={{ borderTop: "none" }}>
                   <Button variant="primary" href="/meet">
-                    Get a quote
+                    Contact Sales
                   </Button>
+                  <small> </small>
                 </Card.Footer>
               </Card>
             </Col>
@@ -153,8 +153,8 @@ export default function PricingPage() {
                 <tr>
                   <th></th>
                   <th>Community</th>
-                  <th>Enterprise</th>
-                  <th className="d-none d-md-table-cell">Hosted</th>
+                  <th>Standard Cloud</th>
+                  <th className="d-none d-md-table-cell">Enterprise Cloud</th>
                 </tr>
               </thead>
               <tbody>
@@ -278,6 +278,26 @@ export default function PricingPage() {
                   </td>
                 </tr>
                 <tr>
+                  <td style={{ textAlign: "left" }}>SaaS Hosted</td>
+                  <td>-</td>
+                  <td className="d-none d-md-table-cell">
+                    <Image
+                      src="/images/grouparoo-blue-checkmark.svg"
+                      alt="Grouparoo blue checkmark"
+                      width={24}
+                      height={24}
+                    />
+                  </td>
+                  <td className="d-none d-md-table-cell">
+                    <Image
+                      src="/images/grouparoo-blue-checkmark.svg"
+                      alt="Grouparoo blue checkmark"
+                      width={24}
+                      height={24}
+                    />
+                  </td>
+                </tr>
+                <tr>
                   <td style={{ textAlign: "left" }}>
                     Teams, Team Members, and Permissions
                   </td>
@@ -343,6 +363,7 @@ export default function PricingPage() {
                     />
                   </td>
                 </tr>
+
                 <tr>
                   <td style={{ textAlign: "left" }}>
                     <b>Support</b>

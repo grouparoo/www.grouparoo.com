@@ -1,6 +1,7 @@
 import "../scss/grouparoo.scss";
 import "../components/icons"; // this is needed to load the library
 import Layout from "../components/layouts/main";
+import FloatingLayout from "../components/layouts/floating";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -43,6 +44,14 @@ export default function GrouparooWWW(props) {
     if (!value) return;
     const existing = storage.getItem(key);
     if (!existing) storage.setItem(key, value);
+  }
+
+  if (router.pathname === "/trial") {
+    return (
+      <FloatingLayout>
+        <Component {...props} />{" "}
+      </FloatingLayout>
+    );
   }
 
   return (

@@ -1,28 +1,10 @@
-import { useState, useEffect, Children, cloneElement } from "react";
+import { Children, cloneElement } from "react";
 import Head from "next/head";
 import GoogleAnalytics from "../googleAnalytics";
 import AdConversionScript from "../adConversionsScript";
-import Navigation from "../navigation";
-import Footer from "../footer";
-import { Alert } from "react-bootstrap";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import GetStarted from "../home/getStarted";
+import { Container } from "react-bootstrap";
 
-function PageTemplate({ children }) {
-  const router = useRouter();
-  const [releaseNote, setReleaseNote] =
-    useState<{
-      name: string;
-      description: string;
-    }>(null);
-
-  useEffect(() => {
-    if (router.asPath !== "/") setReleaseNote(null);
-  }, [router.asPath]);
-
-  const noGetStarted = ["/meet", "/docs", "/blog", "/jobs", "/get-started"];
-
+function FloatingLayout({ children }) {
   return (
     <>
       <Head>
@@ -31,8 +13,6 @@ function PageTemplate({ children }) {
         )}
 
         <title>Grouparoo</title>
-        {/* <link rel="stylesheet" href="/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/css/prism.css" /> */}
         <meta name="application-name" content="Grouparoo" />
         <link
           rel="apple-touch-icon-precomposed"
@@ -128,27 +108,14 @@ function PageTemplate({ children }) {
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="/css/prism.css"></link>
       </Head>
-
-      {releaseNote?.description ? (
-        <Alert variant="primary" style={{ textAlign: "center", margin: 0 }}>
-          <small>
-            <strong>What's New</strong> - {releaseNote.description}{" "}
-            <Link href="/whats-new">
-              <a>Learn More</a>
-            </Link>
-          </small>
-        </Alert>
-      ) : null}
-
       <div className="main">
-        <Navigation />
-        <div id="content-container" style={{ minHeight: 700 }}>
-          {Children.map(children, (child) =>
-            cloneElement(child, { setReleaseNote })
-          )}
-        </div>
-        {noGetStarted.includes(router.asPath) ? null : <GetStarted />}
-        <Footer />
+        <Container
+          fluid
+          className="align-items-center justify-content-center d-flex my-5 my-xl-0 pb-lg-3 pb-xl-0 mx-0 trialContainer"
+        >
+          {" "}
+          {children}
+        </Container>
       </div>
 
       <GoogleAnalytics />
@@ -157,4 +124,4 @@ function PageTemplate({ children }) {
   );
 }
 
-export default PageTemplate;
+export default FloatingLayout;

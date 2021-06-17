@@ -350,3 +350,16 @@ hr {
   width: 100%;
   position: absolute;
 }
+
+// -- trial --
+
+@media only screen and (min-width: 991px) {
+  .trialContainer {
+    min-height: 100vh;
+    // max-height: 100vh;
+  }
+}
+
+#privacy-policy-check {
+  margin-top: 3.7px;
+}
