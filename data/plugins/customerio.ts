@@ -1,7 +1,7 @@
 import { Plugin } from "./index";
 
 export const Customerio: Plugin = {
-  name: "CustomerIO",
+  name: "Customer.IO",
   description:
     "Grouparoo's CustomerIO integration allows you to sync all of your customer data that lives in various sources into CustomerIO.",
   priority: 60,
