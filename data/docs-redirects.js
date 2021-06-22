@@ -151,36 +151,6 @@ const configRedirects = [
     src: "/docs/config/settings",
     dest: "/docs/running/settings",
   },
-  // Enterprise Guides
-  {
-    src: "/docs/config/ui-config",
-    dest: "/docs/running/ui-enterprise",
-  },
-  {
-    src: "/docs/config/apps/enterprise",
-    dest: "/docs/running/ui-enterprise/apps",
-  },
-  {
-    src: "/docs/config/sources/enterprise",
-    dest: "/docs/running/ui-enterprise/sources",
-  },
-  {
-    src: "/docs/config/properties/enterprise",
-    dest: "/docs/running/ui-enterprise/properties",
-  },
-  {
-    src: "/docs/config/groups/enterprise",
-    dest: "/docs/running/ui-enterprise/groups",
-  },
-  {
-    src: "/docs/config/destinations/enterprise",
-    dest: "/docs/running/ui-enterprise/destinations",
-  },
-  // Settings
-  {
-    src: "/docs/config/settings",
-    dest: "/docs/running/settings",
-  },
 ];
 
 const combinedRedirects = [
