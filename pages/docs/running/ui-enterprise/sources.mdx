@@ -11,22 +11,20 @@ Now that you've added an App ([see here if you haven't](/docs/running/ui-enterpr
 
 To start, you'll click on the Sources navigation in the left-nav and click `Add new Source`.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="Add new Source"
   alt="Add new Source"
-  src="docs/guides/add-new-source.png"
+  src="/images/docs/guides/add-new-source.png"
   width={820}
   height={414}
 />
 
 Sources are created using Apps. Next, choose the kind of Source you'd like to create from the list of available Apps. The choices shown will be based on which Apps you've already connected. If you don't see the App you want to use, you can [add a new App](/docs/running/ui-enterprise/apps).
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="Add new postgres source"
   alt="Add new postgres source"
-  src="docs/guides/add-new-source-choose-app.png"
+  src="/images/docs/guides/add-new-source-choose-app.png"
   width={820}
   height={414}
 />
@@ -35,11 +33,10 @@ Sources are created using Apps. Next, choose the kind of Source you'd like to cr
 
 Once you've chosen the App, fill in the appropriate configuration values for your Source. This will determine what information from the Source gets imported into Grouparoo.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="new postgres source"
   alt="new postgres source"
-  src="docs/guides/new-source-postgres.png"
+  src="/images/docs/guides/new-source-postgres.png"
   width={820}
   height={414}
 />
@@ -48,11 +45,10 @@ Once you've chosen the App, fill in the appropriate configuration values for you
 
 After you've chosen the Source that contains your user data, you will need to indicate what makes your users unique. Often a unique identifier is a `user id`, `uid`, or `email`. If you already have a unique Profile Property defined in Grouparoo, you can map your Source to that Profile Property. If your Source has a new way of identifying profiles uniquely, you can create a new unique Profile Property.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="First Profile Property"
   alt="First Profile Property"
-  src="docs/guides/new-source-bootstrap.png"
+  src="/images/docs/guides/new-source-bootstrap.png"
   width={820}
   height={414}
 />
@@ -65,11 +61,10 @@ A Schedule defines how often Grouparoo will check your Source for new data. When
 
 You can choose how often Grouparoo will check your Source for new data. You will also point Grouparoo to the column that indicates when a row in your users table has been updated, such as an `updated_at` timestamp column.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="Schedule"
   alt="Schedule"
-  src="docs/guides/new-source-schedule.png"
+  src="/images/docs/guides/new-source-schedule.png"
   width={820}
   height={414}
 />

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { EnterpriseCTA, HavingProblems } from "./callouts";
 import CLICommand from "./CLICommands";
 import Image from "./image";
+import ImageInBrowserFrame from "../imageInBrowserFrame";
 import PluginsList from "./pluginsList";
 import {
   PluginDocsColumnarDestination,
@@ -26,6 +27,7 @@ export {
   EnterpriseCTA,
   HavingProblems,
   Image,
+  ImageInBrowserFrame,
   Link,
   PluginDocsColumnarDestination,
   PluginDocsColumnarSource,
