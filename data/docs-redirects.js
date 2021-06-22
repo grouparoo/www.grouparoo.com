@@ -134,6 +134,10 @@ const configRedirects = [
     src: "/docs/config/properties/enterprise",
     dest: "/docs/running/ui-enterprise/properties",
   },
+  {
+    src: "/docs/config/groups/enterprise",
+    dest: "/docs/running/ui-enterprise/groups",
+  },
 ];
 
 const combinedRedirects = [
