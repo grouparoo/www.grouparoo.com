@@ -38,14 +38,3 @@ export function HavingProblems() {
     </>
   );
 }
-
-export function UIConfigPrereqs() {
-  return (
-    <Alert variant="warning">
-      <p className="mb-0">
-        UI Config requires that your Grouparoo application{" "}
-        <a href="/docs/deployment">is running in production</a>.
-      </p>
-    </Alert>
-  );
-}

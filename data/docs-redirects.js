@@ -101,13 +101,30 @@ const communityRedirects = [
 /* --- Config --- */
 
 const configRedirects = [
-  { src: "/docs/config/apps", dest: "/docs/config/apps/community" },
-  { src: "/docs/config/sources", dest: "/docs/config/sources/community" },
-  { src: "/docs/config/properties", dest: "/docs/config/properties/community" },
-  { src: "/docs/config/groups", dest: "/docs/config/groups/community" },
+  {
+    src: "/docs/config/apps",
+    dest: "/docs/config/apps/community",
+  },
+  {
+    src: "/docs/config/sources",
+    dest: "/docs/config/sources/community",
+  },
+  {
+    src: "/docs/config/properties",
+    dest: "/docs/config/properties/community",
+  },
+  {
+    src: "/docs/config/groups",
+    dest: "/docs/config/groups/community",
+  },
   {
     src: "/docs/config/destinations",
     dest: "/docs/config/destinations/community",
+  },
+  // Enterprise Guides
+  {
+    src: "/docs/config/apps/enterprise",
+    dest: "/docs/running/ui-enterprise/apps",
   },
 ];
 

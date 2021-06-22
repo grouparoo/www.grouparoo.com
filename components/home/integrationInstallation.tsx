@@ -49,7 +49,7 @@ export default function IntegrationInstallation({
           <h4>Enterprise Edition</h4>
           <p>
             Our Enterprise Edition enables you to{" "}
-            <Link href="/docs/config/apps/enterprise">
+            <Link href="/docs/running/ui-enterprise/apps">
               {`configure your ${displayName} apps through the UI`}
             </Link>
             .

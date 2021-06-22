@@ -1,7 +1,7 @@
 import { Alert, Button, Tab } from "react-bootstrap";
 import Link from "next/link";
 
-import { EnterpriseCTA, HavingProblems, UIConfigPrereqs } from "./callouts";
+import { EnterpriseCTA, HavingProblems } from "./callouts";
 import CLICommand from "./CLICommands";
 import Image from "./image";
 import PluginsList from "./pluginsList";
@@ -37,7 +37,6 @@ export {
   RuleOpsTable,
   Tab,
   Tabs,
-  UIConfigPrereqs,
   ValidateAndApplyConfig,
   AppExamplesReadme,
 };

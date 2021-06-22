@@ -49,7 +49,35 @@ const DocsNav: NavItem[] = [
   {
     title: "Step 3: Run",
     path: "/docs/running",
-    children: [{ title: "Testing", path: "/docs/running/testing" }],
+    children: [
+      {
+        title: "Enterprise Guides",
+        path: "/docs/running/ui-enterprise",
+        children: [
+          {
+            title: "Apps",
+            path: "/docs/running/ui-enterprise/apps",
+          },
+          {
+            title: "Sources",
+            path: "/docs/running/ui-enterprise/sources",
+          },
+          {
+            title: "Properties",
+            path: "/docs/running/ui-enterprise/properties",
+          },
+          {
+            title: "Groups",
+            path: "/docs/running/ui-enterprise/groups",
+          },
+          {
+            title: "Destinations",
+            path: "/docs/running/ui-enterprise/destinations",
+          },
+        ],
+      },
+      { title: "Testing", path: "/docs/running/testing" },
+    ],
   },
 
   // -- 04: Deploy --
