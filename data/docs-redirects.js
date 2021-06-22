@@ -168,6 +168,10 @@ const configRedirects = [
     src: "/docs/config/groups/enterprise",
     dest: "/docs/running/ui-enterprise/groups",
   },
+  {
+    src: "/docs/config/destinations/enterprise",
+    dest: "/docs/running/ui-enterprise/destinations",
+  },
 ];
 
 const combinedRedirects = [
