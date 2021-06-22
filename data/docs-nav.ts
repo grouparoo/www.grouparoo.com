@@ -41,7 +41,6 @@ const DocsNav: NavItem[] = [
       { title: "Properties", path: "/docs/config/properties/community" },
       { title: "Groups", path: "/docs/config/groups/community" },
       { title: "Destinations", path: "/docs/config/destinations/community" },
-      { title: "Settings", path: "/docs/config/settings" },
     ],
   },
 
@@ -76,6 +75,7 @@ const DocsNav: NavItem[] = [
           },
         ],
       },
+      { title: "Settings", path: "/docs/running/settings" },
       { title: "Testing", path: "/docs/running/testing" },
     ],
   },
