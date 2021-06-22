@@ -319,8 +319,6 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/settings</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/config/ui-config</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/development/databases</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/development/dataflow</loc><changefreq
@@ -356,6 +354,8 @@
     >https://www.grouparoo.com/docs/plugins/grouparoo-sqlite</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/running/testing</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/running/ui-enterprise</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/support/common-issues</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
@@ -423,23 +423,23 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/apps/community</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/config/apps/enterprise</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/destinations/community</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/config/destinations/enterprise</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/groups/community</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/config/groups/enterprise</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/properties/community</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/config/properties/enterprise</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/sources/community</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/config/sources/enterprise</loc><changefreq
+    >https://www.grouparoo.com/docs/running/ui-enterprise/apps</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/running/ui-enterprise/destinations</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/running/ui-enterprise/groups</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/running/ui-enterprise/properties</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/running/ui-enterprise/sources</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/support/upgrading-grouparoo/v01-v02</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
