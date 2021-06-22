@@ -23,7 +23,7 @@ export function HavingProblems() {
       <Alert variant="primary">
         <h5>Having Problems?</h5>
 
-        <p>
+        <p className="mb-0">
           If you are having trouble, visit the list of{" "}
           <Link href="/docs/support/common-issues">
             <a>common issues</a>
