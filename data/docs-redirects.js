@@ -130,6 +130,10 @@ const configRedirects = [
     src: "/docs/config/sources/enterprise",
     dest: "/docs/running/ui-enterprise/sources",
   },
+  {
+    src: "/docs/config/properties/enterprise",
+    dest: "/docs/running/ui-enterprise/properties",
+  },
 ];
 
 const combinedRedirects = [
