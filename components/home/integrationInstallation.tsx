@@ -42,7 +42,7 @@ export default function IntegrationInstallation({
           <p>
             Once you've installed the {displayName} plugin, you can begin to
             configure it by{" "}
-            <Link href="/docs/config/apps/community">adding an App</Link>.
+            <Link href="/docs/config/code-config/apps">adding an App</Link>.
           </p>
         </Col>
         <Col>

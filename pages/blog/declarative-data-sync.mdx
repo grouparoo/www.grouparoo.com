@@ -35,10 +35,10 @@ Here is how you declare your pipeline:
 
 - [Get](https://www.grouparoo.com/docs/installation#step-2-pick-an-installation-method) our `grouparoo` command line tool via npm and `init` a new Grouparoo project
 - [Install](https://www.grouparoo.com/docs/installation/plugins#installing-a-plugin) plugins for the connections you need (Postgres, Mailchimp, Salesforce, etc.).
-- Generate an [App](https://www.grouparoo.com/docs/config/apps/community) with connection information (Postgres database, etc).
-- Generate a [Source](https://www.grouparoo.com/docs/config/sources/community) with [Properties](https://www.grouparoo.com/docs/config/properties/community) (id, email, first_name from users table) to create Profiles.
-- Generate calculated [Groups](https://www.grouparoo.com/docs/config/groups/community) of Profiles (High Value Users) based on Profile Property values.
-- Generate a [Destination](https://www.grouparoo.com/docs/config/destinations/community) and map the data to it (sync email, first_name, and group membership to Mailchimp)
+- Generate an [App](https://www.grouparoo.com/docs/config/code-config/apps) with connection information (Postgres database, etc).
+- Generate a [Source](https://www.grouparoo.com/docs/config/code-config/sources) with [Properties](https://www.grouparoo.com/docs/config/code-config/properties) (id, email, first_name from users table) to create Profiles.
+- Generate calculated [Groups](https://www.grouparoo.com/docs/config/code-config/groups) of Profiles (High Value Users) based on Profile Property values.
+- Generate a [Destination](https://www.grouparoo.com/docs/config/code-config/destinations) and map the data to it (sync email, first_name, and group membership to Mailchimp)
 
 Now, you can call `grouparoo run` to test the data [sync](https://www.grouparoo.com/docs/running), make expectation or snapshot [tests](https://www.grouparoo.com/docs/running/testing), and [deploy](https://www.grouparoo.com/docs/deployment) your application so it’s always running and looking for new data to sync.
 

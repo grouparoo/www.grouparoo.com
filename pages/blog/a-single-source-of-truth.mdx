@@ -101,7 +101,7 @@ _Note that the open-source version of Grouparoo needs to run on a server. That c
 
 3. OK, we're chugging along nicely here. The point is to create an application to pipe data from Sheets to Mailchimp, right? It follows then that we need to create an `app` for both (I'm calling them `sheetsapp` and `mailchimpapp`). Let designate the `sheetsapp` as a `source` (I'm calling this `src`), and the `mailchimpapp` as a `destination` (I'm calling this `dest`). I think I should get an award for my creative naming, right?
 
-   The syntax goes something like `grouparoo generate plugin-name:command arguments`, which is pretty standard. There are some more [examples in the documentation on sources](/docs/config/sources/community) that might smooth the learning curve a bit. Or just watch the video above.
+   The syntax goes something like `grouparoo generate plugin-name:command arguments`, which is pretty standard. There are some more [examples in the documentation on sources](/docs/config/code-config/sources) that might smooth the learning curve a bit. Or just watch the video above.
 
    ```bash
    grouparoo generate google-sheets:app sheetsapp
@@ -120,7 +120,7 @@ _Note that the open-source version of Grouparoo needs to run on a server. That c
 
    <br />
 
-5. We're also going to create a `group`, which just compiles all of the rows from our `source` and filters them by `property`. It's nice to have that functionality, and it really comes in handy later on with more complex setups, but in this scenario, our group is just going to be made up of every row from our `source`, so we're not going to make use of the filtering rules. If you're interested in learning more about them for your project, there's a detailed table on [this page in the docs.](/docs/config/groups/community)
+5. We're also going to create a `group`, which just compiles all of the rows from our `source` and filters them by `property`. It's nice to have that functionality, and it really comes in handy later on with more complex setups, but in this scenario, our group is just going to be made up of every row from our `source`, so we're not going to make use of the filtering rules. If you're interested in learning more about them for your project, there's a detailed table on [this page in the docs.](/docs/config/code-config/groups)
 
    ```bash
    grouparoo generate group:calculated allemails

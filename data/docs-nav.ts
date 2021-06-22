@@ -35,12 +35,11 @@ const DocsNav: NavItem[] = [
     path: "/docs/config",
     children: [
       { title: "Code Config", path: "/docs/config/code-config" },
-      { title: "UI Config", path: "/docs/config/ui-config" },
-      { title: "Apps", path: "/docs/config/apps/community" },
-      { title: "Sources", path: "/docs/config/sources/community" },
-      { title: "Properties", path: "/docs/config/properties/community" },
-      { title: "Groups", path: "/docs/config/groups/community" },
-      { title: "Destinations", path: "/docs/config/destinations/community" },
+      { title: "Apps", path: "/docs/config/apps" },
+      { title: "Sources", path: "/docs/config/sources" },
+      { title: "Properties", path: "/docs/config/properties" },
+      { title: "Groups", path: "/docs/config/groups" },
+      { title: "Destinations", path: "/docs/config/destinations" },
     ],
   },
 
