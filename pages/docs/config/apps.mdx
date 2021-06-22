@@ -1,7 +1,71 @@
 ---
 title: Apps
 date: "2021-06-22"
-pullQuote: "Apps are how Grouparoo can connect to any number of different tools such as your databases, data warehouses, and other 3rd party tools."
+pullQuote: "Learn how to configure Apps, which are how Grouparoo connects to the third-party tools your team uses."
 ---
 
-...
+Apps are typically the first types of objects that you will create. They help Grouparoo connect to a number of different tools, such as your databases, data warehouses, and other third-party tools. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+
+With [Config UI](/docs/config) running and registered, follow the steps below to configure your app(s).
+
+### Step 1: Add an App
+
+You can begin the process either from the home page or the dashboard.
+
+<ImageInBrowserFrame
+  centered
+  alt="Config UI: Add App"
+  src="/images/docs/guides/config/app--01-add.png"
+  width={850}
+  height={414}
+/>
+
+This will take you to a list of your current apps. Click to add a new app.
+
+<ImageInBrowserFrame
+  centered
+  alt="Config UI: Add App"
+  src="/images/docs/guides/config/app--02-add.png"
+  width={852}
+  height={460}
+/>
+
+Apps are enabled by installing plugins. Fortunately, Grouparoo's Config UI helps you install plugins on the fly. Apps from installed plugins will have an orange badge and are ready to be installed immediately.
+
+Everything else in the list is a plugin that can be installed by clicking on it. ([Learn more about plugins](/docs/installation/plugins).)
+
+Choose the type of app you'd like to add. When you're first getting started, we recommend adding the app that has the majority of your customer data such as a data warehouse or production database replica.
+
+<ImageInBrowserFrame
+  centered
+  alt="Config UI: Choose App"
+  src="/images/docs/guides/config/app--03-plugins.png"
+  width={850}
+  height={472}
+/>
+
+### Step 2: Configure Your App
+
+Once you've chosen an App, add the connection details you'll need to connect to this App.
+
+<ImageInBrowserFrame
+  centered
+  alt="Add App Left Nav"
+  src="/images/docs/guides/config/app--04-configure.png"
+  width={820}
+  height={444}
+/>
+
+## Generated Config File
+
+Grouparoo's Config UI will write a file to your local filesystem based on your inputs. That file will be placed in the `config/apps` directory in your Grouparoo project. You can further edit this file locally or through the Config UI.
+
+<Button href="/docs/config/code-config/apps" variant="outline-primary">
+  Learn more about config files
+</Button>
+
+## Next Steps
+
+Your Grouparoo application starts with Apps. As you continue to configure your application, you'll want to remember to **always start with an App.** Want to add a new Destination? Make sure there is an App to support it.
+
+Sources and Destinations both are direct descendents of Apps. If you don't have any Sources in your Grouparoo application yet, move on to [create a Source](/docs/running/ui-enterprise/sources). If you've already imported data into Grouparoo, then you're ready to [create a Destination](/docs/running/ui-enterprise/destinations) to export data from Grouparoo.
