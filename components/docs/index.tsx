@@ -1,12 +1,7 @@
 import { Alert, Button, Tab } from "react-bootstrap";
 import Link from "next/link";
 
-import {
-  ConfigToggle,
-  EnterpriseCTA,
-  HavingProblems,
-  UIConfigPrereqs,
-} from "./callouts";
+import { EnterpriseCTA, HavingProblems, UIConfigPrereqs } from "./callouts";
 import CLICommand from "./CLICommands";
 import Image from "./image";
 import PluginsList from "./pluginsList";
@@ -28,7 +23,6 @@ export {
   Alert,
   Button,
   CLICommand,
-  ConfigToggle,
   EnterpriseCTA,
   HavingProblems,
   Image,
