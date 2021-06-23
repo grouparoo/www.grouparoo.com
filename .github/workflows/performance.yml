@@ -1,12 +1,15 @@
 name: Performance
 
-on: [pull_request]
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "3 0 * * 5"
 
 jobs:
   lhci:
     name: Lighthouse
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'grouparoo/www.grouparoo.com' && github.actor != 'dependabot[bot]' }}
+    if: ${{ github.repository == 'grouparoo/www.grouparoo.com' }}
     steps:
       - name: echo actor
         run: |
@@ -17,7 +20,15 @@ jobs:
       - name: Calculate performance
         run: |
           ./scripts/performance_action
-      - uses: marocchino/sticky-pull-request-comment@v1
+      - name: Load Comment Markdown
+        id: comment
+        uses: juliangruber/read-file-action@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           path: ./.lighthouseci/comment.md
+      - name: Echo Comment Markdown
+        run: echo "${{ steps.comment.outputs.content }}"
+      - name: Post Comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: 537 # https://github.com/grouparoo/www.grouparoo.com/discussions/537
+          body: "${{ steps.comment.outputs.content }}"
