@@ -81,9 +81,6 @@ export default function Trial({ props }) {
 
   const onSubmit = async (data) => {
     setLoading(true);
-
-    validator.isEmail(data.email);
-    validator.isURL(data.companyWebsite);
     // defaults
     let source = "/trial";
     let medium = "web";
