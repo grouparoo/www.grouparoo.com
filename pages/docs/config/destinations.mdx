@@ -1,7 +1,111 @@
 ---
 title: Destinations
 date: "2021-06-22"
-pullQuote: "Destinations are tools where you want to send your Customer Data so you can take action on your workflows."
+pullQuote: "Learn how to configure destinations using Grouparoo's Config UI."
 ---
 
-...
+<Alert variant="warning">
+  <p className="mb-0">
+    You usually want to have an <a href="/docs/config/apps">app</a>,{" "}
+    <a href="/docs/config/sources">source</a>,{" "}
+    <a href="/docs/config/properties">a few properties</a>, and{" "}
+    <a href="/docs/config/groups">at least one group</a> before creating a
+    destination.
+  </p>
+</Alert>
+
+Once you have all other items configuration, you're ready to setup your destinations. Destinations are the last piece of the puzzle, the place(s) you want to send your customer data so you can take action on your workflows. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+
+Here's how to send profiles, groups, and profile properties to destinations:
+
+### Step 1: Choose an App
+
+Click on _Destinations_ in the left-nav and then click _Add New Destination_.
+
+<ImageInBrowserFrame
+  centered
+  alt="Config UI: Add Destination"
+  src="/images/docs/guides/config/destination--01-add.png"
+  width={820}
+  height={494}
+/>
+
+Choose the kind of destination you'd like to create from the list of available apps. The choices shown will be based on which apps you've already connected. If you don't see the app you want to use, you can [add a new app](/docs/config/apps).
+
+<ImageInBrowserFrame
+  centered
+  alt="Config UI: Choose App"
+  src="/images/docs/guides/config/destination--02-app.png"
+  width={820}
+  height={448}
+/>
+
+### Step 2: Set Destination Options
+
+Once you've selected the type of app, the specific questions and settings will vary. Here is [Mailchimp](https://mailchimp.com/), as an example. Mailchimp has audiences that each have a `listId`. You can choose the specific `listId` you'll want to set for this Destination.
+
+<ImageInBrowserFrame
+  centered
+  alt="Config UI: Mailchimp Details"
+  src="/images/docs/guides/config/destination--03-name.png"
+  width={820}
+  height={456}
+/>
+
+### Step 3: Choose Groups
+
+Now you can define what groups and what profile properties you want to send to your destination. This mapping defines which profiles get sent to the destination.
+
+<ImageInBrowserFrame
+  centered
+  alt="Config UI: Choose Group"
+  src="/images/docs/guides/config/destination--04-group.png"
+  width={820}
+  height={437}
+/>
+
+### Step 4: Map Profile Properties
+
+Next you can choose which profile properties you want to send to your destination. Usually a unique profile property such as `email` or `user id` will be required so the destination knows how to identify profiles and to keep profiles separate.
+
+<ImageInBrowserFrame
+  centered
+  alt="Config UI: Map Profile Properties"
+  src="/images/docs/guides/config/destination--05-property.png"
+  width={820}
+  height={434}
+/>
+
+### Step 5: Choose Group Membership
+
+Lastly, you can choose how group membership shows up in your destination. This mapping lets you decide how groups are represented in your destination. Often groups are shown as lists, audiences, or tags in these destinations.
+
+<ImageInBrowserFrame
+  centered
+  alt="Config UI: Choose Group Membership"
+  src="/images/docs/guides/config/destination--06-mappings.png"
+  width={820}
+  height={460}
+/>
+
+## Generated Config File
+
+Grouparoo's Config UI will write a file to your local filesystem based on your inputs. That file will be placed in the `config/destinations` directory in your Grouparoo project. You can further edit this file locally or through the Config UI.
+
+<Button href="/docs/config/code-config/destinations" variant="outline-primary">
+  Learn more about config files
+</Button>
+
+## 🎉 You're Done! Yay! 🎉
+
+You're all set! Once you have an app, source, a few properties, at least one group, and a destination, you have all the pieces you need to start syncing customer data!
+
+If you're ready, feel free to move on to [running the app](/docs/running) in development, and then [deploy to production](/docs/deployment) when you're confident everything is working right.
+
+Config UI offers an additional benefit of sampling data as you go. If you haven't added any sample profiles, you may want to check that out before moving on to running the app.
+
+<Button href="/docs/config/profiles" variant="outline-primary">
+  Add sample profiles
+</Button>
+
+If you have any additional questions, please let us know through our [support form / Github Issues](https://github.com/grouparoo/grouparoo/issues/new/choose).
