@@ -1,6 +1,3 @@
-import { stringify } from "gray-matter";
-import validator from "validator";
-
 export function titleize(str: string) {
   return str
     .replace(/^[\s_]+|[\s_]+$/g, "")
