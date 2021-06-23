@@ -4,34 +4,39 @@ date: "2021-02-08"
 pullQuote: "Learn how to use Code Config to configure your Grouparoo application."
 ---
 
-After you've installed Grouparoo locally, you're ready to configure it. The easiest way to configure Grouparoo is through Code Config. If you're using Grouparoo's Enterprise Edition, you can also configure the application through the UI. See the UI Config section below for more info.
+After you've installed Grouparoo locally, you're ready to configure it. The easiest way to configure Grouparoo is through Grouparoo's Config UI plugin.
 
-<Button
-  className="mb-4"
-  variant="outline-primary"
-  href="/docs/config/code-config"
->
-  Get Started with Code Config
-</Button>
+If you're using Grouparoo's Enterprise Edition, you can also configure the application through the UI. However, we don't recommend this for first time users, as it does not provide the ability to test your data before it is synced. [See here](/docs/running/ui-enterprise) for more information on configuration objects with Grouparoo's Enterprise Edition.
 
-## Code Config Guides
+## Getting Started with Config UI
 
-Code Config is the recommended way to install Grouparoo. Here are some guides to help you through that process:
+Config UI is the recommended way to configure your Grouparoo data. It requires the [@grouparoo/ui-config](https://www.npmjs.com/package/@grouparoo/ui-config) plugin. This is included by default when you initialize Grouparoo with `grouparoo init`. If you don't have it as a dependency, you can install it with the `install` command:
 
-- [Intro to Code Config](/docs/config/code-config)
-- [Adding Apps](/docs/config/code-config/apps)
-- [Adding Sources](/docs/config/code-config/sources)
-- [Adding Properties to Sources](/docs/config/code-config/properties)
-- [Adding Destinations](/docs/config/code-config/destinations)
-- [Creating Groups](/docs/config/code-config/groups)
+    $ grouparoo install @grouparoo/ui-config
 
-## UI Config (Enterprise) Guides
+To start the Config UI application, use the `config` CLI command:
 
-Grouparoo's Enterprise Edition enables you to configure Grouparoo through the UI. If you have [purchased an Enterprise license](/meet), you can configure your application through the UI. Here are some guides to help you through that process:
+    $ grouparoo config
 
-- [Intro to UI Config](/docs/running/ui-enterprise)
-- [Adding Apps](/docs/running/ui-enterprise/apps)
-- [Adding Sources](/docs/running/ui-enterprise/sources)
-- [Adding Properties to Sources](/docs/running/ui-enterprise/properties)
-- [Adding Destinations](/docs/running/ui-enterprise/destinations)
-- [Creating Groups](/docs/running/ui-enterprise/groups)
+This will start the Config UI application and open your browser to the appropriate location.
+
+## Creating Config Objects
+
+The Config UI helps you through the process of creating configuration objects for your Grouparoo application. As you make changes in Config UI, Grouparoo will write files to your `config` directory in your Grouparoo project.
+
+When then running Grouparoo's main application in development or production mode, these files will be loaded into the system and used as your application's configuration.
+
+## Config Guides
+
+There are a handful of guides to help you through the configuration process with Config UI:
+
+- [Apps](/docs/config/apps)
+- [Sources](/docs/config/sources)
+- [Properties](/docs/config/properties)
+- [Groups](/docs/config/groups)
+- [Destinations](/docs/config/destinations)
+- [Sample Profiles](/docs/config/profiles)
+
+## Using the CLI
+
+You can also use [Grouparoo's CLI](/docs/cli) to generate config files. See [Code Config](/docs/config/code-config) for more information on generating config files on the command line.
