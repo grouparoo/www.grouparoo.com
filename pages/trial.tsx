@@ -152,232 +152,243 @@ export default function Trial({ props }) {
         <title>{title}</title>
         <link rel="canonical" href="https://www.grouparoo.com/trial" />
       </Head>
+      <Container>
+        <Row className="align-self-center m-0">
+          <Col
+            md={9}
+            xl={5}
+            className="align-self-center pb-2 pb-lg-5 text-center mx-auto"
+          >
+            <Link href="/">
+              <Image
+                src="/images/logo-and-wordmark-black-words.png"
+                alt="Grouparoo Logo"
+                width={150}
+                height={32}
+                className="mb-3"
+              />
+            </Link>
+            <h1>Grouparoo Cloud</h1>
+            <h2>Start Your Free 30 Day Trial</h2>
+            <p>No credit card required.</p>
+          </Col>
+          <Col
+            xs={12}
+            md={9}
+            xl={7}
+            className="d-flex justify-content-around mx-auto m-0 "
+          >
+            <Error message={error.generic} />
+            {!registered ? (
+              <Container className="bg-white border shadow border-3 rounded col-11 p-4 mt-4 mt-md-0">
+                <h3 className="mx-auto text-center">
+                  Create Your Grouparoo Subdomain
+                </h3>
 
-      <Row className="align-self-center m-0">
-        <Col
-          md={9}
-          xl={5}
-          className="align-self-center pb-2 pb-lg-5 text-center mx-auto"
-        >
-          <Link href="/">
-            <Image
-              src="/images/logo-and-wordmark-black-words.png"
-              alt="Grouparoo Logo"
-              width={150}
-              height={32}
-              className="mb-3"
-            />
-          </Link>
-          <h1>Grouparoo Cloud</h1>
-          <h2>Start Your Free 30 Day Trial</h2>
-          <p>No credit card required.</p>
-        </Col>
-        <Col
-          xs={12}
-          md={9}
-          xl={7}
-          className="d-flex justify-content-around mx-auto m-0 "
-        >
-          <Error message={error.generic} />
-          {!registered ? (
-            <Container className="bg-white border shadow border-3 rounded col-11 p-4 mt-4 mt-md-0">
-              <h3 className="mx-auto text-center">
-                Create Your Grouparoo Subdomain
-              </h3>
-
-              <Form id="form" onSubmit={handleSubmit(onSubmit)}>
-                {" "}
-                <Form.Group>
-                  <Form.Label>First Name</Form.Label>
-                  <Form.Control
-                    {...register("firstName")}
-                    type="text"
-                    name="firstName"
-                    defaultValue=""
-                    disabled={disabled}
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Last Name</Form.Label>
-                  <Form.Control
-                    {...register("lastName")}
-                    type="text"
-                    name="lastName"
-                    defaultValue=""
-                    disabled={disabled}
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Work Email *</Form.Label>
-                  <Form.Control
-                    {...register("email", {
-                      required: true,
-                      validate: (email) => EmailValidators.validate(email),
-                    })}
-                    type="email"
-                    name="email"
-                    defaultValue=""
-                    disabled={disabled}
-                  />
-                  <Error message={error.email} />
-                  {errors.email && (
+                <Form id="form" onSubmit={handleSubmit(onSubmit)}>
+                  {" "}
+                  <Form.Group>
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control
+                      {...register("firstName")}
+                      type="text"
+                      name="firstName"
+                      defaultValue=""
+                      disabled={disabled}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control
+                      {...register("lastName")}
+                      type="text"
+                      name="lastName"
+                      defaultValue=""
+                      disabled={disabled}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Work Email *</Form.Label>
+                    <Form.Control
+                      {...register("email", {
+                        required: true,
+                        validate: (email) => EmailValidators.validate(email),
+                      })}
+                      type="email"
+                      name="email"
+                      defaultValue=""
+                      disabled={disabled}
+                    />
+                    <Error message={error.email} />
+                    {errors.email && (
+                      <small style={{ color: "red" }}>
+                        Please enter a valid work email.
+                      </small>
+                    )}
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Company Website *</Form.Label>
+                    <Form.Control
+                      {...register("companyWebsite", {
+                        required: true,
+                        validate: (input) => validator.isURL(input),
+                      })}
+                      type="text"
+                      name="companyWebsite"
+                      defaultValue=""
+                      onChange={onSubdomainChange}
+                      disabled={disabled}
+                    />
+                  </Form.Group>
+                  {errors.companyWebsite && (
                     <small style={{ color: "red" }}>
-                      Please enter a valid work email.
+                      Please enter a valid company website URL.
                     </small>
                   )}
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Company Website *</Form.Label>
-                  <Form.Control
-                    {...register("companyWebsite", {
-                      required: true,
-                      validate: (input) => validator.isURL(input),
-                    })}
-                    type="text"
-                    name="companyWebsite"
-                    defaultValue=""
-                    onChange={onSubdomainChange}
-                    disabled={disabled}
-                  />
-                </Form.Group>
-                {errors.companyWebsite && (
-                  <small style={{ color: "red" }}>
-                    Please enter a valid company website URL.
-                  </small>
-                )}
-                <Form.Group>
-                  <div className="my-3 text-center">
-                    <span>Your Grouparoo subdomain will be: </span>
-                    {editSubdomain ? (
-                      <>
+                  <Form.Group>
+                    <div className="my-3 text-center">
+                      <span>Your Grouparoo subdomain will be: </span>
+                      {editSubdomain ? (
+                        <>
+                          <div className="text-break my-1 h5">
+                            <Form.Control
+                              {...register("subdomain", {
+                                required: true,
+                              })}
+                              type="text"
+                              name="subdomain"
+                              onChange={onSubdomainChange}
+                              defaultValue={subdomain}
+                            />
+                            <span>.grouparoo.app</span>
+                          </div>
+                        </>
+                      ) : (
                         <div className="text-break my-1 h5">
-                          <Form.Control
-                            {...register("subdomain", {
-                              required: true,
-                            })}
-                            type="text"
-                            name="subdomain"
-                            onChange={onSubdomainChange}
-                            defaultValue={subdomain}
-                          />
-                          <span>.grouparoo.app</span>
+                          {" "}
+                          <span>
+                            {subdomain}
+                            <span className="text-nowrap">.grouparoo.app</span>
+                          </span>
                         </div>
-                      </>
-                    ) : (
-                      <div className="text-break my-1 h5">
-                        {" "}
-                        <span>
-                          {subdomain}
-                          <span className="text-nowrap">.grouparoo.app</span>
-                        </span>
-                      </div>
-                    )}
-                    <Error message={error.subdomain} />
+                      )}
+                      <Error message={error.subdomain} />
 
-                    {errors.subdomain && (
-                      <small style={{ color: "red" }}>
-                        A valid subdomain is required.
-                      </small>
-                    )}
+                      {errors.subdomain && (
+                        <small style={{ color: "red" }}>
+                          A valid subdomain is required.
+                        </small>
+                      )}
 
-                    <Button variant="link" onClick={onEditSubdomainClick}>
-                      {editSubdomain ? "save" : "change"}
+                      <Button variant="link" onClick={onEditSubdomainClick}>
+                        {editSubdomain ? "save" : "change"}
+                      </Button>
+                    </div>
+                  </Form.Group>
+                  <Form.Group>
+                    <div className="my-3 text-center">
+                      <Form.Check
+                        {...register("check", { required: true })}
+                        type="checkbox"
+                        id="privacy-policy-check"
+                        defaultValue="false"
+                        className="small align-items-center m-0"
+                        label={privacyPolicyLabel}
+                      />
+                      {errors.check && (
+                        <small style={{ color: "red" }}>
+                          Please review and agree to the privacy policy.
+                        </small>
+                      )}
+                    </div>
+                  </Form.Group>
+                  <Form.Group className="text-center">
+                    <Button
+                      variant="primary"
+                      type="submit"
+                      className="btn-lg"
+                      disabled={disabled}
+                    >
+                      Submit
                     </Button>
-                  </div>
-                </Form.Group>
-                <Form.Group>
-                  <div className="my-3 text-center">
-                    <Form.Check
-                      {...register("check", { required: true })}
-                      type="checkbox"
-                      id="privacy-policy-check"
-                      defaultValue="false"
-                      className="small align-items-center m-0"
-                      label={privacyPolicyLabel}
-                    />
-                    {errors.check && (
-                      <small style={{ color: "red" }}>
-                        Please review and agree to the privacy policy.
-                      </small>
-                    )}
-                  </div>
-                </Form.Group>
-                <Form.Group className="text-center">
-                  <Button
-                    variant="primary"
-                    type="submit"
-                    className="btn-lg"
-                    disabled={disabled}
-                  >
-                    Submit
-                  </Button>
-                </Form.Group>
-              </Form>
-            </Container>
-          ) : (
-            <>
-              <Container className="bg-white border shadow border-3 rounded col-11 p-4 mt-4 mt-md-0">
-                <Row className="text-center mb-1">
-                  <Col>
-                    <h1>Grouparoo Cloud</h1>
-                    <h2>We'll be in touch!</h2>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    Your request for a trial of Grouparoo Cloud was successful.
-                    You will receive an email with your login credentials and
-                    instructions on how to get started shortly. Meanwhile you
-                    can check out:
-                  </Col>
-                </Row>
-                <div className="mt-3 mb-5">
-                  <Row className="my-3">
-                    <Col>
-                      <p className="h4">Check out our Getting Started Guide</p>
-                      <Link href="/docs/getting-started" passHref>
-                        <a target="_blank" rel="noopener noreferrer">
-                          A quick intro to the Grouparoo platform.
-                        </a>
-                      </Link>
-                    </Col>
-                  </Row>
-                  <Row className="my-3">
-                    <Col>
-                      <p className="h4">Onboarding Support</p>
-                      <Link href="/meet" passHref>
-                        <a target="_blank" rel="noopener noreferrer">
-                          Schedule Time for an Onboarding Session
-                        </a>
-                      </Link>
-                    </Col>
-                  </Row>
-                  <Row className="my-3">
-                    <Col>
-                      <p className="h4">Join the Community</p>
-                      <Link href="/docs/community" passHref>
-                        <a target="_blank" rel="noopener noreferrer">
-                          The Grouparoo community hangs out in Slack.
-                        </a>
-                      </Link>
-                    </Col>
-                  </Row>
-                  <Row className="my-3">
-                    <Col>
-                      <p className="h4">Check out our Docs</p>
-                      <Link href="/docs" passHref>
-                        <a target="_blank" rel="noopener noreferrer">
-                          Get tips on how to get the most out of Grouparoo.
-                        </a>
-                      </Link>
-                    </Col>
-                  </Row>
-                </div>
+                  </Form.Group>
+                </Form>
               </Container>
-            </>
-          )}
-        </Col>
-      </Row>
+            ) : (
+              <>
+                <Container className="bg-white border shadow border-3 rounded col-11 p-4 mt-4 mt-md-0">
+                  <Row className="text-center mb-1">
+                    <Col>
+                      <h1>Grouparoo Cloud</h1>
+                      <h2>We'll be in touch!</h2>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      Your request for a trial of Grouparoo Cloud was
+                      successful. You will receive an email with your login
+                      credentials and instructions on how to get started
+                      shortly. Meanwhile you can check out:
+                    </Col>
+                  </Row>
+                  <div className="mt-3 mb-5">
+                    <Row className="my-3">
+                      <Col>
+                        <p className="h4">
+                          Check out our Getting Started Guide
+                        </p>
+                        <Link href="/docs/getting-started" passHref>
+                          <a target="_blank" rel="noopener noreferrer">
+                            A quick intro to the Grouparoo platform.
+                          </a>
+                        </Link>
+                      </Col>
+                    </Row>
+                    <Row className="my-3">
+                      <Col>
+                        <p className="h4">Onboarding Support</p>
+                        <Link href="/meet" passHref>
+                          <a target="_blank" rel="noopener noreferrer">
+                            Schedule Time for an Onboarding Session
+                          </a>
+                        </Link>
+                      </Col>
+                    </Row>
+                    <Row className="my-3">
+                      <Col>
+                        <p className="h4">Join the Community</p>
+                        <Link href="/docs/community" passHref>
+                          <a target="_blank" rel="noopener noreferrer">
+                            The Grouparoo community hangs out in Slack.
+                          </a>
+                        </Link>
+                      </Col>
+                    </Row>
+                    <Row className="my-3">
+                      <Col>
+                        <p className="h4">Check out our Docs</p>
+                        <Link href="/docs" passHref>
+                          <a target="_blank" rel="noopener noreferrer">
+                            Get tips on how to get the most out of Grouparoo.
+                          </a>
+                        </Link>
+                      </Col>
+                    </Row>
+                  </div>
+                </Container>
+              </>
+            )}
+          </Col>
+        </Row>
+        <Row>
+          <Col className="mx-auto text-center pt-3">
+            <small>
+              For all other inquiries, please email{" "}
+              <a href="mailto:help@grouparoo.com">help@grouparoo.com</a>
+            </small>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }

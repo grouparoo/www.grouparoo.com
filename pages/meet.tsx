@@ -242,7 +242,7 @@ export default function Meet() {
         <Row>
           <Col>
             <p>
-              For all other inquires, please email{" "}
+              For all other inquiries, please email{" "}
               <a href="mailto:help@grouparoo.com">help@grouparoo.com</a>
             </p>
           </Col>
