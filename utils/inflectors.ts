@@ -1,6 +1,7 @@
 import { stringify } from "gray-matter";
+import validator from "validator";
 
-export function titleize(str:string) {
+export function titleize(str: string) {
   return str
     .replace(/^[\s_]+|[\s_]+$/g, "")
     .replace(/[_\s]+/g, " ")
@@ -11,9 +12,8 @@ export function titleize(str:string) {
 
 // Take a title string and replace all spaces with commas, convert to lowercase
 
-export function urlize(str:string): string {
-
-  return str.replace(/\ /g, '-').toLowerCase();
+export function urlize(str: string): string {
+  return str.replace(/\ /g, "-").toLowerCase();
 }
 
 /**
@@ -25,22 +25,23 @@ export function arrayToReadableList(items: string[]): string {
   // case 1 item
   if (items.length === 1) return items[0];
   // case 2 items
-  if (items.length === 2)
-    return `${items[0]} and ${items[1]}`;
+  if (items.length === 2) return `${items[0]} and ${items[1]}`;
   // case 3 or more items
   if (items.length >= 3) {
-    return items.map((item, idx) => {
-      if (idx === items.length - 1) {
-       return `and ${item}`
-      } else {
-        return `${item},`
-      }
-    }).join(' ')
+    return items
+      .map((item, idx) => {
+        if (idx === items.length - 1) {
+          return `and ${item}`;
+        } else {
+          return `${item},`;
+        }
+      })
+      .join(" ");
   }
 }
 
 export function possessiveNoun(word: string): string {
-  if(word.length === 0) return word;
-  if(word[word.length-1] === 's') return `${word}'`
-  else return `${word}'s`
+  if (word.length === 0) return word;
+  if (word[word.length - 1] === "s") return `${word}'`;
+  else return `${word}'s`;
 }

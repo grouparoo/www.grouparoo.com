@@ -7,6 +7,7 @@ import { Container, Alert, Row, Col, Form, Button } from "react-bootstrap";
 import Image from "../components/Image";
 import { ErrorHandler } from "../utils/errorHandler";
 import { isBrowser } from "../utils/isBrowser";
+import { EmailValidators } from "../utils/validators";
 
 interface FormError {
   email: string;
@@ -174,7 +175,10 @@ export default function Meet() {
                     <Form.Group>
                       <Form.Label>Work Email *</Form.Label>
                       <Form.Control
-                        {...register("email", { required: true })}
+                        {...register("email", {
+                          required: true,
+                          validate: (email) => EmailValidators.validate(email),
+                        })}
                         type="email"
                         name="email"
                         defaultValue=""
@@ -183,7 +187,7 @@ export default function Meet() {
                       <Error message={error.email} />
                       {errors.email && (
                         <small style={{ color: "red" }}>
-                          A valid email is required.
+                          Please enter a valid work email.
                         </small>
                       )}
                     </Form.Group>

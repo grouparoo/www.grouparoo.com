@@ -6,6 +6,8 @@ import { useState } from "react";
 import { useApi } from "./../hooks/useApi";
 import { ErrorHandler } from "../utils/errorHandler";
 import { isBrowser } from "../utils/isBrowser";
+import validator from "validator";
+import { EmailValidators } from "../utils/validators";
 
 interface FormError {
   email: string;
@@ -79,6 +81,9 @@ export default function Trial({ props }) {
 
   const onSubmit = async (data) => {
     setLoading(true);
+
+    validator.isEmail(data.email);
+    validator.isURL(data.companyWebsite);
     // defaults
     let source = "/trial";
     let medium = "web";
@@ -208,7 +213,10 @@ export default function Trial({ props }) {
                 <Form.Group>
                   <Form.Label>Work Email *</Form.Label>
                   <Form.Control
-                    {...register("email", { required: true })}
+                    {...register("email", {
+                      required: true,
+                      validate: (email) => EmailValidators.validate(email),
+                    })}
                     type="email"
                     name="email"
                     defaultValue=""
@@ -217,7 +225,7 @@ export default function Trial({ props }) {
                   <Error message={error.email} />
                   {errors.email && (
                     <small style={{ color: "red" }}>
-                      A valid email is required.
+                      Please enter a valid work email.
                     </small>
                   )}
                 </Form.Group>
@@ -226,6 +234,7 @@ export default function Trial({ props }) {
                   <Form.Control
                     {...register("companyWebsite", {
                       required: true,
+                      validate: (input) => validator.isURL(input),
                     })}
                     type="text"
                     name="companyWebsite"
@@ -236,7 +245,7 @@ export default function Trial({ props }) {
                 </Form.Group>
                 {errors.companyWebsite && (
                   <small style={{ color: "red" }}>
-                    A valid url is required.
+                    Please enter a valid company website URL.
                   </small>
                 )}
                 <Form.Group>
