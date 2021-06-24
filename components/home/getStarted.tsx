@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button, ButtonGroup } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Link from "next/link";
 
 export default function GetStarted({

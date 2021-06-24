@@ -21,7 +21,17 @@ function PageTemplate({ children }) {
     if (router.asPath !== "/") setReleaseNote(null);
   }, [router.asPath]);
 
-  const noGetStarted = ["/meet", "/docs", "/blog", "/jobs", "/get-started"];
+  const noGetStarted = [
+    "/404",
+    "/meet",
+    "/docs",
+    "/blog",
+    "/blog/page/[pageNumber]",
+    "/blog/author/[author]",
+    "/blog/author/[author]/[pageNumber]",
+    "/jobs/[id]",
+    "/get-started",
+  ];
 
   return (
     <>
@@ -147,7 +157,10 @@ function PageTemplate({ children }) {
             cloneElement(child, { setReleaseNote })
           )}
         </div>
-        {noGetStarted.includes(router.asPath) ? null : <GetStarted />}
+        {noGetStarted.includes(router.route) ||
+        noGetStarted.includes(router.asPath) ? null : (
+          <GetStarted />
+        )}
         <Footer />
       </div>
 
