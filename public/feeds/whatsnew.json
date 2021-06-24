@@ -11,11 +11,11 @@
   },
   "items": [
     {
-      "id": "grouparoo-release-note-2021-06-24-v0.4",
+      "id": "grouparoo-release-note-2021-06-24-v0-4",
       "content_html": "<p>Grouparoo v0.4 is a release focused on performance. There aren&#x27;t many new features, but everything Grouparoo does is faster now! In our testing, we&#x27;ve seen around a 200% increase in speed importing large amounts of Profiles and Properties from your Sources.</p><p>Learn more about what&#x27;s new and how to upgrade <a href=\"/docs/support/upgrading-grouparoo/v03-v04\">here</a>.</p>",
-      "url": "https://www.grouparoo.com/whats-new#2021-06-24-v0.4",
+      "url": "https://www.grouparoo.com/whats-new#2021-06-24-v0-4",
       "title": "Grouparoo v0.4 is released!",
-      "image": "https://www.grouparoo.com/posts/releases/2021-06-24-v0.4.png",
+      "image": "https://www.grouparoo.com/posts/releases/2021-06-24-v0-4.png",
       "date_modified": "2021-06-24T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
