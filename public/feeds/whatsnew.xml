@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Wed, 09 Jun 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 24 Jun 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,20 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Grouparoo v0.4 is released!]]></title>
+            <link>https://www.grouparoo.com/whats-new#2021-06-24-v0.4</link>
+            <guid>grouparoo-release-note-2021-06-24-v0.4</guid>
+            <pubDate>Thu, 24 Jun 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Grouparoo v0.4 is a release focused on performance. There aren&#x27;t many new features, but everything Grouparoo does is faster now! In our testing, we&#x27;ve seen around a 200% increase in speed importing large amounts of Profiles and Properties from your Sources.</p><p>Learn more about what&#x27;s new and how to upgrade <a href="/docs/support/upgrading-grouparoo/v03-v04">here</a>.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+            <enclosure
+        url="https://www.grouparoo.com/posts/releases/2021-06-24-v0.4.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title><![CDATA[Destination Sync Modes]]></title>
             <link
