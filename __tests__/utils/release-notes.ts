@@ -2,6 +2,7 @@ import { getReleaseNotes } from "../../utils/releaseNotes";
 import { loadEntries } from "../../utils/mdxUtils";
 
 const LIMIT = 25;
+const sameDayBuffer = 3;
 
 describe("utils/releaseNotes", () => {
   const entries = loadEntries(["pages", "whats-new"]);
@@ -13,14 +14,14 @@ describe("utils/releaseNotes", () => {
     let notes, total;
 
     beforeAll(async () => {
-      const items = await getReleaseNotes(1, LIMIT);
+      const items = await getReleaseNotes(1, LIMIT + sameDayBuffer);
       notes = items.notes;
       total = items.total;
     });
 
     test("pagination", async () => {
       expect(entries.length).toBe(total);
-      expect(notes.length).toBe(LIMIT);
+      expect(notes.length).toBe(LIMIT + sameDayBuffer);
     });
 
     for (const entry of entries.reverse().slice(0, LIMIT)) {
