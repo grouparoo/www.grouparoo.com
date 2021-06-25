@@ -12,7 +12,7 @@ export const MongoDB: Plugin = {
   category: "database",
   badge: "",
   showLink: true,
-  packageName: "@grouparoo/mongodb",
+  packageName: "@grouparoo/mongo",
 
   useCases: {
     paragraphOne:
