@@ -105,7 +105,7 @@ Next up, we need to find our Audience ID. For this, just follow this 2 step proc
   height={116}
 />
 
-If you're facing any difficulties, you can also checkout the MailChimp Documentation to [find your Audience ID](https://mailchimp.com/help/about-api-keys/).
+If you're facing any difficulties, you can also checkout the Mailchimp Documentation to [find your Audience ID](https://mailchimp.com/help/about-api-keys/).
 
 ## Setting up your Node.js Application
 
@@ -261,13 +261,13 @@ I am listening
 
 This proves that our server is up and running, and the post request has also gone through. If you do not have a frontend and want to test this, you can easily use a tool like Postman and send a `POST` request similar to the one we have mentioned above for the frontend application.
 
-Now finally, it is time to do some real fun stuff! Let’s integrate this with MailChimp!
+Now finally, it is time to do some real fun stuff! Let’s integrate this with Mailchimp!
 
-## Connecting your Node.js App to MailChimp
+## Connecting your Node.js App to Mailchimp
 
 For this whole process, we’re directly referring to the [Mailchimp API Documentation](https://mailchimp.com/developer/marketing/api/list-activity/). They have excellent documentation stating all the different things you need to be aware of with extremely detailed resources. Make sure to check that out if you need any additional information that is not mentioned here directly.
 
-We're using the Mailchimp API v3 here with the standard URL route. You can also download the [MailChimp NodeJS module](https://www.npmjs.com/package/mailchimp-api-v3) if you want, but that is preferable for larger projects rather than a small integration we're building here today.
+We're using the Mailchimp API v3 here with the standard URL route. You can also download the [Mailchimp NodeJS module](https://www.npmjs.com/package/mailchimp-api-v3) if you want, but that is preferable for larger projects rather than a small integration we're building here today.
 
 ### Getting your API Endpoint
 
@@ -293,7 +293,7 @@ app.post('/subscribe', (req, res) => {
 })
 ```
 
-Perfect, now with that in place, let’s make the data we’ll be passing to our MailChimp. We’ll be naming the object as `addData`. As per the Mailchimp Documentation, this object accepts a property called `members`. The `members` property accepts multiple objects, but here we’ll be just looking for two,
+Perfect, now with that in place, let’s make the data we’ll be passing to our Mailchimp. We’ll be naming the object as `addData`. As per the Mailchimp Documentation, this object accepts a property called `members`. The `members` property accepts multiple objects, but here we’ll be just looking for two,
 
 - `email_address`: Email address for a subscriber.
 - `status`: Subscriber's current status. Possible values: `subscribed`, `unsubscribed`, `cleaned`, or `pending`. We’ll be using `pending` as the status here since it helps us create a double opt-in list. Mailchimp on our behalf will automatically send out the confirmation email if the status is pending. Once a person clicks the link and verifies, their email will show up in your Audience List!
@@ -339,7 +339,7 @@ const options = {
 
 ```
 
-Perfect, now it is time for sending this request over to MailChimp, yay! For this we will be using the `request` module we previously imported.
+Perfect, now it is time for sending this request over to Mailchimp, yay! For this we will be using the `request` module we previously imported.
 
 ```
 request (options, (error, response, body) => {
