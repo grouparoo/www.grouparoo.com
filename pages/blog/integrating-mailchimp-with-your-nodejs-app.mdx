@@ -1,6 +1,6 @@
 ---
 title: "Integrating Mailchimp with your Node.js App"
-date: "2021-06-07"
+date: "2021-06-27"
 author: "Yashovardhan Agrawal"
 pullQuote: "A step by step guide of integrating your Mailchimp Audiences with your Node.js app"
 image: "integrating-mailchimp-with-your-nodejs-app/mc4.png"
@@ -15,7 +15,7 @@ To get started, you'll be needing the following things prepared:
 
 - A [Mailchimp](https://mailchimp.com/help/create-an-account/) Account
 - [Node.js & npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed on your machine
-- A [basic frontend application](https://www.w3schools.com/howto/howto_css_newsletter.asp) to send requests to your Node.js application.
+- A [basic frontend application](https://gist.github.com/yashovardhan/6ac14edc99981dcc14d79627abb72cf8#file-index-html) to send requests to your Node.js application.
 
 This guide will help you make a sample Node.js application with Express to send and receive API requests and responses. Although a basic knowledge of Node.js would be helpful, you can easily follow the steps given and get started with your application.
 
@@ -72,7 +72,7 @@ For integrating your app, the first and most important thing needed is an API Ke
   height={317}
 />
 
-We have displayed the latter portion of our API Key in the image above. One thing to note here are the last three characters after the `-`. This represents the data center corresponding to your account, which is for all the API calls one can make. For us, it is us6. This might be different for you, so make sure to note this separately.
+We have displayed the latter portion of our API Key in the image above. One thing to note here are the last three characters after the `-`. This represents the data center corresponding to your account, which is for all the API calls one can make. For us, it is us6. This might be different for you, so make sure to note this separately. You can also checkout the Mailchimp documentation which [about API Keys](https://mailchimp.com/help/about-api-keys/).
 
 ### Finding your Audience ID
 
@@ -105,6 +105,8 @@ Next up, we need to find our Audience ID. For this, just follow this 2 step proc
   height={116}
 />
 
+If you're facing any difficulties, you can also checkout the MailChimp Documentation to [find your Audience ID](https://mailchimp.com/help/about-api-keys/).
+
 ## Setting up your Node.js Application
 
 We're assuming that you have a sample frontend application for this tutorial, where users can quickly enter their email and click on the signup button to register on your mailing list.
@@ -112,32 +114,36 @@ We're assuming that you have a sample frontend application for this tutorial, wh
 Here's what a sample request from the frontend might look like:
 
 ```
-cta.addEventListener('click', (event) => {
-    event.preventDefault();
+let submit = document.getElementById('submit');
+let email = document.getElementById('email').value;
 
-    if(this.email.value == null || this.email.value == "") {
-      console.log("error: email not added");
-    } else {
-      let fetchData = {
-        method: "POST",
-        body: JSON.stringify({email: this.email.value}),
-        headers: {"Content-Type": "application/json"}
-      }
+submit.addEventListener('click', (event) => {
+  event.preventDefault();
 
-      fetch('/subscribe', fetchData)
-        .then(res => {
-          console.log("success:", res)
-        })
-        .catch(res => {
-          console.log("error:", res)
-        })
+  if(this.email.value == null || this.email.value == "") {
+    alert("error: email not added");
+  } else {
+    let fetchData = {
+      method: "POST",
+      body: JSON.stringify({email: this.email.value}),
+      headers: {"Content-Type": "application/json"}
+    }
+
+    fetch('/subscribe', fetchData)
+      .then(res => {
+        if (res.ok) {
+          alert("Success!")
+        } else {
+          alert("Error!")
+        }
+      })
     }
   })
 ```
 
 Here, on click, the function checks for the validity of email and accordingly places a `POST request` on the '/subscribe' endpoint of our application with the body containing the `email` value entered by the user.
 
-For simplicity, we're logging in all the error messages into the browser console.
+For simplicity, we're logging in all the error messages into the browser console. If you want to checkout the sample HTML Code associated with this project, please have a look [here](https://gist.github.com/yashovardhan/6ac14edc99981dcc14d79627abb72cf8#file-index-html).
 
 Now, when we have set up our frontend, let's create our backend!
 
@@ -165,7 +171,7 @@ $ npm install express body-parser request
 
 ### Setting up your app.js file
 
-Perfect, so now we can go ahead and get our hands dirty to write some actual code!
+Perfect, so now we can go ahead and get our hands dirty to write some actual code! But, before that, remember to make a sub directory called `public` and move your frontend code inside it. This will make sure when we execute the node.js app, your frontend is served alongside.
 
 Inside your project, create a new `app.js` file.
 
@@ -261,7 +267,7 @@ Now finally, it is time to do some real fun stuff! Let’s integrate this with M
 
 For this whole process, we’re directly referring to the [Mailchimp API Documentation](https://mailchimp.com/developer/marketing/api/list-activity/). They have excellent documentation stating all the different things you need to be aware of with extremely detailed resources. Make sure to check that out if you need any additional information that is not mentioned here directly.
 
-We’re using the standard URL route here. You can also download the [Mailchimp NodeJS module](https://www.npmjs.com/package/mailchimp-api-v3) if you want to as well. Although this makes your life easier in implementing the API, it adds many other modules that we do not need for this particular project.
+We're using the Mailchimp API v3 here with the standard URL route. You can also download the [MailChimp NodeJS module](https://www.npmjs.com/package/mailchimp-api-v3) if you want, but that is preferable for larger projects rather than a small integration we're building here today.
 
 ### Getting your API Endpoint
 
@@ -345,10 +351,10 @@ request (options, (error, response, body) => {
 })
 ```
 
-And that’s it! We’re done with the code here! You have successfully made way for people to opt-in for your mailing list!
+And that’s it! We’re done with the code here! You have successfully made way for people to opt-in for your mailing list! You can also view the full file containing the code [here](https://gist.github.com/yashovardhan/6ac14edc99981dcc14d79627abb72cf8#file-app-js)
 
 ## Alternative Method - Using an off the shelf solution
 
 As you can see, just to configure a single API function, we needed to go through a considerable integration pain, which again is a code you need to maintain regularly. What I generally use and recommend to you all is definitely, Grouparoo.
 
-Grouparoo is a data syncing platform that connects directly to your product database, allows you and your team to define what customer data you care about, and then syncs that data to Mailchimp. The best part, the tool is fully open source! You can easily choose between a self-hosted or a cloud offering. Using this will be just a matter of minutes to build this integration, and anyone can easily use the GUI to configure it!
+Grouparoo is a data syncing platform that connects directly to your product database, allows you and your team to define what customer data you care about, and then syncs that data to Mailchimp. The best part, the tool is fully open source! You can easily choose between a self-hosted or a cloud offering. Using this will be just a matter of minutes to build this integration, and anyone can easily use the GUI to configure it! Checkout this [example app]()https://github.com/grouparoo/app-example-config that connects SQLite data to Mailchimp.
