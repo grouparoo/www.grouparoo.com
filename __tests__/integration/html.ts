@@ -134,7 +134,13 @@ describe("sitemap integration", () => {
           let href = tag.attr("href");
           const id = tag.attr("id");
           const name = href || id;
-          expect(name).toBeTruthy();
+
+          try {
+            expect(name).toBeTruthy();
+          } catch (error) {
+            console.log("link missing href or id", tag);
+            throw error;
+          }
 
           if (!linkIsValid(href)) localPagesNotFound.push(href);
 
