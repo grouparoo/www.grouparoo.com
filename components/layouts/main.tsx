@@ -11,11 +11,10 @@ import GetStarted from "../home/getStarted";
 
 function PageTemplate({ children }) {
   const router = useRouter();
-  const [releaseNote, setReleaseNote] =
-    useState<{
-      name: string;
-      description: string;
-    }>(null);
+  const [releaseNote, setReleaseNote] = useState<{
+    name: string;
+    description: string;
+  }>(null);
 
   useEffect(() => {
     if (router.asPath !== "/") setReleaseNote(null);
