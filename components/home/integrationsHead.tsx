@@ -15,7 +15,7 @@ export default function IntegrationsHead({
         <title>{name} Integrations - Best Data App Integration Tools</title>
         <meta
           name="description"
-          content={`Grouparoo's ${name} integration allows you to sync all of your customer data that lives in various sources into ${name}. ✓ Start a free trial now!`}
+          content={`The Grouparoo ${name} integration allows you to sync all of your customer data that lives in various sources into ${name}. ✓ Start a free trial now!`}
         />
         <link
           rel="canonical"
