@@ -141,8 +141,8 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <br />
               <h2>Reverse ETL makes your data warehouse actionable</h2>
               <p>
-                Grouparoo connects your customer data to all the places where
-                they make a difference. Use your data warehouse to power
+                Grouparoo connects your customer data to all the places where it
+                can make a difference. Use your data warehouse to power
                 marketing campaigns, customer service, and everything else your
                 business needs to succeed.
                 <br />
