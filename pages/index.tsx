@@ -20,7 +20,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
   }: { pluginNames: string[]; releaseNote: any } = pageProps;
   const title = "Grouparoo: Open Source Data Synchronization Framework";
   const description =
-    "Grouparoo is an open source framework that helps you move data between your database and all of your cloud-based tools.";
+    "Grouparoo is an open source framework that helps you move data between your data warehouse and all of your cloud-based tools.";
   const pluginName =
     pluginNames[Math.floor(Math.random() * pluginNames.length)];
   const tagline = `Stop writing code to sync data to ${pluginName}*`;
@@ -139,10 +139,18 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
           <Row>
             <Col>
               <br />
-              <h2>Make your customer data actionable</h2>
+              <h2>Reverse ETL makes your data warehouse actionable</h2>
               <p>
-                Grouparoo connects your customer profiles and groups to all the
-                places where they make a difference.
+                Grouparoo connects your customer data to all the places where it
+                can make a difference. Use your data warehouse to power
+                marketing campaigns, customer service, and everything else your
+                business needs to succeed.
+                <br />
+                <small>
+                  <Link href="/solutions/reverse-etl">
+                    <a>Learn more about reverse ETL</a>
+                  </Link>
+                </small>
               </p>
               <br />
               <Image
@@ -225,10 +233,12 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               </Row>
             </Col>
             <Col md={6}>
-              <h3>Use Source-of-truth data</h3>
+              <h3>Use verified data</h3>
               <p>
-                Pull data from trusted sources like data warehouses instead of
-                instrumenting buggy Event streams.
+                You've spent a lot of time ensuring that your data warehouse has
+                the correct data. Now you can use it to generate real value for
+                your company. The same data that your business uses to make
+                decisions can now also be used to act.
               </p>
             </Col>
             <Col md={6} className="d-md-none">
