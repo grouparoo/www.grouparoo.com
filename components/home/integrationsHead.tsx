@@ -12,10 +12,10 @@ export default function IntegrationsHead({
   return (
     <>
       <Head>
-        <title>Grouparoo Integration: {name}</title>
+        <title>{name} Integrations - Best Data App Integration Tools</title>
         <meta
           name="description"
-          content={`Sync your customer data with ${name}`}
+          content={`Grouparoo's ${name} integration allows you to sync all of your customer data that lives in various sources into ${name}. ✓ Start a free trial now!`}
         />
         <link
           rel="canonical"
