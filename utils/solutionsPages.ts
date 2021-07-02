@@ -22,6 +22,8 @@ export interface ComparisonInfo {
 }
 
 export interface CategoryInfo {
+  title: string;
+  description: string;
   category: string;
   header: string[];
   features: FeatureArray;
@@ -37,13 +39,8 @@ export async function getSolutionsData(
     components
   );
   if (slugId.includes("alternative")) {
-    const {
-      competitor,
-      pros,
-      competitorPros,
-      comparisonChartData,
-      features,
-    } = frontMatter;
+    const { competitor, pros, competitorPros, comparisonChartData, features } =
+      frontMatter;
 
     return {
       competitor,
@@ -54,8 +51,10 @@ export async function getSolutionsData(
       source,
     };
   } else {
-    const { category, header, features } = frontMatter;
+    const { title, description, category, header, features } = frontMatter;
     return {
+      title,
+      description,
       category,
       header,
       features,
