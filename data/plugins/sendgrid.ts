@@ -3,7 +3,7 @@ import { Plugin } from "./index";
 export const Sendgrid: Plugin = {
   name: "Sendgrid",
   description:
-    "Grouparoo's Sendgrid integration allows you to sync all of your customer data that lives in various sources into Sendgrid.",
+    "Grouparoo's Sendgrid integration allows you to sync all of your customer data that lives in your data warehouse into Sendgrid.",
   priority: 70,
   slug: "sendgrid",
   logo: "sendgrid.png",
@@ -17,7 +17,7 @@ export const Sendgrid: Plugin = {
     paragraphOne:
       "Grouparoo is open source data infrastructure to keep customer data in-sync between your data warehouse and 3rd party tools such as Sendgrid.",
     paragraphTwo:
-      "Grouparoo pulls customer data in real-time from all of your data sources and keeps that data synced to Sendgrid.",
+      "Grouparoo pulls customer data in real-time from all of your data sources and warehouse and keeps that data synced to Sendgrid.",
   },
   useCasesList: [
     "Automatically create Contacts in Sendgrid as new users sign up in your core product",

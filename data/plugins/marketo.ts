@@ -3,7 +3,7 @@ import { Plugin } from "./index";
 export const Marketo: Plugin = {
   name: "Marketo",
   description:
-    "Grouparoo's Marketo integration allows you to sync all of your customer data that lives in various sources into Marketo.",
+    "Grouparoo's Marketo integration allows you to sync all of your customer data that lives in your data warehouse into Marketo.",
   priority: 80,
   slug: "marketo",
   logo: "marketo.png",
@@ -17,7 +17,7 @@ export const Marketo: Plugin = {
     paragraphOne:
       "Grouparoo is open source data infrastructure to keep customer data in-sync between your data warehouse and 3rd party tools such as Marketo.",
     paragraphTwo:
-      "Grouparoo pulls customer data in real-time from all of your data sources and keeps that data synced to Marketo.",
+      "Grouparoo pulls customer data in real-time from all of your data sources and warehouse and keeps that data synced to Marketo.",
   },
   useCasesList: [
     "Automatically create Lead (also known as People or Person) objects in Marketo as new users sign up in your core product",

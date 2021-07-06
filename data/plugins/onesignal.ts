@@ -3,7 +3,7 @@ import { Plugin } from "./index";
 export const OneSignal: Plugin = {
   name: "OneSignal",
   description:
-    "Grouparoo's OneSignal integration allows you to sync all of your customer data that lives in various sources into OneSignal.",
+    "Grouparoo's OneSignal integration allows you to sync all of your customer data that lives in your data warehouse into OneSignal.",
   priority: 80,
   slug: "onesignal",
   logo: "onesignal.png",
@@ -17,7 +17,7 @@ export const OneSignal: Plugin = {
     paragraphOne:
       "Grouparoo is open source data infrastructure to keep customer data in-sync between your data warehouse and 3rd party tools such as OneSignal.",
     paragraphTwo:
-      "Grouparoo pulls customer data in real-time from all of your data sources and keeps that data synced to OneSignal.",
+      "Grouparoo pulls customer data in real-time from all of your data sources and warehouse and keeps that data synced to OneSignal.",
   },
   useCasesList: [
     "Automatically enrich Devices in OneSignal as users interact in your core product",

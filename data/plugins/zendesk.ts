@@ -3,7 +3,7 @@ import { Plugin } from "./index";
 export const Zendesk: Plugin = {
   name: "Zendesk",
   description:
-    "Grouparoo's Zendesk integration allows you to sync all of your customer data that lives in various sources into Zendesk.",
+    "Grouparoo's Zendesk integration allows you to sync all of your customer data that lives in your data warehouse into Zendesk.",
   priority: 80,
   slug: "zendesk",
   logo: "zendesk.svg",
@@ -17,7 +17,7 @@ export const Zendesk: Plugin = {
     paragraphOne:
       "Grouparoo is open source data infrastructure to keep customer data in-sync between your data warehouse and 3rd party tools such as Zendesk.",
     paragraphTwo:
-      "Grouparoo pulls customer data in real-time from all of your data sources and keeps that data synced to Zendesk.",
+      "Grouparoo pulls customer data in real-time from all of your data sources and warehouse and keeps that data synced to Zendesk.",
   },
   useCasesList: [
     "Automatically create Users in Zendesk as new users sign up in your core product",

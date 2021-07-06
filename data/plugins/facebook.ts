@@ -3,7 +3,7 @@ import { Plugin } from "./index";
 export const Facebook: Plugin = {
   name: "Facebook",
   description:
-    "Grouparoo's Facebook integration allows you to sync all of your customer data that lives in various sources into Facebook.",
+    "Grouparoo's Facebook integration allows you to sync all of your customer data that lives in your data warehouse into Facebook.",
   priority: 60,
   slug: "facebook",
   logo: "facebook.png",
@@ -17,7 +17,7 @@ export const Facebook: Plugin = {
     paragraphOne:
       "Grouparoo is open source data infrastructure to keep customer data in-sync between your data warehouse and 3rd party tools such as Mailchimp.",
     paragraphTwo:
-      "Grouparoo pulls customer data in real-time from all of your data sources and keeps that data synced to Mailchimp.",
+      "Grouparoo pulls customer data in real-time from all of your data sources and warehouse and keeps that data synced to Mailchimp.",
   },
   useCasesList: [
     "Automatically create Contacts in Facebook Audiences as new users sign up in your core product",

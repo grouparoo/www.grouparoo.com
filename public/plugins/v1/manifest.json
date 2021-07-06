@@ -21,7 +21,7 @@
   },
   {
     "name": "Customer.io",
-    "description": "Grouparoo's Customer.io integration allows you to sync all of your customer data that lives in various sources into Customer.io.",
+    "description": "Grouparoo's Customer.io integration allows you to sync all of your customer data that lives in your data warehouse into Customer.io.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/customerio/customerio.png",
     "packageName": "@grouparoo/customerio",
     "source": false,
@@ -31,7 +31,7 @@
   },
   {
     "name": "Facebook",
-    "description": "Grouparoo's Facebook integration allows you to sync all of your customer data that lives in various sources into Facebook.",
+    "description": "Grouparoo's Facebook integration allows you to sync all of your customer data that lives in your data warehouse into Facebook.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/facebook/facebook.png",
     "packageName": "@grouparoo/facebook",
     "source": false,
@@ -51,7 +51,7 @@
   },
   {
     "name": "Hubspot",
-    "description": "Grouparoo's Hubspot integration allows you to sync all of your customer data that lives in various sources into Hubspot.",
+    "description": "Grouparoo's Hubspot integration allows you to sync all of your customer data that lives in your data warehouse into Hubspot.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/hubspot/hubspot.svg",
     "packageName": "@grouparoo/hubspot",
     "source": false,
@@ -61,7 +61,7 @@
   },
   {
     "name": "Intercom",
-    "description": "Grouparoo's Intercom integration allows you to sync all of your customer data that lives in various sources into Intercom.",
+    "description": "Grouparoo's Intercom integration allows you to sync all of your customer data that lives in your data warehouse into Intercom.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/intercom/intercom.png",
     "packageName": "@grouparoo/intercom",
     "source": false,
@@ -71,7 +71,7 @@
   },
   {
     "name": "Iterable",
-    "description": "Grouparoo's Iterable integration allows you to sync all of your customer data that lives in various sources into Iterable.",
+    "description": "Grouparoo's Iterable integration allows you to sync all of your customer data that lives in your data warehouse into Iterable.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/iterable/iterable.png",
     "packageName": "@grouparoo/iterable",
     "source": false,
@@ -81,7 +81,7 @@
   },
   {
     "name": "Mailchimp",
-    "description": "Grouparoo's Mailchimp integration allows you to sync all of your customer data that lives in various sources into Mailchimp.",
+    "description": "Grouparoo's Mailchimp integration allows you to sync all of your customer data that lives in your data warehouse into Mailchimp.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/mailchimp/mailchimp.svg",
     "packageName": "@grouparoo/mailchimp",
     "source": false,
@@ -91,7 +91,7 @@
   },
   {
     "name": "Marketo",
-    "description": "Grouparoo's Marketo integration allows you to sync all of your customer data that lives in various sources into Marketo.",
+    "description": "Grouparoo's Marketo integration allows you to sync all of your customer data that lives in your data warehouse into Marketo.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/marketo/marketo.png",
     "packageName": "@grouparoo/marketo",
     "source": false,
@@ -121,7 +121,7 @@
   },
   {
     "name": "OneSignal",
-    "description": "Grouparoo's OneSignal integration allows you to sync all of your customer data that lives in various sources into OneSignal.",
+    "description": "Grouparoo's OneSignal integration allows you to sync all of your customer data that lives in your data warehouse into OneSignal.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/onesignal/onesignal.png",
     "packageName": "@grouparoo/onesignal",
     "source": false,
@@ -141,7 +141,7 @@
   },
   {
     "name": "Pipedrive",
-    "description": "Grouparoo's Pipedrive integration allows you to sync all of your customer data that lives in various sources into Pipedrive.",
+    "description": "Grouparoo's Pipedrive integration allows you to sync all of your customer data that lives in your data warehouse into Pipedrive.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/pipedrive/pipedrive.png",
     "packageName": "@grouparoo/pipedrive",
     "source": false,
@@ -181,7 +181,7 @@
   },
   {
     "name": "Sailthru",
-    "description": "Grouparoo's Sailthru integration allows you to sync all of your customer data that lives in various sources into Sailthru.",
+    "description": "Grouparoo's Sailthru integration allows you to sync all of your customer data that lives in your data warehouse into Sailthru.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/sailthru/sailthru.png",
     "packageName": "@grouparoo/sailthru",
     "source": false,
@@ -191,7 +191,7 @@
   },
   {
     "name": "Salesforce",
-    "description": "Grouparoo's Salesforce integration allows you to sync all of your customer data that lives in various sources into Salesforce.",
+    "description": "Grouparoo's Salesforce integration allows you to sync all of your customer data that lives in your data warehouse into Salesforce.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/salesforce/salesforce.png",
     "packageName": "@grouparoo/salesforce",
     "source": false,
@@ -201,7 +201,7 @@
   },
   {
     "name": "Sendgrid",
-    "description": "Grouparoo's Sendgrid integration allows you to sync all of your customer data that lives in various sources into Sendgrid.",
+    "description": "Grouparoo's Sendgrid integration allows you to sync all of your customer data that lives in your data warehouse into Sendgrid.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/sendgrid/sendgrid.png",
     "packageName": "@grouparoo/sendgrid",
     "source": false,
@@ -221,7 +221,7 @@
   },
   {
     "name": "Zendesk",
-    "description": "Grouparoo's Zendesk integration allows you to sync all of your customer data that lives in various sources into Zendesk.",
+    "description": "Grouparoo's Zendesk integration allows you to sync all of your customer data that lives in your data warehouse into Zendesk.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/zendesk/zendesk.svg",
     "packageName": "@grouparoo/zendesk",
     "source": false,

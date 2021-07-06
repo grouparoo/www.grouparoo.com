@@ -3,7 +3,7 @@ import { Plugin } from "./index";
 export const Pipedrive: Plugin = {
   name: "Pipedrive",
   description:
-    "Grouparoo's Pipedrive integration allows you to sync all of your customer data that lives in various sources into Pipedrive.",
+    "Grouparoo's Pipedrive integration allows you to sync all of your customer data that lives in your data warehouse into Pipedrive.",
   priority: 80,
   slug: "pipedrive",
   logo: "pipedrive.png",
@@ -17,7 +17,7 @@ export const Pipedrive: Plugin = {
     paragraphOne:
       "Grouparoo is open source data infrastructure to keep customer data in-sync between your data warehouse and 3rd party tools such as Pipedrive.",
     paragraphTwo:
-      "Grouparoo pulls customer data in real-time from all of your data sources and keeps that data synced to Pipedrive.",
+      "Grouparoo pulls customer data in real-time from all of your data sources and warehouse and keeps that data synced to Pipedrive.",
   },
   useCasesList: [
     "Automatically enrich People and Contacts in Pipedrive as users interact in your core product",
