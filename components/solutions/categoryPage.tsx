@@ -13,11 +13,8 @@ export default function CategoryPage(category: CategoryInfo) {
   return (
     <>
       <Head>
-        <title>Grouparoo: A {category.category}</title>
-        <meta
-          name="description"
-          content={`Grouparoo is a ${category.category} tool.`}
-        />
+        <title>{category.title}</title>
+        <meta name="description" content={category.description} />
         <link
           rel="canonical"
           href={`https://www.grouparoo.com/solutions/${urlize(
