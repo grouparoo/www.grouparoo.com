@@ -148,10 +148,13 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
                 businesses scale. Over the last few years, teams have been
                 investing by collecting key data and insights in their data
                 warehouses to power BI and Data Science. The companies at the
-                forefront of the Modern Data Stack movement are just starting to
-                do Reverse ETL back to empower Marketing, Sales, and Support
-                tools with this same data so they can make those teams more
-                effective.
+                forefront of the{" "}
+                <Link href="/solutions/modern-data-stack">
+                  <a>Modern Data Stack movement</a>
+                </Link>{" "}
+                are just starting to do Reverse ETL back to empower Marketing,
+                Sales, and Support tools with this same data so they can make
+                those teams more effective.
               </p>
 
               <br />
