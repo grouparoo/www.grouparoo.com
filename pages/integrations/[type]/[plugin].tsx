@@ -196,7 +196,9 @@ function DestionationHeaderArrow({ data }) {
       <Row>
         <Col lg={5} md={12}>
           <br />
-          <h1>{data.name} integration for all your tools & customer data</h1>
+          <h1 data-testid="header">
+            {data.name} integration for all your tools & customer data
+          </h1>
           <p>{data.description}</p>
         </Col>
         <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
@@ -236,7 +238,7 @@ function SourceHeaderArrow({ data }) {
       <Row className="mb-3">
         <Col lg={5} md={12}>
           <br />
-          <h1>
+          <h1 data-testid="header">
             Sync {data.name} customer data with all of your 3rd party tools
           </h1>
           <p>{data.description}</p>

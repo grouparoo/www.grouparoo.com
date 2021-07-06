@@ -70,7 +70,9 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
         <Container>
           <Row className="pt-5 pb-2">
             <Col>
-              <h1 suppressHydrationWarning={true}>{tagline}</h1>
+              <h1 data-testid="header" suppressHydrationWarning={true}>
+                {tagline}
+              </h1>
             </Col>
           </Row>
           <Row className="pb-5">

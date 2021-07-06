@@ -1,9 +1,10 @@
-import { shallow } from "enzyme";
+import { render, screen } from "@testing-library/react";
 import About from "../../pages/about";
 
 describe("page/about", () => {
   test("renders the page", () => {
-    const page = shallow(<About pageProps={{}} />);
-    expect(page.html()).toContain("About Grouparoo");
+    render(<About pageProps={{}} />);
+    const heading = screen.getByTestId("header");
+    expect(heading).toHaveTextContent("About Grouparoo");
   });
 });
