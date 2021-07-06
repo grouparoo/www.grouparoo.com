@@ -1,5 +1,8 @@
 module.exports = {
-  setupFiles: ["<rootDir>/jest.setup.js"],
+  setupFiles: ["<rootDir>/jest.setup.ts"],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.after.ts"],
+  maxWorkers: "50%",
+  testEnvironment: "jsdom",
   testPathIgnorePatterns: [
     "<rootDir>/.next/",
     "<rootDir>/node_modules/",

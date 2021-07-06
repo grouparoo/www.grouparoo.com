@@ -21,7 +21,7 @@ export default function About({ pageProps }) {
       <Container>
         <Row>
           <Col>
-            <h1>About Grouparoo</h1>
+            <h1 data-testid="header">About Grouparoo</h1>
           </Col>
         </Row>
         <Row>

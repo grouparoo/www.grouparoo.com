@@ -1,13 +1,18 @@
-import { shallow } from "enzyme";
+import { render, screen } from "@testing-library/react";
 import Home from "../../pages/index";
 import "../../components/icons";
 
 describe("page/home", () => {
   test("renders the page", () => {
-    const page = shallow(
-      <Home pageProps={{ pluginNames: ["AnnoyingPlugin"] }} />
+    render(
+      <Home
+        setReleaseNote={() => {}}
+        pageProps={{
+          pluginNames: ["AnnoyingPlugin"],
+        }}
+      />
     );
-    expect(page.html()).toContain(
+    expect(screen.getByTestId("header")).toHaveTextContent(
       "Stop writing code to sync data to AnnoyingPlugin*"
     );
   });
