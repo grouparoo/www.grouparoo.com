@@ -197,18 +197,22 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               </p>
             </Col>
             <Col>
-              <HomepageCodeBox
-                icon="npm"
-                code={
-                  <>
-                    {`$`} npm install -g grouparoo
-                    <br />
-                    {`$`} grouparoo init .
-                    <br />
-                    {`$`} grouparoo start
-                  </>
-                }
-              />
+              <Link href="/docs/getting-started">
+                <a style={{ textDecoration: "none" }}>
+                  <HomepageCodeBox
+                    icon="npm"
+                    code={
+                      <>
+                        {`$`} npm install -g grouparoo
+                        <br />
+                        {`$`} grouparoo init .
+                        <br />
+                        {`$`} grouparoo start
+                      </>
+                    }
+                  />
+                </a>
+              </Link>
             </Col>
           </Row>
 
