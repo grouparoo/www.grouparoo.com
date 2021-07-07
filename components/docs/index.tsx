@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { EnterpriseCTA, HavingProblems } from "./callouts";
 import CLICommand from "./CLICommands";
+import GeneratedConfigFile from "./generatedConfigFile";
 import Image from "./image";
 import ImageInBrowserFrame from "../imageInBrowserFrame";
 import PluginsList from "./pluginsList";
@@ -25,6 +26,7 @@ export {
   Button,
   CLICommand,
   EnterpriseCTA,
+  GeneratedConfigFile,
   HavingProblems,
   Image,
   ImageInBrowserFrame,
