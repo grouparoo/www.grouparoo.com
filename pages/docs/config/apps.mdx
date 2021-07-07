@@ -1,12 +1,12 @@
 ---
 title: Apps
 date: "2021-06-22"
-pullQuote: "Learn how to configure apps using Grouparoo's Config UI."
+pullQuote: "Learn how to configure apps using Grouparoo's UI Config."
 ---
 
 Apps are typically the first types of objects that you will create. They help Grouparoo connect to a number of different tools, such as your databases, data warehouses, and other third-party tools. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
 
-With [Config UI](/docs/config) running and registered, follow the steps below to configure your app(s).
+With [UI Config](/docs/config) running and registered, follow the steps below to configure your app(s).
 
 ### Step 1: Add an App
 
@@ -14,7 +14,7 @@ You can begin the process either from the home page or the dashboard.
 
 <ImageInBrowserFrame
   centered
-  alt="Config UI: Add App"
+  alt="UI Config: Add App"
   src="/images/docs/guides/config/app--01-add.png"
   width={850}
   height={414}
@@ -24,13 +24,13 @@ This will take you to a list of your current apps. Click to add a new app.
 
 <ImageInBrowserFrame
   centered
-  alt="Config UI: Add App"
+  alt="UI Config: Add App"
   src="/images/docs/guides/config/app--02-add.png"
   width={852}
   height={460}
 />
 
-Apps are enabled by installing plugins. Fortunately, Grouparoo's Config UI helps you install plugins on the fly. Apps from installed plugins will have an orange badge and are ready to be installed immediately.
+Apps are enabled by installing plugins. Fortunately, Grouparoo's UI Config helps you install plugins on the fly. Apps from installed plugins will have an orange badge and are ready to be installed immediately.
 
 Everything else in the list is a plugin that can be installed by clicking on it. ([Learn more about plugins](/docs/installation/plugins).)
 
@@ -38,7 +38,7 @@ Choose the type of app you'd like to add. When you're first getting started, we 
 
 <ImageInBrowserFrame
   centered
-  alt="Config UI: Installing App"
+  alt="UI Config: Installing App"
   src="/images/docs/guides/config/app--03-plugins.png"
   width={850}
   height={472}
@@ -50,7 +50,7 @@ Once you've chosen an App, add the connection details you'll need to connect to 
 
 <ImageInBrowserFrame
   centered
-  alt="Config UI: Configure App"
+  alt="UI Config: Configure App"
   src="/images/docs/guides/config/app--04-configure.png"
   width={820}
   height={444}
@@ -58,7 +58,7 @@ Once you've chosen an App, add the connection details you'll need to connect to 
 
 ## Generated Config File
 
-Grouparoo's Config UI will write a file to your local filesystem based on your inputs. That file will be placed in the `config/apps` directory in your Grouparoo project. You can further edit this file locally or through the Config UI.
+Grouparoo's UI Config will write a file to your local filesystem based on your inputs. That file will be placed in the `config/apps` directory in your Grouparoo project. You can further edit this file locally or through the UI Config.
 
 <Button href="/docs/config/code-config/apps" variant="outline-primary">
   Learn more about config files

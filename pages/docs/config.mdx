@@ -1,34 +1,34 @@
 ---
 title: "Configuration"
 date: "2021-06-23"
-pullQuote: "Learn how to use Config UI to configure your Grouparoo application."
+pullQuote: "Learn how to use UI Config to configure your Grouparoo application."
 ---
 
-After you've installed Grouparoo locally, you're ready to configure it. The easiest way to configure Grouparoo is through Grouparoo's Config UI plugin.
+After you've installed Grouparoo locally, you're ready to configure it. The easiest way to configure Grouparoo is through Grouparoo's UI Config plugin.
 
 If you're using Grouparoo's Enterprise Edition, you can also configure the application through the UI. However, we don't recommend this for first time users, as it does not provide the ability to test your data before it is synced. [See here](/docs/running/ui-enterprise) for more information on configuration objects with Grouparoo's Enterprise Edition.
 
-## Getting Started with Config UI
+## Getting Started with UI Config
 
-Config UI is the recommended way to configure your Grouparoo data. It requires the [@grouparoo/ui-config](https://www.npmjs.com/package/@grouparoo/ui-config) plugin. This is included by default when you initialize Grouparoo with `grouparoo init`. If you don't have it as a dependency, you can install it with the `install` command:
+UI Config is the recommended way to configure your Grouparoo data. It requires the [@grouparoo/ui-config](https://www.npmjs.com/package/@grouparoo/ui-config) plugin. This is included by default when you initialize Grouparoo with `grouparoo init`. If you don't have it as a dependency, you can install it with the `install` command:
 
     $ grouparoo install @grouparoo/ui-config
 
-To start the Config UI application, use the `config` CLI command:
+To start the UI Config application, use the `config` CLI command:
 
     $ grouparoo config
 
-This will start the Config UI application and open your browser to the appropriate location.
+This will start the UI Config application and open your browser to the appropriate location.
 
 ## Creating Config Objects
 
-The Config UI helps you through the process of creating configuration objects for your Grouparoo application. As you make changes in Config UI, Grouparoo will write files to your `config` directory in your Grouparoo project.
+The UI Config helps you through the process of creating configuration objects for your Grouparoo application. As you make changes in UI Config, Grouparoo will write files to your `config` directory in your Grouparoo project.
 
 When then running Grouparoo's main application in development or production mode, these files will be loaded into the system and used as your application's configuration.
 
 ## Config Guides
 
-There are a handful of guides to help you through the configuration process with Config UI:
+There are a handful of guides to help you through the configuration process with UI Config:
 
 - [Apps](/docs/config/apps)
 - [Sources](/docs/config/sources)
