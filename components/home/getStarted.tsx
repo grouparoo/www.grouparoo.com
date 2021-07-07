@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import Link from "next/link";
 
 export default function GetStarted({
@@ -8,34 +8,48 @@ export default function GetStarted({
 }) {
   return (
     <>
-      <div id="getStartedContainer" className="text-center w-full pb-5">
+      <div
+        id="getStartedContainer"
+        className="text-center w-full pb-5"
+        style={{
+          background:
+            "linear-gradient(0deg, rgba(179,232,255,1) 0%, rgba(41,171,226,1) 40%, rgba(41,171,226,1) 60%, rgba(179,232,255,1) 100%)",
+        }}
+      >
         <Container>
           <Row>
+            <Col md={3} />
             <Col>
               <br />
               <br />
-              <h2>Get Started with Grouparoo</h2>
-              <p>Start syncing your data with Grouparoo Cloud</p>
-
-              <Button variant="primary" href="/trial" className="ml-auto">
-                Start Free Trial
-              </Button>
-
-              {showLearnMore ? (
-                <>
-                  <br />
-                  <br />
-                  <br />
-                  <p>
-                    Or download and try our open source{" "}
-                    <Link href="/docs/getting-started">
-                      <a> Community edition</a>
-                    </Link>{" "}
-                    .
-                  </p>
-                </>
-              ) : null}
+              <Card>
+                <Card.Body>
+                  <h2>Get Started with Grouparoo</h2>
+                  <p>Start syncing your data with Grouparoo Cloud</p>
+                  <Button
+                    variant="primary"
+                    href="/trial"
+                    className="ml-auto mt-1 mb-4"
+                  >
+                    Start Free Trial
+                  </Button>
+                  {showLearnMore ? (
+                    <>
+                      <p>
+                        <small>
+                          Or download and try our open source{" "}
+                          <Link href="/docs/getting-started">
+                            <a> Community edition</a>
+                          </Link>
+                          .
+                        </small>
+                      </p>
+                    </>
+                  ) : null}
+                </Card.Body>
+              </Card>
             </Col>
+            <Col md={3} />
           </Row>
         </Container>
       </div>

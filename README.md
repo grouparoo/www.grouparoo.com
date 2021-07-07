@@ -49,4 +49,8 @@ npm test # I will also run the build and lint commands
 
 - All changes to the `main` branch are automatically deployed to www.grouparoo.com (assuming tests pass).
 
+## Attribution
+
+- All logos & names used to describe plugins are property of their respective owners
+
 🦘
