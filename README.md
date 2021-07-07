@@ -52,6 +52,5 @@ npm test # I will also run the build and lint commands
 ## Attribution
 
 - All logos & names used to describe plugins are property of their respective owners
-- [Light burst](https://unsplash.com/photos/voM1Z9cGPCU) image via of Unsplash
 
 🦘

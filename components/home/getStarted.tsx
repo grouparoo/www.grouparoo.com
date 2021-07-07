@@ -12,10 +12,8 @@ export default function GetStarted({
         id="getStartedContainer"
         className="text-center w-full pb-5"
         style={{
-          backgroundImage:
-            'url("/_next/image?url=%2Fimages%2Fshahadat-rahman-voM1Z9cGPCU-unsplash.jpg&w=1920&q=90")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          background:
+            "linear-gradient(0deg, rgba(179,232,255,1) 0%, rgba(41,171,226,1) 40%, rgba(41,171,226,1) 60%, rgba(179,232,255,1) 100%)",
         }}
       >
         <Container>
@@ -23,7 +21,7 @@ export default function GetStarted({
             <Col md={3} />
             <Col>
               <br />
-              <br /> <br />
+              <br />
               <Card>
                 <Card.Body>
                   <h2>Get Started with Grouparoo</h2>
@@ -50,7 +48,6 @@ export default function GetStarted({
                   ) : null}
                 </Card.Body>
               </Card>
-              <br />
             </Col>
             <Col md={3} />
           </Row>
