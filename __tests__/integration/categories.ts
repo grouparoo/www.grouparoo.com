@@ -13,7 +13,7 @@ declare var by: any;
 declare var until: any;
 
 // comparison pages to test
-const cases = ["reverse-etl", "customer-data-platform"];
+const cases = ["reverse-etl"];
 
 describe("integration/comparisons", () => {
   beforeAll(async () => {

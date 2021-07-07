@@ -136,11 +136,6 @@ export default function Footer() {
                 </Link>
                 <br />
 
-                <Link href="/solutions/customer-data-platform">
-                  <a>Customer Data Platform</a>
-                </Link>
-                <br />
-
                 <Link href="/solutions/modern-data-stack">
                   <a>Modern Data Stack</a>
                 </Link>
