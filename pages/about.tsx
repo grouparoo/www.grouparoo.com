@@ -48,13 +48,12 @@ export default function About({ pageProps }) {
               dependencies on other teams.
             </p>
             <p>
-              Our aim is to solve this problem for business users by making a
-              no-code tool to help them understand and take action on their
-              customer data, and to make it easy for technical users to install
-              and maintain. Funded by top-tier inventors, Grouparoo is creating
-              open-core applications to simplify and automate the data syncing
-              process within companies - solving both technical and
-              organizational challenges.
+              Our aim is to solve this problem by making it as simple as
+              deploying your website to change how your data is synced. Funded
+              by top-tier inventors, Grouparoo is creating open-core
+              applications to simplify and automate the data syncing process
+              within companies - solving both technical and organizational
+              challenges.
             </p>
             <p>
               We’re a fully remote team too, so no matter where you are, we’d
