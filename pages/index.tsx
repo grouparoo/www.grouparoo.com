@@ -451,7 +451,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <br />
               <p>
                 Grouparoo is powered by{" "}
-                <Link href="docs/config">
+                <Link href="/docs/config">
                   <a>code</a>
                 </Link>
                 . That means that just like the rest of your stack, you can
