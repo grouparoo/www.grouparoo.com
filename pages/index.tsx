@@ -83,8 +83,6 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             <Col lg={2} />
           </Row>
 
-          <br />
-
           <Row>
             <Col>
               <Button
@@ -100,11 +98,8 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
           </Row>
 
           <br />
-          <br />
-          <br />
-          <br />
 
-          <Row className="pb-5">
+          <Row className="pt-5 pb-4">
             <Col md={12}>
               <small>
                 <p>
