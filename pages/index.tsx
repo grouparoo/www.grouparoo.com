@@ -137,20 +137,17 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             <Col>
               <h2>Reverse ETL makes your data warehouse actionable</h2>
 
-              <br />
-              <p style={{ textAlign: "left" }}>
-                We are at the next step in the data-driven evolution of how
-                businesses scale. Over the last few years, teams have been
-                investing by collecting key data and insights in their data
-                warehouses to power BI and Data Science. The companies at the
-                forefront of the{" "}
-                <Link href="/solutions/modern-data-stack">
-                  <a>Modern Data Stack movement</a>
-                </Link>{" "}
-                are just starting to do Reverse ETL back to empower Marketing,
-                Sales, and Support tools with this same data so they can make
-                those teams more effective.
+              <p>
+                Grouparoo connects your customer data to all the places where it
+                can make a difference. Use your data warehouse to power
+                marketing campaigns, customer service, and everything else your
+                business needs to succeed.
               </p>
+              <small>
+                <Link href="/solutions/reverse-etl">
+                  <a>Learn more about reverse ETL</a>
+                </Link>
+              </small>
 
               <br />
               <br />
@@ -162,21 +159,6 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
                 width={1260}
                 height={535}
               />
-
-              <br />
-              <br />
-
-              <p style={{ textAlign: "left" }}>
-                Grouparoo helps these companies scale by making the integrations
-                easy. And it does it through open source to make sure that
-                flexibility, privacy, and low cost are at the heart of the
-                solution.
-              </p>
-              <small>
-                <Link href="/solutions/reverse-etl">
-                  <a>Learn more about reverse ETL</a>
-                </Link>
-              </small>
             </Col>
           </Row>
         </Container>
@@ -449,15 +431,34 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             <Col>
               <h2>How Grouparoo Works</h2>
               <br />
-              <p>
-                Grouparoo is powered by{" "}
+
+              <p style={{ textAlign: "left" }}>
+                We are at the next step in the data-driven evolution of how
+                businesses scale. Over the last few years, teams have been
+                investing by collecting key data and insights in their data
+                warehouses to power BI and Data Science. The companies at the
+                forefront of the{" "}
+                <Link href="/solutions/modern-data-stack">
+                  <a>Modern Data Stack movement</a>
+                </Link>{" "}
+                are just starting to do{" "}
+                <Link href="/solutions/reverse-etl">
+                  <a>Reverse ETL</a>
+                </Link>{" "}
+                back to empower Marketing, Sales, and Support tools with this
+                same data so they can make those teams more effective.
+              </p>
+              <p style={{ textAlign: "left" }}>
+                Grouparoo helps these companies scale by making integrations
+                easy. And Grouparoo is open source, so flexibility and privacy
+                are at the heart of the solution. Grouparoo is powered by{" "}
                 <Link href="/docs/config">
                   <a>code</a>
                 </Link>
-                . That means that just like the rest of your stack, you can
-                develop locally, commit your changes, and deploy. Our web-based
-                user interface makes it easy to generate configuration files for
-                even the most complex schema.
+                . You can use Grouparoo just like the rest of your tech stack;
+                you can develop locally, commit your changes, and deploy. Our
+                web-based user interface makes it easy to generate configuration
+                files for even the most complex schema.
               </p>
             </Col>
           </Row>
