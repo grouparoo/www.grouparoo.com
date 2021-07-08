@@ -3,7 +3,7 @@ import { Plugin } from "./index";
 export const Sailthru: Plugin = {
   name: "Sailthru",
   description:
-    "Grouparoo's Sailthru integration allows you to sync all of your customer data that lives in various sources into Sailthru.",
+    "Grouparoo's Sailthru integration allows you to sync all of your customer data that lives in your data warehouse into Sailthru.",
   priority: 50,
   slug: "sailthru",
   logo: "sailthru.png",
@@ -17,7 +17,7 @@ export const Sailthru: Plugin = {
     paragraphOne:
       "Grouparoo is open source data infrastructure to keep customer data in-sync between your data warehouse and 3rd party tools such as Sailthru.",
     paragraphTwo:
-      "Grouparoo pulls customer data in real-time from all of your data sources and keeps that data synced to Sailthru.",
+      "Grouparoo pulls customer data in real-time from all of your data sources and warehouse and keeps that data synced to Sailthru.",
   },
   useCasesList: [
     "Automatically create Users or User objects in Sailthru as new users sign up in your core product",

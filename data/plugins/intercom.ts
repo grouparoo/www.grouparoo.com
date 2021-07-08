@@ -3,7 +3,7 @@ import { Plugin } from "./index";
 export const Intercom: Plugin = {
   name: "Intercom",
   description:
-    "Grouparoo's Intercom integration allows you to sync all of your customer data that lives in various sources into Intercom.",
+    "Grouparoo's Intercom integration allows you to sync all of your customer data that lives in your data warehouse into Intercom.",
   priority: 80,
   slug: "intercom",
   logo: "intercom.png",
@@ -17,7 +17,7 @@ export const Intercom: Plugin = {
     paragraphOne:
       "Grouparoo is open source data infrastructure to keep customer data in-sync between your data warehouse and 3rd party tools such as Intercom.",
     paragraphTwo:
-      "Grouparoo pulls customer data in real-time from all of your data sources and keeps that data synced to Intercom.",
+      "Grouparoo pulls customer data in real-time from all of your data sources and warehouse and keeps that data synced to Intercom.",
   },
   useCasesList: [
     "Automatically create Contacts in Intercom as new users sign up in your core product",

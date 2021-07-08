@@ -3,7 +3,7 @@ import { Plugin } from "./index";
 export const Salesforce: Plugin = {
   name: "Salesforce",
   description:
-    "Grouparoo's Salesforce integration allows you to sync all of your customer data that lives in various sources into Salesforce.",
+    "Grouparoo's Salesforce integration allows you to sync all of your customer data that lives in your data warehouse into Salesforce.",
   priority: 100,
   slug: "salesforce",
   logo: "salesforce.png",
@@ -17,7 +17,7 @@ export const Salesforce: Plugin = {
     paragraphOne:
       "Grouparoo is open source data infrastructure to keep customer data in-sync between your data warehouse and 3rd party tools such as Salesforce.",
     paragraphTwo:
-      "Grouparoo pulls customer data in real-time from all of your data sources and keeps that data synced to Salesforce.",
+      "Grouparoo pulls customer data in real-time from all of your data sources and warehouse and keeps that data synced to Salesforce.",
   },
   useCasesList: [
     "Create and update any profileObject in Salesforce such as Contacts, Leads, or Individuals as new users sign up in your core product",

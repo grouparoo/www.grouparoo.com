@@ -83,8 +83,6 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             <Col lg={2} />
           </Row>
 
-          <br />
-
           <Row>
             <Col>
               <Button
@@ -100,11 +98,8 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
           </Row>
 
           <br />
-          <br />
-          <br />
-          <br />
 
-          <Row className="pb-5">
+          <Row className="pt-5 pb-4">
             <Col md={12}>
               <small>
                 <p>
@@ -140,21 +135,23 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
         <Container>
           <Row>
             <Col>
-              <br />
               <h2>Reverse ETL makes your data warehouse actionable</h2>
+
               <p>
                 Grouparoo connects your customer data to all the places where it
                 can make a difference. Use your data warehouse to power
                 marketing campaigns, customer service, and everything else your
                 business needs to succeed.
-                <br />
-                <small>
-                  <Link href="/solutions/reverse-etl">
-                    <a>Learn more about reverse ETL</a>
-                  </Link>
-                </small>
               </p>
+              <small>
+                <Link href="/solutions/reverse-etl">
+                  <a>Learn more about reverse ETL</a>
+                </Link>
+              </small>
+
               <br />
+              <br />
+
               <Image
                 centered
                 src="/images/home/hero-diagram.svg"
@@ -182,18 +179,22 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               </p>
             </Col>
             <Col>
-              <HomepageCodeBox
-                icon="npm"
-                code={
-                  <>
-                    {`$`} npm install -g grouparoo
-                    <br />
-                    {`$`} grouparoo init .
-                    <br />
-                    {`$`} grouparoo start
-                  </>
-                }
-              />
+              <Link href="/docs/getting-started">
+                <a style={{ textDecoration: "none" }}>
+                  <HomepageCodeBox
+                    icon="npm"
+                    code={
+                      <>
+                        {`$`} npm install -g grouparoo
+                        <br />
+                        {`$`} grouparoo init .
+                        <br />
+                        {`$`} grouparoo start
+                      </>
+                    }
+                  />
+                </a>
+              </Link>
             </Col>
           </Row>
 
@@ -430,6 +431,35 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             <Col>
               <h2>How Grouparoo Works</h2>
               <br />
+
+              <p style={{ textAlign: "left" }}>
+                We are at the next step in the data-driven evolution of how
+                businesses scale. Over the last few years, teams have been
+                investing by collecting key data and insights in their data
+                warehouses to power BI and Data Science. The companies at the
+                forefront of the{" "}
+                <Link href="/solutions/modern-data-stack">
+                  <a>Modern Data Stack movement</a>
+                </Link>{" "}
+                are just starting to do{" "}
+                <Link href="/solutions/reverse-etl">
+                  <a>Reverse ETL</a>
+                </Link>{" "}
+                back to empower Marketing, Sales, and Support tools with this
+                same data so they can make those teams more effective.
+              </p>
+              <p style={{ textAlign: "left" }}>
+                Grouparoo helps these companies scale by making integrations
+                easy. And Grouparoo is open source, so flexibility and privacy
+                are at the heart of the solution. Grouparoo is powered by{" "}
+                <Link href="/docs/config">
+                  <a>code</a>
+                </Link>
+                . You can use Grouparoo just like the rest of your tech stack;
+                you can develop locally, commit your changes, and deploy. Our
+                web-based user interface makes it easy to generate configuration
+                files for even the most complex schema.
+              </p>
             </Col>
           </Row>
           <Row className="align-items-center">

@@ -3,7 +3,7 @@ import { Plugin } from "./index";
 export const Iterable: Plugin = {
   name: "Iterable",
   description:
-    "Grouparoo's Iterable integration allows you to sync all of your customer data that lives in various sources into Iterable.",
+    "Grouparoo's Iterable integration allows you to sync all of your customer data that lives in your data warehouse into Iterable.",
   priority: 80,
   slug: "iterable",
   logo: "iterable.png",
@@ -17,7 +17,7 @@ export const Iterable: Plugin = {
     paragraphOne:
       "Grouparoo is open source data infrastructure to keep customer data in-sync between your data warehouse and 3rd party tools such as Iterable.",
     paragraphTwo:
-      "Grouparoo pulls customer data in real-time from all of your data sources and keeps that data synced to Iterable.",
+      "Grouparoo pulls customer data in real-time from all of your data sources and warehouse and keeps that data synced to Iterable.",
   },
   useCasesList: [
     "Automatically create Users in Iterable as new users sign up in your core product",

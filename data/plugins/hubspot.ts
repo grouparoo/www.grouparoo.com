@@ -3,7 +3,7 @@ import { Plugin } from "./index";
 export const Hubspot: Plugin = {
   name: "Hubspot",
   description:
-    "Grouparoo's Hubspot integration allows you to sync all of your customer data that lives in various sources into Hubspot.",
+    "Grouparoo's Hubspot integration allows you to sync all of your customer data that lives in your data warehouse into Hubspot.",
   priority: 70,
   slug: "hubspot",
   logo: "hubspot.svg",
@@ -17,7 +17,7 @@ export const Hubspot: Plugin = {
     paragraphOne:
       "Grouparoo is open source data infrastructure to keep customer data in-sync between your data warehouse and 3rd party tools such as Hubspot.",
     paragraphTwo:
-      "Grouparoo pulls customer data in real-time from all of your data sources and keeps that data synced to Hubspot.",
+      "Grouparoo pulls customer data in real-time from all of your data sources and warehouse and keeps that data synced to Hubspot.",
   },
   useCasesList: [
     "Automatically create Contacts in Hubspot as new users sign up in your core product",

@@ -159,12 +159,15 @@ export default function PricingPage() {
               </thead>
               <tbody>
                 <tr>
-                  <td style={{ textAlign: "left" }}>
+                  <td
+                    colSpan={4}
+                    style={{
+                      textAlign: "left",
+                      backgroundColor: "white",
+                    }}
+                  >
                     <b>Features</b>
                   </td>
-                  <td></td>
-                  <td></td>
-                  <td className="d-none d-md-table-cell"></td>
                 </tr>
                 <tr>
                   <td style={{ textAlign: "left" }}>
@@ -365,12 +368,15 @@ export default function PricingPage() {
                 </tr>
 
                 <tr>
-                  <td style={{ textAlign: "left" }}>
+                  <td
+                    colSpan={4}
+                    style={{
+                      textAlign: "left",
+                      backgroundColor: "white",
+                    }}
+                  >
                     <b>Support</b>
                   </td>
-                  <td></td>
-                  <td></td>
-                  <td className="d-none d-md-table-cell"></td>
                 </tr>
                 <tr>
                   <td style={{ textAlign: "left" }}>Access to the community</td>

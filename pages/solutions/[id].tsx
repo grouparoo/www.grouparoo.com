@@ -30,7 +30,6 @@ export async function getStaticPaths() {
       { params: { id: "segment-alternative" } },
       { params: { id: "hightouch-alternative" } },
       { params: { id: "reverse-etl" } },
-      { params: { id: "customer-data-platform" } },
       { params: { id: "modern-data-stack" } },
     ],
     fallback: false,
