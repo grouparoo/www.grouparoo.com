@@ -51,7 +51,7 @@ const Authors: Author[] = [
     url: "https://www.seancdavis.com/",
     twitter: "@seancdavis29",
     description:
-      "Sean is a full-stack developer working on Grouparoo, an open source data framework that easily connects your data to business tools. Sean is a tinkerer and a teacher who enjoys long walks in the woods, spending time with his family, baking bread, playing music, and eating sandwiches.",
+      "Sean is a tinkerer and a teacher who enjoys long walks in the woods, spending time with his family, baking bread, playing music, and eating sandwiches.",
   },
   {
     name: "Pedro S Lopez",

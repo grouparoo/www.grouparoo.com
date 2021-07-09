@@ -122,32 +122,6 @@ export default function WhoWeAre() {
 
           <Col md={4} className="d-flex justify-content-center">
             <TeamMember
-              name="Sean C Davis"
-              image="sean_c_davis.jpg"
-              title="Senior Software Engineer"
-              description={
-                <span>
-                  👨‍👩‍👧 🦮 🎸 ✍️
-                  <br /> Previously:
-                  <br />
-                  Director of Technology{" "}
-                  <a
-                    href="https://www.ample.co/"
-                    target="_blank"
-                    rel="noreferrer nofollow"
-                  >
-                    @Ample
-                  </a>
-                </span>
-              }
-              github="https://github.com/seancdavis"
-              twitter="https://twitter.com/seancdavis29"
-              linkedIn="https://www.linkedin.com/in/seancdavis29/"
-            />
-          </Col>
-
-          <Col md={4} className="d-flex justify-content-center">
-            <TeamMember
               name="Pedro S Lopez"
               image="pedro_lopez.png"
               title="Full Stack Software Engineer"
