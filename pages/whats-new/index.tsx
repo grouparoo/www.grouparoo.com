@@ -33,6 +33,7 @@ export default function ReleaseIndex({ pageProps }) {
           type="application/rss+xml"
           href="https://www.grouparoo.com/feeds/whatsnew.xml"
         />
+        <meta name="robots" content="noindex" />
       </Head>
 
       <Container className="releasePage">
