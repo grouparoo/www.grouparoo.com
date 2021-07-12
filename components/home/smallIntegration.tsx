@@ -28,7 +28,7 @@ export default function SmallIntegration({
     >
       <Image
         src={`/images/home/integrations/${slug}/${image}`}
-        alt={name}
+        alt={`${name} integration`}
         height={80}
         width={80}
       />

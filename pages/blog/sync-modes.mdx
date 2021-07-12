@@ -9,7 +9,7 @@ tags: [engineering]
 
 Grouparoo supports syncing data to an ever-growing number of destinations. While building these [integrations](/integrations) and talking to our users, we have found it's important to be intentional about how exactly data syncing to these destinations is performed.
 
-For example, our [Salesforce plugin](/integrations/destinations/salesforce) has a "Sync Mode" option that allows you to control whether contacts will be created, deleted or only updated. Similarly, our [Intercom plugin](/integrations/destinations/intercom) has an option for skipping contact removals and another for opting out of contact creation. Our [Facebook integration](/integrations/destinations/facebook) also has an option to avoid deleting people from Audiences, due to limitations on the amount of people that can be deleted. This doesn't stop here and this notion of _sync modes_ can be applied throughout most destinations.
+For example, our [Salesforce data integration](/integrations/destinations/salesforce) has a "Sync Mode" option that allows you to control whether contacts will be created, deleted or only updated. Similarly, our [Intercom plugin](/integrations/destinations/intercom) has an option for skipping contact removals and another for opting out of contact creation. Our [Facebook integration](/integrations/destinations/facebook) also has an option to avoid deleting people from Audiences, due to limitations on the amount of people that can be deleted. This doesn't stop here and this notion of _sync modes_ can be applied throughout most destinations.
 
 <Image
   centered
@@ -37,7 +37,7 @@ It's interesting to note that this is somewhat different than when integrating w
 
 ### Supporting more complex workflows
 
-These sync modes can also be used throughout multiple destinations to support more complex workflows. For example, when integrating with Salesforce you could define two destinations, one for each stage of the lifecycle:
+These sync modes can also be used throughout multiple destinations to support more complex workflows. For example, when using our Salesforce data integration you could define two destinations, one for each stage of the lifecycle:
 
 1. A destination set up in **Additive** mode would make sure to create new Leads as people sign up, which salespeople would look for and claim.
 2. When Leads become upgraded to Contacts and have the salesperson assigned, another destination set up in **Enrich** mode keeps the Contact's information up to date as they interact with the product.
