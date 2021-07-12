@@ -94,10 +94,10 @@ export default function Footer() {
     <footer className="footer py-5">
       <Container>
         <Row>
-          <Col md={6} className="d-none d-lg-block">
+          <Col md={3} className="d-none d-lg-block">
             <LogoAndSocialLinks router={router} />
           </Col>
-          <Col md={6}>
+          <Col md={9}>
             <Row>
               <Col>
                 <strong>Use Cases</strong>
@@ -139,6 +139,46 @@ export default function Footer() {
                 <Link href="/solutions/modern-data-stack">
                   <a>Modern Data Stack</a>
                 </Link>
+              </Col>
+              <Col>
+                <strong>Integrations</strong>
+                <br />
+                <Link href="/integrations/destinations/salesforce">
+                  <a>Salesforce Data Integration</a>
+                </Link>
+                <br />
+                <Link href="/integrations/destinations/zendesk">
+                  <a>Zendesk Integration</a>
+                </Link>
+                <br />
+                <Link href="/integrations/destinations/marketo">
+                  <a>Marketo Integration</a>
+                </Link>
+                <br />
+                <Link href="/integrations/destinations/mailchimp">
+                  <a>Mailchimp Integration</a>
+                </Link>
+                <br />
+                <Link href="/integrations/destinations/hubspot">
+                  <a>Hubspot Integration</a>
+                </Link>
+                <br />
+                <Link href="/integrations/destinations/iterable">
+                  <a>Iterable Integration</a>
+                </Link>
+                <br />
+                <Link href="/integrations/sources/bigquery">
+                  <a>Bigquery Integration</a>
+                </Link>
+                <br />
+                <Link href="/integrations/sources/snowflake">
+                  <a>Snowflake Integration</a>
+                </Link>
+                <br />
+                <Link href="/integrations/sources/redshift">
+                  <a>Snowflake Integration</a>
+                </Link>
+                <br />
               </Col>
               <Col>
                 <strong>Product</strong>
