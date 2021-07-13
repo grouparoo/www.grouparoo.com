@@ -76,6 +76,7 @@ export default function BlogIndex({ pageProps }) {
           type="application/rss+xml"
           href="https://www.grouparoo.com/feeds/blog.xml"
         />
+        {category || author ? <meta name="robots" content="noindex" /> : null}
       </Head>
 
       <Container>

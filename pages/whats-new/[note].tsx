@@ -25,6 +25,7 @@ export default function ReleaseNotePage({ pageProps, ...props }) {
         description={feature.description}
         twitterCard={feature.twitterCard || "summary"}
         image={feature.image}
+        noIndex={true}
       />
 
       <Container className="releasePage">
