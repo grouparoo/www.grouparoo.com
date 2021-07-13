@@ -38,7 +38,7 @@ export default function IntegrationCard({
             slug={slug}
             name={name}
           />
-          <Card.Text>{name}</Card.Text>
+          <Card.Text>{`${name} integration`}</Card.Text>
 
           {type ? (
             <>

@@ -37,13 +37,15 @@ export default function IntegrationButton({
             >
               <Image
                 src={`/images/home/integrations/${slug}/${image}`}
-                alt={name}
+                alt={`${name} integration`}
                 width={40}
                 height={40}
               />
             </div>
             <div style={{ height }} className="d-flex align-items-center">
-              <p style={{ marginLeft: 10, marginBottom: 0 }}>{name}</p>
+              <p
+                style={{ marginLeft: 10, marginBottom: 0 }}
+              >{`${name} integration`}</p>
             </div>
           </Button>
         </a>
