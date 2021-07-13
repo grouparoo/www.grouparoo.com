@@ -53,21 +53,21 @@ export default function Navigation() {
                       <Dropdown.Item>
                         <Link href="/integrations/sources/snowflake">
                           <a className="nav-link" role="button">
-                            Snowflake
+                            Snowflake Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
                         <Link href="/integrations/sources/postgres">
                           <a className="nav-link" role="button">
-                            Postgres
+                            Postgres Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
                         <Link href="/integrations/sources/mysql">
                           <a className="nav-link" role="button">
-                            MySQL
+                            MySQL Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
@@ -98,21 +98,21 @@ export default function Navigation() {
                       <Dropdown.Item>
                         <Link href="/integrations/destinations/salesforce">
                           <a className="nav-link" role="button">
-                            Salesforce
+                            Salesforce Data Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
                         <Link href="/integrations/destinations/marketo">
                           <a className="nav-link" role="button">
-                            Marketo
+                            Marketo Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
                         <Link href="/integrations/destinations/zendesk">
                           <a className="nav-link" role="button">
-                            Zendesk
+                            Zendesk Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
