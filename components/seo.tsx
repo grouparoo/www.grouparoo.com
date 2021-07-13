@@ -37,6 +37,7 @@ const SEO = ({
   twitterAuthor,
   twitterCard,
   path,
+  noIndex = false,
 }: {
   canonical?: boolean;
   description?: string;
@@ -45,6 +46,7 @@ const SEO = ({
   twitterAuthor?: string;
   twitterCard?: string;
   path: string;
+  noIndex?: boolean;
 }) => {
   if (!path || !title) {
     console.error(`path and title are required for SEO component.`);
@@ -76,7 +78,7 @@ const SEO = ({
         />
         <meta name="twitter:site" content="@grouparoo" />
         <meta name="twitter:creator" content={twitterAuthor || "@grouparoo"} />
-
+        {noIndex ? <meta name="robots" content="noindex" /> : null}
         <meta property="og:title" content={title} />
         <meta property="og:url" content={url} />
       </Head>
