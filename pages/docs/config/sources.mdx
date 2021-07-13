@@ -1,0 +1,97 @@
+---
+title: Sources
+date: "2021-06-22"
+pullQuote: "Learn how to configure sources using Grouparoo's UI Config."
+---
+
+<Alert variant="warning">
+  <p className="mb-0">
+    Sources require an app. <a href="/docs/config/apps">See here</a> if you
+    haven't created an app yet.
+  </p>
+</Alert>
+
+A Source is a definition for how you pull data from an App into Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+
+### Step 1: Choose an App
+
+To start, you'll click on the Sources navigation in the left-nav and click `Add new Source`.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: New Source"
+  src="/images/docs/guides/config/source--01-add.png"
+  width={820}
+  height={443}
+/>
+
+Choose the kind of source you'd like to create from the list of available apps. The choices shown will be based on which apps you've already connected. If you don't see the app you want to use, you can [add a new app](/docs/config/apps).
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Choose App"
+  src="/images/docs/guides/config/source--02-choose-app.png"
+  width={820}
+  height={430}
+/>
+
+### Step 2: Configure Your Source
+
+Once you've chosen the app, fill in the appropriate configuration values for your source. This will determine what information from the source gets imported into Grouparoo.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Configure Source"
+  src="/images/docs/guides/config/source--03-configure.png"
+  width={820}
+  height={439}
+/>
+
+### Step 3: Connect this Source to Grouparoo Profiles
+
+After you've chosen the source that contains your user data, you will need to indicate what makes your users unique. Often a unique identifier is a `user id`, `uid`, or `email`. If you already have a unique profile property defined in Grouparoo, you can map your source to that profile property. If your source has a new way of identifying profiles uniquely, you can create a new unique profile property.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Source Mapping"
+  src="/images/docs/guides/config/source--04-mapping.png"
+  width={820}
+  height={440}
+/>
+
+Check out [the Profile Properties Config Guide](/docs/config/properties) for more information.
+
+### Step 4: Add a Schedule
+
+A schedule defines how often Grouparoo will check your source for new data. When there are additions or changes in your data source, Grouparoo will pull that data in based on your schedule settings.
+
+You can choose how often Grouparoo will check your source for new data. You will also point Grouparoo to the column that indicates when a row in your users table has been updated, such as an `updated_at` timestamp column.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Add Schedule"
+  src="/images/docs/guides/config/source--05-schedule.png"
+  width={820}
+  height={436}
+/>
+
+<GeneratedConfigFile
+  configDir="sources"
+  docPath="/docs/config/code-config/sources"
+/>
+
+## Next Steps
+
+Once you've created a source, you'll probably want to [add more profile properties](/docs/config/properties) to it.
+
+<Button
+  href="/docs/config/properties"
+  variant="outline-primary"
+  className="mb-4"
+>
+  Add more properties
+</Button>
+
+The real magic happens when you put your users into groups, which you can then export. Once you have all the appropriate properties, you'll want to [create some groups](/docs/config/groups) of users.
+
+And once you have those groups, you can [create a destination](/docs/config/destinations) to export data from groups. (Just remember to [create an app](/docs/config/apps) for your destination.)

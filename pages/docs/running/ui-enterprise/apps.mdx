@@ -1,11 +1,9 @@
 ---
-title: "Apps (Enterprise)"
+title: "Apps (Enterprise Edition)"
 date: "2021-02-11"
 pullQuote: "Learn how to configure Apps in Grouparoo's Enterprise Edition."
-breadcrumb_label: "Enterprise Guide"
+breadcrumb_label: Apps
 ---
-
-<ConfigToggle edition="enterprise" section="apps" />
 
 Apps are typically the first types of objects that you will create. They help Grouparoo connect to a number of different tools, such as your databases, data warehouses, and other third-party tools. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
 
@@ -22,20 +20,18 @@ You can add an app either from the dashboard or from the left-navigation. You wi
 
 **Pro Tip:** When you're first getting started, we recommend adding the App that has the majority of your customer data such as a data warehouse or production database replica.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="Add App"
   alt="Add App"
-  src="docs/guides/add-app.png"
+  src="/images/docs/guides/add-app.png"
   width={820}
   height={414}
 />
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="Add Left Nav"
   alt="Add App Left Nav"
-  src="docs/guides/add-app-nav.png"
+  src="/images/docs/guides/add-app-nav.png"
   width={820}
   height={414}
 />
@@ -44,11 +40,10 @@ You can add an app either from the dashboard or from the left-navigation. You wi
 
 Once you've chosen an App, add the connection details you'll need to connect to this App.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="Add App Postgres"
   alt="Add App Left Nav"
-  src="docs/guides/add-app-postgres.png"
+  src="/images/docs/guides/add-app-postgres.png"
   width={820}
   height={414}
 />
@@ -57,4 +52,4 @@ Once you've chosen an App, add the connection details you'll need to connect to 
 
 Your Grouparoo application starts with Apps. As you continue to configure your application, you'll want to remember to **always start with an App.** Want to add a new Destination? Make sure there is an App to support it.
 
-Sources and Destinations both are direct descendents of Apps. If you don't have any Sources in your Grouparoo application yet, move on to [create a Source](/docs/config/sources/enterprise). If you've already imported data into Grouparoo, then you're ready to [create a Destination](/docs/config/destinations/enterprise) to export data from Grouparoo.
+Sources and Destinations both are direct descendants of Apps. If you don't have any Sources in your Grouparoo application yet, move on to [create a Source](/docs/running/ui-enterprise/sources). If you've already imported data into Grouparoo, then you're ready to [create a Destination](/docs/running/ui-enterprise/destinations) to export data from Grouparoo.

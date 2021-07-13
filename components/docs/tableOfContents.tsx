@@ -9,22 +9,20 @@ const highlightColor = "#fd7e14";
 const NavListItem = ({ item }) => {
   const router = useRouter();
 
+  const isActive = router.asPath.includes(item.path);
+
   return (
     <li>
       <Link href={item.path}>
         <a
-          style={{
-            color: router.asPath.includes(item.path)
-              ? highlightColor
-              : undefined,
-          }}
+          style={{ color: isActive ? highlightColor : undefined }}
           target={item.target}
           rel={item.target === "_blank" ? "nofollow noopener noreferrer" : null}
         >
           {item.title}
         </a>
       </Link>
-      <NavList items={item.children} />
+      {isActive ? <NavList items={item.children} /> : null}
     </li>
   );
 };

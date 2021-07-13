@@ -1,0 +1,61 @@
+---
+title: Properties
+date: "2021-06-22"
+pullQuote: "Learn how to configure properties using Grouparoo's UI Config."
+---
+
+<Alert variant="warning">
+  <p className="mb-0">
+    Properties require a source. <a href="/docs/config/sources">See here</a> if
+    you haven't created a source yet.
+  </p>
+</Alert>
+
+Once you have a source, you can begin to define additional profile properties for that source. Properties are data values associated to the profiles you have in Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+
+### Step 1: Add Property
+
+You can add a new property either from the properties list page, using the main navigation on the left of your screen.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Add Property (Option 1)"
+  src="/images/docs/guides/config/property--01a-add.png"
+  width={820}
+  height={439}
+/>
+
+Or you can start from within a source and click the "App Property" button.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Add Property (Option 2)"
+  src="/images/docs/guides/config/property--01b-add.png"
+  width={820}
+  height={440}
+/>
+
+### Step 2: Configure Property
+
+There are a number of options for how you can define properties, such as whether it is `unique`, whether the property is an `array`, and as well as the aggregation method.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Configure Property"
+  src="/images/docs/guides/config/property--02-configure.png"
+  width={820}
+  height={440}
+/>
+
+<GeneratedConfigFile
+  configDir="properties"
+  docPath="/docs/config/code-config/properties"
+/>
+
+## Next Steps
+
+Once you have enough properties to be able to define users, you can start thinking about [defining your groups](/docs/config/groups).
+
+<Button href="/docs/config/groups" variant="outline-primary">
+  Define your groups
+</Button>

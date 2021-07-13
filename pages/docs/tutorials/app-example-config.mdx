@@ -81,7 +81,7 @@ To see a list of available generators at any time, use the `--list` flag.
 
 If you ran this from within the project, you probably saw that first Grouparoo ran through its database migrations, then printed out a list of templates. Most of them likely don't look helpful to our task here, which is to install a SQLite App.
 
-In Grouparoo, [Apps](/docs/config/apps/community) are _connection definitions_. They tell Grouparoo how to connect to the various services used to sync your data. Every Source and Destination requires an App.
+In Grouparoo, [Apps](/docs/config/code-config/apps) are _connection definitions_. They tell Grouparoo how to connect to the various services used to sync your data. Every Source and Destination requires an App.
 
 ### Install SQLite Plugin
 
@@ -403,7 +403,7 @@ And then load up the database with your new config objects:
 
 ## Step 6: Add Groups
 
-[Groups](/docs/config/groups/community) are where the power really comes into play with Grouparoo. Groups let us create cohorts of users that we then use to send to one or more Destinations (e.g. Mailchimp). Many Destinations also enable us to use Groups as tags on the object that gets synced. We'll see an example of that later.
+[Groups](/docs/config/code-config/groups) are where the power really comes into play with Grouparoo. Groups let us create cohorts of users that we then use to send to one or more Destinations (e.g. Mailchimp). Many Destinations also enable us to use Groups as tags on the object that gets synced. We'll see an example of that later.
 
 We're going to create two groups:
 

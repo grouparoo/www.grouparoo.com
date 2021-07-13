@@ -1,14 +1,11 @@
 import { Alert, Button, Tab } from "react-bootstrap";
 import Link from "next/link";
 
-import {
-  ConfigToggle,
-  EnterpriseCTA,
-  HavingProblems,
-  UIConfigPrereqs,
-} from "./callouts";
+import { EnterpriseCTA, HavingProblems } from "./callouts";
 import CLICommand from "./CLICommands";
+import GeneratedConfigFile from "./generatedConfigFile";
 import Image from "./image";
+import ImageInBrowserFrame from "../imageInBrowserFrame";
 import PluginsList from "./pluginsList";
 import {
   PluginDocsColumnarDestination,
@@ -28,10 +25,11 @@ export {
   Alert,
   Button,
   CLICommand,
-  ConfigToggle,
   EnterpriseCTA,
+  GeneratedConfigFile,
   HavingProblems,
   Image,
+  ImageInBrowserFrame,
   Link,
   PluginDocsColumnarDestination,
   PluginDocsColumnarSource,
@@ -43,7 +41,6 @@ export {
   RuleOpsTable,
   Tab,
   Tabs,
-  UIConfigPrereqs,
   ValidateAndApplyConfig,
   AppExamplesReadme,
 };

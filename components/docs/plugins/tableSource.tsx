@@ -199,7 +199,8 @@ mapping: {
           Profiles
         </Link>
         . In most cases, this is an ID or an e-mail address. Grouparoo will
-        automatically determine what field is used for a primary key based on the mapping and automatically generate one Profile per unique value in
+        automatically determine what field is used for a primary key based on
+        the mapping and automatically generate one Profile per unique value in
         that field.
       </p>
 
@@ -219,7 +220,7 @@ mapping: {
       </p>
 
       <p>
-        <Link href="/docs/config/sources/community#adding-a-schedule">
+        <Link href="/docs/config/code-config/sources#adding-a-schedule">
           You can read more about the common options here
         </Link>
         . The {plugin}-specific options (those in the <code>options</code>{" "}
@@ -271,7 +272,7 @@ mapping: {
 
       <p>
         The Property config object has several options.{" "}
-        <Link href="/docs/config/properties/community#configuring-your-property">
+        <Link href="/docs/config/code-config/properties#configuring-your-property">
           Some are share across all Properties
         </Link>
         , while others are more specific to the type of Property generated. A{" "}

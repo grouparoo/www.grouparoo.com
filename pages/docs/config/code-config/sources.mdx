@@ -1,18 +1,16 @@
 ---
-title: "Sources (Community)"
+title: "Sources (Code Config)"
 date: "2021-02-11"
-pullQuote: "Now that you've added an App, your first step is to create a Source. A Source is a definition for how you pull data from an App into Grouparoo."
-breadcrumb_label: "Community Guide"
+pullQuote: "Learn how to configure Sources using Grouparoo's CLI tool."
+breadcrumb_label: Sources
 ---
-
-<ConfigToggle edition="community" section="sources" />
 
 <Alert variant="warning">
   This guide assumes that you've already{" "}
-  <a href="/docs/config/apps/community">added an App</a>.
+  <a href="/docs/config/code-config/apps">added an App</a>.
 </Alert>
 
-Now that you've added an App ([see here if you haven't](/docs/config/apps/community)), your next step is to create a Source. A Source is a definition for how you pull data from an App into Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+Now that you've added an App ([see here if you haven't](/docs/config/code-config/apps)), your next step is to create a Source. A Source is a definition for how you pull data from an App into Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
 
 ## Generating a New Source
 
@@ -90,11 +88,11 @@ Other sections may be commented out but require some action by you. The best pra
 
 ### Configuring Your First Source
 
-The very first Source you create in Grouparoo will need a [Property](/docs/config/properties/community) to use as a primary key for each Profile. This must be unique to each of your Profiles, and is commonly a user ID or email address. Grouparoo will generate one Profile per unique value for this Property.
+The very first Source you create in Grouparoo will need a [Property](/docs/config/code-config/properties) to use as a primary key for each Profile. This must be unique to each of your Profiles, and is commonly a user ID or email address. Grouparoo will generate one Profile per unique value for this Property.
 
 ## Batch Source Generation
 
-Certain plugins may provide batch source generation options. This means that is you have a valid [`App`](/docs/config/apps/community) already configured and applied, Grouparoo can inspect that app and generate a Source and Properties automatically for you. Learn more about this from the [Generate CLI Command documentation](/docs/cli/config#batch-generation).
+Certain plugins may provide batch source generation options. This means that is you have a valid [`App`](/docs/config/code-config/apps) already configured and applied, Grouparoo can inspect that app and generate a Source and Properties automatically for you. Learn more about this from the [Generate CLI Command documentation](/docs/cli/config#batch-generation).
 
 ## Adding a Schedule
 

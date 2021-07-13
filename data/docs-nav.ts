@@ -34,14 +34,38 @@ const DocsNav: NavItem[] = [
     title: "Step 2: Configure",
     path: "/docs/config",
     children: [
-      { title: "Code Config", path: "/docs/config/code-config" },
-      { title: "UI Config", path: "/docs/config/ui-config" },
-      { title: "Apps", path: "/docs/config/apps/community" },
-      { title: "Sources", path: "/docs/config/sources/community" },
-      { title: "Properties", path: "/docs/config/properties/community" },
-      { title: "Groups", path: "/docs/config/groups/community" },
-      { title: "Destinations", path: "/docs/config/destinations/community" },
-      { title: "Settings", path: "/docs/config/settings" },
+      { title: "Apps", path: "/docs/config/apps" },
+      { title: "Sources", path: "/docs/config/sources" },
+      { title: "Properties", path: "/docs/config/properties" },
+      { title: "Groups", path: "/docs/config/groups" },
+      { title: "Destinations", path: "/docs/config/destinations" },
+      { title: "Sample Profiles", path: "/docs/config/profiles" },
+      {
+        title: "Code Config",
+        path: "/docs/config/code-config",
+        children: [
+          {
+            title: "Apps",
+            path: "/docs/config/code-config/apps",
+          },
+          {
+            title: "Sources",
+            path: "/docs/config/code-config/sources",
+          },
+          {
+            title: "Properties",
+            path: "/docs/config/code-config/properties",
+          },
+          {
+            title: "Groups",
+            path: "/docs/config/code-config/groups",
+          },
+          {
+            title: "Destinations",
+            path: "/docs/config/code-config/destinations",
+          },
+        ],
+      },
     ],
   },
 
@@ -49,7 +73,36 @@ const DocsNav: NavItem[] = [
   {
     title: "Step 3: Run",
     path: "/docs/running",
-    children: [{ title: "Testing", path: "/docs/running/testing" }],
+    children: [
+      {
+        title: "Enterprise Guides",
+        path: "/docs/running/ui-enterprise",
+        children: [
+          {
+            title: "Apps",
+            path: "/docs/running/ui-enterprise/apps",
+          },
+          {
+            title: "Sources",
+            path: "/docs/running/ui-enterprise/sources",
+          },
+          {
+            title: "Properties",
+            path: "/docs/running/ui-enterprise/properties",
+          },
+          {
+            title: "Groups",
+            path: "/docs/running/ui-enterprise/groups",
+          },
+          {
+            title: "Destinations",
+            path: "/docs/running/ui-enterprise/destinations",
+          },
+        ],
+      },
+      { title: "Settings", path: "/docs/running/settings" },
+      { title: "Testing", path: "/docs/running/testing" },
+    ],
   },
 
   // -- 04: Deploy --

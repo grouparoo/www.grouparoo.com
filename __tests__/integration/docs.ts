@@ -35,9 +35,9 @@ describe("integration/docs", () => {
   });
 
   test("it renders a page", async () => {
-    const testUrl = url + "/docs/config/apps/community";
+    const testUrl = url + "/docs/config/apps";
     await browser.get(testUrl);
     const header = await browser.findElement(by.tagName("h1")).getText();
-    expect(header).toBe("Apps (Community)");
+    expect(header).toBe("Apps");
   });
 });

@@ -1,0 +1,69 @@
+---
+title: Sample Profiles
+date: "2021-06-22"
+pullQuote: "Learn how to add sample profiles to Grouparoo's UI Config."
+---
+
+<Alert variant="warning">
+  <p className="mb-0">
+    You'll want to have a <a href="/docs/config/sources">source</a> and{" "}
+    <a href="/docs/config/properties">a few properties</a> before importing
+    sample profiles.
+  </p>
+</Alert>
+
+While UI Config is focused on helping you configure how you're going to sync data from sources to destinations, it also provides some visibility into what your profiles will look like in production through _sample profiles_.
+
+A profile is a representation of one of your customers. The data that makes up a profile is what has been extracted and transformed from your source(s). The transformed data is then what gets synced to your destination(s). [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+
+Here's how to select a sample profile in Grouparoo's UI Config.
+
+### Step 1: Add Sample Profile
+
+Click on _Profiles_ in the left-nav and then click _Add Sample Profile_.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Add Sample Profile"
+  src="/images/docs/guides/config/profile--01-add.png"
+  width={820}
+  height={313}
+/>
+
+Choose the property (which must be unique) and then add the value for that property in the _Value_ field. If you don't see the property you're looking for, [create a new one](/docs/config/properties) and check that it is unique.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Add Identifying Property"
+  src="/images/docs/guides/config/profile--02-add.png"
+  width={820}
+  height={321}
+/>
+
+If that profile exists, it will be shown in a pending state.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Pending Sample Profile"
+  src="/images/docs/guides/config/profile--03-pending.png"
+  width={820}
+  height={433}
+/>
+
+### Step 2: Import Profile Properties
+
+You can click the _Import and Export_ button to import the sample property's values. When finished, this will place the profile in the ready state, and you should see all of its property values, along with its group memberships.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Sample Profile"
+  src="/images/docs/guides/config/profile--04-ready.png"
+  width={820}
+  height={388}
+/>
+
+## Generated Config File
+
+Grouparoo's UI Config will write a file to your local filesystem based on your inputs. The file will be placed at `config/development/profiles.json` in your Grouparoo project. It will contain a list of your sample profiles. You can further edit this file locally or through the UI Config.
+
+Note that this file is only used by UI Config and will be ignored by your main Grouparoo application.

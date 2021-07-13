@@ -1,0 +1,110 @@
+---
+title: Groups
+date: "2021-06-22"
+pullQuote: "Learn how to configure groups using Grouparoo's UI Config."
+---
+
+<Alert variant="warning">
+  <p className="mb-0">
+    Groups require at least one property (which requires a source and an app).{" "}
+    <a href="/docs/config/properties">See here</a> if you haven't created a
+    property yet.
+  </p>
+</Alert>
+
+Groups are where the magic happens in Grouparoo. (It's in the name, after all!) Groups are a segment or cohort of Profiles. They are useful in that you can use Groups to target a specific set of users to [export to some destination](/docs/config/destinations). You can have _Calculated Groups_ and _Manual Groups_. [See here](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+
+### Step 1: Add a Group
+
+To add a group, use the link in the main navigation, which will take you to your groups list page. Click the "Add Group" button to add a new group.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Add Group"
+  src="/images/docs/guides/config/group--01-add.png"
+  width={820}
+  height={444}
+/>
+
+This will take you to a screen where you can name the group and choose whether it is a manual group or a calculated group. If you choose a manual group, there will be no more steps in UI Config. You will add your users to the group when running in production.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Add Group Name"
+  src="/images/docs/guides/config/group--02-add.png"
+  width={820}
+  height={370}
+/>
+
+### Step 2: Configure Group
+
+Calculated groups are more common. They add and remove profiles automatically based on group rules that you define. Each rule has several options for logically determining if a profile belongs in the group.
+
+After creating a calculated group, you will be able to define the rules for that group.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Configure Group"
+  src="/images/docs/guides/config/group--03-configure.png"
+  width={820}
+  height={481}
+/>
+
+## Examples
+
+Here are a few different examples of calculated groups and their rules:
+
+### Example: Repeat Purchasers
+
+Group Rules:
+
+- Profiles who have purchased more than once
+- Profiles with an email
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Group Example #1"
+  src="/images/docs/guides/config/group--04-example.png"
+  width={820}
+  height={453}
+/>
+
+### Example: High-Value & Abandoned Cart Recently
+
+Group Rules:
+
+- Profiles who have a Life-time Value (LTV) of over 30
+- Profiles who have recently added an item to their cart
+- Profiles with an email
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Group Example #2"
+  src="/images/docs/guides/config/group--05-example.png"
+  width={820}
+  height={438}
+/>
+
+### Example: High-Value Xhosa Speakers
+
+Group Rules:
+
+- Profiles with a language set to `xhosa`
+- Profiles who have a Life-time Value (LTV) of over 50
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Group Example #3"
+  src="/images/docs/guides/config/group--06-example.png"
+  width={820}
+  height={424}
+/>
+
+<GeneratedConfigFile
+  configDir="groups"
+  docPath="/docs/config/code-config/groups"
+/>
+
+## Next Steps
+
+Once you've grouped your users, you're ready for the last step in the Grouparoo configuration journey, [adding destinations](/docs/config/destinations).

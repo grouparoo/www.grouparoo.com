@@ -1,24 +1,20 @@
 ---
-title: "UI Config (Enterprise)"
+title: "Enterprise Guides"
 date: "2021-02-10"
 pullQuote: "Configure Grouparoo through the UI using the Enterprise Edition."
 ---
 
-<UIConfigPrereqs />
-
-While we recommend using [Code Config](/docs/config/code-config) to configure your application, you can also use the UI if you have installed our Enterprise Edition. This process provides you with a clean interface to be able to connect various services so that you can import and export data to and from your Grouparoo application.
+While we recommend you [configure your Grouparoo application before running](/docs/config), our UI Edition offers the ability to configure your application _while_ it's running.
 
 <EnterpriseCTA />
 
-## UI Config Guides
+The enterprise guides show you how to create and configure each of the following items:
 
-Here are a list of the available guides:
-
-- [Adding Apps](/docs/config/apps/enterprise)
-- [Adding Sources](/docs/config/sources/enterprise)
-- [Adding Properties to Sources](/docs/config/properties/enterprise)
-- [Adding Destinations](/docs/config/destinations/enterprise)
-- [Creating Groups](/docs/config/groups/enterprise)
+- [Apps](/docs/running/ui-enterprise/apps)
+- [Sources](/docs/running/ui-enterprise/sources)
+- [Properties](/docs/running/ui-enterprise/properties)
+- [Destinations](/docs/running/ui-enterprise/destinations)
+- [Groups](/docs/running/ui-enterprise/groups)
 
 ## Quick Example
 
@@ -30,31 +26,28 @@ The first thing you need to do is to add an App. Apps are how Grouparoo can conn
 
 You can add an app either from the dashboard or from the left-navigation.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="Add App"
   alt="Add App"
-  src="docs/guides/add-app.png"
+  src="/images/docs/guides/add-app.png"
   width={820}
   height={414}
 />
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="Add Left Nav"
   alt="Add App Left Nav"
-  src="docs/guides/add-app-nav.png"
+  src="/images/docs/guides/add-app-nav.png"
   width={820}
   height={414}
 />
 
 We recommend starting with the App that has the majority of your customer data such as a data warehouse or production database replica. Once you've chosen an App, add the connection details you'll need to connect to this App.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="Add Left Nav"
   alt="Add App Left Nav"
-  src="docs/guides/add-app-postgres.png"
+  src="/images/docs/guides/add-app-postgres.png"
   width={820}
   height={414}
 />
@@ -65,33 +58,30 @@ Now that you've added an App, your first step is to create a [Source](/docs/gett
 
 To start, you'll click on the Sources navigation in the left-nav and click `Add new Source`.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="Add new source"
   alt="Add new source"
-  src="docs/guides/add-new-source.png"
+  src="/images/docs/guides/add-new-source.png"
   width={820}
   height={414}
 />
 
 Then you'll choose the kind of Source you'd like to create. The choices shown will be based on which Apps you've already connected. If you don't see the App you want to use, you can add a new App.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="Add new postgres source"
   alt="Add new postgres source"
-  src="docs/guides/add-new-source-choose-app.png"
+  src="/images/docs/guides/add-new-source-choose-app.png"
   width={820}
   height={414}
 />
 
 Once you've chosen the App, you will name your Source and identify the table with user data that you want to pull into Grouparoo.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="New postgres source"
   alt="New postgres source"
-  src="docs/guides/new-source-postgres.png"
+  src="/images/docs/guides/new-source-postgres.png"
   width={820}
   height={414}
 />
@@ -102,11 +92,10 @@ After you've chosen the database table that contains your user data, you will ne
 
 You will also create your first Property. A Property is how you pull data from your Source and add that onto all of your Profiles in Grouparoo. In this first case, you will map it directly to a unique identifier for your users.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="First Profile Property"
   alt="First Profile Property"
-  src="docs/guides/new-source-bootstrap.png"
+  src="/images/docs/guides/new-source-bootstrap.png"
   width={820}
   height={414}
 />
@@ -117,11 +106,10 @@ A Schedule defines how often Grouparoo will check your Source for new data. When
 
 You can choose how often Grouparoo will check your Source for new data. You will also point Grouparoo to the column that indicates when a row in your users table has been updated, such as an `updated_at` timestamp column.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="Schedule"
   alt="Schedule"
-  src="docs/guides/new-source-schedule.png"
+  src="/images/docs/guides/new-source-schedule.png"
   width={820}
   height={414}
 />
@@ -132,22 +120,20 @@ Now your first Source is all set up! 🎉 Grouparoo is now regularly pulling in 
 
 You can have multiple Profile Properties defined from the same Source. You can create new Profile Properties from the Properties list:
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="New Profile Properties"
   alt="New Profile Properties"
-  src="docs/guides/new-profile-properties.png"
+  src="/images/docs/guides/new-profile-properties.png"
   width={820}
   height={414}
 />
 
 You can also create new Profile Properties by going to a Source's detail page.
 
-<Image
+<ImageInBrowserFrame
   centered
-  source="New Profile Properties Source Details"
   alt="New Profile Properties Source Details"
-  src="docs/guides/new-profile-properties-source-detail.png"
+  src="/images/docs/guides/new-profile-properties-source-detail.png"
   width={820}
   height={414}
 />
@@ -155,4 +141,4 @@ You can also create new Profile Properties by going to a Source's detail page.
 ### Next steps
 
 - Repeat the steps above to create more Sources and/or Profile Properties
-- [Create Groups](/docs/config/groups/enterprise) of Profiles (cohorts or segments)
+- [Create Groups](/docs/running/ui-enterprise/groups) of Profiles (cohorts or segments)

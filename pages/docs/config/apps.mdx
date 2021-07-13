@@ -1,0 +1,83 @@
+---
+title: Apps
+date: "2021-06-22"
+pullQuote: "Learn how to configure apps using Grouparoo's UI Config."
+---
+
+Apps are typically the first types of objects that you will create. They help Grouparoo connect to a number of different tools, such as your databases, data warehouses, and other third-party tools. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+
+With [UI Config](/docs/config) running and registered, follow the steps below to configure your app(s).
+
+### Step 1: Add an App
+
+You can begin the process either from the home page or the dashboard.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Add App"
+  src="/images/docs/guides/config/app--01-add.png"
+  width={850}
+  height={414}
+/>
+
+This will take you to a list of your current apps. Click to add a new app.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Add App"
+  src="/images/docs/guides/config/app--02-add.png"
+  width={852}
+  height={460}
+/>
+
+Apps are enabled by installing plugins. Fortunately, Grouparoo's UI Config helps you install plugins on the fly.
+
+Apps from installed plugins will have an orange badge and are ready to be created immediately. Everything else in the list is a plugin that can be installed by clicking on it. ([Learn more about plugins](/docs/installation/plugins).)
+
+Choose the type of app you'd like to add. When you're first getting started, we recommend adding the app that has the majority of your customer data such as a data warehouse or production database replica.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Installing App"
+  src="/images/docs/guides/config/app--03-plugins.png"
+  width={850}
+  height={472}
+/>
+
+<Alert variant="warning" className="mt-4">
+  <p>
+    Because Grouparoo is installing the plugin from NPM, you must be online for
+    this process to work properly. That also means you should expect to see
+    changes to your <code>package.json</code> and <code>package-lock.json</code>{" "}
+    files.
+  </p>
+  <p className="mb-0">
+    If something goes wrong during the process, shut down the server and install
+    the plugin manually. <Link href="/docs/plugins">More information here</Link>
+    .
+  </p>
+</Alert>
+
+### Step 2: Configure Your App
+
+Once you've chosen an App, add the connection details you'll need to connect to this App.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Configure App"
+  src="/images/docs/guides/config/app--04-configure.png"
+  width={820}
+  height={444}
+/>
+
+<GeneratedConfigFile configDir="apps" docPath="/docs/config/code-config/apps" />
+
+## Next Steps
+
+Your Grouparoo application starts with apps. As you continue to configure your application, you'll want to remember to **always start with an app.** Want to add a new destination? Make sure there is an app to support it.
+
+If you're just getting started, move on to create a source next.
+
+<Button href="/docs/config/sources" variant="outline-primary">
+  Create a source
+</Button>
