@@ -114,6 +114,9 @@ export default function Trial({ props }) {
         send_to: "send_to': 'AW-467110449/dWjCCL2x78ICELGU3t4B", // trialRequest conversion
         event_callback: () => {},
       });
+      globalThis.gtag("event", "trial-request", {
+        event_category: "conversion",
+      });
     }
 
     const response = await execApi("post", `/api/v1/trial-request`, data);

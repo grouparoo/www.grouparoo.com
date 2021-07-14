@@ -79,6 +79,9 @@ export default function Meet() {
         send_to: "AW-467110449/NGnKCL62zY8CELGU3t4B", // demoRequest conversion
         event_callback: () => {},
       });
+      globalThis.gtag("event", "demo-request", {
+        event_category: "conversion",
+      });
     }
 
     const response = await execApi("post", `/api/v1/demo-request`, data);

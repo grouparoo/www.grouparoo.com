@@ -1,7 +1,17 @@
 import Head from "next/head";
 import { Container, Row, Col } from "react-bootstrap";
+import { isBrowser } from "../utils/isBrowser";
 
 export default function Chat() {
+  //because the form is embedded in the iframe, we are tracking that a user clicks in the div to determine if they've joined
+  function onJoinClick() {
+    if (isBrowser() && globalThis?.gtag) {
+      globalThis.gtag("event", "join-community", {
+        event_category: "conversion",
+      });
+    }
+  }
+
   return (
     <>
       <Head>
@@ -31,7 +41,7 @@ export default function Chat() {
       </div>
 
       <div id="signup" style={{ textAlign: "center" }}>
-        <Container style={{ maxWidth: 880 }}>
+        <Container style={{ maxWidth: 880 }} onClick={() => onJoinClick()}>
           <iframe
             src="https://grouparoo.commsor.com/embed/"
             className="commsor-embed"
