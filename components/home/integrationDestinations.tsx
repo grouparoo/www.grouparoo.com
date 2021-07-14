@@ -7,7 +7,7 @@ export default function IntegrationDestinations() {
   return (
     <>
       <Container>
-        <Row>
+        <Row className="d-flex justify-content-center">
           {PluginData.length > 0
             ? PluginData.sort((a, b) => {
                 return b.priority - a.priority;

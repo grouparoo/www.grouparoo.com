@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import Image from "../Image";
 
 export default function IntegrationButton({
@@ -18,10 +18,8 @@ export default function IntegrationButton({
     <>
       <Link href={`/integrations/${type}s/${slug}`}>
         <a>
-          <Button
-            size="lg"
-            variant="outline-primary"
-            className="d-flex flex-row"
+          <Card
+            className="d-flex flex-row border-primary bg-transparent p-2"
             style={{ borderWidth: 4, marginBottom: 10 }}
           >
             <div
@@ -47,7 +45,7 @@ export default function IntegrationButton({
                 style={{ marginLeft: 10, marginBottom: 0 }}
               >{`${name} integration`}</p>
             </div>
-          </Button>
+          </Card>
         </a>
       </Link>
     </>
