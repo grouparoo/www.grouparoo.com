@@ -116,6 +116,7 @@ export default function Trial({ props }) {
       });
       globalThis.gtag("event", "trial-request", {
         event_category: "conversion",
+        event_callback: () => {},
       });
     }
 

@@ -81,6 +81,7 @@ export default function Meet() {
       });
       globalThis.gtag("event", "demo-request", {
         event_category: "conversion",
+        event_callback: () => {},
       });
     }
 
