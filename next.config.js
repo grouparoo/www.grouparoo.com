@@ -4,6 +4,8 @@ module.exports = {
   env: {
     ROBOTS_DISABLED: process.env.ROBOTS_DISABLED,
     GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+    GOOGLE_ADS_DEMO_CONVERSION = process.env.GOOGLE_ADS_DEMO_CONVERSION,
+    GOOGLE_ADS_SUBSCRIBE_CONVERSION = process.env.GOOGLE_ADS_SUBSCRIBE_CONVERSION
   },
   async rewrites() {
     return [];

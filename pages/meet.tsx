@@ -20,10 +20,10 @@ export default function Meet() {
     formState: { errors },
   } = useForm();
   const { query } = useRouter();
+  const GoogleAdsDemoID = process.env.GOOGLE_ADS_DEMO_CONVERSION;
   const [loading, setLoading] = useState(false);
   const [requested, setRequested] = useState(false);
   const [error, setError] = useState<FormError>({ email: null, generic: null });
-
   const errorHandler = new ErrorHandler();
 
   errorHandler.subscribe("result", (e) => {
@@ -76,7 +76,7 @@ export default function Meet() {
 
     if (isBrowser() && globalThis?.gtag) {
       globalThis.gtag("event", "conversion", {
-        send_to: "AW-467110449/NGnKCL62zY8CELGU3t4B", // demoRequest conversion
+        send_to: GoogleAdsDemoID,
         event_callback: () => {},
       });
       globalThis.gtag("event", "demo-request", {

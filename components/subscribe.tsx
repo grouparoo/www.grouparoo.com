@@ -10,6 +10,7 @@ export default function Subscribe() {
   const [loading, setLoading] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
   const [error, setError] = useState(null);
+  const GoogleAdsSubscribeID = process.env.GOOGLE_ADS_SUBSCRIBE_CONVERSION;
 
   const errorHandler = new ErrorHandler();
   errorHandler.subscribe("result", (e) => {
@@ -32,7 +33,7 @@ export default function Subscribe() {
 
     if (isBrowser() && globalThis?.gtag) {
       globalThis.gtag("event", "conversion", {
-        send_to: "AW-467110449/kY5uCK_Yg44CELGU3t4B", // subscribe conversion
+        send_to: GoogleAdsSubscribeID,
         event_callback: () => {},
       });
     }
