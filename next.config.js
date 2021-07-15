@@ -7,6 +7,7 @@ module.exports = {
     GOOGLE_ADS_DEMO_CONVERSION: process.env.GOOGLE_ADS_DEMO_CONVERSION,
     GOOGLE_ADS_SUBSCRIBE_CONVERSION:
       process.env.GOOGLE_ADS_SUBSCRIBE_CONVERSION,
+    GOOGLE_ADS_TRIAL_CONVERSION: process.env.GOOGLE_ADS_TRIAL_CONVERSION,
   },
   async rewrites() {
     return [];

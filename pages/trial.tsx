@@ -30,6 +30,7 @@ export default function Trial({ props }) {
     generic: null,
     subdomain: null,
   });
+  const GoogleAdsTrialConversion = process.env.GOOGLE_ADS_TRIAL_CONVERSION;
 
   const onSubdomainChange = (e) => {
     e.preventDefault();
@@ -111,7 +112,7 @@ export default function Trial({ props }) {
 
     if (isBrowser() && globalThis?.gtag) {
       globalThis.gtag("event", "conversion", {
-        send_to: "send_to': 'AW-467110449/dWjCCL2x78ICELGU3t4B", // trialRequest conversion
+        send_to: GoogleAdsTrialConversion,
         event_callback: () => {},
       });
       globalThis.gtag("event", "trial-request", {
