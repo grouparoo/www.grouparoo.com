@@ -110,20 +110,20 @@ export default function Trial({ props }) {
     data.companyWebsite = data.companyWebsite.toLowerCase();
     data.subdomain = data.subdomain.toLowerCase();
 
-    if (isBrowser() && globalThis?.gtag) {
-      globalThis.gtag("event", "conversion", {
-        send_to: GoogleAdsTrialConversion,
-        event_callback: () => {},
-      });
-      globalThis.gtag("event", "trial-request", {
-        event_category: "conversion",
-        event_callback: () => {},
-      });
-    }
-
     const response = await execApi("post", `/api/v1/trial-request`, data);
     if (response?.trialRequest) {
       setRegistered(true);
+
+      if (isBrowser() && globalThis?.gtag) {
+        globalThis.gtag("event", "conversion", {
+          send_to: GoogleAdsTrialConversion,
+          event_callback: () => {},
+        });
+        globalThis.gtag("event", "trial-request", {
+          event_category: "conversion",
+          event_callback: () => {},
+        });
+      }
     }
     setLoading(false);
   };
