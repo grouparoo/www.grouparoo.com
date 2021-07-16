@@ -74,19 +74,20 @@ export default function Meet() {
     data.medium = medium;
     data.campaign = campaign;
 
-    if (isBrowser() && globalThis?.gtag) {
-      globalThis.gtag("event", "conversion", {
-        send_to: GoogleAdsDemoID,
-        event_callback: () => {},
-      });
-      globalThis.gtag("event", "demo-request", {
-        event_category: "conversion",
-        event_callback: () => {},
-      });
-    }
-
     const response = await execApi("post", `/api/v1/demo-request`, data);
-    if (response?.demoRequest) setRequested(true);
+    if (response?.demoRequest) {
+      setRequested(true);
+      if (isBrowser() && globalThis?.gtag) {
+        globalThis.gtag("event", "conversion", {
+          send_to: GoogleAdsDemoID,
+          event_callback: () => {},
+        });
+        globalThis.gtag("event", "demo-request", {
+          event_category: "conversion",
+          event_callback: () => {},
+        });
+      }
+    }
     setLoading(false);
   };
 
