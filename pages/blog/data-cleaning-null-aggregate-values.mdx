@@ -324,17 +324,18 @@ function calculateLTV(
 
 ```py
 def calculate_ltv (query_results, aggregation_method, profiles):
-  responses_by_id = {};
+  responses_by_id = {}
 
   for  i in profiles:
     if aggregation_method == "count" or aggregation_method == "sum":
         # default all entries for counted or summed aggregations to 0 to start... will be replaced later if there is a response
-        responses_by_id[i["id"]] = [0];
+        responses_by_id[i["id"]] = [0]
+
 
   for row in query_results:
-    responses_by_id[row["id"]] = row["data"];
+    responses_by_id[row["id"]] = row["data"]
 
-  return responses_by_id;
+  return responses_by_id
 
 
 mock_query_results = [{"id":1, "data":[112.50]}, {"id":2, "data":[16.48]}, {"id":3, "data":[42.97]}, {"id":4, "data":[96.41]}]
