@@ -4,6 +4,7 @@ import IntegrationCard from "../../components/home/integrationCard";
 import SEO from "../../components/seo";
 import BigArrow from "../../components/bigArrow";
 import ImageInBrowserFrame from "../../components/imageInBrowserFrame";
+import Link from "next/link";
 
 export default function BigQueryToSalesforce() {
   return (
@@ -12,7 +13,7 @@ export default function BigQueryToSalesforce() {
         canonical={true}
         path={`/integrations/bigquery-to-salesforce`}
         title="BigQuery to Salesforce Integrations"
-        description="Connect your BigQuery database or warehouse to your Salesforce instance using Grouparoo. Grouparoo keeps your Salesforce data updated as new data gets added or changed in your BigQuery warehouse"
+        description="Connect your BigQuery data warehouse to your Salesforce instance using Grouparoo. Grouparoo keeps your Salesforce data updated as new data gets added or changed in your BigQuery warehouse"
         twitterCard={"summary"}
       />
       <Container>
@@ -21,7 +22,7 @@ export default function BigQueryToSalesforce() {
             <br />
             <h1>Connect BigQuery with Salesforce</h1>
             <p>
-              Grouparoo connects data in your BigQuery database to your
+              Grouparoo connects data in your BigQuery data warehouse to your
               Salesforce instance. Use our prebuilt connectors so you don't have
               to write code yourself. Connect your data in minutes instead of
               weeks.
@@ -234,6 +235,79 @@ export default function BigQueryToSalesforce() {
       <br />
 
       <br />
+      <div
+        id="synchronize"
+        style={{
+          textAlign: "center",
+          backgroundImage: "linear-gradient(#242436,#43435F)",
+        }}
+        className="text-white homePageSection"
+      >
+        <Container>
+          <Row>
+            <Col>
+              <h2>Reverse ETL makes your data warehouse actionable</h2>
+
+              <p>
+                Grouparoo connects your customer data to all the places where it
+                can make a difference. Use your data warehouse to power
+                marketing campaigns, customer service, and everything else your
+                business needs to succeed.
+              </p>
+              <small>
+                <Link href="/solutions/reverse-etl">
+                  <a>Learn more about reverse ETL</a>
+                </Link>
+              </small>
+
+              <br />
+              <br />
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <br />
+      <br />
+      <div
+        id="about-bigquery-and-salesforce"
+        className="integrationsPageSection"
+      >
+        <Container>
+          <Row>
+            <Col>
+              <h2>About Google Cloud BigQuery</h2>
+              <p>
+                BigQuery is one of Google's main products in their Google Cloud
+                Platform. BigQuery is serverless and scalable data warehouse
+                designed primarily for businesses. It is queryable using SQL,
+                and has built-in machine learning capabilities.
+              </p>
+              <small>
+                <Link href="/integrations/sources/bigquery">
+                  <a>Learn more about Grouparoo's BigQuery plugin</a>
+                </Link>
+              </small>
+            </Col>
+            <Col>
+              <h2>About Salesforce</h2>
+              <p>
+                Salesforce is a leader in the SaaS-based CRM space. They have an
+                extensive product suite that encompasses marketing, sales,
+                support, and many other functions. Salesforce allows companies
+                and organizations to manage the customer experience and journey
+                across many different channels.
+              </p>
+              <small>
+                <Link href="/integrations/destinations/salesforce">
+                  <a>Learn more about Grouparoo's Salesforce plugin</a>
+                </Link>
+              </small>
+            </Col>
+          </Row>
+          <br />
+          <br />
+        </Container>
+      </div>
     </>
   );
 }
