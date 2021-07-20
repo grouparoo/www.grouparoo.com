@@ -13,7 +13,7 @@ export default function GetStarted({
         className="text-center w-full pb-5"
         style={{
           background:
-            "linear-gradient(0deg, rgba(179,232,255,1) 0%, rgba(41,171,226,1) 40%, rgba(41,171,226,1) 60%, rgba(179,232,255,1) 100%)",
+            "linear-gradient(0deg, rgba(179,232,255,0.5) 0%, rgba(41,171,226,0.4) 40%, rgba(41,171,226,0.4) 60%, rgba(179,232,255,0.5) 100%)",
         }}
       >
         <Container>
