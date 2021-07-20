@@ -9,6 +9,7 @@ import {
   Image,
 } from "react-bootstrap";
 import SEO from "../components/seo";
+import Link from "next/link";
 
 export default function PricingPage() {
   const boxTextStyle = {
@@ -465,6 +466,72 @@ export default function PricingPage() {
           </Col>
         </Row>
       </Container>
+      <br />
+      <br />
+      <div
+        id="frequently-asked-questions"
+        style={{
+          textAlign: "center",
+          backgroundImage: "linear-gradient(#242436,#43435F)",
+        }}
+        className="text-white homePageSection"
+      >
+        <Container>
+          <Row>
+            <Col>
+              <h2>Frequently Asked Questions</h2>
+              <br />
+              <Row style={{ textAlign: "left" }}>
+                <Col>
+                  <h4>Is the Community edition of Grouparoo really free?</h4>
+                  <p>
+                    Yes! Our Community edition is open source and free. You will
+                    need to be able to host it somewhere such as Heroku or AWS.
+                  </p>
+                  <h4>
+                    What are Profiles, and how is Pricing based on Profile
+                    volume?
+                  </h4>
+                  <p>
+                    Profiles are the primary object type in Grouparoo. In short,
+                    Profiles are people, whether they are leads, contacts, or
+                    users in your system. When syncing data from your data
+                    warehouse to a business tool like a CRM, most tools are
+                    person-based.
+                  </p>
+                </Col>
+                <Col>
+                  {" "}
+                  <h4>
+                    Is there a limit to the number of Sources and Destinations
+                    that I can use?
+                  </h4>
+                  <p>
+                    Nope! Whether you're using the Community, Cloud, or
+                    Enterprise editions of Grouparoo, you can connect as many
+                    Sources and Destinations as you'd like.
+                  </p>
+                  <h4>Do you have onboarding support?</h4>
+                  <p>
+                    For customers on the Cloud or Enterprise plans, we provide
+                    hands-on support for getting set up with Grouparoo. For
+                    folks using the Community edition of Grouparoo, you can join
+                    the Grouparoo
+                    <a href="docs/community">community</a> and discuss any
+                    questions or topics you may have there. We're also active in
+                    the community, so we're happy to help!
+                  </p>
+                </Col>
+              </Row>
+
+              <br />
+              <br />
+            </Col>
+          </Row>
+        </Container>
+        <br />
+        <br />
+      </div>
     </>
   );
 }
