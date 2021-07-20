@@ -7,7 +7,7 @@ The Grouparoo public website, blog, & docs.
 ## Getting Started:
 
 ```bash
-# Assuming you have Node v12 and NPM installed...
+# Assuming you have Node.js 12+ and NPM installed...
 
 # Clone this repository
 git clone git@github.com:grouparoo/www.grouparoo.com.git
