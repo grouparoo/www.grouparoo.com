@@ -4,6 +4,7 @@ import IntegrationCard from "../../components/home/integrationCard";
 import SEO from "../../components/seo";
 import BigArrow from "../../components/bigArrow";
 import ImageInBrowserFrame from "../../components/imageInBrowserFrame";
+import Link from "next/link";
 
 export default function PostgresToSalesforce() {
   return (
@@ -21,7 +22,7 @@ export default function PostgresToSalesforce() {
             <br />
             <h1>Connect Postgres with Salesforce</h1>
             <p>
-              Grouparoo connects data in your Postgres database to your
+              Grouparoo connects data in your Postgres data warehouse to your
               Salesforce instance. Use our prebuilt connectors so you don't have
               to write code yourself. Connect your data in minutes instead of
               weeks.
@@ -231,6 +232,79 @@ export default function PostgresToSalesforce() {
           <br />
         </div>
       </Container>
+      <div
+        id="synchronize"
+        style={{
+          textAlign: "center",
+          backgroundImage: "linear-gradient(#242436,#43435F)",
+        }}
+        className="text-white homePageSection"
+      >
+        <Container>
+          <Row>
+            <Col>
+              <h2>Reverse ETL makes your data warehouse actionable</h2>
+
+              <p>
+                Grouparoo connects your customer data to all the places where it
+                can make a difference. Use your data warehouse to power
+                marketing campaigns, customer service, and everything else your
+                business needs to succeed.
+              </p>
+              <small>
+                <Link href="/solutions/reverse-etl">
+                  <a>Learn more about reverse ETL</a>
+                </Link>
+              </small>
+
+              <br />
+              <br />
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <br />
+      <br />
+      <div
+        id="about-postgres-and-salesforce"
+        className="integrationsPageSection"
+      >
+        <Container>
+          <Row>
+            <Col>
+              <h2>About PostgreSQL</h2>
+              <p>
+                PostgreSQL (or Postgres for short) is a powerful, open source
+                object-relational database. Postgres is one of the most popular
+                database types in modern application development, and it's also
+                the foundation for Amazon's Redshift data warehouse product.{" "}
+              </p>
+              <small>
+                <Link href="/integrations/sources/postgres">
+                  <a>Learn more about Grouparoo's Postgres plugin</a>
+                </Link>
+              </small>
+            </Col>
+            <Col>
+              <h2>About Salesforce</h2>
+              <p>
+                Salesforce is a leader in the SaaS-based CRM space. They have an
+                extensive product suite that encompasses marketing, sales,
+                support, and many other functions. Salesforce allows companies
+                and organizations to manage the customer experience and journey
+                across many different channels.
+              </p>
+              <small>
+                <Link href="/integrations/destinations/salesforce">
+                  <a>Learn more about Grouparoo's Salesforce plugin</a>
+                </Link>
+              </small>
+            </Col>
+          </Row>
+          <br />
+          <br />
+        </Container>
+      </div>
     </>
   );
 }
