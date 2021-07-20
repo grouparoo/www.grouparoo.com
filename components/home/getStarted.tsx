@@ -8,21 +8,14 @@ export default function GetStarted({
 }) {
   return (
     <>
-      <div
-        id="getStartedContainer"
-        className="text-center w-full pb-5"
-        style={{
-          background:
-            "linear-gradient(0deg, rgba(179,232,255,0.5) 0%, rgba(41,171,226,0.4) 40%, rgba(41,171,226,0.4) 60%, rgba(179,232,255,0.5) 100%)",
-        }}
-      >
+      <div id="getStartedContainer" className="text-center w-full pb-5">
         <Container>
           <Row>
             <Col md={3} />
             <Col>
               <br />
               <br />
-              <Card>
+              <Card border="primary">
                 <Card.Body>
                   <h2>Get Started with Grouparoo</h2>
                   <p>Start syncing your data with Grouparoo Cloud</p>
