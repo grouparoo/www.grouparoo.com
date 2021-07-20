@@ -1,6 +1,7 @@
 interface NavItem {
   title: string;
   path: string;
+  linkText?: string;
   children?: NavItem[];
   target?: "_self" | "_blank" | "_parent" | "_top";
 }
@@ -25,14 +26,17 @@ const DocsNav: NavItem[] = [
     children: [
       {
         title: "Installing Grouparoo with Node.js",
+        linkText: "Node.js",
         path: "/docs/installation/node",
       },
       {
         title: "Installing Grouparoo with Docker",
+        linkText: "Docker",
         path: "/docs/installation/docker",
       },
       {
         title: "Installing Grouparoo Plugins",
+        linkText: "Plugins",
         path: "/docs/installation/plugins",
       },
     ],
@@ -109,8 +113,16 @@ const DocsNav: NavItem[] = [
           },
         ],
       },
-      { title: "Running Grouparoo: Settings", path: "/docs/running/settings" },
-      { title: "Running Grouparoo: Testing", path: "/docs/running/testing" },
+      {
+        title: "Running Grouparoo: Settings",
+        linkText: "Settings",
+        path: "/docs/running/settings",
+      },
+      {
+        title: "Running Grouparoo: Testing",
+        linkText: "Testing",
+        path: "/docs/running/testing",
+      },
     ],
   },
 
@@ -170,6 +182,7 @@ const DocsNav: NavItem[] = [
   // -- Plugins --
   {
     title: "Plugins Documentation",
+    linkText: "Plugins",
     path: "/docs/plugins",
     children: [
       { title: "BigQuery", path: "/docs/plugins/grouparoo-bigquery" },
@@ -185,6 +198,7 @@ const DocsNav: NavItem[] = [
   // -- Tutorials --
   {
     title: "Tutorials: Get Started With Your Own Instance",
+    linkText: "Tutorials",
     path: "/docs/tutorials",
     children: [
       {
@@ -197,6 +211,7 @@ const DocsNav: NavItem[] = [
   // -- Development --
   {
     title: "Development Documentation",
+    linkText: "Development",
     path: "/docs/development",
     children: [
       { title: "Databases", path: "/docs/development/databases" },
@@ -214,6 +229,7 @@ const DocsNav: NavItem[] = [
   // -- Community --
   {
     title: "Join the Grouparoo Community",
+    linkText: "Community",
     path: "/docs/community",
     children: [
       { title: "Code of Conduct", path: "/docs/community/code-of-conduct" },
@@ -231,6 +247,7 @@ const DocsNav: NavItem[] = [
   // -- Support --
   {
     title: "Support Documentation",
+    linkText: "Support",
     path: "/docs/support",
     children: [
       { title: "Common Issues", path: "/docs/support/common-issues" },
@@ -238,6 +255,7 @@ const DocsNav: NavItem[] = [
       { title: "Environment", path: "/docs/support/environment" },
       {
         title: "Grouparoo Privacy Policy & Legal",
+        linkText: "Privacy Policy & Legal",
         path: "/docs/support/legal",
       },
       { title: "Support Docs: Monitoring", path: "/docs/support/monitoring" },
