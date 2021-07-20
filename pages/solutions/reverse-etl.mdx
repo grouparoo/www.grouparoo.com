@@ -29,15 +29,15 @@ features:
 
 ## What is Reverse ETL and why is it important?
 
-Reverse ETL is a new data engineering term that has been picking up attention in recent months.
+Reverse ETL is a new data engineering term that has been picking up a lot of attention in recent months.
 
 At Grouparoo, we’re helping to lead that trend, so we thought we’d share an overview of what Reverse ETL is, and how Grouparoo enables businesses to use their data to the fullest extent.
 
 ### What is Reverse ETL?
 
-Before we discuss Reverse ETL, let’s talk about “regular” ETL.
+Before we discuss Reverse ETL, let’s do a high level overview of “regular” ETL.
 
-ETL is a data warehouse term which stands for Extract, Transform, and Load. ETL describes the process of taking data from a database or source (Extract), modifying it or cleaning it up (Transform), and then putting it in a data warehouse (Load).
+It shouldn’t be news to you that companies have a lot of data. The trick is bringing it together cohesively. ETL is a data warehouse term which stands for Extract, Transform, and Load. ETL describes the process of taking data from a database or source (Extract), modifying it or cleaning it up (Transform), and then putting it into a data warehouse (Load). One alternative approach to this is ELT (Extract, Load, Transform) which involves Extracting data from a source, Loading the data directly into a warehouse, and Transforming from there.
 
 <SectionDivider
   imagePath="/images/home/solutions/categories/etl.svg"
@@ -48,9 +48,9 @@ ETL is a data warehouse term which stands for Extract, Transform, and Load. ETL 
   imageLeft="false"
 />
 
-With the data now living in a data warehouse, teams can analyze their data without writing costly (and often impossible) queries that require joining different data sources.
+With the data now living in a data warehouse, teams can analyze their data without writing costly (and often impossible) queries that require joining different data sources. ETL tools including Fivetran, Microsoft SSIS, and Informatica Power Center have helped automate this process, as have Transformation tools like dbt.
 
-Additionally, because the data has been transformed by a data owner, there is a shared, canonical definition for how data is structured.
+Because the data has been transformed by a data owner, there is a shared, canonical definition for how data is structured. For years, ETL was the top way for companies to get a unified, top level view of their data. It made data warehouses the center of a company’s data infrastructure.
 
 #### Okay, so what about reverse ETL?
 
@@ -69,13 +69,14 @@ Reverse ETL, on the other hand, is the process that takes data from a data wareh
 
 Reverse ETL has emerged as companies use more tools that require customer data.
 
-Your Sales team is using CRMs like [Hubspot](http://hubspot.com) and [Salesforce](http://salesforce.com) to keep track of all of their leads and deals. As they try to close more deals, they need better data in Hubspot and Salesforce to better understand who these leads or customers are, how they’re using the product, whether they’re likely to churn, and everything else.
+For example, your Sales team is using CRMs like [Hubspot](http://hubspot.com) and [Salesforce](http://salesforce.com) to keep track of all of their leads and deals. As they try to close more deals, they need better data in Hubspot and Salesforce to better understand who these leads or customers are, how they’re using your products, whether they’re likely to churn, and everything else.
 
 _Is someone a highly-active user who might be a great fit for a new product you just launched? _
+_Did customers subscribe to your newsletter and make a purchase after a recent outreach?_
 
-Your Marketing team is trying to run great campaigns that engage with your email list and subscribers. They need personalized, tailored data in Marketo or Mailchimp to be effective.
+Your Marketing team is working to run great campaigns that engage with your email list and subscribers. They need access to personalized, tailored data in Marketo or Mailchimp to be effective.
 
-Thankfully, the data that your revenue and operational teams need already lives in your data warehouse.
+It helps that the data your revenue and operational teams need already lives in one place -- your data warehouse. You just need a better way to read it.
 
 <SectionDivider
   imagePath="/images/home/hero-diagram.svg"
@@ -86,33 +87,31 @@ Thankfully, the data that your revenue and operational teams need already lives 
   imageLeft="false"
 />
 
-The tricky part is getting that data to all of your different tools. Often for an
-engineering team, integrating with a single email tool or CRM isn’t too tricky at
-first.
+However, in order to provide teams with the data and reporting they need, there must be systems in place. The tricky part is building a pipeline to get that data to all of your different tools. Unfortunately, there isn’t a standard model for integrating these apps. Often for an engineering team, integrating with a single email tool or CRM isn’t too tricky at first.
 
-Someone on the marketing team or their manager asks them to connect a customer list to their email tool of choice, let’s say Mailchimp. No big deal. The engineer looks up the Mailchimp API and learns about the endpoints at play. They build something custom, probably a cron job, that takes information from their users database and sends some data to Mailchimp like email, first name, and last name.
+Someone on the marketing team or their manager asks engineering to connect a customer list to their email tool of choice, let’s say Mailchimp. No big deal. The engineer looks up the Mailchimp API and learns about the endpoints at play. They build something custom, probably a cron job, that takes information from their users SQL database and sends some data to Mailchimp like email, first name, and last name.
 
 No sweat, right?
 
 Well, things get more complicated quickly. What happens when a user record changes? Or new users get added?
 
-What happens when marketing or sales wants more user information in Mailchimp?
+What happens when content and marketing or sales wants more user information in Mailchimp?
 
-What happens when Mailchimp’s API is down or you hit a rate limit?
+What happens when Mailchimp’s API is down or you hit a rate limit? Or worse, management decides to change to a different application entirely?
 
-The minute another team wants to use a different tool, the engineering team will need to figure out whether to build another one-off integration with this different tool, or if they will create some internal data synchronizing tool.
+The minute another team wants to use a different tool, the engineering team will need to figure out whether to build another one-off integration with this different tool, or if they will create some internal data synchronizing tool. If you’ve had this experience, you know the impact it can have on operations, resources, and your ability to provide the best experience for your teams.
 
-With these challenges multiplying, robust reverse ETL tools come to the rescue.
+This is a sign that your company may need a different approach. With these challenges multiplying, there must be a better solution to manage moving your data. Here is where robust reverse ETL tools come to the rescue. Reverse ETL isn’t so much about moving into a post ETL data world, as it is the other side of the same funnel.
 
 ### How does Reverse ETL work?
 
-Reverse ETL tools, at their core, make it easy to take data that already lives in your data warehouse or database, and connects that data to the different SaaS tools you’re using.
+Reverse ETL tools, at their core, make it easy to take data that already lives in your data warehouse or database, and connect that data to the different SaaS applications you’re using.
 
 #### Define the customer data you want
 
 The first step in Reverse ETL is defining what data you want to pull from your source of truth.
 
-In Grouparoo terms, that means connecting to a Source like a database or data warehouse and defining Profile Properties.
+In Grouparoo terms, that means first connecting to Sources -- which could be anything from Google Bigquery to Snowflake to a Postgres database, or any one of our 20+ integration options. Then, you can start defining Profile Properties.
 
 Profile Properties are customer data, such as identifying information like email or _user_id_ to product usage data like _lifetime_value_ or _last_login_at_.
 
@@ -133,13 +132,13 @@ Both of these options result in efficient queries to your database that then cre
 
 #### Define how you want to export your data
 
-From here, Grouparoo allows you to define what Profile and Property data you want to send to your business tools like CRMs, marketing automation platforms, and others. We call these Destinations, and we’ve built 20+ integrations (and we’re launching more all the time!).
+From here, Grouparoo allows you to define what Profile and Property data you want to send to your business tools like CRMs, marketing automation platforms, and others. We call these Destinations, and we’ve built 20+ integration apps (and we’re launching more all the time!).
 
-With our pre-built integrations, your engineering team doesn’t need to learn the ins and outs of every tool’s API.
+With our pre-built integrations, your engineering team doesn’t need to learn the ins and outs of every tool’s API features.
 
-Grouparoo handles all of the tricky nuances of every API, whether it’s about using different [Batch APIs](https://www.grouparoo.com/blog/batching-api-requests) or managing requests so you don’t hit [rate limits](https://www.grouparoo.com/blog/crm-system-rate-limiting).
+Grouparoo handles all of the tricky nuances of every API -- whether it’s about using different [Batch APIs](https://www.grouparoo.com/blog/batching-api-requests) or managing requests so you don’t hit [rate limits](https://www.grouparoo.com/blog/crm-system-rate-limiting).
 
-Connecting to a new integration just requires installing the plugin and adding some connection details such as an API key. Once that’s set, anyone on your team can connect your customer data to your destinations.
+Connecting to a new integration just requires installing the plugin and adding some connection details such as an API key. Once that’s set, anyone on your team, developer or not, can connect your customer data to your destinations.
 
 <SectionDivider
   imagePath="/images/home/how-it-works-3.png"
@@ -153,11 +152,11 @@ Connecting to a new integration just requires installing the plugin and adding s
 
 #### Set schedules for how often to update this data
 
-Once you’ve defined these connections, Grouparoo regularly queries your data for updates. As you get new customer data Grouparoo will automatically sync that data to your destinations.
+Once you’ve defined these connections, Grouparoo regularly queries your data for updates. As you get new customer data, Grouparoo will automatically read and sync that data to your destinations.
 
 If you want to send new data to your destination, anyone on your team can update the destination mappings.
 
-Grouparoo also keeps all of your profile data up-to-date and ensures that everything we send to a destination was recently checked against the source of truth.
+Grouparoo also keeps all of your profile data up-to-date and ensures that everything we send to a destination was recently checked against the source of truth. That way, you can rest with a sense of security that your data is accurate and current.
 
 <SectionDivider
   imagePath="/images/home/solutions/categories/schedules.png"
@@ -173,7 +172,7 @@ Grouparoo also keeps all of your profile data up-to-date and ensures that everyt
 
 The key purpose behind Reverse ETL is to empower business teams to take action with verified and trustworthy data. This practice is called **Operational Analytics. **Operational analytics is the practice of taking your data and turning it into action.
 
-With better, trustworthy data in your Marketing tools, you can drive better growth, have more targeted emails and communications, and create better experiences for your users.
+With better, more trustworthy data in your Marketing tools, you can drive better growth, have more targeted emails and communications, and create better experiences for your users.
 
 Sales teams are able to better personalize their sales discussions based on how their leads and accounts are using the product.
 
