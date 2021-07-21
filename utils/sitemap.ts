@@ -17,15 +17,15 @@ interface PagePathsResponse {
   fallback: boolean;
 }
 
-// export async function getAuthorPaths(): Promise<PagePathsResponse> {
-//   const paths = Authors.map((a) => `/blog/author/${a.slug}`);
-//   return { paths, fallback: false };
-// }
+export async function getAuthorPaths(): Promise<PagePathsResponse> {
+  const paths = Authors.map((a) => `/blog/author/${a.slug}`);
+  return { paths, fallback: false };
+}
 
-// export async function getBlogCategoryPaths(): Promise<PagePathsResponse> {
-//   const paths = Object.keys(badgeTypes).map((tag) => `/blog/category/${tag}`);
-//   return { paths, fallback: false };
-// }
+export async function getBlogCategoryPaths(): Promise<PagePathsResponse> {
+  const paths = Object.keys(badgeTypes).map((tag) => `/blog/category/${tag}`);
+  return { paths, fallback: false };
+}
 
 async function getPagePaths() {
   const paths = glob
