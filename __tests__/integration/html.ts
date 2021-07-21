@@ -11,6 +11,7 @@ const EDGE_CASES = {
 };
 
 const allowedMissingLinks = [
+  /^\/whats-new\/([a-z0-9\-\_\.]+)?$/, //no-indexed but we still want it
   /^\/downloads\/([a-z0-9\-\_\.]+)?$/, // Dumping ground for downloadable sample files.
   /^\/jobs(\/[a-z0-9\-\_\.]+)?$/, // Dynamically-generated routes for Lever posts.
   /^\/blog\/author\/([a-z\-\_]+)?$/, // Blog author pages have duplicate content and are not in sitemap.
@@ -137,6 +138,7 @@ describe("sitemap integration", () => {
             throw error;
           }
 
+          //we link to whats-new pages, but they should not be in our sitemap!
           if (!linkIsValid(href)) localPagesNotFound.push(href);
 
           const target = tag.attr("target");

@@ -58,8 +58,6 @@ export async function getSitemapStream() {
 
   const pages = await getPagePaths();
   const integrations = await getStaticPaths();
-  //author and category pages automatically excluded
-  const toExclude = [/^\/whats-new\/*/];
 
   const paths = pages
     .concat(integrations)
@@ -68,10 +66,12 @@ export async function getSitemapStream() {
     )
     .sort((a, b) => a.split("/").length - b.split("/").length);
   paths.forEach((p) => {
-    let priority = 0.6;
-    if (p.split("/").length <= 2) priority = 1.0;
-    if (p.match(/^\/solutions\//)) priority = 1.0;
-    smStream.write({ url: p, priority, changefreq: "daily" });
+    if (!p.includes(/^\/whats-new\/*/)) {
+      let priority = 0.6;
+      if (p.split("/").length <= 2) priority = 1.0;
+      if (p.match(/^\/solutions\//)) priority = 1.0;
+      smStream.write({ url: p, priority, changefreq: "daily" });
+    }
   });
 
   smStream.end();
