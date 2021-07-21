@@ -138,7 +138,6 @@ describe("sitemap integration", () => {
             throw error;
           }
 
-          //we link to whats-new pages, but they should not be in our sitemap!
           if (!linkIsValid(href)) localPagesNotFound.push(href);
 
           const target = tag.attr("target");
