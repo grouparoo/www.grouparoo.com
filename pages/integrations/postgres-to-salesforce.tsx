@@ -281,7 +281,7 @@ export default function PostgresToSalesforce() {
               </p>
               <small>
                 <Link href="/integrations/sources/postgres">
-                  <a>Learn more about Grouparoo's Postgres plugin</a>
+                  <a>Learn more about Grouparoo's Postgres integration</a>
                 </Link>
               </small>
             </Col>
@@ -296,7 +296,9 @@ export default function PostgresToSalesforce() {
               </p>
               <small>
                 <Link href="/integrations/destinations/salesforce">
-                  <a>Learn more about Grouparoo's Salesforce plugin</a>
+                  <a>
+                    Learn more about Grouparoo's Salesforce data integration
+                  </a>
                 </Link>
               </small>
             </Col>

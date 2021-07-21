@@ -271,7 +271,7 @@ export default function PostgresToHubspot() {
               </p>
               <small>
                 <Link href="/integrations/sources/postgres">
-                  <a>Learn more about Grouparoo's Postgres plugin</a>
+                  <a>Learn more about Grouparoo's Postgres integration</a>
                 </Link>
               </small>
             </Col>
@@ -286,7 +286,7 @@ export default function PostgresToHubspot() {
               </p>
               <small>
                 <Link href="/integrations/destinations/hubspot">
-                  <a>Learn more about Grouparoo's Hubspot plugin</a>
+                  <a>Learn more about Grouparoo's Hubspot integration</a>
                 </Link>
               </small>
             </Col>

@@ -278,13 +278,13 @@ export default function BigQueryToSalesforce() {
               <h2>About Google Cloud BigQuery</h2>
               <p>
                 BigQuery is one of Google's main products in their Google Cloud
-                Platform. BigQuery is serverless and scalable data warehouse
+                Platform. BigQuery is a serverless and scalable data warehouse
                 designed primarily for businesses. It is queryable using SQL,
                 and has built-in machine learning capabilities.
               </p>
               <small>
                 <Link href="/integrations/sources/bigquery">
-                  <a>Learn more about Grouparoo's BigQuery plugin</a>
+                  <a>Learn more about Grouparoo's BigQuery integration</a>
                 </Link>
               </small>
             </Col>
@@ -299,7 +299,9 @@ export default function BigQueryToSalesforce() {
               </p>
               <small>
                 <Link href="/integrations/destinations/salesforce">
-                  <a>Learn more about Grouparoo's Salesforce plugin</a>
+                  <a>
+                    Learn more about Grouparoo's Salesforce data integration
+                  </a>
                 </Link>
               </small>
             </Col>
