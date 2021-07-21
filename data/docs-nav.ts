@@ -259,7 +259,7 @@ const DocsNav: NavItem[] = [
         path: "/docs/support/legal",
       },
       { title: "Support Docs: Monitoring", path: "/docs/support/monitoring" },
-      { title: "Suport Docs: Network", path: "/docs/support/network" },
+      { title: "Support Docs: Network", path: "/docs/support/network" },
       { title: "Support Docs: Permissions", path: "/docs/support/permissions" },
       { title: "Support Docs: Secrets", path: "/docs/support/secrets" },
       { title: "Support Docs: Security", path: "/docs/support/security" },
