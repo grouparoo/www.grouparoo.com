@@ -1,21 +1,20 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Head from "next/head";
 import Link from "next/link";
 import IntegrationCard from "../components/home/integrationCard";
 import { PluginData } from "../data/plugins";
+import SEO from "../components/seo";
 
 export default function IntegrationsPage() {
   return (
     <>
-      <Head>
-        <title>Grouparoo: Integrations with all of your tools</title>
-        <meta
-          name="description"
-          content="Grouparoo is real-time data infrastructure that puts marketers and operators in control."
-        />
-        <link rel="canonical" href="https://www.grouparoo.com/integrations" />
-      </Head>
+      <SEO
+        canonical={true}
+        description="Grouparoo is the Reverse ETL product that integrates with all of your team's business tools such as CRMs and Marketing Automation."
+        image="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
+        path="/integrations"
+        title="Grouparoo: Integrations with all of your tools"
+      />
 
       <div
         id="headline"
@@ -29,8 +28,9 @@ export default function IntegrationsPage() {
                 Connect your data stack with all the tools that your team uses
               </h1>
               <p className="text-big-muted">
-                Grouparoo lets you import and export your data to the world's
-                most popular tools
+                Grouparoo has integrations with leading data warehouses,
+                databases, CRMs, ad platforms, and more. Grouparoo is making new
+                integrations all the time.
               </p>
             </Col>
           </Row>

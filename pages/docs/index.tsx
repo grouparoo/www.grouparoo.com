@@ -71,9 +71,9 @@ export default function DocsIndex() {
                     Want to learn more about how to configure and use Grouparoo?
                   </h2>
                   <p>
-                    Grouparoo can be configured without needing to write any
-                    code. Learn how to connect to your Sources and Destinations
-                    to begin syncing your data.
+                    Grouparoo can be configured either with code or in the UI.
+                    Learn how to connect to your Sources and Destinations to
+                    begin syncing your data.
                   </p>
                 </Col>
                 <Col style={{ textAlign: "center" }}>
