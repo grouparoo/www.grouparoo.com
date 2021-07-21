@@ -1353,7 +1353,7 @@ PRAGMA case_sensitive_like<span class="token operator">=</span><span class="toke
         </item>
         <item>
             <title
-      ><![CDATA[Get User's Previous Path with NextJS Router]]></title>
+      ><![CDATA[Get user's Previous Path with NextJS Router]]></title>
             <link
       >https://www.grouparoo.com/blog/getting-previous-path-nextjs</link>
             <guid>grouparoo-blog-post-getting-previous-path-nextjs</guid>
@@ -1905,8 +1905,7 @@ brew services restart postgres
       />
         </item>
         <item>
-            <title
-      ><![CDATA[How TypeScript's any creates confusing bugs]]></title>
+            <title><![CDATA[How TypeScript's `any` creates bugs]]></title>
             <link
       >https://www.grouparoo.com/blog/any-wreaks-havoc-on-overloads</link>
             <guid>grouparoo-blog-post-any-wreaks-havoc-on-overloads</guid>
