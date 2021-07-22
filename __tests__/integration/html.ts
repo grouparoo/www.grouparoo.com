@@ -11,6 +11,7 @@ const EDGE_CASES = {
 };
 
 const allowedMissingLinks = [
+  /^\/whats-new\/([a-z0-9\-\_\.]+)?$/, //no-indexed but we still want it
   /^\/downloads\/([a-z0-9\-\_\.]+)?$/, // Dumping ground for downloadable sample files.
   /^\/jobs(\/[a-z0-9\-\_\.]+)?$/, // Dynamically-generated routes for Lever posts.
   /^\/blog\/author\/([a-z\-\_]+)?$/, // Blog author pages have duplicate content and are not in sitemap.
@@ -67,6 +68,7 @@ describe("sitemap integration", () => {
       let testUrl;
       let testPath;
       const productionHost = "https://www.grouparoo.com";
+
       beforeAll(async () => {
         if (!productionUrl.startsWith(productionHost)) {
           throw new Error("Invalid page: " + productionUrl);
@@ -98,6 +100,11 @@ describe("sitemap integration", () => {
         } else {
           expect(href).toEqual(productionUrl);
         }
+      });
+
+      test("whats-new sub-pages are excluded from sitemap", async () => {
+        if (testUrl === `${productionHost}/whats-new/`)
+          expect(testUrl).not.toContain("/whats-new/");
       });
 
       test("images", async () => {
