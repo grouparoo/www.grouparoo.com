@@ -119,6 +119,23 @@ export default function IntegrationsPage({
           </Row>
         </Container>
       </div>
+      {data.narrative ? (
+        <Container>
+          <div className="integrationNarrative rounded p-5 mt-5 shadow">
+            <Row>
+              <Col className="col-4">
+                <div className="">
+                  <h3>IMAGE HERE!</h3>
+                </div>{" "}
+              </Col>
+              <Col className="col-8">
+                <p>{data.narrative.p1}</p>
+                <p>{data.narrative.p2}</p>
+              </Col>
+            </Row>
+          </div>
+        </Container>
+      ) : null}
       <br />
       <br />
       <IntegrationInstallation

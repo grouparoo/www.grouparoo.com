@@ -66,6 +66,10 @@ export interface Plugin {
     imageHeight: number;
   }[];
   configOptions?: PluginConfigOptions;
+  narrative?: {
+    p1: string;
+    p2: string;
+  };
 }
 
 export const PluginData: Plugin[] = [
