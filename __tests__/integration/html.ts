@@ -81,12 +81,19 @@ describe("sitemap integration", () => {
         $ = cheerio.load(htmlContent);
       });
 
-      test("title", async () => {
+      test("it has a title", async () => {
         const title = $("title").text();
         expect(title).toBeTruthy();
       });
+      test("SEO: title length less than 60 chars", async () => {
+        //what's new posts are noindexed so it's ok if they're longer
+        if (!testUrl.includes("whats-new")) {
+          const title = $("title").text();
+          expect(title.length).toBeLessThanOrEqual(60);
+        }
+      });
 
-      test("canonical link", async () => {
+      test("it has a canonical link", async () => {
         const link = $("link[rel=canonical]");
         expect(link).toBeTruthy();
         const href = link.attr("href");

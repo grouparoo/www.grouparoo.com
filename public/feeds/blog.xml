@@ -203,7 +203,7 @@ const request = require(&quot;request&quot;);
         </item>
         <item>
             <title
-      ><![CDATA[Bundling and Distributing Next.js Sites via NPM]]></title>
+      ><![CDATA[Bundle and Distribute Next.js Sites via NPM]]></title>
             <link
       >https://www.grouparoo.com/blog/distributing-nextjs-via-npm</link>
             <guid>grouparoo-blog-post-distributing-nextjs-via-npm</guid>
@@ -249,7 +249,7 @@ node_modules
         </item>
         <item>
             <title
-      ><![CDATA[Asynchronous API patterns in CRMs and marketing tools]]></title>
+      ><![CDATA[Asynchronous APIs in CRM and marketing tools]]></title>
             <link
       >https://www.grouparoo.com/blog/asynchronous-api-patterns-in-crms</link>
             <guid>grouparoo-blog-post-asynchronous-api-patterns-in-crms</guid>
@@ -266,8 +266,7 @@ a <code>job_id</code> that you can use to check on the status of the import.</p>
       />
         </item>
         <item>
-            <title
-      ><![CDATA[Are MySQL columns names sometimes case sensitive?]]></title>
+            <title><![CDATA[Are MySQL columns names case sensitive?]]></title>
             <link
       >https://www.grouparoo.com/blog/mysql-column-names-case-sensitive</link>
             <guid>grouparoo-blog-post-mysql-column-names-case-sensitive</guid>
@@ -350,8 +349,7 @@ a <code>job_id</code> that you can use to check on the status of the import.</p>
       />
         </item>
         <item>
-            <title
-      ><![CDATA[Why do database columns have a character length of 191?]]></title>
+            <title><![CDATA[Why are database columns 191 characters?]]></title>
             <link>https://www.grouparoo.com/blog/varchar-191</link>
             <guid>grouparoo-blog-post-varchar-191</guid>
             <pubDate>Fri, 14 May 2021 00:00:00 GMT</pubDate>
@@ -368,7 +366,7 @@ a <code>job_id</code> that you can use to check on the status of the import.</p>
         </item>
         <item>
             <title
-      ><![CDATA[Build a Responsive Mega Menu Using React Bootstrap]]></title>
+      ><![CDATA[Responsive Mega Menu Using React Bootstrap]]></title>
             <link
       >https://www.grouparoo.com/blog/build-a-mega-menu-with-react-bootstrap</link>
             <guid
@@ -563,7 +561,7 @@ see more. Better yet, drop us a PR! We&#x27;re open source!</p>]]></content:enco
         </item>
         <item>
             <title
-      ><![CDATA[A Single Source of Truth with Grouparoo, Mailchimp, and Google Sheets]]></title>
+      ><![CDATA[Data Pipelining Mailchimp and Google Sheets]]></title>
             <link>https://www.grouparoo.com/blog/a-single-source-of-truth</link>
             <guid>grouparoo-blog-post-a-single-source-of-truth</guid>
             <pubDate>Wed, 12 May 2021 00:00:00 GMT</pubDate>
@@ -592,7 +590,7 @@ grouparoo generate mailchimp:email:destination dest --parent mailchimpapp
         </item>
         <item>
             <title
-      ><![CDATA[Change the Primary Key Data Type with Sequelize]]></title>
+      ><![CDATA[Change the Primary Key Type with Sequelize]]></title>
             <link
       >https://www.grouparoo.com/blog/change-primary-key-sequelize</link>
             <guid>grouparoo-blog-post-change-primary-key-sequelize</guid>
@@ -924,7 +922,7 @@ updatedAt (object): Tue Apr 20 2021 13:50:17 GMT-0400 (Eastern Daylight Time)
         </item>
         <item>
             <title
-      ><![CDATA[Google Cloud Run does not support Background Jobs]]></title>
+      ><![CDATA[Don't Do Background Jobs on Google Cloud Run]]></title>
             <link
       >https://www.grouparoo.com/blog/google-cloud-run-no-background-job</link>
             <guid>grouparoo-blog-post-google-cloud-run-no-background-job</guid>
@@ -933,8 +931,7 @@ updatedAt (object): Tue Apr 20 2021 13:50:17 GMT-0400 (Eastern Daylight Time)
       ><![CDATA[<p>Grouparoo is a self-hosted product, so we are always looking for the simplest ways to help our customers run the application. A new member of the Google Cloud Platform (GCP) family is <a href="https://cloud.google.com/run" target="_blank" rel="nofollow noopener noreferrer">Google Cloud Run</a> - which is the closest Google has come yet to a Heroku-like &quot;Git-Ops&quot; way to deploy your applications. It handles load balancing, scaling, and more for you and is a really compelling product. Combined with <a href="https://cloud.google.com/build" target="_blank" rel="nofollow noopener noreferrer">Google Cloud Build</a>, you can wire up your service to (re)deploy automatically when your git repository changes.</p><p>Grouparoo was easy to run on Google Cloud Run, with a few caveats:</p><ol><li>You&#x27;ll need a VPC connector to bridge the Cloud Run networks and any other services you might be running (like a postgres database or redis service). <a href="https://cloud.google.com/vpc/docs/configure-serverless-vpc-access#creating_a_connector" target="_blank" rel="nofollow noopener noreferrer">learn more</a></li><li>When configuring hosted Redis for Grouparoo (via Google Memorystore), be sure to enable an authentication string, but not encryption in transit.</li><li>You&#x27;ll be using &quot;Google Cloud Build&quot; to manage deployments. The Cloud Build service will also need access the <code>Serverless VPC Access User</code> and <code>Compute Network Admin</code> IAM roles.</li></ol><p>After those steps, and setting our environment variables, we had Grouparoo running on Google Cloud Run!</p><p>But... it didn&#x27;t last long. Every few hours, we would notice that our job throughput would grind to 0. We would then visit the site to look for failures, but everything appeared to be OK, and would start working again. However, only a few hours later, things would slow down again. What was going on?</p><p>After some digging, we learned that Google Cloud Run throttled based on HTTP requests, and <em>only</em> HTTP requests.</p><blockquote><p>When an application running on Cloud Run finishes handling a request, the container instance&#x27;s access to CPU will be disabled or severely limited. Therefore, you should not start background threads or routines that run outside the scope of the request handlers.</p></blockquote><p>This makes Google Cloud Run a poor platform choice for an application like Grouparoo which manages its own background jobs, and expects at least one instance to always be available for scheduling. You can learn more <a href="https://cloud.google.com/run/docs/tips/general#avoiding_background_activities" target="_blank" rel="nofollow noopener noreferrer">here</a>. That explains why when we visited the site, things started working again, and stopped after that.</p><hr/><p>If you are looking to run Grouparoo on GCP, check out our <a href="https://github.com/grouparoo/app-example-gcp" target="_blank" rel="nofollow noopener noreferrer">Google Cloud example project</a> which uses node.js natively, and connects to a hosted Redis and Postgres database.</p>]]></content:encoded>
         </item>
         <item>
-            <title
-      ><![CDATA[Sync Modes: Being intentional about how to sync data]]></title>
+            <title><![CDATA[Sync modes - Intentional data syncing]]></title>
             <link>https://www.grouparoo.com/blog/sync-modes</link>
             <guid>grouparoo-blog-post-sync-modes</guid>
             <pubDate>Tue, 13 Apr 2021 00:00:00 GMT</pubDate>
@@ -948,7 +945,7 @@ updatedAt (object): Tue Apr 20 2021 13:50:17 GMT-0400 (Eastern Daylight Time)
         </item>
         <item>
             <title
-      ><![CDATA[Extracting all MongoDB fields including the nested ones]]></title>
+      ><![CDATA[Extracting MongoDB fields - even nested ones]]></title>
             <link
       >https://www.grouparoo.com/blog/extracting-all-mongodb-fields</link>
             <guid>grouparoo-blog-post-extracting-all-mongodb-fields</guid>
@@ -1053,8 +1050,7 @@ exports<span class="token punctuation">.</span><span class="token method-variabl
       />
         </item>
         <item>
-            <title
-      ><![CDATA[Three Methods for Promisifying Node Callback Functions]]></title>
+            <title><![CDATA[Promisifying Your Node Callback Functions]]></title>
             <link
       >https://www.grouparoo.com/blog/promisifying-node-functions</link>
             <guid>grouparoo-blog-post-promisifying-node-functions</guid>
@@ -1151,8 +1147,7 @@ exports<span class="token punctuation">.</span><span class="token method-variabl
       />
         </item>
         <item>
-            <title
-      ><![CDATA[Ignoring Unused Variables When Destructuring Arrays]]></title>
+            <title><![CDATA[Unused Variables in Destructured Arrays]]></title>
             <link
       >https://www.grouparoo.com/blog/ignoring-variables-when-destructuring-arrays</link>
             <guid
@@ -1178,8 +1173,7 @@ exports<span class="token punctuation">.</span><span class="token method-variabl
       />
         </item>
         <item>
-            <title
-      ><![CDATA[Git prune to remove reference to origin/master]]></title>
+            <title><![CDATA[Git prune to remove reference to master]]></title>
             <link
       >https://www.grouparoo.com/blog/git-prune-to-remove-master</link>
             <guid>grouparoo-blog-post-git-prune-to-remove-master</guid>
@@ -1283,8 +1277,7 @@ X-RateLimit-Reset:  Time when the number of requests will be reset to the maximu
       />
         </item>
         <item>
-            <title
-      ><![CDATA[Dialect differences between SQLite and Postgres in Sequelize]]></title>
+            <title><![CDATA[SQL Dialect differences in Sequelize]]></title>
             <link>https://www.grouparoo.com/blog/sql-dialect-differences</link>
             <guid>grouparoo-blog-post-sql-dialect-differences</guid>
             <pubDate>Thu, 04 Mar 2021 00:00:00 GMT</pubDate>
@@ -1342,8 +1335,7 @@ PRAGMA case_sensitive_like<span class="token operator">=</span><span class="toke
       />
         </item>
         <item>
-            <title
-      ><![CDATA[Testing sessionStorage and localStorage with Selenium (Node)]]></title>
+            <title><![CDATA[Testing storage with Selenium (Node)]]></title>
             <link
       >https://www.grouparoo.com/blog/testing-session-storage-selenium-node</link>
             <guid
@@ -1375,7 +1367,7 @@ PRAGMA case_sensitive_like<span class="token operator">=</span><span class="toke
         </item>
         <item>
             <title
-      ><![CDATA[Getting the Previous Path in Next.js Application]]></title>
+      ><![CDATA[Get user's Previous Path with NextJS Router]]></title>
             <link
       >https://www.grouparoo.com/blog/getting-previous-path-nextjs</link>
             <guid>grouparoo-blog-post-getting-previous-path-nextjs</guid>
@@ -1411,8 +1403,7 @@ PRAGMA case_sensitive_like<span class="token operator">=</span><span class="toke
       />
         </item>
         <item>
-            <title
-      ><![CDATA[Gifit: Convert Screen Recordings to easy-to-share Animated gifs]]></title>
+            <title><![CDATA[Gifit: Turn Screen Recordings into GIFs]]></title>
             <link>https://www.grouparoo.com/blog/gifit</link>
             <guid>grouparoo-blog-post-gifit</guid>
             <pubDate>Fri, 12 Feb 2021 00:00:00 GMT</pubDate>
@@ -1498,8 +1489,7 @@ $ nvm alias default 15
       />
         </item>
         <item>
-            <title
-      ><![CDATA[Deferring Side-Effects in Node.js until the End of a Transaction]]></title>
+            <title><![CDATA[Defer Transaction Side-Effects in Node.js]]></title>
             <link
       >https://www.grouparoo.com/blog/defering-side-effects-in-node</link>
             <guid>grouparoo-blog-post-defering-side-effects-in-node</guid>
@@ -1719,8 +1709,7 @@ Done running autorun.
       />
         </item>
         <item>
-            <title
-      ><![CDATA[Measuring product usage for open source projects]]></title>
+            <title><![CDATA[Measuring usage for open source projects]]></title>
             <link
       >https://www.grouparoo.com/blog/product-metrics-open-source</link>
             <guid>grouparoo-blog-post-product-metrics-open-source</guid>
@@ -1864,8 +1853,7 @@ brew services restart postgres
       />
         </item>
         <item>
-            <title
-      ><![CDATA[Using Typescript to create a Robust API between your frontend and backend]]></title>
+            <title><![CDATA[Fullstack Typescript - create an API]]></title>
             <link
       >https://www.grouparoo.com/blog/typescript-frontend-backend</link>
             <guid>grouparoo-blog-post-typescript-frontend-backend</guid>
@@ -1931,8 +1919,7 @@ brew services restart postgres
       />
         </item>
         <item>
-            <title
-      ><![CDATA[How TypeScript's any creates confusing function overload bugs]]></title>
+            <title><![CDATA[How TypeScript's `any` creates bugs]]></title>
             <link
       >https://www.grouparoo.com/blog/any-wreaks-havoc-on-overloads</link>
             <guid>grouparoo-blog-post-any-wreaks-havoc-on-overloads</guid>
@@ -2142,7 +2129,7 @@ exports<span class="token punctuation">.</span><span class="token method-variabl
         </item>
         <item>
             <title
-      ><![CDATA[Why tracking your Product’s Performance with Events is Probably Wrong]]></title>
+      ><![CDATA[Don't Track Product Performance with Events]]></title>
             <link
       >https://www.grouparoo.com/blog/events-are-probably-wrong-for-you</link>
             <guid>grouparoo-blog-post-events-are-probably-wrong-for-you</guid>
@@ -2218,7 +2205,7 @@ exports<span class="token punctuation">.</span><span class="token method-variabl
         </item>
         <item>
             <title
-      ><![CDATA[Common Challenges for Marketing at Tech Companies]]></title>
+      ><![CDATA[Top Marketing Challenges for Tech Companies]]></title>
             <link>https://www.grouparoo.com/blog/marketing-challenges</link>
             <guid>grouparoo-blog-post-marketing-challenges</guid>
             <pubDate>Fri, 11 Sep 2020 00:00:00 GMT</pubDate>
@@ -2437,8 +2424,7 @@ $$<span class="token punctuation">;</span>
       />
         </item>
         <item>
-            <title
-      ><![CDATA[Sharing Code in Next.JS Applications with Plugins]]></title>
+            <title><![CDATA[Sharing Code in Next.JS Apps with Plugins]]></title>
             <link>https://www.grouparoo.com/blog/nextjs-plugins</link>
             <guid>grouparoo-blog-post-nextjs-plugins</guid>
             <pubDate>Thu, 23 Jul 2020 00:00:00 GMT</pubDate>

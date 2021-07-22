@@ -28,7 +28,7 @@ if (!fs.existsSync(manifestFileDir)) {
 }
 
 const localPluginPaths = docsNavData
-  .find((plugin) => plugin.title === "Plugins")
+  .find((plugin) => plugin.title.includes("Plugins"))
   .children.map((plugin) => plugin.path);
 
 console.log(localPluginPaths);
