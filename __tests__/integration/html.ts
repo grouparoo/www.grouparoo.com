@@ -102,8 +102,9 @@ describe("sitemap integration", () => {
         }
       });
 
-      test("whats-new pages are excluded from sitemap", async () => {
-        expect(testUrl).not.toContain("whats-new");
+      test("whats-new sub-pages are excluded from sitemap", async () => {
+        if (testUrl === `${productionHost}/whats-new/`)
+          expect(testUrl).not.toContain("/whats-new/");
       });
 
       test("images", async () => {
