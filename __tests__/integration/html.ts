@@ -102,9 +102,8 @@ describe("sitemap integration", () => {
         }
       });
 
-      test("noindexed pages are excluded from sitemap", async () => {
-        const metaRobots = $("meta[property='robots']");
-        expect(metaRobots).toBeUndefined();
+      test("whats-new pages are excluded from sitemap", async () => {
+        expect(testUrl).not.toContain("whats-new");
       });
 
       test("images", async () => {
