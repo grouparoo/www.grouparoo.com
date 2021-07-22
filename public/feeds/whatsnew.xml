@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Thu, 24 Jun 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 21 Jul 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,20 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Grouparoo v0.5 has new developer tooling]]></title>
+            <link>https://www.grouparoo.com/whats-new#2021-07-21-v0-5</link>
+            <guid>grouparoo-release-note-2021-07-21-v0-5</guid>
+            <pubDate>Wed, 21 Jul 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Grouparoo v0.5.1 is now available. It focuses on developer workflow. The new UI is especially exciting. It adds much more confidence to the process of configuring your workflow by letting you preview the data and make sure everything is set up correctly.</p><p>Learn more about how it works and see a video <a href="https://www.grouparoo.com/blog/software-development-workflow" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+            <enclosure
+        url="https://www.grouparoo.com/posts/software-development-workflow/workflow.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title><![CDATA[Grouparoo v0.4 is released!]]></title>
             <link>https://www.grouparoo.com/whats-new#2021-06-24-v0-4</link>

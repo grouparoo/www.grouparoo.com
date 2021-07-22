@@ -11,6 +11,18 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2021-07-21-v0-5",
+      "content_html": "<p>Grouparoo v0.5.1 is now available. It focuses on developer workflow. The new UI is especially exciting. It adds much more confidence to the process of configuring your workflow by letting you preview the data and make sure everything is set up correctly.</p><p>Learn more about how it works and see a video <a href=\"https://www.grouparoo.com/blog/software-development-workflow\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">here</a>.</p>",
+      "url": "https://www.grouparoo.com/whats-new#2021-07-21-v0-5",
+      "title": "Grouparoo v0.5 has new developer tooling",
+      "image": "https://www.grouparoo.com/posts/software-development-workflow/workflow.png",
+      "date_modified": "2021-07-21T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-06-24-v0-4",
       "content_html": "<p>Grouparoo v0.4 is a release focused on performance. There aren&#x27;t many new features, but everything Grouparoo does is faster now! In our testing, we&#x27;ve seen around a 200% increase in speed importing large amounts of Profiles and Properties from your Sources.</p><p>Learn more about what&#x27;s new and how to upgrade <a href=\"/docs/support/upgrading-grouparoo/v03-v04\">here</a>.</p>",
       "url": "https://www.grouparoo.com/whats-new#2021-06-24-v0-4",
