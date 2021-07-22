@@ -68,6 +68,7 @@ describe("sitemap integration", () => {
       let testUrl;
       let testPath;
       const productionHost = "https://www.grouparoo.com";
+
       beforeAll(async () => {
         if (!productionUrl.startsWith(productionHost)) {
           throw new Error("Invalid page: " + productionUrl);
@@ -99,6 +100,11 @@ describe("sitemap integration", () => {
         } else {
           expect(href).toEqual(productionUrl);
         }
+      });
+
+      test("noindexed pages are excluded from sitemap", async () => {
+        const metaRobots = $("meta[property='robots']");
+        expect(metaRobots).toBeUndefined();
       });
 
       test("images", async () => {
