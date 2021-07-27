@@ -72,7 +72,7 @@ export default function Healthcare() {
           <Row style={{ textAlign: "center" }}>
             <Col md={12}>
               <h2>
-                Grouparoo is a self-hosted customer data platform, syncing your
+                Grouparoo is a self-hosted reverse ETL tool, syncing your
                 source-of-truth data with 3rd party tools.
               </h2>
             </Col>

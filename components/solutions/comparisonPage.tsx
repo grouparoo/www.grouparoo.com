@@ -75,10 +75,7 @@ export default function ComparisonPage(comp: ComparisonInfo) {
           <br />
         </Container>
       </div>
-      <FeatureBanner
-        category="Customer Data Platform"
-        features={comp.features}
-      />
+      <FeatureBanner category="Data Tool" features={comp.features} />
       <div className="homePageSection">
         <Container fluid className="p-0">
           <Row className="d-flex justify-content-center">

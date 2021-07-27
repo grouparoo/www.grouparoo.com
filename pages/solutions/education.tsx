@@ -12,7 +12,7 @@ export default function Education() {
         canonical={true}
         path={`/solutions/education`}
         title="Grouparoo for Schools and EdTech companies"
-        description="Grouparoo is a customer data platform and reverse ETL tool to power data for schools and EdTech companies."
+        description="Grouparoo is a reverse ETL tool to power data for schools and EdTech companies."
         twitterCard={"summary"}
       />
 
@@ -71,7 +71,7 @@ export default function Education() {
           <Row style={{ textAlign: "center" }}>
             <Col md={12}>
               <h2>
-                Grouparoo is a self-hosted customer data platform, syncing your
+                Grouparoo is a self-hosted reverse ETL tool, syncing your
                 source-of-truth data with the communications tools you're
                 familiar with.
               </h2>
