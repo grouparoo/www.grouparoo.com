@@ -9,7 +9,7 @@ export interface FeatureArray extends Array<Feature> {}
 
 export default function FeatureBanner({
   features,
-  category = "Customer Data Platform",
+  category = "Reverse ETL Tool",
 }: {
   features: FeatureArray;
   category: string;
