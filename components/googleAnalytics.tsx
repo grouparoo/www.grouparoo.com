@@ -11,7 +11,7 @@ function GoogleAnalytics() {
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GoogleAnalyticsTrackingID}');
+gtag('config', '${GoogleAnalyticsTrackingID}', {page_path: window.location.pathname});
 `;
 
     const script = document.createElement("script");
