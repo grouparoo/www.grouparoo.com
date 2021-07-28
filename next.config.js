@@ -65,7 +65,7 @@ module.exports = {
       },
       {
         source: "/blog/snowflake-source",
-        destination: "/integrations/destinations/snowflake",
+        destination: "/integrations/sources/snowflake",
         statusCode: 301,
       },
       {
