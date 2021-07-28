@@ -34,6 +34,41 @@ module.exports = {
         statusCode: 301,
       },
       {
+        source: "/blog/bigquery-source",
+        destination: "/integrations/sources/bigquery",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/hubspot-destination",
+        destination: "/integrations/destinations/hubspot",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/mailchimp-destination",
+        destination: "/integrations/destinations/mailchimp",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/marketo-destination",
+        destination: "/integrations/destinations/marketo",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/sailthru-destination",
+        destination: "/integrations/destinations/sailthru",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/salesforce-destination",
+        destination: "/integrations/destinations/salesforce",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/snowflake-source",
+        destination: "/integrations/sources/snowflake",
+        statusCode: 301,
+      },
+      {
         source: "/feature-request",
         destination:
           "https://github.com/grouparoo/grouparoo/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=",

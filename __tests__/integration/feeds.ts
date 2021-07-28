@@ -72,7 +72,10 @@ describe("integration", () => {
 
         const titles = items.map((item) => item.title[0]);
         expect(titles).toEqual(
-          expect.arrayContaining(["BigQuery Source", "Building a Sync Engine"])
+          expect.arrayContaining([
+            "Development workflow for Reverse ETL",
+            "Building a Sync Engine",
+          ])
         );
       },
       10 * 1000
@@ -94,7 +97,10 @@ describe("integration", () => {
 
         const titles = items.map((item) => item.title);
         expect(titles).toEqual(
-          expect.arrayContaining(["BigQuery Source", "Building a Sync Engine"])
+          expect.arrayContaining([
+            "Development workflow for Reverse ETL",
+            "Building a Sync Engine",
+          ])
         );
       },
       10 * 1000
