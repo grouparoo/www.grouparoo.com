@@ -3,7 +3,7 @@ import Head from "next/head";
 
 const GoogleAnalyticsTrackingID = process.env.GOOGLE_ANALYTICS_TRACKING_ID;
 
-function GoogleAnalytics() {
+export function GoogleAnalytics() {
   useEffect(() => {
     if (!GoogleAnalyticsTrackingID) return;
 
@@ -11,7 +11,7 @@ function GoogleAnalytics() {
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GoogleAnalyticsTrackingID}');
+gtag('config', '${GoogleAnalyticsTrackingID}', {page_path: window.location.pathname});
 `;
 
     const script = document.createElement("script");
@@ -34,4 +34,8 @@ gtag('config', '${GoogleAnalyticsTrackingID}');
   );
 }
 
-export default GoogleAnalytics;
+export function googleAnalyticsPageView(url: string) {
+  if (globalThis?.gtag) {
+    globalThis.gtag("config", GoogleAnalyticsTrackingID, { page_path: url });
+  }
+}

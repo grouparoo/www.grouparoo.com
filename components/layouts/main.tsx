@@ -1,6 +1,6 @@
 import { useState, useEffect, Children, cloneElement } from "react";
 import Head from "next/head";
-import GoogleAnalytics from "../googleAnalytics";
+import { GoogleAnalytics } from "../googleAnalytics";
 import AdConversionScript from "../adConversionsScript";
 import Navigation from "../navigation";
 import Footer from "../footer";
