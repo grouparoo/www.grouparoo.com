@@ -84,7 +84,7 @@ As you can see, the users table has 5 unique users and the purchases table has 5
 
 ```sql
 SELECT
-	COALESCE(SUM(purchases.price)) as __result,
+	COALESCE(SUM(purchases.price), 0) as __result,
 	user_id as __pk
 FROM purchases
 WHERE purchases.user_id
@@ -122,9 +122,9 @@ When we look at the results from that query we end up with:
 </table>
 <br />
 
-Yikes! No user 5. That means wherever you’re using this data, when you try and access the row for user 5, you’ll get `null`! So why did `COALESCE` do this?
+Yikes! No user 5. That means wherever you’re using this data, when you try and access the row for user 5, you’ll get `null`, which may throw off calculations. So why did `COALESCE` do this?
 
-`COALESCE` did exactly what it was supposed to. A SQL query is like checking a post office box -- you might find a bunch of envelopes containing various amounts of mail, or even an empty envelope I suppose. But if there’s no mail at that post office box, you leave empty handed. If SQL can’t find any rows, it comes back empty handed as well. Think of the difference this way:
+A SQL query is like checking a post office box -- you might find a bunch of envelopes containing various amounts of mail, or even an empty envelope I suppose. But if there’s no mail at that post office box, you leave empty handed. If SQL can’t find any rows, it comes back empty handed as well. In fact, getting back a null vs a 0 vs an undefined may seem similar, but they tell us different things:
 
 <table style={{ textAlign: "center" }}>
   <thead>
@@ -347,7 +347,7 @@ print(calculate_ltv(mock_query_results, mock_aggregation_method, mock_profiles))
 
 ```
 
-To see them in action, here’s [a jsfiddle for the TypeScript solution](https://jsfiddle.net/xqd5rjb2/1/) and an IDEOne instance for the [Python solution](https://ideone.com/fork/P9zIHf).
+To see them in action, here’s [a jsfiddle for the TypeScript solution](https://jsfiddle.net/xqd5rjb2/1/) and an IDEOne instance for the [Python solution](https://ideone.com/qIgSap).
 
 ### Learn More:
 
