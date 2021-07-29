@@ -13,7 +13,7 @@ export default function GrouparooWWW(props) {
   useEffect(() => {
     storeInSession();
 
-    function handleRouteChange(url) {
+    function handleRouteChange(url: string) {
       googleAnalyticsPageView(url);
       scrollToTop();
     }
@@ -21,7 +21,7 @@ export default function GrouparooWWW(props) {
     router.events.on("routeChangeComplete", handleRouteChange);
 
     return () => {
-      router.events.off("routeChangeComplete", scrollToTop);
+      router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.asPath, router.isReady]);
 
