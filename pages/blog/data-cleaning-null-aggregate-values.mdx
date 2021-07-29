@@ -1,0 +1,499 @@
+---
+title: "Data cleaning for nulls with SQL vs. code"
+date: "2021-07-29"
+author: "Teal Larson"
+pullQuote: "When data cleaning, you'll need to decide how to handle null values.  Let's see how SQL handles empty sets, and two options for cleaning them up."
+image: "data-cleaning-null-aggregate-values/210715-cleaning-null-values.png"
+tags: [engineering]
+---
+
+When preparing your data set for analysis, it is crucial to ensure that your data set is both complete and accurate. One step in this process is deciding how to handle null values. Depending on how your data is going to be used, you may not want null values at all!
+
+## Let's clean some data
+
+We're going to take a look at calculating Lifetime Value (LTV) of a customer. We want a customer with no purchase history to have an LTV of 0. What happens if our aggregated column returns no rows, and thus is `null`? Should we clean the data at the query level or afterwards using a script?
+
+We’re going to walk through this LTV example from beginning to end looking at different options -- some that work well, some that work poorly, and some that won’t work at all.
+
+To start, we have a `users` table and a `purchases` table.
+
+users:
+
+<table style={{ textAlign: "center" }}>
+  <thead>
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+    </tr>
+  </thead>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>1</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>2</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>3</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>4</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>5</td>
+  </tr>
+</table>
+<br />
+purchases:
+
+<table style={{ textAlign: "center" }}>
+  <thead>
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> price </th>
+    </tr>
+  </thead>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>1</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>79.36</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>3</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>42.97</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>1</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>33.14</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>2</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>16.48</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>4</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>96.41</td>
+  </tr>
+</table>
+<br />
+
+As you can see, the users table has 5 unique users and the purchases table has 5 purchases from users 1, 2, 3, and 4. User 5 is not present in the purchases table. Now that we have our data, it’s time to create our calculated column. Our query is being called by a function that passes it a list of user_ids that can be used in the query.
+
+### Option 1: With a SQL Query
+
+#### Using `COALESCE`
+
+`COALESCE` is a keyword used by Postgres and other SQL dialects to return the first non-null value in a set. Because of this, it’s a common keyword for data cleaning. Let’s look closer at the following query.
+
+```sql
+SELECT
+	COALESCE(SUM(purchases.price), 0) as LTV,
+	user_id
+FROM purchases
+WHERE purchases.user_id
+	IN (1, 2, 3, 4, 5)
+GROUP BY user_id
+ORDER BY user_id;
+
+```
+
+When we look at the results from that query we end up with:
+
+<table style={{ textAlign: "center" }}>
+  <thead>
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> LTV </th>
+    </tr>
+  </thead>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>1</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>112.50</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>2</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>16.48</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>3</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>42.97</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>4</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>96.41</td>
+  </tr>
+</table>
+<br />
+
+Yikes! No user 5. That means wherever you’re using this data, when you try and access the row for user 5, you’ll get `null`, which may throw off calculations. So why did `COALESCE` do this?
+
+A SQL query is like checking a post office box -- you might find a bunch of envelopes containing various amounts of mail, or even an empty envelope I suppose. But if there’s no mail at that post office box, you leave empty handed. If SQL can’t find any rows, it comes back empty handed as well. In fact, getting back a null vs a 0 vs an undefined may seem similar, but they tell us different things:
+
+<table style={{ textAlign: "center" }}>
+  <thead>
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> value </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> meaning </th>
+    </tr>
+  </thead>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>0</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>
+      We know something is there and its value is zero.
+    </td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>null</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>
+      We know something is there and its value is unspecified
+    </td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>empty set</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>
+      We know nothing is there
+    </td>
+  </tr>
+</table>
+<br />
+
+So the issue with our query isn’t with the `COALESCE` but with the order of execution - there are no rows to return with a `user_id` of 5 in `purchases`. Let's think about the logical order of how we get there:
+
+The order that query gets executed in is:
+
+1. Find rows in `purchases` that match the given user ids (5 rows, matching 4 of the given user ids)
+2. On each of the rows returned, return either the sum of the price column or 0 (same 5 rows, with aggregated data for LTV)
+3. Group by user_id and order by user_id (4 rows returned, in order by user_id, with aggregated data for LTV)
+
+After the first line, there isn’t even a row for user 5 anymore. We can expect the same behavior if we try a `CASE` switch for our LTV because, again, there is no row, no data for it to act on.
+
+Had our `purchases` table contained a row for user_id 5 with `null` for price, it would have returned as expected. Knowing that, a second option is to break out a right outer join.
+
+#### `RIGHT OUTER JOIN`
+
+Knowing that our issue was with missing rows, we could go the route of a `RIGHT OUTER JOIN` with our users table to achieve that. This way, we’ll get back a row for every user from `users`, and, if it’s there, the sum of their data from the “price” column in `purchases`, otherwise a 0.
+
+```sql
+SELECT
+users.id as user_id,
+	COALESCE(SUM("price"), 0) as LTV
+FROM purchases
+	RIGHT OUTER JOIN users
+	ON demo.purchases.user_id = users.id
+GROUP BY user_id
+ORDER BY user_id;
+```
+
+<table style={{ textAlign: "center" }}>
+  <thead>
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> LTV </th>
+    </tr>
+  </thead>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>1</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>112.50</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>2</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>16.48</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>3</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>42.97</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>4</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>96.41</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black", padding: "4px" }}>5</td>
+    <td style={{ border: "1px solid black", padding: "4px" }}>0</td>
+  </tr>
+</table>
+<br />
+
+It works! Fantastic.
+
+<Alert variant="primary">
+  {" "}
+  💡 If all of your foreign keys are coming from a single table, the above might
+  be the right solution for you. However, in more complex cases, you may not have
+  something like a generic “users” table.
+</Alert>
+
+Your primary data may be spread across multiple tables -- for instance, you may have a setup like:
+
+location_a_customers
+
+<table style={{ textAlign: "center" }}>
+  <thead>
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Column </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Type </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Collation </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Nullable </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Default </th>
+    </tr>
+  </thead>
+  <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+  </tr>
+  <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> email </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>  
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> last_name </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>  
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>
+
+</table>
+<br />
+
+location_b_customers
+
+<table style={{ textAlign: "center" }}>
+  <thead>
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Column </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Type </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Collation </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Nullable </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Default </th>
+    </tr>
+  </thead>
+  <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+  </tr>
+  <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> email </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>  
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> last_name </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>  
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>
+
+</table>
+<br />
+
+that you want to use with a purchases table:
+
+<table style={{ textAlign: "center" }}>
+  <thead>
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Column </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Type </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Collation </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Nullable </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Default </th>
+    </tr>
+  </thead>
+  <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+  </tr>
+  <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> purchase_amount </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> decimal </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>  
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> item_sku </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>  
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> item_category </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>
+
+</table>
+
+Fear not, we can still make it happen. Though, for everyone’s sake, at this point I would recommend using a function over using SQL! Just for giggles, let's prove it's possible first.
+
+#### `UNION` with a list
+
+<Alert variant="warning">
+  {" "}
+  ⚠️ Overkill query ahead. You should really try a function instead.
+</Alert>
+
+One way around the issue of having multiple users tables would be to create a list of all the `user_id`s for the query with a sublist of (`user_id`, 0), then `UNION` the original query with that list. If it sounds overkill, that’s because it is:
+
+```sql
+SELECT
+  DISTINCT on (user_id) user_id,
+  purchases FROM( SELECT user_id, COUNT(*) as LTV
+FROM purchases
+WHERE purchases.user_id in (1, 2, 3, 4, 5)
+GROUP BY user_id
+
+UNION
+
+SELECT * FROM (
+  values (1, 0), (2, 0), (3, 0), (4, 0), (5, 0))
+  AS t (user_id, LTV)
+  ORDER BY user_id, LTV DESC
+) AS data;
+
+```
+
+Which returns our beloved 0:
+
+<table style={{ textAlign: "center" }}>
+  <thead>
+    <tr>
+      <th style={{ border: "1px solid black" }}> user_id </th>
+      <th style={{ border: "1px solid black" }}> LTV </th>
+    </tr>
+  </thead>
+  <tr>
+    <td style={{ border: "1px solid black" }}>1</td>
+    <td style={{ border: "1px solid black" }}>112.50</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black" }}>2</td>
+    <td style={{ border: "1px solid black" }}>16.48</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black" }}>3</td>
+    <td style={{ border: "1px solid black" }}>42.97</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black" }}>4</td>
+    <td style={{ border: "1px solid black" }}>96.41</td>
+  </tr>
+  <tr>
+    <td style={{ border: "1px solid black" }}>5</td>
+    <td style={{ border: "1px solid black" }}>0</td>
+  </tr>
+</table>
+<br />
+
+The query isn’t too out of hand for 5 users, but imagine having to write that out (or have a function write that out) for 500 users! What about 10,000! Just because something works, doesn’t make it necessarily the right idea. So let’s try it from the programming sde.
+
+### Option 2: After the SQL Query 🥇
+
+We’re really asking a lot of SQL there. While it was possible, it was not very pretty, very concise, or very readable. It also muddies things up as it is technically returning data from our database that isn’t there. Thankfully, transforming the data we do get back using a function is a much more straightforward task!
+
+I worked this one out in both TypeScript and Python. I love that we use TypeScript for building out our data pipeline because dynamic typing helps keep the guard rails on and make sure I’m paying attention to what I’m working with -- especially as our data structures grow in complexity, it helps to be completely sure what you’re working with. And Python for all the Python-loving data folks as well.
+
+Here’s how we can use a function to transform our data to include 0s. We start by setting the LTV of every id as [0], then iterate through our results and replace the [0]s as we go:
+
+#### TypeScript:
+
+```ts
+interface Profile {
+  id: string;
+}
+
+interface DataResonseRow {
+  id: string;
+  data: number[];
+}
+
+function calculateLTV(
+  queryResults: DataResponseRow[],
+  aggregationMethod: string,
+  profiles: Profile[]
+) {
+  const responsesById: { [id: string]: any[] } = {};
+
+  for (const i in profiles) {
+    if (aggregationMethod === "count" || aggregationMethod === "sum") {
+      //default all entries for counted or summed aggregations to 0 to start... will be replaced later if there is a response
+      responsesById[profiles[i].id] = [0];
+    }
+  }
+
+  for (const row in queryResults) {
+    responsesById[queryResults[row].id] = queryResults[row].data;
+  }
+
+  return responsesById;
+}
+```
+
+#### Python:
+
+<Alert variant="secondary">
+  🐍 Note: There are many Python libraries that help with data cleaning and
+  analytics. Two popular choices are [pandas](https://pandas.pydata.org/) and
+  [matplotlib](https://matplotlib.org/stable/contents.html). However, this is a
+  super straightforward solution using plain-vanilla Python.{" "}
+</Alert>
+
+```py
+def calculate_ltv (query_results, aggregation_method, profiles):
+  responses_by_id = {}
+
+  for  i in profiles:
+    if aggregation_method == "count" or aggregation_method == "sum":
+        # default all entries for counted or summed aggregations to 0 to start... will be replaced later if there is a response
+        responses_by_id[i["id"]] = [0]
+
+
+  for row in query_results:
+    responses_by_id[row["id"]] = row["data"]
+
+  return responses_by_id
+
+
+mock_query_results = [{"id":1, "data":[112.50]}, {"id":2, "data":[16.48]}, {"id":3, "data":[42.97]}, {"id":4, "data":[96.41]}]
+mock_aggregation_method = "sum"
+mock_profiles = [{"id": 1}, {"id": 2}, {"id": 3}, {"id": 4}, {"id": 5}]
+
+
+print(calculate_ltv(mock_query_results, mock_aggregation_method, mock_profiles));
+
+```
+
+To see them in action, here’s [a jsfiddle for the TypeScript solution](https://jsfiddle.net/xqd5rjb2/1/) and an IDEOne instance for the [Python solution](https://ideone.com/qIgSap).
+
+### Learn More:
+
+- To learn more about handling conditionals and aggregations in Postgresql, check out [their docs](https://www.postgresql.org/docs/8.1/functions-conditional.html)
