@@ -20,10 +20,10 @@ export default function Meet() {
     formState: { errors },
   } = useForm();
   const { query } = useRouter();
+  const GoogleAdsDemoID = process.env.GOOGLE_ADS_DEMO_CONVERSION;
   const [loading, setLoading] = useState(false);
   const [requested, setRequested] = useState(false);
   const [error, setError] = useState<FormError>({ email: null, generic: null });
-
   const errorHandler = new ErrorHandler();
 
   errorHandler.subscribe("result", (e) => {
@@ -74,15 +74,20 @@ export default function Meet() {
     data.medium = medium;
     data.campaign = campaign;
 
-    if (isBrowser() && globalThis?.gtag) {
-      globalThis.gtag("event", "conversion", {
-        send_to: "AW-467110449/NGnKCL62zY8CELGU3t4B", // demoRequest conversion
-        event_callback: () => {},
-      });
-    }
-
     const response = await execApi("post", `/api/v1/demo-request`, data);
-    if (response?.demoRequest) setRequested(true);
+    if (response?.demoRequest) {
+      setRequested(true);
+      if (isBrowser() && globalThis?.gtag) {
+        globalThis.gtag("event", "conversion", {
+          send_to: GoogleAdsDemoID,
+          event_callback: () => {},
+        });
+        globalThis.gtag("event", "demo-request", {
+          event_category: "conversion",
+          event_callback: () => {},
+        });
+      }
+    }
     setLoading(false);
   };
 

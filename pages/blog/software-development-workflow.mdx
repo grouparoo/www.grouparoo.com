@@ -1,0 +1,98 @@
+---
+title: "Development workflow for Reverse ETL"
+date: "2021-07-19"
+author: "Brian Leonard"
+pullQuote: "Grouparoo's developer tooling enables a git workflow on your Reverse ETL project."
+image: "software-development-workflow/video.png"
+tags: [product, engineering]
+---
+
+An important trend in data engineering is the move towards the software development workflow that is the norm for more product-focused teams. This includes aspects such as config-as-code checked into git, tests and continuous integration, code reviews, staging environments, and production deployments.
+
+<Image
+  alt="Software development workflow"
+  src="software-development-workflow/workflow.png"
+  centered
+  width={690}
+  height={300}
+/>
+
+Building on our [config-as-code](https://www.grouparoo.com/blog/declarative-data-sync) approach, the Grouparoo 0.5 release now makes this workflow even easier by enabling the UI to generate this config. The UI adds much more confidence to the process by:
+
+- Introspecting your source tables/columns and your destination fields
+- Verifying credentials and previewing data
+- Working with sample profiles to iterate on nuances
+- Automatically writing configuration files to check into source control
+
+Take a look at how it works.
+
+<p className="video-responsive">
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/FCtZknaX1WA?rel=0"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  ></iframe>
+</p>
+
+## Evolution
+
+Over the last few years, data teams have invested a lot of resources into making their data warehouse the source of truth for their customer data. They've generated reports and insights that has helped their business make better decisions.
+
+In this environment, it was not always necessary to go through the whole software development workflow. Many things were ad hoc anyway. Analysts were not always collaborating. The worst-case scenario was an incorrect report. That's not great, but it's also not the end of the world.
+
+As this data got more and more useful, other teams wanted to be able to put it into action. In response to that need, we work with companies that are looking to operationalize their data warehouse. Data teams are calling this [Reverse ETL](https://www.grouparoo.com/solutions/reverse-etl) because it is writing data back to the tools the business uses.
+
+These integrations create more leverage, but the worst case scenario has escalated. A [Marketo data integration](https://www.grouparoo.com/integrations/destinations/marketo) could send a million emails to the wrong people. A more rigorous workflow is needed.
+
+## Grouparoo Process
+
+In Grouparoo, our JSON-based config files map the data from your source data warehouse to destinations like our [Salesforce data integrations](https://www.grouparoo.com/integrations/destinations/salesforce), [Zendesk integration](https://www.grouparoo.com/integrations/destinations/zendesk), and [others](https://www.grouparoo.com/integrations).
+
+The new UI developer tool makes it easy to create and iterate on this pipeline.
+
+Enter your credentials or use [environment variables](https://www.grouparoo.com/docs/support/environment) to connect to your warehouse. Select the tables and columns where your customer data lives. If you need it, you can use aggregations from many tables or write your own custom SQL.
+
+<Image
+  alt="Snowflake source"
+  src="software-development-workflow/01-snowflake.png"
+  centered
+  width={800}
+  height={461}
+/>
+
+When mapping to a destination, the UI pre-fills tool-specific details. For example, a [Mailchimp integration](https://www.grouparoo.com/integrations/destinations/mailchimp) will prompt you to pick the Audience List from your account. It will then know all the Merge Vars so you can map to them. A [Salesforce integration](https://www.grouparoo.com/integrations/destinations/salesforce) will know all about your Objects.
+
+<Image
+  alt="Salesforce destination"
+  src="software-development-workflow/02-salesforce.png"
+  centered
+  width={800}
+  height={611}
+/>
+
+Many companies have millions of customers they want to sync. We have designed the developer tooling, though, to work on just a few sample profiles at a time. This allows you to gain confidence while configuring the pipeline. Use them to preview how those million will work when it goes to production.
+
+<Image
+  alt="Profile details"
+  src="software-development-workflow/03-profile.png"
+  centered
+  width={800}
+  height={958}
+/>
+
+To gain more confidence, you can also write [tests](https://www.grouparoo.com/docs/running/testing) to lock in the behaviors. Run these tests on CI to make sure everything is working as expected. Don't worry, it won't actually change your destinations. We have seen people use either seeded, staging, or production data in these tests.
+
+All of this results in a changes to your configuration that is reflected in the JSON files and tests. Let's make a Pull Request and get it reviewed. When deployed to staging or production, the configuration goes into effect and Grouparoo automatically syncs the right data.
+
+<Image
+  alt="Config pull request"
+  src="software-development-workflow/04-github.png"
+  centered
+  width={800}
+  height={603}
+/>
+
+These screenshots are from the [Snowflake to Salesforce](https://github.com/grouparoo/app-example-snowflake-salesforce) example app. You can also check out another example of our developer tooling with less requirements in our [local data example](https://github.com/grouparoo/app-example-config).

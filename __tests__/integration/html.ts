@@ -11,6 +11,7 @@ const EDGE_CASES = {
 };
 
 const allowedMissingLinks = [
+  /^\/whats-new\/([a-z0-9\-\_\.]+)?$/, //no-indexed but we still want it
   /^\/downloads\/([a-z0-9\-\_\.]+)?$/, // Dumping ground for downloadable sample files.
   /^\/jobs(\/[a-z0-9\-\_\.]+)?$/, // Dynamically-generated routes for Lever posts.
   /^\/blog\/author\/([a-z\-\_]+)?$/, // Blog author pages have duplicate content and are not in sitemap.
@@ -67,6 +68,7 @@ describe("sitemap integration", () => {
       let testUrl;
       let testPath;
       const productionHost = "https://www.grouparoo.com";
+
       beforeAll(async () => {
         if (!productionUrl.startsWith(productionHost)) {
           throw new Error("Invalid page: " + productionUrl);
@@ -79,12 +81,19 @@ describe("sitemap integration", () => {
         $ = cheerio.load(htmlContent);
       });
 
-      test("title", async () => {
+      test("it has a title", async () => {
         const title = $("title").text();
         expect(title).toBeTruthy();
       });
+      test("SEO: title length less than 60 chars", async () => {
+        //what's new posts are noindexed so it's ok if they're longer
+        if (!testUrl.includes("whats-new")) {
+          const title = $("title").text();
+          expect(title.length).toBeLessThanOrEqual(60);
+        }
+      });
 
-      test("canonical link", async () => {
+      test("it has a canonical link", async () => {
         const link = $("link[rel=canonical]");
         expect(link).toBeTruthy();
         const href = link.attr("href");
@@ -98,6 +107,11 @@ describe("sitemap integration", () => {
         } else {
           expect(href).toEqual(productionUrl);
         }
+      });
+
+      test("whats-new sub-pages are excluded from sitemap", async () => {
+        if (testUrl === `${productionHost}/whats-new/`)
+          expect(testUrl).not.toContain("/whats-new/");
       });
 
       test("images", async () => {

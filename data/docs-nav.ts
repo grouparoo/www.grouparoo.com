@@ -1,6 +1,7 @@
 interface NavItem {
   title: string;
   path: string;
+  linkText?: string;
   children?: NavItem[];
   target?: "_self" | "_blank" | "_parent" | "_top";
 }
@@ -8,11 +9,11 @@ interface NavItem {
 const DocsNav: NavItem[] = [
   // -- Getting Started --
   {
-    title: "Getting Started",
+    title: "Getting Started with Grouparoo",
     path: "/docs/getting-started",
     children: [
       {
-        title: "Product Concepts",
+        title: "Core Product Concepts",
         path: "/docs/getting-started/product-concepts",
       },
     ],
@@ -23,9 +24,21 @@ const DocsNav: NavItem[] = [
     title: "Step 1: Install",
     path: "/docs/installation",
     children: [
-      { title: "Node.js", path: "/docs/installation/node" },
-      { title: "Docker", path: "/docs/installation/docker" },
-      { title: "Plugins", path: "/docs/installation/plugins" },
+      {
+        title: "Installing Grouparoo with Node.js",
+        linkText: "Node.js",
+        path: "/docs/installation/node",
+      },
+      {
+        title: "Installing Grouparoo with Docker",
+        linkText: "Docker",
+        path: "/docs/installation/docker",
+      },
+      {
+        title: "Installing Grouparoo Plugins",
+        linkText: "Plugins",
+        path: "/docs/installation/plugins",
+      },
     ],
   },
 
@@ -100,8 +113,16 @@ const DocsNav: NavItem[] = [
           },
         ],
       },
-      { title: "Settings", path: "/docs/running/settings" },
-      { title: "Testing", path: "/docs/running/testing" },
+      {
+        title: "Running Grouparoo: Settings",
+        linkText: "Settings",
+        path: "/docs/running/settings",
+      },
+      {
+        title: "Running Grouparoo: Testing",
+        linkText: "Testing",
+        path: "/docs/running/testing",
+      },
     ],
   },
 
@@ -140,7 +161,7 @@ const DocsNav: NavItem[] = [
 
   // -- CLI --
   {
-    title: "CLI",
+    title: "Grouparoo CLI",
     path: "/docs/cli",
     children: [
       {
@@ -160,7 +181,8 @@ const DocsNav: NavItem[] = [
 
   // -- Plugins --
   {
-    title: "Plugins",
+    title: "Plugins Documentation",
+    linkText: "Plugins",
     path: "/docs/plugins",
     children: [
       { title: "BigQuery", path: "/docs/plugins/grouparoo-bigquery" },
@@ -175,7 +197,8 @@ const DocsNav: NavItem[] = [
 
   // -- Tutorials --
   {
-    title: "Tutorials",
+    title: "Tutorials: Get Started With Your Own Instance",
+    linkText: "Tutorials",
     path: "/docs/tutorials",
     children: [
       {
@@ -187,7 +210,8 @@ const DocsNav: NavItem[] = [
 
   // -- Development --
   {
-    title: "Development",
+    title: "Development Documentation",
+    linkText: "Development",
     path: "/docs/development",
     children: [
       { title: "Databases", path: "/docs/development/databases" },
@@ -204,7 +228,8 @@ const DocsNav: NavItem[] = [
 
   // -- Community --
   {
-    title: "Community",
+    title: "Join the Grouparoo Community",
+    linkText: "Community",
     path: "/docs/community",
     children: [
       { title: "Code of Conduct", path: "/docs/community/code-of-conduct" },
@@ -221,19 +246,24 @@ const DocsNav: NavItem[] = [
 
   // -- Support --
   {
-    title: "Support",
+    title: "Support Documentation",
+    linkText: "Support",
     path: "/docs/support",
     children: [
       { title: "Common Issues", path: "/docs/support/common-issues" },
       { title: "Debugging", path: "/docs/support/debugging" },
       { title: "Environment", path: "/docs/support/environment" },
-      { title: "Legal", path: "/docs/support/legal" },
-      { title: "Monitoring", path: "/docs/support/monitoring" },
-      { title: "Network", path: "/docs/support/network" },
-      { title: "Permissions", path: "/docs/support/permissions" },
-      { title: "Secrets", path: "/docs/support/secrets" },
-      { title: "Security", path: "/docs/support/security" },
-      { title: "Telemetry", path: "/docs/support/telemetry" },
+      {
+        title: "Grouparoo Privacy Policy & Legal",
+        linkText: "Privacy Policy & Legal",
+        path: "/docs/support/legal",
+      },
+      { title: "Support Docs: Monitoring", path: "/docs/support/monitoring" },
+      { title: "Support Docs: Network", path: "/docs/support/network" },
+      { title: "Support Docs: Permissions", path: "/docs/support/permissions" },
+      { title: "Support Docs: Secrets", path: "/docs/support/secrets" },
+      { title: "Support Docs: Security", path: "/docs/support/security" },
+      { title: "Support Docs: Telemetry", path: "/docs/support/telemetry" },
       {
         title: "Upgrade Guides",
         path: "/docs/support/upgrading-grouparoo",

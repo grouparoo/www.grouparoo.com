@@ -19,7 +19,7 @@ const NavListItem = ({ item }) => {
           target={item.target}
           rel={item.target === "_blank" ? "nofollow noopener noreferrer" : null}
         >
-          {item.title}
+          {item.linkText ? item.linkText : item.title}
         </a>
       </Link>
       {isActive ? <NavList items={item.children} /> : null}
@@ -66,7 +66,9 @@ export function TableOfContents() {
                       }
                       className="sectionHeading"
                     >
-                      <strong>{section.title}</strong>
+                      <strong>
+                        {section.linkText ? section.linkText : section.title}
+                      </strong>
                     </a>
                   </Link>
                   {isActiveSection ? (

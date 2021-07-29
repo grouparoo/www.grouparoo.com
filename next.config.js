@@ -4,6 +4,10 @@ module.exports = {
   env: {
     ROBOTS_DISABLED: process.env.ROBOTS_DISABLED,
     GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+    GOOGLE_ADS_DEMO_CONVERSION: process.env.GOOGLE_ADS_DEMO_CONVERSION,
+    GOOGLE_ADS_SUBSCRIBE_CONVERSION:
+      process.env.GOOGLE_ADS_SUBSCRIBE_CONVERSION,
+    GOOGLE_ADS_TRIAL_CONVERSION: process.env.GOOGLE_ADS_TRIAL_CONVERSION,
   },
   async rewrites() {
     return [];
@@ -27,6 +31,41 @@ module.exports = {
         source: "/docker-compose",
         destination:
           "https://raw.githubusercontent.com/grouparoo/omnibus/main/docker-compose.yml",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/bigquery-source",
+        destination: "/integrations/sources/bigquery",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/hubspot-destination",
+        destination: "/integrations/destinations/hubspot",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/mailchimp-destination",
+        destination: "/integrations/destinations/mailchimp",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/marketo-destination",
+        destination: "/integrations/destinations/marketo",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/sailthru-destination",
+        destination: "/integrations/destinations/sailthru",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/salesforce-destination",
+        destination: "/integrations/destinations/salesforce",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/snowflake-source",
+        destination: "/integrations/sources/snowflake",
         statusCode: 301,
       },
       {

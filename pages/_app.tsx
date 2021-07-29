@@ -4,6 +4,7 @@ import Layout from "../components/layouts/main";
 import FloatingLayout from "../components/layouts/floating";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { googleAnalyticsPageView } from "../components/googleAnalytics";
 
 export default function GrouparooWWW(props) {
   const { Component } = props;
@@ -12,7 +13,12 @@ export default function GrouparooWWW(props) {
   useEffect(() => {
     storeInSession();
 
-    router.events.on("routeChangeComplete", scrollToTop);
+    function handleRouteChange(url) {
+      googleAnalyticsPageView(url);
+      scrollToTop();
+    }
+
+    router.events.on("routeChangeComplete", handleRouteChange);
 
     return () => {
       router.events.off("routeChangeComplete", scrollToTop);
