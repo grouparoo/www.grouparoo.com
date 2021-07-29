@@ -1,7 +1,4 @@
-import { Children, cloneElement } from "react";
 import Head from "next/head";
-import { GoogleAnalytics } from "../googleAnalytics";
-import AdConversionScript from "../adConversionsScript";
 import { Container } from "react-bootstrap";
 
 function FloatingLayout({ children }) {
@@ -117,9 +114,6 @@ function FloatingLayout({ children }) {
           {children}
         </Container>
       </div>
-
-      <GoogleAnalytics />
-      <AdConversionScript />
     </>
   );
 }
