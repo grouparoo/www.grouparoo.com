@@ -24,7 +24,6 @@ export default function IntegrationCard({
   const card = (
     <div
       style={{ borderRadius: "5px", boxShadow: "5px 5px 5px 5px lightgrey" }}
-      className="h-100"
     >
       <Card
         bg="dark"
