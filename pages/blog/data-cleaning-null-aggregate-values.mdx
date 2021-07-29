@@ -76,7 +76,7 @@ purchases:
 
 As you can see, the users table has 5 unique users and the purchases table has 5 purchases from users 1, 2, 3, and 4. User 5 is not present in the purchases table. Now that we have our data, it’s time to create our calculated column. Our query is being called by a function that passes it a list of user_ids that can be used in the query.
 
-### Option 1: Using SQL
+### Option 1: With a SQL Query
 
 #### Using `COALESCE`
 
@@ -84,13 +84,13 @@ As you can see, the users table has 5 unique users and the purchases table has 5
 
 ```sql
 SELECT
-	COALESCE(SUM(purchases.price), 0) as __result,
-	user_id as __pk
+	COALESCE(SUM(purchases.price), 0) as LTV,
+	user_id
 FROM purchases
 WHERE purchases.user_id
 	IN (1, 2, 3, 4, 5)
-GROUP BY __pk
-ORDER BY __pk;
+GROUP BY user_id
+ORDER BY user_id;
 
 ```
 
@@ -99,8 +99,8 @@ When we look at the results from that query we end up with:
 <table style={{ textAlign: "center" }}>
   <thead>
     <tr>
-      <th style={{ border: "1px solid black", padding: "4px" }}> __pk </th>
-      <th style={{ border: "1px solid black", padding: "4px" }}> __result </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> LTV </th>
     </tr>
   </thead>
   <tr>
@@ -172,20 +172,20 @@ Knowing that our issue was with missing rows, we could go the route of a `RIGHT 
 
 ```sql
 SELECT
-demo.users.id as __pk,
-	COALESCE(SUM("price"), 0) as purchases
-FROM demo.purchases
-	RIGHT OUTER JOIN demo.users
-	ON demo.purchases.user_id = demo.users.id
-GROUP BY __pk
-ORDER BY __pk;
+users.id as user_id,
+	COALESCE(SUM("price"), 0) as LTV
+FROM purchases
+	RIGHT OUTER JOIN users
+	ON demo.purchases.user_id = users.id
+GROUP BY user_id
+ORDER BY user_id;
 ```
 
 <table style={{ textAlign: "center" }}>
   <thead>
     <tr>
-      <th style={{ border: "1px solid black", padding: "4px" }}> __pk </th>
-      <th style={{ border: "1px solid black", padding: "4px" }}> __result </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> LTV </th>
     </tr>
   </thead>
   <tr>
@@ -220,7 +220,140 @@ It works! Fantastic.
   something like a generic “users” table.
 </Alert>
 
-Your primary data may be spread across multiple tables. Fear not, we can still make it happen. Though, for everyone’s sake, at this point I would recommend using a function over using SQL! Just for giggles, let's prove it's possible first.
+Your primary data may be spread across multiple tables -- for instance, you may have a setup like:
+
+location_a_customers
+
+<table style={{ textAlign: "center" }}>
+  <thead>
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Column </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Type </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Collation </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Nullable </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Default </th>
+    </tr>
+  </thead>
+  <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+  </tr>
+  <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> email </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>  
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> last_name </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>  
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>
+
+</table>
+<br />
+
+location_b_customers
+
+<table style={{ textAlign: "center" }}>
+  <thead>
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Column </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Type </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Collation </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Nullable </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Default </th>
+    </tr>
+  </thead>
+  <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+  </tr>
+  <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> email </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>  
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> last_name </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>  
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>
+
+</table>
+<br />
+
+that you want to use with a purchases table:
+
+<table style={{ textAlign: "center" }}>
+  <thead>
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Column </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Type </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Collation </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Nullable </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> Default </th>
+    </tr>
+  </thead>
+  <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> user_id </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+  </tr>
+  <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> purchase_amount </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> decimal </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>  
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> item_sku </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>  
+    <tr>
+      <th style={{ border: "1px solid black", padding: "4px" }}> item_category </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> string </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}> not null </th>
+      <th style={{ border: "1px solid black", padding: "4px" }}>  </th>
+    </tr>
+
+</table>
+
+Fear not, we can still make it happen. Though, for everyone’s sake, at this point I would recommend using a function over using SQL! Just for giggles, let's prove it's possible first.
 
 #### `UNION` with a list
 
@@ -231,10 +364,21 @@ Your primary data may be spread across multiple tables. Fear not, we can still m
 
 One way around the issue of having multiple users tables would be to create a list of all the `user_id`s for the query with a sublist of (`user_id`, 0), then `UNION` the original query with that list. If it sounds overkill, that’s because it is:
 
-```sql SELECT DISTINCT on (__pk) __pk, purchases FROM( SELECT user_id as __pk, COUNT(*)
-as purchases FROM demo.purchases WHERE demo.purchases.user_id in (1, 2, 3, 4, 5)
-GROUP BY __pk UNION SELECT * FROM (values (1, 0), (2, 0), (3, 0), (4, 0), (5, 0))
-AS t (__pk, purchases) ORDER BY __pk, purchases DESC ) AS data;
+```sql
+SELECT
+  DISTINCT on (user_id) user_id,
+  purchases FROM( SELECT user_id, COUNT(*) as LTV
+FROM purchases
+WHERE purchases.user_id in (1, 2, 3, 4, 5)
+GROUP BY user_id
+
+UNION
+
+SELECT * FROM (
+  values (1, 0), (2, 0), (3, 0), (4, 0), (5, 0))
+  AS t (user_id, LTV)
+  ORDER BY user_id, LTV DESC
+) AS data;
 
 ```
 
@@ -243,8 +387,8 @@ Which returns our beloved 0:
 <table style={{ textAlign: "center" }}>
   <thead>
     <tr>
-      <th style={{ border: "1px solid black" }}> __pk </th>
-      <th style={{ border: "1px solid black" }}> __result </th>
+      <th style={{ border: "1px solid black" }}> user_id </th>
+      <th style={{ border: "1px solid black" }}> LTV </th>
     </tr>
   </thead>
   <tr>
@@ -272,7 +416,7 @@ Which returns our beloved 0:
 
 The query isn’t too out of hand for 5 users, but imagine having to write that out (or have a function write that out) for 500 users! What about 10,000! Just because something works, doesn’t make it necessarily the right idea. So let’s try it from the programming sde.
 
-### Option 2: Using a function 🥇
+### Option 2: After the SQL Query 🥇
 
 We’re really asking a lot of SQL there. While it was possible, it was not very pretty, very concise, or very readable. It also muddies things up as it is technically returning data from our database that isn’t there. Thankfully, transforming the data we do get back using a function is a much more straightforward task!
 
@@ -317,9 +461,10 @@ function calculateLTV(
 #### Python:
 
 <Alert variant="secondary">
-  🐍 Note: There are many Python libraries that help with data cleaning!
-  Definitely check them out. However, this is a super straightforward solution
-  using plain-vanilla Python.{" "}
+  🐍 Note: There are many Python libraries that help with data cleaning and
+  analytics. Two popular choices are [pandas](https://pandas.pydata.org/) and
+  [matplotlib](https://matplotlib.org/stable/contents.html). However, this is a
+  super straightforward solution using plain-vanilla Python.{" "}
 </Alert>
 
 ```py
