@@ -25,8 +25,7 @@
       type="application/rss+xml"
     />
         <item>
-            <title
-      ><![CDATA[Data cleaning for nulls with SQL vs. code: Grouparoo Blog]]></title>
+            <title><![CDATA[Data cleaning for nulls with SQL vs. code]]></title>
             <link
       >https://www.grouparoo.com/blog/data-cleaning-null-aggregate-values</link>
             <guid>grouparoo-blog-post-data-cleaning-null-aggregate-values</guid>
