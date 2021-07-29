@@ -1,5 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
-import Image from "../../../components/Image";
+import { Container, Button, Row, Col } from "react-bootstrap";
 import IntegrationCard from "../../../components/home/integrationCard";
 import IntegrationMappings from "../../../components/home/integrationMappings";
 import IntegrationInstallation from "../../../components/home/integrationInstallation";
@@ -212,6 +211,13 @@ function DestionationHeaderArrow({ data }) {
             {data.name} integration for all your tools & customer data
           </h1>
           <p>{data.description}</p>
+          <Row>
+            <Col>
+              <Button variant="primary" href="/get-started" className="ml-auto">
+                Start a Free Trial →
+              </Button>
+            </Col>
+          </Row>
         </Col>
         <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
           <br />
@@ -254,6 +260,13 @@ function SourceHeaderArrow({ data }) {
             Sync {data.name} customer data with all of your 3rd party tools
           </h1>
           <p>{data.description}</p>
+          <Row>
+            <Col>
+              <Button variant="primary" href="/get-started" className="ml-auto">
+                Start a Free Trial →
+              </Button>
+            </Col>
+          </Row>
         </Col>
         <Col lg={3} md={5} sm={5} xs={5} className="text-center">
           <br />
