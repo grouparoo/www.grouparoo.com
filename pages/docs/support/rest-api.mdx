@@ -1,0 +1,80 @@
+---
+title: "Grouparoo REST API"
+date: "2021-08-02"
+pullQuote: "Use the Grouparoo REST API to connect to your Grouparoo instance from an external application."
+---
+
+Grouparoo's REST API enables you to connect to your Grouparoo instance from an external application and return data in JSON format.
+
+## What can you do with our API?
+
+Grouparoo's REST API contains endpoints for over 25 topics -- everything from installing a Grouparoo Plugin to getting a list of all your Schedules. To see a full list of API endpoints, navigate to `/swagger` in the UI of your Grouparoo instance or run:
+
+```bash
+curl -X 'GET' \
+  '{{yourinstanceurl}}/api/v1/swagger' \
+  -H 'accept: application/json'
+```
+
+with your instance's URL.
+
+## Using the Grouparoo API
+
+### Generating an API Key
+
+To get started using Grouparoo's REST API, you'll need to generate an API key. To do this, first make sure you are signed into an account with "write" access for API Keys. Then:
+
+1. Go to Platform > API Keys or navigate to `/apiKeys/` and select "Add API Key".
+
+2. Give your API Key a name. An API Key will be generated an yu will be prompted to set permissions for this API.
+
+<ImageInBrowserFrame
+  centered
+  source="Generate an API Key"
+  alt="Generate an API Key"
+  src="/images/docs/support/rest-api/apikeyconfig.png"
+  width={820}
+  height={502}
+/>
+
+To learn more about what each of the topics can do in the API, you can access the Swagger Docs for the Grouparoo API by navigating to `/swagger` in the UI of your Grouparoo Instance or going to Platform > API Documentation.
+
+### Accessing the API
+
+Our Swagger docs can be found by navigating to `/swagger` in your Grouparoo Instance or by running:
+
+```bash
+curl -X 'GET' \
+  '{{yourInstanceURL}}/api/v1/swagger' \
+  -H 'accept: application/json'
+```
+
+with your instance's URL.
+
+<ImageInBrowserFrame
+  centered
+  source="Generate an API Key"
+  alt="Generate an API Key"
+  src="/images/docs/support/rest-api/swaggerdocs.png"
+  width={820}
+  height={530}
+/>
+
+To see examples of how to use your API key in the Swagger docs, click "Authorize" and enter your API Key (if pasting in your API Key, remember to check there's no extra whitespace!).
+
+<ImageInBrowserFrame
+  centered
+  source="Generate an API Key"
+  alt="Generate an API Key"
+  src="/images/docs/support/rest-api/auths.png"
+  width={820}
+  height={521}
+/>
+
+For example, if you want to see a list of all your instance's apps, you can run:
+
+```
+curl -X 'GET' \
+  '{{yourInstanceURL}}/api/v1/apps?limit=100&offset=0&apiKey={{yourAPIKey}}' \
+  -H 'accept: application/json'
+```
