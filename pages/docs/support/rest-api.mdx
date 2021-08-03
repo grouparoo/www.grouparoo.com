@@ -24,6 +24,8 @@ with your instance's URL.
 
 To get started using Grouparoo's REST API, you'll need to generate an API key. To do this, first make sure you are signed into an account with "write" access for API Keys. Then:
 
+#### UI Method
+
 1. Go to Platform > API Keys or navigate to `/apiKeys` and select "Add API Key".
 
 2. Give your API Key a name. An API Key will be generated and you will be prompted to set permissions for this API.
@@ -38,6 +40,34 @@ To get started using Grouparoo's REST API, you'll need to generate an API key. T
 />
 
 To learn more about what each of the topics can do in the API, you can access the Swagger Docs for the Grouparoo API by navigating to `/swagger` in the UI of your Grouparoo Instance or going to Platform > API Documentation.
+
+#### Code Config Method
+
+You can also generate an API key object with the [`grouparoo generate` command]. To do this, run
+
+```
+grouparoo generate apiKey {{yourAPIKeyId}}
+```
+
+This command will generate a config file in a new directory `/config/apiKeys/{{yourAPIKeyId}}.js` that looks like this:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      class: "apiKey",
+      id: "{{yourAPIKeyId}}",
+      name: "{{yourAPIKeyId}}",
+      options: {
+        permissionAllRead: false, // Does this API Key have read permission to all topics?
+        permissionAllWrite: false, // Does this API Key have write permission to all topics?
+      },
+    },
+  ];
+};
+```
+
+From here, you can update the name and permissions.
 
 ### Accessing the API
 
