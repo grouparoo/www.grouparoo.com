@@ -58,6 +58,7 @@ exports.default = async function buildConfig() {
       class: "apiKey",
       id: "{{yourAPIKeyId}}",
       name: "{{yourAPIKeyId}}",
+      apiKey: "API KEY HERE" // you can hard-code the API key you want to use, or source it from `process.env.PRODUCTION_API_KEY`
       options: {
         permissionAllRead: false, // Does this API Key have read permission to all topics?
         permissionAllWrite: false, // Does this API Key have write permission to all topics?
@@ -69,17 +70,10 @@ exports.default = async function buildConfig() {
 
 From here, you can update the name and permissions.
 
-### Accessing the API
+### Accessing & Testing the API
 
-Our Swagger docs can be found by navigating to `/swagger` in your Grouparoo Instance or by running:
-
-```bash
-curl -X 'GET' \
-  '{{yourInstanceURL}}/api/v1/swagger' \
-  -H 'accept: application/json'
-```
-
-with your instance's URL.
+As Grouparoo can be self-hosted, every deployment of Grouparoo provides its own API documentation.
+The Swagger docs for your API can be found by navigating to `/swagger` in the Grouparoo UI.
 
 <ImageInBrowserFrame
   centered
@@ -90,7 +84,7 @@ with your instance's URL.
   height={530}
 />
 
-To see examples of how to use your API key in the Swagger docs, click "Authorize" and enter your API Key (if pasting in your API Key, be careful about extra whitespace).
+The Grouparoo API can be authorized in 2 distinct ways: as a web user (with a cookie and CSRF token), or via an API Key. By default, when visiting the `/swagger` page, you will be authenticated using your existing cookie. You can switch to using an API key by clicking "Authorize" and entering your API Key (if pasting in your API Key, be careful about extra whitespace).
 
 <ImageInBrowserFrame
   centered
@@ -104,7 +98,80 @@ To see examples of how to use your API key in the Swagger docs, click "Authorize
 For example, if you want to see a list of all your instance's apps, you can run:
 
 ```
-curl -X 'GET' \
-  '{{yourInstanceURL}}/api/v1/apps?limit=100&offset=0&apiKey={{yourAPIKey}}' \
-  -H 'accept: application/json'
+# Set Variables
+GROUPAROO_HOST="http://localhost:3000"
+GROUPAROO_API_KEY="ba05b18d9dae4acbb08799e7ef238f0d"
+
+# Make Requests
+curl -X GET "$GROUPAROO_HOST/api/v1/apps?apiKey=$GROUPAROO_API_KEY"
+```
+
+You can also make post requests, such as creating a team or adding team members. Assuming you have your variables set from the previous example:
+
+```
+# Set More Variables
+TEAM_NAME="newTeam"
+
+# Make Request
+curl -X POST "$GROUPAROO_HOST/api/v1/team?name=$TEAM_NAME&permissionAllRead=true&permissionAllWrite=false&apiKey=$GROUPAROO_API_KEY"
+```
+
+You'll get back an object that includes the team's id:
+
+```json
+{
+  "team": {
+    "id": "tea_377556ab-3a49-4b23-9044-fdaee77ed08f",
+    "name": "newTeam",
+    "locked": null,
+    "permissionAllRead": true,
+    "permissionAllWrite": false,
+    "createdAt": 1628110919221,
+    "updatedAt": 1628110919221,
+    "permissions": [
+      {
+        "id": "prm_3882efbd-912a-4f48-b1ca-d0445dff972a",
+        "topic": "apiKey",
+        "read": true,
+        "write": false,
+        "locked": null
+      },
+      ...
+    ],
+    "membersCount": 0
+  },
+  "serverInformation": {
+    "serverName": "@grouparoo/core",
+    "apiVersion": "0.5.3-alpha.1",
+    "requestDuration": 211,
+    "currentTime": 1628110919419
+  },
+  "requesterInformation": {
+    "id": "69f83d5c56f347bc656b022a4dfba659e1c2e53e-fc8845c5-94dc-4c70-aa15-f7d4ebaf2b58",
+    "fingerprint": "69f83d5c56f347bc656b022a4dfba659e1c2e53e",
+    "messageId": "fc8845c5-94dc-4c70-aa15-f7d4ebaf2b58",
+    "remoteIP": "127.0.0.1",
+    "receivedParams": {
+      "name": "teamanem",
+      "permissionAllRead": "true",
+      "permissionAllWrite": "false",
+      "action": "team:create",
+      "apiVersion": "1"
+    }
+  }
+}
+```
+
+which you can then use to add a team member:
+
+```
+# Set Even More Variables
+TEAM_ID="tea_377556ab-3a49-4b23-9044-fdaee77ed08f"
+MEMBER_FIRST_NAME="Taisto"
+MEMBER_LAST_NAME="Walerian"
+MEMBER_EMAIL="twalerian996@demo.com"
+MEMBER_PASSWORD="abc123"
+
+# Make Request
+curl -X POST "$GROUPAROO_HOST/api/v1/team/member?email=MEMBER_EMAIL&firstName=$MEMBER_FIRST_NAME&lastName=$MEMBER_LAST_NAME&password=$MEMBER_PASSWORD&subscribed=true&teamId=$TEAM_ID&apiKey=GROUPAROO_API_KEY"
 ```
