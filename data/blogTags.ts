@@ -3,6 +3,7 @@ export const badgeTypes = {
   engineering: "success",
   connections: "info",
   notes: "warning",
+  data: "info",
   product: "danger",
   operations: "secondary",
   company: "info",

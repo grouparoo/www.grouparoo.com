@@ -31,6 +31,8 @@ export interface BlogEntry {
   path: string;
   slug: string;
   image: string;
+  seoTitle: string;
+  seoDescription: string;
 }
 
 export const LIMIT = 10;
@@ -83,7 +85,16 @@ export async function getBlogPost(slugName): Promise<BlogPost> {
     ["pages", "blog", `${slugName}.mdx`],
     components
   );
-  const { title, date, author, pullQuote, tags, twitterCard } = frontMatter;
+  const {
+    title,
+    date,
+    author,
+    pullQuote,
+    tags,
+    twitterCard,
+    seoTitle,
+    seoDescription,
+  } = frontMatter;
   let { image } = frontMatter;
   if (image && !image.startsWith("http")) {
     image = `https://www.grouparoo.com/posts/${image}`;
@@ -100,6 +111,8 @@ export async function getBlogPost(slugName): Promise<BlogPost> {
     image: image || null,
     source,
     twitterCard: twitterCard || "summary",
+    seoTitle: seoTitle || null,
+    seoDescription: seoDescription || null,
   };
 }
 
