@@ -32,8 +32,11 @@ export default function BlogPage({ pageProps }) {
   return (
     <>
       <Head>
-        <title>{post.title}: Grouparoo Blog</title>
-        <meta name="description" content={post.pullQuote} />
+        <title>{post.seoTitle || `${post.title}: Grouparoo Blog`}</title>
+        <meta
+          name="description"
+          content={post.seoDescription || post.pullQuote}
+        />
         <link rel="canonical" href={url} />
 
         <link
