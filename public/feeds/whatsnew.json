@@ -11,6 +11,17 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2021-07-28-eloqua",
+      "content_html": "<p>We&#x27;ve just released a new <code>@grouparoo/eloqua</code> plugin to sync data to Orcale Eloqua! Learn more about connecting to Eloqua <a href=\"/integrations/destinations/eloqua\">here</a>.</p>",
+      "url": "https://www.grouparoo.com/whats-new#2021-07-28-eloqua",
+      "title": "Eloqua Plugin",
+      "date_modified": "2021-07-28T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-07-21-v0-5",
       "content_html": "<p>Grouparoo v0.5.1 is now available. It focuses on developer workflow. The new UI is especially exciting. It adds much more confidence to the process of configuring your workflow by letting you preview the data and make sure everything is set up correctly.</p><p>Learn more about how it works and see a video <a href=\"https://www.grouparoo.com/blog/software-development-workflow\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">here</a>.</p>",
       "url": "https://www.grouparoo.com/whats-new#2021-07-21-v0-5",

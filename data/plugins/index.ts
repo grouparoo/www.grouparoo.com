@@ -1,4 +1,5 @@
 import { CSV } from "./csv";
+import { Eloqua } from "./eloqua";
 import { Facebook } from "./facebook";
 import { GoogleBigQuery } from "./googleBigQuery";
 import { GoogleSheets } from "./googleSheets";
@@ -74,6 +75,7 @@ export interface Plugin {
 
 export const PluginData: Plugin[] = [
   CSV,
+  Eloqua,
   Customerio,
   Facebook,
   GoogleBigQuery,

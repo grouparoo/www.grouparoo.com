@@ -30,6 +30,16 @@
     "docsUrl": null
   },
   {
+    "name": "Eloqua",
+    "description": "Grouparoo's Eloqua integration allows you to sync all of your customer data that lives in your data warehouse into Eloqua.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/eloqua/eloqua.png",
+    "packageName": "@grouparoo/eloqua",
+    "source": false,
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/eloqua",
+    "docsUrl": null
+  },
+  {
     "name": "Facebook",
     "description": "Grouparoo's Facebook integration allows you to sync all of your customer data that lives in your data warehouse into Facebook.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/facebook/facebook.png",
