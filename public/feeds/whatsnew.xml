@@ -30,7 +30,7 @@
             <guid>grouparoo-release-note-2021-07-28-eloqua</guid>
             <pubDate>Wed, 28 Jul 2021 00:00:00 GMT</pubDate>
             <content:encoded
-      ><![CDATA[<p>We&#x27;ve just released a new <code>@grouparoo/eloqua</code> plugin to sync data to Orcale Eloqua! Learn more about connecting to Eloqua <a href="/integrations/destinations/eloqua">here</a>.</p>]]></content:encoded>
+      ><![CDATA[<p>We&#x27;ve just released a new <code>@grouparoo/eloqua</code> plugin to sync data to Oracle Eloqua! Learn more about connecting to Eloqua <a href="/integrations/destinations/eloqua">here</a>.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>

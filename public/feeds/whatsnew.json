@@ -12,7 +12,7 @@
   "items": [
     {
       "id": "grouparoo-release-note-2021-07-28-eloqua",
-      "content_html": "<p>We&#x27;ve just released a new <code>@grouparoo/eloqua</code> plugin to sync data to Orcale Eloqua! Learn more about connecting to Eloqua <a href=\"/integrations/destinations/eloqua\">here</a>.</p>",
+      "content_html": "<p>We&#x27;ve just released a new <code>@grouparoo/eloqua</code> plugin to sync data to Oracle Eloqua! Learn more about connecting to Eloqua <a href=\"/integrations/destinations/eloqua\">here</a>.</p>",
       "url": "https://www.grouparoo.com/whats-new#2021-07-28-eloqua",
       "title": "Eloqua Plugin",
       "date_modified": "2021-07-28T00:00:00.000Z",
