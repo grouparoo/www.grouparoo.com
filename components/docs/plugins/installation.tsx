@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { PluginData } from "../../../data/plugins";
 import CodeBlock from "./codeBlock";
 
 const packageJsonAfterInstallation = (pkgName) => `
@@ -23,7 +24,7 @@ const packageJsonAfterInstallation = (pkgName) => `
 const PluginDocsInstallation = ({ plugin }: { plugin: string }) => {
   if (!plugin) return null;
 
-  const pkgName = `@grouparoo/${plugin.toLowerCase()}`;
+  const pluginData = PluginData.find(({ name }) => name === plugin);
 
   return (
     <>
@@ -40,14 +41,20 @@ const PluginDocsInstallation = ({ plugin }: { plugin: string }) => {
         </Link>{" "}
         from <Link href="/docs/cli">our CLI</Link>:
       </p>
-      <CodeBlock code={`grouparoo install ${pkgName}`} cli={true} />
+      <CodeBlock
+        code={`grouparoo install ${pluginData.packageName}`}
+        cli={true}
+      />
       <p>
         This adds the package to your <code>package.json</code> file as a
         dependency, and also drops the plugin in the{" "}
         <code>grouparoo.plugins</code> section in that same file, which enables
         it.
       </p>
-      <CodeBlock code={packageJsonAfterInstallation(pkgName)} language="json" />
+      <CodeBlock
+        code={packageJsonAfterInstallation(pluginData.packageName)}
+        language="json"
+      />
       <p>
         Once the plugin is installed, you'll be working primarily with{" "}
         <Link href="/docs/cli/config">the CLI's configuration commands</Link> to

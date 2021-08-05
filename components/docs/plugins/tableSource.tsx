@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-import { PluginConfigOptions } from "../../../data/plugins";
+import { PluginConfigOptions, PluginData } from "../../../data/plugins";
 
 import { Alert } from "../";
 import CodeBlock from "./codeBlock";
 import OptionsList from "./optionsList";
 
 const PluginDocsTableSource = ({ plugin }: { plugin: string }) => {
-  const slug = plugin.toLowerCase();
+  const pluginData = PluginData.find(({ name }) => name === plugin);
 
   const codeBlocks = {
     config: `
@@ -18,8 +18,8 @@ exports.default = async function buildConfig() {
       class: "source",
       id: "users",
       name: "users",
-      type: "${slug}-table-import",
-      appId: "my_${slug}_app",
+      type: "${pluginData.slug}-table-import",
+      appId: "my_${pluginData.slug}_app",
       options: {
         table: "users",
       },
@@ -54,25 +54,26 @@ mapping: {
 }
   `,
   };
+  const table = pluginData.tableAlternative || "table";
+  const column = pluginData.columnAlternative || "column";
 
   const optionLists: { [key: string]: PluginConfigOptions } = {
     source: {
       table: {
         required: true,
-        description: `Name of the table in the ${plugin} database.`,
+        description: `Name of the ${table} in the ${plugin} database.`,
       },
     },
     mapping: {
       column: {
         required: true,
-        description:
-          "The name of the column to use as the [high watermark](/docs/getting-started/product-concepts#high-watermark).",
+        description: `The name of the ${column} to use as the [high watermark](/docs/getting-started/product-concepts#high-watermark).`,
       },
     },
     property: {
       column: {
         required: true,
-        description: "The name of the column to use for the Property.",
+        description: `The name of the ${column} to use for the Property.`,
       },
       aggregationMethod: {
         required: true,
@@ -89,7 +90,9 @@ mapping: {
 
   return (
     <>
-      <h2 id={`create-${slug}-table-source`}>Create a {plugin} Table Source</h2>
+      <h2 id={`create-${pluginData.slug}-table-source`}>
+        Create a {plugin} Table Source
+      </h2>
 
       <p>
         You can generate a {plugin} Table Source using the <code>generate</code>{" "}
@@ -106,7 +109,7 @@ mapping: {
       </p>
 
       <CodeBlock
-        code={`grouparoo generate ${slug}:table:source users --parent my_${slug}_app`}
+        code={`grouparoo generate ${pluginData.slug}:table:source users --parent my_${pluginData.slug}_app`}
         cli={true}
       />
 
@@ -139,7 +142,7 @@ mapping: {
           example:
         </p>
         <CodeBlock
-          code={`grouparoo generate ${slug}:table:source --describe`}
+          code={`grouparoo generate ${pluginData.slug}:table:source --describe`}
           cli={true}
         />
         <p>
@@ -181,7 +184,7 @@ mapping: {
       </p>
 
       <p>
-        For example, let's say your database has a column named{" "}
+        For example, let's say your database has a {column} named{" "}
         <code>email</code> and that maps directly to a <em>unique</em> Property
         on the Profile in Grouparoo called <code>emailAddress</code>. In that
         case, your mapping would look like this:
@@ -239,7 +242,7 @@ mapping: {
       </p>
 
       <CodeBlock
-        code={`grouparoo generate ${slug}:table:property first_name --parent users`}
+        code={`grouparoo generate ${pluginData.slug}:table:property first_name --parent users`}
         cli={true}
       />
 
@@ -249,7 +252,7 @@ mapping: {
         </p>
         <p className="mb-0">
           You can also create properties in a batch when creating the Table
-          Source
+          Source{" "}
           <Link href="/docs/cli/config#batch-generation">
             <span>
               using the <code>--with</code> option while running the{" "}
@@ -290,18 +293,18 @@ mapping: {
         A {plugin} Table Source also provides the ability to{" "}
         <Link href="/docs/getting-started/product-concepts#filter">filter</Link>{" "}
         your data via the <code>filters</code> option. This is a series of rules
-        that will filter data in the database table to find the appropriate
+        that will filter data in the database {table} to find the appropriate
         value for each Profile for a given Property.
       </p>
 
       <p>
         For example, let's say you had a property called{" "}
         <code>lifetime_value</code> which summed all the purchases for a given
-        user. Your Source is a <code>purchases</code>
-        table that has a <code>state</code> column set to either{" "}
-        <code>successful</code> or <code>returned</code>. You may only want to
-        include <code>successful</code> purchases. Your <code>filters</code>{" "}
-        config might look like this:
+        user. Your Source is a <code>purchases</code> {table} that has a{" "}
+        <code>state</code> {column} set to either <code>successful</code> or{" "}
+        <code>returned</code>. You may only want to include{" "}
+        <code>successful</code> purchases. Your <code>filters</code> config
+        might look like this:
       </p>
 
       <CodeBlock code={codeBlocks.propertyFilters} language="javascript" />

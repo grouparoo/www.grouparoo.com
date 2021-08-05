@@ -7,7 +7,7 @@ import { Intercom } from "./intercom";
 import { Iterable } from "./iterable";
 import { Mailchimp } from "./mailchimp";
 import { Marketo } from "./marketo";
-import { MongoDB } from "./mongodb";
+import { Mongo } from "./mongo";
 import { MySQL } from "./mysql";
 import { OneSignal } from "./onesignal";
 import { Customerio } from "./customerio";
@@ -70,6 +70,8 @@ export interface Plugin {
     p1: string;
     p2: string;
   };
+  tableAlternative?: string;
+  columnAlternative?: string;
 }
 
 export const PluginData: Plugin[] = [
@@ -83,7 +85,7 @@ export const PluginData: Plugin[] = [
   Iterable,
   Mailchimp,
   Marketo,
-  MongoDB,
+  Mongo,
   MySQL,
   OneSignal,
   Pardot,

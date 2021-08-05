@@ -1,11 +1,11 @@
 import { Plugin } from "./index";
 
-export const MongoDB: Plugin = {
-  name: "MongoDB",
+export const Mongo: Plugin = {
+  name: "Mongo",
   description:
     "Grouparoo's MongoDB integration allows you to sync all of your customer data that lives in your MongoDB with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
   priority: 40,
-  slug: "mongodb",
+  slug: "mongo",
   logo: "mongodb.svg",
   primaryType: "source",
   otherTypes: [""],
@@ -13,6 +13,8 @@ export const MongoDB: Plugin = {
   badge: "",
   showLink: true,
   packageName: "@grouparoo/mongo",
+  tableAlternative: "collection",
+  columnAlternative: "field",
 
   useCases: {
     paragraphOne:
