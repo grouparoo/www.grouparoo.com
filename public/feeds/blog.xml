@@ -25,8 +25,7 @@
       type="application/rss+xml"
     />
         <item>
-            <title
-      ><![CDATA[Binding a Node.js web app to both IPv4 and IPv6 sockets]]></title>
+            <title><![CDATA[Running a Node app on both IPv4 and IPv6]]></title>
             <link>https://www.grouparoo.com/blog/node-js-and-ipv6</link>
             <guid>grouparoo-blog-post-node-js-and-ipv6</guid>
             <pubDate>Thu, 05 Aug 2021 00:00:00 GMT</pubDate>
