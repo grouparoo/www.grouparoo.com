@@ -2,17 +2,14 @@ import { useState, useEffect, Children, cloneElement } from "react";
 import Head from "next/head";
 import Navigation from "../navigation";
 import Footer from "../footer";
-import { Alert } from "react-bootstrap";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import GetStarted from "../home/getStarted";
+import { OpenSourceDataStackConfBanner } from "../banners/OpenSourceDataStackConfBanner";
+import { DisplayReleaseNote, WhatsNewBanner } from "../banners/whatsNewBanner";
 
 function PageTemplate({ children }) {
   const router = useRouter();
-  const [releaseNote, setReleaseNote] = useState<{
-    name: string;
-    description: string;
-  }>(null);
+  const [releaseNote, setReleaseNote] = useState<DisplayReleaseNote>(null);
 
   useEffect(() => {
     if (router.asPath !== "/") setReleaseNote(null);
@@ -139,16 +136,8 @@ function PageTemplate({ children }) {
         <link rel="stylesheet" href="/css/prism.css"></link>
       </Head>
 
-      {releaseNote?.description ? (
-        <Alert variant="primary" style={{ textAlign: "center", margin: 0 }}>
-          <small>
-            <strong>What's New</strong> - {releaseNote.description}{" "}
-            <Link href="/whats-new">
-              <a>Learn More</a>
-            </Link>
-          </small>
-        </Alert>
-      ) : null}
+      <OpenSourceDataStackConfBanner router={router} />
+      {/* <WhatsNewBanner releaseNote={releaseNote} /> */}
 
       <div className="main">
         <Navigation />
