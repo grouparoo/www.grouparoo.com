@@ -9,8 +9,8 @@ const PluginDocsColumnarSource = ({ plugin }: { plugin: string }) => {
   const pluginData = PluginData.find(({ name }) => name === plugin);
   const table = pluginData.tableAlternative || "table";
   const column = pluginData.columnAlternative || "column";
-  const queryLanguage =
-    plugin === "Mongo" ? "MongoDB Query Language (MQL)" : "SQL";
+  const queryLanguage = pluginData.queryLanguageAlternative || "SQL";
+
   return (
     <>
       <h2 id={`create-${pluginData.slug}-source`}>Create a {plugin} Source</h2>

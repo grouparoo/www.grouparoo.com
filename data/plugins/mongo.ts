@@ -74,6 +74,7 @@ export const Mongo: Plugin = {
       description: 'The database name - e.g. `"data_warehouse"`.',
     },
   },
+  queryLanguageAlternative: "MongoDB Query Language (MQL)",
   queryScheduleAlternativeExample: `{
   options: {
     query: [
