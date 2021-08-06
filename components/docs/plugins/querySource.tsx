@@ -6,86 +6,25 @@ import { Alert } from "..";
 import CodeBlock from "./codeBlock";
 import OptionsList from "./optionsList";
 
-const PluginDocsQuerySource = ({
-  plugin,
-  isTablesUpperCase = false,
-}: {
-  plugin: string;
-  isTablesUpperCase?: boolean;
-}) => {
+const PluginDocsQuerySource = ({ plugin }: { plugin: string }) => {
   const pluginData = PluginData.find(({ name }) => name === plugin);
   const table = pluginData.tableAlternative || "table";
   const column = pluginData.columnAlternative || "column";
-  const queryLanguage =
-    plugin === "Mongo" ? "MongoDB Query Language (MQL)" : "SQL";
-
+  const queryLanguage = pluginData.queryLanguageAlternative || "SQL";
   const querySchedule =
-    plugin === "Mongo"
-      ? `{
+    pluginData.queryScheduleAlternativeExample ||
+    `{
   options: {
-    query: [
-      {
-        $match: {
-          updatedAt: {
-            $gt: "new Date(ISODate().getTime() - 1000 * 60 * 60 * 24 * 2)",
-          },
-        },
-      },
-      {
-        $project: {
-          _id: 1,
-        },
-      },
-    ], 
+    query: "SELECT id FROM users WHERE updated_at >= (NOW() - INTERVAL '2 day')", 
     propertyId: "userId"
-  }
-}`
-      : `{
-  options: {
-    query: "SELECT ${isTablesUpperCase ? "id".toUpperCase() : "id"} FROM ${
-          isTablesUpperCase ? "users".toUpperCase() : "users"
-        } WHERE ${
-          isTablesUpperCase ? "updated_at".toUpperCase() : "updated_at"
-        } >= (NOW() - INTERVAL '2 day')", propertyId: "userId"
   }
 }`;
 
   const queryProperties =
-    plugin === "Mongo"
-      ? `{
+    pluginData.queryPropertiesAlternativeExample ||
+    `{
   options: {
-    query: [
-      {
-       $match: {
-         user_id: {{userId}},
-       },
-      },
-      {
-       $group: {
-         _id: null,
-         total: {
-           $sum: "$price",
-         },
-       },
-      },
-      {
-       $project: {
-         _id: 0,
-       },
-      },
-    ],
-  }
-}`
-      : `
-{
-  options: {
-    query: "SELECT SUM(${
-      isTablesUpperCase ? "price".toUpperCase() : "price"
-    }) from ${
-          isTablesUpperCase ? "purchases".toUpperCase() : "purchases"
-        } where ${
-          isTablesUpperCase ? "user_id".toUpperCase() : "user_id"
-        } = {{userId}}";
+    query: "SELECT SUM(price) from purchases where user_id = {{userId}}";
   }
 }`;
 
@@ -93,13 +32,11 @@ const PluginDocsQuerySource = ({
     tableSourceMapping: `
 mapping: {
   email: "emailAddress",
-}
-  `,
+}`,
     tablePropertyFilters: `
 {
   filters: [{ key: "state", op: "equals", match: "successful" }],
-}
-  `,
+}`,
     querySchedule,
     queryProperties,
   };

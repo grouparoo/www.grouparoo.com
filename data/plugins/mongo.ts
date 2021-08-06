@@ -74,4 +74,47 @@ export const Mongo: Plugin = {
       description: 'The database name - e.g. `"data_warehouse"`.',
     },
   },
+  queryScheduleAlternativeExample: `{
+  options: {
+    query: [
+      {
+        $match: {
+          updatedAt: {
+            $gt: "new Date(ISODate().getTime() - 1000 * 60 * 60 * 24 * 2)",
+          },
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+        },
+      },
+    ], 
+    propertyId: "userId"
+  }
+}`,
+  queryPropertiesAlternativeExample: `{
+  options: {
+    query: [
+      {
+       $match: {
+         user_id: {{userId}},
+       },
+      },
+      {
+       $group: {
+         _id: null,
+         total: {
+           $sum: "$price",
+         },
+       },
+      },
+      {
+       $project: {
+         _id: 0,
+       },
+      },
+    ],
+  }
+}`,
 };

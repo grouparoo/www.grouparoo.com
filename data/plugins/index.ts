@@ -72,6 +72,9 @@ export interface Plugin {
   };
   tableAlternative?: string;
   columnAlternative?: string;
+  queryLanguageAlternative?: string;
+  queryScheduleAlternativeExample?: string;
+  queryPropertiesAlternativeExample?: string;
 }
 
 export const PluginData: Plugin[] = [

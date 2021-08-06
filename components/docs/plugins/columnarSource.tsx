@@ -5,13 +5,7 @@ import TableSource from "./tableSource";
 import QuerySource from "./querySource";
 import { Alert } from "../index";
 
-const PluginDocsColumnarSource = ({
-  plugin,
-  isTablesUpperCase = false,
-}: {
-  plugin: string;
-  isTablesUpperCase?: boolean;
-}) => {
+const PluginDocsColumnarSource = ({ plugin }: { plugin: string }) => {
   const pluginData = PluginData.find(({ name }) => name === plugin);
   const table = pluginData.tableAlternative || "table";
   const column = pluginData.columnAlternative || "column";
@@ -69,7 +63,7 @@ const PluginDocsColumnarSource = ({
       )}
 
       <TableSource plugin={plugin} />
-      <QuerySource plugin={plugin} isTablesUpperCase={isTablesUpperCase} />
+      <QuerySource plugin={plugin} />
     </>
   );
 };

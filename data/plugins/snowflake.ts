@@ -87,4 +87,15 @@ export const Snowflake: Plugin = {
       description: "The Snowflake schema (default: PUBLIC)",
     },
   },
+  queryScheduleAlternativeExample: `{
+  options: {
+    query: "SELECT ID FROM USERS WHERE UPDATED_AT >= (NOW() - INTERVAL '2 day')", 
+    propertyId: "userId"
+  }
+}`,
+  queryPropertiesAlternativeExample: `{
+  options: {
+    query: "SELECT SUM(PRICE) from PURCHASES where USER_ID = {{userId}}";
+  }
+}`,
 };
