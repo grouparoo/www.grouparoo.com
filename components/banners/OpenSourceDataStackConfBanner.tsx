@@ -14,7 +14,11 @@ export function OpenSourceDataStackConfBanner({
         Grouparoo is part of the Open Source Data Stack Conference on Sept.
         28-30th.{" "}
         <strong>
-          <a href="https://www.opensourcedatastack.com" target="_blank">
+          <a
+            href="https://www.opensourcedatastack.com"
+            target="_blank"
+            rel="noreferrer"
+          >
             Register now
           </a>
         </strong>{" "}
