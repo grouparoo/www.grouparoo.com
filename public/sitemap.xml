@@ -247,6 +247,8 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/plugins/grouparoo-intercom</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/plugins/grouparoo-mongo</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/plugins/grouparoo-mysql</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/plugins/grouparoo-postgres</loc><changefreq
@@ -305,7 +307,7 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/destinations/marketo</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/integrations/sources/mongodb</loc><changefreq
+    >https://www.grouparoo.com/integrations/sources/mongo</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/sources/mysql</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc

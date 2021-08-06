@@ -1,74 +1,63 @@
 import Link from "next/link";
 
-import { PluginConfigOptions } from "../../../data/plugins";
+import { PluginConfigOptions, PluginData } from "../../../data/plugins";
 
 import { Alert } from "..";
 import CodeBlock from "./codeBlock";
 import OptionsList from "./optionsList";
 
-const PluginDocsQuerySource = ({
-  plugin,
-  isTablesUpperCase = false,
-}: {
-  plugin: string;
-  isTablesUpperCase?: boolean;
-}) => {
-  const slug = plugin.toLowerCase();
+const PluginDocsQuerySource = ({ plugin }: { plugin: string }) => {
+  const pluginData = PluginData.find(({ name }) => name === plugin);
+  const table = pluginData.tableAlternative || "table";
+  const column = pluginData.columnAlternative || "column";
+  const queryLanguage = pluginData.queryLanguageAlternative || "SQL";
+  const querySchedule =
+    pluginData.queryScheduleAlternativeExample ||
+    `{
+  options: {
+    query: "SELECT id FROM users WHERE updated_at >= (NOW() - INTERVAL '2 day')", 
+    propertyId: "userId"
+  }
+}`;
+
+  const queryProperties =
+    pluginData.queryPropertiesAlternativeExample ||
+    `{
+  options: {
+    query: "SELECT SUM(price) from purchases where user_id = {{userId}}";
+  }
+}`;
 
   const codeBlocks = {
     tableSourceMapping: `
 mapping: {
   email: "emailAddress",
-}
-  `,
+}`,
     tablePropertyFilters: `
 {
   filters: [{ key: "state", op: "equals", match: "successful" }],
-}
-  `,
-    querySchedule: `
-{
-  options: {
-    query: "SELECT ${isTablesUpperCase ? "id".toUpperCase() : "id"} FROM ${
-      isTablesUpperCase ? "users".toUpperCase() : "users"
-    } WHERE ${
-      isTablesUpperCase ? "updated_at".toUpperCase() : "updated_at"
-    } >= (NOW() - INTERVAL '2 day')", propertyId: "userId"
-  }
-}
-  `,
-    queryProperties: `
-{
-  options: {
-    query: "SELECT SUM(${
-      isTablesUpperCase ? "price".toUpperCase() : "price"
-    }) from ${
-      isTablesUpperCase ? "purchases".toUpperCase() : "purchases"
-    } where ${
-      isTablesUpperCase ? "user_id".toUpperCase() : "user_id"
-    } = {{userId}}";
-  }
-}
-  `,
+}`,
+    querySchedule,
+    queryProperties,
   };
 
   const optionLists: { [key: string]: PluginConfigOptions } = {
     tableSource: {
       table: {
         required: true,
-        description: "Name of the table in the {plugin} database.",
+        description: `Name of the ${table} in the {plugin} database.`,
       },
     },
     tableMapping: {
       column: {
         required: true,
-        description: "The name of the column to use as the high watermark.",
+        description: `The name of the ${column} to use as the high watermark.`,
       },
     },
     tableProperties: {
       column: {
         required: true,
-        description: "The name of the column to use for the Property.",
+        description: `The name of the ${column} to use for the Property.`,
       },
       aggregationMethod: {
         required: true,
@@ -83,8 +72,7 @@ mapping: {
     },
     querySchedule: {
       query: {
-        description:
-          "A SQL query to return that tells Grouparoo which Profiles to check each time the interval occurs.",
+        description: `A ${queryLanguage} query to return that tells Grouparoo which Profiles to check each time the interval occurs.`,
       },
       propertyId: {
         description:
@@ -101,7 +89,9 @@ mapping: {
 
   return (
     <>
-      <h2 id={`create-${slug}-query-source`}>Create a {plugin} Query Source</h2>
+      <h2 id={`create-${pluginData.slug}-query-source`}>
+        Create a {plugin} Query Source
+      </h2>
 
       <p>
         You can generate a {plugin} Query Source using the <code>generate</code>{" "}
@@ -110,14 +100,14 @@ mapping: {
       </p>
 
       <CodeBlock
-        code={`grouparoo generate ${slug}:query:source users --parent my_${slug}_app`}
+        code={`grouparoo generate ${pluginData.slug}:query:source users --parent my_${pluginData.slug}_app`}
         cli={true}
       />
 
       <p>
         A Query Source is a more flexible way to build properties. With a Query
-        Source, you can add custom SQL commands to your Properties, which could
-        pull data from one or more tables in your database.
+        Source, you can add custom {queryLanguage} commands to your Properties,
+        which could pull data from one or more {table}s in your database.
       </p>
 
       {/* --- Options --- */}
@@ -146,7 +136,7 @@ mapping: {
           <strong>Important!</strong>
         </p>
         <p className="mb-0">
-          Be sure that your query only returns one column of data, and that it
+          Be sure that your query only returns one {column} of data, and that it
           maps to the Grouparoo Property you set with{" "}
           <code>options.propertyId</code>.
         </p>
@@ -164,7 +154,7 @@ mapping: {
       </p>
 
       <CodeBlock
-        code={`grouparoo generate ${slug}:query:property lifetime_value --parent users`}
+        code={`grouparoo generate ${pluginData.slug}:query:property lifetime_value --parent users`}
         cli={true}
       />
 
@@ -179,10 +169,10 @@ mapping: {
       <OptionsList options={optionLists.queryProperties} />
 
       <p>
-        Here's an example that sums the values in the <code>price</code> column
-        for rows in which the <code>user_id</code> column's value matches the
-        value of the Grouparoo Profile's <code>userId</code> field (i.e.{" "}
-        <code>userId</code> is the <code>id</code> for the Property in
+        Here's an example that sums the values in the <code>price</code>{" "}
+        {column} for rows in which the <code>user_id</code> {column}'s value
+        matches the value of the Grouparoo Profile's <code>userId</code> field
+        (i.e. <code>userId</code> is the <code>id</code> for the Property in
         Grouparoo):
       </p>
 

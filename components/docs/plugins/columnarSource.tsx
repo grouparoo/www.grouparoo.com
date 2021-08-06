@@ -1,23 +1,22 @@
 import Link from "next/link";
+import { PluginData } from "../../../data/plugins";
 
 import TableSource from "./tableSource";
 import QuerySource from "./querySource";
+import { Alert } from "../index";
 
-const PluginDocsColumnarSource = ({
-  plugin,
-  isTablesUpperCase = false,
-}: {
-  plugin: string;
-  isTablesUpperCase?: boolean;
-}) => {
-  const slug = plugin.toLowerCase();
+const PluginDocsColumnarSource = ({ plugin }: { plugin: string }) => {
+  const pluginData = PluginData.find(({ name }) => name === plugin);
+  const table = pluginData.tableAlternative || "table";
+  const column = pluginData.columnAlternative || "column";
+  const queryLanguage = pluginData.queryLanguageAlternative || "SQL";
 
   return (
     <>
-      <h2 id={`create-${slug}-source`}>Create a {plugin} Source</h2>
+      <h2 id={`create-${pluginData.slug}-source`}>Create a {plugin} Source</h2>
       <p>
         The {plugin} Source is a specific type of Source that we call a
-        <em>Columnar Source</em>, which means it imports data from a
+        <em> Columnar Source</em>, which means it imports data from a
         column-based mechanism, like a database. Columnar Sources can take one
         of two forms:
       </p>
@@ -30,8 +29,8 @@ const PluginDocsColumnarSource = ({
               Table Source
             </Link>
           </em>{" "}
-          targets specific columns within a single table and can perform
-          aggregation methods on that column.
+          targets specific {column}s within a single {table} and can perform
+          aggregation methods on that {column}.
         </li>
         <li>
           A Columnar{" "}
@@ -40,13 +39,31 @@ const PluginDocsColumnarSource = ({
               Query Source
             </Link>
           </em>{" "}
-          provides the ability to write custom SQL code to extract data from one
-          or more tables and import the result into Grouparoo.
+          provides the ability to write custom {queryLanguage} code to extract
+          data from one or more {table}s and import the result into Grouparoo.
         </li>
       </ul>
 
+      {pluginData.tableAlternative && (
+        <Alert variant="primary">
+          <p className="mb-0">
+            Note that the {plugin} terminology for table is{" "}
+            <code>{pluginData.tableAlternative}</code>
+            {pluginData.columnAlternative && (
+              <span>
+                {" "}
+                and for column is <code>{pluginData.columnAlternative}</code>
+              </span>
+            )}
+            . However, we'll keep the <em>Columnar</em> and{" "}
+            <em>Table Source</em> terms since they're part of Grouparoo
+            terminology.
+          </p>
+        </Alert>
+      )}
+
       <TableSource plugin={plugin} />
-      <QuerySource plugin={plugin} isTablesUpperCase={isTablesUpperCase} />
+      <QuerySource plugin={plugin} />
     </>
   );
 };

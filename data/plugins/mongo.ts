@@ -1,11 +1,11 @@
 import { Plugin } from "./index";
 
-export const MongoDB: Plugin = {
-  name: "MongoDB",
+export const Mongo: Plugin = {
+  name: "Mongo",
   description:
     "Grouparoo's MongoDB integration allows you to sync all of your customer data that lives in your MongoDB with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
   priority: 40,
-  slug: "mongodb",
+  slug: "mongo",
   logo: "mongodb.svg",
   primaryType: "source",
   otherTypes: [""],
@@ -13,6 +13,8 @@ export const MongoDB: Plugin = {
   badge: "",
   showLink: true,
   packageName: "@grouparoo/mongo",
+  tableAlternative: "collection",
+  columnAlternative: "field",
 
   useCases: {
     paragraphOne:
@@ -72,4 +74,48 @@ export const MongoDB: Plugin = {
       description: 'The database name - e.g. `"data_warehouse"`.',
     },
   },
+  queryLanguageAlternative: "MongoDB Query Language (MQL)",
+  queryScheduleAlternativeExample: `{
+  options: {
+    query: [
+      {
+        $match: {
+          updatedAt: {
+            $gt: "new Date(ISODate().getTime() - 1000 * 60 * 60 * 24 * 2)",
+          },
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+        },
+      },
+    ], 
+    propertyId: "userId"
+  }
+}`,
+  queryPropertiesAlternativeExample: `{
+  options: {
+    query: [
+      {
+       $match: {
+         user_id: {{userId}},
+       },
+      },
+      {
+       $group: {
+         _id: null,
+         total: {
+           $sum: "$price",
+         },
+       },
+      },
+      {
+       $project: {
+         _id: 0,
+       },
+      },
+    ],
+  }
+}`,
 };

@@ -110,14 +110,14 @@
     "docsUrl": null
   },
   {
-    "name": "MongoDB",
+    "name": "Mongo",
     "description": "Grouparoo's MongoDB integration allows you to sync all of your customer data that lives in your MongoDB with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/mongodb/mongodb.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/mongo/mongodb.svg",
     "packageName": "@grouparoo/mongo",
     "source": true,
     "destination": false,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/mongo",
-    "docsUrl": null
+    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-mongo"
   },
   {
     "name": "MySQL",
