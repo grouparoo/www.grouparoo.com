@@ -52,7 +52,7 @@ export default function GrouparooWWW(props) {
     if (!existing) storage.setItem(key, value);
   }
 
-  if (router.pathname === "/trial") {
+  if (router.pathname === "/trial" || router.pathname === "/trial_landing") {
     return (
       <FloatingLayout>
         <Component {...props} />{" "}
