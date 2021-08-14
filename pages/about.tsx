@@ -28,7 +28,7 @@ export default function About({ pageProps }) {
           <Col xl={6} lg={5} md={4}>
             <Image
               thumbnail
-              src="/images/team/team.jpg"
+              src="/images/team/team.jpeg"
               alt="Team photo"
               width={530}
               height={398}
