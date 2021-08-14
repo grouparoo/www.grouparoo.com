@@ -35,7 +35,7 @@ export default function About({ pageProps }) {
             />
             <p>
               <small>
-                <em>The Grouparoo Team in meeting in San Francisco</em>
+                <em>The Grouparoo Team Meeting in San Francisco</em>
               </small>
             </p>
           </Col>
