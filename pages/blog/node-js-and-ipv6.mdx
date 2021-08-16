@@ -1,6 +1,6 @@
 ---
 title: "Running a Node app on both IPv4 and IPv6"
-date: "2021-08-05"
+date: "2021-08-16"
 author: "Evan Tahler"
 pullQuote: "Grouparoo can speak IPv4 and IPv6 - Here's how we did it."
 image: "node-js-and-ipv6/sylvain-gllm-X4dBqRUzO2U-unsplash.jpg"
@@ -44,7 +44,7 @@ server.listen(port, hostname, () => {
 
 In this example, we are binding only to `127.0.0.1` which is the IPv4 version of what is called a `loopback` - this means that only the same computer can talk to itself. This is a very safe way to test and develop, and a very bad way to run a web server 🤣.
 
-Conversely, what if we wanted to allow traffic in from the widest variety of hosts? This is the default configuration of Grouparoo - we want the application to be as widely available as possible, and the infrastructure to be be in charge of restricting who the application can talk to as needed. In IPv4, that would mean choosing a host of `0.0.0.0` which would allow traffic from anywhere. What about IPv6? It turns out that the string `::` (yes, that’s two colons) means "all" in IPv6, and is actually shorthand for `0.0.0.0.0.0.0.0`.
+Conversely, what if we wanted to allow traffic in from the widest variety of hosts? This is the default configuration of Grouparoo - we want the application to be as widely available as possible, and for the infrastructure to be be in charge of restricting who the application can talk to. In IPv4, that would mean choosing a host of `0.0.0.0` which would allow traffic from anywhere. What about IPv6? It turns out that the string `::` (yes, that’s two colons) means "everywhere" in IPv6, and is shorthand for `0.0.0.0.0.0.0.0`.
 
 So, in our node.js example above, that would mean that the most permissive host options would be:
 
@@ -57,7 +57,7 @@ server.listen(port, hostname);
 
 ## Testing
 
-How can we test that both IPv4 and IPv6 clients can reach your application? Grouparoo exposes a public "status" endpoint we can use to make sure that the application is reachable, and we can try to connect via `cURL` over a few hostnames & IP Addresses.
+How can we test that both IPv4 and IPv6 clients can reach your application? Grouparoo exposes a public "status" endpoint we can use to make sure that the application is reachable, and we can try to connect via `cURL` over a few hostnames & IP Addresses. Then, we pipe the response through the [`jq`](https://stedolan.github.io/jq/) command to parse out just the "status" response key:
 
 #### IPv4 testing:
 
