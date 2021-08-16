@@ -28,14 +28,14 @@ export default function About({ pageProps }) {
           <Col xl={6} lg={5} md={4}>
             <Image
               thumbnail
-              src="/images/team/team.jpg"
+              src="/images/team/team.jpeg"
               alt="Team photo"
               width={530}
               height={398}
             />
             <p>
               <small>
-                <em>The Grouparoo Founding Meeting</em>
+                <em>The Grouparoo Team Meeting in San Francisco</em>
               </small>
             </p>
           </Col>
