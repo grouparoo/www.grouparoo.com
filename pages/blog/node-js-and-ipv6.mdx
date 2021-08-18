@@ -1,0 +1,108 @@
+---
+title: "Running a Node app on both IPv4 and IPv6"
+date: "2021-08-16"
+author: "Evan Tahler"
+pullQuote: "Grouparoo can speak IPv4 and IPv6 - Here's how we did it."
+image: "node-js-and-ipv6/sylvain-gllm-X4dBqRUzO2U-unsplash.jpg"
+tags: [engineering]
+---
+
+We want to make Grouparoo as easy as possible to run, which means considering many different server environments. We recently had a customer who wanted to run Grouparoo in a Docker cluster that only had IPv6 addresses enabled. There are lots of reasons why IPv6 might be better (including the fact that we are [running out of public IPv4 Addresses](https://en.wikipedia.org/wiki/IPv4_address_exhaustion)), but it’s rare to find a deployment environment that _only_ has IPv6 addresses by default. That said, it’s easy to tell your Node.js application to listen to all hosts on both IPv4 and IPv6 - and that's what Grouparoo does [now](https://github.com/grouparoo/grouparoo/pull/2127)!
+
+<Image
+  centered
+  source="https://unsplash.com/photos/X4dBqRUzO2U"
+  alt="Twisty Roads"
+  src="node-js-and-ipv6/sylvain-gllm-X4dBqRUzO2U-unsplash.jpg"
+  width={800}
+  height={1000}
+/>
+
+## The Node.js HTTP Server
+
+When starting a Node.js server, you can to choose both the port to listen on and the hostname to bind to ([docs](https://nodejs.org/api/net.html#net_class_net_server)). Depending on how your server is configured, choosing a specific hostname might route traffic in different ways. Maybe you have 2 network cards (one for internal traffic and one for external), or perhaps you have different networks for IPv4 and IPv6 traffic - choosing a certain hostname may have different effects.
+
+The node HTTP example looks like this:
+
+```ts
+// from https://nodejs.org/en/docs/guides/getting-started-guide/
+const http = require("http");
+
+const hostname = "127.0.0.1";
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/plain");
+  res.end("Hello World");
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+```
+
+In this example, we are binding only to `127.0.0.1` which is the IPv4 version of what is called a `loopback` - this means that only the same computer can talk to itself. This is a very safe way to test and develop, and a very bad way to run a web server 🤣.
+
+Conversely, what if we wanted to allow traffic in from the widest variety of hosts? This is the default configuration of Grouparoo - we want the application to be as widely available as possible, and for the infrastructure to be be in charge of restricting who the application can talk to. In IPv4, that would mean choosing a host of `0.0.0.0` which would allow traffic from anywhere. What about IPv6? It turns out that the string `::` (yes, that’s two colons) means "everywhere" in IPv6, and is shorthand for `0.0.0.0.0.0.0.0`.
+
+So, in our node.js example above, that would mean that the most permissive host options would be:
+
+```ts
+const hostname = "::";
+const port = 3000;
+//...
+server.listen(port, hostname);
+```
+
+## Testing
+
+How can we test that both IPv4 and IPv6 clients can reach your application? Grouparoo exposes a public "status" endpoint we can use to make sure that the application is reachable, and we can try to connect via `cURL` over a few hostnames & IP Addresses. Then, we pipe the response through the [`jq`](https://stedolan.github.io/jq/) command to parse out just the "status" response key:
+
+#### IPv4 testing:
+
+```bash
+$ curl -s "http://localhost:3000/api/v1/status/public" | jq .status
+"ok"
+
+$ curl -s "http://127.0.0.1:3000/api/v1/status/public" | jq .status
+"ok"
+
+$ curl -s "http://0.0.0.0:3000/api/v1/status/public" | jq .status
+"ok"
+```
+
+#### IPv6 testing:
+
+```bash
+$ curl -s "http://[::1]:3000/api/v1/status/public" | jq .status
+"ok"
+
+$ curl -s "http://[::]:3000/api/v1/status/public" | jq .status
+"ok"
+
+$ curl -s "http://[::ffff:127.0.0.1]:3000/api/v1/status/public" | jq .status
+"ok"
+
+$ curl -s "http://[0:0:0:0:0:0:0:1]:3000/api/v1/status/public" | jq .status
+"ok"
+
+$ curl -s "http://[0:0:0:0:0:0:0:0]:3000/api/v1/status/public" | jq .status
+"ok"
+```
+
+You can see that for both IPv4 connections (eg: `127.0.0.1`) and IPv6 connections (eg `0:0:0:0:0:0:0:1`) we can connect to our app!
+
+## IPv6 Also Support IPv4 Addresses
+
+The hostname of `::` works with IPv4 addresses because it is backwards compatible. Technically, we have only bound to an IPv6 address, but IPv6 can still handle the older style of connections. This is visible in Grouparoo's logs when we try `127.0.0.1`:
+
+```
+2021-08-05T18:03:53.046Z - info: [ action @ web ] to=::ffff:127.0.0.1 action=status:public params={"action":"status:public","apiVersion":"1"} duration=3 method=GET pathname=/api/v1/status/public
+```
+
+The address `127.0.0.1` is translated to `::ffff:127.0.0.1:` which is the IPV6 interpretation of `127.0.0.1`, with the 4 missing first IPv6 sections replaced by `f`.
+
+---
+
+Thanks to https://stackoverflow.com/questions/40189084/what-is-ipv6-for-localhost-and-0-0-0-0 for some of this information.
