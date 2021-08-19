@@ -182,7 +182,7 @@
   {
     "name": "SQLite",
     "description": "Grouparoo's SQLite integration allows you to sync all of your customer data that lives in your SQLite database with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/sqlite/sqlite.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/sqlite/sqlite.png",
     "packageName": "@grouparoo/sqlite",
     "source": true,
     "destination": true,

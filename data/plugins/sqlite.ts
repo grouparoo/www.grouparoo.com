@@ -6,7 +6,7 @@ export const SQLite: Plugin = {
     "Grouparoo's SQLite integration allows you to sync all of your customer data that lives in your SQLite database with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
   priority: 10,
   slug: "sqlite",
-  logo: "sqlite.svg",
+  logo: "sqlite.png",
   primaryType: "source",
   otherTypes: ["destination"],
   category: "database",
