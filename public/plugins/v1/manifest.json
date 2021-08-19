@@ -232,7 +232,7 @@
   {
     "name": "Zendesk",
     "description": "Grouparoo's Zendesk integration allows you to sync all of your customer data that lives in your data warehouse into Zendesk.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/zendesk/zendesk.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/zendesk/zendesk.png",
     "packageName": "@grouparoo/zendesk",
     "source": false,
     "destination": true,

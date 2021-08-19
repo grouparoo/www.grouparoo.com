@@ -6,7 +6,7 @@ export const Zendesk: Plugin = {
     "Grouparoo's Zendesk integration allows you to sync all of your customer data that lives in your data warehouse into Zendesk.",
   priority: 80,
   slug: "zendesk",
-  logo: "zendesk.svg",
+  logo: "zendesk.png",
   primaryType: "destination",
   otherTypes: [],
   category: "customer support",
