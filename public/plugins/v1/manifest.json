@@ -172,7 +172,7 @@
   {
     "name": "Redshift",
     "description": "Grouparoo's Redshift integration allows you to sync all of your customer data that lives in your Redshift data warehouse with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/redshift/redshift.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/redshift/redshift.png",
     "packageName": "@grouparoo/redshift",
     "source": true,
     "destination": true,

@@ -6,7 +6,7 @@ export const Redshift: Plugin = {
     "Grouparoo's Redshift integration allows you to sync all of your customer data that lives in your Redshift data warehouse with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
   priority: 90,
   slug: "redshift",
-  logo: "redshift.svg",
+  logo: "redshift.png",
   primaryType: "source",
   otherTypes: ["destination"],
   category: "data warehouse",

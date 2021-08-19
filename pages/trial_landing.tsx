@@ -202,7 +202,7 @@ export default function Trial({ props }) {
               </Col>
               <Col>
                 <Image
-                  src="/images/home/integrations/redshift/redshift.svg"
+                  src="/images/home/integrations/redshift/redshift.png"
                   alt="Redshift logo"
                   width={60}
                   height={60}
