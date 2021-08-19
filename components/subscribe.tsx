@@ -8,7 +8,7 @@ import { isBrowser } from "../utils/isBrowser";
 export default function Subscribe() {
   const { handleSubmit, register } = useForm();
   const [loading, setLoading] = useState(false);
-  const [subscribed, setSubscribed] = useState(false); // TODO: Store this in a cookie?
+  const [subscribed, setSubscribed] = useState(false);
   const [error, setError] = useState(null);
   const GoogleAdsSubscribeID = process.env.GOOGLE_ADS_SUBSCRIBE_CONVERSION;
 
