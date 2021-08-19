@@ -142,7 +142,7 @@
   {
     "name": "Pardot",
     "description": "",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/pardot/pardot.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/pardot/pardot.png",
     "packageName": "@grouparoo/pardot",
     "source": false,
     "destination": true,
