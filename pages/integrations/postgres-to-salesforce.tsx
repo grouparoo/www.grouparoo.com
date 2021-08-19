@@ -88,7 +88,7 @@ export default function PostgresToSalesforce() {
                 }}
               >
                 <Image
-                  src={`/images/home/integrations/postgres/postgres.svg`}
+                  src={`/images/home/integrations/postgres/postgres.png`}
                   alt="postgres"
                   height={80}
                   width={80}

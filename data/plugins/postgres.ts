@@ -6,7 +6,7 @@ export const Postgres: Plugin = {
     "Grouparoo's Postgres integration allows you to sync all of your customer data that lives in your Postgres DB with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
   priority: 90,
   slug: "postgres",
-  logo: "postgres.svg",
+  logo: "postgres.png",
   primaryType: "source",
   otherTypes: ["destination"],
   category: "database",

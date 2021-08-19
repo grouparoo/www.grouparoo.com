@@ -162,7 +162,7 @@
   {
     "name": "Postgres",
     "description": "Grouparoo's Postgres integration allows you to sync all of your customer data that lives in your Postgres DB with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/postgres/postgres.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/postgres/postgres.png",
     "packageName": "@grouparoo/postgres",
     "source": true,
     "destination": true,
