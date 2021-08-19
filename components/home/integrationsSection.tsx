@@ -33,10 +33,8 @@ export default function IntegrationsSection() {
                       className="py-2"
                     >
                       <IntegrationCard
-                        name={plugin.name}
                         slug={plugin.slug}
                         type={plugin.primaryType}
-                        image={plugin.logo}
                         showLink={plugin.showLink}
                       />
                     </Col>

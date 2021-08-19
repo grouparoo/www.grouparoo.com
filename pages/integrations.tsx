@@ -63,7 +63,6 @@ export default function IntegrationsPage() {
                       className="py-4"
                     >
                       <IntegrationCard
-                        name={plugin.name}
                         type={plugin.primaryType}
                         otherType={
                           plugin.otherTypes.length > 0
@@ -72,7 +71,6 @@ export default function IntegrationsPage() {
                         }
                         category={plugin.category}
                         slug={plugin.slug}
-                        image={plugin.logo}
                         showLink={plugin.showLink}
                       />
                     </Col>

@@ -30,12 +30,7 @@ export default function BigQueryToSalesforce() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <IntegrationCard
-              name="Google BigQuery"
-              slug="bigquery"
-              image="bigquery.png"
-              showLink={false}
-            />
+            <IntegrationCard slug="bigquery" showLink={false} />
           </Col>
           <Col lg={1} md={2} sm={2} xs={2} style={{ textAlign: "center" }}>
             <br />
@@ -45,12 +40,7 @@ export default function BigQueryToSalesforce() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <IntegrationCard
-              name="Salesforce"
-              slug="salesforce"
-              image="salesforce.png"
-              showLink={false}
-            />
+            <IntegrationCard slug="salesforce" showLink={false} />
           </Col>
         </Row>
       </Container>

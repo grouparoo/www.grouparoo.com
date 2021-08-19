@@ -209,28 +209,12 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
                   <br />
                   <br />
                   <br />
-                  <SmallIntegration
-                    name="MySQL"
-                    slug="mysql"
-                    image="mysql.png"
-                  />
-                  <SmallIntegration
-                    name="Snowflake"
-                    slug="snowflake"
-                    image="snowflake.png"
-                  />
+                  <SmallIntegration slug="mysql" />
+                  <SmallIntegration slug="snowflake" />
                 </Col>
                 <Col>
-                  <SmallIntegration
-                    name="Postgres"
-                    slug="postgres"
-                    image="postgres.svg"
-                  />
-                  <SmallIntegration
-                    name="BigQuery"
-                    slug="bigquery"
-                    image="bigquery.png"
-                  />
+                  <SmallIntegration slug="postgres" />
+                  <SmallIntegration slug="bigquery" />
                 </Col>
                 <Col />
               </Row>
@@ -247,32 +231,12 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             <Col md={6} className="d-md-none">
               <Row className="align-items-center">
                 <Col>
-                  <SmallIntegration
-                    name="MySQL"
-                    slug="mysql"
-                    image="mysql.png"
-                    fillWidth={true}
-                  />
-                  <SmallIntegration
-                    name="Redshift"
-                    slug="redshift"
-                    image="redshift.svg"
-                    fillWidth={true}
-                  />
+                  <SmallIntegration slug="mysql" fillWidth={true} />
+                  <SmallIntegration slug="redshift" fillWidth={true} />
                 </Col>
                 <Col>
-                  <SmallIntegration
-                    name="Postgres"
-                    slug="postgres"
-                    image="postgres.svg"
-                    fillWidth={true}
-                  />
-                  <SmallIntegration
-                    name="BigQuery"
-                    slug="bigquery"
-                    image="bigquery.png"
-                    fillWidth={true}
-                  />
+                  <SmallIntegration slug="postgres" fillWidth={true} />
+                  <SmallIntegration slug="bigquery" fillWidth={true} />
                 </Col>
               </Row>
             </Col>
@@ -293,60 +257,24 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <Row className="align-items-center">
                 <Col className="d-none d-md-block" />
                 <Col className="d-none d-md-block">
-                  <SmallIntegration
-                    name="Mailchimp"
-                    slug="mailchimp"
-                    image="mailchimp.svg"
-                  />
-                  <SmallIntegration
-                    name="Marketo"
-                    slug="marketo"
-                    image="marketo.png"
-                  />
+                  <SmallIntegration slug="mailchimp" />
+                  <SmallIntegration slug="marketo" />
                 </Col>
                 <Col className="d-md-none">
-                  <SmallIntegration
-                    name="Mailchimp"
-                    slug="mailchimp"
-                    fillWidth={true}
-                    image="mailchimp.svg"
-                  />
-                  <SmallIntegration
-                    name="Marketo"
-                    slug="marketo"
-                    fillWidth={true}
-                    image="marketo.png"
-                  />
+                  <SmallIntegration slug="mailchimp" fillWidth={true} />
+                  <SmallIntegration slug="marketo" fillWidth={true} />
                 </Col>
                 <Col className="d-none d-md-block">
                   <br />
                   <br />
                   <br />
 
-                  <SmallIntegration
-                    name="Salesforce"
-                    slug="salesforce"
-                    image="salesforce.png"
-                  />
-                  <SmallIntegration
-                    name="Zendesk"
-                    slug="zendesk"
-                    image="zendesk.svg"
-                  />
+                  <SmallIntegration slug="salesforce" />
+                  <SmallIntegration slug="zendesk" />
                 </Col>
                 <Col className="d-md-none">
-                  <SmallIntegration
-                    name="Salesforce"
-                    slug="salesforce"
-                    fillWidth={true}
-                    image="salesforce.png"
-                  />
-                  <SmallIntegration
-                    name="Zendesk"
-                    slug="zendesk"
-                    fillWidth={true}
-                    image="zendesk.svg"
-                  />
+                  <SmallIntegration slug="salesforce" fillWidth={true} />
+                  <SmallIntegration slug="zendesk" fillWidth={true} />
                 </Col>
                 <Col className="d-none d-md-block" />
               </Row>
