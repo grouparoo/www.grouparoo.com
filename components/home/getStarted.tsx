@@ -11,7 +11,12 @@ export default function GetStarted({
       <Card.Body>
         <h2>Get Started with Grouparoo</h2>
         <p>Start syncing your data with Grouparoo Cloud</p>
-        <Button variant="primary" href="/trial" className="ml-auto mt-1 mb-4">
+        <Button
+          variant="primary"
+          size="lg"
+          href="/trial"
+          className="ml-auto mt-1 mb-4"
+        >
           Start Free Trial
         </Button>
         {showLearnMore ? (

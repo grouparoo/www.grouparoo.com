@@ -92,26 +92,13 @@ export default function BlogPage({ pageProps }) {
             <AuthorBox author={author} entry={post} />
           </Col>
           <Col>
-            <Subscribe />
-            <a
-              href={`https://twitter.com/intent/tweet?text="${
-                post.title
-              }" from @grouparoo &url=${`https://www.grouparoo.com${post.path}`}`}
-              target="_blank"
-              rel="noreferrer nofollow"
-            >
-              <div style={{ height: 25 }} className="d-flex align-items-center">
-                <p style={{ marginRight: 5, marginBottom: 0, marginTop: 0 }}>
-                  Share this post
-                </p>
-                <Image
-                  src="/images/home/twitter.png"
-                  alt="Twitter Logo"
-                  width={25}
-                  height={25}
-                />
-              </div>
-            </a>
+            <TwitterLink post={post} />
+            <br />
+            <Card>
+              <Card.Body>
+                <Subscribe />
+              </Card.Body>
+            </Card>
             <br />
             <div
               style={{
@@ -127,6 +114,34 @@ export default function BlogPage({ pageProps }) {
       <br />
       <br />
     </>
+  );
+}
+
+function TwitterLink({ post }: { post: BlogPost }) {
+  return (
+    <Row>
+      <Col>
+        <a
+          href={`https://twitter.com/intent/tweet?text="${
+            post.title
+          }" from @grouparoo &url=${`https://www.grouparoo.com${post.path}`}`}
+          target="_blank"
+          rel="noreferrer nofollow"
+        >
+          <div style={{ height: 25 }} className="d-flex align-items-center">
+            <p style={{ marginRight: 5, marginBottom: 0, marginTop: 0 }}>
+              Share this post
+            </p>
+            <Image
+              src="/images/home/twitter.png"
+              alt="Twitter Logo"
+              width={25}
+              height={25}
+            />
+          </div>
+        </a>
+      </Col>
+    </Row>
   );
 }
 

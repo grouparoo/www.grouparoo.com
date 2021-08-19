@@ -162,7 +162,14 @@ function PageTemplate({ children }) {
 
               <Row>
                 <Col />
-                <Col md={5}>
+                <Col
+                  md={5}
+                  style={{
+                    marginTop: 20,
+                    marginBottom: 10,
+                    minHeight: 150,
+                  }}
+                >
                   <Subscribe />
                 </Col>
                 <Col />
