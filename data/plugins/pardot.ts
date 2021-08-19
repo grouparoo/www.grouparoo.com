@@ -5,7 +5,7 @@ export const Pardot: Plugin = {
   description: "",
   priority: 40,
   slug: "pardot",
-  logo: "pardot.svg",
+  logo: "pardot.png",
   primaryType: "destination",
   otherTypes: [""],
   category: "marketing automation",

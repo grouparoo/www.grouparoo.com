@@ -1,16 +1,15 @@
 import Image from "../Image";
+import { getPluginDisplay } from "../../data/plugins";
 
 export default function SmallIntegration({
-  image,
   slug,
-  name,
   fillWidth,
 }: {
-  image: string;
   slug: string;
-  name: string;
   fillWidth?: boolean;
 }) {
+  const plugin = getPluginDisplay(slug);
+
   return (
     <div
       style={{
@@ -27,8 +26,8 @@ export default function SmallIntegration({
       }}
     >
       <Image
-        src={`/images/home/integrations/${slug}/${image}`}
-        alt={`${name} integration`}
+        src={plugin.logoPath}
+        alt={`${plugin.name} integration`}
         height={80}
         width={80}
       />

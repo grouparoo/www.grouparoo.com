@@ -30,12 +30,7 @@ export default function PostgresToHubspot() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <IntegrationCard
-              name="Postgres"
-              slug="postgres"
-              image="postgres.svg"
-              showLink={false}
-            />
+            <IntegrationCard slug="postgres" showLink={false} />
           </Col>
           <Col lg={1} md={2} sm={2} xs={2} style={{ textAlign: "center" }}>
             <br />
@@ -45,12 +40,7 @@ export default function PostgresToHubspot() {
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
             <br />
-            <IntegrationCard
-              name="Hubspot"
-              slug="hubspot"
-              image="hubspot.svg"
-              showLink={false}
-            />
+            <IntegrationCard slug="hubspot" showLink={false} />
           </Col>
         </Row>
       </Container>
@@ -98,7 +88,7 @@ export default function PostgresToHubspot() {
                 }}
               >
                 <Image
-                  src={`/images/home/integrations/postgres/postgres.svg`}
+                  src={`/images/home/integrations/postgres/postgres.png`}
                   alt="postgres"
                   height={80}
                   width={80}
@@ -119,7 +109,7 @@ export default function PostgresToHubspot() {
                 }}
               >
                 <Image
-                  src={`/images/home/integrations/hubspot/hubspot.svg`}
+                  src={`/images/home/integrations/hubspot/hubspot.png`}
                   alt="hubspot"
                   height={80}
                   width={80}

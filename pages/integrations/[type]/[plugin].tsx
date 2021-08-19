@@ -221,12 +221,7 @@ function DestionationHeaderArrow({ data }) {
         </Col>
         <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
           <br />
-          <IntegrationCard
-            name="Grouparoo"
-            slug="grouparoo"
-            image="grouparoo.png"
-            showLink={false}
-          />
+          <IntegrationCard slug="grouparoo" showLink={false} />
         </Col>
         <Col lg={1} md={2} sm={2} xs={2} style={{ textAlign: "center" }}>
           <br />
@@ -236,12 +231,7 @@ function DestionationHeaderArrow({ data }) {
         </Col>
         <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
           <br />
-          <IntegrationCard
-            name={data.name}
-            slug={data.slug}
-            image={data.logo}
-            showLink={false}
-          />
+          <IntegrationCard slug={data.slug} showLink={false} />
         </Col>
       </Row>
 
@@ -270,12 +260,7 @@ function SourceHeaderArrow({ data }) {
         </Col>
         <Col lg={3} md={5} sm={5} xs={5} className="text-center">
           <br />
-          <IntegrationCard
-            name={data.name}
-            slug={data.slug}
-            image={data.logo}
-            showLink={false}
-          />
+          <IntegrationCard slug={data.slug} showLink={false} />
         </Col>
         <Col lg={1} md={2} sm={2} xs={2} className="text-center">
           <br />
@@ -285,12 +270,7 @@ function SourceHeaderArrow({ data }) {
         </Col>
         <Col lg={3} md={5} sm={5} xs={5} className="text-center">
           <br />
-          <IntegrationCard
-            name="Grouparoo"
-            slug="grouparoo"
-            image="grouparoo.png"
-            showLink={false}
-          />
+          <IntegrationCard slug="grouparoo" showLink={false} />
         </Col>
       </Row>
     </>

@@ -1,19 +1,15 @@
 import { Card, Badge } from "react-bootstrap";
 import SmallIntegration from "./smallIntegration";
+import { getPluginDisplay } from "../../data/plugins";
 import Link from "next/link";
 
 export default function IntegrationCard({
-  name,
-  image,
   slug,
   type,
   otherType,
   category,
-  tag,
   showLink = true,
 }: {
-  name: string;
-  image: string;
   slug: string;
   type?: string;
   otherType?: string;
@@ -21,6 +17,7 @@ export default function IntegrationCard({
   tag?: string;
   showLink?: boolean;
 }) {
+  const plugin = getPluginDisplay(slug);
   const card = (
     <div
       style={{ borderRadius: "5px", boxShadow: "5px 5px 5px 5px lightgrey" }}
@@ -32,13 +29,8 @@ export default function IntegrationCard({
         className={showLink ? "integrationCard h-100" : "h-100"}
       >
         <Card.Body>
-          <SmallIntegration
-            fillWidth={true}
-            image={image}
-            slug={slug}
-            name={name}
-          />
-          <Card.Text>{`${name} integration`}</Card.Text>
+          <SmallIntegration fillWidth={true} slug={plugin.slug} />
+          <Card.Text>{`${plugin.name} integration`}</Card.Text>
 
           {type ? (
             <>

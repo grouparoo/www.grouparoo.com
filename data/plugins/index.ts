@@ -35,6 +35,12 @@ export interface PluginConfigOptions {
   [key: string]: PluginConfigOption;
 }
 
+export interface PluginDisplay {
+  name: string;
+  slug: string;
+  logoPath: string;
+}
+
 export interface Plugin {
   name: string;
   description: string;
@@ -120,6 +126,26 @@ export function randomHomepagePlugins() {
   ];
 
   return pluginNames;
+}
+
+export function getPluginDisplay(pluginSlug: string): PluginDisplay {
+  if (pluginSlug === "grouparoo") {
+    return {
+      name: "Grouparoo",
+      slug: "grouparoo",
+      logoPath: "/images/home/integrations/grouparoo/grouparoo.png",
+    };
+  }
+  const pluginData = PluginData.find(({ slug }) => slug === pluginSlug);
+  if (!pluginData) {
+    throw new Error(`Slug (${pluginSlug}) not found in plugin data.`);
+  }
+  const { name, slug, logo } = pluginData;
+  return {
+    name,
+    slug,
+    logoPath: `/images/home/integrations/${slug}/${logo}`,
+  };
 }
 
 export async function getUseCasePaths() {

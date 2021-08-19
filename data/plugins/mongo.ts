@@ -6,7 +6,7 @@ export const Mongo: Plugin = {
     "Grouparoo's MongoDB integration allows you to sync all of your customer data that lives in your MongoDB with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
   priority: 40,
   slug: "mongo",
-  logo: "mongodb.svg",
+  logo: "mongo.png",
   primaryType: "source",
   otherTypes: [""],
   category: "database",
@@ -39,7 +39,7 @@ export const Mongo: Plugin = {
       header: "Easily connect your MongoDB data",
       description:
         "Since Grouparoo is installed in your cloud infrastructure, you can easily point Grouparoo to any number of MongoDB instances you may have running.",
-      imageSrc: "/images/home/integrations/mongodb/add-mongo-app.png",
+      imageSrc: "/images/home/integrations/mongo/add-mongo-app.png",
       imageAlt: "Grouparoo MongoDB settings",
       imageWidth: 742,
       imageHeight: 696,
@@ -49,7 +49,7 @@ export const Mongo: Plugin = {
         "Define Profile Properties without needing to write MongoDB queries",
       description:
         "Grouparoo is low-code, so less technical team members can create new Profile Properties without needing to work with engineers. They can pull the data they need when they want.",
-      imageSrc: "/images/home/integrations/mongodb/mongo-table-mode.png",
+      imageSrc: "/images/home/integrations/mongo/mongo-table-mode.png",
       imageAlt: "MongoDB table source",
       imageWidth: 742,
       imageHeight: 757,
@@ -58,7 +58,7 @@ export const Mongo: Plugin = {
       header: "But you can also write MongoDB queries if you want",
       description:
         "Some Profile Properties will require aggregations across collections or more complex queries. Use Grouparoo's Query mode to pull the data you need.",
-      imageSrc: "/images/home/integrations/mongodb/mongo-query-mode.png",
+      imageSrc: "/images/home/integrations/mongo/mongo-query-mode.png",
       imageAlt: "MongoDB query source",
       imageWidth: 742,
       imageHeight: 645,

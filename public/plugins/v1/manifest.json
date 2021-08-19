@@ -62,7 +62,7 @@
   {
     "name": "Hubspot",
     "description": "Grouparoo's Hubspot integration allows you to sync all of your customer data that lives in your data warehouse into Hubspot.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/hubspot/hubspot.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/hubspot/hubspot.png",
     "packageName": "@grouparoo/hubspot",
     "source": false,
     "destination": true,
@@ -112,7 +112,7 @@
   {
     "name": "Mongo",
     "description": "Grouparoo's MongoDB integration allows you to sync all of your customer data that lives in your MongoDB with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/mongo/mongodb.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/mongo/mongo.png",
     "packageName": "@grouparoo/mongo",
     "source": true,
     "destination": false,
@@ -142,7 +142,7 @@
   {
     "name": "Pardot",
     "description": "",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/pardot/pardot.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/pardot/pardot.png",
     "packageName": "@grouparoo/pardot",
     "source": false,
     "destination": true,
@@ -162,7 +162,7 @@
   {
     "name": "Postgres",
     "description": "Grouparoo's Postgres integration allows you to sync all of your customer data that lives in your Postgres DB with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/postgres/postgres.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/postgres/postgres.png",
     "packageName": "@grouparoo/postgres",
     "source": true,
     "destination": true,
@@ -172,7 +172,7 @@
   {
     "name": "Redshift",
     "description": "Grouparoo's Redshift integration allows you to sync all of your customer data that lives in your Redshift data warehouse with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/redshift/redshift.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/redshift/redshift.png",
     "packageName": "@grouparoo/redshift",
     "source": true,
     "destination": true,
@@ -182,7 +182,7 @@
   {
     "name": "SQLite",
     "description": "Grouparoo's SQLite integration allows you to sync all of your customer data that lives in your SQLite database with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/sqlite/sqlite.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/sqlite/sqlite.png",
     "packageName": "@grouparoo/sqlite",
     "source": true,
     "destination": true,
@@ -232,7 +232,7 @@
   {
     "name": "Zendesk",
     "description": "Grouparoo's Zendesk integration allows you to sync all of your customer data that lives in your data warehouse into Zendesk.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/zendesk/zendesk.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/zendesk/zendesk.png",
     "packageName": "@grouparoo/zendesk",
     "source": false,
     "destination": true,
