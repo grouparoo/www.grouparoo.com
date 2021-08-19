@@ -109,7 +109,7 @@ export default function PostgresToHubspot() {
                 }}
               >
                 <Image
-                  src={`/images/home/integrations/hubspot/hubspot.svg`}
+                  src={`/images/home/integrations/hubspot/hubspot.png`}
                   alt="hubspot"
                   height={80}
                   width={80}

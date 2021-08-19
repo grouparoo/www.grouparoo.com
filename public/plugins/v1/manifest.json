@@ -62,7 +62,7 @@
   {
     "name": "Hubspot",
     "description": "Grouparoo's Hubspot integration allows you to sync all of your customer data that lives in your data warehouse into Hubspot.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/hubspot/hubspot.svg",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/hubspot/hubspot.png",
     "packageName": "@grouparoo/hubspot",
     "source": false,
     "destination": true,

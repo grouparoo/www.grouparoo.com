@@ -6,7 +6,7 @@ export const Hubspot: Plugin = {
     "Grouparoo's Hubspot integration allows you to sync all of your customer data that lives in your data warehouse into Hubspot.",
   priority: 70,
   slug: "hubspot",
-  logo: "hubspot.svg",
+  logo: "hubspot.png",
   primaryType: "destination",
   otherTypes: [],
   category: "email marketing",
