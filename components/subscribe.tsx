@@ -50,7 +50,7 @@ export default function Subscribe() {
   }
 
   let form;
-  let content = "We will let you know about our launch and new content.";
+  let content = "We will let you know about product updates and new content.";
   if (subscribed) {
     form = null;
     content = "You have been subscribed. Talk to you soon!";
