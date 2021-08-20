@@ -68,6 +68,8 @@ exports.default = async function buildConfig() {
 };
 ```
 
+Grouparoo will auto-generate an API key for you, but it is also possible to set it explicitly in the config file or as an env variable `PRODUCTION_API_KEY`.
+
 From here, you can update the name and permissions.
 
 ### Accessing & Testing the API
@@ -84,7 +86,7 @@ The Swagger docs for your API can be found by navigating to `/swagger` in the Gr
   height={530}
 />
 
-The Grouparoo API can be authorized in 2 distinct ways: as a web user (with a cookie and CSRF token), or via an API Key. By default, when visiting the `/swagger` page, you will be authenticated using your existing cookie. You can switch to using an API key by clicking "Authorize" and entering your API Key (if pasting in your API Key, be careful about extra whitespace).
+The Grouparoo API can be authorized in 2 distinct ways: as a web user (with a cookie and CSRF token), or via an API Key. By default, when visiting the `/swagger` page, you will be authenticated using your existing cookie. You can switch to using an API key by clicking "Authorize" and entering your API Key (if pasting in your API Key, be careful about whitespace).
 
 <ImageInBrowserFrame
   centered
@@ -106,72 +108,82 @@ GROUPAROO_API_KEY="ba05b18d9dae4acbb08799e7ef238f0d"
 curl -X GET "$GROUPAROO_HOST/api/v1/apps?apiKey=$GROUPAROO_API_KEY"
 ```
 
-You can also make post requests, such as creating a team or adding team members. Assuming you have your variables set from the previous example:
+You can also make post requests. Running the command above, you should have gotten back a list of all your apps. You can use an `app_id` to generate a source like so:
 
 ```
 # Set More Variables
-TEAM_NAME="newTeam"
+APP_ID="demo_db"
+SOURCE_NAME="demo_source"
+TABLE_NAME="users"
+SOURCE_TYPE="postgres-table-import"
 
 # Make Request
-curl -X POST "$GROUPAROO_HOST/api/v1/team?name=$TEAM_NAME&permissionAllRead=true&permissionAllWrite=false&apiKey=$GROUPAROO_API_KEY"
+curl -X POST "$GROUPAROO_HOST/api/v1/source?appId=$APP_ID&name=$SOURCE_NAME&options=%7B%22table%22%3A%20%22$TABLE_NAME%22%7D&type=$SOURCE_TYPE&state=ready&apiKey=$GROUPAROO_API_KEY"
 ```
 
-You'll get back an object that includes the team's id:
+You'll get back an object that includes the source's id:
 
 ```json
 {
-  "team": {
-    "id": "tea_377556ab-3a49-4b23-9044-fdaee77ed08f",
-    "name": "newTeam",
-    "locked": null,
-    "permissionAllRead": true,
-    "permissionAllWrite": false,
-    "createdAt": 1628110919221,
-    "updatedAt": 1628110919221,
-    "permissions": [
-      {
-        "id": "prm_3882efbd-912a-4f48-b1ca-d0445dff972a",
-        "topic": "apiKey",
-        "read": true,
-        "write": false,
-        "locked": null
-      },
-      ...
-    ],
-    "membersCount": 0
-  },
-  "serverInformation": {
-    "serverName": "@grouparoo/core",
-    "apiVersion": "0.5.3-alpha.1",
-    "requestDuration": 211,
-    "currentTime": 1628110919419
-  },
-  "requesterInformation": {
-    "id": "69f83d5c56f347bc656b022a4dfba659e1c2e53e-fc8845c5-94dc-4c70-aa15-f7d4ebaf2b58",
-    "fingerprint": "69f83d5c56f347bc656b022a4dfba659e1c2e53e",
-    "messageId": "fc8845c5-94dc-4c70-aa15-f7d4ebaf2b58",
-    "remoteIP": "127.0.0.1",
-    "receivedParams": {
-      "name": "teamanem",
-      "permissionAllRead": "true",
-      "permissionAllWrite": "false",
-      "action": "team:create",
-      "apiVersion": "1"
+  "source": {
+    "id": "src_a654f21f-b745-4ee3-824e-3a9d039a405f",
+    "name": "demo_source",
+    "type": "postgres-table-import",
+    "state": "ready",
+    "mapping": {},
+    "app": {
+      "id": "demo_db",
+      "name": "Demo Database",
+      "icon": "/public/@grouparoo/postgres/postgres.svg",
+      "type": "postgres",
+      "state": "ready",
+      "locked": "config:code",
+  ...
     }
   }
 }
 ```
 
-which you can then use to add a team member:
+Then, you can use the source id to create a property
 
 ```
 # Set Even More Variables
-TEAM_ID="tea_377556ab-3a49-4b23-9044-fdaee77ed08f"
-MEMBER_FIRST_NAME="Taisto"
-MEMBER_LAST_NAME="Walerian"
-MEMBER_EMAIL="twalerian996@demo.com"
-MEMBER_PASSWORD="abc123"
+SOURCE_ID="src_22d32d1d-5573-4e1d-a4a7-151d8329e4cb"
+ID="email"
+key="email"
+options="=%7B%22column%22%3A%22email%22%2C%20%22aggregationMethod%22%3A%22exact%22%7D" #these are an encoded object
+type="email"
 
 # Make Request
-curl -X POST "$GROUPAROO_HOST/api/v1/team/member?email=MEMBER_EMAIL&firstName=$MEMBER_FIRST_NAME&lastName=$MEMBER_LAST_NAME&password=$MEMBER_PASSWORD&subscribed=true&teamId=$TEAM_ID&apiKey=GROUPAROO_API_KEY"
+curl -X POST "http://localhost:3000/api/v1/property?id=$ID&key=$KEY&options=$OPTIONS&sourceId=$SOURCE_ID&state=ready&type=$TYPE&apiKey=$API_KEY"
 ```
+
+and you'll get back the property object:
+
+```json
+{
+  "property": {
+    "id": "email",
+    "sourceId": "src_22d32d1d-5573-4e1d-a4a7-151d8329e4cb",
+    "key": "email",
+    "type": "email",
+    "state": "ready",
+    "unique": false,
+    "identifying": false,
+    "directlyMapped": false,
+    "keepValueIfNotFound": false,
+    "locked": null,
+    "options": {
+      "column": "email",
+      "aggregationMethod": "exact"
+    },
+    "filters": [],
+    "isArray": false,
+    "createdAt": 1629494788513,
+    "updatedAt": 1629494788588
+  },
+  ...
+}
+```
+
+For more workflow examples and help formatting curl requests, check out the swagger docs for your API.
