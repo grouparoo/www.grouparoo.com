@@ -50,14 +50,14 @@ export default function Subscribe() {
   }
 
   let form;
-  let content = "We will let you know about our launch and new content.";
+  let content = "We will let you know about product updates and new content.";
   if (subscribed) {
     form = null;
     content = "You have been subscribed. Talk to you soon!";
   } else {
     form = (
       <Form id="form" onSubmit={handleSubmit(onSubmit)}>
-        <Row>
+        <Row noGutters>
           <Col md={12} style={{ padding: 0 }}>
             <Form.Group>
               <Form.Control
@@ -72,9 +72,9 @@ export default function Subscribe() {
             </Form.Group>
           </Col>
         </Row>
-        <Row>
+        <Row noGutters>
           <Col style={{ padding: 0 }}>
-            <Button variant="primary" type="submit">
+            <Button type="submit" variant="outline-primary">
               Subscribe
             </Button>
           </Col>
@@ -83,17 +83,13 @@ export default function Subscribe() {
     );
   }
 
-  const minHeight = 150; // height that prevents it from moving after submit in desktop
-
   return (
-    <Col style={{ marginTop: 20, marginBottom: 10, minHeight }}>
-      <Row>
+    <Row>
+      <Col>
         <h5>Stay up to date</h5>
-      </Row>
-      <Row>
         <p style={{ fontSize: "smaller" }}>{content}</p>
-      </Row>
-      {form}
-    </Col>
+        {form}
+      </Col>
+    </Row>
   );
 }

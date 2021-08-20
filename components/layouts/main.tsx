@@ -1,4 +1,5 @@
 import { useState, useEffect, Children, cloneElement } from "react";
+import { Row, Container, Col } from "react-bootstrap";
 import Head from "next/head";
 import Navigation from "../navigation";
 import Footer from "../footer";
@@ -6,6 +7,7 @@ import { useRouter } from "next/router";
 import GetStarted from "../home/getStarted";
 import { OpenSourceDataStackConfBanner } from "../banners/OpenSourceDataStackConfBanner";
 import { DisplayReleaseNote, WhatsNewBanner } from "../banners/whatsNewBanner";
+import Subscribe from "../subscribe";
 
 function PageTemplate({ children }) {
   const router = useRouter();
@@ -148,8 +150,34 @@ function PageTemplate({ children }) {
         </div>
         {noGetStarted.includes(router.route) ||
         noGetStarted.includes(router.asPath) ? null : (
-          <GetStarted />
+          <div id="getStartedContainer" className="text-center w-full py-5">
+            <Container>
+              <Row>
+                <Col md={3} />
+                <Col>
+                  <GetStarted />
+                </Col>
+                <Col md={3} />
+              </Row>
+
+              <Row>
+                <Col />
+                <Col
+                  md={5}
+                  style={{
+                    marginTop: 20,
+                    marginBottom: 10,
+                    minHeight: 150,
+                  }}
+                >
+                  <Subscribe />
+                </Col>
+                <Col />
+              </Row>
+            </Container>
+          </div>
         )}
+
         <Footer />
       </div>
     </>
