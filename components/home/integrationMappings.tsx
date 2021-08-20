@@ -17,8 +17,6 @@ export default function IntegrationMappings({
   destinationProperty: string;
   destinationGroup: string;
 }) {
-  const imageStyle = { height: 128 };
-
   return (
     <>
       <Row style={{ textAlign: "center" }}>
@@ -37,7 +35,6 @@ export default function IntegrationMappings({
         >
           <Image
             centered
-            style={imageStyle}
             src="/images/home/logo-square-with-padding-blue-background.svg"
             alt="Grouparoo Logo"
             height={128}
@@ -73,7 +70,6 @@ export default function IntegrationMappings({
         >
           <Image
             centered
-            style={imageStyle}
             src={`/images/home/integrations/${slug}/${image}`}
             alt={name}
             height={128}
