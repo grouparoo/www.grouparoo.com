@@ -8,15 +8,7 @@ Grouparoo's REST API enables you to connect to your Grouparoo instance from an e
 
 ## What can you do with our API?
 
-Grouparoo's REST API contains endpoints for over 25 topics -- everything from installing a Grouparoo Plugin to getting a list of all your Schedules. To see a full list of API endpoints, navigate to `/swagger` in the UI of your Grouparoo instance or run:
-
-```bash
-curl -X 'GET' \
-  '{{yourinstanceurl}}/api/v1/swagger' \
-  -H 'accept: application/json'
-```
-
-with your instance's URL.
+Grouparoo's REST API contains endpoints for over 25 topics -- everything from installing a Grouparoo Plugin to getting a list of all your Schedules. To see a full list of API endpoints, navigate to `/swagger` in the UI of your Grouparoo instance.
 
 ## Using the Grouparoo API
 
@@ -28,7 +20,7 @@ To get started using Grouparoo's REST API, you'll need to generate an API key. T
 
 1. Go to Platform > API Keys or navigate to `/apiKeys` and select "Add API Key".
 
-2. Give your API Key a name. An API Key will be generated and you will be prompted to set permissions for this API.
+2. Give your API Key a name. An API Key will be generated and you will be prompted to set permissions for it.
 
 <ImageInBrowserFrame
   centered
@@ -43,7 +35,7 @@ To learn more about what each of the topics can do in the API, you can access th
 
 #### Code Config Method
 
-You can also generate an API key object with the [`grouparoo generate` command]. To do this, run
+You can also generate an API key object with the [`grouparoo generate` command](/docs/cli/config#generate). To do this, run
 
 ```
 grouparoo generate apiKey {{yourAPIKeyId}}
@@ -97,7 +89,7 @@ The Grouparoo API can be authorized in 2 distinct ways: as a web user (with a co
   height={521}
 />
 
-For example, if you want to see a list of all your instance's apps, you can run:
+You are now ready to make HTTP requests with your Grouparoo API. For example, if you want to see a list of all your instance's apps, you can run:
 
 ```bash
 # Set Variables
@@ -157,7 +149,6 @@ Then, you can use the source id to create a property
 
 ```bash
 # Set new variables for the request
-APP_ID="demo_db"
 PROPERTY_ID="email"
 SOURCE_ID="demo_source"
 PROPERTY_KEY="email"
@@ -176,12 +167,7 @@ curl \
   -d "state=ready" \
   -d "options={\"column\": \"$COLUMN\", \"aggregationMethod": \"$AGGREGATION_METHOD\"}" \
 
-"$GROUPAROO_HOST/api/v1/source"
-
-# Make Request
-
-curl -X POST "http://localhost:3000/api/v1"
-
+"$GROUPAROO_HOST/api/v1/property"
 ```
 
 and you'll get back the property object:
