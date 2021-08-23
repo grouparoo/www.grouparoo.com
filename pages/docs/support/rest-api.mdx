@@ -89,7 +89,8 @@ The Grouparoo API can be authorized in 2 distinct ways: as a web user (with a co
   height={521}
 />
 
-You are now ready to make HTTP requests with your Grouparoo API. For example, if you want to see a list of all your instance's apps, you can run:
+You can use the Swagger UI to try out all the APIs available to your Grouparoo instance. The Grouparoo API is available to use via any HTTP API Client. In the following examples, we'll use the ubiquitous [cURL](https://curl.se/) library.
+For example, if you want to see a list of all your instance's apps, you can run:
 
 ```bash
 # Set Variables
@@ -198,4 +199,5 @@ and you'll get back the property object:
 }
 ```
 
+Note how in the above examples, the `apiKey` can be provided either as a GET parameter in the URL, or as form data. Either way works!
 For more workflow examples and help formatting curl requests, check out the swagger docs for your API.
