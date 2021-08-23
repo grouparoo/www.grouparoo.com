@@ -110,15 +110,24 @@ curl -X GET "$GROUPAROO_HOST/api/v1/apps?apiKey=$GROUPAROO_API_KEY"
 
 You can also make post requests. Running the command above, you should have gotten back a list of all your apps. You can use an `app_id` to generate a source like so:
 
-```
-# Set More Variables
+```bash
+# Set new variables for the request
 APP_ID="demo_db"
 SOURCE_NAME="demo_source"
 TABLE_NAME="users"
 SOURCE_TYPE="postgres-table-import"
 
 # Make Request
-curl -X POST "$GROUPAROO_HOST/api/v1/source?appId=$APP_ID&name=$SOURCE_NAME&options=%7B%22table%22%3A%20%22$TABLE_NAME%22%7D&type=$SOURCE_TYPE&state=ready&apiKey=$GROUPAROO_API_KEY"
+curl \
+  -X POST \
+  -d "apiKey=$GROUPAROO_API_KEY" \
+  -d "appId=$APP_ID" \
+  -d "name=$SOURCE_NAME" \
+  -d "type=$SOURCE_TYPE" \
+  -d "state=ready" \
+  -d "options={\"table\": \"$TABLE_NAME\"}" \
+  -d "mapping={\"id\": \"user_id\"}" \
+"$GROUPAROO_HOST/api/v1/source"
 ```
 
 You'll get back an object that includes the source's id:
@@ -146,16 +155,33 @@ You'll get back an object that includes the source's id:
 
 Then, you can use the source id to create a property
 
-```
-# Set Even More Variables
-SOURCE_ID="src_22d32d1d-5573-4e1d-a4a7-151d8329e4cb"
-ID="email"
-key="email"
-options="=%7B%22column%22%3A%22email%22%2C%20%22aggregationMethod%22%3A%22exact%22%7D" #these are an encoded object
-type="email"
+```bash
+# Set new variables for the request
+APP_ID="demo_db"
+PROPERTY_ID="email"
+SOURCE_ID="demo_source"
+PROPERTY_KEY="email"
+PROPERTY_TYPE="email"
+COLUMN="email"
+AGGREGATION_METHOD="exact"
 
 # Make Request
-curl -X POST "http://localhost:3000/api/v1/property?id=$ID&key=$KEY&options=$OPTIONS&sourceId=$SOURCE_ID&state=ready&type=$TYPE&apiKey=$API_KEY"
+curl \
+  -X POST \
+  -d "apiKey=$GROUPAROO_API_KEY" \
+  -d "id=$PROPERTY_ID" \
+  -d "source=$SOURCE_ID" \
+  -d "key=$PROPERTY_KEY" \
+  -d "type=$PROPERTY_TYPE" \
+  -d "state=ready" \
+  -d "options={\"column\": \"$COLUMN\", \"aggregationMethod": \"$AGGREGATION_METHOD\"}" \
+
+"$GROUPAROO_HOST/api/v1/source"
+
+# Make Request
+
+curl -X POST "http://localhost:3000/api/v1"
+
 ```
 
 and you'll get back the property object:
