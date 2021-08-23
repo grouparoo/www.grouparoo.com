@@ -39,6 +39,11 @@ module.exports = {
         statusCode: 301,
       },
       {
+        source: "/solutions/customer-data-platform",
+        destination: "/",
+        statusCode: 301,
+      },
+      {
         source: "/blog/hubspot-destination",
         destination: "/integrations/destinations/hubspot",
         statusCode: 301,
