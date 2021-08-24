@@ -1,0 +1,203 @@
+---
+title: "Grouparoo REST API"
+date: "2021-08-02"
+pullQuote: "Use the Grouparoo REST API to connect to your Grouparoo instance from an external application."
+---
+
+Grouparoo's REST API enables you to connect to your Grouparoo instance from an external application and return data in JSON format.
+
+## What can you do with our API?
+
+Grouparoo's REST API contains endpoints for over 25 topics -- everything from installing a Grouparoo Plugin to getting a list of all your Schedules. To see a full list of API endpoints, navigate to `/swagger` in the UI of your Grouparoo instance.
+
+## Using the Grouparoo API
+
+### Generating an API Key
+
+To get started using Grouparoo's REST API, you'll need to generate an API key. To do this, first make sure you are signed into an account with "write" access for API Keys. Then:
+
+#### UI Method
+
+1. Go to Platform > API Keys or navigate to `/apiKeys` and select "Add API Key".
+
+2. Give your API Key a name. An API Key will be generated and you will be prompted to set permissions for it.
+
+<ImageInBrowserFrame
+  centered
+  source="Generate an API Key"
+  alt="Generate an API Key"
+  src="/images/docs/support/rest-api/apikeyconfig.png"
+  width={820}
+  height={502}
+/>
+
+To learn more about what each of the topics can do in the API, you can access the Swagger Docs for the Grouparoo API by navigating to `/swagger` in the UI of your Grouparoo Instance or going to Platform > API Documentation.
+
+#### Code Config Method
+
+You can also generate an API key object with the [`grouparoo generate` command](/docs/cli/config#generate). To do this, run
+
+```
+grouparoo generate apiKey {{yourAPIKeyId}}
+```
+
+This command will generate a config file in a new directory `/config/apiKeys/{{yourAPIKeyId}}.js` that looks like this:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      class: "apiKey",
+      id: "{{yourAPIKeyId}}",
+      name: "{{yourAPIKeyId}}",
+      apiKey: "API KEY HERE" // you can hard-code the API key you want to use, or source it from `process.env.PRODUCTION_API_KEY`
+      options: {
+        permissionAllRead: false, // Does this API Key have read permission to all topics?
+        permissionAllWrite: false, // Does this API Key have write permission to all topics?
+      },
+    },
+  ];
+};
+```
+
+Grouparoo will auto-generate an API key for you, but it is also possible to set it explicitly in the config file or as an env variable `PRODUCTION_API_KEY`.
+
+From here, you can update the name and permissions.
+
+### Accessing & Testing the API
+
+As Grouparoo can be self-hosted, every deployment of Grouparoo provides its own API documentation.
+The Swagger docs for your API can be found by navigating to `/swagger` in the Grouparoo UI.
+
+<ImageInBrowserFrame
+  centered
+  source="Generate an API Key"
+  alt="Generate an API Key"
+  src="/images/docs/support/rest-api/swaggerdocs.png"
+  width={820}
+  height={530}
+/>
+
+The Grouparoo API can be authorized in 2 distinct ways: as a web user (with a cookie and CSRF token), or via an API Key. By default, when visiting the `/swagger` page, you will be authenticated using your existing cookie. You can switch to using an API key by clicking "Authorize" and entering your API Key (if pasting in your API Key, be careful about whitespace).
+
+<ImageInBrowserFrame
+  centered
+  source="Generate an API Key"
+  alt="Generate an API Key"
+  src="/images/docs/support/rest-api/auths.png"
+  width={820}
+  height={521}
+/>
+
+You can use the Swagger UI to try out all the APIs available to your Grouparoo instance. The Grouparoo API is available to use via any HTTP API Client. In the following examples, we'll use the ubiquitous [cURL](https://curl.se/) library.
+For example, if you want to see a list of all your instance's apps, you can run:
+
+```bash
+# Set Variables
+GROUPAROO_HOST="http://localhost:3000"
+GROUPAROO_API_KEY="ba05b18d9dae4acbb08799e7ef238f0d"
+
+# Make Requests
+curl -X GET "$GROUPAROO_HOST/api/v1/apps?apiKey=$GROUPAROO_API_KEY"
+```
+
+You can also make post requests. Running the command above, you should have gotten back a list of all your apps. You can use an `app_id` to generate a source like so:
+
+```bash
+# Set new variables for the request
+APP_ID="demo_db"
+SOURCE_NAME="demo_source"
+TABLE_NAME="users"
+SOURCE_TYPE="postgres-table-import"
+
+# Make Request
+curl \
+  -X POST \
+  -d "apiKey=$GROUPAROO_API_KEY" \
+  -d "appId=$APP_ID" \
+  -d "name=$SOURCE_NAME" \
+  -d "type=$SOURCE_TYPE" \
+  -d "state=ready" \
+  -d "options={\"table\": \"$TABLE_NAME\"}" \
+  -d "mapping={\"id\": \"user_id\"}" \
+"$GROUPAROO_HOST/api/v1/source"
+```
+
+You'll get back an object that includes the source's id:
+
+```json
+{
+  "source": {
+    "id": "src_a654f21f-b745-4ee3-824e-3a9d039a405f",
+    "name": "demo_source",
+    "type": "postgres-table-import",
+    "state": "ready",
+    "mapping": {},
+    "app": {
+      "id": "demo_db",
+      "name": "Demo Database",
+      "icon": "/public/@grouparoo/postgres/postgres.svg",
+      "type": "postgres",
+      "state": "ready",
+      "locked": "config:code",
+  ...
+    }
+  }
+}
+```
+
+Then, you can use the source id to create a property
+
+```bash
+# Set new variables for the request
+PROPERTY_ID="email"
+SOURCE_ID="demo_source"
+PROPERTY_KEY="email"
+PROPERTY_TYPE="email"
+COLUMN="email"
+AGGREGATION_METHOD="exact"
+
+# Make Request
+curl \
+  -X POST \
+  -d "apiKey=$GROUPAROO_API_KEY" \
+  -d "id=$PROPERTY_ID" \
+  -d "source=$SOURCE_ID" \
+  -d "key=$PROPERTY_KEY" \
+  -d "type=$PROPERTY_TYPE" \
+  -d "state=ready" \
+  -d "options={\"column\": \"$COLUMN\", \"aggregationMethod": \"$AGGREGATION_METHOD\"}" \
+
+"$GROUPAROO_HOST/api/v1/property"
+```
+
+and you'll get back the property object:
+
+```json
+{
+  "property": {
+    "id": "email",
+    "sourceId": "src_22d32d1d-5573-4e1d-a4a7-151d8329e4cb",
+    "key": "email",
+    "type": "email",
+    "state": "ready",
+    "unique": false,
+    "identifying": false,
+    "directlyMapped": false,
+    "keepValueIfNotFound": false,
+    "locked": null,
+    "options": {
+      "column": "email",
+      "aggregationMethod": "exact"
+    },
+    "filters": [],
+    "isArray": false,
+    "createdAt": 1629494788513,
+    "updatedAt": 1629494788588
+  },
+  ...
+}
+```
+
+Note how in the above examples, the `apiKey` can be provided either as a GET parameter in the URL, or as form data. Either way works!
+For more workflow examples and help formatting curl requests, check out the swagger docs for your API.
