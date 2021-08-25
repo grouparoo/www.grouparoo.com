@@ -25,8 +25,7 @@
       type="application/rss+xml"
     />
         <item>
-            <title
-      ><![CDATA[The Modern Customer Data Integration Stack]]></title>
+            <title><![CDATA[What is Customer Data Integration?]]></title>
             <link
       >https://www.grouparoo.com/blog/customer-data-integration</link>
             <guid>grouparoo-blog-post-customer-data-integration</guid>
