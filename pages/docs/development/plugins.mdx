@@ -329,7 +329,7 @@ const { key, value, description, defaultValue } = await api.plugins.readSetting(
 await api.plugins.updateSetting(pluginName, key, value);
 ```
 
-Settings are all of type `string`, so coerce them if needed. Setting keys and values are limited to 191 characters in length.
+Settings are all of type `string` or `number`, so coerce them if needed. Setting keys and values are limited to 191 characters in length.
 
 ### Iteration and Testing
 
