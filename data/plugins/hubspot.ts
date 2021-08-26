@@ -43,7 +43,7 @@ export const Hubspot: Plugin = {
       imageSrc: "/images/home/integrations/hubspot/grouparoo-to-hubspot.png",
       imageAlt: "Map data to Hubspot",
       imageWidth: 742,
-      imageHeight: 506,
+      imageHeight: 412,
     },
     {
       header:

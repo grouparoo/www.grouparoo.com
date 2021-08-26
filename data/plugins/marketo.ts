@@ -43,7 +43,7 @@ export const Marketo: Plugin = {
       imageSrc: "/images/home/integrations/marketo/grouparoo-to-marketo.png",
       imageAlt: "Map data to Marketo",
       imageWidth: 742,
-      imageHeight: 506,
+      imageHeight: 406,
     },
     {
       header:
