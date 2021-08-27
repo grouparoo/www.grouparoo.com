@@ -44,7 +44,7 @@ export const Sailthru: Plugin = {
       imageSrc: "/images/home/integrations/sailthru/grouparoo-to-sailthru.png",
       imageAlt: "Map data to Sailthru",
       imageWidth: 742,
-      imageHeight: 506,
+      imageHeight: 414,
     },
     {
       header:
