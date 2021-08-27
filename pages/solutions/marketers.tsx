@@ -207,7 +207,7 @@ export default function IndexPage() {
                 src="/images/home/how-it-works-3.png"
                 alt="Grouparoo destination"
                 width={650}
-                height={399}
+                height={355}
               />
             </Col>
           </Row>
