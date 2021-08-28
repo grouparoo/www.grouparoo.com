@@ -178,7 +178,7 @@ export default function WhoWeAre() {
               title="Community Architect"
               description={
                 <span>
-                 🕵🏻‍♀️👩🏻‍🔬👩🏻‍💻👩🏻‍🏫 
+                  🕵🏻‍♀️👩🏻‍🔬👩🏻‍💻👩🏻‍🏫
                   <br /> Previously:
                   <br />
                   Community Development Manager{" "}
