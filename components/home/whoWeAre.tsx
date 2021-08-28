@@ -29,7 +29,7 @@ export default function WhoWeAre() {
               title="CEO"
               description={
                 <span>
-                  👨‍👩‍👧‍👦 🛠
+                  👨‍👩‍👧‍👦 🛠 📚
                   <br />
                   Previously:
                   <br />
@@ -56,7 +56,7 @@ export default function WhoWeAre() {
               title="CTO"
               description={
                 <span>
-                  🤖 🎮 👩🏻‍🤝‍👨🏼
+                  🤖 🎮 👫
                   <br />
                   Previously:
                   <br />
@@ -169,6 +169,31 @@ export default function WhoWeAre() {
               github="https://github.com/tealjulia"
               twitter="https://twitter.com/tealdoestech"
               linkedIn="https://www.linkedin.com/in/teal-larson"
+            />
+          </Col>
+          <Col md={4} className="d-flex justify-content-center">
+            <TeamMember
+              name="Maria Silverhardt"
+              image="maria_silverhardt.jpg"
+              title="Community Architect"
+              description={
+                <span>
+                  🕵🏻‍♀️👩🏻‍🔬👩🏻‍💻👩🏻‍🏫
+                  <br /> Previously:
+                  <br />
+                  Community Development Manager{" "}
+                  <a
+                    href="https://www.bugcrowd.com"
+                    target="_blank"
+                    rel="noreferrer nofollow"
+                  >
+                    @Bugcrowd
+                  </a>
+                </span>
+              }
+              github="https://github.com/asthedatamoves"
+              twitter="https://twitter.com/msdatadetective"
+              linkedIn="https://www.linkedin.com/in/mariasilverhardt"
             />
           </Col>
         </Row>

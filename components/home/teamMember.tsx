@@ -62,8 +62,8 @@ function SocialIconGrayscale({ name }) {
       <Image
         src={`/images/home/${name}.png`}
         alt={name}
-        width={20}
-        height={20}
+        width={18}
+        height={18}
       />
     </div>
   );
