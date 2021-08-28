@@ -29,7 +29,7 @@ export default function WhoWeAre() {
               title="CEO"
               description={
                 <span>
-                  👨‍👩‍👧‍👦 🛠
+                  👨‍👩‍👧‍👦 🛠 📚
                   <br />
                   Previously:
                   <br />
@@ -56,7 +56,7 @@ export default function WhoWeAre() {
               title="CTO"
               description={
                 <span>
-                  🤖 🎮 👩🏻‍🤝‍👨🏼
+                  🤖 🎮 👫
                   <br />
                   Previously:
                   <br />
