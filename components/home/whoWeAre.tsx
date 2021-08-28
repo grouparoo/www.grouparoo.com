@@ -174,7 +174,7 @@ export default function WhoWeAre() {
           <Col md={4} className="d-flex justify-content-center">
             <TeamMember
               name="Maria Silverhardt"
-              image="Maria_Silverhardt_Team_Photo.jpg"
+              image="maria_silverhardt.jpg"
               title="Community Architect"
               description={
                 <span>
