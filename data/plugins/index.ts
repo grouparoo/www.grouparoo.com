@@ -7,7 +7,9 @@ import { Hubspot } from "./hubspot";
 import { Intercom } from "./intercom";
 import { Iterable } from "./iterable";
 import { Mailchimp } from "./mailchimp";
+import { Mailjet } from "./mailjet";
 import { Marketo } from "./marketo";
+import { Mixpanel } from "./mixpanel";
 import { Mongo } from "./mongo";
 import { MySQL } from "./mysql";
 import { OneSignal } from "./onesignal";
@@ -95,7 +97,9 @@ export const PluginData: Plugin[] = [
   Intercom,
   Iterable,
   Mailchimp,
+  Mailjet,
   Marketo,
+  Mixpanel,
   Mongo,
   MySQL,
   OneSignal,
