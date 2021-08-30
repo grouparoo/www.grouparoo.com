@@ -10,16 +10,6 @@
     "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-bigquery"
   },
   {
-    "name": "Calculated Property",
-    "description": "Grouparoo's Calculated Property plugin allows you to transform data from your warehouse before you export to various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/csv/csv.svg",
-    "packageName": "@grouparoo/calculated-property",
-    "source": true,
-    "destination": false,
-    "npmUrl": "https://www.npmjs.com/package/@grouparoo/calculated-property",
-    "docsUrl": null
-  },
-  {
     "name": "CSV",
     "description": "",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/csv/csv.svg",
