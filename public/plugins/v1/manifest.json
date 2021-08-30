@@ -10,16 +10,6 @@
     "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-bigquery"
   },
   {
-    "name": "Calculated Property",
-    "description": "Grouparoo's Calculated Property plugin allows you to transform data from your warehouse before you export to various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/calculated-property/calculated-property.png",
-    "packageName": "@grouparoo/calculated-property",
-    "source": true,
-    "destination": false,
-    "npmUrl": "https://www.npmjs.com/package/@grouparoo/calculated-property",
-    "docsUrl": null
-  },
-  {
     "name": "CSV",
     "description": "",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/csv/csv.svg",
@@ -112,7 +102,7 @@
   {
     "name": "Mailjet",
     "description": "Grouparoo's Mailjet integration allows you to sync all of your customer data that lives in your data warehouse into Mailjet.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/mailchimp/mailjet.png",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/mailjet/mailjet.png",
     "packageName": "@grouparoo/mailjet",
     "source": false,
     "destination": true,
