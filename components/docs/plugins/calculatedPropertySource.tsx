@@ -4,9 +4,7 @@ import CodeBlock from "./codeBlock";
 
 import { Alert } from "../index";
 
-const PluginDocsCalculatedPropertySource = ({ plugin }: { plugin: string }) => {
-  const pluginData = PluginData.find(({ name }) => name === plugin);
-
+const PluginDocsCalculatedPropertySource = () => {
   const codeBlocks = {
     config: `
 exports.default = async function buildConfig() {
