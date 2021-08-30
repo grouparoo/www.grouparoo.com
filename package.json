@@ -20,7 +20,7 @@
     "test": "jest --runInBand",
     "lint": "prettier --check pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
     "lint-fix": "prettier --write pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
-    "nuke": "rm -rf node_modules && rm -rf api/dist"
+    "nuke": "rm -rf node_modules && rm -rf .next"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.35",
