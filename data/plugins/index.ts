@@ -1,4 +1,6 @@
+import { CalculatedProperty } from "./calculated-property";
 import { CSV } from "./csv";
+import { Customerio } from "./customerio";
 import { Eloqua } from "./eloqua";
 import { Facebook } from "./facebook";
 import { GoogleBigQuery } from "./googleBigQuery";
@@ -13,7 +15,6 @@ import { Mixpanel } from "./mixpanel";
 import { Mongo } from "./mongo";
 import { MySQL } from "./mysql";
 import { OneSignal } from "./onesignal";
-import { Customerio } from "./customerio";
 import { Pardot } from "./pardot";
 import { Pipedrive } from "./pipedrive";
 import { Postgres } from "./postgres";
@@ -87,6 +88,7 @@ export interface Plugin {
 }
 
 export const PluginData: Plugin[] = [
+  CalculatedProperty,
   CSV,
   Eloqua,
   Customerio,
