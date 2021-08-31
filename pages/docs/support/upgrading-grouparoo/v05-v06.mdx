@@ -1,0 +1,73 @@
+---
+title: "Upgrading Grouparoo from v0.5 to v0.6"
+date: "2021-08-31"
+pullQuote: "v0.6 is an exciting release with some breaking changes! Learn how to upgrade to v0.6."
+---
+
+## Calculated Properties
+
+v0.6 introduces calculated properties to Grouparoo. This allows you to run a custom javascript function to create properties that compute their value based on other properties.
+
+This is a new feature that does not introduce any breaking changes. Therefore, the only thing necessary to upgrade is to [follow the generic upgrade guide](/docs/support/upgrading-grouparoo#installing-updates) to bump your application to `v0.6.x`, and install the "Calculated Property" plugin.
+
+## Automatically deleting Profiles
+
+As of v0.6, Profiles are automatically deleted from Grouparoo when they've been removed from their primary source. This can be useful to make sure that profiles are removed from all of your destinations, which can be particularly helpful for GDPR compliance.
+
+**Note that after upgrading to v0.6, Profiles that have not been seen for the last 7 days will be checked for existence and removed from Grouparoo (and destinations) if they no longer exist.**
+
+You can use [Sync Modes](http://localhost:3001/blog/using-sync-modes) to control how destinations handle deleted profiles. The "Additive" and "Enrich" modes will not delete profiles from destinations.
+
+### Global setting
+
+The _"Confirm Profile Existence Days"_ setting allows you to configure how often Grouparoo will confirm that a profile still exists in its primary source. By default, this will happen every 7 days.
+
+<Image
+  src="docs/support/upgrading-grouparoo/v05-v06-confirm-setting.png"
+  alt="Confirm Profile Existence Days setting"
+  width={500}
+  height={231}
+/>
+
+<Alert variant="primary">
+  <p className="mb-0">
+    <strong>Tip:</strong> You can set the value to 0 to disable this check.
+  </p>
+</Alert>
+
+### Confirming as part of a schedule run
+
+To check for profile existence as part of a run, you can enable the _"Confirm profiles exist when running schedule?"_ option on the schedule.
+
+#### UI
+
+<ImageInBrowserFrame
+  centered
+  alt="Confirm profiles on schedule run"
+  src="/images/docs/support/upgrading-grouparoo/v05-v06-schedule-option.png"
+  width={820}
+  height={475}
+/>
+
+<br />
+<br />
+
+#### Code Config
+
+In code config, this option can be configured with the `confirmProfiles` key.
+
+```json
+{
+  "class": "Schedule",
+  "id": "demo_users_schedule",
+  "name": "Users Schedule",
+  "sourceId": "demo_users",
+  "recurring": true,
+  "recurringFrequency": 900000,
+  "confirmProfiles": true,
+  "options": {
+    "column": "updated_at"
+  },
+  "filters": []
+}
+```

@@ -271,6 +271,10 @@ const DocsNav: NavItem[] = [
         path: "/docs/support/upgrading-grouparoo",
         children: [
           {
+            title: "v0.5 to v0.6",
+            path: "/docs/support/upgrading-grouparoo/v05-v06",
+          },
+          {
             title: "v0.4 to v0.5",
             path: "/docs/support/upgrading-grouparoo/v04-v05",
           },
