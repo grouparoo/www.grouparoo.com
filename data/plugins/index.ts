@@ -9,9 +9,7 @@ import { Hubspot } from "./hubspot";
 import { Intercom } from "./intercom";
 import { Iterable } from "./iterable";
 import { Mailchimp } from "./mailchimp";
-import { Mailjet } from "./mailjet";
 import { Marketo } from "./marketo";
-import { Mixpanel } from "./mixpanel";
 import { Mongo } from "./mongo";
 import { MySQL } from "./mysql";
 import { OneSignal } from "./onesignal";
@@ -85,9 +83,8 @@ export interface Plugin {
   queryLanguageAlternative?: string;
   queryScheduleAlternativeExample?: string;
   queryPropertiesAlternativeExample?: string;
+  toDisplay?: boolean;
 }
-
-//This list is used to check the plugin manifest.json
 
 export const PluginData: Plugin[] = [
   CalculatedProperty,
@@ -101,9 +98,7 @@ export const PluginData: Plugin[] = [
   Intercom,
   Iterable,
   Mailchimp,
-  Mailjet,
   Marketo,
-  Mixpanel,
   Mongo,
   MySQL,
   OneSignal,
@@ -118,8 +113,6 @@ export const PluginData: Plugin[] = [
   SQLite,
   Zendesk,
 ];
-
-//This list is used to generate the cards... no usecases value, no card created
 
 export const PluginPageData: Plugin[] = PluginData.filter((p) => p.useCases);
 
@@ -150,7 +143,8 @@ export function getPluginDisplay(pluginSlug: string): PluginDisplay {
   if (!pluginData) {
     throw new Error(`Slug (${pluginSlug}) not found in plugin data.`);
   }
-  const { name, slug, logo } = pluginData;
+  const { name, slug, logo, toDisplay } = pluginData;
+
   return {
     name,
     slug,

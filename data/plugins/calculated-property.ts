@@ -13,4 +13,5 @@ export const CalculatedProperty: Plugin = {
   badge: "",
   showLink: false,
   packageName: "@grouparoo/calculated-property",
+  toDisplay: false,
 };
