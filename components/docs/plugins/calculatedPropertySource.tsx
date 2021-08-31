@@ -192,26 +192,30 @@ exports.default = async function buildConfig() {
       </p>
       <p>
         For example, to use an existing property <code>total_cost</code> and{" "}
-        <code>total_sales</code>
-        to calculate a <code>profit_margin</code> property, I could run:
+        <code>total_sales</code> to calculate a <code>profit_margin</code>{" "}
+        property, run:
       </p>
       <CodeBlock code={codeBlocks.customFunctionProfit} language="javascript" />
       <p>
         You can also do coalescing. For example, say you want to add a
-        `primary_phone` and your first pick is `cell_phone_number`, if there
-        isn't a cell, you want `work_phone_number`, and if there isn't one of
-        those a `home_phone_number`, otherwise you want `null`.:
+        <code>primary_phone</code> and your first pick is{" "}
+        <code>cell_phone_number</code>, if there isn't a cell, you want{" "}
+        <code>work_phone_number</code>, and if there isn't one of those a{" "}
+        <code>home_phone_number</code>, otherwise you want <code>null</code>.:
       </p>
       <CodeBlock code={codeBlocks.customFunctionPhone} language="javascript" />
       <p>
-        A Calculated Property's `customFunction` can use whatever synchronous
-        JavaScript you would like to generate your property. Please note that:
+        A Calculated Property's <code>customFunction</code> can use whatever
+        synchronous JavaScript you would like to generate your property. Please
+        note that:
         <ul>
-          <li>Using `require` is not currently supported</li>
+          <li>
+            Using <code>require</code> is not currently supported
+          </li>
           <li>Async functions are not currently supported</li>
           <li>
-            Your function must return a value (or `null`, but not `undefined`)to
-            pass validation
+            Your function must return a value (or <code>null</code>, but not{" "}
+            <code>undefined</code>)to pass validation
           </li>
         </ul>
       </p>
