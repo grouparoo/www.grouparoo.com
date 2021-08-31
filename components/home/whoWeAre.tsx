@@ -1,4 +1,4 @@
-import { Row, Col } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import TeamMember from "./teamMember";
 
 export default function WhoWeAre() {
@@ -171,6 +171,7 @@ export default function WhoWeAre() {
               linkedIn="https://www.linkedin.com/in/teal-larson"
             />
           </Col>
+
           <Col md={4} className="d-flex justify-content-center">
             <TeamMember
               name="Maria Silverhardt"
@@ -194,6 +195,31 @@ export default function WhoWeAre() {
               github="https://github.com/asthedatamoves"
               twitter="https://twitter.com/msdatadetective"
               linkedIn="https://www.linkedin.com/in/mariasilverhardt"
+            />
+          </Col>
+
+          <Col md={4} className="d-flex justify-content-center">
+            <TeamMember
+              name="Krishna Glick"
+              image="krishna_glick.jpg"
+              title="Senior Software Engineer"
+              description={
+                <span>
+                  🥦🧗🏻🐶🐱
+                  <br /> Previously:
+                  <br />
+                  Senior Software Engineer{" "}
+                  <a
+                    href="https://www.iheart.com"
+                    target="_blank"
+                    rel="noreferrer nofollow"
+                  >
+                    @iHeartMedia
+                  </a>
+                </span>
+              }
+              github="https://github.com/krishnaglick"
+              linkedIn="https://www.linkedin.com/in/krishnaglick"
             />
           </Col>
         </Row>
