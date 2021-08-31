@@ -4,7 +4,10 @@ import CodeBlock from "./codeBlock";
 
 import { Alert } from "../index";
 
-const PluginDocsCalculatedPropertySource = () => {
+const PluginDocsCalculatedPropertySource = ({ plugin }: { plugin: string }) => {
+  const pluginData = PluginData.find(
+    ({ name }) => name === "CalculatedProperty"
+  );
   const codeBlocks = {
     config: `
 exports.default = async function buildConfig() {
@@ -108,7 +111,7 @@ exports.default = async function buildConfig() {
         Properties by generating our first one. You can do this through the CLI:
       </p>
       <CodeBlock
-        code={`grouparoo generate calculated-property:property full_name --parent calculated-source`}
+        code={`grouparoo generate calculated-property:property full_name --parent calculated_source`}
         cli={true}
       />
       <Alert variant="primary">
@@ -137,19 +140,19 @@ exports.default = async function buildConfig() {
 
       <p>
         The Property config object for Calculated Properties has a single
-        option. This option is the `customFunction` option and it is where the
-        real magic happens with Calculated Properties.
+        option. This option is the <code>customFunction</code> option and it is
+        where the real magic happens with Calculated Properties.
       </p>
       <p>
         At the bottom of your config file for a Calculated Property, there will
-        be an empty function called `customFunction`. Here, you can write how
-        you would like to generate your new Property.
+        be an empty function called <code>customFunction</code>. Here, you can
+        write how you would like to generate your new Property.
       </p>
       <p>
         Custom functions can do anything from string concatenation or splitting,
         to performing calculations, to returning a conditional value. Your
         custom function must return a value, though that value is allowed to be
-        `null`.
+        <code>null</code>.
       </p>
       <p>
         To reference other Grouparoo Properties, use mustache variables to refer
@@ -157,31 +160,40 @@ exports.default = async function buildConfig() {
         file. If no key is present, the default key is a Property's id.
       </p>
       <p>
-        To calculate a `full_name` Property, you would fill in the configuration
-        as follows using [mustache
-        variables](https://github.com/janl/mustache.js#variables) to reference
-        existing properties:
+        To calculate a <code>full_name</code> Property, you would fill in the
+        configuration as follows using{" "}
+        <a
+          href="https://github.com/janl/mustache.js#variables"
+          target="_blank"
+          rel="noreferrer"
+        >
+          mustache variables
+        </a>{" "}
+        to reference existing properties:
       </p>
       <CodeBlock code={codeBlocks.customFunction} language="javascript" />
       <p>
-        `customFunction` is executed Profile by Profile, so the value of each
-        Profile's `first_name` and `last_name` Properties are parsed directly
-        into the function, which is why it is quoted in order to evaluate as and
-        return a string.
+        <code>customFunction</code> is executed Profile by Profile, so the value
+        of each Profile's <code>first_name</code> and <code>last_name</code>{" "}
+        Properties are parsed directly into the function, which is why it is
+        quoted in order to evaluate as and return a string.
       </p>
       <p>
-        You can write `customFunction`s using `string`, `number`, `boolean`, and
-        `date` property types. All mustached variables are returned as the
-        string value of their value. This means if you want to use an integer or
-        float type for calculation, you will have to parse it. For example:
+        You can write <code>customFunction</code>s using <code>string</code>,{" "}
+        <code>number</code>, <code>boolean</code>, and
+        <code>date</code> property types. All mustached variables are returned
+        as the string value of their value. This means if you want to use an
+        integer or float type for calculation, you will have to parse it. For
+        example:
         <CodeBlock
           code={`const ltv = parseFloat("{{ltv}}")`}
           language="javascript"
         />
       </p>
       <p>
-        For example, to use an existing property `total_cost` and `total_sales`
-        to calculate a `profit_margin` property, I could run:
+        For example, to use an existing property <code>total_cost</code> and{" "}
+        <code>total_sales</code>
+        to calculate a <code>profit_margin</code> property, I could run:
       </p>
       <CodeBlock code={codeBlocks.customFunctionProfit} language="javascript" />
       <p>
