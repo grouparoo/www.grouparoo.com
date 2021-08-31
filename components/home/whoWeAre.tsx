@@ -219,8 +219,7 @@ export default function WhoWeAre() {
                 </span>
               }
               github="https://github.com/krishnaglick"
-              linkedIn="https://twitter.com/msdatadetective"
-              twitter=""
+              linkedIn="https://www.linkedin.com/in/krishnaglick"
             />
           </Col>
         </Row>
