@@ -87,6 +87,8 @@ export interface Plugin {
   queryPropertiesAlternativeExample?: string;
 }
 
+//This list is used to check the plugin manifest.json
+
 export const PluginData: Plugin[] = [
   CalculatedProperty,
   CSV,
@@ -116,6 +118,8 @@ export const PluginData: Plugin[] = [
   SQLite,
   Zendesk,
 ];
+
+//This list is used to generate the cards... no usecases value, no card created
 
 export const PluginPageData: Plugin[] = PluginData.filter((p) => p.useCases);
 
