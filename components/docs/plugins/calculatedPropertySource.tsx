@@ -61,6 +61,12 @@ exports.default = async function buildConfig() {
     return "{{cell_phone_number}}" || "{{work_phone_number}}" || "{{home_phone_number}}" || null;
   }
 `,
+    customFunctionIfNoEmail: `
+function customFunction() {
+  if ("{{email}}" === "") return true;
+  else return false;
+}
+`,
   };
 
   return (
@@ -205,6 +211,13 @@ exports.default = async function buildConfig() {
       </p>
       <CodeBlock code={codeBlocks.customFunctionPhone} language="javascript" />
       <p>
+        To replace a null value, you can evaluate the string returned against an
+        empty string and use a conditional. Here we'll make a property that
+        flags any account missing an email:
+        <CodeBlock
+          code={codeBlocks.customFunctionIfNoEmail}
+          language="javascript"
+        />
         A Calculated Property's <code>customFunction</code> can use whatever
         synchronous JavaScript you would like to generate your property. Please
         note that:
