@@ -6,21 +6,21 @@ pullQuote: "v0.6 is an exciting release with some breaking changes! Learn how to
 
 ## Calculated Properties
 
-v0.6 introduces calculated properties to Grouparoo. This allows you to run a custom javascript function to create properties that compute their value based on other properties.
+v0.6 introduces Calculated Properties to Grouparoo. This allows you to run a custom javascript function to create Properties that compute their value based on other Properties.
 
 This is a new feature that does not introduce any breaking changes. Therefore, the only thing necessary to upgrade is to [follow the generic upgrade guide](/docs/support/upgrading-grouparoo#installing-updates) to bump your application to `v0.6.x`, and install the "Calculated Property" plugin.
 
 ## Automatically deleting Profiles
 
-As of v0.6, Profiles are automatically deleted from Grouparoo when they've been removed from their primary source. This can be useful to make sure that profiles are removed from all of your destinations, which can be particularly helpful for certain types of compliance.
+As of v0.6, Profiles are automatically deleted from Grouparoo when they've been removed from their primary Source. This can be useful to make sure that Profiles are removed from all of your Destinations, which can be particularly helpful for certain types of compliance.
 
-**Note that after upgrading to v0.6, Profiles that have not been seen for the last 7 days will be checked for existence and removed from Grouparoo (and destinations) if they no longer exist.**
+**Note that after upgrading to v0.6, Profiles that have not been seen for the last 7 days will be checked for existence and removed from Grouparoo (and destinations) if they no longer exist.** This 7 day period can be modified by the settings described below.
 
-You can use [Sync Modes](http://localhost:3001/blog/using-sync-modes) to control how destinations handle deleted profiles. The "Additive" and "Enrich" modes will not delete profiles from destinations.
+You can use [Sync Modes](http://localhost:3001/blog/using-sync-modes) to control how Destinations handle deleted profiles. The "Additive" and "Enrich" modes will not delete profiles from Destinations.
 
 ### Global setting
 
-The _"Confirm Profile Existence Days"_ setting allows you to configure how often Grouparoo will confirm that a profile still exists in its primary source. By default, this will happen every 7 days.
+The _"Confirm Profile Existence Days"_ setting allows you to configure how often Grouparoo will confirm that a profile still exists in its primary Source. By default, this will happen every 7 days.
 
 <Image
   src="docs/support/upgrading-grouparoo/v05-v06-confirm-setting.png"
@@ -35,9 +35,9 @@ The _"Confirm Profile Existence Days"_ setting allows you to configure how often
   </p>
 </Alert>
 
-### Confirming as part of a schedule run
+### Confirming as part of a Schedule run
 
-To check for profile existence as part of a run, you can enable the _"Confirm profiles exist when running schedule?"_ option on the schedule.
+To check for profile existence as part of a run, you can enable the _"Confirm profiles exist when running schedule?"_ option on the schedule. Enabling this setting means that Grouparoo will immediately check for Profiles removed from your Source after every run, rather than / in addition to checking periodically as defined by the `Confirm Profile Existence Days` setting. Enable this on your Schedules if your Source regularly removes Profile data.
 
 #### UI
 
