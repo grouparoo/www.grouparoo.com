@@ -110,16 +110,6 @@
     "docsUrl": null
   },
   {
-    "name": "Mailjet",
-    "description": "Grouparoo's Mailjet integration allows you to sync all of your customer data that lives in your data warehouse into Mailjet.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/mailjet/mailjet.png",
-    "packageName": "@grouparoo/mailjet",
-    "source": false,
-    "destination": true,
-    "npmUrl": "https://www.npmjs.com/package/@grouparoo/mailjet",
-    "docsUrl": null
-  },
-  {
     "name": "Marketo",
     "description": "Grouparoo's Marketo integration allows you to sync all of your customer data that lives in your data warehouse into Marketo.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/marketo/marketo.png",
@@ -127,16 +117,6 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/marketo",
-    "docsUrl": null
-  },
-  {
-    "name": "Mixpanel",
-    "description": "Grouparoo's Mixpanel integration allows you to sync all of your customer data that lives in your data warehouse into Mixpanel.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/mixpanel/mixpanel.png",
-    "packageName": "@grouparoo/mixpanel",
-    "source": false,
-    "destination": true,
-    "npmUrl": "https://www.npmjs.com/package/@grouparoo/mixpanel",
     "docsUrl": null
   },
   {
