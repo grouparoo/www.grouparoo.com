@@ -184,7 +184,7 @@ export default function Trial({ props }) {
               <p>Connect your data warehouse to all of your business tools. </p>
               <h4>Reverse ETL for the modern data stack</h4>
               <p>Grouparoo fits into your data engineering workflow</p>
-              <h4>New intergrations</h4>
+              <h4>New integrations</h4>
               <p>
                 Integrations with all your favorite data warehouses and business
                 tools
