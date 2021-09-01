@@ -62,7 +62,7 @@
     "validator": "13.6.0"
   },
   "devDependencies": {
-    "@lhci/cli": "0.8.0",
+    "@lhci/cli": "0.8.1",
     "@prettier/plugin-xml": "1.0.2",
     "@types/jest": "26.0.24",
     "@types/node": "16.4.10",
