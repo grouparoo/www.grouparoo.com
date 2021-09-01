@@ -1,4 +1,6 @@
+import { CalculatedProperty } from "./calculated-property";
 import { CSV } from "./csv";
+import { Customerio } from "./customerio";
 import { Eloqua } from "./eloqua";
 import { Facebook } from "./facebook";
 import { GoogleBigQuery } from "./googleBigQuery";
@@ -11,7 +13,6 @@ import { Marketo } from "./marketo";
 import { Mongo } from "./mongo";
 import { MySQL } from "./mysql";
 import { OneSignal } from "./onesignal";
-import { Customerio } from "./customerio";
 import { Pardot } from "./pardot";
 import { Pipedrive } from "./pipedrive";
 import { Postgres } from "./postgres";
@@ -82,9 +83,11 @@ export interface Plugin {
   queryLanguageAlternative?: string;
   queryScheduleAlternativeExample?: string;
   queryPropertiesAlternativeExample?: string;
+  toDisplay?: boolean;
 }
 
 export const PluginData: Plugin[] = [
+  CalculatedProperty,
   CSV,
   Eloqua,
   Customerio,
@@ -140,7 +143,8 @@ export function getPluginDisplay(pluginSlug: string): PluginDisplay {
   if (!pluginData) {
     throw new Error(`Slug (${pluginSlug}) not found in plugin data.`);
   }
-  const { name, slug, logo } = pluginData;
+  const { name, slug, logo, toDisplay } = pluginData;
+
   return {
     name,
     slug,
