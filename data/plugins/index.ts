@@ -8,8 +8,11 @@ import { GoogleSheets } from "./googleSheets";
 import { Hubspot } from "./hubspot";
 import { Intercom } from "./intercom";
 import { Iterable } from "./iterable";
+import { Mailjet } from "./mailjet";
 import { Mailchimp } from "./mailchimp";
 import { Marketo } from "./marketo";
+import { Mixpanel } from "./mixpanel";
+
 import { Mongo } from "./mongo";
 import { MySQL } from "./mysql";
 import { OneSignal } from "./onesignal";
@@ -98,7 +101,9 @@ export const PluginData: Plugin[] = [
   Intercom,
   Iterable,
   Mailchimp,
+  Mailjet,
   Marketo,
+  Mixpanel,
   Mongo,
   MySQL,
   OneSignal,
