@@ -1,0 +1,108 @@
+---
+title: "@grouparoo/marketo"
+date: "2021-09-01"
+pullQuote: "Learn how to work with the Marketo plugin as a Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Marketo" />
+
+Grouparoo's [Marketo](https://www.marketo.com/) plugin enables you to export contacts and tags to Marketo.
+
+This guide will show you how to work with the Marketo plugin to [create a Destination](#create-an-marketo-destination) to export your data.
+
+<PluginDocsInstallation plugin="Marketo" />
+
+<PluginDocsCreateApp plugin="Marketo" />
+
+<ValidateAndApplyConfig headingLevel="h3" />
+
+## Create an Marketo Destination
+
+Once your App exists, you can generate an Marketo Destination using the `generate` command. You must specify a `parent`, which should match the `id` of the App you just created.
+
+This is the simplest form of [Generator](/docs/getting-started/product-concepts#generator) for Destinations:
+
+```
+$ grouparoo generate marketo:destination marketo_destination --parent my_marketo_app
+```
+
+This would generate a config file at `config/destinations/marketo_destination.js` in your Grouparoo project. You can then edit this file to match your desired configuration. Here is an example of what this config object will look like after generation:
+
+```js
+// config/destinations/marketo_destination.js
+
+exports.default = async function buildConfig() {
+  return [
+    {
+      id: "marketo_destination",
+      name: "marketo_destination",
+      class: "destination",
+      type: "marketo-export",
+      appId: "my_marketo_app",
+      groupId: "...",
+      syncMode: "...",
+
+      mapping: {
+        email: "email",
+        firstname: "firstName",
+        lastname: "lastName",
+      },
+
+      destinationGroupMemberships: {
+        "High Value Customers": "highValueCustomers",
+      },
+    },
+  ];
+};
+```
+
+For more information on what all these properties mean and how to configure them, see [Configuring your Destination](/docs/config/code-config/destinations#configuring-your-destination).
+
+### Sync Modes
+
+The Marketo Destination supports all three sync modes:
+
+- **Sync** (`sync`): Add, update, and remove profiles as needed.
+- **Additive** (`additive`): Add and update profiles as needed, but do not remove anybody.
+- **Enrich** (`enrich`): Only update profiles that already exist in the Destination. Do not add or remove anybody.
+
+You can set the desired sync mode through the `syncMode` property in the config file:
+
+```js
+syncMode: "additive",
+```
+
+### Property Mappings
+
+These mappings are what tell Grouparoo which Properties you want to sync to the Destination and what they should be called. For this plugin, **Grouparoo Properties** map to **Marketo Leads Fields**.
+
+For Marketo, mapping the `email` property is always required.
+
+You can also map to custom attributes that you've defined on Marketo by simply adding them along with the others.
+
+Here's an example of how this would look in the config file. Note that the keys refer to Marketo Attribute names and values refer to Grouparoo Property IDs.
+
+```js
+mapping: {
+  email: "email",
+  firstname: "firstName",
+  custom_lifetime_value: "ltv",
+},
+```
+
+### Group Mappings
+
+You can use **Group Memberships** to automatically add **Marketo Tags** to your contacts.
+
+Here's an example of how to configure this in the config file. Keys refer to the name of the tag to be shown on Marketo and values refer to the Grouparoo Group ID.
+
+```js
+destinationGroupMemberships: {
+  "High Value Customers": "highValueCustomers",
+},
+```
+
+## Marketo Next Steps
+
+Once you have the plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
