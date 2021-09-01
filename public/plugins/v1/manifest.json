@@ -27,7 +27,7 @@
     "source": true,
     "destination": false,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/calculated-property",
-    "docsUrl": null
+    "docsUrl": "https://www.grouparoo.com/plugins/grouparoo-calculated-property"
   },
   {
     "name": "Customer.io",
