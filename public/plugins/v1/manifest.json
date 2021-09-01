@@ -207,7 +207,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/salesforce",
-    "docsUrl": null
+    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-salesforce"
   },
   {
     "name": "Sendgrid",
