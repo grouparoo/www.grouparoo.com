@@ -1,7 +1,7 @@
 import { Plugin } from "./index";
 
 export const CalculatedProperty: Plugin = {
-  name: "CalculatedProperty",
+  name: "Calculated Property",
   description:
     "Grouparoo's Calculated Property plugin allows you to transform data from your warehouse before you export to various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
   priority: 0,

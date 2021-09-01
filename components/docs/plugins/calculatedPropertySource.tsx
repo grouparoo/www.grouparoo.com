@@ -9,10 +9,9 @@ const PluginDocsCalculatedPropertySource = ({ plugin }: { plugin: string }) => {
     ({ name }) => name === "CalculatedProperty"
   );
   const codeBlocks = {
-    config: `
+    source: `
 exports.default = async function buildConfig() {
   return [
-    // --- Source ---
     {
       class: "source",
       id: "calculated_source",
@@ -63,8 +62,7 @@ exports.default = async function buildConfig() {
 `,
     customFunctionIfNoEmail: `
 function customFunction() {
-  if ("{{email}}" === "") return true;
-  else return false;
+  return "{{email}}" !== "" ? "{{email}}" : "unknown"
 }
 `,
   };
@@ -82,8 +80,8 @@ function customFunction() {
         configuration.
       </p>
       <p>
-        However, in order to generate the property, though, we will first need
-        to generate a parent source.
+        In order to generate the property, you will first need to generate a
+        parent source.
       </p>
       <p>
         You can generate a Calculated Property Source using the{" "}
@@ -91,11 +89,11 @@ function customFunction() {
         which should match the <code>id</code> of the App you created.
       </p>
       <p>
-        This is the simplest form of{" "}
+        The{" "}
         <Link href="/docs/getting-started/product-concepts#generator">
           Generator
         </Link>{" "}
-        you can use for Calculated Property Sources:
+        for Calculated Property Sources looks like:
       </p>
 
       <CodeBlock
@@ -103,18 +101,19 @@ function customFunction() {
         cli={true}
       />
       <p>
-        This generates a file at <code>config/sources/users</code>. Calculated
-        Property Sources act primarily as placeholders. The real fun comes when
-        we get to the Property configuration.
+        This generates a file at <code>config/sources/calculated_source</code>.
+        Calculated Property Sources act primarily as placeholders. The real fun
+        comes when you get to the Property configuration.
       </p>
+      <CodeBlock code={codeBlocks.source} language="javascript" />
 
       {/* --- Property --- */}
       <h3 id="calculated-property-properties">
         Calculated Property Properties
       </h3>
       <p>
-        After you generate a Source, we get to see the real power of Calculated
-        Properties by generating our first one. You can do this through the CLI:
+        After you generate a Source, you get to see the real power of Calculated
+        Properties. You can generate a Calculated Property through the CLI:
       </p>
       <CodeBlock
         code={`grouparoo generate calculated-property:property full_name --parent calculated_source`}
@@ -133,7 +132,8 @@ function customFunction() {
       <p>
         The Property generator will drop individual a file in the{" "}
         <code>config/properties</code> directory. Edit this file to match your
-        desired configuration.
+        desired configuration. All Calculated Properties are required to have a
+        valid <code>customFunction</code> option.
       </p>
 
       <CodeBlock code={codeBlocks.property} language="javascript" />
@@ -157,17 +157,11 @@ function customFunction() {
       <p>
         Custom functions can do anything from string concatenation or splitting,
         to performing calculations, to returning a conditional value. Your
-        custom function must return a value, though that value is allowed to be
+        custom function must return a value, though that value is allowed to be{" "}
         <code>null</code>.
       </p>
       <p>
-        To reference other Grouparoo Properties, use mustache variables to refer
-        to the key of that property. A Property's key can be found in its config
-        file. If no key is present, the default key is a Property's id.
-      </p>
-      <p>
-        To calculate a <code>full_name</code> Property, you would fill in the
-        configuration as follows using{" "}
+        To reference other Grouparoo Properties, use{" "}
         <a
           href="https://github.com/janl/mustache.js#variables"
           target="_blank"
@@ -175,7 +169,14 @@ function customFunction() {
         >
           mustache variables
         </a>{" "}
-        to reference existing properties:
+        to refer to the key of that property. A Property's key can be found in
+        its config file. If no key is present, the default key is a Property's
+        id.
+      </p>
+      <p>
+        To calculate a <code>full_name</code> Property, you would fill in the
+        configuration as follows using mustache variables to reference existing
+        properties:
       </p>
       <CodeBlock code={codeBlocks.customFunction} language="javascript" />
       <p>
@@ -203,7 +204,7 @@ function customFunction() {
       </p>
       <CodeBlock code={codeBlocks.customFunctionProfit} language="javascript" />
       <p>
-        You can also do coalescing. For example, say you want to add a
+        You can also do coalescing. For example, say you want to add a{" "}
         <code>primary_phone</code> and your first pick is{" "}
         <code>cell_phone_number</code>, if there isn't a cell, you want{" "}
         <code>work_phone_number</code>, and if there isn't one of those a{" "}
@@ -211,9 +212,9 @@ function customFunction() {
       </p>
       <CodeBlock code={codeBlocks.customFunctionPhone} language="javascript" />
       <p>
-        To replace a null value, you can evaluate the string returned against an
-        empty string and use a conditional. Here we'll make a property that
-        flags any account missing an email:
+        To replace a null value, you can evaluate the string from the mustache
+        variable against an empty string and use a conditional. Here we'll make
+        a property that flags any account missing an email:
         <CodeBlock
           code={codeBlocks.customFunctionIfNoEmail}
           language="javascript"
