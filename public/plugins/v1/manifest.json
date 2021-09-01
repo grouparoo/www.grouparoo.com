@@ -107,7 +107,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/marketo",
-    "docsUrl": null
+    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-marketo"
   },
   {
     "name": "Mongo",
