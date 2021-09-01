@@ -43,7 +43,7 @@ export const Mailchimp: Plugin = {
         "/images/home/integrations/mailchimp/grouparoo-to-mailchimp.png",
       imageAlt: "Map data to Mailchimp",
       imageWidth: 742,
-      imageHeight: 506,
+      imageHeight: 455,
     },
     {
       header:

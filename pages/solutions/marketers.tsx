@@ -189,7 +189,7 @@ export default function IndexPage() {
                 src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
                 width={650}
-                height={398}
+                height={396}
               />
             </Col>
           </Row>
@@ -207,7 +207,7 @@ export default function IndexPage() {
                 src="/images/home/how-it-works-3.png"
                 alt="Grouparoo destination"
                 width={650}
-                height={398}
+                height={355}
               />
             </Col>
           </Row>
@@ -289,7 +289,7 @@ export default function IndexPage() {
                         src="/images/home/retention-marketing.png"
                         alt="Sync groups to destinations"
                         width={730}
-                        height={480}
+                        height={452}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="ops-enablement">
@@ -298,7 +298,7 @@ export default function IndexPage() {
                         src="/images/home/marketing-ops.png"
                         alt="Create properties from sources"
                         width={730}
-                        height={613}
+                        height={452}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="growth-marketing">

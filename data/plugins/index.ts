@@ -83,6 +83,7 @@ export interface Plugin {
   queryLanguageAlternative?: string;
   queryScheduleAlternativeExample?: string;
   queryPropertiesAlternativeExample?: string;
+  toDisplay?: boolean;
 }
 
 export const PluginData: Plugin[] = [
@@ -142,7 +143,8 @@ export function getPluginDisplay(pluginSlug: string): PluginDisplay {
   if (!pluginData) {
     throw new Error(`Slug (${pluginSlug}) not found in plugin data.`);
   }
-  const { name, slug, logo } = pluginData;
+  const { name, slug, logo, toDisplay } = pluginData;
+
   return {
     name,
     slug,

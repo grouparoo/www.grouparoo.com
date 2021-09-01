@@ -53,6 +53,7 @@ export default function IntegrationsPage() {
               ? PluginData.sort((a, b) => {
                   return b.priority - a.priority;
                 }).map((plugin) => {
+                  if (plugin.toDisplay === false) return null;
                   return (
                     <Col
                       lg={4}

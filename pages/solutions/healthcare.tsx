@@ -185,7 +185,7 @@ export default function Healthcare() {
                 src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
                 width={650}
-                height={398}
+                height={396}
               />
             </Col>
           </Row>
@@ -204,7 +204,7 @@ export default function Healthcare() {
                 src="/images/home/how-it-works-3.png"
                 alt="Grouparoo destination"
                 width={650}
-                height={398}
+                height={355}
               />
             </Col>
           </Row>
@@ -286,7 +286,7 @@ export default function Healthcare() {
                         centered
                         src="/images/home/retention-marketing.png"
                         alt="Sync groups to destinations"
-                        width={730}
+                        width={776}
                         height={480}
                       />
                     </Tab.Pane>

@@ -121,7 +121,7 @@ export default function About({ pageProps }) {
                   <Image
                     src="/images/investors/fuel-capital-logo.png"
                     alt="Fuel Capital logo"
-                    width={362}
+                    width={369}
                     height={75}
                   />
                 </a>
@@ -133,7 +133,7 @@ export default function About({ pageProps }) {
                   <Image
                     src="/images/investors/eniac-logo.svg"
                     alt="Eniac Ventures logo"
-                    width={362}
+                    width={238}
                     height={75}
                   />
                 </a>
@@ -149,7 +149,7 @@ export default function About({ pageProps }) {
                     <Image
                       src="/images/investors/hack-vc-logo.svg"
                       alt="Hack VC logo"
-                      width={250}
+                      width={280}
                       height={75}
                     />
                   </div>
