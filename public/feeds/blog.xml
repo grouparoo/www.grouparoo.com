@@ -9,7 +9,7 @@
         <title>Grouparoo: Blog</title>
         <link>https://www.grouparoo.com/blog</link>
         <description>Articles and updates from Grouparoo.</description>
-        <lastBuildDate>Wed, 25 Aug 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 01 Sep 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,19 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Welcome, Maria!]]></title>
+            <link>https://www.grouparoo.com/blog/welcome-maria</link>
+            <guid>grouparoo-blog-post-welcome-maria</guid>
+            <pubDate>Wed, 01 Sep 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Open source projects become important only through their communities.</p><p>Because of this, we have been looking for the right person to help build awareness, work with and represent the community, and generally make everyone happier. I am so glad we found <a href="https://twitter.com/MsDataDetective" target="_blank" rel="nofollow noopener noreferrer">Maria Silverhardt</a>. The stories I have heard about her from her community members are inspiring.</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Maria Silverhardt profile picture" src="https://www.grouparoo.com/posts/welcome-maria/profile.jpg" width="200" height="200" style="height:200px;width:200px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>Maria is the first non-engineer to join the team, though she has some skills there, too. We know that it takes more than just working code to make projects like ours successful and we are investing to create a helpful and welcoming community from the start.</p><p>Welcome, Maria! We are so excited to have you here.</p>]]></content:encoded>
+            <enclosure
+        url="https://www.grouparoo.com/posts/welcome-maria/profile.jpg"
+        length="0"
+        type="image/jpg"
+      />
+        </item>
         <item>
             <title><![CDATA[What is Customer Data Integration?]]></title>
             <link
