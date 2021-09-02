@@ -50,7 +50,7 @@
     "react-markdown": "6.0.3",
     "react-moment": "1.1.1",
     "react-syntax-highlighter": "15.4.4",
-    "rehype-autolink-headings": "5.1.0",
+    "rehype-autolink-headings": "6.1.0",
     "rehype-slug": "4.0.1",
     "remark-external-links": "8.0.0",
     "remark-react": "^8.0.0",
