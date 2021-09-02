@@ -10,6 +10,67 @@ export const GoogleSheets: Plugin = {
   otherTypes: [],
   category: "data tool",
   badge: "",
-  showLink: false,
+  showLink: true,
   packageName: "@grouparoo/google-sheets",
+  useCases: {
+    paragraphOne:
+      "Grouparoo is open source data infrastructure to keep your customer data in-sync with 3rd party tools.",
+    paragraphTwo:
+      "Grouparoo pulls customer data in real-time from your database, data warehouse, and other data sources.",
+  },
+  useCasesList: [
+    "Easily connect your production data with 3rd party tools",
+    "Create a unified customer definition in Grouparoo",
+    "Easily make cohorts and segments out of your Google Sheets",
+    "Denormalize your database so you can easily send customer data to tools like CRMs, marketing automation, and email marketing",
+  ],
+  dataModelTitle: "An Overview of Grouparoo's Data Model",
+  dataModelDescription: [
+    "Grouparoo's core objects are Profiles and Profile Properties. These objects are defined based on your data such as the data in your Google Sheets spreadsheets. You can pull this data in with Grouparoo's help.",
+    "Once you've defined these Profiles and Profile Properties, you can use Grouparoo to create dynamic segments and cohorts.",
+  ],
+  otherPluginsHeading:
+    "Send your customer data from Google Sheets to these tools",
+  pluginScreenshots: [
+    {
+      header: "Give access to your Google Cloud Service Account fast",
+      description:
+        "By giving only the client email address and the private key your are able to extract data from as much spreadsheet as you want.",
+      imageSrc: "/images/home/integrations/google-sheets/google-sheets-app.png",
+      imageAlt: "Grouparoo Google Sheets settings",
+      imageWidth: 742,
+      imageHeight: 384,
+    },
+    {
+      header: "Easily connect your Google Sheets data",
+      description:
+        "Since Grouparoo is installed in your cloud infrastructure, you can easily point Grouparoo to any number of Google Sheets spreadsheets.",
+      imageSrc:
+        "/images/home/integrations/google-sheets/google-sheets-source.png",
+      imageAlt: "Grouparoo Google Sheets source settings",
+      imageWidth: 742,
+      imageHeight: 486,
+    },
+
+    {
+      header: "Define Profile Properties easily",
+      description:
+        "Grouparoo is low-code, so less technical team members can create new Profile Properties without needing to work with engineers. They can pull the data they need when they want.",
+      imageSrc:
+        "/images/home/integrations/google-sheets/google-sheets-property.png",
+      imageAlt: "Grouparoo add property settings",
+      imageWidth: 742,
+      imageHeight: 486,
+    },
+  ],
+  configOptions: {
+    client_email: {
+      description: "Email of service account.",
+      required: true,
+    },
+    private_key: {
+      description: "Private key of service account.",
+      required: true,
+    },
+  },
 };
