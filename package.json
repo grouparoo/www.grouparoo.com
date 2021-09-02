@@ -52,7 +52,7 @@
     "react-syntax-highlighter": "15.4.4",
     "rehype-autolink-headings": "5.1.0",
     "rehype-slug": "4.0.1",
-    "remark-external-links": "8.0.0",
+    "remark-external-links": "9.0.1",
     "remark-react": "^8.0.0",
     "sass": "1.38.2",
     "sharp": "0.29.0",
