@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Wed, 28 Jul 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 02 Sep 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,16 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Calculated Properties]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-09-02-calculated-properties</link>
+            <guid>grouparoo-release-note-2021-09-02-calculated-properties</guid>
+            <pubDate>Thu, 02 Sep 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>One exciting development with the release of Grouparoo v0.6 is our Calculated Property plugin. With the Calculated Property plugin, users can now create custom properties calculated from other properties using JavaScript and <a href="https://github.com/janl/mustache.js/" target="_blank" rel="nofollow noopener noreferrer">mustache variables</a>.</p><p>This allows for data transformation such as string concatenation to create a <code>full_name</code> property, explicitly dealing with empty values, coalescing values, and more using JavaScript functions against data from your warehouse.</p><p>For more information and examples of how to build using our Calcualted Property plugin, you can check out our <a href="https://www.grouparoo.com/docs/plugins/grouparoo-calculated-property" target="_blank" rel="nofollow noopener noreferrer">Calculated Property plugin docs</a>.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
         <item>
             <title><![CDATA[Eloqua Plugin]]></title>
             <link>https://www.grouparoo.com/whats-new#2021-07-28-eloqua</link>
