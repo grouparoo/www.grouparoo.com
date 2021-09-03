@@ -186,6 +186,10 @@ const DocsNav: NavItem[] = [
     path: "/docs/plugins",
     children: [
       { title: "BigQuery", path: "/docs/plugins/grouparoo-bigquery" },
+      {
+        title: "Calculated Property",
+        path: "/docs/plugins/grouparoo-calculated-property",
+      },
       { title: "Intercom", path: "/docs/plugins/grouparoo-intercom" },
       { title: "Mongo", path: "/docs/plugins/grouparoo-mongo" },
       { title: "MySQL", path: "/docs/plugins/grouparoo-mysql" },

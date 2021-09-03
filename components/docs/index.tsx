@@ -8,6 +8,7 @@ import Image from "./image";
 import ImageInBrowserFrame from "../imageInBrowserFrame";
 import PluginsList from "./pluginsList";
 import {
+  PluginDocsCalculatedPropertySource,
   PluginDocsColumnarDestination,
   PluginDocsColumnarSource,
   PluginDocsCreateApp,
@@ -31,6 +32,7 @@ export {
   Image,
   ImageInBrowserFrame,
   Link,
+  PluginDocsCalculatedPropertySource,
   PluginDocsColumnarDestination,
   PluginDocsColumnarSource,
   PluginDocsCreateApp,

@@ -9,9 +9,9 @@ import OptionsList from "./optionsList";
 const PluginDocsCreateApp = ({ plugin }: { plugin: string }) => {
   if (!plugin) return null;
 
-  const cmdName = plugin.toLowerCase();
-  const appId = `my_${cmdName}_app`;
   const pluginData = PluginData.find(({ name }) => name === plugin);
+  const cmdName = pluginData.slug;
+  const appId = `my_${cmdName.replace("-", "_")}_app`;
   const appConfigPath = `config/apps/${appId}.js`;
 
   const appConfigCode: string = `
