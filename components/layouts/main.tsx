@@ -170,7 +170,7 @@ function PageTemplate({ children }) {
                     minHeight: 150,
                   }}
                 >
-                  <Subscribe />
+                  <Subscribe campaign="footer-subscribe" />
                 </Col>
                 <Col />
               </Row>
