@@ -192,11 +192,11 @@ The `@grouparoo/demo` plugin makes it easy to generate sample data! You can use 
 
 ```bash
 cd apps/staging-community
-# populate the system with 1000 profiles, properties, 1000 purchases, and some groups
-grouparoo demo purchases
+# populate the system with 1000 profiles, properties, 1000 purchases, and some groups. create config.
+grouparoo demo -c purchases
 
-# including the --scale param allows you to control how many profiles you make. e.g. --scale 10 makes 10,000 extra profiles.
-grouparoo demo purchases --scale 10
+# including the --scale param allows you to control how many profiles you make. e.g. --scale 10 makes 10,000 extra profiles. create config.
+grouparoo demo -c purchases --scale 10
 ```
 
 **Note: These commands will clear all existing data in your Grouparoo database, replacing it with the sample data.**
@@ -205,6 +205,36 @@ You can then use the following credentials to log in:
 
 - Username: `demo@grouparoo.com`
 - Password: `password`
+
+Here is the full set of options available:
+
+```
+➜ grouparoo demo -h
+Usage: grouparoo demo [options] <types>
+
+Load data into a source database, create properties, destinations, and other config.
+A demo@grouparoo.com Team Member is created. Password: "password"
+
+Valid Types:
+b2c            (default) loads users and purchases into source
+b2b            loads users, accounts, and payment data into source
+purchases      same as b2c
+accounts       same as b2b
+reset          only clear Grouparoo database and don't load config
+setup          only create the login Team Member
+postgres       (default) load source data into local Postgres database
+mongo          load specified source data into local MongoDB database
+mysql          load specified source data into local MySQL database
+snowflake      assume Snowflake instance with data already present
+mailchimp      create mailchimp destination for data
+
+Options:
+  --scale [scale]  make the number more than 1 to multiple amount of data. (default: "1")
+  -c, --config     add flag to write to config directory and not populate configuraiton into Grouparoo database
+  -s, --seed       add flag to only write (or output) demo source data and not touch Grouparoo database
+  -f, --force      add flag to ensure deletion of config directory
+  -h, --help       display help for command
+```
 
 ## Testing
 
