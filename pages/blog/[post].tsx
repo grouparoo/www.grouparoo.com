@@ -96,7 +96,7 @@ export default function BlogPage({ pageProps }) {
             <br />
             <Card>
               <Card.Body>
-                <Subscribe />
+                <Subscribe campaign="blog-subscribe" />
               </Card.Body>
             </Card>
             <br />

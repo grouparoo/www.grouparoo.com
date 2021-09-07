@@ -5,7 +5,7 @@ import { Row, Col, Form, Button } from "react-bootstrap";
 import { ErrorHandler } from "../utils/errorHandler";
 import { isBrowser } from "../utils/isBrowser";
 
-export default function Subscribe() {
+export default function Subscribe({ campaign }: { campaign: string }) {
   const { handleSubmit, register } = useForm();
   const [loading, setLoading] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
@@ -29,7 +29,7 @@ export default function Subscribe() {
 
     data.source = window?.location?.hostname || "grouparoo website";
     data.medium = "web";
-    data.campaign = "blog-subscribe";
+    data.campaign = campaign;
 
     if (isBrowser() && globalThis?.gtag) {
       globalThis.gtag("event", "conversion", {
