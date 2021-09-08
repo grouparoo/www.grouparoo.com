@@ -9,7 +9,7 @@
         <title>Grouparoo: Blog</title>
         <link>https://www.grouparoo.com/blog</link>
         <description>Articles and updates from Grouparoo.</description>
-        <lastBuildDate>Fri, 03 Sep 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 07 Sep 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,19 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Welcome, KC!]]></title>
+            <link>https://www.grouparoo.com/blog/welcome-kc</link>
+            <guid>grouparoo-blog-post-welcome-kc</guid>
+            <pubDate>Tue, 07 Sep 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>The promise of open source is one of community. It is about people making great things together.</p><p>With that in mind, maybe it&#x27;s not suprising that we first met <a href="https://github.com/krishnaglick" target="_blank" rel="nofollow noopener noreferrer">KC Glick</a> years ago when he contributed to the <a href="https://www.actionherojs.com/" target="_blank" rel="nofollow noopener noreferrer">Actionhero</a> project that is at the core of Grouparoo. Now, he&#x27;s on the Grouparoo team and will be contributing throughout the stack.</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="KC Glick profile picture" src="https://www.grouparoo.com/posts/welcome-kc/profile.jpg" width="200" height="200" style="height:200px;width:200px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>KC comes to us most recently from iHeart, the media company that has runs all those stations we listen to. As a team lead there, he showed he also has the collaboration skills needed to help us continue to built out a great engineering team.</p><p>Welcome, KC! We are so excited to have you here.</p>]]></content:encoded>
+            <enclosure
+        url="https://www.grouparoo.com/posts/welcome-kc/profile.jpg"
+        length="0"
+        type="image/jpg"
+      />
+        </item>
         <item>
             <title><![CDATA[Grouparoo v0.6 release]]></title>
             <link>https://www.grouparoo.com/blog/v06-release</link>
