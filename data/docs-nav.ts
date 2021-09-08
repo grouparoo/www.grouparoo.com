@@ -191,6 +191,7 @@ const DocsNav: NavItem[] = [
         path: "/docs/plugins/grouparoo-calculated-property",
       },
       { title: "Intercom", path: "/docs/plugins/grouparoo-intercom" },
+      { title: "Marketo", path: "/docs/plugins/grouparoo-marketo" },
       { title: "Mongo", path: "/docs/plugins/grouparoo-mongo" },
       { title: "MySQL", path: "/docs/plugins/grouparoo-mysql" },
       { title: "Postgres", path: "/docs/plugins/grouparoo-postgres" },
