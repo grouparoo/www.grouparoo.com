@@ -1,12 +1,12 @@
 ---
-title: "Operational Analytics"
-seoTitle: "Operational Analytics "
-date: "2021-09-07"
+title: "What is Operational Analytics?"
+seoTitle: "Use reverse ETL to power your Operational Analytics efforts, syncing data to all of your business, growth, and GTM tools."
+date: "2021-09-08"
 author: "Andy Jih"
-pullQuote: "ETL and ELT are two approaches to getting data into a usable form for analysis and use. Let's explore the differences."
-seoDescription: "Looking to learn more about ETL vs ELT? The Grouparoo experts will walk you through the data integration terms you should know. ✓ Start a free trial now!"
+pullQuote: "Learn about how operational analytics makes data engineers' lives easier while powering experimentation and growth for user-facing teams."
+seoDescription: "Looking to learn more about Operational Analytics? The Grouparoo experts will walk you through the data integration concepts you should know. ✓ Start a free trial now!"
 twitterCard: summary_large_image
-image: "etl-vs-elt/etl.png"
+image: "operational-analytics/unsplash-pipes.jpg"
 tags: [engineering, data]
 ---
 
@@ -16,23 +16,37 @@ Operational analytics is the process of creating data pipelines and datasets to 
 
 ### What did you do before Operational Analytics and Reverse ETL existed?
 
-The Modern Data Stack is a recent development in the data engineering space. The core of the Modern Data Stack is that data warehouse technologies such as Snowflake, BigQuery, and Redshift have gotten fast enough and cheap enough to be considered the source of truth for many businesses. With the data warehouse functioning as a business’s or organization’s source of truth, different data tools have emerged to support and power each step in this modern data stack.
+The Modern Data Stack is a recent development in the data engineering space. The core enabler of the Modern Data Stack is that data warehouse technologies such as Snowflake, BigQuery, and Redshift have gotten fast enough and cheap enough to be considered the source of truth for many businesses. With the data warehouse functioning as a business’s or organization’s source of truth, different data tools have emerged to support and power each step in this modern data stack.
 
 Up until recently, the primary goal for data teams was to get data into the warehouse. Tools like Fivetran, Airbyte, Meltano, and others are focused on getting data into a data warehouse, and tools like dbt are focused on transforming that data into understandable and uniform data for teams to analyze. Data teams would then point tools like Metabase, Looker, or Tableau at these datasets and teams could do analysis and business intelligence. You can read more about the [Modern Data Stack here](https://www.grouparoo.com/solutions/modern-data-stack).
 
-The data journey and stack usually ended here. Marketers, sales teams, and customer service teams are now able to explore their data warehouse and do their own analysis without needing to ask a data analyst or engineer. Giving these business teams the ability to understand their data without needing to bother another person was a step-function change and improvement for many organizations.
+The data journey and stack usually ended here. Marketers, sales teams, and customer service teams were then able to explore their data warehouse and do their own analysis without needing to ask a data analyst or engineer. Giving these business teams the ability to understand their data without needing to bother another person was a step-function change and improvement for many organizations.
 
-That said, these teams were still stuck; they had this data in their analytics and BI tools, but to make use of this data, they needed to ask an engineer to build an integration with the marketing, sales, or customer support tools they’re using. Often engineers aren’t super excited to build these kinds of integrations. Product engineers don’t want to do it because these tools aren’t part of the core product. Data engineers also aren’t super keen to build these integrations because each tool’s APIs behaves differently, and creating a fully automated system that syncs across all of these tools becomes very unwieldy very quickly. And worst off, let’s say an engineer builds this integration to pipe data from a data warehouse into an email marketing tool. They are now responsible for every new data field that a marketer or customer support agent wants in their email tool.
+That said, these teams were still stuck; they had this data in their analytics and Business Intelligence (BI) tools, but to make use of this data, they needed to ask an engineer to build an integration with the marketing, sales, or customer support tools they’re using. Often engineers aren’t super excited to build these kinds of integrations. Product engineers don’t want to do it because these tools aren’t part of the core product. Data engineers also aren’t super keen to build these integrations because each tool’s APIs behaves differently, and creating a fully automated system that syncs across all of these tools becomes very unwieldy very quickly. And worst of all, let’s say an engineer builds this integration to pipe data from a data warehouse into an email marketing tool. They are now responsible for every new data field that a marketer or customer support agent wants in their email tool.
 
 If these teams aren’t able to get support from an engineer, then they usually resort to manual processes to get data out of tools like [Metabase](https://www.metabase.com/) or [Looker](https://looker.com/) using CSVs or google sheets and then importing them into their support ([Zendesk](https://www.zendesk.com/), [Intercom](https://www.intercom.com/)), email marketing ([Marketo](marketo.com), [Hubspot](https://www.hubspot.com/)), or sales CRMs ([Salesforce](https://www.salesforce.com/)).
 
 Since so many other parts of the data stack are about creating leverage and efficiency, this last step in the data journey is where [Reverse ETL](https://www.grouparoo.com/solutions/reverse-etl) comes in, making Operational Analytics automated, testable, and resilient. Reverse ETL tools come with pre-built integrations to the various business tools your team uses, so the engineering team doesn’t have to build integrations with every single CRM or email tool.
 
+<Image
+  centered
+  alt="https://unsplash.com/photos/9AxFJaNySB8"
+  src="operational-analytics/unsplash-pipes.jpg"
+  width={4060}
+  height={3226}
+/>
+<small>
+  <i>
+    Photo by <a href="https://unsplash.com/@realaxer">T K</a> on{" "}
+    <a href="https://unsplash.com/s/photos/pipelines">Unsplash</a>
+  </i>
+</small>
+
 #### One example of data progression:
 
 We’ll use an example use case to show how that data progression has changed over the years. Let’s say a marketer wants to be able to create a drip campaign to target churned customers who haven’t made a purchase in the last six months. That should be a pretty simple list to generate, but it’s been woefully manual, requiring many different hands to be involved historically.
 
-Progression of requests from business teams to data teams
+Progression of requests from business teams to data teams:
 
 1. Marketer asks a data analyst or engineer to generate a list. The analyst or engineer might have time to create this customer list, but this list is usually a CSV or spreadsheet. The minute that list is generated, it’s immediately out of date because that customer data is changing. The marketer then takes this CSV list and uploads it into their email marketing tool of choice, such as Marketo or Mailchimp. They probably name it something like ‘6month-churn-customer-list-jan-2018’, and before you know it, they’ll have hundreds of customer lists in their email tool that are nearly impossible to keep track of.
 2. In the last few years, various analytics tools like Looker, Metabase, or Tableau have made it easier for non-data teams to analyze and observe their own data in Looker. This change was great-- now, instead of having to ask a data analyst to pull a report, the marketer could explore the data in Looker themselves to see how many users are in the churned customer segment. Unfortunately at this point, the marketer is stuck in the same spot again. They still need to export this data as a CSV or spreadsheet, upload it manually into their email tool, and remember to do this every so often.
@@ -45,7 +59,7 @@ To make Operational Analytics truly automated, you want a Reverse ETL tool such 
 <Image
   centered
   alt="Flowchart of the modern data stack"
-  src="customer-data-integration/modern-data-stack.png"
+  src="operational-analytics/modern-data-stack.png"
   width={1015}
   height={456}
 />
@@ -54,11 +68,9 @@ Nearly every piece in this process above has been owned by Data and Analytics te
 
 The goal with automating your operational data analytics and Reverse ETL process is to have a data engineer or analytics engineers own the definitions of what gets synced. Developer-focused operations analytics tools can fit directly into an engineer team’s workflow with CI/CD, git workflows, and testing.
 
-### Operational Analytics Use Cases
+### Operational Analytics at work: Triaging Customer Support tickets based on product usage
 
 You can imagine just about any customer-facing team’s campaigns or projects being faster and more effective with an operational analytics engine or Reverse ETL tool behind the effort. Here is a deep-dive example of how Operational Analytics drives growth.
-
-#### Triaging Customer Support tickets based on product usage
 
 A common practice for customer support teams is to triage support tickets as they show up. Let’s say a customer support team wants to prioritize customer support emails from existing users who have at least made a purchase, so they can address more timely issues as they relate to shipping or otherwise.
 
@@ -82,4 +94,4 @@ Now when stakeholders ask for a new data field to be sent to the email marketing
 
 From here, the business teams are able to control exactly how that data field shows up in the tool of their choice. For example, let’s say the data engineer has defined a Lifetime Value (LTV) data property in Grouparoo. Now that LTV is defined in Grouparoo, the marketing team can map that to the Marketo Lead Fields so they can tailor their email campaigns. Customer support can map LTV to Zendesk User Fields so they can triage higher priority customer emails. Sales can map LTV to the Salesforce Account data fields so they can know the true value of their Accounts.
 
-WIth a Reverse ETL pipeline in place to power your Operational Analytics, you can improve both your bottom-line revenue and top-line revenue. Your bottom-line revenue increases as you can free up engineering time and operations time supporting manual workflows. And your top-line revenue will increase as well as your growth teams will be able to execute and test campaigns more quickly and easily without being bottlenecked by out-of-date data.
+With a Reverse ETL pipeline in place to power your Operational Analytics, you can improve both your bottom-line revenue and top-line revenue. Your bottom-line revenue increases as you can free up engineering time and operations time supporting manual workflows. And your top-line revenue will increase as well as your growth teams will be able to execute and test campaigns more quickly and easily without being bottlenecked by out-of-date data.
