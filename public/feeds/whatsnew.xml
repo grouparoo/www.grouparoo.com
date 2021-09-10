@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Thu, 02 Sep 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 10 Sep 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,16 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Automatic Profile Deletion]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-09-10-auto-profile-deletion</link>
+            <guid>grouparoo-release-note-2021-09-10-auto-profile-deletion</guid>
+            <pubDate>Fri, 10 Sep 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>As part of the v0.6 release, Grouparoo now checks for Profiles that have been deleted from their primary source and removes them from the system. This means that Profiles can be automatically cleared out from Destinations they&#x27;re synced to when you&#x27;ve removed them from your Data Warehouse.</p><p>This behavior can be configured to run along with your existing Schedule, as well as periodically. For more information, check out our <a href="https://www.grouparoo.com/docs/support/upgrading-grouparoo/v05-v06#automatically-deleting-profiles" target="_blank" rel="nofollow noopener noreferrer">v0.6 upgrade guide</a>.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
         <item>
             <title><![CDATA[Calculated Properties]]></title>
             <link
