@@ -11,6 +11,17 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2021-09-10-auto-profile-deletion",
+      "content_html": "<p>As part of the v0.6 release, Grouparoo now checks for Profiles that have been deleted from their primary source and removes them from the system. This means that Profiles can be automatically cleared out from Destinations they&#x27;re synced to when you&#x27;ve removed them from your Data Warehouse.</p><p>This behavior can be configured to run along with your existing Schedule, as well as periodically. For more information, check out our <a href=\"https://www.grouparoo.com/docs/support/upgrading-grouparoo/v05-v06#automatically-deleting-profiles\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">v0.6 upgrade guide</a>.</p>",
+      "url": "https://www.grouparoo.com/whats-new#2021-09-10-auto-profile-deletion",
+      "title": "Automatic Profile Deletion",
+      "date_modified": "2021-09-10T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-09-02-calculated-properties",
       "content_html": "<p>One exciting development with the release of Grouparoo v0.6 is our Calculated Property plugin. With the Calculated Property plugin, users can now create custom properties calculated from other properties using JavaScript and <a href=\"https://github.com/janl/mustache.js/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">mustache variables</a>.</p><p>This allows for data transformation such as string concatenation to create a <code>full_name</code> property, explicitly dealing with empty values, coalescing values, and more using JavaScript functions against data from your warehouse.</p><p>For more information and examples of how to build using our Calcualted Property plugin, you can check out our <a href=\"https://www.grouparoo.com/docs/plugins/grouparoo-calculated-property\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Calculated Property plugin docs</a>.</p>",
       "url": "https://www.grouparoo.com/whats-new#2021-09-02-calculated-properties",
