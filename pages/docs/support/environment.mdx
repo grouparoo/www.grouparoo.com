@@ -57,35 +57,6 @@ You can also modify the SSL connection options to your postgres database with th
 
 To use SQLite, set `DATABASE_URL="sqlite://grouparoo_development.sqlite"` which will be stored in your application directory by default, or you can provide an absolute path, ie: `DATABASE_URL="sqlite:///path/to/db.sqlite"`.
 
-**File Storage**
-
-By default, Grouparoo will store files locally on disk in your application directory. This is OK for development, but you will want to store files in S3 (or a compatible service, such as Google Cloud Storage) when you deploy your application. This will persist files across deployments and nodes in your cluster.
-
-To enable S3 file storage, install the `@grouparoo/files-s3` plugin and enable it in your `package.json`. You will need to provide the required environment variables to the Grouparoo application so it can access your S3 bucket:
-
-- `S3_ACCESS_KEY`
-- `S3_SECRET_ACCESS_KEY`
-- `S3_REGION`
-- `S3_BUCKET`
-
-`S3_ACCESS_KEY` and `S3_SECRET_ACCESS_KEY` are for an [IAM](https://console.aws.amazon.com/iam/home) user which you should create for this purpose alone. This user will need a policy granting it read & write access to the S3 Bucket in question:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "Stmt1571257330000",
-      "Effect": "Allow",
-      "Action": ["s3:*"],
-      "Resource": ["arn:aws:s3:::your-bucket-name/*"]
-    }
-  ]
-}
-```
-
-`S3_REGION` is an AWS region, like `"us-east-1"` and `S3_BUCKET` is the name of your bucket, which should match the one used in the policy for the IAM user,`your-bucket-name` in this example.
-
 ## `.env` example
 
 ```bash
@@ -135,15 +106,6 @@ DATABASE_URL="sqlite://grouparoo_development.sqlite"
 # With custom SSL options:
 # DATABASE_SSL=true
 # DATABASE_SSL_SELF_SIGNED=true
-
-########
-## S3 ##
-########
-
-S3_ACCESS_KEY="xxx"
-S3_SECRET_ACCESS_KEY="xxx"
-S3_REGION="us-east-1"
-S3_BUCKET="your-bucket-name"
 ```
 
 > A note on `SERVER_TOKEN`: This should be a random string that will be used to identify Grouparoo servers to each-other in the same cluster. It will not be used to authenticate users, but rather authorize servers to make requests against each other. SERVER_TOKEN is not a replacement for setting unique, per-application database credentials and isolated runtime environments.

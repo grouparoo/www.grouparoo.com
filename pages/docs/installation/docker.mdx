@@ -33,10 +33,6 @@ ENV SERVER_TOKEN="change-me"
 ENV WORKERS=1
 ENV REDIS_URL="redis://redis:6379/0"
 ENV DATABASE_URL="postgresql://postgres:password@db:5432/grouparoo_docker"
-ENV S3_ACCESS_KEY=""
-ENV S3_SECRET_ACCESS_KEY=""
-ENV S3_REGION=""
-ENV S3_BUCKET=""
 
 COPY . .
 RUN npm install
