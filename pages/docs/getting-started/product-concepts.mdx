@@ -105,6 +105,10 @@ Consider that you have a [Property](#profile-property) called `email`, while you
 
 Every Source needs a Mapping, as Grouparoo must know how to associate imported information.
 
+## Model
+
+A Model defines the shape of your [Records](#record). Each Model has its own [Sources](#source), [Records](#record), and [Properties](#property). Together, this allows you to do things like create generate different types of [Records](#record) such as Leads, Customers, Users, and Visitors that contain different [Properties](#property). For example, a Visitor Model may have a `number_of_sessions` Property, while a Customer may have a `ltv` Property. Models allow you to only add the Properties you need to keep your Records clean.
+
 ## Plugin
 
 The core Grouparoo application is the engine that drives syncing data from [Sources](#source) to [Destinations](#destination). The application relies on plugins to provide you with only the functionality you require to sync data between your preferred services.
