@@ -1,3 +1,4 @@
+import { Braze } from "./braze";
 import { CalculatedProperty } from "./calculated-property";
 import { CSV } from "./csv";
 import { Customerio } from "./customerio";
@@ -90,6 +91,7 @@ export interface Plugin {
 }
 
 export const PluginData: Plugin[] = [
+  Braze,
   CalculatedProperty,
   CSV,
   Eloqua,
