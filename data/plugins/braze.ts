@@ -46,7 +46,7 @@ export const Braze: Plugin = {
     },
     {
       header:
-        "Grouparoo keeps your User Profiles data in Braze updated in real-time",
+        "Grouparoo keeps your User Profile data in Braze updated in real-time",
       description:
         "Empower your sales team to make the right actions based on analytics now that all of your User information is up-to-date in Braze",
       imageSrc: "/images/home/integrations/braze/braze-user.png",
