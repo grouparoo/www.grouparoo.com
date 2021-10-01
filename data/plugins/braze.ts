@@ -22,7 +22,7 @@ export const Braze: Plugin = {
   useCasesList: [
     "Create and update your Braze Users as new users sign up in your core product",
     "Update existing Attributes on Users objects such as email and first name and also create new custom Fields on your own terms without needing engineering help",
-    "Keep Users Attributes up-to-date automatically",
+    "Keep User Attributes up-to-date automatically",
     "Have better control over how you segment your User Attributes",
   ],
   dataModelTitle: "An Overview of Braze's Data Model and API",
