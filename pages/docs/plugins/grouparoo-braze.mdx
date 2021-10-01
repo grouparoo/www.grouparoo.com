@@ -1,0 +1,110 @@
+---
+title: "@grouparoo/braze"
+date: "2021-10-01"
+pullQuote: "Learn how to work with Braze plugin as a Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Braze" />
+
+Grouparoo's [Braze](https://www.braze.com/) plugin enables you to export users to Braze.
+
+This guide will show you how to work with Braze plugin to [create a Destination](#create-a-braze-destination) to export your data.
+
+<PluginDocsInstallation plugin="Braze" />
+
+<PluginDocsCreateApp plugin="Braze" />
+
+<ValidateAndApplyConfig headingLevel="h3" />
+
+## Create a Braze Destination
+
+Once your App exists, you can generate a Braze Destination using the `generate` command. You must specify a `parent`, which should match the `id` of the App you just created.
+
+This is the simplest form of [Generator](/docs/getting-started/product-concepts#generator) for Destinations:
+
+```
+$ grouparoo generate braze:destination braze_destination --parent my_braze_app
+```
+
+This would generate a config file at `config/destinations/braze_destination.js` in your Grouparoo project. You can then edit this file to match your desired configuration. Here is an example of what this config object will look like after generation:
+
+```js
+// config/destinations/braze_destination.js
+
+exports.default = async function buildConfig() {
+  return [
+    {
+      id: "braze_destination",
+      name: "braze_destination",
+      class: "destination",
+      type: "braze-export",
+      appId: "my_braze_app",
+      groupId: "...",
+      syncMode: "...",
+
+      mapping: {
+        external_id: "userId",
+        email: "email",
+        first_name: "firstName",
+        last_name: "lastName",
+      },
+
+      destinationGroupMemberships: {
+        "High Value Customers": "highValueCustomers",
+      },
+    },
+  ];
+};
+```
+
+For more information on what all these properties mean and how to configure them, see [Configuring your Destination](/docs/config/code-config/destinations#configuring-your-destination).
+
+### Sync Modes
+
+Braze Destination supports all three sync modes:
+
+- **Sync** (`sync`): Add, update, and remove profiles as needed.
+- **Additive** (`additive`): Add and update profiles as needed, but do not remove anybody.
+- **Enrich** (`enrich`): Only update profiles that already exist in the Destination. Do not add or remove anybody.
+
+You can set the desired sync mode through the `syncMode` property in the config file:
+
+```js
+syncMode: "additive",
+```
+
+### Property Mappings
+
+These mappings are what tell Grouparoo which Properties you want to sync to the Destination and what they should be called. For this plugin, **Grouparoo Properties** map to **Braze User Attributes**.
+
+For Braze, mapping the `external_id` property is always required, this property can be any unique string.
+
+You can also map to custom attributes that you've defined on Braze by simply adding them along with the others.
+
+Here's an example of how this would look in the config file. Note that the keys refer to Braze Attribute names and values refer to Grouparoo Property IDs.
+
+```js
+mapping: {
+  external_id: "userId",
+  email: "email",
+  first_name: "firstName",
+  last_name: "lastName",
+},
+```
+
+### Group Mappings
+
+You can use **Group Memberships** to automatically add **Braze Groups** to your contacts. In braze, the groups are stored in an array property called Groups.
+
+Here's an example of how to configure this in the config file. Keys refer to the name of the tag to be shown on Braze and values refer to the Grouparoo Group ID.
+
+```js
+destinationGroupMemberships: {
+  "High Value Customers": "highValueCustomers",
+},
+```
+
+## Braze Next Steps
+
+Once you have the plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!

@@ -190,6 +190,7 @@ const DocsNav: NavItem[] = [
         title: "Calculated Property",
         path: "/docs/plugins/grouparoo-calculated-property",
       },
+      { title: "Braze", path: "/docs/plugins/grouparoo-braze" },
       { title: "Intercom", path: "/docs/plugins/grouparoo-intercom" },
       { title: "Marketo", path: "/docs/plugins/grouparoo-marketo" },
       { title: "Mongo", path: "/docs/plugins/grouparoo-mongo" },

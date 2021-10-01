@@ -10,6 +10,16 @@
     "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-bigquery"
   },
   {
+    "name": "Braze",
+    "description": "Grouparoo's Braze integration allows you to sync all of your customer data that lives in your data warehouse into Braze.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/braze/braze.png",
+    "packageName": "@grouparoo/braze",
+    "source": false,
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/braze",
+    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-braze"
+  },
+  {
     "name": "CSV",
     "description": "",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/csv/csv.svg",
