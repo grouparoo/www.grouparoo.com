@@ -198,7 +198,7 @@ cd apps/staging-community
 grouparoo demo -c
 
 # including the --scale param allows you to control how many records you make. e.g. --scale 10 makes 10,000 extra users. create config.
-grouparoo demo -c users --scale 10
+grouparoo demo -c --users --scale 10
 ```
 
 **Note: These commands will clear all existing data in your Grouparoo database, replacing it with the sample data.**
@@ -212,33 +212,31 @@ Here is the full set of options available:
 
 ```
 ➜ grouparoo demo -h
-Usage: grouparoo demo [options] [type] [type]
+Usage: grouparoo demo [options]
 
 Load data into a source database, create properties, destinations, and other config.
 A demo@grouparoo.com Team Member is created. Password: "password"
 
-Valid Types:
-b2c            (default) loads users and admins models
-b2b            loads account model
-users          includes users model with purchases
-accounts       includes accounts model with with payments
-admins         includes admins model
-reset          only clear Grouparoo database and don't load config
-setup          only create the login Team Member
-postgres       (default) load source data into local Postgres database
-mongo          load specified source data into local MongoDB database
-mysql          load specified source data into local MySQL database
-snowflake      assumes a Snowflake instance with data already present
-bigquery       assumes a BigQuery instance with data already present
-mailchimp      create Mailchimp destination for data
-salesforce     create Salesforce destination for data
-
 Options:
-  --scale [scale]              make the number more than 1 to multiple amount of data. (default: "1")
-  --junkPercent [junkPercent]  what percent of the data should have problems? (default: "0")
-  -c, --config                 add flag to write to config directory and not populate configuration into Grouparoo database
-  -s, --seed                   add flag to only write (or output) demo source data and not touch Grouparoo database
-  -h, --help                   display help for command
+  --scale [scale]                make the number more than 1 to multiple amount of data. (default: "1")
+  --junkPercent [junkPercent]    what percent of the data should have problems? (default: "0")
+  -c, --config [config]          add flag to write to config directory and not populate configuration into Grouparoo database
+  --reset [reset]                only clear Grouparoo database and don't load config
+  --seed [seed]                  add flag to only write (or output) demo source data and not touch Grouparoo database
+  --setup [setup]                only create the login Team Member
+  --b2c [b2c]                    (default) loads users and admins models
+  -b, --b2b [b2b]                loads account model
+  -u, --users [users]            includes users model with purchases
+  -a, --accounts [accounts]      includes accounts model with with payments
+  --admins [admins]              includes admins model
+  --postgres [postgres]          (default) load source data into local Postgres database
+  --mongo [mongo]                load specified source data into local MongoDB database
+  --mysql [mysql]                load specified source data into local MySQL database
+  --snowflake [snowflake]        assumes a Snowflake instance with data already present
+  --bigquery [bigquery]          assumes a BigQuery instance with data already present
+  -m, --mailchimp [mailchimp]    create Mailchimp destination for data
+  -s, --salesforce [salesforce]  create Salesforce destination for data
+  -h, --help                     display help for command
 ```
 
 ## Testing
