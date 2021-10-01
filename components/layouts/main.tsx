@@ -138,8 +138,8 @@ function PageTemplate({ children }) {
         <link rel="stylesheet" href="/css/prism.css"></link>
       </Head>
 
-      <OpenSourceDataStackConfBanner router={router} />
-      {/* <WhatsNewBanner releaseNote={releaseNote} /> */}
+      {/* <OpenSourceDataStackConfBanner router={router} /> */}
+      <WhatsNewBanner releaseNote={releaseNote} />
 
       <div className="main">
         <Navigation />
