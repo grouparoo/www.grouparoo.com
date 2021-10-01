@@ -71,7 +71,7 @@
     "isomorphic-fetch": "3.0.0",
     "jest": "27.1.0",
     "jest-environment-webdriver": "grouparoo/jest-webdriver#jest-v27-webdriver",
-    "jest-mock-axios": "4.4.0",
+    "jest-mock-axios": "4.4.1",
     "markdown-table": "2.0.0",
     "next-remote-watch": "1.0.0",
     "prettier": "2.4.1",
