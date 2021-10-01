@@ -17,7 +17,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/braze",
-    "docsUrl": null
+    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-braze"
   },
   {
     "name": "CSV",
