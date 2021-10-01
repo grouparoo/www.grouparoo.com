@@ -218,25 +218,25 @@ Load data into a source database, create properties, destinations, and other con
 A demo@grouparoo.com Team Member is created. Password: "password"
 
 Options:
-  --scale [scale]                make the number more than 1 to multiple amount of data. (default: "1")
-  --junkPercent [junkPercent]    what percent of the data should have problems? (default: "0")
-  -c, --config [config]          add flag to write to config directory and not populate configuration into Grouparoo database
-  --reset [reset]                only clear Grouparoo database and don't load config
-  --seed [seed]                  add flag to only write (or output) demo source data and not touch Grouparoo database
-  --setup [setup]                only create the login Team Member
-  --b2c [b2c]                    (default) loads users and admins models
-  -b, --b2b [b2b]                loads account model
-  -u, --users [users]            includes users model with purchases
-  -a, --accounts [accounts]      includes accounts model with with payments
-  --admins [admins]              includes admins model
-  --postgres [postgres]          (default) load source data into local Postgres database
-  --mongo [mongo]                load specified source data into local MongoDB database
-  --mysql [mysql]                load specified source data into local MySQL database
-  --snowflake [snowflake]        assumes a Snowflake instance with data already present
-  --bigquery [bigquery]          assumes a BigQuery instance with data already present
-  -m, --mailchimp [mailchimp]    create Mailchimp destination for data
-  -s, --salesforce [salesforce]  create Salesforce destination for data
-  -h, --help                     display help for command
+  --scale [scale]              make the number more than 1 to multiple amount of data. (default: "1")
+  --junkPercent [junkPercent]  what percent of the data should have problems? (default: "0")
+  -c, --config                 add flag to write to config directory and not populate configuration into Grouparoo database
+  --reset                      only clear Grouparoo database and don't load config
+  --seed                       add flag to only write (or output) demo source data and not touch Grouparoo database
+  --setup                      only create the login Team Member
+  --b2c                        (default) loads users and admins models
+  -b, --b2b                    loads account model
+  -u, --users                  includes users model with purchases
+  -a, --accounts               includes accounts model with with payments
+  --admins                     includes admins model
+  --postgres                   (default) load source data into local Postgres database
+  --mongo                      load specified source data into local MongoDB database
+  --mysql                      load specified source data into local MySQL database
+  --snowflake                  assumes a Snowflake instance with data already present
+  --bigquery                   assumes a BigQuery instance with data already present
+  -m, --mailchimp              create Mailchimp destination for data
+  -s, --salesforce             create Salesforce destination for data
+  -h, --help                   display help for command
 ```
 
 ## Testing
