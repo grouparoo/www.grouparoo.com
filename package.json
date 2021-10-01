@@ -67,7 +67,7 @@
     "@types/jest": "27.0.2",
     "@types/node": "16.10.2",
     "@types/react-dom": "17.0.9",
-    "csv-stringify": "5.6.4",
+    "csv-stringify": "5.6.5",
     "isomorphic-fetch": "3.0.0",
     "jest": "27.2.4",
     "jest-environment-webdriver": "grouparoo/jest-webdriver#jest-v27-webdriver",
