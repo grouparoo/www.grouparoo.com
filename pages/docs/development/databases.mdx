@@ -11,7 +11,7 @@ This document is a collection of the guidelines Grouparoo uses when dealing with
 - No sequential IDs. We use app-generated unique IDs for primary keys (UUIDs). We are working with large datasets and database that sometimes can't count.
 - Every table gets `id`, `createdAt` and `updatedAt`, even if it seems silly now... we will need it eventually!
 - No `enums`, use `VARCHAR(191)`. Migrating an enum is too hard and database-specific. We can use the ENUM type in the model for validations
-- No default values for strings. Define defaults in the model. Do mark columns as non-null.
+- No default values for strings. Instead, Define defaults in the model. If you want to add a default value to a non-null column, you can acomplish this with a 2-part migration: first add the column with a default value (to update all the existing rows), and then remove the default.
 - No foreign key constraints in the database... do these checks in the model. But, it's probably a good idea to add a search index to these
 - All guids/uuids are 40 characters long - a real V4 UUID (36 characters) + 3 letter prefix + underscore, ie: `app_168c4564-e389-4fbd-8338-db04d62022ba`
 - Do not use compound indexes for SQLite. There's a [Seqeulzie bug](https://github.com/sequelize/sequelize/issues/12823)
@@ -48,6 +48,6 @@ select * from users where uuid >= previousValue order by uuid asc limit 100;
 
 - Do not order by `rand()` or `random()`. It's very slow on large datasets. There are other [alternatives](https://github.com/grouparoo/grouparoo/pull/716) possible, but may require more than one query.
 
-## Other Notes
+## Avoid Circular Dependencies
 
-- If you are loading a model in an initializer in the `@grouparoo/core` project, you need to load it from Core's main export, not the Model file itself. ie: `import {Profile} from '../index'` not `import {Profile} from '../models/Profile'`.
+- If you are loading a model in an initializer in the `@grouparoo/core` project, you need to load it from the file's direct export, not `@grouparoo/core`'s main export. ie: `import {App} from '../models/App'` not `import {App} from '../App'`.
