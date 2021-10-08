@@ -1,0 +1,132 @@
+---
+title: "Upgrading Grouparoo from v0.6 to v0.7"
+date: "2021-10-08"
+pullQuote: "v0.7 is our biggest release yet! Learn how to upgrade so you can import and export multiple Models."
+---
+
+Grouparoo v0.7 is our biggest release yet! Learn how to upgrade so you can import and export multiple Models.
+
+## Models and Records
+
+The v0.7 release is all about preparing Grouparoo to be able to import multiple Models. A [Model](/docs/getting-started/product-concepts#model) defines the shape of your [Records](#record). Each Model has its own [Sources](#source), [Records](#record), and [Properties](#property). Together, this allows you to do things like create generate different types of [Records](#record) such as Leads, Customers, Users, and Visitors that contain different [Properties](#property). In the Future, Grouparoo will be adding the ability to handle other types of Models than Profiles - including Accounts and Events.
+
+The first and biggest change is that what used to be called `Profiles` is now called `Records`. You'll see this change throughout the Grouparoo UI, and you will need to change all instances of `profile` or `profileId` in your config files to `record` and `recordId`.
+
+Next, you will need to generate your first Model. If you were using Grouparoo v0.6 or earlier, you essentially had a single Model with the following attributes:
+
+```json
+{
+  "class": "Model",
+  "id": "users",
+  "name": "Users",
+  "type": "profile"
+}
+```
+
+Adding the above to `./config/models/users.json` will add a new Users model to your Grouparoo project. You can also generate a new model with the the `grouparoo` cli, `grouparoo generate model Users`.
+
+Note the id, `users`as you will need to add a`modelId` to a few objects to let them know which model they should be using:
+
+- Sources
+- Destinations
+- Groups
+- Sample Records (previously called Sample Profiles)
+
+For example, a Source with a new `modelId` might look like:
+
+```json
+{
+  "class": "Source",
+  "id": "demo_users",
+  "name": "Product Users",
+  "type": "postgres-import-table",
+  "appId": "demo_db",
+  "modelId": "users", // <-- Note the new modelId
+  "options": {
+    "table": "users"
+  },
+  "mapping": {
+    "id": "user_id"
+  }
+}
+```
+
+## Plugin Names Changed and Clarified
+
+To prepare Grouparoo for exporting multiple types of models, the names of our Plugin Connections have changed. It is very likely that you will need to update the `"type"` property of your Destinations and Sources. Plugin connections now follow the pattern `{type}-{direction}-{model}`. For Destinations, the name of the Model used is the name the Destination prefers (usually something like "contact", "profile" or "user").
+
+Examples of changes include:
+
+```bash
+# old name             -> new name
+
+# Sources (incomplete list of examples)
+bigquery-table-import  -> bigquery-import-table
+bigquery-query-import  -> bigquery-import-query
+snowflake-table-import -> snowflake-import-table
+snowflake-query-import -> snowflake-import-query
+
+# Destinations (incomplete list of examples)
+braze-export           -> braze-export-users
+hubspot-export         -> hubspot-export-contacts
+mixpanel-export        -> mixpanel-export-profiles
+
+```
+
+The easiest way to see the new names of the Plugin Connections provided by the Grouparoo plugins you have installed is to either use the `grouparoo configure` command or view the list in the CLI via `grouparoo generate --list`
+
+## Grouparoo File System Removed
+
+Version 0.7 removes the Grouparoo File System which was previously used to upload and download files by the Grouparoo application, usually in S3. This has been removed to simplify the Application, as it was an underutilized feature. Because of this, it is no longer possible to export members of your Groups to CSV.
+
+Remove the following plugins if you have them installed, as they no longer are maintained and not released fro versions v0.7+ of Grouparoo:
+
+- `@grouparoo/files-local`
+- `@grouparoo/files-s3`
+
+## CSV Plugin Simplification
+
+With the removal of the Grouparoo file system, there is now only 1 type of CSV import plugin, named `csv-import-table` which accepts a URL of a remotely-available CSV file to import. The CSV source that read a CSV file uploaded to Grouparoo has been removed.
+
+## Salesforce Plugin Key Names
+
+To match Grouparoo's new terminology, the `@grouparoo/salesforce` plugin has been updated, and config changes are required in any config files with a Salesforce Destination:
+
+```bash
+# Old Key Name             -> New Key Name
+
+profileObject              -> recordObject
+profileMatchField          -> recordMatchField
+membershipProfileField     -> membershipRecordField
+profileReferenceField      -> recordReferenceField
+profileReferenceObject     -> recordReferenceObject
+profileReferenceMatchField -> recordReferenceMatchField
+```
+
+## Invalid Properties
+
+Grouparoo now notes if a Record Property that you are importing is invalid for the type of the property. This might mean that Grouparoo encountered a duplicate value for a unique property, or that an email-type property doesn't contain an "@". In previous versions of Grouparoo, this would have caused an exception. Now, grouparoo will set the Record Property's value to `null` and list a reason. Note that a property becoming null may change the Groups that the Record is a member of.
+
+<Image
+  src="docs/support/upgrading-grouparoo/v06-v07-invalid-property.png"
+  alt="Confirm Profile Existence Days setting"
+  width={774}
+  height={500}
+/>
+
+You can choose to list records with invalid properties as well.
+
+<Image
+  src="docs/support/upgrading-grouparoo/v06-v07-invalid-property-list.png"
+  alt="Confirm Profile Existence Days setting"
+  width={774}
+  height={500}
+/>
+
+## Record Snapshot Tests
+
+To match Grouparoo's new terminology, the jest testing helper previously titled `getProperty()` has been renamed `getRecord()`. You will need to update your test code to use the new terminology and re-record your test snapshots.
+
+## Bootstrapped Property
+
+The option for creating a "Bootstrapped Property" as part of defining a Source has been removed. This option was previous was deprecated.
