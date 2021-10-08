@@ -99,7 +99,7 @@ export default function Hacktoberfest({ pageProps }) {
             </Col>
           </Row>
           <Row>
-            <Col sm={2}>
+            <Col sm={3}>
               <Image
                 thumbnail
                 src="/images/hacktoberfest/grouparoo_event_hacktoberfest.png"
