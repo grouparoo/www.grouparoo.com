@@ -10,7 +10,7 @@ As always, begin by updating the packages within your Grouparoo project by [foll
 
 ## Models and Records
 
-The v0.7 release is all about preparing Grouparoo to be able to import multiple Models. A [Model](/docs/getting-started/product-concepts#model) defines the shape of your [Records](#record). Each Model has its own [Sources](#source), [Records](#record), and [Properties](#property). Together, this allows you to do things like create generate different types of [Records](#record) such as Leads, Customers, Users, and Visitors that contain different [Properties](#property). In the Future, Grouparoo will be adding the ability to handle other types of Models than Profiles - including Accounts and Events.
+The v0.7 release is all about preparing Grouparoo to be able to import multiple Models. A [Model](/docs/getting-started/product-concepts#model) defines the shape of your [Records](#record). Each Model has its own [Sources](#source), [Records](#record), and [Properties](#property). Together, this allows you to do things like create different types of [Records](#record) such as Leads, Customers, Users, and Visitors that contain different [Properties](#property). In the future, Grouparoo will be adding the ability to handle other types of Models than Profiles - including Accounts, Events, and Custom Objects.
 
 The first and biggest change is that what used to be called `Profiles` is now called `Records`. You'll see this change throughout the Grouparoo UI, and you will need to change all instances of `profile`, `profileId`, and `confirmProfiles` in your config files to `record`, `recordId`, and `confirmRecords` respectively.
 
@@ -55,7 +55,7 @@ For example, a Source with a new `modelId` might look like:
 
 ## Plugin Names Changed and Clarified
 
-To prepare Grouparoo for exporting multiple types of models, the names of our Plugin Connections have changed. It is very likely that you will need to update the `"type"` property of your Destinations and Sources. Plugin connections now follow the pattern `{type}-{direction}-{model}`. For Destinations, the name of the Model used is the name the Destination prefers (usually something like "contact", "profile" or "user").
+To prepare Grouparoo for exporting multiple types of models, the names of our Plugin Connections have changed. It is very likely that you will need to update the `"type"` property of your Destinations and Sources. Plugin connections now follow the pattern `{type}-{direction}-{model}`. For Destinations, the name of the Model is the name the Destination uses (usually something like "contact", "profile", or "user").
 
 Examples of changes include:
 
@@ -118,7 +118,7 @@ To support this, Destinations now have the property `collection` required in the
 
 ## Grouparoo File System Removed
 
-Version 0.7 removes the Grouparoo File System which was previously used to upload and download files by the Grouparoo application, usually in S3. This has been removed to simplify the Application, as it was an underutilized feature. Because of this, it is no longer possible to export members of your Groups to CSV.
+Version 0.7 removes the Grouparoo File System which was previously used to upload and download files by the Grouparoo application, usually in S3. This has been removed to simplify the application, as it was an underutilized feature. Because of this, it is no longer possible to export members of your Groups to CSV.
 
 Remove the following plugins if you have them installed, as they no longer are maintained and not released fro versions v0.7+ of Grouparoo:
 
@@ -146,7 +146,7 @@ profileReferenceMatchField -> recordReferenceMatchField
 
 ## Invalid Properties
 
-Grouparoo now notes if a Record Property that you are importing is invalid for the type of the property. This might mean that Grouparoo encountered a duplicate value for a unique property, or that an email-type property doesn't contain an "@". In previous versions of Grouparoo, this would have caused an exception. Now, grouparoo will set the Record Property's value to `null` and list a reason. Note that a property becoming null may change the Groups that the Record is a member of.
+Grouparoo now notes if a Record Property that you are importing is invalid for the type of the property. This might mean that Grouparoo encountered a duplicate value for a unique property, or that an email-type property doesn't contain an "@". In previous versions of Grouparoo, this would have caused an exception. Now, Grouparoo will set the Record Property's value to `null` and list a reason. Note that a property becoming null may change the Groups that the Record is a member of.
 
 <Image
   src="docs/support/upgrading-grouparoo/v06-v07-invalid-property.png"
@@ -170,4 +170,4 @@ To match Grouparoo's new terminology, the jest testing helper previously titled 
 
 ## Bootstrapped Property
 
-The option for creating a "Bootstrapped Property" as part of defining a Source has been removed. This option was previous was deprecated.
+The option for creating a "Bootstrapped Property" as part of defining a Source has been removed. This option's functionality was deprecated in a previous release.
