@@ -42,13 +42,6 @@ describe("utils/blogPosts", () => {
 
         expect(item.tags.every((tag) => validTags.includes(tag))).toBeTruthy();
       });
-
-      // test.todo(`${entry.slug} tags`, async () => {
-      //   const item = await getBlogPost(entry.slug);
-
-      //   for (const tag in item.tags) {
-      //   }
-      // });
     }
   });
 });

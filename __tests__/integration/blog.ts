@@ -33,6 +33,4 @@ describe("integration/blog", () => {
     const header = await browser.findElement(by.tagName("h1")).getText();
     expect(header).toBe("Steps for Marketing Tests");
   });
-
-  test("it only allows valid tags");
 });
