@@ -48,6 +48,7 @@ const DocsNav: NavItem[] = [
     path: "/docs/config",
     children: [
       { title: "Apps", path: "/docs/config/apps" },
+      { title: "Models", path: "/docs/config/models" },
       { title: "Sources", path: "/docs/config/sources" },
       { title: "Properties", path: "/docs/config/properties" },
       { title: "Groups", path: "/docs/config/groups" },
