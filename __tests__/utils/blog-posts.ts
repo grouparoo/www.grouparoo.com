@@ -1,6 +1,8 @@
 import { getBlogPosts, getBlogPost } from "../../utils/blogPosts";
 import { loadEntries } from "../../utils/mdxUtils";
 import getAuthor from "../../utils/getAuthor";
+import { badgeTypes } from "../../data/blogTags";
+import { TagNames } from "sitemap";
 
 describe("utils/blogPosts", () => {
   const entries = loadEntries(["pages", "blog"]);
@@ -16,6 +18,8 @@ describe("utils/blogPosts", () => {
 
     for (const entry of entries) {
       test(`${entry.slug}`, async () => {
+        const validTags = Object.keys(badgeTypes);
+
         const listItem = items.find((i) => i.slug === entry.slug);
         expect(listItem).toBeTruthy();
 
@@ -35,7 +39,16 @@ describe("utils/blogPosts", () => {
         expect(date.getTime()).toBeGreaterThan(0);
 
         expect(item.tags.length).toBeGreaterThan(0);
+
+        expect(item.tags.every((tag) => validTags.includes(tag))).toBeTruthy();
       });
+
+      // test.todo(`${entry.slug} tags`, async () => {
+      //   const item = await getBlogPost(entry.slug);
+
+      //   for (const tag in item.tags) {
+      //   }
+      // });
     }
   });
 });
