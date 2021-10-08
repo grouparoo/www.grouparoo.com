@@ -12,7 +12,7 @@ As always, begin by updating the packages within your Gropuaroo project by [foll
 
 The v0.7 release is all about preparing Grouparoo to be able to import multiple Models. A [Model](/docs/getting-started/product-concepts#model) defines the shape of your [Records](#record). Each Model has its own [Sources](#source), [Records](#record), and [Properties](#property). Together, this allows you to do things like create generate different types of [Records](#record) such as Leads, Customers, Users, and Visitors that contain different [Properties](#property). In the Future, Grouparoo will be adding the ability to handle other types of Models than Profiles - including Accounts and Events.
 
-The first and biggest change is that what used to be called `Profiles` is now called `Records`. You'll see this change throughout the Grouparoo UI, and you will need to change all instances of `profile` or `profileId` in your config files to `record` and `recordId`.
+The first and biggest change is that what used to be called `Profiles` is now called `Records`. You'll see this change throughout the Grouparoo UI, and you will need to change all instances of `profile`, `profileId`, and `confirmProfiles` in your config files to `record`, `recordId`, and `confirmRecords` respectively.
 
 Next, you will need to generate your first Model. If you were using Grouparoo v0.6 or earlier, you essentially had a single Model with the following attributes:
 
@@ -25,7 +25,7 @@ Next, you will need to generate your first Model. If you were using Grouparoo v0
 }
 ```
 
-Adding the above to `./config/models/users.json` will add a new Users model to your Grouparoo project. You can also generate a new model with the the `grouparoo` cli, `grouparoo generate model Users`.
+Adding the above to `./config/models/users.json` (be sure to `mkdir ./config/models` as needed) will add a new Users model to your Grouparoo project. You can also generate a new model with the the `grouparoo` cli, `grouparoo generate model Users`.
 
 Note the id, `users`as you will need to add a`modelId` to a few objects to let them know which model they should be using:
 
@@ -77,6 +77,45 @@ mixpanel-export        -> mixpanel-export-profiles
 
 The easiest way to see the new names of the Plugin Connections provided by the Grouparoo plugins you have installed is to either use the `grouparoo configure` command or view the list in the CLI via `grouparoo generate --list`
 
+## Destinations can Export all Records of a Certain Model
+
+Now that Grouparoo can support multiple Models, we can use that distinction to choose which Records to export. Prior to v0.7, Grouparoo Destinations required a Group to know which Records to Export. Now, you can choose to export all members of a Model.
+
+<Image
+  src="docs/support/upgrading-grouparoo/v06-v07-export-model.png"
+  alt="Export all Models"
+  width={1027}
+  height={500}
+/>
+
+To support this, Destinations now have the property `collection` required in their configuration. `destination.collection` can be `group`, `model`, or `none` and is required. Updating a Destination looks like:
+
+```json
+{
+  "class": "Destination",
+  "id": "newsletter",
+  "name": "Newsletter",
+  "type": "mailchimp-export",
+  "appId": "mailchimp",
+  "modelId": "users", // --> Note the new `modelId`
+  "collection": "group", // --> Note the new `collection`
+  "groupId": "all_emails",
+  "syncMode": "additive",
+  "options": {
+    "listId": "MAILCHIMP_LIST_ID"
+  },
+  "mapping": {
+    "FNAME": "first_name",
+    "LNAME": "last_name",
+    "email_address": "email",
+    "language": "language"
+  },
+  "destinationGroupMemberships": {
+    "High Value Spanish Speakers": "high_value_spanish_speakers"
+  }
+}
+```
+
 ## Grouparoo File System Removed
 
 Version 0.7 removes the Grouparoo File System which was previously used to upload and download files by the Grouparoo application, usually in S3. This has been removed to simplify the Application, as it was an underutilized feature. Because of this, it is no longer possible to export members of your Groups to CSV.
@@ -111,7 +150,7 @@ Grouparoo now notes if a Record Property that you are importing is invalid for t
 
 <Image
   src="docs/support/upgrading-grouparoo/v06-v07-invalid-property.png"
-  alt="Confirm Profile Existence Days setting"
+  alt="View invalid Record Properties"
   width={774}
   height={500}
 />
@@ -120,7 +159,7 @@ You can choose to list records with invalid properties as well.
 
 <Image
   src="docs/support/upgrading-grouparoo/v06-v07-invalid-property-list.png"
-  alt="Confirm Profile Existence Days setting"
+  alt="Filter by Invalid Record Properties"
   width={774}
   height={500}
 />
