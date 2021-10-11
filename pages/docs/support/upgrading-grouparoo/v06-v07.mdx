@@ -29,7 +29,7 @@ Next, you will need to generate your first Model. If you were using Grouparoo v0
 
 Adding the above to `./config/models/users.json` (be sure to `mkdir ./config/models` as needed) will add a new Users model to your Grouparoo project. You can also generate a new model with the the `grouparoo` cli, `grouparoo generate model Users`.
 
-Note the id, `users`as you will need to add a`modelId` to a few objects to let them know which model they should be using:
+Note the id, `users` as you will need to add a `modelId` to a few objects to let them know which model they should be using:
 
 - Sources
 - Destinations
@@ -122,7 +122,7 @@ To support this, Destinations now have the property `collection` required in the
 
 Version 0.7 removes the Grouparoo File System which was previously used to upload and download files by the Grouparoo application, usually in S3. This has been removed to simplify the application, as it was an underutilized feature. Because of this, it is no longer possible to export members of your Groups to CSV.
 
-Remove the following plugins if you have them installed, as they no longer are maintained and not released fro versions v0.7+ of Grouparoo:
+Remove the following plugins if you have them installed, as they no longer are maintained and not released for versions v0.7+ of Grouparoo:
 
 - `@grouparoo/files-local`
 - `@grouparoo/files-s3`
@@ -168,7 +168,7 @@ You can choose to list records with invalid properties as well.
 
 ## Record Snapshot Tests
 
-To match Grouparoo's new terminology, the jest testing helper previously titled `getProperty()` has been renamed `getRecord()`. You will need to update your test code to use the new terminology and re-record your test snapshots.
+To match Grouparoo's new terminology, the jest testing helper previously titled `getProfile()` has been renamed `getRecord()`. You will need to update your test code to use the new terminology and re-record your test snapshots.
 
 ## Bootstrapped Property
 
