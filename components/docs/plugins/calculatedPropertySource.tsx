@@ -180,8 +180,8 @@ function customFunction() {
       </p>
       <CodeBlock code={codeBlocks.customFunction} language="javascript" />
       <p>
-        <code>customFunction</code> is executed Profile by Profile, so the value
-        of each Profile's <code>first_name</code> and <code>last_name</code>{" "}
+        <code>customFunction</code> is executed Record by Record, so the value
+        of each Record's <code>first_name</code> and <code>last_name</code>{" "}
         Properties are parsed directly into the function, which is why it is
         quoted in order to evaluate as and return a string.
       </p>

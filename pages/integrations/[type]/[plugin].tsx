@@ -138,7 +138,7 @@ export default function IntegrationsPage({
       <br />
 
       <Container>
-        {data.destinationProfile && (
+        {data.destinationRecord && (
           <Row>
             <Col>
               <h2>How Grouparoo Connects with {data.name}</h2>
@@ -147,7 +147,7 @@ export default function IntegrationsPage({
                 name={data.name}
                 slug={data.slug}
                 image={data.logo}
-                destinationProfile={data.destinationProfile}
+                destinationRecord={data.destinationRecord}
                 destinationProperty={data.destinationProperty}
                 destinationGroup={data.destinationGroup}
               />

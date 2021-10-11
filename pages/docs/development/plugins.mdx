@@ -183,11 +183,11 @@ import { test } from "./../lib/test";
 import { columns } from "./../lib/columns";
 import {
   profilePropertyRuleQueryOptions,
-  buildProfilePropertyRuleQuery,
-} from "./../lib/buildProfileQuery";
+  buildRecordPropertyRuleQuery,
+} from "./../lib/buildRecordQuery";
 import { profiles } from "./../lib/profiles";
 import { profileProperty } from "./../lib/profileProperty";
-import { exportProfile } from "./../lib/exportProfile";
+import { exportRecord } from "./../lib/exportRecord";
 
 export class Plugins extends Initializer {
   constructor() {
@@ -210,7 +210,7 @@ export class Plugins extends Initializer {
           ],
           test: test,
           profilePropertyRuleQueryOptions,
-          buildProfilePropertyRuleQuery,
+          buildRecordPropertyRuleQuery,
         },
       ],
       connections: [
@@ -243,7 +243,7 @@ export class Plugins extends Initializer {
             // ...
           ],
           methods: {
-            exportProfile,
+            exportRecord,
             columns,
           },
         },

@@ -283,7 +283,7 @@ import { helper } from "@grouparoo/spec-helper";
 // import "@grouparoo/spec-helper";
 
 // import other things, including @grouparoo/core if you need it
-import { Profile } from "@grouparoo/core";
+import { GrouparooRecord } from "@grouparoo/core";
 
 describe("my plugin", () => {
   // This command injects a `beforeAll` and `afterAll` to startup and shutdown the server.  There are lots of options to help you with testing.  If you need access to Models, you need to turn on the server so it can connect to Postgres
@@ -292,7 +292,7 @@ describe("my plugin", () => {
   // Now the server will be booted up, connected to the database, and you can use factories and models like normal
   test("works", async () => {
     const factory = await helper.factories.profile();
-    const profile = await Profile.findOne({ where: { id: factory.id } });
+    const profile = await GrouparooRecord.findOne({ where: { id: factory.id } });
     expect(profile.id).toBe(profile.id);
   });
 });

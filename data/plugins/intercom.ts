@@ -32,7 +32,7 @@ export const Intercom: Plugin = {
     "The core object in Intercom is a Contact. A Contact represents an individual person who might be a Lead or a User. Leads have one required attribute: <code>email</code>. Users on the other hand have two required attributes: <code>email</code> and <code>external_id</code>.",
     "All of these Leads and Users have additional attributes that you can set, like name, role, phone, as well as custom attributes.",
   ],
-  destinationProfile: "Intercom Contacts",
+  destinationRecord: "Intercom Contacts",
   destinationProperty: "Intercom User/Lead Attributes",
   destinationGroup: "Intercom Tags",
   pluginScreenshots: [

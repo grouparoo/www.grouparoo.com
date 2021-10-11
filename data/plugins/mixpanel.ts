@@ -31,8 +31,8 @@ export const Mixpanel: Plugin = {
     "The core object in Mixpanel is a User Profile. User Profile have one required attribute, which is their email address.",
     "Mixpanel calls attributes of a User Profile a User Property. Mixpanel pre-defines a number of Fields like $email, $first_name and $last_name for example, but you can define as many Fields as you'd like in the Mixpanel website or straight from Grouparoo.",
   ],
-  destinationProfile: "Mixpanel User Profile",
-  destinationProperty: "Mixpanel User Profile Properties",
+  destinationRecord: "Mixpanel User Profiles",
+  destinationProperty: "Mixpanel User Profiles Properties",
   destinationGroup: "Mixpanel Groups",
   pluginScreenshots: [
     {
@@ -46,9 +46,9 @@ export const Mixpanel: Plugin = {
     },
     {
       header:
-        "Grouparoo keeps your User Profiles data in Mixpanel updated in real-time",
+        "Grouparoo keeps your User Records data in Mixpanel updated in real-time",
       description:
-        "Empower your sales team to make the right actions based on analytics now that all of your User Profiles information is up-to-date in Mixpanel",
+        "Empower your sales team to make the right actions based on analytics now that all of your User Records information is up-to-date in Mixpanel",
       imageSrc: "/images/home/integrations/mixpanel/mixpanel-users.png",
       imageAlt: "Users in Mixpanel",
       imageWidth: 742,

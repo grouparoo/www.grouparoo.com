@@ -28,8 +28,8 @@ Welcome to the Grouparoo Dictionary! This is the collection of terms we use thro
 - [Mapping](#mapping)
 - [Model](#model)
 - [Plugin](#plugin)
-- [Profile](#profile)
-- [Profile Property](#profile-property)
+- [Record](#record)
+- [Record Property](#record-property)
 - [Property](#property)
 - [Query Source](#query-source)
 - [Source](#source)
@@ -51,7 +51,7 @@ Some versions of [the `generate` command](/docs/cli/config#generate) support cre
 
 ## Calculated Group
 
-Calculated Groups are a type of [Group](#group) that are always kept up to date for you by Grouparoo. As new Profiles are created, or the Profile Properties of existing Profiles are changed, Group membership will automatically be adjusted.
+Calculated Groups are a type of [Group](#group) that are always kept up to date for you by Grouparoo. As new Records are created, or the Record Properties of existing Records are changed, Group membership will automatically be adjusted.
 
 ## Columnar Source
 
@@ -59,11 +59,11 @@ A Columnar Source is a specific type of [Source](#source) that imports data from
 
 ## Destination
 
-Destinations are where you want [Grouparoo Profiles](#profile) and [Groups](#group) to be sent. Often Destinations are customer marketing tools such as email marketing or push notification services, though databases and data warehouses can also function at Destinations.
+Destinations are where you want [Grouparoo Records](#profile) and [Groups](#group) to be sent. Often Destinations are customer marketing tools such as email marketing or push notification services, though databases and data warehouses can also function at Destinations.
 
-When you set up a Destination in Grouparoo, you will choose which Groups as well as which [Profile Properties](#profile-properties) you will send to each Destination. You will have control and visibility over what data gets sent to each Destination.
+When you set up a Destination in Grouparoo, you will choose which Groups as well as which [Record Properties](#profile-properties) you will send to each Destination. You will have control and visibility over what data gets sent to each Destination.
 
-Grouparoo will keep the Profile and Group data in your Destinations up-to-date in real time.
+Grouparoo will keep the Record and Group data in your Destinations up-to-date in real time.
 
 See [our Integrations page](/integrations) for an up-to-date list of our supported Destinations. We are always adding support for more Destinations. If you have a request, please [let us know](/meet)!
 
@@ -79,7 +79,7 @@ You can learn more about Generators by reading through [the Code Config docs](/d
 
 ## Group
 
-Groups are a collection of [Profiles](#profile) that you can define and filter. These filters (or _rules_) are built to be easy-to-understand by non-technical users.
+Groups are a collection of [Records](#profile) that you can define and filter. These filters (or _rules_) are built to be easy-to-understand by non-technical users.
 
 Let's say we wanted to make a Group of high-value customers who recently abandoned the checkout process. Here is an example of the rules to define this group:
 
@@ -96,11 +96,11 @@ A High Watermark is a value used for comparison during [Runs](#run) that are [sc
 
 ## Manual Group
 
-Manual Groups are a type of [Group](#group) that only change when you add or remove Profiles.
+Manual Groups are a type of [Group](#group) that only change when you add or remove Records.
 
 ## Mapping
 
-When importing data from a [Source](#source), Grouparoo needs to know how to relate the data its importing to the [Profiles](#profiles) already in Grouparoo. This is what we call a Mapping. It operates like a foreign key in a database.
+When importing data from a [Source](#source), Grouparoo needs to know how to relate the data its importing to the [Records](#profiles) already in Grouparoo. This is what we call a Mapping. It operates like a foreign key in a database.
 
 Consider that you have a [Property](#profile-property) called `email`, while your Source has an attribute called `emailAddress`, which is a unique field in that Source. You could map `emailAddress` from your source to `email` in Grouparoo. This tells Grouparoo that when anything changes on the Source, it knows which profile to update.
 
@@ -118,29 +118,29 @@ Being that Grouparoo is a Node.js application, the plugins are available as Java
 
 Learn more about [existing plugins](/docs/plugins), or [develop your own plugin](/docs/development/plugins).
 
-## Profile
+## Record
 
-Profiles represent individual people. For your specific company or organization, that may mean:
+Records represent individual people. For your specific company or organization, that may mean:
 
 - Leads
 - Customers
 - Users
 - Visitors to your site or app
 
-## Profile Property
+## Record Property
 
-Profile Properties are data associated with a profile. You can define Profile Properties based on data that exists in your data Sources.
+Record Properties are data associated with a profile. You can define Record Properties based on data that exists in your data Sources.
 
-Profile Properties are given a specific type, letting us know if they are a `number`, `date`, or `string`. Having a type helps Grouparoo know how to display this data and send it to Destinations.
+Record Properties are given a specific type, letting us know if they are a `number`, `date`, or `string`. Having a type helps Grouparoo know how to display this data and send it to Destinations.
 
-Profile Properties can also be **Unique** or **Not Unique**. Defining Uniqueness is needed in order to create and merge Profiles from various sources without creating duplicate Profiles.
+Record Properties can also be **Unique** or **Not Unique**. Defining Uniqueness is needed in order to create and merge Records from various sources without creating duplicate Records.
 
-Common examples of **Unique** Profile Properties are:
+Common examples of **Unique** Record Properties are:
 
 - `Email Address`
 - `User ID`
 
-Common examples of **Not Unique** Profile Properties are:
+Common examples of **Not Unique** Record Properties are:
 
 - `First Name`
 - `Last Name`
@@ -148,7 +148,7 @@ Common examples of **Not Unique** Profile Properties are:
 
 ## Property
 
-Properties define how a Profile Property gets pulled from a Source. Every Source might be structured in slightly different ways, so Grouparoo plugins make it easy for you to define Properties.
+Properties define how a Record Property gets pulled from a Source. Every Source might be structured in slightly different ways, so Grouparoo plugins make it easy for you to define Properties.
 
 For example, you might define a Property called `first_name` which you are pulling from your product database via the `@grouparoo/postgres` plugin.
 
@@ -168,13 +168,13 @@ A Schedule defines some interval by which to process a [Run](#run). Though techn
 
 Sources are the tools that Grouparoo will connect with to pull in customer data. A Source can be anything that contains customer data such as data warehouses, databases, and CRMs.
 
-When you add a new Source, you will define how that Source connects with the [Profiles](#profile) that already exist in Grouparoo through a `Unique` [Profile Property](#profile-property).
+When you add a new Source, you will define how that Source connects with the [Records](#profile) that already exist in Grouparoo through a `Unique` [Record Property](#profile-property).
 
 See [our Integrations page](/integrations) for an up-to-date list of our supported Sources. We are always adding support for more Sources. If you have a request, please [let us know](/meet)!
 
 ## Sync Mode
 
-When creating a Grouparoo [Destination](#destination), you will be asked to choose a Sync Mode. A Sync Mode tells the Grouparoo application how to create and delete Profiles on this destination. The types of Sync Modes are:
+When creating a Grouparoo [Destination](#destination), you will be asked to choose a Sync Mode. A Sync Mode tells the Grouparoo application how to create and delete Records on this destination. The types of Sync Modes are:
 
 - **Sync**: Add, update and remove profiles from the destination as needed.
 - **Additive**: Add new profiles and update those that already exist in the destination, but never remove anyone.

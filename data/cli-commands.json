@@ -129,7 +129,7 @@
     "inputs": {
       "reset": {
         "default": false,
-        "description": "[DANGER] Empty the cluster of all Profile data before starting the run? Equivalent to `grouparoo reset data`",
+        "description": "[DANGER] Empty the cluster of all Record data before starting the run? Equivalent to `grouparoo reset data`",
         "letter": "r",
         "flag": true
       },
@@ -199,11 +199,11 @@
   },
   {
     "name": "sync <profileProperty>",
-    "description": "Sync (import & export) a Profile.  You can provide a Profile id or a unique Profile Property",
+    "description": "Sync (import & export) a Record.  You can provide a Record id or a unique Record Property",
     "example": "grouparoo sync person@example.com --property email",
     "inputs": {
       "property": {
-        "description": "Choose the name of the Property to find the Profile by (i.e.: email_address)",
+        "description": "Choose the name of the Property to find the Record by (i.e.: email_address)",
         "letter": "p"
       },
       "no-export": {

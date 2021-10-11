@@ -10,7 +10,7 @@ breadcrumb_label: Properties
   <Link href="/docs/config/code-config/sources">added a Source</Link>.
 </Alert>
 
-Now that you have a Source or some Sources ([see here if you don't have a Source](/docs/config/code-config/sources)), you can begin to define additional Properties. Properties are data values associated to the Profiles you have in Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+Now that you have a Source or some Sources ([see here if you don't have a Source](/docs/config/code-config/sources)), you can begin to define additional Properties. Properties are data values associated to the Records you have in Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
 
 ## Generating a New Property
 
@@ -18,7 +18,7 @@ You are likely to have more Properties than any other type of config object in y
 
 To generate a new Property for your Grouparoo application, you can run [the `generate` command](/docs/cli/config#generate).
 
-For example, let's say you have configured a Postgres Table Source with the ID `users`. And let's say you want to add a Property that calculates the lifetime value of each customer. You can generate a new Profile for that Source like this:
+For example, let's say you have configured a Postgres Table Source with the ID `users`. And let's say you want to add a Property that calculates the lifetime value of each customer. You can generate a new Record for that Source like this:
 
     grouparoo generate postgres:table:property ltv --parent users_table
 
@@ -82,12 +82,12 @@ Each Property has a common set of options, while other options are specific to t
 
 - `class`: (**required**) Should be set to `"property"`.
 - `id`: (**required**) The unique value that defines this Property.
-- `identifying`: (**required**) Consider this option to be the primary key for your Profile. It is how Grouparoo identifies the Property in the UI.
+- `identifying`: (**required**) Consider this option to be the primary key for your Record. It is how Grouparoo identifies the Property in the UI.
 - `isArray`: (**required**) Is the Property an array?
 - `name`: (**required**) A display name for the Property. Will be set to the `id` by default.
 - `sourceId`: (**required**) The `id` of the Source that the Property is created from. This will be the value of the `--parent` option you passed to the `generate` command.
 - `type`: (**required**) The data type of the Property. The options available will be generated as a comment in the generated config file.
-- `unique`: (**required**) If `true` Profiles will be forced to have unique records for this Property.
+- `unique`: (**required**) If `true` Records will be forced to have unique records for this Property.
 
 The generator attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/properties` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Property for a Postgres Source, all but `sourceId` and `options.column` were pre-populated.
 

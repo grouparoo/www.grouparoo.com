@@ -55,14 +55,14 @@ The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/plugi
 
   One of these should be defined. The choice is whether or not the plugin can import many users at once for a property or it is done one at a time.
 
-  - `profileProperty `[`ProfilePropertyPluginMethod`](https://docs.grouparoo.com/interfaces/profilepropertypluginmethod.html) Given a profile and the property definition, get the value of the property for that profile.
-  - `profileProperties `[`ProfilePropertiesPluginMethod`](https://docs.grouparoo.com/interfaces/profilepropertiespluginmethod.html) Given an array of profiles and the property definition, get the value of the property for each profile.
+  - `profileProperty `[`RecordPropertyPluginMethod`](https://docs.grouparoo.com/interfaces/profilepropertypluginmethod.html) Given a profile and the property definition, get the value of the property for that profile.
+  - `profileProperties `[`RecordPropertiesPluginMethod`](https://docs.grouparoo.com/interfaces/profilepropertiespluginmethod.html) Given an array of profiles and the property definition, get the value of the property for each profile.
 
 - **Schedule Methods**
 
   These methods are used when the source can have a schedule.
 
-  - `profiles `[`ProfilesPluginMethod`](https://docs.grouparoo.com/interfaces/profilespluginmethod.html) This method is the core method to implement a schedule. It uses a high-water mark and given options to return a collection of profiles to import. This options might also return properties to set on the profiles The main goal of this method is to call `await plugin.createImport(schedule, run, row)` for each row of data, where row is an object like `{user_id: 9, email: "person@example.com", first_name: "person"}`
+  - `profiles `[`RecordsPluginMethod`](https://docs.grouparoo.com/interfaces/profilespluginmethod.html) This method is the core method to implement a schedule. It uses a high-water mark and given options to return a collection of profiles to import. This options might also return properties to set on the profiles The main goal of this method is to call `await plugin.createImport(schedule, run, row)` for each row of data, where row is an object like `{user_id: 9, email: "person@example.com", first_name: "person"}`
   - `sourceRunPercentComplete `[`SourceRunPercentCompleteMethod`](https://docs.grouparoo.com/interfaces/sourcerunpercentcompletemethod.html) If implemented, this method can help the user by getting a percentage that an import session is complete. SQL sources tend divide how many imports have been done by the number of total records since the last change.
 
 When defining `methods`, link to the method directly, do not use a string name.
@@ -98,7 +98,7 @@ import { plugin } from "@grouparoo/core";
 import { test } from "./../lib/test";
 import { connect } from "./../lib/connect";
 import { disconnect } from "./../lib/disconnect";
-import { exportProfile } from "../lib/export/exportProfile";
+import { exportRecord } from "../lib/export/exportRecord";
 import { exportArrayProperties } from "../lib/export/exportArrayProperties";
 
 import { getConnection as getTableConnection } from "../lib/table-import/connection";
@@ -218,7 +218,7 @@ export function getConnection() {
   return buildConnection({
     app: "postgres",
     name: "postgres-table-import",
-    description: "Import or update Profiles from a Postgres database table.",
+    description: "Import or update Records from a Postgres database table.",
     tableOptionDescription: "The table to scan",
     getSampleRows,
     getColumns,
@@ -241,7 +241,7 @@ export function getConnection() {
   return buildConnection({
     app: "postgres",
     name: "postgres-query-import",
-    description: "Import or update Profiles via a custom Postgres query.",
+    description: "Import or update Records via a custom Postgres query.",
     executeQuery,
     getChangedRows,
   });

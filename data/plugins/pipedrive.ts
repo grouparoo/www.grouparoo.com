@@ -31,7 +31,7 @@ export const Pipedrive: Plugin = {
     "The core object in Pipedrive is a Lead. A Lead is a potential deal, and Leads need to be associated with a Person or an Organization. A Person represents an individual, and requires an <code>email</code> and a <code>name</code>.",
     "With an <code>email</code> and a <code>name</code> set, Grouparoo can then update the Fields on a Person with data like products purchased, lifetime value, and whether or not a Person is in a segment or group.",
   ],
-  destinationProfile: "Pipedrive Person",
+  destinationRecord: "Pipedrive Person",
   destinationProperty: "Pipedrive Fields",
   destinationGroup: "Pipedrive Filters",
   pluginScreenshots: [

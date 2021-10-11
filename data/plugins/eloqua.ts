@@ -30,7 +30,7 @@ export const Eloqua: Plugin = {
     "Trying to figure out how to integrate your data with Eloqua? Here’s an overview for how Eloqua defines Contacts.",
     "The core object in Eloqua is a Contact. A Contact represents an individual person who might be a Lead or a User.",
   ],
-  destinationProfile: "Eloqua Contacts",
+  destinationRecord: "Eloqua Contacts",
   destinationProperty: "Eloqua Contact Attributes",
   destinationGroup: "Eloqua Segments",
   pluginScreenshots: [

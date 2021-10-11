@@ -171,7 +171,7 @@ mapping: {
       <p>
         Here's an example that sums the values in the <code>price</code>{" "}
         {column} for rows in which the <code>user_id</code> {column}'s value
-        matches the value of the Grouparoo Profile's <code>userId</code> field
+        matches the value of the Grouparoo Record's <code>userId</code> field
         (i.e. <code>userId</code> is the <code>id</code> for the Property in
         Grouparoo):
       </p>

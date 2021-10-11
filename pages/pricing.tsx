@@ -489,8 +489,7 @@ export default function PricingPage() {
                     need to be able to host it somewhere such as Heroku or AWS.
                   </p>
                   <h4>
-                    What are Records, and how is Pricing based on Profile
-                    volume?
+                    What are Records, and how is Pricing based on Record volume?
                   </h4>
                   <p>
                     Records are the primary object type in Grouparoo. In short,

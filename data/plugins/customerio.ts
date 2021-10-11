@@ -32,7 +32,7 @@ export const Customerio: Plugin = {
     "The core object in Customer.io are People, though the API endpoint is Customer. People have one required field: <code>customer_id</code>.",
     "Once Grouparoo is connected to Customer.io based on the <code>customer_id</code>, Grouparoo can set Attributes with data like email, name, lifetime value, and any other details about the groups these Customers might be in.",
   ],
-  destinationProfile: "Customer.io People",
+  destinationRecord: "Customer.io People",
   destinationProperty: "Customer.io Attributes",
   destinationGroup: "Customer.io Attributes",
   pluginScreenshots: [
@@ -52,7 +52,7 @@ export const Customerio: Plugin = {
       description:
         "Run campaigns in Customer.io based on the People and Attributes that you've synced",
       imageSrc: "/images/home/integrations/customerio/customerio-person.png",
-      imageAlt: "A Profile in CustomerIO",
+      imageAlt: "A Record in CustomerIO",
       imageWidth: 1100,
       imageHeight: 656,
     },

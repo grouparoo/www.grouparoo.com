@@ -48,14 +48,14 @@ The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/plugi
 
   One of these should be defined. The choice is whether or not the destination can export many profiles at once or it is done one at a time.
 
-  - `profileProperty `[`ExportProfilePluginMethod`](https://docs.grouparoo.com/interfaces/exportprofilepluginmethod.html) Given the property values and group memberships to export for a single profile, send it to the destination. The singular case is much easier to reason about, particularly when there is an error with the destination.
-  - `profileProperties `[`ExportProfilesPluginMethod`](https://docs.grouparoo.com/interfaces/exportprofilespluginmethod.html) Given the property values and group memberships to export for many profiles, send it to the destination. The extra semantics can be more complicated because there can be partial failures. However, if the destination has a "batch" API, it's generally better to use this for performance reasons.
+  - `profileProperty `[`ExportRecordPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordpluginmethod.html) Given the property values and group memberships to export for a single profile, send it to the destination. The singular case is much easier to reason about, particularly when there is an error with the destination.
+  - `profileProperties `[`ExportRecordsPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordspluginmethod.html) Given the property values and group memberships to export for many profiles, send it to the destination. The extra semantics can be more complicated because there can be partial failures. However, if the destination has a "batch" API, it's generally better to use this for performance reasons.
 
 When defining `methods`, link to the method directly, do not use a string name.
 
 ## Research
 
-The first thing to do is create a document that discusses how the Grouparoo model (Profiles with properties, Group memberships) map to the destination system. Here are some examples from [Salesforce](https://github.com/grouparoo/grouparoo/issues/649) and [Intercom](https://github.com/grouparoo/grouparoo/issues/1046).
+The first thing to do is create a document that discusses how the Grouparoo model (Records with properties, Group memberships) map to the destination system. Here are some examples from [Salesforce](https://github.com/grouparoo/grouparoo/issues/649) and [Intercom](https://github.com/grouparoo/grouparoo/issues/1046).
 
 Here are the main things to figure out (and the answer for the _Intercom_ case).
 
@@ -119,8 +119,8 @@ A key thing to understand is if there is a bulk API or not. In general, it's bet
 
 The easiest way to get started is to pick the approach and copy an existing plugin. Pick the ones that is closest. For example if you are making another ad platform destination that does batching, [facebook](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/facebook) might be a good bet. Otherwise, here are some simple defaults.
 
-- Single profile at a time (`exportProfile`): [hubspot](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/hubspot)
-- Batch multiple profiles (`exportProfiles`): [marketo](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/marketo)
+- Single profile at a time (`exportRecord`): [hubspot](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/hubspot)
+- Batch multiple profiles (`exportRecords`): [marketo](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/marketo)
 
 After copying, change the names in the `plugin.ts`, `package.json`, and the directory structure to the one you are making. Look for an icon with a license that we can use and note the attribution in the `README.md`. The icon should be square and 256+ pixels. Transparent backgrounds are preferred.
 
@@ -168,11 +168,11 @@ For the rest of the fields, there are three kinds of systems.
 
 Especially when there are API requests involved, it's important to create a test suite for the destination mapping code like in [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/salesforce/__tests__/export-objects/destination-mapping-options.ts), [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/__tests__/fixtures/destination-mapping-options.js) and others.
 
-At this point, the UI for the destination mapping should work. Don't save the mapping because `exportProfiles` is not ready. However, the mapping fields can be verified.
+At this point, the UI for the destination mapping should work. Don't save the mapping because `exportRecords` is not ready. However, the mapping fields can be verified.
 
-## Export Profiles
+## Export Records
 
-The core code of the destination plugin is the `exportProfile` (single) or `exportProfiles` (batch) method. It is given the (old and new) properties and the (old and new) group membership. If the profile is to be deleted, that is noted. The goal is to sync that information to the destination system.
+The core code of the destination plugin is the `exportRecord` (single) or `exportRecords` (batch) method. It is given the (old and new) properties and the (old and new) group membership. If the profile is to be deleted, that is noted. The goal is to sync that information to the destination system.
 
 In both approaches (single or batch), the pattern is generally the same.
 
@@ -182,21 +182,21 @@ In both approaches (single or batch), the pattern is generally the same.
 
 - **Verify Data**
 
-  Create an error if a required data (in `newProfileProperties` is not present). For example, [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/export/exportProfile.ts#L23-L27) throws an error if there is no external id.
+  Create an error if a required data (in `newRecordProperties` is not present). For example, [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/export/exportRecord.ts#L23-L27) throws an error if there is no external id.
 
 - **Find existing users**
 
-  See if the user(s) already exist in the system. This often uses a combination of the old and new profile properties. For example, [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportProfile.ts#L173-L252) uses all the primary key data to search for a user and then prioritizes the response.
+  See if the user(s) already exist in the system. This often uses a combination of the old and new profile properties. For example, [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportRecord.ts#L173-L252) uses all the primary key data to search for a user and then prioritizes the response.
 
 - **Delete if requested**
 
-  If being asked to `toDelete`, the method often returns early. If there was no user found, then it can skip it like in [mailchimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/mailchimp/src/lib/shared/updateProfile.ts#L38-L46).
+  If being asked to `toDelete`, the method often returns early. If there was no user found, then it can skip it like in [mailchimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/mailchimp/src/lib/shared/updateRecord.ts#L38-L46).
 
 - **Create or Update the user**
 
-  Build a payload from the given property values. Use the `oldProfileProperties` that are not in `newProfileProperties` to known which values should be cleared. This sometimes means setting it to `null` or `undefined` like in [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/export/exportProfile.ts#L60-L75) or an empty string like in [malichimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/mailchimp/src/lib/shared/updateProfile.ts#L50-L57). Sometimes, it means setting a default value like in [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/salesforce/src/lib/export/salesforceExporter.ts#L309-L335).
+  Build a payload from the given property values. Use the `oldRecordProperties` that are not in `newRecordProperties` to known which values should be cleared. This sometimes means setting it to `null` or `undefined` like in [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/export/exportRecord.ts#L60-L75) or an empty string like in [malichimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/mailchimp/src/lib/shared/updateRecord.ts#L50-L57). Sometimes, it means setting a default value like in [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/salesforce/src/lib/export/salesforceExporter.ts#L309-L335).
 
-  Each likely has some formatting constraints. For example, Dates vary between destinations. There is epoch time like in [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportProfile.ts#L277-L287) and ISO strings like in [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/src/lib/export/exportProfiles.ts#L166-L175).
+  Each likely has some formatting constraints. For example, Dates vary between destinations. There is epoch time like in [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportRecord.ts#L277-L287) and ISO strings like in [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/src/lib/export/exportRecords.ts#L166-L175).
 
   If the user was not found, create it via API. If the user was found, update it via API. In either case, there should be a id in the destination by the end of this step. If it exists, it's best to use an "upsert" API which will use the primary key to create it if necessary. This is more reliable by removing timing risks.
 
@@ -256,7 +256,7 @@ Within any of these methods, an `error` or `skipMessage` (info error) can be ass
 
 Read more about [plugin development](./plugins#iteration-and-testing) to understand the best way to work on your new plugin.
 
-Plugins are tested using [jest](https://jestjs.io/). The primary way of testing them is to test the individual methods (`exportProfile`, `destinationMappingOptions`, etc) in their own file/suite. Several plugins have multiple suites for exporting profiles when there are `destinationOptions` that make them work differently.
+Plugins are tested using [jest](https://jestjs.io/). The primary way of testing them is to test the individual methods (`exportRecord`, `destinationMappingOptions`, etc) in their own file/suite. Several plugins have multiple suites for exporting profiles when there are `destinationOptions` that make them work differently.
 
 ### Nock
 
@@ -299,7 +299,7 @@ import { plugin } from "@grouparoo/core";
 
 import { test } from "./../lib/test";
 
-import { exportProfile } from "../lib/export/exportProfile";
+import { exportRecord } from "../lib/export/exportRecord";
 import { destinationOptions } from "../lib/export/destinationOptions";
 import { destinationMappingOptions } from "../lib/export/destinationMappingOptions";
 import { exportArrayProperties } from "../lib/export/exportArrayProperties";
@@ -347,11 +347,11 @@ export class Plugins extends Initializer {
         {
           name: "zendesk-export",
           direction: "export",
-          description: "Export Profiles to a Zendesk account.",
+          description: "Export Records to a Zendesk account.",
           app: "zendesk",
           options: [],
           methods: {
-            exportProfile,
+            exportRecord,
             destinationOptions,
             destinationMappingOptions,
             exportArrayProperties,

@@ -394,7 +394,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             <Col md={4}>
               <div>
                 <h3 className="homepageBlueH3">
-                  Create Unified Customer Profiles
+                  Create Unified Customer Records
                 </h3>
                 <p>
                   Create a single view of your customers from all of your data

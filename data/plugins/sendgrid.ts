@@ -32,7 +32,7 @@ export const Sendgrid: Plugin = {
     "The core object in Sendgrid is a Contact. A Contact represents an individual person. Contacts have one required user field: <code>email</code>.",
     "All of these Contacts have Reserved Fields that you can set, like First Name, Last Name, and Phone Number. Contacts also have custom fields.",
   ],
-  destinationProfile: "Sendgrid Users",
+  destinationRecord: "Sendgrid Users",
   destinationProperty: "Sendgrid User Fields",
   destinationGroup: "Sendgrid Audiences",
   pluginScreenshots: [

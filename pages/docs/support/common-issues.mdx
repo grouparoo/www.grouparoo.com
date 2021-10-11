@@ -30,7 +30,7 @@ If you need to run Grouparoo's migrations in a one-off process, you can with the
 
 ## My Runs do not Complete
 
-In general, Runs will wait for all of their Imports and Exports to complete before for finishing themselves. Encountering an error is OK when trying to import or export a profile, but not _trying_ to do the import or export will cause a problem. If a Run should have imported 100 Profiles, but the system only processed 99, the Run will still be in the `running` state. What happened to that last Profile Import?
+In general, Runs will wait for all of their Imports and Exports to complete before for finishing themselves. Encountering an error is OK when trying to import or export a profile, but not _trying_ to do the import or export will cause a problem. If a Run should have imported 100 Records, but the system only processed 99, the Run will still be in the `running` state. What happened to that last Record Import?
 
 - Check for resque (background task) errors on your server by visiting `/resque`. Are there any errors? Does it look like a worker has been working on a profile for a long time (ie: over a minute)?
 

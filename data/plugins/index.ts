@@ -65,7 +65,7 @@ export interface Plugin {
   useCasesList?: string[];
   dataModelTitle?: string;
   dataModelDescription?: string[];
-  destinationProfile?: string;
+  destinationRecord?: string;
   destinationProperty?: string;
   destinationGroup?: string;
   otherPluginsHeading?: string;

@@ -26,8 +26,8 @@ export const GoogleSheets: Plugin = {
   ],
   dataModelTitle: "An Overview of Grouparoo's Data Model",
   dataModelDescription: [
-    "Grouparoo's core objects are Records and Profile Properties. These objects are defined based on your data such as the data in your Google Sheets spreadsheets. You can pull this data in with Grouparoo's help.",
-    "Once you've defined these Records and Profile Properties, you can use Grouparoo to create dynamic segments and cohorts.",
+    "Grouparoo's core objects are Records and Record Properties. These objects are defined based on your data such as the data in your Google Sheets spreadsheets. You can pull this data in with Grouparoo's help.",
+    "Once you've defined these Records and Record Properties, you can use Grouparoo to create dynamic segments and cohorts.",
   ],
   otherPluginsHeading:
     "Send your customer data from Google Sheets to these tools",
@@ -53,9 +53,9 @@ export const GoogleSheets: Plugin = {
     },
 
     {
-      header: "Define Profile Properties easily",
+      header: "Define Record Properties easily",
       description:
-        "Grouparoo is low-code, so less technical team members can create new Profile Properties without needing to work with engineers. They can pull the data they need when they want.",
+        "Grouparoo is low-code, so less technical team members can create new Record Properties without needing to work with engineers. They can pull the data they need when they want.",
       imageSrc:
         "/images/home/integrations/google-sheets/google-sheets-property.png",
       imageAlt: "Grouparoo add property settings",
