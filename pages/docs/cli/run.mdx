@@ -12,7 +12,7 @@ The `status` command will produce human-readable output like the following:
 ┌-- Cluster Status @ 2021-02-25T16:58:12.839Z ---
 | Overview
 | * Cluster Name: evan's dev cluster / development
-| * Total Profiles: 1000
+| * Total Records: 1000
 | * Total Groups: 3
 |
 | Groups
@@ -25,7 +25,7 @@ The `status` command will produce human-readable output like the following:
 |
 | Pending Items
 | * Active Runs: 0
-| * Pending Profiles: 0 / 1000
+| * Pending Records: 0 / 1000
 | * Pending Imports: 0
 | * Pending Exports: 0
 └------------------------------------------------
@@ -56,7 +56,7 @@ When running `grouparoo reset` you provide a mode, either: `cluster`, `data` or 
 
 **`reset:data`**
 
-- truncates "data" tables (profiles, groups, etc) but leaves apps, sources, properties
+- truncates "data" tables (records, groups, etc) but leaves apps, sources, properties
 - clears the redis cache
 - clears resque
 

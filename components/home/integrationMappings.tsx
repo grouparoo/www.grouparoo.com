@@ -45,8 +45,8 @@ export default function IntegrationMappings({
           <p>
             <strong>Grouparoo Concepts</strong>
           </p>
-          <p>Grouparoo Profiles</p>
-          <p>Grouparoo Profile Properties</p>
+          <p>Grouparoo Records</p>
+          <p>Grouparoo Record Properties</p>
           <p>Grouparoo Groups</p>
         </Col>
         <Col lg={2} md={2} sm={2} xs={2}>

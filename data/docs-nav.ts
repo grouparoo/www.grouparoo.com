@@ -53,7 +53,7 @@ const DocsNav: NavItem[] = [
       { title: "Properties", path: "/docs/config/properties" },
       { title: "Groups", path: "/docs/config/groups" },
       { title: "Destinations", path: "/docs/config/destinations" },
-      { title: "Sample Profiles", path: "/docs/config/profiles" },
+      { title: "Sample Records", path: "/docs/config/records" },
       {
         title: "Code Config",
         path: "/docs/config/code-config",

@@ -72,7 +72,7 @@ mapping: {
     },
     querySchedule: {
       query: {
-        description: `A ${queryLanguage} query to return that tells Grouparoo which Profiles to check each time the interval occurs.`,
+        description: `A ${queryLanguage} query to return that tells Grouparoo which Records to check each time the interval occurs.`,
       },
       propertyId: {
         description:

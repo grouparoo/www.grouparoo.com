@@ -30,8 +30,8 @@ export const Mongo: Plugin = {
   ],
   dataModelTitle: "An Overview of Grouparoo's Data Model",
   dataModelDescription: [
-    "Grouparoo's core objects are Profiles and Profile Properties. These objects are defined based on your data such as the data in your MongoDB. You can pull this data in with Grouparoo's help or you can write MongoDB queries directly.",
-    "Once you've defined these Profiles and Profile Properties, you can use Grouparoo to create dynamic segments and cohorts.",
+    "Grouparoo's core objects are Records and Profile Properties. These objects are defined based on your data such as the data in your MongoDB. You can pull this data in with Grouparoo's help or you can write MongoDB queries directly.",
+    "Once you've defined these Records and Profile Properties, you can use Grouparoo to create dynamic segments and cohorts.",
   ],
   otherPluginsHeading: "Send your customer data from MongoDB to these tools",
   pluginScreenshots: [

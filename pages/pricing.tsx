@@ -93,13 +93,13 @@ export default function PricingPage() {
                 <Card.Body>
                   <Card.Title>Standard Cloud</Card.Title>
                   <h5>Starting at $150/month</h5>
-                  For companies who want to sync up to 100k Profiles to their
+                  For companies who want to sync up to 100k Records to their
                   destinations.
                   <br />
                   <br />
                   <div style={boxTextStyle}>
                     <b>Features include:</b>
-                    <li>Up to 100k Profiles synced/month</li>
+                    <li>Up to 100k Records synced/month</li>
                     <li>Access to all Sources and Destinations</li>
                     <li>
                       A no-code web UI allowing team members to access data
@@ -129,7 +129,7 @@ export default function PricingPage() {
                   <br />
                   <div style={boxTextStyle}>
                     <b>Features include:</b>
-                    <li> &gt; 100k Profiles synced/month</li>
+                    <li> &gt; 100k Records synced/month</li>
                     <li>Business hours support</li>
                     <li>Enhanced support response time SLAs</li>
                   </div>
@@ -489,12 +489,12 @@ export default function PricingPage() {
                     need to be able to host it somewhere such as Heroku or AWS.
                   </p>
                   <h4>
-                    What are Profiles, and how is Pricing based on Profile
+                    What are Records, and how is Pricing based on Profile
                     volume?
                   </h4>
                   <p>
-                    Profiles are the primary object type in Grouparoo. In short,
-                    Profiles are people, whether they are leads, contacts, or
+                    Records are the primary object type in Grouparoo. In short,
+                    Records are people, whether they are leads, contacts, or
                     users in your system. When syncing data from your data
                     warehouse to a business tool like a CRM, most tools are
                     person-based.

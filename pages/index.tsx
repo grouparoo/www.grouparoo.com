@@ -459,7 +459,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <p>
                 Run campaigns in the marketing and business tools of your
                 choice. Switch providers easily without needing to rebuild
-                integrations. Send Groups and Profiles
+                integrations. Send Groups, Profiles, or Records!
               </p>
             </Col>
             <Col md={8}>

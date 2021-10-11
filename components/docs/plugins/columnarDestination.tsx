@@ -11,7 +11,7 @@ const PluginDocsColumnarDestination = ({ plugin }: { plugin: string }) => {
   const destOptions: PluginConfigOptions = {
     table: {
       description:
-        "The name of the table which Grouparoo which use to export **Profiles**.",
+        "The name of the table which Grouparoo which use to export **Records**.",
     },
     primaryKey: { description: "The primary key for the specified table." },
     groupsTable: {
@@ -20,7 +20,7 @@ const PluginDocsColumnarDestination = ({ plugin }: { plugin: string }) => {
     },
     groupForeignKey: {
       description:
-        "The foreign key that the groups table uses to reference the profiles table.",
+        "The foreign key that the groups table uses to reference the records table.",
     },
     groupColumnName: {
       description: "The column name used to store the Group name values.",

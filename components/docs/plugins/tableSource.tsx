@@ -198,12 +198,12 @@ mapping: {
 
       <p>
         Before you can define a Mapping, you must have a primary key for{" "}
-        <Link href="/docs/getting-started/product-concepts#profile">
-          Profiles
+        <Link href="/docs/getting-started/product-concepts#records">
+          Records
         </Link>
         . In most cases, this is an ID or an e-mail address. Grouparoo will
         automatically determine what field is used for a primary key based on
-        the mapping and automatically generate one Profile per unique value in
+        the mapping and automatically generate one Record per unique value in
         that field.
       </p>
 
