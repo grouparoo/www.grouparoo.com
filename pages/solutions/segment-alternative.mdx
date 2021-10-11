@@ -71,19 +71,19 @@ Grouparoo is a newer entrant, having started in early 2020, but is a reverse ETL
 
 ### 📈 <span style={{ width:".5em", display:"inline-block" }} />Queryable data vs. events
 
-Grouparoo’s fundamental model is built upon querying source-of-truth data that already exists. Whether this data lives in a data warehouse like Snowflake or Redshift or in a product database like MySQL or MongoDB, Grouparoo defines customer profiles based on the data that already exists in those data sources. The truly important data in your user experience and product funnel is already stored in your database, and Grouparoo lets you use it directly. When did your customers sign up? What products did they purchase? Where are they located?
+Grouparoo’s fundamental model is built upon querying source-of-truth data that already exists. Whether this data lives in a data warehouse like Snowflake or Redshift or in a product database like MySQL or MongoDB, Grouparoo defines customer records based on the data that already exists in those data sources. The truly important data in your user experience and product funnel is already stored in your database, and Grouparoo lets you use it directly. When did your customers sign up? What products did they purchase? Where are they located?
 
 <SectionDivider
-  imagePath="/images/docs/guides/add-profile-property.png"
-  heading="Easily define profiles, no matter your data."
+  imagePath="/images/docs/guides/add-record-property.png"
+  heading="Easily define records, no matter your data."
   width="600"
   height="303"
-  content="Grouparoo's queryable data structure makes it easy to create profiles -- even from historical data.  You can configure customer profiles from the command line on our community edition, or straight from the UI with our enterprise product."
+  content="Grouparoo's queryable data structure makes it easy to create records -- even from historical data.  You can configure customer records from the command line on our community edition, or straight from the UI with our enterprise product."
   imageLeft="false"
   browser="true"
 />
 
-When you configure Grouparoo, you’re defining how you want to query that data from your databases and data warehouses. Unlike Segment’s Event-based architecture, Grouparoo’s approach makes it possible to define customer profiles and properties based on historical data. One of the biggest challenges with Event-based data tools is that you only have data from when you first started instrumenting these Events. If you just implemented Segment six months ago, you likely only have six months worth of data. Why not just query your full history instead? This also allows you to update your property definitions without losing any history.
+When you configure Grouparoo, you’re defining how you want to query that data from your databases and data warehouses. Unlike Segment’s Event-based architecture, Grouparoo’s approach makes it possible to define customer records and properties based on historical data. One of the biggest challenges with Event-based data tools is that you only have data from when you first started instrumenting these Events. If you just implemented Segment six months ago, you likely only have six months worth of data. Why not just query your full history instead? This also allows you to update your property definitions without losing any history.
 
 Events are often a pain for engineers as well. When product engineers are building new features, they’re already figuring out how to store and represent this data in their product database. Asking them to wire up Events for every action, button-click, or server-side change is a waste of energy for three reasons:
 
@@ -93,10 +93,10 @@ Events are often a pain for engineers as well. When product engineers are buildi
 
 <SectionDivider
   imagePath="/images/home/integrations/salesforce/grouparoo-to-salesforce.png"
-  heading="Connect your customer profiles to all your SaaS tools"
+  heading="Connect your customer records to all your SaaS tools"
   width="718"
   height="393"
-  content="With the profiles and properties you’ve defined in Grouparoo, you can then sync that data to Salesforce and other tools that your team uses. "
+  content="With the records and properties you’ve defined in Grouparoo, you can then sync that data to Salesforce and other tools that your team uses. "
   imageLeft="true"
   browser="true"
 />

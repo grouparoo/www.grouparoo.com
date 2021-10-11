@@ -291,9 +291,9 @@ describe("my plugin", () => {
 
   // Now the server will be booted up, connected to the database, and you can use factories and models like normal
   test("works", async () => {
-    const factory = await helper.factories.profile();
-    const profile = await GrouparooRecord.findOne({ where: { id: factory.id } });
-    expect(profile.id).toBe(profile.id);
+    const factory = await helper.factories.record();
+    const record = await GrouparooRecord.findOne({ where: { id: factory.id } });
+    expect(record.id).toBe(record.id);
   });
 });
 ```

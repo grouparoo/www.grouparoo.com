@@ -7,7 +7,7 @@
         "propertyId": "subscribed",
         "operation": { "op": "exists" }
       },
-      "caption": "All profiles that do not have data about subscription status"
+      "caption": "All records that do not have data about subscription status"
     },
     {
       "op": "notExists",
@@ -16,7 +16,7 @@
         "propertyId": "subscribed",
         "operation": { "op": "notExists" }
       },
-      "caption": "All profiles that have data about subscription status"
+      "caption": "All records that have data about subscription status"
     },
     {
       "op": "eq",
@@ -47,7 +47,7 @@
         "propertyId": "last_purchase_date",
         "operation": { "op": "exists" }
       },
-      "caption": "All profiles who have made a purchase"
+      "caption": "All records who have made a purchase"
     },
     {
       "op": "notExists",
@@ -56,7 +56,7 @@
         "propertyId": "last_purchase_date",
         "operation": { "op": "notExists" }
       },
-      "caption": "All profiles who have not made a purchase"
+      "caption": "All records who have not made a purchase"
     },
     {
       "op": "eq",
@@ -66,7 +66,7 @@
         "operation": { "op": "eq" },
         "match": "2021-05-25T04:45:00.000+00:00"
       },
-      "caption": "All profiles whose most recent purchase was on May 25, 2021 at exactly 4:45AM UTC."
+      "caption": "All records whose most recent purchase was on May 25, 2021 at exactly 4:45AM UTC."
     },
     {
       "op": "ne",
@@ -76,7 +76,7 @@
         "operation": { "op": "ne" },
         "match": "2021-05-25T04:45:00.000+00:00"
       },
-      "caption": "All profiles whose most recent purchase was anytime except May 25, 2021 at exactly 4:45AM UTC."
+      "caption": "All records whose most recent purchase was anytime except May 25, 2021 at exactly 4:45AM UTC."
     },
     {
       "op": "gt",
@@ -86,7 +86,7 @@
         "operation": { "op": "lt" },
         "match": "2020-12-25T04:45:00.00+00:00"
       },
-      "caption": "All profiles whose most recent purchase is after December 25, 2020 at 04:45:00 UTC."
+      "caption": "All records whose most recent purchase is after December 25, 2020 at 04:45:00 UTC."
     },
     {
       "op": "lt",
@@ -96,7 +96,7 @@
         "operation": { "op": "lt" },
         "match": "2021-05-25T09:30:00.000+00:00"
       },
-      "caption": "All profiles whose most recent purchase is prior to May 25, 2021 9:30:00 AM UTC."
+      "caption": "All records whose most recent purchase is prior to May 25, 2021 9:30:00 AM UTC."
     },
     {
       "op": "gte",
@@ -106,7 +106,7 @@
         "operation": { "op": "gte" },
         "match": "2019-06-14T18:16:00.000+00:00"
       },
-      "caption": "All profiles whose most recent purchase is exactly at or after June 14, 2019 at 6:16 PM UTC"
+      "caption": "All records whose most recent purchase is exactly at or after June 14, 2019 at 6:16 PM UTC"
     },
     {
       "op": "lte",
@@ -116,7 +116,7 @@
         "operation": { "op": "lte" },
         "match": "2020-12-25T04:45:00.000+00:00"
       },
-      "caption": "All profiles whose most recent purchase is exactly at or before December 25, 2020 at 04:45:00 UTC."
+      "caption": "All records whose most recent purchase is exactly at or before December 25, 2020 at 04:45:00 UTC."
     },
     {
       "op": "relative_gt",
@@ -127,7 +127,7 @@
         "relativeMatchNumber": "60",
         "relativeMatchUnit": "days"
       },
-      "caption": "All profiles whose most recent purchase is within the last 60 days"
+      "caption": "All records whose most recent purchase is within the last 60 days"
     },
     {
       "op": "relative_lt",
@@ -138,7 +138,7 @@
         "relativeMatchNumber": "30",
         "relativeMatchUnit": "days"
       },
-      "caption": "All profiles whose subscription ends within the next 30 days"
+      "caption": "All records whose subscription ends within the next 30 days"
     }
   ],
   "email": [
@@ -146,13 +146,13 @@
       "op": "exists",
       "description": "exists with any value",
       "example": { "propertyId": "email", "operation": { "op": "exists" } },
-      "caption": "All profiles with an email address listed."
+      "caption": "All records with an email address listed."
     },
     {
       "op": "notExists",
       "description": "does not exist",
       "example": { "propertyId": "email", "operation": { "op": "notExists" } },
-      "caption": "All profiles without an email address listed."
+      "caption": "All records without an email address listed."
     },
     {
       "op": "eq",
@@ -162,7 +162,7 @@
         "operation": { "op": "eq" },
         "match": "hello@grouparoo.com"
       },
-      "caption": "All profiles with an email address exactly equal to hello@grouparoo.com."
+      "caption": "All records with an email address exactly equal to hello@grouparoo.com."
     },
     {
       "op": "ne",
@@ -172,7 +172,7 @@
         "operation": { "op": "ne" },
         "match": "hello@grouparoo.com"
       },
-      "caption": "All profiles without an email address exactly equal to hello@grouparoo.com."
+      "caption": "All records without an email address exactly equal to hello@grouparoo.com."
     },
     {
       "op": "like",
@@ -182,7 +182,7 @@
         "operation": { "op": "like" },
         "match": "%smith%"
       },
-      "caption": "All profiles with an email address containing smith (case sensitive)."
+      "caption": "All records with an email address containing smith (case sensitive)."
     },
     {
       "op": "notLike",
@@ -192,7 +192,7 @@
         "operation": { "op": "notLike" },
         "match": "%smith%"
       },
-      "caption": "All profiles without an email address containing smith (case sensitive)."
+      "caption": "All records without an email address containing smith (case sensitive)."
     },
     {
       "op": "startsWith",
@@ -202,7 +202,7 @@
         "operation": { "op": "startsWith" },
         "match": "test"
       },
-      "caption": "All profiles with an email address starting with \"test\" (case sensitive)."
+      "caption": "All records with an email address starting with \"test\" (case sensitive)."
     },
     {
       "op": "endsWith",
@@ -212,7 +212,7 @@
         "operation": { "op": "endsWith" },
         "match": "grouparoo.com"
       },
-      "caption": "All profiles with an email address ending with \"@grouparoo.com\" (case sensitive)."
+      "caption": "All records with an email address ending with \"@grouparoo.com\" (case sensitive)."
     },
     {
       "op": "substring",
@@ -222,7 +222,7 @@
         "operation": { "op": "substring" },
         "match": "grouparoo"
       },
-      "caption": "All profiles with an email address containing \"grouparoo\"."
+      "caption": "All records with an email address containing \"grouparoo\"."
     }
   ],
   "float": [
@@ -230,13 +230,13 @@
       "op": "exists",
       "description": "exists with any value",
       "example": { "propertyId": "ltv", "operation": { "op": "exists" } },
-      "caption": "All profiles with an LTV value."
+      "caption": "All records with an LTV value."
     },
     {
       "op": "notExists",
       "description": "does not exist",
       "example": { "propertyId": "ltv", "operation": { "op": "notExists" } },
-      "caption": "All profiles without an LTV value."
+      "caption": "All records without an LTV value."
     },
     {
       "op": "eq",
@@ -246,7 +246,7 @@
         "operation": { "op": "eq" },
         "match": "113932.97"
       },
-      "caption": "All profiles with an LTV of exactly $113,932.97."
+      "caption": "All records with an LTV of exactly $113,932.97."
     },
     {
       "op": "ne",
@@ -256,7 +256,7 @@
         "operation": { "op": "ne" },
         "match": "113932.97"
       },
-      "caption": "All profiles without an LTV of exactly $113,932.97."
+      "caption": "All records without an LTV of exactly $113,932.97."
     },
     {
       "op": "gt",
@@ -266,7 +266,7 @@
         "operation": { "op": "gt" },
         "match": "113932.97"
       },
-      "caption": "All profiles without an LTV of greater than $113,932.97."
+      "caption": "All records without an LTV of greater than $113,932.97."
     },
     {
       "op": "lt",
@@ -276,7 +276,7 @@
         "operation": { "op": "lt" },
         "match": "113932.97"
       },
-      "caption": "All profiles without an LTV of less than $113,932.97."
+      "caption": "All records without an LTV of less than $113,932.97."
     },
     {
       "op": "gte",
@@ -286,7 +286,7 @@
         "operation": { "op": "gte" },
         "match": "113932.97"
       },
-      "caption": "All profiles without an LTV of exactly $113,932.97. or more"
+      "caption": "All records without an LTV of exactly $113,932.97. or more"
     },
     {
       "op": "lte",
@@ -296,7 +296,7 @@
         "operation": { "op": "lte" },
         "match": "113932.97"
       },
-      "caption": "All profiles without an LTV of exactly $113,932.97. or less"
+      "caption": "All records without an LTV of exactly $113,932.97. or less"
     }
   ],
   "integer": [
@@ -304,13 +304,13 @@
       "op": "exists",
       "description": "exists with any value",
       "example": { "propertyId": "visits", "operation": { "op": "notExists" } },
-      "caption": "All profiles with any value in the \"visits\" field."
+      "caption": "All records with any value in the \"visits\" field."
     },
     {
       "op": "notExists",
       "description": "does not exist",
       "example": { "propertyId": "visits", "operation": { "op": "notExists" } },
-      "caption": "All profiles with an empty \"visits\" field."
+      "caption": "All records with an empty \"visits\" field."
     },
     {
       "op": "eq",
@@ -320,7 +320,7 @@
         "operation": { "op": "eq" },
         "match": "6"
       },
-      "caption": "All profiles with exactly six visits."
+      "caption": "All records with exactly six visits."
     },
     {
       "op": "ne",
@@ -330,7 +330,7 @@
         "operation": { "op": "ne" },
         "match": "6"
       },
-      "caption": "All profiles with any number of visits except six."
+      "caption": "All records with any number of visits except six."
     },
     {
       "op": "gt",
@@ -340,7 +340,7 @@
         "operation": { "op": "gt" },
         "match": "6"
       },
-      "caption": "All profiles with more than six visits."
+      "caption": "All records with more than six visits."
     },
     {
       "op": "lt",
@@ -350,7 +350,7 @@
         "operation": { "op": "ne" },
         "match": "6"
       },
-      "caption": "All profiles with less than six visits."
+      "caption": "All records with less than six visits."
     },
     {
       "op": "gte",
@@ -360,7 +360,7 @@
         "operation": { "op": "gte" },
         "match": "6"
       },
-      "caption": "All profiles with six or more visits."
+      "caption": "All records with six or more visits."
     },
     {
       "op": "lte",
@@ -370,7 +370,7 @@
         "operation": { "op": "lte" },
         "match": "6"
       },
-      "caption": "All profiles with 6 or fewer visits."
+      "caption": "All records with 6 or fewer visits."
     }
   ],
   "phoneNumber": [
@@ -378,13 +378,13 @@
       "op": "exists",
       "description": "exists with any value",
       "example": { "propertyId": "phone", "operation": { "op": "exists" } },
-      "caption": "All profiles with a phone number listed."
+      "caption": "All records with a phone number listed."
     },
     {
       "op": "notExists",
       "description": "does not exist",
       "example": { "propertyId": "phone", "operation": { "op": "notExists" } },
-      "caption": "All profiles without a phone number listed."
+      "caption": "All records without a phone number listed."
     },
     {
       "op": "eq",
@@ -394,7 +394,7 @@
         "operation": { "op": "eq" },
         "match": "+1-555-555-5555"
       },
-      "caption": "All profiles with a phone number of +1-555-555-5555."
+      "caption": "All records with a phone number of +1-555-555-5555."
     },
     {
       "op": "ne",
@@ -404,7 +404,7 @@
         "operation": { "op": "ne" },
         "match": "+1-555-555-5555"
       },
-      "caption": "All profiles without a phone number of +1-555-555-5555."
+      "caption": "All records without a phone number of +1-555-555-5555."
     },
     {
       "op": "like",
@@ -414,7 +414,7 @@
         "operation": { "op": "like" },
         "match": "%780%"
       },
-      "caption": "All profiles with a phone number containing 780."
+      "caption": "All records with a phone number containing 780."
     },
     {
       "op": "notLike",
@@ -424,7 +424,7 @@
         "operation": { "op": "notLike" },
         "match": "%780%"
       },
-      "caption": "All profiles without a phone number containing 780."
+      "caption": "All records without a phone number containing 780."
     },
     {
       "op": "startsWith",
@@ -434,7 +434,7 @@
         "operation": { "op": "startsWith" },
         "match": "+1"
       },
-      "caption": "All profiles with a phone number starting with +1."
+      "caption": "All records with a phone number starting with +1."
     },
     {
       "op": "endsWith",
@@ -444,7 +444,7 @@
         "operation": { "op": "startsWith" },
         "match": "80"
       },
-      "caption": "All profiles with a phone number ending with 80."
+      "caption": "All records with a phone number ending with 80."
     },
     {
       "op": "substring",
@@ -454,7 +454,7 @@
         "operation": { "op": "startsWith" },
         "match": "80"
       },
-      "caption": "All profiles with a phone number containing the substring 80."
+      "caption": "All records with a phone number containing the substring 80."
     }
   ],
   "string": [
@@ -462,7 +462,7 @@
       "op": "exists",
       "description": "exists with any value",
       "example": { "propertyId": "lastName", "operation": { "op": "exists" } },
-      "caption": "All profiles with a last name listed."
+      "caption": "All records with a last name listed."
     },
     {
       "op": "notExists",
@@ -471,7 +471,7 @@
         "propertyId": "lastName",
         "operation": { "op": "notExists" }
       },
-      "caption": "All profiles without a last name listed."
+      "caption": "All records without a last name listed."
     },
     {
       "op": "eq",
@@ -481,7 +481,7 @@
         "operation": { "op": "eq" },
         "match": "Ramirez"
       },
-      "caption": "All profiles with a last name of exactly Ramirez."
+      "caption": "All records with a last name of exactly Ramirez."
     },
     {
       "op": "ne",
@@ -491,7 +491,7 @@
         "operation": { "op": "ne" },
         "match": "Ramirez"
       },
-      "caption": "All profiles without a last name of exactly Ramirez."
+      "caption": "All records without a last name of exactly Ramirez."
     },
     {
       "op": "like",
@@ -501,7 +501,7 @@
         "operation": { "op": "like" },
         "match": "__m%"
       },
-      "caption": "All profiles with a last name that has a third letter of m."
+      "caption": "All records with a last name that has a third letter of m."
     },
     {
       "op": "notLike",
@@ -511,7 +511,7 @@
         "operation": { "op": "notLike" },
         "match": "__m%"
       },
-      "caption": "All profiles without a last name that has a third letter of m."
+      "caption": "All records without a last name that has a third letter of m."
     },
     {
       "op": "startsWith",
@@ -521,7 +521,7 @@
         "operation": { "op": "startsWith" },
         "match": "Mc"
       },
-      "caption": "All profiles with a last name starting with Mc (case sensitive)"
+      "caption": "All records with a last name starting with Mc (case sensitive)"
     },
     {
       "op": "endsWith",
@@ -531,7 +531,7 @@
         "operation": { "op": "endsWith" },
         "match": "son"
       },
-      "caption": "All profiles with a last name ending with son (case sensitive)."
+      "caption": "All records with a last name ending with son (case sensitive)."
     },
     {
       "op": "substring",
@@ -541,7 +541,7 @@
         "operation": { "op": "substring" },
         "match": "al"
       },
-      "caption": "All profiles with a last name containing al (case sensitive)."
+      "caption": "All records with a last name containing al (case sensitive)."
     }
   ],
   "url": [
@@ -552,7 +552,7 @@
         "propertyId": "company_url",
         "operation": { "op": "exists" }
       },
-      "caption": "All profiles with a company URL listed."
+      "caption": "All records with a company URL listed."
     },
     {
       "op": "notExists",
@@ -561,7 +561,7 @@
         "propertyId": "company_url",
         "operation": { "op": "notExists" }
       },
-      "caption": "All profiles without a company URL listed."
+      "caption": "All records without a company URL listed."
     },
     {
       "op": "eq",
@@ -571,7 +571,7 @@
         "operation": { "op": "eq" },
         "match": "https://www.grouparoo.com"
       },
-      "caption": "All profiles with a company URL exactly equal to https://www.grouparoo.com."
+      "caption": "All records with a company URL exactly equal to https://www.grouparoo.com."
     },
     {
       "op": "ne",
@@ -581,7 +581,7 @@
         "operation": { "op": "ne" },
         "match": "https://www.grouparoo.com"
       },
-      "caption": "All profiles without a company URL exactly equal to https://www.grouparoo.com."
+      "caption": "All records without a company URL exactly equal to https://www.grouparoo.com."
     },
     {
       "op": "like",
@@ -591,7 +591,7 @@
         "operation": { "op": "like" },
         "match": "%grouparoo.com"
       },
-      "caption": "All profiles with a company URL containing anything and then grouparoo.com (case sensitive)."
+      "caption": "All records with a company URL containing anything and then grouparoo.com (case sensitive)."
     },
     {
       "op": "notLike",
@@ -601,7 +601,7 @@
         "operation": { "op": "like" },
         "match": "%grouparoo.com"
       },
-      "caption": "All profiles without a company URL containing anything and then grouparoo.com (case sensitive)."
+      "caption": "All records without a company URL containing anything and then grouparoo.com (case sensitive)."
     },
     {
       "op": "startsWith",
@@ -611,7 +611,7 @@
         "operation": { "op": "startsWith" },
         "match": "https"
       },
-      "caption": "All profiles with a company URL starting with https (case sensitive)."
+      "caption": "All records with a company URL starting with https (case sensitive)."
     },
     {
       "op": "endsWith",
@@ -621,7 +621,7 @@
         "operation": { "op": "startsWith" },
         "match": ".com"
       },
-      "caption": "All profiles with a company URL ending with .com (case sensitive)"
+      "caption": "All records with a company URL ending with .com (case sensitive)"
     },
     {
       "op": "substring",
@@ -631,7 +631,7 @@
         "operation": { "op": "substring" },
         "match": "grouparoo"
       },
-      "caption": "All profiles with a company URL containing grouparoo (case sensitive)"
+      "caption": "All records with a company URL containing grouparoo (case sensitive)"
     }
   ],
   "_relativeMatchUnits": ["days", "weeks", "months", "quarters", "years"],

@@ -406,7 +406,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-1.png"
-                alt="Grouparoo profile"
+                alt="Grouparoo record"
                 width={650}
                 height={398}
               />

@@ -155,16 +155,16 @@ export default function Healthcare() {
               <div>
                 <h3 className="homepageBlueH3">Pull in your Patient Data</h3>
                 <p>
-                  You don’t have to know SQL to build your profiles. Use a
-                  simple interface to keep patient data up to date with the
-                  sources that matter.
+                  You don’t have to know SQL to build your records. Use a simple
+                  interface to keep patient data up to date with the sources
+                  that matter.
                 </p>
               </div>
             </Col>
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-1.png"
-                alt="Grouparoo profile"
+                alt="Grouparoo record"
                 width={650}
                 height={398}
               />

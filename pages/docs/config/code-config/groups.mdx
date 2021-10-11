@@ -75,13 +75,13 @@ exports.default = async function buildConfig() {
 };
 ```
 
-This group would contain profiles with an email address that is not `@grouparoo.com` that have made a purchase in the last 15 days, have a lifetime value over $3000, and are subscribed to our newsletter.
+This group would contain records with an email address that is not `@grouparoo.com` that have made a purchase in the last 15 days, have a lifetime value over $3000, and are subscribed to our newsletter.
 
 More info this below.
 
 ## Configuring Your Calculated Group
 
-Configuring a Calculated Group is all about adding Rules to the group. A Rule is some logical operator to filter Properties. A profile must match every Rule to be included in the Group.
+Configuring a Calculated Group is all about adding Rules to the group. A Rule is some logical operator to filter Properties. A record must match every Rule to be included in the Group.
 
 Available operations depends on both the _type_ of Property and the underlying Grouparoo database (SQLite vs. Postgres). See below for a list of rules. (If in doubt, choose Postgres.)
 
@@ -93,7 +93,7 @@ Add your list of Rules to the `rules` array in the generated config file. You ma
 
 ## Adding Manual Groups
 
-While a great deal of the value of Grouparoo comes from our Calculated Groups, Manual Groups are still valuable in certain circumstances. Manual Groups are Groups of profiles where you manually add or remove Records from the Group.
+While a great deal of the value of Grouparoo comes from our Calculated Groups, Manual Groups are still valuable in certain circumstances. Manual Groups are Groups of records where you manually add or remove Records from the Group.
 
 To generate a new Manual Group for your Grouparoo application, run [the `generate` command](/docs/cli/config#generate).
 

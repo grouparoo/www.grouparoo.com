@@ -147,7 +147,7 @@
       },
       "no-export": {
         "default": false,
-        "description": "Skip exporting the profiles",
+        "description": "Skip exporting the records",
         "letter": "n",
         "flag": true
       },
@@ -198,7 +198,7 @@
     }
   },
   {
-    "name": "sync <profileProperty>",
+    "name": "sync <recordProperty>",
     "description": "Sync (import & export) a Record.  You can provide a Record id or a unique Record Property",
     "example": "grouparoo sync person@example.com --property email",
     "inputs": {
@@ -208,7 +208,7 @@
       },
       "no-export": {
         "default": false,
-        "description": "Skip exporting the profile",
+        "description": "Skip exporting the record",
         "letter": "n",
         "flag": true
       },

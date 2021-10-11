@@ -157,7 +157,7 @@ export default function Education() {
                   Pull in your student and teacher data
                 </h3>
                 <p>
-                  You don’t have to know SQL to build profiles. Use a simple
+                  You don’t have to know SQL to build records. Use a simple
                   interface to keep student and teacher data up to date with the
                   sources that matter.
                 </p>
@@ -166,7 +166,7 @@ export default function Education() {
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-1.png"
-                alt="Grouparoo profile"
+                alt="Grouparoo record"
                 width={650}
                 height={398}
               />

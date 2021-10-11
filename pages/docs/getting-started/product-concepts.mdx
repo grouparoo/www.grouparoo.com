@@ -59,9 +59,9 @@ A Columnar Source is a specific type of [Source](#source) that imports data from
 
 ## Destination
 
-Destinations are where you want [Grouparoo Records](#profile) and [Groups](#group) to be sent. Often Destinations are customer marketing tools such as email marketing or push notification services, though databases and data warehouses can also function at Destinations.
+Destinations are where you want [Grouparoo Records](#record) and [Groups](#group) to be sent. Often Destinations are customer marketing tools such as email marketing or push notification services, though databases and data warehouses can also function at Destinations.
 
-When you set up a Destination in Grouparoo, you will choose which Groups as well as which [Record Properties](#profile-properties) you will send to each Destination. You will have control and visibility over what data gets sent to each Destination.
+When you set up a Destination in Grouparoo, you will choose which Groups as well as which [Record Properties](#record-properties) you will send to each Destination. You will have control and visibility over what data gets sent to each Destination.
 
 Grouparoo will keep the Record and Group data in your Destinations up-to-date in real time.
 
@@ -79,7 +79,7 @@ You can learn more about Generators by reading through [the Code Config docs](/d
 
 ## Group
 
-Groups are a collection of [Records](#profile) that you can define and filter. These filters (or _rules_) are built to be easy-to-understand by non-technical users.
+Groups are a collection of [Records](#record) that you can define and filter. These filters (or _rules_) are built to be easy-to-understand by non-technical users.
 
 Let's say we wanted to make a Group of high-value customers who recently abandoned the checkout process. Here is an example of the rules to define this group:
 
@@ -100,9 +100,9 @@ Manual Groups are a type of [Group](#group) that only change when you add or rem
 
 ## Mapping
 
-When importing data from a [Source](#source), Grouparoo needs to know how to relate the data its importing to the [Records](#profiles) already in Grouparoo. This is what we call a Mapping. It operates like a foreign key in a database.
+When importing data from a [Source](#source), Grouparoo needs to know how to relate the data its importing to the [Records](#records) already in Grouparoo. This is what we call a Mapping. It operates like a foreign key in a database.
 
-Consider that you have a [Property](#profile-property) called `email`, while your Source has an attribute called `emailAddress`, which is a unique field in that Source. You could map `emailAddress` from your source to `email` in Grouparoo. This tells Grouparoo that when anything changes on the Source, it knows which profile to update.
+Consider that you have a [Property](#record-property) called `email`, while your Source has an attribute called `emailAddress`, which is a unique field in that Source. You could map `emailAddress` from your source to `email` in Grouparoo. This tells Grouparoo that when anything changes on the Source, it knows which record to update.
 
 Every Source needs a Mapping, as Grouparoo must know how to associate imported information.
 
@@ -129,7 +129,7 @@ Records represent individual people. For your specific company or organization, 
 
 ## Record Property
 
-Record Properties are data associated with a profile. You can define Record Properties based on data that exists in your data Sources.
+Record Properties are data associated with a record. You can define Record Properties based on data that exists in your data Sources.
 
 Record Properties are given a specific type, letting us know if they are a `number`, `date`, or `string`. Having a type helps Grouparoo know how to display this data and send it to Destinations.
 
@@ -168,7 +168,7 @@ A Schedule defines some interval by which to process a [Run](#run). Though techn
 
 Sources are the tools that Grouparoo will connect with to pull in customer data. A Source can be anything that contains customer data such as data warehouses, databases, and CRMs.
 
-When you add a new Source, you will define how that Source connects with the [Records](#profile) that already exist in Grouparoo through a `Unique` [Record Property](#profile-property).
+When you add a new Source, you will define how that Source connects with the [Records](#record) that already exist in Grouparoo through a `Unique` [Record Property](#record-property).
 
 See [our Integrations page](/integrations) for an up-to-date list of our supported Sources. We are always adding support for more Sources. If you have a request, please [let us know](/meet)!
 
@@ -176,9 +176,9 @@ See [our Integrations page](/integrations) for an up-to-date list of our support
 
 When creating a Grouparoo [Destination](#destination), you will be asked to choose a Sync Mode. A Sync Mode tells the Grouparoo application how to create and delete Records on this destination. The types of Sync Modes are:
 
-- **Sync**: Add, update and remove profiles from the destination as needed.
-- **Additive**: Add new profiles and update those that already exist in the destination, but never remove anyone.
-- **Enrich**: Update profiles that already exist in the destination, _enriching_ them with additional data and group membership information. No profiles are added or removed.
+- **Sync**: Add, update and remove records from the destination as needed.
+- **Additive**: Add new records and update those that already exist in the destination, but never remove anyone.
+- **Enrich**: Update records that already exist in the destination, _enriching_ them with additional data and group membership information. No records are added or removed.
 
 You can learn more about in our blog posts [introducing Sync Modes](/blog/sync-modes) and [how to use Sync Modes](/blog/using-sync-modes)
 

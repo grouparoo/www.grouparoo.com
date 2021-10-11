@@ -426,7 +426,7 @@ exports.default = async function buildConfig() {
       id: "all_emails",
       name: "all_emails",
       type: "calculated",
-      // Include profiles where there is a value for `email`.
+      // Include records where there is a value for `email`.
       rules: [
         {
           propertyId: "email",

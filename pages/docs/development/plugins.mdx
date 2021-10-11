@@ -182,11 +182,11 @@ import { plugin } from "@grouparoo/core";
 import { test } from "./../lib/test";
 import { columns } from "./../lib/columns";
 import {
-  profilePropertyRuleQueryOptions,
+  recordPropertyRuleQueryOptions,
   buildRecordPropertyRuleQuery,
 } from "./../lib/buildRecordQuery";
-import { profiles } from "./../lib/profiles";
-import { profileProperty } from "./../lib/profileProperty";
+import { records } from "./../lib/records";
+import { recordProperty } from "./../lib/recordProperty";
 import { exportRecord } from "./../lib/exportRecord";
 
 export class Plugins extends Initializer {
@@ -209,7 +209,7 @@ export class Plugins extends Initializer {
             // ...
           ],
           test: test,
-          profilePropertyRuleQueryOptions,
+          recordPropertyRuleQueryOptions,
           buildRecordPropertyRuleQuery,
         },
       ],
@@ -217,28 +217,28 @@ export class Plugins extends Initializer {
         {
           name: "postgres-import",
           direction: "import",
-          description: "import or update profiles from a postgres database",
+          description: "import or update records from a postgres database",
           app: ["postgres"],
           options: [
             { key: "table", required: true, description: "the table to scan" },
             // ...
           ],
           methods: {
-            profiles,
-            profileProperty,
+            records,
+            recordProperty,
             columns,
           },
         },
         {
           name: "postgres-export",
           direction: "export",
-          description: "export profiles to a postgres table",
+          description: "export records to a postgres table",
           app: ["postgres"],
           options: [
             {
               key: "table",
               required: true,
-              description: "the table to write profiles to",
+              description: "the table to write records to",
             },
             // ...
           ],
@@ -273,7 +273,7 @@ export class AwesomeStatus extends Action {
     this.middleware = ["authenticated-action"]; // <-- here
 
     // define the permissions needed to use this action
-    this.permission = { topic: "profile", mode: "read" };
+    this.permission = { topic: "record", mode: "read" };
   }
 
   async run() {

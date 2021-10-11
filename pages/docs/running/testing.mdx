@@ -80,8 +80,8 @@ describe("snapshot", () => {
   // utility to start and stop the server within the test suite
   helper.grouparooTestServer();
 
-  test("a profile snapshot can be tested", async () => {
-    const { profile, snapshot } = await helper.getRecord({
+  test("a record snapshot can be tested", async () => {
+    const { record, snapshot } = await helper.getRecord({
       email: "person@example",
     });
 
@@ -93,7 +93,7 @@ describe("snapshot", () => {
     expect(snapshot.properties.userId.values).toEqual([100]);
     expect(snapshot.groups.length).toBe(1);
     expect(snapshot.groups[0].name).toBe("People with Email Addresses");
-    expect(profile.state).toBe("ready");
+    expect(record.state).toBe("ready");
   });
 });
 ```
@@ -124,12 +124,12 @@ helper.grouparooTestServer({ truncate: false });
 
 ### `getRecord`
 
-Retrieves a profile from a series of key-value pairs representing properties of that profile.
+Retrieves a record from a series of key-value pairs representing properties of that record.
 
 Usage:
 
 ```js
-const profile = await helper.getRecord({
+const record = await helper.getRecord({
   user_id: 100,
   email: "example@example.com",
 });
