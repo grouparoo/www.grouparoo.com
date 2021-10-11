@@ -27,19 +27,19 @@ exports.default = async function buildConfig() {
           id: "full_name",
           name: "full_name",
           class: "property",
-          sourceId: "calculated_source", 
-          type: "string", 
+          sourceId: "calculated_source",
+          type: "string",
           unique: false,
-          identifying: false, 
-          isArray: false, 
+          identifying: false,
+          isArray: false,
           options: {
-            customFunction: customFunction, 
+            customFunction: customFunction,
           },
           filters: null,
         },
       ];
     };
-    
+
     function customFunction() {
       // write your custom function here
       // use mustache variables to reference the keys of any properties you would like to reference
@@ -180,8 +180,8 @@ function customFunction() {
       </p>
       <CodeBlock code={codeBlocks.customFunction} language="javascript" />
       <p>
-        <code>customFunction</code> is executed Profile by Profile, so the value
-        of each Profile's <code>first_name</code> and <code>last_name</code>{" "}
+        <code>customFunction</code> is executed Record by Record, so the value
+        of each Record's <code>first_name</code> and <code>last_name</code>{" "}
         Properties are parsed directly into the function, which is why it is
         quoted in order to evaluate as and return a string.
       </p>

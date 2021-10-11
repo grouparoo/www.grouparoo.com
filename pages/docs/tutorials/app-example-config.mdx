@@ -1,6 +1,6 @@
 ---
 title: "App Example: Declarative Sync"
-date: "2020-03-30"
+date: "2021-10-11"
 pullQuote: "Learn how to sync data from a SQLite customer database to a Mailchimp audience."
 pageNavSelector: "h2"
 image: docs/tutorials/210331-app-example-config.png
@@ -194,7 +194,7 @@ Now we have an app and we can add some Sources!
 
 ## Step 5: Add Users Source and Properties
 
-Next, it's time to add our Sources and their Properties. A Source is the place your customer data lives. In this case, we're mocking a data warehouse type of setup for an e-commerce site. Properties are attributes for your Profiles (in Grouparoo, we refer to users as _Profiles_).
+Next, it's time to add our Sources and their Properties. A Source is the place your customer data lives. In this case, we're mocking a data warehouse type of setup for an e-commerce site. Properties are attributes for your Records (in Grouparoo, we refer to users as _Records_).
 
 From our list of generators, you may have noticed that there are two types of sources for SQLite: _query_ and _table_. (If you didn't catch that, run `grouparoo generate sqlite --list` again.)
 
@@ -426,7 +426,7 @@ exports.default = async function buildConfig() {
       id: "all_emails",
       name: "all_emails",
       type: "calculated",
-      // Include profiles where there is a value for `email`.
+      // Include Records where there is a value for `email`.
       rules: [
         {
           propertyId: "email",
@@ -454,7 +454,7 @@ exports.default = async function buildConfig() {
       id: "high_value_spanish_speakers",
       name: "high_value_spanish_speakers",
       type: "calculated",
-      // Inlcude Profiles with an `ltv` above 100 who have a value of `Spanish`
+      // Inlcude Records with an `ltv` above 100 who have a value of `Spanish`
       // for `language`.
       rules: [
         {
@@ -591,7 +591,7 @@ Now we're ready to add the Mailchimp Destination. Let's call our Destination `ne
 
 We'll change a few values in the config file (`config/destinations/mailchimp.js`). We want to set:
 
-- Group ID for the Group of Profiles to export.
+- Group ID for the Group of Records to export.
 - Mailchimp's list ID
 - The fields to include in the Mailchimp contact.
 - Any tags (as Grouparoo Groups) to attach to the Mailchimp contact.
@@ -611,7 +611,7 @@ exports.default = async function buildConfig() {
         // The list ID we set in .env.
         listId: process.env.MAILCHIMP_LIST_ID,
       },
-      // The properties to send to Mailchimp with the Profile. Mailchimp has a
+      // The properties to send to Mailchimp with the Record. Mailchimp has a
       // few predetermined fields, which is why `FNAME` and `LNAME` have a
       // different structure than the others.
       mapping: {
@@ -620,7 +620,7 @@ exports.default = async function buildConfig() {
         LNAME: "last_name",
         language: "language",
       },
-      // This tells Grouparoo to tag Profiles in the
+      // This tells Grouparoo to tag Records in the
       // `high_value_spanish_speakers` group with "High Value Spanish Speaker"
       // in Mailchimp.
       destinationGroupMemberships: {

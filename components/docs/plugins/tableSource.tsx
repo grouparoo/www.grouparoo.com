@@ -177,16 +177,14 @@ mapping: {
           Mappings
         </Link>{" "}
         is a critical part of the process, as it tells Grouparoo with which{" "}
-        <Link href="/docs/getting-started/product-concepts#profile">
-          Profile
-        </Link>{" "}
+        <Link href="/docs/getting-started/product-concepts#record">Record</Link>{" "}
         to associate imported data.
       </p>
 
       <p>
         For example, let's say your database has a {column} named{" "}
         <code>email</code> and that maps directly to a <em>unique</em> Property
-        on the Profile in Grouparoo called <code>emailAddress</code>. In that
+        on the Record in Grouparoo called <code>emailAddress</code>. In that
         case, your mapping would look like this:
       </p>
 
@@ -198,12 +196,12 @@ mapping: {
 
       <p>
         Before you can define a Mapping, you must have a primary key for{" "}
-        <Link href="/docs/getting-started/product-concepts#profile">
-          Profiles
+        <Link href="/docs/getting-started/product-concepts#record">
+          Records
         </Link>
         . In most cases, this is an ID or an e-mail address. Grouparoo will
         automatically determine what field is used for a primary key based on
-        the mapping and automatically generate one Profile per unique value in
+        the mapping and automatically generate one Record per unique value in
         that field.
       </p>
 
@@ -294,7 +292,7 @@ mapping: {
         <Link href="/docs/getting-started/product-concepts#filter">filter</Link>{" "}
         your data via the <code>filters</code> option. This is a series of rules
         that will filter data in the database {table} to find the appropriate
-        value for each Profile for a given Property.
+        value for each Record for a given Property.
       </p>
 
       <p>

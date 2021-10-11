@@ -1,6 +1,6 @@
 ---
 title: "Monitoring"
-date: "2021-02-02"
+date: "2021-10-11"
 pullQuote: "How to Monitor your Grouparoo Cluster"
 ---
 
@@ -15,5 +15,5 @@ To ensure that you have a robust Grouparoo deployment, we recommend that you set
 ### Monitor the Tier
 
 - Monitor the hardware performance of the servers running the Grouparoo Application Tier. Is there enough RAM? Is the CPU constantly pegged to 100% usage? Your hosting provider should provide tools to monitor your servers. If you are deploying with a tool like Docker or Kubernetes, there are ways to aggregate this information for all instances of the container.
-- Monitor the number of rows in your database. Are there more Profiles or less Exports than you expect?
+- Monitor the number of rows in your database. Are there more Records or less Exports than you expect?
 - Monitor the memory consumption of Redis. Redis is an in-memory database, and if it gets full, it will either refuse to accept new data or start deleting old data. Keeping Redis’ data volume small involves tuning the batch sizes of your Grouparoo application and ensuring you have enough Application Background Workers to run all the tasks created and the data tier to support it.

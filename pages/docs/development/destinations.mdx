@@ -1,12 +1,12 @@
 ---
 title: "Destinations"
-date: "2021-01-05"
+date: "2021-10-11"
 pullQuote: "Build a destination to syndicate customer data to a tool."
 ---
 
 Grouparoo syndicates customer data to many tools using destinations. This type of [plugin](./plugins) defines an `App` and one more `Connections` with the `export` direction. The same plugin can also make [sources](./sources), but this document focuses on how to make a destination.
 
-A destination will define how Grouparoo should export profile property values and group memberships to external tools. What each profile and each group maps to varies depending on the tool. For example, there can be a destination that synchronizes all users first name and email address to Mailchimp, tagging them as such if they are in the "High Value" group.
+A destination will define how Grouparoo should export record property values and group memberships to external tools. What each record and each group maps to varies depending on the tool. For example, there can be a destination that synchronizes all users first name and email address to Mailchimp, tagging them as such if they are in the "High Value" group.
 
 ## App
 
@@ -46,24 +46,24 @@ The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/plugi
 
 - **Data Methods**
 
-  One of these should be defined. The choice is whether or not the destination can export many profiles at once or it is done one at a time.
+  One of these should be defined. The choice is whether or not the destination can export many records at once or it is done one at a time.
 
-  - `profileProperty `[`ExportProfilePluginMethod`](https://docs.grouparoo.com/interfaces/exportprofilepluginmethod.html) Given the property values and group memberships to export for a single profile, send it to the destination. The singular case is much easier to reason about, particularly when there is an error with the destination.
-  - `profileProperties `[`ExportProfilesPluginMethod`](https://docs.grouparoo.com/interfaces/exportprofilespluginmethod.html) Given the property values and group memberships to export for many profiles, send it to the destination. The extra semantics can be more complicated because there can be partial failures. However, if the destination has a "batch" API, it's generally better to use this for performance reasons.
+  - `recordProperty `[`ExportRecordPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordpluginmethod.html) Given the property values and group memberships to export for a single record, send it to the destination. The singular case is much easier to reason about, particularly when there is an error with the destination.
+  - `recordProperties `[`ExportRecordsPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordspluginmethod.html) Given the property values and group memberships to export for many records, send it to the destination. The extra semantics can be more complicated because there can be partial failures. However, if the destination has a "batch" API, it's generally better to use this for performance reasons.
 
 When defining `methods`, link to the method directly, do not use a string name.
 
 ## Research
 
-The first thing to do is create a document that discusses how the Grouparoo model (Profiles with properties, Group memberships) map to the destination system. Here are some examples from [Salesforce](https://github.com/grouparoo/grouparoo/issues/649) and [Intercom](https://github.com/grouparoo/grouparoo/issues/1046).
+The first thing to do is create a document that discusses how the Grouparoo model (Records with properties, Group memberships) map to the destination system. Here are some examples from [Salesforce](https://github.com/grouparoo/grouparoo/issues/649) and [Intercom](https://github.com/grouparoo/grouparoo/issues/1046).
 
 Here are the main things to figure out (and the answer for the _Intercom_ case).
 
-- What do profiles map to? _Contacts_
+- What do records map to? _Contacts_
 
-  - What will the primary key be to look up a profile? _email or externalId_
-  - What does deleting a profile mean? _Archive or permanently delete_
-  - API to look up profile by primary key(s)
+  - What will the primary key be to look up a record? _email or externalId_
+  - What does deleting a record mean? _Archive or permanently delete_
+  - API to look up record by primary key(s)
   - APIs to create, update (ideally upsert)
   - API to delete
 
@@ -76,7 +76,7 @@ Here are the main things to figure out (and the answer for the _Intercom_ case).
 - What will group membership map to? _Tags_
 
   - API to create a group
-  - API to add profiles to groups
+  - API to add records to groups
 
 - Do the APIs exist to do these things in bulk? _Not anymore?_
 
@@ -115,12 +115,12 @@ We first need to decide if there is anything that should be configured or it's a
 
 ## Batch Strategy
 
-A key thing to understand is if there is a bulk API or not. In general, it's better to use one if it exists, especially with the helpers that we have created to handle the challenges of more than one profile syncing at a time.
+A key thing to understand is if there is a bulk API or not. In general, it's better to use one if it exists, especially with the helpers that we have created to handle the challenges of more than one record syncing at a time.
 
 The easiest way to get started is to pick the approach and copy an existing plugin. Pick the ones that is closest. For example if you are making another ad platform destination that does batching, [facebook](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/facebook) might be a good bet. Otherwise, here are some simple defaults.
 
-- Single profile at a time (`exportProfile`): [hubspot](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/hubspot)
-- Batch multiple profiles (`exportProfiles`): [marketo](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/marketo)
+- Single record at a time (`exportRecord`): [hubspot](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/hubspot)
+- Batch multiple records (`exportRecords`): [marketo](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/marketo)
 
 After copying, change the names in the `plugin.ts`, `package.json`, and the directory structure to the one you are making. Look for an icon with a license that we can use and note the attribution in the `README.md`. The icon should be square and 256+ pixels. Transparent backgrounds are preferred.
 
@@ -168,11 +168,11 @@ For the rest of the fields, there are three kinds of systems.
 
 Especially when there are API requests involved, it's important to create a test suite for the destination mapping code like in [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/salesforce/__tests__/export-objects/destination-mapping-options.ts), [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/__tests__/fixtures/destination-mapping-options.js) and others.
 
-At this point, the UI for the destination mapping should work. Don't save the mapping because `exportProfiles` is not ready. However, the mapping fields can be verified.
+At this point, the UI for the destination mapping should work. Don't save the mapping because `exportRecords` is not ready. However, the mapping fields can be verified.
 
-## Export Profiles
+## Export Records
 
-The core code of the destination plugin is the `exportProfile` (single) or `exportProfiles` (batch) method. It is given the (old and new) properties and the (old and new) group membership. If the profile is to be deleted, that is noted. The goal is to sync that information to the destination system.
+The core code of the destination plugin is the `exportRecord` (single) or `exportRecords` (batch) method. It is given the (old and new) properties and the (old and new) group membership. If the record is to be deleted, that is noted. The goal is to sync that information to the destination system.
 
 In both approaches (single or batch), the pattern is generally the same.
 
@@ -182,11 +182,11 @@ In both approaches (single or batch), the pattern is generally the same.
 
 - **Verify Data**
 
-  Create an error if a required data (in `newProfileProperties` is not present). For example, [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/export/exportProfile.ts#L23-L27) throws an error if there is no external id.
+  Create an error if a required data (in `newRecordProperties` is not present). For example, [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/export/exportProfile.ts#L23-L27) throws an error if there is no external id.
 
 - **Find existing users**
 
-  See if the user(s) already exist in the system. This often uses a combination of the old and new profile properties. For example, [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportProfile.ts#L173-L252) uses all the primary key data to search for a user and then prioritizes the response.
+  See if the user(s) already exist in the system. This often uses a combination of the old and new record properties. For example, [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportProfile.ts#L173-L252) uses all the primary key data to search for a user and then prioritizes the response.
 
 - **Delete if requested**
 
@@ -194,13 +194,13 @@ In both approaches (single or batch), the pattern is generally the same.
 
 - **Create or Update the user**
 
-  Build a payload from the given property values. Use the `oldProfileProperties` that are not in `newProfileProperties` to known which values should be cleared. This sometimes means setting it to `null` or `undefined` like in [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/export/exportProfile.ts#L60-L75) or an empty string like in [malichimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/mailchimp/src/lib/shared/updateProfile.ts#L50-L57). Sometimes, it means setting a default value like in [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/salesforce/src/lib/export/salesforceExporter.ts#L309-L335).
+  Build a payload from the given property values. Use the `oldRecordProperties` that are not in `newRecordProperties` to known which values should be cleared. This sometimes means setting it to `null` or `undefined` like in [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/export/exportProfile.ts#L60-L75) or an empty string like in [malichimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/mailchimp/src/lib/shared/updateProfile.ts#L50-L57). Sometimes, it means setting a default value like in [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/salesforce/src/lib/export/salesforceExporter.ts#L309-L335).
 
   Each likely has some formatting constraints. For example, Dates vary between destinations. There is epoch time like in [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportProfile.ts#L277-L287) and ISO strings like in [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/src/lib/export/exportProfiles.ts#L166-L175).
 
   If the user was not found, create it via API. If the user was found, update it via API. In either case, there should be a id in the destination by the end of this step. If it exists, it's best to use an "upsert" API which will use the primary key to create it if necessary. This is more reliable by removing timing risks.
 
-  While creating the payload, sometimes you need more information about the remote fields. If needed while exporting profiles, cache remote fields because they don't change very often. Share cache but force update in `destinationMappingOptions` code so they always get the newest. See code from [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/%40grouparoo/intercom/src/lib/export-users/destinationMappingOptions.ts#L84-L105) for an example.
+  While creating the payload, sometimes you need more information about the remote fields. If needed while exporting records, cache remote fields because they don't change very often. Share cache but force update in `destinationMappingOptions` code so they always get the newest. See code from [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/%40grouparoo/intercom/src/lib/export-users/destinationMappingOptions.ts#L84-L105) for an example.
 
 - **Assign Groups**
 
@@ -218,45 +218,45 @@ In both approaches (single or batch), the pattern is generally the same.
 
 - **Return**
 
-  The return value for a single profile is an object with a `success` key as `true` or `false`. To help with rate limiting, the method can also return a `retryIn` key with a number of milliseconds to wait before trying again.
+  The return value for a single record is an object with a `success` key as `true` or `false`. To help with rate limiting, the method can also return a `retryIn` key with a number of milliseconds to wait before trying again.
 
-  In the single profile case, an `error` can be returned and should be a Javascript `Error`. If the `error` has a property called `errorLevel` (set to `error` or `info`), that will be taken into consideration. An `info` error will not retry, will not show up in Resque errors, but the message will be shown. A regular error (returned or thrown) will have the whole method be retried later, with exponential backoff.
+  In the single record case, an `error` can be returned and should be a Javascript `Error`. If the `error` has a property called `errorLevel` (set to `error` or `info`), that will be taken into consideration. An `info` error will not retry, will not show up in Resque errors, but the message will be shown. A regular error (returned or thrown) will have the whole method be retried later, with exponential backoff.
 
-  The case is similar for the batch case, except that it an `errors` array with a required `profileGuid` key that notes which profile had the issue.
+  The case is similar for the batch case, except that it an `errors` array with a required `recordGuid` key that notes which record had the issue.
 
-There should be a significant amount of tests related to exporting profiles.
+There should be a significant amount of tests related to exporting records.
 
 ### Single
 
-The single case makes things fairly straightforward. The system knows which profile it's dealing with, so any error thrown or returned relates to retrying that later. It's already fairly inefficient, but that makes searching much easier because there is no correlation to be done between results and profiles.
+The single case makes things fairly straightforward. The system knows which record it's dealing with, so any error thrown or returned relates to retrying that later. It's already fairly inefficient, but that makes searching much easier because there is no correlation to be done between results and records.
 
-Most of the examples above were from the single profile case. They tend to be a single function or one level deep with a method for each of the above steps. If there is an error in any of them, it does a `throw`.
+Most of the examples above were from the single record case. They tend to be a single function or one level deep with a method for each of the above steps. If there is an error in any of them, it does a `throw`.
 
 ### Batch
 
-If the API supports batching, it's better to try and use that, but it comes with complications now that there are N profiles at play. To help with these challenges, Grouparoo has the [app-examples/batch](https://github.com/grouparoo/grouparoo/tree/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/app-templates/src/destination/batch) helper to codify the above process for the batch case.
+If the API supports batching, it's better to try and use that, but it comes with complications now that there are N records at play. To help with these challenges, Grouparoo has the [app-examples/batch](https://github.com/grouparoo/grouparoo/tree/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/app-templates/src/destination/batch) helper to codify the above process for the batch case.
 
 The best example is the [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/marketo/src/lib/export/exportProfiles.ts) plugin.
 
 There are several methods to implement that more or less represent the destination-specific pieces of the above.
 
 - `getClient` Return a client to use for the rest of the interaction
-- `findAndSetDestinationIds` Fetch using the given keys to associate a `destinationId` for each profile
+- `findAndSetDestinationIds` Fetch using the given keys to associate a `destinationId` for each record
 - `deleteByDestinationIds` Delete the given `destinationId` values
-- `updateByDestinationIds` Update the given profiles with their `destinationId` values
-- `createByForeignKeyAndSetDestinationIds` Create the given profiles and associate a `destinationId`
-- `addToGroups` Given a set of groups, add some profiles
-- `removeFromGroups` Given a set of groups, remove some profiles
+- `updateByDestinationIds` Update the given records with their `destinationId` values
+- `createByForeignKeyAndSetDestinationIds` Create the given records and associate a `destinationId`
+- `addToGroups` Given a set of groups, add some records
+- `removeFromGroups` Given a set of groups, remove some records
 - `normalizeForeignKeyValue` Gives the opportunity to fix up the email or externalId
 - `normalizeGroupName` Gives the opportunity to fix up the group name (e.g. lowercase and remove tag spaces)
 
-Within any of these methods, an `error` or `skipMessage` (info error) can be associated with a profile. That profile will be omitted from subsequent steps.
+Within any of these methods, an `error` or `skipMessage` (info error) can be associated with a record. That record will be omitted from subsequent steps.
 
 ## Iteration and Testing
 
 Read more about [plugin development](./plugins#iteration-and-testing) to understand the best way to work on your new plugin.
 
-Plugins are tested using [jest](https://jestjs.io/). The primary way of testing them is to test the individual methods (`exportProfile`, `destinationMappingOptions`, etc) in their own file/suite. Several plugins have multiple suites for exporting profiles when there are `destinationOptions` that make them work differently.
+Plugins are tested using [jest](https://jestjs.io/). The primary way of testing them is to test the individual methods (`exportRecord`, `destinationMappingOptions`, etc) in their own file/suite. Several plugins have multiple suites for exporting records when there are `destinationOptions` that make them work differently.
 
 ### Nock
 
@@ -270,11 +270,11 @@ This can be very tricky. Everything has to be the same when it runs again, so an
 
 ### Process
 
-At this point, it has been easiest to start with the copied test and iterate, but one at a time (skipping all the rest). Make sure a profile can be written, then updated, then groups added, ad then deleted.
+At this point, it has been easiest to start with the copied test and iterate, but one at a time (skipping all the rest). Make sure a record can be written, then updated, then groups added, ad then deleted.
 
-It's important to be sure to clean up written profiles so that the first one in the test really is a new user in the destination system. For example [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/__tests__/integration/export-profiles.ts#L81-L83) cleans up all test users and lists at the start and end of every run of the suite.
+It's important to be sure to clean up written records so that the first one in the test really is a new user in the destination system. For example [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/__tests__/integration/export-profiles.ts#L81-L83) cleans up all test users and lists at the start and end of every run of the suite.
 
-Here is a list of things that are important to test related to exporting profiles.
+Here is a list of things that are important to test related to exporting records.
 
 - creating users
 - updating users
@@ -299,7 +299,7 @@ import { plugin } from "@grouparoo/core";
 
 import { test } from "./../lib/test";
 
-import { exportProfile } from "../lib/export/exportProfile";
+import { exportRecord } from "../lib/export/exportRecord";
 import { destinationOptions } from "../lib/export/destinationOptions";
 import { destinationMappingOptions } from "../lib/export/destinationMappingOptions";
 import { exportArrayProperties } from "../lib/export/exportArrayProperties";
@@ -347,11 +347,11 @@ export class Plugins extends Initializer {
         {
           name: "zendesk-export",
           direction: "export",
-          description: "Export Profiles to a Zendesk account.",
+          description: "Export Records to a Zendesk account.",
           app: "zendesk",
           options: [],
           methods: {
-            exportProfile,
+            exportRecord,
             destinationOptions,
             destinationMappingOptions,
             exportArrayProperties,

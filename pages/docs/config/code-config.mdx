@@ -1,6 +1,6 @@
 ---
 title: "Code Config"
-date: "2021-06-23"
+date: "2021-10-11"
 pullQuote: "Use Grouparoo CLI to configure your application using code."
 ---
 
@@ -209,9 +209,9 @@ exports.default = [
 
 ## Referencing other Config Objects
 
-To fully define your infrastructure and Profile Properties, you will need to reference one config from another. We do this by referencing the `id` of the related object.
+To fully define your infrastructure and Record Properties, you will need to reference one config from another. We do this by referencing the `id` of the related object.
 
-For example, to define an `App → Source → Profile Property`, you could do:
+For example, to define an `App → Source → Record Property`, you could do:
 
 ```js
 // file: config/grouparoo.js
@@ -248,7 +248,7 @@ exports.default = [
   // Property
   {
     name: "User Id",
-    class: "ProfilePropertyRule",
+    class: "RecordPropertyRule",
     type: "integer",
     unique: true,
     isArray: false,

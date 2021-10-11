@@ -1,12 +1,12 @@
 ---
 title: "Testing Grouparoo"
-date: "2021-02-02"
+date: "2021-10-11"
 pullQuote: "Grouparoo provides the tools you need to write expectation and snapshot tests against your data."
 ---
 
 ## Testing your Grouparoo Application
 
-In order to help fit Grouparoo into the CI/CD tools you use today, Grouparoo comes with testing utilities to which you can use to build a test suite that ensures that the application is producing the Profiles and Groups you expect. Grouparoo relies on [Jest](https://jestjs.io) to provide expectations and snapshot testing. To enable Grouparoo testing:
+In order to help fit Grouparoo into the CI/CD tools you use today, Grouparoo comes with testing utilities to which you can use to build a test suite that ensures that the application is producing the Records and Groups you expect. Grouparoo relies on [Jest](https://jestjs.io) to provide expectations and snapshot testing. To enable Grouparoo testing:
 
 1. `npm install --save @grouparoo/spec-helper jest`
 2. create a `.env.test` file to store your test configuration.
@@ -15,7 +15,7 @@ In order to help fit Grouparoo into the CI/CD tools you use today, Grouparoo com
 5. Run your test with `./node_modules/.bin/jest [path/to/test]`.
    - You can wire up `npm test` to run this for you.
 
-When you test your Grouparoo application, you'll be testing your configuration files, Apps, Sources, and Destinations. Ideally, you have a specific Profile in mind that you can fully sync. You can ensure that it ends up in the right Groups, and would be exported to the Destinations you expect.
+When you test your Grouparoo application, you'll be testing your configuration files, Apps, Sources, and Destinations. Ideally, you have a specific Record in mind that you can fully sync. You can ensure that it ends up in the right Groups, and would be exported to the Destinations you expect.
 
 ## `.env.test`
 
@@ -80,8 +80,8 @@ describe("snapshot", () => {
   // utility to start and stop the server within the test suite
   helper.grouparooTestServer();
 
-  test("a profile snapshot can be tested", async () => {
-    const { profile, snapshot } = await helper.getProfile({
+  test("a record snapshot can be tested", async () => {
+    const { record, snapshot } = await helper.getRecord({
       email: "person@example",
     });
 
@@ -93,7 +93,7 @@ describe("snapshot", () => {
     expect(snapshot.properties.userId.values).toEqual([100]);
     expect(snapshot.groups.length).toBe(1);
     expect(snapshot.groups[0].name).toBe("People with Email Addresses");
-    expect(profile.state).toBe("ready");
+    expect(record.state).toBe("ready");
   });
 });
 ```
@@ -122,14 +122,14 @@ Options may be passed to `grouparooTestServer` as an object. The main option of 
 helper.grouparooTestServer({ truncate: false });
 ```
 
-### `getProfile`
+### `getRecord`
 
-Retrieves a profile from a series of key-value pairs representing properties of that profile.
+Retrieves a Record from a series of key-value pairs representing properties of that Record.
 
 Usage:
 
 ```js
-const profile = await helper.getProfile({
+const record = await helper.getRecord({
   user_id: 100,
   email: "example@example.com",
 });

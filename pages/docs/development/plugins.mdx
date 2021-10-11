@@ -1,6 +1,6 @@
 ---
 title: "Plugins"
-date: "2020-01-05"
+date: "2021-10-11"
 pullQuote: "The Grouparoo Plugin System is how you can add & extend Grouparoo."
 ---
 
@@ -182,12 +182,12 @@ import { plugin } from "@grouparoo/core";
 import { test } from "./../lib/test";
 import { columns } from "./../lib/columns";
 import {
-  profilePropertyRuleQueryOptions,
-  buildProfilePropertyRuleQuery,
-} from "./../lib/buildProfileQuery";
-import { profiles } from "./../lib/profiles";
-import { profileProperty } from "./../lib/profileProperty";
-import { exportProfile } from "./../lib/exportProfile";
+  recordPropertyRuleQueryOptions,
+  buildRecordPropertyRuleQuery,
+} from "./../lib/buildRecordQuery";
+import { records } from "./../lib/records";
+import { recordProperty } from "./../lib/recordProperty";
+import { exportRecord } from "./../lib/exportRecord";
 
 export class Plugins extends Initializer {
   constructor() {
@@ -209,41 +209,41 @@ export class Plugins extends Initializer {
             // ...
           ],
           test: test,
-          profilePropertyRuleQueryOptions,
-          buildProfilePropertyRuleQuery,
+          recordPropertyRuleQueryOptions,
+          buildRecordPropertyRuleQuery,
         },
       ],
       connections: [
         {
           name: "postgres-import",
           direction: "import",
-          description: "import or update profiles from a postgres database",
+          description: "import or update records from a postgres database",
           app: ["postgres"],
           options: [
             { key: "table", required: true, description: "the table to scan" },
             // ...
           ],
           methods: {
-            profiles,
-            profileProperty,
+            records,
+            recordProperty,
             columns,
           },
         },
         {
           name: "postgres-export",
           direction: "export",
-          description: "export profiles to a postgres table",
+          description: "export records to a postgres table",
           app: ["postgres"],
           options: [
             {
               key: "table",
               required: true,
-              description: "the table to write profiles to",
+              description: "the table to write records to",
             },
             // ...
           ],
           methods: {
-            exportProfile,
+            exportRecord,
             columns,
           },
         },
@@ -273,7 +273,7 @@ export class AwesomeStatus extends Action {
     this.middleware = ["authenticated-action"]; // <-- here
 
     // define the permissions needed to use this action
-    this.permission = { topic: "profile", mode: "read" };
+    this.permission = { topic: "record", mode: "read" };
   }
 
   async run() {

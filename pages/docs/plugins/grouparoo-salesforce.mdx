@@ -1,6 +1,6 @@
 ---
 title: "@grouparoo/salesforce"
-date: "2021-09-01"
+date: "2021-10-11"
 pullQuote: "Learn how to work with the Salesforce plugin as a Destination."
 pageNavSelector: "h2"
 ---
@@ -44,16 +44,16 @@ exports.default = async function buildConfig() {
       syncMode: "...",
 
       options: {
-        profileObject: "Contact",
-        profileMatchField: "Email",
+        recordObject: "Contact",
+        recordMatchField: "Email",
         groupObject: "Campaign",
         groupNameField: "Name",
         membershipObject: "CampaignMember",
-        membershipProfileField: "ContactId",
+        membershipRecordField: "ContactId",
         membershipGroupField: "CampaignId",
-        profileReferenceField: "AccountId",
-        profileReferenceObject: "Account",
-        profileReferenceMatchField: "Name",
+        recordReferenceField: "AccountId",
+        recordReferenceObject: "Account",
+        recordReferenceMatchField: "Name",
       },
 
       mapping: {
@@ -76,9 +76,9 @@ For more information on what all these properties mean and how to configure them
 
 The Salesforce Destination supports all three sync modes:
 
-- **Sync** (`sync`): Add, update, and remove profiles as needed.
-- **Additive** (`additive`): Add and update profiles as needed, but do not remove anybody.
-- **Enrich** (`enrich`): Only update profiles that already exist in the Destination. Do not add or remove anybody.
+- **Sync** (`sync`): Add, update, and remove records as needed.
+- **Additive** (`additive`): Add and update records as needed, but do not remove anybody.
+- **Enrich** (`enrich`): Only update records that already exist in the Destination. Do not add or remove anybody.
 
 You can set the desired sync mode through the `syncMode` property in the config file:
 
@@ -92,14 +92,14 @@ Here are the available options for a Salesforce Destination:
 
 <OptionsList
   options={{
-    profileObject: {
-      displayName: "profileObject",
-      description: "Which object in Salesforce represents a Grouparoo profile?",
+    recordObject: {
+      displayName: "recordObject",
+      description: "Which object in Salesforce represents a Grouparoo record?",
     },
-    profileMatchField: {
-      displayName: "profileMatchField",
+    recordMatchField: {
+      displayName: "recordMatchField",
       description:
-        "Which field in the profile Object is used to match Grouparoo profiles?",
+        "Which field in the record Object is used to match Grouparoo records?",
     },
     groupObject: {
       displayName: "groupObject",
@@ -113,32 +113,32 @@ Here are the available options for a Salesforce Destination:
     membershipObject: {
       displayName: "membershipObject",
       description:
-        "Which object in Salesforce maps the profile object to the group object?",
+        "Which object in Salesforce maps the record object to the group object?",
     },
-    membershipProfileField: {
-      displayName: "membershipProfileField",
+    membershipRecordField: {
+      displayName: "membershipRecordField",
       description:
-        "Which object in Salesforce maps the profile object to the group object?",
+        "Which object in Salesforce maps the record object to the group object?",
     },
     membershipGroupField: {
       displayName: "membershipGroupField",
       description:
         "Which field in the membership Object is the reference to the group?",
     },
-    profileReferenceField: {
-      displayName: "profileReferenceField",
+    recordReferenceField: {
+      displayName: "recordReferenceField",
       description:
-        "Is there a reference field on the profile Object to fill out?",
+        "Is there a reference field on the record Object to fill out?",
     },
-    profileReferenceObject: {
-      displayName: "profileReferenceObject",
+    recordReferenceObject: {
+      displayName: "recordReferenceObject",
       description:
-        "If there is a reference field, which Object should be created to apply to the profile?",
+        "If there is a reference field, which Object should be created to apply to the record?",
     },
-    profileReferenceMatchField: {
-      displayName: "profileReferenceMatchField",
+    recordReferenceMatchField: {
+      displayName: "recordReferenceMatchField",
       description:
-        "If there is a reference field, how should it be matched to Grouparoo profiles?",
+        "If there is a reference field, how should it be matched to Grouparoo records?",
     },
   }}
 />
@@ -147,16 +147,16 @@ You can configure these options by setting them inside the `options` object of t
 
 ```js
 options: {
-  profileObject: "Contact",
-  profileMatchField: "Email",
+  recordObject: "Contact",
+  recordMatchField: "Email",
   groupObject: "Campaign",
   groupNameField: "Name",
   membershipObject: "CampaignMember",
-  membershipProfileField: "ContactId",
+  membershipRecordField: "ContactId",
   membershipGroupField: "CampaignId",
-  profileReferenceField: "AccountId",
-  profileReferenceObject: "Account",
-  profileReferenceMatchField: "Name",
+  recordReferenceField: "AccountId",
+  recordReferenceObject: "Account",
+  recordReferenceMatchField: "Name",
 },
 ```
 
