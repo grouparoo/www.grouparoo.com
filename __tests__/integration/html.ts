@@ -6,6 +6,10 @@ import path from "path";
 
 let url: string;
 
+const EDGE_CASES = {
+  "/solutions/engineers": { canonical: "https://www.grouparoo.com/" },
+};
+
 const allowedMissingLinks = [
   /^\/whats-new\/([a-z0-9\-\_\.]+)?$/, //no-indexed
   /^\/trial_landing\/$/, //no-indexed
