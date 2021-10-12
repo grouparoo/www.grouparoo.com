@@ -67,7 +67,7 @@ mapping: {
     mapping: {
       column: {
         required: true,
-        description: `The name of the ${column} to use as the [high watermark](/docs/getting-started/product-concepts#high-watermark).`,
+        description: `The name of the ${column} to use as the [High Watermark](/docs/getting-started/product-concepts#high-watermark).`,
       },
     },
     property: {

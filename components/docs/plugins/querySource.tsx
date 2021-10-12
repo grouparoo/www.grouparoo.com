@@ -51,7 +51,7 @@ mapping: {
     tableMapping: {
       column: {
         required: true,
-        description: `The name of the ${column} to use as the high watermark.`,
+        description: `The name of the ${column} to use as the High Watermark.`,
       },
     },
     tableProperties: {

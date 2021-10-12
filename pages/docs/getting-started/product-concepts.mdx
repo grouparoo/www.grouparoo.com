@@ -92,7 +92,7 @@ There are 2 types of groups: [**Calculated**](#calculated-group) and [**Manual**
 
 ## High Watermark
 
-A High Watermark is a value used for comparison during [Runs](#run) that are [scheduled](#schedule). Grouparoo will only import items where the high watermark column is greater than the largest previously imported high watermark value. For example, let's say you use `updated_at` as your high watermark. Grouparoo will run an import and record the highest value from that column (presumably from the most recently updated record). The next time the import runs, Grouparoo will only consider records where `updated_at` is greater than the previous high watermark value. And it doesn't have to be a date, it just has to be comparable. Another example would be a numeric field, like `version`, in which the value is incremented when changes are made to the record in the Source database.
+A High Watermark is a value used for comparison during [Runs](#run) that are [scheduled](#schedule). Grouparoo will only import items where the High Watermark column is greater than the largest previously imported High Watermark value. For example, let's say you use `updated_at` as your High Watermark. Grouparoo will run an import and record the highest value from that column (presumably from the most recently updated record). The next time the import runs, Grouparoo will only consider records where `updated_at` is greater than the previous High Watermark value. And it doesn't have to be a date, it just has to be comparable. Another example would be a numeric field, like `version`, in which the value is incremented when changes are made to the record in the Source database.
 
 ## Manual Group
 
