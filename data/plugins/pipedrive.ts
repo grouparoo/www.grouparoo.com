@@ -42,8 +42,8 @@ export const Pipedrive: Plugin = {
       imageSrc:
         "/images/home/integrations/pipedrive/grouparoo-to-pipedrive.png",
       imageAlt: "Pipedrive Destination settings",
-      imageWidth: 1026,
-      imageHeight: 801,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:

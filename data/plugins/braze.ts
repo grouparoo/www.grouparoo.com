@@ -41,8 +41,8 @@ export const Braze: Plugin = {
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support or special training.",
       imageSrc: "/images/home/integrations/braze/grouparoo-to-braze.png",
       imageAlt: "Map data to Braze",
-      imageWidth: 742,
-      imageHeight: 512,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:

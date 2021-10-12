@@ -42,7 +42,7 @@ export const Zendesk: Plugin = {
         "Grouparoo can be configured either in code or in our web UI, so non-technical teams and team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/zendesk/grouparoo-to-zendesk.png",
       imageAlt: "Zendesk Destination settings",
-      imageWidth: 742,
+      imageWidth: 932,
       imageHeight: 506,
     },
     {

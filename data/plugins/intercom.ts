@@ -42,8 +42,8 @@ export const Intercom: Plugin = {
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/intercom/grouparoo-to-intercom.png",
       imageAlt: "Intercom Destination settings",
-      imageWidth: 1184,
-      imageHeight: 919,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "Grouparoo keeps your Contacts in Intercom updated in real-time",

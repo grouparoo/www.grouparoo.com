@@ -43,8 +43,8 @@ export const Customerio: Plugin = {
       imageSrc:
         "/images/home/integrations/customerio/grouparoo-to-customerio.png",
       imageAlt: "Customer.io Destination settings",
-      imageWidth: 1253,
-      imageHeight: 801,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:

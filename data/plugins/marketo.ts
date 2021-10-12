@@ -42,8 +42,8 @@ export const Marketo: Plugin = {
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/marketo/grouparoo-to-marketo.png",
       imageAlt: "Map data to Marketo",
-      imageWidth: 742,
-      imageHeight: 406,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:

@@ -42,8 +42,8 @@ export const OneSignal: Plugin = {
       imageSrc:
         "/images/home/integrations/onesignal/grouparoo-to-onesignal.png",
       imageAlt: "OneSignal Destination settings",
-      imageWidth: 1100,
-      imageHeight: 801,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "Grouparoo keeps your Segments in OneSignal updated in real-time",

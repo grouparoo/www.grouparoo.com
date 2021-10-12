@@ -42,8 +42,8 @@ export const Hubspot: Plugin = {
         "Grouparoo is low-code, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/hubspot/grouparoo-to-hubspot.png",
       imageAlt: "Map data to Hubspot",
-      imageWidth: 742,
-      imageHeight: 412,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:

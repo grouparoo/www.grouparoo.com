@@ -41,8 +41,8 @@ export const Iterable: Plugin = {
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/iterable/grouparoo-to-iterable.png",
       imageAlt: "Iterable Destination settings",
-      imageWidth: 1184,
-      imageHeight: 879,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "Grouparoo keeps your Users in Iterable updated in real-time",

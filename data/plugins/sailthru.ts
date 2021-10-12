@@ -43,8 +43,8 @@ export const Sailthru: Plugin = {
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/sailthru/grouparoo-to-sailthru.png",
       imageAlt: "Map data to Sailthru",
-      imageWidth: 742,
-      imageHeight: 414,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:

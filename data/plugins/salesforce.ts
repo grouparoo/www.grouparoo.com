@@ -43,8 +43,8 @@ export const Salesforce: Plugin = {
       imageSrc:
         "/images/home/integrations/salesforce/grouparoo-to-salesforce.png",
       imageAlt: "Map data to Salesforce",
-      imageWidth: 742,
-      imageHeight: 406,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:
