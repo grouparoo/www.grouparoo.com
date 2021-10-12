@@ -142,7 +142,7 @@ export default function Trial({ props }) {
   const privacyPolicyLabel = (
     <>
       I agree to the{" "}
-      <Link href="https://www.grouparoo.com/legal/privacy" passHref>
+      <Link href="/legal/privacy" passHref>
         <a target="_blank" rel="noopener noreferrer">
           privacy policy
         </a>
