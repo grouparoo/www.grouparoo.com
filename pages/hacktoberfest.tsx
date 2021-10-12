@@ -10,13 +10,11 @@ export default function Hacktoberfest({ pageProps }) {
       <SEO
         canonical={true}
         description="Hacktoberfest 2021"
-        image="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
-        path="/about"
+        image="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhacktoberfest%2Fheader-hacktoberfest2021.png&w=3840&q=75"
+        path="/hacktoberfest"
         title="Grouparoo Hacktoberfest 2021"
       />
       <div
-        id="headline"
-        className="homePageSection"
         style={{
           textAlign: "center",
           paddingTop: 0,
@@ -31,18 +29,19 @@ export default function Hacktoberfest({ pageProps }) {
                 We’re celebrating Open Source with a contest giving away 12
                 raffle prizes for Hacktoberfest! Hacktoberfest is a month-long
                 challenge encouraging Github contributions and collaboration.
-              </h4>{" "}
-              <br></br>
-              <h3>Everyone is invited to participate!</h3> <br></br>
+              </h4>
+              <br />
+              <h3>Everyone is invited to participate!</h3>
+              <br />
             </Col>
-          </Row>{" "}
+          </Row>
           <Row>
             <Col>
               <Image
                 src="/images/hacktoberfest/header-hacktoberfest2021.png"
                 alt="Hacktoberfest Grouparoo 2021"
                 width={1184}
-                height={600}
+                height={590}
               />
             </Col>
           </Row>
@@ -52,11 +51,8 @@ export default function Hacktoberfest({ pageProps }) {
         <Container>
           <Row>
             <Col>
-              <br></br>
-              <br></br>
+              <br />
               <div
-                id="About"
-                className="homePageSection"
                 style={{
                   textAlign: "center",
                   paddingTop: 0,
@@ -65,7 +61,6 @@ export default function Hacktoberfest({ pageProps }) {
               >
                 <h2>About</h2>
               </div>
-              <br></br>
               <p>
                 For an entire month from Oct 12 - Nov 12, we're holding raffles
                 giving away 12 prizes for contributors to Grouparoo. We are
@@ -81,25 +76,21 @@ export default function Hacktoberfest({ pageProps }) {
           </Row>
           <Row>
             <Col>
-              <br></br>{" "}
               <div
-                id="Qualify"
-                className="homePageSection"
                 style={{
                   textAlign: "center",
-                  paddingTop: 0,
+                  paddingTop: 60,
                   paddingBottom: 20,
                 }}
               >
                 <h2>To Qualify for Prizes</h2>
               </div>
-              <br></br>
               <p>
                 Chose one or do both. All pull requests must be merged by the
                 end of day November 12th, to be entered in the contest. Each
                 pull request contribution equates to one raffle entry.
               </p>
-              <br></br>
+              <br />
               <h4>Improve documentation</h4>
               <ul>
                 <li>
@@ -115,7 +106,7 @@ export default function Hacktoberfest({ pageProps }) {
                   .
                 </li>
               </ul>
-              <br></br>
+              <br />
               <h4>Create a destination</h4>
               <ul>
                 <li>
@@ -142,16 +133,14 @@ export default function Hacktoberfest({ pageProps }) {
           </Row>
           <Row>
             <Col>
-              <br></br>{" "}
               <div
-                id="event"
-                className="homePageSection"
                 style={{
                   textAlign: "center",
-                  paddingTop: 0,
+                  paddingTop: 20,
                   paddingBottom: 20,
                 }}
               >
+                <br />
                 <h2>Event</h2>
               </div>
             </Col>
@@ -159,20 +148,18 @@ export default function Hacktoberfest({ pageProps }) {
           <Row>
             <Col sm={3}>
               <div
-                id="Qualify"
-                className="homePageSection"
+                className="d-none d-md-block"
                 style={{
                   textAlign: "center",
                   paddingTop: 0,
-                  paddingBottom: 20,
+                  paddingBottom: 0,
                 }}
               >
-                {" "}
                 <a href="https://www.eventbrite.com/e/grouparoos-hacktoberfest-2021-contest-tickets-190570570707">
                   <Image
                     src="/images/hacktoberfest/event-oct-28.png"
                     alt="October 28, 2021"
-                    width={175}
+                    width={185}
                     height={200}
                   />
                 </a>
@@ -185,38 +172,31 @@ export default function Hacktoberfest({ pageProps }) {
               <p>
                 Ask questions &amp; get helpful tips on how to win!{" "}
                 <a href="https://www.eventbrite.com/e/grouparoos-hacktoberfest-2021-contest-tickets-190570570707">
-                  Register here.{" "}
+                  Register here.
                 </a>
               </p>
             </Col>
           </Row>
           <Row>
             <Col>
-              {" "}
               <div
-                id="community"
-                className="homePageSection"
                 style={{
                   textAlign: "center",
-                  paddingTop: 0,
-                  paddingBottom: 20,
+                  paddingTop: 20,
+                  paddingBottom: 10,
                 }}
               >
-                <br></br>
-
                 <h2>Community</h2>
+                <br />
                 <p>To collaborate or ask for help, connect with us here. </p>
-              </div>{" "}
+              </div>
             </Col>
           </Row>
           <Row>
-            <Col sm={1}>
-              {" "}
+            <Col>
               <div
-                id="twitter"
-                className="homePageSection"
+                className="d-flex justify-content-center"
                 style={{
-                  textAlign: "center",
                   paddingTop: 0,
                   paddingBottom: 20,
                 }}
@@ -229,63 +209,25 @@ export default function Hacktoberfest({ pageProps }) {
                     height={75}
                   />
                 </a>
-              </div>
-            </Col>
-            <Col sm={2}>
-              {" "}
-              <div
-                id="slack"
-                className="homePageSection"
-                style={{
-                  textAlign: "center",
-                  paddingTop: 0,
-                  paddingBottom: 20,
-                }}
-              >
-                {" "}
+                <div style={{ width: 20 }}></div>
                 <a href="https://www.grouparoo.com/chat">
                   <Image
-                    src="/images/hacktoberfest/slack-icon2.png"
+                    src="/images/hacktoberfest/slack-icon.png"
                     alt="Slack"
-                    width={100}
-                    height={100}
-                  />{" "}
+                    width={75}
+                    height={75}
+                  />
                 </a>
-              </div>
-            </Col>
-            <Col sm={1}>
-              {" "}
-              <div
-                id="linkedIn"
-                className="homePageSection"
-                style={{
-                  textAlign: "center",
-                  paddingTop: 0,
-                  paddingBottom: 20,
-                }}
-              >
-                {" "}
+                <div style={{ width: 20 }}></div>
                 <a href="https://www.linkedin.com/company/grouparoo">
                   <Image
                     src="/images/hacktoberfest/linkedin-icon.png"
                     alt="LinkedIn"
                     width={75}
                     height={75}
-                  />{" "}
+                  />
                 </a>
-              </div>
-            </Col>
-            <Col sm={1}>
-              {" "}
-              <div
-                id="Github"
-                className="homePageSection"
-                style={{
-                  textAlign: "center",
-                  paddingTop: 0,
-                  paddingBottom: 20,
-                }}
-              >
+                <div style={{ width: 20 }}></div>
                 <a href="https://github.com/grouparoo">
                   <Image
                     src="/images/hacktoberfest/github-icon.png"
@@ -299,40 +241,36 @@ export default function Hacktoberfest({ pageProps }) {
           </Row>
           <Row>
             <Col>
-              <br></br>{" "}
               <div
-                id="headline"
-                className="homePageSection"
                 style={{
                   textAlign: "center",
-                  paddingTop: 0,
-                  paddingBottom: 20,
+                  paddingTop: 40,
+                  paddingBottom: 10,
                 }}
               >
-                <h1>Prizes</h1>
-                <br></br>
-              </div>{" "}
-              <div
-                id="prizes"
-                className="homePageSection"
-                style={{
-                  textAlign: "center",
-                  paddingTop: 0,
-                  paddingBottom: 20,
-                }}
-              >
-                Contest contributions accepted until Nov. 12th, 2021. Winners
-                will be contacted and awarded mid November.
-                <br></br> <br></br>
+                <h2>Prizes</h2>
+                <br />
+                Contest contributions accepted until Nov. 12th, 2021.
+                <br />
+                Winners will be contacted and awarded mid November.
               </div>
-              <Col> </Col>
-              <Col>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <div
+                className="d-flex justify-content-center"
+                style={{
+                  paddingTop: 0,
+                  paddingBottom: 40,
+                }}
+              >
                 <ul>
                   <li>5 x Grouparoo T-shirts</li>
                   <li>5 x $50 Gift Cards</li>
-                  <li>2 x Grouparoo Hoodies</li> <br></br> <br></br>
-                </ul>{" "}
-              </Col>
+                  <li>2 x Grouparoo Hoodies</li>
+                </ul>
+              </div>
             </Col>
           </Row>
         </Container>
