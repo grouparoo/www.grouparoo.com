@@ -40,7 +40,7 @@ export const Iterable: Plugin = {
       description:
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/iterable/grouparoo-to-iterable.png",
-      imageAlt: "Iterable destination settings",
+      imageAlt: "Iterable Destination settings",
       imageWidth: 1184,
       imageHeight: 879,
     },

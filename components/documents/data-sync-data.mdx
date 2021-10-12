@@ -52,7 +52,7 @@ The opportunity for your data sync App is to minimize what is sent to external t
 
 ### Destinations have nuances
 
-Every destination service is unique. For sanity, you will want to standardize how you interact with each one, but there will always be deviations.
+Every Destination service is unique. For sanity, you will want to standardize how you interact with each one, but there will always be deviations.
 
 The mapping difference is how to project your customers and group into that system. For Mailchimp, this means contacts with merge vars that have tags. Marketo has users with fields on lists. Salesforce has many customized options. Research the available APIs and decide on how the data gets mapped.
 
@@ -62,9 +62,9 @@ Finally, each service has its own approach towards rate limiting. Understand the
 
 ### Record the data flow
 
-Log the values, the time, and the destination of all data leaving your system. This serves many purposes across observability, compliance, and efficiency.
+Log the values, the time, and the Destination of all data leaving your system. This serves many purposes across observability, compliance, and efficiency.
 
 It is inevitable that you will be asked something along the lines of, "Why did I receive this push notification yesterday at noon?
 "Everyone will be perplexed because only customers without a purchase should have been sent that notification and this user clearly has a purchase. A record of the data flow will show you that they moved out of that cohort just after noon. Similar questions are often asked around PII compliance and the log will help.
 
-You will also be able to use the record to be more efficient with your destination systems. For example, if the data this destination is to receive does not change, you can skip the API call and use your rate limit more wisely.
+You will also be able to use the record to be more efficient with your Destination systems. For example, if the data this Destination is to receive does not change, you can skip the API call and use your rate limit more wisely.

@@ -155,7 +155,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <Image
                 centered
                 src="/images/home/hero-diagram.svg"
-                alt="Grouparoo sources and destination connections"
+                alt="Grouparoo sources and Destination connections"
                 width={1260}
                 height={535}
               />
@@ -443,7 +443,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-3.png"
-                alt="Grouparoo destination"
+                alt="Grouparoo Destination"
                 width={650}
                 height={355}
               />
@@ -465,7 +465,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-4.png"
-                alt="Data synced to destination"
+                alt="Data synced to Destination"
                 width={650}
                 height={398}
               />

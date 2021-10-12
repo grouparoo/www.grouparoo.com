@@ -42,7 +42,7 @@ export const Customerio: Plugin = {
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc:
         "/images/home/integrations/customerio/grouparoo-to-customerio.png",
-      imageAlt: "Customer.io destination settings",
+      imageAlt: "Customer.io Destination settings",
       imageWidth: 1253,
       imageHeight: 801,
     },

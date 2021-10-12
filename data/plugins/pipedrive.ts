@@ -41,7 +41,7 @@ export const Pipedrive: Plugin = {
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc:
         "/images/home/integrations/pipedrive/grouparoo-to-pipedrive.png",
-      imageAlt: "Pipedrive destination settings",
+      imageAlt: "Pipedrive Destination settings",
       imageWidth: 1026,
       imageHeight: 801,
     },

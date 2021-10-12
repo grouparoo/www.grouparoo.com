@@ -41,7 +41,7 @@ export const OneSignal: Plugin = {
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc:
         "/images/home/integrations/onesignal/grouparoo-to-onesignal.png",
-      imageAlt: "OneSignal destination settings",
+      imageAlt: "OneSignal Destination settings",
       imageWidth: 1100,
       imageHeight: 801,
     },

@@ -1,16 +1,16 @@
 ---
 title: "Destinations"
-date: "2021-01-05"
-pullQuote: "Build a destination to syndicate customer data to a tool."
+date: "2021-10-12"
+pullQuote: "Build a Destination to syndicate customer data to a tool."
 ---
 
-Grouparoo syndicates customer data to many tools using destinations. This type of [plugin](./plugins) defines an `App` and one more `Connections` with the `export` direction. The same plugin can also make [sources](./sources), but this document focuses on how to make a destination.
+Grouparoo syndicates customer data to many tools using destinations. This type of [plugin](./plugins) defines an `App` and one more `Connections` with the `export` direction. The same plugin can also make [sources](./sources), but this document focuses on how to make a Destination.
 
-A destination will define how Grouparoo should export record property values and group memberships to external tools. What each record and each group maps to varies depending on the tool. For example, there can be a destination that synchronizes all users first name and email address to Mailchimp, tagging them as such if they are in the "High Value" group.
+A Destination will define how Grouparoo should export record property values and group memberships to external tools. What each record and each group maps to varies depending on the tool. For example, there can be a Destination that synchronizes all users first name and email address to Mailchimp, tagging them as such if they are in the "High Value" group.
 
 ## App
 
-An `App` represents the ability to communicate with a destination. For example, this could mean credentials or an API key for a Saas tool.
+An `App` represents the ability to communicate with a Destination. For example, this could mean credentials or an API key for a Saas tool.
 
 The properties ([`PluginApp`](https://docs.grouparoo.com/interfaces/pluginapp.html)) of an `App` are:
 
@@ -27,9 +27,9 @@ The properties ([`PluginApp`](https://docs.grouparoo.com/interfaces/pluginapp.ht
 
 ### Connections
 
-Your plugin can provide multiple types of `Connections` for use within Grouparoo. `Connections` use `Apps` to import or export data. In the destination case, this is about the `export` direction.
+Your plugin can provide multiple types of `Connections` for use within Grouparoo. `Connections` use `Apps` to import or export data. In the Destination case, this is about the `export` direction.
 
-The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/pluginconnection.html)) of a destination `Connection` are:
+The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/pluginconnection.html)) of a Destination `Connection` are:
 
 - **name**: The user-facing name of the connection, like `mailchimp-export` or `zendesk-export`.
 - **direction**: Use `export` for destinations.
@@ -39,23 +39,23 @@ The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/plugi
 
 - **Destination Methods**
 
-  These methods are used in the creation of a destination.
+  These methods are used in the creation of a Destination.
 
   - `destinationOptions `[`DestinationOptionsMethod`](https://docs.grouparoo.com/interfaces/destinationoptionsmethod.html) This allows more dynamic `options` to be specified. For example, it could also use code to provide a set of choices for a list selection. For example, the `mailchimp-export` lets the user pick from existing Mailchimp lists.
-  - `destinationMappingOptions `[`DestinationMappingOptionsMethod`](https://docs.grouparoo.com/interfaces/destinationmappingoptionsmethod.html) Connect to the destination and return the properties that are "required" (often `email` or `external_id`) and those that are "known" (often firstName or custom fields). For example, in the Mailchimp case, `email_address` is required. Asking it via API about the fields returns `FNAME`, `ADDRESS`, and any other custom fields that exist. Grouparoo then allows mapping of these to its properties.
+  - `destinationMappingOptions `[`DestinationMappingOptionsMethod`](https://docs.grouparoo.com/interfaces/destinationmappingoptionsmethod.html) Connect to the Destination and return the properties that are "required" (often `email` or `external_id`) and those that are "known" (often firstName or custom fields). For example, in the Mailchimp case, `email_address` is required. Asking it via API about the fields returns `FNAME`, `ADDRESS`, and any other custom fields that exist. Grouparoo then allows mapping of these to its properties.
 
 - **Data Methods**
 
-  One of these should be defined. The choice is whether or not the destination can export many records at once or it is done one at a time.
+  One of these should be defined. The choice is whether or not the Destination can export many records at once or it is done one at a time.
 
-  - `recordProperty `[`ExportRecordPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordpluginmethod.html) Given the property values and group memberships to export for a single record, send it to the destination. The singular case is much easier to reason about, particularly when there is an error with the destination.
-  - `recordProperties `[`ExportRecordsPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordspluginmethod.html) Given the property values and group memberships to export for many records, send it to the destination. The extra semantics can be more complicated because there can be partial failures. However, if the destination has a "batch" API, it's generally better to use this for performance reasons.
+  - `recordProperty `[`ExportRecordPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordpluginmethod.html) Given the property values and group memberships to export for a single record, send it to the Destination. The singular case is much easier to reason about, particularly when there is an error with the Destination.
+  - `recordProperties `[`ExportRecordsPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordspluginmethod.html) Given the property values and group memberships to export for many records, send it to the Destination. The extra semantics can be more complicated because there can be partial failures. However, if the Destination has a "batch" API, it's generally better to use this for performance reasons.
 
 When defining `methods`, link to the method directly, do not use a string name.
 
 ## Research
 
-The first thing to do is create a document that discusses how the Grouparoo model (Records with properties, Group memberships) map to the destination system. Here are some examples from [Salesforce](https://github.com/grouparoo/grouparoo/issues/649) and [Intercom](https://github.com/grouparoo/grouparoo/issues/1046).
+The first thing to do is create a document that discusses how the Grouparoo model (Records with properties, Group memberships) map to the Destination system. Here are some examples from [Salesforce](https://github.com/grouparoo/grouparoo/issues/649) and [Intercom](https://github.com/grouparoo/grouparoo/issues/1046).
 
 Here are the main things to figure out (and the answer for the _Intercom_ case).
 
@@ -90,8 +90,8 @@ Here are the main things to figure out (and the answer for the _Intercom_ case).
 
 - Anything to learn from other integrations?
 
-  - How does [Segment](https://segment.com/docs/connections/destinations/catalog/) integrate with this destination? _Only handles Users_
-  - How does [Lytics](https://www.lytics.com/integrations/) integrate with this destination? _No info_
+  - How does [Segment](https://segment.com/docs/connections/destinations/catalog/) integrate with this Destination? _Only handles Users_
+  - How does [Lytics](https://www.lytics.com/integrations/) integrate with this Destination? _No info_
 
 ## Destination Strategy
 
@@ -99,7 +99,7 @@ We first need to decide if there is anything that should be configured or it's a
 
 - **Salesforce**
 
-  There are conceptually unlimited mappings with some primary core "user" Object models: Lead and Contact. They could also be literally anything. A common group mapping is to Campaigns, but it can also be very generic. We decided to start with the generic case. There is a highly configurable destination where you pick the Salesforce Object that you want to sync with. We will likely make more targeted destinations (Leads/Contacts in Campaigns) as we learn more.
+  There are conceptually unlimited mappings with some primary core "user" Object models: Lead and Contact. They could also be literally anything. A common group mapping is to Campaigns, but it can also be very generic. We decided to start with the generic case. There is a highly configurable Destination where you pick the Salesforce Object that you want to sync with. We will likely make more targeted destinations (Leads/Contacts in Campaigns) as we learn more.
 
 - **Intercom**
 
@@ -111,13 +111,13 @@ We first need to decide if there is anything that should be configured or it's a
 
 - **Zendesk**
 
-  Many are simple. There is a single destination and no configuration for Zendesk export. The User fields get filled out and they are tagged based on group membership.
+  Many are simple. There is a single Destination and no configuration for Zendesk export. The User fields get filled out and they are tagged based on group membership.
 
 ## Batch Strategy
 
 A key thing to understand is if there is a bulk API or not. In general, it's better to use one if it exists, especially with the helpers that we have created to handle the challenges of more than one record syncing at a time.
 
-The easiest way to get started is to pick the approach and copy an existing plugin. Pick the ones that is closest. For example if you are making another ad platform destination that does batching, [facebook](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/facebook) might be a good bet. Otherwise, here are some simple defaults.
+The easiest way to get started is to pick the approach and copy an existing plugin. Pick the ones that is closest. For example if you are making another ad platform Destination that does batching, [facebook](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/facebook) might be a good bet. Otherwise, here are some simple defaults.
 
 - Single record at a time (`exportRecord`): [hubspot](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/hubspot)
 - Batch multiple records (`exportRecords`): [marketo](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/marketo)
@@ -144,17 +144,17 @@ If there is a `parallelism` requirement, this is implemented in a `parallelism.t
 
 ## Destination Mapping
 
-The next step is to get the mapping going. This means understanding the equivalent of properties in the destination system. Common names are "fields," "attributes," "variables", or "properties."
+The next step is to get the mapping going. This means understanding the equivalent of properties in the Destination system. Common names are "fields," "attributes," "variables", or "properties."
 
-The most common case is that one of these fields are the primary key. This is often "email" or "external_id" or something like that would also be unique in the Grouparoo system. When filling out the destination options, these would be the `required` properties like in [mailchimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/mailchimp/src/lib/shared/destinationMappingOptions.ts#L61).
+The most common case is that one of these fields are the primary key. This is often "email" or "external_id" or something like that would also be unique in the Grouparoo system. When filling out the Destination options, these would be the `required` properties like in [mailchimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/mailchimp/src/lib/shared/destinationMappingOptions.ts#L61).
 
-Sometimes it's the destination system dynamically determining what is required. For example, [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/salesforce/src/lib/export/mapping.ts#L193) fetches the fields of the object and sees that some of them are needed to create an Object. These become required fields.
+Sometimes it's the Destination system dynamically determining what is required. For example, [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/salesforce/src/lib/export/mapping.ts#L193) fetches the fields of the object and sees that some of them are needed to create an Object. These become required fields.
 
 For the rest of the fields, there are three kinds of systems.
 
 - **Static**
 
-  There are a known set of fields and the user (of the destination system) can not add more. In this case, the `destinationMappingOptions.ts` code usually hard codes the `known` fields. For example, [facebook](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/facebook/src/lib/export/fields.ts#L10-L79) has a set of known fields.
+  There are a known set of fields and the user (of the Destination system) can not add more. In this case, the `destinationMappingOptions.ts` code usually hard codes the `known` fields. For example, [facebook](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/facebook/src/lib/export/fields.ts#L10-L79) has a set of known fields.
 
 - **Defined**
 
@@ -164,15 +164,15 @@ For the rest of the fields, there are three kinds of systems.
 
 - **Dynamic**
 
-  A few destination systems allow completely arbitrary data to be stored. It will essentially make a new field the first time the data is sent. It often already has existing fields. In this case, the plugin should set `allowOptionalFromProperties` to `true` like in [sailthru](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/sailthru/src/lib/export/destinationMappingOptions.ts#L15-L18). This gives a new section in the UI for these dynamic mappings.
+  A few Destination systems allow completely arbitrary data to be stored. It will essentially make a new field the first time the data is sent. It often already has existing fields. In this case, the plugin should set `allowOptionalFromProperties` to `true` like in [sailthru](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/sailthru/src/lib/export/destinationMappingOptions.ts#L15-L18). This gives a new section in the UI for these dynamic mappings.
 
-Especially when there are API requests involved, it's important to create a test suite for the destination mapping code like in [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/salesforce/__tests__/export-objects/destination-mapping-options.ts), [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/__tests__/fixtures/destination-mapping-options.js) and others.
+Especially when there are API requests involved, it's important to create a test suite for the Destination mapping code like in [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/salesforce/__tests__/export-objects/destination-mapping-options.ts), [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/__tests__/fixtures/destination-mapping-options.js) and others.
 
-At this point, the UI for the destination mapping should work. Don't save the mapping because `exportRecords` is not ready. However, the mapping fields can be verified.
+At this point, the UI for the Destination mapping should work. Don't save the mapping because `exportRecords` is not ready. However, the mapping fields can be verified.
 
 ## Export Records
 
-The core code of the destination plugin is the `exportRecord` (single) or `exportRecords` (batch) method. It is given the (old and new) properties and the (old and new) group membership. If the record is to be deleted, that is noted. The goal is to sync that information to the destination system.
+The core code of the Destination plugin is the `exportRecord` (single) or `exportRecords` (batch) method. It is given the (old and new) properties and the (old and new) group membership. If the record is to be deleted, that is noted. The goal is to sync that information to the Destination system.
 
 In both approaches (single or batch), the pattern is generally the same.
 
@@ -198,13 +198,13 @@ In both approaches (single or batch), the pattern is generally the same.
 
   Each likely has some formatting constraints. For example, Dates vary between destinations. There is epoch time like in [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportRecord.ts#L277-L287) and ISO strings like in [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/src/lib/export/exportRecords.ts#L166-L175).
 
-  If the user was not found, create it via API. If the user was found, update it via API. In either case, there should be a id in the destination by the end of this step. If it exists, it's best to use an "upsert" API which will use the primary key to create it if necessary. This is more reliable by removing timing risks.
+  If the user was not found, create it via API. If the user was found, update it via API. In either case, there should be a id in the Destination by the end of this step. If it exists, it's best to use an "upsert" API which will use the primary key to create it if necessary. This is more reliable by removing timing risks.
 
   While creating the payload, sometimes you need more information about the remote fields. If needed while exporting records, cache remote fields because they don't change very often. Share cache but force update in `destinationMappingOptions` code so they always get the newest. See code from [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/%40grouparoo/intercom/src/lib/export-users/destinationMappingOptions.ts#L84-L105) for an example.
 
 - **Assign Groups**
 
-  Group memberships often become "lists" or "tags" in the destination system.
+  Group memberships often become "lists" or "tags" in the Destination system.
 
   In some destinations, like [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/export/exportProfile.ts#L77-L94), this is done in the payload while updating or creating the user. This is particularly common in the "tag" case.
 
@@ -238,7 +238,7 @@ If the API supports batching, it's better to try and use that, but it comes with
 
 The best example is the [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/marketo/src/lib/export/exportProfiles.ts) plugin.
 
-There are several methods to implement that more or less represent the destination-specific pieces of the above.
+There are several methods to implement that more or less represent the Destination-specific pieces of the above.
 
 - `getClient` Return a client to use for the rest of the interaction
 - `findAndSetDestinationIds` Fetch using the given keys to associate a `destinationId` for each record
@@ -262,7 +262,7 @@ Plugins are tested using [jest](https://jestjs.io/). The primary way of testing 
 
 A key piece of these suites is using [nock](https://github.com/nock/nock) to record and mock API requests.
 
-Each plugin tends to have a `.env` file (along with and `.env.example`). For example, [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/__tests__/.env.example) has the necessary ENV variables as well as setup instructions for the destination system.
+Each plugin tends to have a `.env` file (along with and `.env.example`). For example, [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/__tests__/.env.example) has the necessary ENV variables as well as setup instructions for the Destination system.
 
 The `nockHelper.ts` file reads these environment variables to be able to [get](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/marketo/__tests__/utils/nockHelper.ts#L14-L28) usable `appOptions` depending on if the test is recording or not. They also [fix up](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/marketo/__tests__/utils/nockHelper.ts#L34-L63) the recorded requests so it doesn't have any sensitive material and can otherwise be replayed.
 
@@ -272,7 +272,7 @@ This can be very tricky. Everything has to be the same when it runs again, so an
 
 At this point, it has been easiest to start with the copied test and iterate, but one at a time (skipping all the rest). Make sure a record can be written, then updated, then groups added, ad then deleted.
 
-It's important to be sure to clean up written records so that the first one in the test really is a new user in the destination system. For example [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/__tests__/integration/export-records.ts#L81-L83) cleans up all test users and lists at the start and end of every run of the suite.
+It's important to be sure to clean up written records so that the first one in the test really is a new user in the Destination system. For example [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/__tests__/integration/export-records.ts#L81-L83) cleans up all test users and lists at the start and end of every run of the suite.
 
 Here is a list of things that are important to test related to exporting records.
 
@@ -291,7 +291,7 @@ Use the current tests as your guide.
 
 ## Example
 
-Here is an example destination `plugin.ts` file.
+Here is an example Destination `plugin.ts` file.
 
 ```typescript
 import { Initializer } from "actionhero";

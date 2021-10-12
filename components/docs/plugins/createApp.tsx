@@ -41,7 +41,7 @@ exports.default = async function buildConfig() {
       <p>
         With Grouparoo, an{" "}
         <Link href="/docs/getting-started/product-concepts#app">App</Link> is
-        how we establish a connection with a source or destination. Add this
+        how we establish a connection with a source or Destination. Add this
         connection by generating an App:
       </p>
       <CodeBlock

@@ -39,7 +39,7 @@ export const Eloqua: Plugin = {
       description:
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/eloqua/grouparoo-to-eloqua.jpg",
-      imageAlt: "Eloqua destination settings",
+      imageAlt: "Eloqua Destination settings",
       imageWidth: 1480,
       imageHeight: 919,
     },

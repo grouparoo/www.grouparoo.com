@@ -56,7 +56,7 @@ See below for more information about this file.
 
 ### List of Available Destination Types
 
-Postgres is just one _type_ of Destination you can create. To see a full list of available types, use the `--list` option, filtered by "destination":
+Postgres is just one _type_ of Destination you can create. To see a full list of available types, use the `--list` option, filtered by "Destination":
 
     grouparoo generate destination --list
 
@@ -67,7 +67,7 @@ This will give you something like the following:
     intercom:destination (id, parent) - Config for a intercom Destination
     iterable:destination (id, parent) - Config for a iterable Destination
     mailchimp:email:destination (id, parent) - Config for a Mailchimp Email Destination
-    mailchimp:id:destination (id, parent) - Config for a Mailchimp ID Destination. Note: Use the email destination unless you know you need this.
+    mailchimp:id:destination (id, parent) - Config for a Mailchimp ID Destination. Note: Use the email Destination unless you know you need this.
     marketo:destination (id, parent) - Config for a marketo Destination
     mysql:destination (id, parent) - Config for a mysql Destination
     postgres:destination (id, parent) - Config for a postgres Destination
@@ -85,7 +85,7 @@ Each Destination has a common set of options, while other options are specific t
 
 - `id`: (**required**) The unique value that defines this Destination.
 - `name`: (**required**) A display name for the Destination. Will be set to the `id` by default.
-- `class`: (**required**) Should be set to `"destination"`.
+- `class`: (**required**) Should be set to `"Destination"`.
 - `type`: (**required**) The type of Destination will vary based on the Generator you're using. You likely don't want to change this value.
 - `appId`: (**required**) The `id` of the App (connection) that the Destination uses.
 - `groupId`: (**required**) The `id` of the group whose members should be exported to the Destination. (This is where Groups in Grouparoo really come in handy.)
@@ -100,7 +100,7 @@ In addition, Destinations have the concept of Mappings and Group Memberships. Se
 
 ### Destination Mappings
 
-Mappings are a series of key-value pairs that tell Grouparoo which Properties to export to the destination for each Record. The structure may vary for each type of Destination, but generally, the keys are the fields in the Destination, while the values are the `id` values for the Properties in Grouparoo.
+Mappings are a series of key-value pairs that tell Grouparoo which Properties to export to the Destination for each Record. The structure may vary for each type of Destination, but generally, the keys are the fields in the Destination, while the values are the `id` values for the Properties in Grouparoo.
 
 Here's an example of a Mailchimp mapping configuration:
 

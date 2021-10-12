@@ -41,7 +41,7 @@ export const Sendgrid: Plugin = {
       description:
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/sendgrid/grouparoo-to-sendgrid.png",
-      imageAlt: "Sendgrid destination settings",
+      imageAlt: "Sendgrid Destination settings",
       imageWidth: 1184,
       imageHeight: 937,
     },
