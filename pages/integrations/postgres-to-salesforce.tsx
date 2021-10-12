@@ -135,7 +135,7 @@ export default function PostgresToSalesforce() {
                   Postgres rows
                 </li>
                 <li>
-                  Update all profileObjects including Contacts, Leads, and
+                  Update all recordObjects including Contacts, Leads, and
                   Individuals in Salesforce automatically{" "}
                 </li>
                 <li>

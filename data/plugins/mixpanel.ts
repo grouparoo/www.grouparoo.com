@@ -28,7 +28,7 @@ export const Mixpanel: Plugin = {
   dataModelTitle: "An Overview of Mixpanel's Data Model and API",
   dataModelDescription: [
     "Trying to figure out how to integrate with Mixpanel? Here’s an overview for how Mixpanel defines customers.",
-    "The core object in Mixpanel is a User Profile. User Profile have one required attribute, which is their email address.",
+    "The core object in Mixpanel is a User Profile. User Profiles have one required attribute, which is their email address.",
     "Mixpanel calls attributes of a User Profile a User Property. Mixpanel pre-defines a number of Fields like $email, $first_name and $last_name for example, but you can define as many Fields as you'd like in the Mixpanel website or straight from Grouparoo.",
   ],
   destinationRecord: "Mixpanel User Profiles",

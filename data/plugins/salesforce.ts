@@ -20,7 +20,7 @@ export const Salesforce: Plugin = {
       "Grouparoo pulls customer data in real-time from all of your data sources and warehouse and keeps that data synced to Salesforce.",
   },
   useCasesList: [
-    "Create and update any profileObject in Salesforce such as Contacts, Leads, or Individuals as new users sign up in your core product",
+    "Create and update any recordObject in Salesforce such as Contacts, Leads, or Individuals as new users sign up in your core product",
     "Update existing Fields on people objects such as email and first name and also create new custom Fields on your own terms without needing engineering help",
     "Automatically create Campaigns or add people to Campaigns in Salesforce",
     "Keep Lead Fields up-to-date automatically",
@@ -29,7 +29,7 @@ export const Salesforce: Plugin = {
   dataModelTitle: "An Overview of Salesforce's Data Model and API",
   dataModelDescription: [
     "Trying to figure out how to integrate your data with Salesforce? Here’s an overview for how Salesforce defines customer objects.",
-    "At its core, Salesforce is a database, and a very flexible one at that. While most of the objects we name here are the primary default ways to use Salesforce, you can map Grouparoo profiles to just about any kind of object in Salesforce.",
+    "At its core, Salesforce is a database, and a very flexible one at that. While most of the objects we name here are the primary default ways to use Salesforce, you can map Grouparoo records to just about any kind of object in Salesforce.",
     "Salesforce has a few primary objects: Leads, Contacts, and Individuals. Each of those three previous objects represents an individual person who might be a lead or a customer. These objects all have two required fields: Email and LastName",
   ],
   destinationRecord: "Salesforce Lead/Contact",
