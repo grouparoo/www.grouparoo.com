@@ -38,7 +38,7 @@ export const Postgres: Plugin = {
         "Since Grouparoo is installed in your cloud infrastructure, you can easily point Grouparoo to any number of Postgres instances you may have running.",
       imageSrc: "/images/home/integrations/postgres/add-postgres-app.png",
       imageAlt: "Grouparoo Postgres settings",
-      imageWidth: 742,
+      imageWidth: 932,
       imageHeight: 506,
     },
     {
@@ -47,8 +47,8 @@ export const Postgres: Plugin = {
         "Grouparoo is low-code, so less technical team members can create new Record Properties without needing to work with engineers. They can pull the data they need when they want.",
       imageSrc: "/images/home/integrations/postgres/postgres-table-mode.png",
       imageAlt: "Grouparoo table source settings",
-      imageWidth: 742,
-      imageHeight: 614,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "But you can also write SQL if you want",
@@ -56,8 +56,8 @@ export const Postgres: Plugin = {
         "Some Record Properties will require joins across tables or more complex queries. Use Grouparoo's Query mode to pull the data you need.",
       imageSrc: "/images/home/integrations/postgres/postgres-query-mode.png",
       imageAlt: "Grouparoo query source settings",
-      imageWidth: 742,
-      imageHeight: 619,
+      imageWidth: 932,
+      imageHeight: 506,
     },
   ],
   configOptions: {

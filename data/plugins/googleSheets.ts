@@ -38,8 +38,8 @@ export const GoogleSheets: Plugin = {
         "By giving only the client email address and the private key your are able to extract data from as much spreadsheet as you want.",
       imageSrc: "/images/home/integrations/google-sheets/google-sheets-app.png",
       imageAlt: "Grouparoo Google Sheets settings",
-      imageWidth: 742,
-      imageHeight: 384,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "Easily connect your Google Sheets data",
@@ -48,8 +48,8 @@ export const GoogleSheets: Plugin = {
       imageSrc:
         "/images/home/integrations/google-sheets/google-sheets-source.png",
       imageAlt: "Grouparoo Google Sheets source settings",
-      imageWidth: 742,
-      imageHeight: 486,
+      imageWidth: 932,
+      imageHeight: 506,
     },
 
     {
@@ -59,8 +59,8 @@ export const GoogleSheets: Plugin = {
       imageSrc:
         "/images/home/integrations/google-sheets/google-sheets-property.png",
       imageAlt: "Grouparoo add property settings",
-      imageWidth: 742,
-      imageHeight: 486,
+      imageWidth: 932,
+      imageHeight: 506,
     },
   ],
   configOptions: {

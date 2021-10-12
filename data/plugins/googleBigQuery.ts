@@ -38,7 +38,7 @@ export const GoogleBigQuery: Plugin = {
         "Since Grouparoo is installed in your cloud infrastructure, you can easily point Grouparoo to any number of BigQuery instances you may have running.",
       imageSrc: "/images/home/integrations/bigquery/add-bigquery-app.png",
       imageAlt: "Grouparoo BigQuery settings",
-      imageWidth: 742,
+      imageWidth: 932,
       imageHeight: 506,
     },
     {
@@ -47,7 +47,7 @@ export const GoogleBigQuery: Plugin = {
         "Grouparoo is low-code, so less technical team members can create new Record Properties without needing to work with engineers. They can pull the data they need when they want.",
       imageSrc: "/images/home/integrations/bigquery/bigquery-table-mode.png",
       imageAlt: "Grouparoo table source settings",
-      imageWidth: 742,
+      imageWidth: 932,
       imageHeight: 506,
     },
     {
@@ -56,7 +56,7 @@ export const GoogleBigQuery: Plugin = {
         "Some Record Properties will require joins across tables or more complex queries. Use Grouparoo's Query mode to pull the data you need.",
       imageSrc: "/images/home/integrations/bigquery/bigquery-query-mode.png",
       imageAlt: "Grouparoo query source settings",
-      imageWidth: 742,
+      imageWidth: 932,
       imageHeight: 506,
     },
   ],

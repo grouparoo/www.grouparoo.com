@@ -41,8 +41,8 @@ export const Mongo: Plugin = {
         "Since Grouparoo is installed in your cloud infrastructure, you can easily point Grouparoo to any number of MongoDB instances you may have running.",
       imageSrc: "/images/home/integrations/mongo/add-mongo-app.png",
       imageAlt: "Grouparoo MongoDB settings",
-      imageWidth: 742,
-      imageHeight: 696,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:
@@ -51,8 +51,8 @@ export const Mongo: Plugin = {
         "Grouparoo is low-code, so less technical team members can create new Record Properties without needing to work with engineers. They can pull the data they need when they want.",
       imageSrc: "/images/home/integrations/mongo/mongo-table-mode.png",
       imageAlt: "MongoDB table source",
-      imageWidth: 742,
-      imageHeight: 757,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "But you can also write MongoDB queries if you want",
@@ -60,8 +60,8 @@ export const Mongo: Plugin = {
         "Some Record Properties will require aggregations across collections or more complex queries. Use Grouparoo's Query mode to pull the data you need.",
       imageSrc: "/images/home/integrations/mongo/mongo-query-mode.png",
       imageAlt: "MongoDB query source",
-      imageWidth: 742,
-      imageHeight: 645,
+      imageWidth: 932,
+      imageHeight: 506,
     },
   ],
   configOptions: {
@@ -90,7 +90,7 @@ export const Mongo: Plugin = {
           _id: 1,
         },
       },
-    ], 
+    ],
     propertyId: "userId"
   }
 }`,

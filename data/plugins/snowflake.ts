@@ -38,7 +38,7 @@ export const Snowflake: Plugin = {
         "Since Grouparoo is installed in your cloud infrastructure, you can easily point Grouparoo to any number of Snowflake instances you may have running.",
       imageSrc: "/images/home/integrations/snowflake/add-snowflake-app.png",
       imageAlt: "Grouparoo Snowflake settings",
-      imageWidth: 742,
+      imageWidth: 932,
       imageHeight: 506,
     },
     {
@@ -47,8 +47,8 @@ export const Snowflake: Plugin = {
         "Grouparoo is low-code, so less technical team members can create new Record Properties without needing to work with engineers. They can pull the data they need when they want.",
       imageSrc: "/images/home/integrations/snowflake/snowflake-table-mode.png",
       imageAlt: "Grouparoo table source settings",
-      imageWidth: 742,
-      imageHeight: 495,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "But you can also write SQL if you want",
@@ -56,8 +56,8 @@ export const Snowflake: Plugin = {
         "Some Record Properties will require joins across tables or more complex queries. Use Grouparoo's Query mode to pull the data you need.",
       imageSrc: "/images/home/integrations/snowflake/snowflake-query-mode.png",
       imageAlt: "Grouparoo query source settings",
-      imageWidth: 742,
-      imageHeight: 492,
+      imageWidth: 932,
+      imageHeight: 506,
     },
   ],
   configOptions: {
@@ -89,7 +89,7 @@ export const Snowflake: Plugin = {
   },
   queryScheduleAlternativeExample: `{
   options: {
-    query: "SELECT ID FROM USERS WHERE UPDATED_AT >= (NOW() - INTERVAL '2 day')", 
+    query: "SELECT ID FROM USERS WHERE UPDATED_AT >= (NOW() - INTERVAL '2 day')",
     propertyId: "userId"
   }
 }`,

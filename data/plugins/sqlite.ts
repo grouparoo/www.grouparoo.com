@@ -38,8 +38,8 @@ export const SQLite: Plugin = {
         "Since Grouparoo is installed in your cloud infrastructure, you can easily point Grouparoo to any number of SQLite instances you may have running.",
       imageSrc: "/images/home/integrations/sqlite/add-sqlite-app.png",
       imageAlt: "Grouparoo SQLite settings",
-      imageWidth: 742,
-      imageHeight: 426,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "Define Record Properties without needing to write SQL queries",
@@ -47,8 +47,8 @@ export const SQLite: Plugin = {
         "Grouparoo is low-code, so less technical team members can create new Record Properties without needing to work with engineers. They can pull the data they need when they want.",
       imageSrc: "/images/home/integrations/sqlite/sqlite-table-mode.png",
       imageAlt: "Grouparoo table source settings",
-      imageWidth: 742,
-      imageHeight: 842,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "But you can also write SQL if you want",
@@ -56,8 +56,8 @@ export const SQLite: Plugin = {
         "Some Record Properties will require joins across tables or more complex queries. Use Grouparoo's Query mode to pull the data you need.",
       imageSrc: "/images/home/integrations/sqlite/sqlite-query-mode.png",
       imageAlt: "Grouparoo query source settings",
-      imageWidth: 742,
-      imageHeight: 623,
+      imageWidth: 932,
+      imageHeight: 506,
     },
   ],
   configOptions: {

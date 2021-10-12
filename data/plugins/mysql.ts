@@ -38,7 +38,7 @@ export const MySQL: Plugin = {
         "Since Grouparoo is installed in your cloud infrastructure, you can easily point Grouparoo to any number of MySQL instances you may have running.",
       imageSrc: "/images/home/integrations/mysql/add-mysql-app.png",
       imageAlt: "Grouparoo MySQL settings",
-      imageWidth: 742,
+      imageWidth: 932,
       imageHeight: 506,
     },
     {
@@ -47,8 +47,8 @@ export const MySQL: Plugin = {
         "Grouparoo is low-code, so less technical team members can create new Record Properties without needing to work with engineers. They can pull the data they need when they want.",
       imageSrc: "/images/home/integrations/mysql/mysql-table-mode.png",
       imageAlt: "MySQL table source",
-      imageWidth: 742,
-      imageHeight: 806,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "But you can also write SQL if you want",
@@ -56,7 +56,7 @@ export const MySQL: Plugin = {
         "Some Record Properties will require joins across tables or more complex queries. Use Grouparoo's Query mode to pull the data you need.",
       imageSrc: "/images/home/integrations/mysql/mysql-query-mode.png",
       imageAlt: "MySQL query source",
-      imageWidth: 742,
+      imageWidth: 932,
       imageHeight: 506,
     },
   ],
