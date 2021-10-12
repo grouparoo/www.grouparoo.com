@@ -202,7 +202,7 @@ A Query Source enables you to pull data from one or more tables by writing custo
 
 ### Add SQLite Users Table Source and Properties
 
-Let's first see what options we have available to us with the table source template:
+Let's first see what options we have available to us with the Table Source template:
 
     $ grouparoo generate sqlite:table:source --describe
 
@@ -222,7 +222,7 @@ Let's first see what options we have available to us with the table source templ
       * mapping - The Mapping between a column in this table and a Grouparoo Property, e.g: `--mapping "id=user_id"`
       * with - The names of the columns to create properties from, e.g: `--with users,id,first_name,last_name`. Defaults to '*'
 
-There's a lot going on here. That's because the table source Generator is pretty smart and can actually generate a handful of Properties for us, too! Otherwise we'd have to create these Properties individually. Let's do that. From our database, let's create a source with an `id` of `users` that pulls `email`, `first_name`, `last_name`, and `language` from the database.
+There's a lot going on here. That's because the Table Source Generator is pretty smart and can actually generate a handful of Properties for us, too! Otherwise we'd have to create these Properties individually. Let's do that. From our database, let's create a source with an `id` of `users` that pulls `email`, `first_name`, `last_name`, and `language` from the database.
 
     $ grouparoo generate sqlite:table:source users --parent product_db --from users --high-water-mark updated_at --with id,email,first_name,last_name,language --mapping 'id=user_id'
 

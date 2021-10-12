@@ -50,7 +50,7 @@ export const Mongo: Plugin = {
       description:
         "Grouparoo is low-code, so less technical team members can create new Record Properties without needing to work with engineers. They can pull the data they need when they want.",
       imageSrc: "/images/home/integrations/mongo/mongo-table-mode.png",
-      imageAlt: "MongoDB table source",
+      imageAlt: "MongoDB Table Source",
       imageWidth: 932,
       imageHeight: 506,
     },
