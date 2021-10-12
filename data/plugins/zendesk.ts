@@ -51,8 +51,8 @@ export const Zendesk: Plugin = {
       description: "Keep customer data accurate and up-to-date in Zendesk",
       imageSrc: "/images/home/integrations/zendesk/zendesk-users.png",
       imageAlt: "Users in Zendesk",
-      imageWidth: 742,
-      imageHeight: 432,
+      imageWidth: 932,
+      imageHeight: 506,
     },
   ],
   otherPluginsHeading:

@@ -407,7 +407,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-1.png"
                 alt="Grouparoo Record"
-                width={650}
+                width={733}
                 height={398}
               />
             </Col>
@@ -426,8 +426,8 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
-                width={650}
-                height={396}
+                width={733}
+                height={398}
               />
             </Col>
           </Row>
@@ -444,8 +444,8 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-3.png"
                 alt="Grouparoo Destination"
-                width={650}
-                height={355}
+                width={733}
+                height={398}
               />
             </Col>
           </Row>
@@ -466,7 +466,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-4.png"
                 alt="Data synced to Destination"
-                width={650}
+                width={733}
                 height={398}
               />
             </Col>

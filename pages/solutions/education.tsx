@@ -167,7 +167,7 @@ export default function Education() {
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-1.png"
                 alt="Grouparoo Record"
-                width={650}
+                width={733}
                 height={398}
               />
             </Col>
@@ -186,8 +186,8 @@ export default function Education() {
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
-                width={650}
-                height={396}
+                width={733}
+                height={398}
               />
             </Col>
           </Row>
@@ -206,8 +206,8 @@ export default function Education() {
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-3.png"
                 alt="Grouparoo Destination"
-                width={650}
-                height={355}
+                width={733}
+                height={398}
               />
             </Col>
           </Row>
@@ -225,7 +225,7 @@ export default function Education() {
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-4.png"
                 alt="Data synced to Destination"
-                width={650}
+                width={733}
                 height={398}
               />
             </Col>
@@ -285,28 +285,27 @@ export default function Education() {
                 <Col md={8}>
                   <Tab.Content style={{ textAlign: "center" }}>
                     <Tab.Pane eventKey="email-marketing">
-                      <Image
-                        centered
+                      <ImageInBrowserFrame
                         src="/images/home/retention-marketing.png"
                         alt="Sync groups to destinations"
-                        width={776}
+                        width={885}
                         height={480}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="customer-support">
-                      <Image
-                        src="/images/home/solutions/healthcare/zendesk-users.png"
+                      <ImageInBrowserFrame
+                        src="/images/home/integrations/zendesk/zendesk-users.png"
                         alt="Users in Zendesk"
-                        width={730}
-                        height={425}
+                        width={885}
+                        height={480}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="product-customization">
-                      <Image
-                        src="/images/home/solutions/healthcare/in-product.png"
+                      <ImageInBrowserFrame
+                        src="/images/home/integrations/zendesk/grouparoo-to-zendesk.png"
                         alt="Map data to product database"
-                        width={730}
-                        height={492}
+                        width={885}
+                        height={480}
                       />
                     </Tab.Pane>
                   </Tab.Content>
@@ -326,12 +325,11 @@ export default function Education() {
                 </p>
               </Col>
               <Col md={6}>
-                <Image
-                  centered
+                <ImageInBrowserFrame
                   src="/images/home/retention-marketing.png"
                   alt="Sync groups to destinations"
-                  width={300}
-                  height={197}
+                  width={400}
+                  height={217}
                 />
               </Col>
             </Row>
@@ -347,11 +345,11 @@ export default function Education() {
                 </p>
               </Col>
               <Col md={6}>
-                <Image
-                  src="/images/home/solutions/healthcare/zendesk-users.png"
+                <ImageInBrowserFrame
+                  src="/images/home/integrations/zendesk/zendesk-users.png"
                   alt="Users in Zendesk"
-                  width={730}
-                  height={175}
+                  width={400}
+                  height={217}
                 />
               </Col>
             </Row>
@@ -367,11 +365,11 @@ export default function Education() {
                 </p>
               </Col>
               <Col md={6}>
-                <Image
-                  src="/images/home/solutions/healthcare/in-product.png"
+                <ImageInBrowserFrame
+                  src="/images/home/integrations/zendesk/grouparoo-to-zendesk.png"
                   alt="Map data to product database"
-                  width={300}
-                  height={202}
+                  width={400}
+                  height={217}
                 />
               </Col>
             </Row>
