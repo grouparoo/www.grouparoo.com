@@ -19,7 +19,7 @@
   },
   {
     "name": "install [package]",
-    "description": "Install a grouparoo plugin (via npm install) and enable it.  Use package@version for a specific version or tag",
+    "description": "Install a grouparoo Plugin (via npm install) and enable it.  Use package@version for a specific version or tag",
     "example": "",
     "inputs": {}
   },

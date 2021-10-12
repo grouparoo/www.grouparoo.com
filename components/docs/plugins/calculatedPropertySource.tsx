@@ -75,7 +75,7 @@ function customFunction() {
       </h2>
       <p>
         The Calculated Property Source is a specific type of Source. The focus
-        of the Calculated Property plugin is the ability generate custom
+        of the Calculated Property Plugin is the ability generate custom
         properties based upon a JavaScript function in the Property
         configuration.
       </p>

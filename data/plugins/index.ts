@@ -148,7 +148,7 @@ export function getPluginDisplay(pluginSlug: string): PluginDisplay {
   }
   const pluginData = PluginData.find(({ slug }) => slug === pluginSlug);
   if (!pluginData) {
-    throw new Error(`Slug (${pluginSlug}) not found in plugin data.`);
+    throw new Error(`Slug (${pluginSlug}) not found in Plugin data.`);
   }
   const { name, slug, logo, toDisplay } = pluginData;
 

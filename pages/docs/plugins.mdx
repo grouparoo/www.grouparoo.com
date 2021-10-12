@@ -1,6 +1,6 @@
 ---
 title: "Grouparoo Plugins"
-date: "2021-02-10"
+date: "2021-10-12"
 section: "installation"
 pullQuote: "Grouparoo can be extended with Plugins to add more Apps, Sources, and Destinations."
 ---
@@ -9,7 +9,7 @@ Grouparoo can be extended with Plugins to add more Apps, Sources, and Destinatio
 
 ## Installing a Plugin
 
-The Grouparoo command line tool is used to add a plugin to your project via `grouparoo install [package]`. You can learn more about the `grouparoo install` command [here](/docs/cli/setup). So, if you wanted to install the `@grouparoo/mysql` plugin, you would run:
+The Grouparoo command line tool is used to add a Plugin to your project via `grouparoo install [package]`. You can learn more about the `grouparoo install` command [here](/docs/cli/setup). So, if you wanted to install the `@grouparoo/mysql` Plugin, you would run:
 
 ```bash
 grouparoo install @grouparoo/mysql # install the latest version
@@ -17,7 +17,7 @@ grouparoo install @grouparoo/mysql # install the latest version
 
 That's it!
 
-Please ensure that the versions of your plugins match the version of `@grouparoo/core` that you are using **exactly** in your `package.json` file. If you need to install a specific version of a plugin to match `@grouparoo/core`, you can:
+Please ensure that the versions of your plugins match the version of `@grouparoo/core` that you are using **exactly** in your `package.json` file. If you need to install a specific version of a Plugin to match `@grouparoo/core`, you can:
 
 ```bash
 grouparoo install @grouparoo/mysql@v1.2.3 # install v1.2.3 specifically
@@ -38,7 +38,7 @@ While many Grouparoo plugins are available for free via an open-source license, 
 
 ### Obtaining Paid Plugins
 
-To install a paid plugin, you will need to authenticate to the npm registry to download and install the new package. Grouparoo will provide you with a "npm access token" which will grant you access to the paid Grouparoo plugins you have purchased for your organization. For every computer that needs access to those plugins (developer machine, CI, build server, etc) you will need to provide that token to npm in one of the following ways:
+To install a paid Plugin, you will need to authenticate to the npm registry to download and install the new package. Grouparoo will provide you with a "npm access token" which will grant you access to the paid Grouparoo plugins you have purchased for your organization. For every computer that needs access to those plugins (developer machine, CI, build server, etc) you will need to provide that token to npm in one of the following ways:
 
 Create a new `.npmrc` file in your Grouparoo project. This can be checked into your project and Docker images if kept private. The contents of the file will look like:
 
@@ -95,4 +95,4 @@ Note: Please ensure that you are only have one version of the `@grouparoo/ui-*` 
 
 ## Creating your own Plugins
 
-Being an open-source project, Grouparoo makes it easy to create your own plugins as well! You can learn more from the [plugin development docs](/docs/development/plugins).
+Being an open-source project, Grouparoo makes it easy to create your own plugins as well! You can learn more from the [Plugin development docs](/docs/development/plugins).

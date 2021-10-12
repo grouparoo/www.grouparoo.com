@@ -79,7 +79,7 @@ export const Redshift: Plugin = {
       default: "public",
       required: false,
       description:
-        "Schema used to read tables. The plugin works inside a single schema.",
+        "Schema used to read tables. The Plugin works inside a single schema.",
     },
     user: {
       required: false,
