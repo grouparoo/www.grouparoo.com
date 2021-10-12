@@ -164,7 +164,7 @@ export default function Healthcare() {
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-1.png"
-                alt="Grouparoo record"
+                alt="Grouparoo Record"
                 width={650}
                 height={398}
               />

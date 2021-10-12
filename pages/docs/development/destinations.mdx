@@ -6,7 +6,7 @@ pullQuote: "Build a Destination to syndicate customer data to a tool."
 
 Grouparoo syndicates customer data to many tools using destinations. This type of [Plugin](./plugins) defines an `App` and one more `Connections` with the `export` direction. The same Plugin can also make [sources](./sources), but this document focuses on how to make a Destination.
 
-A Destination will define how Grouparoo should export record property values and Group memberships to external tools. What each record and each Group maps to varies depending on the tool. For example, there can be a Destination that synchronizes all users first name and email address to Mailchimp, tagging them as such if they are in the "High Value" Group.
+A Destination will define how Grouparoo should export Record property values and Group memberships to external tools. What each Record and each Group maps to varies depending on the tool. For example, there can be a Destination that synchronizes all users first name and email address to Mailchimp, tagging them as such if they are in the "High Value" Group.
 
 ## App
 
@@ -48,7 +48,7 @@ The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/plugi
 
   One of these should be defined. The choice is whether or not the Destination can export many records at once or it is done one at a time.
 
-  - `recordProperty `[`ExportRecordPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordpluginmethod.html) Given the property values and Group memberships to export for a single record, send it to the Destination. The singular case is much easier to reason about, particularly when there is an error with the Destination.
+  - `recordProperty `[`ExportRecordPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordpluginmethod.html) Given the property values and Group memberships to export for a single Record, send it to the Destination. The singular case is much easier to reason about, particularly when there is an error with the Destination.
   - `recordProperties `[`ExportRecordsPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordspluginmethod.html) Given the property values and Group memberships to export for many records, send it to the Destination. The extra semantics can be more complicated because there can be partial failures. However, if the Destination has a "batch" API, it's generally better to use this for performance reasons.
 
 When defining `methods`, link to the method directly, do not use a string name.
@@ -61,9 +61,9 @@ Here are the main things to figure out (and the answer for the _Intercom_ case).
 
 - What do records map to? _Contacts_
 
-  - What will the primary key be to look up a record? _email or externalId_
-  - What does deleting a record mean? _Archive or permanently delete_
-  - API to look up record by primary key(s)
+  - What will the primary key be to look up a Record? _email or externalId_
+  - What does deleting a Record mean? _Archive or permanently delete_
+  - API to look up Record by primary key(s)
   - APIs to create, update (ideally upsert)
   - API to delete
 
@@ -115,11 +115,11 @@ We first need to decide if there is anything that should be configured or it's a
 
 ## Batch Strategy
 
-A key thing to understand is if there is a bulk API or not. In general, it's better to use one if it exists, especially with the helpers that we have created to handle the challenges of more than one record syncing at a time.
+A key thing to understand is if there is a bulk API or not. In general, it's better to use one if it exists, especially with the helpers that we have created to handle the challenges of more than one Record syncing at a time.
 
 The easiest way to get started is to pick the approach and copy an existing Plugin. Pick the ones that is closest. For example if you are making another ad platform Destination that does batching, [facebook](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/facebook) might be a good bet. Otherwise, here are some simple defaults.
 
-- Single record at a time (`exportRecord`): [hubspot](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/hubspot)
+- Single Record at a time (`exportRecord`): [hubspot](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/hubspot)
 - Batch multiple records (`exportRecords`): [marketo](https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/marketo)
 
 After copying, change the names in the `plugin.ts`, `package.json`, and the directory structure to the one you are making. Look for an icon with a license that we can use and note the attribution in the `README.md`. The icon should be square and 256+ pixels. Transparent backgrounds are preferred.
@@ -172,7 +172,7 @@ At this point, the UI for the Destination Mapping should work. Don't save the Ma
 
 ## Export Records
 
-The core code of the Destination Plugin is the `exportRecord` (single) or `exportRecords` (batch) method. It is given the (old and new) properties and the (old and new) Group membership. If the record is to be deleted, that is noted. The goal is to sync that information to the Destination system.
+The core code of the Destination Plugin is the `exportRecord` (single) or `exportRecords` (batch) method. It is given the (old and new) properties and the (old and new) Group membership. If the Record is to be deleted, that is noted. The goal is to sync that information to the Destination system.
 
 In both approaches (single or batch), the pattern is generally the same.
 
@@ -186,7 +186,7 @@ In both approaches (single or batch), the pattern is generally the same.
 
 - **Find existing users**
 
-  See if the user(s) already exist in the system. This often uses a combination of the old and new record properties. For example, [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportRecord.ts#L173-L252) uses all the primary key data to search for a user and then prioritizes the response.
+  See if the user(s) already exist in the system. This often uses a combination of the old and new Record properties. For example, [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportRecord.ts#L173-L252) uses all the primary key data to search for a user and then prioritizes the response.
 
 - **Delete if requested**
 
@@ -212,25 +212,25 @@ In both approaches (single or batch), the pattern is generally the same.
 
   Sometimes the API only allows the full list. This gets a bit more complicated because it involves cache management of the whole list, but use examples like [hubspot](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/hubspot/src/lib/export/listMethods.ts#L30-L44).
 
-  When you get the id of the Group equivalent, then add the user to it. For many destinations, this will take one API request per list. To minimize API calls, if the data of their current membership is on the user record or can be fetched, only update where needed. See code from [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportProfile.ts#L448-L492).
+  When you get the id of the Group equivalent, then add the user to it. For many destinations, this will take one API request per list. To minimize API calls, if the data of their current membership is on the user Record or can be fetched, only update where needed. See code from [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportProfile.ts#L448-L492).
 
   When removing from a list, it is ok if the user was never in it to begin with. Try to catch this specific error.
 
 - **Return**
 
-  The return value for a single record is an object with a `success` key as `true` or `false`. To help with rate limiting, the method can also return a `retryIn` key with a number of milliseconds to wait before trying again.
+  The return value for a single Record is an object with a `success` key as `true` or `false`. To help with rate limiting, the method can also return a `retryIn` key with a number of milliseconds to wait before trying again.
 
-  In the single record case, an `error` can be returned and should be a Javascript `Error`. If the `error` has a property called `errorLevel` (set to `error` or `info`), that will be taken into consideration. An `info` error will not retry, will not show up in Resque errors, but the message will be shown. A regular error (returned or thrown) will have the whole method be retried later, with exponential backoff.
+  In the single Record case, an `error` can be returned and should be a Javascript `Error`. If the `error` has a property called `errorLevel` (set to `error` or `info`), that will be taken into consideration. An `info` error will not retry, will not show up in Resque errors, but the message will be shown. A regular error (returned or thrown) will have the whole method be retried later, with exponential backoff.
 
-  The case is similar for the batch case, except that it an `errors` array with a required `recordGuid` key that notes which record had the issue.
+  The case is similar for the batch case, except that it an `errors` array with a required `recordGuid` key that notes which Record had the issue.
 
 There should be a significant amount of tests related to exporting records.
 
 ### Single
 
-The single case makes things fairly straightforward. The system knows which record it's dealing with, so any error thrown or returned relates to retrying that later. It's already fairly inefficient, but that makes searching much easier because there is no correlation to be done between results and records.
+The single case makes things fairly straightforward. The system knows which Record it's dealing with, so any error thrown or returned relates to retrying that later. It's already fairly inefficient, but that makes searching much easier because there is no correlation to be done between results and records.
 
-Most of the examples above were from the single record case. They tend to be a single function or one level deep with a method for each of the above steps. If there is an error in any of them, it does a `throw`.
+Most of the examples above were from the single Record case. They tend to be a single function or one level deep with a method for each of the above steps. If there is an error in any of them, it does a `throw`.
 
 ### Batch
 
@@ -241,7 +241,7 @@ The best example is the [marketo](https://github.com/grouparoo/grouparoo/blob/c5
 There are several methods to implement that more or less represent the Destination-specific pieces of the above.
 
 - `getClient` Return a client to use for the rest of the interaction
-- `findAndSetDestinationIds` Fetch using the given keys to associate a `destinationId` for each record
+- `findAndSetDestinationIds` Fetch using the given keys to associate a `destinationId` for each Record
 - `deleteByDestinationIds` Delete the given `destinationId` values
 - `updateByDestinationIds` Update the given records with their `destinationId` values
 - `createByForeignKeyAndSetDestinationIds` Create the given records and associate a `destinationId`
@@ -250,7 +250,7 @@ There are several methods to implement that more or less represent the Destinati
 - `normalizeForeignKeyValue` Gives the opportunity to fix up the email or externalId
 - `normalizeGroupName` Gives the opportunity to fix up the Group name (e.g. lowercase and remove tag spaces)
 
-Within any of these methods, an `error` or `skipMessage` (info error) can be associated with a record. That record will be omitted from subsequent steps.
+Within any of these methods, an `error` or `skipMessage` (info error) can be associated with a Record. That Record will be omitted from subsequent steps.
 
 ## Iteration and Testing
 
@@ -260,7 +260,7 @@ Plugins are tested using [jest](https://jestjs.io/). The primary way of testing 
 
 ### Nock
 
-A key piece of these suites is using [nock](https://github.com/nock/nock) to record and mock API requests.
+A key piece of these suites is using [nock](https://github.com/nock/nock) to Record and mock API requests.
 
 Each Plugin tends to have a `.env` file (along with and `.env.example`). For example, [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/__tests__/.env.example) has the necessary ENV variables as well as setup instructions for the Destination system.
 
@@ -270,7 +270,7 @@ This can be very tricky. Everything has to be the same when it runs again, so an
 
 ### Process
 
-At this point, it has been easiest to start with the copied test and iterate, but one at a time (skipping all the rest). Make sure a record can be written, then updated, then groups added, ad then deleted.
+At this point, it has been easiest to start with the copied test and iterate, but one at a time (skipping all the rest). Make sure a Record can be written, then updated, then groups added, ad then deleted.
 
 It's important to be sure to clean up written records so that the first one in the test really is a new user in the Destination system. For example [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/__tests__/integration/export-records.ts#L81-L83) cleans up all test users and lists at the start and end of every run of the suite.
 

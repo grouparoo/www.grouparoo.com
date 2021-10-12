@@ -21,7 +21,7 @@ This document is place to centrally describe how all of this works!
 
 ### Records and Record Properties
 
-The main object in Grouparoo is a `Record`. A record by itself is simply an `id` and the time it was created and last updated. It is a "join table" to collect many `Record Properties`, which act as a key-value store for the data about `Records`. For example, a common `Record Property` would be `key='email', value='evan@grouparoo.com', type='string'`. We also store when each `Record Property` was created and updated.
+The main object in Grouparoo is a `Record`. A Record by itself is simply an `id` and the time it was created and last updated. It is a "join table" to collect many `Record Properties`, which act as a key-value store for the data about `Records`. For example, a common `Record Property` would be `key='email', value='evan@grouparoo.com', type='string'`. We also store when each `Record Property` was created and updated.
 
 ### Groups
 
@@ -72,9 +72,9 @@ Each `App` works a little differently, but you will be asked what to check for a
 
 Imports are created when a `Schedules'` `Run` finds new or updated data. Either way, an `Import` tells Grouparoo that something has changed that we should take note of.
 
-Most `Imports` trigger the update of a record. An `Import` can be as simple as `{user_id: 3, firstName: 'Evan'}`. This tells us that we should update the `Record` we have for user #3, and if we don't have a `Record` for User #3, we should create one.
+Most `Imports` trigger the update of a Record. An `Import` can be as simple as `{user_id: 3, firstName: 'Evan'}`. This tells us that we should update the `Record` we have for user #3, and if we don't have a `Record` for User #3, we should create one.
 
-We know that the `Import`'s data we get should be saved to the related record if:
+We know that the `Import`'s data we get should be saved to the related Record if:
 
 1. The `Import`'s payload contains a unique `Record Property` as defined by the `Properties`
 2. The other data key-value pairs are also defined by the `Properties`.
@@ -83,7 +83,7 @@ We know that the `Import`'s data we get should be saved to the related record if
 
 ### Record Hydration
 
-Any time an `Import` is recorded by Grouparoo, and that `Import` can be linked to a `Record`, Grouparoo will fully update that record, checking all the `Apps` that are connected to it via `Record Properties` and asking for new data. You can see which `Record Properties` should be updated by checking if they are in the pending state or not. In this way, you can be sure that your `Records` are always up to date, and we can recover quickly from any new or missed data. We call this step "Record Hydration".
+Any time an `Import` is recorded by Grouparoo, and that `Import` can be linked to a `Record`, Grouparoo will fully update that Record, checking all the `Apps` that are connected to it via `Record Properties` and asking for new data. You can see which `Record Properties` should be updated by checking if they are in the pending state or not. In this way, you can be sure that your `Records` are always up to date, and we can recover quickly from any new or missed data. We call this step "Record Hydration".
 
 This means that if an `Import` comes in from the "MySQL-Datawarehouse:purchase" `Import Schedules`, Grouparoo will automatically check all `Record Properties`, including "ltv", "first_name" and everything else.
 

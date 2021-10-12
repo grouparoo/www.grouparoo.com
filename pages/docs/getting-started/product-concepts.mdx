@@ -92,7 +92,7 @@ There are 2 types of groups: [**Calculated**](#calculated-group) and [**Manual**
 
 ## High Watermark
 
-A High Watermark is a value used for comparison during [Runs](#run) that are [scheduled](#schedule). Grouparoo will only import items where the High Watermark column is greater than the largest previously imported High Watermark value. For example, let's say you use `updated_at` as your High Watermark. Grouparoo will run an import and record the highest value from that column (presumably from the most recently updated record). The next time the import runs, Grouparoo will only consider records where `updated_at` is greater than the previous High Watermark value. And it doesn't have to be a date, it just has to be comparable. Another example would be a numeric field, like `version`, in which the value is incremented when changes are made to the record in the Source database.
+A High Watermark is a value used for comparison during [Runs](#run) that are [scheduled](#schedule). Grouparoo will only import items where the High Watermark column is greater than the largest previously imported High Watermark value. For example, let's say you use `updated_at` as your High Watermark. Grouparoo will run an import and Record the highest value from that column (presumably from the most recently updated Record). The next time the import runs, Grouparoo will only consider records where `updated_at` is greater than the previous High Watermark value. And it doesn't have to be a date, it just has to be comparable. Another example would be a numeric field, like `version`, in which the value is incremented when changes are made to the Record in the Source database.
 
 ## Manual Group
 
@@ -102,7 +102,7 @@ Manual Groups are a type of [Group](#group) that only change when you add or rem
 
 When importing data from a [Source](#source), Grouparoo needs to know how to relate the data its importing to the [Records](#records) already in Grouparoo. This is what we call a Mapping. It operates like a foreign key in a database.
 
-Consider that you have a [Property](#record-property) called `email`, while your Source has an attribute called `emailAddress`, which is a unique field in that Source. You could map `emailAddress` from your source to `email` in Grouparoo. This tells Grouparoo that when anything changes on the Source, it knows which record to update.
+Consider that you have a [Property](#record-property) called `email`, while your Source has an attribute called `emailAddress`, which is a unique field in that Source. You could map `emailAddress` from your source to `email` in Grouparoo. This tells Grouparoo that when anything changes on the Source, it knows which Record to update.
 
 Every Source needs a Mapping, as Grouparoo must know how to associate imported information.
 
@@ -129,7 +129,7 @@ Records represent individual people. For your specific company or organization, 
 
 ## Record Property
 
-Record Properties are data associated with a record. You can define Record Properties based on data that exists in your data Sources.
+Record Properties are data associated with a Record. You can define Record Properties based on data that exists in your data Sources.
 
 Record Properties are given a specific type, letting us know if they are a `number`, `date`, or `string`. Having a type helps Grouparoo know how to display this data and send it to Destinations.
 

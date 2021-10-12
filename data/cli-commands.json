@@ -208,7 +208,7 @@
       },
       "no-export": {
         "default": false,
-        "description": "Skip exporting the record",
+        "description": "Skip exporting the Record",
         "letter": "n",
         "flag": true
       },
