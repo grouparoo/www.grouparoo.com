@@ -108,7 +108,7 @@ function JobCard({ job }: { job: LeverJob }) {
         </Button>
         <br />
         <br />
-        <Link href="/jobs">
+        <Link href="/about#careers">
           <a>See all open Positions</a>
         </Link>
       </Card.Body>
