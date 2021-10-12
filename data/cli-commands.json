@@ -64,7 +64,7 @@
         "default": false,
         "letter": "l",
         "flag": true,
-        "description": "Display the available config templates to use with config-generate.  You can filter the list of templates by providing a string to match against, ie: `grouparoo generate app --list` to see templates which match \"app\""
+        "description": "Display the available config templates to use with config-generate.  You can Filter the list of templates by providing a string to match against, ie: `grouparoo generate app --list` to see templates which match \"app\""
       },
       "describe": {
         "required": false,

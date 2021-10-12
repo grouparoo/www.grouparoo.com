@@ -289,9 +289,9 @@ mapping: {
 
       <p>
         A {plugin} Table Source also provides the ability to{" "}
-        <Link href="/docs/getting-started/product-concepts#filter">filter</Link>{" "}
+        <Link href="/docs/getting-started/product-concepts#filter">Filter</Link>{" "}
         your data via the <code>filters</code> option. This is a series of rules
-        that will filter data in the database {table} to find the appropriate
+        that will Filter data in the database {table} to find the appropriate
         value for each Record for a given Property.
       </p>
 
