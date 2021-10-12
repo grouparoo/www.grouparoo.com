@@ -55,7 +55,7 @@ export const MySQL: Plugin = {
       description:
         "Some Record Properties will require joins across tables or more complex queries. Use Grouparoo's Query mode to pull the data you need.",
       imageSrc: "/images/home/integrations/mysql/mysql-query-mode.png",
-      imageAlt: "MySQL query source",
+      imageAlt: "MySQL Query Source",
       imageWidth: 932,
       imageHeight: 506,
     },

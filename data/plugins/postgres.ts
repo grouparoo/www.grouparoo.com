@@ -55,7 +55,7 @@ export const Postgres: Plugin = {
       description:
         "Some Record Properties will require joins across tables or more complex queries. Use Grouparoo's Query mode to pull the data you need.",
       imageSrc: "/images/home/integrations/postgres/postgres-query-mode.png",
-      imageAlt: "Grouparoo query source settings",
+      imageAlt: "Grouparoo Query Source settings",
       imageWidth: 932,
       imageHeight: 506,
     },

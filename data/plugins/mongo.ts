@@ -59,7 +59,7 @@ export const Mongo: Plugin = {
       description:
         "Some Record Properties will require aggregations across collections or more complex queries. Use Grouparoo's Query mode to pull the data you need.",
       imageSrc: "/images/home/integrations/mongo/mongo-query-mode.png",
-      imageAlt: "MongoDB query source",
+      imageAlt: "MongoDB Query Source",
       imageWidth: 932,
       imageHeight: 506,
     },

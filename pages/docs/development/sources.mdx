@@ -73,7 +73,7 @@ Most SQL-based sources implement two connections: table and query.
 
 The table source is optimized for the common case where the data to import is a table with a foreign key to a unique Property. An example might be a "purchases" table with a "user_id" column. A simple "users" table with an "id" column also works. In these cases, this source allows the user to sum, count, and perform other operations without writing any SQL. This also makes it each to make schedules and optimize the import speed.
 
-The query source allows someone to write any SQL. It uses a mustache templating system to be able to use another other Property. For example: `SELECT SUM(price) FROM purchases INNER JOIN users ON ... WHERE users.id = {userId}`. This flexibility makes it less performant on large datasets because it fetches Property values one Record at a time.
+The Query Source allows someone to write any SQL. It uses a mustache templating system to be able to use another other Property. For example: `SELECT SUM(price) FROM purchases INNER JOIN users ON ... WHERE users.id = {userId}`. This flexibility makes it less performant on large datasets because it fetches Property values one Record at a time.
 
 Both of these SQL sources tend to recalculate their properties each time a Record change is detected and the Record is being recalculated. This keeps things nice and update-to-date.
 
