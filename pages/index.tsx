@@ -418,7 +418,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <h3 className="homepageBlueH3">Create Groups</h3>
               <p>
                 Point and click to explore segmentation. Find out the size of
-                the group in seconds, not hours. Use your group definitions
+                the Group in seconds, not hours. Use your Group definitions
                 across destinations.
               </p>
             </Col>

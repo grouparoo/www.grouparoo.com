@@ -175,8 +175,8 @@ export default function Healthcare() {
             <Col md={4}>
               <h3 className="homepageBlueH3">Create Groups</h3>
               <p>
-                Point and click segmentation. Find out the size of the group in
-                seconds, not hours. Use your group definitions across
+                Point and click segmentation. Find out the size of the Group in
+                seconds, not hours. Use your Group definitions across
                 destinations.
               </p>
             </Col>

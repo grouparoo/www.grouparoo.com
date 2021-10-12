@@ -16,7 +16,7 @@ const PluginDocsColumnarDestination = ({ plugin }: { plugin: string }) => {
     primaryKey: { description: "The primary key for the specified table." },
     groupsTable: {
       description:
-        "Grouparoo also exports group memberships. This is the table used to export Group data.",
+        "Grouparoo also exports Group memberships. This is the table used to export Group data.",
     },
     groupForeignKey: {
       description:

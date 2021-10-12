@@ -88,7 +88,7 @@ Each Destination has a common set of options, while other options are specific t
 - `class`: (**required**) Should be set to `"Destination"`.
 - `type`: (**required**) The type of Destination will vary based on the Generator you're using. You likely don't want to change this value.
 - `appId`: (**required**) The `id` of the App (connection) that the Destination uses.
-- `groupId`: (**required**) The `id` of the group whose members should be exported to the Destination. (This is where Groups in Grouparoo really come in handy.)
+- `groupId`: (**required**) The `id` of the Group whose members should be exported to the Destination. (This is where Groups in Grouparoo really come in handy.)
 - `mapping`: See below.
 - `destinationGroupMemberships`: See below.
 
@@ -118,7 +118,7 @@ Notice the odd structure of the keys. That's specific to Mailchimp. Each Destina
 
 ### Destination Group Membership
 
-Grouparoo also provides the ability to attach group membership to the exported data. How this looks within the Destination is specific to the Destination. But the shape of the config file largely remains the same. In most Destinations, Destinations Group Memberships become either tags (Mailchimp), lists (Hubspot), or appended as additional properties to the record (Customer.io).
+Grouparoo also provides the ability to attach Group membership to the exported data. How this looks within the Destination is specific to the Destination. But the shape of the config file largely remains the same. In most Destinations, Destinations Group Memberships become either tags (Mailchimp), lists (Hubspot), or appended as additional properties to the record (Customer.io).
 
 `destinationGroupMemberships` are a set of key-value pairs that tell Grouparoo which memberships to publish to the Destination. For example, you may have sent all your users to a Mailchimp Destination, but you wanted to tag high-value customers. That config might look something like this:
 

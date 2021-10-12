@@ -94,7 +94,7 @@ const DataTable = ({ data, heading, eventKey }) => {
                   ("2020-09-01T08:15:00+00:00"){" "}
                 </span>
                 A date passed as YYYY-MM-DD will pass validation, but may result
-                in less accurate group results.
+                in less accurate Group results.
               </Alert>
             ) : null}
             The following operators are available on <code>{heading}</code>{" "}

@@ -6,7 +6,7 @@ pullQuote: "Build a Destination to syndicate customer data to a tool."
 
 Grouparoo syndicates customer data to many tools using destinations. This type of [plugin](./plugins) defines an `App` and one more `Connections` with the `export` direction. The same plugin can also make [sources](./sources), but this document focuses on how to make a Destination.
 
-A Destination will define how Grouparoo should export record property values and group memberships to external tools. What each record and each group maps to varies depending on the tool. For example, there can be a Destination that synchronizes all users first name and email address to Mailchimp, tagging them as such if they are in the "High Value" group.
+A Destination will define how Grouparoo should export record property values and Group memberships to external tools. What each record and each Group maps to varies depending on the tool. For example, there can be a Destination that synchronizes all users first name and email address to Mailchimp, tagging them as such if they are in the "High Value" Group.
 
 ## App
 
@@ -48,8 +48,8 @@ The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/plugi
 
   One of these should be defined. The choice is whether or not the Destination can export many records at once or it is done one at a time.
 
-  - `recordProperty `[`ExportRecordPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordpluginmethod.html) Given the property values and group memberships to export for a single record, send it to the Destination. The singular case is much easier to reason about, particularly when there is an error with the Destination.
-  - `recordProperties `[`ExportRecordsPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordspluginmethod.html) Given the property values and group memberships to export for many records, send it to the Destination. The extra semantics can be more complicated because there can be partial failures. However, if the Destination has a "batch" API, it's generally better to use this for performance reasons.
+  - `recordProperty `[`ExportRecordPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordpluginmethod.html) Given the property values and Group memberships to export for a single record, send it to the Destination. The singular case is much easier to reason about, particularly when there is an error with the Destination.
+  - `recordProperties `[`ExportRecordsPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordspluginmethod.html) Given the property values and Group memberships to export for many records, send it to the Destination. The extra semantics can be more complicated because there can be partial failures. However, if the Destination has a "batch" API, it's generally better to use this for performance reasons.
 
 When defining `methods`, link to the method directly, do not use a string name.
 
@@ -73,9 +73,9 @@ Here are the main things to figure out (and the answer for the _Intercom_ case).
   - Find a list of the valid types of fields
   - API to get the list of known fields
 
-- What will group membership map to? _Tags_
+- What will Group membership map to? _Tags_
 
-  - API to create a group
+  - API to create a Group
   - API to add records to groups
 
 - Do the APIs exist to do these things in bulk? _Not anymore?_
@@ -99,7 +99,7 @@ We first need to decide if there is anything that should be configured or it's a
 
 - **Salesforce**
 
-  There are conceptually unlimited mappings with some primary core "user" Object models: Lead and Contact. They could also be literally anything. A common group mapping is to Campaigns, but it can also be very generic. We decided to start with the generic case. There is a highly configurable Destination where you pick the Salesforce Object that you want to sync with. We will likely make more targeted destinations (Leads/Contacts in Campaigns) as we learn more.
+  There are conceptually unlimited mappings with some primary core "user" Object models: Lead and Contact. They could also be literally anything. A common Group mapping is to Campaigns, but it can also be very generic. We decided to start with the generic case. There is a highly configurable Destination where you pick the Salesforce Object that you want to sync with. We will likely make more targeted destinations (Leads/Contacts in Campaigns) as we learn more.
 
 - **Intercom**
 
@@ -111,7 +111,7 @@ We first need to decide if there is anything that should be configured or it's a
 
 - **Zendesk**
 
-  Many are simple. There is a single Destination and no configuration for Zendesk export. The User fields get filled out and they are tagged based on group membership.
+  Many are simple. There is a single Destination and no configuration for Zendesk export. The User fields get filled out and they are tagged based on Group membership.
 
 ## Batch Strategy
 
@@ -172,7 +172,7 @@ At this point, the UI for the Destination mapping should work. Don't save the ma
 
 ## Export Records
 
-The core code of the Destination plugin is the `exportRecord` (single) or `exportRecords` (batch) method. It is given the (old and new) properties and the (old and new) group membership. If the record is to be deleted, that is noted. The goal is to sync that information to the Destination system.
+The core code of the Destination plugin is the `exportRecord` (single) or `exportRecords` (batch) method. It is given the (old and new) properties and the (old and new) Group membership. If the record is to be deleted, that is noted. The goal is to sync that information to the Destination system.
 
 In both approaches (single or batch), the pattern is generally the same.
 
@@ -208,11 +208,11 @@ In both approaches (single or batch), the pattern is generally the same.
 
   In some destinations, like [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/export/exportProfile.ts#L77-L94), this is done in the payload while updating or creating the user. This is particularly common in the "tag" case.
 
-  In other cases, there is a object (a "list") to possibly create and assign a user to. Caching and mutual exclusion become important in these cases. Several plugins have a `listMethods.ts` file that handle these cases. The `objectCache` method can assist in making sure two lists aren't created with the same name and that API calls are minimized. For example, [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/src/lib/export/listMethods.ts#L9-L30) looks for the list and creates it if it does not exist. Wrapping this in `objectCache` and having the group name in the `cacheKey` means that only one thread is doing that at a time and the resulting id is cached.
+  In other cases, there is a object (a "list") to possibly create and assign a user to. Caching and mutual exclusion become important in these cases. Several plugins have a `listMethods.ts` file that handle these cases. The `objectCache` method can assist in making sure two lists aren't created with the same name and that API calls are minimized. For example, [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/src/lib/export/listMethods.ts#L9-L30) looks for the list and creates it if it does not exist. Wrapping this in `objectCache` and having the Group name in the `cacheKey` means that only one thread is doing that at a time and the resulting id is cached.
 
   Sometimes the API only allows the full list. This gets a bit more complicated because it involves cache management of the whole list, but use examples like [hubspot](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/hubspot/src/lib/export/listMethods.ts#L30-L44).
 
-  When you get the id of the group equivalent, then add the user to it. For many destinations, this will take one API request per list. To minimize API calls, if the data of their current membership is on the user record or can be fetched, only update where needed. See code from [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportProfile.ts#L448-L492).
+  When you get the id of the Group equivalent, then add the user to it. For many destinations, this will take one API request per list. To minimize API calls, if the data of their current membership is on the user record or can be fetched, only update where needed. See code from [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportProfile.ts#L448-L492).
 
   When removing from a list, it is ok if the user was never in it to begin with. Try to catch this specific error.
 
@@ -248,7 +248,7 @@ There are several methods to implement that more or less represent the Destinati
 - `addToGroups` Given a set of groups, add some records
 - `removeFromGroups` Given a set of groups, remove some records
 - `normalizeForeignKeyValue` Gives the opportunity to fix up the email or externalId
-- `normalizeGroupName` Gives the opportunity to fix up the group name (e.g. lowercase and remove tag spaces)
+- `normalizeGroupName` Gives the opportunity to fix up the Group name (e.g. lowercase and remove tag spaces)
 
 Within any of these methods, an `error` or `skipMessage` (info error) can be associated with a record. That record will be omitted from subsequent steps.
 

@@ -81,12 +81,12 @@ You can learn more about Generators by reading through [the Code Config docs](/d
 
 Groups are a collection of [Records](#record) that you can define and Filter. These filters (or _rules_) are built to be easy-to-understand by non-technical users.
 
-Let's say we wanted to make a Group of high-value customers who recently abandoned the checkout process. Here is an example of the rules to define this group:
+Let's say we wanted to make a Group of high-value customers who recently abandoned the checkout process. Here is an example of the rules to define this Group:
 
 - `[Total Customer Value] [is greater than] [$50]`
 - `[Abandoned Cart] [in the last] [3 days]`
 
-With these rules, you have a Group consisting of every user who has purchased more than $50 and recently abandoned their cart. You can then synchronize that group in real-time to all of your Destinations to then communicate with them.
+With these rules, you have a Group consisting of every user who has purchased more than $50 and recently abandoned their cart. You can then synchronize that Group in real-time to all of your Destinations to then communicate with them.
 
 There are 2 types of groups: [**Calculated**](#calculated-group) and [**Manual**](#manual-group)
 
@@ -178,7 +178,7 @@ When creating a Grouparoo [Destination](#destination), you will be asked to choo
 
 - **Sync**: Add, update and remove records from the Destination as needed.
 - **Additive**: Add new records and update those that already exist in the Destination, but never remove anyone.
-- **Enrich**: Update records that already exist in the Destination, _enriching_ them with additional data and group membership information. No records are added or removed.
+- **Enrich**: Update records that already exist in the Destination, _enriching_ them with additional data and Group membership information. No records are added or removed.
 
 You can learn more about in our blog posts [introducing Sync Modes](/blog/sync-modes) and [how to use Sync Modes](/blog/using-sync-modes)
 
