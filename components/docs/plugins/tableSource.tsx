@@ -185,7 +185,7 @@ mapping: {
         For example, let's say your database has a {column} named{" "}
         <code>email</code> and that maps directly to a <em>unique</em> Property
         on the Record in Grouparoo called <code>emailAddress</code>. In that
-        case, your mapping would look like this:
+        case, your Mapping would look like this:
       </p>
 
       <CodeBlock code={codeBlocks.mapping} language="javascript" />
@@ -201,7 +201,7 @@ mapping: {
         </Link>
         . In most cases, this is an ID or an e-mail address. Grouparoo will
         automatically determine what field is used for a primary key based on
-        the mapping and automatically generate one Record per unique value in
+        the Mapping and automatically generate one Record per unique value in
         that field.
       </p>
 

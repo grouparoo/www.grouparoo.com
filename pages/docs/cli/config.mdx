@@ -47,7 +47,7 @@ Required Inputs:
 Optional Inputs:
   * from - The table to use for this source, e.g: `--from users`
   * high-water-mark - The name of the column to uses for this Source's Schedule, e.g: `--high-water-mark updated_at`.
-  * mapping - The mapping between a column in this table and a Grouparoo Property, e.g: `--mapping "id=user_id"`
+  * mapping - The Mapping between a column in this table and a Grouparoo Property, e.g: `--mapping "id=user_id"`
   * with - The names of the columns to create properties from, e.g: `--with users,id,first_name,last_name`. Defaults to '*'
 ```
 
@@ -68,7 +68,7 @@ grouparoo generate postgres:table:source users_table \
   --parent data_warehouse \
   --from users \ # The table to use
   --with id,first_name,email,last_name \  # The columns to make into properties (default *)
-  --mapping 'id=user_id' \ # How the mapping should shake out
+  --mapping 'id=user_id' \ # How the Mapping should shake out
   --high-water-mark updated_at
 ```
 

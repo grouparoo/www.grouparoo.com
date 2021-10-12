@@ -219,7 +219,7 @@ Let's first see what options we have available to us with the table source templ
     Optional Options:
       * from - The table to use for this source, e.g: `--from users`
       * high-water-mark - The name of the column to uses for this Source's Schedule, e.g: `--high-water-mark updated_at`.
-      * mapping - The mapping between a column in this table and a Grouparoo Property, e.g: `--mapping "id=user_id"`
+      * mapping - The Mapping between a column in this table and a Grouparoo Property, e.g: `--mapping "id=user_id"`
       * with - The names of the columns to create properties from, e.g: `--with users,id,first_name,last_name`. Defaults to '*'
 
 There's a lot going on here. That's because the table source Generator is pretty smart and can actually generate a handful of Properties for us, too! Otherwise we'd have to create these Properties individually. Let's do that. From our database, let's create a source with an `id` of `users` that pulls `email`, `first_name`, `last_name`, and `language` from the database.
@@ -232,7 +232,7 @@ A few other items to note with this command:
 
 - We're using `updated_at` as the High Watermark, which tells Grouparoo which records to target when looking for updates.
 - Because we included the `high-water-mark` option, the Generator also created a Schedule object that is included with the Source config file (`config/sources/users.js`). This defines how often the users Source import will run after starting Grouparoo.
-- The `mapping` tells Grouparoo to point the `id` column from the `users` table to a `user_id` Property in Grouparoo.
+- The `Mapping` tells Grouparoo to point the `id` column from the `users` table to a `user_id` Property in Grouparoo.
 
 ### Validate and Apply Config Changes
 
@@ -291,7 +291,7 @@ Let's begin by adding another table-based Source.
 Notice a few changes here:
 
 - We're not automatically bringing in any columns (to be made into Properties). We'll do that manually next.
-- The mapping is `user_id=user_id`. This is because the `purchases` table has a `user_id` field and that field will map to the `user_id` Property we created in Grouparoo.
+- The Mapping is `user_id=user_id`. This is because the `purchases` table has a `user_id` field and that field will map to the `user_id` Property we created in Grouparoo.
 - The High Watermark here is `created_at`, which will also enable the Schedule, by default.
 
 These changes should have been applied automatically to your config file. You shouldn't have to edit the generated config file.

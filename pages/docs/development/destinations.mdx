@@ -42,7 +42,7 @@ The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/plugi
   These methods are used in the creation of a Destination.
 
   - `destinationOptions `[`DestinationOptionsMethod`](https://docs.grouparoo.com/interfaces/destinationoptionsmethod.html) This allows more dynamic `options` to be specified. For example, it could also use code to provide a set of choices for a list selection. For example, the `mailchimp-export` lets the user pick from existing Mailchimp lists.
-  - `destinationMappingOptions `[`DestinationMappingOptionsMethod`](https://docs.grouparoo.com/interfaces/destinationmappingoptionsmethod.html) Connect to the Destination and return the properties that are "required" (often `email` or `external_id`) and those that are "known" (often firstName or custom fields). For example, in the Mailchimp case, `email_address` is required. Asking it via API about the fields returns `FNAME`, `ADDRESS`, and any other custom fields that exist. Grouparoo then allows mapping of these to its properties.
+  - `destinationMappingOptions `[`DestinationMappingOptionsMethod`](https://docs.grouparoo.com/interfaces/destinationmappingoptionsmethod.html) Connect to the Destination and return the properties that are "required" (often `email` or `external_id`) and those that are "known" (often firstName or custom fields). For example, in the Mailchimp case, `email_address` is required. Asking it via API about the fields returns `FNAME`, `ADDRESS`, and any other custom fields that exist. Grouparoo then allows Mapping of these to its properties.
 
 - **Data Methods**
 
@@ -95,11 +95,11 @@ Here are the main things to figure out (and the answer for the _Intercom_ case).
 
 ## Destination Strategy
 
-We first need to decide if there is anything that should be configured or it's all a simple mapping. Here are some examples and how we have handled them. Feedback of people already using those systems is critical.
+We first need to decide if there is anything that should be configured or it's all a simple Mapping. Here are some examples and how we have handled them. Feedback of people already using those systems is critical.
 
 - **Salesforce**
 
-  There are conceptually unlimited mappings with some primary core "user" Object models: Lead and Contact. They could also be literally anything. A common Group mapping is to Campaigns, but it can also be very generic. We decided to start with the generic case. There is a highly configurable Destination where you pick the Salesforce Object that you want to sync with. We will likely make more targeted destinations (Leads/Contacts in Campaigns) as we learn more.
+  There are conceptually unlimited mappings with some primary core "user" Object models: Lead and Contact. They could also be literally anything. A common Group Mapping is to Campaigns, but it can also be very generic. We decided to start with the generic case. There is a highly configurable Destination where you pick the Salesforce Object that you want to sync with. We will likely make more targeted destinations (Leads/Contacts in Campaigns) as we learn more.
 
 - **Intercom**
 
@@ -144,11 +144,11 @@ If there is a `parallelism` requirement, this is implemented in a `parallelism.t
 
 ## Destination Mapping
 
-The next step is to get the mapping going. This means understanding the equivalent of properties in the Destination system. Common names are "fields," "attributes," "variables", or "properties."
+The next step is to get the Mapping going. This means understanding the equivalent of properties in the Destination system. Common names are "fields," "attributes," "variables", or "properties."
 
 The most common case is that one of these fields are the primary key. This is often "email" or "external_id" or something like that would also be unique in the Grouparoo system. When filling out the Destination options, these would be the `required` properties like in [mailchimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/mailchimp/src/lib/shared/destinationMappingOptions.ts#L61).
 
-Sometimes it's the Destination system dynamically determining what is required. For example, [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/salesforce/src/lib/export/mapping.ts#L193) fetches the fields of the object and sees that some of them are needed to create an Object. These become required fields.
+Sometimes it's the Destination system dynamically determining what is required. For example, [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/salesforce/src/lib/export/Mapping.ts#L193) fetches the fields of the object and sees that some of them are needed to create an Object. These become required fields.
 
 For the rest of the fields, there are three kinds of systems.
 
@@ -158,17 +158,17 @@ For the rest of the fields, there are three kinds of systems.
 
 - **Defined**
 
-  A common case is that the system has a static (or default) set of fields, but the user can add more in the system settings. In this case, an API call is needed to fetch the list. In these cases, they are then mapping to Grouparoo types from the type given in the API request like in [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/src/lib/export/destinationMappingOptions.ts#L33-L63).
+  A common case is that the system has a static (or default) set of fields, but the user can add more in the system settings. In this case, an API call is needed to fetch the list. In these cases, they are then Mapping to Grouparoo types from the type given in the API request like in [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/src/lib/export/destinationMappingOptions.ts#L33-L63).
 
-  The `destinationMappingOptions` method allows some `known` fields to be marked as `important`. This is done for the most likely ones that a Grouparoo user would want (first name, for example). These are presented immediately in the UI. The rest show up in a typeahead. The [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/src/lib/export/destinationMappingOptions.ts#L65-L69) mapping does this by name.
+  The `destinationMappingOptions` method allows some `known` fields to be marked as `important`. This is done for the most likely ones that a Grouparoo user would want (first name, for example). These are presented immediately in the UI. The rest show up in a typeahead. The [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/src/lib/export/destinationMappingOptions.ts#L65-L69) Mapping does this by name.
 
 - **Dynamic**
 
   A few Destination systems allow completely arbitrary data to be stored. It will essentially make a new field the first time the data is sent. It often already has existing fields. In this case, the plugin should set `allowOptionalFromProperties` to `true` like in [sailthru](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/sailthru/src/lib/export/destinationMappingOptions.ts#L15-L18). This gives a new section in the UI for these dynamic mappings.
 
-Especially when there are API requests involved, it's important to create a test suite for the Destination mapping code like in [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/salesforce/__tests__/export-objects/destination-mapping-options.ts), [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/__tests__/fixtures/destination-mapping-options.js) and others.
+Especially when there are API requests involved, it's important to create a test suite for the Destination Mapping code like in [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/salesforce/__tests__/export-objects/destination-mapping-options.ts), [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/__tests__/fixtures/destination-mapping-options.js) and others.
 
-At this point, the UI for the Destination mapping should work. Don't save the mapping because `exportRecords` is not ready. However, the mapping fields can be verified.
+At this point, the UI for the Destination Mapping should work. Don't save the Mapping because `exportRecords` is not ready. However, the Mapping fields can be verified.
 
 ## Export Records
 
