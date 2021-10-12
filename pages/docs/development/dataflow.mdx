@@ -47,17 +47,17 @@ Apps are how you define connections to your tools like your databases, email ven
 - What is the type of this `Record Property`? A number, a string? We actually stringify all of our Record Property data for searching, but wen we render it back out again, we convert it. This also helps us know how to build search queries for Calculated `Groups`.
 - How is this `Record Property` to be retrieved? By which App? We talk more about this below.
 
-Every `Record Property` also includes a reference to an app (perhaps "MySQL-Datawarehouse") and a statement/query/option of how to get it for each Record. Grouparoo will always be keeping your data in sync so we always need to know how to retrieve a `Record`'s `Record Properties`.
+Every `Record Property` also includes a reference to an App (perhaps "MySQL-Datawarehouse") and a statement/query/option of how to get it for each Record. Grouparoo will always be keeping your data in sync so we always need to know how to retrieve a `Record`'s `Record Properties`.
 
 - For an `App` "MySQL-Datawarehouse" which is linked to the `Property` for "First Name (string)" you might provide a SQL statement like `select first_name from users where users.id={{ user_id }}`.
 - You can also have more complex queries, like you could connect the `App` "MySQL-Datawarehouse" to the `Property` for "ltv (number)" which might do `select (sum(purchases.total) - sum(refunds.total)) as ltv from users join purchases on purchases.user_id = users.id join refunds.user_id = users.id where users.id={{ user_id }}`
-- For a an app `CSV` responsible for "VIP (boolean)" you might choose "column" from a dropdown indicating that any column labeled "VIP" should be allowed to set this `Record Property`
+- For a an App `CSV` responsible for "VIP (boolean)" you might choose "column" from a dropdown indicating that any column labeled "VIP" should be allowed to set this `Record Property`
 
 ## Data into Grouparoo
 
 ### Sources, Schedules, and Runs
 
-When you add an `App` to Grouparoo, you can also configure if you want Grouparoo to periodically check that app for new data. This might be accomplished by checking a database table for new/updated rows or asking an API for recent changes. This is called a `Schedule`. You can create many `Schedules` from a single `App`, against each `Source`. An `App` can have many `Sources`, often correlating to a logical collection in the `App`, e.g. Tables in a Database.
+When you add an `App` to Grouparoo, you can also configure if you want Grouparoo to periodically check that App for new data. This might be accomplished by checking a database table for new/updated rows or asking an API for recent changes. This is called a `Schedule`. You can create many `Schedules` from a single `App`, against each `Source`. An `App` can have many `Sources`, often correlating to a logical collection in the `App`, e.g. Tables in a Database.
 
 Perhaps the `App` "MySQL-Datawarehouse" has 4 `Schedules`:
 

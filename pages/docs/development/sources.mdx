@@ -16,15 +16,15 @@ An `App` represents the ability to communicate with a source. For example, this 
 
 The properties ([`PluginApp`](https://docs.grouparoo.com/interfaces/pluginapp.html)) of an `App` are:
 
-- **name**: The user-facing name of the app. For example, `snowflake` or `postgres`.
-- **options**: Options needed to configure and connect to your app. This might commonly be an `apiKey` or `username` and `password`. Options have `key` (string), `displayName` (string), `description` (string), `placeholder` (string), and `required` (boolean) attributes.
-- **icon**: The path to the app's icon file (SVG or PNG). Icons should be stored in the `/public` directory of your plugin.
+- **name**: The user-facing name of the App. For example, `snowflake` or `postgres`.
+- **options**: Options needed to configure and connect to your App. This might commonly be an `apiKey` or `username` and `password`. Options have `key` (string), `displayName` (string), `description` (string), `placeholder` (string), and `required` (boolean) attributes.
+- **icon**: The path to the App's icon file (SVG or PNG). Icons should be stored in the `/public` directory of your plugin.
 
 - **App Methods**
 
-  These methods are used to configure and interact with the app.
+  These methods are used to configure and interact with the App.
 
-  - `test `[`TestPluginMethod`](https://docs.grouparoo.com/interfaces/testpluginmethod.html) This method will be called when an app is created to ensure that the app can be reached. The `appOptions` and other data will be passed to it. The `test` method should whether it can connect with those options or not, along with a message. This will often use the `connect` result to verify success.
+  - `test `[`TestPluginMethod`](https://docs.grouparoo.com/interfaces/testpluginmethod.html) This method will be called when an App is created to ensure that the App can be reached. The `appOptions` and other data will be passed to it. The `test` method should whether it can connect with those options or not, along with a message. This will often use the `connect` result to verify success.
   - `connect `[`ConnectPluginAppMethod`](https://docs.grouparoo.com/interfaces/connectpluginappmethod.html) If defined, this method is called to get an instance of a client to the source. It uses the `appOptions` passed to it to return an object that knows how to make queries. It will cache the client and give it to `Connection` methods. If it is not defined, the `Connection` (import) methods will be expected to connect each time. Using `connect` results in higher efficiency sources. For example, the `postgres` plugin uses this to keep a socket open with the database server.
   - `disconnect `[`DisconnectPluginAppMethod`](https://docs.grouparoo.com/interfaces/disconnectpluginappmethod.html) When defining `connect`, this method is used to disconnect the client. For example, to close the Postgres socket when the server is shutting down.
 
@@ -37,8 +37,8 @@ The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/plugi
 - **name**: The user-facing name of the connection, like `snowflake-query-import` or `postgres-table-import`.
 - **direction**: Use `import` for sources.
 - **description**: The user-facing description of the connection.
-- **app**: The name of the app created before. For example, your `snowflake-query-import` connection might require the `snowflake` app, also defined by your plugin.
-- **options**: Options needed to configure this connection. This differs from the options of an `app`, and is likely dependent on the `app` options. For example, an `postgres-table-import` connection requires a `table` option to be set by the Grouparoo user, and will use the `name`, `host`, `password` and `database` options from the `postgres` app that it is used to get the list of table names.
+- **app**: The name of the App created before. For example, your `snowflake-query-import` connection might require the `snowflake` App, also defined by your plugin.
+- **options**: Options needed to configure this connection. This differs from the options of an `App`, and is likely dependent on the `App` options. For example, an `postgres-table-import` connection requires a `table` option to be set by the Grouparoo user, and will use the `name`, `host`, `password` and `database` options from the `postgres` App that it is used to get the list of table names.
 - **propertyOptions**: Options needed to configure each `property`. Each has a these fields: `key`, `displayName`, `required`, `description`, `type`. You can also define an `options` method to define the option dynamically. For example, the `postgres-table-import` connection needs a column name to import the data for the property.
 - **scheduleOptions**: Options needed to configure a `schedule`. Each has a these fields: `key`, `required`, `description`, `type`. You can also define an `options` method to define the option dynamically. For example, the `postgres-table-import` connection needs a column name to known which column is the "updated_at" timestamp.
 

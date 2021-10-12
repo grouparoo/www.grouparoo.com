@@ -14,15 +14,15 @@ An `App` represents the ability to communicate with a destination. For example, 
 
 The properties ([`PluginApp`](https://docs.grouparoo.com/interfaces/pluginapp.html)) of an `App` are:
 
-- **name**: The user-facing name of the app. For example, `mailchimp` or `zendesk`.
-- **options**: Options needed to configure and connect to your app. This might commonly be an `apiKey` or `username` and `password`. Options have `key` (string), `displayName` (string), `description` (string), `placeholder` (string), and `required` (boolean) attributes.
-- **icon**: The path to the app's icon file (SVG or PNG). Icons should be stored in the `/public` directory of your plugin.
+- **name**: The user-facing name of the App. For example, `mailchimp` or `zendesk`.
+- **options**: Options needed to configure and connect to your App. This might commonly be an `apiKey` or `username` and `password`. Options have `key` (string), `displayName` (string), `description` (string), `placeholder` (string), and `required` (boolean) attributes.
+- **icon**: The path to the App's icon file (SVG or PNG). Icons should be stored in the `/public` directory of your plugin.
 
 - **App Methods**
 
-  These methods are used to configure and interact with the app.
+  These methods are used to configure and interact with the App.
 
-  - `test `[`TestPluginMethod`](https://docs.grouparoo.com/interfaces/testpluginmethod.html) This method will be called when an app is created to ensure that the app can be reached. The `appOptions` and other data will be passed to it. The `test` method should whether it can connect with those options or not, along with a message. This will often use the `connect` result to verify success.
+  - `test `[`TestPluginMethod`](https://docs.grouparoo.com/interfaces/testpluginmethod.html) This method will be called when an App is created to ensure that the App can be reached. The `appOptions` and other data will be passed to it. The `test` method should whether it can connect with those options or not, along with a message. This will often use the `connect` result to verify success.
   - `parallelism `[`AppParallelismMethod`](https://docs.grouparoo.com/interfaces/appparallelismmethod.html) If defined, the method will be called to see how many worker processes can be made at a time. The method returns an integer. Many destinations have such a number. For example, Mailchimp can only be contacted 10 times in parallel. More dynamic rate limiting is handled by reacting to the responses while sending data.
 
 ### Connections
@@ -34,8 +34,8 @@ The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/plugi
 - **name**: The user-facing name of the connection, like `mailchimp-export` or `zendesk-export`.
 - **direction**: Use `export` for destinations.
 - **description**: The user-facing description of the connection.
-- **app**: The name of the app created before. For example, your `mailchimp-export` connection might require the `mailchimp` app, also defined by your plugin.
-- **options**: Options needed to configure this connection. This differs from the options of an `app`, and is likely dependent on the `app` options. For example, a `mailchimp-export` connection requires a `listId` option to be set by the Grouparoo user, and will use the `apiKey` options from the `mailchimp` app that it is used to get choices for a Mailchimp list.
+- **app**: The name of the App created before. For example, your `mailchimp-export` connection might require the `mailchimp` App, also defined by your plugin.
+- **options**: Options needed to configure this connection. This differs from the options of an `App`, and is likely dependent on the `App` options. For example, a `mailchimp-export` connection requires a `listId` option to be set by the Grouparoo user, and will use the `apiKey` options from the `mailchimp` App that it is used to get choices for a Mailchimp list.
 
 - **Destination Methods**
 
@@ -136,9 +136,9 @@ The first stop is the `plugin.ts` file to define the `appOptions` needed. This i
 
 Most destinations have a file called `connect.ts` that take in the `appOptions` and return back a client to do API requests. There are many examples: [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/src/lib/connect.ts), [mailchimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/mailchimp/src/lib/connect.ts), [hubspot](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/hubspot/src/lib/connect.ts).
 
-Make this change and then look to the `test.ts` file near `connect.ts`. This is probably referenced from the `plugin.ts` file and implements the test of the app client. Pass the `appOptions` to `connect.ts` to get a client and test it out by doing an API request that returns something that might assure the user things are working. For example, [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/test.ts) says who is logged in and [mailchimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/mailchimp/src/lib/test.ts) says who many lists there are available.
+Make this change and then look to the `test.ts` file near `connect.ts`. This is probably referenced from the `plugin.ts` file and implements the test of the App client. Pass the `appOptions` to `connect.ts` to get a client and test it out by doing an API request that returns something that might assure the user things are working. For example, [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/test.ts) says who is logged in and [mailchimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/mailchimp/src/lib/test.ts) says who many lists there are available.
 
-Once this is done, the UI should actually work. Create the app with valid credentials. Click on "Check Connection" with good and bad credentials to see is the message is working as expected. Iterate as needed. Write a test if you like.
+Once this is done, the UI should actually work. Create the App with valid credentials. Click on "Check Connection" with good and bad credentials to see is the message is working as expected. Iterate as needed. Write a test if you like.
 
 If there is a `parallelism` requirement, this is implemented in a `parallelism.ts` file and noted in `plugin.ts` like in mailchimp [here](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/mailchimp/src/lib/parallelism.ts) and [here](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/mailchimp/src/initializers/plugin.ts#L34).
 

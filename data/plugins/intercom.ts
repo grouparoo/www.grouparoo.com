@@ -60,7 +60,7 @@ export const Intercom: Plugin = {
   configOptions: {
     token: {
       required: true,
-      description: "Access token from your private app in the developer hub",
+      description: "Access token from your private App in the developer hub",
     },
   },
 };
