@@ -3,6 +3,7 @@ import cheerio from "cheerio";
 import fetch from "isomorphic-fetch";
 import { readSitemap } from "../../scripts/readSitemap";
 import path from "path";
+import * as nextConfig from "../../next.config";
 
 let url: string;
 
@@ -56,6 +57,22 @@ describe("sitemap integration", () => {
     }
     // If not matching any of the above conditions, link is invalid.
     return false;
+  };
+
+  const linkRedirects = async (link) => {
+    // If link goes to a redirected path, it is invalid
+    const redirects = await nextConfig.redirects();
+
+    const redirectPaths = redirects.map((redirect) => {
+      if (redirect.destination.startsWith("/")) return redirect.source;
+    });
+
+    for (const i in redirectPaths) {
+      if (link === redirectPaths[i]) {
+        console.log("DATA: " + link + "     " + redirectPaths[i]);
+        return true;
+      }
+    }
   };
 
   test("read sitemap", async () => {
@@ -138,8 +155,9 @@ describe("sitemap integration", () => {
       test("links", async () => {
         let localPagesNotFound = [];
         let missingRefOnBlank = [];
+        let linksWithRedirects = [];
 
-        $("a").each(function () {
+        $("a").each(async function () {
           const tag = $(this);
           let href = tag.attr("href");
           const id = tag.attr("id");
@@ -153,6 +171,8 @@ describe("sitemap integration", () => {
           }
 
           if (!linkIsValid(href)) localPagesNotFound.push(href);
+          const containsRedirect = await linkRedirects(href);
+          if (containsRedirect === true) linksWithRedirects.push(href);
 
           const target = tag.attr("target");
           const rel = tag.attr("rel") || "";
@@ -162,7 +182,7 @@ describe("sitemap integration", () => {
             }
           }
         });
-
+        expect(linksWithRedirects).toEqual([]);
         expect(localPagesNotFound).toEqual([]);
         expect(missingRefOnBlank).toEqual([]);
       });
