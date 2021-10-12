@@ -130,7 +130,7 @@ function customFunction() {
         </p>
       </Alert>
       <p>
-        The Property generator will drop individual a file in the{" "}
+        The Property Generator will drop individual a file in the{" "}
         <code>config/properties</code> directory. Edit this file to match your
         desired configuration. All Calculated Properties are required to have a
         valid <code>customFunction</code> option.

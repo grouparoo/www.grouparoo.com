@@ -79,10 +79,10 @@ Each Source has a common set of options, while other options are specific to the
 - `class`: (**required**) Should be set to `"source"`.
 - `id`: (**required**) The unique value that defines this Source.
 - `name`: (**required**) A display name for the Source. Will be set to the `id` by default.
-- `type`: (**required**) The type of Source will vary based on the generator you're using. You likely don't want to change this value.
+- `type`: (**required**) The type of Source will vary based on the Generator you're using. You likely don't want to change this value.
 - `appId`: (**required**) The `id` of the App (connection) that the Source uses.
 
-The generator makes a _reasonable_ guess at the values in the config file it generated (in the `config/sources` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Postgres Source, all but `appId` and `options.table` were pre-populated.
+The Generator makes a _reasonable_ guess at the values in the config file it generated (in the `config/sources` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Postgres Source, all but `appId` and `options.table` were pre-populated.
 
 Other sections may be commented out but require some action by you. The best practice when configuring a Source is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Source.
 

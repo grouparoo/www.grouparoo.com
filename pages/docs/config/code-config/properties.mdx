@@ -89,7 +89,7 @@ Each Property has a common set of options, while other options are specific to t
 - `type`: (**required**) The data type of the Property. The options available will be generated as a comment in the generated config file.
 - `unique`: (**required**) If `true` Records will be forced to have unique records for this Property.
 
-The generator attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/properties` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Property for a Postgres Source, all but `sourceId` and `options.column` were pre-populated.
+The Generator attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/properties` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Property for a Postgres Source, all but `sourceId` and `options.column` were pre-populated.
 
 Other sections may be commented out but require some action by you. The best practice when configuring an Property is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Property.
 

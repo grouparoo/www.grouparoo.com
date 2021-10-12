@@ -50,7 +50,7 @@ exports.default = async function buildConfig() {
       />
       <Alert variant="primary">
         <p>
-          Note that every generator requires an <code>id</code> argument. It is
+          Note that every Generator requires an <code>id</code> argument. It is
           a unique value describing the App you just created. It should be
           alphanumeric, lower case, without spaces, and unique among other
           objects of the same type (Apps).

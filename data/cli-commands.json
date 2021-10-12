@@ -81,23 +81,23 @@
       "from": {
         "required": false,
         "letter": "f",
-        "description": "For batch generators, where should we read the objects from?"
+        "description": "For batch Generators, where should we read the objects from?"
       },
       "with": {
         "required": false,
         "letter": "w",
-        "description": "For batch generators, what additional objects should we create? Use commas to separate names (--with \"id,first_name,last_name\") or \"*\" for all (`--with \"*\"`). Default is ``",
+        "description": "For batch Generators, what additional objects should we create? Use commas to separate names (--with \"id,first_name,last_name\") or \"*\" for all (`--with \"*\"`). Default is ``",
         "default": ""
       },
       "mapping": {
         "required": false,
         "letter": "m",
-        "description": "For batch generators, how should we map this object? The remote key precedes the Grouparoo Property name. Use = to set the pair (--mapping \"id=user_id\")."
+        "description": "For batch Generators, how should we map this object? The remote key precedes the Grouparoo Property name. Use = to set the pair (--mapping \"id=user_id\")."
       },
       "high-water-mark": {
         "required": false,
         "letter": "H",
-        "description": "For batch generators, what should we use for the high-water-mark?"
+        "description": "For batch Generators, what should we use for the high-water-mark?"
       },
       "overwrite": {
         "required": true,

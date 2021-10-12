@@ -57,7 +57,7 @@ Place that file anywhere on your file system that your current user can read.
 
 Most of the rest of our tutorial is going to be generating our config objects, which tell Grouparoo where our data is and what to do with it. We'll be spending a lot of time using [the `generate` command](/docs/cli/config).
 
-To see a list of available generators at any time, use the `--list` flag.
+To see a list of available Generators at any time, use the `--list` flag.
 
     $ grouparoo generate --list
 
@@ -85,7 +85,7 @@ In Grouparoo, [Apps](/docs/config/code-config/apps) are _connection definitions_
 
 ### Install SQLite Plugin
 
-But we didn't see SQLite mentioned in the list of available generator templates. That's because Grouparoo is also plugin-focused, so that you're instance only carries what it really needs. That means we have to install the SQLite plugin to have access to SQLite generator templates. Let's do that!
+But we didn't see SQLite mentioned in the list of available Generator templates. That's because Grouparoo is also plugin-focused, so that you're instance only carries what it really needs. That means we have to install the SQLite plugin to have access to SQLite Generator templates. Let's do that!
 
     $ grouparoo install @grouparoo/sqlite
 
@@ -196,7 +196,7 @@ Now we have an app and we can add some Sources!
 
 Next, it's time to add our Sources and their Properties. A Source is the place your customer data lives. In this case, we're mocking a data warehouse type of setup for an e-commerce site. Properties are attributes for your Records (in Grouparoo, we refer to users as _Records_).
 
-From our list of generators, you may have noticed that there are two types of sources for SQLite: _query_ and _table_. (If you didn't catch that, run `grouparoo generate sqlite --list` again.)
+From our list of Generators, you may have noticed that there are two types of sources for SQLite: _query_ and _table_. (If you didn't catch that, run `grouparoo generate sqlite --list` again.)
 
 A query source enables you to pull data from one or more tables by writing custom SQL queries. Table sources are much simpler. They provide a means to pull data from a column directly, without writing any custom SQL.
 
@@ -222,7 +222,7 @@ Let's first see what options we have available to us with the table source templ
       * mapping - The mapping between a column in this table and a Grouparoo Property, e.g: `--mapping "id=user_id"`
       * with - The names of the columns to create properties from, e.g: `--with users,id,first_name,last_name`. Defaults to '*'
 
-There's a lot going on here. That's because the table source generator is pretty smart and can actually generate a handful of Properties for us, too! Otherwise we'd have to create these Properties individually. Let's do that. From our database, let's create a source with an `id` of `users` that pulls `email`, `first_name`, `last_name`, and `language` from the database.
+There's a lot going on here. That's because the table source Generator is pretty smart and can actually generate a handful of Properties for us, too! Otherwise we'd have to create these Properties individually. Let's do that. From our database, let's create a source with an `id` of `users` that pulls `email`, `first_name`, `last_name`, and `language` from the database.
 
     $ grouparoo generate sqlite:table:source users --parent product_db --from users --high-water-mark updated_at --with id,email,first_name,last_name,language --mapping 'id=user_id'
 
@@ -231,12 +231,12 @@ That generated your Source config (`apps/sources/users.js`), along with the spec
 A few other items to note with this command:
 
 - We're using `updated_at` as the high watermark, which tells Grouparoo which records to target when looking for updates.
-- Because we included the `high-water-mark` option, the generator also created a Schedule object that is included with the Source config file (`config/sources/users.js`). This defines how often the users Source import will run after starting Grouparoo.
+- Because we included the `high-water-mark` option, the Generator also created a Schedule object that is included with the Source config file (`config/sources/users.js`). This defines how often the users Source import will run after starting Grouparoo.
 - The `mapping` tells Grouparoo to point the `id` column from the `users` table to a `user_id` Property in Grouparoo.
 
 ### Validate and Apply Config Changes
 
-Believe it or not, that generator gave you the files _exactly_ as it should have. They are all ready to go. Go ahead and validate:
+Believe it or not, that Generator gave you the files _exactly_ as it should have. They are all ready to go. Go ahead and validate:
 
     $ grouparoo validate
 
@@ -493,7 +493,7 @@ As we know now, whenever we want a new type of Source or Destination, we first n
 
     $ grouparoo install @grouparoo/mailchimp
 
-Then we can see the generators it gave us:
+Then we can see the Generators it gave us:
 
     $ grouparoo generate mailchimp --list
 

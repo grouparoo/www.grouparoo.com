@@ -262,7 +262,7 @@ mapping: {
       </Alert>
 
       <p>
-        The Property generator will drop individual files in the{" "}
+        The Property Generator will drop individual files in the{" "}
         <code>config/properties</code> directory. Edit these files to match your
         desired configuration.
       </p>

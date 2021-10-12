@@ -86,13 +86,13 @@ Each Destination has a common set of options, while other options are specific t
 - `id`: (**required**) The unique value that defines this Destination.
 - `name`: (**required**) A display name for the Destination. Will be set to the `id` by default.
 - `class`: (**required**) Should be set to `"destination"`.
-- `type`: (**required**) The type of Destination will vary based on the generator you're using. You likely don't want to change this value.
+- `type`: (**required**) The type of Destination will vary based on the Generator you're using. You likely don't want to change this value.
 - `appId`: (**required**) The `id` of the App (connection) that the Destination uses.
 - `groupId`: (**required**) The `id` of the group whose members should be exported to the Destination. (This is where Groups in Grouparoo really come in handy.)
 - `mapping`: See below.
 - `destinationGroupMemberships`: See below.
 
-The generator attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/destinations` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Postgres App, all but `appId`, `groupId`, and `options.listId` were pre-populated.
+The Generator attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/destinations` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Postgres App, all but `appId`, `groupId`, and `options.listId` were pre-populated.
 
 The best practice when configuring an Destination is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Destination.
 
