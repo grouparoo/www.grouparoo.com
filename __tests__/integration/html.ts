@@ -69,7 +69,6 @@ describe("sitemap integration", () => {
 
     for (const i in redirectPaths) {
       if (link === redirectPaths[i]) {
-        console.log("DATA: " + link + "     " + redirectPaths[i]);
         return true;
       }
     }
@@ -171,8 +170,8 @@ describe("sitemap integration", () => {
           }
 
           if (!linkIsValid(href)) localPagesNotFound.push(href);
-          const containsRedirect = await linkRedirects(href);
-          if (containsRedirect === true) linksWithRedirects.push(href);
+          if ((await linkRedirects(href)) === true)
+            linksWithRedirects.push(href);
 
           const target = tag.attr("target");
           const rel = tag.attr("rel") || "";
