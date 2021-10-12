@@ -60,9 +60,9 @@ The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/plugi
 
 - **Schedule Methods**
 
-  These methods are used when the source can have a schedule.
+  These methods are used when the source can have a Schedule.
 
-  - `records `[`RecordsPluginMethod`](https://docs.grouparoo.com/interfaces/recordspluginmethod.html) This method is the core method to implement a schedule. It uses a high-water mark and given options to return a collection of records to import. This options might also return properties to set on the records The main goal of this method is to call `await plugin.createImport(schedule, run, row)` for each row of data, where row is an object like `{user_id: 9, email: "person@example.com", first_name: "person"}`
+  - `records `[`RecordsPluginMethod`](https://docs.grouparoo.com/interfaces/recordspluginmethod.html) This method is the core method to implement a Schedule. It uses a high-water mark and given options to return a collection of records to import. This options might also return properties to set on the records The main goal of this method is to call `await plugin.createImport(schedule, run, row)` for each row of data, where row is an object like `{user_id: 9, email: "person@example.com", first_name: "person"}`
   - `sourceRunPercentComplete `[`SourceRunPercentCompleteMethod`](https://docs.grouparoo.com/interfaces/sourcerunpercentcompletemethod.html) If implemented, this method can help the user by getting a percentage that an import session is complete. SQL sources tend divide how many imports have been done by the number of total records since the last change.
 
 When defining `methods`, link to the method directly, do not use a string name.
@@ -79,7 +79,7 @@ Both of these SQL sources tend to recalculate their properties each time a Recor
 
 ## Schedule Sources
 
-Another class of source runs more off data pulled during the schedule phase than fetching properties. For example, the Google Sheets source will connect to a spreadsheet and note the cell values. Those get written directly into Record Property values for each Property ("column" in this case) defined.
+Another class of source runs more off data pulled during the Schedule phase than fetching properties. For example, the Google Sheets source will connect to a spreadsheet and note the cell values. Those get written directly into Record Property values for each Property ("column" in this case) defined.
 
 This differs from the SQL sources because the spreadsheet is not contacted every time a Record is being recalculated.
 

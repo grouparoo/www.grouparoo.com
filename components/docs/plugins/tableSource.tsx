@@ -215,7 +215,7 @@ mapping: {
           Schedule
         </Link>{" "}
         is attached to every Source config file by default, commented out. If
-        you want to import data from the source on a schedule (which is the
+        you want to import data from the source on a Schedule (which is the
         typical behavior), then you should remove the comments and apply the
         necessary values.
       </p>

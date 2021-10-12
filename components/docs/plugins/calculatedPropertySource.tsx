@@ -81,7 +81,7 @@ function customFunction() {
       </p>
       <p>
         In order to generate the Property, you will first need to generate a
-        parent source.
+        parent Source.
       </p>
       <p>
         You can generate a Calculated Property Source using the{" "}
@@ -124,7 +124,7 @@ function customFunction() {
           <strong>Pro Tip!</strong>
         </p>
         <p className="mb-0">
-          Note that the parent source of a Calculated Property is{" "}
+          Note that the parent Source of a Calculated Property is{" "}
           <em>always</em> a Calculated Property Source, even if the Property
           itself references Properties from other Sources.
         </p>
