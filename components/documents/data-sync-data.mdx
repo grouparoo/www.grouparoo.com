@@ -22,7 +22,7 @@ In all cases, the goal is to reliably know which records have changed (or may ha
 
 ### Be idempotent
 
-It is tempting to take the incremental approach when calculating property values. For example, you might receive an event that the user has bought a $30 item. You could simply add $30 to the previous lifetime value. Resist this temptation.
+It is tempting to take the incremental approach when calculating Property values. For example, you might receive an event that the user has bought a $30 item. You could simply add $30 to the previous lifetime value. Resist this temptation.
 
 The source of the truth can answer this question idempotently. This means you don’t need to rely on previous information. Always doing that query allows you to have reliable data. The benefit starts with the full history from the beginning and continues through to flexibility to make changes later.
 
@@ -40,11 +40,11 @@ In this case, you can discover new purchases with that frequency to determine th
 
 Cohorts (or audiences, or groups, or segments) are a key outcome of data sync, particularly for marketing tools. A customer’s membership in a Group like “High Value” will determine how the company interacts with them. It is valuable to share this definition, even as it changes, across multiple apps to create a consistent customer experience.
 
-As it is calculating the property values, a data sync App should also read from shared definitions and calculate these Group memberships. It can then synchronize the memberships to multiple tools. For example, a “High Value” user might be on a special marketing mailing list and also have their tickets routed more quickly in customer support.
+As it is calculating the Property values, a data sync App should also read from shared definitions and calculate these Group memberships. It can then synchronize the memberships to multiple tools. For example, a “High Value” user might be on a special marketing mailing list and also have their tickets routed more quickly in customer support.
 
 ### Minimize data out
 
-In many cases, the specific property value for a user is not relevant; however, that value is a factor in cohort creation. In the lifetime value example, it is unlikely that an email tool literally needs the number of dollars spent; however, bucketing users into groups is critically important.
+In many cases, the specific Property value for a user is not relevant; however, that value is a factor in cohort creation. In the lifetime value example, it is unlikely that an email tool literally needs the number of dollars spent; however, bucketing users into groups is critically important.
 
 At the same time, personally identifiable information (PII) can be dangerous. Policies like GDPR, CCPA, and others make it important to limit the PII flowing out of your internal system.
 

@@ -62,7 +62,7 @@ We may use personal information for the following purposes:
 
 - To prevent fraud, criminal activity, or misuses of our Site, and to ensure the security of our IT systems, architecture, and networks; and
 
-- To comply with legal obligations and legal process and to protect our rights, privacy, safety, or property, and/or that of our affiliates, you, or other third parties.
+- To comply with legal obligations and legal process and to protect our rights, privacy, safety, or Property, and/or that of our affiliates, you, or other third parties.
 
 **Aggregated Information.** We may aggregate personal information and use the aggregated information to analyze the effectiveness of our Site, to improve and add features to our Site, and for other similar purposes. In addition, from time to time, we may analyze the general behavior and characteristics of users of our Site and share aggregated information like general user statistics with prospective business partners. We may collect aggregated information through the Site, through cookies, and through other means described in this Privacy Policy.
 
@@ -76,7 +76,7 @@ Grouparoo does not sell your personal information. In certain circumstances we m
 
 - **Business Transfers:** If we are involved in a merger, acquisition, financing due diligence, reorganization, bankruptcy, receivership, dissolution, sale of all or a portion of our assets, or transition of service to another provider (collectively a “Transaction”), your personal information and other information may be shared in the diligence process with counterparties and others assisting with the Transaction and transferred to a successor or affiliate as part of or following that Transaction along with other assets.
 
-- **Legal Requirements:** If required to do so by law or in the good faith belief that such action is necessary to (i) comply with a legal obligation, including to meet national security or law enforcement requirements, (ii) protect and defend our rights or property, (iii) prevent fraud, (iv) act in urgent circumstances to protect the personal safety of users of the Service, or the public, or (v) protect against legal liability.
+- **Legal Requirements:** If required to do so by law or in the good faith belief that such action is necessary to (i) comply with a legal obligation, including to meet national security or law enforcement requirements, (ii) protect and defend our rights or Property, (iii) prevent fraud, (iv) act in urgent circumstances to protect the personal safety of users of the Service, or the public, or (v) protect against legal liability.
 
 - **Other Users:** Certain actions you take may be visible to other users of the Service. For example, your posts will appear in other users’ feeds and your profile information will be accessible to other users. You acknowledge that by sharing posts or adding information to your profile you make the information shared available to other users and that Grouparoo cannot control, and shall not be responsible for any use other users make of such information.
 

@@ -45,7 +45,7 @@ export const CSV: Plugin = {
       description:
         "Grouparoo is low-code, so less technical team members can create new Record Properties without needing to work with engineers. They can pull the data they need when they want.",
       imageSrc: "/images/home/integrations/csv/csv-create-property.png",
-      imageAlt: "Grouparoo add property settings",
+      imageAlt: "Grouparoo add Property settings",
       imageWidth: 742,
       imageHeight: 566,
     },

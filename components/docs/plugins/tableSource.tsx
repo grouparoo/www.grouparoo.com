@@ -296,7 +296,7 @@ mapping: {
       </p>
 
       <p>
-        For example, let's say you had a property called{" "}
+        For example, let's say you had a Property called{" "}
         <code>lifetime_value</code> which summed all the purchases for a given
         user. Your Source is a <code>purchases</code> {table} that has a{" "}
         <code>state</code> {column} set to either <code>successful</code> or{" "}

@@ -80,7 +80,7 @@ function customFunction() {
         configuration.
       </p>
       <p>
-        In order to generate the property, you will first need to generate a
+        In order to generate the Property, you will first need to generate a
         parent source.
       </p>
       <p>
@@ -169,7 +169,7 @@ function customFunction() {
         >
           mustache variables
         </a>{" "}
-        to refer to the key of that property. A Property's key can be found in
+        to refer to the key of that Property. A Property's key can be found in
         its config file. If no key is present, the default key is a Property's
         id.
       </p>
@@ -188,7 +188,7 @@ function customFunction() {
       <p>
         You can write <code>customFunction</code>s using <code>string</code>,{" "}
         <code>number</code>, <code>boolean</code>, and
-        <code>date</code> property types. All mustached variables are returned
+        <code>date</code> Property types. All mustached variables are returned
         as the string value of their value. This means if you want to use an
         integer or float type for calculation, you will have to parse it. For
         example:
@@ -198,9 +198,9 @@ function customFunction() {
         />
       </p>
       <p>
-        For example, to use an existing property <code>total_cost</code> and{" "}
+        For example, to use an existing Property <code>total_cost</code> and{" "}
         <code>total_sales</code> to calculate a <code>profit_margin</code>{" "}
-        property, run:
+        Property, run:
       </p>
       <CodeBlock code={codeBlocks.customFunctionProfit} language="javascript" />
       <p>
@@ -214,13 +214,13 @@ function customFunction() {
       <p>
         To replace a null value, you can evaluate the string from the mustache
         variable against an empty string and use a conditional. Here we'll make
-        a property that flags any account missing an email:
+        a Property that flags any account missing an email:
         <CodeBlock
           code={codeBlocks.customFunctionIfNoEmail}
           language="javascript"
         />
         A Calculated Property's <code>customFunction</code> can use whatever
-        synchronous JavaScript you would like to generate your property. Please
+        synchronous JavaScript you would like to generate your Property. Please
         note that:
         <ul>
           <li>

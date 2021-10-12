@@ -58,7 +58,7 @@ export const GoogleSheets: Plugin = {
         "Grouparoo is low-code, so less technical team members can create new Record Properties without needing to work with engineers. They can pull the data they need when they want.",
       imageSrc:
         "/images/home/integrations/google-sheets/google-sheets-property.png",
-      imageAlt: "Grouparoo add property settings",
+      imageAlt: "Grouparoo add Property settings",
       imageWidth: 932,
       imageHeight: 506,
     },

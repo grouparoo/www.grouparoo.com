@@ -6,7 +6,7 @@ pullQuote: "Build a source to import data into Grouparoo customer records."
 
 Grouparoo imports data into customer records using sources. This type of [Plugin](./plugins) defines an `App` and one more `Connections` with the `import` direction. The same Plugin can also make [destinations](./destinations), but this document focuses on how to make a source.
 
-A source will define how Grouparoo should import `properties` into `records`. An example property might be `firstName` and the `postgres` Plugin knows how to fill that out for a user by querying the database.
+A source will define how Grouparoo should import `properties` into `records`. An example Property might be `firstName` and the `postgres` Plugin knows how to fill that out for a user by querying the database.
 
 Sources also can define `schedules`. These know how to connect with the data to know what has changed. A change will trigger `records` and their `properties` being updated. Schedules are often recurring.
 
@@ -39,7 +39,7 @@ The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/plugi
 - **description**: The user-facing description of the connection.
 - **app**: The name of the App created before. For example, your `snowflake-query-import` connection might require the `snowflake` App, also defined by your Plugin.
 - **options**: Options needed to configure this connection. This differs from the options of an `App`, and is likely dependent on the `App` options. For example, an `postgres-table-import` connection requires a `table` option to be set by the Grouparoo user, and will use the `name`, `host`, `password` and `database` options from the `postgres` App that it is used to get the list of table names.
-- **propertyOptions**: Options needed to configure each `property`. Each has a these fields: `key`, `displayName`, `required`, `description`, `type`. You can also define an `options` method to define the option dynamically. For example, the `postgres-table-import` connection needs a column name to import the data for the property.
+- **propertyOptions**: Options needed to configure each `Property`. Each has a these fields: `key`, `displayName`, `required`, `description`, `type`. You can also define an `options` method to define the option dynamically. For example, the `postgres-table-import` connection needs a column name to import the data for the Property.
 - **scheduleOptions**: Options needed to configure a `schedule`. Each has a these fields: `key`, `required`, `description`, `type`. You can also define an `options` method to define the option dynamically. For example, the `postgres-table-import` connection needs a column name to known which column is the "updated_at" timestamp.
 
 - **Source Methods**
@@ -48,15 +48,15 @@ The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/plugi
 
   - `sourceOptions `[`SourceOptionsMethod`](https://docs.grouparoo.com/interfaces/sourceoptionsmethod.html) This allows more dynamic `options` to be specified. For example, it could also use code to provide a set of choices for a list selection. For example, the `postgres-table-import` connection lists out table names.
   - `sourcePreview `[`SourcePreviewMethod`](https://docs.grouparoo.com/interfaces/sourcepreviewmethod.html) Show the user a preview of the data. Given the current options, if possible return a preview. For example, the `postgres-table-import` returns 10 rows from the selected table.
-  - `sourceFilters `[`SourceFilterMethod`](https://docs.grouparoo.com/interfaces/sourcefiltermethod.html) During property creation, this allows the Plugin to determine what filters are available. For example, the `postgres-table-import` notes that integers columns have actions such as `greater than` and string columns have different filters such as `like`.
-  - `uniquePropertyBootstrapOptions `[`UniquePropertyBootstrapOptions`](https://docs.grouparoo.com/interfaces/uniquepropertybootstrapoptions.html): There is an interesting case during creation of the first source. It's possible that the first source (Postgres User Table) might need one of it's own properties (user_id) to bootstrap the rest. This allows a source to define the options that such a property would use.
+  - `sourceFilters `[`SourceFilterMethod`](https://docs.grouparoo.com/interfaces/sourcefiltermethod.html) During Property creation, this allows the Plugin to determine what filters are available. For example, the `postgres-table-import` notes that integers columns have actions such as `greater than` and string columns have different filters such as `like`.
+  - `uniquePropertyBootstrapOptions `[`UniquePropertyBootstrapOptions`](https://docs.grouparoo.com/interfaces/uniquepropertybootstrapoptions.html): There is an interesting case during creation of the first source. It's possible that the first source (Postgres User Table) might need one of it's own properties (user_id) to bootstrap the rest. This allows a source to define the options that such a Property would use.
 
 - **Property Methods**
 
-  One of these should be defined. The choice is whether or not the Plugin can import many users at once for a property or it is done one at a time.
+  One of these should be defined. The choice is whether or not the Plugin can import many users at once for a Property or it is done one at a time.
 
-  - `recordProperty `[`RecordPropertyPluginMethod`](https://docs.grouparoo.com/interfaces/recordpropertypluginmethod.html) Given a Record and the property definition, get the value of the property for that Record.
-  - `recordProperties `[`RecordPropertiesPluginMethod`](https://docs.grouparoo.com/interfaces/recordpropertiespluginmethod.html) Given an array of records and the property definition, get the value of the property for each Record.
+  - `recordProperty `[`RecordPropertyPluginMethod`](https://docs.grouparoo.com/interfaces/recordpropertypluginmethod.html) Given a Record and the Property definition, get the value of the Property for that Record.
+  - `recordProperties `[`RecordPropertiesPluginMethod`](https://docs.grouparoo.com/interfaces/recordpropertiespluginmethod.html) Given an array of records and the Property definition, get the value of the Property for each Record.
 
 - **Schedule Methods**
 
@@ -71,15 +71,15 @@ When defining `methods`, link to the method directly, do not use a string name.
 
 Most SQL-based sources implement two connections: table and query.
 
-The table source is optimized for the common case where the data to import is a table with a foreign key to a unique property. An example might be a "purchases" table with a "user_id" column. A simple "users" table with an "id" column also works. In these cases, this source allows the user to sum, count, and perform other operations without writing any SQL. This also makes it each to make schedules and optimize the import speed.
+The table source is optimized for the common case where the data to import is a table with a foreign key to a unique Property. An example might be a "purchases" table with a "user_id" column. A simple "users" table with an "id" column also works. In these cases, this source allows the user to sum, count, and perform other operations without writing any SQL. This also makes it each to make schedules and optimize the import speed.
 
-The query source allows someone to write any SQL. It uses a mustache templating system to be able to use another other property. For example: `SELECT SUM(price) FROM purchases INNER JOIN users ON ... WHERE users.id = {userId}`. This flexibility makes it less performant on large datasets because it fetches property values one Record at a time.
+The query source allows someone to write any SQL. It uses a mustache templating system to be able to use another other Property. For example: `SELECT SUM(price) FROM purchases INNER JOIN users ON ... WHERE users.id = {userId}`. This flexibility makes it less performant on large datasets because it fetches Property values one Record at a time.
 
 Both of these SQL sources tend to recalculate their properties each time a Record change is detected and the Record is being recalculated. This keeps things nice and update-to-date.
 
 ## Schedule Sources
 
-Another class of source runs more off data pulled during the schedule phase than fetching properties. For example, the Google Sheets source will connect to a spreadsheet and note the cell values. Those get written directly into Record Property values for each property ("column" in this case) defined.
+Another class of source runs more off data pulled during the schedule phase than fetching properties. For example, the Google Sheets source will connect to a spreadsheet and note the cell values. Those get written directly into Record Property values for each Property ("column" in this case) defined.
 
 This differs from the SQL sources because the spreadsheet is not contacted every time a Record is being recalculated.
 

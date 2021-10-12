@@ -68,7 +68,7 @@ Braze Destination supports all three sync modes:
 - **Additive** (`additive`): Add and update records as needed, but do not remove anybody.
 - **Enrich** (`enrich`): Only update records that already exist in the Destination. Do not add or remove anybody.
 
-You can set the desired sync mode through the `syncMode` property in the config file:
+You can set the desired sync mode through the `syncMode` Property in the config file:
 
 ```js
 syncMode: "additive",
@@ -78,7 +78,7 @@ syncMode: "additive",
 
 These mappings are what tell Grouparoo which Properties you want to sync to the Destination and what they should be called. For this Plugin, **Grouparoo Properties** map to **Braze User Attributes**.
 
-For Braze, Mapping the `external_id` property is always required, this property can be any unique string.
+For Braze, Mapping the `external_id` Property is always required, this Property can be any unique string.
 
 You can also map to custom attributes that you've defined on Braze by simply adding them along with the others.
 
@@ -95,7 +95,7 @@ mapping: {
 
 ### Group Mappings
 
-You can use **Group Memberships** to automatically add **Braze Groups** to your contacts. In braze, the groups are stored in an array property called Groups.
+You can use **Group Memberships** to automatically add **Braze Groups** to your contacts. In braze, the groups are stored in an array Property called Groups.
 
 Here's an example of how to configure this in the config file. Keys refer to the name of the tag to be shown on Braze and values refer to the Grouparoo Group ID.
 

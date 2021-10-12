@@ -48,8 +48,8 @@ The properties ([`PluginConnection`](https://docs.grouparoo.com/interfaces/plugi
 
   One of these should be defined. The choice is whether or not the Destination can export many records at once or it is done one at a time.
 
-  - `recordProperty `[`ExportRecordPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordpluginmethod.html) Given the property values and Group memberships to export for a single Record, send it to the Destination. The singular case is much easier to reason about, particularly when there is an error with the Destination.
-  - `recordProperties `[`ExportRecordsPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordspluginmethod.html) Given the property values and Group memberships to export for many records, send it to the Destination. The extra semantics can be more complicated because there can be partial failures. However, if the Destination has a "batch" API, it's generally better to use this for performance reasons.
+  - `recordProperty `[`ExportRecordPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordpluginmethod.html) Given the Property values and Group memberships to export for a single Record, send it to the Destination. The singular case is much easier to reason about, particularly when there is an error with the Destination.
+  - `recordProperties `[`ExportRecordsPluginMethod`](https://docs.grouparoo.com/interfaces/exportrecordspluginmethod.html) Given the Property values and Group memberships to export for many records, send it to the Destination. The extra semantics can be more complicated because there can be partial failures. However, if the Destination has a "batch" API, it's generally better to use this for performance reasons.
 
 When defining `methods`, link to the method directly, do not use a string name.
 
@@ -194,7 +194,7 @@ In both approaches (single or batch), the pattern is generally the same.
 
 - **Create or Update the user**
 
-  Build a payload from the given property values. Use the `oldRecordProperties` that are not in `newRecordProperties` to known which values should be cleared. This sometimes means setting it to `null` or `undefined` like in [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/export/exportRecord.ts#L60-L75) or an empty string like in [malichimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/mailchimp/src/lib/shared/updateRecord.ts#L50-L57). Sometimes, it means setting a default value like in [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/salesforce/src/lib/export/salesforceExporter.ts#L309-L335).
+  Build a payload from the given Property values. Use the `oldRecordProperties` that are not in `newRecordProperties` to known which values should be cleared. This sometimes means setting it to `null` or `undefined` like in [zendesk](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/zendesk/src/lib/export/exportRecord.ts#L60-L75) or an empty string like in [malichimp](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/mailchimp/src/lib/shared/updateRecord.ts#L50-L57). Sometimes, it means setting a default value like in [salesforce](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/%40grouparoo/salesforce/src/lib/export/salesforceExporter.ts#L309-L335).
 
   Each likely has some formatting constraints. For example, Dates vary between destinations. There is epoch time like in [intercom](https://github.com/grouparoo/grouparoo/blob/a24a6b2425eca2947466ae041efc5b83a876e87b/plugins/@grouparoo/intercom/src/lib/export-users/exportRecord.ts#L277-L287) and ISO strings like in [marketo](https://github.com/grouparoo/grouparoo/blob/c525ba5a5bcc1dfbab848991ea0475fa7fd5cb86/plugins/@grouparoo/marketo/src/lib/export/exportRecords.ts#L166-L175).
 
@@ -220,7 +220,7 @@ In both approaches (single or batch), the pattern is generally the same.
 
   The return value for a single Record is an object with a `success` key as `true` or `false`. To help with rate limiting, the method can also return a `retryIn` key with a number of milliseconds to wait before trying again.
 
-  In the single Record case, an `error` can be returned and should be a Javascript `Error`. If the `error` has a property called `errorLevel` (set to `error` or `info`), that will be taken into consideration. An `info` error will not retry, will not show up in Resque errors, but the message will be shown. A regular error (returned or thrown) will have the whole method be retried later, with exponential backoff.
+  In the single Record case, an `error` can be returned and should be a Javascript `Error`. If the `error` has a Property called `errorLevel` (set to `error` or `info`), that will be taken into consideration. An `info` error will not retry, will not show up in Resque errors, but the message will be shown. A regular error (returned or thrown) will have the whole method be retried later, with exponential backoff.
 
   The case is similar for the batch case, except that it an `errors` array with a required `recordGuid` key that notes which Record had the issue.
 
