@@ -27,12 +27,18 @@ export default function Hacktoberfest({ pageProps }) {
             <Col>
               <h4>
                 We’re celebrating Open Source with a contest giving away 12
-                raffle prizes for Hacktoberfest! Hacktoberfest is a month-long
-                challenge encouraging Github contributions and collaboration.
-              </h4>
-              <br />
-              <h3>Everyone is invited to participate!</h3>
-              <br />
+                raffle prizes for{" "}
+                <a href="https://hacktoberfest.digitalocean.com">
+                  Hacktoberfest
+                </a>
+              </h4>{" "}
+              <h4>
+                <br></br>
+                Hacktoberfest is a month-long challenge encouraging Github
+                contributions and collaboration.
+              </h4>{" "}
+              <br></br>
+              <h3>Everyone is invited to participate!</h3> <br></br>
             </Col>
           </Row>
           <Row>
