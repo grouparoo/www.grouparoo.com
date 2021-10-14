@@ -55,6 +55,21 @@ For example, a Source with a new `modelId` might look like:
 }
 ```
 
+Sample Records in your code config have also changed `class` from `Profile` to `Record`:
+
+```json
+[
+  {
+    "id": "pro_c83846e5-aebe-4981-aa0d-3b1d5b71157d",
+    "class": "Record", // <-- Note the new class name
+    "modelId": "users", // <-- Note the new modelId
+    "properties": {
+      "user_id": [10]
+    }
+  }
+]
+```
+
 ## Plugin Names Changed and Clarified
 
 To prepare Grouparoo for exporting multiple types of models, the names of our Plugin Connections have changed. It is very likely that you will need to update the `"type"` property of your Destinations and Sources. Plugin connections now follow the pattern `{type}-{direction}-{model}`. For Destinations, the name of the Model is the name the Destination uses (usually something like "contact", "profile", or "user").
