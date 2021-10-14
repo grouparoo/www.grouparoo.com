@@ -32,7 +32,7 @@ export const Intercom: Plugin = {
     "The core object in Intercom is a Contact. A Contact represents an individual person who might be a Lead or a User. Leads have one required attribute: <code>email</code>. Users on the other hand have two required attributes: <code>email</code> and <code>external_id</code>.",
     "All of these Leads and Users have additional attributes that you can set, like name, role, phone, as well as custom attributes.",
   ],
-  destinationProfile: "Intercom Contacts",
+  destinationRecord: "Intercom Contacts",
   destinationProperty: "Intercom User/Lead Attributes",
   destinationGroup: "Intercom Tags",
   pluginScreenshots: [
@@ -41,9 +41,9 @@ export const Intercom: Plugin = {
       description:
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/intercom/grouparoo-to-intercom.png",
-      imageAlt: "Intercom destination settings",
-      imageWidth: 1184,
-      imageHeight: 919,
+      imageAlt: "Intercom Destination settings",
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "Grouparoo keeps your Contacts in Intercom updated in real-time",
@@ -60,7 +60,7 @@ export const Intercom: Plugin = {
   configOptions: {
     token: {
       required: true,
-      description: "Access token from your private app in the developer hub",
+      description: "Access token from your private App in the developer hub",
     },
   },
 };

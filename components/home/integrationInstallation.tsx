@@ -40,7 +40,7 @@ export default function IntegrationInstallation({
         <Col>
           <h4>Community Edition</h4>
           <p>
-            Once you've installed the {displayName} plugin, you can begin to
+            Once you've installed the {displayName} Plugin, you can begin to
             configure it by <Link href="/docs/config/apps">adding an App</Link>.
           </p>
         </Col>

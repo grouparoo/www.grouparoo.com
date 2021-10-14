@@ -1,6 +1,6 @@
 ---
 title: "Development"
-date: "2021-01-12"
+date: "2021-10-12"
 pullQuote: "Learn how to get started developing and hacking on Grouparoo."
 ---
 
@@ -155,7 +155,7 @@ npm run dev
 
 Grouparoo is written in [Typescript](https://www.typescriptlang.org/), which means that we need to compile our Typescript to Javascript before we can run it. This is true for Grouparoo plugins, but not necessarily true for Grouparoo Apps or Core, if you are using `npm run dev` (development mode), which will handle the compilation on the fly. Every sub-project in the Grouparoo Monorepo has an `npm run prepare` command which handles the compilation process. `npm run prepare` is also an [NPM lifecycle hook](https://docs.npmjs.com/misc/scripts#prepublish-and-prepare), which will automatically run after every `npm install` as well.
 
-If you are developing a plugin, you will need to `npm run prepare` it before seeing your changes. In many cases, the `prepare` step only calls out to `tsc`, and in these cases, you may be able to `tsc --watch` to automatically source changes and rebuild your plugin.
+If you are developing a Plugin, you will need to `npm run prepare` it before seeing your changes. In many cases, the `prepare` step only calls out to `tsc`, and in these cases, you may be able to `tsc --watch` to automatically source changes and rebuild your Plugin.
 
 Grouparoo self-documents its Typescript interface to [docs.grouparoo.com](https://docs.grouparoo.com) via [Typedoc](https://typedoc.org/). The docs from the `main` branch are automatically published to this site. If you want to read the docs for an older version of Grouparoo or a different branch, you can generate the docs locally by running `cd core && npm run docs` in this repository.
 
@@ -188,7 +188,7 @@ All dependencies Grouparoo uses must be licensed under a non-viral open-source l
 
 ## Populating Demo Data
 
-The `@grouparoo/demo` plugin makes it easy to generate sample data! You can use the `staging-community` app to try things out:
+The `@grouparoo/demo` Plugin makes it easy to generate sample data! You can use the `staging-community` App to try things out:
 
 ```bash
 cd apps/staging-community
@@ -234,8 +234,8 @@ Options:
   --mysql                      load specified source data into local MySQL database
   --snowflake                  assumes a Snowflake instance with data already present
   --bigquery                   assumes a BigQuery instance with data already present
-  -m, --mailchimp              create Mailchimp destination for data
-  -s, --salesforce             create Salesforce destination for data
+  -m, --mailchimp              create Mailchimp Destination for data
+  -s, --salesforce             create Salesforce Destination for data
   -h, --help                   display help for command
 ```
 
@@ -268,11 +268,11 @@ A note on chromedriver for OSX Users: As Chrome updates, you may need to `brew r
 
 ### `@grouparoo/spec-helper`
 
-The plugin `@grouparoo/spec-helper` exists to make testing easier, especially within plugins. It contains factories, startup/shutdown helpers for the application, and reasonable testing defaults. Unlike a traditional node module, including this package into a test suite **will** have side-effects - specifically your working directly will be changed into `@grouparoo/core` so you can run the application like normal in your tests. You can see what happens [here](https://github.com/grouparoo/grouparoo/blob/78f0dae336b641f653422db3c1c5f1a5488f3d8f/plugins/%40grouparoo/spec-helper/src/lib/specHelper.ts#L7-L21).
+The Plugin `@grouparoo/spec-helper` exists to make testing easier, especially within plugins. It contains factories, startup/shutdown helpers for the application, and reasonable testing defaults. Unlike a traditional node module, including this package into a test suite **will** have side-effects - specifically your working directly will be changed into `@grouparoo/core` so you can run the application like normal in your tests. You can see what happens [here](https://github.com/grouparoo/grouparoo/blob/78f0dae336b641f653422db3c1c5f1a5488f3d8f/plugins/%40grouparoo/spec-helper/src/lib/specHelper.ts#L7-L21).
 
 ```js
 import path from "path";
-// First, set an environment variable so that @grouparoo/core will load this plugin if you are doing an integration test
+// First, set an environment variable so that @grouparoo/core will load this Plugin if you are doing an integration test
 process.env.GROUPAROO_INJECTED_PLUGINS = JSON.stringify({
   "@grouparoo/hubspot": { path: path.join(__dirname, "..", "..") },
 });
@@ -283,7 +283,7 @@ import { helper } from "@grouparoo/spec-helper";
 // import "@grouparoo/spec-helper";
 
 // import other things, including @grouparoo/core if you need it
-import { Profile } from "@grouparoo/core";
+import { GrouparooRecord } from "@grouparoo/core";
 
 describe("my plugin", () => {
   // This command injects a `beforeAll` and `afterAll` to startup and shutdown the server.  There are lots of options to help you with testing.  If you need access to Models, you need to turn on the server so it can connect to Postgres
@@ -291,16 +291,16 @@ describe("my plugin", () => {
 
   // Now the server will be booted up, connected to the database, and you can use factories and models like normal
   test("works", async () => {
-    const factory = await helper.factories.profile();
-    const profile = await Profile.findOne({ where: { id: factory.id } });
-    expect(profile.id).toBe(profile.id);
+    const factory = await helper.factories.record();
+    const record = await GrouparooRecord.findOne({ where: { id: factory.id } });
+    expect(record.id).toBe(record.id);
   });
 });
 ```
 
 ## Notes on Example Apps
 
-- If you create a new example app, you will need to `pnpm install` again to link up the dependencies in the monorepo.
+- If you create a new example App, you will need to `pnpm install` again to link up the dependencies in the monorepo.
 - Be sure that your `pacakge.json`'s `name` field matches the folder name.
 - Be sure that `package.json`'s `grouparoo.grouparoo_monorepo_app` matches the folder name.
 

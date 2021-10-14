@@ -31,7 +31,7 @@ export const Iterable: Plugin = {
     "The core object in Iterable is a User. A User represents an individual person. Users have one required user field: <code>email</code>.",
     "All of these Users have additional user fields that you can set, like name, role, phone, as well as custom fields.",
   ],
-  destinationProfile: "Iterable Users",
+  destinationRecord: "Iterable Users",
   destinationProperty: "Iterable User Fields",
   destinationGroup: "Iterable Audiences",
   pluginScreenshots: [
@@ -40,9 +40,9 @@ export const Iterable: Plugin = {
       description:
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/iterable/grouparoo-to-iterable.png",
-      imageAlt: "Iterable destination settings",
-      imageWidth: 1184,
-      imageHeight: 879,
+      imageAlt: "Iterable Destination settings",
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "Grouparoo keeps your Users in Iterable updated in real-time",

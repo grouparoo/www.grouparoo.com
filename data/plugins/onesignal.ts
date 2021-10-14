@@ -29,9 +29,9 @@ export const OneSignal: Plugin = {
   dataModelDescription: [
     "Trying to figure out how to integrate your data with OneSignal? Here’s an overview for how OneSignal defines Devices and Segments",
     "The core object in OneSignal is a Device. A Device represents an actual device. Users can have many Devices. All Devices have one required field: <code>external_user_id</code>.",
-    "With an <code>external_user_id</code>, Grouparoo can set Tags with data like name, lifetime value, and whether or not a user/Device is in a group.",
+    "With an <code>external_user_id</code>, Grouparoo can set Tags with data like name, lifetime value, and whether or not a user/Device is in a Group.",
   ],
-  destinationProfile: "OneSignal Devices",
+  destinationRecord: "OneSignal Devices",
   destinationProperty: "OneSignal Tags",
   destinationGroup: "OneSignal Segments",
   pluginScreenshots: [
@@ -41,9 +41,9 @@ export const OneSignal: Plugin = {
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc:
         "/images/home/integrations/onesignal/grouparoo-to-onesignal.png",
-      imageAlt: "OneSignal destination settings",
-      imageWidth: 1100,
-      imageHeight: 801,
+      imageAlt: "OneSignal Destination settings",
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "Grouparoo keeps your Segments in OneSignal updated in real-time",

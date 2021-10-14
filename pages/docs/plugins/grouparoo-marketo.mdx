@@ -1,15 +1,15 @@
 ---
 title: "@grouparoo/marketo"
-date: "2021-09-01"
-pullQuote: "Learn how to work with the Marketo plugin as a Destination."
+date: "2021-10-12"
+pullQuote: "Learn how to work with the Marketo Plugin as a Destination."
 pageNavSelector: "h2"
 ---
 
 <PluginDocsLinks plugin="Marketo" />
 
-Grouparoo's [Marketo](https://www.marketo.com/) plugin enables you to export contacts and tags to Marketo.
+Grouparoo's [Marketo](https://www.marketo.com/) Plugin enables you to export contacts and tags to Marketo.
 
-This guide will show you how to work with the Marketo plugin to [create a Destination](#create-an-marketo-destination) to export your data.
+This guide will show you how to work with the Marketo Plugin to [create a Destination](#create-an-marketo-destination) to export your data.
 
 <PluginDocsInstallation plugin="Marketo" />
 
@@ -63,11 +63,11 @@ For more information on what all these properties mean and how to configure them
 
 The Marketo Destination supports all three sync modes:
 
-- **Sync** (`sync`): Add, update, and remove profiles as needed.
-- **Additive** (`additive`): Add and update profiles as needed, but do not remove anybody.
-- **Enrich** (`enrich`): Only update profiles that already exist in the Destination. Do not add or remove anybody.
+- **Sync** (`sync`): Add, update, and remove Records as needed.
+- **Additive** (`additive`): Add and update Records as needed, but do not remove anybody.
+- **Enrich** (`enrich`): Only update Records that already exist in the Destination. Do not add or remove anybody.
 
-You can set the desired sync mode through the `syncMode` property in the config file:
+You can set the desired Sync Mode through the `syncMode` Property in the config file:
 
 ```js
 syncMode: "additive",
@@ -75,9 +75,9 @@ syncMode: "additive",
 
 ### Property Mappings
 
-These mappings are what tell Grouparoo which Properties you want to sync to the Destination and what they should be called. For this plugin, **Grouparoo Properties** map to **Marketo Leads Fields**.
+These mappings are what tell Grouparoo which Properties you want to sync to the Destination and what they should be called. For this Plugin, **Grouparoo Properties** map to **Marketo Leads Fields**.
 
-For Marketo, mapping the `email` property is always required.
+For Marketo, Mapping the `email` Property is always required.
 
 You can also map to custom attributes that you've defined on Marketo by simply adding them along with the others.
 
@@ -105,4 +105,4 @@ destinationGroupMemberships: {
 
 ## Marketo Next Steps
 
-Once you have the plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
+Once you have the Plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!

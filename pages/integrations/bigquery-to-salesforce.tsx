@@ -135,7 +135,7 @@ export default function BigQueryToSalesforce() {
                   BigQuery rows
                 </li>
                 <li>
-                  Update all profileObjects including Contacts, Leads, and
+                  Update all recordObjects including Contacts, Leads, and
                   Individuals in Salesforce automatically{" "}
                 </li>
                 <li>
@@ -181,7 +181,7 @@ export default function BigQueryToSalesforce() {
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/integrations/bigquery/bigquery-table-mode.png"
-                alt="Grouparoo table source settings"
+                alt="Grouparoo Table Source settings"
                 width={742}
                 height={506}
               />
