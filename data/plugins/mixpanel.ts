@@ -46,9 +46,9 @@ export const Mixpanel: Plugin = {
     },
     {
       header:
-        "Grouparoo keeps your User Records data in Mixpanel updated in real-time",
+        "Grouparoo keeps your User Profiles data in Mixpanel updated in real-time",
       description:
-        "Empower your sales team to make the right actions based on analytics now that all of your User Records information is up-to-date in Mixpanel",
+        "Empower your sales team to make the right actions based on analytics now that all of your User Profiles information is up-to-date in Mixpanel",
       imageSrc: "/images/home/integrations/mixpanel/mixpanel-users.png",
       imageAlt: "Users in Mixpanel",
       imageWidth: 742,

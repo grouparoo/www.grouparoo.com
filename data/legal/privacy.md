@@ -62,7 +62,7 @@ We may use personal information for the following purposes:
 
 - To prevent fraud, criminal activity, or misuses of our Site, and to ensure the security of our IT systems, architecture, and networks; and
 
-- To comply with legal obligations and legal process and to protect our rights, privacy, safety, or Property, and/or that of our affiliates, you, or other third parties.
+- To comply with legal obligations and legal process and to protect our rights, privacy, safety, or property, and/or that of our affiliates, you, or other third parties.
 
 **Aggregated Information.** We may aggregate personal information and use the aggregated information to analyze the effectiveness of our Site, to improve and add features to our Site, and for other similar purposes. In addition, from time to time, we may analyze the general behavior and characteristics of users of our Site and share aggregated information like general user statistics with prospective business partners. We may collect aggregated information through the Site, through cookies, and through other means described in this Privacy Policy.
 
