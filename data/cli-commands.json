@@ -147,7 +147,7 @@
       },
       "no-export": {
         "default": false,
-        "description": "Skip exporting the records",
+        "description": "Skip exporting the Records",
         "letter": "n",
         "flag": true
       },
