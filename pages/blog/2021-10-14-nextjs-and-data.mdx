@@ -5,7 +5,6 @@ tags: ["engineering"]
 description: "Lessons learned trying to apply single-store concepts to a NextJS app"
 author: "Krishna Glick"
 pullQuote: "NextJS is not a single point of entry application."
-image: "https://nextjs.org/_next/image?url=%2Fstatic%2Fimages%2Flearn.png&w=1080&q=75"
 ---
 
 I'd like to begin this post with a little background.
@@ -26,16 +25,14 @@ With the preamble out of the way, here's the meat of it. Since the application w
 That concept also influenced later work I did that was client-side only. Utilizing Create-React-App (CRA) I built a few contexts and shared them at top level effectively giving me multiple stores to pull and interact with. I quite liked this pattern as it let's you isolate your concerns without too much of a headache and React hooks let you do things requiring data from more than one without too much trouble.
 
 ```javascript
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function Example() {
   // Declare a new state variable, which we'll call "count"  const [count, setCount] = useState(0);
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
@@ -89,12 +86,13 @@ App.getInitialProps = async (appContext: AppContext) => {
 ```
 
 ```tsx
-export const getServerSideProps: GetServerSideProps<MyProps> =
-  async (context) => {
-    const data = await api.getMyData(context.req);
-    return { props: { data } };
-  };
-  ```
+export const getServerSideProps: GetServerSideProps<MyProps> = async (
+  context
+) => {
+  const data = await api.getMyData(context.req);
+  return { props: { data } };
+};
+```
 
 If you're fighting the framework to do what you want, maybe you're doing it wrong. Since NextJS wants to load data on page navigation I decided to stop fighting and let it do it. This left me with two top-level contexts, one for the user and one that provided specific server-side functionality to issue redirects from React. That data is defined by utilizing `getInitialProps` in the `_app` page, with everything else getting fed data from a `getServerSideProps` call.
 
