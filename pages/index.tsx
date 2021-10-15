@@ -437,7 +437,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <h3 className="homepageBlueH3">Send to Destinations</h3>
               <p>
                 Integrations make it easy to send the right data to each tool
-                you use. No code is necessary to change what data gets sent
+                you use. No code is necessary to change what data gets sent.
               </p>
             </Col>
             <Col md={8}>
@@ -459,7 +459,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <p>
                 Run campaigns in the marketing and business tools of your
                 choice. Switch providers easily without needing to rebuild
-                integrations. Send Groups, Profiles, or Records!
+                integrations. Send Records and Group data.
               </p>
             </Col>
             <Col md={8}>
