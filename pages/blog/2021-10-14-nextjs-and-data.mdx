@@ -31,28 +31,30 @@ That concept also influenced later work I did that was client-side only. Utilizi
 ```tsx
 // ContextProvider.component.tsx
 export const ContextProvider: FunctionComponent = ({ children }) => (
-    <ContextA.Provider value={useContextAInitialState()}>
-        <ContextB.Provider value={useContextBInitialState()}>
-            <ContextC.Provider value={useContextCInitialState()}>{children}</ContextC.Provider>
-        </ContextB.Provider>
-    </ContextA.Provider>
+  <ContextA.Provider value={useContextAInitialState()}>
+    <ContextB.Provider value={useContextBInitialState()}>
+      <ContextC.Provider value={useContextCInitialState()}>
+        {children}
+      </ContextC.Provider>
+    </ContextB.Provider>
+  </ContextA.Provider>
 );
 
 //contextA.ts
 export const useContextAInitialState = () => {
-    const [someValue, updateSomeValue] = useState("someValue");
-    useEffect(() => {
-        someAsyncFetch.then(updateSomeValue);
-    }, []);
-    return { someValue, updateSomeValue };
+  const [someValue, updateSomeValue] = useState("someValue");
+  useEffect(() => {
+    someAsyncFetch.then(updateSomeValue);
+  }, []);
+  return { someValue, updateSomeValue };
 };
 export const useContextAContext = () => useContext(UserContext);
 
 // Some.component.tsx
 export const Some = () => {
-    const { someValue } = useContextAContext();
+  const { someValue } = useContextAContext();
 
-    return <div>{someValue}</div>;
+  return <div>{someValue}</div>;
 };
 ```
 
@@ -63,37 +65,40 @@ As seen above, I like to make use of React hooks extensively. Since hooks don't 
 ```tsx
 // page/MyComponent.tsx
 export default MyComponent = (props: {}) => {
-    return <div>My Component</div>;
+  return <div>My Component</div>;
 };
 
 //_app.tsx
-const App = ({ Component, pageProps }: AppProps & { pageProps: AppInitialProps }) => {
-    const { some, data, ...componentProps } = pageProps;
-    return (
-        <ContextProvider {...{ some, data }}>
-            <Component {...componentProps} />
-        </ContextProvider>
-    );
+const App = ({
+  Component,
+  pageProps,
+}: AppProps & { pageProps: AppInitialProps }) => {
+  const { some, data, ...componentProps } = pageProps;
+  return (
+    <ContextProvider {...{ some, data }}>
+      <Component {...componentProps} />
+    </ContextProvider>
+  );
 };
 
 App.getInitialProps = async (appContext: AppContext) => {
-    const nextjsAppProps = await NextApp.getInitialProps(appContext);
-    const pageProps: AppInitialProps = {};
-    // Only run on the server
-    if (appContext.ctx.res) {
-        pageProps.some = "some";
-        pageProps.data = await someAsyncFetch();
-    }
+  const nextjsAppProps = await NextApp.getInitialProps(appContext);
+  const pageProps: AppInitialProps = {};
+  // Only run on the server
+  if (appContext.ctx.res) {
+    pageProps.some = "some";
+    pageProps.data = await someAsyncFetch();
+  }
 
-    return { ...nextjsAppProps, pageProps };
+  return { ...nextjsAppProps, pageProps };
 };
 
 export default App;
 
 //contextA.ts
 export const useContextAInitialState = ({ data }: { data: string }) => {
-    const [someValue, updateSomeValue] = useState(data || "someValue");
-    return { someValue, updateSomeValue };
+  const [someValue, updateSomeValue] = useState(data || "someValue");
+  return { someValue, updateSomeValue };
 };
 ```
 
