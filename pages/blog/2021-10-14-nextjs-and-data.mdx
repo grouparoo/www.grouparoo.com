@@ -7,9 +7,13 @@ author: "Krishna Glick"
 pullQuote: "NextJS is not a single point of entry application."
 ---
 
-I'd like to begin this post with a little background.
+Managing data in a front-end framework is an infinitely solved problem. Every framework has its own flavor, architecture, and opinions. Notably, NextJS makes does not. They provide a variety of methods for [data fetching](https://nextjs.org/docs/basic-features/data-fetching) but offers no in-built patterns for data management.
 
-I was the Lead Engineer at iHeart on a very high-traffic application. If you've ever visited a website for a radio station under the iHeart brand you've seen the result of my teams engineering efforts. That application started development in late 2018 with one goal at the forefront: let React handle complex, branching async rendering.
+On one hand, it doesn't seem unreasonable; NextJS simply expands on React. On the other, that leaves it up to the individual or team to make those choices. React Contexts are fairly powerful, though limited during server-side rendering. Global stores like React Tooltik, Recoil, or Mobx are all more complete solutions with their own pros and cons.
+
+I ultimately went with React Contexts given the use-case of the application I was building here at Grouparoo.
+
+For some background, I was a Lead Engineer at iHeartMedia on a very high-traffic application. If you've ever visited a website for a radio station under the iHeart brand you've seen the result of my teams engineering efforts. That application started development in late 2018 with one goal at the forefront: let React handle complex, branching async rendering, and async data loading.
 
 <Image
   alt="iHeart wmxw-fm"
@@ -20,79 +24,80 @@ I was the Lead Engineer at iHeart on a very high-traffic application. If you've 
 
 As the application rendered each portion of the tree it would need to fetch additional data to know what portions to render next. NextJS only offered async rendering at the top of the tree, and at the time the React team claimed it would have functional server-side rendering out soon. As of this writing it's still [not available](https://github.com/reactwg/react-18/discussions/37_) in the form that was promised.
 
-With the preamble out of the way, here's the meat of it. Since the application was rendered from a single point all application data was stored in a single, top level MobX store. This was dehydrated, shipped to the client, and then hydrated for application parity. The core concept is a single entrypoint always, and from there make decisions.
+Since the application was rendered from a single point all application data was stored in a top level MobX store. This was dehydrated, shipped to the client, and then hydrated for application parity. The core concept is a single entrypoint always, and from there make decisions.
 
 That concept also influenced later work I did that was client-side only. Utilizing Create-React-App (CRA) I built a few contexts and shared them at top level effectively giving me multiple stores to pull and interact with. I quite liked this pattern as it let's you isolate your concerns without too much of a headache and React hooks let you do things requiring data from more than one without too much trouble.
 
-```javascript
-import React, { useState } from "react";
+```tsx
+// ContextProvider.component.tsx
+export const ContextProvider: FunctionComponent = ({ children }) => (
+    <ContextA.Provider value={useContextAInitialState()}>
+        <ContextB.Provider value={useContextBInitialState()}>
+            <ContextC.Provider value={useContextCInitialState()}>{children}</ContextC.Provider>
+        </ContextB.Provider>
+    </ContextA.Provider>
+);
 
-function Example() {
-  // Declare a new state variable, which we'll call "count"  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
-    </div>
-  );
-}
+//contextA.ts
+export const useContextAInitialState = () => {
+    const [someValue, updateSomeValue] = useState("someValue");
+    useEffect(() => {
+        someAsyncFetch.then(updateSomeValue);
+    }, []);
+    return { someValue, updateSomeValue };
+};
+export const useContextAContext = () => useContext(UserContext);
+
+// Some.component.tsx
+export const Some = () => {
+    const { someValue } = useContextAContext();
+
+    return <div>{someValue}</div>;
+};
 ```
 
-Here at Grouparoo I was tasked with building a UI for one of our internal applications, and thanks to [ActionHero's NextJS Plugin](https://github.com/actionhero/ah-next-plugin) we slid a new UI into place quite easily. I approached NextJS like I would a greenfield CRA - creating some top level contexts and pushing my data into them. This ran into problems quickly.
+At Grouparoo we needed to build a UI for one of our internal applications, and thanks to [ActionHero's NextJS Plugin](https://github.com/actionhero/ah-next-plugin) we slid a new UI into place quite easily. I approached NextJS like I would a greenfield CRA - creating some top level contexts and pushing my data into them. This ran into problems quickly.
 
-One of the core pieces of logic within my contexts are `useEffect`'s. Since they don't run on the server any logic I had to asynchronously load data and store it in a `useState` was never run. If I wanted any data at all I'd need to get it in a `getServerSideProps`, or other NextJS hook.
-
-The other concept I utilized was putting _all_ data into [contexts](https://reactjs.org/docs/context.html). Why load anything more than once I thought. This let the applications function quickly since going to a new "page" required limited to no additional data. In NextJS land this didn't work so well. Since each page has its own data-loading and context data was set a top level, the two concepts didn't mesh well.
+As seen above, I like to make use of React hooks extensively. Since hooks don't run on the server any logic I built to load and store data had to _also_ happen in a `getServerSideProps`, or other NextJS hook.
 
 ```tsx
-const ThemeContext = React.createContext('light');
-const UserContext = React.createContext({
-  name: 'Guest',
-});
+// page/MyComponent.tsx
+export default MyComponent = (props: {}) => {
+    return <div>My Component</div>;
+};
 
-class App extends React.Component {
-  render() {
-    const { signedInUser, theme } = this.props;
-
-    // App component that provides initial context values
+//_app.tsx
+const App = ({ Component, pageProps }: AppProps & { pageProps: AppInitialProps }) => {
+    const { some, data, ...componentProps } = pageProps;
     return (
-        <ThemeContext.Provider value={theme}>
-            <UserContext.Provider value={signedInUser}>
-                <Layout />
-            </UserContext.Provider>
-        </ThemeContext.Provider>
+        <ContextProvider {...{ some, data }}>
+            <Component {...componentProps} />
+        </ContextProvider>
     );
-  }
-}
+};
 
 App.getInitialProps = async (appContext: AppContext) => {
-  const nextjsAppProps = await App.getInitialProps(appContext);
-  const pageProps: AppInitialProps = {};
-  if (appContext.ctx.res) {
-    pageProps.thene edirect(appContext.ctx.res),
+    const nextjsAppProps = await NextApp.getInitialProps(appContext);
+    const pageProps: AppInitialProps = {};
+    // Only run on the server
+    if (appContext.ctx.res) {
+        pageProps.some = "some";
+        pageProps.data = await someAsyncFetch();
+    }
 
-    // We always want to attempt to get the user on the server
-    // But a failure to get the user still means it was loaded
-    const signedInUser = await userApi
-      .getUserFromSession(appContext.ctx.req)
-      .catch(() => null);
-    pageProps.user = signedInUser;
-    pageProps.theme = signedInUser?.theme ?? "light";
-  }
-
-  return { ...nextjsAppProps, pageProps };
+    return { ...nextjsAppProps, pageProps };
 };
 
-```
+export default App;
 
-```tsx
-export const getServerSideProps: GetServerSideProps<MyProps> = async (
-  context
-) => {
-  const data = await api.getMyData(context.req);
-  return { props: { data } };
+//contextA.ts
+export const useContextAInitialState = ({ data }: { data: string }) => {
+    const [someValue, updateSomeValue] = useState(data || "someValue");
+    return { someValue, updateSomeValue };
 };
 ```
+
+The other concept I utilized was putting _all_ data into [contexts](https://reactjs.org/docs/context.html). With a client-only application it made sense; going to a new "page" required limited to no additional data. In NextJS land this didn't work so well. Since each page has its own data-loading and context data was set at top level it required some gymnastics to get the page-loaded data into the React contexts.
 
 If you're fighting the framework to do what you want, maybe you're doing it wrong. Since NextJS wants to load data on page navigation I decided to stop fighting and let it do it. This left me with two top-level contexts, one for the user and one that provided specific server-side functionality to issue redirects from React. That data is defined by utilizing `getInitialProps` in the `_app` page, with everything else getting fed data from a `getServerSideProps` call.
 
