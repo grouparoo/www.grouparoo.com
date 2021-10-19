@@ -173,7 +173,11 @@ describe("sitemap integration", () => {
           if (!testedImages.has(imgUrl)) {
             const response = await fetch(imgUrl);
             testedImages.add(imgUrl);
-            expect(response.status).toEqual(200);
+            try {
+              expect(response.status).toEqual(200);
+            } catch (error) {
+              throw new Error(`CANNOT FIND ${imgUrl}`);
+            }
           }
         }
       });
