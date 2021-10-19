@@ -52,7 +52,7 @@ Outside-In debugging starts at the highest level of the system and works in towa
 
 ### 1. Test Each Individual Tier
 
-Are the servers for each tier up and running? Can you see that the application (Grouparoo app, database, etc) is up and running on each server? Test these directly if possible by SSH-ing into the machine or starting a console. Check application logs or your APM tool.
+Are the servers for each tier up and running? Can you see that the application (Grouparoo App, database, etc) is up and running on each server? Test these directly if possible by SSH-ing into the machine or starting a console. Check application logs or your APM tool.
 
 ### 2. Test the Connections Between Tiers
 
@@ -66,7 +66,7 @@ There are two types of "usage" to check - **system** and **application**.
 
 System usage include RAM or Disk space, the resources that each server provides to the applications running on it. Test these resources directly on each system via logs, `htop`, `du`, and similar commands.
 
-Application usage refers to the size of the data you are processing with Grouparoo. Are there more Profiles or Imports than normal? Is your database filling up? Check these by connecting to each database in the Data Tier directly and reporting its usage metrics, like number of rows, slow queries, etc.
+Application usage refers to the size of the data you are processing with Grouparoo. Are there more Records or Imports than normal? Is your database filling up? Check these by connecting to each database in the Data Tier directly and reporting its usage metrics, like number of rows, slow queries, etc.
 
 ### 4. Check for Changes in Dependencies
 
@@ -76,9 +76,9 @@ However, there are other types of dependencies: operating system versions and pa
 
 ### 5. Check for Reproducible Application Tier Problems
 
-Can you break things in the same way multiple times? Reproducible bugs are possible to fix, and it’s important to explain why they happen. Does visiting a certain page crash things? Does importing or exporting a certain profile cause an error?
+Can you break things in the same way multiple times? Reproducible bugs are possible to fix, and it’s important to explain why they happen. Does visiting a certain page crash things? Does importing or exporting a certain Record cause an error?
 
-Sharing this information to reproduce the problem is important when [reporting a bug](/support).
+Sharing this information to reproduce the problem is important when [reporting a bug](/docs/support).
 
 ### 6. Add Instrumentation
 

@@ -32,7 +32,7 @@ export const Hubspot: Plugin = {
     "The core object in Hubspot is a Contact. A Contact represents an individual person who might be a lead or a customer. Contacts have one required attribute, which is their email address.",
     "Hubspot calls attributes of a Contact a Contact Property. Hubspot pre-defines a number of Contact Properties like <code>firstname</code> and <code>lastname</code> for example, but you can create new Contact Properties as you'd like using Grouparoo or in the Hubspot website.",
   ],
-  destinationProfile: "Hubspot Contacts",
+  destinationRecord: "Hubspot Contacts",
   destinationProperty: "Hubspot Contact Properties",
   destinationGroup: "Hubspot Contact Lists",
   pluginScreenshots: [
@@ -42,8 +42,8 @@ export const Hubspot: Plugin = {
         "Grouparoo is low-code, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/hubspot/grouparoo-to-hubspot.png",
       imageAlt: "Map data to Hubspot",
-      imageWidth: 742,
-      imageHeight: 412,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:

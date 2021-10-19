@@ -19,6 +19,8 @@
     >1.0</priority></url><url><loc
     >https://www.grouparoo.com/get-started</loc><changefreq
     >daily</changefreq><priority>1.0</priority></url><url><loc
+    >https://www.grouparoo.com/hacktoberfest</loc><changefreq
+    >daily</changefreq><priority>1.0</priority></url><url><loc
     >https://www.grouparoo.com/integrations</loc><changefreq
     >daily</changefreq><priority>1.0</priority></url><url><loc
     >https://www.grouparoo.com/meet</loc><changefreq>daily</changefreq><priority
@@ -205,8 +207,6 @@
     >daily</changefreq><priority>1.0</priority></url><url><loc
     >https://www.grouparoo.com/solutions/hightouch-alternative</loc><changefreq
     >daily</changefreq><priority>1.0</priority></url><url><loc
-    >https://www.grouparoo.com/solutions/marketers</loc><changefreq
-    >daily</changefreq><priority>1.0</priority></url><url><loc
     >https://www.grouparoo.com/solutions/modern-data-stack</loc><changefreq
     >daily</changefreq><priority>1.0</priority></url><url><loc
     >https://www.grouparoo.com/solutions/reverse-etl</loc><changefreq
@@ -233,9 +233,9 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/models</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/config/profiles</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/properties</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/config/records</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/sources</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc

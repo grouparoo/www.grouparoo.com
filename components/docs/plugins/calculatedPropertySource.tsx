@@ -75,13 +75,13 @@ function customFunction() {
       </h2>
       <p>
         The Calculated Property Source is a specific type of Source. The focus
-        of the Calculated Property plugin is the ability generate custom
+        of the Calculated Property Plugin is the ability generate custom
         properties based upon a JavaScript function in the Property
         configuration.
       </p>
       <p>
-        In order to generate the property, you will first need to generate a
-        parent source.
+        In order to generate the Property, you will first need to generate a
+        parent Source.
       </p>
       <p>
         You can generate a Calculated Property Source using the{" "}
@@ -124,13 +124,13 @@ function customFunction() {
           <strong>Pro Tip!</strong>
         </p>
         <p className="mb-0">
-          Note that the parent source of a Calculated Property is{" "}
+          Note that the parent Source of a Calculated Property is{" "}
           <em>always</em> a Calculated Property Source, even if the Property
           itself references Properties from other Sources.
         </p>
       </Alert>
       <p>
-        The Property generator will drop individual a file in the{" "}
+        The Property Generator will drop individual a file in the{" "}
         <code>config/properties</code> directory. Edit this file to match your
         desired configuration. All Calculated Properties are required to have a
         valid <code>customFunction</code> option.
@@ -169,7 +169,7 @@ function customFunction() {
         >
           mustache variables
         </a>{" "}
-        to refer to the key of that property. A Property's key can be found in
+        to refer to the key of that Property. A Property's key can be found in
         its config file. If no key is present, the default key is a Property's
         id.
       </p>
@@ -180,15 +180,15 @@ function customFunction() {
       </p>
       <CodeBlock code={codeBlocks.customFunction} language="javascript" />
       <p>
-        <code>customFunction</code> is executed Profile by Profile, so the value
-        of each Profile's <code>first_name</code> and <code>last_name</code>{" "}
+        <code>customFunction</code> is executed Record by Record, so the value
+        of each Record's <code>first_name</code> and <code>last_name</code>{" "}
         Properties are parsed directly into the function, which is why it is
         quoted in order to evaluate as and return a string.
       </p>
       <p>
         You can write <code>customFunction</code>s using <code>string</code>,{" "}
         <code>number</code>, <code>boolean</code>, and
-        <code>date</code> property types. All mustached variables are returned
+        <code>date</code> Property types. All mustached variables are returned
         as the string value of their value. This means if you want to use an
         integer or float type for calculation, you will have to parse it. For
         example:
@@ -198,9 +198,9 @@ function customFunction() {
         />
       </p>
       <p>
-        For example, to use an existing property <code>total_cost</code> and{" "}
+        For example, to use an existing Property <code>total_cost</code> and{" "}
         <code>total_sales</code> to calculate a <code>profit_margin</code>{" "}
-        property, run:
+        Property, run:
       </p>
       <CodeBlock code={codeBlocks.customFunctionProfit} language="javascript" />
       <p>
@@ -214,13 +214,13 @@ function customFunction() {
       <p>
         To replace a null value, you can evaluate the string from the mustache
         variable against an empty string and use a conditional. Here we'll make
-        a property that flags any account missing an email:
+        a Property that flags any account missing an email:
         <CodeBlock
           code={codeBlocks.customFunctionIfNoEmail}
           language="javascript"
         />
         A Calculated Property's <code>customFunction</code> can use whatever
-        synchronous JavaScript you would like to generate your property. Please
+        synchronous JavaScript you would like to generate your Property. Please
         note that:
         <ul>
           <li>

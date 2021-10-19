@@ -6,8 +6,8 @@ header: "Reverse ETL tools help sales and marketing teams understand their data 
 features:
   [
     {
-      title: "🔎 Use the profiles and segments you already have",
-      text: "Reverse ETLs let you use the robust profile data you've already made in your data warehouse.",
+      title: "🔎 Use the records and segments you already have",
+      text: "Reverse ETLs let you use the robust Record data you've already made in your data warehouse.",
     },
     {
       title: "💼  Make informed business decisions with operational analytics",
@@ -80,7 +80,7 @@ It helps that the data your revenue and operational teams need already lives in 
 
 <SectionDivider
   imagePath="/images/home/hero-diagram.svg"
-  heading="Reverse ETL allows you to sync profiles and groups across your tools"
+  heading="Reverse ETL allows you to sync records and groups across your tools"
   width="600"
   height="255"
   content="You already have the data you need in your warehouse, Reverse ETLs allow you to sync that tailored data to tools such as Salesforce, Zendesk, or Marketo where you can put it to use."
@@ -93,7 +93,7 @@ Someone on the marketing team or their manager asks engineering to connect a cus
 
 No sweat, right?
 
-Well, things get more complicated quickly. What happens when a user record changes? Or new users get added?
+Well, things get more complicated quickly. What happens when a user Record changes? Or new users get added?
 
 What happens when content and marketing or sales wants more user information in Mailchimp?
 
@@ -111,41 +111,41 @@ Reverse ETL tools, at their core, make it easy to take data that already lives i
 
 The first step in Reverse ETL is defining what data you want to pull from your source of truth.
 
-In Grouparoo terms, that means first connecting to Sources -- which could be anything from Google Bigquery to Snowflake to a Postgres database, or any one of our 20+ integration options. Then, you can start defining Profile Properties.
+In Grouparoo terms, that means first connecting to Sources -- which could be anything from Google Bigquery to Snowflake to a Postgres database, or any one of our 20+ integration options. Then, you can start defining Record Properties.
 
-Profile Properties are customer data, such as identifying information like email or _user_id_ to product usage data like _lifetime_value_ or _last_login_at_.
+Record Properties are customer data, such as identifying information like email or _user_id_ to product usage data like _lifetime_value_ or _last_login_at_.
 
 <SectionDivider
   imagePath="/images/home/how-it-works-1.png"
-  heading="Defining profiles with Grouparoo is simple"
-  width="601"
-  height="368"
+  heading="Defining records with Grouparoo is simple"
+  width="733"
+  height="398"
   content="You can use our enterprise UI or our community edition CLI tools to generate properties efficiently."
   imageLeft="true"
   browser="true"
 />
 
-In Grouparoo, you can define these profile properties using our no-code web interface
+In Grouparoo, you can define these Record properties using our no-code web interface
 or in code with our community edition.
 
 Both of these options result in efficient queries to your database that then creates Properties in Grouparoo.
 
 #### Define how you want to export your data
 
-From here, Grouparoo allows you to define what Profile and Property data you want to send to your business tools like CRMs, marketing automation platforms, and others. We call these Destinations, and we’ve built 20+ integration apps (and we’re launching more all the time!).
+From here, Grouparoo allows you to define what Record and Property data you want to send to your business tools like CRMs, marketing automation platforms, and others. We call these Destinations, and we’ve built 20+ integration apps (and we’re launching more all the time!).
 
 With our pre-built integrations, your engineering team doesn’t need to learn the ins and outs of every tool’s API features.
 
 Grouparoo handles all of the tricky nuances of every API -- whether it’s about using different [Batch APIs](https://www.grouparoo.com/blog/batching-api-requests) or managing requests so you don’t hit [rate limits](https://www.grouparoo.com/blog/crm-system-rate-limiting).
 
-Connecting to a new integration just requires installing the plugin and adding some connection details such as an API key. Once that’s set, anyone on your team, developer or not, can connect your customer data to your destinations.
+Connecting to a new integration just requires installing the Plugin and adding some connection details such as an API key. Once that’s set, anyone on your team, developer or not, can connect your customer data to your destinations.
 
 <SectionDivider
   imagePath="/images/home/how-it-works-3.png"
   heading="Map your data to any one of our 20+ destinations"
-  width="600"
-  height="328"
-  content="No need for your team to know every quirk of your destination's API.  Grouparoo handles all that for you."
+  width="733"
+  height="398"
+  content="No need for your team to know every quirk of your Destination's API.  Grouparoo handles all that for you."
   imageLeft="false"
   browser="true"
 />
@@ -154,14 +154,14 @@ Connecting to a new integration just requires installing the plugin and adding s
 
 Once you’ve defined these connections, Grouparoo regularly queries your data for updates. As you get new customer data, Grouparoo will automatically read and sync that data to your destinations.
 
-If you want to send new data to your destination, anyone on your team can update the destination mappings.
+If you want to send new data to your Destination, anyone on your team can update the Destination mappings.
 
-Grouparoo also keeps all of your profile data up-to-date and ensures that everything we send to a destination was recently checked against the source of truth. That way, you can rest with a sense of security that your data is accurate and current.
+Grouparoo also keeps all of your Record data up-to-date and ensures that everything we send to a Destination was recently checked against the source of truth. That way, you can rest with a sense of security that your data is accurate and current.
 
 <SectionDivider
   imagePath="/images/home/solutions/categories/schedules.png"
-  heading="Schedule your profiles to sync automatically"
-  width="600"
+  heading="Schedule your records to sync automatically"
+  width="787"
   height="427"
   content="With Grouparoo, runs can be triggered every hour, every day, every week, or in real-time."
   imageLeft="true"

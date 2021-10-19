@@ -105,14 +105,6 @@ export default function Footer() {
                 <div className="pl-1">
                   <strong>Use Cases</strong>
                   <br />
-                  <Link href="/solutions/engineers">
-                    <a>Grouparoo for Engineers</a>
-                  </Link>
-                  <br />
-                  <Link href="/solutions/marketers">
-                    <a>Grouparoo for Marketers</a>
-                  </Link>
-                  <br />
                   <Link href="/solutions/healthcare">
                     <a>Healthcare</a>
                   </Link>

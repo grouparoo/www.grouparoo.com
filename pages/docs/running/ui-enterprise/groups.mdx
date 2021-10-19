@@ -1,21 +1,21 @@
 ---
 title: "Groups (Enterprise Edition)"
-date: "2021-02-11"
+date: "2021-10-13"
 pullQuote: "Learn how to configure Groups in Grouparoo's Enterprise Edition."
 breadcrumb_label: Groups
 ---
 
 Once you have an App, Source, and Properties ([start with an App](/docs/running/ui-enterprise/apps) if you don't have any), then you're ready to define your Groups.
 
-Groups are where the magic happens in Grouparoo. (It's in the name, after all!) Groups are a segment or cohort of Profiles. They are useful in that you can use Groups to target a specific set of users to [export to some Destination](/docs/running/ui-enterprise/destinations). You can have _Calculated Groups_ and _Manual Groups_. [See here](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+Groups are where the magic happens in Grouparoo. (It's in the name, after all!) Groups are a segment or cohort of Records. They are useful in that you can use Groups to target a specific set of users to [export to some Destination](/docs/running/ui-enterprise/destinations). You can have _Calculated Groups_ and _Manual Groups_. [See here](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
 
 ## Adding Calculated Groups
 
-Calculated Groups add and remove Profiles automatically based on Group Rules that you define. Each Rule has several options for logically determining if a profile belongs in the group. Those options are listed below, followed by a few examples.
+Calculated Groups add and remove Records automatically based on Group Rules that you define. Each Rule has several options for logically determining if a Record belongs in the Group. Those options are listed below, followed by a few examples.
 
 ### Rule Operation Options
 
-Each Rule has an operator — a logical statement to filter profiles. A profile must match every Rule to be included in the Group.
+Each Rule has an operator — a logical statement to filter records. A Record must match every Rule to be included in the Group.
 
 Available operations depends on both the _type_ of Property and the underlying Grouparoo database (SQLite vs. Postgres). See below for a list of rules. (If in doubt, choose Postgres.)
 
@@ -29,51 +29,51 @@ Here are a few different examples of Calculated Groups and their rules:
 
 Group Rules:
 
-- Profiles who have purchased more than once
-- Profiles with an email
+- Records who have purchased more than once
+- Records with an email
 
 <ImageInBrowserFrame
   centered
   alt="Repeat Purchasers"
   src="/images/docs/guides/group-example-01.png"
-  width={820}
-  height={414}
+  width={1202}
+  height={661}
 />
 
 #### Example: High-Value & Abandoned Cart Recently
 
 Group Rules:
 
-- Profiles who have a Life-time Value (LTV) of over 30
-- Profiles who have recently added an item to their cart
-- Profiles with an email
+- Records who have a Life-time Value (LTV) of over 30
+- Records who have recently added an item to their cart
+- Records with an email
 
 <ImageInBrowserFrame
   centered
   alt="High Value"
   src="/images/docs/guides/group-example-02.png"
-  width={820}
-  height={414}
+  width={1368}
+  height={673}
 />
 
 #### Example: High-Value Xhosa Speakers
 
 Group Rules:
 
-- Profiles with a language set to `xhosa`
-- Profiles who have a Life-time Value (LTV) of over 50
+- Records with a language set to `xhosa`
+- Records who have a Life-time Value (LTV) of over 50
 
 <ImageInBrowserFrame
   centered
   alt="High Value"
   src="/images/docs/guides/group-example-03.png"
-  width={820}
-  height={414}
+  width={1827}
+  height={671}
 />
 
 ## Adding Manual Groups
 
-While a great deal of the value of Grouparoo comes from our Calculated Groups, Manual Groups are still valuable in certain circumstances. Manual Groups are Groups of profiles where you manually add or remove Profiles from the Group.
+While a great deal of the value of Grouparoo comes from our Calculated Groups, Manual Groups are still valuable in certain circumstances. Manual Groups are Groups of records where you manually add or remove Records from the Group.
 
 ## Next Steps
 

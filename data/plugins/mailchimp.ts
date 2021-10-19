@@ -31,7 +31,7 @@ export const Mailchimp: Plugin = {
     "The core object in Mailchimp is a Contact (also known as a Member). A Contact represents an individual person that lives on a List or Audience. Contacts have one required attribute, which is their email address.",
     "Mailchimp calls attributes of a Contact a Merge Field (formerly a Merge Var). MailChimp pre-defines a number of Merge Fields like <code>FNAME</code> (first name) and <code>LNAME</code> (last name) for example, but you can define as many Merge Fields as you'd like using Grouparoo or in the Mailchimp website.",
   ],
-  destinationProfile: "Mailchimp Contacts",
+  destinationRecord: "Mailchimp Contacts",
   destinationProperty: "Mailchimp Merge Vars",
   destinationGroup: "Mailchimp Tags",
   pluginScreenshots: [
@@ -42,8 +42,8 @@ export const Mailchimp: Plugin = {
       imageSrc:
         "/images/home/integrations/mailchimp/grouparoo-to-mailchimp.png",
       imageAlt: "Map data to Mailchimp",
-      imageWidth: 742,
-      imageHeight: 455,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:
