@@ -131,7 +131,7 @@ describe("sitemap integration", () => {
           expect(testUrl).not.toContain("/whats-new/");
       });
 
-      test("images", async () => {
+      test("image alt tags", async () => {
         const altTagMissing = [];
         $("img").each(function () {
           const tag = $(this);
@@ -149,6 +149,24 @@ describe("sitemap integration", () => {
         });
 
         expect(altTagMissing).toEqual([]);
+      });
+
+      test("image sources", async () => {
+        const imgArray = Array.from($("img"));
+        const imageTags = imgArray
+          //@ts-ignore
+          .map((i) => i.parent.children.filter((t) => t.name === "noscript"))
+          .flat()
+          .filter((container) => container.children.length > 0)
+          .map((container) => container.children[0].data);
+
+        for (const tag of imageTags) {
+          const noScript = cheerio.load(tag);
+          const imgSrc = noScript("img").attr("src");
+          const imgUrl = `${url}${imgSrc}`;
+          const response = await fetch(imgUrl);
+          expect(response.status).toEqual(200);
+        }
       });
 
       test("links", async () => {
