@@ -1,0 +1,107 @@
+---
+title: "NextJS and Managing Your Data"
+date: "2021-10-15"
+tags: ["engineering"]
+description: "Lessons learned trying to apply single-store concepts to a NextJS app"
+author: "Krishna Glick"
+pullQuote: "NextJS is not a single point of entry application."
+---
+
+Managing data in a front-end framework is an infinitely solved problem. Every framework has its own flavor, architecture, and opinions on how state should flow; NextJS does not. They provide a variety of methods for [data fetching](https://nextjs.org/docs/basic-features/data-fetching) but offers no in-built patterns for data management.
+
+On one hand, it doesn't seem unreasonable; NextJS simply expands on React. On the other, that leaves it up to the individual or team to make those choices. React Contexts are fairly powerful, though limited during server-side rendering. Global stores like React Tooltik, Recoil, or Mobx are all more complete solutions with their own pros and cons.
+
+For some background, I was a Lead Engineer at iHeartMedia on a very high-traffic application. If you've ever visited a website for a radio station under the iHeart brand you've seen the result of my team's engineering efforts. That application started development in late 2018 with one goal at the forefront: let React handle complex, branching async rendering, and async data loading.
+
+<Image
+  alt="iHeart wmxw-fm"
+  src="nextjs-and-data/iheart-react.png"
+  width="700"
+  height="333"
+/>
+
+As the application rendered each portion of the tree it would need to fetch additional data to know what portions to render next. NextJS only offered async rendering at the top of the tree, and at the time the React team claimed it would have functional server-side rendering out soon. As of this writing it's still [not available](https://github.com/reactwg/react-18/discussions/37) in the form that was promised.
+
+Since the application was rendered from a single point all application data was stored in a top level MobX store. This was dehydrated, shipped to the client, and then [hydrated](<https://en.wikipedia.org/wiki/Hydration_(web_development)>) for application parity. The core concept is a single entrypoint always, and from there make decisions.
+
+That concept also influenced later work I did that was client-side only. Utilizing Create-React-App (CRA) I built a few contexts and shared them at top level effectively giving me multiple stores to pull and interact with. I quite liked this pattern as it let's you isolate your concerns without too much of a headache and React hooks let you do things requiring data from more than one without too much trouble.
+
+```tsx
+// ContextProvider.component.tsx
+export const ContextProvider: FunctionComponent = ({ children }) => (
+  <ContextA.Provider value={useContextAInitialState()}>
+    <ContextB.Provider value={useContextBInitialState()}>
+      <ContextC.Provider value={useContextCInitialState()}>
+        {children}
+      </ContextC.Provider>
+    </ContextB.Provider>
+  </ContextA.Provider>
+);
+
+//contextA.ts
+export const useContextAInitialState = () => {
+  const [someValue, updateSomeValue] = useState("someValue");
+  useEffect(() => {
+    someAsyncFetch.then(updateSomeValue);
+  }, []);
+  return { someValue, updateSomeValue };
+};
+export const useContextAContext = () => useContext(UserContext);
+
+// Some.component.tsx
+export const Some = () => {
+  const { someValue } = useContextAContext();
+
+  return <div>{someValue}</div>;
+};
+```
+
+At Grouparoo we needed to build a UI for one of our internal applications, and thanks to [ActionHero's NextJS Plugin](https://github.com/actionhero/ah-next-plugin) we slid a new UI into place quite easily. I approached NextJS like I would a greenfield CRA - creating some top level contexts and pushing my data into them. This ran into problems quickly.
+
+As seen above, I like to make use of React hooks extensively. Since hooks don't run on the server, any logic I built to load and store data had to _also_ happen in a `getServerSideProps`, or other NextJS hook.
+
+```tsx
+// page/MyComponent.tsx
+export default MyComponent = (props: {}) => {
+  return <div>My Component</div>;
+};
+
+//_app.tsx
+const App = ({
+  Component,
+  pageProps,
+}: AppProps & { pageProps: AppInitialProps }) => {
+  const { some, data, ...componentProps } = pageProps;
+  return (
+    <ContextProvider {...{ some, data }}>
+      <Component {...componentProps} />
+    </ContextProvider>
+  );
+};
+
+App.getInitialProps = async (appContext: AppContext) => {
+  const nextjsAppProps = await NextApp.getInitialProps(appContext);
+  const pageProps: AppInitialProps = {};
+  // Only run on the server
+  if (appContext.ctx.res) {
+    pageProps.some = "some";
+    pageProps.data = await someAsyncFetch();
+  }
+
+  return { ...nextjsAppProps, pageProps };
+};
+
+export default App;
+
+//contextA.ts
+export const useContextAInitialState = ({ data }: { data: string }) => {
+  const [someValue, updateSomeValue] = useState(data || "someValue");
+  return { someValue, updateSomeValue };
+};
+```
+
+The other major concept I've utilized in the past was putting _all_ data into [contexts](https://reactjs.org/docs/context.html). With a client-only application it made sense; going to a new "page" required limited to no additional data. In NextJS land this didn't work so well. Since each page has its own data-loading and context data was set at top level it required some gymnastics to get the page-loaded data into the React contexts.
+
+If you're fighting the framework to do what you want, maybe you're doing it wrong. Since NextJS wants to load data on page navigation I decided to stop fighting and let it do it. This left me with two top-level contexts, one for the user and one that provided specific server-side functionality to issue redirects from React. That data is defined by utilizing `getInitialProps` in the `_app` page, with everything else getting fed data from a `getServerSideProps` call.
+
+NextJS _is not_ a single point of entry application. Every page is a top-level object, a fresh entrypoint into the application, and it's important to keep that in mind when considering your architecture. `_app` lets you take some liberties but it's important to isolate your concerns; `_app.getInitialProps` is called for _every single page_.

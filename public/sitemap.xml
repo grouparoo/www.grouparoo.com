@@ -31,6 +31,8 @@
     >daily</changefreq><priority>1.0</priority></url><url><loc
     >https://www.grouparoo.com/whats-new</loc><changefreq
     >daily</changefreq><priority>1.0</priority></url><url><loc
+    >https://www.grouparoo.com/blog/2021-10-14-nextjs-and-data</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/blog/7-awesome-sqlite-quirks</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/blog/97-things-every-data-engineer-should-know</loc><changefreq

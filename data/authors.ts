@@ -3,7 +3,7 @@ export interface Author {
   slug: string;
   image: string;
   url: string;
-  twitter: string;
+  twitter?: string;
   description: string;
 }
 
@@ -97,6 +97,14 @@ const Authors: Author[] = [
     twitter: "@yashovardhan",
     description:
       "Yash is an Open Source Developer Evangelist and a total Javascript nerd. He loves sharing his ideas, through writings, talks or just being around at hackathons and tech events. While not coding, you can always find Yash singing some random Indian bollywood song!",
+  },
+  {
+    name: "Krishna Glick",
+    slug: "kc",
+    image: "krishna_glick.png",
+    url: "https://github.com/krishnaglick",
+    description:
+      "Krishna (KC) Glick is a Senior Software Engineer at Grouparoo. He started his career as a C# dev, before falling in love with Javascript and later Typescript. KC has four pets which he is happy to talk about at length if asked, and can be found rock climbing several evenings a week.",
   },
 ];
 
