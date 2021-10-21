@@ -20,6 +20,7 @@
     "**/*.ts",
     "**/*.tsx",
     "config.js",
-    "next.config.js"
+    "next.config.js",
+    "public/favicon/favicon-generator.js"
   ]
 }

@@ -20,7 +20,8 @@
     "test": "jest --runInBand",
     "lint": "prettier --check pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
     "lint-fix": "prettier --write pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
-    "nuke": "rm -rf node_modules && rm -rf .next"
+    "nuke": "rm -rf node_modules && rm -rf .next",
+    "generate-favicons": "node ./public/favicon/favicon-generator.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.36",
@@ -55,7 +56,6 @@
     "remark-external-links": "8.0.0",
     "remark-react": "^8.0.0",
     "sass": "1.42.1",
-    "sharp": "0.29.1",
     "sitemap": "7.0.0",
     "typescript": "4.4.3",
     "uuid": "8.3.2",
@@ -75,6 +75,7 @@
     "markdown-table": "2.0.0",
     "next-remote-watch": "1.0.0",
     "prettier": "2.4.1",
+    "sharp": "0.29.2",
     "ts-jest": "27.0.5",
     "ts-node": "10.2.1",
     "xml2js": "0.4.23"
