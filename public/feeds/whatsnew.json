@@ -11,11 +11,11 @@
   },
   "items": [
     {
-      "id": "grouparoo-release-note-2021-10-20-mixpanel",
-      "content_html": "<p>Grouparoo has added support for exporting data to <a href=\"https://mixpanel.com/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Mixpanel</a>!</p><p>With the <code>@grouparoo/mixpanel</code> plugin, you can now sync data from your data warehouse into Mixpanel&#x27;s User Profiles, Properties and Groups.</p><p>Learn more about integrating Grouparoo with Mixpanel <a href=\"/integrations/destinations/mixpanel\">here</a>.</p><div style=\"margin-bottom:20px\"><img alt=\"Mixpanel Destination\" src=\"https://www.grouparoo.com/posts/releases/2021-10-20-mixpanel.png\" width=\"1000\" height=\"429\" style=\"height:429px;width:1000px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
-      "url": "https://www.grouparoo.com/whats-new#2021-10-20-mixpanel",
+      "id": "grouparoo-release-note-2021-10-21-mixpanel",
+      "content_html": "<p>Grouparoo has added support for exporting data to <a href=\"https://mixpanel.com/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Mixpanel</a>!</p><p>With the <code>@grouparoo/mixpanel</code> plugin, you can now sync data from your data warehouse into Mixpanel&#x27;s User Profiles, Properties and Groups.</p><p>Learn more about integrating Grouparoo with Mixpanel <a href=\"/integrations/destinations/mixpanel\">here</a>.</p><div style=\"margin-bottom:20px\"><img alt=\"Mixpanel Destination\" src=\"https://www.grouparoo.com/posts/releases/2021-10-21-mixpanel.png\" width=\"1000\" height=\"429\" style=\"height:429px;width:1000px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
+      "url": "https://www.grouparoo.com/whats-new#2021-10-21-mixpanel",
       "title": "Mixpanel Destination",
-      "date_modified": "2021-10-20T00:00:00.000Z",
+      "date_modified": "2021-10-21T00:00:00.000Z",
       "author": {
         "name": "Grouparoo, Inc.",
         "url": "https://www.grouparoo.com"
