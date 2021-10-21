@@ -14,7 +14,7 @@ function LogoAndSocialLinks({ router }) {
             src="/images/logo.png"
             alt="Grouparoo Logo"
             width={50}
-            height={40}
+            height={50}
           />
         </a>
       </Link>
@@ -175,7 +175,7 @@ export default function Footer() {
                   </Link>
                   <br />
                   <Link href="/integrations/sources/redshift">
-                    <a>Snowflake Integration</a>
+                    <a>Redshift Integration</a>
                   </Link>
                   <br />
                 </div>
