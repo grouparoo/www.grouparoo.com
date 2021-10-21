@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Fri, 10 Sep 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 21 Oct 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,15 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Mixpanel Destination]]></title>
+            <link>https://www.grouparoo.com/whats-new#2021-10-21-mixpanel</link>
+            <guid>grouparoo-release-note-2021-10-21-mixpanel</guid>
+            <pubDate>Thu, 21 Oct 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Grouparoo has added support for exporting data to <a href="https://mixpanel.com/" target="_blank" rel="nofollow noopener noreferrer">Mixpanel</a>!</p><p>With the <code>@grouparoo/mixpanel</code> plugin, you can now sync data from your data warehouse into Mixpanel&#x27;s User Profiles, Properties and Groups.</p><p>Learn more about integrating Grouparoo with Mixpanel <a href="/integrations/destinations/mixpanel">here</a>.</p><div style="margin-bottom:20px"><img alt="Mixpanel Destination" src="https://www.grouparoo.com/posts/releases/2021-10-21-mixpanel.png" width="1000" height="429" style="height:429px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
         <item>
             <title><![CDATA[Automatic Profile Deletion]]></title>
             <link

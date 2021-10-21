@@ -1,6 +1,9 @@
 const docsRedirects = require("./data/docs-redirects");
 
-module.exports = {
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
   env: {
     ROBOTS_DISABLED: process.env.ROBOTS_DISABLED,
     GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
@@ -11,6 +14,19 @@ module.exports = {
   },
   async rewrites() {
     return [];
+  },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "SAMEORIGIN",
+          },
+        ],
+      },
+    ];
   },
   async redirects() {
     return [
@@ -88,3 +104,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = nextConfig;
