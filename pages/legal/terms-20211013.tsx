@@ -15,6 +15,7 @@ export default function Meet({ pageProps }) {
           rel="canonical"
           href="https://www.grouparoo.com/legal/terms-20211013"
         />
+        <meta name="robots" content="noindex" />
       </Head>
 
       <Container className="mb-5">
