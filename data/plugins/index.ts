@@ -150,7 +150,7 @@ export function getPluginDisplay(pluginSlug: string): PluginDisplay {
   if (!pluginData) {
     throw new Error(`Slug (${pluginSlug}) not found in Plugin data.`);
   }
-  const { name, slug, logo, toDisplay } = pluginData;
+  const { name, slug, logo } = pluginData;
 
   return {
     name,
