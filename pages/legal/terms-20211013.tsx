@@ -10,7 +10,7 @@ export default function Meet({ pageProps }) {
   return (
     <>
       <Head>
-        <title>Grouparoo Master Terms and Conditions</title>
+        <title>Grouparoo Master Terms and Conditions - 2021-10-13</title>
         <link
           rel="canonical"
           href="https://www.grouparoo.com/legal/terms-20211013"
