@@ -241,6 +241,9 @@ export default function Footer() {
                   <Link href="/legal/privacy">
                     <a>Privacy Policy</a>
                   </Link>
+                  <Link href="/legal/terms">
+                    <a>Terms and Conditions</a>
+                  </Link>
                 </div>
               </Col>
               <Col className="d-none d-md-inline-block col-md-1" />
