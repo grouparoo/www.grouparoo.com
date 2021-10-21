@@ -11,6 +11,17 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2021-10-21-mixpanel",
+      "content_html": "<p>Grouparoo has added support for exporting data to <a href=\"https://mixpanel.com/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Mixpanel</a>!</p><p>With the <code>@grouparoo/mixpanel</code> plugin, you can now sync data from your data warehouse into Mixpanel&#x27;s User Profiles, Properties and Groups.</p><p>Learn more about integrating Grouparoo with Mixpanel <a href=\"/integrations/destinations/mixpanel\">here</a>.</p><div style=\"margin-bottom:20px\"><img alt=\"Mixpanel Destination\" src=\"https://www.grouparoo.com/posts/releases/2021-10-21-mixpanel.png\" width=\"1000\" height=\"429\" style=\"height:429px;width:1000px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
+      "url": "https://www.grouparoo.com/whats-new#2021-10-21-mixpanel",
+      "title": "Mixpanel Destination",
+      "date_modified": "2021-10-21T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-09-10-auto-profile-deletion",
       "content_html": "<p>As part of the v0.6 release, Grouparoo now checks for Profiles that have been deleted from their primary source and removes them from the system. This means that Profiles can be automatically cleared out from Destinations they&#x27;re synced to when you&#x27;ve removed them from your Data Warehouse.</p><p>This behavior can be configured to run along with your existing Schedule, as well as periodically. For more information, check out our <a href=\"https://www.grouparoo.com/docs/support/upgrading-grouparoo/v05-v06#automatically-deleting-profiles\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">v0.6 upgrade guide</a>.</p>",
       "url": "https://www.grouparoo.com/whats-new#2021-09-10-auto-profile-deletion",
