@@ -15,15 +15,13 @@ export default function AuthorBox({
     <Alert variant="primary">
       <Row>
         <Col md={2}>
-          {author.image.length > 0 && (
-            <Image
-              roundedCircle
-              src={`/images/authors/${author.image}`}
-              alt={author.name}
-              width={100}
-              height={100}
-            />
-          )}
+          <Image
+            roundedCircle
+            src={`/images/authors/${author.image}`}
+            alt={author.name}
+            width={100}
+            height={100}
+          />
         </Col>
         <Col>
           <small>
@@ -45,17 +43,13 @@ export default function AuthorBox({
                 <br />
               </>
             ) : null}
-            {author.description.length > 0 && <em>{author.description}</em>}
+            <em>{author.description}</em>
             <br />
             <br />
-            {author.url.length > 0 && (
-              <span>
-                Learn more about {author.name.split(" ")[0]} @{" "}
-                <a href={author.url} target="_new">
-                  {author.url}
-                </a>
-              </span>
-            )}
+            Learn more about {author.name.split(" ")[0]} @{" "}
+            <a href={author.url} target="_new">
+              {author.url}
+            </a>
           </small>
         </Col>
       </Row>

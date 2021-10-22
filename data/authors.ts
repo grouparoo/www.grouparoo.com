@@ -39,9 +39,10 @@ const Authors: Author[] = [
     name: "Guest Contributor",
     slug: "guest",
     image: "",
-    url: "",
-    twitter: "",
-    description: "",
+    url: "https://www.grouparoo.com",
+    twitter: "@grouparoo",
+    description:
+      "Grouparoo is the open source data framework that easily connects your data to your business tools.",
   },
   {
     name: "Tiger Oakes",
