@@ -75,7 +75,6 @@
     "markdown-table": "2.0.0",
     "next-remote-watch": "1.0.0",
     "prettier": "2.4.1",
-    "sharp": "0.29.2",
     "ts-jest": "27.0.5",
     "ts-node": "10.2.1",
     "xml2js": "0.4.23"
