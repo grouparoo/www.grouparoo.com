@@ -153,34 +153,38 @@ describe("sitemap integration", () => {
         expect(altTagMissing).toEqual([]);
       });
 
-      test("image sources", async () => {
-        const imgArray: Array<Record<string, any>> = Array.from($("img"));
+      test(
+        "image sources",
+        async () => {
+          const imgArray: Array<Record<string, any>> = Array.from($("img"));
 
-        const imageTags = imgArray
-          .map((i) => i.parent.children.filter((t) => t.name === "noscript"))
-          .flat()
-          .filter((container) => container.children.length > 0)
-          .map((container) => container.children[0].data);
+          const imageTags = imgArray
+            .map((i) => i.parent.children.filter((t) => t.name === "noscript"))
+            .flat()
+            .filter((container) => container.children.length > 0)
+            .map((container) => container.children[0].data);
 
-        for (const tag of imageTags) {
-          // next.js does a tricky image replacement thing so what we're doing
-          // here is traversing the dom a little to find the ultimate src of the
-          // image (which next.js stores in a noscript tag)
-          const noScript = cheerio.load(tag);
-          const imgSrc = noScript("img").attr("src");
-          const imgUrl = `${url}${imgSrc}`;
+          for (const tag of imageTags) {
+            // next.js does a tricky image replacement thing so what we're doing
+            // here is traversing the dom a little to find the ultimate src of the
+            // image (which next.js stores in a noscript tag)
+            const noScript = cheerio.load(tag);
+            const imgSrc = noScript("img").attr("src");
+            const imgUrl = `${url}${imgSrc}`;
 
-          if (!testedImages.has(imgUrl)) {
-            const response = await fetch(imgUrl);
-            testedImages.add(imgUrl);
-            try {
-              expect(response.status).toEqual(200);
-            } catch (error) {
-              throw new Error(`CANNOT FIND ${imgUrl}`);
+            if (!testedImages.has(imgUrl)) {
+              const response = await fetch(imgUrl);
+              testedImages.add(imgUrl);
+              try {
+                expect(response.status).toEqual(200);
+              } catch (error) {
+                throw new Error(`CANNOT FIND ${imgUrl}`);
+              }
             }
           }
-        }
-      });
+        },
+        1000 * 20
+      );
 
       test("links", async () => {
         let localPagesNotFound = [];
