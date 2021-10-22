@@ -42,9 +42,7 @@ This Data Processing Addendum (including all Schedules attached hereto, the “*
 
    2.4. If applicable laws preclude Grouparoo from complying with Customer’s instructions, Grouparoo will inform Customer of its inability to comply with the instructions, to the extent permitted by law.
 
-   2.5. Grouparoo will immediately inform Customer if, in its opinion, an instruction from Customer infringes the Data Protection Laws.
-
-   2.6. Each of Customer and Grouparoo will comply with their respective obligations under the Data Protection Laws.
+   2.5. Each of Customer and Grouparoo will comply with their respective obligations under the Data Protection Laws.
 
 3. Cross-Border Transfers of Personal Data
 
