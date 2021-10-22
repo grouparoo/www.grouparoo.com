@@ -38,7 +38,7 @@ const Authors: Author[] = [
   {
     name: "Guest Contributor",
     slug: "guest",
-    image: "",
+    image: "guest_contributor.png",
     url: "https://www.grouparoo.com",
     twitter: "@grouparoo",
     description:
