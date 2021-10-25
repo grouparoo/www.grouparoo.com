@@ -36,6 +36,15 @@ const Authors: Author[] = [
       "Brian is the CEO and co-founder of Grouparoo, an open source data framework that easily connects your data to business tools.  Brian is a leader and technologist who enjoys hanging out with his family, traveling, learning new things, and building software that makes people's lives easier.",
   },
   {
+    name: "Guest Contributor",
+    slug: "guest",
+    image: "guest_contributor.png",
+    url: "https://www.grouparoo.com",
+    twitter: "@grouparoo",
+    description:
+      "Grouparoo is the open source data framework that easily connects your data to your business tools.",
+  },
+  {
     name: "Tiger Oakes",
     slug: "tiger_oakes",
     image: "tiger_oakes.png",

@@ -191,6 +191,12 @@ You can choose to list records with invalid properties as well.
   height={500}
 />
 
+## Destination Deletion
+
+Prior to Grouparoo v0.7, when a Destination was deleted either via by removing its code config file or in the enterprise UI, the Grouparoo application would attempt one final export for the Records that were previously sent to the Destination. This behavior has been removed, and now deleting a Destination will simply delete it from Grouparoo and not effect the previously exported Records in the Destination.
+
+The old behavior may have lead to unintended removal of Records from your Destinations in certain SyncModes. If you do want to remove the previously exported Records from a destination, choose to sync a collection of `"none"` in combination with SyncMode `"sync"` after previously exporting Records.
+
 ## Record Snapshot Tests
 
 To match Grouparoo's new terminology, the jest testing helper previously titled `getProfile()` has been renamed `getRecord()`. You will need to update your test code to use the new terminology and re-record your test snapshots.
