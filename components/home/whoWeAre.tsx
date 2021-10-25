@@ -222,6 +222,31 @@ export default function WhoWeAre() {
               linkedIn="https://www.linkedin.com/in/krishnaglick"
             />
           </Col>
+
+          <Col md={4} className="d-flex justify-content-center">
+            <TeamMember
+              name="Edmundo Ruiz Ghanem"
+              image="edmundo_ruiz_ghanem.png"
+              title="Senior Software Engineer"
+              description={
+                <span>
+                  🌎 👨‍👩‍👦 🎥 🎛
+                  <br /> Previously:
+                  <br />
+                  Engineering{" "}
+                  <a
+                    href="https://www.drift.com"
+                    target="_blank"
+                    rel="noreferrer nofollow"
+                  >
+                    @Drift
+                  </a>
+                </span>
+              }
+              github="https://github.com/edmundito"
+              linkedIn="https://www.linkedin.com/in/edmundito"
+            />
+          </Col>
         </Row>
       </div>
     </>
