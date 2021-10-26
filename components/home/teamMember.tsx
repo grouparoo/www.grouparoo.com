@@ -1,7 +1,7 @@
 import { Col, Row } from "react-bootstrap";
 import Image from "../Image";
 
-interface TeamMemberProps {
+export interface TeamMemberProps {
   name: string;
   image: string;
   title: string;
