@@ -1,5 +1,154 @@
 import { Col, Row } from "react-bootstrap";
-import TeamMember from "./teamMember";
+import TeamMember, { TeamMemberProps } from "./teamMember";
+
+interface TeamMember extends Omit<TeamMemberProps, "description"> {
+  emojis: string[];
+  previously: {
+    role: string;
+    company: string;
+    website: string;
+  }[];
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    name: "Brian Leonard",
+    image: "brian_leonard.png",
+    title: "CEO",
+    github: "https://github.com/bleonard",
+    twitter: "https://twitter.com/bleonard",
+    linkedIn: "https://www.linkedin.com/in/brianl429",
+    emojis: ["👨‍👩‍👧‍👦", "🛠", "📚"],
+    previously: [
+      {
+        role: "CTO, Technical Co-Founder",
+        company: "TaskRabbit",
+        website: "https://www.taskrabbit.com",
+      },
+    ],
+  },
+  {
+    name: "Evan Tahler",
+    image: "evan_tahler.png",
+    title: "CTO",
+    emojis: ["🤖", "🎮", "👫"],
+    github: "https://github.com/evantahler",
+    twitter: "https://twitter.com/evantahler",
+    linkedIn: "https://www.linkedin.com/in/evantahler",
+    previously: [
+      {
+        role: "Founder",
+        company: "ActionheroJS",
+        website: "https://actionherojs.com",
+      },
+      {
+        role: "CPO",
+        company: "Voom",
+        website:
+          "https://www.airbus.com/innovation/urban-air-mobility/voom.html",
+      },
+    ],
+  },
+  {
+    name: "Andy Jih",
+    image: "andy_jih.png",
+    title: "COO",
+    emojis: ["🏳️‍🌈", "🏃🏻‍♂️", "🎻"],
+    github: "https://github.com/andyjih",
+    twitter: "https://twitter.com/andyjih",
+    linkedIn: "https://www.linkedin.com/in/andyjih/",
+    previously: [
+      {
+        role: "Product",
+        company: "Stripe",
+        website: "https://www.stripe.com",
+      },
+      {
+        role: "Head of Product",
+        company: "Remedy",
+        website: "https://www.crunchbase.com/organization/remedy-labs-inc",
+      },
+    ],
+  },
+  {
+    name: "Pedro S Lopez",
+    image: "pedro_lopez.png",
+    title: "Full Stack Software Engineer",
+    github: "https://github.com/pedroslopez",
+    twitter: "https://twitter.com/pedroslopez",
+    linkedIn: "https://www.linkedin.com/in/pedroslopez/",
+    emojis: ["🤖", "🎹", "👨🏽‍💻", "🎮"],
+    previously: [
+      {
+        role: "Engineering and Technical Vetting",
+        company: "G2i",
+        website: "https://www.g2i.co/",
+      },
+    ],
+  },
+  {
+    name: "Teal Larson",
+    image: "teal_larson.jpg",
+    title: "Full Stack Software Engineer",
+    github: "https://github.com/tealjulia",
+    twitter: "https://twitter.com/tealdoestech",
+    linkedIn: "https://www.linkedin.com/in/teal-larson",
+    emojis: ["🚴🏼", "📚", "🏔", "☕️"],
+    previously: [
+      {
+        role: "Freelance",
+        company: "Full Stack Engineer",
+        website: "https://www.tealjulia.com/",
+      },
+    ],
+  },
+  {
+    name: "Maria Silverhardt",
+    image: "maria_silverhardt.jpg",
+    title: "Community Architect",
+    github: "https://github.com/asthedatamoves",
+    twitter: "https://twitter.com/msdatadetective",
+    linkedIn: "https://www.linkedin.com/in/mariasilverhardt",
+    emojis: ["🕵🏻‍♀️", "👩🏻‍🔬", "👩🏻‍💻", "👩🏻‍🏫"],
+    previously: [
+      {
+        role: "Community Development Manager",
+        company: "Bugcrowd",
+        website: "https://www.bugcrowd.com",
+      },
+    ],
+  },
+  {
+    name: "Krishna Glick",
+    image: "krishna_glick.jpg",
+    title: "Senior Software Engineer",
+    github: "https://github.com/krishnaglick",
+    linkedIn: "https://www.linkedin.com/in/krishnaglick",
+    emojis: ["🥦", "🧗🏻", "🐶", "🐱"],
+    previously: [
+      {
+        role: "Senior Software Engineer",
+        company: "iHeartMedia",
+        website: "https://www.iheart.com",
+      },
+    ],
+  },
+  {
+    name: "Edmundo Ruiz Ghanem",
+    image: "edmundo_ruiz_ghanem.png",
+    title: "Senior Software Engineer",
+    github: "https://github.com/edmundito",
+    linkedIn: "https://www.linkedin.com/in/edmundito",
+    emojis: ["🌎", "👨‍👩‍👦", "🎥", "🎛"],
+    previously: [
+      {
+        role: "Engineering",
+        company: "Drift",
+        website: "https://www.drift.com",
+      },
+    ],
+  },
+];
 
 export default function WhoWeAre() {
   return (
@@ -22,206 +171,42 @@ export default function WhoWeAre() {
         style={{ textAlign: "center" }}
       >
         <Row className="justify-content-center">
-          <Col md={4} className="d-flex justify-content-center">
-            <TeamMember
-              name="Brian Leonard"
-              image="brian_leonard.png"
-              title="CEO"
-              description={
-                <span>
-                  👨‍👩‍👧‍👦 🛠 📚
-                  <br />
-                  Previously:
-                  <br />
-                  CTO, Technical Co-Founder{" "}
-                  <a
-                    href="https://www.taskrabbit.com"
-                    target="_blank"
-                    rel="noreferrer nofollow"
-                  >
-                    @TaskRabbit
-                  </a>
-                </span>
-              }
-              github="https://github.com/bleonard"
-              twitter="https://twitter.com/bleonard"
-              linkedIn="https://www.linkedin.com/in/brianl429"
-            />
-          </Col>
-
-          <Col md={4} className="d-flex justify-content-center">
-            <TeamMember
-              name="Evan Tahler"
-              image="evan_tahler.png"
-              title="CTO"
-              description={
-                <span>
-                  🤖 🎮 👫
-                  <br />
-                  Previously:
-                  <br />
-                  Founder{" "}
-                  <a
-                    href="https://actionherojs.com"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    @ActionheroJS
-                  </a>{" "}
-                  <br />
-                  CPO{" "}
-                  <a
-                    href="https://www.airbus.com/innovation/urban-air-mobility/voom.html"
-                    target="_blank"
-                    rel="noreferrer nofollow"
-                  >
-                    @Voom
-                  </a>
-                </span>
-              }
-              github="https://github.com/evantahler"
-              twitter="https://twitter.com/evantahler"
-              linkedIn="https://www.linkedin.com/in/evantahler"
-            />
-          </Col>
-
-          <Col md={4} className="d-flex justify-content-center">
-            <TeamMember
-              name="Andy Jih"
-              image="andy_jih.png"
-              title="COO"
-              description={
-                <span>
-                  🏳️‍🌈 🏃🏻‍♂️ 🎻
-                  <br /> Previously:
-                  <br />
-                  Product{" "}
-                  <a
-                    href="https://www.stripe.com"
-                    target="_blank"
-                    rel="noreferrer nofollow"
-                  >
-                    @Stripe
-                  </a>{" "}
-                  <br />
-                  Head of Product{" "}
-                  <a
-                    href="https://www.crunchbase.com/organization/remedy-labs-inc"
-                    target="_blank"
-                    rel="noreferrer nofollow"
-                  >
-                    @Remedy
-                  </a>
-                </span>
-              }
-              github="https://github.com/andyjih"
-              twitter="https://twitter.com/andyjih"
-              linkedIn="https://www.linkedin.com/in/andyjih/"
-            />
-          </Col>
-
-          <Col md={4} className="d-flex justify-content-center">
-            <TeamMember
-              name="Pedro S Lopez"
-              image="pedro_lopez.png"
-              title="Full Stack Software Engineer"
-              description={
-                <span>
-                  🤖 🎹 👨🏽‍💻 🎮
-                  <br /> Previously:
-                  <br />
-                  Engineering and Technical Vetting{" "}
-                  <a
-                    href="https://www.g2i.co/"
-                    target="_blank"
-                    rel="noreferrer nofollow"
-                  >
-                    @G2i
-                  </a>
-                </span>
-              }
-              github="https://github.com/pedroslopez"
-              twitter="https://twitter.com/pedroslopez"
-              linkedIn="https://www.linkedin.com/in/pedroslopez/"
-            />
-          </Col>
-
-          <Col md={4} className="d-flex justify-content-center">
-            <TeamMember
-              name="Teal Larson"
-              image="teal_larson.jpg"
-              title="Full Stack Software Engineer"
-              description={
-                <span>
-                  🚴🏼 📚 🏔 ☕️
-                  <br /> Previously:
-                  <br />
-                  Freelance{" "}
-                  <a
-                    href="https://www.tealjulia.com/"
-                    target="_blank"
-                    rel="noreferrer nofollow"
-                  >
-                    Full Stack Engineer
-                  </a>
-                </span>
-              }
-              github="https://github.com/tealjulia"
-              twitter="https://twitter.com/tealdoestech"
-              linkedIn="https://www.linkedin.com/in/teal-larson"
-            />
-          </Col>
-
-          <Col md={4} className="d-flex justify-content-center">
-            <TeamMember
-              name="Maria Silverhardt"
-              image="maria_silverhardt.jpg"
-              title="Community Architect"
-              description={
-                <span>
-                  🕵🏻‍♀️👩🏻‍🔬👩🏻‍💻👩🏻‍🏫
-                  <br /> Previously:
-                  <br />
-                  Community Development Manager{" "}
-                  <a
-                    href="https://www.bugcrowd.com"
-                    target="_blank"
-                    rel="noreferrer nofollow"
-                  >
-                    @Bugcrowd
-                  </a>
-                </span>
-              }
-              github="https://github.com/asthedatamoves"
-              twitter="https://twitter.com/msdatadetective"
-              linkedIn="https://www.linkedin.com/in/mariasilverhardt"
-            />
-          </Col>
-
-          <Col md={4} className="d-flex justify-content-center">
-            <TeamMember
-              name="Krishna Glick"
-              image="krishna_glick.jpg"
-              title="Senior Software Engineer"
-              description={
-                <span>
-                  🥦🧗🏻🐶🐱
-                  <br /> Previously:
-                  <br />
-                  Senior Software Engineer{" "}
-                  <a
-                    href="https://www.iheart.com"
-                    target="_blank"
-                    rel="noreferrer nofollow"
-                  >
-                    @iHeartMedia
-                  </a>
-                </span>
-              }
-              github="https://github.com/krishnaglick"
-              linkedIn="https://www.linkedin.com/in/krishnaglick"
-            />
-          </Col>
+          {teamMembers.map(({ emojis, previously, ...teamMemberProps }) => (
+            <Col md={4} className="d-flex justify-content-center">
+              <TeamMember
+                {...teamMemberProps}
+                description={
+                  <span>
+                    {emojis && emojis.length > 0 && (
+                      <>
+                        {emojis.join(" ")}
+                        <br />
+                      </>
+                    )}
+                    {previously && previously.length > 0 && (
+                      <>
+                        Previously:
+                        <br />
+                        {previously.map(({ role, company, website }) => (
+                          <>
+                            {role}{" "}
+                            <a
+                              href={website}
+                              target="_blank"
+                              rel="noreferrer nofollow"
+                            >
+                              @{company}
+                            </a>
+                            <br />
+                          </>
+                        ))}
+                      </>
+                    )}
+                  </span>
+                }
+              />
+            </Col>
+          ))}
         </Row>
       </div>
     </>
