@@ -133,7 +133,7 @@ export default function Healthcare() {
               <Image
                 centered
                 src="/images/home/bowtie.svg"
-                alt="Grouparoo sources and destination connections"
+                alt="Grouparoo sources and Destination connections"
                 width={1000}
                 height={537}
               />
@@ -155,17 +155,17 @@ export default function Healthcare() {
               <div>
                 <h3 className="homepageBlueH3">Pull in your Patient Data</h3>
                 <p>
-                  You don’t have to know SQL to build your profiles. Use a
-                  simple interface to keep patient data up to date with the
-                  sources that matter.
+                  You don’t have to know SQL to build your records. Use a simple
+                  interface to keep patient data up to date with the sources
+                  that matter.
                 </p>
               </div>
             </Col>
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-1.png"
-                alt="Grouparoo profile"
-                width={650}
+                alt="Grouparoo Record"
+                width={733}
                 height={398}
               />
             </Col>
@@ -175,8 +175,8 @@ export default function Healthcare() {
             <Col md={4}>
               <h3 className="homepageBlueH3">Create Groups</h3>
               <p>
-                Point and click segmentation. Find out the size of the group in
-                seconds, not hours. Use your group definitions across
+                Point and click segmentation. Find out the size of the Group in
+                seconds, not hours. Use your Group definitions across
                 destinations.
               </p>
             </Col>
@@ -184,8 +184,8 @@ export default function Healthcare() {
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
-                width={650}
-                height={396}
+                width={733}
+                height={398}
               />
             </Col>
           </Row>
@@ -202,9 +202,9 @@ export default function Healthcare() {
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-3.png"
-                alt="Grouparoo destination"
-                width={650}
-                height={355}
+                alt="Grouparoo Destination"
+                width={733}
+                height={398}
               />
             </Col>
           </Row>
@@ -221,8 +221,8 @@ export default function Healthcare() {
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-4.png"
-                alt="Data synced to destination"
-                width={650}
+                alt="Data synced to Destination"
+                width={733}
                 height={398}
               />
             </Col>
@@ -282,28 +282,27 @@ export default function Healthcare() {
                 <Col md={8}>
                   <Tab.Content style={{ textAlign: "center" }}>
                     <Tab.Pane eventKey="email-marketing">
-                      <Image
-                        centered
+                      <ImageInBrowserFrame
                         src="/images/home/retention-marketing.png"
                         alt="Sync groups to destinations"
-                        width={776}
+                        width={885}
                         height={480}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="customer-support">
-                      <Image
-                        src="/images/home/solutions/healthcare/zendesk-users.png"
+                      <ImageInBrowserFrame
+                        src="/images/home/integrations/zendesk/zendesk-users.png"
                         alt="Users in Zendesk"
-                        width={730}
-                        height={425}
+                        width={885}
+                        height={480}
                       />
                     </Tab.Pane>
                     <Tab.Pane eventKey="product-customization">
-                      <Image
-                        src="/images/home/solutions/healthcare/in-product.png"
+                      <ImageInBrowserFrame
+                        src="/images/home/integrations/zendesk/grouparoo-to-zendesk.png"
                         alt="Map data to product database"
-                        width={730}
-                        height={492}
+                        width={885}
+                        height={480}
                       />
                     </Tab.Pane>
                   </Tab.Content>
@@ -323,12 +322,11 @@ export default function Healthcare() {
                 </p>
               </Col>
               <Col md={6}>
-                <Image
-                  centered
+                <ImageInBrowserFrame
                   src="/images/home/retention-marketing.png"
                   alt="Sync groups to destinations"
-                  width={300}
-                  height={197}
+                  width={400}
+                  height={217}
                 />
               </Col>
             </Row>
@@ -344,11 +342,11 @@ export default function Healthcare() {
                 </p>
               </Col>
               <Col md={6}>
-                <Image
-                  src="/images/home/solutions/healthcare/zendesk-users.png"
+                <ImageInBrowserFrame
+                  src="/images/home/integrations/zendesk/zendesk-users.png"
                   alt="Users in Zendesk"
-                  width={730}
-                  height={175}
+                  width={400}
+                  height={217}
                 />
               </Col>
             </Row>
@@ -364,11 +362,11 @@ export default function Healthcare() {
                 </p>
               </Col>
               <Col md={6}>
-                <Image
-                  src="/images/home/solutions/healthcare/in-product.png"
+                <ImageInBrowserFrame
+                  src="/images/home/integrations/zendesk/grouparoo-to-zendesk.png"
                   alt="Map data to product database"
-                  width={300}
-                  height={202}
+                  width={400}
+                  height={217}
                 />
               </Col>
             </Row>

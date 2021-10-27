@@ -55,6 +55,31 @@ For example, a Source with a new `modelId` might look like:
 }
 ```
 
+Sample Records in your code config have also changed `class` from `Profile` to `Record`:
+
+```json
+[
+  {
+    "id": "pro_c83846e5-aebe-4981-aa0d-3b1d5b71157d",
+    "class": "Record", // <-- Note the new class name
+    "modelId": "users", // <-- Note the new modelId
+    "properties": {
+      "user_id": [10]
+    }
+  }
+]
+```
+
+## Migration Notes
+
+**Code Config:**
+
+To migrate an existing Grouparoo Deployment from v0.6 to v0.7, and you have been using code config, you will need to check in your new code config model **before** the migration will succeed. This is required as Grouparoo needs to know the id of the Model to apply to your existing records. Otherwise, an error like `error: Make a single Model config file` will prevent Grouparoo from running.
+
+**Grouparoo Enterprise:**
+
+If you have been using Grouparoo Enterprise, a new Model will be created for you and applied to your existing Records. You can then rename or adjust this model in the Grouparoo Enterprise UI.
+
 ## Plugin Names Changed and Clarified
 
 To prepare Grouparoo for exporting multiple types of models, the names of our Plugin Connections have changed. It is very likely that you will need to update the `"type"` property of your Destinations and Sources. Plugin connections now follow the pattern `{type}-{direction}-{model}`. For Destinations, the name of the Model is the name the Destination uses (usually something like "contact", "profile", or "user").
@@ -165,6 +190,12 @@ You can choose to list records with invalid properties as well.
   width={774}
   height={500}
 />
+
+## Destination Deletion
+
+Prior to Grouparoo v0.7, when a Destination was deleted either via by removing its code config file or in the enterprise UI, the Grouparoo application would attempt one final export for the Records that were previously sent to the Destination. This behavior has been removed, and now deleting a Destination will simply delete it from Grouparoo and not effect the previously exported Records in the Destination.
+
+The old behavior may have lead to unintended removal of Records from your Destinations in certain SyncModes. If you do want to remove the previously exported Records from a destination, choose to sync a collection of `"none"` in combination with SyncMode `"sync"` after previously exporting Records.
 
 ## Record Snapshot Tests
 

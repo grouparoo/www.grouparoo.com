@@ -31,9 +31,9 @@ export const Sailthru: Plugin = {
   dataModelDescription: [
     "Trying to figure out how to integrate your data with Sailthru? Here’s an overview for how Sailthru defines customer objects.",
     "The core object in Sailthru is a User. A User represents an individual person who might be a lead or a customer. Users have one required variable, which is their email address.",
-    "Sailthru calls attributes of a User a User Var or User Variable. The two default User Vars in Sailthru are <code>email</code> and <code>extId</code>, which stands for external ID. We recommend passing through an identifying value from your system like a user ID to this User Var. You can also create more User Vars based on the Grouparoo Profile Properties that you define.",
+    "Sailthru calls attributes of a User a User Var or User Variable. The two default User Vars in Sailthru are <code>email</code> and <code>extId</code>, which stands for external ID. We recommend passing through an identifying value from your system like a user ID to this User Var. You can also create more User Vars based on the Grouparoo Record Properties that you define.",
   ],
-  destinationProfile: "Sailthru Users",
+  destinationRecord: "Sailthru Users",
   destinationProperty: "Sailthru Users Vars",
   destinationGroup: "Sailthru Lists",
   pluginScreenshots: [
@@ -43,8 +43,8 @@ export const Sailthru: Plugin = {
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/sailthru/grouparoo-to-sailthru.png",
       imageAlt: "Map data to Sailthru",
-      imageWidth: 742,
-      imageHeight: 414,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:

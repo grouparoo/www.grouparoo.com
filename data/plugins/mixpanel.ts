@@ -28,11 +28,11 @@ export const Mixpanel: Plugin = {
   dataModelTitle: "An Overview of Mixpanel's Data Model and API",
   dataModelDescription: [
     "Trying to figure out how to integrate with Mixpanel? Here’s an overview for how Mixpanel defines customers.",
-    "The core object in Mixpanel is a User Profile. User Profile have one required attribute, which is their email address.",
+    "The core object in Mixpanel is a User Profile. User Profiles have one required attribute, which is their email address.",
     "Mixpanel calls attributes of a User Profile a User Property. Mixpanel pre-defines a number of Fields like $email, $first_name and $last_name for example, but you can define as many Fields as you'd like in the Mixpanel website or straight from Grouparoo.",
   ],
-  destinationProfile: "Mixpanel User Profile",
-  destinationProperty: "Mixpanel User Profile Properties",
+  destinationRecord: "Mixpanel User Profiles",
+  destinationProperty: "Mixpanel User Profiles Properties",
   destinationGroup: "Mixpanel Groups",
   pluginScreenshots: [
     {
@@ -41,8 +41,8 @@ export const Mixpanel: Plugin = {
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support or special training.",
       imageSrc: "/images/home/integrations/mixpanel/grouparoo-to-mixpanel.png",
       imageAlt: "Map data to Mixpanel",
-      imageWidth: 742,
-      imageHeight: 529,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:

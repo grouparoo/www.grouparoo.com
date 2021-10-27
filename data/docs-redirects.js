@@ -14,7 +14,7 @@ const guidesRedirects = [
     dest: "/docs/config/sources",
   },
   {
-    src: "/docs/guides/create-profile-properties",
+    src: "/docs/guides/create-record-properties",
     dest: "/docs/config/properties",
   },
   {

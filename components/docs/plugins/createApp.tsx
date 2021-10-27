@@ -41,7 +41,7 @@ exports.default = async function buildConfig() {
       <p>
         With Grouparoo, an{" "}
         <Link href="/docs/getting-started/product-concepts#app">App</Link> is
-        how we establish a connection with a source or destination. Add this
+        how we establish a connection with a Source or Destination. Add this
         connection by generating an App:
       </p>
       <CodeBlock
@@ -50,7 +50,7 @@ exports.default = async function buildConfig() {
       />
       <Alert variant="primary">
         <p>
-          Note that every generator requires an <code>id</code> argument. It is
+          Note that every Generator requires an <code>id</code> argument. It is
           a unique value describing the App you just created. It should be
           alphanumeric, lower case, without spaces, and unique among other
           objects of the same type (Apps).

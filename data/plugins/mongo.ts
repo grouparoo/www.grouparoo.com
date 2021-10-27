@@ -30,8 +30,8 @@ export const Mongo: Plugin = {
   ],
   dataModelTitle: "An Overview of Grouparoo's Data Model",
   dataModelDescription: [
-    "Grouparoo's core objects are Profiles and Profile Properties. These objects are defined based on your data such as the data in your MongoDB. You can pull this data in with Grouparoo's help or you can write MongoDB queries directly.",
-    "Once you've defined these Profiles and Profile Properties, you can use Grouparoo to create dynamic segments and cohorts.",
+    "Grouparoo's core objects are Records and Record Properties. These objects are defined based on your data such as the data in your MongoDB. You can pull this data in with Grouparoo's help or you can write MongoDB queries directly.",
+    "Once you've defined these Records and Record Properties, you can use Grouparoo to create dynamic segments and cohorts.",
   ],
   otherPluginsHeading: "Send your customer data from MongoDB to these tools",
   pluginScreenshots: [
@@ -41,27 +41,27 @@ export const Mongo: Plugin = {
         "Since Grouparoo is installed in your cloud infrastructure, you can easily point Grouparoo to any number of MongoDB instances you may have running.",
       imageSrc: "/images/home/integrations/mongo/add-mongo-app.png",
       imageAlt: "Grouparoo MongoDB settings",
-      imageWidth: 742,
-      imageHeight: 696,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:
-        "Define Profile Properties without needing to write MongoDB queries",
+        "Define Record Properties without needing to write MongoDB queries",
       description:
-        "Grouparoo is low-code, so less technical team members can create new Profile Properties without needing to work with engineers. They can pull the data they need when they want.",
+        "Grouparoo is low-code, so less technical team members can create new Record Properties without needing to work with engineers. They can pull the data they need when they want.",
       imageSrc: "/images/home/integrations/mongo/mongo-table-mode.png",
-      imageAlt: "MongoDB table source",
-      imageWidth: 742,
-      imageHeight: 757,
+      imageAlt: "MongoDB Table Source",
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "But you can also write MongoDB queries if you want",
       description:
-        "Some Profile Properties will require aggregations across collections or more complex queries. Use Grouparoo's Query mode to pull the data you need.",
+        "Some Record Properties will require aggregations across collections or more complex queries. Use Grouparoo's Query mode to pull the data you need.",
       imageSrc: "/images/home/integrations/mongo/mongo-query-mode.png",
-      imageAlt: "MongoDB query source",
-      imageWidth: 742,
-      imageHeight: 645,
+      imageAlt: "MongoDB Query Source",
+      imageWidth: 932,
+      imageHeight: 506,
     },
   ],
   configOptions: {
@@ -90,7 +90,7 @@ export const Mongo: Plugin = {
           _id: 1,
         },
       },
-    ], 
+    ],
     propertyId: "userId"
   }
 }`,

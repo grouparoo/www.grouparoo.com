@@ -57,7 +57,7 @@ Place that file anywhere on your file system that your current user can read.
 
 Most of the rest of our tutorial is going to be generating our config objects, which tell Grouparoo where our data is and what to do with it. We'll be spending a lot of time using [the `generate` command](/docs/cli/config).
 
-To see a list of available generators at any time, use the `--list` flag.
+To see a list of available Generators at any time, use the `--list` flag.
 
     $ grouparoo generate --list
 
@@ -68,14 +68,14 @@ To see a list of available generators at any time, use the `--list` flag.
       apikey (id) - Config for a Grouparoo API Key
       group:calculated (id) - Config for a calculated Grouparoo Group
       group:manual (id) - Config for a manual Grouparoo Group
-      manual:app (id) - Config for a Grouparoo App with manual property values
+      manual:app (id) - Config for a Grouparoo App with manual Property values
       manual:property (id, parent) - Config for a Grouparoo Property based on a Manual Source
       manual:source (id, parent) - Config for a Grouparoo Source based on a Manual App
       setting (plugin-name, key, value, id) - Config for a Grouparoo Setting
       team (id) - Config for a Grouparoo Team
       team:member (id, parent) - Config for a Grouparoo Team Member
 
-    You can filter this list by providing a (partial) template to match template names against. (e.g. `grouparoo generate postgres --list`)
+    You can Filter this list by providing a (partial) template to match template names against. (e.g. `grouparoo generate postgres --list`)
 
     You can add plugins to this project to connect to new Sources and Destinations and add additional commands with the `grouparoo install` command.
 
@@ -85,11 +85,11 @@ In Grouparoo, [Apps](/docs/config/code-config/apps) are _connection definitions_
 
 ### Install SQLite Plugin
 
-But we didn't see SQLite mentioned in the list of available generator templates. That's because Grouparoo is also plugin-focused, so that you're instance only carries what it really needs. That means we have to install the SQLite plugin to have access to SQLite generator templates. Let's do that!
+But we didn't see SQLite mentioned in the list of available Generator templates. That's because Grouparoo is also plugin-focused, so that you're instance only carries what it really needs. That means we have to install the SQLite Plugin to have access to SQLite Generator templates. Let's do that!
 
     $ grouparoo install @grouparoo/sqlite
 
-Now take a look and what's available using a "sqlite" filter as the argument passed to `generate`:
+Now take a look and what's available using a "sqlite" Filter as the argument passed to `generate`:
 
     $ grouparoo generate sqlite --list
 
@@ -190,19 +190,19 @@ Hooray! When you're ready let's [apply those changes](/docs/cli/config#apply), w
 
     ✅ Config applied - 1 config objects up-to-date!
 
-Now we have an app and we can add some Sources!
+Now we have an App and we can add some Sources!
 
 ## Step 5: Add Users Source and Properties
 
-Next, it's time to add our Sources and their Properties. A Source is the place your customer data lives. In this case, we're mocking a data warehouse type of setup for an e-commerce site. Properties are attributes for your Profiles (in Grouparoo, we refer to users as _Profiles_).
+Next, it's time to add our Sources and their Properties. A Source is the place your customer data lives. In this case, we're mocking a data warehouse type of setup for an e-commerce site. Properties are attributes for your Records (in Grouparoo, we refer to users as _Records_).
 
-From our list of generators, you may have noticed that there are two types of sources for SQLite: _query_ and _table_. (If you didn't catch that, run `grouparoo generate sqlite --list` again.)
+From our list of Generators, you may have noticed that there are two types of sources for SQLite: _query_ and _table_. (If you didn't catch that, run `grouparoo generate sqlite --list` again.)
 
-A query source enables you to pull data from one or more tables by writing custom SQL queries. Table sources are much simpler. They provide a means to pull data from a column directly, without writing any custom SQL.
+A Query Source enables you to pull data from one or more tables by writing custom SQL queries. Table sources are much simpler. They provide a means to pull data from a column directly, without writing any custom SQL.
 
 ### Add SQLite Users Table Source and Properties
 
-Let's first see what options we have available to us with the table source template:
+Let's first see what options we have available to us with the Table Source template:
 
     $ grouparoo generate sqlite:table:source --describe
 
@@ -219,10 +219,10 @@ Let's first see what options we have available to us with the table source templ
     Optional Options:
       * from - The table to use for this source, e.g: `--from users`
       * high-water-mark - The name of the column to uses for this Source's Schedule, e.g: `--high-water-mark updated_at`.
-      * mapping - The mapping between a column in this table and a Grouparoo Property, e.g: `--mapping "id=user_id"`
+      * mapping - The Mapping between a column in this table and a Grouparoo Property, e.g: `--mapping "id=user_id"`
       * with - The names of the columns to create properties from, e.g: `--with users,id,first_name,last_name`. Defaults to '*'
 
-There's a lot going on here. That's because the table source generator is pretty smart and can actually generate a handful of Properties for us, too! Otherwise we'd have to create these Properties individually. Let's do that. From our database, let's create a source with an `id` of `users` that pulls `email`, `first_name`, `last_name`, and `language` from the database.
+There's a lot going on here. That's because the Table Source Generator is pretty smart and can actually generate a handful of Properties for us, too! Otherwise we'd have to create these Properties individually. Let's do that. From our database, let's create a source with an `id` of `users` that pulls `email`, `first_name`, `last_name`, and `language` from the database.
 
     $ grouparoo generate sqlite:table:source users --parent product_db --from users --high-water-mark updated_at --with id,email,first_name,last_name,language --mapping 'id=user_id'
 
@@ -230,13 +230,13 @@ That generated your Source config (`apps/sources/users.js`), along with the spec
 
 A few other items to note with this command:
 
-- We're using `updated_at` as the high watermark, which tells Grouparoo which records to target when looking for updates.
-- Because we included the `high-water-mark` option, the generator also created a Schedule object that is included with the Source config file (`config/sources/users.js`). This defines how often the users Source import will run after starting Grouparoo.
-- The `mapping` tells Grouparoo to point the `id` column from the `users` table to a `user_id` Property in Grouparoo.
+- We're using `updated_at` as the High Watermark, which tells Grouparoo which records to target when looking for updates.
+- Because we included the `high-water-mark` option, the Generator also created a Schedule object that is included with the Source config file (`config/sources/users.js`). This defines how often the users Source import will run after starting Grouparoo.
+- The `Mapping` tells Grouparoo to point the `id` column from the `users` table to a `user_id` Property in Grouparoo.
 
 ### Validate and Apply Config Changes
 
-Believe it or not, that generator gave you the files _exactly_ as it should have. They are all ready to go. Go ahead and validate:
+Believe it or not, that Generator gave you the files _exactly_ as it should have. They are all ready to go. Go ahead and validate:
 
     $ grouparoo validate
 
@@ -291,8 +291,8 @@ Let's begin by adding another table-based Source.
 Notice a few changes here:
 
 - We're not automatically bringing in any columns (to be made into Properties). We'll do that manually next.
-- The mapping is `user_id=user_id`. This is because the `purchases` table has a `user_id` field and that field will map to the `user_id` Property we created in Grouparoo.
-- The high watermark here is `created_at`, which will also enable the Schedule, by default.
+- The Mapping is `user_id=user_id`. This is because the `purchases` table has a `user_id` field and that field will map to the `user_id` Property we created in Grouparoo.
+- The High Watermark here is `created_at`, which will also enable the Schedule, by default.
 
 These changes should have been applied automatically to your config file. You shouldn't have to edit the generated config file.
 
@@ -426,7 +426,7 @@ exports.default = async function buildConfig() {
       id: "all_emails",
       name: "all_emails",
       type: "calculated",
-      // Include profiles where there is a value for `email`.
+      // Include records where there is a value for `email`.
       rules: [
         {
           propertyId: "email",
@@ -454,7 +454,7 @@ exports.default = async function buildConfig() {
       id: "high_value_spanish_speakers",
       name: "high_value_spanish_speakers",
       type: "calculated",
-      // Inlcude Profiles with an `ltv` above 100 who have a value of `Spanish`
+      // Inlcude Records with an `ltv` above 100 who have a value of `Spanish`
       // for `language`.
       rules: [
         {
@@ -489,11 +489,11 @@ Now we're ready to setup our Destination, [Mailchimp](https://mailchimp.com/). C
 
 ### Install Mailchimp Plugin
 
-As we know now, whenever we want a new type of Source or Destination, we first need an App. But to be able to generate the App, we need its plugin. So let's begin by installing the plugin:
+As we know now, whenever we want a new type of Source or Destination, we first need an App. But to be able to generate the App, we need its Plugin. So let's begin by installing the Plugin:
 
     $ grouparoo install @grouparoo/mailchimp
 
-Then we can see the generators it gave us:
+Then we can see the Generators it gave us:
 
     $ grouparoo generate mailchimp --list
 
@@ -503,7 +503,7 @@ Then we can see the generators it gave us:
 
       mailchimp:app (id) - Config for a Mailchimp App
       mailchimp:email:destination (id, parent) - Config for a Mailchimp Email Destination
-      mailchimp:id:destination (id, parent) - Config for a Mailchimp ID Destination. Note: Use the email destination unless you know you need this.
+      mailchimp:id:destination (id, parent) - Config for a Mailchimp ID Destination. Note: Use the email Destination unless you know you need this.
       mailchimp:property (id, parent) - Config for a Mailchimp Property
       mailchimp:source (id, parent) - Config for a Mailchimp Source
 
@@ -591,7 +591,7 @@ Now we're ready to add the Mailchimp Destination. Let's call our Destination `ne
 
 We'll change a few values in the config file (`config/destinations/mailchimp.js`). We want to set:
 
-- Group ID for the Group of Profiles to export.
+- Group ID for the Group of Records to export.
 - Mailchimp's list ID
 - The fields to include in the Mailchimp contact.
 - Any tags (as Grouparoo Groups) to attach to the Mailchimp contact.
@@ -611,7 +611,7 @@ exports.default = async function buildConfig() {
         // The list ID we set in .env.
         listId: process.env.MAILCHIMP_LIST_ID,
       },
-      // The properties to send to Mailchimp with the Profile. Mailchimp has a
+      // The properties to send to Mailchimp with the Record. Mailchimp has a
       // few predetermined fields, which is why `FNAME` and `LNAME` have a
       // different structure than the others.
       mapping: {
@@ -620,8 +620,8 @@ exports.default = async function buildConfig() {
         LNAME: "last_name",
         language: "language",
       },
-      // This tells Grouparoo to tag Profiles in the
-      // `high_value_spanish_speakers` group with "High Value Spanish Speaker"
+      // This tells Grouparoo to tag Records in the
+      // `high_value_spanish_speakers` Group with "High Value Spanish Speaker"
       // in Mailchimp.
       destinationGroupMemberships: {
         "High Value Spanish Speaker": "high_value_spanish_speakers",
@@ -657,7 +657,7 @@ And apply:
     info: [ config ] updated App `mailchimp` (mailchimp)
     ...
     info: [ config ] updated Group `high_value_spanish_speakers` (high_value_spanish_speakers)
-    notice: [ run ] starting run run_fb4eba09-20cc-40f7-a462-93a0b66a72bf for group all_emails (all_emails)
+    notice: [ run ] starting run run_fb4eba09-20cc-40f7-a462-93a0b66a72bf for Group all_emails (all_emails)
     ...
 
     ✅ Config applied - 15 config objects up-to-date!
@@ -674,7 +674,7 @@ You're ready to run Grouparoo! Do it!
 
 This will begin the process of importing data from SQLite into Grouparoo and exporting it to Mailchimp.
 
-After you run the command the server will go wild, and that's a good thing. But it's tough to follow. You can open your browser and run the web app for some visibility and observability into what's happening under the hood. The app is available at http://localhost:3000/.
+After you run the command the server will go wild, and that's a good thing. But it's tough to follow. You can open your browser and run the web App for some visibility and observability into what's happening under the hood. The App is available at http://localhost:3000/.
 
 ## Next Steps
 

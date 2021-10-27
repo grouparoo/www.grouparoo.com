@@ -26,8 +26,8 @@ export const GoogleSheets: Plugin = {
   ],
   dataModelTitle: "An Overview of Grouparoo's Data Model",
   dataModelDescription: [
-    "Grouparoo's core objects are Profiles and Profile Properties. These objects are defined based on your data such as the data in your Google Sheets spreadsheets. You can pull this data in with Grouparoo's help.",
-    "Once you've defined these Profiles and Profile Properties, you can use Grouparoo to create dynamic segments and cohorts.",
+    "Grouparoo's core objects are Records and Record Properties. These objects are defined based on your data such as the data in your Google Sheets spreadsheets. You can pull this data in with Grouparoo's help.",
+    "Once you've defined these Records and Record Properties, you can use Grouparoo to create dynamic segments and cohorts.",
   ],
   otherPluginsHeading:
     "Send your customer data from Google Sheets to these tools",
@@ -38,8 +38,8 @@ export const GoogleSheets: Plugin = {
         "By giving only the client email address and the private key your are able to extract data from as much spreadsheet as you want.",
       imageSrc: "/images/home/integrations/google-sheets/google-sheets-app.png",
       imageAlt: "Grouparoo Google Sheets settings",
-      imageWidth: 742,
-      imageHeight: 384,
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "Easily connect your Google Sheets data",
@@ -48,19 +48,19 @@ export const GoogleSheets: Plugin = {
       imageSrc:
         "/images/home/integrations/google-sheets/google-sheets-source.png",
       imageAlt: "Grouparoo Google Sheets source settings",
-      imageWidth: 742,
-      imageHeight: 486,
+      imageWidth: 932,
+      imageHeight: 506,
     },
 
     {
-      header: "Define Profile Properties easily",
+      header: "Define Record Properties easily",
       description:
-        "Grouparoo is low-code, so less technical team members can create new Profile Properties without needing to work with engineers. They can pull the data they need when they want.",
+        "Grouparoo is low-code, so less technical team members can create new Record Properties without needing to work with engineers. They can pull the data they need when they want.",
       imageSrc:
         "/images/home/integrations/google-sheets/google-sheets-property.png",
-      imageAlt: "Grouparoo add property settings",
-      imageWidth: 742,
-      imageHeight: 486,
+      imageAlt: "Grouparoo add Property settings",
+      imageWidth: 932,
+      imageHeight: 506,
     },
   ],
   configOptions: {

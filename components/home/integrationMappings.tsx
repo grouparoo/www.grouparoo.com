@@ -6,14 +6,14 @@ export default function IntegrationMappings({
   name,
   image,
   slug,
-  destinationProfile,
+  destinationRecord,
   destinationProperty,
   destinationGroup,
 }: {
   name: string;
   image: string;
   slug: string;
-  destinationProfile: string;
+  destinationRecord: string;
   destinationProperty: string;
   destinationGroup: string;
 }) {
@@ -45,8 +45,8 @@ export default function IntegrationMappings({
           <p>
             <strong>Grouparoo Concepts</strong>
           </p>
-          <p>Grouparoo Profiles</p>
-          <p>Grouparoo Profile Properties</p>
+          <p>Grouparoo Records</p>
+          <p>Grouparoo Record Properties</p>
           <p>Grouparoo Groups</p>
         </Col>
         <Col lg={2} md={2} sm={2} xs={2}>
@@ -80,7 +80,7 @@ export default function IntegrationMappings({
           <p>
             <strong>{name} Concepts</strong>
           </p>
-          <p>{destinationProfile}</p>
+          <p>{destinationRecord}</p>
           <p>{destinationProperty}</p>
           <p>{destinationGroup}</p>
         </Col>

@@ -11,7 +11,7 @@ comparisonChartData:
         {
           feature: "Free tier",
           grouparoo: "Community edition is free. Period.",
-          comp: "Limited to 1 destination and 10k monthly active records",
+          comp: "Limited to 1 Destination and 10k monthly active records",
         },
         {
           feature: "Data requirements",
@@ -71,19 +71,19 @@ Grouparoo is a newer entrant, having started in early 2020, but is a reverse ETL
 
 ### 📈 <span style={{ width:".5em", display:"inline-block" }} />Queryable data vs. events
 
-Grouparoo’s fundamental model is built upon querying source-of-truth data that already exists. Whether this data lives in a data warehouse like Snowflake or Redshift or in a product database like MySQL or MongoDB, Grouparoo defines customer profiles based on the data that already exists in those data sources. The truly important data in your user experience and product funnel is already stored in your database, and Grouparoo lets you use it directly. When did your customers sign up? What products did they purchase? Where are they located?
+Grouparoo’s fundamental model is built upon querying source-of-truth data that already exists. Whether this data lives in a data warehouse like Snowflake or Redshift or in a product database like MySQL or MongoDB, Grouparoo defines customer records based on the data that already exists in those data sources. The truly important data in your user experience and product funnel is already stored in your database, and Grouparoo lets you use it directly. When did your customers sign up? What products did they purchase? Where are they located?
 
 <SectionDivider
-  imagePath="/images/docs/guides/add-profile-property.png"
-  heading="Easily define profiles, no matter your data."
-  width="600"
-  height="303"
-  content="Grouparoo's queryable data structure makes it easy to create profiles -- even from historical data.  You can configure customer profiles from the command line on our community edition, or straight from the UI with our enterprise product."
+  imagePath="/images/home/integrations/snowflake/snowflake-table-mode.png"
+  heading="Easily define records, no matter your data."
+  width="713"
+  height="387"
+  content="Grouparoo's queryable data structure makes it easy to create records -- even from historical data.  You can configure customer records from the command line on our community edition, or straight from the UI with our enterprise product."
   imageLeft="false"
   browser="true"
 />
 
-When you configure Grouparoo, you’re defining how you want to query that data from your databases and data warehouses. Unlike Segment’s Event-based architecture, Grouparoo’s approach makes it possible to define customer profiles and properties based on historical data. One of the biggest challenges with Event-based data tools is that you only have data from when you first started instrumenting these Events. If you just implemented Segment six months ago, you likely only have six months worth of data. Why not just query your full history instead? This also allows you to update your property definitions without losing any history.
+When you configure Grouparoo, you’re defining how you want to query that data from your databases and data warehouses. Unlike Segment’s Event-based architecture, Grouparoo’s approach makes it possible to define customer records and properties based on historical data. One of the biggest challenges with Event-based data tools is that you only have data from when you first started instrumenting these Events. If you just implemented Segment six months ago, you likely only have six months worth of data. Why not just query your full history instead? This also allows you to update your Property definitions without losing any history.
 
 Events are often a pain for engineers as well. When product engineers are building new features, they’re already figuring out how to store and represent this data in their product database. Asking them to wire up Events for every action, button-click, or server-side change is a waste of energy for three reasons:
 
@@ -93,10 +93,10 @@ Events are often a pain for engineers as well. When product engineers are buildi
 
 <SectionDivider
   imagePath="/images/home/integrations/salesforce/grouparoo-to-salesforce.png"
-  heading="Connect your customer profiles to all your SaaS tools"
-  width="718"
-  height="393"
-  content="With the profiles and properties you’ve defined in Grouparoo, you can then sync that data to Salesforce and other tools that your team uses. "
+  heading="Connect your customer records to all your SaaS tools"
+  width="713"
+  height="387"
+  content="With the records and properties you’ve defined in Grouparoo, you can then sync that data to Salesforce and other tools that your team uses. "
   imageLeft="true"
   browser="true"
 />
@@ -124,7 +124,7 @@ The tides are shifting though — as GDPR, CCPA, and other privacy-focused legis
   imageLeft="false"
 />
 
-Grouparoo makes it much easier for privacy-conscious teams to keep their sensitive customer data, Personally Identifiable Information (PII), and Private Health Information (PHI), in their own virtual private clouds such as Amazon Web Services (AWS) and Google Cloud Platform (GCP). Additionally, instead of sending every single piece of data to every single SaaS tool you use, instead you can segment and group your users in Grouparoo, and just send the data about what groups your users are in to these different tools. Instead of sending Jane Kim’s full customer record, address, purchase history, and activity log to Marketo, you can just send Jane’s first name, email, and that she’s in your “High-Value Customers in NY” segment. Jane still gets the correct, personalized email, but without letting Marketo know exactly how much she’s spent with you and her address.
+Grouparoo makes it much easier for privacy-conscious teams to keep their sensitive customer data, Personally Identifiable Information (PII), and Private Health Information (PHI), in their own virtual private clouds such as Amazon Web Services (AWS) and Google Cloud Platform (GCP). Additionally, instead of sending every single piece of data to every single SaaS tool you use, instead you can segment and Group your users in Grouparoo, and just send the data about what groups your users are in to these different tools. Instead of sending Jane Kim’s full customer Record, address, purchase history, and activity log to Marketo, you can just send Jane’s first name, email, and that she’s in your “High-Value Customers in NY” segment. Jane still gets the correct, personalized email, but without letting Marketo know exactly how much she’s spent with you and her address.
 
 ### 💰 <span style={{ width:".5em", display:"inline-block" }} />Cost
 

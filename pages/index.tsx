@@ -155,7 +155,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <Image
                 centered
                 src="/images/home/hero-diagram.svg"
-                alt="Grouparoo sources and destination connections"
+                alt="Grouparoo sources and Destination connections"
                 width={1260}
                 height={535}
               />
@@ -394,7 +394,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             <Col md={4}>
               <div>
                 <h3 className="homepageBlueH3">
-                  Create Unified Customer Profiles
+                  Create Unified Customer Records
                 </h3>
                 <p>
                   Create a single view of your customers from all of your data
@@ -406,8 +406,8 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-1.png"
-                alt="Grouparoo profile"
-                width={650}
+                alt="Grouparoo Record"
+                width={733}
                 height={398}
               />
             </Col>
@@ -418,7 +418,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <h3 className="homepageBlueH3">Create Groups</h3>
               <p>
                 Point and click to explore segmentation. Find out the size of
-                the group in seconds, not hours. Use your group definitions
+                the Group in seconds, not hours. Use your Group definitions
                 across destinations.
               </p>
             </Col>
@@ -426,8 +426,8 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-2.png"
                 alt="Grouparoo groups"
-                width={650}
-                height={396}
+                width={733}
+                height={398}
               />
             </Col>
           </Row>
@@ -437,15 +437,15 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <h3 className="homepageBlueH3">Send to Destinations</h3>
               <p>
                 Integrations make it easy to send the right data to each tool
-                you use. No code is necessary to change what data gets sent
+                you use. No code is necessary to change what data gets sent.
               </p>
             </Col>
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-3.png"
-                alt="Grouparoo destination"
-                width={650}
-                height={355}
+                alt="Grouparoo Destination"
+                width={733}
+                height={398}
               />
             </Col>
           </Row>
@@ -459,14 +459,14 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <p>
                 Run campaigns in the marketing and business tools of your
                 choice. Switch providers easily without needing to rebuild
-                integrations. Send Groups and Profiles
+                integrations. Send Records and Group data.
               </p>
             </Col>
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/how-it-works-4.png"
-                alt="Data synced to destination"
-                width={650}
+                alt="Data synced to Destination"
+                width={733}
                 height={398}
               />
             </Col>

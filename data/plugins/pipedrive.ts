@@ -29,9 +29,9 @@ export const Pipedrive: Plugin = {
   dataModelDescription: [
     "Trying to figure out how to integrate your data with Pipedrive? Here’s an overview for how Pipedrive defines Persons, Fields, and Filters",
     "The core object in Pipedrive is a Lead. A Lead is a potential deal, and Leads need to be associated with a Person or an Organization. A Person represents an individual, and requires an <code>email</code> and a <code>name</code>.",
-    "With an <code>email</code> and a <code>name</code> set, Grouparoo can then update the Fields on a Person with data like products purchased, lifetime value, and whether or not a Person is in a segment or group.",
+    "With an <code>email</code> and a <code>name</code> set, Grouparoo can then update the Fields on a Person with data like products purchased, lifetime value, and whether or not a Person is in a segment or Group.",
   ],
-  destinationProfile: "Pipedrive Person",
+  destinationRecord: "Pipedrive Person",
   destinationProperty: "Pipedrive Fields",
   destinationGroup: "Pipedrive Filters",
   pluginScreenshots: [
@@ -41,9 +41,9 @@ export const Pipedrive: Plugin = {
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc:
         "/images/home/integrations/pipedrive/grouparoo-to-pipedrive.png",
-      imageAlt: "Pipedrive destination settings",
-      imageWidth: 1026,
-      imageHeight: 801,
+      imageAlt: "Pipedrive Destination settings",
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header:

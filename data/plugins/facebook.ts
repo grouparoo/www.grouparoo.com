@@ -33,7 +33,7 @@ export const Facebook: Plugin = {
     "On every User are various keys and values such as <code>EMAIL</code>, <code>FN</code> (first name), <code>LN</code> (last name).",
     "You can also create new custom keys and values on every User",
   ],
-  destinationProfile: "Facebook Users",
+  destinationRecord: "Facebook Users",
   destinationProperty: "Facebook User Keys",
   destinationGroup: "Facebook Custom Audiences",
   otherPluginsHeading:

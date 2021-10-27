@@ -1,22 +1,22 @@
 ---
 title: Destinations
-date: "2021-06-22"
+date: "2021-10-13"
 pullQuote: "Learn how to configure destinations using Grouparoo's UI Config."
 ---
 
 <Alert variant="warning">
   <p className="mb-0">
-    You usually want to have an <a href="/docs/config/apps">app</a>,{" "}
+    You usually want to have an <a href="/docs/config/apps">App</a>,{" "}
     <a href="/docs/config/sources">source</a>,{" "}
     <a href="/docs/config/properties">a few properties</a>, and{" "}
-    <a href="/docs/config/groups">at least one group</a> before creating a
-    destination.
+    <a href="/docs/config/groups">at least one Group</a> before creating a
+    Destination.
   </p>
 </Alert>
 
 Once you have all other items configuration, you're ready to setup your destinations. Destinations are the last piece of the puzzle, the place(s) you want to send your customer data so you can take action on your workflows. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
 
-Here's how to send profiles, groups, and profile properties to destinations:
+Here's how to send Records, Groups, and Record properties to destinations:
 
 ### Step 1: Choose an App
 
@@ -26,66 +26,66 @@ Click on _Destinations_ in the left-nav and then click _Add New Destination_.
   centered
   alt="UI Config: Add Destination"
   src="/images/docs/guides/config/destination--01-add.png"
-  width={820}
-  height={494}
+  width={1828}
+  height={646}
 />
 
-Choose the kind of destination you'd like to create from the list of available apps. The choices shown will be based on which apps you've already connected. If you don't see the app you want to use, you can [add a new app](/docs/config/apps).
+Choose the kind of Destination you'd like to create from the list of available apps. The choices shown will be based on which apps you've already connected. If you don't see the App you want to use, you can [add a new App](/docs/config/apps).
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Choose App"
   src="/images/docs/guides/config/destination--02-app.png"
-  width={820}
-  height={448}
+  width={953}
+  height={647}
 />
 
 ### Step 2: Set Destination Options
 
-Once you've selected the type of app, the specific questions and settings will vary. Here is [Mailchimp](https://mailchimp.com/), as an example. Mailchimp has audiences that each have a `listId`. You can choose the specific `listId` you'll want to set for this Destination.
+Once you've selected the type of App, the specific questions and settings will vary. Here is [Mailchimp](https://mailchimp.com/), as an example. Mailchimp has audiences that each have a `listId`. You can choose the specific `listId` you'll want to set for this Destination.
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Mailchimp Details"
   src="/images/docs/guides/config/destination--03-name.png"
-  width={820}
-  height={456}
+  width={1834}
+  height={791}
 />
 
 ### Step 3: Choose Groups
 
-Now you can define what groups and what profile properties you want to send to your destination. This mapping defines which profiles get sent to the destination.
+Now you can define what groups and what Record properties you want to send to your Destination. This Mapping defines which records get sent to the Destination.
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Choose Group"
   src="/images/docs/guides/config/destination--04-group.png"
-  width={820}
-  height={437}
+  width={1815}
+  height={857}
 />
 
-### Step 4: Map Profile Properties
+### Step 4: Map Record Properties
 
-Next you can choose which profile properties you want to send to your destination. Usually a unique profile property such as `email` or `user id` will be required so the destination knows how to identify profiles and to keep profiles separate.
+Next you can choose which Record properties you want to send to your Destination. Usually a unique Record Property such as `email` or `user id` will be required so the Destination knows how to identify records and to keep records separate.
 
 <ImageInBrowserFrame
   centered
-  alt="UI Config: Map Profile Properties"
+  alt="UI Config: Map Record Properties"
   src="/images/docs/guides/config/destination--05-property.png"
-  width={820}
-  height={434}
+  width={1820}
+  height={867}
 />
 
 ### Step 5: Choose Group Membership
 
-Lastly, you can choose how group membership shows up in your destination. This mapping lets you decide how groups are represented in your destination. Often groups are shown as lists, audiences, or tags in these destinations.
+Lastly, you can choose how Group membership shows up in your Destination. This Mapping lets you decide how groups are represented in your Destination. Often groups are shown as lists, audiences, or tags in these destinations.
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Choose Group Membership"
   src="/images/docs/guides/config/destination--06-mappings.png"
-  width={820}
-  height={460}
+  width={1427}
+  height={959}
 />
 
 <GeneratedConfigFile
@@ -95,14 +95,14 @@ Lastly, you can choose how group membership shows up in your destination. This m
 
 ## 🎉 You're Done! Yay! 🎉
 
-You're all set! Once you have an app, source, a few properties, at least one group, and a destination, you have all the pieces you need to start syncing customer data!
+You're all set! Once you have an App, source, a few properties, at least one Group, and a Destination, you have all the pieces you need to start syncing customer data!
 
-If you're ready, feel free to move on to [running the app](/docs/running) in development, and then [deploy to production](/docs/deployment) when you're confident everything is working right.
+If you're ready, feel free to move on to [running the App](/docs/running) in development, and then [deploy to production](/docs/deployment) when you're confident everything is working right.
 
-UI Config offers an additional benefit of sampling data as you go. If you haven't added any sample profiles, you may want to check that out before moving on to running the app.
+UI Config offers an additional benefit of sampling data as you go. If you haven't added any sample records, you may want to check that out before moving on to running the App.
 
-<Button href="/docs/config/profiles" variant="outline-primary">
-  Add sample profiles
+<Button href="/docs/config/records" variant="outline-primary">
+  Add sample records
 </Button>
 
 If you have any additional questions, please let us know through our [support form / Github Issues](https://github.com/grouparoo/grouparoo/issues/new/choose).

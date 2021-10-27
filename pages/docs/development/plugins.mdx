@@ -1,6 +1,6 @@
 ---
 title: "Plugins"
-date: "2020-01-05"
+date: "2020-10-12"
 pullQuote: "The Grouparoo Plugin System is how you can add & extend Grouparoo."
 ---
 
@@ -8,10 +8,10 @@ The Grouparoo Plugin System is how you can add & extend Grouparoo!
 
 ## Installing a Plugin
 
-In your Grouparoo deployment project, simply install the plugin with NPM and enable it in your `package.json` file
+In your Grouparoo deployment project, simply install the Plugin with NPM and enable it in your `package.json` file
 
 1. `npm install @grouparoo/awesome-plugin`
-2. Add the plugin to your `grouparoo -> plugins` hash within `package.json`. When complete, your `package.json` using `@grouparoo/awesome-plugin` will look like:
+2. Add the Plugin to your `grouparoo -> plugins` hash within `package.json`. When complete, your `package.json` using `@grouparoo/awesome-plugin` will look like:
 
 ```json
 {
@@ -47,9 +47,9 @@ Mainly, Plugins add new [Sources](/docs/development/sources) and [Destinations](
 
 ### Setup
 
-A Grouparoo Plugin is based on the Actionhero Plugin model (https://docs.actionherojs.com/tutorial-plugins.html), and we have many hooks provided via `package.json` elements which you can use in your plugin.
+A Grouparoo Plugin is based on the Actionhero Plugin model (https://docs.actionherojs.com/tutorial-plugins.html), and we have many hooks provided via `package.json` elements which you can use in your Plugin.
 
-Your directory structure for your plugin should look like:
+Your directory structure for your Plugin should look like:
 
 ```shell
 /
@@ -64,7 +64,7 @@ Your directory structure for your plugin should look like:
 | - ts.config.json
 ```
 
-The best way to develop you plugin is to create a parent Grouparoo project with a `package.json` (see "Installing a Plugin" above) which requires both `@grouparoo/core` and your new plugin. From there, you can either mount your local plugin as you develop it with tools like [`npm link`](https://docs.npmjs.com/cli/link.html) or [`pnpm`](https://pnpm.js.org) for more complex projects in a monorepo.
+The best way to develop you Plugin is to create a parent Grouparoo project with a `package.json` (see "Installing a Plugin" above) which requires both `@grouparoo/core` and your new Plugin. From there, you can either mount your local Plugin as you develop it with tools like [`npm link`](https://docs.npmjs.com/cli/link.html) or [`pnpm`](https://pnpm.js.org) for more complex projects in a monorepo.
 
 Below, we will enumerate the types of things your plugins can do:
 
@@ -78,12 +78,12 @@ Below, we will enumerate the types of things your plugins can do:
 
 ### `package.json` options
 
-In your plugin's `package.json`, we use a `grouparoo` section to list certain options:
+In your Plugin's `package.json`, we use a `grouparoo` section to list certain options:
 
 ```json
 {
   "name": "@grouparoo/awesome-plugin",
-  "description": "a Grouparoo plugin",
+  "description": "a Grouparoo Plugin",
   "version": "1.0.0",
   "license": "UNLICENSED",
   "private": true,
@@ -127,7 +127,7 @@ In your plugin's `package.json`, we use a `grouparoo` section to list certain op
 
 - The `api` key defines the environment variables that your application needs to launch.
   - If these environment variables are not present, the Grouparoo Core application will display an error, but will still launch
-- This example means that `process.env.APP_API_KEY` can be used within your plugin (if the user provides it).
+- This example means that `process.env.APP_API_KEY` can be used within your Plugin (if the user provides it).
 
 **`grouparoo/serverInjection`**
 
@@ -159,7 +159,7 @@ Notes:
 
 ### Connections
 
-Your plugin can provide multiple types of `Apps` for use within Grouparoo. Grouparoo users can create multiple instances of each type of app. It can then create `Connections` to import and/or export data.
+Your Plugin can provide multiple types of `Apps` for use within Grouparoo. Grouparoo users can create multiple instances of each type of App. It can then create `Connections` to import and/or export data.
 
 More information is available for each type:
 
@@ -182,12 +182,12 @@ import { plugin } from "@grouparoo/core";
 import { test } from "./../lib/test";
 import { columns } from "./../lib/columns";
 import {
-  profilePropertyRuleQueryOptions,
-  buildProfilePropertyRuleQuery,
-} from "./../lib/buildProfileQuery";
-import { profiles } from "./../lib/profiles";
-import { profileProperty } from "./../lib/profileProperty";
-import { exportProfile } from "./../lib/exportProfile";
+  recordPropertyRuleQueryOptions,
+  buildRecordPropertyRuleQuery,
+} from "./../lib/buildRecordQuery";
+import { records } from "./../lib/records";
+import { recordProperty } from "./../lib/recordProperty";
+import { exportRecord } from "./../lib/exportRecord";
 
 export class Plugins extends Initializer {
   constructor() {
@@ -209,41 +209,41 @@ export class Plugins extends Initializer {
             // ...
           ],
           test: test,
-          profilePropertyRuleQueryOptions,
-          buildProfilePropertyRuleQuery,
+          recordPropertyRuleQueryOptions,
+          buildRecordPropertyRuleQuery,
         },
       ],
       connections: [
         {
           name: "postgres-import",
           direction: "import",
-          description: "import or update profiles from a postgres database",
+          description: "import or update records from a postgres database",
           app: ["postgres"],
           options: [
             { key: "table", required: true, description: "the table to scan" },
             // ...
           ],
           methods: {
-            profiles,
-            profileProperty,
+            records,
+            recordProperty,
             columns,
           },
         },
         {
           name: "postgres-export",
           direction: "export",
-          description: "export profiles to a postgres table",
+          description: "export records to a postgres table",
           app: ["postgres"],
           options: [
             {
               key: "table",
               required: true,
-              description: "the table to write profiles to",
+              description: "the table to write records to",
             },
             // ...
           ],
           methods: {
-            exportProfile,
+            exportRecord,
             columns,
           },
         },
@@ -273,7 +273,7 @@ export class AwesomeStatus extends Action {
     this.middleware = ["authenticated-action"]; // <-- here
 
     // define the permissions needed to use this action
-    this.permission = { topic: "profile", mode: "read" };
+    this.permission = { topic: "record", mode: "read" };
   }
 
   async run() {
@@ -284,7 +284,7 @@ export class AwesomeStatus extends Action {
 
 If you want your action to require a logged-in web user or valid API Key, use the `authenticated-action` middleware. We will then check that this user/API Key has the proper permissions you specified.
 
-Unlike actions directly provided by Grouparoo Core, Actions created by plugins will need to be manually added to the roues file. You do this in an `Initializer` within your plugin:
+Unlike actions directly provided by Grouparoo Core, Actions created by plugins will need to be manually added to the roues file. You do this in an `Initializer` within your Plugin:
 
 ```ts
 import { Initializer, route } from "actionhero";
@@ -316,7 +316,7 @@ To learn more about tasks, visit https://www.actionherojs.com/tutorials/tasks
 You can define user-configurable settings for your plugins. These will be exposed to the Grouparoo Administrators in the "settings" menu. Settings are defined within an initializer.
 
 ```js
-// Define a setting for your plugin
+// Define a setting for your Plugin
 await api.plugins.registerSetting(pluginName, key, defaultValue, description);
 
 // Read a setting
@@ -335,13 +335,13 @@ Settings are all of type `string` or `number`, so coerce them if needed. Setting
 
 When setting up Grouparoo, use `pnpm install` from the root of the monorepo to get everything installed. This used [lerna](https://lerna.js.org/) to act like all the plugins are "regular" npm ones but there are really the local files.
 
-When you add a new plugin, it's version should be the same as all the other ones. This will allow lerna to pick up that local plugin before it is published and allow you to iterate on the functionality. Run `pnpm install` after creating the new package and every time a dependency is added.
+When you add a new Plugin, it's version should be the same as all the other ones. This will allow lerna to pick up that local Plugin before it is published and allow you to iterate on the functionality. Run `pnpm install` after creating the new package and every time a dependency is added.
 
-To make this new plugin be used while running, add it to the `package.json` file of a Grouparoo app like the one in [`apps/staging-public`](https://github.com/grouparoo/grouparoo/blob/c4dc38bfa44354c23ed1d6de7f66a89adad11a41/apps/staging-public/package.json). It needs to be added to both the [`dependencies`](https://github.com/grouparoo/grouparoo/blob/c4dc38bfa44354c23ed1d6de7f66a89adad11a41/apps/staging-public/package.json#L22) and the [`plugins`](https://github.com/grouparoo/grouparoo/blob/c4dc38bfa44354c23ed1d6de7f66a89adad11a41/apps/staging-public/package.json#L51) array at the bottom. After adding to these spots, run `pnpm install` from the root and `npm run dev` from the app.
+To make this new Plugin be used while running, add it to the `package.json` file of a Grouparoo App like the one in [`apps/staging-public`](https://github.com/grouparoo/grouparoo/blob/c4dc38bfa44354c23ed1d6de7f66a89adad11a41/apps/staging-public/package.json). It needs to be added to both the [`dependencies`](https://github.com/grouparoo/grouparoo/blob/c4dc38bfa44354c23ed1d6de7f66a89adad11a41/apps/staging-public/package.json#L22) and the [`plugins`](https://github.com/grouparoo/grouparoo/blob/c4dc38bfa44354c23ed1d6de7f66a89adad11a41/apps/staging-public/package.json#L51) array at the bottom. After adding to these spots, run `pnpm install` from the root and `npm run dev` from the App.
 
-It would be frustrating to have to run `pnpm install` every time there was a change. The running app, when run with `npm run dev` will automatically reboot itself with changes to the compiled Typescript. Run `npm run watch` (the same as `node_modules/.bin/tsc --watch`) from the plugin directory to watch for changes to make this happen. If you do this, then file changes to the plugin will show up momentarily in the running app. Sometimes, the app struggles to restart and you have to kill it and run `npm run dev` again.
+It would be frustrating to have to run `pnpm install` every time there was a change. The running App, when run with `npm run dev` will automatically reboot itself with changes to the compiled Typescript. Run `npm run watch` (the same as `node_modules/.bin/tsc --watch`) from the Plugin directory to watch for changes to make this happen. If you do this, then file changes to the Plugin will show up momentarily in the running App. Sometimes, the App struggles to restart and you have to kill it and run `npm run dev` again.
 
-When running tests for your new plugin, use `node_modules/.bin/jest __tests__/file/path.ts`. This will automatically incorporate any changes to the library or test files in that plugin.
+When running tests for your new Plugin, use `node_modules/.bin/jest __tests__/file/path.ts`. This will automatically incorporate any changes to the library or test files in that Plugin.
 
 #### Summary: Localhost
 

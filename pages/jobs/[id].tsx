@@ -27,6 +27,10 @@ export default function JobPage({ pageProps }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@grouparoo" />
         <meta name="twitter:creator" content={"@grouparoo"} />
+        <link
+          rel="canonical"
+          href={`https://www.grouparoo.com/jobs/${job.id}`}
+        />
         <meta
           property="og:url"
           content={`https://www.grouparoo.com/jobs/${job.id}`}

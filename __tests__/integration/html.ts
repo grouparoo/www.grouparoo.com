@@ -24,6 +24,8 @@ const allowedMissingLinks = [
   /^\/support$/, // Redirects to docs page, but we want to keep the reference around.
 ];
 
+const testedImages = new Set<string>();
+
 describe("sitemap integration", () => {
   beforeAll(async () => {
     const env = await helper.prepareForIntegrationTest();
@@ -132,7 +134,7 @@ describe("sitemap integration", () => {
           expect(testUrl).not.toContain("/whats-new/");
       });
 
-      test("images", async () => {
+      test("image alt tags", async () => {
         const altTagMissing = [];
         $("img").each(function () {
           const tag = $(this);
@@ -151,6 +153,39 @@ describe("sitemap integration", () => {
 
         expect(altTagMissing).toEqual([]);
       });
+
+      test(
+        "image sources",
+        async () => {
+          const imgArray: Array<Record<string, any>> = Array.from($("img"));
+
+          const imageTags = imgArray
+            .map((i) => i.parent.children.filter((t) => t.name === "noscript"))
+            .flat()
+            .filter((container) => container.children.length > 0)
+            .map((container) => container.children[0].data);
+
+          for (const tag of imageTags) {
+            // next.js does a tricky image replacement thing so what we're doing
+            // here is traversing the dom a little to find the ultimate src of the
+            // image (which next.js stores in a noscript tag)
+            const noScript = cheerio.load(tag);
+            const imgSrc = noScript("img").attr("src");
+            const imgUrl = `${url}${imgSrc}`;
+
+            if (!testedImages.has(imgUrl)) {
+              const response = await fetch(imgUrl);
+              testedImages.add(imgUrl);
+              try {
+                expect(response.status).toEqual(200);
+              } catch (error) {
+                throw new Error(`CANNOT FIND ${imgUrl}`);
+              }
+            }
+          }
+        },
+        1000 * 20
+      );
 
       test("links", async () => {
         let localPagesNotFound = [];

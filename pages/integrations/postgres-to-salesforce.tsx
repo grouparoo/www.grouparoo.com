@@ -135,7 +135,7 @@ export default function PostgresToSalesforce() {
                   Postgres rows
                 </li>
                 <li>
-                  Update all profileObjects including Contacts, Leads, and
+                  Update all recordObjects including Contacts, Leads, and
                   Individuals in Salesforce automatically{" "}
                 </li>
                 <li>
@@ -181,7 +181,7 @@ export default function PostgresToSalesforce() {
             <Col md={8}>
               <ImageInBrowserFrame
                 src="/images/home/integrations/postgres/postgres-table-mode.png"
-                alt="Grouparoo table source settings"
+                alt="Grouparoo Table Source settings"
                 width={742}
                 height={614}
               />

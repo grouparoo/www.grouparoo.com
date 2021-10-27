@@ -32,7 +32,7 @@ export const Sendgrid: Plugin = {
     "The core object in Sendgrid is a Contact. A Contact represents an individual person. Contacts have one required user field: <code>email</code>.",
     "All of these Contacts have Reserved Fields that you can set, like First Name, Last Name, and Phone Number. Contacts also have custom fields.",
   ],
-  destinationProfile: "Sendgrid Users",
+  destinationRecord: "Sendgrid Users",
   destinationProperty: "Sendgrid User Fields",
   destinationGroup: "Sendgrid Audiences",
   pluginScreenshots: [
@@ -41,9 +41,9 @@ export const Sendgrid: Plugin = {
       description:
         "Grouparoo can be configured either in code or in our web UI, so non-technical team members can modify what data they send to different tools without needing engineering support.",
       imageSrc: "/images/home/integrations/sendgrid/grouparoo-to-sendgrid.png",
-      imageAlt: "Sendgrid destination settings",
-      imageWidth: 1184,
-      imageHeight: 937,
+      imageAlt: "Sendgrid Destination settings",
+      imageWidth: 932,
+      imageHeight: 506,
     },
     {
       header: "Grouparoo keeps your Users in Sendgrid updated in real-time",

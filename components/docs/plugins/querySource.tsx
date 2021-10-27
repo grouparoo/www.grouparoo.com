@@ -51,7 +51,7 @@ mapping: {
     tableMapping: {
       column: {
         required: true,
-        description: `The name of the ${column} to use as the high watermark.`,
+        description: `The name of the ${column} to use as the High Watermark.`,
       },
     },
     tableProperties: {
@@ -72,7 +72,7 @@ mapping: {
     },
     querySchedule: {
       query: {
-        description: `A ${queryLanguage} query to return that tells Grouparoo which Profiles to check each time the interval occurs.`,
+        description: `A ${queryLanguage} query to return that tells Grouparoo which Records to check each time the interval occurs.`,
       },
       propertyId: {
         description:
@@ -171,7 +171,7 @@ mapping: {
       <p>
         Here's an example that sums the values in the <code>price</code>{" "}
         {column} for rows in which the <code>user_id</code> {column}'s value
-        matches the value of the Grouparoo Profile's <code>userId</code> field
+        matches the value of the Grouparoo Record's <code>userId</code> field
         (i.e. <code>userId</code> is the <code>id</code> for the Property in
         Grouparoo):
       </p>

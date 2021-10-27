@@ -3,7 +3,7 @@ export interface Author {
   slug: string;
   image: string;
   url: string;
-  twitter: string;
+  twitter?: string;
   description: string;
 }
 
@@ -34,6 +34,15 @@ const Authors: Author[] = [
     twitter: "@bleonard",
     description:
       "Brian is the CEO and co-founder of Grouparoo, an open source data framework that easily connects your data to business tools.  Brian is a leader and technologist who enjoys hanging out with his family, traveling, learning new things, and building software that makes people's lives easier.",
+  },
+  {
+    name: "Guest Contributor",
+    slug: "guest",
+    image: "guest_contributor.png",
+    url: "https://www.grouparoo.com",
+    twitter: "@grouparoo",
+    description:
+      "Grouparoo is the open source data framework that easily connects your data to your business tools.",
   },
   {
     name: "Tiger Oakes",
@@ -97,6 +106,22 @@ const Authors: Author[] = [
     twitter: "@yashovardhan",
     description:
       "Yash is an Open Source Developer Evangelist and a total Javascript nerd. He loves sharing his ideas, through writings, talks or just being around at hackathons and tech events. While not coding, you can always find Yash singing some random Indian bollywood song!",
+  },
+  {
+    name: "Krishna Glick",
+    slug: "kc",
+    image: "krishna_glick.png",
+    url: "https://github.com/krishnaglick",
+    description:
+      "Krishna (KC) Glick is a Senior Software Engineer at Grouparoo. He started his career as a C# dev, before falling in love with Javascript and later Typescript. KC has four pets which he is happy to talk about at length if asked, and can be found rock climbing several evenings a week.",
+  },
+  {
+    name: "Micah Bello",
+    slug: "micah_bello",
+    image: "micah_bello.jpeg",
+    url: "https://github.com/Micah-Bello",
+    description:
+      "Micah is a freelance writer and budding back-end developer with a love for all things software related. He spends his free time learning about the technologies that drive innovation in the software industry.",
   },
 ];
 

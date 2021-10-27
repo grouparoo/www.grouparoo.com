@@ -28,8 +28,8 @@ Welcome to the Grouparoo Dictionary! This is the collection of terms we use thro
 - [Mapping](#mapping)
 - [Model](#model)
 - [Plugin](#plugin)
-- [Profile](#profile)
-- [Profile Property](#profile-property)
+- [Record](#record)
+- [Record Property](#record-property)
 - [Property](#property)
 - [Query Source](#query-source)
 - [Source](#source)
@@ -43,7 +43,7 @@ An App in Grouparoo represents a _integration_, or a _connection_ to some servic
 
 ## Application Database
 
-The application database, sometimes referred to as the Grouparoo database, is the database created and used by the Grouparoo application. This is not to be confused with any database source that in which you store customer data.
+The Application Database, sometimes referred to as the Grouparoo database, is the database created and used by the Grouparoo application. This is not to be confused with any database source that in which you store customer data.
 
 ## Batch Generation
 
@@ -51,7 +51,7 @@ Some versions of [the `generate` command](/docs/cli/config#generate) support cre
 
 ## Calculated Group
 
-Calculated Groups are a type of [Group](#group) that are always kept up to date for you by Grouparoo. As new Profiles are created, or the Profile Properties of existing Profiles are changed, Group membership will automatically be adjusted.
+Calculated Groups are a type of [Group](#group) that are always kept up to date for you by Grouparoo. As new Records are created, or the Record Properties of existing Records are changed, Group membership will automatically be adjusted.
 
 ## Columnar Source
 
@@ -59,11 +59,11 @@ A Columnar Source is a specific type of [Source](#source) that imports data from
 
 ## Destination
 
-Destinations are where you want [Grouparoo Profiles](#profile) and [Groups](#group) to be sent. Often Destinations are customer marketing tools such as email marketing or push notification services, though databases and data warehouses can also function at Destinations.
+Destinations are where you want [Grouparoo Records](#record) and [Groups](#group) to be sent. Often Destinations are customer marketing tools such as email marketing or push notification services, though databases and data warehouses can also function at Destinations.
 
-When you set up a Destination in Grouparoo, you will choose which Groups as well as which [Profile Properties](#profile-properties) you will send to each Destination. You will have control and visibility over what data gets sent to each Destination.
+When you set up a Destination in Grouparoo, you will choose which Groups as well as which [Record Properties](#record-properties) you will send to each Destination. You will have control and visibility over what data gets sent to each Destination.
 
-Grouparoo will keep the Profile and Group data in your Destinations up-to-date in real time.
+Grouparoo will keep the Record and Group data in your Destinations up-to-date in real time.
 
 See [our Integrations page](/integrations) for an up-to-date list of our supported Destinations. We are always adding support for more Destinations. If you have a request, please [let us know](/meet)!
 
@@ -79,30 +79,30 @@ You can learn more about Generators by reading through [the Code Config docs](/d
 
 ## Group
 
-Groups are a collection of [Profiles](#profile) that you can define and filter. These filters (or _rules_) are built to be easy-to-understand by non-technical users.
+Groups are a collection of [Records](#record) that you can define and Filter. These filters (or _rules_) are built to be easy-to-understand by non-technical users.
 
-Let's say we wanted to make a Group of high-value customers who recently abandoned the checkout process. Here is an example of the rules to define this group:
+Let's say we wanted to make a Group of high-value customers who recently abandoned the checkout process. Here is an example of the rules to define this Group:
 
 - `[Total Customer Value] [is greater than] [$50]`
 - `[Abandoned Cart] [in the last] [3 days]`
 
-With these rules, you have a Group consisting of every user who has purchased more than $50 and recently abandoned their cart. You can then synchronize that group in real-time to all of your Destinations to then communicate with them.
+With these rules, you have a Group consisting of every user who has purchased more than $50 and recently abandoned their cart. You can then synchronize that Group in real-time to all of your Destinations to then communicate with them.
 
 There are 2 types of groups: [**Calculated**](#calculated-group) and [**Manual**](#manual-group)
 
 ## High Watermark
 
-A High Watermark is a value used for comparison during [Runs](#run) that are [scheduled](#schedule). Grouparoo will only import items where the high watermark column is greater than the largest previously imported high watermark value. For example, let's say you use `updated_at` as your high watermark. Grouparoo will run an import and record the highest value from that column (presumably from the most recently updated record). The next time the import runs, Grouparoo will only consider records where `updated_at` is greater than the previous high watermark value. And it doesn't have to be a date, it just has to be comparable. Another example would be a numeric field, like `version`, in which the value is incremented when changes are made to the record in the Source database.
+A High Watermark is a value used for comparison during [Runs](#run) that are [scheduled](#schedule). Grouparoo will only import items where the High Watermark column is greater than the largest previously imported High Watermark value. For example, let's say you use `updated_at` as your High Watermark. Grouparoo will run an import and Record the highest value from that column (presumably from the most recently updated Record). The next time the import runs, Grouparoo will only consider records where `updated_at` is greater than the previous High Watermark value. And it doesn't have to be a date, it just has to be comparable. Another example would be a numeric field, like `version`, in which the value is incremented when changes are made to the Record in the Source database.
 
 ## Manual Group
 
-Manual Groups are a type of [Group](#group) that only change when you add or remove Profiles.
+Manual Groups are a type of [Group](#group) that only change when you add or remove Records.
 
 ## Mapping
 
-When importing data from a [Source](#source), Grouparoo needs to know how to relate the data its importing to the [Profiles](#profiles) already in Grouparoo. This is what we call a Mapping. It operates like a foreign key in a database.
+When importing data from a [Source](#source), Grouparoo needs to know how to relate the data its importing to the [Records](#records) already in Grouparoo. This is what we call a Mapping. It operates like a foreign key in a database.
 
-Consider that you have a [Property](#profile-property) called `email`, while your Source has an attribute called `emailAddress`, which is a unique field in that Source. You could map `emailAddress` from your source to `email` in Grouparoo. This tells Grouparoo that when anything changes on the Source, it knows which profile to update.
+Consider that you have a [Property](#record-property) called `email`, while your Source has an attribute called `emailAddress`, which is a unique field in that Source. You could map `emailAddress` from your source to `email` in Grouparoo. This tells Grouparoo that when anything changes on the Source, it knows which Record to update.
 
 Every Source needs a Mapping, as Grouparoo must know how to associate imported information.
 
@@ -116,31 +116,31 @@ The core Grouparoo application is the engine that drives syncing data from [Sour
 
 Being that Grouparoo is a Node.js application, the plugins are available as JavaScript packages through [NPM](https://www.npmjs.com/). The majority of plugins are open-source and available for free, though we do have also have [paid plugins](/docs/plugins#paid-plugins).
 
-Learn more about [existing plugins](/docs/plugins), or [develop your own plugin](/docs/development/plugins).
+Learn more about [existing plugins](/docs/plugins), or [develop your own Plugin](/docs/development/plugins).
 
-## Profile
+## Record
 
-Profiles represent individual people. For your specific company or organization, that may mean:
+Records represent individual people. For your specific company or organization, that may mean:
 
 - Leads
 - Customers
 - Users
-- Visitors to your site or app
+- Visitors to your site or App
 
-## Profile Property
+## Record Property
 
-Profile Properties are data associated with a profile. You can define Profile Properties based on data that exists in your data Sources.
+Record Properties are data associated with a Record. You can define Record Properties based on data that exists in your data Sources.
 
-Profile Properties are given a specific type, letting us know if they are a `number`, `date`, or `string`. Having a type helps Grouparoo know how to display this data and send it to Destinations.
+Record Properties are given a specific type, letting us know if they are a `number`, `date`, or `string`. Having a type helps Grouparoo know how to display this data and send it to Destinations.
 
-Profile Properties can also be **Unique** or **Not Unique**. Defining Uniqueness is needed in order to create and merge Profiles from various sources without creating duplicate Profiles.
+Record Properties can also be **Unique** or **Not Unique**. Defining Uniqueness is needed in order to create and merge Records from various sources without creating duplicate Records.
 
-Common examples of **Unique** Profile Properties are:
+Common examples of **Unique** Record Properties are:
 
 - `Email Address`
 - `User ID`
 
-Common examples of **Not Unique** Profile Properties are:
+Common examples of **Not Unique** Record Properties are:
 
 - `First Name`
 - `Last Name`
@@ -148,9 +148,9 @@ Common examples of **Not Unique** Profile Properties are:
 
 ## Property
 
-Properties define how a Profile Property gets pulled from a Source. Every Source might be structured in slightly different ways, so Grouparoo plugins make it easy for you to define Properties.
+Properties define how a Record Property gets pulled from a Source. Every Source might be structured in slightly different ways, so Grouparoo plugins make it easy for you to define Properties.
 
-For example, you might define a Property called `first_name` which you are pulling from your product database via the `@grouparoo/postgres` plugin.
+For example, you might define a Property called `first_name` which you are pulling from your product database via the `@grouparoo/postgres` Plugin.
 
 ## Query Source
 
@@ -168,17 +168,17 @@ A Schedule defines some interval by which to process a [Run](#run). Though techn
 
 Sources are the tools that Grouparoo will connect with to pull in customer data. A Source can be anything that contains customer data such as data warehouses, databases, and CRMs.
 
-When you add a new Source, you will define how that Source connects with the [Profiles](#profile) that already exist in Grouparoo through a `Unique` [Profile Property](#profile-property).
+When you add a new Source, you will define how that Source connects with the [Records](#record) that already exist in Grouparoo through a `Unique` [Record Property](#record-property).
 
 See [our Integrations page](/integrations) for an up-to-date list of our supported Sources. We are always adding support for more Sources. If you have a request, please [let us know](/meet)!
 
 ## Sync Mode
 
-When creating a Grouparoo [Destination](#destination), you will be asked to choose a Sync Mode. A Sync Mode tells the Grouparoo application how to create and delete Profiles on this destination. The types of Sync Modes are:
+When creating a Grouparoo [Destination](#destination), you will be asked to choose a Sync Mode. A Sync Mode tells the Grouparoo application how to create and delete Records on this Destination. The types of Sync Modes are:
 
-- **Sync**: Add, update and remove profiles from the destination as needed.
-- **Additive**: Add new profiles and update those that already exist in the destination, but never remove anyone.
-- **Enrich**: Update profiles that already exist in the destination, _enriching_ them with additional data and group membership information. No profiles are added or removed.
+- **Sync**: Add, update and remove records from the Destination as needed.
+- **Additive**: Add new records and update those that already exist in the Destination, but never remove anyone.
+- **Enrich**: Update records that already exist in the Destination, _enriching_ them with additional data and Group membership information. No records are added or removed.
 
 You can learn more about in our blog posts [introducing Sync Modes](/blog/sync-modes) and [how to use Sync Modes](/blog/using-sync-modes)
 

@@ -70,4 +70,4 @@ const manifestData = PluginData.map((plugin): PluginManifestItem => {
 
 fs.writeFileSync(manifestFilePath, JSON.stringify(manifestData, null, 2));
 
-console.log(`Wrote plugin manifest file to: ${manifestFilePath}`);
+console.log(`Wrote Plugin manifest file to: ${manifestFilePath}`);

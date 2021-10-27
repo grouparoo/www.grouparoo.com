@@ -1,15 +1,15 @@
 ---
 title: "@grouparoo/salesforce"
-date: "2021-09-01"
-pullQuote: "Learn how to work with the Salesforce plugin as a Destination."
+date: "2021-10-12"
+pullQuote: "Learn how to work with the Salesforce Plugin as a Destination."
 pageNavSelector: "h2"
 ---
 
 <PluginDocsLinks plugin="Salesforce" />
 
-Grouparoo's [Salesforce](https://www.salesforce.com/) plugin enables you to export contacts and groups to Salesforce.
+Grouparoo's [Salesforce](https://www.salesforce.com/) Plugin enables you to export contacts and groups to Salesforce.
 
-This guide will show you how to work with the Salesforce plugin to [create a Destination](#create-an-salesforce-destination) to export your data.
+This guide will show you how to work with the Salesforce Plugin to [create a Destination](#create-an-salesforce-destination) to export your data.
 
 <PluginDocsInstallation plugin="Salesforce" />
 
@@ -44,16 +44,16 @@ exports.default = async function buildConfig() {
       syncMode: "...",
 
       options: {
-        profileObject: "Contact",
-        profileMatchField: "Email",
+        recordObject: "Contact",
+        recordMatchField: "Email",
         groupObject: "Campaign",
         groupNameField: "Name",
         membershipObject: "CampaignMember",
-        membershipProfileField: "ContactId",
+        membershipRecordField: "ContactId",
         membershipGroupField: "CampaignId",
-        profileReferenceField: "AccountId",
-        profileReferenceObject: "Account",
-        profileReferenceMatchField: "Name",
+        recordReferenceField: "AccountId",
+        recordReferenceObject: "Account",
+        recordReferenceMatchField: "Name",
       },
 
       mapping: {
@@ -76,11 +76,11 @@ For more information on what all these properties mean and how to configure them
 
 The Salesforce Destination supports all three sync modes:
 
-- **Sync** (`sync`): Add, update, and remove profiles as needed.
-- **Additive** (`additive`): Add and update profiles as needed, but do not remove anybody.
-- **Enrich** (`enrich`): Only update profiles that already exist in the Destination. Do not add or remove anybody.
+- **Sync** (`sync`): Add, update, and remove Records as needed.
+- **Additive** (`additive`): Add and update Records as needed, but do not remove anybody.
+- **Enrich** (`enrich`): Only update Records that already exist in the Destination. Do not add or remove anybody.
 
-You can set the desired sync mode through the `syncMode` property in the config file:
+You can set the desired Sync Mode through the `syncMode` Property in the config file:
 
 ```js
 syncMode: "additive";
@@ -92,53 +92,53 @@ Here are the available options for a Salesforce Destination:
 
 <OptionsList
   options={{
-    profileObject: {
-      displayName: "profileObject",
-      description: "Which object in Salesforce represents a Grouparoo profile?",
+    recordObject: {
+      displayName: "recordObject",
+      description: "Which object in Salesforce represents a Grouparoo Record?",
     },
-    profileMatchField: {
-      displayName: "profileMatchField",
+    recordMatchField: {
+      displayName: "recordMatchField",
       description:
-        "Which field in the profile Object is used to match Grouparoo profiles?",
+        "Which field in the Record Object is used to match Grouparoo records?",
     },
     groupObject: {
       displayName: "groupObject",
-      description: "Which object in Salesforce represents a Grouparoo group?",
+      description: "Which object in Salesforce represents a Grouparoo Group?",
     },
     groupNameField: {
       displayName: "groupNameField",
       description:
-        "Which field in the group Object is used for the name of a Grouparoo group?",
+        "Which field in the Group Object is used for the name of a Grouparoo Group?",
     },
     membershipObject: {
       displayName: "membershipObject",
       description:
-        "Which object in Salesforce maps the profile object to the group object?",
+        "Which object in Salesforce maps the Record object to the Group object?",
     },
-    membershipProfileField: {
-      displayName: "membershipProfileField",
+    membershipRecordField: {
+      displayName: "membershipRecordField",
       description:
-        "Which object in Salesforce maps the profile object to the group object?",
+        "Which object in Salesforce maps the Record object to the Group object?",
     },
     membershipGroupField: {
       displayName: "membershipGroupField",
       description:
-        "Which field in the membership Object is the reference to the group?",
+        "Which field in the membership Object is the reference to the Group?",
     },
-    profileReferenceField: {
-      displayName: "profileReferenceField",
+    recordReferenceField: {
+      displayName: "recordReferenceField",
       description:
-        "Is there a reference field on the profile Object to fill out?",
+        "Is there a reference field on the Record Object to fill out?",
     },
-    profileReferenceObject: {
-      displayName: "profileReferenceObject",
+    recordReferenceObject: {
+      displayName: "recordReferenceObject",
       description:
-        "If there is a reference field, which Object should be created to apply to the profile?",
+        "If there is a reference field, which Object should be created to apply to the Record?",
     },
-    profileReferenceMatchField: {
-      displayName: "profileReferenceMatchField",
+    recordReferenceMatchField: {
+      displayName: "recordReferenceMatchField",
       description:
-        "If there is a reference field, how should it be matched to Grouparoo profiles?",
+        "If there is a reference field, how should it be matched to Grouparoo records?",
     },
   }}
 />
@@ -147,24 +147,24 @@ You can configure these options by setting them inside the `options` object of t
 
 ```js
 options: {
-  profileObject: "Contact",
-  profileMatchField: "Email",
+  recordObject: "Contact",
+  recordMatchField: "Email",
   groupObject: "Campaign",
   groupNameField: "Name",
   membershipObject: "CampaignMember",
-  membershipProfileField: "ContactId",
+  membershipRecordField: "ContactId",
   membershipGroupField: "CampaignId",
-  profileReferenceField: "AccountId",
-  profileReferenceObject: "Account",
-  profileReferenceMatchField: "Name",
+  recordReferenceField: "AccountId",
+  recordReferenceObject: "Account",
+  recordReferenceMatchField: "Name",
 },
 ```
 
 ### Property Mappings
 
-These mappings are what tell Grouparoo which Properties you want to sync to the Destination and what they should be called. For this plugin, **Grouparoo Properties** can be mapped to a **Salesforce Object** specified on the `options` object.
+These mappings are what tell Grouparoo which Properties you want to sync to the Destination and what they should be called. For this Plugin, **Grouparoo Properties** can be mapped to a **Salesforce Object** specified on the `options` object.
 
-You can also map to custom attributes that you've defined on Salesforce by adding them directly to the mapping object (also include the \_\_c suffix).
+You can also map to custom attributes that you've defined on Salesforce by adding them directly to the Mapping object (also include the \_\_c suffix).
 
 Here's an example of how this would look in the config file. Note that the keys refer to Salesforce Attribute names and values refer to Grouparoo Property IDs.
 
@@ -178,7 +178,7 @@ mapping: {
 
 ### Group Mappings
 
-You can use **Group Memberships** to automatically add your contacts to **Salesforce Objects**, defined by the property `groupObject` on the `options` object.
+You can use **Group Memberships** to automatically add your contacts to **Salesforce Objects**, defined by the Property `groupObject` on the `options` object.
 
 Here's an example of how to configure this in the config file. Keys refer to the name of the tag to be shown on Salesforce and values refer to the Grouparoo Group ID.
 
@@ -190,4 +190,4 @@ destinationGroupMemberships: {
 
 ## Salesforce Next Steps
 
-Once you have the plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
+Once you have the Plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!

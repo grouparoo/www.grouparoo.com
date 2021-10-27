@@ -17,7 +17,7 @@ First and foremost, you should deploy Grouparoo only within an environment you t
 ## Destination Configuration
 
 - When sending customer data to third-parties, only send the data you absolutely need communicate with them.
-- Use Group Membership as a proxy for customer data. For example, rather than sending a Customer's address to your CRM tool, send that they are in the group "California Customers".
+- Use Group Membership as a proxy for customer data. For example, rather than sending a Customer's address to your CRM tool, send that they are in the Group "California Customers".
 
 ## Permissions
 
@@ -29,7 +29,7 @@ Grouparoo's Enterprise edition has a robust permission system you can use to lim
 
 ## Environment Variables for Secrets
 
-To communicate with Sources and Destinations, Grouparoo will need to be provided with a number of API Keys and passwords, otherwise known as "Secrets". While Grouparoo can store this information in its application database, you may prefer to store this information in the Environment. This will ensure that these Secrets are not readable by Grouparoo users, and that they will also not be compromised if the Grouparoo database is accessed improperly.
+To communicate with Sources and Destinations, Grouparoo will need to be provided with a number of API Keys and passwords, otherwise known as "Secrets". While Grouparoo can store this information in its Application Database, you may prefer to store this information in the Environment. This will ensure that these Secrets are not readable by Grouparoo users, and that they will also not be compromised if the Grouparoo database is accessed improperly.
 
 <Button variant="outline-primary" href="/docs/support/secrets">
   Learn more about secrets

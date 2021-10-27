@@ -31,7 +31,7 @@ const PluginDocsInstallation = ({ plugin }: { plugin: string }) => {
       <h2 id={`installing-${plugin}-plugin`}>Install the {plugin} Plugin</h2>
       <p>
         To work with the {plugin}{" "}
-        <Link href="/docs/getting-started/product-concepts#plugin">plugin</Link>
+        <Link href="/docs/getting-started/product-concepts#plugin">Plugin</Link>
         , you must first install it in an existing Grouparoo project. You can do
         this using{" "}
         <Link href="/docs/cli/setup#install">
@@ -47,7 +47,7 @@ const PluginDocsInstallation = ({ plugin }: { plugin: string }) => {
       />
       <p>
         This adds the package to your <code>package.json</code> file as a
-        dependency, and also drops the plugin in the{" "}
+        dependency, and also drops the Plugin in the{" "}
         <code>grouparoo.plugins</code> section in that same file, which enables
         it.
       </p>
@@ -56,7 +56,7 @@ const PluginDocsInstallation = ({ plugin }: { plugin: string }) => {
         language="json"
       />
       <p>
-        Once the plugin is installed, you'll be working primarily with{" "}
+        Once the Plugin is installed, you'll be working primarily with{" "}
         <Link href="/docs/cli/config">the CLI's configuration commands</Link> to
         get everything set up.
       </p>
