@@ -103,22 +103,6 @@ const teamMembers: TeamMember[] = [
     ],
   },
   {
-    name: "Maria Silverhardt",
-    image: "maria_silverhardt.jpg",
-    title: "Community Architect",
-    github: "https://github.com/asthedatamoves",
-    twitter: "https://twitter.com/msdatadetective",
-    linkedIn: "https://www.linkedin.com/in/mariasilverhardt",
-    emojis: ["🕵🏻‍♀️", "👩🏻‍🔬", "👩🏻‍💻", "👩🏻‍🏫"],
-    previously: [
-      {
-        role: "Community Development Manager",
-        company: "Bugcrowd",
-        website: "https://www.bugcrowd.com",
-      },
-    ],
-  },
-  {
     name: "Krishna Glick",
     image: "krishna_glick.jpg",
     title: "Senior Software Engineer",
