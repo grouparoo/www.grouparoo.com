@@ -155,42 +155,48 @@ export default function WhoWeAre() {
         style={{ textAlign: "center" }}
       >
         <Row className="justify-content-center">
-          {teamMembers.map(({ emojis, previously, ...teamMemberProps }) => (
-            <Col md={4} className="d-flex justify-content-center">
-              <TeamMember
-                {...teamMemberProps}
-                description={
-                  <span>
-                    {emojis && emojis.length > 0 && (
-                      <>
-                        {emojis.join(" ")}
-                        <br />
-                      </>
-                    )}
-                    {previously && previously.length > 0 && (
-                      <>
-                        Previously:
-                        <br />
-                        {previously.map(({ role, company, website }) => (
-                          <>
-                            {role}{" "}
-                            <a
-                              href={website}
-                              target="_blank"
-                              rel="noreferrer nofollow"
-                            >
-                              @{company}
-                            </a>
-                            <br />
-                          </>
-                        ))}
-                      </>
-                    )}
-                  </span>
-                }
-              />
-            </Col>
-          ))}
+          {teamMembers.map(
+            ({ emojis, previously, ...teamMemberProps }, idx) => (
+              <Col
+                id={`who-we-are-${idx}`}
+                md={4}
+                className="d-flex justify-content-center"
+              >
+                <TeamMember
+                  {...teamMemberProps}
+                  description={
+                    <span>
+                      {emojis && emojis.length > 0 && (
+                        <>
+                          {emojis.join(" ")}
+                          <br />
+                        </>
+                      )}
+                      {previously && previously.length > 0 && (
+                        <>
+                          Previously:
+                          <br />
+                          {previously.map(({ role, company, website }) => (
+                            <>
+                              {role}{" "}
+                              <a
+                                href={website}
+                                target="_blank"
+                                rel="noreferrer nofollow"
+                              >
+                                @{company}
+                              </a>
+                              <br />
+                            </>
+                          ))}
+                        </>
+                      )}
+                    </span>
+                  }
+                />
+              </Col>
+            )
+          )}
         </Row>
       </div>
     </>

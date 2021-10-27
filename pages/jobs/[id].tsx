@@ -107,6 +107,14 @@ function JobCard({ job }: { job: LeverJob }) {
           </Fragment>
         ))}
 
+        {job.additionalPlain ? (
+          <p>
+            <em>
+              <small>{job.additionalPlain}</small>
+            </em>
+          </p>
+        ) : null}
+
         <Button variant="primary" href={job.applyUrl} target="_blank">
           Apply Now - {job.text}
         </Button>
@@ -133,5 +141,6 @@ function JobListItem({ listItem }: { listItem: LeverJobListItem }) {
 
 JobPage.getInitialProps = async function (ctx) {
   const job = await getJob(ctx.query.id);
+  console.log({ job });
   return { job };
 };
