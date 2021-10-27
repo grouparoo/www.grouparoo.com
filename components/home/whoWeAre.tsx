@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Col, Row } from "react-bootstrap";
 import TeamMember, { TeamMemberProps } from "./teamMember";
 
@@ -158,7 +159,7 @@ export default function WhoWeAre() {
           {teamMembers.map(
             ({ emojis, previously, ...teamMemberProps }, idx) => (
               <Col
-                id={`who-we-are-${idx}`}
+                key={`who-we-are-${idx}`}
                 md={4}
                 className="d-flex justify-content-center"
               >
@@ -176,19 +177,21 @@ export default function WhoWeAre() {
                         <>
                           Previously:
                           <br />
-                          {previously.map(({ role, company, website }) => (
-                            <>
-                              {role}{" "}
-                              <a
-                                href={website}
-                                target="_blank"
-                                rel="noreferrer nofollow"
-                              >
-                                @{company}
-                              </a>
-                              <br />
-                            </>
-                          ))}
+                          {previously.map(
+                            ({ role, company, website }, prvIdx) => (
+                              <Fragment key={`prv-${idx}-${prvIdx}`}>
+                                {role}{" "}
+                                <a
+                                  href={website}
+                                  target="_blank"
+                                  rel="noreferrer nofollow"
+                                >
+                                  @{company}
+                                </a>
+                                <br />
+                              </Fragment>
+                            )
+                          )}
                         </>
                       )}
                     </span>
