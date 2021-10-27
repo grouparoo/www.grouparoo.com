@@ -141,6 +141,5 @@ function JobListItem({ listItem }: { listItem: LeverJobListItem }) {
 
 JobPage.getInitialProps = async function (ctx) {
   const job = await getJob(ctx.query.id);
-  console.log({ job });
   return { job };
 };
