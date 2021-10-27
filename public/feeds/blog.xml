@@ -25,6 +25,19 @@
       type="application/rss+xml"
     />
         <item>
+            <title><![CDATA[Welcome, Edmundo!]]></title>
+            <link>https://www.grouparoo.com/blog/welcome-edmundo</link>
+            <guid>grouparoo-blog-post-welcome-edmundo</guid>
+            <pubDate>Wed, 27 Oct 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>There are some people that you meet and hope to work with someday. Two of our co-founders met <a href="https://github.com/edmundito" target="_blank" rel="nofollow noopener noreferrer">Edmundo</a> in school long ago and have been looking for that opportunity. It has arrived! Edmundo is joining the Grouparoo team as a Senior Full-Stack Engineer.</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Edmundo Ruiz Ghanem profile picture" src="https://www.grouparoo.com/posts/welcome-edmundo/profile.png" width="200" height="200" style="height:200px;width:200px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>Most recently, Edmundo was at Drift making conversational marketing and sales tools. Drift and tools like it are examples of where Grouparoo users want to sync their data. It will be great to have someone on the team from that side of the pipeline to add their perspective.</p><p>Welcome, Edmundo! We are so excited to have you here.</p>]]></content:encoded>
+            <enclosure
+        url="https://www.grouparoo.com/posts/welcome-edmundo/profile.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
+        <item>
             <title><![CDATA[What is a Data Pipeline?]]></title>
             <link>https://www.grouparoo.com/blog/what-is-a-data-pipeline</link>
             <guid>grouparoo-blog-post-what-is-a-data-pipeline</guid>
@@ -198,7 +211,7 @@
             <guid>grouparoo-blog-post-welcome-kc</guid>
             <pubDate>Tue, 07 Sep 2021 00:00:00 GMT</pubDate>
             <content:encoded
-      ><![CDATA[<p>The promise of open source is one of community. It is about people making great things together.</p><p>With that in mind, maybe it&#x27;s not suprising that we first met <a href="https://github.com/krishnaglick" target="_blank" rel="nofollow noopener noreferrer">KC Glick</a> years ago when he contributed to the <a href="https://www.actionherojs.com/" target="_blank" rel="nofollow noopener noreferrer">Actionhero</a> project that is at the core of Grouparoo. Now, he&#x27;s on the Grouparoo team and will be contributing throughout the stack.</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="KC Glick profile picture" src="https://www.grouparoo.com/posts/welcome-kc/profile.jpg" width="200" height="200" style="height:200px;width:200px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>KC comes to us most recently from iHeart, the media company that runs all those stations we listen to. As a team lead there, he showed he also has the collaboration skills needed to help us continue to built out a great engineering team.</p><p>Welcome, KC! We are so excited to have you here.</p>]]></content:encoded>
+      ><![CDATA[<p>The promise of open source is one of community. It is about people making great things together.</p><p>With that in mind, maybe it&#x27;s not surprising that we first met <a href="https://github.com/krishnaglick" target="_blank" rel="nofollow noopener noreferrer">KC Glick</a> years ago when he contributed to the <a href="https://www.actionherojs.com/" target="_blank" rel="nofollow noopener noreferrer">Actionhero</a> project that is at the core of Grouparoo. Now, he&#x27;s on the Grouparoo team and will be contributing throughout the stack.</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="KC Glick profile picture" src="https://www.grouparoo.com/posts/welcome-kc/profile.jpg" width="200" height="200" style="height:200px;width:200px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>KC comes to us most recently from iHeart, the media company that runs all those stations we listen to. As a team lead there, he showed he also has the collaboration skills needed to help us continue to built out a great engineering team.</p><p>Welcome, KC! We are so excited to have you here.</p>]]></content:encoded>
             <enclosure
         url="https://www.grouparoo.com/posts/welcome-kc/profile.jpg"
         length="0"
@@ -224,19 +237,6 @@
 </code></pre><p>We have enabled transformation at the lowest level so you can write any function to implement whatever logic applies to your use case. The <a href="https://www.grouparoo.com/docs/plugins/grouparoo-calculated-property" target="_blank" rel="nofollow noopener noreferrer">calculated property documentation</a> has more details.</p><h2 id="new-destinations"><a href="#new-destinations">New destinations</a></h2><p><a href="https://www.mixpanel.com/" target="_blank" rel="nofollow noopener noreferrer">Mixpanel</a> is an analytics and communications tool. Grouparoo nows can sync its data to your Mixpanel User Profiles to enable a better experience there.</p><p><a href="https://www.mailjet.com/" target="_blank" rel="nofollow noopener noreferrer">Mailjet</a> is an email marketing tool. Grouparoo now exports profiles and creates contact lists there to automate your customer journey.</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="A ship" src="https://www.grouparoo.com/posts/v06-release/ship.jpg" source="https://unsplash.com/photos/AWTAbbKObME" width="850" height="553" style="height:553px;width:850px;max-height:100%;max-width:100%" class="imageOutline"/></div></div>]]></content:encoded>
             <enclosure
         url="https://www.grouparoo.com/posts/v06-release/ship.jpg"
-        length="0"
-        type="image/jpg"
-      />
-        </item>
-        <item>
-            <title><![CDATA[Welcome, Maria!]]></title>
-            <link>https://www.grouparoo.com/blog/welcome-maria</link>
-            <guid>grouparoo-blog-post-welcome-maria</guid>
-            <pubDate>Wed, 01 Sep 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Open source projects become important only through their communities.</p><p>Because of this, we have been looking for the right person to help build awareness, work with and represent the community, and generally make everyone happier. I am so glad we found <a href="https://twitter.com/MsDataDetective" target="_blank" rel="nofollow noopener noreferrer">Maria Silverhardt</a>. The stories I have heard about her from her community members are inspiring.</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Maria Silverhardt profile picture" src="https://www.grouparoo.com/posts/welcome-maria/profile.jpg" width="200" height="200" style="height:200px;width:200px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>Maria is the first non-engineer to join the team, though she has some skills there, too. We know that it takes more than just working code to make projects like ours successful and we are investing to create a helpful and welcoming community from the start.</p><p>Welcome, Maria! We are so excited to have you here.</p>]]></content:encoded>
-            <enclosure
-        url="https://www.grouparoo.com/posts/welcome-maria/profile.jpg"
         length="0"
         type="image/jpg"
       />
@@ -1867,19 +1867,6 @@ $ nvm alias default 15
         url="https://www.grouparoo.com/posts/apple-m1-js-memory-error/error-graphic.png"
         length="0"
         type="image/png"
-      />
-        </item>
-        <item>
-            <title><![CDATA[Welcome, Sean!]]></title>
-            <link>https://www.grouparoo.com/blog/welcome-sean</link>
-            <guid>grouparoo-blog-post-welcome-sean</guid>
-            <pubDate>Mon, 01 Feb 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>When building a new company, the first few hires are absolutely critical. It is important to get them right.</p><p>For us, &quot;getting it right&quot; means:</p><ul><li>talented at building things all throughout the stack</li><li>enjoys and is good at sharing technical content</li><li>excited about what we are building and who we are building it for</li></ul><p>Fortunately, we met <a href="https://twitter.com/seancdavis29" target="_blank" rel="nofollow noopener noreferrer">Sean C Davis</a>.</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Sean C Davis profile picture" src="https://www.grouparoo.com/posts/welcome-sean/profile.jpg" width="300" height="300" style="height:300px;width:300px;max-height:100%;max-width:100%" class="imageOutline"/></div></div><p>Sean has most recently been a Director of Technology at <a href="https://www.ample.co/" target="_blank" rel="nofollow noopener noreferrer">Ample</a>, where they build beautiful sites for their clients. We are now looking forward to some of that beauty around here.</p><p>He is excited about the Jamstack world and has been evangelizing the approach for quite a while, including <a href="https://nextjs.org/2020/conf/speakers/seancdavis" target="_blank" rel="nofollow noopener noreferrer">recently</a> at Next.js Conf.</p><p>A week in, Sean has dived right in and started <a href="https://github.com/grouparoo/grouparoo/pulls?q=is%3Apr+author%3Aseancdavis+" target="_blank" rel="nofollow noopener noreferrer">contributing</a> to Grouparoo. At this rate, he will have more Pull Requests than me in a few weeks.</p><p>We are so excited. Welcome, Sean!</p>]]></content:encoded>
-            <enclosure
-        url="https://www.grouparoo.com/posts/welcome-sean/profile.jpg"
-        length="0"
-        type="image/jpg"
       />
         </item>
         <item>
