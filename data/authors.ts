@@ -118,7 +118,7 @@ const Authors: Author[] = [
   {
     name: "Micah Bello",
     slug: "micah_bello",
-    image: "micah_bello.png",
+    image: "micah_bello.jpeg",
     url: "https://github.com/Micah-Bello",
     description:
       "Micah is a freelance writer and budding back-end developer with a love for all things software related. He spends his free time learning about the technologies that drive innovation in the software industry.",
