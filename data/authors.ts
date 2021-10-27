@@ -115,6 +115,14 @@ const Authors: Author[] = [
     description:
       "Krishna (KC) Glick is a Senior Software Engineer at Grouparoo. He started his career as a C# dev, before falling in love with Javascript and later Typescript. KC has four pets which he is happy to talk about at length if asked, and can be found rock climbing several evenings a week.",
   },
+  {
+    name: "Micah Bello",
+    slug: "micah_bello",
+    image: "micah_bello.jpeg",
+    url: "https://github.com/Micah-Bello",
+    description:
+      "Micah is a freelance writer and budding back-end developer with a love for all things software related. He spends his free time learning about the technologies that drive innovation in the software industry.",
+  },
 ];
 
 export default Authors;
