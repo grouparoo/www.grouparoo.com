@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Col, Row } from "react-bootstrap";
 import TeamMember, { TeamMemberProps } from "./teamMember";
 
@@ -156,7 +157,11 @@ export default function WhoWeAre() {
       >
         <Row className="justify-content-center">
           {teamMembers.map(({ emojis, previously, ...teamMemberProps }) => (
-            <Col md={4} className="d-flex justify-content-center">
+            <Col
+              md={4}
+              className="d-flex justify-content-center"
+              key={teamMemberProps.name}
+            >
               <TeamMember
                 {...teamMemberProps}
                 description={
@@ -167,12 +172,12 @@ export default function WhoWeAre() {
                         <br />
                       </>
                     )}
-                    {previously && previously.length > 0 && (
+                    {previously?.length && (
                       <>
                         Previously:
                         <br />
                         {previously.map(({ role, company, website }) => (
-                          <>
+                          <Fragment key={company}>
                             {role}{" "}
                             <a
                               href={website}
@@ -182,7 +187,7 @@ export default function WhoWeAre() {
                               @{company}
                             </a>
                             <br />
-                          </>
+                          </Fragment>
                         ))}
                       </>
                     )}

@@ -175,7 +175,7 @@ export default function Footer() {
                   </Link>
                   <br />
                   <Link href="/integrations/sources/redshift">
-                    <a>Snowflake Integration</a>
+                    <a>Redshift Integration</a>
                   </Link>
                   <br />
                 </div>
