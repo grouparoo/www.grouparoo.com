@@ -66,7 +66,11 @@ export async function getSitemapStream() {
     )
     .sort((a, b) => a.split("/").length - b.split("/").length);
   paths.forEach((p) => {
-    if (!p.includes("/whats-new/") && !p.includes("/trial_landing")) {
+    if (
+      !p.includes("/whats-new/") &&
+      !p.includes("/trial_landing") &&
+      !p.includes("/legal/terms-")
+    ) {
       let priority = 0.6;
       if (p.split("/").length <= 2) priority = 1.0;
       if (p.match(/^\/solutions\//)) priority = 1.0;
