@@ -11,6 +11,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faLayerGroup } from "@fortawesome/free-solid-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faPlug } from "@fortawesome/free-solid-svg-icons";
 import { faProjectDiagram } from "@fortawesome/free-solid-svg-icons";
 import { faPuzzlePiece } from "@fortawesome/free-solid-svg-icons";
@@ -31,6 +32,7 @@ library.add(
   faGithub,
   faLayerGroup,
   faLink,
+  faPen,
   faPlug,
   faProjectDiagram,
   faPuzzlePiece,
