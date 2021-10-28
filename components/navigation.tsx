@@ -138,7 +138,7 @@ export default function Navigation() {
               </NavDropdown>
 
               <NavDropdown
-                className="pr-2 py-2 align-text-top d-md-none d-lg-inline-block"
+                className="pr-2 py-2 align-text-top"
                 title="Solutions"
                 id="basic-nav-dropdown"
               >
@@ -273,7 +273,7 @@ export default function Navigation() {
               </div>
 
               <NavDropdown
-                className="pr-2 py-2 align-text-top"
+                className="pr-2 py-2 align-text-top d-md-none d-lg-inline-block"
                 title="Blog"
                 id="basic-nav-dropdown"
               >
