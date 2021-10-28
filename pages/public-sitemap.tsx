@@ -2,8 +2,25 @@ import { parseString } from "xml2js";
 import path from "path";
 import fs from "fs";
 
+async function parseSitemap(sitemap) {
+  /*Next step: parse sitemap to feed to page: 
+    { dirName1: {subDir1: [page, page, page, page], 
+                 subDir2: [page, page, page, page]},
+      dirName2: {subDir1: [page, page, page, page], 
+                 subDir2: [page, page, page, page]},
+      dirName3: {subDir1: [page, page, page, page], 
+                 subDir2: [page, page, page, page]},
+      other: [page, page, page, page]
+    }
+    Create a sitemapSection component for each top-level object (subDirs are categories within the sections)
+
+    Most can be parsed based on path... but special attention will be needed for blog post categories (how to sort by those?)
+  */
+}
+
 export default function PublicSitemap(props) {
-  console.log(props.pageProps.sitemap);
+  parseSitemap(props.pageProps.sitemap);
+
   return <div>hi</div>;
 }
 
@@ -23,9 +40,6 @@ export async function getStaticProps(context) {
   return { props: { sitemap: sitemapData } };
 }
 
-// getStaticProps: get all pages from the sitemap
-// create an array of page sections
-// array.sort
 // filter results of getStaticProps by the array to categorize pages
 // ie: if path.contains(blog/*) && path.notContains(category, author) {blogPosts.push()}
 // end up with an array of pages, posts, docs
