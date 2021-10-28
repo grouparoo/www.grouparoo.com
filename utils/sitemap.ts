@@ -69,7 +69,7 @@ export async function getSitemapStream() {
     if (
       !p.includes("/whats-new/") &&
       !p.includes("/trial_landing") &&
-      !p.includes("/terms-")
+      !p.includes("/legal/terms-")
     ) {
       let priority = 0.6;
       if (p.split("/").length <= 2) priority = 1.0;

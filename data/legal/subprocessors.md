@@ -4,7 +4,7 @@
 
 **Authorized Subpsrocessors**
 
-<table>
+<table class="table">
   <tr>
    <td><strong>Sub-Processor</strong>
    </td>
