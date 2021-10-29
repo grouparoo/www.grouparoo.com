@@ -33,23 +33,21 @@ const PluginDocsInstallation = ({ plugin }: { plugin: string }) => {
         To work with the {plugin}{" "}
         <Link href="/docs/getting-started/product-concepts#plugin">Plugin</Link>
         , you must first install it in an existing Grouparoo project. You can do
-        this using{" "}
+        this using <code>grouparoo config</code> and choosing to add the new
+        App. You can also install a plugin with the Grouparoo CLI and use{" "}
         <Link href="/docs/cli/setup#install">
           <span>
             the <code>install</code> command
           </span>
         </Link>{" "}
-        from <Link href="/docs/cli">our CLI</Link>:
+        from <Link href="/docs/cli">our CLI</Link>:{" "}
+        <code>grouparoo install {pluginData.packageName}</code>
       </p>
-      <CodeBlock
-        code={`grouparoo install ${pluginData.packageName}`}
-        cli={true}
-      />
       <p>
-        This adds the package to your <code>package.json</code> file as a
-        dependency, and also drops the Plugin in the{" "}
-        <code>grouparoo.plugins</code> section in that same file, which enables
-        it.
+        Both methods of installation add the package to your{" "}
+        <code>package.json</code> file as a dependency, and also drops the
+        Plugin in the <code>grouparoo.plugins</code> section in that same file,
+        which enables it.
       </p>
       <CodeBlock
         code={packageJsonAfterInstallation(pluginData.packageName)}

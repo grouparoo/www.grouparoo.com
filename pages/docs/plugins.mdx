@@ -9,7 +9,17 @@ Grouparoo can be extended with Plugins to add more Apps, Sources, and Destinatio
 
 ## Installing a Plugin
 
-The Grouparoo command line tool is used to add a Plugin to your project via `grouparoo install [package]`. You can learn more about the `grouparoo install` command [here](/docs/cli/setup). So, if you wanted to install the `@grouparoo/mysql` Plugin, you would run:
+The easiest way to install a Plugin is by running `grouparoo config` within your project folder, and adding a new App via the web interface. You will see a list of all the available Grouparoo Plugins, and the application will install new ones you select. Under the hood, installing a new Plugin will add it to your `package.json` and use `npm` to install it.
+
+<Image
+  thumbnail
+  src="docs/plugins/install-plugin-config.png"
+  alt="Installing a Grouparoo Plugin"
+  width={1010}
+  height={517}
+/>
+
+The Grouparoo command line tool can also be used to add a Plugin to your project via `grouparoo install [package]`. You can learn more about the `grouparoo install` command [here](/docs/cli/setup). So, if you wanted to install the `@grouparoo/mysql` Plugin, you would run:
 
 ```bash
 grouparoo install @grouparoo/mysql # install the latest version

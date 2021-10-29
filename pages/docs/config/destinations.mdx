@@ -52,9 +52,17 @@ Once you've selected the type of App, the specific questions and settings will v
   height={791}
 />
 
-### Step 3: Choose Groups
+In addition to any plugin-specific Destination options, you will also be asked to choose a SyncMode. Grouparoo supports 3 types of SyncModes which determine how we deal with creating and deleting records for the Destination.
 
-Now you can define what groups and what Record properties you want to send to your Destination. This Mapping defines which records get sent to the Destination.
+- **Sync** (`sync`): Add, update, and remove Records as needed.
+- **Additive** (`additive`): Add and update Records as needed, but do not remove anybody.
+- **Enrich** (`enrich`): Only update Records that already exist in the Destination. Do not add or remove anybody.
+
+Not all plugins support all types of SyncModes.
+
+### Step 3: Choose Collection
+
+Now you can choose which Records will be sent to this Destination. You can choose the members of a specific [Group](/docs/getting-started/product-concepts#group), or all the Records that belong to this [Model](/docs/getting-started/product-concepts#model).
 
 <ImageInBrowserFrame
   centered
@@ -78,7 +86,7 @@ Next you can choose which Record properties you want to send to your Destination
 
 ### Step 5: Choose Group Membership
 
-Lastly, you can choose how Group membership shows up in your Destination. This Mapping lets you decide how groups are represented in your Destination. Often groups are shown as lists, audiences, or tags in these destinations.
+Lastly, you can choose how Group membership shows up in your Destination. This Mapping lets you decide how groups are represented in your Destination. Often groups are shown as `lists`, `audiences`, or `tags` in these Destinations.
 
 <ImageInBrowserFrame
   centered
