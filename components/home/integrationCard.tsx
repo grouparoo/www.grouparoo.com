@@ -9,7 +9,6 @@ export default function IntegrationCard({
   otherType,
   category,
   showLink = true,
-  fixedHeight = false,
 }: {
   slug: string;
   type?: string;
@@ -17,13 +16,12 @@ export default function IntegrationCard({
   category?: string;
   tag?: string;
   showLink?: boolean;
-  fixedHeight?: boolean;
 }) {
   const plugin = getPluginDisplay(slug);
   const card = (
     <div
       style={{ borderRadius: "5px", boxShadow: "5px 5px 5px 5px lightgrey" }}
-      className={fixedHeight ? "" : "h-100"}
+      className="h-100"
     >
       <Card
         bg="dark"
