@@ -11,12 +11,17 @@ import {
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { FeaturedBlogPosts } from "../data/featuredBlogPosts";
 
 export default function Navigation() {
   return (
     <header>
       <Container>
-        <Navbar variant="light" expand="md">
+        <Navbar
+          variant="light"
+          expand="md"
+          style={{ paddingLeft: 0, paddingRight: 0 }}
+        >
           <Navbar.Brand className="pt-3">
             <Link href="/">
               <a>
@@ -266,6 +271,48 @@ export default function Navigation() {
                   </a>
                 </Link>
               </div>
+
+              <NavDropdown
+                className="pr-2 py-2 align-text-top d-md-none d-lg-inline-block"
+                title="Blog"
+                id="basic-nav-dropdown"
+              >
+                <Container className="blogNav pt-0 mt-0">
+                  <Row>
+                    <Col xs="12" md="12" className="text-left">
+                      <Dropdown.Header>
+                        <FontAwesomeIcon
+                          color="black"
+                          icon={"pen"}
+                          size="1x"
+                          className="pr-1"
+                        />{" "}
+                        Popular Posts
+                      </Dropdown.Header>
+                      {FeaturedBlogPosts.map((post, idx) => (
+                        <Dropdown.Item key={`header-featured-post-${idx}`}>
+                          <Link href={post.href}>
+                            <a className="nav-link" role="button">
+                              {post.title}
+                            </a>
+                          </Link>
+                        </Dropdown.Item>
+                      ))}
+                      <Dropdown.Item>
+                        <Link href="/blog">
+                          <a
+                            className="nav-link"
+                            role="button"
+                            id="seeMoreLink"
+                          >
+                            Read Blog...
+                          </a>
+                        </Link>
+                      </Dropdown.Item>
+                    </Col>
+                  </Row>
+                </Container>
+              </NavDropdown>
             </Nav>
             <a
               href="https://github.com/grouparoo/grouparoo"
@@ -281,7 +328,7 @@ export default function Navigation() {
               variant="primary"
               href="/get-started"
               size="sm"
-              className="col-sm-12 col-md-3 col-lg-2 mx-0 mr-lg-2 ml-lg-2 mt-3"
+              className="col-sm-12 col-md-3 col-lg-2 mx-0  ml-lg-2 mt-3"
             >
               Get Started
             </Button>
