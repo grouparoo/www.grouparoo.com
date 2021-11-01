@@ -146,6 +146,21 @@ export function getPluginDisplay(pluginSlug: string): PluginDisplay {
       logoPath: "/images/home/integrations/grouparoo/grouparoo.png",
     };
   }
+  if (pluginSlug === "data_warehouse") {
+    return {
+      name: "Your Data Warehouse",
+      slug: "data_warehouse",
+      logoPath: "/images/home/integrations/default/database.png",
+    };
+  }
+  if (pluginSlug === "destinations") {
+    return {
+      name: "Your Business Tools",
+      slug: "destinations",
+      logoPath: "/images/home/integrations/default/cloud.png",
+    };
+  }
+
   const pluginData = PluginData.find(({ slug }) => slug === pluginSlug);
   if (!pluginData) {
     throw new Error(`Slug (${pluginSlug}) not found in Plugin data.`);

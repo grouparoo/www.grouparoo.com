@@ -63,6 +63,10 @@ h1 {
   font-weight: 800;
   line-height: 72px;
   letter-spacing: -1px;
+
+  @media screen and (max-width: 600px) {
+    font-size: 60px;
+  }
 }
 
 h2 {

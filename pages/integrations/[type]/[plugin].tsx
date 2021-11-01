@@ -93,7 +93,7 @@ export default function IntegrationsPage({
       />
       <Container>
         {data.primaryType === "destination" && (
-          <DestionationHeaderArrow data={data} />
+          <DestinationHeaderArrow data={data} />
         )}
         {data.primaryType === "source" && <SourceHeaderArrow data={data} />}
         <br />
@@ -201,41 +201,42 @@ export async function getStaticPaths() {
   return getUseCasePaths();
 }
 
-function DestionationHeaderArrow({ data }) {
+function DestinationHeaderArrow({ data }) {
   return (
     <>
       <Row>
-        <Col lg={5} md={12}>
+        <Col>
           <br />
           <h1 data-testid="header">
             {data.name} integration for all your tools & customer data
           </h1>
-          <p>{data.description}</p>
-          <Row>
-            <Col>
-              <Button variant="primary" href="/get-started" className="ml-auto">
-                Start a Free Trial →
-              </Button>
-            </Col>
-          </Row>
-        </Col>
-        <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
-          <br />
-          <IntegrationCard slug="grouparoo" showLink={false} />
-        </Col>
-        <Col lg={1} md={2} sm={2} xs={2} style={{ textAlign: "center" }}>
-          <br />
-          <br />
-          <br />
-          <BigArrow />
-        </Col>
-        <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
-          <br />
-          <IntegrationCard slug={data.slug} showLink={false} />
+          {data.description}
         </Col>
       </Row>
 
       <br />
+
+      <Row>
+        <Col md={3} style={{ textAlign: "center" }}>
+          <IntegrationCard slug="data_warehouse" showLink={false} />
+        </Col>
+        <Col md={1} style={{ textAlign: "center" }}>
+          <br className="d-none d-md-block" />
+          <br className="d-none d-md-block" />
+          <BigArrow downOnMobile={true} /> <br />
+        </Col>
+        <Col md={3} style={{ textAlign: "center" }}>
+          <IntegrationCard slug="grouparoo" showLink={false} />
+        </Col>
+        <Col md={1} style={{ textAlign: "center" }}>
+          <br className="d-none d-md-block" />
+          <br className="d-none d-md-block" />
+          <BigArrow downOnMobile={true} /> <br />
+        </Col>
+        <Col md={3} style={{ textAlign: "center" }}>
+          <IntegrationCard slug={data.slug} showLink={false} />
+        </Col>
+      </Row>
     </>
   );
 }
@@ -243,34 +244,37 @@ function DestionationHeaderArrow({ data }) {
 function SourceHeaderArrow({ data }) {
   return (
     <>
-      <Row className="mb-3">
-        <Col lg={5} md={12}>
+      <Row>
+        <Col>
           <br />
           <h1 data-testid="header">
             Sync {data.name} customer data with all of your 3rd party tools
           </h1>
-          <p>{data.description}</p>
-          <Row>
-            <Col>
-              <Button variant="primary" href="/get-started" className="ml-auto">
-                Start a Free Trial →
-              </Button>
-            </Col>
-          </Row>
+          {data.description}
         </Col>
-        <Col lg={3} md={5} sm={5} xs={5} className="text-center">
-          <br />
+      </Row>
+
+      <br />
+
+      <Row>
+        <Col md={3} style={{ textAlign: "center" }}>
           <IntegrationCard slug={data.slug} showLink={false} />
         </Col>
-        <Col lg={1} md={2} sm={2} xs={2} className="text-center">
-          <br />
-          <br />
-          <br />
-          <BigArrow />
+        <Col md={1} style={{ textAlign: "center" }}>
+          <br className="d-none d-md-block" />
+          <br className="d-none d-md-block" />
+          <BigArrow downOnMobile={true} /> <br />
         </Col>
-        <Col lg={3} md={5} sm={5} xs={5} className="text-center">
-          <br />
+        <Col md={3} style={{ textAlign: "center" }}>
           <IntegrationCard slug="grouparoo" showLink={false} />
+        </Col>
+        <Col md={1} style={{ textAlign: "center" }}>
+          <br className="d-none d-md-block" />
+          <br className="d-none d-md-block" />
+          <BigArrow downOnMobile={true} /> <br />
+        </Col>
+        <Col md={3} style={{ textAlign: "center" }}>
+          <IntegrationCard slug={"destinations"} showLink={false} />
         </Col>
       </Row>
     </>
