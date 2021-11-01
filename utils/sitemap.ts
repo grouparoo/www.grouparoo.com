@@ -27,7 +27,7 @@ export async function getBlogCategoryPaths(): Promise<PagePathsResponse> {
   return { paths, fallback: false };
 }
 
-async function getPagePaths() {
+export async function getPagePaths() {
   const paths = glob
     .sync(path.join(pagesDir, "**", "+(*.tsx|*.mdx)"))
     .filter((p) => !p.match(/\/\[.*\].*.tsx$/))
@@ -43,7 +43,7 @@ async function getPagePaths() {
   return paths;
 }
 
-async function getStaticPaths() {
+export async function getStaticPaths() {
   const methods = [getUseCasePaths];
   let allPaths = [];
   for (const method of methods) {
@@ -76,4 +76,13 @@ export async function getSitemapStream() {
 
   smStream.end();
   return await streamToPromise(smStream).then((sm) => sm.toString());
+}
+
+export async function getPublicSitemap() {
+  const pages = await getPagePaths();
+  const integrations = await getStaticPaths();
+
+  const paths = pages.concat(integrations);
+
+  return paths;
 }

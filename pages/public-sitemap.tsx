@@ -1,43 +1,41 @@
-import { parseString } from "xml2js";
-import path from "path";
 import fs from "fs";
-
-async function parseSitemap(sitemap) {
-  /*Next step: parse sitemap to feed to page: 
-    { dirName1: {subDir1: [page, page, page, page], 
-                 subDir2: [page, page, page, page]},
-      dirName2: {subDir1: [page, page, page, page], 
-                 subDir2: [page, page, page, page]},
-      dirName3: {subDir1: [page, page, page, page], 
-                 subDir2: [page, page, page, page]},
-      other: [page, page, page, page]
-    }
-    Create a sitemapSection component for each top-level object (subDirs are categories within the sections)
-
-    Most can be parsed based on path... but special attention will be needed for blog post categories (how to sort by those?)
-  */
-}
+import path from "path";
+import {
+  getStaticPaths as getStaticSitemapPaths,
+  getPagePaths,
+} from "../utils/sitemap";
 
 export default function PublicSitemap(props) {
-  parseSitemap(props.pageProps.sitemap);
-
+  console.log(props.pageProps.sitemap);
   return <div>hi</div>;
 }
 
 export async function getStaticProps(context) {
-  // const sitemapPath = path.resolve(path.join(process.cwd(), "sitemap.xml"));
-  const sitemapPath = path.join(process.cwd(), "public", "sitemap.xml");
-  let sitemapData;
+  const sitemapPath = path.join(process.cwd(), "public", "public-sitemap.json");
 
-  var data = fs.readFileSync(sitemapPath, "utf8");
-  let sitemap = data.toString().replace("\ufeff", "");
+  const data = await fs.readFileSync(sitemapPath, "utf8");
+  let paths = data.toString().replace("\ufeff", "");
+  let cleanPaths = JSON.parse(paths);
 
-  parseString(sitemap, function (err, result) {
-    sitemapData = JSON.stringify(result.urlset.url, null, 2);
-    return sitemapData;
+  let ret = {};
+  await cleanPaths.forEach((path) => {
+    const dirs = path.split("/");
+    const filename = dirs.pop();
+
+    let dirObject = ret;
+    dirs.forEach((dir, i) => {
+      if (i === dirs.length - 1) {
+        dirObject[dir] = dirObject[dir] || [];
+        dirObject[dir].push(filename);
+      } else {
+        dirObject[dir] = dirObject[dir] || {};
+      }
+      dirObject = dirObject[dir];
+    });
   });
 
-  return { props: { sitemap: sitemapData } };
+  console.log(ret);
+  return { props: { sitemap: ret } };
 }
 
 // filter results of getStaticProps by the array to categorize pages
