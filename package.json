@@ -30,7 +30,7 @@
     "@mapbox/rehype-prism": "0.8.0",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "12.1.1",
-    "axios": "0.22.0",
+    "axios": "0.24.0",
     "babel-plugin-import-glob-array": "0.2.0",
     "babel-plugin-transform-define": "2.0.1",
     "bootstrap": "4.6.0",
