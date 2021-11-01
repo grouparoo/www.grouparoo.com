@@ -76,7 +76,7 @@
     "next-remote-watch": "1.0.0",
     "prettier": "2.4.1",
     "ts-jest": "27.0.5",
-    "ts-node": "10.2.1",
+    "ts-node": "10.4.0",
     "xml2js": "0.4.23"
   }
 }
