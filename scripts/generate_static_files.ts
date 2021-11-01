@@ -43,8 +43,6 @@ async function feedContent() {
 async function jsonSitemap() {
   const paths = await getPublicSitemap();
 
-  const ret = {};
-
   return {
     "public-sitemap.json": JSON.stringify(paths),
   };

@@ -1,44 +1,51 @@
 import fs from "fs";
 import path from "path";
-import {
-  getStaticPaths as getStaticSitemapPaths,
-  getPagePaths,
-} from "../utils/sitemap";
+import SitemapSection from "../components/sitemapSection";
 
 export default function PublicSitemap(props) {
-  console.log(props.pageProps.sitemap);
-  return <div>hi</div>;
+  let { sitemap } = props.pageProps;
+
+  console.log(sitemap);
+
+  return (
+    <div>
+      <SitemapSection paths={sitemap[""]["blog"]} background="light" />
+    </div>
+  );
 }
 
 export async function getStaticProps(context) {
   const sitemapPath = path.join(process.cwd(), "public", "public-sitemap.json");
 
   const data = await fs.readFileSync(sitemapPath, "utf8");
-  let paths = data.toString().replace("\ufeff", "");
-  let cleanPaths = JSON.parse(paths);
+  let paths = JSON.parse(data);
 
   let ret = {};
-  await cleanPaths.forEach((path) => {
+  await paths.forEach((path) => {
     const dirs = path.split("/");
     const filename = dirs.pop();
 
+    //build sitemap object
     let dirObject = ret;
+
     dirs.forEach((dir, i) => {
       if (i === dirs.length - 1) {
+        if (dir.length === 0) {
+          dir = "other";
+        }
         dirObject[dir] = dirObject[dir] || [];
         dirObject[dir].push(filename);
       } else {
         dirObject[dir] = dirObject[dir] || {};
       }
+
       dirObject = dirObject[dir];
     });
+    return ret;
   });
 
-  console.log(ret);
+  ret[""]["other"] = ret["other"];
+  delete ret["other"];
+  delete ret[""]["whats-new"];
   return { props: { sitemap: ret } };
 }
-
-// filter results of getStaticProps by the array to categorize pages
-// ie: if path.contains(blog/*) && path.notContains(category, author) {blogPosts.push()}
-// end up with an array of pages, posts, docs
-// each array generates a <sitemapSection />
