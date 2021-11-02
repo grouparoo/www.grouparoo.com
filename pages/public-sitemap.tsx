@@ -4,12 +4,22 @@ import SitemapSection from "../components/sitemapSection";
 
 export default function PublicSitemap(props) {
   let { sitemap } = props.pageProps;
-
-  console.log(sitemap);
-
   return (
     <div>
-      <SitemapSection paths={sitemap[""]["blog"]} background="light" />
+      {Object.keys(sitemap[""]).map((dir, index) => {
+        let paths = sitemap[""][dir];
+        let background;
+
+        index % 2 === 0 ? (background = "dark") : (background = "light");
+        return (
+          <SitemapSection
+            key={dir}
+            category={dir}
+            paths={paths}
+            background={background}
+          />
+        );
+      })}
     </div>
   );
 }
@@ -47,5 +57,6 @@ export async function getStaticProps(context) {
   ret[""]["other"] = ret["other"];
   delete ret["other"];
   delete ret[""]["whats-new"];
+
   return { props: { sitemap: ret } };
 }
