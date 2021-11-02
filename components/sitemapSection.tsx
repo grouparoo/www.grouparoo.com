@@ -1,5 +1,6 @@
 import { Container, Col, Row } from "react-bootstrap";
 import Link from "next/link";
+import { titleize } from "../utils/inflectors";
 
 export default function SitemapSection({
   category,
@@ -13,28 +14,6 @@ export default function SitemapSection({
   let style;
   let classNames;
 
-  function generateSubItems(pageName, subPages: []) {
-    return subPages.forEach((item) => {
-      console.log(item);
-      return <div>"hi"</div>;
-    });
-  }
-
-  function generateItem(pageName: string) {
-    if (Array.isArray(paths[pageName])) {
-      console.log(pageName);
-      return generateSubItems(pageName, paths[pageName]);
-    }
-
-    const path = `/${category}/${pageName}`;
-
-    return (
-      <div key={pageName} className="lg-col-6 col-12">
-        <Link href={path}>{pageName}</Link>
-      </div>
-    );
-  }
-
   background === "dark"
     ? ((style = { backgroundImage: "linear-gradient(#242436,#43435F)" }),
       (classNames = "bg-dark text-white homePageSection my-5"))
@@ -45,8 +24,16 @@ export default function SitemapSection({
         <div className="h2 border-bottom">{category}</div>
         <Col>
           <Row>
-            {paths.map((path) => {
-              return generateItem(path);
+            {paths.map((pageName: string) => {
+              if (pageName.length === 0) return;
+              const path = `/${category}/${pageName}`;
+              let pageTitle = titleize(pageName).replace(/-/g, " ");
+
+              return (
+                <Col key={pageName} className="col-lg-6 col-12">
+                  <Link href={path}>{pageTitle}</Link>
+                </Col>
+              );
             })}
           </Row>
         </Col>

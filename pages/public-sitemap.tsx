@@ -57,6 +57,9 @@ export async function getStaticProps(context) {
   ret[""]["other"] = ret["other"];
   delete ret["other"];
   delete ret[""]["whats-new"];
+  ret[""]["integrations"] = ret[""]["integrations"]["destinations"].concat(
+    ret[""]["integrations"]["sources"]
+  );
 
   return { props: { sitemap: ret } };
 }
