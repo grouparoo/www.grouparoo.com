@@ -29,6 +29,7 @@ export default function SitemapSection({
           <Row>
             {paths.map((pageName: string) => {
               if (pageName.length === 0) return;
+              if (pageName === "trial_landing") return;
               let path;
               category === "other"
                 ? (path = `/${pageName}`)
