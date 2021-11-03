@@ -3,29 +3,41 @@ import path from "path";
 import SitemapSection from "../components/sitemap/sitemapSection";
 import SitemapBlogSection from "../components/sitemap/sitemapBlogSection";
 import { getBlogEntries } from "../utils/blogPosts";
+import SEO from "../components/seo";
 
 export default function PublicSitemap(props) {
   const { sitemap, entries } = props.pageProps;
 
   console.log(entries);
   return (
-    <div>
-      {Object.keys(sitemap[""]).map((dir, index) => {
-        let paths = sitemap[""][dir];
-        let background;
+    <>
+      <SEO
+        canonical={true}
+        description="Grouparoo is the Reverse ETL product that integrates with all of your team's business tools such as CRMs and Marketing Automation."
+        image="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
+        path="/public-sitemap"
+        title="Grouparoo: Sitemap"
+      />
 
-        index % 2 === 0 ? (background = "light") : (background = "dark");
-        return (
-          <SitemapSection
-            key={dir}
-            category={dir}
-            paths={paths}
-            background={background}
-          />
-        );
-      })}
-      <SitemapBlogSection entries={entries} />
-    </div>
+      <div>
+        <h1 className="mx-auto text-center">Sitemap</h1>
+        {Object.keys(sitemap[""]).map((dir, index) => {
+          let paths = sitemap[""][dir];
+          let background;
+
+          index % 2 === 0 ? (background = "dark") : (background = "light");
+          return (
+            <SitemapSection
+              key={dir}
+              category={dir}
+              paths={paths}
+              background={background}
+            />
+          );
+        })}
+        <SitemapBlogSection entries={entries} />
+      </div>
+    </>
   );
 }
 

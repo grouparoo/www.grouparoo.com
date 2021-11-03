@@ -10,22 +10,19 @@ export default function SitemapBlogSection({
   entries: { [key: string]: BlogEntry[] };
 }) {
   return (
-    <div
-      style={{ backgroundImage: "linear-gradient(#242436,#43435F)" }}
-      className="bg-dark text-white homePageSection my-5"
-    >
+    <div className="homePageSection my-5">
       <Container>
         <div className="h2 border-bottom">Blog</div>
         <Col>
           <Row>
             {Object.keys(entries).map((category) => {
               return (
-                <Row>
+                <Row className="col-12">
                   <h3 className="col-12 mb-1 mt-3">{titleize(category)}</h3>
                   {entries[category].map((entry) => {
                     let path = `/blog/${entry.slug}`;
                     return (
-                      <Col key={entry.slug} className="col-lg-6 col-12">
+                      <Col key={entry.slug} className="col-lg-6 col-12 my-1">
                         <Link href={path}>{entry.title}</Link>
                       </Col>
                     );
