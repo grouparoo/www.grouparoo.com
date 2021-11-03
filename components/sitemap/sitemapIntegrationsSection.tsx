@@ -16,7 +16,7 @@ export default function SitemapIntegrationsSection({
       className="bg-dark text-white homePageSection my-5"
     >
       <Container>
-        <h2 className="border-bottom">Integrations</h2>
+        <h2 className="border-bottom col-10 mx-auto">Integrations</h2>
         <Col className="col-9 mx-auto">
           <Row>
             <h3 className="col-12 mb-1 mt-3">Sources</h3>

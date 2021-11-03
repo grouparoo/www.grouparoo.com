@@ -22,7 +22,9 @@ export default function SitemapSection({
   return (
     <div style={style} className={classNames}>
       <Container>
-        <div className="h2 border-bottom">{titleize(category)}</div>
+        <div className="h2 col-10 mx-auto border-bottom">
+          {titleize(category)}
+        </div>
         <Col className="col-9 mx-auto">
           <Row>
             {paths.map((pageName: string) => {
