@@ -1,16 +1,20 @@
 import fs from "fs";
 import path from "path";
-import SitemapSection from "../components/sitemapSection";
+import SitemapSection from "../components/sitemap/sitemapSection";
+import SitemapBlogSection from "../components/sitemap/sitemapBlogSection";
+import { getBlogEntries } from "../utils/blogPosts";
 
 export default function PublicSitemap(props) {
-  let { sitemap } = props.pageProps;
+  const { sitemap, entries } = props.pageProps;
+
+  console.log(entries);
   return (
     <div>
       {Object.keys(sitemap[""]).map((dir, index) => {
         let paths = sitemap[""][dir];
         let background;
 
-        index % 2 === 0 ? (background = "dark") : (background = "light");
+        index % 2 === 0 ? (background = "light") : (background = "dark");
         return (
           <SitemapSection
             key={dir}
@@ -20,6 +24,7 @@ export default function PublicSitemap(props) {
           />
         );
       })}
+      <SitemapBlogSection entries={entries} />
     </div>
   );
 }
@@ -57,9 +62,19 @@ export async function getStaticProps(context) {
   ret[""]["other"] = ret["other"];
   delete ret["other"];
   delete ret[""]["whats-new"];
+  delete ret[""]["blog"];
   ret[""]["integrations"] = ret[""]["integrations"]["destinations"].concat(
     ret[""]["integrations"]["sources"]
   );
 
-  return { props: { sitemap: ret } };
+  const blogPosts = await getBlogEntries(1, null, null, 1000);
+  let sortedEntries = {};
+
+  blogPosts.entries.map((entry) => {
+    const primaryTag = entry.tags[0];
+    sortedEntries[primaryTag] = sortedEntries[primaryTag] || [];
+    sortedEntries[primaryTag].push(entry);
+  });
+
+  return { props: { sitemap: ret, entries: sortedEntries } };
 }

@@ -1,6 +1,6 @@
 import { Container, Col, Row } from "react-bootstrap";
 import Link from "next/link";
-import { titleize } from "../utils/inflectors";
+import { titleize } from "../../utils/inflectors";
 
 export default function SitemapSection({
   category,
@@ -18,10 +18,11 @@ export default function SitemapSection({
     ? ((style = { backgroundImage: "linear-gradient(#242436,#43435F)" }),
       (classNames = "bg-dark text-white homePageSection my-5"))
     : ((style = null), (classNames = "homePageSection my-5"));
+
   return (
     <div style={style} className={classNames}>
       <Container>
-        <div className="h2 border-bottom">{category}</div>
+        <div className="h2 border-bottom">{titleize(category)}</div>
         <Col>
           <Row>
             {paths.map((pageName: string) => {
