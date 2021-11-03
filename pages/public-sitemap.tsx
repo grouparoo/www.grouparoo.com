@@ -2,11 +2,12 @@ import fs from "fs";
 import path from "path";
 import SitemapSection from "../components/sitemap/sitemapSection";
 import SitemapBlogSection from "../components/sitemap/sitemapBlogSection";
+import SitemapIntegrationSection from "../components/sitemap/sitemapIntegrationsSection";
 import { getBlogEntries } from "../utils/blogPosts";
 import SEO from "../components/seo";
 
 export default function PublicSitemap(props) {
-  const { sitemap, entries } = props.pageProps;
+  const { sitemap, entries, integrations } = props.pageProps;
 
   console.log(entries);
   return (
@@ -35,6 +36,7 @@ export default function PublicSitemap(props) {
             />
           );
         })}
+        <SitemapIntegrationSection integrations={integrations} />
         <SitemapBlogSection entries={entries} />
       </div>
     </>
@@ -75,9 +77,16 @@ export async function getStaticProps(context) {
   delete ret["other"];
   delete ret[""]["whats-new"];
   delete ret[""]["blog"];
-  ret[""]["integrations"] = ret[""]["integrations"]["destinations"].concat(
-    ret[""]["integrations"]["sources"]
+
+  const integrations = {};
+  integrations["sources"] = ret[""]["integrations"]["sources"];
+  integrations["destinations"] = ret[""]["integrations"]["sources"];
+  integrations["other"] = ret[""]["integrations"].filter(
+    (item) =>
+      !integrations["sources"].includes(item) &&
+      !integrations["destinations"].includes(item)
   );
+  delete ret[""]["integrations"];
 
   const blogPosts = await getBlogEntries(1, null, null, 1000);
   let sortedEntries = {};
@@ -88,5 +97,7 @@ export async function getStaticProps(context) {
     sortedEntries[primaryTag].push(entry);
   });
 
-  return { props: { sitemap: ret, entries: sortedEntries } };
+  return {
+    props: { sitemap: ret, entries: sortedEntries, integrations: integrations },
+  };
 }

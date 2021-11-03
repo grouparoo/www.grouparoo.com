@@ -23,15 +23,18 @@ export default function SitemapSection({
     <div style={style} className={classNames}>
       <Container>
         <div className="h2 border-bottom">{titleize(category)}</div>
-        <Col>
+        <Col className="col-9 mx-auto">
           <Row>
             {paths.map((pageName: string) => {
               if (pageName.length === 0) return;
+              if (category === "other") {
+                const path = `/${pageName}`;
+              }
               const path = `/${category}/${pageName}`;
               let pageTitle = titleize(pageName).replace(/-/g, " ");
 
               return (
-                <Col key={pageName} className="col-lg-6 col-12">
+                <Col key={pageName} className="col-lg-4 col-md-6 col-12">
                   <Link href={path}>{pageTitle}</Link>
                 </Col>
               );

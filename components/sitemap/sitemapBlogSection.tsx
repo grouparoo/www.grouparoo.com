@@ -13,7 +13,7 @@ export default function SitemapBlogSection({
     <div className="homePageSection my-5">
       <Container>
         <div className="h2 border-bottom">Blog</div>
-        <Col>
+        <Col className="col-9 mx-auto">
           <Row>
             {Object.keys(entries).map((category) => {
               return (
