@@ -29,10 +29,10 @@ export default function SitemapSection({
           <Row>
             {paths.map((pageName: string) => {
               if (pageName.length === 0) return;
-              if (category === "other") {
-                const path = `/${pageName}`;
-              }
-              const path = `/${category}/${pageName}`;
+              let path;
+              category === "other"
+                ? (path = `/${pageName}`)
+                : (path = `/${category}/${pageName}`);
               let pageTitle = titleize(pageName).replace(/-/g, " ");
 
               return (

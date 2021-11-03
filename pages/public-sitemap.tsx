@@ -9,7 +9,6 @@ import SEO from "../components/seo";
 export default function PublicSitemap(props) {
   const { sitemap, entries, integrations } = props.pageProps;
 
-  console.log(entries);
   return (
     <>
       <SEO
@@ -80,7 +79,7 @@ export async function getStaticProps(context) {
 
   const integrations = {};
   integrations["sources"] = ret[""]["integrations"]["sources"];
-  integrations["destinations"] = ret[""]["integrations"]["sources"];
+  integrations["destinations"] = ret[""]["integrations"]["destinations"];
   integrations["other"] = ret[""]["integrations"].filter(
     (item) =>
       !integrations["sources"].includes(item) &&

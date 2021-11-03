@@ -168,7 +168,8 @@ export default function WhoWeAre() {
                       </>
                     )}
                     {previously && previously.length > 0 && (
-                      <span key={previously[0].website}>
+                      <>
+                        {" "}
                         Previously:
                         <br />
                         {previously.map(({ role, company, website }) => (
@@ -184,7 +185,7 @@ export default function WhoWeAre() {
                             <br />
                           </>
                         ))}
-                      </span>
+                      </>
                     )}
                   </span>
                 }

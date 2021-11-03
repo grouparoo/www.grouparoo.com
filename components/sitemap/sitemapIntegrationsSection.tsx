@@ -8,8 +8,6 @@ export default function SitemapIntegrationsSection({
 }: {
   integrations;
 }) {
-  console.log(integrations);
-
   return (
     <div
       style={{ backgroundImage: "linear-gradient(#242436,#43435F)" }}
