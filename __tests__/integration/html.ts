@@ -14,6 +14,7 @@ const EDGE_CASES = {
 const allowedMissingLinks = [
   /^\/whats-new\/([a-z0-9\-\_\.]+)?$/, //no-indexed
   /^\/trial_landing$/, //no-indexed
+  /^\/terms-\/$/, //no-indexed
   /^\/downloads\/([a-z0-9\-\_\.]+)?$/, // Dumping ground for downloadable sample files.
   /^\/jobs(\/[a-z0-9\-\_\.]+)?$/, // Dynamically-generated routes for Lever posts.
   /^\/blog\/author\/([a-z\-\_]+)?$/, // Blog author pages have duplicate content and are not in sitemap.

@@ -2,6 +2,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import Image from "./Image";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { FeaturedBlogPosts } from "../data/featuredBlogPosts";
+import { Fragment } from "react";
 
 function LogoAndSocialLinks({ router }) {
   const year = new Date().getFullYear();
@@ -134,6 +136,17 @@ export default function Footer() {
                   <Link href="/solutions/modern-data-stack">
                     <a>Modern Data Stack</a>
                   </Link>
+
+                  <br />
+
+                  {FeaturedBlogPosts.map((post, idx) => (
+                    <Fragment key={`featured-post-footer-${idx}`}>
+                      <Link href={post.href}>
+                        <a>{post.title}</a>
+                      </Link>
+                      <br />
+                    </Fragment>
+                  ))}
                 </div>
 
                 <hr className="d-md-none mx-auto border-light border-top-0 m-2" />
@@ -175,7 +188,7 @@ export default function Footer() {
                   </Link>
                   <br />
                   <Link href="/integrations/sources/redshift">
-                    <a>Snowflake Integration</a>
+                    <a>Redshift Integration</a>
                   </Link>
                   <br />
                 </div>
@@ -240,6 +253,10 @@ export default function Footer() {
                   <br />
                   <Link href="/legal/privacy">
                     <a>Privacy Policy</a>
+                  </Link>
+                  <br />
+                  <Link href="/legal/terms">
+                    <a>Terms and Conditions</a>
                   </Link>
                 </div>
               </Col>

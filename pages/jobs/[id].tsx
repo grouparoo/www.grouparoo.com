@@ -107,6 +107,14 @@ function JobCard({ job }: { job: LeverJob }) {
           </Fragment>
         ))}
 
+        {job.additionalPlain ? (
+          <p>
+            <em>
+              <small>{job.additionalPlain}</small>
+            </em>
+          </p>
+        ) : null}
+
         <Button variant="primary" href={job.applyUrl} target="_blank">
           Apply Now - {job.text}
         </Button>

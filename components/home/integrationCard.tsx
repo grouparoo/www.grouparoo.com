@@ -30,7 +30,7 @@ export default function IntegrationCard({
       >
         <Card.Body>
           <SmallIntegration fillWidth={true} slug={plugin.slug} />
-          <Card.Text>{`${plugin.name} integration`}</Card.Text>
+          <Card.Text>{plugin.name}</Card.Text>
 
           {type ? (
             <>

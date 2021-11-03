@@ -33,4 +33,11 @@ describe("integration/blog", () => {
     const header = await browser.findElement(by.tagName("h1")).getText();
     expect(header).toBe("Steps for Marketing Tests");
   });
+
+  test("featured blog posts are in the footer", async () => {
+    const testUrl = url + "/";
+    await browser.get(testUrl);
+    const footer = await browser.findElement(by.tagName("footer")).getText();
+    expect(footer).toContain("What is Data Synchronization?");
+  });
 });

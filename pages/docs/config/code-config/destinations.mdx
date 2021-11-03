@@ -35,7 +35,9 @@ exports.default = async function buildConfig() {
       class: "destination",
       type: "mailchimp-export",
       appId: "...",
+      collection: "...",
       groupId: "...",
+      syncMode: "...",
       options: {
         listId: "...",
       },
@@ -88,7 +90,9 @@ Each Destination has a common set of options, while other options are specific t
 - `class`: (**required**) Should be set to `"Destination"`.
 - `type`: (**required**) The type of Destination will vary based on the Generator you're using. You likely don't want to change this value.
 - `appId`: (**required**) The `id` of the App (connection) that the Destination uses.
-- `groupId`: (**required**) The `id` of the Group whose members should be exported to the Destination. (This is where Groups in Grouparoo really come in handy.)
+- `collection`: (**required**) Which records should be exported from this Destination? You can choose "group", "model", or "none".
+- `groupId`: The `id` of the Group whose members should be exported to the Destination. (This is where Groups in Grouparoo really come in handy.) You need to choose `collection: "group"` to choose a `groupId`.
+- `syncMode`: (**required**): The SyncMode you wish to use for this Destination. Options are "Sync", "Additive", and "Enrich".
 - `mapping`: See below.
 - `destinationGroupMemberships`: See below.
 
