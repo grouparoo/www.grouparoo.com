@@ -34,7 +34,7 @@ export default function SitemapSection({
               let pageTitle = titleize(pageName).replace(/-/g, " ");
 
               return (
-                <Col key={pageName} className="col-lg-4 col-md-6 col-12">
+                <Col key={pageName} className="col-md-6 col-12">
                   <Link href={path}>{pageTitle}</Link>
                 </Col>
               );

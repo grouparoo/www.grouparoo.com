@@ -23,10 +23,7 @@ export default function SitemapIntegrationsSection({
             {integrations["sources"].map((integration) => {
               let path = `/integrations/sources/${integration}`;
               return (
-                <Col
-                  key={integration}
-                  className="col-lg-4 col-md-6 col-12 my-1"
-                >
+                <Col key={integration} className="col-md-6 col-12 my-1">
                   <Link href={path}>{titleize(integration)}</Link>
                 </Col>
               );
@@ -37,10 +34,7 @@ export default function SitemapIntegrationsSection({
             {integrations["destinations"].map((integration) => {
               let path = `/integrations/destinations/${integration}`;
               return (
-                <Col
-                  key={integration}
-                  className="col-lg-4 col-md-6 col-12 my-1"
-                >
+                <Col key={integration} className="col-md-6 col-12 my-1">
                   <Link href={path}>{titleize(integration)}</Link>
                 </Col>
               );
@@ -51,10 +45,7 @@ export default function SitemapIntegrationsSection({
             {integrations["other"].map((integration) => {
               let path = `/integrations/${integration}`;
               return (
-                <Col
-                  key={integration}
-                  className="col-lg-4 col-md-6 col-12 my-1"
-                >
+                <Col key={integration} className="col-md-6 col-12 my-1">
                   <Link href={path}>{titleize(integration)}</Link>
                 </Col>
               );
