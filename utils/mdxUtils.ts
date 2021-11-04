@@ -118,7 +118,7 @@ export function getBreadcrumbs(fullPath: string) {
     const filePath = `${path.join(pagesDir, pagePath)}.mdx`;
     // The default title is a titleized version of the segment, in case we can't
     // find the file.
-    let title = titleize(curr).replace(/-/g, " ");
+    let title = titleize(curr);
     // If the file does exist ...
     if (fs.existsSync(filePath)) {
       // Read it.

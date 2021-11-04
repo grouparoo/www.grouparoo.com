@@ -16,6 +16,7 @@
     "start": "next start --port $PORT",
     "dev": "API_URL=\"http://localhost:8080\" PORT=3001 next-remote-watch pages",
     "dev-tel": "PORT=3001 next-remote-watch pages",
+    "generate-static-files": "ts-node ./scripts/generate_static_files.ts",
     "pretest": "npm run lint && npm run build",
     "test": "jest --runInBand",
     "lint": "prettier --check pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",

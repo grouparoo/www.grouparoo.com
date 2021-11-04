@@ -174,6 +174,7 @@ export default function WhoWeAre() {
                     )}
                     {previously?.length && (
                       <>
+                        {" "}
                         Previously:
                         <br />
                         {previously.map(({ role, company, website }) => (
