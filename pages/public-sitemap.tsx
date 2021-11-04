@@ -6,6 +6,7 @@ import SEO from "../components/seo";
 import paths from "../public/public-sitemap.json";
 import { badgeTypes } from "../data/blogTags";
 import { titleize } from "../utils/inflectors";
+import { SitemapDocsSection } from "../components/sitemap/sitemapDocsSection";
 
 export type SitemapItem = {
   path: string;
@@ -42,16 +43,7 @@ export default function PublicSitemap({
 
       <div>
         <h1 className="mx-auto text-center">Sitemap</h1>
-        {Object.entries(docs).map(
-          ([category, sitemapItems]: [string, SitemapItem[]], idx) => (
-            <SitemapSection
-              key={category}
-              category={category}
-              sitemapItems={sitemapItems}
-              background={idx % 2 === 0 ? "dark" : "light"}
-            />
-          )
-        )}
+        <SitemapDocsSection docs={docs} />
         {Object.entries(restSitemap).map(
           ([category, sitemapItems]: [string, SitemapItem[]], idx) => (
             <SitemapSection
