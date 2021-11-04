@@ -2,7 +2,7 @@ export interface Author {
   name: string;
   slug: string;
   image: string;
-  url: string;
+  url?: string;
   twitter?: string;
   description: string;
 }
@@ -122,6 +122,13 @@ const Authors: Author[] = [
     url: "https://github.com/Micah-Bello",
     description:
       "Micah is a freelance writer and budding back-end developer with a love for all things software related. He spends his free time learning about the technologies that drive innovation in the software industry.",
+  },
+  {
+    name: "Stephen Mash",
+    slug: "stephen_mash",
+    image: "stephen_mash.jpeg",
+    description:
+      "Stephen is a UK-based freelance technology writer with a background in system development and assurance, primarily focused on high-integrity applications.",
   },
 ];
 
