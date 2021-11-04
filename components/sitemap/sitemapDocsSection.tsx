@@ -5,10 +5,7 @@ import { titleize } from "../../utils/inflectors";
 
 function SitemapDocsSection({ docs }: { docs: Record<string, SitemapItem[]> }) {
   return (
-    <div
-      style={{ backgroundImage: "linear-gradient(#242436,#43435F)" }}
-      className="bg-dark text-white homePageSection my-5"
-    >
+    <div className="homePageSection my-5">
       <Container>
         <h2 className="border-bottom col-10 mx-auto">Docs</h2>
         <Col className="col-9 mx-auto">

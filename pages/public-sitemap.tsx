@@ -43,7 +43,6 @@ export default function PublicSitemap({
 
       <div>
         <h1 className="mx-auto text-center">Sitemap</h1>
-        <SitemapDocsSection docs={docs} />
         {Object.entries(restSitemap).map(
           ([category, sitemapItems]: [string, SitemapItem[]], idx) => (
             <SitemapSection
@@ -54,6 +53,7 @@ export default function PublicSitemap({
             />
           )
         )}
+        <SitemapDocsSection docs={docs} />
         <SitemapIntegrationSection {...integrations} />
         <SitemapBlogSection {...blog} />
       </div>
