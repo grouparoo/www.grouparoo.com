@@ -127,6 +127,7 @@ const Authors: Author[] = [
     name: "Stephen Mash",
     slug: "stephen_mash",
     image: "stephen_mash.jpeg",
+    url: "https://www.linkedin.com/in/steve-mash-exosure",
     description:
       "Stephen is a UK-based freelance technology writer with a background in system development and assurance, primarily focused on high-integrity applications.",
   },
