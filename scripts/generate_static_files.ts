@@ -41,10 +41,16 @@ async function feedContent() {
 }
 
 async function jsonSitemap() {
-  const paths = await getPublicSitemap();
+  // The JSON sitemap gets blogs from elsewhere.
+  // We don't want the what's new pages or trial_landing.
+  const paths = (await getPublicSitemap())
+    .filter((p) => !p.includes("blog"))
+    .filter((p) => !p.includes("whats-new"))
+    .filter((p) => !p.includes("terms-"))
+    .filter((p) => !p.includes("trial_landing"));
 
   return {
-    "public-sitemap.json": JSON.stringify(paths),
+    "public-sitemap.json": JSON.stringify(paths, null, 2),
   };
 }
 

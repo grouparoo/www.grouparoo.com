@@ -2,6 +2,7 @@ export function titleize(str: string) {
   return str
     .replace(/^[\s_]+|[\s_]+$/g, "")
     .replace(/[_\s]+/g, " ")
+    .replace(/-/g, " ")
     .replace(/^[\w]|[ _-]\w/g, (m) => {
       return m.toUpperCase();
     });

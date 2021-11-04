@@ -1,14 +1,35 @@
-import fs from "fs";
-import path from "path";
 import SitemapSection from "../components/sitemap/sitemapSection";
 import SitemapBlogSection from "../components/sitemap/sitemapBlogSection";
 import SitemapIntegrationSection from "../components/sitemap/sitemapIntegrationsSection";
 import { getBlogEntries } from "../utils/blogPosts";
 import SEO from "../components/seo";
+import paths from "../public/public-sitemap.json";
+import { badgeTypes } from "../data/blogTags";
+import { titleize } from "../utils/inflectors";
 
-export default function PublicSitemap(props) {
-  const { sitemap, entries, integrations } = props.pageProps;
+export type SitemapItem = {
+  path: string;
+  name: string;
+};
+export interface Sitemap {
+  docs: SitemapItem[];
+  legal: SitemapItem[];
+  solutions: SitemapItem[];
+  other: SitemapItem[];
+  integrations: {
+    sources: SitemapItem[];
+    destinations: SitemapItem[];
+    guides: SitemapItem[];
+  };
+  blog: Record<keyof typeof badgeTypes, SitemapItem[]>;
+}
 
+export default function PublicSitemap({
+  pageProps: { sitemap },
+}: {
+  pageProps: { sitemap: Sitemap };
+}) {
+  const { integrations, blog, ...restSitemap } = sitemap;
   return (
     <>
       <SEO
@@ -21,82 +42,101 @@ export default function PublicSitemap(props) {
 
       <div>
         <h1 className="mx-auto text-center">Sitemap</h1>
-        {Object.keys(sitemap[""]).map((dir, index) => {
-          let paths = sitemap[""][dir];
-          let background;
-
-          index % 2 === 0 ? (background = "dark") : (background = "light");
-          return (
+        {Object.entries(restSitemap).map(
+          ([category, sitemapItems]: [string, SitemapItem[]], idx) => (
             <SitemapSection
-              key={dir}
-              category={dir}
-              paths={paths}
-              background={background}
+              key={category}
+              category={category}
+              sitemapItems={sitemapItems}
+              background={idx % 2 === 0 ? "dark" : "light"}
             />
-          );
-        })}
-        <SitemapIntegrationSection integrations={integrations} />
-        <SitemapBlogSection entries={entries} />
+          )
+        )}
+        <SitemapIntegrationSection {...integrations} />
+        <SitemapBlogSection {...blog} />
       </div>
     </>
   );
 }
 
-export async function getStaticProps(context) {
-  const sitemapPath = path.join(process.cwd(), "public", "public-sitemap.json");
-
-  const data = await fs.readFileSync(sitemapPath, "utf8");
-  let paths = JSON.parse(data);
-
-  let ret = {};
-  await paths.forEach((path) => {
-    const dirs = path.split("/");
-    const filename = dirs.pop();
-
-    //build sitemap object
-    let dirObject = ret;
-
-    dirs.forEach((dir, i) => {
-      if (i === dirs.length - 1) {
-        if (dir.length === 0) {
-          dir = "other";
-        }
-        dirObject[dir] = dirObject[dir] || [];
-        dirObject[dir].push(filename);
-      } else {
-        dirObject[dir] = dirObject[dir] || {};
-      }
-
-      dirObject = dirObject[dir];
-    });
-    return ret;
-  });
-
-  ret[""]["other"] = ret["other"];
-  delete ret["other"];
-  delete ret[""]["whats-new"];
-  delete ret[""]["blog"];
-
-  const integrations = {};
-  integrations["sources"] = ret[""]["integrations"]["sources"];
-  integrations["destinations"] = ret[""]["integrations"]["destinations"];
-  integrations["other"] = ret[""]["integrations"].filter(
-    (item) =>
-      !integrations["sources"].includes(item) &&
-      !integrations["destinations"].includes(item)
-  );
-  delete ret[""]["integrations"];
-
-  const blogPosts = await getBlogEntries(1, null, null, 1000);
-  let sortedEntries = {};
-
-  blogPosts.entries.map((entry) => {
-    const primaryTag = entry.tags[0];
-    sortedEntries[primaryTag] = sortedEntries[primaryTag] || [];
-    sortedEntries[primaryTag].push(entry);
-  });
-
-  return {
-    props: { sitemap: ret, entries: sortedEntries, integrations: integrations },
+export async function getStaticProps() {
+  const { entries: blogPosts } = await getBlogEntries(1, null, null, 1000);
+  const sitemap: Sitemap = {
+    docs: [],
+    legal: [],
+    solutions: [],
+    other: [],
+    integrations: {
+      sources: [],
+      destinations: [],
+      guides: [],
+    },
+    blog: {
+      company: [],
+      sync: [],
+      product: [],
+      operations: [],
+      notes: [],
+      marketing: [],
+      engineering: [],
+      data: [],
+      connections: [],
+    },
   };
+
+  // All paths except for blog posts
+  paths.forEach((path) => {
+    if (path === "/") {
+      return sitemap.other.push({
+        path,
+        name: "Home",
+      });
+    }
+    const pathParts = path.split("/").filter(Boolean);
+    if (pathParts.length === 1) {
+      sitemap.other.push({
+        path,
+        name: titleize(pathParts[0]),
+      });
+    } else if (pathParts.length > 1) {
+      if (path.includes("integrations")) {
+        const [, integrationType, name] = pathParts;
+        if (name) {
+          // We know it's a Source or Destintation
+          sitemap.integrations[integrationType].push({
+            path,
+            name: titleize(name),
+          });
+        } else {
+          sitemap.integrations.guides.push({
+            path,
+            name: titleize(integrationType),
+          });
+        }
+      } else {
+        const [type, ...rest] = pathParts;
+        const name = titleize(rest.slice(-1)[0]);
+        sitemap[type].push({
+          path,
+          name,
+        });
+      }
+    } else {
+      throw new Error("Empty path: " + path);
+    }
+  });
+
+  blogPosts.forEach((blogPost) => {
+    const [category] = blogPost.tags;
+    if (!sitemap.blog[category]) {
+      console.error(blogPost);
+      throw new Error("Blog post with unknown category");
+    }
+    sitemap.blog[category].push({
+      path: blogPost.path,
+      name: blogPost.title,
+    });
+  });
+
+  return { props: { sitemap } };
 }

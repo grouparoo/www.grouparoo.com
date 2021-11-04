@@ -1,12 +1,15 @@
 import { Container, Col, Row } from "react-bootstrap";
 import Link from "next/link";
-import { titleize } from "../../utils/inflectors";
-import { useState } from "react";
+import { SitemapItem } from "../../pages/public-sitemap";
 
 export default function SitemapIntegrationsSection({
-  integrations,
+  sources,
+  destinations,
+  guides,
 }: {
-  integrations;
+  sources: SitemapItem[];
+  destinations: SitemapItem[];
+  guides: SitemapItem[];
 }) {
   return (
     <div
@@ -18,35 +21,27 @@ export default function SitemapIntegrationsSection({
         <Col className="col-9 mx-auto">
           <Row>
             <h3 className="col-12 mb-1 mt-3">Sources</h3>
-            {integrations["sources"].map((integration) => {
-              <Col key={integration} className="col-md-6 col-12 my-1">
-                <Link href={`/integrations/sources/${integration}`}>
-                  {titleize(integration)}
-                </Link>
-              </Col>;
-            })}
+            {sources.map((source) => (
+              <Col key={source.path} className="col-md-6 col-12 my-1">
+                <Link href={source.path}>{source.name}</Link>
+              </Col>
+            ))}
           </Row>
           <Row>
             <h3 className="col-12 mb-1 mt-3">Destinations</h3>
-            {integrations["destinations"].map((integration) => {
-              <Col key={integration} className="col-md-6 col-12 my-1">
-                <Link href={`/integrations/destinations/${integration}`}>
-                  {titleize(integration)}
-                </Link>
-              </Col>;
-            })}
+            {destinations.map((destination) => (
+              <Col key={destination.path} className="col-md-6 col-12 my-1">
+                <Link href={destination.path}>{destination.name}</Link>
+              </Col>
+            ))}
           </Row>
           <Row>
-            <h3 className="col-12 mb-1 mt-3">Misc</h3>
-            {integrations["other"].map((integration) => {
-              return (
-                <Col key={integration} className="col-md-6 col-12 my-1">
-                  <Link href={`/integrations/${integration}`}>
-                    {titleize(integration)}
-                  </Link>
-                </Col>
-              );
-            })}
+            <h3 className="col-12 mb-1 mt-3">Guides</h3>
+            {guides.map((guide) => (
+              <Col key={guide.path} className="col-md-6 col-12 my-1">
+                <Link href={guide.path}>{guide.name}</Link>
+              </Col>
+            ))}
           </Row>
         </Col>
       </Container>

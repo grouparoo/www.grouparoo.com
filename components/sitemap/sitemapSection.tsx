@@ -1,23 +1,27 @@
 import { Container, Col, Row } from "react-bootstrap";
 import Link from "next/link";
 import { titleize } from "../../utils/inflectors";
+import type { SitemapItem } from "../../pages/public-sitemap";
+import { useMemo } from "react";
 
 export default function SitemapSection({
   category,
-  paths,
+  sitemapItems,
   background,
 }: {
   category: string;
-  paths: [];
+  sitemapItems: SitemapItem[];
   background: string;
 }) {
-  let style;
-  let classNames;
-
-  background === "dark"
-    ? ((style = { backgroundImage: "linear-gradient(#242436,#43435F)" }),
-      (classNames = "bg-dark text-white homePageSection my-5"))
-    : ((style = null), (classNames = "homePageSection my-5"));
+  const { style, classNames } = useMemo(() => {
+    if (background === "dark") {
+      return {
+        style: { backgroundImage: "linear-gradient(#242436,#43435F)" },
+        classNames: "bg-dark text-white homePageSection my-5",
+      };
+    }
+    return { classNames: "homePageSection my-5" };
+  }, [background]);
 
   return (
     <div style={style} className={classNames}>
@@ -27,21 +31,11 @@ export default function SitemapSection({
         </div>
         <Col className="col-9 mx-auto">
           <Row>
-            {paths.map((pageName: string) => {
-              if (pageName.length === 0) return;
-              if (pageName === "trial_landing") return;
-              let path;
-              category === "other"
-                ? (path = `/${pageName}`)
-                : (path = `/${category}/${pageName}`);
-              let pageTitle = titleize(pageName).replace(/-/g, " ");
-
-              return (
-                <Col key={pageName} className="col-md-6 col-12">
-                  <Link href={path}>{pageTitle}</Link>
-                </Col>
-              );
-            })}
+            {sitemapItems.map(({ name, path }) => (
+              <Col key={path} className="col-md-6 col-12">
+                <Link href={path}>{name}</Link>
+              </Col>
+            ))}
           </Row>
         </Col>
       </Container>

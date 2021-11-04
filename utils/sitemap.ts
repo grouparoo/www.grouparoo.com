@@ -27,8 +27,8 @@ export async function getBlogCategoryPaths(): Promise<PagePathsResponse> {
   return { paths, fallback: false };
 }
 
-async function getPagePaths() {
-  const paths = glob
+export async function getPagePaths() {
+  const paths: string[] = glob
     .sync(path.join(pagesDir, "**", "+(*.tsx|*.mdx)"))
     .filter((p) => !p.match(/\/\[.*\].*.tsx$/))
     .filter((p) => !p.match(/\/_document.tsx$/))
@@ -45,7 +45,7 @@ async function getPagePaths() {
 
 async function getStaticPaths() {
   const methods = [getUseCasePaths];
-  let allPaths = [];
+  let allPaths: string[] = [];
   for (const method of methods) {
     const { paths } = await method();
     allPaths = allPaths.concat(paths);
