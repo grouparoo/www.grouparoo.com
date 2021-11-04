@@ -12,7 +12,7 @@ export type SitemapItem = {
   name: string;
 };
 export interface Sitemap {
-  docs: SitemapItem[];
+  docs: Record<string, SitemapItem[]>;
   legal: SitemapItem[];
   solutions: SitemapItem[];
   other: SitemapItem[];
@@ -29,7 +29,7 @@ export default function PublicSitemap({
 }: {
   pageProps: { sitemap: Sitemap };
 }) {
-  const { integrations, blog, ...restSitemap } = sitemap;
+  const { integrations, blog, docs, ...restSitemap } = sitemap;
   return (
     <>
       <SEO
@@ -42,6 +42,16 @@ export default function PublicSitemap({
 
       <div>
         <h1 className="mx-auto text-center">Sitemap</h1>
+        {Object.entries(docs).map(
+          ([category, sitemapItems]: [string, SitemapItem[]], idx) => (
+            <SitemapSection
+              key={category}
+              category={category}
+              sitemapItems={sitemapItems}
+              background={idx % 2 === 0 ? "dark" : "light"}
+            />
+          )
+        )}
         {Object.entries(restSitemap).map(
           ([category, sitemapItems]: [string, SitemapItem[]], idx) => (
             <SitemapSection
@@ -62,7 +72,7 @@ export default function PublicSitemap({
 export async function getStaticProps() {
   const { entries: blogPosts } = await getBlogEntries(1, null, null, 1000);
   const sitemap: Sitemap = {
-    docs: [],
+    docs: {},
     legal: [],
     solutions: [],
     other: [],
@@ -113,6 +123,15 @@ export async function getStaticProps() {
             name: titleize(integrationType),
           });
         }
+      } else if (path.includes("docs")) {
+        const [, category, ...rest] = pathParts;
+        sitemap.docs[category] ??= [];
+        sitemap.docs[category].push({
+          name: titleize(
+            rest.length > 1 ? rest.slice(-1)[0] : rest[0] ?? category
+          ),
+          path,
+        });
       } else {
         const [type, ...rest] = pathParts;
         const name = titleize(rest.slice(-1)[0]);
