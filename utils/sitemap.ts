@@ -86,7 +86,5 @@ export async function getPublicSitemap() {
   const pages = await getPagePaths();
   const integrations = await getStaticPaths();
 
-  const paths = pages.concat(integrations);
-
-  return paths;
+  return pages.concat(integrations);
 }
