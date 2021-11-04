@@ -10,7 +10,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import externalLinks from "remark-external-links";
 
-import { titleize, breadcrumbTitleize } from "../utils/inflectors";
+import { titleize } from "../utils/inflectors";
 
 const dirname = __dirname;
 let rootDir: string;
