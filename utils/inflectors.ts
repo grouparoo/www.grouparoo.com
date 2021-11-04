@@ -8,6 +8,15 @@ export function titleize(str: string) {
     });
 }
 
+export function breadcrumbTitleize(str: string) {
+  return str
+    .replace(/^[\s_]+|[\s_]+$/g, "")
+    .replace(/[_\s]+/g, " ")
+    .replace(/^[\w]|[ _-]\w/g, (m) => {
+      return m.toUpperCase();
+    });
+}
+
 // Take a title string and replace all spaces with commas, convert to lowercase
 
 export function urlize(str: string): string {

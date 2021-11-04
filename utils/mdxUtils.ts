@@ -10,7 +10,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import externalLinks from "remark-external-links";
 
-import { titleize } from "../utils/inflectors";
+import { titleize, breadcrumbTitleize } from "../utils/inflectors";
 
 const dirname = __dirname;
 let rootDir: string;
@@ -118,7 +118,7 @@ export function getBreadcrumbs(fullPath: string) {
     const filePath = `${path.join(pagesDir, pagePath)}.mdx`;
     // The default title is a titleized version of the segment, in case we can't
     // find the file.
-    let title = titleize(curr);
+    let title = breadcrumbTitleize(curr);
     // If the file does exist ...
     if (fs.existsSync(filePath)) {
       // Read it.
