@@ -19,32 +19,31 @@ export default function SitemapIntegrationsSection({
           <Row>
             <h3 className="col-12 mb-1 mt-3">Sources</h3>
             {integrations["sources"].map((integration) => {
-              let path = `/integrations/sources/${integration}`;
-              return (
-                <Col key={integration} className="col-md-6 col-12 my-1">
-                  <Link href={path}>{titleize(integration)}</Link>
-                </Col>
-              );
+              <Col key={integration} className="col-md-6 col-12 my-1">
+                <Link href={`/integrations/sources/${integration}`}>
+                  {titleize(integration)}
+                </Link>
+              </Col>;
             })}
           </Row>
           <Row>
             <h3 className="col-12 mb-1 mt-3">Destinations</h3>
             {integrations["destinations"].map((integration) => {
-              let path = `/integrations/destinations/${integration}`;
-              return (
-                <Col key={integration} className="col-md-6 col-12 my-1">
-                  <Link href={path}>{titleize(integration)}</Link>
-                </Col>
-              );
+              <Col key={integration} className="col-md-6 col-12 my-1">
+                <Link href={`/integrations/destinations/${integration}`}>
+                  {titleize(integration)}
+                </Link>
+              </Col>;
             })}
           </Row>
           <Row>
             <h3 className="col-12 mb-1 mt-3">Misc</h3>
             {integrations["other"].map((integration) => {
-              let path = `/integrations/${integration}`;
               return (
                 <Col key={integration} className="col-md-6 col-12 my-1">
-                  <Link href={path}>{titleize(integration)}</Link>
+                  <Link href={`/integrations/${integration}`}>
+                    {titleize(integration)}
+                  </Link>
                 </Col>
               );
             })}
