@@ -46,10 +46,15 @@ export default function AuthorBox({
             <em>{author.description}</em>
             <br />
             <br />
-            Learn more about {author.name.split(" ")[0]} @{" "}
-            <a href={author.url} target="_new">
-              {author.url}
-            </a>
+            {author.url ? (
+              <>
+                Learn more about {author.name.split(" ")[0]} @{" "}
+                <a href={author.url} target="_new">
+                  {" "}
+                  {author.url}{" "}
+                </a>
+              </>
+            ) : null}
           </small>
         </Col>
       </Row>
