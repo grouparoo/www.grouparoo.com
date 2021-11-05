@@ -313,6 +313,11 @@ const DocsNav: NavItem[] = [
       },
     ],
   },
+  {
+    title: "Cloud Documentation",
+    linkText: "Cloud",
+    path: "/docs/cloud",
+  },
 ];
 
 export default DocsNav;
