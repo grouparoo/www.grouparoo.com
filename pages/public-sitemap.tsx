@@ -43,6 +43,9 @@ export default function PublicSitemap({
 
       <div>
         <h1 className="mx-auto text-center">Sitemap</h1>
+        <SitemapIntegrationSection {...integrations} />
+        <SitemapDocsSection docs={docs} />
+
         {Object.entries(restSitemap).map(
           ([category, sitemapItems]: [string, SitemapItem[]], idx) => (
             <SitemapSection
@@ -53,8 +56,6 @@ export default function PublicSitemap({
             />
           )
         )}
-        <SitemapDocsSection docs={docs} />
-        <SitemapIntegrationSection {...integrations} />
         <SitemapBlogSection {...blog} />
       </div>
     </>
@@ -65,14 +66,14 @@ export async function getStaticProps() {
   const { entries: blogPosts } = await getBlogEntries(1, null, null, 1000);
   const sitemap: Sitemap = {
     docs: {},
-    legal: [],
-    solutions: [],
-    other: [],
     integrations: {
       sources: [],
       destinations: [],
       guides: [],
     },
+    solutions: [],
+    legal: [],
+    other: [],
     blog: {
       company: [],
       sync: [],
@@ -120,7 +121,9 @@ export async function getStaticProps() {
         sitemap.docs[category] ??= [];
         sitemap.docs[category].push({
           name: titleize(
-            rest.length > 1 ? rest.slice(-1)[0] : rest[0] ?? category
+            rest.length > 1
+              ? `${rest.slice(-2)[0]}:  ${rest.slice(-2)[1]}`
+              : rest[0] ?? category
           ),
           path,
         });

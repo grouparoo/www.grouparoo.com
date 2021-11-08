@@ -258,6 +258,10 @@ export default function Footer() {
                   <Link href="/legal/terms">
                     <a>Terms and Conditions</a>
                   </Link>
+                  <br />
+                  <Link href="/public-sitemap">
+                    <a>Sitemap</a>
+                  </Link>
                 </div>
               </Col>
               <Col className="d-none d-md-inline-block col-md-1" />
