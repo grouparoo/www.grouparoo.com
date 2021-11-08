@@ -92,7 +92,7 @@ const nextConfig = {
       {
         source: "/feature-request",
         destination:
-          "https://github.com/grouparoo/grouparoo/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=",
+          "https://github.com/grouparoo/grouparoo/issues/new?assignees=&labels=enhancement&template=feature_request.yml&title=%5BFeature%5D%3A+",
         statusCode: 302,
       },
       {
