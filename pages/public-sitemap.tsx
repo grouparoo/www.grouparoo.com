@@ -24,6 +24,13 @@ export interface Sitemap {
   };
   blog: Record<keyof typeof badgeTypes, SitemapItem[]>;
 }
+function buildDocsTitle(category, rest) {
+  return rest.length > 1
+    ? //if there is more than one piece in "rest" to build with, combine the lowest two to make a descriptive title
+      `${rest.slice(-2)[0]}:  ${rest.slice(-2)[1]}`
+    : //otherwise give the only piece there (if it exists) or just the category name (if it doesn't)
+      rest[0] ?? category;
+}
 
 export default function PublicSitemap({
   pageProps: { sitemap },
@@ -31,6 +38,7 @@ export default function PublicSitemap({
   pageProps: { sitemap: Sitemap };
 }) {
   const { integrations, blog, docs, ...restSitemap } = sitemap;
+
   return (
     <>
       <SEO
@@ -43,6 +51,9 @@ export default function PublicSitemap({
 
       <div>
         <h1 className="mx-auto text-center">Sitemap</h1>
+        <SitemapIntegrationSection {...integrations} />
+        <SitemapDocsSection docs={docs} />
+
         {Object.entries(restSitemap).map(
           ([category, sitemapItems]: [string, SitemapItem[]], idx) => (
             <SitemapSection
@@ -53,8 +64,6 @@ export default function PublicSitemap({
             />
           )
         )}
-        <SitemapDocsSection docs={docs} />
-        <SitemapIntegrationSection {...integrations} />
         <SitemapBlogSection {...blog} />
       </div>
     </>
@@ -65,14 +74,14 @@ export async function getStaticProps() {
   const { entries: blogPosts } = await getBlogEntries(1, null, null, 1000);
   const sitemap: Sitemap = {
     docs: {},
-    legal: [],
-    solutions: [],
-    other: [],
     integrations: {
       sources: [],
       destinations: [],
       guides: [],
     },
+    solutions: [],
+    legal: [],
+    other: [],
     blog: {
       company: [],
       sync: [],
@@ -119,9 +128,7 @@ export async function getStaticProps() {
         const [, category, ...rest] = pathParts;
         sitemap.docs[category] ??= [];
         sitemap.docs[category].push({
-          name: titleize(
-            rest.length > 1 ? rest.slice(-1)[0] : rest[0] ?? category
-          ),
+          name: titleize(buildDocsTitle(category, rest)),
           path,
         });
       } else {
