@@ -3,15 +3,15 @@ import { Container, Button, Row, Col } from "react-bootstrap";
 import Image from "../components/Image";
 import Head from "next/head";
 import Link from "next/link";
-import HomepageCodeBox from "../components/home/homepageCodeBox";
-import IntegrationsSection from "../components/home/integrationsSection";
-import SmallIntegration from "../components/home/smallIntegration";
-import WhyOpenSource from "../components/home/whyOpenSource";
-import CustomerTestimonials from "../components/home/customerTestimonials";
+import HomepageCodeBox from "../components/home/HomepageCodeBox";
+import IntegrationsSection from "../components/home/IntegrationsSection";
+import SmallIntegration from "../components/home/SmallIntegration";
+import WhyOpenSource from "../components/home/WhyOpenSource";
+import CustomerTestimonials from "../components/home/CustomerTestimonials";
 import { randomHomepagePlugins } from "../data/plugins";
 import { getReleaseNotes } from "../utils/releaseNotes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ImageInBrowserFrame from "../components/imageInBrowserFrame";
+import ImageInBrowserFrame from "../components/ImageInBrowserFrame";
 
 export default function IndexPage({ pageProps, setReleaseNote }) {
   const {

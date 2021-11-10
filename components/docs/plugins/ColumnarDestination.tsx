@@ -2,8 +2,8 @@
 
 import { PluginConfigOptions } from "../../../data/plugins";
 
-import CodeBlock from "./codeBlock";
-import OptionsList from "./optionsList";
+import CodeBlock from "./CodeBlock";
+import OptionsList from "./OptionsList";
 
 const PluginDocsColumnarDestination = ({ plugin }: { plugin: string }) => {
   const slug = plugin.toLowerCase();

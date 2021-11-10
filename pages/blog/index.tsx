@@ -5,8 +5,8 @@ import { Container } from "react-bootstrap";
 import Image from "../../components/Image";
 import { BlogEntry, getBlogEntries } from "../../utils/blogPosts";
 import BlogTags from "../../utils/blogTags";
-import AuthorBox from "../../components/blog/authorBox";
-import { PaginationHelper } from "../../components/paginationHelper";
+import AuthorBox from "../../components/blog/AuthorBox";
+import { PaginationHelper } from "../../components/PaginationHelper";
 
 function blogEntry(entry: BlogEntry, idx: number) {
   const author = getAuthor(entry.author);

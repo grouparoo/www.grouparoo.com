@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { Alert } from ".";
-import CodeBlock from "./plugins/codeBlock";
+import { Alert } from "./Index";
+import CodeBlock from "./plugins/CodeBlock";
 
 export default function ValidateAndApplyConfig({
   headingLevel,

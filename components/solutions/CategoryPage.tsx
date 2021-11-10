@@ -4,8 +4,8 @@ import Head from "next/head";
 import hydrate from "next-mdx-remote/hydrate";
 import { CategoryInfo } from "../../utils/solutionsPages";
 import { arrayToReadableList, urlize } from "../../utils/inflectors";
-import FeatureBanner from "./featureBanner";
-import * as components from ".";
+import FeatureBanner from "./FeatureBanner";
+import * as components from "./Index";
 
 export default function CategoryPage(category: CategoryInfo) {
   const content = hydrate(category.source, { components });

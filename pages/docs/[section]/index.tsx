@@ -1,10 +1,10 @@
 import { Container, Row, Col, Breadcrumb } from "react-bootstrap";
 import hydrate from "next-mdx-remote/hydrate";
-import { TableOfContents } from "../../../components/docs/tableOfContents";
-import { PageNavigation } from "../../../components/pageNavigation";
-import * as components from "../../../components/docs";
+import { TableOfContents } from "../../../components/docs/TableOfContents";
+import { PageNavigation } from "../../../components/PageNavigation";
+import * as components from "../../../components/docs/Index";
 import { loadMdxFile, getStaticMdxPaths } from "../../../utils/mdxUtils";
-import SEO from "../../../components/seo";
+import SEO from "../../../components/SEO";
 
 export default function DocPage({ pageProps }) {
   const { source, frontMatter, path, breadcrumbs } = pageProps;

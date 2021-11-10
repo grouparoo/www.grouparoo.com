@@ -8,7 +8,7 @@ import {
 } from "../../utils/jobPosts";
 import Head from "next/head";
 import Link from "next/link";
-import WorkingAtGrouparooCard from "../../components/jobs/workingAtGrouparoo";
+import WorkingAtGrouparooCard from "../../components/jobs/WorkingAtGrouparoo";
 
 export default function JobPage({ pageProps }) {
   const job: LeverJob = pageProps.job;

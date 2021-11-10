@@ -3,15 +3,15 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
 import { Container, Row, Col, Alert, Card } from "react-bootstrap";
-import Tweet from "../../components/blog/tweet";
+import Tweet from "../../components/blog/Tweet";
 import Image from "../../components/Image";
 import BlogTags from "../../utils/blogTags";
-import Subscribe from "../../components/subscribe";
-import AuthorBox from "../../components/blog/authorBox";
+import Subscribe from "../../components/Subscribe";
+import AuthorBox from "../../components/blog/AuthorBox";
 import getAuthor from "../../utils/getAuthor";
 import { BlogPost, getBlogPost, getBlogPaths } from "../../utils/blogPosts";
-import BlogImage from "../../components/blog/image";
-import { PageNavigation } from "../../components/pageNavigation";
+import BlogImage from "../../components/blog/Image";
+import { PageNavigation } from "../../components/PageNavigation";
 
 const components = {
   Image: BlogImage,

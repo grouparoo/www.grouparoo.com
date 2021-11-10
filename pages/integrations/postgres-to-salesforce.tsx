@@ -1,9 +1,9 @@
 import { Container, Row, Col, ButtonGroup, Button } from "react-bootstrap";
 import Image from "../../components/Image";
-import IntegrationCard from "../../components/home/integrationCard";
-import SEO from "../../components/seo";
-import BigArrow from "../../components/bigArrow";
-import ImageInBrowserFrame from "../../components/imageInBrowserFrame";
+import IntegrationCard from "../../components/home/IntegrationCard";
+import SEO from "../../components/SEO";
+import BigArrow from "../../components/BigArrow";
+import ImageInBrowserFrame from "../../components/ImageInBrowserFrame";
 import Link from "next/link";
 
 export default function PostgresToSalesforce() {

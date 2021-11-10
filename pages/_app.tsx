@@ -1,10 +1,10 @@
 import "../scss/grouparoo.scss";
-import "../components/icons"; // this is needed to load the library
-import Layout from "../components/layouts/main";
-import FloatingLayout from "../components/layouts/floating";
+import "../components/Icons"; // this is needed to load the library
+import Layout from "../components/layouts/Main";
+import FloatingLayout from "../components/layouts/Floating";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { googleAnalyticsPageView } from "../components/googleAnalytics";
+import { googleAnalyticsPageView } from "../components/GoogleAnalytics";
 
 export default function GrouparooWWW(props) {
   const { Component } = props;

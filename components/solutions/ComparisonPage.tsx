@@ -1,12 +1,12 @@
 import React from "react";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import Head from "next/head";
-import ComparisonTable from "./comparisonTable";
-import FeatureBanner from "./featureBanner";
+import ComparisonTable from "./ComparisonTable";
+import FeatureBanner from "./FeatureBanner";
 import hydrate from "next-mdx-remote/hydrate";
 import { ComparisonInfo } from "../../utils/solutionsPages";
 import { arrayToReadableList, possessiveNoun } from "../../utils/inflectors";
-import * as components from ".";
+import * as components from "./Index";
 
 export default function ComparisonPage(comp: ComparisonInfo) {
   const content = hydrate(comp.source, { components });

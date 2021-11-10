@@ -6,9 +6,9 @@ import hydrate from "next-mdx-remote/hydrate";
 import { ReleaseNote, getReleaseNotes } from "../../utils/releaseNotes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Moment from "react-moment";
-import BlogImage from "../../components/blog/image";
-import Tweet from "../../components/blog/tweet";
-import { PaginationHelper } from "../../components/paginationHelper";
+import BlogImage from "../../components/blog/Image";
+import Tweet from "../../components/blog/Tweet";
+import { PaginationHelper } from "../../components/PaginationHelper";
 
 export const components = { Image: BlogImage, Tweet };
 

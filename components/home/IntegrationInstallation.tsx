@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
-import HomepageCodeBox from "../../components/home/homepageCodeBox";
+import HomepageCodeBox from "./HomepageCodeBox";
 
 export default function IntegrationInstallation({
   packageName,

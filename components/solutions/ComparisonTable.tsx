@@ -1,6 +1,6 @@
 import { Container, Row, Col, Table } from "react-bootstrap";
 import Image from "../Image";
-import ComparisonRow from "./comparisonRow";
+import ComparisonRow from "./ComparisonRow";
 
 export default function ComparisonTable({ comparisonChartData }) {
   let tableRows = comparisonChartData.data.map((feature) => (

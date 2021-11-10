@@ -1,5 +1,5 @@
 import { loadEntries, loadMdxFile, getStaticMdxPaths } from "./mdxUtils";
-import { FeatureArray } from "../components/solutions/featureBanner";
+import { FeatureArray } from "../components/solutions/FeatureBanner";
 
 export interface ComparisonChartData {
   competitor: string;

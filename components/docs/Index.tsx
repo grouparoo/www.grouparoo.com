@@ -1,12 +1,12 @@
 import { Alert, Button, Tab } from "react-bootstrap";
 import Link from "next/link";
 
-import { EnterpriseCTA, HavingProblems } from "./callouts";
+import { EnterpriseCTA, HavingProblems } from "./Callouts";
 import CLICommand from "./CLICommands";
-import GeneratedConfigFile from "./generatedConfigFile";
-import Image from "./image";
-import ImageInBrowserFrame from "../imageInBrowserFrame";
-import PluginsList from "./pluginsList";
+import GeneratedConfigFile from "./GeneratedConfigFile";
+import Image from "./Image";
+import ImageInBrowserFrame from "../ImageInBrowserFrame";
+import PluginsList from "./PluginsList";
 import {
   PluginDocsCalculatedPropertySource,
   PluginDocsColumnarDestination,
@@ -15,11 +15,11 @@ import {
   PluginDocsInstallation,
   PluginDocsLinks,
   OptionsList,
-} from "./plugins";
-import RuleOpsTable from "./ruleOpsTable";
-import Tabs from "./tabs";
-import ValidateAndApplyConfig from "./validateAndApplyConfig";
-import AppExamplesReadme from "./appExamplesReadme";
+} from "./plugins/Index";
+import RuleOpsTable from "./RuleOpsTable";
+import Tabs from "./Tabs";
+import ValidateAndApplyConfig from "./ValidateAndApplyConfig";
+import AppExamplesReadme from "./AppExamplesReadme";
 
 // The exported components are available for use in docs MDX files.
 export {

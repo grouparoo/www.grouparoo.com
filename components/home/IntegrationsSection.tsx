@@ -1,5 +1,5 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
-import IntegrationCard from "./integrationCard";
+import IntegrationCard from "./IntegrationCard";
 import { PluginData } from "../../data/plugins";
 
 export default function IntegrationsSection() {

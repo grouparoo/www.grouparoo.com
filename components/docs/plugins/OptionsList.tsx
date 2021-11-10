@@ -1,6 +1,6 @@
 import { PluginConfigOption } from "../../../data/plugins";
 
-import Markdown from "./markdown";
+import Markdown from "./Markdown";
 
 const PluginDocsOption = (option: PluginConfigOption) => {
   return (
