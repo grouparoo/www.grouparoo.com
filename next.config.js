@@ -85,8 +85,13 @@ const nextConfig = {
         statusCode: 301,
       },
       {
-        source: "/blog/snowflake-source",
-        destination: "/integrations/sources/snowflake",
+        source: "/blog/salesforce-destination",
+        destination: "/integrations/destinations/salesforce",
+        statusCode: 301,
+      },
+      {
+        source: "/solutions/marketers",
+        destination: "/",
         statusCode: 301,
       },
       {
