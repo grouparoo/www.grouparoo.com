@@ -220,13 +220,6 @@ export default function Navigation() {
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item>
-                        <Link href="/solutions/marketers">
-                          <a className="nav-link" role="button">
-                            Marketing
-                          </a>
-                        </Link>
-                      </Dropdown.Item>
                       <Dropdown.Divider />
                       <Dropdown.Header>
                         <FontAwesomeIcon
