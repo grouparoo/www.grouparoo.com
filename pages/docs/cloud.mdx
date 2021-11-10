@@ -7,61 +7,13 @@ pullQuote: "An easy-to-follow guide on integrating your Code Config repository w
 We're excited to share our Cloud offering! This guide should cover everything you need to get integrated
 using your own repository with Grouparoo Cloud.
 
-### Step 1 - Getting to your Project
 
-Sign in to your [Cloud](http://cloud.grouparoo.com/) account, or create a new one.
+### Step 1 - Acquiring an API Key
 
-#### If a new account
+As of right now you need to make a [Trial Request](/trial) in order to get Grouparoo Cloud access. Our Administrators should get back to you within a day to help get you set up in our system and ready to integrate! After the setup process you should have an API Key and a Project ID which are required for integration.
 
-Follow the steps shown on Cloud to create an Organzation and Project.
+### Step 2 - Integrating your Code Config repository with Grouparoo Cloud
 
-#### If an existing account, but a new Grouparoo Project
+If you do not have a Code Config repository set up, please follow our [Docs](/docs/getting-started) on how to do so.
 
-Use the Project dropdown to create a new Project.
-screenshot here
-
-#### If an existing account, and project
-
-You're set, follow the steps below!
-
-### Step 2 - Acquring an API Key
-
-Get your API Key. This can be found on your Project's primary page by clicking the Key icon near
-the top right of the page.
-API Keys are created with your project! Press the Copy button to copy the API Key.
-
-### Step 3 - Creating your Github action
-
-Note: Until Cloud is up and running, be sure to run the `grouparoo-infra-apps -> cloud-terraformer` Github action with your project's name!
-
-The best way to interact with Grouparoo Cloud and Github Actions is as follows:
-
-1. Create a github repo, public or private, to hold your Code Config. Do _not_ push your code config yet!
-
-   - `mkdir my-code-config && cd my-code-config`
-   - `git init && git commit -m "first commit" --allow-empty && git remote add origin <my origin.git> && git push -u origin main`
-   - Make a new branch for your Code Config, and github action
-   - `git checkout -B my-cloud-workflow-branch`
-   - `grouparoo init .`
-   - Use `grouparoo config` to setup your [Code Config](https://www.grouparoo.com/docs/config). Make sure to commit it!
-
-2. Create the workflow for Grouparoo Cloud and push it up
-
-   - `mkdir -p .github/workflows && curl https://raw.githubusercontent.com/grouparoo/app-example-cloud/main/.github/workflows/grouparoo-cloud.yml?token=ABF42DR7YI226UKGVOEFI43BRZ346 -o .github/workflows/grouparoo-cloud.yml`
-   - `git add .github`
-   - `git commit -m "Adding the workflow"`
-   - `git push -u origin my-cloud-workflow-branch`
-
-3. Activate the Workflow
-
-   - Go into your repository's Settings -> Secrets -> New repository secret
-   - Naming is important, based on the template used for `grouparoo-cloud.yml` we need two keys: `GROUPAROO_CLOUD_TOKEN` and `GROUPAROO_CLOUD_PROJECT_ID`.
-     - The Project ID should look similar to `prj_<some-guid>`
-   - Make the two secrets with the appropriate values from Grouparoo Cloud.
-   - Create a pull request against `main` with your Code Config branch.
-   - If you did everything right the CI action should run green!
-   - Merge the PR.
-
-4. Go checkout your running application
-   - Merging should trigger the `Deploy` workflow.
-   - Visit your Project's page in Grouparoo Cloud to be taken to the running instance
+Once your repository is setup and pushed up to Github, go [here](/docs/cloud/repository-integration).

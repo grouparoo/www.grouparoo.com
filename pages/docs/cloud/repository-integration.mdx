@@ -1,0 +1,70 @@
+---
+title: "Grouparoo Cloud Repository Integration"
+date: "2021-11-10"
+pullQuote: "Simple integration steps for Grouparoo Cloud"
+---
+
+If you are here you should already have an API Key and Project ID.
+
+Grouparoo Cloud requires three things to function: A github action yaml file and two secrets to identify and authorize the code config repository.
+
+### Github Repository Secrets
+
+Grouparoo Cloud requires two secrets to be available in your repository: `GROUPAROO_CLOUD_TOKEN` and `GROUPAROO_CLOUD_PROJECT_ID`.
+
+If these values have already been provided for you, skip ahead. Otherwise you can get them from [Grouparoo Cloud](https://cloud.grouparoo.com/) in your Project's Integrations page.
+
+In your Github repository go to: Settings -> Secrets -> New repository secret.
+
+Add `GROUPAROO_CLOUD_TOKEN` and `GROUPAROO_CLOUD_PROJECT_ID` with the provided values.
+<sub>The Project ID should look similar to `prj_some-set-of-values`.</sub>
+
+### Github Action
+
+We recommend creating a new branch for this since our system can check PR builds for validity, saving you some potential headache.
+
+Create a file in your repository: `.github/workflows/grouparoo-cloud.yml`
+And place the below code into it.
+
+```yml
+name: grouparoo-cloud
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ci:
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: grouparoo/cloud-action@main
+        with:
+          project_id: ${{ secrets.GROUPAROO_CLOUD_PROJECT_ID }}
+          token: ${{ secrets.GROUPAROO_CLOUD_TOKEN }}
+          api_url: "https://staging-cloud.grouparoo.com"
+  deploy:
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: grouparoo/cloud-action@main
+        with:
+          type: deploy
+          project_id: ${{ secrets.GROUPAROO_CLOUD_PROJECT_ID }}
+          token: ${{ secrets.GROUPAROO_CLOUD_TOKEN }}
+          api_url: "https://staging-cloud.grouparoo.com"
+```
+
+Then create a pull request against your main branch. It may take a few minutes but our CI system should kick in and confirm that your Code Config is valid and hostable. If CI runs green, merge and our system will deploy it into Grouparoo Cloud. Once it's available your Project page in Grouparoo Cloud will provide a link!
+
+If you have any trouble please visit our [Support Page](/docs/support).
