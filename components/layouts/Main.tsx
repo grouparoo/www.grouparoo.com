@@ -1,13 +1,13 @@
 import { useState, useEffect, Children, cloneElement } from "react";
 import { Row, Container, Col } from "react-bootstrap";
 import Head from "next/head";
-import Navigation from "../navigation";
-import Footer from "../footer";
+import Navigation from "../Navigation";
+import Footer from "../Footer";
 import { useRouter } from "next/router";
-import GetStarted from "../home/getStarted";
+import GetStarted from "../home/GetStarted";
 import { OpenSourceDataStackConfBanner } from "../banners/OpenSourceDataStackConfBanner";
-import { DisplayReleaseNote, WhatsNewBanner } from "../banners/whatsNewBanner";
-import Subscribe from "../subscribe";
+import { DisplayReleaseNote, WhatsNewBanner } from "../banners/WhatsNewBanner";
+import Subscribe from "../Subscribe";
 
 function PageTemplate({ children }) {
   const router = useRouter();

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Col, Row } from "react-bootstrap";
-import TeamMember, { TeamMemberProps } from "./teamMember";
+import TeamMember, { TeamMemberProps } from "./TeamMember";
 
 interface TeamMember extends Omit<TeamMemberProps, "description"> {
   emojis: string[];

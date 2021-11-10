@@ -1,6 +1,6 @@
 import { Row, Col, Container } from "react-bootstrap";
 import Image from "../Image";
-import ImageInBrowserFrame from "../imageInBrowserFrame";
+import ImageInBrowserFrame from "../ImageInBrowserFrame";
 
 export default function SectionDivider({
   imagePath,

@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Container, Row, Col } from "react-bootstrap";
 import { loadMdxFile } from "./../../utils/mdxUtils";
 import hydrate from "next-mdx-remote/hydrate";
-import { PageNavigation } from "../../components/pageNavigation";
+import { PageNavigation } from "../../components/PageNavigation";
 
 export default function Meet({ pageProps }) {
   const content = hydrate(pageProps.source, {});

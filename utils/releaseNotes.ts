@@ -1,6 +1,6 @@
 import { loadEntries, loadMdxFilePath, getStaticMdxPaths } from "./mdxUtils";
-import BlogImage from "../components/blog/image";
-import Tweet from "../components/blog/tweet";
+import BlogImage from "../components/blog/Image";
+import Tweet from "../components/blog/Tweet";
 import { Feed } from "feed";
 
 export type ReleaseNote = {

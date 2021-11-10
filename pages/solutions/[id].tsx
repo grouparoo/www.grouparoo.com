@@ -1,9 +1,9 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { getSolutionsData } from "../../utils/solutionsPages";
-import ComparisonPage from "../../components/solutions/comparisonPage";
-import CategoryPage from "../../components/solutions/categoryPage";
-import * as components from "../../components/solutions";
+import ComparisonPage from "../../components/solutions/ComparisonPage";
+import CategoryPage from "../../components/solutions/CategoryPage";
+import * as components from "../../components/solutions/Index";
 
 export default function SolutionsPage({ pageProps }) {
   const router = useRouter();

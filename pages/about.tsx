@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "../components/Image";
-import WhoWeAre from "../components/home/whoWeAre";
-import JobBoard from "../components/jobs/jobBoard";
-import WorkingAtGrouparooCard from "../components/jobs/workingAtGrouparoo";
+import WhoWeAre from "../components/home/WhoWeAre";
+import JobBoard from "../components/jobs/JobBoard";
+import WorkingAtGrouparooCard from "../components/jobs/WorkingAtGrouparoo";
 import { getJobs } from "../utils/jobPosts";
-import SEO from "../components/seo";
+import SEO from "../components/SEO";
 
 export default function About({ pageProps }) {
   return (

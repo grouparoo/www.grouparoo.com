@@ -8,7 +8,7 @@ import {
   Table,
   Image,
 } from "react-bootstrap";
-import SEO from "../components/seo";
+import SEO from "../components/SEO";
 import Link from "next/link";
 
 export default function PricingPage() {

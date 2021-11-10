@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Button, Tab, Nav, Row, Col } from "react-bootstrap";
 import Image from "../../components/Image";
-import SEO from "../../components/seo";
-import IntegrationsSection from "../../components/home/integrationsSection";
-import ImageInBrowserFrame from "../../components/imageInBrowserFrame";
+import SEO from "../../components/SEO";
+import IntegrationsSection from "../../components/home/IntegrationsSection";
+import ImageInBrowserFrame from "../../components/ImageInBrowserFrame";
 
 export default function Education() {
   return (

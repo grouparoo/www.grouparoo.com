@@ -1,12 +1,12 @@
-import SitemapSection from "../components/sitemap/sitemapSection";
-import SitemapBlogSection from "../components/sitemap/sitemapBlogSection";
-import SitemapIntegrationSection from "../components/sitemap/sitemapIntegrationsSection";
+import SitemapSection from "../components/sitemap/SitemapSection";
+import SitemapBlogSection from "../components/sitemap/SitemapBlogSection";
+import SitemapIntegrationSection from "../components/sitemap/SitemapIntegrationsSection";
 import { getBlogEntries } from "../utils/blogPosts";
-import SEO from "../components/seo";
+import SEO from "../components/SEO";
 import paths from "../public/public-sitemap.json";
 import { badgeTypes } from "../data/blogTags";
 import { titleize } from "../utils/inflectors";
-import { SitemapDocsSection } from "../components/sitemap/sitemapDocsSection";
+import { SitemapDocsSection } from "../components/sitemap/SitemapDocsSection";
 
 export type SitemapItem = {
   path: string;

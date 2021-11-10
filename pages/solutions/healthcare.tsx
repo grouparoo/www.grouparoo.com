@@ -2,8 +2,8 @@ import React from "react";
 import { Container, Button, Tab, Nav, Row, Col } from "react-bootstrap";
 import Image from "../../components/Image";
 import Head from "next/head";
-import IntegrationsSection from "../../components/home/integrationsSection";
-import ImageInBrowserFrame from "../../components/imageInBrowserFrame";
+import IntegrationsSection from "../../components/home/IntegrationsSection";
+import ImageInBrowserFrame from "../../components/ImageInBrowserFrame";
 
 export default function Healthcare() {
   return (

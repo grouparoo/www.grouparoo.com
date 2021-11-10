@@ -9,7 +9,7 @@ import {
 } from "../../utils/releaseNotes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { releaseBadges, releaseDate, components } from "./index";
-import SEO from "../../components/seo";
+import SEO from "../../components/SEO";
 
 export default function ReleaseNotePage({ pageProps, ...props }) {
   const feature: ReleaseNote = pageProps.feature;

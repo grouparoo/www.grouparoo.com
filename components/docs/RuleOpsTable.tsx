@@ -12,7 +12,7 @@ import {
 } from "react-bootstrap";
 import pgRuleOps from "../../data/property-ops-dictionary--postgres.json";
 import sqliteRuleOps from "../../data/property-ops-dictionary--sqlite.json";
-import CodeBlock from "../code";
+import CodeBlock from "../Code";
 
 const propertyTypes = [
   "boolean",

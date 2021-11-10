@@ -2,9 +2,9 @@ import Link from "next/link";
 
 import { PluginData } from "../../../data/plugins";
 
-import { Alert } from "../";
-import CodeBlock from "./codeBlock";
-import OptionsList from "./optionsList";
+import { Alert } from "../Index";
+import CodeBlock from "./CodeBlock";
+import OptionsList from "./OptionsList";
 
 const PluginDocsCreateApp = ({ plugin }: { plugin: string }) => {
   if (!plugin) return null;

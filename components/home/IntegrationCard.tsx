@@ -1,5 +1,5 @@
 import { Card, Badge } from "react-bootstrap";
-import SmallIntegration from "./smallIntegration";
+import SmallIntegration from "./SmallIntegration";
 import { getPluginDisplay } from "../../data/plugins";
 import Link from "next/link";
 

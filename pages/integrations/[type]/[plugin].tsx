@@ -1,13 +1,13 @@
 import { Container, Button, Row, Col } from "react-bootstrap";
-import IntegrationCard from "../../../components/home/integrationCard";
-import IntegrationMappings from "../../../components/home/integrationMappings";
-import IntegrationInstallation from "../../../components/home/integrationInstallation";
-import IntegrationSources from "../../../components/home/integrationSources";
-import IntegrationDestinations from "../../../components/home/integrationDestinations";
-import IntegrationsHead from "../../../components/home/integrationsHead";
-import BigArrow from "../../../components/bigArrow";
+import IntegrationCard from "../../../components/home/IntegrationCard";
+import IntegrationMappings from "../../../components/home/IntegrationMappings";
+import IntegrationInstallation from "../../../components/home/IntegrationInstallation";
+import IntegrationSources from "../../../components/home/IntegrationSources";
+import IntegrationDestinations from "../../../components/home/IntegrationDestinations";
+import IntegrationsHead from "../../../components/home/IntegrationsHead";
+import BigArrow from "../../../components/BigArrow";
 import { PluginData, getUseCasePaths } from "../../../data/plugins";
-import ImageInBrowserFrame from "../../../components/imageInBrowserFrame";
+import ImageInBrowserFrame from "../../../components/ImageInBrowserFrame";
 
 export default function IntegrationsPage({
   pageProps,

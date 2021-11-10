@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { PluginData } from "../../../data/plugins";
-import CodeBlock from "./codeBlock";
+import CodeBlock from "./CodeBlock";
 
 const packageJsonAfterInstallation = (pkgName) => `
 // package.json

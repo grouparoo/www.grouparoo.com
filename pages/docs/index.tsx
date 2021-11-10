@@ -7,7 +7,7 @@ import {
   ButtonGroup,
   Alert,
 } from "react-bootstrap";
-import { TableOfContents } from "../../components/docs/tableOfContents";
+import { TableOfContents } from "../../components/docs/TableOfContents";
 
 export default function DocsIndex() {
   return (

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import Home from "../../pages/index";
-import "../../components/icons";
+import "../../components/Icons";
 
 describe("page/home", () => {
   test("renders the page", () => {

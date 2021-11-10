@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
-import IntegrationCard from "../components/home/integrationCard";
+import IntegrationCard from "../components/home/IntegrationCard";
 import { PluginData } from "../data/plugins";
-import SEO from "../components/seo";
+import SEO from "../components/SEO";
 
 export default function IntegrationsPage() {
   return (

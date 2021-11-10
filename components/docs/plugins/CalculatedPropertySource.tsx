@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { PluginData } from "../../../data/plugins";
-import CodeBlock from "./codeBlock";
+import CodeBlock from "./CodeBlock";
 
-import { Alert } from "../index";
+import { Alert } from "../Index";
 
 const PluginDocsCalculatedPropertySource = ({ plugin }: { plugin: string }) => {
   const pluginData = PluginData.find(

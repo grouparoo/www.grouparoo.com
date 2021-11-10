@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useApi } from "./../hooks/useApi";
+import { useApi } from "../hooks/useApi";
 import { useForm } from "react-hook-form";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { ErrorHandler } from "../utils/errorHandler";

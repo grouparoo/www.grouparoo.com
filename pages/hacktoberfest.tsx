@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "../components/Image";
 
-import SEO from "../components/seo";
+import SEO from "../components/SEO";
 
 export default function Hacktoberfest({ pageProps }) {
   return (

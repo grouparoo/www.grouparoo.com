@@ -1,9 +1,9 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
-import IntegrationButton from "../home/integrationButton";
+import IntegrationButton from "./IntegrationButton";
 import { PluginData } from "../../data/plugins";
 import { Fragment } from "react";
 
-export default function IntegrationDestinations() {
+export default function IntegrationSources() {
   return (
     <>
       <Container>
@@ -12,14 +12,12 @@ export default function IntegrationDestinations() {
             ? PluginData.sort((a, b) => {
                 return b.priority - a.priority;
               })
-                .filter(
-                  (pluginType) => pluginType.primaryType === "destination"
-                )
+                .filter((pluginType) => pluginType.primaryType === "source")
                 .filter((pluginType) => pluginType.showLink === true)
                 .slice(0, 5)
                 .map((plugin, idx) => {
                   return (
-                    <Fragment key={`integrationDestination-${idx}`}>
+                    <Fragment key={`integrationSource-${idx}`}>
                       <IntegrationButton
                         name={plugin.name}
                         slug={plugin.slug}

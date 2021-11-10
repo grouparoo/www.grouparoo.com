@@ -1,7 +1,7 @@
 import { loadEntries, loadMdxFile, getStaticMdxPaths } from "./mdxUtils";
 import getAuthor from "./getAuthor";
-import BlogImage from "../components/blog/image";
-import Tweet from "../components/blog/tweet";
+import BlogImage from "../components/blog/Image";
+import Tweet from "../components/blog/Tweet";
 import { Alert, Card } from "react-bootstrap";
 import { Feed } from "feed";
 import Link from "next/link";

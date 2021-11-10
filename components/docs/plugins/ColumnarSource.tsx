@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { PluginData } from "../../../data/plugins";
 
-import TableSource from "./tableSource";
-import QuerySource from "./querySource";
-import { Alert } from "../index";
+import TableSource from "./TableSource";
+import QuerySource from "./QuerySource";
+import { Alert } from "../Index";
 
 const PluginDocsColumnarSource = ({ plugin }: { plugin: string }) => {
   const pluginData = PluginData.find(({ name }) => name === plugin);
