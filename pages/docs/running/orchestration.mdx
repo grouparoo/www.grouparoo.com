@@ -6,30 +6,24 @@ pullQuote: "It's easy to integrate Grouparoo into your existing ELT/ELT process"
 
 It's easy to integrate Grouparoo into your existing ELT/ELT process! There are 3 main ways tell Grouparoo when to run:
 
-- Running Grouparoo directly via an Orchestrator
-- Triggering Schedules via the API
-- Triggering Schedules via a Query
-
-## Running Grouparoo directly via an Orchestrator
-
-Grouparoo can always be run via the CLI via `grouparoo run`. Some customers may want to run Grouparoo via the CLI directly from their orchestrator a the proper time at the end of their ETL/ELT pipeline. For these use cases, we recommend configuring Grouparoo via code config and using the `grouparoo run` command. This will run all Schedules at this time, when `grouparoo run` is started.
-
-There are [flags which can be used to customize the run command's behavior](/docs/cli/run#run). This method of triggering Schedules is only applicable when self-hosting Grouparoo.
+- [Triggering Schedules via the API](#triggering-schedules-via-the-api)
+- [Triggering Schedules via a Query](#triggering-schedules-via-a-query)
+- [Running Grouparoo directly via an Orchestrator](#running-grouparoo-directly-via-an-orchestrator)
 
 ## Triggering Schedules via the API
 
-Using the Grouparoo API, you can choose to run a [Schedule](/docs/getting-started/product-concepts#schedule) whenever it is right for you. A common use-case is to trigger all of your Grouparoo Schedules to look for new records at the conclusion of a [DBT](https://www.getdbt.com/) transform step via [Airflow](https://airflow.apache.org/) or [Dagster](https://dagster.io/).
+Using the Grouparoo API, you can choose to run a [Schedule](/docs/getting-started/product-concepts#schedule) whenever it is right for you. A common use-case is to trigger all of your Grouparoo Schedules to look for new & updated Records at the conclusion of a [DBT](https://www.getdbt.com/) transform step via and Orchestrator like [Airflow](https://airflow.apache.org/) or [Dagster](https://dagster.io/).
 
-The `/api/v1/schedules/run` endpoint can be used to trigger a Run for your Schedules. You can run all of them at once or provide a list of specific `scheduleIds` to run now.
+The `/api/v1/schedules/run` endpoint can be used to trigger a Run for your Schedules. You can run all of your Schedules or provide a list of specific `scheduleIds` to run.
 
-First, create an [API Key]() with the `write` permission on `Sources`.
+First, create an [API Key](/docs/getting-started/product-concepts#api-key) with the `write` permission on `Sources`, and then you can use the API as documented below:
 
 ```bash
 # Set Variables
 GROUPAROO_HOST="http://localhost:3000"
 GROUPAROO_API_KEY="ba05b18d9dae4acbb08799e7ef238f0d"
 
-# Request to run all Schedules
+# Request to run all Schedules now
 curl \
   -X POST \
   -d "apiKey=$GROUPAROO_API_KEY" \
@@ -40,7 +34,7 @@ curl \
   -X GET \
 "$GROUPAROO_HOST/api/v1/schedules?apiKey=$GROUPAROO_API_KEY"
 
-# Request to run a specific schedule
+# Request to run a specific schedule now
 # The names of your schedules will be of the format (source_name)_schedule
 # Provide IDs as a JSON Array
 curl \
@@ -55,3 +49,9 @@ More information about using [Grouparoo's REST API can be found here](/docs/supp
 ## Triggering Schedules via a Query
 
 Coming soon.
+
+## Running Grouparoo directly via an Orchestrator
+
+Grouparoo can always be run via the CLI with `grouparoo run`. Some customers may want to run Grouparoo via the CLI directly from their orchestrator as the final part of their ETL/ELT pipeline. For these use cases, we recommend configuring Grouparoo via code config and using the `grouparoo run` command. This will run all Schedules immediately when `grouparoo run` is started.
+
+There are [flags which can be used to customize the run command's behavior](/docs/cli/run#run). This method of triggering Schedules is only applicable when self-hosting Grouparoo.
