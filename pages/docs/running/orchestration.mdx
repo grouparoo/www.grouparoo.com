@@ -12,7 +12,7 @@ It's easy to integrate Grouparoo into your existing ELT/ELT process! There are 3
 
 ## Triggering Schedules via the API
 
-Using the Grouparoo API, you can choose to run a [Schedule](/docs/getting-started/product-concepts#schedule) whenever it is right for you. A common use-case is to trigger all of your Grouparoo Schedules to look for new & updated Records at the conclusion of a [DBT](https://www.getdbt.com/) transform step via and Orchestrator like [Airflow](https://airflow.apache.org/) or [Dagster](https://dagster.io/).
+Using the Grouparoo API, you can choose to run a [Schedule](/docs/getting-started/product-concepts#schedule) whenever it is right for you. A common use-case is to trigger all of your Grouparoo Schedules to look for new & updated Records at the conclusion of a [dbt](https://www.getdbt.com/) transform step via and Orchestrator like [Airflow](https://airflow.apache.org/) or [Dagster](https://dagster.io/).
 
 The `/api/v1/schedules/run` endpoint can be used to trigger a Run for your Schedules. You can run all of your Schedules or provide a list of specific `scheduleIds` to run.
 
