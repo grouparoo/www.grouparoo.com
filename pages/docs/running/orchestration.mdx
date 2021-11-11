@@ -1,0 +1,57 @@
+---
+title: "ELT & ETL Orchestration"
+date: "2021-11-11"
+pullQuote: "It's easy to integrate Grouparoo into your existing ELT/ELT process"
+---
+
+It's easy to integrate Grouparoo into your existing ELT/ELT process! There are 3 main ways tell Grouparoo when to run:
+
+- Running Grouparoo directly via an Orchestrator
+- Triggering Schedules via the API
+- Triggering Schedules via a Query
+
+## Running Grouparoo directly via an Orchestrator
+
+Grouparoo can always be run via the CLI via `grouparoo run` or `grouparoo start`. Some customers may want to run Grouparoo via the CLI directly from their orchestrator a the proper time at the end of their ETL/ELT pipeline. For these use cases, we recommend configuring Grouparoo via code config and using the `grouparoo run` command.
+
+This method of triggering Grouparoo is only applicable when self-hosting Grouparoo.
+
+## Triggering Schedules via the API
+
+Using the Grouparoo API, you can choose to run a [Schedule](/docs/getting-started/product-concepts#schedule) whenever it is right for you. A common use-case is to trigger all of your Grouparoo Schedules to look for new records at the conclusion of a [DBT](https://www.getdbt.com/) transform step via [Airflow](https://airflow.apache.org/) or [Dagster](https://dagster.io/).
+
+The `/api/v1/schedules` endpoint can be used to trigger a Run for your Schedules. You can run all of them at once or provide a list of specific `scheduleIds` to run now.
+
+First, create an [API Key]() with the `write` permission on `Sources`.
+
+```bash
+# Set Variables
+GROUPAROO_HOST="http://localhost:3000"
+GROUPAROO_API_KEY="ba05b18d9dae4acbb08799e7ef238f0d"
+
+# Request to run all Schedules
+curl \
+  -X POST \
+  -d "apiKey=$GROUPAROO_API_KEY" \
+"$GROUPAROO_HOST/api/v1/schedules/run"
+
+# Request to view the available schedules
+curl \
+  -X GET \
+"$GROUPAROO_HOST/api/v1/schedules?apiKey=$GROUPAROO_API_KEY"
+
+# Request to run a specific schedule
+# The names of your schedules will be of the format (source_name)_schedule
+# Provide IDs as a JSON Array
+curl \
+  -X POST \
+  -d "apiKey=$GROUPAROO_API_KEY" \
+  -d "scheduleIds=[\"users_table_schedule\"]" \
+"$GROUPAROO_HOST/api/v1/schedules/run"
+```
+
+More information about using [Grouparoo's REST API can be found here](/docs/support/rest-api), including how to generate API Keys. You can learn more about the specifics of this (or any) API endpoint that your Grouparoo instance provides by visiting the `/swagger` page on your Grouparoo instance.
+
+## Triggering Schedules via a Query
+
+Coming soon.

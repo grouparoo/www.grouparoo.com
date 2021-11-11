@@ -120,6 +120,11 @@ const DocsNav: NavItem[] = [
         path: "/docs/running/settings",
       },
       {
+        title: "Running Grouparoo: Orchestration",
+        linkText: "Orchestration",
+        path: "/docs/running/orchestration",
+      },
+      {
         title: "Running Grouparoo: Testing",
         linkText: "Testing",
         path: "/docs/running/testing",
