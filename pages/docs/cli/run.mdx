@@ -38,7 +38,7 @@ The `status` command will produce human-readable output like the following:
 The `grouparoo run` command differs from the `grouparoo start` command in a few key ways:
 
 - The `grouparoo run` command will terminate when there is nothing left to do. You'll see similar status to `grouparoo status` periodically displayed in the console.
-- The `grouparoo run` command will run _all_ schedules exactly once. We will not continue to process them as time progresses. You can choose to run non-recurring schedules as well via a flag.
+- The `grouparoo run` command will run _all_ schedules exactly once. We will not continue to add new runs as time progresses per a Schedule. You can choose to run non-recurring schedules as well via a flag.
 
 <CLICommand name="start" />
 
