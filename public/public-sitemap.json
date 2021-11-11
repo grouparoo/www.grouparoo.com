@@ -52,6 +52,7 @@
   "/docs/plugins/grouparoo-snowflake",
   "/docs/plugins/grouparoo-sqlite",
   "/docs/running",
+  "/docs/running/orchestration",
   "/docs/running/settings",
   "/docs/running/testing",
   "/docs/running/ui-enterprise",
