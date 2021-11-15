@@ -39,7 +39,7 @@ export const ClickHouse: Plugin = {
       imageSrc: "/images/home/integrations/clickhouse/add-clickhouse-app.png",
       imageAlt: "Grouparoo ClickHouse settings",
       imageWidth: 932,
-      imageHeight: 506,
+      imageHeight: 524,
     },
     {
       header: "Define Record Properties without needing to write SQL queries",
@@ -49,7 +49,7 @@ export const ClickHouse: Plugin = {
         "/images/home/integrations/clickhouse/clickhouse-table-mode.png",
       imageAlt: "ClickHouse Table Source",
       imageWidth: 932,
-      imageHeight: 506,
+      imageHeight: 524,
     },
     {
       header: "But you can also write SQL if you want",
@@ -59,7 +59,7 @@ export const ClickHouse: Plugin = {
         "/images/home/integrations/clickhouse/clickhouse-query-mode.png",
       imageAlt: "ClickHouse Query Source",
       imageWidth: 932,
-      imageHeight: 506,
+      imageHeight: 524,
     },
   ],
   configOptions: {
