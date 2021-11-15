@@ -1,23 +1,21 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
+const fontFamilies = [
+  "IBM+Plex+Mono:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700",
+  "IBM+Plex+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400",
+  "Inter:wght@100;300;400;500;700;900",
+];
+const fontUrl = `https://fonts.googleapis.com/css2?${fontFamilies
+  .map((f) => `family=${f}`)
+  .join("&")}&display=swap`;
+
 class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
         <Head>
           {/* Google Fonts */}
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-            rel="stylesheet"
-          />
+          <link href={fontUrl} rel="stylesheet" />
 
           {/* Google Tag Manager + Google Analytics */}
           <script
