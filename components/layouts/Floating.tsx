@@ -104,13 +104,6 @@ function FloatingLayout({ children }) {
         />
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="/css/prism.css"></link>
-
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="*"
-        />
       </Head>
       <div className="main">
         <Container
