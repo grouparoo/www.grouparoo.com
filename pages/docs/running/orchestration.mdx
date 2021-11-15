@@ -1,0 +1,161 @@
+---
+title: "ELT & ETL Orchestration"
+date: "2021-11-11"
+pullQuote: "It's easy to integrate Grouparoo into your existing ELT/ELT process"
+---
+
+It's easy to integrate Grouparoo into your existing ELT/ELT process! Grouparoo is a core part of the [modern data stack](/solutions/modern-data-stack) and provides a number of ways to integrate with the rest of your data infrastructure, and is compatible with a number of different orchestrators - tools that schedule and coordinate different parts of your data pipeline.
+
+There are 4 main ways tell Grouparoo when to check for new or updated data:
+
+- [Triggering Schedules via Time](#triggering-schedules-via-time)
+- [Triggering Schedules via the API](#triggering-schedules-via-the-api)
+- [Triggering Schedules via a Query](#triggering-schedules-via-a-query)
+- [Running Grouparoo directly via the CLI](#running-grouparoo-directly-via-the-cli)
+
+## Triggering Schedules via Time
+
+The simplest way to check for new data is create a recurring [Schedule](/docs/getting-started/product-concepts#schedule) within Grouparoo. A recurring Schedule will check your Source every-so-often for new data and import it.
+
+For example, this configuration below would check the `users` table in the data warehouse for new data every 30 minutes. We know data is new because looking at the `updated_at` column and storing the largest value seen as a [High Water Mark](/docs/getting-started/product-concepts#high-watermark)
+
+```js
+// from config/sources/users.json
+
+[
+  {
+    class: "Source",
+    id: "users",
+    modelId: "users",
+    name: "Data Warehouse Users",
+    type: "redshift-import-table",
+    appId: "data_warehouse",
+    options: {
+      table: "users",
+    },
+    mapping: {
+      id: "user_id",
+    },
+  },
+  {
+    class: "Schedule",
+    id: "users_schedule",
+    name: "Users Schedule",
+    sourceId: "users",
+    recurring: true,
+    recurringFrequency: 1800000, // 30 minutes in ms
+    confirmRecords: false,
+    options: {
+      column: "updated_at",
+    },
+    filters: [],
+  },
+];
+```
+
+This method is the simplest and is built into Grouparoo directly.
+
+## Triggering Schedules via the API
+
+Using the Grouparoo API, you can choose to run a [Schedule](/docs/getting-started/product-concepts#schedule) whenever it is right for you. A common use-case is to trigger all of your Grouparoo Schedules to look for new & updated Records at the conclusion of a [dbt](https://www.getdbt.com/) transform step via an Orchestrator like [Airflow](https://airflow.apache.org/) or [Dagster](https://dagster.io/).
+
+The `/api/v1/schedules/run` endpoint can be used to trigger a Run for your Schedules. You can run all of your Schedules or provide a list of specific `scheduleIds` to run.
+
+First, create an [API Key](/docs/getting-started/product-concepts#api-key) with the `write` permission on `Sources`, and then you can use the API as documented below:
+
+```bash
+# Set Variables
+GROUPAROO_HOST="http://localhost:3000"
+GROUPAROO_API_KEY="ba05b18d9dae4acbb08799e7ef238f0d"
+
+# Request to run all Schedules now
+curl \
+  -X POST \
+  -d "apiKey=$GROUPAROO_API_KEY" \
+"$GROUPAROO_HOST/api/v1/schedules/run"
+
+# --- OR ---
+
+# Request to view the available schedules
+curl \
+  -X GET \
+"$GROUPAROO_HOST/api/v1/schedules?apiKey=$GROUPAROO_API_KEY"
+
+# Request to run a specific schedule now
+# The names of your schedules will be of the format (source_name)_schedule
+# Provide IDs as a JSON Array
+curl \
+  -X POST \
+  -d "apiKey=$GROUPAROO_API_KEY" \
+  -d "scheduleIds=[\"users_table_schedule\"]" \
+"$GROUPAROO_HOST/api/v1/schedules/run"
+```
+
+More information about using [Grouparoo's REST API can be found here](/docs/support/rest-api), including how to generate API Keys. You can learn more about the specifics of this (or any) API endpoint that your Grouparoo instance provides by visiting the `/swagger` page on your Grouparoo instance.
+
+If you want to wait until the Runs created by the call to `/api/v1/schedules/run` are complete before moving on to the next step in your data pipeline, you can! You can also use the API to retrieve run status:
+
+```bash
+# Store the Run ID
+RUN_ID="run_aad727ae-b8f8-4a6a-b205-015113bf0e7c"
+
+# Request details of a Run
+# Pipe through `jq` to get just the property we are looking for
+curl \
+  -X GET \
+"$GROUPAROO_HOST/api/v1/run/$RUN_ID?apiKey=$GROUPAROO_API_KEY" \
+| jq '.run.state'
+```
+
+Note that your API Key will need read access to the `run` permission as well.
+
+## Triggering Schedules via a Query
+
+> Coming soon.
+
+## Running Grouparoo directly via the CLI
+
+Grouparoo can always be run via the command line with `grouparoo run`. Some customers may want to run Grouparoo via the CLI directly from their orchestrator as the final part of their ETL/ELT pipeline, or simply every night via `cron`. For these use cases, we recommend configuring Grouparoo via [code config](/docs/config/code-config) and using the `grouparoo run` command. This will run all Schedules immediately when `grouparoo run` is started.
+
+```bash
+$ grouparoo run
+
+🦘 Grouparoo: run
+notice: Starting Grouparoo v0.7.4 on node.js v16.8.0
+
+# wait for completion...
+
+┌-- 🦘 Run Completed @ 2021-11-12T18:55:38.806Z ---
+|
+| RECORDS
+|
+|   * Records Updated: 105
+|   * Records Created: 105
+|   * All Records: 105
+|
+| SOURCES
+|
+| 1. Product Users
+|   * Records Created: 100
+|   * Records Imported: 100
+|   * Imports Created: 101
+|   * Error: none
+|
+| 2. Accounts
+|   * Records Created: 5
+|   * Records Imported: 5
+|   * Imports Created: 6
+|   * Error: none
+|
+| DESTINATIONS
+|
+| 1. Logger Destination
+|   * Exports Created: 100
+|   * Exports Failed: 0
+|   * Exports Complete: 100
+└--------------------------------------------------
+
+notice: All Tasks Complete!
+```
+
+There are [flags which can be used to customize the run command's behavior](/docs/cli/run#run). This method of triggering Schedules is only applicable when self-hosting Grouparoo.

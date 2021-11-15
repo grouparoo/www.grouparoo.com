@@ -15,6 +15,7 @@ Welcome to the Grouparoo Dictionary! This is the collection of terms we use thro
 ### Table of Contents
 
 - [App](#app)
+- [API Key](#api-key)
 - [Application Database](#application-database)
 - [Batch Generation](#batch-generation)
 - [Calculated Group](#calculated-group)
@@ -32,14 +33,21 @@ Welcome to the Grouparoo Dictionary! This is the collection of terms we use thro
 - [Record Property](#record-property)
 - [Property](#property)
 - [Query Source](#query-source)
-- [Source](#source)
+- [Run](#run)
 - [Schedule](#schedule)
+- [Source](#source)
 - [Sync Mode](#sync-mode)
 - [Table Source](#table-source)
 
 ## App
 
 An App in Grouparoo represents a _integration_, or a _connection_ to some service. Every [Source](#source) and [Destination](#destination) requires an App. [See this page](/integrations) for a full list of available integrations.
+
+## API Key
+
+Grouparoo uses API Keys to allow for programmatic access to API provided by our Grouparoo instance. Each API Key can have different read and write permissions to various sections of thr Grouparoo API.
+
+You can learn more about how to use and generate API Keys from the [REST API documentation](/docs/support/rest-api).
 
 ## Application Database
 
@@ -162,7 +170,9 @@ A Run is a series of imports and/or exports. Runs are triggered by actions in Gr
 
 ## Schedule
 
-A Schedule defines some interval by which to process a [Run](#run). Though technically separate objects, Schedules are often used in conjunction with [Sources](#sources).
+Schedules define a frequency that Grouparoo should check your [Sources](#source) for new data, creating a [Run](#run). Whenever possible, Schedules use [High watermarks](#high-watermark) to scan for only new and updated data in your Data Warehouse. Schedules can also be triggered manually or via the [API](/docs/running/orchestration#triggering-schedules-via-the-api).
+
+Though technically separate objects, Schedules are often used in conjunction with [Sources](#sources).
 
 ## Source
 
