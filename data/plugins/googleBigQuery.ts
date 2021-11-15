@@ -4,7 +4,7 @@ export const GoogleBigQuery: Plugin = {
   name: "BigQuery",
   description:
     "Grouparoo's Google BigQuery integration allows you to sync all of your customer data that lives in your Google BigQuery data warehouse with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
-  priority: 80,
+  priority: 85,
   slug: "bigquery",
   logo: "bigquery.png",
   primaryType: "source",

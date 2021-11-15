@@ -2,6 +2,7 @@ import { Braze } from "./braze";
 import { CalculatedProperty } from "./calculated-property";
 import { CSV } from "./csv";
 import { Customerio } from "./customerio";
+import { ClickHouse } from "./clickhouse";
 import { Eloqua } from "./eloqua";
 import { Facebook } from "./facebook";
 import { GoogleBigQuery } from "./googleBigQuery";
@@ -93,6 +94,7 @@ export interface Plugin {
 export const PluginData: Plugin[] = [
   Braze,
   CalculatedProperty,
+  ClickHouse,
   CSV,
   Eloqua,
   Customerio,
