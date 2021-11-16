@@ -1,0 +1,118 @@
+---
+title: "Types of APIs"
+date: "2021-11-16"
+author: "Micah Bello"
+seoDescription: "Learn more about the different types of APIs that exist. Grouparoo makes it easy to connect your data warehouse with tools' APIs. ✓ Start a free trial now!"
+pullQuote: "Learn more about the different types of APIs that exist. Grouparoo makes it easy to connect your data warehouse with tools' APIs."
+image: "types-of-apis/hive.jpg"
+tags: [data]
+---
+
+Application Programming Interfaces or APIs are an integral part of modern software development and enable a wide variety of applications and workflows. Enterprises are becoming increasingly reliant on APIs to effectively connect with partners and customers. 
+
+APIs come in an array of types and protocols that work great in different scenarios. In this article, we’ll examine the different types of APIs used in software development today. Let’s get started.
+
+<Image
+  alt="Image of a bee hive"
+  src="types-of-apis/hive.jpg"
+  centered
+  height={730}
+  width={918}
+/>
+
+## Types of APIs
+
+APIs are often categorized based on their scope or level of access. So how many APIs are there? The four main API types are public, internal, partner, and composite APIs.
+
+
+### Public APIs
+
+A public or open API is one that’s designed for use by the public. As a result, such APIs are easily accessible by any developer or business seeking to utilize the data or functionality they provide. 
+
+Public APIs can either be free or may require registration and a fee per call depending on the provider. Some examples of [public APIs](https://github.com/public-apis/public-apis) include Archive.org’s search and book APIs, Square’s payment API, and cryptocurrency APIs such as Coinbase’s API. 
+
+
+### Internal APIs
+
+Unlike public APIs, internal APIs are designed for use within an enterprise. They’re used to facilitate communication between the different internal teams and software systems in a company. 
+
+Internal APIs are used by a lot of large companies to operate more efficiently while saving costs. They also help to enhance security and enable the development of enterprise mobile applications.
+
+
+### Partner APIs
+
+Partner APIs sit somewhere in the middle between public and internal APIs. They’re available, not to the public, but specific third parties for business-to-business interactions. Thus, access to partner APIs is restricted to only authorized partners with proper licenses. 
+
+
+### Composite APIs
+
+Composite APIs leverage multiple API endpoints to perform a series of related operations. They are commonly used in microservice architectures, where it may be necessary to retrieve data from different services. Composite APIs are ideal for implementing complex API behaviors and can help to improve performance. 
+
+
+## Types of API Protocols and Architectures
+
+APIs can also be grouped based on the architecture and protocol they implement. Let’s take a closer look at these protocols and architectures. 
+
+
+### REST
+
+REST or Representational State Transfer is a popular API architecture. It specifies a couple of design constraints or principles that APIs must adhere to in order to be considered truly “RESTful.” Some of these guidelines include:
+
+
+
+* **Uniform interface. **This constraint requires the API interface to be uniform and resource-based. Resources should have logical URIs that identify them and allow for manipulation. Responses should also adhere to the HATEOAS (Hypermedia as the Engine of Application State) guideline by including links to related resources wherever applicable. 
+* **Client-Server.** The client and the server shouldn’t be dependent on each other. Both should be able to evolve separately.
+* **Stateless.** The server should not store any information between requests. The client must provide all information needed to process each request, including authorization and authentication parameters.
+* **Cacheable.** Responses may be cached on the client. Every response should indicate if it can be cached and for how long.
+* **Layered system.** The API should work in a layered architecture. Layers should be loosely coupled and encapsulated.  
+* **Code on demand.** This optional constraint specifies that the API can return executable code to the client if necessary. 
+
+Most modern data and service APIs are built around these high-level design principles even though few actually adhere completely to all of them. Some examples of APIs that conform to REST include [GitHub’s API](https://docs.github.com/en/rest), the [Google Maps API](https://developers.google.com/maps/), and [PayPal’s API](https://developer.paypal.com/docs/api/overview/).
+
+
+### RPC
+
+RPC or Remote Procedure Call is an API protocol that is designed around actions rather than resources. In other words, RPC APIs are built to execute actions on the server rather than retrieve resources. 
+
+There are two types of RPC protocols: XML-RPC and JSON-RPC. The main difference between both variants is the format the types of API calls are encoded in. XML-RPC uses XML while JSON-RPC uses JSON.
+
+
+### SOAP
+
+SOAP or Simple Object Access Protocol is a messaging protocol that was designed for communication over the internet. It supports a range of internet protocols including HTTP,  TCP, and SMTP.  
+
+SOAP leverages XML for data transfer. It’s a very structured and relatively inflexible standard for building APIs. The [SOAP specification](https://www.w3.org/TR/soap/), which is defined by the W3C details how to structure and process SOAP messages, and how to use SOAP with HTTP.
+
+SOAP is ideal for scenarios where advanced security and strict rules are required. However, most modern developers prefer to create APIs using the more flexible REST architecture. 
+
+
+## Types of API by Use Cases
+
+APIs can also be classified according to the use cases they enable. Some examples include web APIs, database APIs, remote APIs, and operating system APIs.
+
+
+### Web APIs
+
+Web APIs are the most common type of APIs used in software development today. They enable the transfer of data between web-based systems. Developers use web APIs to add functionality to their software. A payment gateway APIs, for example, enables developers to integrate online payment processing functionality into their applications. Businesses also use web APIs to share information with third parties and their customers.
+
+
+### Database APIs
+
+Database APIs enable software developers to build applications that interact with databases using a set of standardized queries and commands. Examples of database APIs include the ORDS (Oracle REST Data Services) API and the Drupal 7 Database API.
+
+
+### Remote APIs
+
+Remote APIs facilitate communication between remotely located software systems. Since most systems are connected over the internet, remote APIs usually leverage web standards. The Java Remote Method Invocation API is an example of a remote API.
+
+
+### Operating systems APIs
+
+Operating systems usually have a set of standard APIs that specify how software applications can interact with the low-level resources and functionality provided by the operating system. Some examples of operating system APIs include the Windows API and the Linux kernel-user space and kernel internal APIs. 
+
+
+## Conclusion
+
+Application Programming Interfaces are critical components of the applications that drive positive business outcomes. Grouparoo allows you to work with a variety of tools such as Salesforce, Mailchimp, and Hubspot with pre-built integrations that make it easy to leverage such APIs.
+
+_featured image via [unsplash](https://unsplash.com/photos/gi1f13S1-64)_
