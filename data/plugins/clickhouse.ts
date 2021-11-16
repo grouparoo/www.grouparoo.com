@@ -78,9 +78,9 @@ export const ClickHouse: Plugin = {
       description: 'The database name - e.g. `"data_warehouse"`.',
     },
     user: {
-      default: undefined,
+      default: "default",
       description:
-        'The user to connect to the database - e.g. `"grouparoo_user"`.  If you are connecting to localhost, leave as `undefined`.',
+        'The user to connect to the database - e.g. `"grouparoo_user"`.  If you are connecting to localhost, leave as `default`.',
     },
     password: {
       description:
