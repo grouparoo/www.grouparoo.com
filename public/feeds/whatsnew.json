@@ -12,7 +12,7 @@
   "items": [
     {
       "id": "grouparoo-release-note-2021-11-15-clickhouse",
-      "content_html": "<p>With the release of Grouparoo 0.74 you can <a href=\"/integrations/sources/clickhouse\">sync data from and to\na ClickHouse database</a> with the <code>@grouparoo/clickhouse</code> plugin.</p><p>For more information and examples, check out the\n<a href=\"/docs/plugins/grouparoo-clickhouse\">ClickHouse plugin docs</a>.</p>",
+      "content_html": "<p>With the release of Grouparoo 0.7.4 you can <a href=\"/integrations/sources/clickhouse\">sync data from and to\na ClickHouse database</a> with the <code>@grouparoo/clickhouse</code> plugin.</p><p>For more information and examples, check out the\n<a href=\"/docs/plugins/grouparoo-clickhouse\">ClickHouse plugin docs</a>.</p>",
       "url": "https://www.grouparoo.com/whats-new#2021-11-15-clickhouse",
       "title": "ClickHouse Plugin",
       "date_modified": "2021-11-15T00:00:00.000Z",
