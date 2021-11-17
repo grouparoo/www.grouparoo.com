@@ -4,9 +4,9 @@ date: "2021-11-10"
 pullQuote: "Simple integration steps for Grouparoo Cloud"
 ---
 
-If you are here you should already have an API Key and Project ID.
-
 Grouparoo Cloud requires three things to function: A github action yaml file and two secrets to identify and authorize the code config repository.
+
+It is assumed you have an existing repository on github that was setup using our [Config UI](/docs/config).
 
 ### GitHub Repository Secrets
 
@@ -22,18 +22,6 @@ In your GitHub repository go to: Settings -> Secrets -> New repository secret.
   width={1127}
   height={650}
 />
-
-<table>
-  <tr>
-    <th>Secret</th>
-  </tr>
-  <tr>
-    <td>GROUPAROO_CLOUD_TOKEN</td>
-  </tr>
-  <tr>
-    <td>GROUPAROO_CLOUD_PROJECT_ID</td>
-  </tr>
-</table>
 
 Add `GROUPAROO_CLOUD_TOKEN` and `GROUPAROO_CLOUD_PROJECT_ID` with the provided values.
 
