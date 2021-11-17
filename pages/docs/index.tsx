@@ -117,7 +117,7 @@ export default function DocsIndex() {
                   <h2>Need help integrating with Grouparoo Cloud?</h2>
                   <p>
                     Grouparoo Cloud is our SaaS Cloud-hosted option. We make it
-                    easy to use _your_ Code Config repository on our hosted
+                    easy to use your Code Config repository on our hosted
                     system, giving you security and peace-of-mind for all your
                     reverse-ETL needs!
                   </p>
