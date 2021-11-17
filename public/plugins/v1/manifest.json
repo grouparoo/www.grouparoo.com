@@ -40,6 +40,16 @@
     "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-calculated-property"
   },
   {
+    "name": "ClickHouse",
+    "description": "Grouparoo's ClickHouse integration allows you to sync all of your customer data that lives in your ClickHouse database with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/clickhouse/clickhouse.png",
+    "packageName": "@grouparoo/clickhouse",
+    "source": true,
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/clickhouse",
+    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-clickhouse"
+  },
+  {
     "name": "Customer.io",
     "description": "Grouparoo's Customer.io integration allows you to sync all of your customer data that lives in your data warehouse into Customer.io.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/customerio/customerio.png",

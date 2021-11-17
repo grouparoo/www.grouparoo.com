@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Wed, 27 Oct 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 15 Nov 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,18 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[ClickHouse Plugin]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-11-15-clickhouse</link>
+            <guid>grouparoo-release-note-2021-11-15-clickhouse</guid>
+            <pubDate>Mon, 15 Nov 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>With the release of Grouparoo 0.7.4 you can <a href="/integrations/sources/clickhouse">sync data from and to
+a ClickHouse database</a> with the <code>@grouparoo/clickhouse</code> plugin.</p><p>For more information and examples, check out the
+<a href="/docs/plugins/grouparoo-clickhouse">ClickHouse plugin docs</a>.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
         <item>
             <title><![CDATA[Grouparoo v0.7 adds Models and more]]></title>
             <link>https://www.grouparoo.com/whats-new#2021-10-27-v0-6</link>

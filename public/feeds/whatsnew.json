@@ -11,6 +11,17 @@
   },
   "items": [
     {
+      "id": "grouparoo-release-note-2021-11-15-clickhouse",
+      "content_html": "<p>With the release of Grouparoo 0.7.4 you can <a href=\"/integrations/sources/clickhouse\">sync data from and to\na ClickHouse database</a> with the <code>@grouparoo/clickhouse</code> plugin.</p><p>For more information and examples, check out the\n<a href=\"/docs/plugins/grouparoo-clickhouse\">ClickHouse plugin docs</a>.</p>",
+      "url": "https://www.grouparoo.com/whats-new#2021-11-15-clickhouse",
+      "title": "ClickHouse Plugin",
+      "date_modified": "2021-11-15T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-10-27-v0-6",
       "content_html": "<p>The 0.7 release of Grouparoo is a huge step forward for data engineers using Grouparoo to reliably sync a variety of types of data to operational tools.</p><p>Here are the key features of the release.</p><ul><li>Models enable Grouparoo to work with multiple data schemas at once.</li><li>Grouparoo helps troubleshoot messy data and is more resistant to data problems</li><li>New Destination: Braze Users</li><li>DevOps Logging Plugins: AWS CloudWatch, Prometheus</li></ul><p>Learn more about how it works and see a video <a href=\"https://www.grouparoo.com/blog/v07-release\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">here</a>.</p>",
       "url": "https://www.grouparoo.com/whats-new#2021-10-27-v0-6",

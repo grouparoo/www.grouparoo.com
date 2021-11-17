@@ -192,11 +192,12 @@ const DocsNav: NavItem[] = [
     path: "/docs/plugins",
     children: [
       { title: "BigQuery", path: "/docs/plugins/grouparoo-bigquery" },
+      { title: "Braze", path: "/docs/plugins/grouparoo-braze" },
       {
         title: "Calculated Property",
         path: "/docs/plugins/grouparoo-calculated-property",
       },
-      { title: "Braze", path: "/docs/plugins/grouparoo-braze" },
+      { title: "ClickHouse", path: "/docs/plugins/grouparoo-clickhouse" },
       { title: "Intercom", path: "/docs/plugins/grouparoo-intercom" },
       { title: "Marketo", path: "/docs/plugins/grouparoo-marketo" },
       { title: "Mongo", path: "/docs/plugins/grouparoo-mongo" },
