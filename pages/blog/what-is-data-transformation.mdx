@@ -28,7 +28,7 @@ Simply speaking, the data transformation definition is the process of converting
 
 The advent of cloud-based solutions has enabled a switch to Extract, Load, and Transform (ELT). The difference here is that warehoused data is in its raw form, with the transformation only performed on-demand following information access.
 
-This approach has the advantage that the process from acquiring raw data to warehousing will be significantly faster, which can be beneficial when managing large volumes of frequently changing data. Another benefit is that this approach supports optimizing the data transforming processes all analytical processing evolves. Finally, where access requires small subsets of the data, this reduces the transformation processing overhead.
+This approach has the advantage that the process from acquiring raw data to warehousing will be significantly faster, which can be beneficial when managing large volumes of frequently changing data. Another benefit is that this approach supports optimizing the data transforming processes all analytical processing evolves. Finally, where access requires small subsets of the data, this reduces the transformation processing overhead. One of the leaders in the space focused on data transforms is [dbt](https://getdbt.com).
 
 The downside is that where large volumes of data are frequently accessed, the processing overhead of the transformation stage will be more significant.
 
@@ -75,7 +75,7 @@ Data protection laws may impose legislative limitations on data transformation o
 
 ## Data Transformation Methods
 
-Extraction techniques move or copy raw data into the transformation environment, where the process of data transformation typically follows a sequential stage transition
+Extraction techniques move or copy raw data into the transformation environment, where the process of data transformation typically follows a sequential stage transition.
 
 The first step in transformation is structural transformations that convert data to a standard format, typically including flattening hierarchical structures and adding missing records. To goal is to create a consistent and coherent dataset compatible with analytical applications and services.
 
