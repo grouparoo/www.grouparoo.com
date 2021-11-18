@@ -50,7 +50,7 @@ jobs:
     if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
       - uses: grouparoo/cloud-action@v2
@@ -61,7 +61,7 @@ jobs:
     if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
       - uses: grouparoo/cloud-action@v2
