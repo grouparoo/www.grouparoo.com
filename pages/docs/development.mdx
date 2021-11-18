@@ -31,6 +31,8 @@ See below for the installation guide for your operating system.
   style={{ padding: "1rem" }}
 >
 
+### Step 1: Install The App
+
 ```bash
 # Install NVM to manage node versions
 # From: https://github.com/nvm-sh/nvm
@@ -46,14 +48,6 @@ nvm install v15
 # Depending on your shell (bash, zsh, etc) you may need to ensure that nvm is loaded into your environment via .bashrc, .bash_profile, etc
 # On OSX/ZSH, we recommend installing Oh My ZSH (https://github.com/ohmyzsh/ohmyzsh) and enabling the nvm plugin
 
-# Install & run postgresql (v9.x)
-brew install postgresql
-brew services start postgresql
-
-# Install & run Redis
-brew install redis
-brew services start redis
-
 # Clone this repository
 git clone git@github.com:grouparoo/grouparoo.git
 cd grouparoo
@@ -64,6 +58,20 @@ pnpm install
 # Configure your local environment variables in .env to be able to run the "staging-enterprise" app
 cp apps/staging-enterprise/.env.example apps/staging-enterprise/.env
 open apps/staging-enterprise/.env
+```
+
+### Step 2: Install Redis & Postgres
+
+#### Option 1: Direct Installation
+
+```bash
+# Install & run Redis
+brew install redis
+brew services start redis
+
+# Install & run postgresql (v9.x)
+brew install postgresql
+brew services start postgresql
 
 # Create your local development database (Postgres)
 createdb "grouparoo_development"
@@ -77,6 +85,24 @@ cd apps/staging-enterprise # If you aren't already here
 npm run dev
 ```
 
+#### Option 2: Using Docker
+
+```bash
+# use the redis official Docker image:
+docker run -d --rm --name grouparoo-redis -p 6379:6379 redis
+
+# use the postgres official Docker image:
+docker run -d --rm --name grouparoo-postgres -p 5432:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=grouparoo_development postgres
+```
+
+### Step 3: Run The App
+
+```bash
+# Run the staging-enterprise app example project
+cd apps/staging-enterprise # If you aren't already here
+npm run dev
+```
+
 </Tab>
 <Tab
   key="Linux/Ubuntu"
@@ -84,6 +110,8 @@ npm run dev
   title="Linux/Ubuntu"
   style={{ padding: "1rem" }}
 >
+
+### Step 1: Install The App
 
 ```bash
 # Install NVM to manage node versions
@@ -93,10 +121,23 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 # Install Node.js 15
 nvm install v15
 
-# Install & run postgresql (v9.x)
-sudo apt update
-sudo apt install postgresql postgresql-contrib
+# Clone this repository
+git clone git@github.com:grouparoo/grouparoo.git
+cd grouparoo
 
+# Install dependencies with pnpm (If you don't have pnpm, install it via "npm i -g pnpm")
+pnpm install
+
+# Configure your local environment variables in .env to be able to run the "staging-enterprise" app
+cp apps/staging-enterprise/.env.example apps/staging-enterprise/.env
+nano apps/staging-enterprise/.env
+```
+
+### Step 2: Install Redis & Postgres
+
+#### Option 1: Direct Installation
+
+```bash
 # Install & run Redis
 sudo apt update
 sudo apt install redis-server
@@ -110,19 +151,9 @@ supervised no
 # add the following line bellow the commented line:
 supervised systemd
 
-# alternatively, you can use the redis official Docker image:
-sudo docker run --name my-redis-container -d redis
-
-# Clone this repository
-git clone git@github.com:grouparoo/grouparoo.git
-cd grouparoo
-
-# Install dependencies with pnpm (If you don't have pnpm, install it via "npm i -g pnpm")
-pnpm install
-
-# Configure your local environment variables in .env to be able to run the "staging-enterprise" app
-cp apps/staging-enterprise/.env.example apps/staging-enterprise/.env
-open apps/staging-enterprise/.env
+# Install & run postgresql (v9.x)
+sudo apt update
+sudo apt install postgresql postgresql-contrib
 
 # Create your local development database (Postgres)
 createdb "grouparoo_development"
@@ -130,7 +161,21 @@ createdb "grouparoo_development"
 # or in `psql`
 CREATE DATABASE grouparoo_development;
 GRANT ALL PRIVILEGES ON DATABASE grouparoo_development TO postgres;
+```
 
+#### Option 2: Using Docker
+
+```bash
+# use the redis official Docker image:
+docker run -d --rm --name grouparoo-redis -p 7489:6379 redis
+
+# use the postgres official Docker image:
+docker run -d --rm --name grouparoo-postgres -p 4521:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=grouparoo_development postgres
+```
+
+### Step 3: Run The App
+
+```bash
 # Run the staging-enterprise app example project
 cd apps/staging-enterprise # If you aren't already here
 npm run dev
