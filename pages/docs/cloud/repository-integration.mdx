@@ -4,7 +4,7 @@ date: "2021-11-10"
 pullQuote: "Simple integration steps for Grouparoo Cloud"
 ---
 
-Grouparoo Cloud requires three things to function: A github action yaml file and two secrets to identify and authorize the code config repository.
+Grouparoo Cloud requires three things to function: A github action `.yaml` file and two secrets to identify and authorize the code config repository.
 
 It is assumed you have an existing repository on github that was setup using our [Config UI](/docs/config).
 
@@ -71,6 +71,6 @@ jobs:
           token: ${{ secrets.GROUPAROO_CLOUD_TOKEN }}
 ```
 
-Then create a pull request against your main branch. It may take a few minutes but our CI system should kick in and confirm that your Code Config is valid and hostable. If CI runs green, merge and our system will deploy it into Grouparoo Cloud. Once it's available your Project page in Grouparoo Cloud will provide a link!
+Then create a pull request against your main branch. It may take a few minutes but our CI system will kick in and confirm that your Code Config is valid and host-able. If CI runs green, merge and our system will deploy it into Grouparoo Cloud. Once it's available your Project page in Grouparoo Cloud will provide a link!
 
 If you have any trouble please visit our [Support Page](/docs/support).

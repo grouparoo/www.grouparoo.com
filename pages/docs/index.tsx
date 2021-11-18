@@ -119,7 +119,7 @@ export default function DocsIndex() {
                     Grouparoo Cloud is our SaaS Cloud-hosted option. We make it
                     easy to use your Code Config repository on our hosted
                     system, giving you security and peace-of-mind for all your
-                    reverse-ETL needs!
+                    reverse ETL needs!
                   </p>
                 </Col>
                 <Col style={{ textAlign: "center" }}>
