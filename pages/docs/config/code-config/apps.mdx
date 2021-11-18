@@ -30,6 +30,10 @@ exports.default = async function buildConfig() {
       id: "data_warehouse",
       name: "data_warehouse",
       type: "postgres",
+      refreshQuery: {
+        query: "..."
+        recurringFrequency: 6000
+      }
       options: {
         host: "localhost",
         port: 5432,
@@ -87,5 +91,26 @@ To install a new Plugin, use [the `install` command](/docs/cli/setup#install). F
 The `generate` command attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/apps` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Postgres App, all but `database`, `user`, and `password` were pre-populated.
 
 The best practice when configuring an App is to read the comments, keys, and values within the generated file and fill in the appropriate values for your App.
+
+### Refresh Query
+
+If your app supports an App Refresh Query, you'll see a field with a `refreshQuery` object. App Refresh Query enables Grouparoo to know where to check your app for new data, and run all Schedules for that App if it finds new data. For example, you might set it up as:
+
+```
+  refreshQuery: {
+    query: "SELECT MAX(updated_at) FROM meta_table"
+    recurringFrequency: 6000
+  }
+```
+
+This query would check every minute for a new `updated_at` value in a table called `meta_table`. The table you check with your App Refresh Query may or may not be one that you include as a [Source](/docs/config/code-config/sources).
+
+If there are [Schedules](/docs/config/code-config/sources#adding-a-schedule) on this App's [Sources](/docs/config/code-config/sources) that you do not want to be run, you can add:
+
+```
+  refreshEnabled: false
+```
+
+to your Schedule's config.
 
 <ValidateAndApplyConfig />

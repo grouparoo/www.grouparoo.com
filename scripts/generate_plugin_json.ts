@@ -37,7 +37,7 @@ const pluginDocsUrl = (plugin: Plugin) => {
   const name = plugin.packageName
     .replace(/\@/g, "") // Characters to remove
     .replace(/[\ \/]/g, "-"); // Characters to replace with a hyphen
-  const localPath = `/docs/plugins/${name}`;
+  const localPath = `/docs/integrations/${name}`;
   console.log(localPath);
 
   return localPluginPaths.includes(localPath) ? `${baseUrl}${localPath}` : null;
