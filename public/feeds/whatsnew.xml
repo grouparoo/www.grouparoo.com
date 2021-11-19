@@ -22,7 +22,7 @@
             <pubDate>Mon, 15 Nov 2021 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p>With the release of Grouparoo 0.7.4 you can <a href="/integrations/sources/clickhouse">sync data from and to
 a ClickHouse database</a> with the <code>@grouparoo/clickhouse</code> plugin.</p><p>For more information and examples, check out the
-<a href="/docs/plugins/grouparoo-clickhouse">ClickHouse plugin docs</a>.</p>]]></content:encoded>
+<a href="/docs/integrations/grouparoo-clickhouse">ClickHouse plugin docs</a>.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>

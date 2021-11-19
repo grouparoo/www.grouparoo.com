@@ -110,7 +110,7 @@ export async function getStaticProps() {
         name: titleize(pathParts[0]),
       });
     } else if (pathParts.length > 1) {
-      if (path.includes("integrations")) {
+      if (pathParts[0] === "integrations") {
         const [, integrationType, name] = pathParts;
         if (name) {
           // We know it's a Source or Destintation
@@ -124,7 +124,7 @@ export async function getStaticProps() {
             name: titleize(integrationType),
           });
         }
-      } else if (path.includes("docs")) {
+      } else if (pathParts[0] === "docs") {
         const [, category, ...rest] = pathParts;
         sitemap.docs[category] ??= [];
         sitemap.docs[category].push({
