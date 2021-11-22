@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React from "react";
 
 import { useBootstrapPrefix } from "react-bootstrap/ThemeProvider";
-import { BsPrefixAndClassNameOnlyProps } from "react-bootstrap/helpers";
+import { BsPrefixOnlyProps } from "react-bootstrap/helpers";
 
 import NextImage from "./DebugImage";
 /* Most of this is from next/image */
@@ -32,7 +32,7 @@ declare type ImageProps = Omit<
 /* end from next/image */
 
 export type MyImageProps = ImageProps &
-  BsPrefixAndClassNameOnlyProps & {
+  BsPrefixOnlyProps & {
     fluid?: boolean;
     rounded?: boolean;
     roundedCircle?: boolean;

@@ -74,14 +74,9 @@ const ruleOpsData: RuleOpsDbType[] = [
 const DataTable = ({ data, heading, eventKey }) => {
   return (
     <Fragment>
-      <Accordion.Toggle
-        as={Button}
-        variant="link"
-        eventKey={eventKey}
-        style={{ display: "block", paddingLeft: "0" }}
-      >
+      <Accordion.Button style={{ display: "block", paddingLeft: "0" }}>
         <h4>{heading}</h4>
-      </Accordion.Toggle>
+      </Accordion.Button>
       <Accordion.Collapse eventKey={eventKey}>
         <Fragment>
           <p>

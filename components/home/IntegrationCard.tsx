@@ -34,7 +34,7 @@ export default function IntegrationCard({
 
           {type ? (
             <>
-              <Badge pill variant="warning">
+              <Badge pill bg="warning">
                 {" "}
                 {type.toUpperCase()}
               </Badge>
@@ -46,7 +46,7 @@ export default function IntegrationCard({
 
           {otherType ? (
             <>
-              <Badge pill variant="warning">
+              <Badge pill bg="warning">
                 {" "}
                 {otherType.toUpperCase()}
               </Badge>
@@ -57,7 +57,7 @@ export default function IntegrationCard({
           )}
           {category ? (
             <>
-              <Badge pill variant="primary" className="text-wrap m-1">
+              <Badge pill bg="primary" className="text-wrap m-1">
                 {" "}
                 {category.toUpperCase()}
               </Badge>
