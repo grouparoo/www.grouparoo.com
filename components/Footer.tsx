@@ -104,7 +104,7 @@ export default function Footer() {
               <Col className="d-none d-md-inline-block col-md-1" />
 
               <Col className="col-6 col-md-3 pb-2 px-3 ">
-                <div className="pl-1">
+                <div className="ps-1">
                   <strong>Use Cases</strong>
                   <br />
                   <Link href="/solutions/healthcare">
@@ -152,7 +152,7 @@ export default function Footer() {
                 <hr className="d-md-none mx-auto border-light border-top-0 m-2" />
               </Col>
               <Col className="col-6 col-md-3 pb-2 px-3">
-                <div className="pl-1">
+                <div className="ps-1">
                   <strong>Integrations</strong>
                   <br />
                   <Link href="/integrations/destinations/salesforce">
@@ -195,7 +195,7 @@ export default function Footer() {
                 <hr className="d-md-none mx-auto border-light border-top-0 m-2" />
               </Col>
               <Col className="col-6 col-md-2 pb-2 px-3">
-                <div className="pl-1">
+                <div className="ps-1">
                   <strong>Product</strong>
                   <br />
                   <Link href="/docs">
@@ -228,7 +228,7 @@ export default function Footer() {
                 </div>
               </Col>
               <Col className="col-6 col-md-2 pb-2 px-3">
-                <div className="pl-1">
+                <div className="ps-1">
                   <strong>Company</strong>
                   <br />
                   <Link href="/about">

@@ -15,7 +15,7 @@ export default function GetStarted({
           variant="primary"
           size="lg"
           href="/trial"
-          className="ml-auto mt-1 mb-4"
+          className="ms-auto mt-1 mb-4"
         >
           Start Free Trial
         </Button>

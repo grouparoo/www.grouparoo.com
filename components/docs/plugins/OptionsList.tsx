@@ -14,7 +14,7 @@ const PluginDocsOption = (option: PluginConfigOption) => {
           </span>
         )}
         {option.default && (
-          <span className="font-weight-light">
+          <span className="fw-light">
             {" "}
             (default: <code>{option.default}</code>)
           </span>

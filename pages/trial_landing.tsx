@@ -179,7 +179,7 @@ export default function Trial({ props }) {
             <h2>Start Your Free 30 Day Trial</h2>
             <br />
             <br />
-            <div className="text-left">
+            <div className="text-start">
               <h4>Operationalize your customer data</h4>
               <p>Connect your data warehouse to all of your business tools. </p>
               <h4>Reverse ETL for the modern data stack</h4>
