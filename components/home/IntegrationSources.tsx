@@ -8,26 +8,32 @@ export default function IntegrationSources() {
     <>
       <Container>
         <Row>
-          {PluginData.length > 0
+          {PluginData.length
             ? PluginData.sort((a, b) => {
                 return b.priority - a.priority;
               })
-                .filter((pluginType) => pluginType.primaryType === "source")
-                .filter((pluginType) => pluginType.showLink === true)
+                .filter(
+                  ({ primaryType, showLink }) =>
+                    showLink && primaryType === "source"
+                )
                 .slice(0, 5)
-                .map((plugin, idx) => {
-                  return (
-                    <Fragment key={`integrationSource-${idx}`}>
-                      <IntegrationButton
-                        name={plugin.name}
-                        slug={plugin.slug}
-                        type={plugin.primaryType}
-                        image={plugin.logo}
-                      />{" "}
-                      &nbsp; &nbsp;
-                    </Fragment>
-                  );
-                })
+                .map((plugin, idx) => (
+                  <Col
+                    key={`integrationSource-${idx}`}
+                    lg={4}
+                    md={4}
+                    sm={6}
+                    xs={6}
+                  >
+                    <IntegrationButton
+                      name={plugin.name}
+                      slug={plugin.slug}
+                      type={plugin.primaryType}
+                      image={plugin.logo}
+                    />{" "}
+                    &nbsp; &nbsp;
+                  </Col>
+                ))
             : null}
         </Row>
         <Row>

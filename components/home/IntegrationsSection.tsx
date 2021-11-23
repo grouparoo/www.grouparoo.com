@@ -17,29 +17,27 @@ export default function IntegrationsSection() {
           </Col>
         </Row>
         <Row>
-          {PluginData.length > 0
+          {PluginData.length
             ? PluginData.sort((a, b) => {
                 return b.priority - a.priority;
               })
                 .slice(0, 9)
-                .map((plugin) => {
-                  return (
-                    <Col
-                      lg={4}
-                      md={4}
-                      sm={6}
-                      xs={6}
-                      key={`plugin-${plugin.name}`}
-                      className="py-2"
-                    >
-                      <IntegrationCard
-                        slug={plugin.slug}
-                        type={plugin.primaryType}
-                        showLink={plugin.showLink}
-                      />
-                    </Col>
-                  );
-                })
+                .map((plugin) => (
+                  <Col
+                    lg={4}
+                    md={4}
+                    sm={6}
+                    xs={6}
+                    key={`plugin-${plugin.name}`}
+                    className="py-2"
+                  >
+                    <IntegrationCard
+                      slug={plugin.slug}
+                      type={plugin.primaryType}
+                      showLink={plugin.showLink}
+                    />
+                  </Col>
+                ))
             : null}
         </Row>
 
