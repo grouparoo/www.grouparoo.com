@@ -8,6 +8,7 @@ import Image from "../components/Image";
 import { ErrorHandler } from "../utils/errorHandler";
 import { isBrowser } from "../utils/isBrowser";
 import { EmailValidators } from "../utils/validators";
+import styles from "./meet.module.scss";
 
 interface FormError {
   email: string;
@@ -153,7 +154,12 @@ export default function Meet() {
             <Error message={error.generic} />
             <Container className="bg-light p-4 mt-4 mt-md-0">
               <h3 className="mx-auto text-center">Schedule a 30 minute demo</h3>
-              <Form id="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+              <Form
+                id="form"
+                onSubmit={handleSubmit(onSubmit)}
+                noValidate
+                className={styles.form}
+              >
                 {!requested ? (
                   <>
                     {" "}
