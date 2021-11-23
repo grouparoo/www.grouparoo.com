@@ -1,10 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<rss
-  version="2.0"
-  xmlns:dc="http://purl.org/dc/elements/1.1/"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/"
-  xmlns:atom="http://www.w3.org/2005/Atom"
->
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
@@ -19,19 +14,13 @@
             <link>https://www.grouparoo.com/whats-new</link>
         </image>
         <copyright>© Grouparoo, Inc. 2020</copyright>
-        <atom:link
-      href="https://www.grouparoo.com/feeds/whatsnew.xml"
-      rel="self"
-      type="application/rss+xml"
-    />
+        <atom:link href="https://www.grouparoo.com/feeds/whatsnew.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[ClickHouse Plugin]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-11-15-clickhouse</link>
+            <link>https://www.grouparoo.com/whats-new#2021-11-15-clickhouse</link>
             <guid>grouparoo-release-note-2021-11-15-clickhouse</guid>
             <pubDate>Mon, 15 Nov 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>With the release of Grouparoo 0.7.4 you can <a href="/integrations/sources/clickhouse">sync data from and to
+            <content:encoded><![CDATA[<p>With the release of Grouparoo 0.7.4 you can <a href="/integrations/sources/clickhouse">sync data from and to
 a ClickHouse database</a> with the <code>@grouparoo/clickhouse</code> plugin.</p><p>For more information and examples, check out the
 <a href="/docs/integrations/grouparoo-clickhouse">ClickHouse plugin docs</a>.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
@@ -41,42 +30,32 @@ a ClickHouse database</a> with the <code>@grouparoo/clickhouse</code> plugin.</p
             <link>https://www.grouparoo.com/whats-new#2021-10-27-v0-6</link>
             <guid>grouparoo-release-note-2021-10-27-v0-6</guid>
             <pubDate>Wed, 27 Oct 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>The 0.7 release of Grouparoo is a huge step forward for data engineers using Grouparoo to reliably sync a variety of types of data to operational tools.</p><p>Here are the key features of the release.</p><ul><li>Models enable Grouparoo to work with multiple data schemas at once.</li><li>Grouparoo helps troubleshoot messy data and is more resistant to data problems</li><li>New Destination: Braze Users</li><li>DevOps Logging Plugins: AWS CloudWatch, Prometheus</li></ul><p>Learn more about how it works and see a video <a href="https://www.grouparoo.com/blog/v07-release" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>The 0.7 release of Grouparoo is a huge step forward for data engineers using Grouparoo to reliably sync a variety of types of data to operational tools.</p><p>Here are the key features of the release.</p><ul><li>Models enable Grouparoo to work with multiple data schemas at once.</li><li>Grouparoo helps troubleshoot messy data and is more resistant to data problems</li><li>New Destination: Braze Users</li><li>DevOps Logging Plugins: AWS CloudWatch, Prometheus</li></ul><p>Learn more about how it works and see a video <a href="https://www.grouparoo.com/blog/v07-release" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/software-development-workflow/workflow.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/software-development-workflow/workflow.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Mixpanel Destination]]></title>
             <link>https://www.grouparoo.com/whats-new#2021-10-21-mixpanel</link>
             <guid>grouparoo-release-note-2021-10-21-mixpanel</guid>
             <pubDate>Thu, 21 Oct 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Grouparoo has added support for exporting data to <a href="https://mixpanel.com/" target="_blank" rel="nofollow noopener noreferrer">Mixpanel</a>!</p><p>With the <code>@grouparoo/mixpanel</code> plugin, you can now sync data from your data warehouse into Mixpanel&#x27;s User Profiles, Properties and Groups.</p><p>Learn more about integrating Grouparoo with Mixpanel <a href="/integrations/destinations/mixpanel">here</a>.</p><div style="margin-bottom:20px"><img alt="Mixpanel Destination" src="https://www.grouparoo.com/posts/releases/2021-10-21-mixpanel.png" width="1000" height="429" style="height:429px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Grouparoo has added support for exporting data to <a href="https://mixpanel.com/" target="_blank" rel="nofollow noopener noreferrer">Mixpanel</a>!</p><p>With the <code>@grouparoo/mixpanel</code> plugin, you can now sync data from your data warehouse into Mixpanel&#x27;s User Profiles, Properties and Groups.</p><p>Learn more about integrating Grouparoo with Mixpanel <a href="/integrations/destinations/mixpanel">here</a>.</p><div style="margin-bottom:20px"><img alt="Mixpanel Destination" src="https://www.grouparoo.com/posts/releases/2021-10-21-mixpanel.png" width="1000" height="429" style="height:429px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
             <title><![CDATA[Automatic Profile Deletion]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-09-10-auto-profile-deletion</link>
+            <link>https://www.grouparoo.com/whats-new#2021-09-10-auto-profile-deletion</link>
             <guid>grouparoo-release-note-2021-09-10-auto-profile-deletion</guid>
             <pubDate>Fri, 10 Sep 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>As part of the v0.6 release, Grouparoo now checks for Profiles that have been deleted from their primary source and removes them from the system. This means that Profiles can be automatically cleared out from Destinations they&#x27;re synced to when you&#x27;ve removed them from your Data Warehouse.</p><p>This behavior can be configured to run along with your existing Schedule, as well as periodically. For more information, check out our <a href="https://www.grouparoo.com/docs/support/upgrading-grouparoo/v05-v06#automatically-deleting-profiles" target="_blank" rel="nofollow noopener noreferrer">v0.6 upgrade guide</a>.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>As part of the v0.6 release, Grouparoo now checks for Profiles that have been deleted from their primary source and removes them from the system. This means that Profiles can be automatically cleared out from Destinations they&#x27;re synced to when you&#x27;ve removed them from your Data Warehouse.</p><p>This behavior can be configured to run along with your existing Schedule, as well as periodically. For more information, check out our <a href="https://www.grouparoo.com/docs/support/upgrading-grouparoo/v05-v06#automatically-deleting-profiles" target="_blank" rel="nofollow noopener noreferrer">v0.6 upgrade guide</a>.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
             <title><![CDATA[Calculated Properties]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-09-02-calculated-properties</link>
+            <link>https://www.grouparoo.com/whats-new#2021-09-02-calculated-properties</link>
             <guid>grouparoo-release-note-2021-09-02-calculated-properties</guid>
             <pubDate>Thu, 02 Sep 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>One exciting development with the release of Grouparoo v0.6 is our Calculated Property plugin. With the Calculated Property plugin, users can now create custom properties calculated from other properties using JavaScript and <a href="https://github.com/janl/mustache.js/" target="_blank" rel="nofollow noopener noreferrer">mustache variables</a>.</p><p>This allows for data transformation such as string concatenation to create a <code>full_name</code> property, explicitly dealing with empty values, coalescing values, and more using JavaScript functions against data from your warehouse.</p><p>For more information and examples of how to build using our Calcualted Property plugin, you can check out our <a href="https://www.grouparoo.com/docs/integrations/grouparoo-calculated-property" target="_blank" rel="nofollow noopener noreferrer">Calculated Property plugin docs</a>.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>One exciting development with the release of Grouparoo v0.6 is our Calculated Property plugin. With the Calculated Property plugin, users can now create custom properties calculated from other properties using JavaScript and <a href="https://github.com/janl/mustache.js/" target="_blank" rel="nofollow noopener noreferrer">mustache variables</a>.</p><p>This allows for data transformation such as string concatenation to create a <code>full_name</code> property, explicitly dealing with empty values, coalescing values, and more using JavaScript functions against data from your warehouse.</p><p>For more information and examples of how to build using our Calcualted Property plugin, you can check out our <a href="https://www.grouparoo.com/docs/integrations/grouparoo-calculated-property" target="_blank" rel="nofollow noopener noreferrer">Calculated Property plugin docs</a>.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
@@ -84,8 +63,7 @@ a ClickHouse database</a> with the <code>@grouparoo/clickhouse</code> plugin.</p
             <link>https://www.grouparoo.com/whats-new#2021-07-28-eloqua</link>
             <guid>grouparoo-release-note-2021-07-28-eloqua</guid>
             <pubDate>Wed, 28 Jul 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We&#x27;ve just released a new <code>@grouparoo/eloqua</code> plugin to sync data to Oracle Eloqua! Learn more about connecting to Eloqua <a href="/integrations/destinations/eloqua">here</a>.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We&#x27;ve just released a new <code>@grouparoo/eloqua</code> plugin to sync data to Oracle Eloqua! Learn more about connecting to Eloqua <a href="/integrations/destinations/eloqua">here</a>.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
@@ -93,83 +71,52 @@ a ClickHouse database</a> with the <code>@grouparoo/clickhouse</code> plugin.</p
             <link>https://www.grouparoo.com/whats-new#2021-07-21-v0-5</link>
             <guid>grouparoo-release-note-2021-07-21-v0-5</guid>
             <pubDate>Wed, 21 Jul 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Grouparoo v0.5.1 is now available. It focuses on developer workflow. The new UI is especially exciting. It adds much more confidence to the process of configuring your workflow by letting you preview the data and make sure everything is set up correctly.</p><p>Learn more about how it works and see a video <a href="https://www.grouparoo.com/blog/software-development-workflow" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Grouparoo v0.5.1 is now available. It focuses on developer workflow. The new UI is especially exciting. It adds much more confidence to the process of configuring your workflow by letting you preview the data and make sure everything is set up correctly.</p><p>Learn more about how it works and see a video <a href="https://www.grouparoo.com/blog/software-development-workflow" target="_blank" rel="nofollow noopener noreferrer">here</a>.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/software-development-workflow/workflow.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/software-development-workflow/workflow.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Grouparoo v0.4 is released!]]></title>
             <link>https://www.grouparoo.com/whats-new#2021-06-24-v0-4</link>
             <guid>grouparoo-release-note-2021-06-24-v0-4</guid>
             <pubDate>Thu, 24 Jun 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Grouparoo v0.4 is a release focused on performance. There aren&#x27;t many new features, but everything Grouparoo does is faster now! In our testing, we&#x27;ve seen around a 200% increase in speed importing large amounts of Profiles and Properties from your Sources.</p><p>Learn more about what&#x27;s new and how to upgrade <a href="/docs/support/upgrading-grouparoo/v03-v04">here</a>.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Grouparoo v0.4 is a release focused on performance. There aren&#x27;t many new features, but everything Grouparoo does is faster now! In our testing, we&#x27;ve seen around a 200% increase in speed importing large amounts of Profiles and Properties from your Sources.</p><p>Learn more about what&#x27;s new and how to upgrade <a href="/docs/support/upgrading-grouparoo/v03-v04">here</a>.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-06-24-v0-4.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-06-24-v0-4.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Destination Sync Modes]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-06-09-sync-modes</link>
+            <link>https://www.grouparoo.com/whats-new#2021-06-09-sync-modes</link>
             <guid>grouparoo-release-note-2021-06-09-sync-modes</guid>
             <pubDate>Wed, 09 Jun 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>All of Grouparoo&#x27;s Destinations now have support for sync modes!</p><p>This new concept allows you to have more control over what exactly happens when Grouparoo syncs data to Destinations and how it interacts with pre-existing data.</p><p>Learn more about what you can do with <a href="https://www.grouparoo.com/blog/sync-modes" target="_blank" rel="nofollow noopener noreferrer">Sync Modes</a> or check out <a href="https://www.grouparoo.com/blog/using-sync-modes" target="_blank" rel="nofollow noopener noreferrer">how you can use them in Grouparoo</a>.</p><div style="margin-bottom:20px"><img alt="Destination Sync Modes" src="https://www.grouparoo.com/posts/releases/2021-06-09-sync-modes.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>All of Grouparoo&#x27;s Destinations now have support for sync modes!</p><p>This new concept allows you to have more control over what exactly happens when Grouparoo syncs data to Destinations and how it interacts with pre-existing data.</p><p>Learn more about what you can do with <a href="https://www.grouparoo.com/blog/sync-modes" target="_blank" rel="nofollow noopener noreferrer">Sync Modes</a> or check out <a href="https://www.grouparoo.com/blog/using-sync-modes" target="_blank" rel="nofollow noopener noreferrer">how you can use them in Grouparoo</a>.</p><div style="margin-bottom:20px"><img alt="Destination Sync Modes" src="https://www.grouparoo.com/posts/releases/2021-06-09-sync-modes.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-06-09-sync-modes.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-06-09-sync-modes.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Pipedrive Destination]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-05-28-pipedrive</link>
+            <link>https://www.grouparoo.com/whats-new#2021-05-28-pipedrive</link>
             <guid>grouparoo-release-note-2021-05-28-pipedrive</guid>
             <pubDate>Fri, 28 May 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>If you are using <a href="https://www.pipedrive.com" target="_blank" rel="nofollow noopener noreferrer">Pipedrive</a>, you can now use Grouparoo to empower your Sales team through the use of customer data in your database or warehouse.</p><div style="margin-bottom:20px"><img alt="Pipedrive Destination" src="https://www.grouparoo.com/posts/releases/2021-05-28-pipedrive.png" width="1000" height="432" style="height:432px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>If you are using <a href="https://www.pipedrive.com" target="_blank" rel="nofollow noopener noreferrer">Pipedrive</a>, you can now use Grouparoo to empower your Sales team through the use of customer data in your database or warehouse.</p><div style="margin-bottom:20px"><img alt="Pipedrive Destination" src="https://www.grouparoo.com/posts/releases/2021-05-28-pipedrive.png" width="1000" height="432" style="height:432px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-05-20-pipedrive.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-05-20-pipedrive.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[One Signal Destination]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-05-20-onesignal</link>
+            <link>https://www.grouparoo.com/whats-new#2021-05-20-onesignal</link>
             <guid>grouparoo-release-note-2021-05-20-onesignal</guid>
             <pubDate>Thu, 20 May 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Grouparoo can now enrich profiles in <a href="https://www.onesignal.com" target="_blank" rel="nofollow noopener noreferrer">One Signal</a>.</p><p>Many mobile apps use OneSignal to understand and communicate with their customers. Now, you can add data to those devices from your Grouparoo profiles and groups.</p><div style="margin-bottom:20px"><img alt="OneSignal Destination" src="https://www.grouparoo.com/posts/releases/2021-05-20-onesignal.png" width="1000" height="428" style="height:428px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Grouparoo can now enrich profiles in <a href="https://www.onesignal.com" target="_blank" rel="nofollow noopener noreferrer">One Signal</a>.</p><p>Many mobile apps use OneSignal to understand and communicate with their customers. Now, you can add data to those devices from your Grouparoo profiles and groups.</p><div style="margin-bottom:20px"><img alt="OneSignal Destination" src="https://www.grouparoo.com/posts/releases/2021-05-20-onesignal.png" width="1000" height="428" style="height:428px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-05-20-onesignal.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-05-20-onesignal.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Enhancing Grouparoo's Customer.io plugin]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-05-13-customerio-app-api-key</link>
-            <guid
-      >grouparoo-release-note-2021-05-13-customerio-app-api-key</guid>
+            <link>https://www.grouparoo.com/whats-new#2021-05-13-customerio-app-api-key</link>
+            <guid>grouparoo-release-note-2021-05-13-customerio-app-api-key</guid>
             <pubDate>Thu, 13 May 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>In order to perform requests to the APP API required by the newest <a href="https://www.grouparoo.com/blog/using-sync-modes" target="_blank" rel="nofollow noopener noreferrer">Sync Modes</a> concept, Grouparoo now asks for the App API key. <a href="https://customer.io/" target="_blank" rel="nofollow noopener noreferrer">Customer.io</a> separates their API into 2 different parts, the <code>TRACK API</code> and the <code>APP API</code>. However, you cannot access the Track API with the App API key nor, access the App API with the track API key.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>In order to perform requests to the APP API required by the newest <a href="https://www.grouparoo.com/blog/using-sync-modes" target="_blank" rel="nofollow noopener noreferrer">Sync Modes</a> concept, Grouparoo now asks for the App API key. <a href="https://customer.io/" target="_blank" rel="nofollow noopener noreferrer">Customer.io</a> separates their API into 2 different parts, the <code>TRACK API</code> and the <code>APP API</code>. However, you cannot access the Track API with the App API key nor, access the App API with the track API key.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
@@ -177,178 +124,113 @@ a ClickHouse database</a> with the <code>@grouparoo/clickhouse</code> plugin.</p
             <link>https://www.grouparoo.com/whats-new#2021-05-04-pardot</link>
             <guid>grouparoo-release-note-2021-05-04-pardot</guid>
             <pubDate>Tue, 04 May 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Grouparoo has extended our integration with the Salesforce family of tools by adding support for <a href="https://www.pardot.com/" target="_blank" rel="nofollow noopener noreferrer">Pardot</a> as a Destination! Pardot is a powerful B2B marketing suite, tightly integrated with the rest of the Salesforce platform.</p><p>Grouparoo makes it simple to sync over your Profiles and build Pardot Lists from your product data.</p><div style="margin-bottom:20px"><img alt="Grouparoo and Pardot" src="https://www.grouparoo.com/posts/releases/2021-05-04-pardot.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Grouparoo has extended our integration with the Salesforce family of tools by adding support for <a href="https://www.pardot.com/" target="_blank" rel="nofollow noopener noreferrer">Pardot</a> as a Destination! Pardot is a powerful B2B marketing suite, tightly integrated with the rest of the Salesforce platform.</p><p>Grouparoo makes it simple to sync over your Profiles and build Pardot Lists from your product data.</p><div style="margin-bottom:20px"><img alt="Grouparoo and Pardot" src="https://www.grouparoo.com/posts/releases/2021-05-04-pardot.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-05-04-pardot.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-05-04-pardot.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Declarative Sync Example App]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-04-20-app-example-config</link>
+            <link>https://www.grouparoo.com/whats-new#2021-04-20-app-example-config</link>
             <guid>grouparoo-release-note-2021-04-20-app-example-config</guid>
             <pubDate>Tue, 20 Apr 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Following our release of <a href="/docs/tutorials/app-example-config">Declarative Sync</a>, we created <a href="https://github.com/grouparoo/app-example-config" target="_blank" rel="nofollow noopener noreferrer">an example Grouparoo instance</a> to give Grouparoo a try before adding your data.</p><p>While this example app has been around for a bit, we gave it a few updates recently to make it easier to tinker with. It now uses SQLite as a data source. And it comes with instructions on how to load fake data into a SQLite database prior to running the application. This enables you to try Grouparoo in an end-to-end instance without needing to use your production data.</p><p>We will continue to iterate on this example and others as <a href="/docs/tutorials">we add more tutorials</a>. As always, <a href="/meet">we&#x27;d love to chat</a> about your ideas for making Grouparoo better.</p><div style="margin-bottom:20px"><img alt="Declarative Sync Example App" src="https://www.grouparoo.com/posts/releases/2021-04-06-tutorial-docs.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Following our release of <a href="/docs/tutorials/app-example-config">Declarative Sync</a>, we created <a href="https://github.com/grouparoo/app-example-config" target="_blank" rel="nofollow noopener noreferrer">an example Grouparoo instance</a> to give Grouparoo a try before adding your data.</p><p>While this example app has been around for a bit, we gave it a few updates recently to make it easier to tinker with. It now uses SQLite as a data source. And it comes with instructions on how to load fake data into a SQLite database prior to running the application. This enables you to try Grouparoo in an end-to-end instance without needing to use your production data.</p><p>We will continue to iterate on this example and others as <a href="/docs/tutorials">we add more tutorials</a>. As always, <a href="/meet">we&#x27;d love to chat</a> about your ideas for making Grouparoo better.</p><div style="margin-bottom:20px"><img alt="Declarative Sync Example App" src="https://www.grouparoo.com/posts/releases/2021-04-06-tutorial-docs.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-04-06-tutorial-docs.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-04-06-tutorial-docs.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[MongoDB Source]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-04-07-mongo-source</link>
+            <link>https://www.grouparoo.com/whats-new#2021-04-07-mongo-source</link>
             <guid>grouparoo-release-note-2021-04-07-mongo-source</guid>
             <pubDate>Wed, 07 Apr 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Grouparoo can now import data from MongoDB!</p><p>The <code>@grouparoo/mongo</code> plugin can be added to your project to import Profiles and Properties from your MongoDB application database. MongoDB is the first NoSQL database supported by Grouparoo, and all of the same Source features available for relational databases are available for MongoDB - including aggregation Properties, query Properties, and scheduled imports.</p><p>Learn how to install plugins by visiting <a href="/docs/installation/plugins">the Grouparoo documentation</a>.</p><div style="margin-bottom:20px"><img alt="Tutorial Docs" src="https://www.grouparoo.com/posts/releases/2021-04-07-mongo.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Grouparoo can now import data from MongoDB!</p><p>The <code>@grouparoo/mongo</code> plugin can be added to your project to import Profiles and Properties from your MongoDB application database. MongoDB is the first NoSQL database supported by Grouparoo, and all of the same Source features available for relational databases are available for MongoDB - including aggregation Properties, query Properties, and scheduled imports.</p><p>Learn how to install plugins by visiting <a href="/docs/installation/plugins">the Grouparoo documentation</a>.</p><div style="margin-bottom:20px"><img alt="Tutorial Docs" src="https://www.grouparoo.com/posts/releases/2021-04-07-mongo.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-04-07-mongo.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-04-07-mongo.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[New Doc Section: Tutorials]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-04-06-tutorial-docs</link>
+            <link>https://www.grouparoo.com/whats-new#2021-04-06-tutorial-docs</link>
             <guid>grouparoo-release-note-2021-04-06-tutorial-docs</guid>
             <pubDate>Tue, 06 Apr 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Grouparoo has launched a new section in our documentation: <a href="/docs/tutorials">Tutorials</a>!</p><p>This new section will be focused on providing you with real-world, step-by-step examples that you can follow to become more familiar with Grouparoo.</p><p>We currently have a single tutorial on <a href="/docs/tutorials/app-example-config">Declarative Sync</a>, which walks through a basic e-commerce example that syncs data between a SQLite product database Source and Mailchimp as the Destination.</p><div style="margin-bottom:20px"><img alt="Tutorial Docs" src="https://www.grouparoo.com/posts/releases/2021-04-06-tutorial-docs.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Grouparoo has launched a new section in our documentation: <a href="/docs/tutorials">Tutorials</a>!</p><p>This new section will be focused on providing you with real-world, step-by-step examples that you can follow to become more familiar with Grouparoo.</p><p>We currently have a single tutorial on <a href="/docs/tutorials/app-example-config">Declarative Sync</a>, which walks through a basic e-commerce example that syncs data between a SQLite product database Source and Mailchimp as the Destination.</p><div style="margin-bottom:20px"><img alt="Tutorial Docs" src="https://www.grouparoo.com/posts/releases/2021-04-06-tutorial-docs.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-04-06-tutorial-docs.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-04-06-tutorial-docs.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[SQLite Plugin]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-04-01-sqlite-plugin</link>
+            <link>https://www.grouparoo.com/whats-new#2021-04-01-sqlite-plugin</link>
             <guid>grouparoo-release-note-2021-04-01-sqlite-plugin</guid>
             <pubDate>Thu, 01 Apr 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Grouparoo <a href="/docs/installation/plugins">has a new plugin</a>: <a href="https://www.npmjs.com/package/@grouparoo/sqlite" target="_blank" rel="nofollow noopener noreferrer">SQLite</a>!</p><p><a href="https://www.sqlite.org/index.html" target="_blank" rel="nofollow noopener noreferrer">SQLite</a> is a lightweight database that holds its data in a single <code>.sqlite </code>file on disk. Up until now, Grouparoo has supported SQLite as its application database, but not as a Source or Destination for your customer data.</p><p>With this addition, you can now use SQLite as a <a href="/docs/config/sources">Source</a> — to import your customer data — or a <a href="/docs/config/destinations">Destination</a> – to export your Grouparoo Profiles and Groups.</p><p>This new plugin will make it easier to get up and running with real-world examples, as we&#x27;ll demonstrate in future tutorials and blog posts. Stay tuned!</p><div style="margin-bottom:20px"><img alt="SQLite Plugin" src="https://www.grouparoo.com/posts/releases/2021-04-01-sqlite-plugin.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Grouparoo <a href="/docs/installation/plugins">has a new plugin</a>: <a href="https://www.npmjs.com/package/@grouparoo/sqlite" target="_blank" rel="nofollow noopener noreferrer">SQLite</a>!</p><p><a href="https://www.sqlite.org/index.html" target="_blank" rel="nofollow noopener noreferrer">SQLite</a> is a lightweight database that holds its data in a single <code>.sqlite </code>file on disk. Up until now, Grouparoo has supported SQLite as its application database, but not as a Source or Destination for your customer data.</p><p>With this addition, you can now use SQLite as a <a href="/docs/config/sources">Source</a> — to import your customer data — or a <a href="/docs/config/destinations">Destination</a> – to export your Grouparoo Profiles and Groups.</p><p>This new plugin will make it easier to get up and running with real-world examples, as we&#x27;ll demonstrate in future tutorials and blog posts. Stay tuned!</p><div style="margin-bottom:20px"><img alt="SQLite Plugin" src="https://www.grouparoo.com/posts/releases/2021-04-01-sqlite-plugin.png" width="1400" height="735" style="height:735px;width:1400px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-04-01-sqlite-plugin.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-04-01-sqlite-plugin.png" length="0" type="image/png"/>
         </item>
         <item>
-            <title
-      ><![CDATA[Faster Installs with Precompiled UI Packages]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-03-18-next-precompile</link>
+            <title><![CDATA[Faster Installs with Precompiled UI Packages]]></title>
+            <link>https://www.grouparoo.com/whats-new#2021-03-18-next-precompile</link>
             <guid>grouparoo-release-note-2021-03-18-next-precompile</guid>
             <pubDate>Thu, 18 Mar 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>The Grouparoo UI packages, <code>@grouparoo/ui-community</code> and <code>@grouparoo/ui-enterprise</code> now install faster and require fewer dependencies on your machines!</p><p>Previously, we were shipping the raw Typescript/Javascript files for our React frontend to our customers, and every time you ran <code>npm install</code>, you were also building the webpack bundle. Now, we do this all for you on our build servers. This leads to larger download sizes, but a faster overall install experience as there is no &quot;build&quot; step. Under the hood, we rely on <a href="https://nextjs.org" target="_blank" rel="nofollow noopener noreferrer">next.js</a> to build and package our UIs.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>The Grouparoo UI packages, <code>@grouparoo/ui-community</code> and <code>@grouparoo/ui-enterprise</code> now install faster and require fewer dependencies on your machines!</p><p>Previously, we were shipping the raw Typescript/Javascript files for our React frontend to our customers, and every time you ran <code>npm install</code>, you were also building the webpack bundle. Now, we do this all for you on our build servers. This leads to larger download sizes, but a faster overall install experience as there is no &quot;build&quot; step. Under the hood, we rely on <a href="https://nextjs.org" target="_blank" rel="nofollow noopener noreferrer">next.js</a> to build and package our UIs.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
             <title><![CDATA[Error Level: Info]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-03-17-errorlevel-info</link>
+            <link>https://www.grouparoo.com/whats-new#2021-03-17-errorlevel-info</link>
             <guid>grouparoo-release-note-2021-03-17-errorlevel-info</guid>
             <pubDate>Wed, 17 Mar 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>There are many variations of things that could go &quot;wrong&quot; when working with the many destinations that Grouparoo supports. For example, there a recoverable errors like rate limiting. However, there is sometimes expected behavior that is still interesting to note. For these cases, we have added an <code>info</code> error level.</p><p>For example, the Salesforce destination has an &quot;Enrich&quot; mode. This means that it should only update users that are already in the system. In these cases, the plugin returns an <code>info</code> error. This is useful for observability in that it helps the user debug what happened.</p><div style="margin-bottom:20px"><img alt="Salesforce info error level" src="https://www.grouparoo.com/posts/releases/2021-03-17-errorlevel-info.png" width="422" height="250" style="height:250px;width:422px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>There are many variations of things that could go &quot;wrong&quot; when working with the many destinations that Grouparoo supports. For example, there a recoverable errors like rate limiting. However, there is sometimes expected behavior that is still interesting to note. For these cases, we have added an <code>info</code> error level.</p><p>For example, the Salesforce destination has an &quot;Enrich&quot; mode. This means that it should only update users that are already in the system. In these cases, the plugin returns an <code>info</code> error. This is useful for observability in that it helps the user debug what happened.</p><div style="margin-bottom:20px"><img alt="Salesforce info error level" src="https://www.grouparoo.com/posts/releases/2021-03-17-errorlevel-info.png" width="422" height="250" style="height:250px;width:422px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-03-17-errorlevel-info.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-03-17-errorlevel-info.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Facebook Custom Audiences Destination]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-03-16-facebook-audiences</link>
+            <link>https://www.grouparoo.com/whats-new#2021-03-16-facebook-audiences</link>
             <guid>grouparoo-release-note-2021-03-16-facebook-audiences</guid>
             <pubDate>Tue, 16 Mar 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Facebook custom audiences can now be a Grouparoo destination. This means that you can sync your customer information to Facebook in order to target ads or exclude them from campaigns.</p><p>A common use case is to automate teaching Facebook about your high-value users. This custom audience can be then used to create a lookalike audience for similar users.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Facebook custom audiences can now be a Grouparoo destination. This means that you can sync your customer information to Facebook in order to target ads or exclude them from campaigns.</p><p>A common use case is to automate teaching Facebook about your high-value users. This custom audience can be then used to create a lookalike audience for similar users.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
             <title><![CDATA[Query Source Schedules]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-03-12-query-source-schedules</link>
-            <guid
-      >grouparoo-release-note-2021-03-12-query-source-schedules</guid>
+            <link>https://www.grouparoo.com/whats-new#2021-03-12-query-source-schedules</link>
+            <guid>grouparoo-release-note-2021-03-12-query-source-schedules</guid>
             <pubDate>Fri, 12 Mar 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Grouparoo now allows users of a Query Source (Postgres, MySQL, Redshift, BigQuery, etc) to provide a custom query to determine which profiles to import. Just provide the query that returns the Profiles to be updated, and let Grouparoo know which Property the query refers to.</p><p>Naively, <code>SELECT id FROM users</code> would work, and all Profiles would be updated. However, you can often be smarter with your Schedule to keep things fast. For example, if your custom query to calculate LTV would only update when a purchase is made, you might <code>SELECT DISTINCT(user_id) FROM purchases where MAX(created_at) &gt; (NOW() - interval 2 day) GROUP BY user_id</code> to only re-import Profiles which have had a recent purchase.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Grouparoo now allows users of a Query Source (Postgres, MySQL, Redshift, BigQuery, etc) to provide a custom query to determine which profiles to import. Just provide the query that returns the Profiles to be updated, and let Grouparoo know which Property the query refers to.</p><p>Naively, <code>SELECT id FROM users</code> would work, and all Profiles would be updated. However, you can often be smarter with your Schedule to keep things fast. For example, if your custom query to calculate LTV would only update when a purchase is made, you might <code>SELECT DISTINCT(user_id) FROM purchases where MAX(created_at) &gt; (NOW() - interval 2 day) GROUP BY user_id</code> to only re-import Profiles which have had a recent purchase.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-03-12-query-source-schedules.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-03-12-query-source-schedules.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Sendgrid Destination]]></title>
             <link>https://www.grouparoo.com/whats-new#2021-03-10-sendgrid</link>
             <guid>grouparoo-release-note-2021-03-10-sendgrid</guid>
             <pubDate>Wed, 10 Mar 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We have added <a href="https://www.sendgrid.com" target="_blank" rel="nofollow noopener noreferrer">Sendgrid</a> as a destination. Sendgrid is a very popular transactional email tool in the developer community, and they&#x27;re starting to build more CRM-esque features into their offering. Our integration allows you to easily connect your product database (Postgres, MySQL) or data warehouse (Snowflake) to Sendgrid with just a few clicks or lines of code.</p><div style="margin-bottom:20px"><img alt="Sendgrid List populated by Grouparoo" src="https://www.grouparoo.com/posts/releases/2021-03-10-sendgrid-lists.png" width="919" height="727" style="height:727px;width:919px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We have added <a href="https://www.sendgrid.com" target="_blank" rel="nofollow noopener noreferrer">Sendgrid</a> as a destination. Sendgrid is a very popular transactional email tool in the developer community, and they&#x27;re starting to build more CRM-esque features into their offering. Our integration allows you to easily connect your product database (Postgres, MySQL) or data warehouse (Snowflake) to Sendgrid with just a few clicks or lines of code.</p><div style="margin-bottom:20px"><img alt="Sendgrid List populated by Grouparoo" src="https://www.grouparoo.com/posts/releases/2021-03-10-sendgrid-lists.png" width="919" height="727" style="height:727px;width:919px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-03-10-sendgrid-lists.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-03-10-sendgrid-lists.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Code Config Generators]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-03-09-grouparoo-generate</link>
+            <link>https://www.grouparoo.com/whats-new#2021-03-09-grouparoo-generate</link>
             <guid>grouparoo-release-note-2021-03-09-grouparoo-generate</guid>
             <pubDate>Tue, 09 Mar 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Last month we launched an exciting new feature, <a href="/blog/declarative-data-sync">Declarative Sync</a>. This feature revolves around the use of <a href="/docs/cli">our CLI tool</a>, specifically <a href="/docs/cli/config#generate">the <code>generate</code> command</a>.</p><p>The generate command uses your input to write a configuration file to your file system. You can then use this file to configure the various objects in Grouparoo, like <a href="/docs/config/code-config/apps">Apps</a>, <a href="/docs/config/code-config/sources">Sources</a>, or <a href="/docs/config/code-config/destinations">Destinations</a>.</p><p>These templates are then read and processed by Grouparoo when the server starts. This makes it trivial to import and export data from your various data sources and destinations by just writing a few lines of JSON.</p><p>You can work the way you are already working. You check your config files into Git. And you can even <a href="/docs/running/testing">run tests</a> to ensure your data is moving around as you&#x27;d expect.</p><p>See <a href="/docs/config/code-config">the docs</a> for more information on how to configure your Grouparoo project using code config files. Or <a href="https://youtu.be/kQ789gMXJB8" target="_blank" rel="nofollow noopener noreferrer">check out our video</a> to see an overview on how it all fits together.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Last month we launched an exciting new feature, <a href="/blog/declarative-data-sync">Declarative Sync</a>. This feature revolves around the use of <a href="/docs/cli">our CLI tool</a>, specifically <a href="/docs/cli/config#generate">the <code>generate</code> command</a>.</p><p>The generate command uses your input to write a configuration file to your file system. You can then use this file to configure the various objects in Grouparoo, like <a href="/docs/config/code-config/apps">Apps</a>, <a href="/docs/config/code-config/sources">Sources</a>, or <a href="/docs/config/code-config/destinations">Destinations</a>.</p><p>These templates are then read and processed by Grouparoo when the server starts. This makes it trivial to import and export data from your various data sources and destinations by just writing a few lines of JSON.</p><p>You can work the way you are already working. You check your config files into Git. And you can even <a href="/docs/running/testing">run tests</a> to ensure your data is moving around as you&#x27;d expect.</p><p>See <a href="/docs/config/code-config">the docs</a> for more information on how to configure your Grouparoo project using code config files. Or <a href="https://youtu.be/kQ789gMXJB8" target="_blank" rel="nofollow noopener noreferrer">check out our video</a> to see an overview on how it all fits together.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/declarative-data-sync/declarative-sync.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/declarative-data-sync/declarative-sync.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Iterable Destination]]></title>
             <link>https://www.grouparoo.com/whats-new#2021-03-03-iterable</link>
             <guid>grouparoo-release-note-2021-03-03-iterable</guid>
             <pubDate>Wed, 03 Mar 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We have added <a href="https://www.iterable.com" target="_blank" rel="nofollow noopener noreferrer">Iterable</a> as a destination. You can now create Iterable Users and Lists dynamically with Grouparoo. Iterable is one of the more popular marketing automation tools out there, so we&#x27;re excited to be able to help our users connect with Iterable.</p><div style="margin-bottom:20px"><img alt="Iterable Audience generated by Grouparoo" src="https://www.grouparoo.com/posts/releases/2021-03-03-iterable-audience.png" width="919" height="682" style="height:682px;width:919px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We have added <a href="https://www.iterable.com" target="_blank" rel="nofollow noopener noreferrer">Iterable</a> as a destination. You can now create Iterable Users and Lists dynamically with Grouparoo. Iterable is one of the more popular marketing automation tools out there, so we&#x27;re excited to be able to help our users connect with Iterable.</p><div style="margin-bottom:20px"><img alt="Iterable Audience generated by Grouparoo" src="https://www.grouparoo.com/posts/releases/2021-03-03-iterable-audience.png" width="919" height="682" style="height:682px;width:919px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-03-03-iterable-audience.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-03-03-iterable-audience.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Grouparoo CLI Updates]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-03-02-grouparoo-cli-updates</link>
+            <link>https://www.grouparoo.com/whats-new#2021-03-02-grouparoo-cli-updates</link>
             <guid>grouparoo-release-note-2021-03-02-grouparoo-cli-updates</guid>
             <pubDate>Tue, 02 Mar 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Along with all the updates to support <a href="/blog/declarative-data-sync">declarative data sync</a>, the <code>grouparoo</code> command itself has been enhanced with a number of new features to make working from the command line easer. We&#x27;ve grouped them into 3 categories: Project Maintenance, Configuration, and Running Grouparoo (Development, Testing and Deployment). The Grouparoo CLI now supports a number of different workflows. For example, we&#x27;ve found that customers want to both <code>grouparoo start</code> and <code>grouparoo run</code>, depending on how they use Grouparoo.</p><p><code>grouparoo start</code> boots up the Grouparoo application as a stand-alone service which will be constantly checking your Sources for new data via Schedules and exporting those Profiles. <code>grouparoo start</code> is best for Growth Engineering teams who are looking to sync data in real-time.,</p><p><code>grouparoo run</code> is a one-off process which will look for new Profile data once, sync those profiles, and then exit when complete. <code>grouparoo run</code> is best for Data Engineering teams who want to run Grouparoo after they&#x27;ve populated their data warehouse with the latest data, and don&#x27;t need to run Grouparoo again until that next update.</p><p>The Grouparoo CLI commands are:</p><p><strong>Project Maintenance</strong></p><pre class="language-bash"><code class="language-bash"><span class="token comment"># Create a new Grouparoo project.</span>
+            <content:encoded><![CDATA[<p>Along with all the updates to support <a href="/blog/declarative-data-sync">declarative data sync</a>, the <code>grouparoo</code> command itself has been enhanced with a number of new features to make working from the command line easer. We&#x27;ve grouped them into 3 categories: Project Maintenance, Configuration, and Running Grouparoo (Development, Testing and Deployment). The Grouparoo CLI now supports a number of different workflows. For example, we&#x27;ve found that customers want to both <code>grouparoo start</code> and <code>grouparoo run</code>, depending on how they use Grouparoo.</p><p><code>grouparoo start</code> boots up the Grouparoo application as a stand-alone service which will be constantly checking your Sources for new data via Schedules and exporting those Profiles. <code>grouparoo start</code> is best for Growth Engineering teams who are looking to sync data in real-time.,</p><p><code>grouparoo run</code> is a one-off process which will look for new Profile data once, sync those profiles, and then exit when complete. <code>grouparoo run</code> is best for Data Engineering teams who want to run Grouparoo after they&#x27;ve populated their data warehouse with the latest data, and don&#x27;t need to run Grouparoo again until that next update.</p><p>The Grouparoo CLI commands are:</p><p><strong>Project Maintenance</strong></p><pre class="language-bash"><code class="language-bash"><span class="token comment"># Create a new Grouparoo project.</span>
 grouparoo init <span class="token punctuation">[</span>dir<span class="token punctuation">]</span>
 
 <span class="token comment"># Upgrade all Grouparoo packages to the latest versions.</span>
@@ -380,110 +262,68 @@ grouparoo start
 grouparoo reset
 </code></pre><p>Learn more from the new <a href="/docs/cli">CLI Reference</a> page in the Grouparoo docs.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/declarative-data-sync/declarative-sync.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/declarative-data-sync/declarative-sync.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Declarative Configuration]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-03-01-declarative-configuration</link>
-            <guid
-      >grouparoo-release-note-2021-03-01-declarative-configuration</guid>
+            <link>https://www.grouparoo.com/whats-new#2021-03-01-declarative-configuration</link>
+            <guid>grouparoo-release-note-2021-03-01-declarative-configuration</guid>
             <pubDate>Mon, 01 Mar 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Grouparoo supports declarative data models and integrations to continuously sync data to cloud-based tools. You manage data sync just like you would any other part of your stack.</p><p>By adding <a href="/docs/config/code-config">declarative code as configuration</a>, you can now use your normal development workflow. You test the configuration, check it into git, run it on CI, review, merge, and deploy.</p><p>Check out the <a href="/blog/declarative-data-sync">video</a> and the <a href="/docs/config/code-config">docs</a> on how to get started. We think it is a big leap forward in how data sync apps are created and maintained.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Grouparoo supports declarative data models and integrations to continuously sync data to cloud-based tools. You manage data sync just like you would any other part of your stack.</p><p>By adding <a href="/docs/config/code-config">declarative code as configuration</a>, you can now use your normal development workflow. You test the configuration, check it into git, run it on CI, review, merge, and deploy.</p><p>Check out the <a href="/blog/declarative-data-sync">video</a> and the <a href="/docs/config/code-config">docs</a> on how to get started. We think it is a big leap forward in how data sync apps are created and maintained.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/declarative-data-sync/declarative-sync.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/declarative-data-sync/declarative-sync.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Documentation Overhaul]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-02-26-documentation</link>
+            <link>https://www.grouparoo.com/whats-new#2021-02-26-documentation</link>
             <guid>grouparoo-release-note-2021-02-26-documentation</guid>
             <pubDate>Fri, 26 Feb 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>With the introduction of <a href="/docs/config/code-config">Code Config</a> in v0.2, we took a step back to look at how we were organizing our documentation. We want to make it as easy as possible to get up and running with Grouparoo.</p><p>Through that process, we created a number of new documents and updated almost every existing doc. Here&#x27;s a brief summary of the changes:</p><ul><li><a href="/docs/getting-started">Getting Started</a> focuses your first-time effort on getting you up and running quickly on your local machine.</li><li>The process of working with Grouparoo is now described in four steps: <a href="/docs/installation">Installation</a>, <a href="/docs/config">Configuration</a>, <a href="/docs/running">Running</a>, and <a href="/docs/deployment">Deployment</a>.</li><li>There is a new section <a href="/docs/cli">on the CLI</a>, which received a major overhaul in v0.2.</li><li>The <a href="/docs/support">Support section</a> is a grab bag of articles to provide more information and support as you dive deeper into Grouparoo.</li><li>The nav is cleaned up so it&#x27;s clear where you are on your documentation journey.</li><li>A table of contents sits below the main nav to guide you through the current page.</li></ul>]]></content:encoded>
+            <content:encoded><![CDATA[<p>With the introduction of <a href="/docs/config/code-config">Code Config</a> in v0.2, we took a step back to look at how we were organizing our documentation. We want to make it as easy as possible to get up and running with Grouparoo.</p><p>Through that process, we created a number of new documents and updated almost every existing doc. Here&#x27;s a brief summary of the changes:</p><ul><li><a href="/docs/getting-started">Getting Started</a> focuses your first-time effort on getting you up and running quickly on your local machine.</li><li>The process of working with Grouparoo is now described in four steps: <a href="/docs/installation">Installation</a>, <a href="/docs/config">Configuration</a>, <a href="/docs/running">Running</a>, and <a href="/docs/deployment">Deployment</a>.</li><li>There is a new section <a href="/docs/cli">on the CLI</a>, which received a major overhaul in v0.2.</li><li>The <a href="/docs/support">Support section</a> is a grab bag of articles to provide more information and support as you dive deeper into Grouparoo.</li><li>The nav is cleaned up so it&#x27;s clear where you are on your documentation journey.</li><li>A table of contents sits below the main nav to guide you through the current page.</li></ul>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-02-18-documentation.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-02-18-documentation.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Node.js v15 and NPM v7 Support]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2021-02-18-node15-and-npm7</link>
+            <link>https://www.grouparoo.com/whats-new#2021-02-18-node15-and-npm7</link>
             <guid>grouparoo-release-note-2021-02-18-node15-and-npm7</guid>
             <pubDate>Thu, 18 Feb 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Grouparoo works on <a href="https://nodejs.org/" target="_blank" rel="nofollow noopener noreferrer">Node.js</a> v12, v14, and now... v15! This means we are in a great position to support the forthcoming LTS release of Node.js v16, along with the current LTS versions of v12 and v14 for years to come.</p><div style="margin-bottom:20px"><img alt="Grouparoo now works with Node.js v14 and v15.  Image from NPM/Github foundation." src="https://www.grouparoo.com/posts/releases/2021-02-18-node15-and-npm7-node.png" width="439" height="230" style="height:230px;width:439px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>Previously, due to the <a href="https://github.blog/2020-10-13-presenting-v7-0-0-of-the-npm-cli/" target="_blank" rel="nofollow noopener noreferrer"><code>peerDependencies</code> changes</a> introduced by NPM v7, we could not initially support Node.js v15 (which ships with NPM v7). The <code>grouparoo</code> CLI tool has been updated to know how to work with both the old and new NPM behavior. We&#x27;ve detailed our <a href="https://github.com/grouparoo/grouparoo/discussions/1270" target="_blank" rel="nofollow noopener noreferrer">mitigation steps here</a>.</p><p>The ability to support Node.js v15 is also important, as it&#x27;s the only version that is <a href="https://www.grouparoo.com/blog/apple-m1-js-memory-error" target="_blank" rel="nofollow noopener noreferrer">natively supported by the new M1 MacOS computers</a>.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Grouparoo works on <a href="https://nodejs.org/" target="_blank" rel="nofollow noopener noreferrer">Node.js</a> v12, v14, and now... v15! This means we are in a great position to support the forthcoming LTS release of Node.js v16, along with the current LTS versions of v12 and v14 for years to come.</p><div style="margin-bottom:20px"><img alt="Grouparoo now works with Node.js v14 and v15.  Image from NPM/Github foundation." src="https://www.grouparoo.com/posts/releases/2021-02-18-node15-and-npm7-node.png" width="439" height="230" style="height:230px;width:439px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>Previously, due to the <a href="https://github.blog/2020-10-13-presenting-v7-0-0-of-the-npm-cli/" target="_blank" rel="nofollow noopener noreferrer"><code>peerDependencies</code> changes</a> introduced by NPM v7, we could not initially support Node.js v15 (which ships with NPM v7). The <code>grouparoo</code> CLI tool has been updated to know how to work with both the old and new NPM behavior. We&#x27;ve detailed our <a href="https://github.com/grouparoo/grouparoo/discussions/1270" target="_blank" rel="nofollow noopener noreferrer">mitigation steps here</a>.</p><p>The ability to support Node.js v15 is also important, as it&#x27;s the only version that is <a href="https://www.grouparoo.com/blog/apple-m1-js-memory-error" target="_blank" rel="nofollow noopener noreferrer">natively supported by the new M1 MacOS computers</a>.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-02-18-node15-and-npm7-node.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-02-18-node15-and-npm7-node.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Intercom Destination]]></title>
             <link>https://www.grouparoo.com/whats-new#2021-02-12-intercom</link>
             <guid>grouparoo-release-note-2021-02-12-intercom</guid>
             <pubDate>Fri, 12 Feb 2021 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We have added <a href="https://www.intercom.com" target="_blank" rel="nofollow noopener noreferrer">Intercom</a> as a destination. You can create Intercom users or leads and tag them based on your Grouparoo groups.</p><p>Intercom is used by support and marketing organizations to communicate via chat and email with their customers.</p><div style="margin-bottom:20px"><img alt="Configuring Intercom Destination" src="https://www.grouparoo.com/posts/releases/2021-02-12-intercom.png" width="439" height="400" style="height:400px;width:439px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We have added <a href="https://www.intercom.com" target="_blank" rel="nofollow noopener noreferrer">Intercom</a> as a destination. You can create Intercom users or leads and tag them based on your Grouparoo groups.</p><p>Intercom is used by support and marketing organizations to communicate via chat and email with their customers.</p><div style="margin-bottom:20px"><img alt="Configuring Intercom Destination" src="https://www.grouparoo.com/posts/releases/2021-02-12-intercom.png" width="439" height="400" style="height:400px;width:439px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2021-02-12-intercom.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2021-02-12-intercom.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Grouparoo can run locally without Redis]]></title>
             <link>https://www.grouparoo.com/whats-new#2020-12-05-redis</link>
             <guid>grouparoo-release-note-2020-12-05-redis</guid>
             <pubDate>Sat, 05 Dec 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>You can now run Grouparoo locally without needing to run Redis. This feature makes it possible for you to try out Grouparoo without needing any dependencies! In your <code>.env</code> file, set your redis URL to <code>REDIS_URL=&quot;redis://mock&quot;</code>. If you choose to run Grouparoo this way, you can&#x27;t use Grouparoo in a cluster. Additionally there is no data persistence, so if you stop and restart your server, there will be data loss.</p><p>This update is an important part of the foundation for Grouparoo v0.2.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>You can now run Grouparoo locally without needing to run Redis. This feature makes it possible for you to try out Grouparoo without needing any dependencies! In your <code>.env</code> file, set your redis URL to <code>REDIS_URL=&quot;redis://mock&quot;</code>. If you choose to run Grouparoo this way, you can&#x27;t use Grouparoo in a cluster. Additionally there is no data persistence, so if you stop and restart your server, there will be data loss.</p><p>This update is an important part of the foundation for Grouparoo v0.2.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2020-11-17-sqlite.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2020-11-17-sqlite.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Batch Imports and Updated Dashboard]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2020-11-17-batch-imports-and-dashboard</link>
-            <guid
-      >grouparoo-release-note-2020-11-17-batch-imports-and-dashboard</guid>
+            <link>https://www.grouparoo.com/whats-new#2020-11-17-batch-imports-and-dashboard</link>
+            <guid>grouparoo-release-note-2020-11-17-batch-imports-and-dashboard</guid>
             <pubDate>Tue, 17 Nov 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We&#x27;ve revamped how Grouparoo works under the hood, simplifying how our data imports work, and more. We&#x27;ve also given the Grouparoo dashboard a refresh to better explain the current state of how Grouparoo is managing your data.</p><div style="margin-bottom:20px"><img src="https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png" alt="Updated Grouparoo dashboard" width="596" height="300" style="height:300px;width:596px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We&#x27;ve revamped how Grouparoo works under the hood, simplifying how our data imports work, and more. We&#x27;ve also given the Grouparoo dashboard a refresh to better explain the current state of how Grouparoo is managing your data.</p><div style="margin-bottom:20px"><img src="https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png" alt="Updated Grouparoo dashboard" width="596" height="300" style="height:300px;width:596px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Mailchimp as a Source]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2020-11-17-mailchimp-as-a-source</link>
+            <link>https://www.grouparoo.com/whats-new#2020-11-17-mailchimp-as-a-source</link>
             <guid>grouparoo-release-note-2020-11-17-mailchimp-as-a-source</guid>
             <pubDate>Tue, 17 Nov 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>You can now add Mailchimp as a Source to Grouparoo. Some of our users were asking for a way to identify users in Mailchimp using a property besides <code>email</code>, so now you can import users from Mailchimp into Grouparoo and identify them using any unique identifier that exists in Mailchimp. You can also pull in open rates and click rates on a profile.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>You can now add Mailchimp as a Source to Grouparoo. Some of our users were asking for a way to identify users in Mailchimp using a property besides <code>email</code>, so now you can import users from Mailchimp into Grouparoo and identify them using any unique identifier that exists in Mailchimp. You can also pull in open rates and click rates on a profile.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
@@ -491,22 +331,16 @@ grouparoo reset
             <link>https://www.grouparoo.com/whats-new#2020-11-17-sqlite</link>
             <guid>grouparoo-release-note-2020-11-17-sqlite</guid>
             <pubDate>Tue, 17 Nov 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Now you can choose between SQLite and Postgres for the database system underlying Grouparoo. You can make these modifications in your environment variables by setting your <code>DATABASE_URL</code> to a SQLite database.</p><div style="margin-bottom:20px"><img src="https://www.grouparoo.com/posts/releases/2020-11-17-sqlite.png" alt="SQlite Environment Variable" width="547" height="125" style="height:125px;width:547px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Now you can choose between SQLite and Postgres for the database system underlying Grouparoo. You can make these modifications in your environment variables by setting your <code>DATABASE_URL</code> to a SQLite database.</p><div style="margin-bottom:20px"><img src="https://www.grouparoo.com/posts/releases/2020-11-17-sqlite.png" alt="SQlite Environment Variable" width="547" height="125" style="height:125px;width:547px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2020-11-17-sqlite.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2020-11-17-sqlite.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Connection Pooling]]></title>
             <link>https://www.grouparoo.com/whats-new#2020-10-20-pools</link>
             <guid>grouparoo-release-note-2020-10-20-pools</guid>
             <pubDate>Tue, 20 Oct 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>The MySQL and Postgres have had connection sharing across background workers for a while. Every now and then, some users saw an issue where a connection was stale.</p><p>Now, these plugins connect to their respective databases with connection pools. This increases the reliability and has been seen to fix these issues.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>The MySQL and Postgres have had connection sharing across background workers for a while. Every now and then, some users saw an issue where a connection was stale.</p><p>Now, these plugins connect to their respective databases with connection pools. This increases the reliability and has been seen to fix these issues.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
@@ -514,66 +348,43 @@ grouparoo reset
             <link>https://www.grouparoo.com/whats-new#2020-10-14-versions</link>
             <guid>grouparoo-release-note-2020-10-14-versions</guid>
             <pubDate>Wed, 14 Oct 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>On the <code>/about</code> page, we now badge the version of your installed plugins. They will be successful (green) if your installed version matches the <code>latest</code>-tagged version of that package on NPM, and warning (orange) if they don&#x27;t.</p><div style="margin-bottom:20px"><img alt="Versioned /about page" src="https://www.grouparoo.com/posts/releases/2020-10-10-versions-1.png" width="600" height="300" style="height:300px;width:600px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>In this way, you can get a quick snapshot about if you are running the latest version of Grouparoo or not.</p><p>You will also get a notification automatically if you are out of date.</p><div style="margin-bottom:20px"><img alt="Version notification" src="https://www.grouparoo.com/posts/releases/2020-10-10-versions-2.png" width="600" height="297" style="height:297px;width:600px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>On the <code>/about</code> page, we now badge the version of your installed plugins. They will be successful (green) if your installed version matches the <code>latest</code>-tagged version of that package on NPM, and warning (orange) if they don&#x27;t.</p><div style="margin-bottom:20px"><img alt="Versioned /about page" src="https://www.grouparoo.com/posts/releases/2020-10-10-versions-1.png" width="600" height="300" style="height:300px;width:600px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>In this way, you can get a quick snapshot about if you are running the latest version of Grouparoo or not.</p><p>You will also get a notification automatically if you are out of date.</p><div style="margin-bottom:20px"><img alt="Version notification" src="https://www.grouparoo.com/posts/releases/2020-10-10-versions-2.png" width="600" height="297" style="height:297px;width:600px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2020-10-10-versions-2.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2020-10-10-versions-2.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Snowflake Source]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2020-10-02-snowflake</link>
+            <link>https://www.grouparoo.com/whats-new#2020-10-02-snowflake</link>
             <guid>grouparoo-release-note-2020-10-02-snowflake</guid>
             <pubDate>Fri, 02 Oct 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p><a href="https://www.snowflake.com" target="_blank" rel="nofollow noopener noreferrer">Snowflake</a> can now be set up as a Grouparoo source, enabling you to create profile properties from your Snowflake data warehouse.</p><p>It supports custom queries as well as a the simplified table source.</p><div style="margin-bottom:20px"><img alt="Types of Snowflake sources" src="https://www.grouparoo.com/posts/releases/2020-10-02-snowflake.png" height="300" width="567" style="height:300px;width:567px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p><a href="https://www.snowflake.com" target="_blank" rel="nofollow noopener noreferrer">Snowflake</a> can now be set up as a Grouparoo source, enabling you to create profile properties from your Snowflake data warehouse.</p><p>It supports custom queries as well as a the simplified table source.</p><div style="margin-bottom:20px"><img alt="Types of Snowflake sources" src="https://www.grouparoo.com/posts/releases/2020-10-02-snowflake.png" height="300" width="567" style="height:300px;width:567px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2020-10-02-snowflake.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2020-10-02-snowflake.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Salesforce Destination]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2020-10-01-salesforce</link>
+            <link>https://www.grouparoo.com/whats-new#2020-10-01-salesforce</link>
             <guid>grouparoo-release-note-2020-10-01-salesforce</guid>
             <pubDate>Thu, 01 Oct 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We have added <a href="https://www.salesforce.com" target="_blank" rel="nofollow noopener noreferrer">Salesforce</a> as a destination. You can now create Salesforce Objects from your profiles and Groups.</p><p>It is a very generic integration because many people use Salesforce in many different ways. Because of this, you can configure it however you want.</p><p>For example, you can sync your profiles to create Contacts with linked Accounts. Groups can the decide what Campaigns they are in. It will automatically keep everything up to date.</p><div style="margin-bottom:20px"><img alt="Configuring Salesforce Destination" src="https://www.grouparoo.com/posts/releases/2020-10-01-salesforce.png" height="400" width="530" style="height:400px;width:530px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We have added <a href="https://www.salesforce.com" target="_blank" rel="nofollow noopener noreferrer">Salesforce</a> as a destination. You can now create Salesforce Objects from your profiles and Groups.</p><p>It is a very generic integration because many people use Salesforce in many different ways. Because of this, you can configure it however you want.</p><p>For example, you can sync your profiles to create Contacts with linked Accounts. Groups can the decide what Campaigns they are in. It will automatically keep everything up to date.</p><div style="margin-bottom:20px"><img alt="Configuring Salesforce Destination" src="https://www.grouparoo.com/posts/releases/2020-10-01-salesforce.png" height="400" width="530" style="height:400px;width:530px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2020-10-01-salesforce.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2020-10-01-salesforce.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Setup Assistance]]></title>
             <link>https://www.grouparoo.com/whats-new#2020-09-20-setup</link>
             <guid>grouparoo-release-note-2020-09-20-setup</guid>
             <pubDate>Sun, 20 Sep 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We have created a setup checklist in Grouparoo to help people getting things going for the first time. It walks you through creating a working sync system.</p><p>By the end of it, you&#x27;ll have users on teams, a source, properties, groups, and a destination.</p><div style="margin-bottom:20px"><img alt="Grouparoo Setup Steps" src="https://www.grouparoo.com/posts/releases/2020-09-15-setup.png" height="300" width="793" style="height:300px;width:793px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>We hope this helps people get off to strong start managing their customer data.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We have created a setup checklist in Grouparoo to help people getting things going for the first time. It walks you through creating a working sync system.</p><p>By the end of it, you&#x27;ll have users on teams, a source, properties, groups, and a destination.</p><div style="margin-bottom:20px"><img alt="Grouparoo Setup Steps" src="https://www.grouparoo.com/posts/releases/2020-09-15-setup.png" height="300" width="793" style="height:300px;width:793px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>We hope this helps people get off to strong start managing their customer data.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2020-09-15-setup.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2020-09-15-setup.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Faster Previews]]></title>
             <link>https://www.grouparoo.com/whats-new#2020-09-12-random</link>
             <guid>grouparoo-release-note-2020-09-12-random</guid>
             <pubDate>Sat, 12 Sep 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>When creating sources on larger datasets, the web page was often timing out. It turns out it was from selecting rows to show as the preview, which takes a long time in many SQL systems.</p><p>While it is nice to show a good sample of rows, it&#x27;s not worth it. We updated the logic to pick the first few rows and now everything is fast again.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>When creating sources on larger datasets, the web page was often timing out. It turns out it was from selecting rows to show as the preview, which takes a long time in many SQL systems.</p><p>While it is nice to show a good sample of rows, it&#x27;s not worth it. We updated the logic to pick the first few rows and now everything is fast again.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
@@ -581,23 +392,16 @@ grouparoo reset
             <link>https://www.grouparoo.com/whats-new#2020-09-06-marketo</link>
             <guid>grouparoo-release-note-2020-09-06-marketo</guid>
             <pubDate>Sun, 06 Sep 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We have added <a href="https://www.marketo.com" target="_blank" rel="nofollow noopener noreferrer">Marketo</a> as a Grouparoo destination. This means you can sync your profiles and groups to this enterprise marketing automation tool. We handle rate-limiting and other challenging things with the connection.</p><div style="margin-bottom:20px"><img alt="How Grouparoo connects to Mailchimp" src="https://www.grouparoo.com/posts/marketo-destination/connection.png" height="250" width="590" style="height:250px;width:590px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We have added <a href="https://www.marketo.com" target="_blank" rel="nofollow noopener noreferrer">Marketo</a> as a Grouparoo destination. This means you can sync your profiles and groups to this enterprise marketing automation tool. We handle rate-limiting and other challenging things with the connection.</p><div style="margin-bottom:20px"><img alt="How Grouparoo connects to Mailchimp" src="https://www.grouparoo.com/posts/marketo-destination/connection.png" height="250" width="590" style="height:250px;width:590px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/marketo-destination/connection.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/marketo-destination/connection.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Phone Number Property]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2020-09-03-phone-property</link>
+            <link>https://www.grouparoo.com/whats-new#2020-09-03-phone-property</link>
             <guid>grouparoo-release-note-2020-09-03-phone-property</guid>
             <pubDate>Thu, 03 Sep 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>All profile property rules have types. Some of the existing types include <code>string</code>, <code>email</code>, <code>integer</code>, <code>float</code>, and <code>date</code>. We have added the <code>phoneNumber</code> type to Grouparoo.</p><p>Knowing the type allows Grouparoo to help ensure data validity, provide better options for filtering and group defining, as well as make smarter mappings to destinations.</p><p>As part of this, for example, we also now support setting the <code>phone</code> property in Zendesk.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>All profile property rules have types. Some of the existing types include <code>string</code>, <code>email</code>, <code>integer</code>, <code>float</code>, and <code>date</code>. We have added the <code>phoneNumber</code> type to Grouparoo.</p><p>Knowing the type allows Grouparoo to help ensure data validity, provide better options for filtering and group defining, as well as make smarter mappings to destinations.</p><p>As part of this, for example, we also now support setting the <code>phone</code> property in Zendesk.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
@@ -605,18 +409,15 @@ grouparoo reset
             <link>https://www.grouparoo.com/whats-new#2020-08-23-zendesk</link>
             <guid>grouparoo-release-note-2020-08-23-zendesk</guid>
             <pubDate>Sun, 23 Aug 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We have added <a href="https://www.zendesk.com" target="_blank" rel="nofollow noopener noreferrer">Zendesk</a> as a Grouparoo destination. One of our most popular requests, we are exciting to be helping our friends in operations get more data to support their customers.</p><div style="margin-bottom:20px"><img alt="Zendesk destination concepts" src="https://www.grouparoo.com/posts/releases/2020-08-23-zendesk.png" height="250" width="581" style="height:250px;width:581px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>We particularly love the use case of shared group definitions between your email and support tools. Your &quot;High Value&quot; customer group in email can now seamlessly have their tickets routed to higher SLA Zendesk queues as well.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We have added <a href="https://www.zendesk.com" target="_blank" rel="nofollow noopener noreferrer">Zendesk</a> as a Grouparoo destination. One of our most popular requests, we are exciting to be helping our friends in operations get more data to support their customers.</p><div style="margin-bottom:20px"><img alt="Zendesk destination concepts" src="https://www.grouparoo.com/posts/releases/2020-08-23-zendesk.png" height="250" width="581" style="height:250px;width:581px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>We particularly love the use case of shared group definitions between your email and support tools. Your &quot;High Value&quot; customer group in email can now seamlessly have their tickets routed to higher SLA Zendesk queues as well.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
             <title><![CDATA[Destination Performance]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2020-08-15-performance</link>
+            <link>https://www.grouparoo.com/whats-new#2020-08-15-performance</link>
             <guid>grouparoo-release-note-2020-08-15-performance</guid>
             <pubDate>Sat, 15 Aug 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We have been updating how Grouparoo works with destinations in order to be more performant and responsive to their unique needs. Here are a few recent improvements:</p><ul><li>Settings for plugins to define how many threads can communicate with a destination at a time</li><li>Patterns for responding to reaching an API limit and dynamically reacting</li><li>Support for batching updates to send many profiles at a time</li><li>In steady-state, only communicate with desitnation if there is a change in the data</li><li>Hardened handling of intermittent errors from destinations</li><li>Improved UI to track destination exports and their progress/status</li></ul>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We have been updating how Grouparoo works with destinations in order to be more performant and responsive to their unique needs. Here are a few recent improvements:</p><ul><li>Settings for plugins to define how many threads can communicate with a destination at a time</li><li>Patterns for responding to reaching an API limit and dynamically reacting</li><li>Support for batching updates to send many profiles at a time</li><li>In steady-state, only communicate with desitnation if there is a change in the data</li><li>Hardened handling of intermittent errors from destinations</li><li>Improved UI to track destination exports and their progress/status</li></ul>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
@@ -624,8 +425,7 @@ grouparoo reset
             <link>https://www.grouparoo.com/whats-new#2020-08-02-redshift</link>
             <guid>grouparoo-release-note-2020-08-02-redshift</guid>
             <pubDate>Sun, 02 Aug 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We have added <a href="https://aws.amazon.com/redshift/" target="_blank" rel="nofollow noopener noreferrer">Redshift</a> as both a source and a destination.</p><p>The most common usage will be as a source. You can use your Redshift data warehouse to populate profiles with properties to be used for group definitions and sent to destinations. Redhsift has two sources:</p><ul><li>Query: write your own SQL</li><li>Table: no-code property creation</li></ul><p>The Redshift destination, like MySQL and Postgres, allows you to write Grouparoo properties and group membership in order to leverage them in business intelligence and other tools.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We have added <a href="https://aws.amazon.com/redshift/" target="_blank" rel="nofollow noopener noreferrer">Redshift</a> as both a source and a destination.</p><p>The most common usage will be as a source. You can use your Redshift data warehouse to populate profiles with properties to be used for group definitions and sent to destinations. Redhsift has two sources:</p><ul><li>Query: write your own SQL</li><li>Table: no-code property creation</li></ul><p>The Redshift destination, like MySQL and Postgres, allows you to write Grouparoo properties and group membership in order to leverage them in business intelligence and other tools.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
@@ -633,8 +433,7 @@ grouparoo reset
             <link>https://www.grouparoo.com/whats-new#2020-07-29-npx</link>
             <guid>grouparoo-release-note-2020-07-29-npx</guid>
             <pubDate>Wed, 29 Jul 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We have provided an <a href="https://github.com/grouparoo/app-example" target="_blank" rel="nofollow noopener noreferrer">example Grouparoo app</a> for a while, but now we&#x27;ve made it easier to generate one of these with a simple command: <code>npx grouparoo generate</code> (edit Feb 9, 2021: the command is now <code>grouparoo init</code>)</p><p>From <code>npx grouparoo --help</code></p><pre><code>Usage: grouparoo [options] [command]
+            <content:encoded><![CDATA[<p>We have provided an <a href="https://github.com/grouparoo/app-example" target="_blank" rel="nofollow noopener noreferrer">example Grouparoo app</a> for a while, but now we&#x27;ve made it easier to generate one of these with a simple command: <code>npx grouparoo generate</code> (edit Feb 9, 2021: the command is now <code>grouparoo init</code>)</p><p>From <code>npx grouparoo --help</code></p><pre><code>Usage: grouparoo [options] [command]
 
 Options:
   -V, --version    output the version number
@@ -649,13 +448,10 @@ Commands:
         </item>
         <item>
             <title><![CDATA[Profile Property Arrays]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2020-07-24-profile-proprty-arrays</link>
-            <guid
-      >grouparoo-release-note-2020-07-24-profile-proprty-arrays</guid>
+            <link>https://www.grouparoo.com/whats-new#2020-07-24-profile-proprty-arrays</link>
+            <guid>grouparoo-release-note-2020-07-24-profile-proprty-arrays</guid>
             <pubDate>Fri, 24 Jul 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Previously, profile properties could only be a single value. For example, <code>lastPurchaseCategory = &quot;Toys&quot;</code>.</p><p>Now sources allow you to create arrays, or lists of values. For example, <code>purchaseCategories = [&quot;Toys&quot;, &quot;Sports&quot;, &quot;Electronics&quot;]</code>.</p><p>These can be leveraged in group definitions. In this case, you can define group membership if someone has ever purchased something in the <code>Sports</code> category.</p><p>Destinations that support lists will also be able to sync the full property.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Previously, profile properties could only be a single value. For example, <code>lastPurchaseCategory = &quot;Toys&quot;</code>.</p><p>Now sources allow you to create arrays, or lists of values. For example, <code>purchaseCategories = [&quot;Toys&quot;, &quot;Sports&quot;, &quot;Electronics&quot;]</code>.</p><p>These can be leveraged in group definitions. In this case, you can define group membership if someone has ever purchased something in the <code>Sports</code> category.</p><p>Destinations that support lists will also be able to sync the full property.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
@@ -663,133 +459,88 @@ Commands:
             <link>https://www.grouparoo.com/whats-new#2020-07-11-runs</link>
             <guid>grouparoo-release-note-2020-07-11-runs</guid>
             <pubDate>Sat, 11 Jul 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We are now giving more information about how your data is importing via schedules and other runs. Each run can now see the percentage complete.</p><div style="margin-bottom:20px"><img alt="Create a property rule from your events" src="https://www.grouparoo.com/posts/releases/2020-07-11-runs.png" height="250" width="765" style="height:250px;width:765px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>Using this, you can track how things are going.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We are now giving more information about how your data is importing via schedules and other runs. Each run can now see the percentage complete.</p><div style="margin-bottom:20px"><img alt="Create a property rule from your events" src="https://www.grouparoo.com/posts/releases/2020-07-11-runs.png" height="250" width="765" style="height:250px;width:765px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>Using this, you can track how things are going.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2020-07-11-runs.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2020-07-11-runs.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Hubspot Destination]]></title>
             <link>https://www.grouparoo.com/whats-new#2020-06-26-hubspot</link>
             <guid>grouparoo-release-note-2020-06-26-hubspot</guid>
             <pubDate>Fri, 26 Jun 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>You can now connect your Grouparoo profiles and groups to <a href="https://www.hubspot.com" target="_blank" rel="nofollow noopener noreferrer">Hubspot</a>. With this destination, you can empower your sales teams on the Hubspot platform with anything from your data warehouse.</p><p>Grouparoo will make contacts with properties and add the to lists inside the Hubspot environment.</p><div style="margin-bottom:20px"><img alt="Hubspot destination concepts" src="https://www.grouparoo.com/posts/releases/2020-06-26-hubspot.png" height="250" width="589" style="height:250px;width:589px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <content:encoded><![CDATA[<p>You can now connect your Grouparoo profiles and groups to <a href="https://www.hubspot.com" target="_blank" rel="nofollow noopener noreferrer">Hubspot</a>. With this destination, you can empower your sales teams on the Hubspot platform with anything from your data warehouse.</p><p>Grouparoo will make contacts with properties and add the to lists inside the Hubspot environment.</p><div style="margin-bottom:20px"><img alt="Hubspot destination concepts" src="https://www.grouparoo.com/posts/releases/2020-06-26-hubspot.png" height="250" width="589" style="height:250px;width:589px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2020-06-26-hubspot.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2020-06-26-hubspot.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Event Stream]]></title>
             <link>https://www.grouparoo.com/whats-new#2020-06-05-events</link>
             <guid>grouparoo-release-note-2020-06-05-events</guid>
             <pubDate>Fri, 05 Jun 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>Real-time visibility into the events coming into the system is important to knowing things are working as expected. To help with that, we have added a stream and other statistics on the event system.</p><div style="margin-bottom:20px"><img alt="Grouparoo event stream" src="https://www.grouparoo.com/posts/releases/2020-06-05-events.png" height="300" width="562" style="height:300px;width:562px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>Stream away!</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Real-time visibility into the events coming into the system is important to knowing things are working as expected. To help with that, we have added a stream and other statistics on the event system.</p><div style="margin-bottom:20px"><img alt="Grouparoo event stream" src="https://www.grouparoo.com/posts/releases/2020-06-05-events.png" height="300" width="562" style="height:300px;width:562px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>Stream away!</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2020-06-05-events.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2020-06-05-events.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Events]]></title>
             <link>https://www.grouparoo.com/whats-new#2020-05-25-events</link>
             <guid>grouparoo-release-note-2020-05-25-events</guid>
             <pubDate>Mon, 25 May 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>This is a big update to add the concept of events. Grouparoo loves connecting to sources like data warehouses, but events (like pageviews) are still important.</p><p>Now, there is an API and a Javascript client to report pageviews and identify users. These events are saved in the Grouparoo database and linked to profiles. It&#x27;s smart enough to merge profiles if it turns out the user was actually the same one.</p><p>Once you have those events, you can create a source that makes profile properties from them. For example, let&#x27;s add how many page views a user has had. And another one for what they last looked at. Of course, you can use those when creating groups and syncing to destinations.</p><div style="margin-bottom:20px"><img alt="Create a property rule from your events" src="https://www.grouparoo.com/posts/releases/2020-05-25-events.png" height="300" width="511" style="height:300px;width:511px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>With events, we are excited to help you get an even picture of your customer.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>This is a big update to add the concept of events. Grouparoo loves connecting to sources like data warehouses, but events (like pageviews) are still important.</p><p>Now, there is an API and a Javascript client to report pageviews and identify users. These events are saved in the Grouparoo database and linked to profiles. It&#x27;s smart enough to merge profiles if it turns out the user was actually the same one.</p><p>Once you have those events, you can create a source that makes profile properties from them. For example, let&#x27;s add how many page views a user has had. And another one for what they last looked at. Of course, you can use those when creating groups and syncing to destinations.</p><div style="margin-bottom:20px"><img alt="Create a property rule from your events" src="https://www.grouparoo.com/posts/releases/2020-05-25-events.png" height="300" width="511" style="height:300px;width:511px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>With events, we are excited to help you get an even picture of your customer.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/releases/2020-05-25-events.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/releases/2020-05-25-events.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[BigQuery Source]]></title>
             <link>https://www.grouparoo.com/whats-new#2020-05-09-bigquery</link>
             <guid>grouparoo-release-note-2020-05-09-bigquery</guid>
             <pubDate>Sat, 09 May 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>You can now connect your <a href="https://cloud.google.com/bigquery" target="_blank" rel="nofollow noopener noreferrer">BigQuery</a> data warehouse to Grouparoo, using it as a source for your profile properties.</p><p>This implementation adds all the same features as our other SQL sources like MySQL and Postgres. For example, you can write a custom SQL query to add a property. There is also the table source that allows importing data without knowing SQL.</p><div style="margin-bottom:20px"><img alt="Two new types of sources: query and table" src="https://www.grouparoo.com/posts/bigquery-source/source-types.png" height="200" width="213" style="height:200px;width:213px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>You can also use all the built-in datasets that Google provides. That&#x27;s pretty neat.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>You can now connect your <a href="https://cloud.google.com/bigquery" target="_blank" rel="nofollow noopener noreferrer">BigQuery</a> data warehouse to Grouparoo, using it as a source for your profile properties.</p><p>This implementation adds all the same features as our other SQL sources like MySQL and Postgres. For example, you can write a custom SQL query to add a property. There is also the table source that allows importing data without knowing SQL.</p><div style="margin-bottom:20px"><img alt="Two new types of sources: query and table" src="https://www.grouparoo.com/posts/bigquery-source/source-types.png" height="200" width="213" style="height:200px;width:213px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>You can also use all the built-in datasets that Google provides. That&#x27;s pretty neat.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/bigquery-source/source-types.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/bigquery-source/source-types.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Sailthru Destination]]></title>
             <link>https://www.grouparoo.com/whats-new#2020-04-23-sailthru</link>
             <guid>grouparoo-release-note-2020-04-23-sailthru</guid>
             <pubDate>Thu, 23 Apr 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We have added <a href="https://www.sailthru.com" target="_blank" rel="nofollow noopener noreferrer">Sailthru</a> as a destination. This means you can export your profile and group data to this email automation tool. One great thing to do there is to use their Lifecycle Optimizer to run campaigns when someone enters a group.</p><p>A few companies have noted that they had some challenges integrating with Sailthru nuances, so we are glad to add, iterate, and harden this plugin.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We have added <a href="https://www.sailthru.com" target="_blank" rel="nofollow noopener noreferrer">Sailthru</a> as a destination. This means you can export your profile and group data to this email automation tool. One great thing to do there is to use their Lifecycle Optimizer to run campaigns when someone enters a group.</p><p>A few companies have noted that they had some challenges integrating with Sailthru nuances, so we are glad to add, iterate, and harden this plugin.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/sailthru-destination/sailthru-profile.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/sailthru-destination/sailthru-profile.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Typeahead]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2020-04-29-typeaheads</link>
+            <link>https://www.grouparoo.com/whats-new#2020-04-29-typeaheads</link>
             <guid>grouparoo-release-note-2020-04-29-typeaheads</guid>
             <pubDate>Mon, 20 Apr 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>To help fill out more fields, we&#x27;ve added typeaheads to several places in the user experience.</p><p>Now, when you are searching profiles or creating groups, it will use values from those profile properties to make it easier.</p><p>Also, when setting up sources and destinations, plugins can choose to provide typeahead selectors.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>To help fill out more fields, we&#x27;ve added typeaheads to several places in the user experience.</p><p>Now, when you are searching profiles or creating groups, it will use values from those profile properties to make it easier.</p><p>Also, when setting up sources and destinations, plugins can choose to provide typeahead selectors.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
             <title><![CDATA[Google Sheets Source]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2020-04-15-google-sheets</link>
+            <link>https://www.grouparoo.com/whats-new#2020-04-15-google-sheets</link>
             <guid>grouparoo-release-note-2020-04-15-google-sheets</guid>
             <pubDate>Wed, 15 Apr 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We have added the ability to connect your Google Sheets to import data into Grouparoo. To some degree, we made Grouparoo so you don&#x27;t need all these spreadsheets. And yet, sometimes it&#x27;s still the best way to make things happen. Now they can become a &quot;real&quot; part of your data infrastructure.</p><div style="margin-bottom:20px"><img alt="Data preview of new source from Google Sheets" src="https://www.grouparoo.com/posts/google-sheets-source/source-data-preview.png" height="300" width="362" style="height:300px;width:362px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>Don&#x27;t forget: with great power comes great responsibility!</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We have added the ability to connect your Google Sheets to import data into Grouparoo. To some degree, we made Grouparoo so you don&#x27;t need all these spreadsheets. And yet, sometimes it&#x27;s still the best way to make things happen. Now they can become a &quot;real&quot; part of your data infrastructure.</p><div style="margin-bottom:20px"><img alt="Data preview of new source from Google Sheets" src="https://www.grouparoo.com/posts/google-sheets-source/source-data-preview.png" height="300" width="362" style="height:300px;width:362px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>Don&#x27;t forget: with great power comes great responsibility!</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/google-sheets-source/source-data-preview.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/google-sheets-source/source-data-preview.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Experience Updates]]></title>
             <link>https://www.grouparoo.com/whats-new#2020-04-10-updates</link>
             <guid>grouparoo-release-note-2020-04-10-updates</guid>
             <pubDate>Fri, 10 Apr 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We updated the data model and experience to make things work better. A few of the changes:</p><ul><li>Create drafts of the objects</li><li>Groups things together with a better UX</li><li>Better mapping for destinations</li></ul><p>Thanks for the feedback!</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We updated the data model and experience to make things work better. A few of the changes:</p><ul><li>Create drafts of the objects</li><li>Groups things together with a better UX</li><li>Better mapping for destinations</li></ul><p>Thanks for the feedback!</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
             <title><![CDATA[Mailchimp Destination]]></title>
-            <link
-      >https://www.grouparoo.com/whats-new#2020-03-26-mailchimp</link>
+            <link>https://www.grouparoo.com/whats-new#2020-03-26-mailchimp</link>
             <guid>grouparoo-release-note-2020-03-26-mailchimp</guid>
             <pubDate>Thu, 26 Mar 2020 00:00:00 GMT</pubDate>
-            <content:encoded
-      ><![CDATA[<p>We now support the ability to sync your profiles and groups to <a href="https://www.mailchimp.com" target="_blank" rel="nofollow noopener noreferrer">Mailchimp</a>. You select the list you want to populate, the merge variables to set, and which tags should be set.</p><div style="margin-bottom:20px"><img alt="How Grouparoo connects to Mailchimp" src="https://www.grouparoo.com/posts/mailchimp-destination/connection.png" height="250" width="574" style="height:250px;width:574px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>Mailchimp has been one of the most popular destination requests from startups and we are excited for you try it out.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>We now support the ability to sync your profiles and groups to <a href="https://www.mailchimp.com" target="_blank" rel="nofollow noopener noreferrer">Mailchimp</a>. You select the list you want to populate, the merge variables to set, and which tags should be set.</p><div style="margin-bottom:20px"><img alt="How Grouparoo connects to Mailchimp" src="https://www.grouparoo.com/posts/mailchimp-destination/connection.png" height="250" width="574" style="height:250px;width:574px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>Mailchimp has been one of the most popular destination requests from startups and we are excited for you try it out.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
-            <enclosure
-        url="https://www.grouparoo.com/posts/mailchimp-destination/connection.png"
-        length="0"
-        type="image/png"
-      />
+            <enclosure url="https://www.grouparoo.com/posts/mailchimp-destination/connection.png" length="0" type="image/png"/>
         </item>
     </channel>
 </rss>
