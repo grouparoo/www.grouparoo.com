@@ -349,14 +349,16 @@ export default function Trial({ props }) {
                   </Form.Group>
                   <Form.Group>
                     <div className="my-3 d-flex justify-content-center">
-                      <Form.Check
-                        {...register("check", { required: true })}
-                        type="checkbox"
-                        id="privacy-policy-check"
-                        defaultValue="false"
-                        className="small align-items-center m-0"
-                        label={privacyPolicyLabel}
-                      />
+                      <small>
+                        <Form.Check
+                          {...register("check", { required: true })}
+                          type="checkbox"
+                          id="privacy-policy-check"
+                          defaultValue="false"
+                          className="small align-items-center m-0"
+                          label={privacyPolicyLabel}
+                        />
+                      </small>
                       {errors.check && (
                         <small style={{ color: "red" }}>
                           Please review and agree to the privacy policy.
