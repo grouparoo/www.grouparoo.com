@@ -116,6 +116,10 @@ code[class*="language-"] {
   line-height: 25.5px;
 }
 
+a {
+  text-decoration: none;
+}
+
 // -- Typography --
 .text-big-muted {
   @extend .text-muted;

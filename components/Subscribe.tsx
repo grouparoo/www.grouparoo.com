@@ -57,7 +57,7 @@ export default function Subscribe({ campaign }: { campaign: string }) {
   } else {
     form = (
       <Form id="form" onSubmit={handleSubmit(onSubmit)}>
-        <Row>
+        <Row className="pb-2">
           <Col md={12}>
             <Form.Group>
               <Form.Control
@@ -72,7 +72,7 @@ export default function Subscribe({ campaign }: { campaign: string }) {
             </Form.Group>
           </Col>
         </Row>
-        <Row className="p-2">
+        <Row className="pb-2">
           <Col>
             <Button type="submit" variant="outline-primary">
               Subscribe
