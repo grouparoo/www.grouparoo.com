@@ -11,7 +11,6 @@ import {
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { FeaturedBlogPosts } from "../data/featuredBlogPosts";
 
 export default function Navigation() {
   return (
@@ -265,47 +264,13 @@ export default function Navigation() {
                 </Link>
               </div>
 
-              <NavDropdown
-                className="pe-2 py-2 align-text-top d-md-none d-lg-inline-block"
-                title="Blog"
-                id="basic-nav-dropdown"
-              >
-                <Container className="blogNav pt-0 mt-0">
-                  <Row>
-                    <Col xs="12" md="12" className="text-start">
-                      <Dropdown.Header>
-                        <FontAwesomeIcon
-                          color="black"
-                          icon={"pen"}
-                          size="1x"
-                          className="pe-1"
-                        />{" "}
-                        Popular Posts
-                      </Dropdown.Header>
-                      {FeaturedBlogPosts.map((post, idx) => (
-                        <Dropdown.Item key={`header-featured-post-${idx}`}>
-                          <Link href={post.href}>
-                            <a className="nav-link" role="button">
-                              {post.title}
-                            </a>
-                          </Link>
-                        </Dropdown.Item>
-                      ))}
-                      <Dropdown.Item>
-                        <Link href="/blog">
-                          <a
-                            className="nav-link"
-                            role="button"
-                            id="seeMoreLink"
-                          >
-                            Read Blog...
-                          </a>
-                        </Link>
-                      </Dropdown.Item>
-                    </Col>
-                  </Row>
-                </Container>
-              </NavDropdown>
+              <div className="nav-link">
+                <Link href="/blog">
+                  <a className="nav-link" role="button">
+                    Blog
+                  </a>
+                </Link>
+              </div>
             </Nav>
             <a
               href="https://github.com/grouparoo/grouparoo"
