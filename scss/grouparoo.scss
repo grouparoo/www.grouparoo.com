@@ -1,6 +1,5 @@
-@import "_variables.scss";
-
 // -- Colors --
+@import "_variables.scss";
 
 // -- External Components --
 @import "~bootstrap/scss/bootstrap";
@@ -16,10 +15,24 @@ $font-code: IBM Plex Mono, sans-serif;
 // Page Defaults
 body {
   background-color: $grouparoo-background-blue;
-  font-family: $font-body;
-  font-weight: 300;
-  font-size: 18px;
-  color: $grouparoo-dark-gray;
+}
+
+form {
+  > div {
+    margin-bottom: 1rem;
+  }
+}
+
+// -- Typography --
+.text-big-muted {
+  @extend .text-muted;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+header {
+  font-weight: 400;
 }
 
 h1,
@@ -75,6 +88,45 @@ h5 {
   letter-spacing: -0.4399999976158142px;
 }
 
+body {
+  font-family: $font-body;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 27px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: $grouparoo-font-color;
+
+  .big {
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 39px;
+  }
+
+  .bold {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 27px;
+  }
+
+  .small {
+    font-size: 14px;
+    line-height: 24px;
+
+    &.bold {
+      font-size: 14px;
+      line-height: 24px;
+      font-weight: 400;
+    }
+  }
+
+  .xs-small {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+
 .outline {
   font-family: IBM Plex Sans;
   font-style: normal;
@@ -109,24 +161,6 @@ a,
   text-decoration: none;
 }
 
-form {
-  > div {
-    margin-bottom: 1rem;
-  }
-}
-
-// -- Typography --
-.text-big-muted {
-  @extend .text-muted;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
-}
-
-header {
-  font-weight: 400;
-}
-
 // -- Nav Bar--
 
 .nav-link {
@@ -142,7 +176,7 @@ header {
 }
 
 #seeMoreLink:hover {
-  color: black;
+  // color: black;
   font-weight: 400;
 }
 .dropdown-menu {
@@ -154,9 +188,9 @@ header {
   box-shadow: none;
   background: none;
 }
-.dropdown-item a:hover {
-  color: black;
-}
+// .dropdown-item a:hover {
+//   color: black;
+// }
 
 .dropdown-item {
   height: 2em;
@@ -176,6 +210,26 @@ header {
   .integrationsNav {
     width: 28em;
     padding-bottom: 1em;
+  }
+}
+
+header {
+  background: url(../public/images/home/pipes.png),
+    linear-gradient(
+      225.01deg,
+      #000000 0%,
+      #0b2e4e 0.01%,
+      #0a2540 99.99%,
+      #06182c 100%
+    );
+
+  * {
+    // Note: This may need to be changed later
+    color: $grouparoo-font-color !important;
+  }
+
+  .dropdown-menu {
+    background-color: #06182c;
   }
 }
 
@@ -267,6 +321,7 @@ pre > code {
 // -- Header --
 header {
   padding-bottom: 50px;
+  font-weight: 400;
 }
 
 // -- Footer --

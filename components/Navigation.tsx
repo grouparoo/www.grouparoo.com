@@ -12,17 +12,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { FeaturedBlogPosts } from "../data/featuredBlogPosts";
-import styles from "./home/header/Header.module.scss";
 
 export default function Navigation() {
   return (
-    <header className={styles.background}>
+    <header>
       <Container>
-        <Navbar
-          variant="light"
-          expand="md"
-          style={{ paddingLeft: 0, paddingRight: 0 }}
-        >
+        <Navbar expand="md" style={{ paddingLeft: 0, paddingRight: 0 }}>
           <Navbar.Brand className="pt-3">
             <Link href="/">
               <a>
