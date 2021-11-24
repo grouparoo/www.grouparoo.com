@@ -57,8 +57,8 @@ export default function Subscribe({ campaign }: { campaign: string }) {
   } else {
     form = (
       <Form id="form" onSubmit={handleSubmit(onSubmit)}>
-        <Row noGutters>
-          <Col md={12} style={{ padding: 0 }}>
+        <Row className="pb-2">
+          <Col md={12}>
             <Form.Group>
               <Form.Control
                 {...register("email", { required: true })}
@@ -72,8 +72,8 @@ export default function Subscribe({ campaign }: { campaign: string }) {
             </Form.Group>
           </Col>
         </Row>
-        <Row noGutters>
-          <Col style={{ padding: 0 }}>
+        <Row className="pb-2">
+          <Col>
             <Button type="submit" variant="outline-primary">
               Subscribe
             </Button>

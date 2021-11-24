@@ -14,7 +14,7 @@ export default function PartialMeet() {
       <Row>
         <Col md={3} />
         <Col md={4} style={{ margin: 0 }}>
-          <Form.Group className="mr-auto">
+          <Form.Group className="me-auto">
             <Form.Control
               {...register("email")}
               type="email"
@@ -25,7 +25,7 @@ export default function PartialMeet() {
           </Form.Group>
         </Col>
         <Col md={2} style={{ margin: 0 }}>
-          <Button variant="primary" type="submit" className="ml-auto">
+          <Button variant="primary" type="submit" className="ms-auto">
             Get a Demo →
           </Button>
         </Col>

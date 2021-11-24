@@ -55,7 +55,7 @@ export default function ComparisonRow({ rowData }) {
   return (
     <>
       <tr>
-        <td className="text-left align-middle comparisonTableLabelCell">
+        <td className="text-start align-middle comparisonTableLabelCell">
           {rowData.feature}
         </td>
         {createCell(rowData.grouparoo, "grouparoo")}

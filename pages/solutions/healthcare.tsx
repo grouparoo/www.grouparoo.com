@@ -40,7 +40,7 @@ export default function Healthcare() {
 
           <Row>
             <Col>
-              <Button variant="primary" href="/meet" className="ml-auto">
+              <Button variant="primary" href="/meet" className="ms-auto">
                 Get a Demo →
               </Button>
             </Col>

@@ -49,7 +49,7 @@ export default function ComparisonPage(comp: ComparisonInfo) {
 
           <Row>
             <Col>
-              <Button variant="primary" href="/get-started" className="ml-auto">
+              <Button variant="primary" href="/get-started" className="ms-auto">
                 Start Free Trial
               </Button>
             </Col>

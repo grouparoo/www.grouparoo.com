@@ -8,28 +8,30 @@ export default function IntegrationDestinations() {
     <>
       <Container>
         <Row>
-          {PluginData.length > 0
+          {PluginData.length
             ? PluginData.sort((a, b) => {
                 return b.priority - a.priority;
               })
-                .filter(
-                  (pluginType) => pluginType.primaryType === "destination"
-                )
-                .filter((pluginType) => pluginType.showLink === true)
+                .filter(({ primaryType }) => primaryType === "destination")
+                .filter(({ showLink }) => showLink)
                 .slice(0, 5)
-                .map((plugin, idx) => {
-                  return (
-                    <Fragment key={`integrationDestination-${idx}`}>
-                      <IntegrationButton
-                        name={plugin.name}
-                        slug={plugin.slug}
-                        type={plugin.primaryType}
-                        image={plugin.logo}
-                      />{" "}
-                      &nbsp; &nbsp;
-                    </Fragment>
-                  );
-                })
+                .map((plugin, idx) => (
+                  <Col
+                    key={`integrationDestination-${idx}`}
+                    lg={4}
+                    md={4}
+                    sm={6}
+                    xs={6}
+                  >
+                    <IntegrationButton
+                      name={plugin.name}
+                      slug={plugin.slug}
+                      type={plugin.primaryType}
+                      image={plugin.logo}
+                    />{" "}
+                    &nbsp; &nbsp;
+                  </Col>
+                ))
             : null}
         </Row>
         <Row>

@@ -192,9 +192,9 @@ describe("sitemap integration", () => {
         let missingRefOnBlank = [];
         let linksWithRedirects = [];
 
-        $("a").each(async function () {
+        $("a:not([role='button']):not([role='tab'])").each(async function () {
           const tag = $(this);
-          let href = tag.attr("href");
+          const href = tag.attr("href");
           const id = tag.attr("id");
           const name = href || id;
 

@@ -37,21 +37,21 @@ export default function Navigation() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto mt-3">
+            <Nav className="ms-auto mt-3">
               <NavDropdown
-                className="pr-2 py-2 align-text-top"
+                className="pe-2 py-2 align-text-top"
                 title="Integrations"
                 id="basic-nav-dropdown"
               >
                 <Container className="integrationsNav pt-0 mt-0">
                   <Row>
-                    <Col xs="12" md="6" className="text-left">
+                    <Col xs="12" md="6" className="text-start">
                       <Dropdown.Header>
                         <FontAwesomeIcon
                           color="black"
                           icon={"arrow-down"}
                           size="1x"
-                          className="pr-1"
+                          className="pe-1"
                         />{" "}
                         Sources
                       </Dropdown.Header>
@@ -90,13 +90,13 @@ export default function Navigation() {
                       <Dropdown.Divider className="d-lg-none" />
                     </Col>
 
-                    <Col xs="12" md="6" className="text-left">
+                    <Col xs="12" md="6" className="text-start">
                       <Dropdown.Header>
                         <FontAwesomeIcon
                           color="black"
                           icon={"arrow-up"}
                           size="1x"
-                          className="pr-1"
+                          className="pe-1"
                         />{" "}
                         Destinations
                       </Dropdown.Header>
@@ -138,19 +138,19 @@ export default function Navigation() {
               </NavDropdown>
 
               <NavDropdown
-                className="pr-2 py-2 align-text-top"
+                className="pe-2 py-2 align-text-top"
                 title="Solutions"
                 id="basic-nav-dropdown"
               >
                 <Container className="solutionsNav pt-0 mt-0">
                   <Row>
-                    <Col xs="12" md="6" className="text-left">
+                    <Col xs="12" md="6" className="text-start">
                       <Dropdown.Header>
                         <FontAwesomeIcon
                           color="black"
                           icon={"building"}
                           size="1x"
-                          className="pr-1"
+                          className="pe-1"
                         />
                         Industries
                       </Dropdown.Header>
@@ -175,7 +175,7 @@ export default function Navigation() {
                           color="black"
                           icon={"balance-scale-left"}
                           size="1x"
-                          className="pr-1"
+                          className="pe-1"
                         />
                         Comparisons
                       </Dropdown.Header>
@@ -203,13 +203,13 @@ export default function Navigation() {
                       <Dropdown.Divider className="d-lg-none" />
                     </Col>
 
-                    <Col xs="12" md="6" className="text-left">
+                    <Col xs="12" md="6" className="text-start">
                       <Dropdown.Header>
                         <FontAwesomeIcon
                           color="black"
                           icon={"user-tie"}
                           size="1x"
-                          className="pr-1"
+                          className="pe-1"
                         />
                         Departments
                       </Dropdown.Header>
@@ -226,7 +226,7 @@ export default function Navigation() {
                           color="black"
                           icon={"check"}
                           size="1x"
-                          className="pr-1"
+                          className="pe-1"
                         />
                         Categories
                       </Dropdown.Header>
@@ -266,19 +266,19 @@ export default function Navigation() {
               </div>
 
               <NavDropdown
-                className="pr-2 py-2 align-text-top d-md-none d-lg-inline-block"
+                className="pe-2 py-2 align-text-top d-md-none d-lg-inline-block"
                 title="Blog"
                 id="basic-nav-dropdown"
               >
                 <Container className="blogNav pt-0 mt-0">
                   <Row>
-                    <Col xs="12" md="12" className="text-left">
+                    <Col xs="12" md="12" className="text-start">
                       <Dropdown.Header>
                         <FontAwesomeIcon
                           color="black"
                           icon={"pen"}
                           size="1x"
-                          className="pr-1"
+                          className="pe-1"
                         />{" "}
                         Popular Posts
                       </Dropdown.Header>
@@ -321,7 +321,7 @@ export default function Navigation() {
               variant="primary"
               href="/get-started"
               size="sm"
-              className="col-sm-12 col-md-3 col-lg-2 mx-0  ml-lg-2 mt-3"
+              className="col-sm-12 col-md-3 col-lg-2 mx-0  ms-lg-2 mt-3"
             >
               Get Started
             </Button>

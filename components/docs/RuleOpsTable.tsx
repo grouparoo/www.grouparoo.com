@@ -74,14 +74,9 @@ const ruleOpsData: RuleOpsDbType[] = [
 const DataTable = ({ data, heading, eventKey }) => {
   return (
     <Fragment>
-      <Accordion.Toggle
-        as={Button}
-        variant="link"
-        eventKey={eventKey}
-        style={{ display: "block", paddingLeft: "0" }}
-      >
+      <Accordion.Button style={{ display: "block", paddingLeft: "0" }}>
         <h4>{heading}</h4>
-      </Accordion.Toggle>
+      </Accordion.Button>
       <Accordion.Collapse eventKey={eventKey}>
         <Fragment>
           <p>
@@ -89,7 +84,7 @@ const DataTable = ({ data, heading, eventKey }) => {
               <Alert variant="primary">
                 💡 Dates used for calculated groups should use full ISO-8601
                 format: <br />
-                <span className="pl-4">
+                <span className="ps-4">
                   <b>YYYY-MM-DDThh:mm:ss.mmm+TZD</b>{" "}
                   ("2020-09-01T08:15:00+00:00"){" "}
                 </span>
@@ -104,9 +99,9 @@ const DataTable = ({ data, heading, eventKey }) => {
           {data.map((item, idx) => (
             <Row
               key={idx}
-              className="border border-top-light border-bottom-light pt-3 pb-2  align-items-center pl-lg-5 pr-lg-3"
+              className="border border-top-light border-bottom-light pt-3 pb-2  align-items-center ps-lg-5 pe-lg-3"
             >
-              <Col className="text-center col-lg-4 mx-auto mx-0 pl-4 pl-lg-0">
+              <Col className="text-center col-lg-4 mx-auto mx-0 ps-4 ps-lg-0">
                 <Row>
                   <code className="h5">{item.op}</code>
                 </Row>
@@ -119,7 +114,7 @@ const DataTable = ({ data, heading, eventKey }) => {
                     language="json"
                   />
                 </div>
-                <div className="pl-2">
+                <div className="ps-2">
                   <small>{item.caption}</small>
                 </div>
               </Col>

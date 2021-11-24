@@ -255,7 +255,7 @@ export default function Trial({ props }) {
                       <span>Your Grouparoo subdomain will be: </span>
                       {editSubdomain ? (
                         <>
-                          <div className="text-break my-1 h5">
+                          <h3 className="text-break my-1">
                             <Form.Control
                               {...register("subdomain", {
                                 required: true,
@@ -266,16 +266,16 @@ export default function Trial({ props }) {
                               defaultValue={subdomain}
                             />
                             <span>.grouparoo.app</span>
-                          </div>
+                          </h3>
                         </>
                       ) : (
-                        <div className="text-break my-1 h5">
+                        <h3 className="text-break my-1">
                           {" "}
                           <span>
                             {subdomain}
                             <span className="text-nowrap">.grouparoo.app</span>
                           </span>
-                        </div>
+                        </h3>
                       )}
                       <Error message={error.subdomain} />
 
@@ -291,15 +291,17 @@ export default function Trial({ props }) {
                     </div>
                   </Form.Group>
                   <Form.Group>
-                    <div className="my-3 text-center">
-                      <Form.Check
-                        {...register("check", { required: true })}
-                        type="checkbox"
-                        id="privacy-policy-check"
-                        defaultValue="false"
-                        className="small align-items-center m-0"
-                        label={privacyPolicyLabel}
-                      />
+                    <div className="my-3 d-flex justify-content-center">
+                      <small>
+                        <Form.Check
+                          {...register("check", { required: true })}
+                          type="checkbox"
+                          id="privacy-policy-check"
+                          defaultValue="false"
+                          className="small align-items-center m-0"
+                          label={privacyPolicyLabel}
+                        />
+                      </small>
                       {errors.check && (
                         <small style={{ color: "red" }}>
                           Please review and agree to the privacy policy.

@@ -157,7 +157,7 @@ export default function Meet() {
                 {!requested ? (
                   <>
                     {" "}
-                    <Form.Group>
+                    <Form.Group className="form-group">
                       <Form.Label>First Name</Form.Label>
                       <Form.Control
                         {...register("firstName")}

@@ -39,7 +39,7 @@ export default function Education() {
 
           <Row>
             <Col>
-              <Button variant="primary" href="/meet" className="ml-auto">
+              <Button variant="primary" href="/meet" className="ms-auto">
                 Get a Demo →
               </Button>
             </Col>

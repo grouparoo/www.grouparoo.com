@@ -56,7 +56,7 @@ export default function BigQueryToSalesforce() {
                 variant="primary"
                 style={{ padding: ".5rem 1rem" }}
                 href="/meet"
-                className="ml-auto"
+                className="ms-auto"
               >
                 Get a demo
               </Button>

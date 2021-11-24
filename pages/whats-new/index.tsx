@@ -140,7 +140,7 @@ export function releaseBadges(tags: string[]) {
     <span>
       {(tags || []).map((tag, idx) => (
         <Fragment key={`tag-${idx}`}>
-          <Badge variant={badgeTypes[tag] || "secondary"}>
+          <Badge bg={badgeTypes[tag] || "secondary"}>
             {tag.charAt(0).toUpperCase() + tag.slice(1)}
           </Badge>
           &nbsp;

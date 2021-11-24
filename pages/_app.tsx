@@ -5,6 +5,7 @@ import FloatingLayout from "../components/layouts/Floating";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { googleAnalyticsPageView } from "../components/GoogleAnalytics";
+import SSRProvider from "react-bootstrap/SSRProvider";
 
 export default function GrouparooWWW(props) {
   const { Component } = props;
@@ -54,15 +55,19 @@ export default function GrouparooWWW(props) {
 
   if (router.pathname === "/trial" || router.pathname === "/trial_landing") {
     return (
-      <FloatingLayout>
-        <Component {...props} />{" "}
-      </FloatingLayout>
+      <SSRProvider>
+        <FloatingLayout>
+          <Component {...props} />{" "}
+        </FloatingLayout>
+      </SSRProvider>
     );
   }
 
   return (
-    <Layout>
-      <Component {...props} />
-    </Layout>
+    <SSRProvider>
+      <Layout>
+        <Component {...props} />
+      </Layout>
+    </SSRProvider>
   );
 }

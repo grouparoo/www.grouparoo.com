@@ -116,6 +116,17 @@ code[class*="language-"] {
   line-height: 25.5px;
 }
 
+a,
+.btn-link {
+  text-decoration: none;
+}
+
+form {
+  > div {
+    margin-bottom: 1rem;
+  }
+}
+
 // -- Typography --
 .text-big-muted {
   @extend .text-muted;

@@ -11,7 +11,7 @@ export default function blogTags(tags: string[]) {
         <Fragment key={`tag-${idx}`}>
           <Link href="/blog/category/[category]" as={`/blog/category/${tag}`}>
             <a>
-              <Badge variant={badgeTypes[tag] || "secondary"}>
+              <Badge bg={badgeTypes[tag] || "secondary"}>
                 {tag.charAt(0).toUpperCase() + tag.slice(1)}
               </Badge>
             </a>
