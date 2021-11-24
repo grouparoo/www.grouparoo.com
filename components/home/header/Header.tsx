@@ -7,21 +7,23 @@ interface HeaderProps {
 }
 
 export const Header = ({ tagline }: HeaderProps) => (
-  <Container className={styles.background} fluid>
-    <Row>
-      <Col>
-        <h1>{tagline}</h1>
-        <p className="outline">
-          Grouparoo is an open source framework that helps you move data between
-          your data warehouse and all of your cloud-based tools.
-        </p>
-        <Button type="button" variant="primary">
-          Get Started
-        </Button>
-      </Col>
-      <Col>
-        <HeaderImage />
-      </Col>
-    </Row>
-  </Container>
+  <header>
+    <Container fluid>
+      <Row sm={12}>
+        <Col>
+          <h1>{tagline}</h1>
+          <p className="text-big-muted outline">
+            Grouparoo is an open source framework that helps you move data
+            between your data warehouse and all of your cloud-based tools.
+          </p>
+          <Button type="button" variant="primary">
+            Get Started
+          </Button>
+        </Col>
+        <Col className="d-flex flex-column justify-content-center">
+          <HeaderImage />
+        </Col>
+      </Row>
+    </Container>
+  </header>
 );
