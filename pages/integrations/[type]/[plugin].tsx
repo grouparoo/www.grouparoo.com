@@ -1,4 +1,4 @@
-import { Container, Button, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import IntegrationCard from "../../../components/home/IntegrationCard";
 import IntegrationMappings from "../../../components/home/IntegrationMappings";
 import IntegrationInstallation from "../../../components/home/IntegrationInstallation";
@@ -138,21 +138,13 @@ export default function IntegrationsPage({
       <br />
 
       <Container>
-        {data.destinationRecord && (
-          <Row>
-            <Col>
-              <h2>How Grouparoo Connects with {data.name}</h2>
-              <br />
-              <IntegrationMappings
-                name={data.name}
-                slug={data.slug}
-                image={data.logo}
-                destinationRecord={data.destinationRecord}
-                destinationProperty={data.destinationProperty}
-                destinationGroup={data.destinationGroup}
-              />
-            </Col>
-          </Row>
+        {data.destinationMappings && (
+          <IntegrationMappings
+            name={data.name}
+            slug={data.slug}
+            image={data.logo}
+            destinationMappings={data.destinationMappings}
+          />
         )}
         <br />
         <br />
