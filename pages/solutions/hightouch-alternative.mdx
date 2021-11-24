@@ -1,12 +1,6 @@
 ---
 competitor: Hightouch
-pros:
-  [
-    "flexibility",
-    "data approach",
-    "no-code configuration",
-    "open source availability",
-  ]
+pros: ["flexibility", "data approach", "cost"]
 competitorPros: ["customization", "reverse ETL"]
 comparisonChartData:
   {
@@ -17,29 +11,34 @@ comparisonChartData:
         {
           feature: "Free tier",
           grouparoo: "Community edition is free. Period.",
-          comp: "Limited to 1 Destination and 10k monthly active records",
+          comp: "Limited to 1 Destination.",
         },
         {
-          feature: "Data requirements",
-          grouparoo: '"Come as you are" with your data',
-          comp: "Requires formal, normalized data warehouse",
+          feature: "Git-based workflow",
+          grouparoo: "Use checked-in configuration, branches, tests, deployments.",
+          comp: "Single branch git sync.",
+        },
+
+        {
+          feature: "User segmentation and sync",
+          grouparoo: "Groups follow through to Destinations",
+          comp: "Only filters synced Record list.",
         },
         {
-          feature: "Use existing data definitions from your data warehouse",
+          feature: "Local testing and development",
           grouparoo: true,
           comp: false,
         },
         {
-          feature: "Configurable data sync time",
-          grouparoo: "Fully customizable -- including real-time",
-          comp: "Manual, hourly, daily, or weekly",
+          feature: "Multiple Sources for a Data Model",
+          grouparoo: true,
+          comp: false,
         },
         {
-          feature: "Configurable via UI",
-          grouparoo: [true, "(enterprise edition)"],
-          comp: true,
+          feature: "Option to mode data without SQL (no-code)",
+          grouparoo: true,
+          comp: false,
         },
-        { feature: "Configurable via CLI", grouparoo: true, comp: false },
         { feature: "Hosted option", grouparoo: true, comp: true },
         { feature: "Self-hosted option", grouparoo: true, comp: false },
       ],
@@ -51,19 +50,16 @@ features:
       text: "Build your data infrastructure the way you do with other apps. Grouparoo’s git-based workflow makes it easy.",
     },
     {
-      title: "🔒  Keep private data in house",
-      text:
-        "Increase privacy by limiting the data that leaves your infrastructure without sacrificing your customer experience.
-
-        ",
-    },
-    {
-      title: "📈  Query the source of truth",
-      text: "Don’t rely on events to understand your customers. Use the data from your product database or data warehouse.",
+      title: "🔐  Keep private data in-house",
+      text: "Increase privacy by limiting the data that leaves your infrastructure without sacrificing your customer experience.",
     },
     {
       title: "💰  Save bags of money",
-      text: "Grouparoo is open source and free to run. Stop being charged by event volume and focus on what you want to build.",
+      text: "Grouparoo is open source and free to run. Stop being charged by your integrations and focus on what you want to build.",
+    },
+    {
+      title: "📊  Explore and analyze user segments",
+      text: "Grouparoo is a lightweight reverse ETL tool. Your team can explore your customer data and build cohorts and segments of your users.",
     },
   ]
 ---
@@ -72,29 +68,33 @@ features:
 
 Hightouch is a SaaS-based data syncing tool that started in 2020.
 
-Grouparoo also started in early 2020, and is also a data syncing tool built for the modern data stack. Here’s a deeper look into how Grouparoo is different from Hightouch.
+Grouparoo also started in early 2020 and is also a data syncing tool built for the modern data stack. Here’s a deeper look into how Grouparoo is different from Hightouch.
 
 ### 🚀 Reverse ETL powered by code
 
-Both Grouparoo and Hightouch are [Reverse ETL](/solutions/reverse-etl) tools, but only Grouparoo was designed to fit into your existing engineering workflow. Grouparoo is powered by configuration files that you can generate and test locally, and then deploy with git - just like you deploy dbt projects today. Being open-source, Grouparoo can be run within your firewall or in our hosted cloud.
+Both Grouparoo and Hightouch are [Reverse ETL](/solutions/reverse-etl) tools, but only Grouparoo was designed to fit into your existing engineering workflow. Grouparoo is powered by configuration files that you can generate and test locally, and then deploy with git - just like you deploy dbt projects today. Being open source, Grouparoo can be run within your firewall or in our hosted cloud.
 
 <SectionDivider
   imagePath="/images/home/integrations/snowflake/snowflake-table-mode.png"
   heading="Easily define records, no matter your data."
   width="713"
   height="387"
-  content="Grouparoo's queryable data structure makes it easy to create records -- even from historical data.  You can configure customer records from the command line on our community edition, or straight from the UI with our enterprise product."
+  content="Grouparoo's queryable data structure makes it easy to create records. You can configure customer records from the developer UI on our community edition and check it into git, or straight from the app UI with our enterprise product."
   imageLeft="true"
   browser="true"
 />
 
 ### 📀 Multiple Sources
 
-Hightouch requires that all of your data already be normalized in into a single source - your data warehouse. Grouparoo works great with data warehouses, but we also know that your business is still growing, and not all of your data has been brought into your data warehouse and is regularly updated. What about your customer support data in Zendesk? What about your NPS scores or onboarding surveys? Grouparoo’s library of sources is ready to help everyone, from the data warehouse engineer to the scrappy growth engineer, use their data, wherever it lives.
+Hightouch requires that all of your data already be normalized in into a single source - your data warehouse. Grouparoo works great with data warehouses, but we also know that your business is still growing, and not all of your data has been brought into your data warehouse and is regularly updated. What about the data in your product database or that spreadsheet? Grouparoo’s library of sources is ready to help everyone, from the data warehouse engineer to the scrappy growth engineer, use their data, wherever it lives.
 
 ### 📈 SQL-based vs. web-based
 
-In Hightouch, the primary method for building your models and querying your data sources is with SQL. That’s great for folks who know SQL, but many aren’t familiar with SQL or would prefer a no-code or low-code approach. Grouparoo’s enterprise product allows people to define Record Properties in our web-UI without having to write SQL queries. Once your Grouparoo instance is connected to a source, you can start to define Properties and Groups in the UI. For folks who are comfortable with code and command-line tools though, you can also configure your Grouparoo instance entirely in code, so your team has flexibility across different skill levels.
+In Hightouch, the primary method for building your models and querying your data sources is with SQL. That’s great for folks who know SQL, but many aren’t familiar with SQL or would prefer a no-code or low-code approach. Grouparoo’s enterprise product allows people to define Record Properties in our web-UI without having to write SQL queries. Once your Grouparoo instance is connected to a source, you can start to define Properties and Groups in the UI. For folks who are comfortable with code though, you can also configure your Grouparoo instance locally with our developer UI, so your team has flexibility across different skill levels.
+
+### 💰 Cost
+
+Another appealing attribute of Grouparoo is cost. Grouparoo is free to try, and if you use our Community-edition and self-host it, it’s free for you to use forever. There also isn’t a limit to the depth of the integrations. Hightouch’s starter pricing, on the other-hand, limits the number of integrations.
 
 <SectionDivider
   imagePath="/images/home/integrations/hubspot/grouparoo-to-hubspot.png"
