@@ -11,10 +11,12 @@ import {
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { FeaturedBlogPosts } from "../data/featuredBlogPosts";
+import styles from "./home/header/Header.module.scss";
 
 export default function Navigation() {
   return (
-    <header>
+    <header className={styles.background}>
       <Container>
         <Navbar
           variant="light"
