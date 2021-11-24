@@ -75,13 +75,24 @@ h5 {
   letter-spacing: -0.4399999976158142px;
 }
 
-button > * {
-  font-family: $font-header;
-  font-size: 14px;
+.outline {
+  font-family: IBM Plex Sans;
   font-style: normal;
-  font-weight: 600;
-  line-height: 21px;
-  letter-spacing: 0px;
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 150%;
+}
+
+button {
+  border-radius: 40px;
+  > * {
+    font-family: $font-header;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0px;
+  }
 }
 
 code,
