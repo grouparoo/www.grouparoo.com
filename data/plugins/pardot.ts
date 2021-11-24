@@ -31,9 +31,13 @@ export const Pardot: Plugin = {
     "The core object in Pardot is a Prospect. Prospect have one required attribute, which is their email address.",
     "Pardot calls attributes of a Prospect a Field. Pardot pre-defines a number of Fields like salutation, first_name and last_name for example, but you can define as many Fields as you'd like in the Pardot website.",
   ],
-  destinationRecord: "Pardot Prospect",
-  destinationProperty: "Pardot Prospect Fields",
-  destinationGroup: "Pardot Lists",
+  destinationMappings: [
+    {
+      record: "Pardot Prospect",
+      property: "Pardot Prospect Fields",
+      group: "Pardot Lists",
+    },
+  ],
   pluginScreenshots: [
     {
       header: "Define what customer data you want in Pardot",

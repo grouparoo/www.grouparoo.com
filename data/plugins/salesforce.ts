@@ -32,9 +32,13 @@ export const Salesforce: Plugin = {
     "At its core, Salesforce is a database, and a very flexible one at that. While most of the objects we name here are the primary default ways to use Salesforce, you can map Grouparoo records to just about any kind of object in Salesforce.",
     "Salesforce has a few primary objects: Leads, Contacts, and Individuals. Each of those three previous objects represents an individual person who might be a lead or a customer. These objects all have two required fields: Email and LastName",
   ],
-  destinationRecord: "Salesforce Lead/Contact",
-  destinationProperty: "Salesforce Lead/Contact Fields",
-  destinationGroup: "Salesforce Campaigns",
+  destinationMappings: [
+    {
+      record: "Salesforce Lead/Contact",
+      property: "Salesforce Lead/Contact Fields",
+      group: "Salesforce Campaigns",
+    },
+  ],
   pluginScreenshots: [
     {
       header: "Define what customer data you want in Salesforce",

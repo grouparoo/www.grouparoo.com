@@ -31,9 +31,13 @@ export const OneSignal: Plugin = {
     "The core object in OneSignal is a Device. A Device represents an actual device. Users can have many Devices. All Devices have one required field: <code>external_user_id</code>.",
     "With an <code>external_user_id</code>, Grouparoo can set Tags with data like name, lifetime value, and whether or not a user/Device is in a Group.",
   ],
-  destinationRecord: "OneSignal Devices",
-  destinationProperty: "OneSignal Tags",
-  destinationGroup: "OneSignal Segments",
+  destinationMappings: [
+    {
+      record: "OneSignal Devices",
+      property: "OneSignal Tags",
+      group: "OneSignal Segments",
+    },
+  ],
   pluginScreenshots: [
     {
       header: "Define what customer data you want in OneSignal",
