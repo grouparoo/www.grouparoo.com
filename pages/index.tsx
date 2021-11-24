@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import Image from "../components/Image";
 import Head from "next/head";
@@ -9,22 +9,31 @@ import SmallIntegration from "../components/home/SmallIntegration";
 import WhyOpenSource from "../components/home/WhyOpenSource";
 import CustomerTestimonials from "../components/home/CustomerTestimonials";
 import { randomHomepagePlugins } from "../data/plugins";
-import { getReleaseNotes } from "../utils/releaseNotes";
+import { getReleaseNotes, ReleaseNote } from "../utils/releaseNotes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ImageInBrowserFrame from "../components/ImageInBrowserFrame";
-import { Header } from "../components/home/Header";
+import { Header } from "../components/home/header/Header";
 
-export default function IndexPage({ pageProps, setReleaseNote }) {
+const getTagline = (pluginNames: string[]) =>
+  `Stop writing code to sync data to ${
+    pluginNames[Math.floor(Math.random() * pluginNames.length)]
+  }*`;
+
+const IndexPage = ({ pageProps, setReleaseNote }) => {
   const {
     pluginNames,
     releaseNote,
-  }: { pluginNames: string[]; releaseNote: any } = pageProps;
+    pluginName,
+  }: { pluginNames: string[]; releaseNote: ReleaseNote[]; pluginName: string } =
+    pageProps;
   const title = "Grouparoo: Open Source Data Synchronization Framework";
   const description =
     "Grouparoo is an open source framework that helps you move data between your data warehouse and all of your cloud-based tools.";
-  const pluginName =
-    pluginNames[Math.floor(Math.random() * pluginNames.length)];
-  const tagline = `Stop writing code to sync data to ${pluginName}*`;
+
+  const tagline = useMemo(
+    () => pluginName ?? getTagline(pluginNames),
+    [pluginName, pluginNames]
+  );
 
   useEffect(() => setReleaseNote(releaseNote), [releaseNote, setReleaseNote]);
 
@@ -66,10 +75,13 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
       <Header tagline={tagline} />
     </>
   );
-}
+};
 
-export async function getStaticProps() {
+export const getServerSideProps = async () => {
   const pluginNames = randomHomepagePlugins();
+  const pluginName = getTagline(pluginNames);
   const { notes } = await getReleaseNotes(1, 1);
-  return { props: { pluginNames, releaseNote: notes[0] } };
-}
+  return { props: { pluginNames, releaseNote: notes[0], pluginName } };
+};
+
+export default IndexPage;
