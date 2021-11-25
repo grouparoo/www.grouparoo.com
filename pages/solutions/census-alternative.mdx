@@ -1,7 +1,7 @@
 ---
 competitor: Census
 pros: ["flexibility", "data approach", "cost"]
-competitorPros: ["analytics", "reverse ETL"]
+competitorPros: ["customization", "reverse ETL"]
 comparisonChartData:
   {
     competitor: "Census",
@@ -11,30 +11,30 @@ comparisonChartData:
         {
           feature: "Free tier",
           grouparoo: "Community edition is free. Period.",
-          comp: "Limited to 100 visitors, 2 sources, and 300 integrations",
+          comp: "Limited to 10 Destination fields and hourly syncs.",
         },
         {
-          feature: "Data architecture",
-          grouparoo: "Query-based",
-          comp: "Events-based",
+          feature: "Git-based workflow",
+          grouparoo: "Use checked-in configuration, branches, tests, deployments.",
+          comp: false,
         },
+        { feature: "User segmentation and sync", grouparoo: true, comp: false },
         {
-          feature: "Define customer records from historical data",
+          feature: "Local testing and development",
           grouparoo: true,
           comp: false,
         },
         {
-          feature: "Easy to configure private vs. shareable data",
+          feature: "Multiple Sources for a Data Model",
           grouparoo: true,
           comp: false,
         },
         {
-          feature: "Configurable via UI",
-          grouparoo: [true, "(enterprise edition)"],
+          feature: "Option to model data without SQL (no-code)",
+          grouparoo: true,
           comp: false,
         },
-        { feature: "Configurable via CLI", grouparoo: true, comp: false },
-        { feature: "Custom records", grouparoo: true, comp: "Add on" },
+        { feature: "Hosted option", grouparoo: true, comp: true },
         { feature: "Self-hosted option", grouparoo: true, comp: false },
       ],
   }
@@ -42,23 +42,19 @@ features:
   [
     {
       title: "🖥  Use your normal workflow",
-      text: "Build your data infrastructure the way you do with other apps. Grouparoo’s git-based workflow makes it easy",
+      text: "Build your data infrastructure the way you do with other apps. Grouparoo’s git-based workflow makes it easy.",
     },
     {
-      title: "🔐  Keep private data in house",
-      text:
-        "Increase privacy by limiting the data that leaves your infrastructure without sacrificing your customer experience.
-        ",
+      title: "🔐  Keep private data in-house",
+      text: "Increase privacy by limiting the data that leaves your infrastructure without sacrificing your customer experience.",
     },
     {
       title: "💰  Save bags of money",
-      text: "Grouparoo is open source and free to run. Stop being charged by event volume and focus on what you want to build.",
+      text: "Grouparoo is open source and free to run. Stop being charged by your connections and focus on what you want to build.",
     },
     {
       title: "📊  Explore and analyze user segments",
-      text:
-        "Grouparoo is a lightweight reverse ETL tool. Your team can explore your customer data and build cohorts and segments of your users.
-        ",
+      text: "Grouparoo is a lightweight reverse ETL tool. Your team can explore your customer data and build cohorts and segments of your users.",
     },
   ]
 ---
@@ -71,21 +67,21 @@ Grouparoo is a newer entrant, having started in early 2020, and is also a data s
 
 ### 🚀 Reverse ETL powered by code
 
-Both Grouparoo and Census are [Reverse ETL](/solutions/reverse-etl) tools, but only Grouparoo was designed to fit into your existing engineering workflow. Grouparoo is powered by configuration files that you can generate and test locally, and then deploy with git - just like you deploy dbt projects today. Being open-source, Grouparoo can be run within your firewall or in our hosted cloud.
+Both Grouparoo and Census are [Reverse ETL](/solutions/reverse-etl) tools, but only Grouparoo was designed to fit into your existing engineering workflow. Grouparoo is powered by configuration files that you can generate and test locally, and then deploy with git - just like you deploy dbt projects today. Being open source, Grouparoo can be run within your firewall or in our hosted cloud.
 
 <SectionDivider
   imagePath="/images/home/integrations/snowflake/snowflake-table-mode.png"
   heading="Easily define records, no matter your data."
   width="713"
   height="387"
-  content="Grouparoo's queryable data structure makes it easy to create records -- even from historical data.  You can configure customer records from the command line on our community edition, or straight from the UI with our enterprise product."
+  content="Grouparoo's queryable data structure makes it easy to create records. You can configure customer records from the developer UI on our community edition and check it into git, or straight from the app UI with our enterprise product."
   imageLeft="true"
   browser="true"
 />
 
 ### 📀 Multiple Sources
 
-Census requires that all of your data already be normalized in into a single source - your data warehouse. Grouparoo works great with data warehouses, but we also know that your business is still growing, and not all of your data has been brought into your data warehouse and is regularly updated. What about your customer support data in Zendesk? What about your NPS scores or onboarding surveys? Grouparoo’s library of sources is ready to help everyone, from the data warehouse engineer to the scrappy growth engineer, use their data, wherever it lives.
+Census requires that all of your data already be normalized in into a single source - your data warehouse. Grouparoo works great with data warehouses, but we also know that your business is still growing, and not all of your data has been brought into your data warehouse and is regularly updated. What about the data in your product database or that spreadsheet? Grouparoo’s library of sources is ready to help everyone, from the data warehouse engineer to the scrappy growth engineer, use their data, wherever it lives.
 
 <SectionDivider
   imagePath="/images/home/integrations/mailchimp/grouparoo-to-mailchimp.png"
@@ -101,9 +97,13 @@ Census requires that all of your data already be normalized in into a single sou
 
 One major difference between Census and Grouparoo is that Grouparoo is open source (MPL v2.0 licensed), and available for anyone in the world to download and give it a try. Given our open source approach, Grouparoo is really focused on making the developer experience as easy as possible. All of your customer data can stay within your own virtual private cloud, so you have complete control.
 
+### 📈 SQL-based vs. web-based
+
+In Census, the primary method for building your models and querying your data sources is with SQL. That’s great for folks who know SQL, but many aren’t familiar with SQL or would prefer a no-code or low-code approach. Grouparoo’s enterprise product allows people to define Record Properties in our web-UI without having to write SQL queries. Once your Grouparoo instance is connected to a source, you can start to define Properties and Groups in the UI. For folks who are comfortable with code though, you can also configure your Grouparoo instance locally with our developer UI, so your team has flexibility across different skill levels.
+
 ### 💰 Cost
 
-Another appealing attribute of Grouparoo is cost. Grouparoo is free to try, and if you use our Community-edition and self-host it, it’s free for you to use forever. There also isn’t a limit to the number of integrations you can use. Census’s starter pricing, on the other-hand, limits the number of integrations you can connect to.
+Another appealing attribute of Grouparoo is cost. Grouparoo is free to try, and if you use our Community-edition and self-host it, it’s free for you to use forever. There also isn’t a limit to the depth of the integrations. Census’s starter pricing, on the other-hand, limits the number fields you can send to an integration.
 
 <SectionDivider
   imagePath="/images/home/solutions/comparisons/install-code.svg"
