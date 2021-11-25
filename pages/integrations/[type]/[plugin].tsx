@@ -212,18 +212,22 @@ function DestinationHeaderArrow({ data }) {
         <Col md={3} style={{ textAlign: "center" }}>
           <IntegrationCard slug="data_warehouse" showLink={false} />
         </Col>
-        <Col md={1} style={{ textAlign: "center" }}>
-          <br className="d-none d-md-block" />
-          <br className="d-none d-md-block" />
-          <BigArrow downOnMobile={true} /> <br />
+        <Col
+          md={1}
+          style={{ textAlign: "center" }}
+          className="align-self-center"
+        >
+          <BigArrow downOnMobile={true} />
         </Col>
         <Col md={3} style={{ textAlign: "center" }}>
           <IntegrationCard slug="grouparoo" showLink={false} />
         </Col>
-        <Col md={1} style={{ textAlign: "center" }}>
-          <br className="d-none d-md-block" />
-          <br className="d-none d-md-block" />
-          <BigArrow downOnMobile={true} /> <br />
+        <Col
+          md={1}
+          style={{ textAlign: "center" }}
+          className="align-self-center"
+        >
+          <BigArrow downOnMobile={true} />
         </Col>
         <Col md={3} style={{ textAlign: "center" }}>
           <IntegrationCard slug={data.slug} showLink={false} />
