@@ -32,9 +32,13 @@ export const Customerio: Plugin = {
     "The core object in Customer.io are People, though the API endpoint is Customer. People have one required field: <code>customer_id</code>.",
     "Once Grouparoo is connected to Customer.io based on the <code>customer_id</code>, Grouparoo can set Attributes with data like email, name, lifetime value, and any other details about the groups these Customers might be in.",
   ],
-  destinationRecord: "Customer.io People",
-  destinationProperty: "Customer.io Attributes",
-  destinationGroup: "Customer.io Attributes",
+  destinationMappings: [
+    {
+      record: "Customer.io People",
+      property: "Customer.io Attributes",
+      group: "Customer.io Attributes",
+    },
+  ],
   pluginScreenshots: [
     {
       header: "Define what customer data you want in Customer.io",

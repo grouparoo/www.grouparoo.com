@@ -91,7 +91,7 @@
   },
   {
     "name": "Hubspot",
-    "description": "Grouparoo's Hubspot integration allows you to sync all of your customer data that lives in your data warehouse into Hubspot.",
+    "description": "Grouparoo's Hubspot integration allows you to sync all of your data that lives in your data warehouse into Hubspot.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/hubspot/hubspot.png",
     "packageName": "@grouparoo/hubspot",
     "source": false,
@@ -251,7 +251,7 @@
   },
   {
     "name": "Salesforce",
-    "description": "Grouparoo's Salesforce data integration allows you to sync all of your customer data that lives in your data warehouse into Salesforce.",
+    "description": "Grouparoo's Salesforce data integration allows you to sync all of your  data that lives in your data warehouse into Salesforce.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/salesforce/salesforce.png",
     "packageName": "@grouparoo/salesforce",
     "source": false,

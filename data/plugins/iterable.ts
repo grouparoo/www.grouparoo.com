@@ -31,9 +31,13 @@ export const Iterable: Plugin = {
     "The core object in Iterable is a User. A User represents an individual person. Users have one required user field: <code>email</code>.",
     "All of these Users have additional user fields that you can set, like name, role, phone, as well as custom fields.",
   ],
-  destinationRecord: "Iterable Users",
-  destinationProperty: "Iterable User Fields",
-  destinationGroup: "Iterable Audiences",
+  destinationMappings: [
+    {
+      record: "Iterable Users",
+      property: "Iterable User Fields",
+      group: "Iterable Audiences",
+    },
+  ],
   pluginScreenshots: [
     {
       header: "Define what customer data you want in Iterable",

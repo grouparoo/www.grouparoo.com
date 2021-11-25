@@ -31,9 +31,13 @@ export const Braze: Plugin = {
     "The core object in Braze is a User. Users have one required attribute, which is their external_id attribute.",
     "Braze calls the properties of a User a User Attribute. Braze pre-defines a number of Fields like email, first_name and last_name for example, but you can define as many Fields as you'd like in the Braze website or straight from Grouparoo.",
   ],
-  destinationRecord: "Braze",
-  destinationProperty: "Braze User Attributes",
-  destinationGroup: "Groups",
+  destinationMappings: [
+    {
+      record: "Braze",
+      property: "Braze User Attributes",
+      group: "Groups",
+    },
+  ],
   pluginScreenshots: [
     {
       header: "Define what customer data you want in Braze",

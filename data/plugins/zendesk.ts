@@ -32,9 +32,13 @@ export const Zendesk: Plugin = {
     "The core object in Zendesk is a User. A User represents an individual person who might contact you or be a customer. Users have two required User Fields: <code>external_id</code> and <code>name</code>. The <code>external_id</code> can be something like your unique user ID, and name can be the person's name.",
     "To add details on a User, you can add and update User Fields. Zendesk also has a concept of Tags. Users can have any number of Tags, and you can create automated workflows and triggers based on these Tags.",
   ],
-  destinationRecord: "Zendesk Users",
-  destinationProperty: "Zendesk User Fields",
-  destinationGroup: "Zendesk Tags",
+  destinationMappings: [
+    {
+      record: "Zendesk Users",
+      property: "Zendesk User Fields",
+      group: "Zendesk Tags",
+    },
+  ],
   pluginScreenshots: [
     {
       header: "Define what customer data you want in Zendesk",

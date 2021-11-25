@@ -32,9 +32,13 @@ export const Marketo: Plugin = {
     "The core object in Marketo is a Lead. A Lead represents an individual person who might be a lead or a customer. Leads have one required field, which is their email address.",
     "Marketo calls attributes of a Lead a Field. The one required Field in Marketo is <code>email</code>.",
   ],
-  destinationRecord: "Marketo Leads",
-  destinationProperty: "Marketo Lead Fields",
-  destinationGroup: "Marketo Lists",
+  destinationMappings: [
+    {
+      record: "Marketo Leads",
+      property: "Marketo Lead Fields",
+      group: "Marketo Lists",
+    },
+  ],
   pluginScreenshots: [
     {
       header: "Define what customer data you want in Marketo",
