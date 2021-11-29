@@ -90,8 +90,8 @@ const nextConfig = {
         statusCode: 301,
       },
       {
-        source: "/docs/plugins",
-        destination: "/docs/integrations",
+        source: "/docs/plugins/:slug",
+        destination: "/docs/integrations/:slug",
         statusCode: 301,
       },
       {
