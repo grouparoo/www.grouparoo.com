@@ -15,7 +15,6 @@ import { Mailjet } from "./mailjet";
 import { Mailchimp } from "./mailchimp";
 import { Marketo } from "./marketo";
 import { Mixpanel } from "./mixpanel";
-
 import { Mongo } from "./mongo";
 import { MySQL } from "./mysql";
 import { OneSignal } from "./onesignal";

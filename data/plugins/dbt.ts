@@ -8,10 +8,10 @@ export const dbt: Plugin = {
   slug: "dbt",
   logo: "dbt.png",
   primaryType: null,
-  otherTypes: null,
+  otherTypes: [],
   category: "data transformation",
   badge: "",
-  showLink: true,
+  showLink: false,
   packageName: "@grouparoo/dbt",
   // useCases: {
   //   paragraphOne:
