@@ -7,23 +7,19 @@ interface HeaderProps {
 }
 
 export const Header = ({ tagline }: HeaderProps) => (
-  <header>
-    <Container fluid>
-      <Row sm={12}>
-        <Col>
-          <h1>{tagline}</h1>
-          <p className="text-big-muted outline">
-            Grouparoo is an open source framework that helps you move data
-            between your data warehouse and all of your cloud-based tools.
-          </p>
-          <Button type="button" variant="primary">
-            Get Started
-          </Button>
-        </Col>
-        <Col className="d-flex flex-column justify-content-center">
-          <HeaderImage />
-        </Col>
-      </Row>
-    </Container>
+  <header className={`d-flex justify-content-evenly ${styles.header}`}>
+    <div>
+      <h2>{tagline}</h2>
+      <p className="outline">
+        Grouparoo is an open source framework that helps you move data between
+        your data warehouse and all of your cloud-based tools.
+      </p>
+      <Button type="button" variant="primary" className="rounded-pill">
+        Get Started
+      </Button>
+    </div>
+    <div className="d-flex flex-column justify-content-center">
+      <HeaderImage />
+    </div>
   </header>
 );

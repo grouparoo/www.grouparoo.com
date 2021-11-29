@@ -12,6 +12,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { FeaturedBlogPosts } from "../data/featuredBlogPosts";
+import styles from "./Navigation.module.scss";
 
 export default function Navigation() {
   return (
@@ -275,7 +276,11 @@ export default function Navigation() {
               rel="noreferrer"
               className="col-sm-12 d-md-none d-lg-inline-block col-lg-1 p-0 mx-lg-1 mx-0 mt-3"
             >
-              <Button variant="outline-dark" size="sm" className="w-100">
+              <Button
+                variant="light"
+                size="sm"
+                className={"w-100 " + styles.github}
+              >
                 <FontAwesomeIcon icon={["fab", "github"]} size="xs" /> Star
               </Button>
             </a>
@@ -283,7 +288,7 @@ export default function Navigation() {
               variant="primary"
               href="/get-started"
               size="sm"
-              className="col-sm-12 col-md-3 col-lg-2 mx-0  ms-lg-2 mt-3"
+              className="col-sm-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
             >
               Get Started
             </Button>
