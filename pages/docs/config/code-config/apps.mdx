@@ -94,10 +94,20 @@ The best practice when configuring an App is to read the comments, keys, and val
 
 ### Refresh Query
 
-If your app supports an App Refresh Query, you'll see a field with a `refreshQuery` object. App Refresh Query enables Grouparoo to know where to check your app for new data, and run all Schedules for that App if it finds new data. For example, you might set it up as:
+App Refresh Query enables Grouparoo to check your data warehouse for new data, and run all Schedules for that App if it finds any. The following Plugins support App Refresh Query:
+
+- BigQuery
+- Clickhouse
+- MySQL
+- Postgres
+- Redshift
+- Snowflake
+- SQLite
+
+For the best results, configure your query up to return a single row of data. For example, you might set it up as:
 
 ```
-  refreshQuery: {
+  refresh: {
     query: "SELECT MAX(updated_at) FROM meta_table"
     recurringFrequency: 6000
   }

@@ -1,0 +1,95 @@
+---
+title: "@grouparoo/dbt"
+date: "2021-11-15"
+pullQuote: "Learn how to work with the dbt Plugin and set up a query to integrate your dbt project with Grouparoo."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="dbt" />
+
+Grouparoo's [dbt](https://www.getdbt.com/) Plugin enables you to configure Grouparoo within your dbt project using a shared config.
+
+<PluginDocsInstallation plugin="dbt" />
+
+You'll also want to install the Grouparoo Plugin for your data warehouse. Grouparoo can support the following data warehouses used by dbt:
+
+- [BigQuery](/integrations/grouparoo-bigquery)
+- [Postgres](/integrations/gropuaroo-postgres)
+- [Redshift](/integrations/grouparoo-redshift)
+- [Snowflake](/integrations/grouparoo-snowflake)
+
+## Orchestrating Grouparoo with dbt
+
+You can use an [App Refresh Query](/getting-started/product-concepts#app-refresh-query) to orchestrate your Grouparoo Project based on dbt runs. An App Refresh Query checks for new data in a specific place in your warehouse as often as every minute. If new data is found, it will trigger all Schedules associated with that App. To get started with App Refresh Query, you'll want to make sure you have a single place for Grouparoo to check for data.
+
+### Step 1: Set up a meta table
+
+<Alert variant="success">
+  This step is only required if you would like to generate a new `meta` table
+  for Grouparoo to check for completed runs.
+</Alert>
+
+You can use dbt's [`on-run-end` hook](https://docs.getdbt.com/reference/project-configs/on-run-start-on-run-end) to generate a new table that is updated upon the completion of each dbt run.
+
+At the very simplest, you can do this by adding a macro to your project that generates a table that is updated after each run. Add the following line to your `dbt_project.yml`:
+
+```yml
+on-run-end: "{{ on_run_end(results) }}"
+```
+
+Then in the `/macros` directory, create a new file called `on_run_end.sql`. The following will generate a `dbt_meta` table if it doesn't already exist and will keep track of how many namespaces had success, errors, or were skipped.
+
+```sql
+{% macro on_run_end(results) %}
+  {% set ns = namespace(success=0, error=0, skipped=0) %}
+
+  {% for res in results %}
+    {{ log("result: " ~ res.status ~ " node: " ~ res.node.unique_id ~ " message: " ~ res.message, info=True) }}
+    {% if res.status == "success" %}
+      {% set ns.success = ns.success + 1 %}
+    {% elif res.status == "error" %}
+      {% set ns.error = ns.error + 1 %}
+    {% elif res.status == "skipped" %}
+      {% set ns.skipped = ns.skipped + 1 %}
+    {% endif %}
+  {% endfor %}
+
+  {{ log("on_run_end  success: " ~ ns.success ~ " error: " ~ ns.error ~ " skipped: " ~ ns.skipped, info=True) }}
+  {% if execute %}
+    CREATE TABLE IF NOT EXISTS dbt_meta (last_run_at TIMESTAMP, success INT, error INT, skipped INT);
+    INSERT INTO dbt_meta (last_run_at, success, error, skipped)
+      VALUES (NOW(), {{ ns.success }}, {{ ns.error }}, {{ ns.skipped }});
+  {% endif %}
+
+{% endmacro %}
+```
+
+### Step 2: Configure an App Refresh Query
+
+Assuming you have already installed a [Plugin](/docs/integrations#plugins) and completed the basic configuration for your [App](/docs/config/apps), you can now set up your App Refresh Query.
+
+Start by heading to the `Refresh` tab on your App and select "Add an App Refresh Query".
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Configure App Refresh Query"
+  src="/images/docs/guides/config/app--06-configure-refresh-query.png"
+  width={1824}
+  height={877}
+/>
+
+If you've set up a meta table in Step 1, you can enter the following as your query to check for any new runs with zero errors:
+
+```sql
+SELECT MAX(last_run_at) FROM dbt_meta WHERE error=0
+```
+
+Otherwise, enter whatever query you would like Grouparoo to use to check for new data. You can read more about configuring an App Refresh Query in the [App Configuration Docs](/docs/config/apps). You can also set how frequently Grouparoo should run this query. By default, it will be run every minute.
+
+Click "Update" to save your changes.
+
+## Next Steps
+
+That's it! While Grouparoo is running, it will now run run your query periodically to check for new data and trigger any associated schedules.
+
+You'll also want to make sure you configure the other items in our [Configuration Guide](/docs/config) to get the most out of your Grouparoo instance and begin sending data to your Destinations.

@@ -185,10 +185,10 @@ const DocsNav: NavItem[] = [
     ],
   },
 
-  // -- Plugins --
+  // -- Integrations --
   {
-    title: "Plugins Documentation",
-    linkText: "Plugins",
+    title: "Grouparoo Integrations Docs",
+    linkText: "Integrations",
     path: "/docs/integrations",
     children: [
       { title: "BigQuery", path: "/docs/integrations/grouparoo-bigquery" },
@@ -198,6 +198,7 @@ const DocsNav: NavItem[] = [
         path: "/docs/integrations/grouparoo-calculated-property",
       },
       { title: "ClickHouse", path: "/docs/integrations/grouparoo-clickhouse" },
+      { title: "dbt", path: "/docs/integrations/grouparoo-dbt" },
       { title: "Intercom", path: "/docs/integrations/grouparoo-intercom" },
       { title: "Marketo", path: "/docs/integrations/grouparoo-marketo" },
       { title: "Mongo", path: "/docs/integrations/grouparoo-mongo" },

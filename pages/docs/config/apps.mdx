@@ -67,7 +67,41 @@ Once you've chosen an App, add the connection details you'll need to connect to 
   alt="UI Config: Configure App"
   src="/images/docs/guides/config/app--04-configure.png"
   width={1824}
-  height={933}
+  height={878}
+/>
+
+### Step 3 (Optional): App Refresh Query
+
+App Refresh Query allows Grouparoo to scan your data warehouse periodically for new data using a query you define.
+
+The following Plugins support App Refresh Query:
+
+- [BigQuery](/integrations/grouparoo-bigquery)
+- [Clickhouse](/integrations/grouparoo-clickhouse)
+- [MySQL](/integrations/gropuaroo-mysql)
+- [Postgres](/integrations/gropuaroo-postgres)
+- [Redshift](/integrations/grouparoo-redshift)
+- [Snowflake](/integrations/grouparoo-snowflake)
+- [SQLite](/integrations/grouparoo-sqlite)
+
+These Apps will have an additional tab at the top of this page titled "Refresh". Clicking that tab will allow you to add a Refresh to your App.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Add App Refresh Query"
+  src="/images/docs/guides/config/app--05-add-refresh-query.png"
+  width={1824}
+  height={873}
+/>
+
+Once you've added an App Refresh Query, you will be able to enter the query you'd like Grouparoo to use to check your App for new data. You can test your query to see what value it will return, and the click "Update" to save.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Configure App Refresh Query"
+  src="/images/docs/guides/config/app--06-configure-refresh-query.png"
+  width={1824}
+  height={877}
 />
 
 <GeneratedConfigFile configDir="apps" docPath="/docs/config/code-config/apps" />
