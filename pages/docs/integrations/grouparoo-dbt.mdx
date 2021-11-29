@@ -22,14 +22,14 @@ dbt project.
   your data warehouse.
 </Alert> Grouparoo's dbt plugin can support the following data warehouses:
 
-- [BigQuery](/integrations/grouparoo-bigquery)
-- [Postgres](/integrations/gropuaroo-postgres)
-- [Redshift](/integrations/grouparoo-redshift)
-- [Snowflake](/integrations/grouparoo-snowflake)
+- [BigQuery](/docs/integrations/grouparoo-bigquery)
+- [Postgres](/docs/integrations/gropuaroo-postgres)
+- [Redshift](/docs/integrations/grouparoo-redshift)
+- [Snowflake](/docs/integrations/grouparoo-snowflake)
 
 ## Orchestrating Grouparoo with dbt
 
-You can use an [App Refresh Query](/getting-started/product-concepts#app-refresh-query) to orchestrate your Grouparoo Project based on dbt runs. An App Refresh Query checks for new data in a specific place in your warehouse as often as every minute. If new data is found, it will trigger all Schedules associated with that App. To get started with App Refresh Query, you'll want to make sure you have a single place for Grouparoo to check for data.
+You can use an [App Refresh Query](/docs/getting-started/product-concepts#app-refresh-query) to orchestrate your Grouparoo Project based on dbt runs. An App Refresh Query checks for new data in a specific place in your warehouse as often as every minute. If new data is found, it will trigger all Schedules associated with that App. To get started with App Refresh Query, you'll want to make sure you have a single place for Grouparoo to check for data.
 
 ### Step 1: Set up a meta table
 
