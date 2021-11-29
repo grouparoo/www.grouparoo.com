@@ -9,9 +9,18 @@ pageNavSelector: "h2"
 
 Grouparoo's [dbt](https://www.getdbt.com/) Plugin enables you to configure Grouparoo within your dbt project using a shared config.
 
+## Create a Grouparoo Project Within your dbt Project
+
+To integrate Grouparoo within your existing dbt project, you'll want to follow our installation docs and make sure you initiate your Grouparoo project in the same directory as your
+dbt project.
+
 <PluginDocsInstallation plugin="dbt" />
 
-You'll also want to install the Grouparoo Plugin for your data warehouse. Grouparoo can support the following data warehouses used by dbt:
+<Alert variant="warning">
+  Note that the main purpose of the dbt Plugin is to enable shared configuration
+  of your dbt project. You will also need to install the Grouparoo Plugin for
+  your data warehouse.
+</Alert> Grouparoo's dbt plugin can support the following data warehouses:
 
 - [BigQuery](/integrations/grouparoo-bigquery)
 - [Postgres](/integrations/gropuaroo-postgres)
