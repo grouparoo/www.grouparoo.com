@@ -40,38 +40,13 @@ You can use an [App Refresh Query](/docs/getting-started/product-concepts#app-re
 
 You can use dbt's [`on-run-end` hook](https://docs.getdbt.com/reference/project-configs/on-run-start-on-run-end) to generate a new table that is updated upon the completion of each dbt run.
 
-At the very simplest, you can do this by adding a macro to your project that generates a table that is updated after each run. Add the following line to your `dbt_project.yml`:
+At its simplest, you can do this by adding a macro to your project that generates a table that is updated after each run. Add the following line to your `dbt_project.yml`:
 
 ```yml
-on-run-end: "{{ on_run_end(results) }}"
+on-run-end: "CREATE TABLE IF NOT EXISTS dbt_meta (last_run_at TIMESTAMP); INSERT INTO dbt_meta (last_run_at) VALUES (NOW());"
 ```
 
-Then in the `/macros` directory, create a new file called `on_run_end.sql`. The following will generate a `dbt_meta` table if it doesn't already exist and will keep track of how many namespaces had success, errors, or were skipped.
-
-```sql
-{% macro on_run_end(results) %}
-  {% set ns = namespace(success=0, error=0, skipped=0) %}
-
-  {% for res in results %}
-    {{ log("result: " ~ res.status ~ " node: " ~ res.node.unique_id ~ " message: " ~ res.message, info=True) }}
-    {% if res.status == "success" %}
-      {% set ns.success = ns.success + 1 %}
-    {% elif res.status == "error" %}
-      {% set ns.error = ns.error + 1 %}
-    {% elif res.status == "skipped" %}
-      {% set ns.skipped = ns.skipped + 1 %}
-    {% endif %}
-  {% endfor %}
-
-  {{ log("on_run_end  success: " ~ ns.success ~ " error: " ~ ns.error ~ " skipped: " ~ ns.skipped, info=True) }}
-  {% if execute %}
-    CREATE TABLE IF NOT EXISTS dbt_meta (last_run_at TIMESTAMP, success INT, error INT, skipped INT);
-    INSERT INTO dbt_meta (last_run_at, success, error, skipped)
-      VALUES (NOW(), {{ ns.success }}, {{ ns.error }}, {{ ns.skipped }});
-  {% endif %}
-
-{% endmacro %}
-```
+You can also generate a more complex `dbt_meta` table using a macro as seen in our [dbt example app](https://github.com/grouparoo/app-example-dbt) project.
 
 ### Step 2: Configure an App Refresh Query
 
@@ -90,7 +65,7 @@ Start by heading to the `Refresh` tab on your App and select "Add an App Refresh
 If you've set up a meta table in Step 1, you can enter the following as your query to check for any new runs with zero errors:
 
 ```sql
-SELECT MAX(last_run_at) FROM dbt_meta WHERE error=0
+SELECT MAX(last_run_at) FROM dbt_meta
 ```
 
 Otherwise, enter whatever query you would like Grouparoo to use to check for new data. You can read more about configuring an App Refresh Query in the [App Configuration Docs](/docs/config/apps). You can also set how frequently Grouparoo should run this query. By default, it will be run every minute.
