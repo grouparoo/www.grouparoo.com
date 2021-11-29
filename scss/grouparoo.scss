@@ -1,6 +1,9 @@
 // -- Colors --
 @import "_variables.scss";
 
+$navbar-light-color: $grouparoo-font-color;
+$navbar-light-hover-color: $grouparoo-font-color;
+
 // -- External Components --
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-svg-core/styles.css";
@@ -135,16 +138,14 @@ body {
   line-height: 150%;
 }
 
-button {
-  border-radius: 40px;
-  > * {
-    font-family: $font-header;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 21px;
-    letter-spacing: 0px;
-  }
+.btn,
+.btn > * {
+  font-family: $font-header;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0px;
 }
 
 code,
@@ -176,7 +177,6 @@ a,
 }
 
 #seeMoreLink:hover {
-  // color: black;
   font-weight: 400;
 }
 .dropdown-menu {
@@ -188,9 +188,6 @@ a,
   box-shadow: none;
   background: none;
 }
-// .dropdown-item a:hover {
-//   color: black;
-// }
 
 .dropdown-item {
   height: 2em;
@@ -223,9 +220,13 @@ header {
       #06182c 100%
     );
 
-  * {
-    // Note: This may need to be changed later
-    color: $grouparoo-font-color !important;
+  *,
+  .nav-bar > * {
+    color: $grouparoo-font-color;
+
+    .nav-link {
+      color: $grouparoo-font-color;
+    }
   }
 
   .dropdown-menu {
