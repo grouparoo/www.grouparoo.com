@@ -142,7 +142,7 @@ function PageTemplate({ children }) {
 
       <div className="main">
         <Navigation />
-        <div id="content-container" style={{ minHeight: 700 }}>
+        <div id="content-container">
           {Children.map(children, (child) =>
             cloneElement(child, { setReleaseNote })
           )}

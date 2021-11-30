@@ -1,8 +1,8 @@
 // -- Colors --
 @import "_variables.scss";
 
-$navbar-light-color: $grouparoo-font-color;
-$navbar-light-hover-color: $grouparoo-font-color;
+$navbar-light-color: $grouparoo-nav-font-color;
+$navbar-light-hover-color: $grouparoo-nav-font-color;
 
 // -- External Components --
 @import "~bootstrap/scss/bootstrap";
@@ -130,6 +130,13 @@ body {
   }
 }
 
+.weave {
+  background: url(/images/home/weave.png), #eff4ff;
+  background-blend-mode: difference;
+  background-position: center;
+  background-size: cover;
+}
+
 .outline {
   font-family: IBM Plex Sans;
   font-style: normal;
@@ -222,10 +229,10 @@ header {
 
   *,
   .nav-bar > * {
-    color: $grouparoo-font-color;
+    color: $grouparoo-nav-font-color;
 
     .nav-link {
-      color: $grouparoo-font-color;
+      color: $grouparoo-nav-font-color;
     }
   }
 

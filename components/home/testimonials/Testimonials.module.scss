@@ -1,0 +1,21 @@
+.quote {
+  border-left: 4px solid #60edba;
+}
+
+.img {
+  width: auto;
+  height: 84px;
+
+  &.chipax {
+    padding: 10px;
+  }
+
+  &.sendoso {
+    padding: 20px;
+  }
+}
+
+.container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
