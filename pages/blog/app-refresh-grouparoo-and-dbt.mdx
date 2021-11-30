@@ -1,0 +1,126 @@
+---
+title: "Use App Refresh to run Grouparoo with dbt"
+date: "2021-11-30"
+author: "Teal Larson"
+pullQuote: "Learn more about using App Refresh Queries to trigger schedules and learn how to integrate this feature with a dbt project."
+seoDescription: "Looking to get your data from your dbt Projects to your Destinations? The Grouparoo experts will walk you through how to get started. ✓ Start a free trial now!"
+image: "app-refresh-grouparoo-and-dbt/211130-dbt-grouparoo.png"
+tags: [data, engineering]
+---
+
+Grouparoo’s new App Refresh feature enables users to run their Grouparoo schedules whenever a predetermined query returns new data. This means you can do things like update your Users and Purchases data anytime your Payments table is updated or run all of your Schedules every time a dbt job completes.
+
+We’ve talked about how to [integrate dbt with Grouparoo](/blog/dbt-and-grouparoo) in your Reverse ETL process before. One use case that was important for us to support is how to integrate Grouparoo into an existing dbt project and trigger schedules automatically when a dbt run completes -- including for users on our Hosted offering. Now, you’re able to run Grouparoo after your dbt runs in any environment!
+
+In this article, we’ll walk through how we used our new App Refresh Query feature to update our dbt example project.
+
+<Alert variant="primary">
+  Browse or fork our dbt example project{" "}
+  <a href="https://github.com/grouparoo/app-example-dbt">here</a>
+</Alert>
+
+This same process will work with any dbt project using Bigquery, Postgres, Redshift, or Snowflake. If you are using Clickhouse, you can still use the `on-run-end` hook and App Refresh Query, though you’ll have to configure your credentials rather than using the `@grouparoo-dbt` wraparound plugin.
+
+<Image
+  alt="Use App Refresh to run Grouparoo with dbt"
+  src="app-refresh-grouparoo-and-dbt/211130-dbt-grouparoo.png"
+  width={500}
+  height={263}
+  centered
+/>
+
+## Tracking dbt run metadata
+
+If you aren’t currently keeping track of metadata from your dbt runs, you can use a [`macro`](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros) along with an [`on-run-end` hook](https://docs.getdbt.com/reference/project-configs/on-run-start-on-run-end) to generate one automatically. In our example project, we started this by adding the following to `dbt_project.yml`:
+
+```yml
+on-run-end: "{{ on_run_end(results) }}"
+```
+
+Then, in `/macros`, we added a file called `on_run_end.sql`. In this file, we used [Jinja](<[https://jinja.palletsprojects.com/en/3.0.x/](https://jinja.palletsprojects.com/en/3.0.x/)>) and SQL to build out a `dbt_meta` table that stores successes, errors, and skips for each run, as well as a timestamp. It will also log the number of successes, errors, and skips when it is executed after a `dbt run`.
+
+## Connecting with Grouparoo
+
+### Self-hosted / Code Config
+
+Take a look at our [dbt example app](https://github.com/grouparoo/app-example-dbt) to see how we’ve set up our configuration. One notable difference from typical Grouparoo configuration is that at the App level we’ve utilized our dbt plugin to fetch credentials from our dbt Profile. The dbt plugin will also be able to tell what environment you’re in (`dev`, `prod`, etc.) and will use the proper version of your warehouse.
+
+We’ve also added a “refresh” object to our App that will generate an [App Refresh Query](/docs/getting-started/product-concepts#app-refresh-query). The query here will check every minute to see if there is a new timestamp in the `last_run_at` column of `dbt_meta`
+
+```js
+
+const { dbtProfile } = require("@grouparoo/dbt");
+
+exports.default = async function buildConfig() {
+
+  // fetch warehouse connection details from parent dbt profile
+
+  const { type, options } = await dbtProfile();
+
+  return [
+
+    {
+
+      class: "app",
+
+      id: "warehouse",
+
+      name: "Warehouse",
+
+      refresh: {
+
+	query: “SELECT MAX(last_run_at) FROM dbt_meta”
+
+	recurringFrequency: 60 * 1000
+
+      }
+
+      type,
+
+      options,
+
+    },
+
+  ];
+
+};
+
+```
+
+From here, you can start your Grouparoo server from the command line. Check that you are in the `/grouparoo` directory in your dbt project and run:
+
+```
+
+grouparoo start
+
+```
+
+### UI Enterprise / Cloud Hosted
+
+Grouparoo also offers a Cloud Hosted version of our product as well as a license for self-hosted UI Enterprise. For those versions, the setup will be a little different. You’ll want to follow the steps in our [Config Guide for Apps](<[https://www.grouparoo.com/docs/config/apps](https://www.grouparoo.com/docs/config/apps)>).
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Configure App Refresh Query"
+  src="/images/docs/guides/config/app--06-configure-refresh-query.png"
+  width={1824}
+  height={877}
+/>
+
+Once your App is configured, you'll want to open the Refresh tab and use the following
+as your Refresh query:
+
+```sql
+
+SELECT MAX(last_run_at) FROM dbt_meta
+
+```
+
+You can then use our UI Enterprise setup steps or [Config Guides](<[http://www.grouparoo.com/docs/config](http://www.grouparoo.com/docs/config)>) to complete your setup.
+
+## Next Steps
+
+Now, anytime a dbt run is completed, whether it’s by manually running `dbt run` or part of a cron job, all our Grouparoo data will be checked for updates and all of our schedules (in this case, just the one on our `mailchimp data` source) will be run.
+
+- To learn more about the different ways Grouparoo can be run, check out our [Orchestration Docs](<[https://www.grouparoo.com/docs/running/orchestration](https://www.grouparoo.com/docs/running/orchestration)>)
+- Read more about how you can run dbt and Grouparoo from the CLI versus keeping the server on, check out our
