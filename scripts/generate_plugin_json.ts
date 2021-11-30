@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-
 import docsNavData from "../data/docs-nav";
 import { Plugin, PluginData } from "../data/plugins";
 
@@ -28,7 +27,7 @@ if (!fs.existsSync(manifestFileDir)) {
 }
 
 const localPluginPaths = docsNavData
-  .find((plugin) => plugin.title.includes("Plugins"))
+  .find((plugin) => plugin.title.includes("Integrations"))
   .children.map((plugin) => plugin.path);
 
 console.log(localPluginPaths);
@@ -37,7 +36,7 @@ const pluginDocsUrl = (plugin: Plugin) => {
   const name = plugin.packageName
     .replace(/\@/g, "") // Characters to remove
     .replace(/[\ \/]/g, "-"); // Characters to replace with a hyphen
-  const localPath = `/docs/plugins/${name}`;
+  const localPath = `/docs/integrations/${name}`;
   console.log(localPath);
 
   return localPluginPaths.includes(localPath) ? `${baseUrl}${localPath}` : null;

@@ -33,7 +33,7 @@
             <content:encoded
       ><![CDATA[<p>With the release of Grouparoo 0.7.4 you can <a href="/integrations/sources/clickhouse">sync data from and to
 a ClickHouse database</a> with the <code>@grouparoo/clickhouse</code> plugin.</p><p>For more information and examples, check out the
-<a href="/docs/plugins/grouparoo-clickhouse">ClickHouse plugin docs</a>.</p>]]></content:encoded>
+<a href="/docs/integrations/grouparoo-clickhouse">ClickHouse plugin docs</a>.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
@@ -76,7 +76,7 @@ a ClickHouse database</a> with the <code>@grouparoo/clickhouse</code> plugin.</p
             <guid>grouparoo-release-note-2021-09-02-calculated-properties</guid>
             <pubDate>Thu, 02 Sep 2021 00:00:00 GMT</pubDate>
             <content:encoded
-      ><![CDATA[<p>One exciting development with the release of Grouparoo v0.6 is our Calculated Property plugin. With the Calculated Property plugin, users can now create custom properties calculated from other properties using JavaScript and <a href="https://github.com/janl/mustache.js/" target="_blank" rel="nofollow noopener noreferrer">mustache variables</a>.</p><p>This allows for data transformation such as string concatenation to create a <code>full_name</code> property, explicitly dealing with empty values, coalescing values, and more using JavaScript functions against data from your warehouse.</p><p>For more information and examples of how to build using our Calcualted Property plugin, you can check out our <a href="https://www.grouparoo.com/docs/plugins/grouparoo-calculated-property" target="_blank" rel="nofollow noopener noreferrer">Calculated Property plugin docs</a>.</p>]]></content:encoded>
+      ><![CDATA[<p>One exciting development with the release of Grouparoo v0.6 is our Calculated Property plugin. With the Calculated Property plugin, users can now create custom properties calculated from other properties using JavaScript and <a href="https://github.com/janl/mustache.js/" target="_blank" rel="nofollow noopener noreferrer">mustache variables</a>.</p><p>This allows for data transformation such as string concatenation to create a <code>full_name</code> property, explicitly dealing with empty values, coalescing values, and more using JavaScript functions against data from your warehouse.</p><p>For more information and examples of how to build using our Calcualted Property plugin, you can check out our <a href="https://www.grouparoo.com/docs/integrations/grouparoo-calculated-property" target="_blank" rel="nofollow noopener noreferrer">Calculated Property plugin docs</a>.</p>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>

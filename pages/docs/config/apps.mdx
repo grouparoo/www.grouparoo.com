@@ -53,8 +53,8 @@ Choose the type of App you'd like to add. When you're first getting started, we 
   </p>
   <p className="mb-0">
     If something goes wrong during the process, shut down the server and install
-    the Plugin manually. <Link href="/docs/plugins">More information here</Link>
-    .
+    the Plugin manually.{" "}
+    <Link href="/docs/integrations">More information here</Link>.
   </p>
 </Alert>
 
@@ -67,8 +67,44 @@ Once you've chosen an App, add the connection details you'll need to connect to 
   alt="UI Config: Configure App"
   src="/images/docs/guides/config/app--04-configure.png"
   width={1824}
-  height={933}
+  height={878}
 />
+
+### Step 3 (Optional): App Refresh Query
+
+App Refresh Query allows Grouparoo to scan your data warehouse periodically for new data using a query you define.
+
+The following Plugins support App Refresh Query:
+
+- [BigQuery](/docs/integrations/grouparoo-bigquery)
+- [Clickhouse](/docs/integrations/grouparoo-clickhouse)
+- [MySQL](/docs/integrations/grouparoo-mysql)
+- [Postgres](/docs/integrations/grouparoo-postgres)
+- [Redshift](/docs/integrations/grouparoo-redshift)
+- [Snowflake](/docs/integrations/grouparoo-snowflake)
+- [SQLite](/docs/integrations/grouparoo-sqlite)
+
+These Apps will have an additional tab at the top of this page titled "Refresh". Clicking that tab will allow you to add a Refresh to your App.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Add App Refresh Query"
+  src="/images/docs/guides/config/app--05-add-refresh-query.png"
+  width={1824}
+  height={873}
+/>
+
+Once you've added an App Refresh Query, you will be able to enter the query you'd like Grouparoo to use to check your App for new data. You can test your query to see what value it will return, and the click "Update" to save.
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Configure App Refresh Query"
+  src="/images/docs/guides/config/app--06-configure-refresh-query.png"
+  width={1824}
+  height={877}
+/>
+
+Your App will now run all schedules for its sources anytime a new value is returned from this query. To implement App Refresh Query, it's helpful to have a single place you can check for updates in your database, often implemented as metadata written at the end of an ETL process.
 
 <GeneratedConfigFile configDir="apps" docPath="/docs/config/code-config/apps" />
 

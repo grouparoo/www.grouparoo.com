@@ -70,7 +70,7 @@ This will give you something like the following:
     snowflake:query:source (id, parent) - Config for a snowflake query Source. Work with multiple tables and build custom queries for its properties.
     snowflake:table:source (id, parent, from, mapping, with, high-water-mark) - Config for a snowflake table Source. Construct Sources and Properties without writing SQL.
 
-This list is determined by the plugins that you have installed. [Learn more about Plugins](/docs/plugins).
+This list is determined by the plugins that you have installed. [Learn more about Plugins](/docs/integrations).
 
 ## Configuring Your Source
 
@@ -107,5 +107,13 @@ Each Source config file has an example Schedule included with it as a separate o
 - `recurring`: (**required**, default: `true`) Should this Schedule run regularly?
 - `recurringFrequency`: (**required**) The length of the Schedule's interval. This is measured in `ms`. For example, 15 minutes would be `1000 * 60 * 15` or `900000`.
 - `options`: These are the custom options that the specific Source type will bring.
+
+If you've configured an App Refresh Query when you configured your App, you can also opt to leave a particular Schedule out of its updates by adding:
+
+```
+  refreshEnabled: false
+```
+
+to the schedule's config.
 
 <ValidateAndApplyConfig />

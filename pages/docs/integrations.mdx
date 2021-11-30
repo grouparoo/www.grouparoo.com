@@ -1,13 +1,15 @@
 ---
-title: "Grouparoo Plugins"
+title: "Grouparoo Integrations"
 date: "2021-10-12"
 section: "installation"
-pullQuote: "Grouparoo can be extended with Plugins to add more Apps, Sources, and Destinations."
+pullQuote: "Grouparoo can integrate seamlessly with your existing data stack. Plugins add more Apps, Sources, and Destinations."
 ---
 
-Grouparoo can be extended with Plugins to add more Apps, Sources, and Destinations.
+## Plugins
 
-## Installing a Plugin
+The primary way Grouparoo can integrate with your data stack is by using Plugins. Grouparoo can be extended with Plugins to add more Apps, Sources, and Destinations.
+
+### Installing a Plugin
 
 The easiest way to install a Plugin is by running `grouparoo config` within your project folder, and adding a new App via the web interface. You will see a list of all the available Grouparoo Plugins, and the application will install new ones you select. Under the hood, installing a new Plugin will add it to your `package.json` and use `npm` to install it.
 
@@ -33,7 +35,7 @@ Please ensure that the versions of your plugins match the version of `@grouparoo
 grouparoo install @grouparoo/mysql@v1.2.3 # install v1.2.3 specifically
 ```
 
-## Available Community Plugins
+### Available Community Plugins
 
 <PluginsList />
 
@@ -105,6 +107,10 @@ The closed-source `@grouparoo/ui-enterprise` edition is everything a company nee
 
 Note: Please ensure that you are only have one version of the `@grouparoo/ui-*` plugins installed, not both.
 
-## Creating your own Plugins
+### Creating your own Plugins
 
 Being an open-source project, Grouparoo makes it easy to create your own plugins as well! You can learn more from the [Plugin development docs](/docs/development/plugins).
+
+## Additional Integrations
+
+In addition to our plugins, you can use features such as our [Orchestration Tools](/docs/running/orchestration) to integrate with tools such as [Airflow](https://airflow.apache.org/), [Dagster](https://dagster.io/), or [dbt](/docs/integrations/grouparoo-dbt).

@@ -1,6 +1,7 @@
 import { Braze } from "./braze";
 import { CalculatedProperty } from "./calculated-property";
 import { CSV } from "./csv";
+import { dbt } from "./dbt";
 import { Customerio } from "./customerio";
 import { ClickHouse } from "./clickhouse";
 import { Eloqua } from "./eloqua";
@@ -14,7 +15,6 @@ import { Mailjet } from "./mailjet";
 import { Mailchimp } from "./mailchimp";
 import { Marketo } from "./marketo";
 import { Mixpanel } from "./mixpanel";
-
 import { Mongo } from "./mongo";
 import { MySQL } from "./mysql";
 import { OneSignal } from "./onesignal";
@@ -98,6 +98,7 @@ export const PluginData: Plugin[] = [
   CalculatedProperty,
   ClickHouse,
   CSV,
+  dbt,
   Eloqua,
   Customerio,
   Facebook,

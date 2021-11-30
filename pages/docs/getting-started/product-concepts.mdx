@@ -15,6 +15,7 @@ Welcome to the Grouparoo Dictionary! This is the collection of terms we use thro
 ### Table of Contents
 
 - [App](#app)
+- [App Refresh Query](#app-refresh-query)
 - [API Key](#api-key)
 - [Application Database](#application-database)
 - [Batch Generation](#batch-generation)
@@ -48,6 +49,10 @@ An App in Grouparoo represents a _integration_, or a _connection_ to some servic
 Grouparoo uses API Keys to allow for programmatic access to API provided by our Grouparoo instance. Each API Key can have different read and write permissions to various sections of thr Grouparoo API.
 
 You can learn more about how to use and generate API Keys from the [REST API documentation](/docs/support/rest-api).
+
+## App Refresh Query
+
+An App Refresh Query can be used to direct Grouparoo to a particular place to check for data. This may looking for new data in a column of one of your sources, or it may refer to a table that you do not use as a source. If the Query you configure returns a value different from what you had stored, Grouparoo will enqueue all Schedules(#schedule) on all Sources(#source) that have refresh enabled.
 
 ## Application Database
 
@@ -122,9 +127,9 @@ A Model defines the shape of your [Records](#record). Each Model has its own [So
 
 The core Grouparoo application is the engine that drives syncing data from [Sources](#source) to [Destinations](#destination). The application relies on plugins to provide you with only the functionality you require to sync data between your preferred services.
 
-Being that Grouparoo is a Node.js application, the plugins are available as JavaScript packages through [NPM](https://www.npmjs.com/). The majority of plugins are open-source and available for free, though we do have also have [paid plugins](/docs/plugins#paid-plugins).
+Being that Grouparoo is a Node.js application, the plugins are available as JavaScript packages through [NPM](https://www.npmjs.com/). The majority of plugins are open-source and available for free, though we do have also have [paid plugins](/docs/integrations#paid-plugins).
 
-Learn more about [existing plugins](/docs/plugins), or [develop your own Plugin](/docs/development/plugins).
+Learn more about [existing plugins](/docs/integrations), or [develop your own Plugin](/docs/development/plugins).
 
 ## Record
 

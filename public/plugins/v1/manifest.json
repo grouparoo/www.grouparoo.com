@@ -7,7 +7,7 @@
     "source": true,
     "destination": false,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/bigquery",
-    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-bigquery"
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-bigquery"
   },
   {
     "name": "Braze",
@@ -17,7 +17,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/braze",
-    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-braze"
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-braze"
   },
   {
     "name": "CSV",
@@ -37,7 +37,7 @@
     "source": true,
     "destination": false,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/calculated-property",
-    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-calculated-property"
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-calculated-property"
   },
   {
     "name": "ClickHouse",
@@ -47,7 +47,7 @@
     "source": true,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/clickhouse",
-    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-clickhouse"
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-clickhouse"
   },
   {
     "name": "Customer.io",
@@ -107,7 +107,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/intercom",
-    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-intercom"
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-intercom"
   },
   {
     "name": "Iterable",
@@ -147,7 +147,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/marketo",
-    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-marketo"
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-marketo"
   },
   {
     "name": "Mixpanel",
@@ -167,7 +167,7 @@
     "source": true,
     "destination": false,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/mongo",
-    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-mongo"
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-mongo"
   },
   {
     "name": "MySQL",
@@ -177,7 +177,7 @@
     "source": true,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/mysql",
-    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-mysql"
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-mysql"
   },
   {
     "name": "OneSignal",
@@ -217,7 +217,7 @@
     "source": true,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/postgres",
-    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-postgres"
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-postgres"
   },
   {
     "name": "Redshift",
@@ -227,7 +227,7 @@
     "source": true,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/redshift",
-    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-redshift"
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-redshift"
   },
   {
     "name": "SQLite",
@@ -237,7 +237,7 @@
     "source": true,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/sqlite",
-    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-sqlite"
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-sqlite"
   },
   {
     "name": "Sailthru",
@@ -257,7 +257,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/salesforce",
-    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-salesforce"
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-salesforce"
   },
   {
     "name": "Sendgrid",
@@ -277,7 +277,7 @@
     "source": true,
     "destination": false,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/snowflake",
-    "docsUrl": "https://www.grouparoo.com/docs/plugins/grouparoo-snowflake"
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-snowflake"
   },
   {
     "name": "Zendesk",
