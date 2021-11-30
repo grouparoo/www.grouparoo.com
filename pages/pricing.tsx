@@ -38,34 +38,26 @@ export default function PricingPage() {
       </div>
       <div id="pricingPlans" className="text-center">
         <Container>
-          <Row className="mx-auto row-cols-1 row-cols-md-2 row-cols-xl-3 d-flex align-items-stretch">
+          <Row className="mx-auto row-cols-1 row-cols-md-2 row-cols-lg-3 d-flex align-items-stretch">
             <Col className="mb-4 mx-auto d-flex align-items-stretch">
               <Card
-                className="p-3 col-10 mx-auto shadow-lg h-100 text-start"
+                className="p-3 col-12 mx-auto shadow-lg h-100 text-start"
                 bg="white"
-                style={{ minHeight: "583px" }}
+                style={{ minHeight: "468px" }}
               >
                 <Card.Body className="d-flex align-items-start flex-column">
                   <div className="h3">Community Edition</div>
                   Grouparoo is open source and free to run in on your own cloud.
                   <br />
                   <br />
-                  <div className="text-start">
+                  <div className={styles.pricingList}>
                     <b>Features include:</b>
-                    <li className="styles.pricingList">
-                      Realtime syncing infrastructure
-                    </li>
-                    <li className="styles.pricingList">
-                      Access to all Sources and Destinations{" "}
-                    </li>
-                    <li className="styles.pricingList">
-                      Configurable with code and our CLI
-                    </li>
-                    <li className="styles.pricingList">
-                      Dynamic Group definition
-                    </li>
-                    <li className="styles.pricingList">Ticket-based support</li>
-                    <li className="styles.pricingList">
+                    <li>Realtime syncing infrastructure</li>
+                    <li>Access to all Sources and Destinations </li>
+                    <li>Configurable with code and our CLI</li>
+                    <li>Dynamic Group definition</li>
+                    <li>Ticket-based support</li>
+                    <li>
                       Enterprise UI add-on available (
                       <Link href="/meet">contact sales</Link>)
                     </li>
@@ -83,10 +75,10 @@ export default function PricingPage() {
             </Col>
             <Col className="mb-4">
               <Card
-                className="mx-auto col-10 p-3
+                className="mx-auto col-12 p-3
                  shadow-lg h-100 text-start"
                 bg="info"
-                style={{ minHeight: "583px" }}
+                style={{ minHeight: "468px" }}
               >
                 <Card.Body>
                   <div className="h3">Standard Cloud</div>
@@ -95,23 +87,16 @@ export default function PricingPage() {
                   destinations.
                   <br />
                   <br />
-                  <div className="text-start">
+                  <div className={styles.pricingList}>
                     <b>Features include:</b>
-                    <li className="styles.pricingList">
-                      Up to 1MM Records synced/month
-                    </li>
-                    <li className="styles.pricingList">
-                      Tiered pricing based on monthly usage
-                    </li>
-                    <li className="styles.pricingList">
-                      Access to all Sources and Destinations
-                    </li>
-                    <li className="styles.pricingList">
+                    <li>Up to 1MM Records synced/month</li>
+                    <li>Tiered pricing based on monthly usage</li>
+                    <li> Access to all Sources and Destinations</li>
+                    <li>
+                      {" "}
                       A no-code web UI allowing team members to access data
                     </li>
-                    <li className="styles.pricingList">
-                      Business hours support
-                    </li>
+                    <li> Business hours support</li>
                   </div>
                 </Card.Body>
                 <Button
@@ -129,27 +114,20 @@ export default function PricingPage() {
 
             <Col className="mb-4 mx-auto ">
               <Card
-                className="mx-auto p-3 shadow-lg h-100 col-10"
+                className="mx-auto p-3 shadow-lg h-100 col-12"
                 bg="white"
-                style={{ minHeight: "583px" }}
+                style={{ minHeight: "468px" }}
               >
                 <Card.Body className="d-flex mx-auto align-items-start flex-column">
                   <div className="h3">Enterprise Cloud</div>
                   For enterprises with larger data sets or unique use cases.
                   <br />
                   <br />
-                  <div className="text-start">
+                  <div className={styles.pricingList}>
                     <b>Features include:</b>
-                    <li className="styles.pricingList">
-                      {" "}
-                      &gt; 1MM synced Records/month
-                    </li>
-                    <li className="styles.pricingList">
-                      Business hours support
-                    </li>
-                    <li className="styles.pricingList">
-                      Enhanced support response time SLAs
-                    </li>
+                    <li> &gt; 1MM synced Records/month</li>
+                    <li> Business hours support</li>
+                    <li> Enhanced support response time SLAs</li>
                   </div>
                   <Button
                     variant="primary"
