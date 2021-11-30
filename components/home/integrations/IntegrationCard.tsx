@@ -51,7 +51,7 @@ const IntegrationCardDetail = ({
   <div className={`h-100 ${styles.cardDetail}`}>
     <Card className={`${showLink ? styles.integrationCardLink : ""} h-100`}>
       <Card.Body className="d-flex flex-column align-items-center">
-        <SmallIntegration fillWidth={true} slug={plugin.slug} />
+        <SmallIntegration slug={plugin.slug} />
         <Card.Text className={`${styles.pluginName} bold`}>
           {plugin.name}
         </Card.Text>
