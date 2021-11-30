@@ -13,6 +13,11 @@ import { getReleaseNotes, ReleaseNote } from "../utils/releaseNotes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ImageInBrowserFrame from "../components/ImageInBrowserFrame";
 import { Header } from "../components/home/header/Header";
+import { Partners } from "../components/home/partners/Partners";
+import { About } from "../components/home/about/About";
+import { Actionable } from "../components/home/actionable/Actionable";
+import { Testimonials } from "../components/home/testimonials/Testimonials";
+import { HowGrouparooWorks } from "../components/home/how-it-works/HowGrouparooWorks";
 
 const getTagline = (pluginNames: string[]) =>
   `Stop writing code to sync data to ${
@@ -73,6 +78,11 @@ const IndexPage = ({ pageProps, setReleaseNote }) => {
       </Head>
 
       <Header tagline={tagline} />
+      <Partners />
+      <About />
+      <Actionable />
+      <Testimonials />
+      <HowGrouparooWorks />
     </>
   );
 };

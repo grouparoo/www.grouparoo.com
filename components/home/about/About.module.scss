@@ -1,0 +1,30 @@
+.about {
+  background: radial-gradient(
+    59.86% 50% at 50% 50%,
+    rgba(225, 223, 251, 0.5) 0%,
+    rgba(225, 223, 251, 0) 100%
+  );
+
+  [class~="col"] {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cloud {
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &.one {
+      background-image: url("./Cloud1.svg");
+    }
+    &.two {
+      background-image: url("./Cloud2.svg");
+    }
+    &.three {
+      background-image: url("./Cloud3.svg");
+    }
+    &.four {
+      background-image: url("./Cloud4.svg");
+    }
+  }
+}
