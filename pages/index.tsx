@@ -19,6 +19,7 @@ import { Actionable } from "../components/home/actionable/Actionable";
 import { Testimonials } from "../components/home/testimonials/Testimonials";
 import { HowGrouparooWorks } from "../components/home/how-it-works/HowGrouparooWorks";
 import styles from "./index.module.scss";
+import { Integrations } from "../components/home/integrations/Integrations";
 
 const getTagline = (pluginNames: string[]) =>
   `Stop writing code to sync data to ${
@@ -116,6 +117,7 @@ const IndexPage = ({ pageProps, setReleaseNote }) => {
           </Col>
         </Row>
       </Container>
+      <Integrations />
     </>
   );
 };
