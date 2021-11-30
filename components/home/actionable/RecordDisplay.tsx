@@ -5,6 +5,7 @@ export const RecordDisplay = ({ className }: { className?: string }) => (
     viewBox="0 0 540 545"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className={className}
   >
     <g filter="url(#filter0_dd_217_337)">
       <rect

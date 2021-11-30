@@ -1,32 +1,31 @@
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { ActionableTargets } from "./ActionableTargets";
 import { RecordDisplay } from "./RecordDisplay";
+import styles from "./Actionable.module.scss";
 
 export const Actionable = () => {
   return (
-    <Container
-      fluid
-      className="weave"
-      style={{ paddingBottom: "30px", paddingTop: "30px" }}
-    >
+    <Container fluid className={`weave ${styles.container}`}>
       <Row>
         <Col>
-          <RecordDisplay />
+          <RecordDisplay className={styles.recordDisplay} />
         </Col>
         <Col>
           <section>
-            <h3>Reverse ETL makes your data warehouse actionable</h3>
+            <h2>Reverse ETL makes your data warehouse actionable</h2>
             <p>
               Grouparoo connects your customer data to all the places where it
               can make a difference. Use your data warehouse to power marketing
               campaigns, customer service, and everything else your business
               needs to succeed.
             </p>
-            <Button>Learn More</Button>
+            <Button type="button" variant="primary" className="rounded-pill">
+              Learn More
+            </Button>
           </section>
         </Col>
       </Row>
-      <Row>
+      <Row className={styles.bottomRow}>
         <ActionableTargets />
       </Row>
     </Container>

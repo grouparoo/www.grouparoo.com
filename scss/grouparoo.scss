@@ -33,10 +33,6 @@ form {
   line-height: 28px;
 }
 
-header {
-  font-weight: 400;
-}
-
 h1,
 h2,
 h3,
@@ -216,7 +212,7 @@ a,
   }
 }
 
-header {
+@mixin header {
   background: url(../public/images/home/pipes.png),
     linear-gradient(
       225.01deg,
@@ -225,6 +221,11 @@ header {
       #0a2540 99.99%,
       #06182c 100%
     );
+  background-size: 450px;
+}
+
+header {
+  @include header;
 
   *,
   .nav-bar > * {
