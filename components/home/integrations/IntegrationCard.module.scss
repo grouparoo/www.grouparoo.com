@@ -1,0 +1,14 @@
+.cardDetail {
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 5px lightgrey;
+
+  .integrationCardLink {
+    &:hover {
+      box-shadow: 5px 5px 5px 5px grey;
+    }
+  }
+
+  .pluginName {
+    color: black;
+  }
+}
