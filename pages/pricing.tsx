@@ -125,7 +125,7 @@ export default function PricingPage() {
                   <br />
                   <div className={styles.pricingList}>
                     <b>Features include:</b>
-                    <li> &gt; 1MM synced Records/month</li>
+                    <li> &gt; 1,000,000 synced Records/month</li>
                     <li> Business hours support</li>
                     <li> Enhanced support response time SLAs</li>
                   </div>
