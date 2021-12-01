@@ -153,7 +153,8 @@ body {
 code,
 pre,
 pre > code,
-code[class*="language-"] {
+code[class*="language-"],
+.code {
   font-family: $font-code;
   font-weight: 500;
   line-height: 25.5px;
