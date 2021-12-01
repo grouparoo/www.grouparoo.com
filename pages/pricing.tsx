@@ -126,7 +126,7 @@ export default function PricingPage() {
                   <br />
                   <div className={styles.pricingList}>
                     <b>Features include:</b>
-                    <li> &gt; 1,000,000 synced Records/month</li>
+                    <li> &gt; 1,000,000 Records synced/month</li>
                     <li> Business hours support</li>
                     <li> Enhanced support response time SLAs</li>
                   </div>
@@ -468,7 +468,7 @@ export default function PricingPage() {
                         </tr>
                         <tr className="w-100 mx-auto">
                           <td className="border-bottom-0">
-                            1MM synced Records: $600/mo
+                            1,000,000 synced Records: $600/mo
                           </td>
                         </tr>
                       </tbody>
@@ -511,7 +511,7 @@ export default function PricingPage() {
                 Pricing is based on monthly synced Records. Each Record that you
                 send to a Destination is a single synced Record, regardless of
                 how many destinations it goes to. You can monitor your monthly
-                usage at anytime from your Grouparoo dashboard.
+                usage at any time from your Grouparoo dashboard.
               </p>
               <h4>
                 Is there a limit to the number of Sources and Destinations that
