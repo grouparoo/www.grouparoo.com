@@ -20,6 +20,7 @@ import { Testimonials } from "../components/home/testimonials/Testimonials";
 import { HowGrouparooWorks } from "../components/home/how-it-works/HowGrouparooWorks";
 import styles from "./index.module.scss";
 import { Integrations } from "../components/home/integrations/Integrations";
+import { WhyGrouparoo } from "../components/home/WhyGrouparoo/WhyGrouparoo";
 
 const getTagline = (pluginNames: string[]) =>
   `Stop writing code to sync data to ${
@@ -85,6 +86,7 @@ const IndexPage = ({ pageProps, setReleaseNote }) => {
       <Actionable />
       <Testimonials />
       <HowGrouparooWorks />
+      {/* TODO: Replace this with an actual component once we know what goes here */}
       <Container className={styles.container}>
         <Row>
           <Col>
@@ -118,6 +120,7 @@ const IndexPage = ({ pageProps, setReleaseNote }) => {
         </Row>
       </Container>
       <Integrations />
+      <WhyGrouparoo />
     </>
   );
 };

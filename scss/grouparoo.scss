@@ -213,7 +213,8 @@ a,
   }
 }
 
-@mixin header {
+header,
+.pipes {
   background: url(../public/images/home/pipes.png),
     linear-gradient(
       225.01deg,
@@ -223,10 +224,6 @@ a,
       #06182c 100%
     );
   background-size: 450px;
-}
-
-header {
-  @include header;
 
   *,
   .nav-bar > * {
