@@ -83,13 +83,13 @@ export default function PricingPage() {
                 <Card.Body className="d-flex align-items-start flex-column">
                   <div className="h3">Standard Cloud</div>
                   <h5>Starting at $150/month</h5>
-                  For companies wanting to sync up to 1MM Records to their
+                  For companies wanting to sync up to 1,000,000 Records to their
                   destinations.
                   <br />
                   <br />
                   <div className={styles.pricingList}>
                     <b>Features include:</b>
-                    <li>Up to 1MM Records synced/month</li>
+                    <li>Up to 1,000,000 Records synced/month</li>
                     <li>Tiered pricing based on monthly usage</li>
                     <li> Access to all Sources and Destinations</li>
                     <li>
@@ -126,7 +126,7 @@ export default function PricingPage() {
                   <br />
                   <div className={styles.pricingList}>
                     <b>Features include:</b>
-                    <li> &gt; 1MM synced Records/month</li>
+                    <li> &gt; 1,000,000 synced Records/month</li>
                     <li> Business hours support</li>
                     <li> Enhanced support response time SLAs</li>
                   </div>
@@ -475,7 +475,7 @@ export default function PricingPage() {
                     </table>
                   </td>
                   <td>
-                    &gt; 1MM synced Records:
+                    &gt; 1,000,000 synced Records:
                     <br />
                     <Link href="/meet">Contact sales</Link>
                   </td>
