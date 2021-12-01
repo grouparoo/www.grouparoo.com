@@ -83,7 +83,7 @@ export default function PricingPage() {
                 <Card.Body>
                   <div className="h3">Standard Cloud</div>
                   <h5>Starting at $150/month</h5>
-                  For companies wanting to sync up to 1MM Records to their
+                  For companies wanting to sync up to 1,000,000 Records to their
                   destinations.
                   <br />
                   <br />
