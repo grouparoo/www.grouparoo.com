@@ -23,7 +23,7 @@ export default function ComparisonRow({ rowData }) {
     if (hasFeature === true) {
       return (
         <Image
-          src="/images/grouparoo-blue-checkmark.svg"
+          src="/images/grouparoo-purple-checkmark.svg"
           alt="Grouparoo blue checkmark"
           width={25}
           height={25}

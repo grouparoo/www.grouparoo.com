@@ -11,7 +11,7 @@ $grouparoo-blue: #29abe2;
 $grouparoo-light-blue: #b3e8ff;
 $grouparoo-blue-gray: #9b9db1;
 $grouparoo-violet: #9954bb;
-$grouparoo-light-violet: #d3d3ff;
+$grouparoo-light-violet: #dfe8fb;
 $grouparoo-background-blue: #f6fafb;
 $grouparoo-green: #3fb618;
 
@@ -257,10 +257,6 @@ header {
 
 .integrationCard:hover {
   box-shadow: 5px 5px 5px 5px grey;
-}
-
-.integrationNarrative {
-  background-color: $grouparoo-light-violet;
 }
 
 // -- Page Content --

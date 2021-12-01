@@ -10,15 +10,9 @@ import {
 } from "react-bootstrap";
 import SEO from "../components/SEO";
 import Link from "next/link";
+import styles from "./pricing.module.scss";
 
 export default function PricingPage() {
-  const boxTextStyle = {
-    fontSize: "14px",
-    textAlign: "left" as "left",
-    paddingLeft: "1.4em",
-    textIndent: "-1.4em",
-  };
-
   return (
     <>
       <SEO
@@ -29,11 +23,7 @@ export default function PricingPage() {
         title="Grouparoo Pricing Options"
       />
 
-      <div
-        id="headline"
-        className="pricingHeadline"
-        style={{ textAlign: "center", paddingTop: 100, paddingBottom: 100 }}
-      >
+      <div id="headline" className="text-center py-5">
         <Container>
           <Row>
             <Col>
@@ -46,100 +36,108 @@ export default function PricingPage() {
           </Row>
         </Container>
       </div>
-      <div
-        id="pricingPlans"
-        className="pricingPlansSection"
-        style={{ textAlign: "center" }}
-      >
+      <div id="pricingPlans" className="text-center">
         <Container>
-          <Row className="row-cols-1 row-cols-md-2 row-cols-xl-3">
-            <Col className="mb-4">
-              <Card className="pricingCard py-5 shadow-lg h-100" bg="white">
-                <Card.Body>
-                  <Card.Title>Community Edition</Card.Title>
+          <Row className="mx-auto row-cols-1 row-cols-md-2 row-cols-lg-3 d-flex align-items-stretch">
+            <Col className="mb-4 mx-auto d-flex align-items-stretch">
+              <Card
+                className="p-3 col-12 mx-auto shadow-lg h-100 text-start"
+                bg="white"
+                style={{ minHeight: "468px" }}
+              >
+                <Card.Body className="d-flex align-items-start flex-column">
+                  <div className="h3">Community Edition</div>
                   Grouparoo is open source and free to run in on your own cloud.
                   <br />
                   <br />
-                  <div style={boxTextStyle}>
+                  <div className={styles.pricingList}>
                     <b>Features include:</b>
                     <li>Realtime syncing infrastructure</li>
                     <li>Access to all Sources and Destinations </li>
                     <li>Configurable with code and our CLI</li>
                     <li>Dynamic Group definition</li>
                     <li>Ticket-based support</li>
+                    <li>
+                      Enterprise UI add-on available (
+                      <Link href="/meet">contact sales</Link>)
+                    </li>
                   </div>
-                </Card.Body>
-                <Card.Footer
-                  style={{ backgroundColor: "white", borderTop: "none" }}
-                >
                   <Button
-                    variant="outline-primary"
+                    variant="outline-dark"
+                    className="w-100 mx-auto mt-auto"
                     href="/docs/getting-started"
                   >
                     Try it now
                   </Button>
                   <small> </small>
-                </Card.Footer>
+                </Card.Body>
               </Card>
             </Col>
             <Col className="mb-4">
               <Card
-                className="pricingCard pt-5 pb-4
-                 shadow-lg h-100"
-                border="primary"
-                bg="secondary"
-                text="white"
+                className="mx-auto col-12 p-3
+                 shadow-lg h-100 text-start"
+                bg="info"
+                style={{ minHeight: "468px" }}
               >
-                <Card.Body>
-                  <Card.Title>Standard Cloud</Card.Title>
+                <Card.Body className="d-flex align-items-start flex-column">
+                  <div className="h3">Standard Cloud</div>
                   <h5>Starting at $150/month</h5>
-                  For companies who want to sync up to 100k Records to their
+                  For companies wanting to sync up to 1,000,000 Records to their
                   destinations.
                   <br />
                   <br />
-                  <div style={boxTextStyle}>
+                  <div className={styles.pricingList}>
                     <b>Features include:</b>
-                    <li>Up to 100k Records synced/month</li>
-                    <li>Access to all Sources and Destinations</li>
+                    <li>Up to 1,000,000 Records synced/month</li>
+                    <li>Tiered pricing based on monthly usage</li>
+                    <li> Access to all Sources and Destinations</li>
                     <li>
+                      {" "}
                       A no-code web UI allowing team members to access data
                     </li>
-                    <li>Business hours support</li>
+                    <li> Business hours support</li>
                   </div>
                 </Card.Body>
-                <Card.Footer style={{ borderTop: "none" }}>
-                  <Button variant="primary" href="/trial">
-                    Start free trial
-                  </Button>
-                </Card.Footer>
-                <small>No credit card required</small>
+                <Button
+                  variant="primary"
+                  className="w-100 mx-auto"
+                  href="/trial"
+                >
+                  Start free trial
+                </Button>
+                <small className="text-center pt-1">
+                  No credit card required
+                </small>
               </Card>
             </Col>
-            <Col className="mb-4 offset-md-3 offset-xl-0">
+
+            <Col className="mb-4 mx-auto ">
               <Card
-                className="pricingCard py-5 shadow-lg h-100"
-                border="primary"
-                bg="secondary"
-                text="white"
+                className="mx-auto col-12 p-3
+                 shadow-lg h-100 text-start"
+                bg="info"
+                style={{ minHeight: "468px" }}
               >
-                <Card.Body>
-                  <Card.Title>Enterprise Cloud</Card.Title>
+                <Card.Body className="d-flex align-items-start flex-column">
+                  <div className="h3">Enterprise Cloud</div>
                   For enterprises with larger data sets or unique use cases.
                   <br />
                   <br />
-                  <div style={boxTextStyle}>
+                  <div className={styles.pricingList}>
                     <b>Features include:</b>
-                    <li> &gt; 100k Records synced/month</li>
-                    <li>Business hours support</li>
-                    <li>Enhanced support response time SLAs</li>
+                    <li> &gt; 1,000,000 Records synced/month</li>
+                    <li> Business hours support</li>
+                    <li> Enhanced support response time SLAs</li>
                   </div>
-                </Card.Body>
-                <Card.Footer style={{ borderTop: "none" }}>
-                  <Button variant="primary" href="/meet">
+                  <Button
+                    variant="primary"
+                    className="w-100 mx-auto mt-auto"
+                    href="/meet"
+                  >
                     Contact Sales
                   </Button>
-                  <small> </small>
-                </Card.Footer>
+                </Card.Body>
               </Card>
             </Col>
           </Row>
@@ -149,7 +147,7 @@ export default function PricingPage() {
       <Container className="mt-3 mx-auto">
         <Row>
           <Col className="">
-            <Table className="text-center w-100">
+            <Table className="text-center bg-white w-100">
               <thead>
                 <tr>
                   <th></th>
@@ -160,23 +158,17 @@ export default function PricingPage() {
               </thead>
               <tbody>
                 <tr>
-                  <td
-                    colSpan={4}
-                    style={{
-                      textAlign: "left",
-                      backgroundColor: "white",
-                    }}
-                  >
-                    <b>Features</b>
+                  <td colSpan={4} className="text-start h5">
+                    FEATURES
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ textAlign: "left" }}>
+                  <td className="text-start">
                     Real-time data-syncing framework
                   </td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -184,7 +176,7 @@ export default function PricingPage() {
                   </td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -192,7 +184,7 @@ export default function PricingPage() {
                   </td>
                   <td className="d-none d-md-table-cell">
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -200,18 +192,16 @@ export default function PricingPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ textAlign: "left" }}>Integrations available</td>
+                  <td className="text-start">Integrations available</td>
                   <td>All</td>
                   <td>All</td>
                   <td className="d-none d-md-table-cell">All</td>
                 </tr>
                 <tr>
-                  <td style={{ textAlign: "left" }}>
-                    Dynamic Group Definitions
-                  </td>
+                  <td className="text-start">Dynamic Group Definitions</td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -219,7 +209,7 @@ export default function PricingPage() {
                   </td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -227,7 +217,7 @@ export default function PricingPage() {
                   </td>
                   <td className="d-none d-md-table-cell">
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -235,10 +225,10 @@ export default function PricingPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ textAlign: "left" }}>Configurable with Code</td>
+                  <td className="text-start">Configurable with Code</td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -246,7 +236,7 @@ export default function PricingPage() {
                   </td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -254,7 +244,7 @@ export default function PricingPage() {
                   </td>
                   <td className="d-none d-md-table-cell">
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -262,11 +252,11 @@ export default function PricingPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ textAlign: "left" }}>Configurable in the UI</td>
-                  <td> - </td>
+                  <td className="text-start">Configurable in the UI</td>
+                  <td>License Available</td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -274,7 +264,7 @@ export default function PricingPage() {
                   </td>
                   <td className="d-none d-md-table-cell">
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -282,11 +272,11 @@ export default function PricingPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ textAlign: "left" }}>SaaS Hosted</td>
+                  <td className="text-start">SaaS Hosted</td>
                   <td>-</td>
                   <td className="d-none d-md-table-cell">
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -294,7 +284,7 @@ export default function PricingPage() {
                   </td>
                   <td className="d-none d-md-table-cell">
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -302,13 +292,13 @@ export default function PricingPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ textAlign: "left" }}>
+                  <td className="text-start">
                     Teams, Team Members, and Permissions
                   </td>
                   <td> - </td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -316,7 +306,7 @@ export default function PricingPage() {
                   </td>
                   <td className="d-none d-md-table-cell">
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -324,13 +314,13 @@ export default function PricingPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ textAlign: "left" }}>
+                  <td className="text-start">
                     Insights and Analytics (coming soon)
                   </td>
                   <td> - </td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -338,7 +328,7 @@ export default function PricingPage() {
                   </td>
                   <td className="d-none d-md-table-cell">
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -346,13 +336,11 @@ export default function PricingPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ textAlign: "left" }}>
-                    Data Governance (coming soon)
-                  </td>
+                  <td className="text-start">Data Governance (coming soon)</td>
                   <td> - </td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -360,30 +348,23 @@ export default function PricingPage() {
                   </td>
                   <td className="d-none d-md-table-cell">
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
                     />
                   </td>
                 </tr>
-
                 <tr>
-                  <td
-                    colSpan={4}
-                    style={{
-                      textAlign: "left",
-                      backgroundColor: "white",
-                    }}
-                  >
-                    <b>Support</b>
+                  <td colSpan={4} className="text-start h5">
+                    SUPPORT
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ textAlign: "left" }}>Access to the community</td>
+                  <td className="text-start">Access to the community</td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -391,7 +372,7 @@ export default function PricingPage() {
                   </td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -399,7 +380,7 @@ export default function PricingPage() {
                   </td>
                   <td className="d-none d-md-table-cell">
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -407,10 +388,10 @@ export default function PricingPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ textAlign: "left" }}>Ticket-based Support</td>
+                  <td className="text-start">Ticket-based Support</td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -418,7 +399,7 @@ export default function PricingPage() {
                   </td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -426,7 +407,7 @@ export default function PricingPage() {
                   </td>
                   <td className="d-none d-md-table-cell">
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -434,13 +415,11 @@ export default function PricingPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ textAlign: "left" }}>
-                    Support during Business Hours
-                  </td>
+                  <td className="text-start">Support during Business Hours</td>
                   <td> - </td>
                   <td>
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -448,7 +427,7 @@ export default function PricingPage() {
                   </td>
                   <td className="d-none d-md-table-cell">
                     <Image
-                      src="/images/grouparoo-blue-checkmark.svg"
+                      src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
                       width={24}
                       height={24}
@@ -456,10 +435,50 @@ export default function PricingPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ textAlign: "left" }}>Enhanced Support SLAs</td>
+                  <td className="text-start">Enhanced Support SLAs</td>
                   <td> - </td>
                   <td>add-on</td>
                   <td className="d-none d-md-table-cell">add-on</td>
+                </tr>
+                <tr>
+                  <td colSpan={4} className="text-start h5">
+                    PRICING / USAGE
+                  </td>
+                </tr>
+                <tr className="align-middle">
+                  <td className="text-start">Monthly usage/price</td>
+                  <td>
+                    Free
+                    <br />
+                    <br />
+                    Enterprise UI: $100/mo
+                  </td>
+                  <td>
+                    <table className="table mb-0">
+                      <tbody>
+                        <tr className="w-100 mx-auto">
+                          <td className="border-bottom-1 border-bottom-light">
+                            100K synced Records: $150/mo
+                          </td>
+                        </tr>
+                        <tr className="w-100 mx-auto">
+                          <td className="border-bottom-1 border-bottom-light">
+                            300K synced Records: $300/mo
+                          </td>
+                        </tr>
+                        <tr className="w-100 mx-auto">
+                          <td className="border-bottom-0">
+                            1,000,000 synced Records: $600/mo
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td>
+                    &gt; 1,000,000 synced Records:
+                    <br />
+                    <Link href="/meet">Contact sales</Link>
+                  </td>
                 </tr>
               </tbody>
             </Table>
@@ -468,63 +487,50 @@ export default function PricingPage() {
       </Container>
       <br />
       <br />
-      <div
-        id="frequently-asked-questions"
-        style={{
-          textAlign: "center",
-          backgroundImage: "linear-gradient(#242436,#43435F)",
-        }}
-        className="text-white homePageSection"
-      >
+      <div id="frequently-asked-questions" className="">
         <Container>
           <Row>
             <Col>
               <h2>Frequently Asked Questions</h2>
               <br />
-              <Row style={{ textAlign: "left" }}>
-                <Col>
-                  <h4>Is the Community edition of Grouparoo really free?</h4>
-                  <p>
-                    Yes! Our Community edition is open source and free. You will
-                    need to be able to host it somewhere such as Heroku or AWS.
-                  </p>
-                  <h4>
-                    What are Records, and how is Pricing based on Record volume?
-                  </h4>
-                  <p>
-                    Records are the primary object type in Grouparoo. In short,
-                    Records are people, whether they are leads, contacts, or
-                    users in your system. When syncing data from your data
-                    warehouse to a business tool like a CRM, most tools are
-                    person-based.
-                  </p>
-                </Col>
-                <Col>
-                  {" "}
-                  <h4>
-                    Is there a limit to the number of Sources and Destinations
-                    that I can use?
-                  </h4>
-                  <p>
-                    Nope! Whether you're using the Community, Cloud, or
-                    Enterprise editions of Grouparoo, you can connect as many
-                    Sources and Destinations as you'd like.
-                  </p>
-                  <h4>Do you have onboarding support?</h4>
-                  <p>
-                    For customers on the Cloud or Enterprise plans, we provide
-                    hands-on support for getting set up with Grouparoo. For
-                    folks using the Community edition of Grouparoo, you can join
-                    the Grouparoo
-                    <a href="docs/community">community</a> and discuss any
-                    questions or topics you may have there. We're also active in
-                    the community, so we're happy to help!
-                  </p>
-                </Col>
-              </Row>
-
-              <br />
-              <br />
+              <h4>Is the Community edition of Grouparoo really free?</h4>
+              <p>
+                Yes! Our Community edition is open source and free. You will
+                need to be able to host it somewhere such as Heroku or AWS.
+              </p>
+              <h4>
+                What are Records, and how is Pricing based on Record volume?
+              </h4>
+              <p>
+                Records are the primary object type in Grouparoo. In short,
+                Records are people, whether they are leads, contacts, or users
+                in your system. When syncing data from your data warehouse to a
+                business tool like a CRM, most tools are person-based.
+              </p>
+              <p>
+                Pricing is based on monthly synced Records. Each Record that you
+                send to a Destination is a single synced Record, regardless of
+                how many destinations it goes to. You can monitor your monthly
+                usage at any time from your Grouparoo dashboard.
+              </p>
+              <h4>
+                Is there a limit to the number of Sources and Destinations that
+                I can use?
+              </h4>
+              <p>
+                Nope! Whether you're using the Community, Cloud, or Enterprise
+                editions of Grouparoo, you can connect as many Sources and
+                Destinations as you'd like.
+              </p>
+              <h4>Do you have onboarding support?</h4>
+              <p>
+                For customers on the Cloud or Enterprise plans, we provide
+                hands-on support for getting set up with Grouparoo. For folks
+                using the Community edition of Grouparoo, you can join the
+                Grouparoo <a href="docs/community">community</a> and discuss any
+                questions or topics you may have there. We're also active in the
+                community, so we're happy to help!
+              </p>
             </Col>
           </Row>
         </Container>
