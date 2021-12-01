@@ -4,7 +4,7 @@ import { IntegrationCard } from "./IntegrationCard";
 
 export const Integrations = () => {
   return (
-    <Container>
+    <Container style={{ paddingBottom: "10px" }}>
       <Row>
         <Col>
           <h2>Integrations with all of your tools</h2>
@@ -28,6 +28,7 @@ export const Integrations = () => {
               <IntegrationCard
                 slug={plugin.slug}
                 type={plugin.primaryType}
+                otherType={plugin.otherTypes[0]}
                 showLink={plugin.showLink}
               />
             </Col>

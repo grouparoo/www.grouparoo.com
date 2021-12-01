@@ -8,7 +8,14 @@
     }
   }
 
-  .pluginName {
+  .pluginName,
+  .badge {
     color: black;
+  }
+
+  .badge {
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: capitalize;
   }
 }

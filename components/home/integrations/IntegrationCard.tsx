@@ -1,16 +1,23 @@
 import { Card, Badge } from "react-bootstrap";
-import { getPluginDisplay, PluginDisplay } from "../../../data/plugins";
+import {
+  getPluginDisplay,
+  PluginDisplay,
+  PluginTypes,
+} from "../../../data/plugins";
 import Link from "next/link";
 import Image from "next/image";
 import { useMemo } from "react";
 import styles from "./IntegrationCard.module.scss";
 
-const IntegrationBadge = ({ type }: { type?: string }) =>
+const IntegrationBadge = ({ type }: { type?: PluginTypes }) =>
   type ? (
-    <div>
-      <Badge pill bg="warning">
-        {" "}
-        {type.toUpperCase()}
+    <div className={"me-1 code"}>
+      <Badge
+        pill
+        bg={type === "source" ? "info" : "warning"}
+        className={styles.badge}
+      >
+        {type}
       </Badge>
     </div>
   ) : null;
@@ -32,8 +39,8 @@ const SmallIntegration = ({ slug }: { slug: string }) => {
 
 interface IntegrationCardProps {
   slug: string;
-  type?: string;
-  otherType?: string;
+  type?: PluginTypes;
+  otherType?: PluginTypes;
   category?: string;
   tag?: string;
   showLink?: boolean;
@@ -56,8 +63,10 @@ const IntegrationCardDetail = ({
           {plugin.name}
         </Card.Text>
 
-        <IntegrationBadge type={type} />
-        <IntegrationBadge type={otherType} />
+        <div className="d-flex justify-content-evenly">
+          <IntegrationBadge type={type} />
+          <IntegrationBadge type={otherType} />
+        </div>
 
         {category && (
           <div>
@@ -74,8 +83,8 @@ const IntegrationCardDetail = ({
 
 interface IntegrationCardProps {
   slug: string;
-  type?: string;
-  otherType?: string;
+  type?: PluginTypes;
+  otherType?: PluginTypes;
   category?: string;
   tag?: string;
   showLink?: boolean;
