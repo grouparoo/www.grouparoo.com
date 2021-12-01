@@ -3,7 +3,7 @@ import path from "path";
 import fs from "fs";
 import glob from "glob";
 import sizeOf from "image-size";
-import CsvStringify from "csv-stringify";
+import { stringify } from "csv-stringify";
 
 const publicPath = path.resolve(path.join(__dirname, "..", "public"));
 
@@ -45,7 +45,7 @@ async function writeCsv(fullPaths) {
   const columns = ["path", "width", "height", "ratio"];
 
   const fileStream = fs.createWriteStream(filename);
-  const csvStream = CsvStringify({ header: true, columns });
+  const csvStream = stringify({ header: true, columns });
   csvStream.pipe(fileStream);
 
   for (const fullPath of fullPaths) {
