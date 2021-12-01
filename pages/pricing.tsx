@@ -474,7 +474,7 @@ export default function PricingPage() {
                     </table>
                   </td>
                   <td>
-                    &gt; 1MM synced Records:
+                    &gt; 1,000,000 synced Records:
                     <br />
                     <Link href="/meet">Contact sales</Link>
                   </td>
