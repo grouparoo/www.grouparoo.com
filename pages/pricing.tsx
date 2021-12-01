@@ -80,7 +80,7 @@ export default function PricingPage() {
                 bg="info"
                 style={{ minHeight: "468px" }}
               >
-                <Card.Body>
+                <Card.Body className="d-flex align-items-start flex-column">
                   <div className="h3">Standard Cloud</div>
                   <h5>Starting at $150/month</h5>
                   For companies wanting to sync up to 1MM Records to their
@@ -114,11 +114,12 @@ export default function PricingPage() {
 
             <Col className="mb-4 mx-auto ">
               <Card
-                className="mx-auto p-3 shadow-lg h-100 col-12"
-                bg="white"
+                className="mx-auto col-12 p-3
+                 shadow-lg h-100 text-start"
+                bg="info"
                 style={{ minHeight: "468px" }}
               >
-                <Card.Body className="d-flex mx-auto align-items-start flex-column">
+                <Card.Body className="d-flex align-items-start flex-column">
                   <div className="h3">Enterprise Cloud</div>
                   For enterprises with larger data sets or unique use cases.
                   <br />
