@@ -89,7 +89,7 @@ export default function PricingPage() {
                   <br />
                   <div className={styles.pricingList}>
                     <b>Features include:</b>
-                    <li>Up to 1MM Records synced/month</li>
+                    <li>Up to 1,000,000 Records synced/month</li>
                     <li>Tiered pricing based on monthly usage</li>
                     <li> Access to all Sources and Destinations</li>
                     <li>
