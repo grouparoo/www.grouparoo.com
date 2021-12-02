@@ -4,7 +4,7 @@ import { IntegrationCard } from "./IntegrationCard";
 
 export const Integrations = () => {
   return (
-    <Container style={{ paddingBottom: "10px" }}>
+    <Container className="pb-4">
       <Row>
         <Col>
           <h2>Integrations with all of your tools</h2>
@@ -15,6 +15,7 @@ export const Integrations = () => {
         {PluginData?.sort((a, b) => {
           return b.priority - a.priority;
         })
+          .filter((integration) => integration.primaryType)
           .slice(0, 9)
           .map((plugin) => (
             <Col

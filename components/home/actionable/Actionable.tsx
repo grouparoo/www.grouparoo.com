@@ -1,6 +1,7 @@
 import { Col, Container, Row, Button } from "react-bootstrap";
 import { ActionableTargets } from "./ActionableTargets";
 import { RecordDisplay } from "./RecordDisplay";
+import Link from "next/link";
 import styles from "./Actionable.module.scss";
 
 export const Actionable = () => {
@@ -19,9 +20,11 @@ export const Actionable = () => {
               campaigns, customer service, and everything else your business
               needs to succeed.
             </p>
-            <Button type="button" variant="primary" className="rounded-pill">
-              Learn More
-            </Button>
+            <Link href="/solutions/reverse-etl">
+              <Button type="button" variant="primary" className="rounded-pill">
+                Learn More
+              </Button>
+            </Link>
           </section>
         </Col>
       </Row>
