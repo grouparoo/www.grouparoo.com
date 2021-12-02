@@ -240,12 +240,15 @@ header,
     color: $grouparoo-nav-font-color;
 
     .nav-link {
-      color: $grouparoo-nav-font-color;
+      color: $grouparoo-nav-font-color !important;
     }
   }
 
   .dropdown-menu {
-    background-color: #06182c;
+    background-color: #fff;
+    .nav-link {
+      color: $grouparoo-font-color !important;
+    }
   }
 }
 
