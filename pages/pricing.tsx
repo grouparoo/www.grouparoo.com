@@ -47,7 +47,7 @@ export default function PricingPage() {
               >
                 <Card.Body className="d-flex align-items-start flex-column">
                   <div className="h3">Community Edition</div>
-                  Grouparoo is open source and free to run in on your own cloud.
+                  Grouparoo is open source and free to run in your own cloud.
                   <br />
                   <br />
                   <div className={styles.pricingList}>
