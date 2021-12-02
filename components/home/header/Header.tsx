@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
-import styles from "./Header.module.scss";
 import { HeaderImage } from "./HeaderImage";
+import styles from "./Header.module.scss";
 
 interface HeaderProps {
   tagline: string;
