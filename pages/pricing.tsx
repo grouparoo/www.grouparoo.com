@@ -503,9 +503,8 @@ export default function PricingPage() {
               <p>
                 Records are the primary object type in Grouparoo. Records may be
                 people, such as leads or contacts, or a different object such as
-                companies or accounts. When syncing data from your data
-                warehouse to a business tool like a CRM, most tools are
-                person-based.
+                companies or accounts. Your Destination will determine what type
+                of Record you use.
               </p>
               <p>
                 Pricing is based on monthly synced Records. Each Record that you
