@@ -21,7 +21,7 @@ Include a `Dockerfile` which is similar the to the below. We are building a sing
 
 ```bash
 # Dockerfile
-FROM node:14
+FROM node:16
 
 WORKDIR /grouparoo
 
@@ -36,7 +36,6 @@ ENV DATABASE_URL="postgresql://postgres:password@db:5432/grouparoo_docker"
 
 COPY . .
 RUN npm install
-RUN npm run prepare
 RUN npm prune
 
 WORKDIR /grouparoo/node_modules/@grouparoo/core
