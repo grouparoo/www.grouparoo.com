@@ -153,26 +153,9 @@ function PageTemplate({ children }) {
           <div id="getStartedContainer" className="text-center w-full py-5">
             <Container>
               <Row>
-                <Col md={3} />
                 <Col>
                   <GetStarted />
                 </Col>
-                <Col md={3} />
-              </Row>
-
-              <Row>
-                <Col />
-                <Col
-                  md={5}
-                  style={{
-                    marginTop: 20,
-                    marginBottom: 10,
-                    minHeight: 150,
-                  }}
-                >
-                  <Subscribe campaign="footer-subscribe" />
-                </Col>
-                <Col />
               </Row>
             </Container>
           </div>

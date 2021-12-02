@@ -4,6 +4,10 @@
 $navbar-light-color: $grouparoo-nav-font-color;
 $navbar-light-hover-color: $grouparoo-nav-font-color;
 
+// Bootstrap Overrides
+
+$card-border-radius: 8px;
+
 // -- External Components --
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-svg-core/styles.css";
