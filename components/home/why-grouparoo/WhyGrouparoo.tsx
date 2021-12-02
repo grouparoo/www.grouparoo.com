@@ -10,7 +10,7 @@ export const WhyGrouparoo = () => {
     <Container fluid className={`pipes ${styles.container}`}>
       <Row>
         <h2>Why Open Source?</h2>
-        <p className="text-big-muted">
+        <p className={styles.subheading}>
           Keeping customer data secure is more important than ever
         </p>
       </Row>
