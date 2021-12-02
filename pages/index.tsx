@@ -21,6 +21,7 @@ import { HowGrouparooWorks } from "../components/home/how-it-works/HowGrouparooW
 import styles from "./index.module.scss";
 import { Integrations } from "../components/home/integrations/Integrations";
 import { WhyGrouparoo } from "../components/home/why-grouparoo/WhyGrouparoo";
+import { Features } from "../components/home/features/Features";
 
 const getTagline = (pluginNames: string[]) =>
   `Stop writing code to sync data to ${
@@ -121,6 +122,7 @@ const IndexPage = ({ pageProps, setReleaseNote }) => {
       </Container>
       <Integrations />
       <WhyGrouparoo />
+      <Features />
     </>
   );
 };
