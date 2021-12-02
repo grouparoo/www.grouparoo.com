@@ -1,5 +1,6 @@
 import { Button, Card } from "react-bootstrap";
 import Link from "next/link";
+import styles from "./GetStarted.module.scss";
 
 export default function GetStarted({
   showLearnMore = true,
@@ -7,18 +8,19 @@ export default function GetStarted({
   showLearnMore?: boolean;
 }) {
   return (
-    <Card border="primary">
+    <Card className={styles.card}>
       <Card.Body>
         <h2>Get Started with Grouparoo</h2>
         <p>Start syncing your data with Grouparoo Cloud</p>
-        <Button
-          variant="primary"
-          size="lg"
-          href="/trial"
-          className="ms-auto mt-1 mb-4"
-        >
-          Start Free Trial
-        </Button>
+        <Link href="/trial">
+          <Button
+            variant="primary"
+            size="lg"
+            className="ms-auto mt-1 mb-4 rounded-pill"
+          >
+            Start Free Trial
+          </Button>
+        </Link>
         {showLearnMore ? (
           <p>
             <small>
