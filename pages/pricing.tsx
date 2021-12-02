@@ -47,7 +47,7 @@ export default function PricingPage() {
               >
                 <Card.Body className="d-flex align-items-start flex-column">
                   <div className="h3">Community Edition</div>
-                  Grouparoo is open source and free to run in on your own cloud.
+                  Grouparoo is open source and free to run in your own cloud.
                   <br />
                   <br />
                   <div className={styles.pricingList}>
@@ -116,7 +116,6 @@ export default function PricingPage() {
               <Card
                 className="mx-auto col-12 p-3
                  shadow-lg h-100 text-start"
-                bg="info"
                 style={{ minHeight: "468px" }}
               >
                 <Card.Body className="d-flex align-items-start flex-column">
@@ -437,8 +436,8 @@ export default function PricingPage() {
                 <tr>
                   <td className="text-start">Enhanced Support SLAs</td>
                   <td> - </td>
-                  <td>add-on</td>
-                  <td className="d-none d-md-table-cell">add-on</td>
+                  <td>Add-on</td>
+                  <td className="d-none d-md-table-cell">Add-on</td>
                 </tr>
                 <tr>
                   <td colSpan={4} className="text-start h5">
@@ -502,10 +501,10 @@ export default function PricingPage() {
                 What are Records, and how is Pricing based on Record volume?
               </h4>
               <p>
-                Records are the primary object type in Grouparoo. In short,
-                Records are people, whether they are leads, contacts, or users
-                in your system. When syncing data from your data warehouse to a
-                business tool like a CRM, most tools are person-based.
+                Records are the primary object type in Grouparoo. Records may be
+                people, such as leads or contacts, or a different object such as
+                companies or accounts. Your Destination will determine what type
+                of Record you use.
               </p>
               <p>
                 Pricing is based on monthly synced Records. Each Record that you
