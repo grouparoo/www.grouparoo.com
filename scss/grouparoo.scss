@@ -123,6 +123,15 @@ body {
     font-size: 12px;
     line-height: 20px;
   }
+
+  .normalize {
+    font-weight: 400;
+    font-family: $font-body;
+  }
+
+  .solid {
+    color: $grouparoo-solid;
+  }
 }
 
 .weave {
