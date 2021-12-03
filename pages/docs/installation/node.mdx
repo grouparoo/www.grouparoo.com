@@ -176,8 +176,7 @@ This will create a `package.json` and `.env` files like these:
     "@grouparoo/ui-community": "1.2.3"
   },
   "scripts": {
-    "start": "cd node_modules/@grouparoo/core && ./bin/start",
-    "dev": "cd node_modules/@grouparoo/core && ./bin/dev"
+    "start": "cd node_modules/@grouparoo/core && ./bin/start"
   },
   "grouparoo": {
     "plugins": ["@grouparoo/ui-community"]
@@ -195,7 +194,7 @@ WEB_URL=http://localhost:3000
 WEB_SERVER=true
 WORKERS=1
 REDIS_URL="redis://localhost:6379/0"
-DATABASE_URL="postgresql://localhost:5432/grouparoo_development"
+DATABASE_URL="sqlite://grouparoo_development.sqlite"
 SERVER_TOKEN="a-random-string"
 ```
 
@@ -204,14 +203,14 @@ SERVER_TOKEN="a-random-string"
 
 _Only these 2 files (a `package.json` and environment variables) are needed to make an "App" for Grouparoo to run!_
 
-### Step 3: Install New Plugins
+### Step 3: Configure Grouparoo & Install Plugins
 
-Run `grouparoo install [plugin]` to install the plugins you may want. Plugins are how the Grouparoo application can be extended to use new Sources and Destinations. Learn more [here](/docs/installation/plugins).
+Run `grouparoo config` to configure Grouparoo in your browser. You will be guided though the process of setting up everything you need, including installing new Plugins. Plugins are how the Grouparoo application can be extended to use new Sources and Destinations. Learn more [here](/docs/installation/plugins).
 
-If you are having trouble installing dependencies, and you are using NPM v7 or later, please see [this discussion for help](https://github.com/grouparoo/grouparoo/discussions/1270)
+Running `grouparoo config` will start the config server which you can see by visiting `http://localhost:3000` (with 3000 being the value for `$PORT` from `.env`). Note that starting the Grouparoo application will also migrate your database and generally configure things as-needed.
 
-### Step 4: Configure & Run!
+Head over to the [Configuration Guides](/docs/config) to learn more about configuring Grouparoo. If you are having trouble installing dependencies, and you are using NPM v7 or later, please see [this discussion for help](https://github.com/grouparoo/grouparoo/discussions/1270)
 
-Now you're ready to run the application! You can do so via `grouparoo start` or `npm start` to start the server. You should then be able to visit `http://localhost:3000` (with 3000 being the value for `$PORT` from `.env`). Note that starting the Grouparoo application will also migrate your database and generally configure things as-needed.
+### Step 4: Deploy and Run Grouparoo
 
-If everything looks good, it's time to get your application configured! Head over to the [Configuration Guides](/docs/config).
+Now that you have configured Grouparoo, you can commit your changes into git and deploy Grouparoo. There are many ways to run Grouparoo in production, and you can learn about them [here](/docs/deployment), or choose to run Grouparoo via [Grouparoo Cloud](/pricing).
