@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { FeaturedBlogPosts } from "../data/featuredBlogPosts";
 import { Fragment } from "react";
+import Subscribe from "./Subscribe";
 
 function LogoAndSocialLinks({ router }) {
   const year = new Date().getFullYear();
@@ -20,7 +21,6 @@ function LogoAndSocialLinks({ router }) {
           />
         </a>
       </Link>
-      <br />
       <br />
       <p>
         <a
@@ -272,6 +272,13 @@ export default function Footer() {
         <Row className="d-lg-none">
           <Col className="text-center pb-4 pt-5">
             <LogoAndSocialLinks router={router} />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col />
+          <Col xs={8} sm={8} md={8} lg={8} xl={8} xxl={8}>
+            <Subscribe campaign="footer-subscribe" />
           </Col>
         </Row>
       </Container>
