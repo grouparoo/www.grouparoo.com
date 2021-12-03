@@ -41,9 +41,9 @@ export default function PricingPage() {
           <Row className="mx-auto row-cols-1 row-cols-md-2 row-cols-lg-3 d-flex align-items-stretch">
             <Col className="mb-4 mx-auto d-flex align-items-stretch">
               <Card
-                className="p-3 col-12 mx-auto shadow-lg h-100 text-start"
+                className={`mx-auto col-12 p-3
+shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                 bg="white"
-                style={{ minHeight: "468px" }}
               >
                 <Card.Body className="d-flex align-items-start flex-column">
                   <div className="h3">Community Edition</div>
@@ -75,10 +75,8 @@ export default function PricingPage() {
             </Col>
             <Col className="mb-4">
               <Card
-                className="mx-auto col-12 p-3
-                 shadow-lg h-100 text-start"
-                bg="info"
-                style={{ minHeight: "468px" }}
+                className={`mx-auto col-12 p-3
+                shadow-lg h-100 text-start feature-card ${styles.featureCard} ${styles.lightBg}`}
               >
                 <Card.Body className="d-flex align-items-start flex-column">
                   <div className="h3">Standard Cloud</div>
@@ -114,9 +112,8 @@ export default function PricingPage() {
 
             <Col className="mb-4 mx-auto ">
               <Card
-                className="mx-auto col-12 p-3
-                 shadow-lg h-100 text-start"
-                style={{ minHeight: "468px" }}
+                className={`mx-auto col-12 p-3
+                 shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
               >
                 <Card.Body className="d-flex align-items-start flex-column">
                   <div className="h3">Enterprise Cloud</div>
