@@ -1,4 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
+import Image from "next/image";
 import styles from "./HowGrouparooWorks.module.scss";
 
 export const HowGrouparooWorks = () => {
@@ -33,23 +34,35 @@ export const HowGrouparooWorks = () => {
             <div
               className={`d-flex flex-column justify-content-end align-items-end`}
             >
-              <img
+              <Image
                 src="/images/home/how-it-works/left.jpg"
                 className={styles.leftImage}
+                width="239px"
+                height="134px"
+                alt="how it works left"
               />
-              <img
+              <Image
                 src="/images/home/how-it-works/bottom-left.jpg"
                 className={styles.bottomLeftImage}
+                width="155px"
+                height="87px"
+                alt="how it works bottom left"
               />
             </div>
             <div className={`d-flex flex-column justify-content-start`}>
-              <img
+              <Image
                 src="/images/home/how-it-works/top.jpg"
                 className={styles.topImage}
+                width="161px"
+                height="161px"
+                alt="how it works top"
               />
-              <img
+              <Image
                 src="/images/home/how-it-works/bottom.png"
                 className={styles.bottomImage}
+                width="201px"
+                height="201px"
+                alt="how it works bottom"
               />
             </div>
           </section>

@@ -1,26 +1,6 @@
 .container {
   img {
     object-fit: cover;
-    padding: 4px;
-  }
-
-  .leftImage {
-    width: 239px;
-    height: 134px;
-  }
-
-  .bottomLeftImage {
-    width: 155px;
-    height: 87px;
-  }
-
-  .topImage {
-    width: 161px;
-    height: 161px;
-  }
-
-  .bottomImage {
-    width: 201px;
-    height: 201px;
+    padding: 4px !important;
   }
 }
