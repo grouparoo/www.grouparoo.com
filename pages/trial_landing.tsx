@@ -64,7 +64,7 @@ export default function Trial({ props }) {
 
   errorHandler.subscribe("result", (e) => {
     const error: FormError = { email: null, generic: null, subdomain: null };
-    const message = e?.error?.message || e?.message || e.toString();
+    const message = e?.message || e.toString();
 
     if (message.includes("subdomain")) {
       error.subdomain = "Subdomain already in use.";
