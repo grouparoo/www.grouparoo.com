@@ -14,7 +14,7 @@ export function Subscribe({ campaign }: { campaign: string }) {
 
   const errorHandler = new ErrorHandler();
   errorHandler.subscribe("result", (e) => {
-    let message = e?.error?.message || e?.message || e.toString();
+    let message = e?.message || e.toString();
     if (message.match(/email/i)) {
       message = "Invalid email address.";
     }

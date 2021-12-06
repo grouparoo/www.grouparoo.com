@@ -1,6 +1,6 @@
 import { EventDispatcher } from "./eventDispatcher";
 
-export class SuccessHandler extends EventDispatcher {
+export class SuccessHandler extends EventDispatcher<string> {
   message: string;
 
   constructor() {
@@ -8,7 +8,7 @@ export class SuccessHandler extends EventDispatcher {
 
     this.message = null;
 
-    this.subscribe("_internal", m => {
+    this.subscribe("_internal", (m) => {
       this.message = m;
     });
   }
