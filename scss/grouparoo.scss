@@ -1,23 +1,10 @@
-// -- Colors --
+// -- Variables --
 @import "_variables.scss";
-
-$navbar-light-color: $grouparoo-nav-font-color;
-$navbar-light-hover-color: $grouparoo-nav-font-color;
-
-// Bootstrap Overrides
-
-$card-border-radius: 8px;
 
 // -- External Components --
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-svg-core/styles.css";
 @import "../public/css/prism";
-
-// -- Fonts --
-// Google Fonts are now magically handled by next - https://nextjs.org/docs/basic-features/font-optimization.  They are loaded in the header in `_document.tsx`
-$font-header: Inter, sans-serif;
-$font-body: IBM Plex Sans, sans-serif;
-$font-code: IBM Plex Mono, sans-serif;
 
 // Page Defaults
 body {
