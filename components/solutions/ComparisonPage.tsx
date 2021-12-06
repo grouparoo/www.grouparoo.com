@@ -88,5 +88,4 @@ export default function ComparisonPage(comp: ComparisonInfo) {
       <ComparisonTable comparisonChartData={comp.comparisonChartData} />
     </>
   );
-  return <>"abc"</>;
 }

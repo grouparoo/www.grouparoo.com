@@ -23,9 +23,9 @@ export default function PostgresToHubspot() {
             <h1>Connect Postgres with Hubspot</h1>
             <p>
               Use Grouparoo to connect data in your Postgres data warehouse to
-              your Hubspot instance. Use our prebuilt connectors so you don't
-              have to write code yourself. Connect your data in minutes instead
-              of weeks.
+              your Hubspot instance. Use our prebuilt connectors so you
+              don&apos;t have to write code yourself. Connect your data in
+              minutes instead of weeks.
             </p>
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
@@ -256,12 +256,13 @@ export default function PostgresToHubspot() {
               <p>
                 PostgreSQL (or Postgres for short) is a powerful, open source
                 object-relational database. Postgres is one of the most popular
-                database types in modern application development, and it's also
-                the foundation for Amazon's Redshift data warehouse product.{" "}
+                database types in modern application development, and it&apos;s
+                also the foundation for Amazon&apos;s Redshift data warehouse
+                product.{" "}
               </p>
               <small>
                 <Link href="/integrations/sources/postgres">
-                  <a>Learn more about Grouparoo's Postgres integration</a>
+                  <a>Learn more about Grouparoo&apos;s Postgres integration</a>
                 </Link>
               </small>
             </Col>
@@ -276,7 +277,7 @@ export default function PostgresToHubspot() {
               </p>
               <small>
                 <Link href="/integrations/destinations/hubspot">
-                  <a>Learn more about Grouparoo's Hubspot integration</a>
+                  <a>Learn more about Grouparoo&apos;s Hubspot integration</a>
                 </Link>
               </small>
             </Col>

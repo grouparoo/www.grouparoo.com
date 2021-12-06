@@ -26,7 +26,7 @@ exports.default = async function buildConfig() {
       type: "${cmdName}",
       options: {
         ${Object.entries(pluginData.configOptions || {})
-          .map(([name, option]) => `${name}: ${option.default || '"..."'},`)
+          .map(([name, option]) => `${name}: ${option.default || `"..."`},`)
           .join("\n        ")}
       }
     },

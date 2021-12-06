@@ -17,8 +17,8 @@ export default function WorkingAtGrouparooCard() {
 
         <small>
           We are always looking for exceptional Engineers, Designers, Product
-          Managers, and Marketers who share our Mission. Even if we don't have a
-          position posted, we would love to meet you! You can reach us at{" "}
+          Managers, and Marketers who share our Mission. Even if we don&apos;t
+          have a position posted, we would love to meet you! You can reach us at{" "}
           <a href="mailto:hello@grouparoo.com">hello@grouparoo.com</a>.
         </small>
       </Card.Body>

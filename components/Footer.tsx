@@ -211,7 +211,7 @@ export default function Footer() {
                   </Link>
                   <br />
                   <Link href="/whats-new">
-                    <a>What's New</a>
+                    <a>What&apos;s New</a>
                   </Link>
                   <br />
                   <Link href="/docs/community">

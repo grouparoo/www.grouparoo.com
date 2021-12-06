@@ -54,9 +54,11 @@ const PluginDocsInstallation = ({ plugin }: { plugin: string }) => {
         language="json"
       />
       <p>
-        Once the Plugin is installed, you'll be working primarily with{" "}
-        <Link href="/docs/cli/config">the CLI's configuration commands</Link> to
-        get everything set up.
+        Once the Plugin is installed, you&apos;ll be working primarily with{" "}
+        <Link href="/docs/cli/config">
+          the CLI&apos;s configuration commands
+        </Link>{" "}
+        to get everything set up.
       </p>
     </>
   );

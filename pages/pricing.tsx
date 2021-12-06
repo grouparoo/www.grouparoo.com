@@ -514,9 +514,9 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                 I can use?
               </h4>
               <p>
-                Nope! Whether you're using the Community, Cloud, or Enterprise
-                editions of Grouparoo, you can connect as many Sources and
-                Destinations as you'd like.
+                Nope! Whether you&apos;re using the Community, Cloud, or
+                Enterprise editions of Grouparoo, you can connect as many
+                Sources and Destinations as you&apos;d like.
               </p>
               <h4>Do you have onboarding support?</h4>
               <p>
@@ -524,8 +524,8 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                 hands-on support for getting set up with Grouparoo. For folks
                 using the Community edition of Grouparoo, you can join the
                 Grouparoo <a href="docs/community">community</a> and discuss any
-                questions or topics you may have there. We're also active in the
-                community, so we're happy to help!
+                questions or topics you may have there. We&apos;re also active
+                in the community, so we&apos;re happy to help!
               </p>
             </Col>
           </Row>

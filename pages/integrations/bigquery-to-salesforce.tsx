@@ -23,9 +23,9 @@ export default function BigQueryToSalesforce() {
             <h1>Connect BigQuery with Salesforce</h1>
             <p>
               Grouparoo connects data in your BigQuery data warehouse to your
-              Salesforce instance. Use our prebuilt connectors so you don't have
-              to write code yourself. Connect your data in minutes instead of
-              weeks.
+              Salesforce instance. Use our prebuilt connectors so you don&apos;t
+              have to write code yourself. Connect your data in minutes instead
+              of weeks.
             </p>
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
@@ -267,14 +267,14 @@ export default function BigQueryToSalesforce() {
             <Col>
               <h2>About Google Cloud BigQuery</h2>
               <p>
-                BigQuery is one of Google's main products in their Google Cloud
-                Platform. BigQuery is a serverless and scalable data warehouse
-                designed primarily for businesses. It is queryable using SQL,
-                and has built-in machine learning capabilities.
+                BigQuery is one of Google&apos;s main products in their Google
+                Cloud Platform. BigQuery is a serverless and scalable data
+                warehouse designed primarily for businesses. It is queryable
+                using SQL, and has built-in machine learning capabilities.
               </p>
               <small>
                 <Link href="/integrations/sources/bigquery">
-                  <a>Learn more about Grouparoo's BigQuery integration</a>
+                  <a>Learn more about Grouparoo&apos;s BigQuery integration</a>
                 </Link>
               </small>
             </Col>
@@ -290,7 +290,8 @@ export default function BigQueryToSalesforce() {
               <small>
                 <Link href="/integrations/destinations/salesforce">
                   <a>
-                    Learn more about Grouparoo's Salesforce data integration
+                    Learn more about Grouparoo&apos;s Salesforce data
+                    integration
                   </a>
                 </Link>
               </small>

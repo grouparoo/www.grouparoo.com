@@ -60,9 +60,10 @@ export default function CustomerTestimonials() {
             <Col>
               <p>
                 <em>
-                  "Grouparoo has definitely helped us level up our customer data
-                  infrastructure. They've created an all-in-one platform that
-                  gets our data to the platforms that need it the most."
+                  &quot;Grouparoo has definitely helped us level up our customer
+                  data infrastructure. They&apos;ve created an all-in-one
+                  platform that gets our data to the platforms that need it the
+                  most.&quot;
                 </em>
               </p>{" "}
               <p>-- Francis Yango, Product @ Sendoso</p>

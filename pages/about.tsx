@@ -65,7 +65,7 @@ export default function About({ pageProps }) {
         <WhoWeAre />
         <Row>
           <Col>
-            <h2>Grouparoo's Mission & Vision</h2>
+            <h2>Grouparoo&apos;s Mission & Vision</h2>
             <p>
               <strong>Vision</strong>: Teams are empowered to make great
               customer experiences.
@@ -110,7 +110,7 @@ export default function About({ pageProps }) {
         <br />
         <h2 id="investors">Our Investors</h2>
         <p>
-          We're excited and humbled to be working with an amazing team of
+          We&apos;re excited and humbled to be working with an amazing team of
           investors who believe in our mission.
         </p>
         <div style={{ margin: "30px" }}>
@@ -191,8 +191,8 @@ export default function About({ pageProps }) {
           <Col md={6}>
             <h5>Work from anywhere in the US</h5>
             <p>
-              We're a fully remote company, so you can work from anywhere in the
-              U.S.{" "}
+              We&apos;re a fully remote company, so you can work from anywhere
+              in the U.S.{" "}
             </p>
             <h5>Healthcare coverage</h5>
             <p>

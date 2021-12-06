@@ -16,7 +16,7 @@ export default function IntegrationInstallation({
           <h2>Free and Easy to Install</h2>
           <p>
             Add the <code>{packageName}</code> package to your project, restart
-            your server, and you're good to go!{" "}
+            your server, and you&apos;re good to go!{" "}
             <Link href="/docs/installation/plugins">
               Learn more about working with plugins
             </Link>
@@ -40,8 +40,9 @@ export default function IntegrationInstallation({
         <Col>
           <h4>Community Edition</h4>
           <p>
-            Once you've installed the {displayName} Plugin, you can begin to
-            configure it by <Link href="/docs/config/apps">adding an App</Link>.
+            Once you&apos;ve installed the {displayName} Plugin, you can begin
+            to configure it by{" "}
+            <Link href="/docs/config/apps">adding an App</Link>.
           </p>
         </Col>
         <Col>

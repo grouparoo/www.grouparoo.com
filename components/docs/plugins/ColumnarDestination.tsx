@@ -34,7 +34,7 @@ const PluginDocsColumnarDestination = ({ plugin }: { plugin: string }) => {
       <p>
         {plugin} is one of the few integrations that can be both a Source and a
         Destination. You can use Grouparoo to export data to a {plugin}{" "}
-        database. Like a Source, a Destination requires that you've already
+        database. Like a Source, a Destination requires that you&apos;ve already
         configured an App to describe the connection details to you {plugin}{" "}
         database.
       </p>

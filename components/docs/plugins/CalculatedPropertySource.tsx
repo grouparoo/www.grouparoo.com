@@ -169,9 +169,9 @@ function customFunction() {
         >
           mustache variables
         </a>{" "}
-        to refer to the key of that Property. A Property's key can be found in
-        its config file. If no key is present, the default key is a Property's
-        id.
+        to refer to the key of that Property. A Property&apos;s key can be found
+        in its config file. If no key is present, the default key is a
+        Property&apos;s id.
       </p>
       <p>
         To calculate a <code>full_name</code> Property, you would fill in the
@@ -181,7 +181,7 @@ function customFunction() {
       <CodeBlock code={codeBlocks.customFunction} language="javascript" />
       <p>
         <code>customFunction</code> is executed Record by Record, so the value
-        of each Record's <code>first_name</code> and <code>last_name</code>{" "}
+        of each Record&apos;s <code>first_name</code> and <code>last_name</code>{" "}
         Properties are parsed directly into the function, which is why it is
         quoted in order to evaluate as and return a string.
       </p>
@@ -206,22 +206,22 @@ function customFunction() {
       <p>
         You can also do coalescing. For example, say you want to add a{" "}
         <code>primary_phone</code> and your first pick is{" "}
-        <code>cell_phone_number</code>, if there isn't a cell, you want{" "}
-        <code>work_phone_number</code>, and if there isn't one of those a{" "}
+        <code>cell_phone_number</code>, if there isn&apos;t a cell, you want{" "}
+        <code>work_phone_number</code>, and if there isn&apos;t one of those a{" "}
         <code>home_phone_number</code>, otherwise you want <code>null</code>.:
       </p>
       <CodeBlock code={codeBlocks.customFunctionPhone} language="javascript" />
       <p>
         To replace a null value, you can evaluate the string from the mustache
-        variable against an empty string and use a conditional. Here we'll make
-        a Property that flags any account missing an email:
+        variable against an empty string and use a conditional. Here we&apos;ll
+        make a Property that flags any account missing an email:
         <CodeBlock
           code={codeBlocks.customFunctionIfNoEmail}
           language="javascript"
         />
-        A Calculated Property's <code>customFunction</code> can use whatever
-        synchronous JavaScript you would like to generate your Property. Please
-        note that:
+        A Calculated Property&apos;s <code>customFunction</code> can use
+        whatever synchronous JavaScript you would like to generate your
+        Property. Please note that:
         <ul>
           <li>
             Using <code>require</code> is not currently supported

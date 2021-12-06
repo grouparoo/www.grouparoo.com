@@ -72,7 +72,7 @@ export default function Education() {
             <Col md={12}>
               <h2>
                 Grouparoo is a self-hosted reverse ETL tool, syncing your
-                source-of-truth data with the communications tools you're
+                source-of-truth data with the communications tools you&apos;re
                 familiar with.
               </h2>
             </Col>
@@ -198,7 +198,7 @@ export default function Education() {
               <p>
                 Integrations make it easy to send the right data to each tool
                 you use. No code is necessary to change what data gets sent. You
-                control exactly what data gets sent. And we're adding new
+                control exactly what data gets sent. And we&apos;re adding new
                 integrations all the time.
               </p>
             </Col>

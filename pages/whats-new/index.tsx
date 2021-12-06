@@ -19,7 +19,7 @@ export default function ReleaseIndex({ pageProps }) {
   return (
     <>
       <Head>
-        <title>Grouparoo: What's New</title>
+        <title>Grouparoo: What&apos;s New</title>
         <link rel="canonical" href={`https://www.grouparoo.com/whats-new`} />
         <link
           rel="alternate"
@@ -36,7 +36,7 @@ export default function ReleaseIndex({ pageProps }) {
       </Head>
 
       <Container className="releasePage">
-        <h1 style={{ paddingBottom: 30 }}>What's New</h1>
+        <h1 style={{ paddingBottom: 30 }}>What&apos;s New</h1>
 
         {!notes || notes.length === 0 ? <p>No notes found</p> : null}
 

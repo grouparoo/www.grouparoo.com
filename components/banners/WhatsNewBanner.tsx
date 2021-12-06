@@ -13,7 +13,7 @@ export function WhatsNewBanner({
   return (
     <Alert variant="primary" style={{ textAlign: "center", margin: 0 }}>
       <small>
-        <strong>What's New</strong> - {releaseNote.description}{" "}
+        <strong>What&apos;s New</strong> - {releaseNote.description}{" "}
         <Link href="/whats-new">
           <a>Learn More</a>
         </Link>
