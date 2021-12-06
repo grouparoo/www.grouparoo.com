@@ -3,7 +3,7 @@ import styles from "./HowGrouparooWorks.module.scss";
 
 export const HowGrouparooWorks = () => {
   return (
-    <Container className={`${styles.container}`}>
+    <Container className={`${styles.container} py-3`}>
       <Row>
         <Col>
           <section>

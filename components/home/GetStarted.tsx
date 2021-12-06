@@ -12,7 +12,7 @@ export default function GetStarted({
       <Card.Body>
         <h2>Get Started with Grouparoo</h2>
         <p>Start syncing your data with Grouparoo Cloud</p>
-        <Link href="/trial">
+        <Link href="/trial" passHref={true}>
           <Button
             variant="primary"
             size="lg"
