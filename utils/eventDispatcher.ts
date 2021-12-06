@@ -1,17 +1,15 @@
+interface ComplexError extends Error {
+  error: Error;
+}
+type ErrorSubscriber = (e: ComplexError) => void | Promise<void>;
 export class EventDispatcher {
-  subscriptions: {
-    [key: string]: any;
-  };
+  subscriptions: Record<string, ErrorSubscriber> = {};
 
-  constructor() {
-    this.subscriptions = {};
-  }
-
-  set(error) {
+  set(error: ComplexError) {
     this.publish(error);
   }
 
-  async publish(data) {
+  async publish(data: ComplexError) {
     const subscriptionKeys = Object.keys(this.subscriptions);
     for (const i in subscriptionKeys) {
       const key = subscriptionKeys[i];
@@ -19,11 +17,11 @@ export class EventDispatcher {
     }
   }
 
-  subscribe(name, handler) {
+  subscribe(name: string, handler: ErrorSubscriber) {
     this.subscriptions[name] = handler;
   }
 
-  unsubscribe(name) {
+  unsubscribe(name: string) {
     delete this.subscriptions[name];
   }
 }
