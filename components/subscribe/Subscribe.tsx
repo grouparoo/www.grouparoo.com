@@ -85,7 +85,6 @@ export const NewSubscribe = ({ campaign }: { campaign: string }) => {
 
   return (
     <Row>
-      <Col className="d-none d-md-inline-block col-md-1" />
       <Col>
         <h3>Stay up to date</h3>
         <p>{content}</p>
