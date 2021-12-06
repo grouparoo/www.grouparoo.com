@@ -1,27 +1,18 @@
-import { useEffect, useMemo } from "react";
-import { Container, Button, Row, Col } from "react-bootstrap";
-import Image from "../components/Image";
 import Head from "next/head";
-import Link from "next/link";
-import HomepageCodeBox from "../components/home/HomepageCodeBox";
-import IntegrationsSection from "../components/home/IntegrationsSection";
-import SmallIntegration from "../components/home/SmallIntegration";
-import WhyOpenSource from "../components/home/WhyOpenSource";
-import CustomerTestimonials from "../components/home/CustomerTestimonials";
-import { randomHomepagePlugins } from "../data/plugins";
-import { getReleaseNotes, ReleaseNote } from "../utils/releaseNotes";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ImageInBrowserFrame from "../components/ImageInBrowserFrame";
-import { Header } from "../components/home/header/Header";
-import { Partners } from "../components/home/partners/Partners";
+import { useEffect, useMemo } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import { About } from "../components/home/about/About";
 import { Actionable } from "../components/home/actionable/Actionable";
-import { Testimonials } from "../components/home/testimonials/Testimonials";
-import { HowGrouparooWorks } from "../components/home/how-it-works/HowGrouparooWorks";
-import styles from "./index.module.scss";
-import { Integrations } from "../components/home/integrations/Integrations";
-import { WhyGrouparoo } from "../components/home/why-grouparoo/WhyGrouparoo";
 import { Features } from "../components/home/features/Features";
+import { Header } from "../components/home/header/Header";
+import { HowGrouparooWorks } from "../components/home/how-it-works/HowGrouparooWorks";
+import { Integrations } from "../components/home/integrations/Integrations";
+import { Partners } from "../components/home/partners/Partners";
+import { Testimonials } from "../components/home/testimonials/Testimonials";
+import { WhyGrouparoo } from "../components/home/why-grouparoo/WhyGrouparoo";
+import { randomHomepagePlugins } from "../data/plugins";
+import { getReleaseNotes, ReleaseNote } from "../utils/releaseNotes";
+import styles from "./index.module.scss";
 
 const getTagline = (pluginNames: string[]) =>
   `Stop writing code to sync data to ${
@@ -91,7 +82,7 @@ const IndexPage = ({ pageProps, setReleaseNote }) => {
       <Container className={styles.container}>
         <Row>
           <Col>
-            <img src="/images/home/how-it-works-1.png" />
+            <img src="/images/home/how-it-works-1.png" alt="how it works" />
           </Col>
           <Col>
             <section>
@@ -116,7 +107,7 @@ const IndexPage = ({ pageProps, setReleaseNote }) => {
             </section>
           </Col>
           <Col>
-            <img src="/images/home/how-it-works-2.png" />
+            <img src="/images/home/how-it-works-2.png" alt="how it works 2" />
           </Col>
         </Row>
       </Container>

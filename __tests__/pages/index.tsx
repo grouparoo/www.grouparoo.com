@@ -13,7 +13,7 @@ describe("page/home", () => {
       />
     );
     expect(screen.getByTestId("header")).toHaveTextContent(
-      "Stop writing code to sync data to AnnoyingPlugin*"
+      "Stop writing code to sync data to AnnoyingPlugin"
     );
   });
 });
