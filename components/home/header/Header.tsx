@@ -7,7 +7,10 @@ interface HeaderProps {
 }
 
 export const Header = ({ tagline }: HeaderProps) => (
-  <header className={`d-flex justify-content-evenly ${styles.header}`}>
+  <header
+    className={`d-flex justify-content-evenly ${styles.header}`}
+    data-testid="header"
+  >
     <div>
       <h2>{tagline}</h2>
       <p className="outline">
