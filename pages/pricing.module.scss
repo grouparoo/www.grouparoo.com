@@ -1,3 +1,5 @@
+@import "../scss/_variables";
+
 .pricingList {
   font-size: 14px;
   text-align: left;
@@ -8,5 +10,5 @@
 }
 
 .lightBg {
-  background-color: #dfe8fb;
+  background-color: $grouparoo-light-violet;
 }
