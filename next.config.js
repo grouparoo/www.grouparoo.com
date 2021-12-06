@@ -12,6 +12,9 @@ const nextConfig = {
       process.env.GOOGLE_ADS_SUBSCRIBE_CONVERSION,
     GOOGLE_ADS_TRIAL_CONVERSION: process.env.GOOGLE_ADS_TRIAL_CONVERSION,
   },
+  sassOptions: {
+    includePaths: [require("path").join(__dirname, "scss")],
+  },
   async rewrites() {
     return [];
   },

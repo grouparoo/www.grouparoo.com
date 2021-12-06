@@ -1,4 +1,14 @@
+@import "_variables";
+
 .pricingList {
   font-size: 14px;
   text-align: left;
+}
+
+.featureCard {
+  min-height: 501px;
+}
+
+.lightBg {
+  background-color: $grouparoo-light-violet;
 }
