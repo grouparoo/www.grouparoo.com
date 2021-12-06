@@ -50,11 +50,11 @@ export default function CustomerTestimonials() {
             <Col>
               <p>
                 <em>
-                  "I was able to set up a process that merges and maintains user
-                  profiles with data from multiple sources in just a few minutes
-                  and I wish we had it years ago.
+                  &quot;I was able to set up a process that merges and maintains
+                  user profiles with data from multiple sources in just a few
+                  minutes and I wish we had it years ago.&quot;
                 </em>
-              </p>{" "}
+              </p>
               <p>-- Joaquín Brenner, Co-founder and COO @ Chipax</p>
             </Col>
             <Col>

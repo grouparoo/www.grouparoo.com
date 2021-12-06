@@ -52,12 +52,15 @@ function getMainComponent(props, imgClasses) {
     imgStyle.maxHeight = "100%";
     imgStyle.maxWidth = "100%";
     props.style = imgStyle;
+    // eslint-disable-next-line jsx-a11y/alt-text, @next/next/no-img-element
     return <img {...props} className={imgClasses} />;
   }
 
   return <NextImage {...props} className={imgClasses} />;
 }
 
+// TODO: Figure out this
+// eslint-disable-next-line react/display-name
 const MyImage = React.forwardRef<HTMLImageElement, MyImageProps>(
   (
     {

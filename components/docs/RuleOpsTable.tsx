@@ -86,7 +86,7 @@ const DataTable = ({ data, heading, eventKey }) => {
                 format: <br />
                 <span className="ps-4">
                   <b>YYYY-MM-DDThh:mm:ss.mmm+TZD</b>{" "}
-                  ("2020-09-01T08:15:00+00:00"){" "}
+                  (&quot;2020-09-01T08:15:00+00:00&quot;){" "}
                 </span>
                 A date passed as YYYY-MM-DD will pass validation, but may result
                 in less accurate Group results.

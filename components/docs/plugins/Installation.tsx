@@ -35,7 +35,7 @@ const PluginDocsInstallation = ({ plugin }: { plugin: string }) => {
         , you must first install it in an existing Grouparoo project. You can do
         this using <code>grouparoo config</code> and choosing to add the new
         App. You can also install a plugin with the Grouparoo CLI and use{" "}
-        <Link href="/docs/cli/setup#install">
+        <Link href="/docs/cli/setup#install" passHref={true}>
           <span>
             the <code>install</code> command
           </span>
