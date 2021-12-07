@@ -19,8 +19,8 @@
     "generate-static-files": "ts-node ./scripts/generate_static_files.ts",
     "pretest": "npm run lint && npm run build",
     "test": "jest --runInBand",
-    "lint": "prettier --check pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
-    "lint-fix": "prettier --write pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
+    "lint": "next lint && prettier --check pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
+    "lint-fix": "next lint --fix && prettier --write pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
     "nuke": "rm -rf node_modules && rm -rf .next"
   },
   "dependencies": {
