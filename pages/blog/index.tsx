@@ -44,9 +44,9 @@ function blogEntry(entry: BlogEntry, idx: number) {
         </div>
       </div>
       <blockquote style={{ color: "darkGray" }}>
-        <span style={{ fontSize: 20, fontFamily: "Georgia" }}>"</span>
+        <span style={{ fontSize: 20, fontFamily: "Georgia" }}>&quot;</span>
         <em>{entry.pullQuote}</em>
-        <span style={{ fontSize: 20, fontFamily: "Georgia" }}>"</span>
+        <span style={{ fontSize: 20, fontFamily: "Georgia" }}>&quot;</span>
       </blockquote>
     </div>
   );

@@ -57,12 +57,12 @@ export default function DataSync({ pageProps }) {
 
 function TableOfContents({ data, organization }) {
   const dataRows = data.map((row) => (
-    <li>
+    <li key={row.text}>
       <a href={row.href}>{row.text}</a>
     </li>
   ));
   const orgRows = organization.map((row) => (
-    <li>
+    <li key={row.text}>
       <a href={row.href}>{row.text}</a>
     </li>
   ));

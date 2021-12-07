@@ -1,5 +1,5 @@
 import NextImage from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
 function isDebugging(props) {
@@ -23,24 +23,27 @@ export default function DebugImage(props) {
   const { error, message } = data;
   const debug = error || message;
 
+  const fetchData = useCallback(async () => {
+    const params = { w: props.width, h: props.height, url: props.src };
+    const result: any = await axios.get("/api/imgdim", { params });
+    const { optimized, error, message } = result.data;
+    if (optimized) {
+      setData({ error: null, message: null });
+    } else {
+      setData({ error, message });
+    }
+  }, [props.height, props.src, props.width]);
+
+  useEffect(() => {
+    if (!isDebugging(props)) {
+      fetchData();
+    }
+  }, [fetchData, props]);
+
   if (!isDebugging(props)) {
     //  return regular image
     return <NextImage {...props} />;
   }
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const params = { w: props.width, h: props.height, url: props.src };
-      const result: any = await axios.get("/api/imgdim", { params });
-      const { optimized, error, message } = result.data;
-      if (optimized) {
-        setData({ error: null, message: null });
-      } else {
-        setData({ error, message });
-      }
-    };
-    fetchData();
-  }, []);
 
   return (
     <div style={{ position: "relative", margin: 0, padding: 0 }}>
