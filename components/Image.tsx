@@ -52,30 +52,26 @@ function getMainComponent(props, imgClasses) {
     imgStyle.maxHeight = "100%";
     imgStyle.maxWidth = "100%";
     props.style = imgStyle;
-    // eslint-disable-next-line jsx-a11y/alt-text, @next/next/no-img-element
-    return <img {...props} className={imgClasses} />;
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img {...props} className={imgClasses} alt={props.alt} />;
   }
 
   return <NextImage {...props} className={imgClasses} />;
 }
 
 // TODO: Figure out this
-// eslint-disable-next-line react/display-name
 const MyImage = React.forwardRef<HTMLImageElement, MyImageProps>(
-  (
-    {
-      bsPrefix,
-      className,
-      fluid,
-      rounded,
-      roundedCircle,
-      thumbnail,
-      centered,
-      outline,
-      ...props
-    },
-    ref
-  ) => {
+  ({
+    bsPrefix,
+    className,
+    fluid,
+    rounded,
+    roundedCircle,
+    thumbnail,
+    centered,
+    outline,
+    ...props
+  }) => {
     bsPrefix = useBootstrapPrefix(bsPrefix, "img");
     const classes = classNames(
       fluid && `${bsPrefix}-fluid`,
@@ -103,5 +99,7 @@ const MyImage = React.forwardRef<HTMLImageElement, MyImageProps>(
     }
   }
 );
+
+MyImage.displayName = "MyImage";
 
 export default MyImage;
