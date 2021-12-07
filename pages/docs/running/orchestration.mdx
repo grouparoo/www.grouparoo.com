@@ -4,7 +4,7 @@ date: "2021-11-11"
 pullQuote: "It's easy to integrate Grouparoo into your existing ELT/ELT process"
 ---
 
-It's easy to integrate Grouparoo into your existing ELT/ELT process! Grouparoo is a core part of the [modern data stack](/solutions/modern-data-stack) and provides a number of ways to integrate with the rest of your data infrastructure, and is compatible with a number of different orchestrators - tools that schedule and coordinate different parts of your data pipeline.
+It's easy to integrate Grouparoo into your existing ELT/ELT process! Grouparoo is a core part of the [modern data stack](/solutions/modern-data-stack) and provides a number of ways to integrate with the rest of your data infrastructure. It is compatible with a number of different orchestrators - tools that schedule and coordinate different parts of your data pipeline.
 
 There are 4 main ways tell Grouparoo when to check for new or updated data:
 
@@ -15,9 +15,9 @@ There are 4 main ways tell Grouparoo when to check for new or updated data:
 
 ## Triggering Schedules via Time
 
-The simplest way to check for new data is create a recurring [Schedule](/docs/getting-started/product-concepts#schedule) within Grouparoo. A recurring Schedule will check your Source every-so-often for new data and import it.
+The simplest way to check for new data is to create a recurring [Schedule](/docs/getting-started/product-concepts#schedule) within Grouparoo. A recurring Schedule will check your Source at a set time interval for new data. It then imports any new data it finds.
 
-For example, this configuration below would check the `users` table in the data warehouse for new data every 30 minutes. We know data is new because looking at the `updated_at` column and storing the largest value seen as a [High Water Mark](/docs/getting-started/product-concepts#high-watermark)
+For example, this configuration below would check the `users` table in the data warehouse for new data every 30 minutes. We know data is new by referring to the `updated_at` column and storing the largest value seen as a [High-Water Mark](/docs/getting-started/product-concepts#high-watermark)
 
 ```js
 // from config/sources/users.json
@@ -53,7 +53,7 @@ For example, this configuration below would check the `users` table in the data 
 ];
 ```
 
-This method is the simplest and is built into Grouparoo directly.
+This method is the simplest of the four options and is built directly into Grouparoo.
 
 ## Triggering Schedules via the API
 
@@ -61,7 +61,7 @@ Using the Grouparoo API, you can choose to run a [Schedule](/docs/getting-starte
 
 The `/api/v1/schedules/run` endpoint can be used to trigger a Run for your Schedules. You can run all of your Schedules or provide a list of specific `scheduleIds` to run.
 
-First, create an [API Key](/docs/getting-started/product-concepts#api-key) with the `write` permission on `Sources`, and then you can use the API as documented below:
+First, create an [API Key](/docs/getting-started/product-concepts#api-key) with the `write` permission on `Sources`. Then you can use the API as documented below:
 
 ```bash
 # Set Variables
@@ -107,7 +107,7 @@ curl \
 | jq '.run.state'
 ```
 
-Note that your API Key will need read access to the `run` permission as well.
+Note that in order to use this method, your API Key will need read access to the `run` permission as well.
 
 ## Triggering Schedules via a Query
 
@@ -117,7 +117,9 @@ At a high level, using a query to orchestrate your runs allows you to do things 
 
 ## Running Grouparoo directly via the CLI
 
-Grouparoo can always be run via the command line with `grouparoo run`. Some customers may want to run Grouparoo via the CLI directly from their orchestrator as the final part of their ETL/ELT pipeline, or simply every night via `cron`. For these use cases, we recommend configuring Grouparoo via [code config](/docs/config/code-config) and using the `grouparoo run` command. This will run all Schedules immediately when `grouparoo run` is started.
+Grouparoo can always be run via the command line with [`grouparoo run`](/docs/cli/run#run). It is important to note that this method runs once and then terminates when the job is completed. The `grouparoo run` command is a manual option that allows you to check for updates only once, each time you explicitly run it.
+
+Some customers may want to run Grouparoo via the CLI directly from their orchestrator as the final part of their ETL/ELT pipeline. Alternatively, it could simply run every night via `cron`. For these use cases, we recommend configuring Grouparoo via [code config](/docs/config/code-config) and using the `grouparoo run` command. This will run all Schedules immediately when `grouparoo run` is started.
 
 ```bash
 $ grouparoo run
