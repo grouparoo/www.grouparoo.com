@@ -59,7 +59,6 @@ function getMainComponent(props, imgClasses) {
   return <NextImage {...props} className={imgClasses} />;
 }
 
-// TODO: Figure out this
 const MyImage = React.forwardRef<HTMLImageElement, MyImageProps>(
   ({
     bsPrefix,
