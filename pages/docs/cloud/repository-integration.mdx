@@ -4,15 +4,27 @@ date: "2021-11-10"
 pullQuote: "Simple integration steps for Grouparoo Cloud"
 ---
 
-Grouparoo Cloud requires three things to function: A github action `.yaml` file and two secrets to identify and authorize the code config repository.
+Your Project in [Grouparoo Cloud](https://cloud.grouparoo.com/) has an Integrations Page.
 
-It is assumed you have an existing repository on github that was setup using our [Config UI](/docs/config).
+<Image
+  src="docs/cloud/project-landing-page-click-integrations.png"
+  alt="Cloud App Fresh Project Landing Page Click Integrations"
+  width={1544}
+  height={469}
+/>
+
+If has instructions on what you need from Cloud to integrate with your GitHub repository.
+
+<Image
+  src="docs/cloud/cloud-integrations-page.png"
+  alt="Cloud App Integrations Page"
+  width={1172}
+  height={575}
+/>
+
+<small>Make sure to click Generate to get an API Token!</small>
 
 ### GitHub Repository Secrets
-
-Grouparoo Cloud requires two secrets to be available in your repository: `GROUPAROO_CLOUD_TOKEN` and `GROUPAROO_CLOUD_PROJECT_ID`.
-
-If these values have not already been provided for you, you can get them from [Grouparoo Cloud](https://cloud.grouparoo.com/) in your Project's Integrations page.
 
 In your GitHub repository go to: Settings -> Secrets -> New repository secret.
 
@@ -23,56 +35,19 @@ In your GitHub repository go to: Settings -> Secrets -> New repository secret.
   height={650}
 />
 
-Add `GROUPAROO_CLOUD_TOKEN` and `GROUPAROO_CLOUD_PROJECT_ID` with the provided values.
+Add `GROUPAROO_CLOUD_TOKEN` and `GROUPAROO_CLOUD_PROJECT_ID` with the values from Cloud's Integration page.
 
-<sub>
-  The Project ID should look similar to <code>prj_some-set-of-values</code>.
-</sub>
+### GitHub Action Workflow
 
-### GitHub Action
+Follow the instructions provided in the Integrations page.
+
+<Image
+  src="docs/cloud/cloud-integrations-page-2.png"
+  alt="Cloud App Integrations Page"
+  width={1176}
+  height={850}
+/>
 
 We recommend creating a new branch for this since our system can check PR builds for validity, saving you some potential headache.
-
-Create a file in your repository: `.github/workflows/grouparoo-cloud.yml`
-And place the below code into it.
-
-```yml
-name: grouparoo-cloud
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
-jobs:
-  ci:
-    if: ${{ github.event_name == 'pull_request' }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
-      - uses: grouparoo/cloud-action@v2
-        with:
-          project_id: ${{ secrets.GROUPAROO_CLOUD_PROJECT_ID }}
-          token: ${{ secrets.GROUPAROO_CLOUD_TOKEN }}
-  deploy:
-    if: ${{ github.event_name == 'push' }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
-      - uses: grouparoo/cloud-action@v2
-        with:
-          type: deploy
-          project_id: ${{ secrets.GROUPAROO_CLOUD_PROJECT_ID }}
-          token: ${{ secrets.GROUPAROO_CLOUD_TOKEN }}
-```
-
-Then create a pull request against your main branch. It may take a few minutes but our CI system will kick in and confirm that your Code Config is valid and host-able. If CI runs green, merge and our system will deploy it into Grouparoo Cloud. Once it's available your Project page in Grouparoo Cloud will provide a link!
 
 If you have any trouble please visit our [Support Page](/docs/support).
