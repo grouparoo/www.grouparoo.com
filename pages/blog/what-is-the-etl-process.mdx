@@ -34,7 +34,7 @@ The data extraction process can be performed in different ways including increme
 
 In the transformation phase, the raw data is prepared for analysis through a couple of processes including validation, authentication, filtering, cleansing, and aggregation. Calculations and summarizations may also be run on the data as it is formatted correctly to match the schema of the target system.
 
-Traditionally, extracted data is transformed in a staging area before it is loaded into the target data warehouse. However, in recent years, the in-warehouse data transformation or ELT (Extract, Load, Transform) approach, which involves transforming the data in the warehouse rather than beforehand, is fast becoming the norm. Companies like [Fivetran](http://fivetran.com), [Meltano](https://meltano.com/), and [Airbyte](https://airbyte.io/)<span style="text-decoration:underline;"> </span>are leading the ELT trend.
+Traditionally, extracted data is transformed in a staging area before it is loaded into the target data warehouse. However, in recent years, the in-warehouse data transformation or ELT (Extract, Load, Transform) approach, which involves transforming the data in the warehouse rather than beforehand, is fast becoming the norm. Companies like [Fivetran](http://fivetran.com), [Meltano](https://meltano.com/), and [Airbyte](https://airbyte.io/) are leading the ELT trend.
 
 This shift towards ELT is due to the improved performance of modern analytics database systems and their support for data transformation using SQL, which most data scientists and analysts are proficient with. Additionally, companies like [dbt](https://www.getdbt.com/) make the Transform step very easy once data is already loaded into a warehouse, further making ELT more popular.
 
