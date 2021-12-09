@@ -114,6 +114,25 @@ export default function DocsIndex() {
             <Alert variant="light">
               <Row className="align-items-center">
                 <Col md={6}>
+                  <h2>Need help integrating with Grouparoo Cloud?</h2>
+                  <p>
+                    Grouparoo Cloud is our SaaS Cloud-hosted option. We make it
+                    easy to use your Code Config repository on our hosted
+                    system, giving you security and peace-of-mind for all your
+                    reverse ETL needs!
+                  </p>
+                </Col>
+                <Col style={{ textAlign: "center" }}>
+                  <Button variant="light" size="lg" href="/docs/cloud">
+                    Cloud Integration Guide
+                  </Button>
+                </Col>
+              </Row>
+            </Alert>
+
+            <Alert variant="light">
+              <Row className="align-items-center">
+                <Col md={6}>
                   <h2>
                     Want to collaborate with the Community to enhance Grouparoo?
                   </h2>

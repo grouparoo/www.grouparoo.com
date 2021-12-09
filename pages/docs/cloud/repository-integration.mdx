@@ -1,0 +1,53 @@
+---
+title: "Grouparoo Cloud Repository Integration"
+date: "2021-11-10"
+pullQuote: "Simple integration steps for Grouparoo Cloud"
+---
+
+Your Project in [Grouparoo Cloud](https://cloud.grouparoo.com/) has an Integrations Page.
+
+<Image
+  src="docs/cloud/project-landing-page-click-integrations.png"
+  alt="Cloud App Fresh Project Landing Page Click Integrations"
+  width={1544}
+  height={469}
+/>
+
+This page has instructions on what you need from Cloud to integrate with your GitHub repository.
+
+<Image
+  src="docs/cloud/cloud-integrations-page.png"
+  alt="Cloud App Integrations Page"
+  width={1172}
+  height={575}
+/>
+
+<small>Make sure to click Generate to get an API Token!</small>
+
+### GitHub Repository Secrets
+
+In your GitHub repository go to: Settings -> Secrets -> New repository secret.
+
+<Image
+  src="docs/cloud/action-secrets.png"
+  alt="GitHub Repository Secrets"
+  width={1127}
+  height={650}
+/>
+
+Add `GROUPAROO_CLOUD_TOKEN` and `GROUPAROO_CLOUD_PROJECT_ID` with the values from Cloud's Integration page.
+
+### GitHub Action Workflow
+
+Follow the instructions provided in the Integrations page.
+
+<Image
+  src="docs/cloud/cloud-integrations-page-2.png"
+  alt="Cloud App Integrations Page"
+  width={1176}
+  height={850}
+/>
+
+We recommend creating a new branch for this since our system can check PR builds for validity, saving you some potential headache.
+
+If you have any trouble please visit our [Support Page](/docs/support).
