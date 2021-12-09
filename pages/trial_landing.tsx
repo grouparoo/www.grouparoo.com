@@ -384,7 +384,7 @@ export default function Trial({ props }) {
                   <Row className="text-center mb-1">
                     <Col>
                       <h1>Grouparoo Cloud</h1>
-                      <h2>We&apos;ll be in touch!</h2>
+                      <h2>We'll be in touch!</h2>
                     </Col>
                   </Row>
                   <Row>

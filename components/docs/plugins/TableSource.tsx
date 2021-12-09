@@ -122,8 +122,8 @@ mapping: {
       </p>
 
       <p>
-        Here is a filled out version of a common use case. We&apos;ll step
-        through the unique pieces below.
+        Here is a filled out version of a common use case. We'll step through
+        the unique pieces below.
       </p>
 
       <CodeBlock code={codeBlocks.config} language="javascript" />
@@ -182,7 +182,7 @@ mapping: {
       </p>
 
       <p>
-        For example, let&apos;s say your database has a {column} named{" "}
+        For example, let's say your database has a {column} named{" "}
         <code>email</code> and that maps directly to a <em>unique</em> Property
         on the Record in Grouparoo called <code>emailAddress</code>. In that
         case, your Mapping would look like this:
@@ -235,8 +235,8 @@ mapping: {
       <h3 id="table-source-properties">Table Source Properties</h3>
 
       <p>
-        After you generate a Source, you&apos;ll likely want to add Properties
-        to it. You can do this through the CLI:
+        After you generate a Source, you'll likely want to add Properties to it.
+        You can do this through the CLI:
       </p>
 
       <CodeBlock
@@ -296,7 +296,7 @@ mapping: {
       </p>
 
       <p>
-        For example, let&apos;s say you had a Property called{" "}
+        For example, let's say you had a Property called{" "}
         <code>lifetime_value</code> which summed all the purchases for a given
         user. Your Source is a <code>purchases</code> {table} that has a{" "}
         <code>state</code> {column} set to either <code>successful</code> or{" "}

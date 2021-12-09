@@ -37,7 +37,7 @@ export default function AuthorBox({
                   href="/blog/author/[slug]"
                   as={`/blog/author/${author.slug}`}
                 >
-                  <a>See all of {author.name}&apos;s posts.</a>
+                  <a>See all of {author.name}'s posts.</a>
                 </Link>
                 <br />
                 <br />

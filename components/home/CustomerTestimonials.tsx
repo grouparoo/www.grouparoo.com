@@ -50,9 +50,9 @@ export default function CustomerTestimonials() {
             <Col>
               <p>
                 <em>
-                  &quot;I was able to set up a process that merges and maintains
-                  user profiles with data from multiple sources in just a few
-                  minutes and I wish we had it years ago.&quot;
+                  "I was able to set up a process that merges and maintains user
+                  profiles with data from multiple sources in just a few minutes
+                  and I wish we had it years ago."
                 </em>
               </p>
               <p>-- Joaquín Brenner, Co-founder and COO @ Chipax</p>
@@ -60,10 +60,9 @@ export default function CustomerTestimonials() {
             <Col>
               <p>
                 <em>
-                  &quot;Grouparoo has definitely helped us level up our customer
-                  data infrastructure. They&apos;ve created an all-in-one
-                  platform that gets our data to the platforms that need it the
-                  most.&quot;
+                  "Grouparoo has definitely helped us level up our customer data
+                  infrastructure. They've created an all-in-one platform that
+                  gets our data to the platforms that need it the most."
                 </em>
               </p>{" "}
               <p>-- Francis Yango, Product @ Sendoso</p>

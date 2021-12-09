@@ -110,8 +110,8 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
                     >
                       <a suppressHydrationWarning={true}>{pluginName}</a>
                     </Link>{" "}
-                    - we don&apos;t mean to pick on you specifically. We
-                    integrate with{" "}
+                    - we don't mean to pick on you specifically. We integrate
+                    with{" "}
                     <Link href="/integrations">
                       <a>lots of marketing, operations, and sales tools</a>
                     </Link>
@@ -222,10 +222,10 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
             <Col md={6}>
               <h3>Use verified data</h3>
               <p>
-                You&apos;ve spent a lot of time ensuring that your data
-                warehouse has the correct data. Now you can use it to generate
-                real value for your company. The same data that your business
-                uses to make decisions can now also be used to act.
+                You've spent a lot of time ensuring that your data warehouse has
+                the correct data. Now you can use it to generate real value for
+                your company. The same data that your business uses to make
+                decisions can now also be used to act.
               </p>
             </Col>
             <Col md={6} className="d-md-none">
@@ -250,8 +250,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <p>
                 Marketing, Sales, Customer Support and other teams are trying
                 new tools all the time. Instead of building and maintaining all
-                of these integrations, use Grouparoo&apos;s pre-built
-                connectors.
+                of these integrations, use Grouparoo's pre-built connectors.
               </p>
             </Col>
             <Col md={6}>
@@ -517,7 +516,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
               <br />
               <p>
                 Write automated tests, so you can verify that the data is being
-                imported and exported as you&apos;d expect.
+                imported and exported as you'd expect.
               </p>
             </Col>
           </Row>

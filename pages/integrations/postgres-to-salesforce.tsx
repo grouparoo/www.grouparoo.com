@@ -23,9 +23,9 @@ export default function PostgresToSalesforce() {
             <h1>Connect Postgres with Salesforce</h1>
             <p>
               Grouparoo connects data in your Postgres data warehouse to your
-              Salesforce instance. Use our prebuilt connectors so you don&apos;t
-              have to write code yourself. Connect your data in minutes instead
-              of weeks.
+              Salesforce instance. Use our prebuilt connectors so you don't have
+              to write code yourself. Connect your data in minutes instead of
+              weeks.
             </p>
           </Col>
           <Col lg={3} md={5} sm={5} xs={5} style={{ textAlign: "center" }}>
@@ -266,13 +266,12 @@ export default function PostgresToSalesforce() {
               <p>
                 PostgreSQL (or Postgres for short) is a powerful, open source
                 object-relational database. Postgres is one of the most popular
-                database types in modern application development, and it&apos;s
-                also the foundation for Amazon&apos;s Redshift data warehouse
-                product.{" "}
+                database types in modern application development, and it's also
+                the foundation for Amazon's Redshift data warehouse product.{" "}
               </p>
               <small>
                 <Link href="/integrations/sources/postgres">
-                  <a>Learn more about Grouparoo&apos;s Postgres integration</a>
+                  <a>Learn more about Grouparoo's Postgres integration</a>
                 </Link>
               </small>
             </Col>
@@ -288,8 +287,7 @@ export default function PostgresToSalesforce() {
               <small>
                 <Link href="/integrations/destinations/salesforce">
                   <a>
-                    Learn more about Grouparoo&apos;s Salesforce data
-                    integration
+                    Learn more about Grouparoo's Salesforce data integration
                   </a>
                 </Link>
               </small>

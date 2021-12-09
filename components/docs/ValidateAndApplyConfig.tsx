@@ -33,7 +33,7 @@ export default function ValidateAndApplyConfig({
       <p>
         And you can apply that config (save it to your{" "}
         <Link href="/docs/getting-started/product-concepts#application-database">
-          Grouparoo application&apos;s database
+          Grouparoo application's database
         </Link>
         ) using{" "}
         <Link href="/docs/cli/config#apply">
@@ -48,9 +48,9 @@ export default function ValidateAndApplyConfig({
 
       <Alert variant="primary">
         <p className="mb-0">
-          Note that <code>apply</code> will run <code>validate</code>, but
-          it&apos;s recommended to run <code>validate</code> on its own first,
-          just to be safe.
+          Note that <code>apply</code> will run <code>validate</code>, but it's
+          recommended to run <code>validate</code> on its own first, just to be
+          safe.
         </p>
       </Alert>
     </>

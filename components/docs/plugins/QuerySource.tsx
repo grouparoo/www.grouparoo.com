@@ -115,8 +115,8 @@ mapping: {
       <h3 id="create-source-options">Query Source Options</h3>
 
       <p>
-        The unique thing about the way a Query Source works is that there
-        aren&apos;t any unique options for the Source itself.
+        The unique thing about the way a Query Source works is that there aren't
+        any unique options for the Source itself.
       </p>
 
       {/* --- Schedule --- */}
@@ -142,7 +142,7 @@ mapping: {
         </p>
       </Alert>
 
-      <p>Here&apos;s an example:</p>
+      <p>Here's an example:</p>
 
       <CodeBlock code={codeBlocks.querySchedule} language="javascript" />
 
@@ -169,11 +169,11 @@ mapping: {
       <OptionsList options={optionLists.queryProperties} />
 
       <p>
-        Here&apos;s an example that sums the values in the <code>price</code>{" "}
-        {column} for rows in which the <code>user_id</code> {column}&apos;s
-        value matches the value of the Grouparoo Record&apos;s{" "}
-        <code>userId</code> field (i.e. <code>userId</code> is the{" "}
-        <code>id</code> for the Property in Grouparoo):
+        Here's an example that sums the values in the <code>price</code>{" "}
+        {column} for rows in which the <code>user_id</code> {column}'s value
+        matches the value of the Grouparoo Record's <code>userId</code> field
+        (i.e. <code>userId</code> is the <code>id</code> for the Property in
+        Grouparoo):
       </p>
 
       <CodeBlock code={codeBlocks.queryProperties} language="javascript" />

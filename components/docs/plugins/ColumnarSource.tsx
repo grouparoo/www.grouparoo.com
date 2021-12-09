@@ -55,8 +55,8 @@ const PluginDocsColumnarSource = ({ plugin }: { plugin: string }) => {
                 and for column is <code>{pluginData.columnAlternative}</code>
               </span>
             )}
-            . However, we&apos;ll keep the <em>Columnar</em> and{" "}
-            <em>Table Source</em> terms since they&apos;re part of Grouparoo
+            . However, we'll keep the <em>Columnar</em> and{" "}
+            <em>Table Source</em> terms since they're part of Grouparoo
             terminology.
           </p>
         </Alert>
