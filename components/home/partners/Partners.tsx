@@ -8,9 +8,7 @@ import styles from "./Partners.module.scss";
 
 export const Partners = () => (
   <div
-    className={
-      styles.partners + " d-flex flex-column justify-content-center weave"
-    }
+    className={styles.partners + " d-flex flex-column justify-content-center"}
   >
     <div className="d-flex justify-content-around">
       <Sendoso />
