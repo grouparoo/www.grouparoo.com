@@ -60,17 +60,20 @@ function getMainComponent(props, imgClasses) {
 }
 
 const MyImage = React.forwardRef<HTMLImageElement, MyImageProps>(
-  ({
-    bsPrefix,
-    className,
-    fluid,
-    rounded,
-    roundedCircle,
-    thumbnail,
-    centered,
-    outline,
-    ...props
-  }) => {
+  (
+    {
+      bsPrefix,
+      className,
+      fluid,
+      rounded,
+      roundedCircle,
+      thumbnail,
+      centered,
+      outline,
+      ...props
+    },
+    _ref
+  ) => {
     bsPrefix = useBootstrapPrefix(bsPrefix, "img");
     const classes = classNames(
       fluid && `${bsPrefix}-fluid`,

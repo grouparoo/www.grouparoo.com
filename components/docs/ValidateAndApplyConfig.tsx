@@ -36,8 +36,10 @@ export default function ValidateAndApplyConfig({
           Grouparoo application&apos;s database
         </Link>
         ) using{" "}
-        <Link href="/docs/cli/config#apply" passHref={true}>
-          the <code>apply</code> command
+        <Link href="/docs/cli/config#apply">
+          <>
+            the <code>apply</code> command
+          </>
         </Link>
         :
       </p>
