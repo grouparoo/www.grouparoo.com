@@ -17,6 +17,7 @@ $zIndexItem: 2;
   .cloud {
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
 
     &.one {
       background-image: url("./Cloud1.svg");

@@ -46,8 +46,8 @@ export const About = () => {
         </Col>
       </Row>
       <Row>
-        <Col className={`py-5 mx-3`}>
-          <DatabaseNodes className={`${styles.cloud} ${styles.one}`} />
+        <Col className={`py-5 mx-3 ${styles.cloud} ${styles.one}`}>
+          <DatabaseNodes />
         </Col>
         <Col className={`py-5 mx-3`}>
           <section>
@@ -72,8 +72,8 @@ export const About = () => {
             </p>
           </section>
         </Col>
-        <Col className={`py-5 mx-3`}>
-          <ToolNodes className={`${styles.cloud} ${styles.two}`} />
+        <Col className={`py-5 mx-3 ${styles.cloud} ${styles.two}`}>
+          <ToolNodes className={``} />
         </Col>
       </Row>
       <Row>
@@ -104,8 +104,8 @@ export const About = () => {
             </p>
           </section>
         </Col>
-        <Col className={`py-5 mx-3`}>
-          <ToolNodes className={`${styles.cloud} ${styles.four}`} />
+        <Col className={`py-5 mx-3 ${styles.cloud} ${styles.four}`}>
+          <ToolNodes className={``} />
         </Col>
       </Row>
     </Container>
