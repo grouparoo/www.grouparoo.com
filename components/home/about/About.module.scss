@@ -1,3 +1,6 @@
+$zIndexLine: 1;
+$zIndexItem: 2;
+
 .about {
   background: radial-gradient(
     59.86% 50% at 50% 50%,
@@ -8,6 +11,7 @@
   [class~="col"] {
     display: flex;
     justify-content: center;
+    z-index: $zIndexItem;
   }
 
   .cloud {
@@ -26,5 +30,12 @@
     &.four {
       background-image: url("./Cloud4.svg");
     }
+  }
+
+  .wigglyLine {
+    position: absolute;
+    align-self: center;
+    opacity: 0.45;
+    z-index: $zIndexLine;
   }
 }

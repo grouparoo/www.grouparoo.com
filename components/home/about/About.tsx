@@ -3,6 +3,7 @@ import { DatabaseNodes } from "./DatabaseNodes";
 import { ToolNodes } from "./ToolNodes";
 import styles from "./About.module.scss";
 import Highlight, { defaultProps } from "prism-react-renderer";
+import { WigglyLine } from "./WigglyLine";
 
 const code = `
   // from https://nodejs.org/en/docs/guides/getting-started-guide/
@@ -13,7 +14,8 @@ const code = `
 
 export const About = () => {
   return (
-    <Container className={styles.about}>
+    <Container className={`${styles.about} d-flex flex-column`}>
+      <WigglyLine className={styles.wigglyLine} />
       <Row>
         <Col className={`py-5 mx-3`}>
           <section>
