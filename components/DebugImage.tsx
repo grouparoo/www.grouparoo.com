@@ -1,5 +1,5 @@
 import NextImage from "next/image";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
 function isDebugging(props) {
@@ -34,13 +34,15 @@ export default function DebugImage(props) {
     }
   }, [props.height, props.src, props.width]);
 
+  const debugging = useMemo(() => isDebugging(props), [props]);
+
   useEffect(() => {
-    if (!isDebugging(props)) {
+    if (debugging) {
       fetchData();
     }
-  }, [fetchData, props]);
+  }, [fetchData, debugging]);
 
-  if (!isDebugging(props)) {
+  if (!debugging) {
     //  return regular image
     return <NextImage {...props} />;
   }
