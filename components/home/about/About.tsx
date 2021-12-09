@@ -2,6 +2,14 @@ import { Col, Container, Row } from "react-bootstrap";
 import { DatabaseNodes } from "./DatabaseNodes";
 import { ToolNodes } from "./ToolNodes";
 import styles from "./About.module.scss";
+import Highlight, { defaultProps } from "prism-react-renderer";
+
+const code = `
+  // from https://nodejs.org/en/docs/guides/getting-started-guide/
+  const http = require("http");
+  const hostname = "127.0.0.1";
+  const port = 3000;
+`;
 
 export const About = () => {
   return (
@@ -19,14 +27,19 @@ export const About = () => {
         </Col>
         <Col className={`py-5 mx-3`}>
           <section>
-            <code>
-              <p>
-                // from https://nodejs.org/en/docs/guides/getting-started-guide/
-              </p>
-              <p>const http = require("http");</p>
-              <p>const hostname = "127.0.0.1";</p>
-              <p>const port = 3000;</p>
-            </code>
+            <Highlight {...defaultProps} language="typescript" code={code}>
+              {({ className, style, tokens, getLineProps, getTokenProps }) => (
+                <pre className={className} style={style}>
+                  {tokens.map((line, i) => (
+                    <div {...getLineProps({ line, key: i })} key={i}>
+                      {line.map((token, key) => (
+                        <span {...getTokenProps({ token, key })} key={key} />
+                      ))}
+                    </div>
+                  ))}
+                </pre>
+              )}
+            </Highlight>
           </section>
         </Col>
       </Row>
