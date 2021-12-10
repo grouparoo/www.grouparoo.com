@@ -94,7 +94,7 @@ export default function Footer() {
   const router = useRouter();
 
   return (
-    <footer className="footer py-5">
+    <footer className="footer py-5 pipes">
       <Container>
         <Row className="d-flex">
           <Col lg={3} className={styles.logoAndSocial}>

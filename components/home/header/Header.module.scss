@@ -1,6 +1,19 @@
-.header {
-  > div {
-    // TODO: Better spacing here
-    width: 25vw;
+.container {
+  padding-left: 10vw;
+  padding-bottom: 50px;
+
+  .text {
+    order: 1;
+    @media screen and (max-width: 768px) {
+      order: 2;
+    }
+  }
+
+  .image {
+    order: 2;
+    @media screen and (max-width: 768px) {
+      order: 1;
+      margin-bottom: 40px;
+    }
   }
 }

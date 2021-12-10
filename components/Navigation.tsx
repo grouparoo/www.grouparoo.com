@@ -10,13 +10,17 @@ import {
   Row,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRouter } from "next/router";
 import Link from "next/link";
-import { FeaturedBlogPosts } from "../data/featuredBlogPosts";
 import styles from "./Navigation.module.scss";
+import { useMemo } from "react";
 
 export default function Navigation() {
+  const router = useRouter();
+  const onHomepage = useMemo(() => router.pathname === "/", [router.pathname]);
+
   return (
-    <header>
+    <header className={onHomepage ? "pipes" : ""}>
       <Container>
         <Navbar expand="md" style={{ paddingLeft: 0, paddingRight: 0 }}>
           <Navbar.Brand className="pt-3">
