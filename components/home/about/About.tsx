@@ -4,12 +4,13 @@ import { ToolNodes } from "./ToolNodes";
 import styles from "./About.module.scss";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { WigglyLine } from "./WigglyLine";
+import vsLight from "prism-react-renderer/themes/vsLight";
 
 const code = `
-  // from https://nodejs.org/en/docs/guides/getting-started-guide/
-  const http = require("http");
-  const hostname = "127.0.0.1";
-  const port = 3000;
+  # in a new directory
+  npm install -g grouparoo
+  grouparoo init .
+  grouparoo config
 `;
 
 export const About = () => {
@@ -22,14 +23,19 @@ export const About = () => {
             <h3>Free & Easy to Install</h3>
             <p>
               Try Grouparoo on your computer today or install it on your
-              company’s servers. Your data stays private on your servers. No
+              company's servers. Your data stays private on your servers. No
               usage or storage limits.
             </p>
           </section>
         </Col>
         <Col className={`py-5 mx-3`}>
-          <section>
-            <Highlight {...defaultProps} language="typescript" code={code}>
+          <section className={styles.codeSection}>
+            <Highlight
+              {...defaultProps}
+              language="bash"
+              code={code}
+              theme={vsLight}
+            >
               {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <pre className={className} style={style}>
                   {tokens.map((line, i) => (
@@ -84,7 +90,7 @@ export const About = () => {
           <section>
             <h3>Open Source</h3>
             <p>
-              Maintain control over your data and infrastructure so you’re never
+              Maintain control over your data and infrastructure so you're never
               locked in. While a dedicated team is building and maintaining
               Grouparoo, we welcome the developer community to contribute and
               improve it as well.

@@ -20,7 +20,7 @@ export const Actionable = () => {
               campaigns, customer service, and everything else your business
               needs to succeed.
             </p>
-            <Link href="/solutions/reverse-etl">
+            <Link href="/solutions/reverse-etl" passHref={true}>
               <Button type="button" variant="primary" className="rounded-pill">
                 Learn More
               </Button>
