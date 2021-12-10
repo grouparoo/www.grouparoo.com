@@ -35,7 +35,7 @@ function BlogImage(props: BlogImageProps) {
 
   return (
     <div style={containerStyle}>
-      <Image {...imageProps} />
+      <Image alt={imageProps.alt} {...imageProps} />
     </div>
   );
 }

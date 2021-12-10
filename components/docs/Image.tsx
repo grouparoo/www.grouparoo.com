@@ -2,19 +2,18 @@ import Image, { MyImageProps } from "../Image";
 
 export type DocImageProps = MyImageProps;
 
-export default function DocImage(props: DocImageProps) {
-  const imageProps = Object.assign({}, props);
+export default function DocImage(imageProps: DocImageProps) {
   const { src } = imageProps;
 
   if (
-    src.includes("data:image") ||
-    src.startsWith("http:") ||
-    src.startsWith("https:")
+    !(
+      src.includes("data:image") ||
+      src.startsWith("http:") ||
+      src.startsWith("https:")
+    )
   ) {
-    imageProps.src = src;
-  } else {
     imageProps.src = `/images/${src}`;
   }
 
-  return <Image {...imageProps} />;
+  return <Image alt={imageProps.alt} {...imageProps} />;
 }

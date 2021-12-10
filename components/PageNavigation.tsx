@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Card } from "react-bootstrap";
 
@@ -16,12 +16,8 @@ export function PageNavigation({
 }) {
   const router = useRouter();
   const [pageNav, setPageNav] = useState<pageNavItem[]>([]);
-  useEffect(() => {
-    buildPageNavigation();
-    setTimeout(buildPageNavigation, 150);
-  }, [router.asPath]);
 
-  function buildPageNavigation() {
+  const buildPageNavigation = useCallback(() => {
     const headerElements = globalThis.document.querySelectorAll(
       pageNavSelector || "h1, h2, h3, h4, h5, h6"
     );
@@ -35,9 +31,16 @@ export function PageNavigation({
       });
 
     setPageNav(_pageNav);
-  }
+  }, [pageNavSelector]);
 
-  if (pageNav.length < 2) return null;
+  useEffect(() => {
+    buildPageNavigation();
+    setTimeout(buildPageNavigation, 150);
+  }, [buildPageNavigation, router.asPath]);
+
+  if (pageNav.length < 2) {
+    return null;
+  }
 
   return (
     <>

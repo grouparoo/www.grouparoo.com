@@ -10,7 +10,10 @@ export function EnterpriseCTA() {
     <Alert variant="primary">
       <p className="mb-0">
         If you are interested in using the Enterprise Edition,{" "}
-        <a href="/meet">send us a message</a>.
+        <Link href="/meet">
+          <a>send us a message</a>
+        </Link>
+        .
       </p>
     </Alert>
   );

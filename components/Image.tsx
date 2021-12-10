@@ -52,7 +52,8 @@ function getMainComponent(props, imgClasses) {
     imgStyle.maxHeight = "100%";
     imgStyle.maxWidth = "100%";
     props.style = imgStyle;
-    return <img {...props} className={imgClasses} />;
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img {...props} className={imgClasses} alt={props.alt} />;
   }
 
   return <NextImage {...props} className={imgClasses} />;
@@ -71,7 +72,7 @@ const MyImage = React.forwardRef<HTMLImageElement, MyImageProps>(
       outline,
       ...props
     },
-    ref
+    _ref
   ) => {
     bsPrefix = useBootstrapPrefix(bsPrefix, "img");
     const classes = classNames(
@@ -100,5 +101,7 @@ const MyImage = React.forwardRef<HTMLImageElement, MyImageProps>(
     }
   }
 );
+
+MyImage.displayName = "MyImage";
 
 export default MyImage;

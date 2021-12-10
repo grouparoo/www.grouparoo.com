@@ -52,9 +52,9 @@ export default function CustomerTestimonials() {
                 <em>
                   "I was able to set up a process that merges and maintains user
                   profiles with data from multiple sources in just a few minutes
-                  and I wish we had it years ago.
+                  and I wish we had it years ago."
                 </em>
-              </p>{" "}
+              </p>
               <p>-- Joaquín Brenner, Co-founder and COO @ Chipax</p>
             </Col>
             <Col>

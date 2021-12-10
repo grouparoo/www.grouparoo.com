@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/next-script-for-ga */
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 const fontFamilies = [

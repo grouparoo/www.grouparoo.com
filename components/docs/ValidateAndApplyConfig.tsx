@@ -20,7 +20,7 @@ export default function ValidateAndApplyConfig({
 
       <p>
         You can validate your config at any time using{" "}
-        <Link href="/docs/cli/config#validate">
+        <Link href="/docs/cli/config#validate" passHref={true}>
           <span>
             the <code>validate</code> command
           </span>
@@ -36,9 +36,11 @@ export default function ValidateAndApplyConfig({
           Grouparoo application's database
         </Link>
         ) using{" "}
-        <a href="/docs/cli/config#apply">
-          the <code>apply</code> command
-        </a>
+        <Link href="/docs/cli/config#apply">
+          <>
+            the <code>apply</code> command
+          </>
+        </Link>
         :
       </p>
 

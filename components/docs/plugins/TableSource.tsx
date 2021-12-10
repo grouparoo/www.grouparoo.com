@@ -251,7 +251,7 @@ mapping: {
         <p className="mb-0">
           You can also create properties in a batch when creating the Table
           Source{" "}
-          <Link href="/docs/cli/config#batch-generation">
+          <Link href="/docs/cli/config#batch-generation" passHref={true}>
             <span>
               using the <code>--with</code> option while running the{" "}
               <code>generate</code> command
