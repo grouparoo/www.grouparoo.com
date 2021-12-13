@@ -1,4 +1,4 @@
-@import "_variables";
+@use "../scss/_variables.scss";
 
 .pricingList {
   font-size: 14px;
@@ -10,5 +10,5 @@
 }
 
 .lightBg {
-  background-color: $grouparoo-light-violet;
+  background-color: variables.$grouparoo-light-violet;
 }
