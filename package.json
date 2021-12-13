@@ -19,8 +19,8 @@
     "generate-static-files": "ts-node ./scripts/generate_static_files.ts",
     "pretest": "npm run lint && npm run build",
     "test": "jest --runInBand",
-    "lint": "prettier --check pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
-    "lint-fix": "prettier --write pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
+    "lint": "next lint && prettier --check pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
+    "lint-fix": "next lint --fix && prettier --write pages/**/*tsx pages/**/*mdx components/**/*.tsx __tests__/**/*.tsx",
     "nuke": "rm -rf node_modules && rm -rf .next"
   },
   "dependencies": {
@@ -41,7 +41,7 @@
     "gray-matter": "4.0.3",
     "image-size": "1.0.0",
     "moment": "2.29.1",
-    "next": "12.0.4",
+    "next": "12.0.5",
     "next-mdx-remote": "1.0.1",
     "prism-react-renderer": "^1.2.1",
     "react": "17.0.2",
@@ -69,6 +69,8 @@
     "@types/node": "16.11.11",
     "@types/react-dom": "17.0.11",
     "csv-stringify": "6.0.4",
+    "eslint": "7.32.0",
+    "eslint-config-next": "12.0.7",
     "isomorphic-fetch": "3.0.0",
     "jest": "27.4.3",
     "jest-environment-webdriver": "grouparoo/jest-webdriver#jest-v27-webdriver",

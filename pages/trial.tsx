@@ -164,7 +164,7 @@ export default function Trial({ props }) {
             xl={5}
             className="align-self-center pb-2 pb-lg-5 text-center mx-auto"
           >
-            <Link href="/">
+            <Link href="/" passHref={true}>
               <Image
                 src="/images/logo-and-wordmark-black-words.png"
                 alt="Grouparoo Logo"

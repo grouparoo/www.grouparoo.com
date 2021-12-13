@@ -468,7 +468,7 @@ grouparoo reset
       >grouparoo-release-note-2020-11-17-batch-imports-and-dashboard</guid>
             <pubDate>Tue, 17 Nov 2020 00:00:00 GMT</pubDate>
             <content:encoded
-      ><![CDATA[<p>We&#x27;ve revamped how Grouparoo works under the hood, simplifying how our data imports work, and more. We&#x27;ve also given the Grouparoo dashboard a refresh to better explain the current state of how Grouparoo is managing your data.</p><div style="margin-bottom:20px"><img src="https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png" alt="Updated Grouparoo dashboard" width="596" height="300" style="height:300px;width:596px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+      ><![CDATA[<p>We&#x27;ve revamped how Grouparoo works under the hood, simplifying how our data imports work, and more. We&#x27;ve also given the Grouparoo dashboard a refresh to better explain the current state of how Grouparoo is managing your data.</p><div style="margin-bottom:20px"><img alt="Updated Grouparoo dashboard" src="https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png" width="596" height="300" style="height:300px;width:596px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
             <enclosure
         url="https://www.grouparoo.com/posts/releases/2020-11-17-dashboard.png"
@@ -492,7 +492,7 @@ grouparoo reset
             <guid>grouparoo-release-note-2020-11-17-sqlite</guid>
             <pubDate>Tue, 17 Nov 2020 00:00:00 GMT</pubDate>
             <content:encoded
-      ><![CDATA[<p>Now you can choose between SQLite and Postgres for the database system underlying Grouparoo. You can make these modifications in your environment variables by setting your <code>DATABASE_URL</code> to a SQLite database.</p><div style="margin-bottom:20px"><img src="https://www.grouparoo.com/posts/releases/2020-11-17-sqlite.png" alt="SQlite Environment Variable" width="547" height="125" style="height:125px;width:547px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+      ><![CDATA[<p>Now you can choose between SQLite and Postgres for the database system underlying Grouparoo. You can make these modifications in your environment variables by setting your <code>DATABASE_URL</code> to a SQLite database.</p><div style="margin-bottom:20px"><img alt="SQlite Environment Variable" src="https://www.grouparoo.com/posts/releases/2020-11-17-sqlite.png" width="547" height="125" style="height:125px;width:547px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
             <enclosure
         url="https://www.grouparoo.com/posts/releases/2020-11-17-sqlite.png"

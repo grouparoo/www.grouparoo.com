@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/next-script-for-ga */
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 const fontFamilies = [
@@ -9,6 +10,8 @@ const fontUrl = `https://fonts.googleapis.com/css2?${fontFamilies
   .map((f) => `family=${f}`)
   .join("&")}&display=swap`;
 
+// we are doing what next suggests on https://nextjs.org/docs/advanced-features/custom-document, but we have type errors
+// @ts-ignore
 class MyDocument extends Document {
   render() {
     return (

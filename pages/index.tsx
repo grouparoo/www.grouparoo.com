@@ -25,7 +25,7 @@ export default function IndexPage({ pageProps, setReleaseNote }) {
     pluginNames[Math.floor(Math.random() * pluginNames.length)];
   const tagline = `Stop writing code to sync data to ${pluginName}*`;
 
-  useEffect(() => setReleaseNote(releaseNote), []);
+  useEffect(() => setReleaseNote(releaseNote), [releaseNote, setReleaseNote]);
 
   return (
     <>

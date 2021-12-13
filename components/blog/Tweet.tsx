@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
+import React, { CSSProperties, useEffect } from "react";
 
 export default function Tweet({ height, nojs, children }) {
-  if (!nojs) {
-    useEffect(() => {
+  useEffect(() => {
+    if (!nojs) {
       const twttr = window["twttr"];
       if (!twttr) {
         const s = document.createElement("script");
         s.setAttribute("src", "https://platform.twitter.com/widgets.js");
         document.body.appendChild(s);
       }
-    }, []);
-  }
+    }
+  }, [nojs]);
 
-  const style: any = { backgroundColor: "transparent" };
+  const style: CSSProperties = { backgroundColor: "transparent" };
   if (height) {
     style.height = height;
   }

@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-sync-scripts */
+/* eslint-disable react/no-unescaped-entities */
 import Head from "next/head";
 import { Container, Row, Col } from "react-bootstrap";
 
