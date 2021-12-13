@@ -224,6 +224,12 @@ a,
       #06182c 100%
     );
   background-size: 450px;
+  padding-bottom: 40px;
+
+  &.notHomePage {
+    background: #0b2945;
+    padding-bottom: 0;
+  }
 
   *,
   .nav-bar > * {
@@ -234,9 +240,14 @@ a,
     }
   }
 
+  .btn {
+    color: $grouparoo-font-color;
+  }
+
   .dropdown-menu {
     background-color: #fff;
-    .nav-link {
+    .nav-link,
+    .dropdown-header {
       color: $grouparoo-font-color !important;
     }
   }
@@ -329,7 +340,6 @@ pre > code {
 
 // -- Header --
 header {
-  padding-bottom: 50px;
   font-weight: 400;
 }
 
