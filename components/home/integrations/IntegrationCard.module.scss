@@ -1,3 +1,5 @@
+@use "../../../scss/variables";
+
 .cardDetail {
   border-radius: 5px;
   box-shadow: 5px 5px 5px 5px lightgrey;
@@ -10,7 +12,7 @@
 
   .pluginName,
   .badge {
-    color: black;
+    color: variables.$grouparoo-font-color;
   }
 
   .badge {

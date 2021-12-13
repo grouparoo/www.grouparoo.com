@@ -1,6 +1,6 @@
-@import "../../../scss/_variables";
+@use "../../../scss/_variables";
 
 .partners {
   height: 116px;
-  background-color: $grouparoo-ethereal-blue;
+  background-color: variables.$grouparoo-ethereal-blue;
 }
