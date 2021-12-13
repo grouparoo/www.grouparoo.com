@@ -3,7 +3,7 @@ import Image from "./Image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { FeaturedBlogPosts } from "../data/featuredBlogPosts";
-import { Fragment } from "react";
+import { Fragment, useMemo } from "react";
 import { NewSubscribe } from "./subscribe/Subscribe";
 import styles from "./Footer.module.scss";
 
@@ -92,9 +92,10 @@ function EditThisPage({ router }) {
 
 export default function Footer() {
   const router = useRouter();
+  const onHomepage = useMemo(() => router.pathname === "/", [router.pathname]);
 
   return (
-    <footer className="footer py-5 pipes">
+    <footer className={`footer py-5 pipes ${onHomepage ? "" : "notHomePage"}`}>
       <Container>
         <Row className="d-flex">
           <Col lg={3} className={styles.logoAndSocial}>
