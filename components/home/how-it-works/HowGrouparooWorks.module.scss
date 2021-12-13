@@ -1,6 +1,16 @@
 .container {
-  img {
-    object-fit: cover;
-    padding: 4px !important;
+  .images {
+    display: flex;
+    flex-direction: row;
+
+    // BS Medium
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    img {
+      object-fit: cover;
+      padding: 4px !important;
+    }
   }
 }

@@ -30,7 +30,7 @@ export const HowGrouparooWorks = () => {
           </section>
         </Col>
         <Col>
-          <section className="d-flex">
+          <section className={`${styles.images}`}>
             <div
               className={`d-flex flex-column justify-content-end align-items-end`}
             >
