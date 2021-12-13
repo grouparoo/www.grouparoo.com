@@ -3,6 +3,11 @@ import SmallIntegration from "./SmallIntegration";
 import { getPluginDisplay } from "../../data/plugins";
 import Link from "next/link";
 
+/**
+ * The old Integration Card
+ *
+ * @deprecated Use the new Integrations/IntegrationCard instead.
+ */
 export default function IntegrationCard({
   slug,
   type,

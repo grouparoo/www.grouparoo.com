@@ -21,8 +21,8 @@ export const Integrations = () => {
             <Col
               lg={4}
               md={4}
-              sm={4}
-              xs={4}
+              sm={6}
+              xs={12}
               key={`plugin-${plugin.name}`}
               className="py-2"
             >
