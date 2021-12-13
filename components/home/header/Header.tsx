@@ -20,7 +20,7 @@ export const Header = ({ tagline }: HeaderProps) => (
         </Button>
       </Col>
       <Col md="6" className={`${styles.image}`}>
-        <HeaderImage />
+        <HeaderImage className={styles.headerImage} />
       </Col>
     </Row>
   </Container>
