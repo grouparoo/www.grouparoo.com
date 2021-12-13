@@ -11,6 +11,9 @@
   z-index: 2;
 
   .bottomRow {
-    margin-top: -12%;
+    // BS Large
+    @media screen and (min-width: 992px) {
+      margin-top: -12%;
+    }
   }
 }
