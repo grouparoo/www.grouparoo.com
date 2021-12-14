@@ -78,51 +78,31 @@ Take a look at our [dbt example app](https://github.com/grouparoo/app-example-db
 One notable difference from typical Grouparoo configuration files is that at the App level we’ve utilized our dbt plugin to fetch credentials from our dbt Profile. The dbt plugin will also be able to tell what environment you’re in (`dev`, `prod`, etc.) and will use the proper version of your warehouse. You can either copy/paste the app configuration from our `app-example-dbt` repo and update it with the id, name, and query you would like, or you can utilize Config UI to manually configure your credentials, environment, and refresh query.
 
 ```js
-
 const { dbtProfile } = require("@grouparoo/dbt");
-
 exports.default = async function buildConfig() {
-
   // fetch warehouse connection details from parent dbt profile
-
   const { type, options } = await dbtProfile();
-
+  
   return [
-
     {
-
       class: "app",
-
       id: "warehouse",
-
       name: "Warehouse",
-
       refresh: {
-
 	query: “SELECT MAX(last_run_at) FROM dbt_meta”
-
 	recurringFrequency: 60 * 1000
-
       }
-
       type,
-
       options,
-
     },
-
   ];
-
 };
-
 ```
 
 From here, you can start your Grouparoo server. If you're testing things out in the command line, check that you are in the `/grouparoo` directory in your dbt project and run:
 
-```
-
+```bash
 grouparoo start
-
 ```
 
 ## Next Steps
