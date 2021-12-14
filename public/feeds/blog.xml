@@ -55,46 +55,26 @@
 
 {<span class="token operator">%</span> endmacro <span class="token operator">%</span>}
 
-</code></pre><h2 id="connecting-with-grouparoo"><a href="#connecting-with-grouparoo">Connecting with Grouparoo</a></h2><p>Take a look at our <a href="https://github.com/grouparoo/app-example-dbt" target="_blank" rel="nofollow noopener noreferrer">dbt example app</a> to see how we’ve set up our configuration. Most of these files can be generated using our <a href="/docs/config">Config UI</a>.</p><p>One notable difference from typical Grouparoo configuration files is that at the App level we’ve utilized our dbt plugin to fetch credentials from our dbt Profile. The dbt plugin will also be able to tell what environment you’re in (<code>dev</code>, <code>prod</code>, etc.) and will use the proper version of your warehouse. You can either copy/paste the app configuration from our <code>app-example-dbt</code> repo and update it with the id, name, and query you would like, or you can utilize Config UI to manually configure your credentials, environment, and refresh query.</p><pre class="language-js"><code class="language-js">
-<span class="token keyword">const</span> <span class="token punctuation">{</span> dbtProfile <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;@grouparoo/dbt&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+</code></pre><h2 id="connecting-with-grouparoo"><a href="#connecting-with-grouparoo">Connecting with Grouparoo</a></h2><p>Take a look at our <a href="https://github.com/grouparoo/app-example-dbt" target="_blank" rel="nofollow noopener noreferrer">dbt example app</a> to see how we’ve set up our configuration. Most of these files can be generated using our <a href="/docs/config">Config UI</a>.</p><p>One notable difference from typical Grouparoo configuration files is that at the App level we’ve utilized our dbt plugin to fetch credentials from our dbt Profile. The dbt plugin will also be able to tell what environment you’re in (<code>dev</code>, <code>prod</code>, etc.) and will use the proper version of your warehouse. You can either copy/paste the app configuration from our <code>app-example-dbt</code> repo and update it with the id, name, and query you would like, or you can utilize Config UI to manually configure your credentials, environment, and refresh query.</p><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> dbtProfile <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;@grouparoo/dbt&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 exports<span class="token punctuation">.</span><span class="token method-variable function-variable method function property-access">default</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">buildConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
   <span class="token comment">// fetch warehouse connection details from parent dbt profile</span>
-
   <span class="token keyword">const</span> <span class="token punctuation">{</span> type<span class="token punctuation">,</span> options <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword control-flow">await</span> <span class="token function">dbtProfile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token keyword control-flow">return</span> <span class="token punctuation">[</span>
-
     <span class="token punctuation">{</span>
-
       <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">&quot;app&quot;</span><span class="token punctuation">,</span>
-
       id<span class="token operator">:</span> <span class="token string">&quot;warehouse&quot;</span><span class="token punctuation">,</span>
-
       name<span class="token operator">:</span> <span class="token string">&quot;Warehouse&quot;</span><span class="token punctuation">,</span>
-
       refresh<span class="token operator">:</span> <span class="token punctuation">{</span>
-
     query<span class="token operator">:</span> “<span class="token constant">SELECT</span> <span class="token constant">MAX</span><span class="token punctuation">(</span>last_run_at<span class="token punctuation">)</span> <span class="token constant">FROM</span> dbt_meta”
-
     recurringFrequency<span class="token operator">:</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span>
-
       <span class="token punctuation">}</span>
-
       type<span class="token punctuation">,</span>
-
       options<span class="token punctuation">,</span>
-
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-
   <span class="token punctuation">]</span><span class="token punctuation">;</span>
-
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-</code></pre><p>From here, you can start your Grouparoo server. If you&#x27;re testing things out in the command line, check that you are in the <code>/grouparoo</code> directory in your dbt project and run:</p><pre><code>
-grouparoo start
-
+</code></pre><p>From here, you can start your Grouparoo server. If you&#x27;re testing things out in the command line, check that you are in the <code>/grouparoo</code> directory in your dbt project and run:</p><pre class="language-bash"><code class="language-bash">grouparoo start
 </code></pre><h2 id="next-steps"><a href="#next-steps">Next Steps</a></h2><p>Now, anytime a dbt run is completed, whether it’s by manually running <code>dbt run</code> or part of a cron job, all our Grouparoo data will be checked for updates and all of our schedules (in this case, just the one on our <code>mailchimp data</code> source) will be run.</p><p>To learn more about the different ways Grouparoo can be run, check out our <a href="%5Bhttps://www.grouparoo.com/docs/running/orchestration%5D(https://www.grouparoo.com/docs/running/orchestration)">Orchestration Docs</a></p>]]></content:encoded>
             <enclosure
         url="https://www.grouparoo.com/posts/app-refresh-grouparoo-and-dbt/211130-dbt-grouparoo.png"
