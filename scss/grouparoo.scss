@@ -215,24 +215,17 @@ a,
 }
 
 .pipes {
-  // Disabling the image until I hear back from Will
-  // background: url(../public/images/home/pipes.png),
-  //   linear-gradient(
-  //     225.01deg,
-  //     #000000 0%,
-  //     #0b2e4e 0.01%,
-  //     #0a2540 99.99%,
-  //     #06182c 100%
-  //   );
-  // background-size: 450px;
-  background: #0b2945;
+  // This pipes image has been manually set to 40% transparency
+  background: url("../public/images/home/pipes.png"),
+    linear-gradient(
+      225.01deg,
+      #000000 0%,
+      #0b2e4e 0.01%,
+      #0a2540 99.99%,
+      #06182c 100%
+    );
+  background-size: 450px;
   padding-bottom: 40px;
-
-  &.notHomePage {
-    background: #0b2945;
-    padding-bottom: 0;
-    margin-bottom: 40px;
-  }
 
   *,
   .nav-bar > * {

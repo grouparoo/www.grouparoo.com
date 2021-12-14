@@ -95,7 +95,7 @@ export default function Footer() {
   const onHomepage = useMemo(() => router.pathname === "/", [router.pathname]);
 
   return (
-    <footer className={`footer py-5 pipes ${onHomepage ? "" : "notHomePage"}`}>
+    <footer className={`footer py-5 pipes`}>
       <Container>
         <Row className="d-flex">
           <Col lg={3} className={styles.logoAndSocial}>

@@ -20,7 +20,7 @@ export default function Navigation() {
   const onHomepage = useMemo(() => router.pathname === "/", [router.pathname]);
 
   return (
-    <header className={`pipes ${onHomepage ? "" : "notHomePage"}`}>
+    <header className={`pipes`}>
       <Container>
         <Navbar expand="md" style={{ paddingLeft: 0, paddingRight: 0 }}>
           <Navbar.Brand className="pt-3">
