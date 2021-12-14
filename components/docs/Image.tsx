@@ -3,7 +3,7 @@ import Image, { MyImageProps } from "../Image";
 export type DocImageProps = MyImageProps;
 
 export default function DocImage(imageProps: DocImageProps) {
-  const { src } = imageProps;
+  let { src } = imageProps;
 
   if (
     !(
@@ -12,8 +12,8 @@ export default function DocImage(imageProps: DocImageProps) {
       src.startsWith("https:")
     )
   ) {
-    imageProps.src = `/images/${src}`;
+    src = `/images/${src}`;
   }
 
-  return <Image alt={imageProps.alt} {...imageProps} />;
+  return <Image {...imageProps} alt={imageProps.alt} src={src} />;
 }
