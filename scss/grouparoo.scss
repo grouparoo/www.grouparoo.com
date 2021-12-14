@@ -215,15 +215,17 @@ a,
 }
 
 .pipes {
-  background: url(../public/images/home/pipes.png),
-    linear-gradient(
-      225.01deg,
-      #000000 0%,
-      #0b2e4e 0.01%,
-      #0a2540 99.99%,
-      #06182c 100%
-    );
-  background-size: 450px;
+  // Disabling the image until I hear back from Will
+  // background: url(../public/images/home/pipes.png),
+  //   linear-gradient(
+  //     225.01deg,
+  //     #000000 0%,
+  //     #0b2e4e 0.01%,
+  //     #0a2540 99.99%,
+  //     #06182c 100%
+  //   );
+  // background-size: 450px;
+  background: #0b2945;
   padding-bottom: 40px;
 
   &.notHomePage {
