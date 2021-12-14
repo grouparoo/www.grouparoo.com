@@ -84,7 +84,12 @@ export const About = () => {
       </Row>
       <Row>
         <Col className={`py-5 mx-3 ${styles.cloud} ${styles.three}`}>
-          <img src="/images/home/github.png" alt="github logo" />
+          <img
+            src="/images/home/github.png"
+            alt="github logo"
+            width="120px"
+            height="120px"
+          />
         </Col>
         <Col className={`py-5 mx-3`}>
           <section>

@@ -32,10 +32,14 @@ $zIndexItem: 2;
   .cloud {
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center;
+    background-position-x: center;
+    background-size: 360px;
+    background-position-y: 0;
 
     &.one {
       background-image: url("./Cloud1.svg");
+      background-position: unset;
+      background-size: 100%;
     }
     &.two {
       background-image: url("./Cloud2.svg");
