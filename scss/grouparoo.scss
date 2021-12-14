@@ -224,7 +224,8 @@ footer,
       #0a2540 99.99%,
       #06182c 100%
     );
-  background-size: 450px;
+  background-repeat: repeat, no-repeat;
+  background-size: 450px, auto;
 
   *,
   .nav-bar > * {
