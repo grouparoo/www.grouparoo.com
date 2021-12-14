@@ -12,9 +12,11 @@ import getAuthor from "../../utils/getAuthor";
 import { BlogPost, getBlogPost, getBlogPaths } from "../../utils/blogPosts";
 import BlogImage from "../../components/blog/Image";
 import { PageNavigation } from "../../components/PageNavigation";
+import ImageInBrowserFrame from "../../components/ImageInBrowserFrame";
 
 const components = {
   Image: BlogImage,
+  ImageInBrowserFrame,
   Alert,
   Card,
   CardBody: Card.Body,
