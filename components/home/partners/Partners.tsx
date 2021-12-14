@@ -3,7 +3,6 @@ import { Chipax } from "./logos/Chipax";
 import { MindfulChef } from "./logos/MindfulChef";
 import { OneMedical } from "./logos/OneMedical";
 import { Raisedev } from "./logos/Raisedev";
-import { Sendoso } from "./logos/Sendoso";
 import styles from "./Partners.module.scss";
 
 export const Partners = () => (
@@ -11,12 +10,11 @@ export const Partners = () => (
     className={styles.partners + " d-flex flex-column justify-content-center"}
   >
     <div className="d-flex justify-content-around">
-      <Sendoso />
-      <Chipax />
+      <OneMedical />
       <MindfulChef />
+      <Chipax />
       <Raisedev />
       <Bloq />
-      <OneMedical />
     </div>
   </div>
 );
