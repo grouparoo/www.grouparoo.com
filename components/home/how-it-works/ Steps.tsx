@@ -16,10 +16,9 @@ export const Steps = () => {
         </Col>
         <Col>
           <section>
-            <h3>Create Unified Customer Records</h3>
+            <h3>Define your Data Models and Sources</h3>
             <p>
-              Create a single view of your customers from all of your data
-              sources. Define what data you care about either with Code or in
+              Define the data models you want to sync from your data sources. Configure these models and how you want to sync using Code or in
               our Enterprise UI.
             </p>
           </section>
@@ -68,12 +67,10 @@ export const Steps = () => {
         <Col>
           <section>
             <h3>
-              Use Group Definitions in your product and in your marketing tools
+              Use Source-Of-Truth data in your SaaS tools and in your product
             </h3>
             <p>
-              Run campaigns in the marketing and business tools of your choice.
-              Switch providers easily without needing to rebuild integrations.
-              Send Records and Group data.
+              Run campaigns in the marketing and business tools of your choice with data that's been verified. Switch providers easily without needing to rebuild integrations.
             </p>
           </section>
         </Col>
