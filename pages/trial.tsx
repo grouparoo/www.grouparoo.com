@@ -166,7 +166,7 @@ export default function Trial({ props }) {
           >
             <Link href="/" passHref={true}>
               <Image
-                src="/images/logo-and-wordmark-black-words.png"
+                src="/images/logo-and-wordmark-black-words.svg"
                 alt="Grouparoo Logo"
                 width={150}
                 height={32}

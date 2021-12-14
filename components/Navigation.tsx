@@ -27,7 +27,7 @@ export default function Navigation() {
             <Link href="/">
               <a>
                 <Image
-                  src="/images/logo-and-wordmark-black-words.png"
+                  src="/images/logo-and-wordmark-white-words.svg"
                   alt="Grouparoo Logo"
                   width={150}
                   height={32}

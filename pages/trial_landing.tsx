@@ -168,7 +168,7 @@ export default function Trial({ props }) {
             <Link href="/">
               <a>
                 <Image
-                  src="/images/logo-and-wordmark-black-words.png"
+                  src="/images/logo-and-wordmark-black-words.svg"
                   alt="Grouparoo Logo"
                   width={300}
                   height={64}
