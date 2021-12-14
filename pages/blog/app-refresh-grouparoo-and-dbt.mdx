@@ -18,7 +18,9 @@ In this article, we’ll walk through how we used our new App Refresh Query feat
 
 <Alert variant="primary">
   Browse or fork our dbt example project{" "}
-  <a href="https://github.com/grouparoo/app-example-dbt" target="_blank">here</a>
+  <a href="https://github.com/grouparoo/app-example-dbt" target="_blank">
+    here
+  </a>
 </Alert>
 
 This example project uses a Postgres database. However, the same process will work with any dbt project using Bigquery, Postgres, Redshift, or Snowflake. If you are using Clickhouse, you can still use the `on-run-end` hook and App Refresh Query, though you’ll have to configure your credentials rather than using the `@grouparoo-dbt` wraparound plugin.
