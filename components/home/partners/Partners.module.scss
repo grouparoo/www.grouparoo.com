@@ -3,4 +3,11 @@
 .partners {
   height: 116px;
   background-color: variables.$grouparoo-ethereal-blue;
+
+  .mindfulChef {
+    border: 0 solid;
+    margin: 0;
+    width: 100%;
+    max-width: 144px;
+  }
 }

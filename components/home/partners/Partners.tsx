@@ -9,9 +9,9 @@ export const Partners = () => (
   <div
     className={styles.partners + " d-flex flex-column justify-content-center"}
   >
-    <div className="d-flex justify-content-around">
+    <div className="d-flex justify-content-around align-items-center">
       <OneMedical />
-      <MindfulChef />
+      <MindfulChef className={styles.mindfulChef} />
       <Chipax />
       <Raisedev />
       <Bloq />
