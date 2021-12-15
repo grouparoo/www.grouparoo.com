@@ -7,6 +7,12 @@ $step-extra-margin: 5px;
   [class~="row"] {
     margin-top: 30px;
 
+    @media screen and (max-width: 576px) {
+      .hasImage {
+        order: 2;
+      }
+    }
+
     &:nth-child(odd) {
       [class~="col"] {
         &:nth-child(even) {

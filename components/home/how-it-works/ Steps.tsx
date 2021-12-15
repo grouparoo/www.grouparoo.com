@@ -6,7 +6,7 @@ export const Steps = () => {
   return (
     <Container className={styles.container}>
       <Row>
-        <Col>
+        <Col xs={12} className={styles.hasImage}>
           <ImageInBrowserFrame
             src="/images/home/how-it-works-1.png"
             alt="how it works"
@@ -14,18 +14,19 @@ export const Steps = () => {
             height={398}
           />
         </Col>
-        <Col>
+        <Col xs={12}>
           <section>
             <h3>Define your Data Models and Sources</h3>
             <p>
-              Define the data models you want to sync from your data sources. Configure these models and how you want to sync using Code or in
+              Define the data models you want to sync from your data sources.
+              Configure these models and how you want to sync using Code or in
               our Enterprise UI.
             </p>
           </section>
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col xs={12}>
           <section>
             <h3>Create Groups</h3>
             <p>
@@ -35,7 +36,7 @@ export const Steps = () => {
             </p>
           </section>
         </Col>
-        <Col>
+        <Col xs={12} className={styles.hasImage}>
           <ImageInBrowserFrame
             src="/images/home/how-it-works-2.png"
             alt="how it works 2"
@@ -45,7 +46,7 @@ export const Steps = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col xs={12} className={styles.hasImage}>
           <ImageInBrowserFrame
             src="/images/home/how-it-works-3.png"
             alt="how it works 3"
@@ -53,7 +54,7 @@ export const Steps = () => {
             height={398}
           />
         </Col>
-        <Col>
+        <Col xs={12}>
           <section>
             <h3>Send to Destinations</h3>
             <p>
@@ -64,17 +65,19 @@ export const Steps = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col xs={12}>
           <section>
             <h3>
               Use Source-Of-Truth data in your SaaS tools and in your product
             </h3>
             <p>
-              Run campaigns in the marketing and business tools of your choice with data that's been verified. Switch providers easily without needing to rebuild integrations.
+              Run campaigns in the marketing and business tools of your choice
+              with data that's been verified. Switch providers easily without
+              needing to rebuild integrations.
             </p>
           </section>
         </Col>
-        <Col>
+        <Col xs={12} className={styles.hasImage}>
           <ImageInBrowserFrame
             src="/images/home/how-it-works-4.png"
             alt="how it works 4"

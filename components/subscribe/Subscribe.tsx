@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useApi } from "../../hooks/useApi";
 import { ErrorHandler } from "../../utils/errorHandler";
 import { isBrowser } from "../../utils/isBrowser";
+import styles from "./Subscribe.module.scss";
 
 export const NewSubscribe = ({ campaign }: { campaign: string }) => {
   const { handleSubmit, register } = useForm();
@@ -52,7 +53,7 @@ export const NewSubscribe = ({ campaign }: { campaign: string }) => {
       subscribed ? null : (
         <Form id="form" onSubmit={handleSubmit(onSubmit)}>
           <Row className="pb-2">
-            <Col md={8} sm={8} xs={8}>
+            <Col md={8} sm={8} xs={12}>
               <Form.Group>
                 <Form.Control
                   {...register("email", { required: true })}
@@ -65,8 +66,12 @@ export const NewSubscribe = ({ campaign }: { campaign: string }) => {
                 <div style={{ fontSize: "smaller", color: "red" }}>{error}</div>
               </Form.Group>
             </Col>
-            <Col md={4} sm={4} xs={4}>
-              <Button type="submit" variant="primary" className="rounded-pill">
+            <Col md={4} sm={4} xs={12}>
+              <Button
+                type="submit"
+                variant="primary"
+                className={`rounded-pill ${styles.subscribe}`}
+              >
                 Subscribe
               </Button>
             </Col>
