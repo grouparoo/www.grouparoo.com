@@ -9,10 +9,10 @@ export const Actionable = () => {
     <Container fluid className={`weave ${styles.container}`}>
       <Container>
         <Row>
-          <Col>
+          <Col lg={6} sm={12}>
             <RecordDisplay className={styles.recordDisplay} />
           </Col>
-          <Col>
+          <Col lg={6} sm={12}>
             <section>
               <h2>Reverse ETL makes your data warehouse actionable</h2>
               <p>

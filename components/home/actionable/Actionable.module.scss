@@ -1,6 +1,12 @@
 .recordDisplay {
   position: relative;
-  top: -12vh;
+  @media screen and (min-width: 1200px) {
+    top: -12vh;
+  }
+  @media screen and (max-width: 1200px) {
+    margin-left: -10%;
+    margin-top: -10%;
+  }
 }
 
 .container {
@@ -12,7 +18,7 @@
 
   .bottomRow {
     // BS Large
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: 1200px) {
       margin-top: -12%;
     }
   }
