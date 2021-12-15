@@ -1,8 +1,14 @@
 .container {
   padding: 50px;
 
-  .icon {
-    min-height: 62px;
+  [class~="row"] {
+    min-height: 105px;
+    [class~="col"] {
+      min-height: 203px;
+      .icon {
+        min-height: 62px;
+      }
+    }
   }
 
   .subheading {
