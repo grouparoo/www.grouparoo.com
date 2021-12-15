@@ -4,7 +4,7 @@ import { ToolNodes } from "./ToolNodes";
 import styles from "./About.module.scss";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { WigglyLine } from "./WigglyLine";
-import vsLight from "prism-react-renderer/themes/vsLight";
+import vsDark from "prism-react-renderer/themes/vsDark";
 
 const code = `
   # in a new directory
@@ -34,7 +34,7 @@ export const About = () => {
               {...defaultProps}
               language="bash"
               code={code}
-              theme={vsLight}
+              theme={vsDark}
             >
               {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <pre className={className} style={style}>
