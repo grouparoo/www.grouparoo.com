@@ -1,8 +1,26 @@
+$step-extra-margin: 5px;
+
 .container {
   margin-top: 30px;
   margin-bottom: 30px;
 
   [class~="row"] {
     margin-top: 30px;
+
+    &:nth-child(odd) {
+      [class~="col"] {
+        &:nth-child(even) {
+          margin-top: $step-extra-margin;
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      [class~="col"] {
+        &:nth-child(odd) {
+          margin-top: $step-extra-margin;
+        }
+      }
+    }
   }
 }
