@@ -4,6 +4,10 @@
   height: 116px;
   background-color: variables.$grouparoo-ethereal-blue;
 
+  > div {
+    filter: contrast(0.2);
+  }
+
   .mindfulChef {
     border: 0 solid;
     margin: 0;
