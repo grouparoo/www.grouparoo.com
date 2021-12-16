@@ -69,7 +69,7 @@ export const NewSubscribe = ({ campaign }: { campaign: string }) => {
             <Col md={4} sm={4} xs={12}>
               <Button
                 type="submit"
-                variant="primary"
+                variant="secondary"
                 className={`rounded-pill ${styles.subscribe}`}
               >
                 Subscribe

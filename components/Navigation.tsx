@@ -288,14 +288,15 @@ export default function Navigation() {
                 <FontAwesomeIcon icon={["fab", "github"]} size="xs" /> Star
               </Button>
             </a>
-            <Button
-              variant="primary"
-              href="/get-started"
-              size="sm"
-              className="col-sm-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
-            >
-              Get Started
-            </Button>
+            <Link href="/get-started" passHref>
+              <Button
+                variant="secondary"
+                size="sm"
+                className="col-sm-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
+              >
+                Get Started
+              </Button>
+            </Link>
           </Navbar.Collapse>
         </Navbar>
       </Container>

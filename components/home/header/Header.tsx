@@ -18,7 +18,7 @@ export const Header = ({ tagline }: HeaderProps) => (
             between your data warehouse and all of your cloud-based tools.
           </p>
           <Link href="/get-started" passHref>
-            <Button type="button" variant="primary" className="rounded-pill">
+            <Button type="button" variant="secondary" className="rounded-pill">
               Get Started
             </Button>
           </Link>

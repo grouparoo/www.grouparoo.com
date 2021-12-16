@@ -14,7 +14,7 @@ export default function GetStarted({
         <p>Start syncing your data with Grouparoo Cloud</p>
         <Link href="/trial" passHref={true}>
           <Button
-            variant="primary"
+            variant="secondary"
             size="lg"
             className="ms-auto mt-1 mb-4 rounded-pill"
           >
