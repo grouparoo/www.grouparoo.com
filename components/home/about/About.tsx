@@ -28,7 +28,7 @@ export const About = () => {
             </p>
           </section>
         </Col>
-        <Col className={`py-5 mx-3`}>
+        <Col className={`py-5 mx-3 ${styles.codeCol}`}>
           <section className={styles.codeSection}>
             <Highlight
               {...defaultProps}

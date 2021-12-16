@@ -14,15 +14,15 @@ $zIndexItem: 2;
     z-index: $zIndexItem;
   }
 
-  .codeSection {
-    padding: 0px, 16px, 0px, 16px;
-    background: #ffffff;
-    border: 1px solid #e0e0e0;
-    box-sizing: border-box;
-    box-shadow: 2px 2px 28px 1px rgba(0, 0, 0, 0.04),
-      2px 2px 44px 8px rgba(116, 96, 237, 0.08);
-    border-radius: 8px;
-    width: 100%;
+  .codeCol {
+    display: unset;
+    .codeSection {
+      box-sizing: border-box;
+      box-shadow: 2px 2px 28px 1px rgba(0, 0, 0, 0.04),
+        2px 2px 44px 8px rgba(116, 96, 237, 0.08);
+      border-radius: 8px;
+      width: 100%;
+    }
   }
 
   .cloud {
