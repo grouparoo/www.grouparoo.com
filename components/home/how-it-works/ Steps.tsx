@@ -6,7 +6,7 @@ export const Steps = () => {
   return (
     <Container className={styles.container}>
       <Row>
-        <Col xs={12} className={styles.hasImage}>
+        <Col md={6} xs={12} className={styles.hasImage}>
           <ImageInBrowserFrame
             src="/images/home/how-it-works-1.png"
             alt="how it works"
@@ -14,7 +14,7 @@ export const Steps = () => {
             height={398}
           />
         </Col>
-        <Col xs={12}>
+        <Col md={6} xs={12}>
           <section>
             <h3>Define your Data Models and Sources</h3>
             <p>
@@ -26,7 +26,7 @@ export const Steps = () => {
         </Col>
       </Row>
       <Row>
-        <Col xs={12}>
+        <Col md={6} xs={12}>
           <section>
             <h3>Create Groups</h3>
             <p>
@@ -36,7 +36,7 @@ export const Steps = () => {
             </p>
           </section>
         </Col>
-        <Col xs={12} className={styles.hasImage}>
+        <Col md={6} xs={12} className={styles.hasImage}>
           <ImageInBrowserFrame
             src="/images/home/how-it-works-2.png"
             alt="how it works 2"
@@ -46,7 +46,7 @@ export const Steps = () => {
         </Col>
       </Row>
       <Row>
-        <Col xs={12} className={styles.hasImage}>
+        <Col md={6} xs={12} className={styles.hasImage}>
           <ImageInBrowserFrame
             src="/images/home/how-it-works-3.png"
             alt="how it works 3"
@@ -54,7 +54,7 @@ export const Steps = () => {
             height={398}
           />
         </Col>
-        <Col xs={12}>
+        <Col md={6} xs={12}>
           <section>
             <h3>Send to Destinations</h3>
             <p>
@@ -65,7 +65,7 @@ export const Steps = () => {
         </Col>
       </Row>
       <Row>
-        <Col xs={12}>
+        <Col md={6} xs={12}>
           <section>
             <h3>
               Use Source-Of-Truth data in your SaaS tools and in your product
@@ -77,7 +77,7 @@ export const Steps = () => {
             </p>
           </section>
         </Col>
-        <Col xs={12} className={styles.hasImage}>
+        <Col md={6} xs={12} className={styles.hasImage}>
           <ImageInBrowserFrame
             src="/images/home/how-it-works-4.png"
             alt="how it works 4"
