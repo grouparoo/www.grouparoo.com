@@ -4,11 +4,6 @@ import TeamMember, { TeamMemberProps } from "./TeamMember";
 
 interface TeamMember extends Omit<TeamMemberProps, "description"> {
   emojis: string[];
-  previously: {
-    role: string;
-    company: string;
-    website: string;
-  }[];
 }
 
 const teamMembers: TeamMember[] = [
@@ -20,13 +15,6 @@ const teamMembers: TeamMember[] = [
     twitter: "https://twitter.com/bleonard",
     linkedIn: "https://www.linkedin.com/in/brianl429",
     emojis: ["👨‍👩‍👧‍👦", "🛠", "📚"],
-    previously: [
-      {
-        role: "CTO, Technical Co-Founder",
-        company: "TaskRabbit",
-        website: "https://www.taskrabbit.com",
-      },
-    ],
   },
   {
     name: "Evan Tahler",
@@ -36,19 +24,6 @@ const teamMembers: TeamMember[] = [
     github: "https://github.com/evantahler",
     twitter: "https://twitter.com/evantahler",
     linkedIn: "https://www.linkedin.com/in/evantahler",
-    previously: [
-      {
-        role: "Founder",
-        company: "ActionheroJS",
-        website: "https://actionherojs.com",
-      },
-      {
-        role: "CPO",
-        company: "Voom",
-        website:
-          "https://www.airbus.com/innovation/urban-air-mobility/voom.html",
-      },
-    ],
   },
   {
     name: "Andy Jih",
@@ -58,18 +33,6 @@ const teamMembers: TeamMember[] = [
     github: "https://github.com/andyjih",
     twitter: "https://twitter.com/andyjih",
     linkedIn: "https://www.linkedin.com/in/andyjih/",
-    previously: [
-      {
-        role: "Product",
-        company: "Stripe",
-        website: "https://www.stripe.com",
-      },
-      {
-        role: "Head of Product",
-        company: "Remedy",
-        website: "https://www.crunchbase.com/organization/remedy-labs-inc",
-      },
-    ],
   },
   {
     name: "Pedro S Lopez",
@@ -79,13 +42,6 @@ const teamMembers: TeamMember[] = [
     twitter: "https://twitter.com/pedroslopez",
     linkedIn: "https://www.linkedin.com/in/pedroslopez/",
     emojis: ["🤖", "🎹", "👨🏽‍💻", "🎮"],
-    previously: [
-      {
-        role: "Engineering and Technical Vetting",
-        company: "G2i",
-        website: "https://www.g2i.co/",
-      },
-    ],
   },
   {
     name: "Teal Larson",
@@ -95,13 +51,6 @@ const teamMembers: TeamMember[] = [
     twitter: "https://twitter.com/tealdoestech",
     linkedIn: "https://www.linkedin.com/in/teal-larson",
     emojis: ["🚴🏼", "📚", "🏔", "☕️"],
-    previously: [
-      {
-        role: "Freelance",
-        company: "Full Stack Engineer",
-        website: "https://www.tealjulia.com/",
-      },
-    ],
   },
   {
     name: "Krishna Glick",
@@ -110,13 +59,6 @@ const teamMembers: TeamMember[] = [
     github: "https://github.com/krishnaglick",
     linkedIn: "https://www.linkedin.com/in/krishnaglick",
     emojis: ["🥦", "🧗🏻", "🐶", "🐱"],
-    previously: [
-      {
-        role: "Senior Software Engineer",
-        company: "iHeartMedia",
-        website: "https://www.iheart.com",
-      },
-    ],
   },
   {
     name: "Edmundo Ruiz Ghanem",
@@ -125,13 +67,6 @@ const teamMembers: TeamMember[] = [
     github: "https://github.com/edmundito",
     linkedIn: "https://www.linkedin.com/in/edmundito",
     emojis: ["🌎", "👨‍👩‍👦", "🎥", "🎛"],
-    previously: [
-      {
-        role: "Engineering",
-        company: "Drift",
-        website: "https://www.drift.com",
-      },
-    ],
   },
 ];
 
