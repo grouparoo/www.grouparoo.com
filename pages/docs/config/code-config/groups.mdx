@@ -7,13 +7,13 @@ breadcrumb_label: Groups
 
 Once you have an App, Source, and Properties ([start with an App](/docs/running/ui-enterprise/apps) if you don't have any), then you're ready to define your Groups.
 
-Groups are where the magic happens in Grouparoo. (It's in the name, after all!) Groups are a segment or cohort of Records. They are useful in that you can use Groups to target a specific set of users to [export to some Destination](/docs/running/ui-enterprise/destinations). You can have _Calculated Groups_ and _Manual Groups_. [See here](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+Groups are where the magic happens in Grouparoo. (It's in the name, after all!) Groups are a segment or cohort of Records. They are useful in that you can use Groups to target a specific set of users to [export to some Destination](/docs/running/ui-enterprise/destinations). [See here](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
 
-## Generating a Calculated Group
+## Generating Group
 
-To generate a new Calculated Group for your Grouparoo application, run [the `generate` command](/docs/cli/config#generate).
+To generate a new Group for your Grouparoo application, run [the `generate` command](/docs/cli/config#generate).
 
-    grouparoo generate group:calculated all_emails
+    grouparoo generate group new_high_value_customers
 
 Note here that `new_high_value_customers` is the ID for the Group. An ID is always required when generating a config object.
 
@@ -26,7 +26,6 @@ exports.default = async function buildConfig() {
       class: "group",
       id: "new_high_value_customers",
       name: "New High Value Customers",
-      type: "calculated",
       rules: [],
     },
   ];
@@ -42,7 +41,6 @@ exports.default = async function buildConfig() {
       class: "group",
       id: "recent_high_value_customers",
       name: "Recent High Value Customers",
-      type: "calculated",
       rules: [
         {
           propertyId: "email",
@@ -79,9 +77,9 @@ This Group would contain Records with an email address that is not `@grouparoo.c
 
 More info this below.
 
-## Configuring Your Calculated Group
+## Configuring Your Group
 
-Configuring a Calculated Group is all about adding Rules to the Group. A Rule is some logical operator to Filter Properties. A Record must match every Rule to be included in the Group.
+Configuring a Group is all about adding Rules to the Group. A Rule is some logical operator to Filter Properties. A Record must match every Rule to be included in the Group.
 
 Available operations depends on both the _type_ of Property and the underlying Grouparoo database (SQLite vs. Postgres). See below for a list of rules. (If in doubt, choose Postgres.)
 
@@ -90,17 +88,5 @@ Note you can use SQL wildcard characters (%, \_, [ ], ^, -) in your Group rule m
 <RuleOpsTable />
 
 Add your list of Rules to the `rules` array in the generated config file. You may also change any of the other default values, as necessary.
-
-## Adding Manual Groups
-
-While a great deal of the value of Grouparoo comes from our Calculated Groups, Manual Groups are still valuable in certain circumstances. Manual Groups are Groups of Records where you manually add or remove Records from the Group.
-
-To generate a new Manual Group for your Grouparoo application, run [the `generate` command](/docs/cli/config#generate).
-
-    grouparoo generate group:manual my_custom_group
-
-Note here that `my_custom_group` is the ID for the Group. An ID is always required when generating a config object.
-
-This command will generate a file in your application directory at `config/groups/my_custom_group.js`. You can change the `name` and `id` properties in this file.
 
 <ValidateAndApplyConfig />
