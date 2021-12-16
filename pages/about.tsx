@@ -247,6 +247,8 @@ export default function About({ pageProps }) {
           width="3200"
         />
 
+        <br />
+
         <Row>
           <Col md={6}>
             <h4>Start to Finish Ownership</h4>
