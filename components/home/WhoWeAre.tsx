@@ -91,7 +91,7 @@ export default function WhoWeAre() {
         style={{ textAlign: "center" }}
       >
         <Row className="justify-content-center">
-          {teamMembers.map(({ emojis, previously, ...teamMemberProps }) => (
+          {teamMembers.map(({ emojis, ...teamMemberProps }) => (
             <Col
               md={4}
               className="d-flex justify-content-center"
@@ -105,26 +105,6 @@ export default function WhoWeAre() {
                       <>
                         {emojis.join(" ")}
                         <br />
-                      </>
-                    )}
-                    {previously?.length && (
-                      <>
-                        {" "}
-                        Previously:
-                        <br />
-                        {previously.map(({ role, company, website }) => (
-                          <Fragment key={company}>
-                            {role}{" "}
-                            <a
-                              href={website}
-                              target="_blank"
-                              rel="noreferrer nofollow"
-                            >
-                              @{company}
-                            </a>
-                            <br />
-                          </Fragment>
-                        ))}
                       </>
                     )}
                   </span>
