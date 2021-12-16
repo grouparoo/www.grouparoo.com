@@ -300,7 +300,11 @@ export default function About({ pageProps }) {
             <p>
               Grouparoo is building open source tools, so almost everything we
               do is{" "}
-              <a href="https://github.com/grouparoo/grouparoo" target="_blank">
+              <a
+                href="https://github.com/grouparoo/grouparoo"
+                target="_blank"
+                rel="noreferrer"
+              >
                 in the open
               </a>
               .
@@ -313,7 +317,11 @@ export default function About({ pageProps }) {
               work. Your work will be directly attributable back to you and
               users can directly converse with you as a result. For example,
               when{" "}
-              <a href="https://www.linkedin.com/in/evantahler/" target="_blank">
+              <a
+                href="https://www.linkedin.com/in/evantahler/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Evan
               </a>{" "}
               rolled out the Postgres plugin, he had a great discussion with a
@@ -328,6 +336,7 @@ export default function About({ pageProps }) {
               <a
                 href="https://github.com/orgs/grouparoo/projects/26"
                 target="_blank"
+                rel="noreferrer"
               >
                 roadmap
               </a>{" "}
@@ -339,7 +348,11 @@ export default function About({ pageProps }) {
             <h4>Community Engagement</h4>
             <p>
               You'll interact directly with users and decide what we build to
-              best serve <a href="/docs/community">our community</a>.
+              best serve{" "}
+              <Link href="/docs/community">
+                <a>our community</a>
+              </Link>
+              .
             </p>
             <p>
               Building a successful open source project is more than just
@@ -410,11 +423,19 @@ export default function About({ pageProps }) {
               Pacific Time, which allows us time to meet synchronously and pair
               as needed, but how you schedule the rest of the day is up to you -
               we have families, friends, and hobbies, too!{" "}
-              <a href="https://www.linkedin.com/in/andyjih/" target="_blank">
+              <a
+                href="https://www.linkedin.com/in/andyjih/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Andy
               </a>{" "}
               likes to go for 6am runs and{" "}
-              <a href="https://www.linkedin.com/in/brianl429/" target="_blank">
+              <a
+                href="https://www.linkedin.com/in/brianl429/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Brian
               </a>{" "}
               helps his kids attend school remotely. We also want to help you
