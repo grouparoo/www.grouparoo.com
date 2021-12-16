@@ -73,11 +73,13 @@ const ruleOpsData: RuleOpsDbType[] = [
 
 const DataTable = ({ data, heading, eventKey }) => {
   return (
-    <Fragment>
+    <Accordion.Item eventKey={eventKey}>
       <Accordion.Button style={{ display: "block", paddingLeft: "0" }}>
-        <h4>{heading}</h4>
+        <Accordion.Header>
+          <h4>{heading}</h4>
+        </Accordion.Header>
       </Accordion.Button>
-      <Accordion.Collapse eventKey={eventKey}>
+      <Accordion.Body>
         <Fragment>
           <p>
             {heading === "date" ? (
@@ -121,8 +123,8 @@ const DataTable = ({ data, heading, eventKey }) => {
             </Row>
           ))}
         </Fragment>
-      </Accordion.Collapse>
-    </Fragment>
+      </Accordion.Body>
+    </Accordion.Item>
   );
 };
 
