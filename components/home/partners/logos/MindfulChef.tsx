@@ -8,7 +8,6 @@ export const MindfulChef = ({ className }: { className?: string }) => (
     xmlns="http://www.w3.org/2000/svg"
     className={className}
   >
-    <title>Mindful Chef logo</title>
     <path
       fill="currentColor"
       fillRule="nonzero"
