@@ -248,7 +248,7 @@ export default function About({ pageProps }) {
         />
 
         <Row>
-          <Col>
+          <Col md={6}>
             <h4>Start to Finish Ownership</h4>
             <p>We place a high degree of trust in our team members.</p>
             <p>
@@ -269,7 +269,7 @@ export default function About({ pageProps }) {
             </p>
           </Col>
 
-          <Col>
+          <Col md={6}>
             <h4>Safe Environment to Fail</h4>
             <p>
               We have the freedom to move quickly, make mistakes, and learn from
@@ -295,7 +295,7 @@ export default function About({ pageProps }) {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col md={6}>
             <h4>Open Source Contributions</h4>
             <p>
               Grouparoo is building open source tools, so almost everything we
@@ -344,7 +344,7 @@ export default function About({ pageProps }) {
               requests. Grouparoo is “all-in” on open source.
             </p>
           </Col>
-          <Col>
+          <Col md={6}>
             <h4>Community Engagement</h4>
             <p>
               You'll interact directly with users and decide what we build to
@@ -369,7 +369,7 @@ export default function About({ pageProps }) {
         </Row>
 
         <Row>
-          <Col>
+          <Col md={6}>
             <h4>Engineering Driven</h4>
             <p>Grouparoo is building data tools made by and for engineers.</p>
             <p>
@@ -387,7 +387,7 @@ export default function About({ pageProps }) {
             </p>
           </Col>
 
-          <Col>
+          <Col md={6}>
             <h4>Open Communication</h4>
             <p>
               Almost everything we do is shared with read and comment access.
@@ -412,7 +412,7 @@ export default function About({ pageProps }) {
         </Row>
 
         <Row>
-          <Col>
+          <Col md={6}>
             <h4>Flexible Work Arrangements</h4>
             <p>We have core hours, but the rest of the day is up to you!</p>
             <p>
@@ -445,7 +445,7 @@ export default function About({ pageProps }) {
             </p>
           </Col>
 
-          <Col>
+          <Col md={6}>
             <h4>Bonded by our Love of Product</h4>
             <p>
               Grouparoo was founded by people who have all experienced the pain
