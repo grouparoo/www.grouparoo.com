@@ -8,17 +8,16 @@ import { Spotify } from "./logos/Spotify";
 import styles from "./Partners.module.scss";
 
 export const Partners = () => (
-  <Container>
-    <div
-      className={styles.partners + " d-flex flex-column justify-content-center"}
-    >
-      <div className="d-flex justify-content-between align-items-center">
-        <Spotify />
-        <OneMedical />
-        <MindfulChef className={styles.mindfulChef} />
-        <Raisedev />
-        <Bloq />
-      </div>
+  <Container
+    fluid
+    className={styles.partners + " d-flex flex-column justify-content-center"}
+  >
+    <div className="d-flex justify-content-around align-items-center flex-wrap">
+      <Spotify />
+      <OneMedical />
+      <MindfulChef className={styles.mindfulChef} />
+      <Raisedev />
+      <Bloq />
     </div>
   </Container>
 );

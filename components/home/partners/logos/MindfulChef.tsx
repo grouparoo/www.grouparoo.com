@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export const MindfulChef = ({ className }: { className?: string }) => (
   <svg
     viewBox="0 0 175 37"

@@ -1,10 +1,5 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 
 export const Chipax = () => (
-  <Image
-    src="/images/home/customer-logos/chipax-logo@2x.png"
-    width={256}
-    height={82}
-    alt="Chipax logo"
-  />
+  <img src="/images/home/customer-logos/chipax-logo@2x.png" alt="Chipax logo" />
 );
