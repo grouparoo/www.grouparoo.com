@@ -16,7 +16,7 @@ export const WhyGrouparoo = () => {
           </p>
         </Row>
         <Row>
-          <Col>
+          <Col sm={6} xs={12}>
             <Github className={styles.icon} />
             <h3>Control</h3>
             <p>
@@ -24,7 +24,7 @@ export const WhyGrouparoo = () => {
               all the code and the data. Use it however you want.
             </p>
           </Col>
-          <Col>
+          <Col sm={6} xs={12}>
             <BriefcaseCheck className={styles.icon} />
             <h3>Compliance</h3>
             <p>
@@ -34,7 +34,7 @@ export const WhyGrouparoo = () => {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col sm={6} xs={12}>
             <Mask className={styles.icon} />
             <h3>Privacy</h3>
             <p>
@@ -42,7 +42,7 @@ export const WhyGrouparoo = () => {
               you give them less because it was only needed to make the groups.
             </p>
           </Col>
-          <Col>
+          <Col sm={6} xs={12}>
             <MoneyBill className={styles.icon} />
             <h3>Cost</h3>
             <p>
