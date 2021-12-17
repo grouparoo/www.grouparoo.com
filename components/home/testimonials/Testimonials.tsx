@@ -6,7 +6,7 @@ export const Testimonials = () => {
   return (
     <Container className={`${styles.container} py-3`}>
       <Row>
-        <Col>
+        <Col md={6} sm={12}>
           <section>
             <Image
               src="/images/home/customer-logos/chipax-logo@2x.png"
@@ -23,7 +23,7 @@ export const Testimonials = () => {
             <p>— Joaquín Brenner, Co-founder and COO @ Chipax</p>
           </section>
         </Col>
-        <Col>
+        <Col md={6} sm={12}>
           <section>
             <Image
               src="/images/home/customer-logos/Sendoso-Logo-1.svg"

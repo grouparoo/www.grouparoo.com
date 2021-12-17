@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Col, Container, Row } from "react-bootstrap";
 import { DatabaseNodes } from "./DatabaseNodes";
 import { ToolNodes } from "./ToolNodes";
@@ -85,11 +86,11 @@ export const About = () => {
       </Row>
       <Row>
         <Col md={6} sm={12} className={`py-5 ${styles.hasImage}`}>
-          <Image
+          <img
             src="/images/home/github.png"
             alt="github logo"
-            width="120px"
-            height="120px"
+            width="auto"
+            height="auto"
           />
         </Col>
         <Col md={6} sm={12} className={`py-5`}>
