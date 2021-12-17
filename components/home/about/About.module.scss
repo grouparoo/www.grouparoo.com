@@ -1,6 +1,8 @@
 $zIndexLine: 1;
 $zIndexItem: 2;
 
+$bs-breakpoint-md: 768px;
+
 .about {
   background: radial-gradient(
     59.86% 50% at 50% 50%,
@@ -14,36 +16,30 @@ $zIndexItem: 2;
     z-index: $zIndexItem;
   }
 
+  @media screen and (max-width: $bs-breakpoint-md) {
+    .hasImage,
+    .codeCol {
+      order: 2;
+    }
+  }
+  .hasImage,
   .codeCol {
-    display: unset;
+    justify-content: center;
+    display: flex;
+  }
+
+  .codeCol {
     .codeSection {
       box-sizing: border-box;
       box-shadow: 2px 2px 28px 1px rgba(0, 0, 0, 0.04),
         2px 2px 44px 8px rgba(116, 96, 237, 0.08);
       border-radius: 8px;
-      width: 100%;
-    }
-  }
+      width: fit-content;
 
-  .cloud {
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-size: contain, 360px;
-    background-position-y: 0;
-
-    &.one {
-      background-image: url("./Cloud1.svg");
-      background-position: unset;
-      background-size: 100%;
-    }
-    &.two {
-      background-image: url("./Cloud2.svg");
-    }
-    &.three {
-      background-image: url("./Cloud3.svg");
-    }
-    &.four {
-      background-image: url("./Cloud4.svg");
+      pre {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -52,5 +48,9 @@ $zIndexItem: 2;
     align-self: center;
     opacity: 0.45;
     z-index: $zIndexLine;
+
+    @media screen and (max-width: $bs-breakpoint-md) {
+      display: none;
+    }
   }
 }

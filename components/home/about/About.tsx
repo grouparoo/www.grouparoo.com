@@ -5,6 +5,7 @@ import styles from "./About.module.scss";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { WigglyLine } from "./WigglyLine";
 import vsDark from "prism-react-renderer/themes/vsDark";
+import Image from "next/image";
 
 const code = `
   # in a new directory
@@ -18,7 +19,7 @@ export const About = () => {
     <Container className={`${styles.about} d-flex flex-column`}>
       <WigglyLine className={styles.wigglyLine} />
       <Row>
-        <Col className={`py-5 mx-3`}>
+        <Col md={6} sm={12} className={`py-5`}>
           <section>
             <h3>Free & Easy to Install</h3>
             <p>
@@ -28,7 +29,7 @@ export const About = () => {
             </p>
           </section>
         </Col>
-        <Col className={`py-5 mx-3 ${styles.codeCol}`}>
+        <Col md={6} sm={12} className={`py-5 ${styles.codeCol}`}>
           <section className={styles.codeSection}>
             <Highlight
               {...defaultProps}
@@ -52,10 +53,10 @@ export const About = () => {
         </Col>
       </Row>
       <Row>
-        <Col className={`py-5 mx-3 ${styles.cloud} ${styles.one}`}>
+        <Col md={6} sm={12} className={`py-5 ${styles.hasImage}`}>
           <DatabaseNodes />
         </Col>
-        <Col className={`py-5 mx-3`}>
+        <Col md={6} sm={12} className={`py-5`}>
           <section>
             <h3>Use Verified Data</h3>
             <p>
@@ -68,7 +69,7 @@ export const About = () => {
         </Col>
       </Row>
       <Row>
-        <Col className={`py-5 mx-3`}>
+        <Col md={6} sm={12} className={`py-5`}>
           <section>
             <h3>Connect New Tools Quickly & Easily</h3>
             <p>
@@ -78,20 +79,20 @@ export const About = () => {
             </p>
           </section>
         </Col>
-        <Col className={`py-5 mx-3 ${styles.cloud} ${styles.two}`}>
+        <Col md={6} sm={12} className={`py-5 ${styles.hasImage}`}>
           <ToolNodes className={``} />
         </Col>
       </Row>
       <Row>
-        <Col className={`py-5 mx-3 ${styles.cloud} ${styles.three}`}>
-          <img
+        <Col md={6} sm={12} className={`py-5 ${styles.hasImage}`}>
+          <Image
             src="/images/home/github.png"
             alt="github logo"
             width="120px"
             height="120px"
           />
         </Col>
-        <Col className={`py-5 mx-3`}>
+        <Col md={6} sm={12} className={`py-5`}>
           <section>
             <h3>Open Source</h3>
             <p>
@@ -104,7 +105,7 @@ export const About = () => {
         </Col>
       </Row>
       <Row>
-        <Col className={`py-5 mx-3`}>
+        <Col md={6} sm={12} className={`py-5`}>
           <section>
             <h3>Best Practices & Batteries Included</h3>
             <p>
@@ -115,7 +116,7 @@ export const About = () => {
             </p>
           </section>
         </Col>
-        <Col className={`py-5 mx-3 ${styles.cloud} ${styles.four}`}>
+        <Col md={6} sm={12} className={`py-5 ${styles.hasImage}`}>
           <ToolNodes className={``} />
         </Col>
       </Row>
