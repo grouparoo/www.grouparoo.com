@@ -1,7 +1,5 @@
 export const HeaderImage = ({ className }: { className?: string }) => (
   <svg
-    width="auto"
-    height="auto"
     viewBox="0 0 441 368"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
