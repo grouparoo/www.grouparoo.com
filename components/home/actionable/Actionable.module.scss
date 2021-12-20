@@ -1,0 +1,24 @@
+.recordDisplay {
+  position: relative;
+  max-width: 100%;
+
+  // BS Large
+  @media screen and (min-width: 992px) {
+    top: -12vh;
+  }
+}
+
+.container {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  margin-top: 30px;
+  position: relative;
+  z-index: 2;
+
+  .bottomRow {
+    // BS Large
+    @media screen and (min-width: 992px) {
+      margin-top: -12%;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+$step-extra-margin: 5px;
+
+.container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  [class~="row"] {
+    margin-top: 30px;
+
+    > div:not(.hasImage) {
+      display: flex;
+      align-items: center;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hasImage {
+        order: 2;
+      }
+    }
+
+    &:nth-child(odd) {
+      [class~="col"] {
+        &:nth-child(even) {
+          margin-top: $step-extra-margin;
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      [class~="col"] {
+        &:nth-child(odd) {
+          margin-top: $step-extra-margin;
+        }
+      }
+    }
+  }
+}

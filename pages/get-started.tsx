@@ -72,8 +72,10 @@ export default function GetStarted({ props }) {
                   </Button>
                 </Card.Footer>
                 <small>No credit card required</small>
+                <Link href="/pricing">
+                  <a className="my-3">View pricing plans</a>
+                </Link>
               </Card>
-              <Link href="/pricing">View pricing plans</Link>
             </Col>
           </Row>
         </Container>

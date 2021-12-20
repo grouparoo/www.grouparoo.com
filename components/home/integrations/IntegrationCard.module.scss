@@ -1,0 +1,23 @@
+@use "../../../scss/variables";
+
+.cardDetail {
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 5px lightgrey;
+
+  .integrationCardLink {
+    &:hover {
+      box-shadow: 5px 5px 5px 5px grey;
+    }
+  }
+
+  .pluginName,
+  .badge {
+    color: variables.$grouparoo-font-color;
+  }
+
+  .badge {
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: capitalize;
+  }
+}

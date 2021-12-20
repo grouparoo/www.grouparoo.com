@@ -6,19 +6,40 @@ $grouparoo-yellow: #ff7518;
 $grouparoo-light-yellow: #fff8f1;
 $grouparoo-red: #ff0039;
 $grouparoo-blue: #29abe2;
+$grouparoo-mint: #2fe5a4;
 $grouparoo-light-blue: #b3e8ff;
 $grouparoo-blue-gray: #9b9db1;
 $grouparoo-violet: #9954bb;
 $grouparoo-light-violet: #dfe8fb;
+$grouparoo-sky-blue: #6090ed;
+$grouparoo-spice: #edac60;
+$grouparoo-light-violet: #dfe8fb;
 $grouparoo-background-blue: #f6fafb;
 $grouparoo-green: #3fb618;
+$grouparoo-solid: #3d3d3d;
+$grouparoo-ethereal-blue: #f5f9ff;
 
 // Bootstrap Colors, cannot be CSS variables
 $primary: $grouparoo-blue;
-$secondary: $grouparoo-dark-gray;
+$secondary: $grouparoo-mint;
 $success: $grouparoo-green;
-$info: $grouparoo-violet;
+$info: $grouparoo-sky-blue;
 $warning: $grouparoo-yellow;
-$danger: $grouparoo-red;
+$danger: $grouparoo-spice;
 $light: $grouparoo-light-gray;
 $dark: $grouparoo-dark-gray;
+
+// Typography Colors
+$grouparoo-nav-font-color: #fff;
+$grouparoo-font-color: #000;
+$navbar-light-color: $grouparoo-nav-font-color;
+$navbar-light-hover-color: $grouparoo-nav-font-color;
+
+// Bootstrap Overrides
+$card-border-radius: 8px;
+
+// -- Fonts --
+// Google Fonts are now magically handled by next - https://nextjs.org/docs/basic-features/font-optimization.  They are loaded in the header in `_document.tsx`
+$font-header: Inter, sans-serif;
+$font-body: IBM Plex Sans, sans-serif;
+$font-code: IBM Plex Mono, sans-serif;

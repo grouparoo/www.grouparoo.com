@@ -10,22 +10,24 @@ import {
   Row,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRouter } from "next/router";
 import Link from "next/link";
+import styles from "./Navigation.module.scss";
+import { useMemo } from "react";
 
 export default function Navigation() {
+  const router = useRouter();
+  const onHomepage = useMemo(() => router.pathname === "/", [router.pathname]);
+
   return (
-    <header>
+    <header className={`pipes ${!onHomepage ? "mb-4" : ""}`}>
       <Container>
-        <Navbar
-          variant="light"
-          expand="md"
-          style={{ paddingLeft: 0, paddingRight: 0 }}
-        >
+        <Navbar expand="md" style={{ paddingLeft: 0, paddingRight: 0 }}>
           <Navbar.Brand className="pt-3">
             <Link href="/">
               <a>
                 <Image
-                  src="/images/logo-and-wordmark-black-words.png"
+                  src="/images/logo-and-wordmark-white-words.svg"
                   alt="Grouparoo Logo"
                   width={150}
                   height={32}
@@ -278,18 +280,23 @@ export default function Navigation() {
               rel="noreferrer"
               className="col-sm-12 d-md-none d-lg-inline-block col-lg-1 p-0 mx-lg-1 mx-0 mt-3"
             >
-              <Button variant="outline-dark" size="sm" className="w-100">
+              <Button
+                variant="light"
+                size="sm"
+                className={"w-100 " + styles.github}
+              >
                 <FontAwesomeIcon icon={["fab", "github"]} size="xs" /> Star
               </Button>
             </a>
-            <Button
-              variant="primary"
-              href="/get-started"
-              size="sm"
-              className="col-sm-12 col-md-3 col-lg-2 mx-0  ms-lg-2 mt-3"
-            >
-              Get Started
-            </Button>
+            <Link href="/get-started" passHref>
+              <Button
+                variant="secondary"
+                size="sm"
+                className="col-sm-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
+              >
+                Get Started
+              </Button>
+            </Link>
           </Navbar.Collapse>
         </Navbar>
       </Container>

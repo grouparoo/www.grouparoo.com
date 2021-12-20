@@ -3,24 +3,25 @@ import Image from "./Image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { FeaturedBlogPosts } from "../data/featuredBlogPosts";
-import { Fragment } from "react";
+import { Fragment, useMemo } from "react";
+import { NewSubscribe } from "./subscribe/Subscribe";
+import styles from "./Footer.module.scss";
 
 function LogoAndSocialLinks({ router }) {
   const year = new Date().getFullYear();
 
   return (
-    <>
+    <div>
       <Link href="/">
         <a>
           <Image
             src="/images/logo.png"
             alt="Grouparoo Logo"
             width={50}
-            height={40}
+            height={50}
           />
         </a>
       </Link>
-      <br />
       <br />
       <p>
         <a
@@ -45,7 +46,7 @@ function LogoAndSocialLinks({ router }) {
       </p>
       <EditThisPage router={router} />
       <p>© Grouparoo, Inc. {year}.</p>
-    </>
+    </div>
   );
 }
 
@@ -91,18 +92,17 @@ function EditThisPage({ router }) {
 
 export default function Footer() {
   const router = useRouter();
+  const onHomepage = useMemo(() => router.pathname === "/", [router.pathname]);
 
   return (
-    <footer className="footer py-5">
+    <footer className={`footer py-5 pipes`}>
       <Container>
-        <Row className="d-flex justify-content-between">
-          <Col lg={3} className="d-none d-lg-block">
+        <Row className="d-flex">
+          <Col lg={3} className={styles.logoAndSocial}>
             <LogoAndSocialLinks router={router} />
           </Col>
           <Col lg={9}>
             <Row>
-              <Col className="d-none d-md-inline-block col-md-1" />
-
               <Col className="col-6 col-md-3 pb-2 px-3 ">
                 <div className="ps-1">
                   <strong>Use Cases</strong>
@@ -211,7 +211,7 @@ export default function Footer() {
                   </Link>
                   <br />
                   <Link href="/whats-new">
-                    <a>What's New</a>
+                    <a>{"What's New"}</a>
                   </Link>
                   <br />
                   <Link href="/docs/community">
@@ -264,14 +264,8 @@ export default function Footer() {
                   </Link>
                 </div>
               </Col>
-              <Col className="d-none d-md-inline-block col-md-1" />
             </Row>
-          </Col>
-        </Row>
-
-        <Row className="d-lg-none">
-          <Col className="text-center pb-4 pt-5">
-            <LogoAndSocialLinks router={router} />
+            <NewSubscribe campaign="footer-subscribe" />
           </Col>
         </Row>
       </Container>

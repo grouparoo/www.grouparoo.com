@@ -1,0 +1,14 @@
+.logoAndSocial {
+  // Bootstrap lg
+  @media (max-width: 992px) {
+    order: 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
