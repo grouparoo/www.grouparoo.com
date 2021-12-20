@@ -5,7 +5,7 @@ import { Row, Col, Form, Button } from "react-bootstrap";
 import { ErrorHandler } from "../utils/errorHandler";
 import { isBrowser } from "../utils/isBrowser";
 
-export default function Subscribe({ campaign }: { campaign: string }) {
+export function Subscribe({ campaign }: { campaign: string }) {
   const { handleSubmit, register } = useForm();
   const [loading, setLoading] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
@@ -14,7 +14,7 @@ export default function Subscribe({ campaign }: { campaign: string }) {
 
   const errorHandler = new ErrorHandler();
   errorHandler.subscribe("result", (e) => {
-    let message = e?.error?.message || e?.message || e.toString();
+    let message = e?.message || e.toString();
     if (message.match(/email/i)) {
       message = "Invalid email address.";
     }
@@ -93,3 +93,5 @@ export default function Subscribe({ campaign }: { campaign: string }) {
     </Row>
   );
 }
+
+export default Subscribe;

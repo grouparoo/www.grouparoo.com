@@ -47,14 +47,16 @@ export interface PluginDisplay {
   logoPath: string;
 }
 
+export type PluginTypes = "source" | "destination" | string;
+
 export interface Plugin {
   name: string;
   description: string;
   priority: number;
   slug: string;
   logo: string;
-  primaryType: string;
-  otherTypes: string[];
+  primaryType: PluginTypes;
+  otherTypes: PluginTypes[];
   category: string;
   badge: string;
   showLink: boolean;

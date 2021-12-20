@@ -1,0 +1,19 @@
+.container {
+  padding: 50px;
+
+  [class~="row"] {
+    min-height: 105px;
+    [class~="col"] {
+      min-height: 203px;
+      .icon {
+        min-height: 62px;
+      }
+    }
+  }
+
+  .subheading {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 38px;
+  }
+}

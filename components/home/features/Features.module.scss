@@ -1,0 +1,11 @@
+.container {
+  [class~="row"] {
+    min-height: 95px;
+    [class~="col"] {
+      min-height: 263px;
+      svg {
+        min-height: 56px;
+      }
+    }
+  }
+}

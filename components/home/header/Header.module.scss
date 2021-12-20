@@ -1,0 +1,20 @@
+.container {
+  .text {
+    order: 1;
+    @media screen and (max-width: 768px) {
+      order: 2;
+    }
+  }
+
+  .image {
+    order: 2;
+    @media screen and (max-width: 768px) {
+      order: 1;
+      margin-bottom: 40px;
+    }
+
+    .headerImage {
+      max-height: 368px;
+    }
+  }
+}

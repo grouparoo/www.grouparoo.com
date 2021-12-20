@@ -1,0 +1,30 @@
+@use "../../../scss/_variables";
+
+$bs-breakpoint-sm: 576px;
+
+.partners {
+  height: 116px;
+  background-color: variables.$grouparoo-ethereal-blue;
+
+  > div {
+    filter: contrast(0.2);
+
+    @media screen and (max-width: $bs-breakpoint-sm) {
+      margin: 2em 0 2em 0;
+      svg,
+      img {
+        padding: 0 1em 0 1em;
+      }
+    }
+
+    svg,
+    img {
+      max-width: 144px;
+    }
+  }
+
+  .mindfulChef {
+    border: 0 solid;
+    margin: 0;
+  }
+}

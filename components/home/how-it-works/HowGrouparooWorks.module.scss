@@ -1,0 +1,16 @@
+.container {
+  .images {
+    display: flex;
+    flex-direction: row;
+
+    // BS Medi
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    img {
+      object-fit: cover;
+      padding: 4px !important;
+    }
+  }
+}
