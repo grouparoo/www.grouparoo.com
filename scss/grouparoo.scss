@@ -6,6 +6,9 @@
 @import "~@fortawesome/fontawesome-svg-core/styles.css";
 @import "../public/css/prism";
 
+$mobile-display-breakpoint: 600px;
+$mobile-font-breakpoint: 800px;
+
 // Page Defaults
 body {
   background-color: $grouparoo-background-blue;
@@ -32,6 +35,7 @@ h4,
 h5,
 h6 {
   font-family: $font-header;
+  word-break: break-word;
 }
 
 h1 {
@@ -41,8 +45,8 @@ h1 {
   line-height: 72px;
   letter-spacing: -1px;
 
-  @media screen and (max-width: 600px) {
-    font-size: 60px;
+  @media screen and (max-width: $mobile-font-breakpoint) {
+    font-size: 40px;
   }
 }
 
@@ -52,6 +56,10 @@ h2 {
   font-weight: 700;
   line-height: 43px;
   letter-spacing: -1px;
+
+  @media screen and (max-width: $mobile-font-breakpoint) {
+    font-size: 25px;
+  }
 }
 
 h3 {
@@ -60,6 +68,10 @@ h3 {
   font-weight: 600;
   line-height: 36px;
   letter-spacing: 0px;
+
+  @media screen and (max-width: $mobile-font-breakpoint) {
+    font-size: 20px;
+  }
 }
 
 h4 {
@@ -203,7 +215,7 @@ a,
   padding-left: 0em;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: $mobile-display-breakpoint) {
   .solutionsNav {
     width: 22em;
     padding-bottom: 1em;
