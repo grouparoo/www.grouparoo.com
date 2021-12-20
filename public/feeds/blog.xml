@@ -25,7 +25,6 @@
       type="application/rss+xml"
     />
         <item>
-
             <title><![CDATA[What is the ETL Process?]]></title>
             <link>https://www.grouparoo.com/blog/what-is-the-etl-process</link>
             <guid>grouparoo-blog-post-what-is-the-etl-process</guid>
@@ -36,7 +35,7 @@
         url="https://www.grouparoo.com/posts/what-is-an-etl-process/triangles.jpg"
         length="0"
         type="image/jpg"
-                             />
+      />
         </item>
         <item>
             <title><![CDATA[Use App Refresh to run Grouparoo with dbt]]></title>
