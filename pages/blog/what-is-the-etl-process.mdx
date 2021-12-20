@@ -1,0 +1,77 @@
+---
+title: "What is the ETL Process?"
+date: "2021-12-15"
+author: "Micah Bello"
+image: "what-is-an-etl-process/triangles.jpg"
+seoDescription: "Learn more about the ETL process and how it fits into the modern data stack. Grouparoo helps operationalize the data you have in your data warehouse. ✓ Start a free trial now!"
+pullQuote: "Learn more about the ETL process and how it fits into the modern data stack."
+tags: [data]
+---
+
+The ETL data integration process has been around for decades and is an integral part of data analytics today. In this article, we’ll look at what goes on in the ETL process and some modern variations that are better suited to our modern, data-driven society.
+
+<Image
+  alt="triangle shapes"
+  src="what-is-an-etl-process/triangles.jpg"
+  centered
+  height={730}
+  width={918}
+/>
+
+## What is ETL?
+
+ETL, or Extract, Transform, Load, is a process that involves extracting data from different [data sources](https://www.grouparoo.com/blog/what-is-a-data-source), transforming it into more suitable formats for processing and analytics, and loading it into the target system, usually a data warehouse. ETL processes are used by organizations to generate business insights from raw data.
+
+ETL data pipelines can be built using a variety of approaches. They can be set up to use batch processing or stream processing with tools such as [Apache Kafka](https://kafka.apache.org/). Let's take a closer look at what the three main stages of the ETL pipeline involve and an ETL process example.
+
+### Extract
+
+During this stage of the ETL process, desired data sources are identified and raw data is moved from these locations to the staging area. These sources could include ERP systems, CRM systems, SQL databases, APIs, flat files, or user input. The data to be extracted might be structured or unstructured.
+
+The data extraction process can be performed in different ways including incremental extraction, full extraction, and update notification. Since modern ETL processes extract data from a variety of SaaS tools, the extraction process often involves integrating with the APIs of these SaaS products.
+
+### Transform
+
+In the transformation phase, the raw data is prepared for analysis through a couple of processes including validation, authentication, filtering, cleansing, and aggregation. Calculations and summarizations may also be run on the data as it is formatted correctly to match the schema of the target system.
+
+Traditionally, extracted data is transformed in a staging area before it is loaded into the target data warehouse. However, in recent years, the in-warehouse data transformation or ELT (Extract, Load, Transform) approach, which involves transforming the data in the warehouse rather than beforehand, is fast becoming the norm. Companies like [Fivetran](http://fivetran.com), [Meltano](https://meltano.com/), and [Airbyte](https://airbyte.io/) are leading the ELT trend.
+
+This shift towards ELT is due to the improved performance of modern analytics database systems and their support for data transformation using SQL, which most data scientists and analysts are proficient with. Additionally, companies like [dbt](https://www.getdbt.com/) make the Transform step very easy once data is already loaded into a warehouse, further making ELT more popular.
+
+### Load
+
+In the final phase of the process, the transformed data is moved to the ETL db or data warehouse. How the data is loaded often depends on its intended use case. When the ETL process first runs, a full data load is performed. Subsequently, incremental loads move data from the sources to the warehouse at regular intervals.
+
+Incremental loads are usually more complicated than full loads since they only load new or updated records and have to work around issues with ordering, schema evolution, and monitorability. Incremental loading can be performed in a streaming fashion, which works better for smaller volumes of data, or in large batches.
+
+An ETL example of a data pipeline would be one that ingests data from a data source such as a Microsoft Excel file, transforms the data and applies business rules, and loads the transformed data into a data warehouse.
+
+## ETL Tools
+
+A lot of different tools can be used to build ETL pipelines. Some of the established commercial options used in traditional ETL processes include Microsoft SQL Server Integration Services, IBM InfoSphere DataStage, and Oracle Data Integrator.
+
+Today, there's a wide variety of commercial and open-source data integration tools that businesses can leverage to create efficient pipelines that serve their needs. Some organizations choose to implement custom solutions such as ETL scripting. An ETL script can be written in languages such as SQL, Python, and Scala and with tools such as AWS Glue.
+
+## ELT (Extract, Load, Transform)
+
+The rise of cloud data warehouses in recent years has triggered a shift in how organizations manage and analyze data. Most modern data pipelines now use the ELT approach to move data from various sources into warehouses.
+
+Unlike the traditional Extract, Transform, Load data pipeline process, ELT involves loading the raw data into the target system before performing transformations to enable the data to be analyzed with different tools.
+
+Of course, each approach has its pros and cons. However, ELT works well for unstructured, high-volume data sets since such data can be loaded directly from the source systems into destinations such as Amazon Redshift, Microsoft Azure Synapse Analytics, and Google Big Query.
+
+ELT pipelines provide greater flexibility and scalability than traditional ETL ones. They're also simpler and provide analysts with data to work with faster. As a result, traditional ETL is dwindling in popularity as more organizations move to the cloud. Nevertheless, ETL still has the advantage of being the older, more established approach as the best practices for ELT are still being defined.
+
+## Reverse ETL
+
+[Reverse ETL](https://www.grouparoo.com/solutions/reverse-etl) is an even more modern approach to data integration and pipelining. As its name implies, this approach involves moving data in the opposite direction to regular ETL pipelines. In reverse ETL, data travels from the data warehouse to any number of destinations. These destinations are usually third-party tools such as Salesforce, Hubspot, and Zendesk.
+
+Reverse ETL enables organizations to leverage their data and the insights from it. It enables operational analytics, allowing teams and managers to make smart decisions based on real-time data.
+
+## Conclusion
+
+The ETL process has evolved over the years as enterprises continue to look for more efficient ways to leverage data. Today, rather than utilizing the rigid traditional batch processing ETL pipelines, organizations use efficient stream processing pipelines and flexible ELT approaches for their data integration needs.
+
+With reverse ETL, business teams are empowered to take action based on easily accessible, trustworthy data. Grouparoo is a modern reverse ETL data pipeline tool that enables you to leverage the data you already have in your data warehouse to make better-informed business decisions. It’s easy to set up and use and integrates with a wide selection of CRMs, data warehouses, databases, ad platforms, and SaaS marketing tools.
+
+_featured image via [unsplash](https://unsplash.com/photos/QGnm_F_nd1E)_
