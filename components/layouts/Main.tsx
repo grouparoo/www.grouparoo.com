@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import GetStarted from "../home/GetStarted";
 import { OpenSourceDataStackConfBanner } from "../banners/OpenSourceDataStackConfBanner";
 import { DisplayReleaseNote, WhatsNewBanner } from "../banners/WhatsNewBanner";
-import { Favicon } from "../Favico";
+import { Favicon } from "../Favicon";
 
 function PageTemplate({ children }) {
   const router = useRouter();
