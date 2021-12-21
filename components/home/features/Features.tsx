@@ -17,14 +17,14 @@ export const Features = () => {
         </h3>
       </Row>
       <Row>
-        <Col>
+        <Col md={4} xs={12}>
           <LineGraph />
           <h4>Observability</h4>
           <p>
             Charts, tools, and data to help you monitor your Grouparoo instance.
           </p>
         </Col>
-        <Col>
+        <Col md={4} xs={12}>
           <Speedometer />
           <h4>Testable</h4>
           <p>
@@ -32,7 +32,7 @@ export const Features = () => {
             imported and exported as you'd expect.
           </p>
         </Col>
-        <Col>
+        <Col md={4} xs={12}>
           <Puzzle />
           <h4>Pre-built integrations</h4>
           <p>
@@ -42,7 +42,7 @@ export const Features = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col md={4} xs={12}>
           <CloudWithCheckmark />
           <h4>Many deploy options</h4>
           <p>
@@ -50,7 +50,7 @@ export const Features = () => {
             own deploy process.
           </p>
         </Col>
-        <Col>
+        <Col md={4} xs={12}>
           <Sliders />
           <h4>Conventions</h4>
           <p>
@@ -58,7 +58,7 @@ export const Features = () => {
             understand and modify Grouparoo.
           </p>
         </Col>
-        <Col>
+        <Col md={4} xs={12}>
           <OpenBox />
           <h4>Open Source & Extensible</h4>
           <p>
