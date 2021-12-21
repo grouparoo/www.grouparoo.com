@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Container } from "react-bootstrap";
-import { Favicon } from "../favicon";
+import { Favicon } from "../Favico";
 
 function FloatingLayout({ children }) {
   return (
