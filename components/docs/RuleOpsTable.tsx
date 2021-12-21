@@ -82,8 +82,7 @@ const DataTable = ({ data, heading, eventKey }) => {
           <p>
             {heading === "date" ? (
               <Alert variant="primary">
-                💡 Dates used for calculated groups should use full ISO-8601
-                format: <br />
+                💡 Dates used for Groups should use full ISO-8601 format: <br />
                 <span className="ps-4">
                   <b>YYYY-MM-DDThh:mm:ss.mmm+TZD</b>{" "}
                   ("2020-09-01T08:15:00+00:00"){" "}

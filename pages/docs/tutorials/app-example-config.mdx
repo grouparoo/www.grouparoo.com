@@ -66,11 +66,7 @@ To see a list of available Generators at any time, use the `--list` flag.
     Available Templates:
 
       apikey (id) - Config for a Grouparoo API Key
-      group:calculated (id) - Config for a calculated Grouparoo Group
-      group:manual (id) - Config for a manual Grouparoo Group
-      manual:app (id) - Config for a Grouparoo App with manual Property values
-      manual:property (id, parent) - Config for a Grouparoo Property based on a Manual Source
-      manual:source (id, parent) - Config for a Grouparoo Source based on a Manual App
+      group (id) - Config for a Grouparoo Group
       setting (plugin-name, key, value, id) - Config for a Grouparoo Setting
       team (id) - Config for a Grouparoo Team
       team:member (id, parent) - Config for a Grouparoo Team Member
@@ -414,7 +410,7 @@ We're going to create two groups:
 
 Let's generate those config objects, beginning with the `all_emails` Group:
 
-    $ grouparoo generate group:calculated all_emails
+    $ grouparoo generate group all_emails
 
 We can then edit [the file at `config/groups/all_emails.js`](https://github.com/grouparoo/app-example-config/blob/a7eda5b16fe8ab15e9dc5cf49f389d43bfba9a19/config/groups/all_emails.js):
 
@@ -425,7 +421,6 @@ exports.default = async function buildConfig() {
       class: "group",
       id: "all_emails",
       name: "all_emails",
-      type: "calculated",
       // Include records where there is a value for `email`.
       rules: [
         {
@@ -442,7 +437,7 @@ exports.default = async function buildConfig() {
 
 Then let's do the same for `high_value_spanish_speakers`:
 
-    $ grouparoo generate group:calculated high_value_spanish_speakers
+    $ grouparoo generate group high_value_spanish_speakers
 
 And its file should look something like this:
 
@@ -453,8 +448,7 @@ exports.default = async function buildConfig() {
       class: "group",
       id: "high_value_spanish_speakers",
       name: "high_value_spanish_speakers",
-      type: "calculated",
-      // Inlcude Records with an `ltv` above 100 who have a value of `Spanish`
+      // Include Records with an `ltv` above 100 who have a value of `Spanish`
       // for `language`.
       rules: [
         {
