@@ -6,7 +6,7 @@ export const HowGrouparooWorks = () => {
   return (
     <Container className={`${styles.container} py-3`}>
       <Row>
-        <Col>
+        <Col md={6} xs={12}>
           <section>
             <h3>How Grouparoo Works</h3>
             <p>

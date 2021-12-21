@@ -3,9 +3,9 @@
     display: flex;
     flex-direction: row;
 
-    // BS Medi
+    // BS Med
     @media screen and (max-width: 768px) {
-      flex-direction: column;
+      display: none;
     }
 
     img {

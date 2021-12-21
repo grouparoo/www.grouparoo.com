@@ -22,13 +22,15 @@ export const Actionable = () => {
                 business needs to succeed.
               </p>
               <Link href="/solutions/reverse-etl" passHref={true}>
-                <Button
-                  type="button"
-                  variant="primary"
-                  className="rounded-pill"
-                >
-                  Learn More
-                </Button>
+                <div>
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    className="rounded-pill"
+                  >
+                    Learn More
+                  </Button>
+                </div>
               </Link>
             </section>
           </Col>
