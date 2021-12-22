@@ -21,7 +21,7 @@ export default function Navigation() {
   const [expanded, setExpanded] = useState(false);
 
   function navLinkClick() {
-    setExpanded(false)
+    setExpanded(false);
   }
   return (
     <header className={`pipes ${!onHomepage ? "mb-4" : ""}`}>
@@ -31,7 +31,12 @@ export default function Navigation() {
           expand="md"
           style={{ paddingLeft: 0, paddingRight: 0 }}
         >
-          <Navbar.Brand className="pt-3" onClick={() => {setNavLink(!expanded)}}>
+          <Navbar.Brand
+            className="pt-3"
+            onClick={() => {
+              setNavLink(!expanded);
+            }}
+          >
             <Link href="/">
               <a>
                 <Image
@@ -67,28 +72,44 @@ export default function Navigation() {
                         />{" "}
                         Sources
                       </Dropdown.Header>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/integrations/sources/snowflake">
                           <a className="nav-link" role="button">
                             Snowflake Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/integrations/sources/postgres">
                           <a className="nav-link" role="button">
                             Postgres Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/integrations/sources/mysql">
                           <a className="nav-link" role="button">
                             MySQL Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item onClick={() =>}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/integrations">
                           <a
                             className="nav-link"
@@ -112,28 +133,44 @@ export default function Navigation() {
                         />{" "}
                         Destinations
                       </Dropdown.Header>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/integrations/destinations/salesforce">
                           <a className="nav-link" role="button">
                             Salesforce Data Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/integrations/destinations/marketo">
                           <a className="nav-link" role="button">
                             Marketo Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/integrations/destinations/zendesk">
                           <a className="nav-link" role="button">
                             Zendesk Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/integrations">
                           <a
                             className="nav-link"
@@ -166,14 +203,22 @@ export default function Navigation() {
                         />
                         Industries
                       </Dropdown.Header>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/solutions/healthcare">
                           <a className="nav-link" role="button">
                             Healthcare
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/solutions/education">
                           <a className="nav-link" role="button">
                             Education
@@ -191,21 +236,33 @@ export default function Navigation() {
                         />
                         Comparisons
                       </Dropdown.Header>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/solutions/census-alternative">
                           <a className="nav-link" role="button">
                             vs. Census
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/solutions/segment-alternative">
                           <a className="nav-link" role="button">
                             vs. Segment
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/solutions/hightouch-alternative">
                           <a className="nav-link" role="button">
                             vs. Hightouch
@@ -225,7 +282,11 @@ export default function Navigation() {
                         />
                         Departments
                       </Dropdown.Header>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/">
                           <a className="nav-link" role="button">
                             Engineering
@@ -242,14 +303,22 @@ export default function Navigation() {
                         />
                         Categories
                       </Dropdown.Header>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/solutions/reverse-etl">
                           <a className="nav-link" role="button">
                             Reverse ETL
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item onClick={() => {navLinkClick()}}>
+                      <Dropdown.Item
+                        onClick={() => {
+                          navLinkClick();
+                        }}
+                      >
                         <Link href="/solutions/modern-data-stack">
                           <a className="nav-link" role="button">
                             Modern Data Stack
@@ -261,7 +330,12 @@ export default function Navigation() {
                 </Container>
               </NavDropdown>
 
-              <div className="nav-link" onClick={() => {navLinkClick()}}>
+              <div
+                className="nav-link"
+                onClick={() => {
+                  navLinkClick();
+                }}
+              >
                 <Link href="/pricing">
                   <a className="nav-link" role="button">
                     Pricing
@@ -269,7 +343,12 @@ export default function Navigation() {
                 </Link>
               </div>
 
-              <div className="nav-link" onClick={() => {navLinkClick()}}>
+              <div
+                className="nav-link"
+                onClick={() => {
+                  navLinkClick();
+                }}
+              >
                 <Link href="/docs">
                   <a className="nav-link" role="button">
                     Docs
@@ -277,7 +356,12 @@ export default function Navigation() {
                 </Link>
               </div>
 
-              <div className="nav-link" onClick={() => {navLinkClick()}}>
+              <div
+                className="nav-link"
+                onClick={() => {
+                  navLinkClick();
+                }}
+              >
                 <Link href="/blog">
                   <a className="nav-link" role="button">
                     Blog
@@ -295,7 +379,9 @@ export default function Navigation() {
                 variant="light"
                 size="sm"
                 className={"w-100 " + styles.github}
-                onClick={() => {navLinkClick()}}
+                onClick={() => {
+                  navLinkClick();
+                }}
               >
                 <FontAwesomeIcon icon={["fab", "github"]} size="xs" /> Star
               </Button>
@@ -305,7 +391,9 @@ export default function Navigation() {
                 variant="secondary"
                 size="sm"
                 className="col-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
-                onClick={() => {navLinkClick()}}
+                onClick={() => {
+                  navLinkClick();
+                }}
               >
                 Get Started
               </Button>
