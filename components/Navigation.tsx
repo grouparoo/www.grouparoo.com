@@ -13,17 +13,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "./Navigation.module.scss";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 export default function Navigation() {
   const router = useRouter();
   const onHomepage = useMemo(() => router.pathname === "/", [router.pathname]);
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <header className={`pipes ${!onHomepage ? "mb-4" : ""}`}>
       <Container>
-        <Navbar expand="md" style={{ paddingLeft: 0, paddingRight: 0 }}>
-          <Navbar.Brand className="pt-3">
+        <Navbar
+          expanded={expanded}
+          expand="md"
+          style={{ paddingLeft: 0, paddingRight: 0 }}
+        >
+          <Navbar.Brand className="pt-3" onClick={() => setExpanded(false)}>
             <Link href="/">
               <a>
                 <Image
@@ -36,8 +41,11 @@ export default function Navigation() {
             </Link>
             <span className="d-none">Grouparoo</span>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            onClick={() => setExpanded(!expanded)}
+          />
+          <Navbar.Collapse id="basic-navbar-nav navbar-collapse">
             <Nav className="ms-auto mt-3">
               <NavDropdown
                 className="pe-2 py-2 align-text-top"
@@ -56,28 +64,28 @@ export default function Navigation() {
                         />{" "}
                         Sources
                       </Dropdown.Header>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/integrations/sources/snowflake">
                           <a className="nav-link" role="button">
                             Snowflake Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/integrations/sources/postgres">
                           <a className="nav-link" role="button">
                             Postgres Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/integrations/sources/mysql">
                           <a className="nav-link" role="button">
                             MySQL Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/integrations">
                           <a
                             className="nav-link"
@@ -101,28 +109,28 @@ export default function Navigation() {
                         />{" "}
                         Destinations
                       </Dropdown.Header>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/integrations/destinations/salesforce">
                           <a className="nav-link" role="button">
                             Salesforce Data Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/integrations/destinations/marketo">
                           <a className="nav-link" role="button">
                             Marketo Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/integrations/destinations/zendesk">
                           <a className="nav-link" role="button">
                             Zendesk Integration
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/integrations">
                           <a
                             className="nav-link"
@@ -155,14 +163,14 @@ export default function Navigation() {
                         />
                         Industries
                       </Dropdown.Header>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/solutions/healthcare">
                           <a className="nav-link" role="button">
                             Healthcare
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/solutions/education">
                           <a className="nav-link" role="button">
                             Education
@@ -180,21 +188,21 @@ export default function Navigation() {
                         />
                         Comparisons
                       </Dropdown.Header>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/solutions/census-alternative">
                           <a className="nav-link" role="button">
                             vs. Census
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/solutions/segment-alternative">
                           <a className="nav-link" role="button">
                             vs. Segment
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/solutions/hightouch-alternative">
                           <a className="nav-link" role="button">
                             vs. Hightouch
@@ -214,7 +222,7 @@ export default function Navigation() {
                         />
                         Departments
                       </Dropdown.Header>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/">
                           <a className="nav-link" role="button">
                             Engineering
@@ -231,14 +239,14 @@ export default function Navigation() {
                         />
                         Categories
                       </Dropdown.Header>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/solutions/reverse-etl">
                           <a className="nav-link" role="button">
                             Reverse ETL
                           </a>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={() => setExpanded(false)}>
                         <Link href="/solutions/modern-data-stack">
                           <a className="nav-link" role="button">
                             Modern Data Stack
@@ -250,7 +258,7 @@ export default function Navigation() {
                 </Container>
               </NavDropdown>
 
-              <div className="nav-link">
+              <div className="nav-link" onClick={() => setExpanded(false)}>
                 <Link href="/pricing">
                   <a className="nav-link" role="button">
                     Pricing
@@ -258,7 +266,7 @@ export default function Navigation() {
                 </Link>
               </div>
 
-              <div className="nav-link">
+              <div className="nav-link" onClick={() => setExpanded(false)}>
                 <Link href="/docs">
                   <a className="nav-link" role="button">
                     Docs
@@ -266,7 +274,7 @@ export default function Navigation() {
                 </Link>
               </div>
 
-              <div className="nav-link">
+              <div className="nav-link" onClick={() => setExpanded(false)}>
                 <Link href="/blog">
                   <a className="nav-link" role="button">
                     Blog
@@ -284,6 +292,7 @@ export default function Navigation() {
                 variant="light"
                 size="sm"
                 className={"w-100 " + styles.github}
+                onClick={() => setExpanded(false)}
               >
                 <FontAwesomeIcon icon={["fab", "github"]} size="xs" /> Star
               </Button>
@@ -293,6 +302,7 @@ export default function Navigation() {
                 variant="secondary"
                 size="sm"
                 className="col-sm-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
+                onClick={() => setExpanded(false)}
               >
                 Get Started
               </Button>
