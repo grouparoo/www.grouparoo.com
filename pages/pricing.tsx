@@ -142,14 +142,14 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
 
       <Container className="mt-3 mx-auto">
         <Row>
-          <Col className="">
-            <Table className="text-center bg-white w-100">
+          <Col style={{ overflowX: "scroll" }}>
+            <Table className="text-center bg-white" style={{ minWidth: 600 }}>
               <thead>
                 <tr>
                   <th></th>
                   <th>Community</th>
                   <th>Standard Cloud</th>
-                  <th className="d-none d-md-table-cell">Enterprise Cloud</th>
+                  <th>Enterprise Cloud</th>
                 </tr>
               </thead>
               <tbody>
@@ -178,7 +178,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                       height={24}
                     />
                   </td>
-                  <td className="d-none d-md-table-cell">
+                  <td>
                     <Image
                       src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
@@ -191,7 +191,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                   <td className="text-start">Integrations available</td>
                   <td>All</td>
                   <td>All</td>
-                  <td className="d-none d-md-table-cell">All</td>
+                  <td>All</td>
                 </tr>
                 <tr>
                   <td className="text-start">Dynamic Group Definitions</td>
@@ -211,7 +211,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                       height={24}
                     />
                   </td>
-                  <td className="d-none d-md-table-cell">
+                  <td>
                     <Image
                       src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
@@ -238,7 +238,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                       height={24}
                     />
                   </td>
-                  <td className="d-none d-md-table-cell">
+                  <td>
                     <Image
                       src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
@@ -258,7 +258,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                       height={24}
                     />
                   </td>
-                  <td className="d-none d-md-table-cell">
+                  <td>
                     <Image
                       src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
@@ -270,7 +270,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                 <tr>
                   <td className="text-start">SaaS Hosted</td>
                   <td>-</td>
-                  <td className="d-none d-md-table-cell">
+                  <td>
                     <Image
                       src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
@@ -278,7 +278,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                       height={24}
                     />
                   </td>
-                  <td className="d-none d-md-table-cell">
+                  <td>
                     <Image
                       src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
@@ -300,7 +300,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                       height={24}
                     />
                   </td>
-                  <td className="d-none d-md-table-cell">
+                  <td>
                     <Image
                       src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
@@ -322,7 +322,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                       height={24}
                     />
                   </td>
-                  <td className="d-none d-md-table-cell">
+                  <td>
                     <Image
                       src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
@@ -342,7 +342,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                       height={24}
                     />
                   </td>
-                  <td className="d-none d-md-table-cell">
+                  <td>
                     <Image
                       src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
@@ -374,7 +374,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                       height={24}
                     />
                   </td>
-                  <td className="d-none d-md-table-cell">
+                  <td>
                     <Image
                       src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
@@ -401,7 +401,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                       height={24}
                     />
                   </td>
-                  <td className="d-none d-md-table-cell">
+                  <td>
                     <Image
                       src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
@@ -421,7 +421,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                       height={24}
                     />
                   </td>
-                  <td className="d-none d-md-table-cell">
+                  <td>
                     <Image
                       src="/images/grouparoo-purple-checkmark.svg"
                       alt="Grouparoo blue checkmark"
@@ -434,7 +434,7 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
                   <td className="text-start">Enhanced Support SLAs</td>
                   <td> - </td>
                   <td>Add-on</td>
-                  <td className="d-none d-md-table-cell">Add-on</td>
+                  <td>Add-on</td>
                 </tr>
                 <tr>
                   <td colSpan={4} className="text-start h5">
@@ -481,9 +481,10 @@ shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
           </Col>
         </Row>
       </Container>
+
       <br />
       <br />
-      <div id="frequently-asked-questions" className="">
+      <div id="frequently-asked-questions">
         <Container>
           <Row>
             <Col>
