@@ -1,12 +1,10 @@
 import React from "react";
-import { useRouter } from "next/router";
 import { getSolutionsData } from "../../utils/solutionsPages";
 import ComparisonPage from "../../components/solutions/ComparisonPage";
 import CategoryPage from "../../components/solutions/CategoryPage";
 import * as components from "../../components/solutions/Index";
 
 export default function SolutionsPage({ pageProps }) {
-  const router = useRouter();
   const { solutionData } = pageProps;
 
   let pageContent = solutionData.hasOwnProperty("category") ? (

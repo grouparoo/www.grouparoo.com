@@ -217,7 +217,10 @@ function DestinationHeaderArrow({ data }) {
           style={{ textAlign: "center" }}
           className="align-self-center"
         >
-          <BigArrow downOnMobile={true} />
+          <br />
+          <br className="d-none d-md-block" />
+          <br className="d-none d-md-block" />
+          <BigArrow downOnMobile={true} /> <br /> <br />
         </Col>
         <Col md={3} style={{ textAlign: "center" }}>
           <IntegrationCard slug="grouparoo" showLink={false} />
@@ -227,7 +230,10 @@ function DestinationHeaderArrow({ data }) {
           style={{ textAlign: "center" }}
           className="align-self-center"
         >
-          <BigArrow downOnMobile={true} />
+          <br />
+          <br className="d-none d-md-block" />
+          <br className="d-none d-md-block" />
+          <BigArrow downOnMobile={true} /> <br /> <br />
         </Col>
         <Col md={3} style={{ textAlign: "center" }}>
           <IntegrationCard slug={data.slug} showLink={false} />
@@ -257,17 +263,19 @@ function SourceHeaderArrow({ data }) {
           <IntegrationCard slug={data.slug} showLink={false} />
         </Col>
         <Col md={1} style={{ textAlign: "center" }}>
+          <br />
           <br className="d-none d-md-block" />
           <br className="d-none d-md-block" />
-          <BigArrow downOnMobile={true} /> <br />
+          <BigArrow downOnMobile={true} /> <br /> <br />
         </Col>
         <Col md={3} style={{ textAlign: "center" }}>
           <IntegrationCard slug="grouparoo" showLink={false} />
         </Col>
         <Col md={1} style={{ textAlign: "center" }}>
+          <br />
           <br className="d-none d-md-block" />
           <br className="d-none d-md-block" />
-          <BigArrow downOnMobile={true} /> <br />
+          <BigArrow downOnMobile={true} /> <br /> <br />
         </Col>
         <Col md={3} style={{ textAlign: "center" }}>
           <IntegrationCard slug={"destinations"} showLink={false} />
