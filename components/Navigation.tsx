@@ -18,41 +18,31 @@ import { useMemo, useState } from "react";
 export default function Navigation() {
   const router = useRouter();
   const onHomepage = useMemo(() => router.pathname === "/", [router.pathname]);
-  const [expanded, setExpanded] = useState(false);
 
-  const navLinkClick = () => {
-    setExpanded(false);
-  };
   return (
     <header className={`pipes ${!onHomepage ? "mb-4" : ""}`}>
       <Container>
         <Navbar
-          expanded={expanded}
+          collapseOnSelect
           expand="md"
           style={{ paddingLeft: 0, paddingRight: 0 }}
         >
-          <Navbar.Brand
-            className="pt-3"
-            onClick={() => {
-              setExpanded(!expanded);
-            }}
-          >
-            <Link href="/">
-              <a>
-                <Image
-                  src="/images/logo-and-wordmark-white-words.svg"
-                  alt="Grouparoo Logo"
-                  width={150}
-                  height={32}
-                />
-              </a>
+          <Navbar.Brand className="pt-3" onClick={() => {}}>
+            <Link href="/" passHref>
+              <Nav.Link>
+                <a>
+                  <Image
+                    src="/images/logo-and-wordmark-white-words.svg"
+                    alt="Grouparoo Logo"
+                    width={150}
+                    height={32}
+                  />
+                </a>
+              </Nav.Link>
             </Link>
             <span className="d-none">Grouparoo</span>
           </Navbar.Brand>
-          <Navbar.Toggle
-            aria-controls="basic-navbar-nav"
-            onClick={() => setExpanded(!expanded)}
-          />
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav navbar-collapse">
             <Nav className="ms-auto mt-3">
               <NavDropdown
@@ -72,52 +62,24 @@ export default function Navigation() {
                         />{" "}
                         Sources
                       </Dropdown.Header>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/integrations/sources/snowflake">
-                          <a className="nav-link" role="button">
-                            Snowflake Integration
-                          </a>
+                      <Dropdown.Item onClick={() => {}}>
+                        <Link href="/integrations/sources/snowflake" passHref>
+                          <Nav.Link>Snowflake Integration</Nav.Link>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/integrations/sources/postgres">
-                          <a className="nav-link" role="button">
-                            Postgres Integration
-                          </a>
+                      <Dropdown.Item>
+                        <Link href="/integrations/sources/postgres" passHref>
+                          <Nav.Link>Postgres Integration</Nav.Link>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/integrations/sources/mysql">
-                          <a className="nav-link" role="button">
-                            MySQL Integration
-                          </a>
+                      <Dropdown.Item>
+                        <Link href="/integrations/sources/mysql" passHref>
+                          <Nav.Link>MySQL Integration</Nav.Link>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/integrations">
-                          <a
-                            className="nav-link"
-                            role="button"
-                            id="seeMoreLink"
-                          >
-                            See More...
-                          </a>
+                      <Dropdown.Item>
+                        <Link href="/integrations" passHref>
+                          <Nav.Link id="seeMoreLink">See More...</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Divider className="d-lg-none" />
@@ -133,52 +95,33 @@ export default function Navigation() {
                         />{" "}
                         Destinations
                       </Dropdown.Header>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/integrations/destinations/salesforce">
-                          <a className="nav-link" role="button">
-                            Salesforce Data Integration
-                          </a>
+                      <Dropdown.Item>
+                        <Link
+                          href="/integrations/destinations/salesforce"
+                          passHref
+                        >
+                          <Nav.Link>Salesforce Data Integration</Nav.Link>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/integrations/destinations/marketo">
-                          <a className="nav-link" role="button">
-                            Marketo Integration
-                          </a>
+                      <Dropdown.Item>
+                        <Link
+                          href="/integrations/destinations/marketo"
+                          passHref
+                        >
+                          <Nav.Link>Marketo Integration</Nav.Link>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/integrations/destinations/zendesk">
-                          <a className="nav-link" role="button">
-                            Zendesk Integration
-                          </a>
+                      <Dropdown.Item>
+                        <Link
+                          href="/integrations/destinations/zendesk"
+                          passHref
+                        >
+                          <Nav.Link>Zendesk Integration</Nav.Link>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/integrations">
-                          <a
-                            className="nav-link"
-                            role="button"
-                            id="seeMoreLink"
-                          >
-                            See More...
-                          </a>
+                      <Dropdown.Item>
+                        <Link href="/integrations" passHref>
+                          <Nav.Link>See More...</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                     </Col>
@@ -203,26 +146,14 @@ export default function Navigation() {
                         />
                         Industries
                       </Dropdown.Header>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/solutions/healthcare">
-                          <a className="nav-link" role="button">
-                            Healthcare
-                          </a>
+                      <Dropdown.Item>
+                        <Link href="/solutions/healthcare" passHref>
+                          <Nav.Link>Healthcare</Nav.Link>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/solutions/education">
-                          <a className="nav-link" role="button">
-                            Education
-                          </a>
+                      <Dropdown.Item>
+                        <Link href="/solutions/education" passHref>
+                          <Nav.Link> Education</Nav.Link>
                         </Link>
                       </Dropdown.Item>
 
@@ -236,37 +167,19 @@ export default function Navigation() {
                         />
                         Comparisons
                       </Dropdown.Header>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/solutions/census-alternative">
-                          <a className="nav-link" role="button">
-                            vs. Census
-                          </a>
+                      <Dropdown.Item>
+                        <Link href="/solutions/census-alternative" passHref>
+                          <Nav.Link>vs. Census</Nav.Link>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/solutions/segment-alternative">
-                          <a className="nav-link" role="button">
-                            vs. Segment
-                          </a>
+                      <Dropdown.Item>
+                        <Link href="/solutions/segment-alternative" passHref>
+                          <Nav.Link> vs. Segment</Nav.Link>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/solutions/hightouch-alternative">
-                          <a className="nav-link" role="button">
-                            vs. Hightouch
-                          </a>
+                      <Dropdown.Item>
+                        <Link href="/solutions/hightouch-alternative" passHref>
+                          <Nav.Link> vs. Hightouch</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Divider className="d-lg-none" />
@@ -282,15 +195,9 @@ export default function Navigation() {
                         />
                         Departments
                       </Dropdown.Header>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/">
-                          <a className="nav-link" role="button">
-                            Engineering
-                          </a>
+                      <Dropdown.Item>
+                        <Link href="/" passHref>
+                          <Nav.Link> Engineering</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Divider />
@@ -303,26 +210,14 @@ export default function Navigation() {
                         />
                         Categories
                       </Dropdown.Header>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/solutions/reverse-etl">
-                          <a className="nav-link" role="button">
-                            Reverse ETL
-                          </a>
+                      <Dropdown.Item>
+                        <Link href="/solutions/reverse-etl" passHref>
+                          <Nav.Link> Reverse ETL</Nav.Link>
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => {
-                          navLinkClick();
-                        }}
-                      >
-                        <Link href="/solutions/modern-data-stack">
-                          <a className="nav-link" role="button">
-                            Modern Data Stack
-                          </a>
+                      <Dropdown.Item>
+                        <Link href="/solutions/modern-data-stack" passHref>
+                          <Nav.Link> Modern Data Stack</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                     </Col>
@@ -330,42 +225,21 @@ export default function Navigation() {
                 </Container>
               </NavDropdown>
 
-              <div
-                className="nav-link"
-                onClick={() => {
-                  navLinkClick();
-                }}
-              >
-                <Link href="/pricing">
-                  <a className="nav-link" role="button">
-                    Pricing
-                  </a>
+              <div className="nav-link">
+                <Link href="/pricing" passHref>
+                  <Nav.Link> Pricing</Nav.Link>
                 </Link>
               </div>
 
-              <div
-                className="nav-link"
-                onClick={() => {
-                  navLinkClick();
-                }}
-              >
-                <Link href="/docs">
-                  <a className="nav-link" role="button">
-                    Docs
-                  </a>
+              <div className="nav-link">
+                <Link href="/docs" passHref>
+                  <Nav.Link> Docs</Nav.Link>
                 </Link>
               </div>
 
-              <div
-                className="nav-link"
-                onClick={() => {
-                  navLinkClick();
-                }}
-              >
-                <Link href="/blog">
-                  <a className="nav-link" role="button">
-                    Blog
-                  </a>
+              <div className="nav-link">
+                <Link href="/blog" passHref>
+                  <Nav.Link> Blog</Nav.Link>
                 </Link>
               </div>
             </Nav>
@@ -379,9 +253,6 @@ export default function Navigation() {
                 variant="light"
                 size="sm"
                 className={"w-100 " + styles.github}
-                onClick={() => {
-                  navLinkClick();
-                }}
               >
                 <FontAwesomeIcon icon={["fab", "github"]} size="xs" /> Star
               </Button>
@@ -391,9 +262,6 @@ export default function Navigation() {
                 variant="secondary"
                 size="sm"
                 className="col-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
-                onClick={() => {
-                  navLinkClick();
-                }}
               >
                 Get Started
               </Button>
