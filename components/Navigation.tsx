@@ -301,7 +301,7 @@ export default function Navigation() {
               <Button
                 variant="secondary"
                 size="sm"
-                className="col-sm-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
+                className="col-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
                 onClick={() => setExpanded(false)}
               >
                 Get Started
