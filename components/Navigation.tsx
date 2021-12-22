@@ -20,9 +20,9 @@ export default function Navigation() {
   const onHomepage = useMemo(() => router.pathname === "/", [router.pathname]);
   const [expanded, setExpanded] = useState(false);
 
-  function navLinkClick() {
+  const navLinkClick = () => {
     setExpanded(false);
-  }
+  };
   return (
     <header className={`pipes ${!onHomepage ? "mb-4" : ""}`}>
       <Container>
@@ -34,7 +34,7 @@ export default function Navigation() {
           <Navbar.Brand
             className="pt-3"
             onClick={() => {
-              setNavLink(!expanded);
+              setExpanded(!expanded);
             }}
           >
             <Link href="/">
