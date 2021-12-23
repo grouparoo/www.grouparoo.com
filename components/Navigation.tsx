@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "./Navigation.module.scss";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 export default function Navigation() {
   const router = useRouter();
@@ -21,13 +21,13 @@ export default function Navigation() {
 
   return (
     <header className={`pipes ${!onHomepage ? "mb-4" : ""}`}>
-      <Container>
+      <Container style={{ padding: 0 }}>
         <Navbar
           collapseOnSelect
           expand="md"
           style={{ paddingLeft: 0, paddingRight: 0 }}
         >
-          <Navbar.Brand className="pt-3" onClick={() => {}}>
+          <Navbar.Brand className="pt-3">
             <Link href="/" passHref>
               <Nav.Link>
                 <Image
@@ -60,7 +60,7 @@ export default function Navigation() {
                         />{" "}
                         Sources
                       </Dropdown.Header>
-                      <Dropdown.Item onClick={() => {}}>
+                      <Dropdown.Item>
                         <Link href="/integrations/sources/snowflake" passHref>
                           <Nav.Link>Snowflake Integration</Nav.Link>
                         </Link>
@@ -251,18 +251,22 @@ export default function Navigation() {
                 variant="light"
                 size="sm"
                 className={"w-100 " + styles.github}
+                style={{ minWidth: 70 }}
               >
                 <FontAwesomeIcon icon={["fab", "github"]} size="xs" /> Star
               </Button>
             </a>
             <Link href="/get-started" passHref>
-              <Button
-                variant="secondary"
-                size="sm"
-                className="col-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
-              >
-                Get Started
-              </Button>
+              <Nav.Link>
+                <Button
+                  style={{ minWidth: 188 }}
+                  variant="secondary"
+                  size="sm"
+                  className="col-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
+                >
+                  Get Started
+                </Button>
+              </Nav.Link>
             </Link>
           </Navbar.Collapse>
         </Navbar>
