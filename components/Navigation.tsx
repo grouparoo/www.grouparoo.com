@@ -30,14 +30,12 @@ export default function Navigation() {
           <Navbar.Brand className="pt-3" onClick={() => {}}>
             <Link href="/" passHref>
               <Nav.Link>
-                <a>
-                  <Image
-                    src="/images/logo-and-wordmark-white-words.svg"
-                    alt="Grouparoo Logo"
-                    width={150}
-                    height={32}
-                  />
-                </a>
+                <Image
+                  src="/images/logo-and-wordmark-white-words.svg"
+                  alt="Grouparoo Logo"
+                  width={150}
+                  height={32}
+                />
               </Nav.Link>
             </Link>
             <span className="d-none">Grouparoo</span>
