@@ -21,23 +21,27 @@ export default function Navigation() {
 
   return (
     <header className={`pipes ${!onHomepage ? "mb-4" : ""}`}>
-      <Container>
-        <Navbar expand="md" style={{ paddingLeft: 0, paddingRight: 0 }}>
+      <Container style={{ padding: 0 }}>
+        <Navbar
+          collapseOnSelect
+          expand="md"
+          style={{ paddingLeft: 0, paddingRight: 0 }}
+        >
           <Navbar.Brand className="pt-3">
-            <Link href="/">
-              <a>
+            <Link href="/" passHref>
+              <Nav.Link>
                 <Image
                   src="/images/logo-and-wordmark-white-words.svg"
                   alt="Grouparoo Logo"
                   width={150}
                   height={32}
                 />
-              </a>
+              </Nav.Link>
             </Link>
             <span className="d-none">Grouparoo</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse id="basic-navbar-nav navbar-collapse">
             <Nav className="ms-auto mt-3">
               <NavDropdown
                 className="pe-2 py-2 align-text-top"
@@ -57,35 +61,23 @@ export default function Navigation() {
                         Sources
                       </Dropdown.Header>
                       <Dropdown.Item>
-                        <Link href="/integrations/sources/snowflake">
-                          <a className="nav-link" role="button">
-                            Snowflake Integration
-                          </a>
+                        <Link href="/integrations/sources/snowflake" passHref>
+                          <Nav.Link>Snowflake Integration</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <Link href="/integrations/sources/postgres">
-                          <a className="nav-link" role="button">
-                            Postgres Integration
-                          </a>
+                        <Link href="/integrations/sources/postgres" passHref>
+                          <Nav.Link>Postgres Integration</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <Link href="/integrations/sources/mysql">
-                          <a className="nav-link" role="button">
-                            MySQL Integration
-                          </a>
+                        <Link href="/integrations/sources/mysql" passHref>
+                          <Nav.Link>MySQL Integration</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <Link href="/integrations">
-                          <a
-                            className="nav-link"
-                            role="button"
-                            id="seeMoreLink"
-                          >
-                            See More...
-                          </a>
+                        <Link href="/integrations" passHref>
+                          <Nav.Link id="seeMoreLink">See More...</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Divider className="d-lg-none" />
@@ -102,35 +94,32 @@ export default function Navigation() {
                         Destinations
                       </Dropdown.Header>
                       <Dropdown.Item>
-                        <Link href="/integrations/destinations/salesforce">
-                          <a className="nav-link" role="button">
-                            Salesforce Data Integration
-                          </a>
+                        <Link
+                          href="/integrations/destinations/salesforce"
+                          passHref
+                        >
+                          <Nav.Link>Salesforce Data Integration</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <Link href="/integrations/destinations/marketo">
-                          <a className="nav-link" role="button">
-                            Marketo Integration
-                          </a>
+                        <Link
+                          href="/integrations/destinations/marketo"
+                          passHref
+                        >
+                          <Nav.Link>Marketo Integration</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <Link href="/integrations/destinations/zendesk">
-                          <a className="nav-link" role="button">
-                            Zendesk Integration
-                          </a>
+                        <Link
+                          href="/integrations/destinations/zendesk"
+                          passHref
+                        >
+                          <Nav.Link>Zendesk Integration</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <Link href="/integrations">
-                          <a
-                            className="nav-link"
-                            role="button"
-                            id="seeMoreLink"
-                          >
-                            See More...
-                          </a>
+                        <Link href="/integrations" passHref>
+                          <Nav.Link>See More...</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                     </Col>
@@ -156,17 +145,13 @@ export default function Navigation() {
                         Industries
                       </Dropdown.Header>
                       <Dropdown.Item>
-                        <Link href="/solutions/healthcare">
-                          <a className="nav-link" role="button">
-                            Healthcare
-                          </a>
+                        <Link href="/solutions/healthcare" passHref>
+                          <Nav.Link>Healthcare</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <Link href="/solutions/education">
-                          <a className="nav-link" role="button">
-                            Education
-                          </a>
+                        <Link href="/solutions/education" passHref>
+                          <Nav.Link> Education</Nav.Link>
                         </Link>
                       </Dropdown.Item>
 
@@ -181,24 +166,18 @@ export default function Navigation() {
                         Comparisons
                       </Dropdown.Header>
                       <Dropdown.Item>
-                        <Link href="/solutions/census-alternative">
-                          <a className="nav-link" role="button">
-                            vs. Census
-                          </a>
+                        <Link href="/solutions/census-alternative" passHref>
+                          <Nav.Link>vs. Census</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <Link href="/solutions/segment-alternative">
-                          <a className="nav-link" role="button">
-                            vs. Segment
-                          </a>
+                        <Link href="/solutions/segment-alternative" passHref>
+                          <Nav.Link> vs. Segment</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <Link href="/solutions/hightouch-alternative">
-                          <a className="nav-link" role="button">
-                            vs. Hightouch
-                          </a>
+                        <Link href="/solutions/hightouch-alternative" passHref>
+                          <Nav.Link> vs. Hightouch</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Divider className="d-lg-none" />
@@ -215,10 +194,8 @@ export default function Navigation() {
                         Departments
                       </Dropdown.Header>
                       <Dropdown.Item>
-                        <Link href="/">
-                          <a className="nav-link" role="button">
-                            Engineering
-                          </a>
+                        <Link href="/" passHref>
+                          <Nav.Link> Engineering</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Divider />
@@ -232,17 +209,13 @@ export default function Navigation() {
                         Categories
                       </Dropdown.Header>
                       <Dropdown.Item>
-                        <Link href="/solutions/reverse-etl">
-                          <a className="nav-link" role="button">
-                            Reverse ETL
-                          </a>
+                        <Link href="/solutions/reverse-etl" passHref>
+                          <Nav.Link> Reverse ETL</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <Link href="/solutions/modern-data-stack">
-                          <a className="nav-link" role="button">
-                            Modern Data Stack
-                          </a>
+                        <Link href="/solutions/modern-data-stack" passHref>
+                          <Nav.Link> Modern Data Stack</Nav.Link>
                         </Link>
                       </Dropdown.Item>
                     </Col>
@@ -251,26 +224,20 @@ export default function Navigation() {
               </NavDropdown>
 
               <div className="nav-link">
-                <Link href="/pricing">
-                  <a className="nav-link" role="button">
-                    Pricing
-                  </a>
+                <Link href="/pricing" passHref>
+                  <Nav.Link> Pricing</Nav.Link>
                 </Link>
               </div>
 
               <div className="nav-link">
-                <Link href="/docs">
-                  <a className="nav-link" role="button">
-                    Docs
-                  </a>
+                <Link href="/docs" passHref>
+                  <Nav.Link> Docs</Nav.Link>
                 </Link>
               </div>
 
               <div className="nav-link">
-                <Link href="/blog">
-                  <a className="nav-link" role="button">
-                    Blog
-                  </a>
+                <Link href="/blog" passHref>
+                  <Nav.Link> Blog</Nav.Link>
                 </Link>
               </div>
             </Nav>
@@ -284,18 +251,22 @@ export default function Navigation() {
                 variant="light"
                 size="sm"
                 className={"w-100 " + styles.github}
+                style={{ minWidth: 70 }}
               >
                 <FontAwesomeIcon icon={["fab", "github"]} size="xs" /> Star
               </Button>
             </a>
             <Link href="/get-started" passHref>
-              <Button
-                variant="secondary"
-                size="sm"
-                className="col-sm-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
-              >
-                Get Started
-              </Button>
+              <Nav.Link>
+                <Button
+                  style={{ minWidth: 188 }}
+                  variant="secondary"
+                  size="sm"
+                  className="col-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
+                >
+                  Get Started
+                </Button>
+              </Nav.Link>
             </Link>
           </Navbar.Collapse>
         </Navbar>
