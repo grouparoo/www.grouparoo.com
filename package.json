@@ -75,7 +75,7 @@
     "jest": "27.4.3",
     "jest-environment-webdriver": "grouparoo/jest-webdriver#jest-v27-webdriver",
     "jest-mock-axios": "4.5.0",
-    "markdown-table": "2.0.0",
+    "markdown-table": "3.0.2",
     "next-remote-watch": "1.0.0",
     "prettier": "2.5.0",
     "ts-jest": "27.1.2",
