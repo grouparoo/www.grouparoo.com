@@ -34,9 +34,9 @@ export function useApi(errorHandler: ErrorHandler) {
           setter(apiResponse);
         }
       }
-    } catch (error) {
-      if (errorHandler) {
-        errorHandler.set({ error: error });
+    } catch (error: unknown) {
+      if (errorHandler && error instanceof Error) {
+        errorHandler.set(error);
       } else {
         console.error(error);
       }

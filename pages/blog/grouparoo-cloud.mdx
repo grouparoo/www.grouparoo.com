@@ -1,0 +1,74 @@
+---
+title: "Enabling CI/CD with Grouparoo Cloud"
+date: "2021-12-21"
+author: "Pedro S Lopez"
+pullQuote: "Grouparoo's developer tooling enables a git workflow on your Reverse ETL project."
+image: "grouparoo-cloud/211220-title.png"
+tags: [product, engineering]
+---
+
+As Data Engineering keeps evolving, more traditional Software Engineering practices continue to be incorporated into the field. The [development workflow for reverse ETL](/blog/software-development-workflow) allows you to check configuration-as-code into a git repository, using the workflow you already know and love: create a pull request with your changes, have a team member review the code, and merge it in when it’s ready.
+
+We’ve continued to make this workflow better, introducing tools like our [Config UI](/docs/config#getting-started-with-ui-config), which makes it easy to configure Grouparoo through a visual interface, in context with your data, while still outputting declarative configuration in the form of JSON files.
+
+Now that everything is in a git repository, it's time to deploy. Building upon these features, we’re now making deploying and managing Grouparoo even easier with Grouparoo Cloud, bringing continuous integration and deployment to your Grouparoo project.
+
+Here's a quick look at how it works:
+
+<p className="video-responsive">
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/pI9Af4FJ3ws?rel=0"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  ></iframe>
+</p>
+
+### Easily connect to GitHub
+
+Integrating a new or existing GitHub repository with Grouparoo Cloud is as simple as installing a single [GitHub action](https://github.com/grouparoo/cloud-action). Check out a full example by visiting the [app-example-cloud project](https://github.com/grouparoo/app-example-cloud/), or watch the video above for a more guided tour.
+
+### Continuous Integration
+
+As you change your groups or send your users to new Destinations, create pull requests with your changes and get automatic validation of your Grouparoo configuration. This adds confidence that the configuration you’ll deploy is working and ready to go.
+
+<Image
+  centered
+  alt="Validation succeeded on GitHub"
+  src="grouparoo-cloud/github-validate.png"
+  width={1900}
+  height={1234}
+/>
+
+Want to go even deeper? You can take it one step further by writing [snapshot tests](/docs/running/testing#writing-tests) to ensure that the application is producing the records and groups you expect.
+
+### Continuous Deployment
+
+When you're ready to deploy, just merge your changes into the `main` branch and Grouparoo Cloud will deploy your latest configuration into production. This means that the code in your git repository will always match what's deployed to production.
+
+<Image
+  centered
+  alt="Apply finished on Grouparoo Cloud"
+  src="grouparoo-cloud/apply.png"
+  width={960}
+  height={682}
+/>
+
+### Made for Grouparoo
+
+Because Grouparoo Cloud was designed with hosting Grouparoo in mind, it runs optimized infrastructure for your instance. In addition, set sensitive connection details as secrets, view your latest logs, browse your history of applied configurations, and more.
+
+<Image
+  centered
+  alt="Setting secrets on Grouparoo Cloud"
+  src="grouparoo-cloud/secrets.png"
+  width={960}
+  height={675}
+/>
+
+### Next steps
+
+Sign up for a 30-day free trial at [grouparoo.com/trial](/trial) to try out Grouparoo Cloud for yourself!
+If you want to learn more, please check out [our docs](/docs/cloud).

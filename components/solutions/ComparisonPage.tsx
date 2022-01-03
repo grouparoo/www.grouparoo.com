@@ -76,15 +76,13 @@ export default function ComparisonPage(comp: ComparisonInfo) {
         </Container>
       </div>
       <FeatureBanner category="Reverse ETL Tool" features={comp.features} />
-      <div className="homePageSection">
-        <Container fluid className="p-0">
-          <Row className="d-flex justify-content-center">
-            <div className="mdxContent justify-content-center comparisonContent">
-              {content}
-            </div>
-          </Row>
-        </Container>
-      </div>
+
+      <Container fluid className="homePageSection p-0 justify-content-center">
+        <div className="mdxContent justify-content-center comparisonContent">
+          {content}
+        </div>
+      </Container>
+
       <ComparisonTable comparisonChartData={comp.comparisonChartData} />
     </>
   );

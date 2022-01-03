@@ -135,7 +135,7 @@ export async function getFeed(): Promise<Feed> {
     id: "https://www.grouparoo.com/blog",
     link: "https://www.grouparoo.com/blog",
     language: "en", // optional, used only in RSS 2.0, possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
-    image: "https://www.grouparoo.com/favicon/favicon-196x196.png",
+    image: "https://www.grouparoo.com/favicon/favicon-192x192.png",
     favicon: "https://www.grouparoo.com/favicon/favicon-32x32.png",
     copyright: "© Grouparoo, Inc. 2020",
     generator: "Feed for Node.js",

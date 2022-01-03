@@ -73,17 +73,16 @@ const ruleOpsData: RuleOpsDbType[] = [
 
 const DataTable = ({ data, heading, eventKey }) => {
   return (
-    <Fragment>
-      <Accordion.Button style={{ display: "block", paddingLeft: "0" }}>
+    <Accordion.Item eventKey={eventKey} className="">
+      <Accordion.Header className="pt-0 pb-0">
         <h4>{heading}</h4>
-      </Accordion.Button>
-      <Accordion.Collapse eventKey={eventKey}>
+      </Accordion.Header>
+      <Accordion.Body>
         <Fragment>
           <p>
             {heading === "date" ? (
               <Alert variant="primary">
-                💡 Dates used for calculated groups should use full ISO-8601
-                format: <br />
+                💡 Dates used for Groups should use full ISO-8601 format: <br />
                 <span className="ps-4">
                   <b>YYYY-MM-DDThh:mm:ss.mmm+TZD</b>{" "}
                   ("2020-09-01T08:15:00+00:00"){" "}
@@ -97,32 +96,35 @@ const DataTable = ({ data, heading, eventKey }) => {
           </p>
 
           {data.map((item, idx) => (
-            <Row
-              key={idx}
-              className="border border-top-light border-bottom-light pt-3 pb-2  align-items-center ps-lg-5 pe-lg-3"
-            >
-              <Col className="text-center col-lg-4 mx-auto mx-0 ps-4 ps-lg-0">
-                <Row>
-                  <code className="h5">{item.op}</code>
-                </Row>
-                <Row>{item.description}</Row>
-              </Col>
-              <Col className="col-12 col-lg-8 mx-auto">
-                <div className="overflow-hidden">
-                  <CodeBlock
-                    value={JSON.stringify(item.example, null, 2)}
-                    language="json"
-                  />
-                </div>
-                <div className="ps-2">
-                  <small>{item.caption}</small>
-                </div>
-              </Col>
-            </Row>
+            <>
+              <Row
+                key={idx}
+                className="pt-3 pb-2 align-items-center ps-lg-5 pe-lg-3"
+              >
+                <Col className="col-lg-4 mx-auto mx-0 ps-4 ps-lg-0">
+                  <Row>
+                    <code className="h5 p-0">{item.op}</code>
+                  </Row>
+                  <Row>{item.description}</Row>
+                </Col>
+                <Col className="col-12 col-lg-8 mx-auto">
+                  <div className="overflow-hidden">
+                    <CodeBlock
+                      value={JSON.stringify(item.example, null, 2)}
+                      language="json"
+                    />
+                  </div>
+                  <div className="ps-2">
+                    <small>{item.caption}</small>
+                  </div>
+                </Col>
+              </Row>
+              <hr />
+            </>
           ))}
         </Fragment>
-      </Accordion.Collapse>
-    </Fragment>
+      </Accordion.Body>
+    </Accordion.Item>
   );
 };
 
@@ -130,13 +132,11 @@ export default function RuleOpsTable() {
   return (
     <Tabs defaultActiveKey={ruleOpsData[0].key}>
       {ruleOpsData.map(({ data, key: dbKey, title }, idx) => (
-        <Tab
-          key={dbKey}
-          eventKey={dbKey}
-          title={title}
-          style={{ padding: "1rem" }}
-        >
-          <Accordion defaultActiveKey={`${dbKey}-${propertyTypes[0]}`}>
+        <Tab key={dbKey} eventKey={dbKey} title={title}>
+          <Accordion
+            defaultActiveKey={`${dbKey}-${propertyTypes[0]}`}
+            className="m-0"
+          >
             {propertyTypes.map((typeKey) => (
               <DataTable
                 key={typeKey}

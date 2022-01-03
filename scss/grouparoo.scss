@@ -1,25 +1,31 @@
+// -- Variables --
 @import "_variables.scss";
-
-// -- Colors --
 
 // -- External Components --
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-svg-core/styles.css";
 @import "../public/css/prism";
 
-// -- Fonts --
-// Google Fonts are now magically handled by next - https://nextjs.org/docs/basic-features/font-optimization.  They are loaded in the header in `_document.tsx`
-$font-header: Inter, sans-serif;
-$font-body: IBM Plex Sans, sans-serif;
-$font-code: IBM Plex Mono, sans-serif;
+$mobile-display-breakpoint: 600px;
+$mobile-font-breakpoint: 800px;
 
 // Page Defaults
 body {
   background-color: $grouparoo-background-blue;
-  font-family: $font-body;
-  font-weight: 300;
-  font-size: 18px;
-  color: $grouparoo-dark-gray;
+}
+
+form {
+  > div {
+    margin-bottom: 1rem;
+  }
+}
+
+// -- Typography --
+.text-big-muted {
+  @extend .text-muted;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
 }
 
 h1,
@@ -29,6 +35,7 @@ h4,
 h5,
 h6 {
   font-family: $font-header;
+  word-break: break-word;
 }
 
 h1 {
@@ -38,8 +45,8 @@ h1 {
   line-height: 72px;
   letter-spacing: -1px;
 
-  @media screen and (max-width: 600px) {
-    font-size: 60px;
+  @media screen and (max-width: $mobile-font-breakpoint) {
+    font-size: 40px;
   }
 }
 
@@ -49,6 +56,10 @@ h2 {
   font-weight: 700;
   line-height: 43px;
   letter-spacing: -1px;
+
+  @media screen and (max-width: $mobile-font-breakpoint) {
+    font-size: 25px;
+  }
 }
 
 h3 {
@@ -57,6 +68,10 @@ h3 {
   font-weight: 600;
   line-height: 36px;
   letter-spacing: 0px;
+
+  @media screen and (max-width: $mobile-font-breakpoint) {
+    font-size: 20px;
+  }
 }
 
 h4 {
@@ -75,7 +90,71 @@ h5 {
   letter-spacing: -0.4399999976158142px;
 }
 
-button > * {
+body {
+  font-family: $font-body;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 27px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: $grouparoo-font-color;
+  overflow-x: hidden;
+
+  .big {
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 39px;
+  }
+
+  .bold {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 27px;
+  }
+
+  .small {
+    font-size: 14px;
+    line-height: 24px;
+
+    &.bold {
+      font-size: 14px;
+      line-height: 24px;
+      font-weight: 400;
+    }
+  }
+
+  .xs-small {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .normalize {
+    font-weight: 400;
+    font-family: $font-body;
+  }
+
+  .solid {
+    color: $grouparoo-solid;
+  }
+}
+
+.weave {
+  background: url(/images/home/weave.png), #eff4ff;
+  background-position: center;
+  background-size: contain;
+}
+
+.outline {
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 150%;
+}
+
+.btn,
+.btn > * {
   font-family: $font-header;
   font-size: 14px;
   font-style: normal;
@@ -87,7 +166,8 @@ button > * {
 code,
 pre,
 pre > code,
-code[class*="language-"] {
+code[class*="language-"],
+.code {
   font-family: $font-code;
   font-weight: 500;
   line-height: 25.5px;
@@ -96,24 +176,6 @@ code[class*="language-"] {
 a,
 .btn-link {
   text-decoration: none;
-}
-
-form {
-  > div {
-    margin-bottom: 1rem;
-  }
-}
-
-// -- Typography --
-.text-big-muted {
-  @extend .text-muted;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
-}
-
-header {
-  font-weight: 400;
 }
 
 // -- Nav Bar--
@@ -131,7 +193,6 @@ header {
 }
 
 #seeMoreLink:hover {
-  color: black;
   font-weight: 400;
 }
 .dropdown-menu {
@@ -142,9 +203,6 @@ header {
   outline: none;
   box-shadow: none;
   background: none;
-}
-.dropdown-item a:hover {
-  color: black;
 }
 
 .dropdown-item {
@@ -157,7 +215,7 @@ header {
   padding-left: 0em;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: $mobile-display-breakpoint) {
   .solutionsNav {
     width: 22em;
     padding-bottom: 1em;
@@ -165,6 +223,43 @@ header {
   .integrationsNav {
     width: 28em;
     padding-bottom: 1em;
+  }
+}
+
+.pipes {
+  // This pipes image has been manually set to 40% transparency
+  background: url("../public/images/home/pipes.png"),
+    linear-gradient(
+      225.01deg,
+      #000000 0%,
+      #0b2e4e 0.01%,
+      #0a2540 99.99%,
+      #06182c 100%
+    );
+  background-repeat: repeat, no-repeat;
+  background-size: 450px, auto;
+
+  padding-bottom: 40px;
+
+  *,
+  .nav-bar > * {
+    color: $grouparoo-nav-font-color;
+
+    .nav-link {
+      color: $grouparoo-nav-font-color !important;
+    }
+  }
+
+  .btn {
+    color: $grouparoo-font-color;
+  }
+
+  .dropdown-menu {
+    background-color: #fff;
+    .nav-link,
+    .dropdown-header {
+      color: $grouparoo-font-color !important;
+    }
   }
 }
 
@@ -255,19 +350,19 @@ pre > code {
 
 // -- Header --
 header {
-  padding-bottom: 50px;
+  font-weight: 400;
 }
 
 // -- Footer --
 footer {
-  color: $light;
+  color: $grouparoo-nav-font-color;
   background-color: $grouparoo-dark-gray;
   font-size: 14px;
 }
 
 footer a {
   text-decoration: none;
-  color: $light;
+  color: $grouparoo-nav-font-color;
 }
 
 // -- HR --
@@ -340,6 +435,10 @@ hr {
 
   li {
     margin-bottom: 1rem; // matches <p>
+  }
+
+  .nav-item {
+    margin-bottom: 0px;
   }
 
   .nav-tabs {

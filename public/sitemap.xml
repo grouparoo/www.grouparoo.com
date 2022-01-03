@@ -41,6 +41,8 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/blog/any-wreaks-havoc-on-overloads</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/blog/app-refresh-grouparoo-and-dbt</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/blog/apple-m1-js-memory-error</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/blog/asynchronous-api-patterns-in-crms</loc><changefreq
@@ -96,6 +98,8 @@
     >https://www.grouparoo.com/blog/google-cloud-run-no-background-job</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/blog/google-sheets-source</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/blog/grouparoo-cloud</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/blog/grouparoo-monorepo-deployment</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
@@ -182,6 +186,8 @@
     >https://www.grouparoo.com/blog/what-is-data-synchronization</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/blog/what-is-data-transformation</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/blog/what-is-the-etl-process</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/blog/your-smart-frontend-is-doing-too-much</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc

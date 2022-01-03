@@ -15,18 +15,16 @@ Welcome to the Grouparoo Dictionary! This is the collection of terms we use thro
 ### Table of Contents
 
 - [App](#app)
-- [App Refresh Query](#app-refresh-query)
 - [API Key](#api-key)
+- [App Refresh Query](#app-refresh-query)
 - [Application Database](#application-database)
 - [Batch Generation](#batch-generation)
-- [Calculated Group](#calculated-group)
 - [Columnar Source](#columnar-source)
 - [Destination](#destination)
 - [Filter](#filter)
 - [Generator](#generator)
 - [Group](#group)
 - [High Watermark](#high-watermark)
-- [Manual Group](#manual-group)
 - [Mapping](#mapping)
 - [Model](#model)
 - [Plugin](#plugin)
@@ -62,10 +60,6 @@ The Application Database, sometimes referred to as the Grouparoo database, is th
 
 Some versions of [the `generate` command](/docs/cli/config#generate) support creating multiple config files from a single command. This is what we call Batch Generation.
 
-## Calculated Group
-
-Calculated Groups are a type of [Group](#group) that are always kept up to date for you by Grouparoo. As new Records are created, or the Record Properties of existing Records are changed, Group membership will automatically be adjusted.
-
 ## Columnar Source
 
 A Columnar Source is a specific type of [Source](#source) that imports data from a column-based mechanism, like a database. Sources of this type share most of their behavior in common.
@@ -92,7 +86,7 @@ You can learn more about Generators by reading through [the Code Config docs](/d
 
 ## Group
 
-Groups are a collection of [Records](#record) that you can define and Filter. These filters (or _rules_) are built to be easy-to-understand by non-technical users.
+Groups are a collection of [Records](#record) that you can define based on rules. These rules (or _filters_) are built to be easy-to-understand by non-technical users.
 
 Let's say we wanted to make a Group of high-value customers who recently abandoned the checkout process. Here is an example of the rules to define this Group:
 
@@ -101,15 +95,9 @@ Let's say we wanted to make a Group of high-value customers who recently abandon
 
 With these rules, you have a Group consisting of every user who has purchased more than $50 and recently abandoned their cart. You can then synchronize that Group in real-time to all of your Destinations to then communicate with them.
 
-There are 2 types of groups: [**Calculated**](#calculated-group) and [**Manual**](#manual-group)
-
 ## High Watermark
 
 A High Watermark is a value used for comparison during [Runs](#run) that are [scheduled](#schedule). Grouparoo will only import items where the High Watermark column is greater than the largest previously imported High Watermark value. For example, let's say you use `updated_at` as your High Watermark. Grouparoo will run an import and Record the highest value from that column (presumably from the most recently updated Record). The next time the import runs, Grouparoo will only consider records where `updated_at` is greater than the previous High Watermark value. And it doesn't have to be a date, it just has to be comparable. Another example would be a numeric field, like `version`, in which the value is incremented when changes are made to the Record in the Source database.
-
-## Manual Group
-
-Manual Groups are a type of [Group](#group) that only change when you add or remove Records.
 
 ## Mapping
 

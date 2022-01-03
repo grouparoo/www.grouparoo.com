@@ -8,7 +8,7 @@ export class ErrorHandler extends EventDispatcher {
 
     this.error = null;
 
-    this.subscribe("_internal", e => {
+    this.subscribe("_internal", (e: Error | string) => {
       this.error = e;
     });
   }

@@ -5,7 +5,11 @@ import { PluginManifestItem } from "../../scripts/generate_plugin_json";
 
 const PluginDocsLink = (plugin: PluginManifestItem) => {
   if (!plugin.docsUrl) return <span>{plugin.name}</span>;
-  return <Link href={plugin.docsUrl}>{plugin.name}</Link>;
+  return (
+    <Link href={plugin.docsUrl.replace("https://www.grouparoo.com", "")}>
+      {plugin.name}
+    </Link>
+  );
 };
 
 export default function PluginsList() {
