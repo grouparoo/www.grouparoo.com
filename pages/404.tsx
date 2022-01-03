@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function FourOhFour() {
   return (
     <Container>
-      <Row>
+      <Row className="pb-5">
         <Col>
           <h1>Oops.</h1>
 
