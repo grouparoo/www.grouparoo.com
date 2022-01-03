@@ -35,7 +35,7 @@ mapping: {
 }`,
     tablePropertyFilters: `
 {
-  filters: [{ key: "state", op: "equals", match: "successful" }],
+  filters: [{ key: "state", op: "eq", match: "successful" }],
 }`,
     querySchedule,
     queryProperties,

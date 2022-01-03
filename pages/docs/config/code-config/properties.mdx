@@ -109,15 +109,17 @@ Your Property config file will also contain `aggregationMethod` and `Filter` opt
 
 #### filters
 
-- `"equals"`
-- `"does not equal"`
-- `"greater than"`
-- `"greater than or equal to"`
-- `"less than"`
-- `"less than or equal to"`
-- `"contains"`
-- `"does not contain"`
-- `"in"`
+-`"exists"` - exists with any value (is not null) -`"notExists"` - does not exist with any value (is null)
+
+- `"eq"`- equals
+- `"ne"` - does not equal
+- `"gt"` - greater than
+- `"gte"` - greater than or equal to
+- `"lt"` - less than
+- `"lte"` - less than or equal to
+- `"substring"` - contains
+- `"notSubstring"` - does not contain
+- `"in"` - in a given set
 
 These can be combined to create more complex properties such as:
 
@@ -142,12 +144,12 @@ exports.default = async function buildConfig() {
       filters: [
         {
           key: "status",
-          op: "equals",
+          op: "eq",
           match: "active",
         },
         {
           key: "subscription_type",
-          op: "does not equal",
+          op: "ne",
           match: "trial",
         },
       ],
@@ -179,7 +181,7 @@ exports.default = async function buildConfig() {
       filters: [
         {
           key: "created_at",
-          op: "greater than",
+          op: "gt",
           match: "2019-12-31T11:59:59.999+00.00",
         },
         {
