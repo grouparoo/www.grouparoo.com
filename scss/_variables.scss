@@ -36,6 +36,7 @@ $navbar-light-color: $grouparoo-nav-font-color;
 $navbar-light-hover-color: $grouparoo-nav-font-color;
 
 // Bootstrap Overrides
+$enable-smooth-scroll: false; // fixes a bug in which sometimes Firefox browsers would not scroll to top
 $card-border-radius: 8px;
 
 // -- Fonts --

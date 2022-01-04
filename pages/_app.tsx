@@ -32,22 +32,12 @@ export default function GrouparooWWW(props) {
 
   useEffect(() => {
     storeInSession();
-
-    function handleRouteChange(url: string) {
-      googleAnalyticsPageView(url);
-      scrollToTop();
-    }
-
-    router.events.on("routeChangeComplete", handleRouteChange);
+    router.events.on("routeChangeComplete", googleAnalyticsPageView);
 
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off("routeChangeComplete", googleAnalyticsPageView);
     };
   }, [router.asPath, router.events, router.isReady, storeInSession]);
-
-  function scrollToTop() {
-    globalThis.scrollTo(0, 0);
-  }
 
   function storeQueryToSession(storage: Storage, key: string, value: string) {
     if (!value) return;
