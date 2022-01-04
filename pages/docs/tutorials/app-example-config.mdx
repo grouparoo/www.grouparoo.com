@@ -425,7 +425,7 @@ exports.default = async function buildConfig() {
       rules: [
         {
           propertyId: "email",
-          operation: { op: "exists" },
+          op: "exists",
         },
       ],
     },
@@ -453,12 +453,12 @@ exports.default = async function buildConfig() {
       rules: [
         {
           propertyId: "ltv",
-          operation: { op: "gt" },
+          op: "gt",
           match: 100,
         },
         {
           propertyId: "language",
-          operation: { op: "eq" },
+          op: "eq",
           match: "Spanish",
         },
       ],
