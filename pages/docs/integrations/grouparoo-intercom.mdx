@@ -17,7 +17,7 @@ Intercom is a messaging platform for customer communications. You can use Interc
 
 ### Destinations
 
-<table className="notesTable">
+<table className="docTable">
   <tbody>
     <tr>
       <td>Intercom Export Contacts</td>
@@ -61,7 +61,11 @@ In Grouparoo, you specify the options to connect to Intercom.
   height={266}
 />
 
-<table>
+<table className="docTable">
+  <tr>
+    <td>Option</td>
+    <td>Description</td>
+  </tr>
   <tr>
     <td>
       <strong>Access Token</strong> (required)
@@ -99,6 +103,52 @@ To further clarify how Intercom should sync data, select how data should be sync
   height={470}
 />
 
+<table className="docTable">
+<tablebody>
+  <tr>
+    <td>
+      <strong>Sync Mode</strong> (required)
+    </td>
+    <td>
+      <strong>Description</strong>
+    </td>
+  </tr>
+  <tr>
+   <td><strong>Creation </strong>(required)
+   </td>
+   <td>There are three creation options for Intercom.
+<p>
+<em>These options only apply if using a syncMode that can add new contacts.</em>
+</p>
+<ul>
+
+<li><strong>User:</strong> This option creates new contacts as Users
+</li>
+<li><strong>Lead:</strong> This option created new contacts as Leads
+</li>
+<li><strong>Lifecycle</strong>: This option creates new contacts as leads unless there is an <em>external_id</em>. If the <em>external_id </em>for a contact exists, then it will be created as a user
+</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td><strong>Removal </strong>(required)
+   </td>
+   <td>There are two removal options for Intercom.
+<p>
+<em>These options only apply if using a syncMode that can remove contacts.</em>
+</p>
+<ul>
+
+<li><strong>Archive</strong>: This will add deleted users to an archive where they can be retrieved again.
+</li>
+<li><strong>Delete</strong>: This option permanently deletes a user record.
+</li>
+</ul>
+   </td>
+  </tr>
+  </tablebody>
+</table>
 ### Record Data
 
 Mapping Record Properties to Intercom User Attributes is the key to syncing data to Intercom.
@@ -148,28 +198,28 @@ As always, if you need support using Grouparoo, reach out to community members i
 
 <style>
   {`
-    .notesTable {
+    .docTable {
       width: 100%;
       margin-top: 12px;
       margin-bottom: 20px;
     }
 
-    .notesTable tr:nth-child(odd){
+    .docTable tr:nth-child(odd){
       background-color: #efefef;
     }
 
-    .notesTable tr:first-child {
+    .docTable tr:first-child {
       background-color: #dedede;
       text-align: center;
       font-weight: bold;
     }
 
-    .notesTable td, th {
+    .docTable td, th {
       border: 1px solid black;
       padding: 10px;
     }
 
-    .notesTable td:first-child, th:first-child {
+    .docTable td:first-child, th:first-child {
       width: 25%;
     }
 
