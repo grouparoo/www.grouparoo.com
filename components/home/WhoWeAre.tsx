@@ -68,6 +68,14 @@ const teamMembers: TeamMember[] = [
     linkedIn: "https://www.linkedin.com/in/edmundito",
     emojis: ["🌎", "👨‍👩‍👦", "🎥", "🎛"],
   },
+  {
+    name: "Reina Feather",
+    image: "reina_feather.jpg",
+    title: "Software Engineer",
+    emojis: ["📚", "🏴", "🏳️‍🌈", "🕹"],
+    github: "https://github.com/rwfeather",
+    linkedIn: "https://www.linkedin.com/in/reina-feather-7b676763",
+  },
 ];
 
 export default function WhoWeAre() {
