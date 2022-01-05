@@ -5,25 +5,25 @@
       "description": "exists with any value",
       "example": {
         "propertyId": "subscribed",
-        "operation": { "op": "exists" }
+        "op": "exists"
       },
-      "caption": "All records that do not have data about subscription status"
+      "caption": "All records that have data about subscription status"
     },
     {
       "op": "notExists",
       "description": "does not exist",
       "example": {
         "propertyId": "subscribed",
-        "operation": { "op": "notExists" }
+        "op": "notExists"
       },
-      "caption": "All records that have data about subscription status"
+      "caption": "All records that do not have data about subscription status"
     },
     {
       "op": "eq",
       "description": "is equal to",
       "example": {
         "propertyId": "subscribed",
-        "operation": { "op": "eq" },
+        "op": "eq",
         "match": "true"
       },
       "caption": "All subscribers"
@@ -33,7 +33,7 @@
       "description": "is not equal to",
       "example": {
         "propertyId": "subscribed",
-        "operation": { "op": "ne" },
+        "op": "ne",
         "match": "true"
       },
       "caption": "All non-subscribers"
@@ -45,7 +45,7 @@
       "description": "exists with any value",
       "example": {
         "propertyId": "last_purchase_date",
-        "operation": { "op": "exists" }
+        "op": "exists"
       },
       "caption": "All records who have made a purchase"
     },
@@ -54,7 +54,7 @@
       "description": "does not exist",
       "example": {
         "propertyId": "last_purchase_date",
-        "operation": { "op": "notExists" }
+        "op": "notExists"
       },
       "caption": "All records who have not made a purchase"
     },
@@ -63,7 +63,7 @@
       "description": "is equal to",
       "example": {
         "propertyId": "last_purchase_date",
-        "operation": { "op": "eq" },
+        "op": "eq",
         "match": "2021-05-25T04:45:00.000+00:00"
       },
       "caption": "All records whose most recent purchase was on May 25, 2021 at exactly 4:45AM UTC."
@@ -73,7 +73,7 @@
       "description": "is not equal to",
       "example": {
         "propertyId": "last_purchase_date",
-        "operation": { "op": "ne" },
+        "op": "ne",
         "match": "2021-05-25T04:45:00.000+00:00"
       },
       "caption": "All records whose most recent purchase was anytime except May 25, 2021 at exactly 4:45AM UTC."
@@ -83,7 +83,7 @@
       "description": "is after",
       "example": {
         "propertyId": "last_purchase_date",
-        "operation": { "op": "lt" },
+        "op": "lt",
         "match": "2020-12-25T04:45:00.00+00:00"
       },
       "caption": "All records whose most recent purchase is after December 25, 2020 at 04:45:00 UTC."
@@ -93,7 +93,7 @@
       "description": "is before",
       "example": {
         "propertyId": "last_purchase_date",
-        "operation": { "op": "lt" },
+        "op": "lt",
         "match": "2021-05-25T09:30:00.000+00:00"
       },
       "caption": "All records whose most recent purchase is prior to May 25, 2021 9:30:00 AM UTC."
@@ -103,7 +103,7 @@
       "description": "is on or after",
       "example": {
         "propertyId": "last_purchase_date",
-        "operation": { "op": "gte" },
+        "op": "gte",
         "match": "2019-06-14T18:16:00.000+00:00"
       },
       "caption": "All records whose most recent purchase is exactly at or after June 14, 2019 at 6:16 PM UTC"
@@ -113,7 +113,7 @@
       "description": "is on or before",
       "example": {
         "propertyId": "last_purchase_date",
-        "operation": { "op": "lte" },
+        "op": "lte",
         "match": "2020-12-25T04:45:00.000+00:00"
       },
       "caption": "All records whose most recent purchase is exactly at or before December 25, 2020 at 04:45:00 UTC."
@@ -123,7 +123,7 @@
       "description": "is in the past",
       "example": {
         "propertyId": "last_purchase_date",
-        "operation": { "op": "relative_gt" },
+        "op": "relative_gt",
         "relativeMatchNumber": "60",
         "relativeMatchUnit": "days"
       },
@@ -134,7 +134,7 @@
       "description": "is in the future",
       "example": {
         "propertyId": "subscription_ends",
-        "operation": { "op": "relative_lt" },
+        "op": "relative_lt",
         "relativeMatchNumber": "30",
         "relativeMatchUnit": "days"
       },
@@ -145,13 +145,13 @@
     {
       "op": "exists",
       "description": "exists with any value",
-      "example": { "propertyId": "email", "operation": { "op": "exists" } },
+      "example": { "propertyId": "email", "op": "exists" },
       "caption": "All records with an email address listed."
     },
     {
       "op": "notExists",
       "description": "does not exist",
-      "example": { "propertyId": "email", "operation": { "op": "notExists" } },
+      "example": { "propertyId": "email", "op": "notExists" },
       "caption": "All records without an email address listed."
     },
     {
@@ -159,7 +159,7 @@
       "description": "is equal to",
       "example": {
         "propertyId": "email",
-        "operation": { "op": "eq" },
+        "op": "eq",
         "match": "hello@grouparoo.com"
       },
       "caption": "All records with an email address exactly equal to hello@grouparoo.com."
@@ -169,7 +169,7 @@
       "description": "is not equal to",
       "example": {
         "propertyId": "email",
-        "operation": { "op": "ne" },
+        "op": "ne",
         "match": "hello@grouparoo.com"
       },
       "caption": "All records without an email address exactly equal to hello@grouparoo.com."
@@ -179,7 +179,7 @@
       "description": "is like (case sensitive)",
       "example": {
         "propertyId": "email",
-        "operation": { "op": "like" },
+        "op": "like",
         "match": "%smith%"
       },
       "caption": "All records with an email address containing smith (case sensitive)."
@@ -189,7 +189,7 @@
       "description": "is not like (case sensitive)",
       "example": {
         "propertyId": "email",
-        "operation": { "op": "notLike" },
+        "op": "notLike",
         "match": "%smith%"
       },
       "caption": "All records without an email address containing smith (case sensitive)."
@@ -199,7 +199,7 @@
       "description": "starts with",
       "example": {
         "propertyId": "email",
-        "operation": { "op": "startsWith" },
+        "op": "startsWith",
         "match": "test"
       },
       "caption": "All records with an email address starting with \"test\" (case sensitive)."
@@ -209,7 +209,7 @@
       "description": "ends with",
       "example": {
         "propertyId": "email",
-        "operation": { "op": "endsWith" },
+        "op": "endsWith",
         "match": "grouparoo.com"
       },
       "caption": "All records with an email address ending with \"@grouparoo.com\" (case sensitive)."
@@ -219,7 +219,7 @@
       "description": "includes the string",
       "example": {
         "propertyId": "email",
-        "operation": { "op": "substring" },
+        "op": "substring",
         "match": "grouparoo"
       },
       "caption": "All records with an email address containing \"grouparoo\"."
@@ -229,7 +229,7 @@
       "description": "is like (case insensitive)",
       "example": {
         "propertyId": "email",
-        "operation": { "op": "like" },
+        "op": "like",
         "match": "%smith%"
       },
       "caption": "All records with an email address containing smith (case insensitive)."
@@ -239,7 +239,7 @@
       "description": "is not like (case insensitive)",
       "example": {
         "propertyId": "email",
-        "operation": { "op": "notILike" },
+        "op": "notILike",
         "match": "%smith%"
       },
       "caption": "All records without an email address containing smith (case insensitive))."
@@ -249,13 +249,13 @@
     {
       "op": "exists",
       "description": "exists with any value",
-      "example": { "propertyId": "ltv", "operation": { "op": "exists" } },
+      "example": { "propertyId": "ltv", "op": "exists" },
       "caption": "All records with an LTV value."
     },
     {
       "op": "notExists",
       "description": "does not exist",
-      "example": { "propertyId": "ltv", "operation": { "op": "notExists" } },
+      "example": { "propertyId": "ltv", "op": "notExists" },
       "caption": "All records without an LTV value."
     },
     {
@@ -263,7 +263,7 @@
       "description": "is equal to",
       "example": {
         "propertyId": "ltv",
-        "operation": { "op": "eq" },
+        "op": "eq",
         "match": "113932.97"
       },
       "caption": "All records with an LTV of exactly $113,932.97."
@@ -273,7 +273,7 @@
       "description": "is not equal to",
       "example": {
         "propertyId": "ltv",
-        "operation": { "op": "ne" },
+        "op": "ne",
         "match": "113932.97"
       },
       "caption": "All records without an LTV of exactly $113,932.97."
@@ -283,61 +283,61 @@
       "description": "is greater than",
       "example": {
         "propertyId": "ltv",
-        "operation": { "op": "gt" },
+        "op": "gt",
         "match": "113932.97"
       },
-      "caption": "All records without an LTV of greater than $113,932.97."
+      "caption": "All records with an LTV of greater than $113,932.97."
     },
     {
       "op": "lt",
       "description": "is less than",
       "example": {
         "propertyId": "ltv",
-        "operation": { "op": "lt" },
+        "op": "lt",
         "match": "113932.97"
       },
-      "caption": "All records without an LTV of less than $113,932.97."
+      "caption": "All records with an LTV of less than $113,932.97."
     },
     {
       "op": "gte",
       "description": "is greater than or equal to",
       "example": {
         "propertyId": "ltv",
-        "operation": { "op": "gte" },
+        "op": "gte",
         "match": "113932.97"
       },
-      "caption": "All records without an LTV of exactly $113,932.97. or more"
+      "caption": "All records with an LTV of exactly $113,932.97. or more"
     },
     {
       "op": "lte",
       "description": "is less than or equal to",
       "example": {
         "propertyId": "ltv",
-        "operation": { "op": "lte" },
+        "op": "lte",
         "match": "113932.97"
       },
-      "caption": "All records without an LTV of exactly $113,932.97. or less"
+      "caption": "All records with an LTV of exactly $113,932.97. or less"
     }
   ],
   "integer": [
     {
       "op": "exists",
       "description": "exists with any value",
-      "example": { "propertyId": "visits", "operation": { "op": "notExists" } },
+      "example": { "propertyId": "visits", "op": "notExists" },
       "caption": "All records with any value in the \"visits\" field."
     },
     {
       "op": "notExists",
       "description": "does not exist",
-      "example": { "propertyId": "visits", "operation": { "op": "notExists" } },
-      "caption": "All records with an empty \"visits\" field."
+      "example": { "propertyId": "visits", "op": "notExists" },
+      "caption": "All records with a null \"visits\" field."
     },
     {
       "op": "eq",
       "description": "is equal to",
       "example": {
         "propertyId": "visits",
-        "operation": { "op": "eq" },
+        "op": "eq",
         "match": "6"
       },
       "caption": "All records with exactly six visits."
@@ -347,17 +347,17 @@
       "description": "is not equal to",
       "example": {
         "propertyId": "visits",
-        "operation": { "op": "ne" },
+        "op": "ne",
         "match": "6"
       },
-      "caption": "All records with any number of visits except six."
+      "caption": "All records without six visits."
     },
     {
       "op": "gt",
       "description": "is greater than",
       "example": {
         "propertyId": "visits",
-        "operation": { "op": "gt" },
+        "op": "gt",
         "match": "6"
       },
       "caption": "All records with more than six visits."
@@ -367,7 +367,7 @@
       "description": "is less than",
       "example": {
         "propertyId": "visits",
-        "operation": { "op": "ne" },
+        "op": "ne",
         "match": "6"
       },
       "caption": "All records with less than six visits."
@@ -377,7 +377,7 @@
       "description": "is greater than or equal to",
       "example": {
         "propertyId": "visits",
-        "operation": { "op": "gte" },
+        "op": "gte",
         "match": "6"
       },
       "caption": "All records with six or more visits."
@@ -387,23 +387,23 @@
       "description": "is less than or equal to",
       "example": {
         "propertyId": "visits",
-        "operation": { "op": "lte" },
+        "op": "lte",
         "match": "6"
       },
-      "caption": "All records with 6 or fewer visits."
+      "caption": "All records with six or fewer visits."
     }
   ],
   "phoneNumber": [
     {
       "op": "exists",
       "description": "exists with any value",
-      "example": { "propertyId": "phone", "operation": { "op": "exists" } },
+      "example": { "propertyId": "phone", "op": "exists" },
       "caption": "All records with a phone number listed."
     },
     {
       "op": "notExists",
       "description": "does not exist",
-      "example": { "propertyId": "phone", "operation": { "op": "notExists" } },
+      "example": { "propertyId": "phone", "op": "notExists" },
       "caption": "All records without a phone number listed."
     },
     {
@@ -411,7 +411,7 @@
       "description": "is equal to",
       "example": {
         "propertyId": "phone",
-        "operation": { "op": "eq" },
+        "op": "eq",
         "match": "+1-555-555-5555"
       },
       "caption": "All records with a phone number of +1-555-555-5555."
@@ -421,7 +421,7 @@
       "description": "is not equal to",
       "example": {
         "propertyId": "phone",
-        "operation": { "op": "ne" },
+        "op": "ne",
         "match": "+1-555-555-5555"
       },
       "caption": "All records without a phone number of +1-555-555-5555."
@@ -431,7 +431,7 @@
       "description": "is like (case sensitive)",
       "example": {
         "propertyId": "phone",
-        "operation": { "op": "like" },
+        "op": "like",
         "match": "%780%"
       },
       "caption": "All records with a phone number containing 780."
@@ -441,7 +441,7 @@
       "description": "is not like (case sensitive)",
       "example": {
         "propertyId": "phone",
-        "operation": { "op": "notLike" },
+        "op": "notLike",
         "match": "%780%"
       },
       "caption": "All records without a phone number containing 780."
@@ -451,7 +451,7 @@
       "description": "starts with",
       "example": {
         "propertyId": "phone",
-        "operation": { "op": "startsWith" },
+        "op": "startsWith",
         "match": "+1"
       },
       "caption": "All records with a phone number starting with +1."
@@ -461,7 +461,7 @@
       "description": "ends with",
       "example": {
         "propertyId": "phone",
-        "operation": { "op": "startsWith" },
+        "op": "startsWith",
         "match": "80"
       },
       "caption": "All records with a phone number ending with 80."
@@ -471,7 +471,7 @@
       "description": "includes the string",
       "example": {
         "propertyId": "phone",
-        "operation": { "op": "startsWith" },
+        "op": "startsWith",
         "match": "80"
       },
       "caption": "All records with a phone number containing the substring 80."
@@ -481,7 +481,7 @@
       "description": "is like (case insensitive)",
       "example": {
         "propertyId": "phone",
-        "operation": { "op": "notLike" },
+        "op": "notLike",
         "match": "%780%"
       },
       "caption": "All records without a phone number containing 780."
@@ -491,7 +491,7 @@
       "description": "is not like (case insensitive)",
       "example": {
         "propertyId": "phone",
-        "operation": { "op": "notLike" },
+        "op": "notLike",
         "match": "%780%"
       },
       "caption": "All records without a phone number containing 780."
@@ -501,7 +501,7 @@
     {
       "op": "exists",
       "description": "exists with any value",
-      "example": { "propertyId": "lastName", "operation": { "op": "exists" } },
+      "example": { "propertyId": "lastName", "op": "exists" },
       "caption": "All records with a last name listed."
     },
     {
@@ -509,7 +509,7 @@
       "description": "does not exist",
       "example": {
         "propertyId": "lastName",
-        "operation": { "op": "notExists" }
+        "op": "notExists"
       },
       "caption": "All records without a last name listed."
     },
@@ -518,7 +518,7 @@
       "description": "is equal to",
       "example": {
         "propertyId": "lastName",
-        "operation": { "op": "eq" },
+        "op": "eq",
         "match": "Ramirez"
       },
       "caption": "All records with a last name of exactly Ramirez."
@@ -528,7 +528,7 @@
       "description": "is not equal to",
       "example": {
         "propertyId": "lastName",
-        "operation": { "op": "ne" },
+        "op": "ne",
         "match": "Ramirez"
       },
       "caption": "All records without a last name of exactly Ramirez."
@@ -538,7 +538,7 @@
       "description": "is like (case sensitive)",
       "example": {
         "propertyId": "lastName",
-        "operation": { "op": "like" },
+        "op": "like",
         "match": "__m%"
       },
       "caption": "All records with a last name that has a third letter of m."
@@ -548,7 +548,7 @@
       "description": "is not like (case sensitive)",
       "example": {
         "propertyId": "lastName",
-        "operation": { "op": "notLike" },
+        "op": "notLike",
         "match": "__m%"
       },
       "caption": "All records without a last name that has a third letter of m."
@@ -558,7 +558,7 @@
       "description": "starts with",
       "example": {
         "propertyId": "lastName",
-        "operation": { "op": "startsWith" },
+        "op": "startsWith",
         "match": "Mc"
       },
       "caption": "All records with a last name starting with Mc (case sensitive)"
@@ -568,7 +568,7 @@
       "description": "ends with",
       "example": {
         "propertyId": "lastName",
-        "operation": { "op": "endsWith" },
+        "op": "endsWith",
         "match": "son"
       },
       "caption": "All records with a last name ending with son (case sensitive)."
@@ -578,7 +578,7 @@
       "description": "includes the string",
       "example": {
         "propertyId": "lastName",
-        "operation": { "op": "substring" },
+        "op": "substring",
         "match": "al"
       },
       "caption": "All records with a last name containing al (case sensitive)."
@@ -588,7 +588,7 @@
       "description": "is like (case insensitive)",
       "example": {
         "propertyId": "lastName",
-        "operation": { "op": "iLike" },
+        "op": "iLike",
         "match": "%al%"
       },
       "caption": "All records with a last name containing al (case insensitive)."
@@ -598,7 +598,7 @@
       "description": "is not like (case insensitive)",
       "example": {
         "propertyId": "lastName",
-        "operation": { "op": "iLike" },
+        "op": "iLike",
         "match": "%al%"
       },
       "caption": "All records without a last name containing al (case insensitive)."
@@ -610,7 +610,7 @@
       "description": "exists with any value",
       "example": {
         "propertyId": "company_url",
-        "operation": { "op": "exists" }
+        "op": "exists"
       },
       "caption": "All records with a company URL listed."
     },
@@ -619,7 +619,7 @@
       "description": "does not exist",
       "example": {
         "propertyId": "company_url",
-        "operation": { "op": "notExists" }
+        "op": "notExists"
       },
       "caption": "All records without a company URL listed."
     },
@@ -628,7 +628,7 @@
       "description": "is equal to",
       "example": {
         "propertyId": "company_url",
-        "operation": { "op": "eq" },
+        "op": "eq",
         "match": "https://www.grouparoo.com"
       },
       "caption": "All records with a company URL exactly equal to https://www.grouparoo.com."
@@ -638,7 +638,7 @@
       "description": "is not equal to",
       "example": {
         "propertyId": "company_url",
-        "operation": { "op": "ne" },
+        "op": "ne",
         "match": "https://www.grouparoo.com"
       },
       "caption": "All records without a company URL exactly equal to https://www.grouparoo.com."
@@ -648,7 +648,7 @@
       "description": "is like (case sensitive)",
       "example": {
         "propertyId": "company_url",
-        "operation": { "op": "like" },
+        "op": "like",
         "match": "%grouparoo.com"
       },
       "caption": "All records with a company URL containing anything and then grouparoo.com (case sensitive)."
@@ -658,7 +658,7 @@
       "description": "is not like (case sensitive)",
       "example": {
         "propertyId": "company_url",
-        "operation": { "op": "like" },
+        "op": "like",
         "match": "%grouparoo.com"
       },
       "caption": "All records without a company URL containing anything and then grouparoo.com (case sensitive)."
@@ -668,7 +668,7 @@
       "description": "starts with",
       "example": {
         "propertyId": "company_url",
-        "operation": { "op": "startsWith" },
+        "op": "startsWith",
         "match": "https"
       },
       "caption": "All records with a company URL starting with https (case sensitive)."
@@ -678,7 +678,7 @@
       "description": "ends with",
       "example": {
         "propertyId": "company_url",
-        "operation": { "op": "startsWith" },
+        "op": "startsWith",
         "match": ".com"
       },
       "caption": "All records with a company URL ending with .com (case sensitive)"
@@ -688,7 +688,7 @@
       "description": "includes the string",
       "example": {
         "propertyId": "company_url",
-        "operation": { "op": "substring" },
+        "op": "substring",
         "match": "grouparoo"
       },
       "caption": "All records with a company URL containing grouparoo (case sensitive)"
@@ -698,7 +698,7 @@
       "description": "is like (case insensitive)",
       "example": {
         "propertyId": "company_url",
-        "operation": { "op": "substring" },
+        "op": "substring",
         "match": "%Grouparoo.com"
       },
       "caption": "All records with a company URL containing anything followed by Grouparoo.com (case insensitive)."
@@ -708,7 +708,7 @@
       "description": "is not like (case insensitive)",
       "example": {
         "propertyId": "company_url",
-        "operation": { "op": "substring" },
+        "op": "substring",
         "match": "%Grouparoo.com"
       },
       "caption": "All records without a company URL containing anything followed by Grouparoo.com (case insensitive)."
@@ -717,27 +717,20 @@
   "_relativeMatchUnits": ["days", "weeks", "months", "quarters", "years"],
   "_convenientRules": {
     "exists": {
-      "operation": {
-        "op": "ne"
-      },
+      "op": "ne",
+
       "match": "null"
     },
     "notExists": {
-      "operation": {
-        "op": "eq"
-      },
+      "op": "eq",
       "match": "null"
     },
     "relative_gt": {
-      "operation": {
-        "op": "gt"
-      },
+      "op": "gt",
       "relativeMatchDirection": "subtract"
     },
     "relative_lt": {
-      "operation": {
-        "op": "lt"
-      },
+      "op": "lt",
       "relativeMatchDirection": "add"
     }
   }

@@ -50,7 +50,7 @@ mapping: {
   `,
     propertyFilters: `
 {
-  filters: [{ key: "state", op: "equals", match: "successful" }],
+  filters: [{ key: "state", op: "eq", match: "successful" }],
 }
   `,
   };

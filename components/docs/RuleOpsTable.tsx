@@ -30,9 +30,7 @@ interface PropertyOperations {
   op: string;
   example: {
     propertyId: string;
-    operation: {
-      op: string;
-    };
+    op: string;
     match?: string;
     relativeMatch?: string;
     relativeMatchUnit?: string;
