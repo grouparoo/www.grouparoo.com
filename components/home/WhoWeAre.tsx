@@ -70,12 +70,11 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: "Reina Feather",
-    image: "evan_tahler.png",
+    image: "reina_feather.jpg",
     title: "Software Engineer",
-    emojis: ["🤖", "🎮", "👫"],
+    emojis: ["📚", "🏴", "🏳️‍🌈", "🕹"],
     github: "https://github.com/rwfeather",
-    // twitter: "https://twitter.com/evantahler",
-    // linkedIn: "https://www.linkedin.com/in/evantahler",
+    linkedIn: "https://www.linkedin.com/in/reina-feather-7b676763",
   },
 ];
 
