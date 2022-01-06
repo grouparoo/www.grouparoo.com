@@ -4,7 +4,7 @@ date: "2022-01-06"
 pullQuote: "v0.8 introduces a new model-centric UI and brings some breaking changes.  Learn how to upgrade from v0.7 to v0.8!"
 ---
 
-Grouparoo v0.8 brings a user experience focused around the Models you build. It also brings several breaking changes. Learn how to upgrade from v0.7 to v0.8!
+Grouparoo v0.8 brings a UI update focused on the Models you build. It also brings several syncing improvements, and a few breaking changes. Learn how to upgrade from v0.7 to v0.8!
 
 As always, begin by updating the packages within your Grouparoo project by [following the generic upgrade guide](/docs/support/upgrading-grouparoo#installing-updates) to bump your dependencies to `v0.7.x`.
 
@@ -13,19 +13,59 @@ As always, begin by updating the packages within your Grouparoo project by [foll
 ## Model-Centric UI
 
 One major change in Grouparoo v0.8 is our new Model-Centric UI. Now, you're able to see at a glance all of the Sources, Properties, Schedules, and Destinations associated with a Model from a single dashboard. You can view a Sample record and quickly access the configuration pages for each of these objects.
-/////////////
 
-## Airbase plugin
+<Image
+  src="docs/support/upgrading-grouparoo/v07-v08-model-centric-ui.png"
+  alt="Model-Centric UI Updates"
+  width={700}
+  height={728}
+/>
 
-## Salesforce Plugin Updates
+## Airtable Plugin
+
+As we continue to add to our list of integrations, we are pleased to announce a community-contributed Grouparoo plugin for Airtable in v0.8.
+
+## Salesforce Plugin Export Types
+
+Another big plugin update -- our Salesforce Plugin now supports three different Export types as a Destination.
+
+<Image
+  src="docs/support/upgrading-grouparoo/v07-v08-salesforce-export-types.png"
+  alt="Salesforce Destination Types"
+  width={700}
+  height={402}
+/>
+
+Now, you can send your Grouparoo Records to Salesforce Accounts, Contacts, or Objects making it easier to get your data exactly where you want it.
+
+## `Null` and `Not Null` Filters for Properties and Schedules
+
+Our SQL Plugins got a new Filter on Properties and Schedules -- `exists with any value` (not null) and `does not exist` (is null). Now you can populate a Property based on whether or not another column in your Source is null.
+
+<Image
+  src="docs/support/upgrading-grouparoo/v07-v08-null-filter.png"
+  alt="Null Property Filters"
+  width={600}
+  height={182}
+/>
 
 ## Migration Notes and Breaking changes
 
-### Google Sheets:
+### Google Sheets Properties
 
-Google Sheets now only supports Properties with an `Exact` aggregation method. If you have Properties from a Google Sheets source using a different aggregation method such as `Count` or `Sum`, they will no longer work with version 0.8.
+Google Sheets now only supports Properties with an `Exact` aggregation method. The following line will need to be added to your Property config files if you use a Google Sheets source:
 
-### Property and Schedule Config Files:
+```
+  "options": {
+    "aggregationMethod": "exact",
+    ...
+  },
+```
+
+All existing Properties from Google Sheets sources created with the CLI or Config UI will need this migration.
+//is there a migration path for people who used UI enterprise to configure?
+
+### Property and Schedule Filters
 
 Property and Schedule filters have been renamed to match the terminology used for group rules. If you have Filters set on Properties or Schedules and you have configured your Grouparoo setup using our Config UI, you will need to manually update your config files as follows:
 
@@ -36,7 +76,7 @@ Property and Schedule filters have been renamed to match the terminology used fo
 - `"greater than"` --> `"gt"`
 - `"greater than or equal to"` --> `"gte"`
 
-### Group Config Files
+### Group Filters
 
 Group config objects have changed shape as well. The operation within the `rules` array is now unnested to match the layout of Property and Schedule filter objects. You will need to unnest as follows:
 
