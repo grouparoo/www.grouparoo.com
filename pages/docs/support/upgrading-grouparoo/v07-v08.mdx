@@ -52,7 +52,7 @@ Our SQL Plugins got a new Filter on Properties and Schedules -- `exists with any
 
 ### Google Sheets Properties
 
-Google Sheets now needs the aggregation method explicitly declared. While it's always only supported `exact` Properties, the following will need to be added to your Property config files if you use a Google Sheets source:
+Google Sheets now needs the aggregation method explicitly declared. While it's always only supported `exact` Properties, the following will need to be added to your Property config files if you use a Google Sheets source with Code Config or Config UI:
 
 ```
   "options": {
@@ -61,12 +61,9 @@ Google Sheets now needs the aggregation method explicitly declared. While it's a
   },
 ```
 
-All existing Properties from Google Sheets sources created with the CLI or Config UI will need this migration.
-//is there a migration path for people who used UI enterprise to configure?
-
 ### Property and Schedule Filters
 
-Property and Schedule filter operations have been renamed to match the operations used for Group Rules. If you have Filters set on Properties or Schedules and you have configured your Grouparoo setup using Code Config or Config UI, you will need to manually update the `op` in the `filters` array in your config files as follows:
+Property and Schedule Filter operations have been renamed to match the operations used for Group Rules. If you have Filters set on Properties or Schedules and you have configured your Grouparoo setup using Code Config or Config UI, you will need to manually update the `op` in the `filters` array in your config files as follows:
 
 - `"equals"` --> `"eq"`
 - `"not equals"` --> `"ne"`
@@ -97,9 +94,9 @@ becomes
 
 ### Group Rules
 
-Group config objects have changed shape as well. The operation within the `rules` array is now unnested to match the layout of Property and Schedule filter objects. You will need to unnest as follows:
+Group config objects have changed shape as well. The operation within the `rules` array is now unnested to match the layout of Property and Schedule filter objects. If you used Config UI or Code Config to configure your Groups, you will need to modify the config files as follows:
 
-A rule config that looked like:
+A Rule that looked like:
 
 ```
   "rules": [{
@@ -121,7 +118,7 @@ Now becomes:
 
 ### Removal of Group Type
 
-As of Grouparoo v0.8, Manual Groups are no longer supported. All groups are now configured based upon sets of Group Rules, rather than by manually adding Records. As such, there is no longer any group "type". You will want to remove the following line from your Group config files, even for calculated groups:
+As of Grouparoo v0.8, Manual Groups are no longer supported. All groups are now configured based upon sets of Group Rules, rather than by manually adding Records. As such, there is no longer any group "type". If you've used Code Config or Config UI, you will need to remove the following line from your Group config files, even for calculated groups:
 
 ```
   "type": "calculated"
