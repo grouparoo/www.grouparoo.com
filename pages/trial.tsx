@@ -1,4 +1,5 @@
-import { Container } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
+import Link from "next/link";
 import { TrialForm } from "../components/TrialForm";
 import SEO from "../components/SEO";
 
@@ -16,7 +17,42 @@ export default function TrialPage() {
         path="/trial"
       />
       <Container>
-        <TrialForm />
+        <Row className="align-self-center m-0">
+          <Col
+            md={9}
+            xl={5}
+            className="align-self-center pb-2 pb-lg-5 text-center mx-auto"
+          >
+            <Link href="/" passHref={true}>
+              <Image
+                src="/images/logo-and-wordmark-black-words.svg"
+                alt="Grouparoo Logo"
+                width={150}
+                height={32}
+                className="mb-3"
+              />
+            </Link>
+            <h1>Grouparoo Cloud</h1>
+            <h2>Start Your Free 30 Day Trial</h2>
+            <p>No credit card required.</p>
+          </Col>
+          <Col
+            xs={12}
+            md={9}
+            xl={7}
+            className="d-flex justify-content-around mx-auto m-0 "
+          >
+            <TrialForm />
+          </Col>
+        </Row>
+        <Row>
+          <Col className="mx-auto text-center pt-3">
+            <small>
+              For all other inquiries, please email{" "}
+              <a href="mailto:help@grouparoo.com">help@grouparoo.com</a>
+            </small>
+          </Col>
+        </Row>
       </Container>
     </>
   );
