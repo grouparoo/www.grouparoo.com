@@ -155,7 +155,11 @@ export const TrialForm: React.FC = () => {
             Start your Grouparoo Cloud Trial
           </h3>
 
-          <Form id="form" onSubmit={handleSubmit(onSubmit)}>
+          <Form
+            id="form"
+            onSubmit={handleSubmit(onSubmit)}
+            style={{ textAlign: "left" }}
+          >
             {" "}
             <Form.Group>
               <Form.Label>First Name</Form.Label>
