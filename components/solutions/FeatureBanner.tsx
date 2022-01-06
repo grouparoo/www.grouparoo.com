@@ -9,8 +9,10 @@ export interface FeatureArray extends Array<Feature> {}
 
 export default function FeatureBanner({
   features,
+  showHeader,
 }: {
   features: FeatureArray;
+  showHeader: boolean;
 }) {
   return (
     <>
@@ -19,7 +21,19 @@ export default function FeatureBanner({
         className="bg-dark homePageSection my-5 text-white"
       >
         <Container>
-          <br />
+          {showHeader ? (
+            <>
+              <Row style={{ textAlign: "center" }}>
+                <Col md={12}>
+                  <h2>
+                    Grouparoo is the Reverse ETL Tool that meets you where you
+                    are.
+                  </h2>
+                </Col>
+              </Row>
+              <br />
+            </>
+          ) : null}
 
           <Row>
             <Col md={6}>

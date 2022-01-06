@@ -63,7 +63,7 @@ export default function ComparisonPage(comp: ComparisonInfo) {
           </Row>
         </Container>
       </div>
-      <FeatureBanner features={comp.features} />
+      <FeatureBanner showHeader={false} features={comp.features} />
 
       <Container fluid className="homePageSection p-0 justify-content-center">
         <div className="mdxContent justify-content-center comparisonContent">

@@ -61,7 +61,7 @@ export default function CategoryPage(category: CategoryInfo) {
           </Row>
         </Container>
       </div>
-      <FeatureBanner features={category.features} />
+      <FeatureBanner showHeader={true} features={category.features} />
 
       <Container fluid className="p-0">
         <Row className="d-flex justify-content-center">
