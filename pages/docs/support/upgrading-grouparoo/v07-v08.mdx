@@ -6,28 +6,29 @@ pullQuote: "v0.8 introduces a new model-centric UI and brings some breaking chan
 
 Grouparoo v0.8 brings a UI update focused on the Models you build. It also brings several syncing improvements, and a few breaking changes. Learn how to upgrade from v0.7 to v0.8!
 
-As always, begin by updating the packages within your Grouparoo project by [following the generic upgrade guide](/docs/support/upgrading-grouparoo#installing-updates) to bump your dependencies to `v0.7.x`.
+As always, begin by updating the packages within your Grouparoo project by [following the generic upgrade guide](/docs/support/upgrading-grouparoo#installing-updates) to bump your dependencies to `v0.8.x`.
 
-**An example of a Grouparoo deployment being upgraded [can be found here](https://github.com/grouparoo/app-example-config/pull/29).**
+**An example of a Grouparoo deployment being upgraded [can be found here](https://github.com/grouparoo/app-example-config/pull/39).**
 
 ## Model-Centric UI
 
-One major change in Grouparoo v0.8 is our new Model-Centric UI. Now, you're able to see at a glance all of the Sources, Properties, Schedules, and Destinations associated with a Model from a single dashboard. You can view a Sample record and quickly access the configuration pages for each of these objects.
+One major change in Grouparoo v0.8 is our new Model-Centric UI. Now, you're able to see all of the Sources, Properties, Schedules, and Destinations associated with a Model on a single dashboard. You can view a Sample record and quickly access the configuration pages for each of these objects.
 
 <Image
   src="docs/support/upgrading-grouparoo/v07-v08-model-centric-ui.png"
   alt="Model-Centric UI Updates"
   width={700}
   height={728}
+  className="mx-auto"
 />
 
 ## Airtable Plugin
 
-As we continue to add to our list of integrations, we are pleased to announce a community-contributed Grouparoo plugin for Airtable in v0.8.
+As we continue to add to our list of integrations, we are pleased to announce a community-contributed [Grouparoo Airtable plugin](https://www.npmjs.com/package/@grouparoo/airtable) in v0.8.
 
 ## Salesforce Plugin Export Types
 
-Another big plugin update -- our Salesforce Plugin now supports three different Export types as a Destination.
+Our Salesforce Plugin now supports three different Export types as a Destination. You can send your Grouparoo Records to Salesforce Accounts, Contacts, or Objects making it easier to get your data exactly where you want it.
 
 <Image
   src="docs/support/upgrading-grouparoo/v07-v08-salesforce-export-types.png"
@@ -35,8 +36,6 @@ Another big plugin update -- our Salesforce Plugin now supports three different 
   width={700}
   height={402}
 />
-
-Now, you can send your Grouparoo Records to Salesforce Accounts, Contacts, or Objects making it easier to get your data exactly where you want it.
 
 ## `Null` and `Not Null` Filters for Properties and Schedules
 
@@ -53,12 +52,12 @@ Our SQL Plugins got a new Filter on Properties and Schedules -- `exists with any
 
 ### Google Sheets Properties
 
-Google Sheets now only supports Properties with an `Exact` aggregation method. The following line will need to be added to your Property config files if you use a Google Sheets source:
+Google Sheets now needs the aggregation method explicitly declared. While it's always only supported `exact` Properties, the following will need to be added to your Property config files if you use a Google Sheets source:
 
 ```
   "options": {
     "aggregationMethod": "exact",
-    ...
+    "column": "..."
   },
 ```
 
@@ -67,7 +66,7 @@ All existing Properties from Google Sheets sources created with the CLI or Confi
 
 ### Property and Schedule Filters
 
-Property and Schedule filters have been renamed to match the terminology used for group rules. If you have Filters set on Properties or Schedules and you have configured your Grouparoo setup using our Config UI, you will need to manually update your config files as follows:
+Property and Schedule filter operations have been renamed to match the operations used for Group Rules. If you have Filters set on Properties or Schedules and you have configured your Grouparoo setup using Code Config or Config UI, you will need to manually update the `op` in the `filters` array in your config files as follows:
 
 - `"equals"` --> `"eq"`
 - `"not equals"` --> `"ne"`
@@ -76,7 +75,27 @@ Property and Schedule filters have been renamed to match the terminology used fo
 - `"greater than"` --> `"gt"`
 - `"greater than or equal to"` --> `"gte"`
 
-### Group Filters
+For example:
+
+```
+  "filters": [{
+    "key": "state",
+    "op": "equals",
+    "match": "successful"
+  }]
+```
+
+becomes
+
+```
+  "filters": [{
+    "key": "state",
+    "op": "eq",
+    "match": "successful"
+  }]
+```
+
+### Group Rules
 
 Group config objects have changed shape as well. The operation within the `rules` array is now unnested to match the layout of Property and Schedule filter objects. You will need to unnest as follows:
 
@@ -100,6 +119,10 @@ Now becomes:
   }]
 ```
 
-### Manual Groups no longer supported
+### Removal of Group Type
 
-As of Grouparoo v0.8, Manual Groups are no longer supported. All groups are now configured based upon sets of Group Rules, rather than by manually adding Records.
+As of Grouparoo v0.8, Manual Groups are no longer supported. All groups are now configured based upon sets of Group Rules, rather than by manually adding Records. As such, there is no longer any group "type". You will want to remove the following line from your Group config files, even for calculated groups:
+
+```
+  "type": "calculated"
+```
