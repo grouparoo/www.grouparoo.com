@@ -1,21 +1,19 @@
-import Head from "next/head";
 import { Container, Row, Col } from "react-bootstrap";
 import { loadMdxFile } from "../../utils/mdxUtils";
 import hydrate from "next-mdx-remote/hydrate";
 import { PageNavigation } from "../../components/PageNavigation";
+import SEO from "../../components/SEO";
 
 export default function Meet({ pageProps }) {
   const content = hydrate(pageProps.source, {});
 
   return (
     <>
-      <Head>
-        <title>Grouparoo Hosted Services Addendum</title>
-        <link
-          rel="canonical"
-          href="https://www.grouparoo.com/legal/hosted-services-addendum"
-        />
-      </Head>
+      <SEO
+        title="Grouparoo Hosted Services Addendum"
+        path="/legal/hosted-services-addendum"
+        canonical={true}
+      />
 
       <Container className="mb-5">
         <Row>

@@ -1,4 +1,3 @@
-import Head from "next/head";
 import {
   Container,
   Row,
@@ -8,14 +7,12 @@ import {
   Alert,
 } from "react-bootstrap";
 import { TableOfContents } from "../../components/docs/TableOfContents";
+import SEO from "../../components/SEO";
 
 export default function DocsIndex() {
   return (
     <>
-      <Head>
-        <title>Grouparoo Documentation</title>
-        <link rel="canonical" href="https://www.grouparoo.com/docs" />
-      </Head>
+      <SEO title="Grouparoo Docs" path="/docs" canonical={true} />
 
       <Container>
         <Row>
