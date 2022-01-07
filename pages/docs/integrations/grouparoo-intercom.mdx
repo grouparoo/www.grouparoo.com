@@ -20,8 +20,15 @@ Intercom is a messaging platform for customer communications. You can use Interc
 <table className="docTable">
   <tbody>
     <tr>
+      <td>Destination Name</td>
+      <td>Destination Description</td>
+    </tr>
+    <tr>
       <td>Intercom Export Contacts</td>
-      <td>Export Records to contacts in an Intercom account.</td>
+      <td>
+        This Destination exports Grouparoo Records to Contacts in an Intercom
+        account.
+      </td>
     </tr>
   </tbody>
 </table>
@@ -149,6 +156,7 @@ To further clarify how Intercom should sync data, select how data should be sync
   </tr>
   </tablebody>
 </table>
+
 ### Record Data
 
 Mapping Record Properties to Intercom User Attributes is the key to syncing data to Intercom.
@@ -195,34 +203,3 @@ In Intercom, tags are similar to User Attributes and segments but they are used 
 We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with Intercom, please let us know.
 
 As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!
-
-<style>
-  {`
-    .docTable {
-      width: 100%;
-      margin-top: 12px;
-      margin-bottom: 20px;
-    }
-
-    .docTable tr:nth-child(odd){
-      background-color: #efefef;
-    }
-
-    .docTable tr:first-child {
-      background-color: #dedede;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    .docTable td, th {
-      border: 1px solid black;
-      padding: 10px;
-    }
-
-    .docTable td:first-child, th:first-child {
-      width: 25%;
-    }
-
-
-  `}
-</style>
