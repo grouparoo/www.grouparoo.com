@@ -9,7 +9,7 @@
         <title>Grouparoo: Blog</title>
         <link>https://www.grouparoo.com/blog</link>
         <description>Articles and updates from Grouparoo.</description>
-        <lastBuildDate>Mon, 27 Dec 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 06 Jan 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,129 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Typescript Types from Class Properties]]></title>
+            <link
+      >https://www.grouparoo.com/blog/typescript-types-from-class-properties</link>
+            <guid
+      >grouparoo-blog-post-typescript-types-from-class-properties</guid>
+            <pubDate>Thu, 06 Jan 2022 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<div style="margin-bottom:20px"><img alt="TS Logo" src="https://www.grouparoo.com/posts/typescript-types-from-class-properties/220106-ts-types.png" width="1270" height="667" style="height:667px;width:1270px;max-height:100%;max-width:100%" class="imageOutline"/></div><p>At Grouparoo, we use a lot of <a href="https://www.typescriptlang.org" target="_blank" rel="nofollow noopener noreferrer">TypeScript</a>. We are always striving to enhance our usage of strong TypeScript types to make better software, and to make it easier to develop Grouparoo. Strong types make it easy for team members to get quick validation about new code, and see hints and tips in their IDEs - a double win!</p><p>Recently, I found myself repeating a lot of metadata when defining a new API endpoint as I was working to enable <a href="https://www.typescriptlang.org/tsconfig#noImplicitAny" target="_blank" rel="nofollow noopener noreferrer"><code>noImplicitAny</code></a> within the <code>@grouparoo/core</code> project. We use <a href="https://www.actionhero.com" target="_blank" rel="nofollow noopener noreferrer">Actionhero</a> to build Grouparoo, and so a typical Action might look like:</p><pre class="language-ts"><code class="language-ts"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Action</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">&quot;actionhero&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword module">export</span> <span class="token keyword">class</span> <span class="token class-name"><span class="token maybe-class-name">TestAction</span></span> <span class="token keyword">extends</span> <span class="token class-name"><span class="token maybe-class-name">Action</span></span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">name</span> <span class="token operator">=</span> <span class="token string">&quot;testAction&quot;</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">description</span> <span class="token operator">=</span> <span class="token string">&quot;I am a test&quot;</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">inputs</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+      key<span class="token operator">:</span> <span class="token punctuation">{</span>
+        required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        formatter<span class="token operator">:</span> stringFormatter<span class="token punctuation">,</span>
+        validator<span class="token operator">:</span> stringValidator<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      value<span class="token operator">:</span> <span class="token punctuation">{</span>
+        required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        formatter<span class="token operator">:</span> integerFormatter<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// &lt;--- Note the type definition below for `params`</span>
+  <span class="token keyword">async</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">{</span> params <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span> params<span class="token operator">:</span> <span class="token punctuation">{</span> key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span> value<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span> key<span class="token operator">:</span> params<span class="token punctuation">.</span><span class="token property-access">key</span><span class="token punctuation">,</span> value<span class="token operator">:</span> params<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">stringFormatter</span><span class="token punctuation">(</span>s<span class="token operator">:</span> <span class="token builtin">unknown</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">String</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">integerFormatter</span><span class="token punctuation">(</span>s<span class="token operator">:</span> <span class="token builtin">unknown</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token known-class-name class-name">String</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">stringValidator</span><span class="token punctuation">(</span>s<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token property-access">length</span> <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">throw</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token known-class-name class-name">Error</span></span><span class="token punctuation">(</span><span class="token string">&quot;inputs should be at least 3 letters long&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>Notice how the params provided back to the <code>run()</code> method are typed, even though we provide that information functionally via the <code>formatter</code> argument to the Action&#x27;s inputs. Defining this information in both was tedious, and more nefariously a possible place for drift between the implementation and the types. What would it take for TypeScript to automatically be able to determine the types of our Params?</p><h2 id="learning-things"><a href="#learning-things">Learning Things</a></h2><p>I tried many approaches to pragmatically determine the types of Action Params, and learned a lot along the way. The most interesting thing that I learned was that method argument types are not inherited. Initially, I wanted to modify the abstract base Action class to automatically reflect its input types into the run method, but it&#x27;s not possible:</p><p>Consider the following:</p><pre class="language-ts"><code class="language-ts"><span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name"><span class="token maybe-class-name">Greeter</span></span> <span class="token punctuation">{</span>
+  <span class="token keyword">abstract</span> <span class="token function">greet</span><span class="token punctuation">(</span>who<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name"><span class="token maybe-class-name">ClassyGreeter</span></span> <span class="token keyword">extends</span> <span class="token class-name"><span class="token maybe-class-name">Greeter</span></span> <span class="token punctuation">{</span>
+  <span class="token function">greet</span><span class="token punctuation">(</span>who<span class="token punctuation">,</span> message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Salutations, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>who<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">. </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>message<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> classyGreeterInstance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">ClassyGreeter</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+classyGreeterInstance<span class="token punctuation">.</span><span class="token method function property-access">greet</span><span class="token punctuation">(</span><span class="token string">&quot;Mr Bingley&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Is it not a fine day?&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// OK, inputs are strings</span>
+classyGreeterInstance<span class="token punctuation">.</span><span class="token method function property-access">greet</span><span class="token punctuation">(</span><span class="token number">1234</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Should throw... but it doesn&#x27;t!</span>
+</code></pre><p>Even though <code>ClassyGreeter</code> extends <code>Greeter</code>, the fact that the <code>greet()</code> method is re-implemented means that the initial type of the method from the abstract class can&#x27;t be assumed. After hitting that dead end, I pivoted to attempt to build a transformation utility type. While there, I found myself inspecting the types of the Action class in question, and I then learned was that TypeScript doesn&#x27;t <em>really</em> know what goes on in a Class constructor.</p><p>You can define the same class both ways:</p><pre class="language-ts"><code class="language-ts"><span class="token keyword">class</span> <span class="token class-name"><span class="token maybe-class-name">ConstructedList</span></span> <span class="token punctuation">{</span>
+  items<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">items</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;apple&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;banana&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name"><span class="token maybe-class-name">StaticList</span></span> <span class="token punctuation">{</span>
+  items<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;apple&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;banana&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">typeof</span> <span class="token function"><span class="token maybe-class-name">ConstructedList</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">items</span><span class="token punctuation">;</span> <span class="token comment">// string[]</span>
+<span class="token keyword">typeof</span> <span class="token function"><span class="token maybe-class-name">StaticList</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">items</span><span class="token punctuation">;</span> <span class="token comment">// [&#x27;apple&#x27;, &#x27;banana&#x27;]</span>
+</code></pre><p>At runtime, these 2 classes will have the same behavior... but, because the class property was defined strictly in <code>StaticList</code>, we can get hinting, and that&#x27;s not something we get from <code>ConstructedList</code></p><div style="margin-bottom:20px"><img alt="TypeHints" src="https://www.grouparoo.com/posts/typescript-types-from-class-properties/hints.png" width="755" height="200" style="height:200px;width:755px;max-height:100%;max-width:100%" class="imageOutline"/></div><h2 id="the-paramsfrom-type-utility"><a href="#the-paramsfrom-type-utility">The <code>ParamsFrom</code> Type Utility</a></h2><p>Knowing the above, it became clear that to reach the goal, I would need to reformat our action definitions to <em>not</em> use a constructor. After that, TypeScript can start to inspect the properties of the class. Our utility can take in the Action&#x27;s class as an argument, and inspect both the keys of the <code>inputs</code>, and if there is a <code>formatter</code> present, infer its return type:</p><pre class="language-ts"><code class="language-ts"><span class="token keyword module">export</span> <span class="token keyword">type</span> <span class="token class-name"><span class="token maybe-class-name">ParamsFrom</span><span class="token operator">&lt;</span><span class="token constant">A</span> <span class="token keyword">extends</span> <span class="token maybe-class-name">Action</span><span class="token operator">&gt;</span></span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span><span class="token maybe-class-name">Input</span> <span class="token keyword">in</span> <span class="token keyword">keyof</span> <span class="token constant">A</span><span class="token punctuation">[</span><span class="token string">&quot;inputs&quot;</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token constant">A</span><span class="token punctuation">[</span><span class="token string">&quot;inputs&quot;</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token maybe-class-name">Input</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&quot;formatter&quot;</span><span class="token punctuation">]</span> <span class="token keyword">extends</span> <span class="token punctuation">(</span>
+    <span class="token spread operator">...</span>ags<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token builtin">any</span>
+    <span class="token operator">?</span> <span class="token maybe-class-name">ReturnType</span><span class="token operator">&lt;</span><span class="token constant">A</span><span class="token punctuation">[</span><span class="token string">&quot;inputs&quot;</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token maybe-class-name">Input</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">&quot;formatter&quot;</span><span class="token punctuation">]</span><span class="token operator">&gt;</span>
+    <span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><p>Of note, because we are accepting data over HTTP or websocket most commonly, we can assume that an input without a formatter is a string.</p><p>Putting everything together, here&#x27;s what our final Action looks like:</p><pre class="language-ts"><code class="language-ts"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Action</span><span class="token punctuation">,</span> <span class="token maybe-class-name">ParamsFrom</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">&quot;actionhero&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword module">export</span> <span class="token keyword">class</span> <span class="token class-name"><span class="token maybe-class-name">TestAction</span></span> <span class="token keyword">extends</span> <span class="token class-name"><span class="token maybe-class-name">Action</span></span> <span class="token punctuation">{</span>
+  name <span class="token operator">=</span> <span class="token string">&quot;testAction&quot;</span><span class="token punctuation">;</span>
+  description <span class="token operator">=</span> <span class="token string">&quot;I am a test&quot;</span><span class="token punctuation">;</span>
+  inputs <span class="token operator">=</span> <span class="token punctuation">{</span>
+    key<span class="token operator">:</span> <span class="token punctuation">{</span>
+      required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      formatter<span class="token operator">:</span> stringFormatter<span class="token punctuation">,</span>
+      validator<span class="token operator">:</span> stringValidator<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    value<span class="token operator">:</span> <span class="token punctuation">{</span>
+      required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      formatter<span class="token operator">:</span> integerFormatter<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">async</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">{</span> params <span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span> params<span class="token operator">:</span> <span class="token maybe-class-name">ParamsFrom</span><span class="token operator">&lt;</span><span class="token maybe-class-name">TestAction</span><span class="token operator">&gt;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span> key<span class="token operator">:</span> params<span class="token punctuation">.</span><span class="token property-access">key</span><span class="token punctuation">,</span> value<span class="token operator">:</span> params<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">stringFormatter</span><span class="token punctuation">(</span>s<span class="token operator">:</span> <span class="token builtin">unknown</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">String</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">integerFormatter</span><span class="token punctuation">(</span>s<span class="token operator">:</span> <span class="token builtin">unknown</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token known-class-name class-name">String</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">stringValidator</span><span class="token punctuation">(</span>s<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token property-access">length</span> <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">throw</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token known-class-name class-name">Error</span></span><span class="token punctuation">(</span><span class="token string">&quot;inputs should be at least 3 letters long&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>And finally, we can see our params are typed:</p><div style="margin-bottom:20px"><img alt="TypeHints" src="https://www.grouparoo.com/posts/typescript-types-from-class-properties/final-types.png" width="1423" height="200" style="height:200px;width:1423px;max-height:100%;max-width:100%" class="imageOutline"/></div><h2 id="open-source-contribution"><a href="#open-source-contribution">Open Source Contribution</a></h2><p>We contributed this work back to Actionhero, and in <a href="https://github.com/actionhero/actionhero/releases/tag/v28.1.0" target="_blank" rel="nofollow noopener noreferrer">Actionhero v28.1.0</a>, the <code>ParamsFrom</code> utility is included!</p>]]></content:encoded>
+            <enclosure
+        url="https://www.grouparoo.com/posts/typescript-types-from-class-properties/220106-ts-types.png"
+        length="0"
+        type="image/png"
+      />
+        </item>
         <item>
             <title><![CDATA[Types of Databases]]></title>
             <link>https://www.grouparoo.com/blog/types-of-databases</link>
