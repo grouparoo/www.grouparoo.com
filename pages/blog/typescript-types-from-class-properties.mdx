@@ -60,11 +60,11 @@ function stringValidator(s: string) {
 }
 ```
 
-Notice how the params provided back to the `run()` method are typed, even though we provide that information functionally via the `formatter` argument to the Action's inputs. Defining this information in both was tedious, and more nefariously a possible place for drift between the implementation and the types. What would it take for TypeScript to automatically be able to determine the types of our Params?
+Notice how the params provided back to the `run()` method are typed, even though we provide that information functionally via the `formatter` argument to the Action's inputs. Defining this information in both locations was tedious, and more nefariously, a possible place for drift between the implementation and the types. What would it take for TypeScript to automatically be able to determine the types of our Params?
 
 ## Learning Things
 
-I tried many approaches to pragmatically determine the types of Action Params, and learned a lot along the way. The most interesting thing that I learned was that method argument types are not inherited. Initially, I wanted to modify the abstract base Action class to automatically reflect its input types into the run method, but it's not possible:
+I tried many approaches to programmatically determine the types of an Action's params, and learned a lot along the way. The most interesting thing that I learned was that method argument types are not inherited in TypeScript. Initially, I wanted to modify the abstract base `Action` class to automatically reflect its input types into the run method, but it's not possible:
 
 Consider the following:
 
@@ -84,9 +84,9 @@ classyGreeterInstance.greet("Mr Bingley", "Is it not a fine day?"); // OK, input
 classyGreeterInstance.greet(1234, false); // Should throw... but it doesn't!
 ```
 
-Even though `ClassyGreeter` extends `Greeter`, the fact that the `greet()` method is re-implemented means that the initial type of the method from the abstract class can't be assumed. After hitting that dead end, I pivoted to attempt to build a transformation utility type. While there, I found myself inspecting the types of the Action class in question, and I then learned was that TypeScript doesn't _really_ know what goes on in a Class constructor.
+Even though `ClassyGreeter` extends `Greeter`, the fact that the `greet()` method is re-implemented means that the initial type of the method from the abstract class can't be assumed. After hitting that dead end, I pivoted to attempt to build a transformation utility type. While working on this, I found myself inspecting the properties of the `Action` class in question, and I learned was that TypeScript doesn't _really_ know what goes on in a Class constructor.
 
-You can define the same class both ways:
+For example, you can define the same class both ways:
 
 ```ts
 class ConstructedList {
@@ -105,7 +105,7 @@ typeof ConstructedList().items; // string[]
 typeof StaticList().items; // ['apple', 'banana']
 ```
 
-At runtime, these 2 classes will have the same behavior... but, because the class property was defined strictly in `StaticList`, we can get hinting, and that's not something we get from `ConstructedList`
+At runtime, these 2 classes will have the same behavior, with `this.items = ["apple", "banana"]`, but because the class property was defined strictly in `StaticList`, we can get the literal types back, rather than just the "string[]" we get from `ConstructedList`.
 
 <Image
   alt="TypeHints"
@@ -116,7 +116,7 @@ At runtime, these 2 classes will have the same behavior... but, because the clas
 
 ## The `ParamsFrom` Type Utility
 
-Knowing the above, it became clear that to reach the goal, I would need to reformat our action definitions to _not_ use a constructor. After that, TypeScript can start to inspect the properties of the class. Our utility can take in the Action's class as an argument, and inspect both the keys of the `inputs`, and if there is a `formatter` present, infer its return type:
+Knowing the above, it became clear that to reach the goal, I would need to reformat all of our action definitions to _not_ use a constructor. After that, TypeScript can start to inspect the properties of the class. Our utility can take in the Action's class as an argument, and inspect both the keys of the `inputs`, and if there is a `formatter` present, infer its return type:
 
 ```ts
 export type ParamsFrom<A extends Action> = {
