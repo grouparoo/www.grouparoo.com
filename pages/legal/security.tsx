@@ -1,18 +1,15 @@
-import Head from "next/head";
 import { Container, Row, Col } from "react-bootstrap";
 import { loadMdxFile } from "../../utils/mdxUtils";
 import hydrate from "next-mdx-remote/hydrate";
 import { PageNavigation } from "../../components/PageNavigation";
+import SEO from "../../components/SEO";
 
 export default function Meet({ pageProps }) {
   const content = hydrate(pageProps.source, {});
 
   return (
     <>
-      <Head>
-        <title>Grouparoo Security</title>
-        <link rel="canonical" href="https://www.grouparoo.com/legal/security" />
-      </Head>
+      <SEO title="Grouparoo Security" path="/legal/security" canonical={true} />
 
       <Container className="mb-5">
         <Row>

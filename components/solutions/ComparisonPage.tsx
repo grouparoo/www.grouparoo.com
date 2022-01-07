@@ -1,8 +1,9 @@
 import React from "react";
-import { Container, Button, Row, Col } from "react-bootstrap";
-import Head from "next/head";
+import { Container, Row, Col } from "react-bootstrap";
 import ComparisonTable from "./ComparisonTable";
+import SEO from "../SEO";
 import FeatureBanner from "./FeatureBanner";
+import { TrialForm } from "../TrialForm";
 import hydrate from "next-mdx-remote/hydrate";
 import { ComparisonInfo } from "../../utils/solutionsPages";
 import { arrayToReadableList, possessiveNoun } from "../../utils/inflectors";
@@ -13,24 +14,19 @@ export default function ComparisonPage(comp: ComparisonInfo) {
 
   return (
     <>
-      <Head>
-        <title>Grouparoo: {comp.competitor} Alternative</title>
-        <meta
-          name="description"
-          content={`Grouparoo is comparable to ${
-            comp.competitor
-          } but wins on ${arrayToReadableList(comp.pros)}.`}
-        />
-        <link
-          rel="canonical"
-          href={`https://www.grouparoo.com/solutions/${comp.competitor.toLowerCase()}-alternative`}
-        />
-      </Head>
+      <SEO
+        title={`Grouparoo: ${comp.competitor} Alternative`}
+        description={`Grouparoo is comparable to ${
+          comp.competitor
+        } but wins on ${arrayToReadableList(comp.pros)}.`}
+        canonical={true}
+        path={`/solutions/${comp.competitor.toLowerCase()}-alternative`}
+      />
 
       <div
         id="headline"
         className="homePageSection"
-        style={{ textAlign: "center", paddingBottom: 100 }}
+        style={{ textAlign: "center", paddingBottom: 0 }}
       >
         <Container>
           <Row>
@@ -44,46 +40,36 @@ export default function ComparisonPage(comp: ComparisonInfo) {
               </p>
             </Col>
           </Row>
-
           <br />
 
-          <Row>
-            <Col>
-              <Button variant="primary" href="/get-started" className="ms-auto">
-                Start Free Trial
-              </Button>
+          <Row style={{ textAlign: "center" }} className="mt-5">
+            <Col md={12}>
+              <h2>
+                Grouparoo is the Reverse ETL tool that meets you where you are.
+              </h2>
             </Col>
           </Row>
 
           <br />
+          <br />
 
           <Row>
+            <Col lg={7}>
+              <ComparisonTable comparisonChartData={comp.comparisonChartData} />
+            </Col>
             <Col>
-              <p>
-                or try it free. We’re open source!&nbsp;&nbsp;&nbsp;
-                <Button
-                  size="sm"
-                  variant="outline-primary"
-                  style={{ padding: ".5rem 1rem" }}
-                  href="/docs/getting-started"
-                >
-                  Install Now
-                </Button>
-              </p>
+              <TrialForm />
             </Col>
           </Row>
-          <br />
         </Container>
       </div>
-      <FeatureBanner category="Reverse ETL Tool" features={comp.features} />
+      <FeatureBanner showHeader={false} features={comp.features} />
 
       <Container fluid className="homePageSection p-0 justify-content-center">
         <div className="mdxContent justify-content-center comparisonContent">
           {content}
         </div>
       </Container>
-
-      <ComparisonTable comparisonChartData={comp.comparisonChartData} />
     </>
   );
 }

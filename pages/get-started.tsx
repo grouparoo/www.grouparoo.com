@@ -1,16 +1,18 @@
 import { Container, Button, Row, Col, Card } from "react-bootstrap";
-import Head from "next/head";
 import Link from "next/link";
+import SEO from "../components/SEO";
 
 export default function GetStarted({ props }) {
   const title = "Grouparoo: Get started";
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <link rel="canonical" href="https://www.grouparoo.com/get-started" />
-      </Head>
+      <SEO
+        title={title}
+        description="Get Started Using Grouparoo"
+        path="/get-started"
+        canonical={true}
+      />
 
       <div
         id="headline"

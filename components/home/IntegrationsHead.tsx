@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../SEO";
 
 export default function IntegrationsHead({
   primaryType,
@@ -10,18 +10,11 @@ export default function IntegrationsHead({
   slug: string;
 }) {
   return (
-    <>
-      <Head>
-        <title>{name} Integrations - Best Data App Integration Tools</title>
-        <meta
-          name="description"
-          content={`The Grouparoo ${name} integration allows you to sync all of your customer data that lives in various sources into ${name}. ✓ Start a free trial now!`}
-        />
-        <link
-          rel="canonical"
-          href={`https://www.grouparoo.com/integrations/${primaryType}s/${slug}`}
-        />
-      </Head>
-    </>
+    <SEO
+      title={`${name} Integrations - Best Data App Integration Tools`}
+      description={`The Grouparoo ${name} integration allows you to sync all of your customer data that lives in various sources into ${name}. ✓ Start a free trial now!`}
+      path={`/integrations/${primaryType}s/${slug}`}
+      canonical={true}
+    />
   );
 }

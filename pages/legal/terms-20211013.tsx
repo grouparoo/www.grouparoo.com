@@ -1,22 +1,19 @@
-import Head from "next/head";
 import { Container, Row, Col } from "react-bootstrap";
 import { loadMdxFile } from "../../utils/mdxUtils";
 import hydrate from "next-mdx-remote/hydrate";
 import { PageNavigation } from "../../components/PageNavigation";
+import SEO from "../../components/SEO";
 
 export default function Meet({ pageProps }) {
   const content = hydrate(pageProps.source, {});
 
   return (
     <>
-      <Head>
-        <title>Grouparoo Master Terms and Conditions - 2021-10-13</title>
-        <link
-          rel="canonical"
-          href="https://www.grouparoo.com/legal/terms-20211013"
-        />
-        <meta name="robots" content="noindex" />
-      </Head>
+      <SEO
+        title="Grouparoo Master Terms and Conditions - 2021-10-13"
+        path="/legal/terms-20211013"
+        noIndex={true}
+      />
 
       <Container className="mb-5">
         <Row>
