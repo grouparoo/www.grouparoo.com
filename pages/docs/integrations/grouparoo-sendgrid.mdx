@@ -1,0 +1,152 @@
+---
+title: "Sendgrid"
+date: "2022-1-10"
+pullQuote: "Learn how to work with the Sendgrid Integration as a Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Sendgrid" />
+
+## Overview
+
+SendGrid is an email service with accompanying Customer Relationship Management tools. You can use SendGrid to
+
+### Destinations
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td> Destination Name </td>
+      <td> Description </td>
+    </tr>
+    <tr>
+      <td>SendGrid Export Contacts</td>
+      <td>
+        Export records to Sendgrid marketing as Contacts and put them in static
+        Lists.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+You will need a SendGrid account with a sender identity created in order to start syncing data to SendGrid. You will also need an API Key with Permissions listed as Full Access in your SendGrid account.
+
+In SendGrid, navigate to Settings > API Keys > Create API Key. You will need this key to establish a connection with SendGrid.
+
+SendGrid API Key management can be found [here](https://app.sendgrid.com/settings/api_keys).
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sendgrid/setup/setup-1.png"
+  alt="API Keys"
+  width={720}
+  height={134}
+/>
+<br></br>
+<br></br>
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sendgrid/setup/setup-2.png"
+  alt="API Keys"
+  width={720}
+  height={256}
+/>
+<br></br>
+<br></br>
+
+## App
+
+To connect SendGrid to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to SendGrid. This specifies the account used for any Destinations.
+
+### App Options
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sendgrid/app/options.png"
+  alt="Sendgrid App Options"
+  width={720}
+  height={101}
+/>
+<br></br>
+<br></br>
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>App Option</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>SendGrid API Key</strong> (required)
+      </td>
+      <td>Sendgrid api key.</td>
+    </tr>
+  </tablebody>
+</table>
+
+For more information on options for keeping your credentials secure, visit our documentation on [secrets](https://www.grouparoo.com/docs/support/secrets).
+
+## SendGrid Export Contacts
+
+This Destination enables you to sync your Grouparoo Records as Contacts in SendGrid.
+
+Companies use Grouparoo to keep their SendGrid Contacts up-to-date in order to communicate with customers and manage client relations.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+- **Sync**: Add, update, and remove SendGrid Contacts as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update SendGrid Contacts as needed, but do not remove anybody. This option looks for new Contacts to add to SendGrid and changes to existing SendGrid Contacts, but does not keep track of deletions.
+- **Enrich**: Only update those Contacts that already exist in SendGrid. Do not add or remove Contacts. This option will only update existing Contacts in SendGrid.
+
+### Destination Options
+
+Some types of Destinations require further clarification about how data should sync. In the case of Pipedrive, there are no further Options to configure before moving on to mapping Record Data.
+
+### Record Data
+
+Mapping Record Properties to SendGrid Contact Fields is the key to syncing data to SendGrid Contacts.
+
+SendGrid’s Contact Fields can be either Reserved Fields or Custom Fields from a form. This helps companies gather helpful information about clients and prospects.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sendgrid/export-contacts/record-data.png"
+  alt="Sendgrid Export Contacts Record Data"
+  width={720}
+  height={356}
+/>
+<br></br>
+<br></br>
+
+#### Required Properties
+
+You must map a Grouparoo Property to the **email** SendGrid Contact Field. Choose the Grouparoo Property that corresponds to the Contact email from the dropdown menu.
+
+- **email:** A Contact’s email address in SendGrid
+
+#### Optional Properties
+
+In addition to the required email field, companies can add many Reserved or Custom Fields to sync with Grouparoo Properties. These can be accessed from the Send Record Property dropdown menu.
+
+### Group Data
+
+In addition to mapping Grouparoo Properties to SendGrid Contact Fields, you can use Grouparoo Groups to create SendGrid Lists.
+
+In SendGrid, Lists help companies segment their audience to improve the delivery of custom messaging.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sendgrid/export-contacts/group-data.png"
+  alt="Sendgrid Export Contacts Group Data"
+  width={720}
+  height={201}
+/>
+<br></br>
+<br></br>
+
+## Notes
+
+We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with SendGrid, please let us know.
+
+As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!
