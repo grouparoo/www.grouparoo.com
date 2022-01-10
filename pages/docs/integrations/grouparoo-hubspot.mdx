@@ -1,0 +1,229 @@
+---
+title: "Hubspot"
+date: "2022-1-10"
+pullQuote: "Learn how to work with the Hubspot Integration as a Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Hubspot" />
+
+Grouparoo's [Hubspot](https://www.hubspot.com/) Integration enables you to export users to Hubspot.
+
+This guide will show you how to work with the Hubspot Integration to [create a Destination](#create-a-braze-destination) to export your data.
+
+## Overview
+
+Hubspot is a customer relationship management (CRM) tool. You can use Hubspot to manage marketing, sales, and customer service tasks. Grouparoo can help you to sync data from your warehouse to Hubspot easily and efficiently.
+
+### Destinations
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td> Destination Name </td>
+      <td> Description </td>
+    </tr>
+    <tr>
+      <td>Hubspot Export Contacts</td>
+      <td>Export Records as Hubspot Contacts and add them to Contact Lists.</td>
+    </tr>
+    <tr>
+      <td>Hubspot Export Objects</td>
+      <td>
+        Export Records as Hubspot Custom Objects or Hubspot standard objects.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+In order to use Hubspot as a destination you will need a Hubspot account,
+
+To find or create an API key for Hubspot, your Hubspot account must have Super Admin Permissions. Navigate to Settings > Integrations > API Key. Only one API key is allowed per Hubspot account and this key gives full developer access to make changes to the account via API. You will need to **Show** then **Copy** the API key from this page. There are also options for rotating out or deleting the key associated with your account.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/hubspot/setup/setup-1.png"
+  alt="finding API key"
+  width={733}
+  height={106}
+/>
+<br></br>
+<br></br>
+
+## App
+
+To connect Hubspot to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to Hubspot. This specifies the account used for any Destinations.
+
+### App Options
+
+In Grouparoo, you specify the options to connect to Hubspot and then test the connection before updating the App.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/hubspot/app/options.png"
+  alt="Hubspot App Options"
+  width={733}
+  height={113}
+/>
+<br></br>
+<br></br>
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>App Option</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Hubspot API Key</strong> (required)
+      </td>
+      <td>Hubspot hapikey (api) key.</td>
+    </tr>
+  </tablebody>
+</table>
+
+For more information on options for keeping your API Key secure, visit our documentation on [secrets](https://www.grouparoo.com/docs/support/secrets).
+
+## Hubspot Export Contacts
+
+This Destination enables you to sync your Grouparoo Records to Contacts in Hubspot.
+
+Companies use Grouparoo to keep their Hubspot Contacts up-to-date in order to communicate with their customers and organize those customer contacts even further, in Lists.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. The following are supported by Hubspot:
+
+- **Sync**: Add, update, and remove Hubspot Contacts as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Hubspot Contacts as needed, but do not remove anybody. This option looks for new Contacts to add to Hubspot and changes to existing Hubspot Contacts, but does not keep track of deletions.
+- **Enrich**: Only update those Contacts that already exist in Hubspot. Do not add or remove Contacts. This option will only update existing Contacts in Hubspot.
+
+### Destination Options
+
+Some types of Destinations require further clarification about how data should sync. In the case of Hubspot Export Contacts Destinations, there are no further Options to configure before moving on to mapping Record Data.
+
+### Record Data
+
+Mapping Record Properties to Hubspot Contact Properties is the key to syncing data to Hubspot.
+
+In Hubspot, Contact Properties can be used to store and organize all the different types of information you collect related to each Contact. This makes it possible to segment, track, and report on the performance of your Hubspot database.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/hubspot/export-contacts/record-data.png"
+  alt="Hubspot Export Contacts Record Data"
+  width={733}
+  height={550}
+/>
+<br></br>
+<br></br>
+
+#### Required Properties
+
+The only Grouparoo Property that is required to map to Hubspot Contact Properties is **email**. Choose the Grouparoo Property that corresponds with the Contact’s email address.
+
+- **email: **a Contact’s email address in Hubspot
+
+#### Optional Properties
+
+In addition to the required email property, Hubspot allows you to set many other Contact Properties. You can create custom Hubspot Contact Properties as needed. These are additional attributes you would create in your Hubspot account and they will be available in the Send Record Property dropdown menu on this screen. Any of these Contact Properties can be synced to from Grouparoo Properties.
+
+### Group Data
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/hubspot/export-contacts/group-data.png"
+  alt="Hubspot Export Contacts Group Data"
+  width={733}
+  height={229}
+/>
+<br></br>
+<br></br>
+
+## Hubspot Export Objects
+
+This Destination enables you to sync your Grouparoo Records to Contacts in Hubspot. You can export Records as Hubspot Custom Objects (with an Enterprise Hubspot account) or Hubspot Standard Objects.
+
+Companies use Grouparoo to keep their Hubspot Contacts up-to-date in order to communicate with their customers and organize those customer contacts even further, in Lists.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. The following are supported by Hubspot:
+
+- **Sync**: Add, update, and remove Hubspot Contacts as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Hubspot Contacts as needed, but do not remove anybody. This option looks for new Contacts to add to Hubspot and changes to existing Hubspot Contacts, but does not keep track of deletions.
+- **Enrich**: Only update those Contacts that already exist in Hubspot. Do not add or remove Contacts. This option will only update existing Contacts in Hubspot.
+
+### Destination Options
+
+To further clarify how Hubspot should sync data, select how data should be synced. There are two required Options to configure this type of Destination.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/hubspot/export-objects/options.png"
+  alt="Hubspot Export Objects Destination Options"
+  width={733}
+  height={159}
+/>
+<br></br>
+<br></br>
+
+<table className="docTable">
+    <tablebody>
+        <tr>
+            <td>Destination Option</td>
+            <td>Description</td>
+        </tr>
+  <tr>
+   <td><strong>Schema</strong>
+
+(required)
+
+   </td>
+   <td>Which object in Hubspot represents a Grouparoo Record?
+   </td>
+  </tr>
+  <tr>
+   <td><strong>Primary Key</strong>
+
+(required)
+
+   </td>
+   <td>Which field in the Schema selected uniquely represents the Grouaproo Records?
+   </td>
+  </tr>
+  </tablebody>
+</table>
+
+### Record Data
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/hubspot/export-objects/record-data.png"
+  alt="Hubspot Export Objects Record Data"
+  width={733}
+  height={627}
+/>
+<br></br>
+<br></br>
+
+#### Required Properties
+
+The only Grouparoo Property that is required to map to Hubspot Contact Properties is **email**. Choose the Grouparoo Property that corresponds with the Contact’s email address.
+
+- **email: **a Contact’s email address in Hubspot
+
+#### Optional Properties
+
+In addition to the required email property, Hubspot allows you to set many other Contact Properties. You can create custom Hubspot Contact Properties as needed. These are additional attributes you would create in your Hubspot account and they will be available in the Send Record Property dropdown menu on this screen. Any of these Contact Properties can be synced to from Grouparoo Properties.
+
+### Group Data
+
+Some Destination types allow you to make use of Grouparoo Groups to apply tags or send to lists. When using Hubspot Export Object, this is not part of the configuration.
+
+## Notes
+
+We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your grouparoo connection with Mailchimp, please let us know.
+
+As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!
