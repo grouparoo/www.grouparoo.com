@@ -509,6 +509,61 @@ hr {
   width: 100%;
   position: absolute;
 }
+// -- Tables --
+
+.docTable {
+  width: 100%;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.docTable tr:nth-child(odd) {
+  background-color: #efefef;
+}
+
+.docTable tr:first-child {
+  background-color: #dedede;
+  text-align: center;
+  font-weight: bold;
+}
+
+.docTable td,
+th {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.docTable td:first-child,
+th:first-child {
+  width: 25%;
+}
+
+.notesTable {
+  width: 100%;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.notesTable tr:nth-child(odd) {
+  background-color: #efefef;
+}
+
+.notesTable tr:first-child {
+  background-color: #dedede;
+  text-align: center;
+  font-weight: bold;
+}
+
+.notesTable td,
+th {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.notesTable td:first-child,
+th:first-child {
+  width: 1%;
+}
 
 // -- trial --
 
