@@ -1,0 +1,157 @@
+---
+title: "Mailjet"
+date: "2022-01-07"
+pullQuote: "Learn how to work with the Mailjet Integration as a Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Mailjet" />
+
+## Overview
+
+Mailjet is an email marketing platform. You can use this service to send both marketing and transactional emails. Grouaproo can help you to sync data from your warehouse to Mailjet easily and routinely.
+
+### Destinations
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Destination Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>Mailjet Export Contacts</td>
+      <td>Export Records to Mailjet and add them to Contact Lists.</td>
+    </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+You will need a Mailjet account to sync data between Grouparoo and Mailjet. In addition, you’ll need to find the API Key and Secret Key in your Mailjet account to proceed with configuration.
+
+To find the API Key and Secret Key, sign into your account and navigate to the [account settings page](https://app.mailjet.com/account). From there, find the box labeled “REST API” and select “Master API Key & Sub API key management. The values given to you here are required information in configuration to sync with Mailjet.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailjet/setup/setup-1.png"
+  alt="Managing API keys"
+  width={500}
+  height={359}
+/>
+<br></br>
+<br></br>
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailjet/setup/setup-2.png"
+  alt="finding API key"
+  width={733}
+  height={267}
+/>
+<br></br>
+<br></br>
+
+## App
+
+To connect Mailjet to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) which tells Grouparoo the details of how to connect to Mailjet. This specifies the account used for any Destinations.
+
+### App Options
+
+In Grouparoo’s UI config, you specify the options to connect to Intercom and test the connection.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailjet/app/options.png"
+  alt="Mailjet App Options"
+  width={733}
+  height={234}
+/>
+<br></br>
+<br></br>
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Value</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Mailjet API Key</strong> (required)
+      </td>
+      <td>Mailjet apiKey</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Mailjet API Secret</strong> (required)
+      </td>
+      <td>Mailjet API Secret</td>
+    </tr>
+  </tablebody>
+</table>
+
+For more information on options for keeping your credentials secure, visit our documentation on [secrets](https://www.grouparoo.com/docs/support/secrets).
+
+## Mailjet Export Contacts
+
+This Destination allows you to sync your Grouparoo Records to Contacts in Mailjet and to add those contacts to Contact Lists if needed.
+
+Companies use Mailjet to optimize their marketing strategy by sending and tracking useful communications to the right segments of their contact lists.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. The following are supported by Mailjet:
+
+- **Sync**: Add, update, and remove Mailjet Contacts as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Mailjet Contacts as needed, but do not remove anybody. This option looks for new Contacts to add to Mailjet and changes to existing Mailjet Contacts, but does not keep track of deletions.
+- **Enrich**: Only update those Contacts that already exist in Mailjet. Do not add or remove Contacts. This option will only update existing Contacts in Mailjet.
+
+### Destination Options
+
+Some types of Destinations require further clarification about how data should sync. In the case of Sailthru, there are no further Options to configure before moving on to mapping Record Data
+
+### Record Data
+
+Mapping Grouparoo Record Properties to Mailjet Contact Properties is the key to syncing data to Mailjet Contacts.
+
+Mailjet Contact Properties can be used for customizing marketing campaigns and they allow you to personalize communications and segment your audience into lists for targeted mailings.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailjet/export-contacts/record-data.png"
+  alt="Mailjet Record Data"
+  width={733}
+  height={429}
+/>
+<br></br>
+<br></br>
+
+#### Required Properties
+
+The only Grouparoo Property that is required to map to a Mailjet Contact Property is **Email**. Choose the Grouparoo Property that corresponds with the User’s email address.
+
+- **Email: **a Lead’s email address in Mailjet
+
+#### Optional Properties
+
+In addition to required fields, Mailjet allows you to create Custom Mailjet Contact Properties. This allows you to store useful details about subscribers. You can find those you have already created by scrolling through the dropdown menu in the **Send Record Property** portion of the form. Any of these can be synced to from Grouparoo Properties.
+
+### Group Data
+
+In addition to mapping Grouparoo Properties to Mailjet Contact Properties, you can use Grouparoo Groups to add Contacts to Mailjet Lists.
+
+Mailjet lists help marketers to engage with customers and business prospects more effectively. This segmentation helps businesses target the most appropriate portion of a list for each campaign.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailjet/export-contacts/group-data.png"
+  alt="Mailjet Group Data"
+  width={733}
+  height={211}
+/>
+<br></br>
+<br></br>
+
+## Notes
+
+We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with Mailjet, please let us know.
+
+As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!
