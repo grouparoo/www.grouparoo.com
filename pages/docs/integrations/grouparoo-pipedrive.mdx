@@ -1,0 +1,139 @@
+---
+title: "Pipedrive"
+date: "2022-1-10"
+pullQuote: "Learn how to work with the Pipedrive Integration as a Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Pipedrive" />
+
+## Overview
+
+Pipedrive is a Customer Relationship Management (CRM) tool that helps businesses visualize their sales processes for a more efficient operation. You can use Pipedrive to orchestrate marketing campaigns and keep in touch with customers and prospects.
+
+### Destinations
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Destination Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>Pipedrive Export Contacts</td>
+      <td>Export Records to Pipedrive as Person contacts</td>
+    </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+You will need a Pipedrive account to start syncing data to Pipedrive using Grouparoo. Find your Pipedrive API token to prepare for configuration.
+
+In Pipedrive, navigate to Settings > Personal Preferences > API to find your personal API token which is required to establish a connection with Pipedrive.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/pipedrive/setup/setup-1.png"
+  alt="API Keys"
+  width={720}
+  height={159}
+/>
+<br></br>
+<br></br>
+
+## App
+
+To connect Pipedrive to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to Pipedrive. This specifies the account used for any Destinations.
+
+### App Options
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/pipedrive/app/options.png"
+  alt="Pipedrive App Options"
+  width={720}
+  height={126}
+/>
+<br></br>
+<br></br>
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>App Option</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>API Token</strong> (required)
+      </td>
+      <td>Pipedrive API token</td>
+    </tr>
+  </tablebody>
+</table>
+
+For more information on options for keeping your credentials secure, visit our documentation on [secrets](https://www.grouparoo.com/docs/support/secrets).
+
+## Pipedrive Export Contacts
+
+This Destination enables you to sync your Grouparoo Records as Person contacts in Pipedrive.
+
+Companies use Grouparoo to keep their Pipedrive Person Contacts up-to-date in order to communicate with customers and manage their marketing strategy.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+- **Sync**: Add, update, and remove Pipedrive Person Contacts as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Pipedrive Person Contacts as needed, but do not remove anybody. This option looks for new Person Contacts to add to Pipedrive and changes to existing Pipedrive Person Contacts, but does not keep track of deletions.
+- **Enrich**: Only update those Person Contacts that already exist in Pipedrive. Do not add or remove Person Contacts. This option will only update existing Person Contacts in Pipedrive.
+
+### Destination Options
+
+Some types of Destinations require further clarification about how data should sync. In the case of Pipedrive, there are no further Options to configure before moving on to mapping Record Data.
+
+### Record Data
+
+Mapping Record Properties to Pipedrive Fields is the key to syncing data to Pipedrive Person Contacts.
+
+Pipedrive’s Fields can be used to tailor data management for a business’ marketing needs.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/pipedrive/export-contacts/record-data.png"
+  alt="Pipedrive Export Contacts Record Data"
+  width={720}
+  height={485}
+/>
+<br></br>
+<br></br>
+
+#### Required Properties
+
+It is required to map Grouparoo Properties to the **Name** and **Email** Pipedrive Fields. Choose the Grouparoo Property that corresponds to each of these Fields from the dropdown menu.
+
+- **Name: **A Person Contact’s full name in Pipedrive
+- **Email:** A Person Contact’s email address in Pipedrive
+
+#### Optional Properties
+
+In addition to the required fields, Pipedrive allows Admin Users to create Custom Fields. Custom Fields must be set up from within the Pipedrive account, using an Admin User profile.
+
+### Group Data
+
+In addition to mapping Grouparoo Properties to Pipedrive Fields, you can use Grouparoo Groups to apply Pipedrive Filters.
+
+In Pipedrive, Filters help marketing teams create reports on deals, people and organizations represented by your Pipedrive data.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/pipedrive/export-contacts/group-data.png"
+  alt="Pipedrive Export Contacts Group Data"
+  width={720}
+  height={208}
+/>
+<br></br>
+<br></br>
+
+## Notes
+
+We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with Pipedrive, please let us know.
+
+As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!
