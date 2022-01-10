@@ -1,0 +1,159 @@
+---
+title: "Sailthru"
+date: "2022-1-10"
+pullQuote: "Learn how to work with the Sailthru Integration as a Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Sailthru" />
+
+## Overview
+
+Sailthru is a cloud-based marketing automation service. You can use Sailthru to deliver personalized marketing messages to customers through email, web, and mobile. Grouparoo can help you sync data from your warehouse to Sailthru for seamless service.
+
+### Destinations
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Destination Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>Sailthru Export Users</td>
+      <td>Export Records to Sailthru</td>
+    </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+You will need a Sailthru account to sync data to Sailthru.
+
+To find your API Key and API Secret in Sailthru, navigate to Settings > [API and Postbacks](https://my.sailthru.com/settings/api_postbacks#). Click the lock icon to see the values you will need during configuration of this Destination.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sailthru/setup/setup-1.png"
+  alt="API Keys"
+  width={500}
+  height={206}
+/>
+<br></br>
+<br></br>
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sailthru/setup/setup-2.png"
+  alt="API Keys"
+  width={500}
+  height={206}
+/>
+<br></br>
+<br></br>
+
+## App
+
+To connect Sailthru to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to Sailthru. This specifies the account used for any Destinations.
+
+### App Options
+
+In Grouparoo, you specify the options to connect to Sailthru. For Sailthru, you will be able to find the values needed for these two required fields [here](https://my.sailthru.com/settings/api_postbacks#).
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sailthru/app/options.png"
+  alt="API Keys"
+  width={720}
+  height={185}
+/>
+<br></br>
+<br></br>
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>App Option</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>API Key </strong>(required)
+      </td>
+      <td>Sailthru API key</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>API Key Secret</strong> (required)
+      </td>
+      <td>Sailthru API Key Secret</td>
+    </tr>
+  </tablebody>
+</table>
+
+For more information on options for keeping your credentials secure, visit our documentation on [secrets](https://www.grouparoo.com/docs/support/secrets).
+
+## Sailthru Export Users
+
+This Destination enables you to sync Grouparoo Records to Sailthru Users.
+
+Companies use Grouparoo to keep Sailthru Users up-to-date in order to create responsive and customized marketing experiences for their clients and leads.
+
+When you [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. The following are supported by Sailthru:
+
+- **Sync**: Add, update, and remove Sailthru Users as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Sailthru Users as needed, but do not remove anybody. This option looks for new Users to add to Sailthru and changes to existing Sailthru Users, but does not keep track of deletions.
+- **Enrich**: Only update those Users that already exist in Sailthru. Do not add or remove Users. This option will only update existing Users in Sailthru.
+
+### Destination Options
+
+Some types of Destinations require further clarification about how data should sync. In the case of Sailthru, there are no further Options to configure before moving on to mapping Record Data.
+
+### Record Data
+
+Mapping Grouparoo Record Properties to Sailthru Vars is the key to syncing data to Sailthru Users.
+
+Sailthru Vars can be used for customizing marketing campaigns and analyzing lead behavior. They allow you to personalize communications and segment your audience into lists for mailings and reports.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sailthru/export-users/record-data.png"
+  alt="API Keys"
+  width={720}
+  height={490}
+/>
+<br></br>
+<br></br>
+
+#### Required Properties
+
+The only Grouparoo Property that is required to map to a Sailthru Var is **email**. Choose the Grouparoo Property that corresponds with the User’s email address.
+
+- **email: **a Lead’s email address in Sailthru
+
+#### Optional Properties
+
+In addition to required fields, Sailthru allows you to create Custom Sailthru Vars. You can find those you have already created by scrolling through the dropdown menu in the **Send Record Property** portion of the form. Any of these can be synced to from Grouparoo Properties.
+
+Below the Optional Sailthru Vars heading, you have the option to create new Sailthru Custom Vars. When you Click Add new Sailthru Var, you will see the properties available in Grouparoo to map to Sailthru. Choose one of these to create a new mapping and a new Var in Sailthru. The name of the Sailthru Var you create is the same as the name of the Grouparoo Property you’ve chosen, by default, but can be edited.
+
+### Group Data
+
+In addition to mapping Grouparoo Properties to Sailthru Vars, you can use Grouparoo Groups to add Users to Sailthru Lists.
+
+In Sailthru, lists help marketers to engage with customers and business prospects more effectively and to segment their data for more useful analysis.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sailthru/export-users/group-data.png"
+  alt="API Keys"
+  width={720}
+  height={204}
+/>
+<br></br>
+<br></br>
+
+## Notes
+
+We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with Sailthru, please let us know.
+
+As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!
