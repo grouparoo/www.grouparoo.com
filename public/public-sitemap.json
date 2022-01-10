@@ -46,6 +46,7 @@
   "/docs/integrations/grouparoo-calculated-property",
   "/docs/integrations/grouparoo-clickhouse",
   "/docs/integrations/grouparoo-dbt",
+  "/docs/integrations/grouparoo-hubspot",
   "/docs/integrations/grouparoo-intercom",
   "/docs/integrations/grouparoo-mailchimp",
   "/docs/integrations/grouparoo-marketo",
