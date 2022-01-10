@@ -97,7 +97,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/hubspot",
-    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-hubspot"
+    "docsUrl": null
   },
   {
     "name": "Intercom",
@@ -127,7 +127,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/mailchimp",
-    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-mailchimp"
+    "docsUrl": null
   },
   {
     "name": "Mailjet",
@@ -137,7 +137,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/mailjet",
-    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-mailjet"
+    "docsUrl": null
   },
   {
     "name": "Marketo",
@@ -157,7 +157,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/mixpanel",
-    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-mixpanel"
+    "docsUrl": null
   },
   {
     "name": "Mongo",
@@ -207,7 +207,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/pipedrive",
-    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-pipedrive"
+    "docsUrl": null
   },
   {
     "name": "Postgres",
@@ -247,7 +247,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/sailthru",
-    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-sailthru"
+    "docsUrl": null
   },
   {
     "name": "Salesforce",
@@ -267,7 +267,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/sendgrid",
-    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-sendgrid"
+    "docsUrl": null
   },
   {
     "name": "Snowflake",
