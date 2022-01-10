@@ -57,6 +57,7 @@
   "/docs/integrations/grouparoo-pipedrive",
   "/docs/integrations/grouparoo-postgres",
   "/docs/integrations/grouparoo-redshift",
+  "/docs/integrations/grouparoo-sailthru",
   "/docs/integrations/grouparoo-salesforce",
   "/docs/integrations/grouparoo-snowflake",
   "/docs/integrations/grouparoo-sqlite",
