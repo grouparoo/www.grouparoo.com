@@ -122,10 +122,11 @@ Each Source config file has an example Schedule included with it as a separate o
 - `"notSubstring"` - does not contain
 - `"in"` - in a given set
 
-For example, to create a schedule that will run every 5 minutes checking the `"updated_at"` column for rows where `status = "active"`, you could do the following:
+For example, to create a schedule that will run every 5 minutes checking the `"updated_at"` column for rows where `status = "active"` and `last_purchase"` exists (is not null), you could do the following:
 
-```
-{
+```js
+exports.default = async function buildConfig() {
+  return [
     "class": "Schedule",
     "id": "users_schedule",
     "name": "Users Schedule",
@@ -140,8 +141,12 @@ For example, to create a schedule that will run every 5 minutes checking the `"u
       "key": "status",
       "op: "eq",
       "match": "active"
+    }, {
+      "key": "last_purchase",
+      "op": "exists"
     }]
   }
+]}
 ```
 
 If you've configured an App Refresh Query when you configured your App, you can also opt to leave a particular Schedule out of its updates by adding:
