@@ -59,6 +59,7 @@
   "/docs/integrations/grouparoo-redshift",
   "/docs/integrations/grouparoo-sailthru",
   "/docs/integrations/grouparoo-salesforce",
+  "/docs/integrations/grouparoo-sendgrid",
   "/docs/integrations/grouparoo-snowflake",
   "/docs/integrations/grouparoo-sqlite",
   "/docs/running",

@@ -204,6 +204,7 @@ const DocsNav: NavItem[] = [
       { title: "Mailchimp", path: "/docs/integrations/grouparoo-mailchimp" },
       {title: "Mailjet", path: "/docs/integrations/grouparoo-mailjet"},
       { title: "Marketo", path: "/docs/integrations/grouparoo-marketo" },
+      {title: "Mixpanel", path: "/docs/integrations/grouparoo-mixpanel"},
       { title: "Mongo", path: "/docs/integrations/grouparoo-mongo" },
       { title: "MySQL", path: "/docs/integrations/grouparoo-mysql" },
       { title: "Pipedrive", path: "/docs/integrations/grouparoo-pipedrive" },
