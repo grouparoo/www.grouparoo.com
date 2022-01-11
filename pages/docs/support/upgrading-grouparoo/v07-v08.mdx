@@ -1,0 +1,125 @@
+---
+title: "Upgrading Grouparoo from v0.7 to v0.8"
+date: "2022-01-11"
+pullQuote: "v0.8 introduces a new model-centric UI and brings some breaking changes.  Learn how to upgrade from v0.7 to v0.8!"
+---
+
+Grouparoo v0.8 brings a UI update focused on the Models you build. It also brings several syncing improvements, and a few breaking changes. Learn how to upgrade from v0.7 to v0.8!
+
+As always, begin by updating the packages within your Grouparoo project by [following the generic upgrade guide](/docs/support/upgrading-grouparoo#installing-updates) to bump your dependencies to `v0.8.x`.
+
+**An example of a Grouparoo deployment being upgraded [can be found here](https://github.com/grouparoo/app-example-config/pull/39).**
+
+## Model-Centric UI
+
+One major change in Grouparoo v0.8 is our new Model-Centric UI. Now, you're able to see all of the Sources, Properties, Schedules, and Destinations associated with a Model on a single dashboard. You can view a sample Record and quickly access the configuration pages for each of these objects.
+
+<Image
+  src="docs/support/upgrading-grouparoo/v07-v08-model-centric-ui.png"
+  alt="Model-Centric UI Updates"
+  width={700}
+  height={728}
+  className="mx-auto"
+/>
+
+## Airtable Plugin
+
+As we continue to add to our list of integrations, we are pleased to announce a community-contributed [Grouparoo Airtable plugin](https://www.npmjs.com/package/@grouparoo/airtable) in v0.8.
+
+## Salesforce Plugin Export Types
+
+Our Salesforce Plugin now supports three different Export types as a Destination. You can send your Grouparoo Records to Salesforce Accounts, Contacts, or Objects making it easier to get your data exactly where you want it.
+
+<Image
+  src="docs/support/upgrading-grouparoo/v07-v08-salesforce-export-types.png"
+  alt="Salesforce Destination Types"
+  width={700}
+  height={402}
+/>
+
+## `Null` and `Not Null` Filters for Properties and Schedules
+
+Our SQL Plugins get two new Filters on Properties and Schedules -- `exists with any value` (not null) and `does not exist` (is null). Now you can populate a Property based on whether or not another column in your Source is null.
+
+<Image
+  src="docs/support/upgrading-grouparoo/v07-v08-null-filter.png"
+  alt="Null Property Filters"
+  width={600}
+  height={182}
+/>
+
+## Migration Notes and Breaking changes
+
+### Google Sheets Properties
+
+Google Sheets now needs the aggregation method explicitly declared. While it's always only supported `exact` Properties, the following will need to be added to your Property config files if you use a Google Sheets source with Code Config or Config UI:
+
+```
+  "options": {
+    "aggregationMethod": "exact",
+    "column": "..."
+  },
+```
+
+### Property and Schedule Filters
+
+Property and Schedule Filter operations have been renamed to match the operations used for Group Rules. If you have Filters set on Properties or Schedules and you have configured your Grouparoo setup using Code Config or Config UI, you will need to manually update the `op` in the `filters` array in your config files as follows:
+
+- `"equals"` --> `"eq"`
+- `"not equals"` --> `"ne"`
+- `"less than"` --> `"lt"`
+- `"less than or equal to"` --> `"lte"`
+- `"greater than"` --> `"gt"`
+- `"greater than or equal to"` --> `"gte"`
+
+For example:
+
+```
+  "filters": [{
+    "key": "state",
+    "op": "equals",
+    "match": "successful"
+  }]
+```
+
+becomes
+
+```
+  "filters": [{
+    "key": "state",
+    "op": "eq",
+    "match": "successful"
+  }]
+```
+
+### Group Rules
+
+Group config objects have changed shape as well. The operation within the `rules` array is now unnested to match the layout of Property and Schedule filter objects. If you used Config UI or Code Config to configure your Groups, you will need to modify the config files as follows:
+
+A Rule that looked like:
+
+```
+  "rules": [{
+    "key": "status",
+    "operation": { "op": "eq" },
+    "match": "active"
+  }]
+```
+
+Now becomes:
+
+```
+  "rules": [{
+    "key": "status",
+    "op": "eq",
+    "match": "active"
+  }]
+```
+
+### Removal of Group Type
+
+As of Grouparoo v0.8, Manual Groups are no longer supported. All groups are now configured based upon sets of Group Rules, rather than by manually adding Records. As such, there is no longer any group "type". If you've used Code Config or Config UI, you will need to remove the following line from your Group config files, even for calculated groups:
+
+```
+  "type": "calculated"
+```
