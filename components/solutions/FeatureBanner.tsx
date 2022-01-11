@@ -9,24 +9,32 @@ export interface FeatureArray extends Array<Feature> {}
 
 export default function FeatureBanner({
   features,
-  category = "Reverse ETL Tool",
+  showHeader,
 }: {
   features: FeatureArray;
-  category: string;
+  showHeader: boolean;
 }) {
   return (
     <>
       <div
         style={{ backgroundImage: "linear-gradient(#242436,#43435F)" }}
-        className="bg-dark text-white homePageSection my-5"
+        className="bg-dark homePageSection my-5 text-white"
       >
         <Container>
-          <Row style={{ textAlign: "center" }}>
-            <Col md={12}>
-              <h2>Grouparoo is the {category} that meets you where you are.</h2>
-            </Col>
-          </Row>
-          <br />
+          {showHeader ? (
+            <>
+              <Row style={{ textAlign: "center" }}>
+                <Col md={12}>
+                  <h2>
+                    Grouparoo is the Reverse ETL Tool that meets you where you
+                    are.
+                  </h2>
+                </Col>
+              </Row>
+              <br />
+            </>
+          ) : null}
+
           <Row>
             <Col md={6}>
               <h3>{features[0].title}</h3>

@@ -148,6 +148,10 @@ exports.default = async function buildConfig() {
           match: "active",
         },
         {
+          key: "last_purchase",
+          op: "exists"
+        }
+        {
           key: "subscription_type",
           op: "ne",
           match: "trial",
@@ -158,7 +162,7 @@ exports.default = async function buildConfig() {
 };
 ```
 
-Which would count every subscription per Record, but leave out any trial subscriptions. Or:
+Which would count every subscription per Record, but leave out any trial subscriptions or Records with no value for `last_purchase`. Or:
 
 ```js
 exports.default = async function buildConfig() {

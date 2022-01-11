@@ -1,19 +1,17 @@
 /* eslint-disable @next/next/no-sync-scripts */
 /* eslint-disable react/no-unescaped-entities */
-import Head from "next/head";
 import { Container, Row, Col } from "react-bootstrap";
+import SEO from "../components/SEO";
 
 export default function Chat() {
   return (
     <>
-      <Head>
-        <title>Grouparoo Community Chat</title>
-        <meta
-          name="description"
-          content="The Grouparoo community is a place to discuss how to help growth and data teams make the most of their customer data and tools."
-        />
-        <link rel="canonical" href="https://www.grouparoo.com/chat" />
-      </Head>
+      <SEO
+        title="Grouparoo Community Chat"
+        description="The Grouparoo community is a place to discuss how to help growth and data teams make the most of their customer data and tools."
+        path="/chat"
+        canonical={true}
+      />
 
       <div
         id="headline"
