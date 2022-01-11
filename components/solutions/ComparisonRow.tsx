@@ -1,12 +1,6 @@
 import Image from "../Image";
 
 export default function ComparisonRow({ rowData }) {
-  // rowData = {
-  // feature: featureName,
-  // grouparoo: true,
-  // comp: false
-  // }
-
   function createCell(cellData, cellId) {
     let cellContents;
     if (Array.isArray(cellData)) {

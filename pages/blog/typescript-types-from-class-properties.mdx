@@ -1,0 +1,184 @@
+---
+title: "TypeScript Types from Class Properties"
+date: "2022-01-06"
+author: "Evan Tahler"
+pullQuote: "Use TypeScript to compute types from complex Objects"
+image: "typescript-types-from-class-properties/220106-ts-types.png"
+tags: [engineering]
+---
+
+<Image
+  alt="TS Logo"
+  src="typescript-types-from-class-properties/220106-ts-types.png"
+  width={1270}
+  height={667}
+/>
+
+At Grouparoo, we use a lot of [TypeScript](https://www.typescriptlang.org). We are always striving to enhance our usage of strong TypeScript types to make better software, and to make it easier to develop Grouparoo. Strong types make it easy for team members to get quick validation about new code, and see hints and tips in their IDEs - a double win!
+
+Recently, I found myself repeating a lot of metadata when defining a new API endpoint as I was working to enable [`noImplicitAny`](https://www.typescriptlang.org/tsconfig#noImplicitAny) within the `@grouparoo/core` project. We use [Actionhero](https://www.actionhero.com) to build Grouparoo, and so a typical Action might look like:
+
+```ts
+import { Action } from "actionhero";
+
+export class TestAction extends Action {
+  constructor() {
+    super();
+    this.name = "testAction";
+    this.description = "I am a test";
+    this.inputs = {
+      key: {
+        required: true,
+        formatter: stringFormatter,
+        validator: stringValidator,
+      },
+      value: {
+        required: true,
+        formatter: integerFormatter,
+      },
+    };
+  }
+
+  // <--- Note the type definition below for `params`
+  async run({ params }: { params: { key: string; value: string } }) {
+    return { key: params.key, value: params.value };
+  }
+}
+
+function stringFormatter(s: unknown) {
+  return String(s);
+}
+
+function integerFormatter(s: unknown) {
+  return parseInt(String(s));
+}
+
+function stringValidator(s: string) {
+  if (s.length < 3) {
+    throw new Error("inputs should be at least 3 letters long");
+  }
+}
+```
+
+Notice how the params provided back to the `run()` method are typed, even though we provide that information functionally via the `formatter` argument to the Action's inputs. Defining this information in both locations was tedious, and more nefariously, a possible place for drift between the implementation and the types. What would it take for TypeScript to automatically be able to determine the types of our Params?
+
+## Learning Things
+
+I tried many approaches to programmatically determine the types of an Action's params, and learned a lot along the way. The most interesting thing that I learned was that method argument types are not inherited in TypeScript. Initially, I wanted to modify the abstract base `Action` class to automatically reflect its input types into the run method, but it's not possible:
+
+Consider the following:
+
+```ts
+abstract class Greeter {
+  abstract greet(who: string, message: string): void;
+}
+
+class ClassyGreeter extends Greeter {
+  greet(who, message) {
+    console.log(`Salutations, ${who}. ${message}`);
+  }
+}
+
+const classyGreeterInstance = new ClassyGreeter();
+classyGreeterInstance.greet("Mr Bingley", "Is it not a fine day?"); // OK, inputs are strings
+classyGreeterInstance.greet(1234, false); // Should throw... but it doesn't!
+```
+
+Even though `ClassyGreeter` extends `Greeter`, the fact that the `greet()` method is re-implemented means that the initial type of the method from the abstract class can't be assumed. After hitting that dead end, I pivoted to attempt to build a transformation utility type. While working on this, I found myself inspecting the properties of the `Action` class in question, and I learned was that TypeScript doesn't _really_ know what goes on in a Class constructor.
+
+For example, you can define the same class both ways:
+
+```ts
+class ConstructedList {
+  items: string[];
+
+  constructor() {
+    this.items = ["apple", "banana"];
+  }
+}
+
+class StaticList {
+  items: ["apple", "banana"];
+}
+
+typeof ConstructedList().items; // string[]
+typeof StaticList().items; // ['apple', 'banana']
+```
+
+At runtime, these 2 classes will have the same behavior, with `this.items = ["apple", "banana"]`, but because the class property was defined strictly in `StaticList`, we can get the literal types back, rather than just the "string[]" we get from `ConstructedList`.
+
+<Image
+  alt="TypeHints"
+  src="typescript-types-from-class-properties/hints.png"
+  width={755}
+  height={200}
+/>
+
+## The `ParamsFrom` Type Utility
+
+Knowing the above, it became clear that to reach the goal, I would need to reformat all of our action definitions to _not_ use a constructor. After that, TypeScript can start to inspect the properties of the class. Our utility can take in the Action's class as an argument, and inspect both the keys of the `inputs`, and if there is a `formatter` present, infer its return type:
+
+```ts
+export type ParamsFrom<A extends Action> = {
+  [Input in keyof A["inputs"]]: A["inputs"][Input]["formatter"] extends (
+    ...ags: any[]
+  ) => any
+    ? ReturnType<A["inputs"][Input]["formatter"]>
+    : string;
+};
+```
+
+Of note, because we are accepting data over HTTP or websocket most commonly, we can assume that an input without a formatter is a string.
+
+Putting everything together, here's what our final Action looks like:
+
+```ts
+import { Action, ParamsFrom } from "actionhero";
+
+export class TestAction extends Action {
+  name = "testAction";
+  description = "I am a test";
+  inputs = {
+    key: {
+      required: true,
+      formatter: stringFormatter,
+      validator: stringValidator,
+    },
+    value: {
+      required: true,
+      formatter: integerFormatter,
+    },
+  };
+
+  async run({ params }: { params: ParamsFrom<TestAction>) {
+    return { key: params.key, value: params.value };
+  }
+}
+
+function stringFormatter(s: unknown) {
+  return String(s);
+}
+
+function integerFormatter(s: unknown) {
+  return parseInt(String(s));
+}
+
+function stringValidator(s: string) {
+  if (s.length < 3) {
+    throw new Error("inputs should be at least 3 letters long");
+  }
+}
+```
+
+And finally, we can see our params are typed:
+
+<Image
+  alt="TypeHints"
+  src="typescript-types-from-class-properties/final-types.png"
+  width={1423}
+  height={200}
+/>
+
+## Open Source Contribution
+
+We contributed this work back to Actionhero, and in [Actionhero v28.1.0](https://github.com/actionhero/actionhero/releases/tag/v28.1.0), the `ParamsFrom` utility is included!

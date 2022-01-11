@@ -1,24 +1,19 @@
 import React from "react";
 import { Container, Button, Tab, Nav, Row, Col } from "react-bootstrap";
 import Image from "../../components/Image";
-import Head from "next/head";
 import IntegrationsSection from "../../components/home/IntegrationsSection";
 import ImageInBrowserFrame from "../../components/ImageInBrowserFrame";
+import SEO from "../../components/SEO";
 
 export default function Healthcare() {
   return (
     <>
-      <Head>
-        <title>Grouparoo for the Healthcare Industry</title>
-        <meta
-          name="description"
-          content="Better understand your patient data and engage with them using the tools you trust."
-        />
-        <link
-          rel="canonical"
-          href="https://www.grouparoo.com/solutions/healthcare"
-        />
-      </Head>
+      <SEO
+        title="Grouparoo for the Healthcare Industry"
+        description="Better understand your patient data and engage with them using the tools you trust."
+        path="/solutions/healthcare"
+        canonical={true}
+      />
 
       <div
         id="headline"

@@ -69,7 +69,7 @@ Segment is a Customer Data Platform (CDP) that was founded in 2011 and quickly b
 
 Grouparoo is a newer entrant, having started in early 2020, but is a reverse ETL tool built on top of the modern data stack and trends that have emerged. Here’s a deeper look into how Grouparoo’s approach is different from Segment.
 
-### 📈 <span style={{ width:".5em", display:"inline-block" }} />Queryable data vs. events
+### 📈 Queryable data vs. events
 
 Grouparoo’s fundamental model is built upon querying source-of-truth data that already exists. Whether this data lives in a data warehouse like Snowflake or Redshift or in a product database like MySQL or MongoDB, Grouparoo defines customer records based on the data that already exists in those data sources. The truly important data in your user experience and product funnel is already stored in your database, and Grouparoo lets you use it directly. When did your customers sign up? What products did they purchase? Where are they located?
 
@@ -101,15 +101,21 @@ Events are often a pain for engineers as well. When product engineers are buildi
   browser="true"
 />
 
-### 🚀 <span style={{ width:".5em", display:"inline-block" }} />Reverse ETL powered by code
+### 🚀 Reverse ETL powered by code
 
 Grouparoo is a [Reverse ETL](/solutions/reverse-etl) tool, designed to fit into your existing engineering workflow. Grouparoo is powered by configuration files that you can generate and test locally, and then deploy with git. Being open-source, Grouparoo can be run within your firewall or in our hosted cloud.
 
-### 🧑‍💻 <span style={{ width:".5em", display:"inline-block" }} />Open source
+### 🧑‍💻 Open source
 
 One major difference between Segment and Grouparoo is that Grouparoo is open source (MPL v2.0 licensed), and [available](https://www.github.com/grouparoo/grouparoo) for anyone in the world to download and give it a try. Given our open source approach, Grouparoo is focused on making the developer experience as easy as possible. All of your customer data can stay within your own virtual private cloud, so you have complete control.
 
-### 🔐 <span style={{ width:".5em", display:"inline-block" }} />Privacy and security
+<p style={{ paddingTop: 0 }}>
+  <Button variant="outline-primary" href="/docs/getting-started">
+    Try it free. We’re open source
+  </Button>
+</p>
+
+### 🔐 Privacy and security
 
 Segment’s growth was partially driven by the explosion in SaaS-based tools that have emerged over the past decade. As teams want to empower marketing, sales, growth, and support, Segment made it easy to spray that data all over the place. This created an anti-pattern though: Segment’s system sends all of your customer events to all of your marketing, sales, and customer support tools. These business teams then had to segment their users in each of their own tools, resulting in different definitions, different segmentations, and jarring user experiences.
 
@@ -126,6 +132,6 @@ The tides are shifting though — as GDPR, CCPA, and other privacy-focused legis
 
 Grouparoo makes it much easier for privacy-conscious teams to keep their sensitive customer data, Personally Identifiable Information (PII), and Private Health Information (PHI), in their own virtual private clouds such as Amazon Web Services (AWS) and Google Cloud Platform (GCP). Additionally, instead of sending every single piece of data to every single SaaS tool you use, instead you can segment and Group your users in Grouparoo, and just send the data about what groups your users are in to these different tools. Instead of sending Jane Kim’s full customer Record, address, purchase history, and activity log to Marketo, you can just send Jane’s first name, email, and that she’s in your “High-Value Customers in NY” segment. Jane still gets the correct, personalized email, but without letting Marketo know exactly how much she’s spent with you and her address.
 
-### 💰 <span style={{ width:".5em", display:"inline-block" }} />Cost
+### 💰 Cost
 
 One major difference is cost. Grouparoo is free to try, and if you use our Community Edition and self-host it, it’s free for you to use forever. Segment, on the other-hand, charges quite a bit based on how many events you track. There’s a dance that we hear from Segment customers where their integration seems great to start, but as their business grows, their Segment bill also grows tremendously. They then have a challenging project for themselves where they’ll need to decide to keep or cull certain events. And good luck if you end up culling the wrong events.

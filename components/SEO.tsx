@@ -55,7 +55,7 @@ const SEO = ({
   const baseUrl = `https://www.grouparoo.com`;
   const url = `${baseUrl}${path}`;
 
-  let imageUrl;
+  let imageUrl: string;
   if (image) {
     imageUrl = !image.startsWith("http") ? `${baseUrl}/images/${image}` : image;
   }

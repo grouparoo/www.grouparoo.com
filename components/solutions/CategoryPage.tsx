@@ -1,27 +1,24 @@
 import React from "react";
 import { Container, Button, Row, Col } from "react-bootstrap";
-import Head from "next/head";
 import hydrate from "next-mdx-remote/hydrate";
 import { CategoryInfo } from "../../utils/solutionsPages";
-import { arrayToReadableList, urlize } from "../../utils/inflectors";
+import { urlize } from "../../utils/inflectors";
 import FeatureBanner from "./FeatureBanner";
 import * as components from "./Index";
+import SEO from "../SEO";
 
 export default function CategoryPage(category: CategoryInfo) {
   const content = hydrate(category.source, { components });
 
   return (
     <>
-      <Head>
-        <title>{category.title}</title>
-        <meta name="description" content={category.description} />
-        <link
-          rel="canonical"
-          href={`https://www.grouparoo.com/solutions/${urlize(
-            category.category
-          )}`}
-        />
-      </Head>
+      <SEO
+        title={category.title}
+        description={category.description}
+        canonical={true}
+        path={`/solutions/${urlize(category.category)}`}
+      />
+
       <div
         id="headline"
         className="homePageSection"
@@ -64,10 +61,7 @@ export default function CategoryPage(category: CategoryInfo) {
           </Row>
         </Container>
       </div>
-      <FeatureBanner
-        category={`${category.category} tool`}
-        features={category.features}
-      />
+      <FeatureBanner showHeader={true} features={category.features} />
 
       <Container fluid className="p-0">
         <Row className="d-flex justify-content-center">

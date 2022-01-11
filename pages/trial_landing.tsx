@@ -1,5 +1,4 @@
 import { Container, Button, Row, Col, Form, Image } from "react-bootstrap";
-import Head from "next/head";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { useState } from "react";
@@ -8,6 +7,7 @@ import { ErrorHandler } from "../utils/errorHandler";
 import { isBrowser } from "../utils/isBrowser";
 import validator from "validator";
 import { EmailValidators } from "../utils/validators";
+import SEO from "../components/SEO";
 
 interface FormError {
   email: string;
@@ -135,10 +135,6 @@ export default function Trial({ props }) {
     return <div style={{ fontSize: "smaller", color: "red" }}>{message}</div>;
   };
 
-  const title = "Grouparoo: Free Trial";
-  const description =
-    "Get started with Grouparoo, the open source framework that helps you move data between your database and all of your cloud-based tools.";
-
   const privacyPolicyLabel = (
     <>
       I agree to the{" "}
@@ -153,11 +149,14 @@ export default function Trial({ props }) {
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <link rel="canonical" href="https://www.grouparoo.com/trial_landing" />
-        <meta name="robots" content="noindex" />
-      </Head>
+      <SEO
+        title="Grouparoo: Free Trial"
+        description="Get started with Grouparoo, the open source framework that helps you move data between your database and all of your cloud-based tools."
+        path="/trial_landing"
+        canonical={false}
+        noIndex={true}
+      />
+
       <Container>
         <Row className="align-self-center m-0">
           <Col

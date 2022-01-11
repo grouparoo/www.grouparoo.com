@@ -1,142 +1,203 @@
 ---
-title: "@grouparoo / intercom"
-date: "2021-10-12"
-pullQuote: "Learn how to work with the Intercom Plugin as a Destination."
+title: "Intercom"
+date: "2022-01-03"
+pullQuote: "Learn how to work with the Intercom Integration as a Destination."
 pageNavSelector: "h2"
 ---
 
 <PluginDocsLinks plugin="Intercom" />
 
-Grouparoo's [Intercom](https://www.intercom.com/) Plugin enables you to export contacts and tags to Intercom.
+Grouparoo's [Intercom](https://www.intercom.com/) Integration enables you to export contacts and tags to Intercom.
 
-This guide will show you how to work with the Intercom Plugin to [create a Destination](#create-an-intercom-destination) to export your data.
+## Overview
 
-<PluginDocsInstallation plugin="Intercom" />
+Intercom is a messaging platform for customer communications. You can use Intercom to stay in touch with customers. Grouparoo can help you to sync data from your warehouse to Intercom easily.
 
-<PluginDocsCreateApp plugin="Intercom" />
+### Destinations
 
-<ValidateAndApplyConfig headingLevel="h3" />
+<table className="docTable">
+  <tbody>
+    <tr>
+      <td>Destination Name</td>
+      <td>Destination Description</td>
+    </tr>
+    <tr>
+      <td>Intercom Export Contacts</td>
+      <td>
+        This Destination exports Grouparoo Records to Contacts in an Intercom
+        account.
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-## Create an Intercom Destination
+## Setup
 
-Once your App exists, you can generate an Intercom Destination using the `generate` command. You must specify a `parent`, which should match the `id` of the App you just created.
+You will need an Intercom account and an access token to sync data to Intercom.
 
-This is the simplest form of [Generator](/docs/getting-started/product-concepts#generator) for Destinations:
+To find your access tokens, or create a new one, visit the [Intercom Developer Hub](https://developers.intercom.com/) and navigate to **Your Apps**. Choose an existing app or add a new one with internal integration (this means you are not publishing your app to the marketplace). From here, you should be able to copy an access token from the Authentication page for setting up your Intercom App in the Grouparoo UI.
 
-```
-$ grouparoo generate intercom:destination intercom_destination --parent my_intercom_app
-```
+<ImageInBrowserFrame
+  src="/images/docs/integrations/intercom/intercom-setup-1.png"
+  alt="Find Access Tokens for Intercom"
+  width={3352}
+  height={398}
+/>
 
-This would generate a config file at `config/destinations/intercom_destination.js` in your Grouparoo project. You can then edit this file to match your desired configuration. Here is an example of what this config object will look like after generation:
+<ImageInBrowserFrame
+  src="/images/docs/integrations/intercom/intercom-setup-2.png"
+  alt="Paste Access Tokens for Intercom"
+  width={1625}
+  height={398}
+/>
 
-```js
-// config/destinations/intercom_destination.js
+## App
 
-exports.default = async function buildConfig() {
-  return [
-    {
-      id: "intercom_destination",
-      name: "intercom_destination",
-      class: "destination",
-      type: "intercom-export",
-      appId: "my_intercom_app",
-      groupId: "...",
-      syncMode: "...",
+To connect Intercom to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to Intercom. This specifies the account used for any Destinations.
 
-      options: {
-        creationMode: "User",
-        removalMode: "Archive",
-      },
+### App Options
 
-      mapping: {
-        email: "email",
-        firstname: "firstName",
-        lastname: "lastName",
-      },
+In Grouparoo, you specify the options to connect to Intercom.
 
-      destinationGroupMemberships: {
-        "High Value Customers": "highValueCustomers",
-      },
-    },
-  ];
-};
-```
+<ImageInBrowserFrame
+  src="/images/docs/integrations/intercom/intercom-app-options.png"
+  alt="Intercom App Options"
+  width={1625}
+  height={266}
+/>
 
-For more information on what all these properties mean and how to configure them, see [Configuring your Destination](/docs/config/code-config/destinations#configuring-your-destination).
+<table className="docTable">
+  <tr>
+    <td>Option</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Access Token</strong> (required)
+    </td>
+    <td>Access token from your private app in the developer hub.</td>
+  </tr>
+</table>
+
+For more information on options for keeping your credentials secure, visit our documentation on [secrets](https://www.grouparoo.com/docs/support/secrets).
+
+## Intercom Export Contacts
+
+This Destination enables you to sync your Grouparoo Records to Contacts in Intercom as either Users, Leads, or a dynamic combination of both depending on data.
+
+Companies use Grouparoo to keep their Intercom Contacts up-to-date in order to communicate with their customers through a wide array of channels using one tool.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
 
 ### Sync Modes
 
-The Intercom Destination supports all three sync modes:
+A Destination’s sync mode determines what to update in a Destination. The following are supported by Intercom:
 
-- **Sync** (`sync`): Add, update, and remove Records as needed.
-- **Additive** (`additive`): Add and update Records as needed, but do not remove anybody.
-- **Enrich** (`enrich`): Only update Records that already exist in the Destination. Do not add or remove anybody.
-
-You can set the desired Sync Mode through the `syncMode` Property in the config file:
-
-```js
-syncMode: "additive",
-```
+- **Sync**: Add, update, and remove Intercom Contacts as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Intercom Contacts as needed, but do not remove anybody. This option looks for new Contacts to add to Intercom and changes to existing Intercom Contacts, but does not keep track of deletions.
+- **Enrich**: Only update those Contacts that already exist in Intercom. Do not add or remove Contacts. This option will only update existing Contacts in Intercom.
 
 ### Destination Options
 
-Here are the available options for an Intercom Destination:
+To further clarify how Intercom should sync data, select how data should be synced.
 
-<OptionsList
-  options={{
-    creationMode: {
-      options: ["User", "Lead", "Lifecycle"],
-      description:
-        "How should Grouparoo create Intercom contacts? Note that this only applies if using a `syncMode` that can add new contacts.",
-    },
-    removalMode: {
-      displayName: "Removal",
-      options: ["Archive", "Delete"],
-      description:
-        "How should Grouparoo remove Intercom contacts? Note that this only applies if using a `syncMode` that can remove existing contacts.",
-    },
-  }}
+<ImageInBrowserFrame
+  src="/images/docs/integrations/intercom/intercom-destination-options.png"
+  alt="Intercom Destination Options"
+  width={1625}
+  height={470}
 />
 
-You can configure these options by setting them inside the `options` object of the config file:
+<table className="docTable">
+<tablebody>
+  <tr>
+    <td>
+     Option
+    </td>
+    <td>
+      Description
+    </td>
+  </tr>
+  <tr>
+   <td><strong>Creation </strong>(required)
+   </td>
+   <td>There are three creation options for Intercom.
+<p>
+<em>These options only apply if using a syncMode that can add new contacts.</em>
+</p>
+<ul>
 
-```js
-options: {
-  creationMode: "Lifecycle",
-  removalMode: "Archive"
-},
-```
+<li><strong>User:</strong> This option creates new contacts as Users
+</li>
+<li><strong>Lead:</strong> This option created new contacts as Leads
+</li>
+<li><strong>Lifecycle</strong>: This option creates new contacts as leads unless there is an <em>external_id</em>. If the <em>external_id </em>for a contact exists, then it will be created as a user
+</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td><strong>Removal </strong>(required)
+   </td>
+   <td>There are two removal options for Intercom.
+<p>
+<em>These options only apply if using a syncMode that can remove contacts.</em>
+</p>
+<ul>
 
-### Property Mappings
+<li><strong>Archive</strong>: This will add deleted users to an archive where they can be retrieved again.
+</li>
+<li><strong>Delete</strong>: This option permanently deletes a user record.
+</li>
+</ul>
+   </td>
+  </tr>
+  </tablebody>
+</table>
 
-These mappings are what tell Grouparoo which Properties you want to sync to the Destination and what they should be called. For this Plugin, **Grouparoo Properties** map to **Intercom People Attributes**.
+### Record Data
 
-For Intercom, Mapping the `email` Property is always required. If `creationMode` is set to `User` or `Lifecycle`, `email` is also a required Mapping.
+Mapping Record Properties to Intercom User Attributes is the key to syncing data to Intercom.
 
-You can also map to custom attributes that you've defined on Intercom by adding the `custom_attributes` prefix (e.g. `custom_attributes.my_custom_attribute`).
+In Intercom, User Attributes can be used to filter and create customer segments. You can also use Intercom User Attributes to qualify leads and trial users.
 
-Here's an example of how this would look in the config file. Note that the keys refer to Intercom Attribute names and values refer to Grouparoo Property IDs.
+<ImageInBrowserFrame
+  src="/images/docs/integrations/intercom/intercom-record-data.png"
+  alt="Intercom Destination Options"
+  width={1625}
+  height={1305}
+/>
+<br></br>
+<br></br>
 
-```js
-mapping: {
-  email: "email",
-  name: "firstName",
-  "custom_attributes.lifetime_value": "ltv",
-},
-```
+#### Required Properties
 
-### Group Mappings
+Some properties are required to be able to find or create the correct Contacts in Intercom.
 
-You can use **Group Memberships** to automatically add **Intercom Tags** to your contacts.
+In Lead creation mode, the only required field for mapping Grouparoo Properties to Intercom User Attributes is **email**. Otherwise, when using User or Lifecycle creation mode, there are two required fields to map: **email** and** external_id**.
 
-Here's an example of how to configure this in the config file. Keys refer to the name of the tag to be shown on Intercom and values refer to the Grouparoo Group ID.
+- **email: **a Contact’s email address in Intercom
+- **exernal_id**: set on a Contact with an identifier from your internal system, often assigned when they sign up for your service
 
-```js
-destinationGroupMemberships: {
-  "High Value Customers": "highValueCustomers",
-},
-```
+#### Optional Properties
 
-## Intercom Next Steps
+In addition to required fields, Intercom has many other User Attributes available to map data to including custom attributes that you have already created. Any of these can be synced to from Grouparoo Properties.
 
-Once you have the Plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
+### Group Data
+
+In addition to mapping Grouparoo Properties to Intercom User Attributes, you can use Grouparoo Groups to apply tags to Intercom User Records.
+
+In Intercom, tags are similar to User Attributes and segments but they are used for grouping users and companies manually to highlight special features such as those requiring VIP support or those who are loyal customers. Tags can be synced using Grouparoo Groups.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/intercom/intercom-group-data.png"
+  alt="Intercom Destination Options"
+  width={1625}
+  height={367}
+/>
+
+## Notes
+
+We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with Intercom, please let us know by reaching out to help@grouparoo.com.
+
+As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!

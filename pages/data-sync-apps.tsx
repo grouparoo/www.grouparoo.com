@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Head from "next/head";
 import cheerio from "cheerio";
 import hydrate from "next-mdx-remote/hydrate";
 import { loadMdxFile } from "../utils/mdxUtils";
+import SEO from "../components/SEO";
 
 const components = {};
 
@@ -16,14 +16,12 @@ export default function DataSync({ pageProps }) {
 
   return (
     <>
-      <Head>
-        <title>Data Sync Apps</title>
-        <meta
-          name="description"
-          content="Key tenants on how to build apps that sync customer data."
-        />
-        <link rel="canonical" href="https://www.grouparoo.com/data-sync-apps" />
-      </Head>
+      <SEO
+        title="Data Sync Apps"
+        description="Key tenants on how to build apps that sync customer data."
+        path="/data-sync-apps"
+        canonical={true}
+      />
 
       <Container>
         <Row>

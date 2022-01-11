@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useApi } from "./../hooks/useApi";
@@ -8,6 +7,7 @@ import Image from "../components/Image";
 import { ErrorHandler } from "../utils/errorHandler";
 import { isBrowser } from "../utils/isBrowser";
 import { EmailValidators } from "../utils/validators";
+import SEO from "../components/SEO";
 
 interface FormError {
   email: string;
@@ -101,14 +101,12 @@ export default function Meet() {
   const disabled = loading || requested;
   return (
     <>
-      <Head>
-        <title>Meet Grouparoo</title>
-        <meta
-          name="description"
-          content="Sign up to meet with the Grouparoo team and see a demo of the Grouparoo product"
-        />
-        <link rel="canonical" href="https://www.grouparoo.com/meet" />
-      </Head>
+      <SEO
+        title="Meet Grouparoo"
+        description="Sign up to meet with the Grouparoo team and see a demo of the Grouparoo product"
+        path="/meet"
+        canonical={true}
+      />
 
       <Container>
         <Row>

@@ -1,6 +1,3 @@
-import React, { useEffect } from "react";
-import Head from "next/head";
-
 const GoogleAnalyticsTrackingID = process.env.GOOGLE_ANALYTICS_TRACKING_ID;
 
 export function googleAnalyticsPageView(url: string) {

@@ -1,11 +1,6 @@
 import { Fragment } from "react";
 import { Row, Col, Container, Card, Alert, Button } from "react-bootstrap";
-import {
-  getJob,
-  getJobs,
-  LeverJob,
-  LeverJobListItem,
-} from "../../utils/jobPosts";
+import { getJob, LeverJob, LeverJobListItem } from "../../utils/jobPosts";
 import Head from "next/head";
 import Link from "next/link";
 import WorkingAtGrouparooCard from "../../components/jobs/WorkingAtGrouparoo";

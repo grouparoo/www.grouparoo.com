@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import hydrate from "next-mdx-remote/hydrate";
