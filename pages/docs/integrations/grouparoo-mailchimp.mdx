@@ -73,8 +73,8 @@ To connect Mailchimp to Grouparoo, you [create an App](https://www.grouparoo.com
 In Grouparoo, you specify the options to connect to Mailchimp.
 
 <ImageInBrowserFrame
-  src="/images/docs/integrations/mailchimp/app/app-options.png"
-  alt="Mailchimp app options"
+  src="/images/docs/integrations/mailchimp/app/options.png"
+  alt="Mailchimp App Options"
   width={733}
   height={135}
 />
@@ -118,9 +118,14 @@ A Destination’s sync mode determines what to update in a Destination. In Mailc
 
 ### Destination Options
 
-{image here}
-
-![alt_text](images/image4.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailchimp/export-contacts/destination-options.png"
+  alt="Mailchimp Export Contacts Options"
+  width={733}
+  height={134}
+/>
+<br></br>
+<br></br>
 
 <table className="docTable">
 <tablebody>
@@ -142,6 +147,46 @@ A Destination’s sync mode determines what to update in a Destination. In Mailc
   </tablebody>
 </table>
 
+### Record Data
+
+Mapping Record Properties to Mailchimp Merge Vars is the key to syncing data to Mailchimp.
+
+Mailchimp’s Merge Vars can help a company organize marketing campaigns and deliver the right content to the right audience segments.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailchimp/export-contacts/record-data.png"
+  alt="Mailchimp Export Contacts Record Data"
+  width={733}
+  height={451}
+/>
+<br></br>
+<br></br>
+
+### Required Properties
+
+The only Grouparoo Property that is required to map to Mailchimp Merge Vars is email_address. Choose the Grouparoo Property that corresponds with the Contact’s email address.
+
+### Optional Properties
+
+In addition to the required email_address field, Mailchimp allows you to set many other Merge Vars. These are additional attributes that are part of the Audience you have set up in Mailchimp beforehand. Some are preset, but it is also possible to create custom fields in Mailchimp. Any Merge Vars associated with the listId you’ve chosen to sync will populate on this configuration screen or be available in the dropdown below the mapping. Any of these can be synced to from Grouparoo Properties.
+
+### Group Data
+
+In addition to mapping Grouparoo Properties to Mailchimp Merge Vars, you can use Grouparoo Groups to apply tags to Mailchimp Contacts.
+
+This tagging process starts by selecting a group from the dropdown menu in the Send Group box. The Mailchimp Tag name will default to the name of the Grouparoo Group you have selected, but you can edit the Mailchimp Tag name to be applied by selecting the pencil icon.
+
+Mailchimp Tags can be used to organize and subdivide your audiences for targeted communications.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailchimp/export-contacts/group-data.png"
+  alt="Mailchimp Export Contacts Group Data"
+  width={733}
+  height={242}
+/>
+<br></br>
+<br></br>
+
 ## Mailchimp Export Contacts By Id
 
 This destination allows you to update existing contacts in a Mailchimp list based on a known Mailchimp ID associated with each Contact that is part of the Audience.
@@ -159,8 +204,8 @@ A Destination’s sync mode determines what to update in a Destination. In Mailc
 ### Destination Options
 
 <ImageInBrowserFrame
-  src="/images/docs/integrations/mailchimp/mailchimp-export-contacts/mailchimp-export-contacts-options.png"
-  alt="Mailchimp export contacts options"
+  src="/images/docs/integrations/mailchimp/export-contacts-by-id/destination-options.png"
+  alt="Mailchimp Export Contacts By ID Options"
   width={733}
   height={134}
 />
@@ -195,9 +240,14 @@ Mailchimp’s Merge Vars can help a company organize marketing campaigns and del
 
 The only required Merge Var when mapping data to Mailchimp is **mailchimp_id**. Choose the Grouparoo Property that corresponds with the contact’s Mailchimp Id.
 
-{image here}
-
-![alt_text](images/image8.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailchimp/export-contacts-by-id/record-data.png"
+  alt="Mailchimp Export Contacts By ID Record Data"
+  width={733}
+  height={135}
+/>
+<br></br>
+<br></br>
 
 #### Optional Properties
 
@@ -212,8 +262,8 @@ This tagging process starts by selecting a group from the dropdown menu in the S
 Mailchimp Tags can be used to organize and subdivide your audiences for targeted communications.
 
 <ImageInBrowserFrame
-  src="/images/docs/integrations/mailchimp/mailchimp-export-contacts-by-id/groups.png"
-  alt="Mailchimp export contacts by id: groups"
+  src="/images/docs/integrations/mailchimp/export-contacts-by-id/group-data.png"
+  alt="Mailchimp Export Contacts By ID Group Data"
   width={733}
   height={242}
 />
