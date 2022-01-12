@@ -27,7 +27,7 @@ export const Mailjet: Plugin = {
   dataModelDescription: [
     "Trying to figure out how to integrate with Mailjet? Here’s an overview for how Mailjet defines customers.",
     "The core object in Mailjet is a Contact. A Contact represents an individual person that lives on a Contact list. Contacts have one required attribute, which is their email address.",
-    "Mailjet calls attributes of a Contact a Contact Property. Mailjet pre-defines a number of Contact Properties such as <code>firstname</code> and <code>country</code>, but you can define as many Contact Properties as you'd like in the Mailjet app.",
+    "Mailjet calls attributes of a Contact a Contact Property. Mailjet pre-defines a number of Contact Properties such as <code>firstname</code> and <code>country</code>, but you can define as many Contact Properties as you'd like in Mailjet.",
   ],
   destinationMappings: [
     {
