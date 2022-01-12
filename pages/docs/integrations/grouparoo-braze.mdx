@@ -1,6 +1,6 @@
 ---
-title: "@grouparoo / braze"
-date: "2021-10-12"
+title: "Braze"
+date: "2022-1-10"
 pullQuote: "Learn how to work with Braze Plugin as a Destination."
 pageNavSelector: "h2"
 ---
@@ -11,100 +11,148 @@ Grouparoo's [Braze](https://www.braze.com/) Plugin enables you to export users t
 
 This guide will show you how to work with Braze Plugin to [create a Destination](#create-a-braze-destination) to export your data.
 
-<PluginDocsInstallation plugin="Braze" />
+## Overview
 
-<PluginDocsCreateApp plugin="Braze" />
+Braze is a customer engagement platform. Braze allows you to leverage contextual information about users and user activity to enhance business communications.
 
-<ValidateAndApplyConfig headingLevel="h3" />
+### Destinations
 
-## Create a Braze Destination
+<table className="docTable">
+  <tr>
+    <td>Destination Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Braze Export Users</strong>
+    </td>
+    <td>Export Users to Braze and add them to Subscription Groups.</td>
+  </tr>
+</table>
 
-Once your App exists, you can generate a Braze Destination using the `generate` command. You must specify a `parent`, which should match the `id` of the App you just created.
+## Setup
 
-This is the simplest form of [Generator](/docs/getting-started/product-concepts#generator) for Destinations:
+You will need a Braze account, a Braze API key, and Braze REST Endpoint to sync data to Braze using Grouparoo.
 
-```
-$ grouparoo generate braze:destination braze_destination --parent my_braze_app
-```
+To find your API keys in the Braze dashboard, use the menu to navigate to Settings > Developer Settings >API Settings. There, you will see a list of any existing API keys and have the option to create a New API key.
 
-This would generate a config file at `config/destinations/braze_destination.js` in your Grouparoo project. You can then edit this file to match your desired configuration. Here is an example of what this config object will look like after generation:
+The API key you use to configure Grouparoo to connect with Braze needs to have Users and Campaigns permissions.
 
-```js
-// config/destinations/braze_destination.js
+<ImageInBrowserFrame
+  src="/images/docs/integrations/braze/setup/setup-1.png"
+  alt="finding API key"
+  width={733}
+  height={169}
+/>
+<br></br>
+<br></br>
 
-exports.default = async function buildConfig() {
-  return [
-    {
-      id: "braze_destination",
-      name: "braze_destination",
-      class: "destination",
-      type: "braze-export",
-      appId: "my_braze_app",
-      groupId: "...",
-      syncMode: "...",
+## App
 
-      mapping: {
-        external_id: "userId",
-        email: "email",
-        first_name: "firstName",
-        last_name: "lastName",
-      },
+To connect Grouparoo to Braze, you [create an App](https://www.grouparoo.com/docs/config/apps) that tells Grouparoo how to make the connection. This specifies the account used for any Destinations.
 
-      destinationGroupMemberships: {
-        "High Value Customers": "highValueCustomers",
-      },
-    },
-  ];
-};
-```
+### App Options
 
-For more information on what all these properties mean and how to configure them, see [Configuring your Destination](/docs/config/code-config/destinations#configuring-your-destination).
+In Grouparoo, you must specify two options to connect to Braze.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/braze/app/options.png"
+  alt="Braze App Options"
+  width={733}
+  height={171}
+/>
+<br></br>
+<br></br>
+
+<table className="docTable">
+  <tr>
+    <td>App Option</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Braze API Key </strong>(required)
+    </td>
+    <td>
+      Braze REST API key. It can be found under the Developer Console (bottom of
+      the left side menu) on the Braze dashboard.{" "}
+      <em>Users and Campaigns permissions are needed.</em>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Braze Rest Endpoint</strong> (required)
+    </td>
+    <td>
+      Braze REST Endpoint. It uses the same instance number as the dashboard
+      (i.e. if the dashboard URL is dashboard-01.braze.com the REST endpoint
+      will be rest.iad-01.braze.com)
+    </td>
+  </tr>
+</table>
+
+For more information on options for keeping your credentials secure, visit our documentation on [secrets](https://www.grouparoo.com/docs/support/secrets).
+
+## Marketo Export Contacts
+
+This Destination enables you to sync your Grouparoo Records to Leads in Braze.
+
+Companies use Braze to organize information about clients and marketing leads to better inform marketing strategies.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
 
 ### Sync Modes
 
-Braze Destination supports all three sync modes:
+A Destination’s sync mode determines what to update in a Destination. The following are supported by Braze:
 
-- **Sync** (`sync`): Add, update, and remove Records as needed.
-- **Additive** (`additive`): Add and update Records as needed, but do not remove anybody.
-- **Enrich** (`enrich`): Only update Records that already exist in the Destination. Do not add or remove anybody.
+- **Sync**: Add, update, and remove Braze Users as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Braze Users as needed, but do not remove anybody. This option looks for new Users to add to Braze and changes to existing Braze Users, but does not keep track of deletions.
+- **Enrich**: Only update those Users that already exist in Braze. Do not add or remove Users. This option will only update existing Users in Braze.
 
-You can set the desired Sync Mode through the `syncMode` Property in the config file:
+### Destination Options
 
-```js
-syncMode: "additive",
-```
+Some types of Destinations require further clarification about how data should sync. In the case of Braze, there are no further Options to configure before moving on to mapping Record Data.
 
-### Property Mappings
+### Record Data
 
-These mappings are what tell Grouparoo which Properties you want to sync to the Destination and what they should be called. For this Plugin, **Grouparoo Properties** map to **Braze User Attributes**.
+<ImageInBrowserFrame
+  src="/images/docs/integrations/braze/export-contacts/record-data.png"
+  alt="Braze Export Contacts: Record Data"
+  width={733}
+  height={719}
+/>
+<br></br>
+<br></br>
 
-For Braze, Mapping the `external_id` Property is always required, this Property can be any unique string.
+#### Required Properties
 
-You can also map to custom attributes that you've defined on Braze by simply adding them along with the others.
+The only Grouparoo Property that is required to map to a Braze User Profile Field is **external_id**. Choose the Grouparoo Property that corresponds with the User’s ID.
 
-Here's an example of how this would look in the config file. Note that the keys refer to Braze Attribute names and values refer to Grouparoo Property IDs.
+- **external_id**: A User’s unique identifier for Braze
 
-```js
-mapping: {
-  external_id: "userId",
-  email: "email",
-  first_name: "firstName",
-  last_name: "lastName",
-},
-```
+#### Optional Properties
 
-### Group Mappings
+In addition to required fields, Braze has a list of preset User Profile Fields available to map data. You can find these by scrolling through the dropdown menu in the **Send Record Property** portion of the form. Any of these can be synced to from Grouparoo Properties.
 
-You can use **Group Memberships** to automatically add **Braze Groups** to your contacts. In braze, the groups are stored in an array Property called Groups.
+Below the Optional Braze User Profile Fields heading, you have the option to create custom Braze User Profile Fields. When you Click ‘Add New Braze User Profile Field’, you will see the properties available in Grouparoo to map to Braze. Choose one of these to create a new mapping and a new Field in Braze. The name of the Braze Profile Field you create is the same as the name of the Grouparoo Property you’ve chosen, by default, but can be edited.
 
-Here's an example of how to configure this in the config file. Keys refer to the name of the tag to be shown on Braze and values refer to the Grouparoo Group ID.
+### Group Data
 
-```js
-destinationGroupMemberships: {
-  "High Value Customers": "highValueCustomers",
-},
-```
+In addition to mapping Grouparoo Properties to Braze User Profile Fields, you can use Grouparoo Groups to add Users and Accounts to Braze Subscription Groups.
 
-## Braze Next Steps
+Braze’s Subscription Groups are segment filters used to narrow your audience that allow for more granular subscription options for end-users. An app group in Braze can have up to 25 Subscription Groups.
 
-Once you have the Plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
+<ImageInBrowserFrame
+  src="/images/docs/integrations/braze/export-contacts/group-data.png"
+  alt="Braze Export Contacts: Group Data"
+  width={733}
+  height={235}
+/>
+<br></br>
+<br></br>
+
+## Notes
+
+We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with Braze, please let us know.
+
+As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!

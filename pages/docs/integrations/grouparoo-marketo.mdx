@@ -1,108 +1,180 @@
 ---
-title: "@grouparoo / marketo"
-date: "2021-10-12"
-pullQuote: "Learn how to work with the Marketo Plugin as a Destination."
+title: "Marketo"
+date: "2022-1-10"
+pullQuote: "Learn how to work with the Marketo Integration as a Destination."
 pageNavSelector: "h2"
 ---
 
 <PluginDocsLinks plugin="Marketo" />
 
-Grouparoo's [Marketo](https://www.marketo.com/) Plugin enables you to export contacts and tags to Marketo.
+## Overview
 
-This guide will show you how to work with the Marketo Plugin to [create a Destination](#create-an-marketo-destination) to export your data.
+Marketo Engage is an Adobe product used for marketing automation. You can use Marketo to leverage behavioral data in marketing campaigns and analyze how effective your marketing channels are.
 
-<PluginDocsInstallation plugin="Marketo" />
+### Destinations
 
-<PluginDocsCreateApp plugin="Marketo" />
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Destination Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>Marketo Export Contacts</td>
+      <td>Export Records to a Marketo account.</td>
+    </tr>
+  </tablebody>
+</table>
 
-<ValidateAndApplyConfig headingLevel="h3" />
+## Setup
 
-## Create an Marketo Destination
+You will need a Marketo account to start syncing data to Marketo using Grouparoo. Gather your Marketo Endpoint, Identity, Client ID, and Client Secret to prepare for configuration.
 
-Once your App exists, you can generate an Marketo Destination using the `generate` command. You must specify a `parent`, which should match the `id` of the App you just created.
+In Marketo, navigate to Admin > Web Services. This is where you will find your Endpoint and Identity, two pieces of information required to establish a connection with Marketo.
 
-This is the simplest form of [Generator](/docs/getting-started/product-concepts#generator) for Destinations:
+<ImageInBrowserFrame
+  src="/images/docs/integrations/marketo/setup/setup-1.png"
+  alt="Managing API keys"
+  width={500}
+  height={272}
+/>
+<br></br>
+<br></br>
 
-```
-$ grouparoo generate marketo:destination marketo_destination --parent my_marketo_app
-```
+<ImageInBrowserFrame
+  src="/images/docs/integrations/marketo/setup/setup-2.png"
+  alt="API Endpoint and Identity"
+  width={720}
+  height={192}
+/>
+<br></br>
+<br></br>
 
-This would generate a config file at `config/destinations/marketo_destination.js` in your Grouparoo project. You can then edit this file to match your desired configuration. Here is an example of what this config object will look like after generation:
+You can find the Client ID and Client Secret by navigating to Admin > LaunchPoint > View Details.
 
-```js
-// config/destinations/marketo_destination.js
+<ImageInBrowserFrame
+  src="/images/docs/integrations/marketo/setup/setup-3.png"
+  alt="Client ID and Client Secret"
+  width={720}
+  height={443}
+/>
+<br></br>
+<br></br>
 
-exports.default = async function buildConfig() {
-  return [
-    {
-      id: "marketo_destination",
-      name: "marketo_destination",
-      class: "destination",
-      type: "marketo-export",
-      appId: "my_marketo_app",
-      groupId: "...",
-      syncMode: "...",
+## App
 
-      mapping: {
-        email: "email",
-        firstname: "firstName",
-        lastname: "lastName",
-      },
+To connect Marketo to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to make the connection. This specifies the account used for any Destinations.
 
-      destinationGroupMemberships: {
-        "High Value Customers": "highValueCustomers",
-      },
-    },
-  ];
-};
-```
+### App Options
 
-For more information on what all these properties mean and how to configure them, see [Configuring your Destination](/docs/config/code-config/destinations#configuring-your-destination).
+In Grouparoo, you specify the options to connect to Intercom.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/marketo/app/options.png"
+  alt="Marketo App Options"
+  width={720}
+  height={326}
+/>
+<br></br>
+<br></br>
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>App Option</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Endpoint </strong>(required)
+      </td>
+      <td>Found in Marketo Web Services</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Identity </strong>(required)
+      </td>
+      <td>Found in Marketo Web Services</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Client ID</strong> (required)
+      </td>
+      <td>Found in LaunchPoint for an API user</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Client Secret</strong> (required)
+      </td>
+      <td>Found in LaunchPoint for an API user</td>
+    </tr>
+  </tablebody>
+</table>
+
+For more information on options for keeping your credentials secure, visit our documentation on [secrets](https://www.grouparoo.com/docs/support/secrets).
+
+## Marketo Export Contacts
+
+This Destination enables you to sync your Grouparoo Records to Leads in Marketo.
+
+Companies use Marketo to organize a wide range of attributes describing behavior of marketing leads to better inform their marketing strategies.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
 
 ### Sync Modes
 
-The Marketo Destination supports all three sync modes:
+A Destination’s sync mode determines what to update in a Destination. The following are supported by Marketo:
 
-- **Sync** (`sync`): Add, update, and remove Records as needed.
-- **Additive** (`additive`): Add and update Records as needed, but do not remove anybody.
-- **Enrich** (`enrich`): Only update Records that already exist in the Destination. Do not add or remove anybody.
+- **Sync**: Add, update, and remove Marketo Leads as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Marketo Leads as needed, but do not remove anybody. This option looks for new Leads to add to Marketo and changes to existing Marketo Leads, but does not keep track of deletions.
+- **Enrich**: Only update those Leads that already exist in Marketo. Do not add or remove Leads. This option will only update existing Leads in Marketo.
 
-You can set the desired Sync Mode through the `syncMode` Property in the config file:
+### Destination Options
 
-```js
-syncMode: "additive",
-```
+Some types of Destinations require further clarification about how data should sync. In the case of Marketo, there are no further Options to configure before moving on to mapping Record Data.
 
-### Property Mappings
+### Record Data
 
-These mappings are what tell Grouparoo which Properties you want to sync to the Destination and what they should be called. For this Plugin, **Grouparoo Properties** map to **Marketo Leads Fields**.
+Mapping Record Properties to Marketo Fields is the key to syncing data to Marketo Leads.
 
-For Marketo, Mapping the `email` Property is always required.
+Marketo‘s Lead Fields can be used for customizing marketing campaigns and analyzing lead behavior.
 
-You can also map to custom attributes that you've defined on Marketo by simply adding them along with the others.
+<ImageInBrowserFrame
+  src="/images/docs/integrations/marketo/export-contacts/record-data.png"
+  alt="Marketo Export Contacts Record Data"
+  width={720}
+  height={440}
+/>
+<br></br>
+<br></br>
 
-Here's an example of how this would look in the config file. Note that the keys refer to Marketo Attribute names and values refer to Grouparoo Property IDs.
+#### Required Properties
 
-```js
-mapping: {
-  email: "email",
-  firstname: "firstName",
-  custom_lifetime_value: "ltv",
-},
-```
+The only Grouparoo Property that is required to map to a Marketo field is **email**. Choose the Grouparoo Property that corresponds with the Lead’s email address.
 
-### Group Mappings
+- **email: **a Lead’s email address in Marketo
 
-You can use **Group Memberships** to automatically add **Marketo Tags** to your contacts.
+#### Optional Properties
 
-Here's an example of how to configure this in the config file. Keys refer to the name of the tag to be shown on Marketo and values refer to the Grouparoo Group ID.
+In addition to required fields, Marketo has an extensive preset list of Marketo Fields available to map data. You can find these by scrolling through the dropdown menu in the **Send Record Property** portion of the form. Any of these can be synced to from Grouparoo Properties.
 
-```js
-destinationGroupMemberships: {
-  "High Value Customers": "highValueCustomers",
-},
-```
+### Group Data
 
-## Marketo Next Steps
+In addition to mapping Grouparoo Properties to Marketo Fields, you can use Grouparoo Groups to add Leads to Marketo Lists.
 
-Once you have the Plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
+In Marketo, lists help marketers to engage with customers and business prospects more effectively.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/marketo/export-contacts/group-data.png"
+  alt="Marketo Export Contacts Group Data"
+  width={720}
+  height={172}
+/>
+<br></br>
+<br></br>
+
+## Notes
+
+We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with Marketo, please let us know.
+
+As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!

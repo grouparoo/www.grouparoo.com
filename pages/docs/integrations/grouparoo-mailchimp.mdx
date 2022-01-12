@@ -1,0 +1,277 @@
+---
+title: "Mailchimp"
+date: "2022-01-07"
+pullQuote: "Learn how to work with the Mailchimp Plugin as a Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Mailchimp" />
+
+## Overview
+
+Mailchimp is a service used for marketing automation. You can use Mailchimp to stay in touch with customers and Grouparoo can help you to sync data from your warehouse to Mailchimp easily.
+
+## Destinations
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Destination Name</td>
+      <td>Destination Description</td>
+    </tr>
+    <tr>
+      <td>Mailchimp Export Contacts</td>
+      <td>Export Records to a Mailchimp list with MergeVars and Tags.</td>
+    </tr>
+    <tr>
+      <td>Mailchimp Export Contacts By Id</td>
+      <td>
+        Update existing contacts in a Mailchimp list based on a known Mailchimp
+        ID.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+You will need to have a Mailchimp account with a Mailchimp Audience set up for the contact list you will sync. In addition, you will need a Mailchimp API key to configure your warehouse to sync to this Destination.
+
+To find the API key, sign in to MailChimp and navigate to the User menu located at the bottom left corner of the browser. Choose “Account” and then “API Keys” from the dropdown menu labeled “Extras”
+
+To create an API key, sign in to the Mailchimp [account page](https://us4.admin.mailchimp.com/account/).Then, using the dropdown menu labeled **Extras**, select **API Keys**.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailchimp/setup/setup-1.png"
+  alt="finding API key"
+  width={733}
+  height={301}
+/>
+<br></br>
+<br></br>
+
+In Mailchimp, it is possible to have more than one API key. In addition to the API
+keys listed, you will see the date each API key was created, the User who created
+the key, any label applied to the key, and a status indicator. The status indicator
+of the key you use must be “enabled” to connect to Mailchimp services via Grouparoo.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailchimp/setup/setup-2.png"
+  alt="copy your API key"
+  width={733}
+  height={140}
+/>
+<br></br>
+<br></br>
+
+## App
+
+To connect Mailchimp to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) which will specify how Grouparoo can connect to Mailchimp. This specifies the account used for any Destinations.
+
+### App Options
+
+In Grouparoo, you specify the options to connect to Mailchimp.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailchimp/app/options.png"
+  alt="Mailchimp App Options"
+  width={733}
+  height={135}
+/>
+<br></br>
+<br></br>
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>API Key</strong> (required)
+      </td>
+      <td>Mailchimp API key.</td>
+    </tr>
+  </tablebody>
+</table>
+
+For more information on options for keeping your API keys secure, visit our documentation on [secrets](https://www.grouparoo.com/docs/support/secrets).
+
+## Mailchimp Export Contacts
+
+This Destination enables you to sync your Grouparoo Records to Contacts in Mailchimp as part of a designated Audience.
+
+Companies use Grouparoo to keep their Mailchimp Contacts up-to-date in order to maintain an effective and seamless communication channel for marketing.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+Mailchimp Export Contacts is one of the two options for configuring a Mailchimp destination.
+
+A Destination’s sync mode determines what to update in a Destination. In Mailchimp Export Contacts, the following sync modes are supported:
+
+- **Sync**: Add, update, and remove Mailchimp Contacts as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Mailchimp Contacts as needed, but do not remove anybody. This option looks for new Contacts to add to Mailchimp and changes to existing Mailchimp Contacts, but does not keep track of deletions.
+- **Enrich**: Only update those Contacts that already exist in Mailchimp. Do not add or remove Contacts. This option will only update existing Contacts in Mailchimp.
+
+### Destination Options
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailchimp/export-contacts/destination-options.png"
+  alt="Mailchimp Export Contacts Options"
+  width={733}
+  height={134}
+/>
+<br></br>
+<br></br>
+
+<table className="docTable">
+<tablebody>
+    <tr>
+      <td>Option</td>
+      <td>Description</td>
+    </tr>
+  <tr>
+
+   <td><strong>listId</strong>
+
+(required)
+
+   </td>
+   <td>Choose from the list of Audiences you have set up in Mailchimp. Each Audience has an Audience ID. This is an alphanumeric code that can be found on the Audience Settings Page. An audience’s name can be edited, but the audience ID will remain the same.
+   </td>
+
+  </tr>
+  </tablebody>
+</table>
+
+### Record Data
+
+Mapping Record Properties to Mailchimp Merge Vars is the key to syncing data to Mailchimp.
+
+Mailchimp’s Merge Vars can help a company organize marketing campaigns and deliver the right content to the right audience segments.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailchimp/export-contacts/record-data.png"
+  alt="Mailchimp Export Contacts Record Data"
+  width={733}
+  height={451}
+/>
+<br></br>
+<br></br>
+
+### Required Properties
+
+The only Grouparoo Property that is required to map to Mailchimp Merge Vars is email_address. Choose the Grouparoo Property that corresponds with the Contact’s email address.
+
+### Optional Properties
+
+In addition to the required email_address field, Mailchimp allows you to set many other Merge Vars. These are additional attributes that are part of the Audience you have set up in Mailchimp beforehand. Some are preset, but it is also possible to create custom fields in Mailchimp. Any Merge Vars associated with the listId you’ve chosen to sync will populate on this configuration screen or be available in the dropdown below the mapping. Any of these can be synced to from Grouparoo Properties.
+
+### Group Data
+
+In addition to mapping Grouparoo Properties to Mailchimp Merge Vars, you can use Grouparoo Groups to apply tags to Mailchimp Contacts.
+
+This tagging process starts by selecting a group from the dropdown menu in the Send Group box. The Mailchimp Tag name will default to the name of the Grouparoo Group you have selected, but you can edit the Mailchimp Tag name to be applied by selecting the pencil icon.
+
+Mailchimp Tags can be used to organize and subdivide your audiences for targeted communications.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailchimp/export-contacts/group-data.png"
+  alt="Mailchimp Export Contacts Group Data"
+  width={733}
+  height={242}
+/>
+<br></br>
+<br></br>
+
+## Mailchimp Export Contacts By Id
+
+This destination allows you to update existing contacts in a Mailchimp list based on a known Mailchimp ID associated with each Contact that is part of the Audience.
+
+Companies use Grouparoo to keep their Mailchimp Contacts up-to-date in order to maintain an effective and seamless communication channel for marketing.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. In Mailchimp Export Contacts by Id, the only sync mode supported is:
+
+- **Enrich**: Only update those Contacts that already exist in Mailchimp. Do not add or remove Contacts. This option will only update existing Contacts in Mailchimp.
+
+### Destination Options
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailchimp/export-contacts-by-id/destination-options.png"
+  alt="Mailchimp Export Contacts By ID Options"
+  width={733}
+  height={134}
+/>
+<br></br>
+<br></br>
+
+<table className="docTable">
+    <tablebody>
+    <tr>
+        <td>Option</td>
+        <td>Description</td>
+        </tr>
+  <tr>
+   <td><strong>listId</strong>
+
+(required)
+
+   </td>
+   <td>Choose from the list of Audiences you have set up in Mailchimp. Each Audience has an Audience ID. This is an alphanumeric code that can be found on the Audience Settings Page. An audience’s name can be edited, but the audience ID will remain the same.
+   </td>
+  </tr>
+  </tablebody>
+</table>
+
+### Record Data
+
+Mapping Record Properties to Mailchimp Merge Vars is the key to syncing data to Mailchimp.
+
+Mailchimp’s Merge Vars can help a company organize marketing campaigns and deliver the right content to the right audience segments.
+
+#### Required Properties
+
+The only required Merge Var when mapping data to Mailchimp is **mailchimp_id**. Choose the Grouparoo Property that corresponds with the contact’s Mailchimp Id.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailchimp/export-contacts-by-id/record-data.png"
+  alt="Mailchimp Export Contacts By ID Record Data"
+  width={733}
+  height={135}
+/>
+<br></br>
+<br></br>
+
+#### Optional Properties
+
+In addition to the required email_address field, Mailchimp allows you to set many other Merge Vars. These are additional attributes that are part of the Audience you have set up in Mailchimp beforehand. Some are preset, but it is also possible to create custom fields in Mailchimp. Any Merge Vars associated with the listId you’ve chosen to sync will populate on this configuration screen or be available in the dropdown below the mapping. Any of these can be synced to from Grouparoo Properties.
+
+### Group Data
+
+In addition to mapping Grouparoo Properties to Mailchimp Merge Vars, you can use Grouparoo Groups to apply tags to Mailchimp Contacts.
+
+This tagging process starts by selecting a group from the dropdown menu in the Send Group box. The Mailchimp Tag name will default to the name of the Grouparoo Group you have selected, but you can edit the Mailchimp Tag name to be applied by selecting the pencil icon.
+
+Mailchimp Tags can be used to organize and subdivide your audiences for targeted communications.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mailchimp/export-contacts-by-id/group-data.png"
+  alt="Mailchimp Export Contacts By ID Group Data"
+  width={733}
+  height={242}
+/>
+<br></br>
+<br></br>
+
+## Notes
+
+We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with Mailchimp, please let us know.
+
+As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!
