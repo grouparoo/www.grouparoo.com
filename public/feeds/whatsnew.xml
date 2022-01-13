@@ -52,7 +52,7 @@
       >grouparoo-release-note-2021-12-15-pipedrive-organizations</guid>
             <pubDate>Wed, 15 Dec 2021 00:00:00 GMT</pubDate>
             <content:encoded
-      ><![CDATA[<p>Grouparoo&#x27;s <a href="/integrations/sources/pipedrive">Pipedrive integration</a> can now export Organization contacts, in addition to Person contacts.</p><p>Just create a new &quot;Pipedrive Export Organizations&quot; Destination and start syncing!</p><div style="margin-bottom:20px"><img alt="Pipedrive Organizations" src="https://www.grouparoo.com/posts/releases/2021-12-15-pipedrive-organizations.png" width="1000" height="181" style="height:181px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+      ><![CDATA[<p>Grouparoo&#x27;s <a href="/integrations/destinations/pipedrive">Pipedrive integration</a> can now export Organization contacts, in addition to Person contacts.</p><p>Just create a new &quot;Pipedrive Export Organizations&quot; Destination and start syncing!</p><div style="margin-bottom:20px"><img alt="Pipedrive Organizations" src="https://www.grouparoo.com/posts/releases/2021-12-15-pipedrive-organizations.png" width="1000" height="181" style="height:181px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
         </item>
         <item>
