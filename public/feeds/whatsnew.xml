@@ -9,7 +9,7 @@
         <title>Grouparoo: What's New</title>
         <link>https://www.grouparoo.com/whats-new</link>
         <description>Notes about product updates as they happen.</description>
-        <lastBuildDate>Mon, 15 Nov 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 25 Dec 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,57 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Common Salesforce Destinations]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-12-25-salesforce-split</link>
+            <guid>grouparoo-release-note-2021-12-25-salesforce-split</guid>
+            <pubDate>Sat, 25 Dec 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Starting with Grouparoo v0.7.8, common use cases for Salesforce, such as exporting &quot;Accounts&quot; and &quot;Contacts&quot;, have been separated out into their own Destinations to make configuring these use cases easier than ever. Of course, you still have the power and flexibility of exporting custom objects by using the existing &quot;Objects&quot; Destination type.</p><div style="margin-bottom:20px"><img alt="Salesforce Destinations" src="https://www.grouparoo.com/posts/releases/2021-12-25-salesforce-split.png" width="1000" height="709" style="height:709px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[App Refresh Query]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-12-20-app-refresh-query</link>
+            <guid>grouparoo-release-note-2021-12-20-app-refresh-query</guid>
+            <pubDate>Mon, 20 Dec 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Grouparoo now supports defining a SQL query that runs against your data warehouse to trigger related schedules and start syncing. This means you can do things like update your Users and Purchases data anytime your Payments table is updated or run all of your Schedules every time a dbt job completes.</p><p>For more information on how this works, and an example on how to use App Refresh Query to run Grouparoo after dbt runs, please check out <a href="/blog/app-refresh-grouparoo-and-dbt">this blog post</a>.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Pipedrive Organizations Destination]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-12-15-pipedrive-organizations</link>
+            <guid
+      >grouparoo-release-note-2021-12-15-pipedrive-organizations</guid>
+            <pubDate>Wed, 15 Dec 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Grouparoo&#x27;s <a href="/integrations/sources/pipedrive">Pipedrive integration</a> can now export Organization contacts, in addition to Person contacts.</p><p>Just create a new &quot;Pipedrive Export Organizations&quot; Destination and start syncing!</p><div style="margin-bottom:20px"><img alt="Pipedrive Organizations" src="https://www.grouparoo.com/posts/releases/2021-12-15-pipedrive-organizations.png" width="1000" height="181" style="height:181px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[BigQuery Location Support]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-12-05-bigquery-location</link>
+            <guid>grouparoo-release-note-2021-12-05-bigquery-location</guid>
+            <pubDate>Sun, 05 Dec 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>Starting with Grouparoo 0.7.6, our <a href="/integrations/sources/bigquery">BigQuery integration</a> allows you to specify your BigQuery dataset&#x27;s location. This allows you to use Grouparoo to sync data from your Data Warehouse located in any region supported by BigQuery.</p><p>For more infofrmation on the available locations, please visit <a href="https://cloud.google.com/bigquery/docs/locations" target="_blank" rel="nofollow noopener noreferrer">BigQuery&#x27;s location docs</a>.</p><div style="margin-bottom:20px"><img alt="BigQuery Location selection" src="https://www.grouparoo.com/posts/releases/2021-12-05-bigquery-location.png" width="1000" height="202" style="height:202px;width:1000px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
+        <item>
+            <title><![CDATA[Snowflake with key pair authentication]]></title>
+            <link
+      >https://www.grouparoo.com/whats-new#2021-11-20-snowflake-keypair</link>
+            <guid>grouparoo-release-note-2021-11-20-snowflake-keypair</guid>
+            <pubDate>Sat, 20 Nov 2021 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>As of version 0.7.4, Grouparoo&#x27;s <a href="/integrations/sources/snowflake">Snowflake integration</a> now supports using <a href="https://docs.snowflake.com/en/user-guide/key-pair-auth.html" target="_blank" rel="nofollow noopener noreferrer">key pair authentication</a> for enhanced authentication security as an alternative to basic username and password authentication.</p><p>To get started, just upgrade to the latest version of Grouparoo and create a new &quot;Snowflake (Keypair)&quot; app. For more information on how to format and provide the keys, please check out the plugin&#x27;s <a href="https://github.com/grouparoo/grouparoo/tree/main/plugins/%40grouparoo/snowflake#notes-on-formatting-your-p8-private-key-when-using-a-snowflake-keypair-app" target="_blank" rel="nofollow noopener noreferrer">README</a>.</p>]]></content:encoded>
+            <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
+        </item>
         <item>
             <title><![CDATA[ClickHouse Plugin]]></title>
             <link
