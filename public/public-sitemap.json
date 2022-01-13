@@ -144,5 +144,6 @@
   "/integrations/destinations/sendgrid",
   "/integrations/sources/snowflake",
   "/integrations/sources/sqlite",
+  "/integrations/destinations/vero",
   "/integrations/destinations/zendesk"
 ]

@@ -280,6 +280,16 @@
     "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-snowflake"
   },
   {
+    "name": "Vero",
+    "description": "Grouparoo's Vero integration allows you to sync all of your customer data that lives in your data warehouse into Vero.",
+    "imageUrl": "https://www.grouparoo.com/images/home/integrations/vero/vero.png",
+    "packageName": "@grouparoo/vero",
+    "source": false,
+    "destination": true,
+    "npmUrl": "https://www.npmjs.com/package/@grouparoo/vero",
+    "docsUrl": null
+  },
+  {
     "name": "Zendesk",
     "description": "Grouparoo's Zendesk integration allows you to sync all of your customer data that lives in your data warehouse into Zendesk.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/zendesk/zendesk.png",
