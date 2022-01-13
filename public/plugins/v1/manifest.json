@@ -1,15 +1,5 @@
 [
   {
-    "name": "Airtable",
-    "description": "Grouparoo's Airtable integration allows you to sync all of your customer data that lives in your data warehouse into Airtable.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/airtable/airtable.png",
-    "packageName": "@grouparoo/airtable",
-    "source": false,
-    "destination": true,
-    "npmUrl": "https://www.npmjs.com/package/@grouparoo/airtable",
-    "docsUrl": null
-  },
-  {
     "name": "BigQuery",
     "description": "Grouparoo's Google BigQuery integration allows you to sync all of your customer data that lives in your Google BigQuery data warehouse with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/bigquery/bigquery.png",
@@ -127,16 +117,6 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/iterable",
-    "docsUrl": null
-  },
-  {
-    "name": "Klaviyo",
-    "description": "Grouparoo's Klaviyo integration allows you to sync all of your customer data that lives in your data warehouse into Klaviyo.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/klaviyo/klaviyo.png",
-    "packageName": "@grouparoo/klaviyo",
-    "source": false,
-    "destination": true,
-    "npmUrl": "https://www.npmjs.com/package/@grouparoo/klaviyo",
     "docsUrl": null
   },
   {
@@ -298,16 +278,6 @@
     "destination": false,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/snowflake",
     "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-snowflake"
-  },
-  {
-    "name": "Vero",
-    "description": "Grouparoo's Vero integration allows you to sync all of your customer data that lives in your data warehouse into Vero.",
-    "imageUrl": "https://www.grouparoo.com/images/home/integrations/vero/vero.png",
-    "packageName": "@grouparoo/vero",
-    "source": false,
-    "destination": true,
-    "npmUrl": "https://www.npmjs.com/package/@grouparoo/vero",
-    "docsUrl": null
   },
   {
     "name": "Zendesk",

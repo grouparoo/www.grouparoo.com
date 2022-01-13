@@ -27,6 +27,7 @@ import { Salesforce } from "./salesforce";
 import { Sendgrid } from "./sendgrid";
 import { Snowflake } from "./snowflake";
 import { SQLite } from "./sqlite";
+import { Vero } from "./vero";
 import { Zendesk } from "./zendesk";
 
 export interface PluginConfigOption {
@@ -125,6 +126,7 @@ export const PluginData: Plugin[] = [
   Sendgrid,
   Snowflake,
   SQLite,
+  Vero,
   Zendesk,
 ];
 
