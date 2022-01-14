@@ -9,7 +9,6 @@
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/airtable",
     "docsUrl": null
   },
-
   {
     "name": "BigQuery",
     "description": "Grouparoo's Google BigQuery integration allows you to sync all of your customer data that lives in your Google BigQuery data warehouse with various destinations such as CRMs, Customer Support Tools, and Marketing Tools.",
