@@ -1,0 +1,10 @@
+---
+title: "App Refresh Query"
+date: "2021-12-20"
+tags: ["new"]
+description: "Trigger schedules by running a query against the app"
+---
+
+Grouparoo now supports defining a SQL query that runs against your data warehouse to trigger related schedules and start syncing. This means you can do things like update your Users and Purchases data anytime your Payments table is updated or run all of your Schedules every time a dbt job completes.
+
+For more information on how this works, and an example on how to use App Refresh Query to run Grouparoo after dbt runs, please check out [this blog post](/blog/app-refresh-grouparoo-and-dbt).
