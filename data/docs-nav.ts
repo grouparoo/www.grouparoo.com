@@ -211,7 +211,7 @@ const DocsNav: NavItem[] = [
       { title: "Redshift", path: "/docs/integrations/grouparoo-redshift" },
       { title: "Sailthru", path: "/docs/integrations/grouparoo-sailthru" },
       { title: "Salesforce", path: "/docs/integrations/grouparoo-salesforce" },
-      { title: "Sendgrid", path: "/docs/integrations/grouparoo-sendgrid" },
+      { title: "SendGrid", path: "/docs/integrations/grouparoo-sendgrid" },
       { title: "Snowflake", path: "/docs/integrations/grouparoo-snowflake" },
       { title: "SQLite", path: "/docs/integrations/grouparoo-sqlite" },
     ],
