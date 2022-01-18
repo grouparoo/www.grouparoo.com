@@ -129,6 +129,7 @@
   "/integrations/destinations/intercom",
   "/integrations/destinations/iterable",
   "/integrations/destinations/mailchimp",
+  "/integrations/destinations/mailjet",
   "/integrations/destinations/marketo",
   "/integrations/destinations/mixpanel",
   "/integrations/sources/mongo",

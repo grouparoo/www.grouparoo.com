@@ -122,6 +122,17 @@
       }
     },
     {
+      "id": "grouparoo-release-note-2021-09-01-mailjet",
+      "content_html": "<p>With the release of Grouparoo v0.6, you can sync all of your customer data that lives\nin your data warehouse into <a href=\"https://www.mailjet.com/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Mailjet</a> with the <code>@grouparoo/mailjet</code> plugin.</p><p>Learn more about integrating Grouparoo with Mailjet <a href=\"/integrations/destinations/mailjet\">here</a>.</p><center><div style=\"margin-bottom:20px\"><img alt=\"Mailjet Destination\" src=\"https://www.grouparoo.com/posts/releases/2021-09-01-mailjet.png\" width=\"733\" height=\"335\" style=\"height:335px;width:733px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div></center>",
+      "url": "https://www.grouparoo.com/whats-new#2021-09-01-mailjet",
+      "title": "Mailjet Destination",
+      "date_modified": "2021-09-01T00:00:00.000Z",
+      "author": {
+        "name": "Grouparoo, Inc.",
+        "url": "https://www.grouparoo.com"
+      }
+    },
+    {
       "id": "grouparoo-release-note-2021-07-28-eloqua",
       "content_html": "<p>We&#x27;ve just released a new <code>@grouparoo/eloqua</code> plugin to sync data to Oracle Eloqua! Learn more about connecting to Eloqua <a href=\"/integrations/destinations/eloqua\">here</a>.</p>",
       "url": "https://www.grouparoo.com/whats-new#2021-07-28-eloqua",
