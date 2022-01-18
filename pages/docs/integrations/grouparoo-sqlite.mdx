@@ -64,7 +64,7 @@ To work with the SQLite [Plugin](https://www.grouparoo.com/docs/getting-started/
 
 ## App
 
-To connect SQLite to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to Intercom. This specifies the location of the database you want to sync data to or from.
+To connect SQLite to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to SQLite. This specifies the location of the database you want to sync data to or from.
 
 ### App Options
 
@@ -89,7 +89,7 @@ In Grouparoo, you specify the options to connect to SQLite.
       <strong>File</strong> (required)
     </td>
     <td>
-      This should be the absolute path of the SQLite database file you want to
+      This should be the Absolute path of the SQLite database file you want to
       use in syncing data.
     </td>
   </tr>
@@ -110,9 +110,7 @@ This source reads from a single table in your SQLite database using a primary or
 
 ### Options
 
-There is one option to set for a SQLite Table Import Source. You need to choose a
-
-table from the database to serve as the location for Grouparoo to scan for changes to Properties.
+There is one option to set for a SQLite Table Import Source. You need to choose a table from the database to serve as the location for Grouparoo to scan for changes to Properties.
 
 <table className="docTable">
   <tr>
@@ -234,7 +232,7 @@ This type of Source provides the ability to write custom SQL code to extract dat
 A Destination’s sync mode determines what to update in a Destination. The following are supported by SQLite:
 
 - **Sync**: Add, update, and remove SQLite Exported Properties as needed.This option looks for new records, changes to existing records, and deletions.
-- **Additive**: Add and update SQLite Exported Properties as needed, but do not remove anybody. This option looks for new Contacts to add to Intercom and changes to existing Intercom Contacts, but does not keep track of deletions.
+- **Additive**: Add and update SQLite Exported Properties as needed, but do not remove anybody. This option looks for new Records to add to SQLite and changes to existing SQLite Records, but does not keep track of deletions.
 - **Enrich**: Only update those Properties that already exist in SQLite. Do not add or remove Properties. This option will only update existing Properties in the SQLite database.
 
 ### Destination Options
@@ -313,7 +311,7 @@ To further clarify how SQLite should sync data, select from the options provided
 
 #### Required Properties
 
-In an SQLite Export Contacts Destination, you must choose the Grouparoo Property to map to the column listed as the primary key in the SQLite database table this Destination will sync to. Therefore, the Exported property listed as required will be whatever is designated as the Primary Key in the SQLite table.
+In an SQLite Export Record Destination, you must choose the Grouparoo Property to map to the column listed as the primary key in the SQLite database table this Destination will sync to. Therefore, the Exported property listed as required will be whatever is designated as the Primary Key in the SQLite table.
 
 #### Optional Properties
 
