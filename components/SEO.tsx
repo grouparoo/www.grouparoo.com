@@ -32,7 +32,7 @@ const getTwitterCardType = ({ image, twitterCard }) => {
 const SEO = ({
   canonical,
   description,
-  image,
+  image = "/home/twitter-og-image.png",
   title,
   twitterAuthor,
   twitterCard,
