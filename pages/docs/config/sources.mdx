@@ -11,11 +11,12 @@ pullQuote: "Learn how to configure sources using Grouparoo's UI Config."
   </p>
 </Alert>
 
-A Source is a definition for how you pull data from an App into Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+A Source is a definition for how you pull data from an App into Grouparoo. [See this page](/docs/getting-started/product-concepts#source) to learn more about the core concepts in Grouparoo.
+Write
 
 A Model has two types of Sources:
 
-- **Primary Source**: This is the source that provides the bulk of the data to the Model. You can only have one per Model.
+- **Primary Source**: This is the source that provides the bulk of the data to the Model. You can only have one per Model. The Primary Source will provide the unique identifier for Records in this Model, like `user_id` or `email_address`.
 - **Secondary Sources**: These sources supplement the data provided by the Primary Source.
 
 ### Step 1: Choose an App
@@ -46,8 +47,8 @@ Once you've chosen the App, fill in the appropriate configuration values for you
 
 You will also need to indicate what makes each Record in your Source unique. This must be a unique identifier such a `user id`, `uid`, or `email`.
 
-When defining the Model's Primary Source, you will only need to select the identifier and
-Grouparoo will generate a Property that will serve as the Primary Key for the Model where the source is located.
+When defining the Model's Primary Source, you will only need to select the identifier.
+Then, Grouparoo will generate a Property that will serve as the Primary Key for the Model where the Source is located.
 
 In the example below, the `id` column of the `users` table will be used to identify each unique record.
 
@@ -59,9 +60,9 @@ In the example below, the `id` column of the `users` table will be used to ident
   height={746}
 />
 
-When defining a Secondary Source, you can map an attribute in the Source back to an existing property that ties it back to the Primary Source.
+When defining a Secondary Source, you can map an attribute in the Source to an existing property that ties it back to the Primary Source.
 
-In the example below, the Pg Purchases source is being tied back to the Pg Users source via the `user_id` foreign key in the `purchases` table.
+In the example below, the Pg Purchases Source is being tied back to the Primary Source (Pg Users) via the `user_id` foreign key in the `purchases` table.
 
 <ImageInBrowserFrame
   centered
