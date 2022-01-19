@@ -122,9 +122,9 @@ Learn more about [existing plugins](/docs/integrations), or [develop your own Pl
 
 ## Primary Key
 
-The Primary Key is the unique identifier in the Primary [Source](#source) for a [Model](#model).
-This identifier from your Source data is mapped directly to a Grouparoo [Property](#property) and acts as the primary key for your Model.
-For example, the Primary key for a `User` model may be the `userId` from its Postgres table Primary Source.
+The Primary Key for a [Model](#model) is the [Property](#property) that serves as the unique identifier [Mapping](#mapping) for the Primary [Source](#source) in that Model.
+
+For example, in a `User` Model with a Postgres table import as the Primary Source, the Primary Key may be the `userId` Property mapped to the `id` column in the Postgres `users` table.
 
 ## Record
 
@@ -160,6 +160,8 @@ Properties define how a Record Property gets pulled from a [Source](#source). Ev
 
 For example, you might define a Property called `first_name` which you are pulling from your product database via the `@grouparoo/postgres` Plugin.
 
+One Property in the [Model](#model) is set as the [Primary Key](#primary-key).
+
 ## Query Source
 
 A Query Source is an implementation of a [Columnar Source](#columnar-source) that enables you to write custom queries to extract information from your database. This is a more flexible version when compared with a [Table Source](#table-source).
@@ -176,12 +178,13 @@ Though technically separate objects, Schedules are often used in conjunction wit
 
 ## Source
 
-Sources are the tools that Grouparoo will connect with to pull in customer data. A Source can be anything that contains customer data such as data warehouses, databases, and CRMs.
+Sources are the objects within [Apps](#app) that Grouparoo will connect with to pull in customer data. A Source can be anything that contains customer data such as data warehouses, databases, and CRMs.
 
 When you add a new Source, you will define how that Source connects with the [Records](#record) that already exist in Grouparoo through a `Unique` [Record Property](#record-property).
 
-A [Model](#model) contains a _Primary_ Source and, optionally, multiple _Secondary_ Sources. The Primary Source is the data source where the bulk of the Record data will be imported, and Secondary Sources serve additional data.
-The [Mapping](#mapping) of the Primary Source is set via the Model's [Primary Key](#primary-key).
+Sources belong to [Models](#model), and each Model has a _Primary_ Source and, optionally, multiple _Secondary_ Sources.
+The Primary Source is the data source where the bulk of the Record data will be imported for the Model, and Secondary Sources serve additional data.
+The [Mapping](#mapping) for the Primary Source is set via the Model's [Primary Key](#primary-key).
 
 See [our Integrations page](/integrations) for an up-to-date list of our supported Sources. We are always adding support for more Sources. If you have a request, please [let us know](/meet)!
 
