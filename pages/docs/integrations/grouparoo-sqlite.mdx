@@ -1,24 +1,337 @@
 ---
-title: "@grouparoo / sqlite"
-date: "2021-10-12"
+title: "SQLite"
+date: "2022-01-14"
 pullQuote: "Learn how to work with the SQLite Plugin as a Source or a Destination."
 pageNavSelector: "h2"
 ---
 
 <PluginDocsLinks plugin="SQLite" />
 
-Grouparoo's [SQLite](https://www.sqlite.org/) Plugin is both a [Source](/docs/getting-started/product-concepts#source) and a [Destination](/docs/getting-started/product-concepts#destination) that enables you to import and export customer data to and from one or more SQLite databases.
+## Overview
 
-<PluginDocsInstallation plugin="SQLite" />
+Grouparoo's [SQLite](https://www.sqlite.org/index.html) Integration is both a [Source](/docs/getting-started/product-concepts#source) and a [Destination](/docs/getting-started/product-concepts#destination) that enables you to import and export customer data to and from one or more SQLite databases. SQLite is a relational database management system (RDBMS). You can use Grouparoo to sync data between a SQLite database and other services to operationalize your data.
 
-<PluginDocsCreateApp plugin="SQLite" />
+### Sources
 
-<ValidateAndApplyConfig />
+<table className="docTable">
+  <tr>
+    <td>Source Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      {" "}
+      <a href="#sqlite-import-table">
+        <strong>SQLite Import Table</strong>
+      </a>
+    </td>
+    <td>Import or update Records from a SQLite database table.</td>
+  </tr>
+  <tr>
+    <td>
+      <a href="#sqlite-import-query">
+        <strong>SQLite Import Query</strong>
+      </a>
+    </td>
+    <td>Import or update Records via a custom SQLite query.</td>
+  </tr>
+</table>
 
-<PluginDocsColumnarSource plugin="SQLite" />
+### Destinations
 
-<PluginDocsColumnarDestination plugin="SQLite" />
+<table className="docTable">
+  <tr>
+    <td>Destination Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+    <a href="#sqlite-export-record">
+      <strong>SQLite Export Record</strong>
+      </a>
+    </td>
+    <td>
+      Export Records to a SQLite table. Groups will be exported to a secondary
+      table linked by a foreign key.
+    </td>
 
-## SQLite Next Steps
+  </tr>
+</table>
 
-Once you have the Plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
+## Setup
+
+To work with the SQLite [Plugin](https://www.grouparoo.com/docs/getting-started/product-concepts#plugin), you must first install it in an existing Grouparoo project. Grouparoo supports syncing with SQLite databases stored on a local machine. Part of configuring the App will be to supply the database file location to establish the connection between Grouparoo and SQLite, so you will also need a path for the local database to refer to as part of configuration.
+
+## App
+
+To connect SQLite to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to SQLite. This specifies the location of the database you want to sync data to or from.
+
+### App Options
+
+In Grouparoo, you specify the options to connect to SQLite.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sqlite/app/options.png"
+  alt="SQLite App Options"
+  width={720}
+  height={152}
+/>
+<br></br>
+<br></br>
+
+<table className="docTable">
+  <tr>
+    <td>App Option</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>File</strong> (required)
+    </td>
+    <td>
+      This should be the Absolute path of the SQLite database file you want to
+      use in syncing data.
+    </td>
+  </tr>
+</table>
+
+## SQLite Import Table
+
+This source reads from a single table in your SQLite database using a primary or foreign key. Properties are generated from this table from row values or aggregations of row values.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sqlite/sqlite-import-table/options.png"
+  alt="SQLite Import Table Options"
+  width={720}
+  height={383}
+/>
+<br></br>
+<br></br>
+
+### Options
+
+There is one option to set for a SQLite Table Import Source. You need to choose a table from the database to serve as the location for Grouparoo to scan for changes to Properties.
+
+<table className="docTable">
+  <tr>
+    <td>Option Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Table</strong> (required)
+    </td>
+    <td>The table you want to scan for updates to your data.</td>
+  </tr>
+</table>
+
+### Mapping
+
+Defining Mappings is a critical part of the process. It tells Grouparoo which Record to associate with the imported data.
+
+If you are using SQLite Import Table as the [primary source](https://www.grouparoo.com/docs/config/code-config/sources), choose the SQLite column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model.
+
+In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources), choose the SQLite column that ties this table to your primary source. This will often be a foreign key in your table.
+
+### Schedule
+
+[Create a schedule](https://www.grouparoo.com/docs/config/sources#step-4-add-a-schedule) to actively pull new data from this SQLite table. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sqlite/sqlite-import-table/schedule.png"
+  alt="SQLite Import Table Schedule"
+  width={720}
+  height={507}
+/>
+<br></br>
+<br></br>
+
+#### Options
+
+Configure a schedule for your project and determine how Grouparoo should check for new data by selecting filling out the options for this Source.
+
+<table className="docTable">
+  <tr>
+    <td>Option Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>column</strong> (required)
+    </td>
+    <td>
+      Select which column Grouparoo should check to look for new data. Often,
+      this would be a column like “updated_at” - Grouparoo remembers the most
+      recent values so it can be based on an incremental count as well.
+    </td>
+  </tr>
+</table>
+
+#### Filters
+
+If there is a subset of rows data you want to specifically include or exclude from your SQLite table, create a filter.
+
+### Properties
+
+Properties populate your Records with data from your SQLite table based on table columns. [Create a Property](https://www.grouparoo.com/docs/config/properties) to be able to use row data in Grouparoo.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sqlite/sqlite-import-table/property.png"
+  alt="SQLite Import Table Options Properties"
+  width={720}
+  height={425}
+/>
+<br></br>
+<br></br>
+
+#### Options
+
+<table className="docTable">
+  <tr>
+    <td>Option Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Column Name</strong> (required)
+    </td>
+    <td>
+      Choose the column that will be the source of data for this Grouparoo
+      Property.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Aggregation Method</strong> (required)
+    </td>
+    <td>
+      Aggregation methods determine how to use the row values in the table.
+      SQLite supports the{" "}
+      <a href="https://www.grouparoo.com/docs/config/code-config/properties#aggregation-method-and-filters">
+        standard set
+      </a>{" "}
+      of aggregation methods for table sources.
+    </td>
+  </tr>
+</table>
+
+#### Filters
+
+If there is a subset of data for a specific primary or foreign key you want to include from your SQLite table, create a filter.
+
+## SQLite Import Query
+
+A Query Source works differently than a table-based source in that there are no any options to choose in setting up the connection to this type of source. A Query Source is a more flexible way to build properties.
+
+This type of Source provides the ability to write custom SQL code to extract data from one or more tables and import the result into Grouparoo.
+
+## SQLite Export Record
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. The following are supported by SQLite:
+
+- **Sync**: Add, update, and remove SQLite Exported Properties as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update SQLite Exported Properties as needed, but do not remove anybody. This option looks for new Records to add to SQLite and changes to existing SQLite Records, but does not keep track of deletions.
+- **Enrich**: Only update those Properties that already exist in SQLite. Do not add or remove Properties. This option will only update existing Properties in the SQLite database.
+
+### Destination Options
+
+To further clarify how SQLite should sync data, select from the options provided that are specific to your database.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sqlite/sqlite-export-record/options.png"
+  alt="SQLite Export Record Options"
+  width={720}
+  height={476}
+/>
+<br></br>
+<br></br>
+
+<table className="docTable">
+  <tr>
+    <td>Destination Option</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Table </strong>(Required)
+    </td>
+    <td>
+      The name of the table used to export Records. You must choose a table that
+      already exists in the SQLite database you are syncing to.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Primary Key </strong>(Required)
+    </td>
+    <td>
+      The primary key of the table. This will be used in the mapping of
+      properties.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Groups Table</strong> (Required)
+    </td>
+    <td>
+      The name of the table used to export groups. This table must already exist
+      in your database and must use a foreign key to relate to the primary key
+      you have already designated for in the previous field.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Group Foreign Key </strong>(Required)
+    </td>
+    <td>
+      The column name for the foreign key that the groups table uses to
+      reference the records table.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Group Column Name </strong>(Required)
+    </td>
+    <td>The column name used to store group names.</td>
+  </tr>
+</table>
+
+### Record Data
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sqlite/sqlite-export-record/records.png"
+  alt="SQLite Export Record: Record Data"
+  width={720}
+  height={481}
+/>
+<br></br>
+<br></br>
+
+#### Required Properties
+
+In an SQLite Export Record Destination, you must choose the Grouparoo Property to map to the column listed as the primary key in the SQLite database table this Destination will sync to. Therefore, the Exported property listed as required will be whatever is designated as the Primary Key in the SQLite table.
+
+#### Optional Properties
+
+In addition to the required mapping for your table’s primary key, any other columns in the table can also have mappings to Grouparoo properties.
+
+### Group Data
+
+In addition to mapping Grouparoo Properties to SQLite Properties, you can use Grouparoo Groups to assign records to a Group in SQLite. This information is recorded in a table that lists the Grouping alongside a foreign key that relates to the associated Record being assigned to that Group in the SQLite database.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/sqlite/sqlite-export-record/groups.png"
+  alt="SQLite Export Record: Group Data"
+  width={720}
+  height={224}
+/>
+<br></br>
+<br></br>
+
+## Notes
+
+We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with SQLite, please let us know by reaching out to [help@grouparoo.com](mailto:help@grouparoo.com).
+
+As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!
