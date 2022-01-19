@@ -1,26 +1,363 @@
 ---
-title: "@grouparoo / postgres"
-date: "2021-10-12"
+title: "Postgres"
+date: "2021-01-19"
 pullQuote: "Learn how to work with the Postgres Plugin as a Source or a Destination."
 pageNavSelector: "h2"
 ---
 
 <PluginDocsLinks plugin="Postgres" />
 
-Grouparoo's [Postgres](https://www.postgresql.org/) Plugin enables you to import data from one or more Postgres databases or to export data to a Postgres database.
+## Overview
 
-This guide will show you how to work with the Postgres Plugin to [create a Source](#create-postgres-source) to import your data, or to [create a Destination](#create-postgres-destination) to export your data.
+Grouparoo's [Postgres](https://www.postgresql.org/) Integration is configurable as both a Source and a Destination that enables you to import and export customer data to and from one or more Postgres databases. Postgres is a relational database management system (RDBMS). You can use Grouparoo to sync data between a Postgres database and other services to operationalize your data.
 
-<PluginDocsInstallation plugin="Postgres" />
+### Sources
 
-<PluginDocsCreateApp plugin="Postgres" />
+<table>
+  <tr>
+    <td>Source Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Postgres Import Table</strong>
+    </td>
+    <td>Import or update Records from a Postgres database table.</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Postgres Import Query</strong>
+    </td>
+    <td>Import or update Records via a custom Postgres query.</td>
+  </tr>
+</table>
 
-<ValidateAndApplyConfig headingLevel="h3" />
+### Destinations
 
-<PluginDocsColumnarSource plugin="Postgres" />
+<table>
+  <tr>
+    <td>Destination Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Postgres Export Record</strong>
+    </td>
+    <td>
+      Export Records to a Postgres table. Groups will be exported to a secondary
+      table linked by a foreign key.
+    </td>
+  </tr>
+</table>
 
-<PluginDocsColumnarDestination plugin="Postgres" />
+## Setup
 
-## Postgres Next Steps
+To work with the Postgres [Plugin](https://www.grouparoo.com/docs/getting-started/product-concepts#plugin), you must first install it in an existing Grouparoo project. Grouparoo supports syncing with Postgres databases stored on a local machine or remotely, provided that there is no firewall or VPN prohibiting the connection.
 
-Once you have the Plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
+## App
+
+To connect Postgres to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to Postgres. This specifies the connection details for the database you want to sync data to or from.
+
+### App Options
+
+In Grouparoo, provide the options that best describe how you would like to connect to Postgres.
+
+![alt_text](images/image1.png "image_tooltip")
+
+<table>
+  <tr>
+    <td>App Option</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Host </strong>(required)
+    </td>
+    <td>
+      The Postgres Database host. This field, if left blank, will default to
+      ‘localhost’.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Port </strong>(required)
+    </td>
+    <td>The Postgres port. If left blank, this defaults to 5432.</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Database</strong> (required)
+    </td>
+    <td>The Postgres Database name.</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Schema </strong>(required)
+    </td>
+    <td>
+      Schema used to read tables. The Plugin works inside a single schema. This
+      field, if left blank, will default to ‘public’.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>User</strong>
+    </td>
+    <td>
+      The Postgres User, if you need to supply credentials to log into this
+      database for access.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Password</strong>
+    </td>
+    <td>
+      The Postgres User’s password. If you don't have a password and you are
+      connecting to a local host, leave this value as undefined.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>SSL</strong>
+    </td>
+    <td>
+      Boolean field to indicate if the connection will require the use of SSL
+      connection. When set to ‘true’, the application will use ssl if supported
+      by the server. If you need custom SSL certificates, the following fields
+      will be where you supply those.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>SSL Certificate</strong>
+    </td>
+    <td>
+      If using SSL, this is the SSL certificate used for the connection.
+      Default: null
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>SSL Key</strong>
+    </td>
+    <td>
+      If using SSL, this is the SSL certificate key used for the connection.
+      Default: null
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>SSL Certificate Authority</strong>
+    </td>
+    <td>
+      If using SSL, this is the SSL certificate authority (CA) for the
+      connection. Default: null
+    </td>
+  </tr>
+</table>
+
+## Postgres Import Table
+
+This source reads from a single schema or table in your Postgres database using a primary or foreign key. Properties are generated from this table from row values or aggregations of row values.
+
+![alt_text](images/image2.png "image_tooltip")
+
+### Options
+
+There is one option to set for a Postgres Table Import Source. You need to choose the table from your database that will serve as the location for Grouparoo to scan for changes to Properties.
+
+<table>
+  <tr>
+    <td>Option Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Table</strong> (required)
+    </td>
+    <td>The table you want to scan for updates to your data.</td>
+  </tr>
+</table>
+
+### Mapping
+
+Defining Mappings is a critical part of the process. It tells Grouparoo which Record to associate with the imported data.
+
+If you are using Postgres Import Table as the [primary source](https://www.grouparoo.com/docs/config/code-config/sources), choose the database column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model.
+
+In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources), choose the database column that ties this table to your primary source. This will often be a foreign key in your table.
+
+### Schedule
+
+[Create a schedule](https://www.grouparoo.com/docs/config/sources#step-4-add-a-schedule) to actively pull new data from this Postgres table. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh. When Recurring is selected, you will see a field for entering the frequency, in minutes, of recurrence.
+
+![alt_text](images/image3.png "image_tooltip")
+
+#### Options
+
+Configure a schedule for your project and determine how Grouparoo should check for new data by selecting filling out the options for this Source.
+
+<table>
+  <tr>
+    <td>Option Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>column</strong> (required)
+    </td>
+    <td>
+      Select which column Grouparoo should check to look for new data. Often,
+      this would be a column like “updated_at” - Grouparoo remembers the most
+      recent values so it can be based on an incremental count as well.
+    </td>
+  </tr>
+</table>
+
+#### Filters
+
+If there is a subset of rows data you want to specifically include or exclude from your Postgres database table, create a filter.
+
+### Properties
+
+Properties populate your Records with data from your Postgres table based on table columns. [Create a Property](https://www.grouparoo.com/docs/config/properties) to be able to use row data in Grouparoo.
+
+####
+
+![alt_text](images/image4.png "image_tooltip")
+
+#### Options
+
+<table>
+  <tr>
+    <td>Option Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Column Name</strong> (required)
+    </td>
+    <td>
+      Choose the column that will be the source of data for this Grouparoo
+      Property.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Aggregation Method</strong> (required)
+    </td>
+    <td>
+      Aggregation methods determine how to use the row values in the table.
+      Postgres supports the{" "}
+      <a href="https://www.grouparoo.com/docs/config/code-config/properties#aggregation-method-and-filters">
+        standard set
+      </a>{" "}
+      of aggregation methods for table sources.
+    </td>
+  </tr>
+</table>
+
+#### Filters
+
+If there is a subset of data for a specific primary or foreign key you want to include from your database table, create a filter.
+
+## Postgres Import Query
+
+A Query Source works differently than a table-based source in that there are no any options to choose in setting up the connection to this type of source. A Query Source is a more flexible way to build properties.
+
+This type of Source provides the ability to write custom SQL code to extract data from one or more tables and import the result into Grouparoo.
+
+## Postgres Export Contacts
+
+A Destination’s sync mode determines what to update in a Destination. The following are supported by SQLite:
+
+- **Sync**: Add, update, and remove SQLite Exported Properties as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update SQLite Exported Properties as needed, but do not remove anybody. This option looks for new Contacts to add to Intercom and changes to existing Intercom Contacts, but does not keep track of deletions.
+- **Enrich**: Only update those Properties that already exist in SQLite. Do not add or remove Properties. This option will only update existing Properties in the SQLite database.
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. The following are supported by SQLite:
+
+- **Sync**: Add, update, and remove Postgres Exported Properties as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Postgres Exported Properties as needed, but do not remove anybody. This option looks for new Records to add to Postgres and changes to existing Intercom Contacts, but does not keep track of deletions.
+- **Enrich**: Only update those Properties that already exist in SQLite. Do not add or remove Properties. This option will only update existing Properties in the SQLite database.
+
+### Destination Options
+
+To further clarify how SQLite should sync data, select from the options provided that are specific to your database.
+
+![alt_text](images/image5.png "image_tooltip")
+
+<table>
+  <tr>
+    <td>Destination Option</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Table </strong>(Required)
+    </td>
+    <td>
+      The name of the table used to export Records. You must choose a table that
+      already exists in the Postgres database you are syncing to.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Primary Key </strong>(Required)
+    </td>
+    <td>
+      The primary key of the table. This will be used in the mapping of
+      properties.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Groups Table</strong> (Required)
+    </td>
+    <td>
+      The name of the table used to export groups. This table must already exist
+      in your database and must use a foreign key to relate to the primary key
+      you have already designated for in the previous field.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Group Foreign Key </strong>(Required)
+    </td>
+    <td>
+      The column name for the foreign key that the groups table uses to
+      reference the records table.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Group Column Name </strong>(Required)
+    </td>
+    <td>The column name used to store group names.</td>
+  </tr>
+</table>
+
+### Record Data
+
+![alt_text](images/image6.png "image_tooltip")
+
+#### Required Properties
+
+In a Postgres Export Contacts Destination, you must choose the Grouparoo Property to map to the column listed as the primary key in the Postgres database table that this Destination syncs to. Therefore, the Exported property listed as required will be whatever is designated as the Primary Key in the Postgres table.
+
+#### Optional Properties
+
+In addition to the required mapping for your table’s primary key, any other columns in the table can also have mappings to Grouparoo properties.
+
+### Group Data
+
+You can also use Grouparoo Groups to assign records to a Group in Postgres. This information is recorded in a table that lists the Grouping alongside a foreign key that relates to the associated Record being assigned to that Group in the Postgres database.
+
+## Notes
+
+We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with Postgres, please let us know by reaching out to [help@grouparoo.com](mailto:help@grouparoo.com).
+
+As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!
