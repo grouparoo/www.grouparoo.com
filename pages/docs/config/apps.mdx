@@ -10,7 +10,7 @@ With [UI Config](/docs/config) running and registered, follow the steps below to
 
 ### Step 1: Add an App
 
-You can begin the process either from the home page or the dashboard.
+You can begin the process either from the setup page or the navigation bar.
 
 <ImageInBrowserFrame
   centered
@@ -20,8 +20,6 @@ You can begin the process either from the home page or the dashboard.
   height={800}
 />
 
-This will take you to a list of your current apps. Click to add a new App.
-
 <ImageInBrowserFrame
   centered
   alt="UI Config: Add App"
@@ -30,11 +28,12 @@ This will take you to a list of your current apps. Click to add a new App.
   height={800}
 />
 
-Apps are enabled by installing plugins. Fortunately, Grouparoo's UI Config helps you install plugins on the fly.
+This will take you to a list of your current apps. Click "Add App".
 
-Apps from installed plugins will have an orange badge and are ready to be created immediately. Everything else in the list is a Plugin that can be installed by clicking on it. ([Learn more about plugins](/docs/installation/plugins).)
+Apps are enabled by installing plugins.
+Fortunately, Grouparoo's UI Config helps you install plugins on the fly. When you install a new app, Grouparoo will install the plugin via NPM and add update your `package.json` and lockfile.
 
-Choose the type of App you'd like to add. When you're first getting started, we recommend adding the App that has the majority of your customer data such as a data warehouse or production database replica.
+Apps from installed plugins will have an `Installed` orange badge and are ready to be created immediately. Everything else in the list is a Plugin that can be installed by clicking on it. ([Learn more about plugins](/docs/installation/plugins).)
 
 <ImageInBrowserFrame
   centered
@@ -43,6 +42,8 @@ Choose the type of App you'd like to add. When you're first getting started, we 
   width={1015}
   height={800}
 />
+
+Choose the type of App you'd like to add. When you're first getting started, we recommend adding the App that has the majority of your customer data such as a data warehouse or production database replica.
 
 <Alert variant="warning" className="mt-4">
   <p>
