@@ -117,6 +117,7 @@
   "/solutions/reverse-etl",
   "/solutions/segment-alternative",
   "/trial",
+  "/integrations/destinations/airtable",
   "/integrations/destinations/braze",
   "/integrations/sources/clickhouse",
   "/integrations/sources/csv",
