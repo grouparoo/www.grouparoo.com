@@ -1,7 +1,5 @@
 import { Plugin } from "./index";
 
-//revisit, plugin wip
-
 export const Klaviyo: Plugin = {
   name: "Klaviyo",
   description:
@@ -11,7 +9,7 @@ export const Klaviyo: Plugin = {
   logo: "klaviyo.png",
   primaryType: "destination",
   otherTypes: [],
-  category: "email marketing",
+  category: "customer data platform",
   badge: "",
   showLink: true,
   packageName: "@grouparoo/klaviyo",
@@ -23,45 +21,42 @@ export const Klaviyo: Plugin = {
   },
   useCasesList: [
     "Automatically create Klaviyo Profiles as new users sign up in your core product",
-    "Create new Merge Fields in Mailchimp without needing engineering help",
-    "Trigger email campaigns based on dynamic Audiences",
-    "Keep Merge Field values up-to-date automatically",
+    "Segment your Profiles dynamically based on up-to-date data",
   ],
-  dataModelTitle: "An Overview of Mailchimp’s Data Model and API",
+  dataModelTitle: "An Overview of Klaviyo's Data Model and API",
   dataModelDescription: [
-    "Trying to figure out how to integrate with Mailchimp? Here’s an overview for how Mailchimp defines customers.",
-    "The core object in Mailchimp is a Contact (also known as a Member). A Contact represents an individual person that lives on a List or Audience. Contacts have one required attribute, which is their email address.",
-    "Mailchimp calls attributes of a Contact a Merge Field (formerly a Merge Var). MailChimp pre-defines a number of Merge Fields like <code>FNAME</code> (first name) and <code>LNAME</code> (last name) for example, but you can define as many Merge Fields as you'd like using Grouparoo or in the Mailchimp website.",
+    "Trying to figure out how to integrate with Klaviyo? Here’s an overview for how Klaviyo defines profiles.",
+    "The core object in Klaviyo is a Profile. A Profile represents an individual person that may be a part of one or more lists or segments. Profiles have one required attribute, which is their email address.",
+    "Klaviyo calls attributes of a Profile a Property. Klaviyo pre-defines a number of Properties like <code>phone_number</code>  and <code>region</code> for example, but you can define as many Properties as you'd like using Grouparoo or in the Klaviyo website.",
   ],
   destinationMappings: [
     {
-      record: "Mailchimp Contacts",
-      property: "Mailchimp Merge Vars",
-      group: "Mailchimp Tags",
+      record: "Klaviyo Profiles",
+      property: "Klaviyo Properties",
+      group: "Klaviyo Lists",
     },
   ],
   pluginScreenshots: [
     {
-      header: "Define what customer data you want in Mailchimp",
+      header: "Define what customer data you want in Klaviyo",
       description:
         "Grouparoo is low-code, so non-technical team members can modify what data they send to different tools without needing engineering support.",
-      imageSrc:
-        "/images/home/integrations/mailchimp/grouparoo-to-mailchimp.png",
-      imageAlt: "Map data to Mailchimp",
+      imageSrc: "/images/home/integrations/klaviyo/grouparoo-to-klaviyo.png",
+      imageAlt: "Map data to Klaviyo",
       imageWidth: 932,
-      imageHeight: 506,
+      imageHeight: 496,
     },
     {
       header:
-        "Grouparoo keeps your customer data in Mailchimp updated in real-time",
+        "Grouparoo keeps your customer data in Klaviyo updated in real-time",
       description:
-        "Run campaigns in Mailchimp based on the Merge Fields and Tags that you've mapped from Grouparoo.",
-      imageSrc: "/images/home/integrations/mailchimp/mailchimp-audience.png",
-      imageAlt: "Mailchimp audience populated",
+        "Run campaigns in Klaviyo based on the Properties and Lists that you've mapped from Grouparoo.",
+      imageSrc: "/images/home/integrations/klaviyo/klaviyo-profiles.png",
+      imageAlt: "Klaviyo profiles list",
       imageWidth: 742,
-      imageHeight: 518,
+      imageHeight: 396,
     },
   ],
   otherPluginsHeading:
-    "Import your customer data from these tools into Mailchimp",
+    "Import your customer data from these tools into Klaviyo",
 };
