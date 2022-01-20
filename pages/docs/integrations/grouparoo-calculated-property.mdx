@@ -1,6 +1,6 @@
 ---
 title: "Calculated Property"
-date: "2022-1-18"
+date: "2022-01-18"
 pullQuote: "Learn how to work with the Calculated Property Plugin as a Source to generate custom transformed properties."
 pageNavSelector: "h2"
 ---
@@ -48,19 +48,18 @@ A Calculated Property must be assigned a key, which you can think of as the Prop
   src="/images/docs/integrations/calculated-property/app/options.png"
   alt="Calculated Property App Options"
   width={733}
-  height={211}
+  height={236}
 />
-<br></br>
-<br></br>
+<br />
 
 ### Options
 
 The Calculated Property Source is a specific type of Source. It performs a calculation on properties derived from another source and gives you the ability to generate custom Properties using a JavaScript function in the Property configuration.
 
-Calculations resulting in a string property can be done using a JavaScript pattern similar to the following example for anything that would result in a string Property:
+In order to write the queries for a Calculated Property, Grouparoo uses [Mustache](https://mustache.github.io/) templates. Calculations resulting in a string property can be done using a JavaScript pattern similar to the following example for anything that would result in a string Property:
 
 ```js
-()=>”{{{lastName}}}{{{firstName}}}”.toLowerCase()
+() => "{{{lastName}}}{{{firstName}}}".toLowerCase();
 ```
 
 <ImageInBrowserFrame
@@ -69,13 +68,14 @@ Calculations resulting in a string property can be done using a JavaScript patte
   width={733}
   height={214}
 />
-<br></br>
-<br></br>
+<br />
+
+Note that the variables wrapped in triple curly braces are the keys of the properties that you want to use in the calculation.
 
 Calculations using integers need to be parsed as integers, so the pattern for such a calculation would be similar to the following example:
 
 ```js
-() =>parseInt(“{{{purchaseCount}}}”)+parseInt(“{{{cartCount}}}”)
+() => parseInt("{{{purchaseCount}}}") + parseInt("{{{cartCount}}}");
 ```
 
 <ImageInBrowserFrame
@@ -84,8 +84,7 @@ Calculations using integers need to be parsed as integers, so the pattern for su
   width={733}
   height={258}
 />
-<br></br>
-<br></br>
+<br />
 
 ## Notes
 
