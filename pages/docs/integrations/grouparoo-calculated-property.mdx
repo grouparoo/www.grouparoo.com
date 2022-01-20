@@ -73,7 +73,7 @@ In order to write the queries for a Calculated Property, Grouparoo uses [Mustach
 
 Note that the variables wrapped in triple curly braces are the keys of the properties that you want to use in the calculation.
 
-Calculations using integers need to be parsed as integers, so the pattern for such a calculation would be similar to the following example:
+Calculations using other types need to be parsed.  So the pattern for such a calculation with Float types would be similar to the following example:
 
 ```js
 () => parseInt("{{{purchaseCount}}}") + parseInt("{{{cartCount}}}");
