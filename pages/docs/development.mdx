@@ -1,6 +1,6 @@
 ---
 title: "Development"
-date: "2021-10-12"
+date: "2022-01-20"
 pullQuote: "Learn how to get started developing and hacking on Grouparoo."
 ---
 
@@ -92,7 +92,7 @@ npm run dev
 docker run -d --rm --name grouparoo-redis -p 6379:6379 redis
 
 # use the postgres official Docker image:
-docker run -d --rm --name grouparoo-postgres -p 5432:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=grouparoo_development postgres
+docker run -d --rm --name grouparoo-postgres -p 5432:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=grouparoo_development -e POSTGRES_USER=$USER postgres
 ```
 
 ### Step 3: Run The App
@@ -170,7 +170,7 @@ GRANT ALL PRIVILEGES ON DATABASE grouparoo_development TO postgres;
 docker run -d --rm --name grouparoo-redis -p 7489:6379 redis
 
 # use the postgres official Docker image:
-docker run -d --rm --name grouparoo-postgres -p 4521:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=grouparoo_development postgres
+docker run -d --rm --name grouparoo-postgres -p 5432:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=grouparoo_development -e POSTGRES_USER=$USER postgres
 ```
 
 ### Step 3: Run The App
