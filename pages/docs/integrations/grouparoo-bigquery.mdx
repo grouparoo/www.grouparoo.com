@@ -9,7 +9,7 @@ pageNavSelector: "h2"
 
 ## Overview
 
-[BigQuery](https://cloud.google.com/bigquery) is a Google-run serverless, scalable, cloud-based data warehouse. It is built to support analysis and has built-in machine learning capabilities. Specifically, BigQuery is designed to help companies look for insights using very large datasets. Grouparoo's BigQuery Plugin enables you to import data from one or more BigQuery databases.You can use Grouparoo to sync data from BigQuery to any of the Destinations we provide plugins for.
+[BigQuery](https://cloud.google.com/bigquery) is a Google-run serverless, scalable, cloud-based data warehouse. It is built to support analysis and has built-in machine learning capabilities. Specifically, BigQuery is designed to help companies look for insights using very large datasets. Grouparoo's BigQuery Plugin enables you to import data from one or more BigQuery databases. You can use Grouparoo to sync data from BigQuery to any of the Destinations we provide plugins for.
 
 ### Sources
 
@@ -44,7 +44,7 @@ In order to use BigQuery, you’ll need to enable it as a service in your Google
 
 ## App
 
-To connect BigQuery to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to Postgres. This specifies the connection details for the database you want to sync data to or from.
+To connect BigQuery to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to BigQuery. This specifies the connection details for the database you want to sync data to or from.
 
 ### App Options
 
@@ -106,7 +106,7 @@ In Grouparoo, provide the options that best describe how you would like to conne
 
 ## BigQuery Import Table
 
-This source reads from a single schema or table in your BigQuery database using a primary or foreign key. Properties are generated from this table from row values or aggregations of row values.
+This type of Source is a [Table Source](https://www.grouparoo.com/docs/getting-started/product-concepts#table-source). It reads from a single schema or table in your BigQuery database using a primary or foreign key. Properties are generated from this table from row values or aggregations of row values.
 
 ### Options
 
@@ -134,8 +134,6 @@ This source reads from a single schema or table in your BigQuery database using 
 
 #### Options
 
-[Create a schedule](https://www.grouparoo.com/docs/config/sources#step-4-add-a-schedule) to actively pull new data from this BigQuery table. Configure a schedule for your project and determine how Grouparoo should check for new data by selecting filling out the options for this Source. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh.
-
 <ImageInBrowserFrame
   src="/images/docs/integrations/bigquery/import-table/schedule.png"
   alt="BigQuery Import Table Schedule"
@@ -156,7 +154,7 @@ This source reads from a single schema or table in your BigQuery database using 
       </td>
       <td>
         Select which column Grouparoo should check to look for new data. Often,
-        this would be a column like “updated_at” - Grouparoo remembers the most
+        this would be a column like “UPDATED_AT” - Grouparoo remembers the most
         recent values so it can be based on an incremental count as well.
       </td>
     </tr>
@@ -222,8 +220,4 @@ A Query Source works differently than a table-based source in that there are no 
 
 This type of Source provides the ability to write custom SQL code to extract data from one or more tables and import the result into Grouparoo.
 
-## Notes
-
-We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with Google’s BigQuery, please let us know.
-
-As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!
+<PluginDocsIntegrationNotes plugin="BigQuery" />
