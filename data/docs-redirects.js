@@ -56,6 +56,23 @@ const developmentRedirects = [
   },
 ];
 
+/* -- Support -- */
+
+const supportRedirects = [
+  {
+    dest: "/docs/support/environment",
+    src: "/docs/deployment/environment",
+  },
+  {
+    src: "/docs/support/debugging",
+    dest: "/docs/deployment/debugging",
+  },
+  {
+    src: "/docs/support/network",
+    dest: "/docs/deployment/network",
+  },
+];
+
 /* -- Community -- */
 
 const communityRedirects = [
@@ -123,6 +140,7 @@ const configRedirects = [
 const combinedRedirects = [
   ...guidesRedirects,
   ...developmentRedirects,
+  ...supportRedirects,
   ...communityRedirects,
   ...configRedirects,
 ];
