@@ -23,13 +23,13 @@ To ensure that you have a robust Grouparoo deployment, we recommend that you set
 
 ## Grouparoo Performance
 
-Say you have 1 million Records to sync from 1 Source to 1 Destination. On average, it might take 0.1 seconds to import a Record and 0.3 seconds to export a record. Assuming you aren't going to hit any rate limits, and you have `WORKERS=5`, Importing and Exporting all the Records will take ~22 hours for the first Run.
+Say you have 1 million Records to sync from 1 Source to 1 Destination. On average, it might take 0.1 seconds to import a Record and 0.1 seconds to export a record. Assuming you aren't going to hit any rate limits, and you have `WORKERS=5`, Importing and Exporting all the Records will take ~11 hours for the first Run.
 
 Subsequent Runs will be much faster. Grouparoo can cache the [Record Properties](/docs/getting-started/product-concepts#record-property), caches [high watermarks from Schedule Runs](/docs/getting-started/product-concepts#high-watermark), and if nothing has changed, Grouparoo will not need to re-import or re-export those Records until they do change.
 
 ```
-1,000,000 Records * (0.1s + 0.3s)
---------------------------------- = ~22 hours
+1,000,000 Records * (0.1s + 0.1s)
+--------------------------------- = ~11 hours
 60 s/min * 60 min/hr * 5 workers
 ```
 
