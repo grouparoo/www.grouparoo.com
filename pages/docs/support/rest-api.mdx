@@ -93,10 +93,10 @@ You can use the Swagger UI to try out all the APIs available to your Grouparoo i
 
 You can send your APIKey along with your request in 3 ways, all of which are acceptable:
 
-1. Via a query param:
+1. (Recommended) Via a the Authorization header as a Bearer token:
 
 ```bash
-curl -X GET "$GROUPAROO_HOST/api/v1/method?apiKey=$GROUPAROO_API_KEY"
+curl -X GET -H "Authorization: Bearer $GROUPAROO_API_KEY" "$GROUPAROO_HOST/api/v1/method"
 ```
 
 2. Via a form data (when not requesting a GET resource):
@@ -105,11 +105,12 @@ curl -X GET "$GROUPAROO_HOST/api/v1/method?apiKey=$GROUPAROO_API_KEY"
 curl -X POST -d "apiKey=$GROUPAROO_API_KEY" "$GROUPAROO_HOST/api/v1/method"
 ```
 
-3. (Recommended) Via a the Authorization header as a Bearer token:
+3. Via a query param:
 
 ```bash
-curl -X GET -H "Authorization: Bearer $GROUPAROO_API_KEY" "$GROUPAROO_HOST/api/v1/method"
+curl -X GET "$GROUPAROO_HOST/api/v1/method?apiKey=$GROUPAROO_API_KEY"
 ```
+
 
 ## API Use Cases
 
