@@ -1,26 +1,328 @@
 ---
-title: "@grouparoo / mysql"
-date: "2021-10-12"
+title: "MySQL"
+date: "2022-01-25"
 pullQuote: "Learn how to work with the MySQL Plugin as a Source or a Destination."
 pageNavSelector: "h2"
 ---
 
 <PluginDocsLinks plugin="MySQL" />
 
-Grouparoo's [MySQL](https://www.mysql.com/) Plugin enables you to import data from one or more MySQL databases or to export data to a MySQL database.
+## Overview
 
-This guide will show you how to work with the MySQL Plugin to [create a Source](#create-mysql-source) to import your data, or to [create a Destination](#create-mysql-destination) to export your data.
+Grouparoo's [MySQL](https://www.mysql.com/) Integration is both a Source and a Destination that enables you to import and export customer data to and from one or more MySQL databases. MySQL is a relational database management system (RDBMS). You can use Grouparoo to sync data between a MuSQL database and other services to operationalize your data.
 
-<PluginDocsInstallation plugin="MySQL" />
+### Sources
 
-<PluginDocsCreateApp plugin="MySQL" />
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>
+        <a href="#mysql-import-table">
+          <strong>MySQL Import Table</strong>
+        </a>
+      </td>
+      <td>Import or update Records from a MySQL database table.</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#mysql-import-query">
+          <strong>MySQL Import Query</strong>
+        </a>
+      </td>
+      <td>Import or update Records via a custom MySQL query.</td>
+    </tr>
+  </tablebody>
+</table>
 
-<ValidateAndApplyConfig headingLevel="h3" />
+### Destinations
 
-<PluginDocsColumnarSource plugin="MySQL" />
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Destination Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#mysql-export-record">
+          <strong>MySQL Export Record</strong>
+        </a>
+      </td>
+      <td>
+        Export Records to a SQLite table. Groups will be exported to a secondary
+        table linked by a foreign key.
+      </td>
+    </tr>
+  </tablebody>
+</table>
 
-<PluginDocsColumnarDestination plugin="MySQL" />
+## Setup
 
-## MySQL Next Steps
+To work with the MySQL [Plugin](https://www.grouparoo.com/docs/getting-started/product-concepts#plugin), you must first install it in an existing Grouparoo project. Grouparoo supports syncing with MySQL databases stored either locally or remotely, depending on how you configure the MySQL App. Part of configuring the App will be to supply the host and port to establish a connection.
 
-Once you have the Plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
+## App
+
+To connect MySQL to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to MySQL. This specifies the name and location of the database you want to sync data to or from.
+
+### App Options
+
+In Grouparoo’s Config UI, you specify the options to connect to MySQL.
+
+![alt_text](images/image1.png "image_tooltip")
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>App Option</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Host</strong>
+      </td>
+      <td>Database host. If left blank, the default value is ‘localhost’.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Port</strong>
+      </td>
+      <td>
+        Port on which to open database connection. If left blank, the default
+        value is ‘3306’.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Database </strong>(required)
+      </td>
+      <td>
+        The database name. There is no default value for this field. The name of
+        a database must be supplied.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>User</strong>
+      </td>
+      <td>
+        The username of the account that will establish a connection to the
+        database - e.g. "grouparoo_user". If you are connecting to localhost,
+        this can be left as undefined.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Password</strong>
+      </td>
+      <td>
+        The database password - e.g. "P@assword". If you don't have a password,
+        leave as undefined.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+## MySQL Import Table
+
+The MySQL Source is a specific type of Source that we call a Columnar Source, which means it imports data from a column-based mechanism, like a database. MYSQL Import Table, more specifically, is a Columnar [Table Source](https://www.grouparoo.com/docs/getting-started/product-concepts#table-source). This source reads from a single table in your SQLite database using a primary key. Properties are generated from this table from row values or aggregations of row values.
+
+![alt_text](images/image2.png "image_tooltip")
+
+### Options
+
+There is one option to set for a SQLite Table Import Source. You need to choose a
+
+table from the database to serve as the location for Grouparoo to scan for changes to Properties
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>Table (required)</td>
+      <td>Name of the table to reference in the MySQL database.</td>
+    </tr>
+  </tablebody>
+</table>
+
+### Mapping
+
+Defining Mappings is a critical part of the process. It tells Grouparoo which Record to associate with the imported data.
+
+If you are using MySQL Import Table as the [primary source](https://www.grouparoo.com/docs/config/code-config/sources), choose the MySQL column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model. The Property mapped to this column will be assigned as the Model's Primary Key.
+
+In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources), choose the SQLite column that ties this table to your primary source. This will often be a foreign key in your table.
+
+### Schedule
+
+[Create a schedule](https://www.grouparoo.com/docs/config/sources#step-4-add-a-schedule) to actively pull new data from this MySQL table. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh.
+
+![alt_text](images/image3.png "image_tooltip")
+
+#### Options
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Column</strong> (required)
+      </td>
+      <td>
+        Choose which column to scan for changes. This would be a Property with a
+        value that, when updated, indicates there are other updates to the
+        Record. A column named ‘updated_at’ is a good example of the appropriate
+        type of column to select for this field.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+#### Filters
+
+If there is a subset of row data you want to specifically include or exclude from your MySQL table, create a filter by choosing a Key and Operation pair.
+
+### Properties
+
+Properties populate your Records with data from your MySQL table based on table columns. Create a Property to be able to use row data in Grouparoo.
+
+![alt_text](images/image4.png "image_tooltip")
+
+#### Options
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Column Name</strong> (required)
+      </td>
+      <td>
+        Choose the column that will be the source of data for this Grouparoo
+        Property.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Aggregation Method</strong> (required)
+      </td>
+      <td>
+        Aggregation methods determine how to use the row values in the table.
+        MySQL supports the{" "}
+        <a href="https://www.grouparoo.com/docs/config/code-config/properties#aggregation-method-and-filters">
+          standard set
+        </a>{" "}
+        of aggregation methods for table sources.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+#### Filters
+
+If there is a subset of data for a specific primary or foreign key you want to include from your SQLite table, create a filter.
+
+## MySQL Import Query
+
+A Query Source works differently than a table-based source in that there are no any options to choose in setting up the connection to this type of source. A Query Source is a more flexible way to build properties.
+
+This type of Source provides the ability to write custom SQL code to extract data from one or more tables and import the result into Grouparoo.
+
+## MySQL Export Record
+
+This Destination enables you to sync your Grouparoo Records to Records in MySQL.
+
+Companies use Grouparoo to sync to their databases in order to ensure that operations run smoothly with the more up-to-date data available across platforms.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. The following are supported by Intercom:
+
+- **Sync**: Add, update, and remove MySQL Records as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update MySQL Records as needed, but do not remove anybody. This option looks for new Records to add to MySQL and changes to existing MySQL Records, but does not keep track of deletions.
+- **Enrich**: Only update those Records that already exist in MySQL. Do not add or remove Records. This option will only update existing Records in MySQL.
+
+### Destination Options
+
+To further clarify how MySQL should sync incoming data, choose options for the Destination.
+
+![alt_text](images/image5.png "image_tooltip")
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Table</strong> (required)
+      </td>
+      <td>The name of the table which Grouparoo will use to export Records.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Primary Key </strong>(required)
+      </td>
+      <td>The primary key for the specified table.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Groups Table</strong> (required)
+      </td>
+      <td>
+        Grouparoo also exports Group memberships. This is the table used to
+        export Group data.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Groups Foreign Key</strong> (required)
+      </td>
+      <td>
+        The foreign key that the groups table uses to reference the records
+        table.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Groups Column Name</strong> (required)
+      </td>
+      <td>The column name used to store the Group name values.</td>
+    </tr>
+  </tablebody>
+</table>
+
+### Record Data
+
+Mapping Record Properties to MySQL via Exported Properties is the key to syncing data to MySQL.
+
+![alt_text](images/image6.png "image_tooltip")
+
+#### Required Properties
+
+In a MySQL Export Record Destination, you must choose the Grouparoo Property to map to the column listed as the primary key in the MySQL database table that this Destination syncs to. Therefore, the exported property listed as required will be whatever is designated as the Primary Key in the MySQL table.
+
+#### Optional Properties
+
+In addition to the required mapping for your table’s primary key, any other columns in the table can also have mappings to Grouparoo properties.
+
+### Group Data
+
+You can also use Grouparoo Groups to assign records to a Group in MySQL. This information is recorded in a table that lists the Grouping alongside a foreign key that relates to the associated Record being assigned to that Group in the MySQL database.
+
+## Notes
+
+We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with MySQL, please let us know by reaching out to [help@grouparoo.com](mailto:help@grouparoo.com).
+
+As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!
