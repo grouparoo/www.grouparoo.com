@@ -140,7 +140,10 @@ const DocsNav: NavItem[] = [
       { title: "Network Topology", path: "/docs/deployment/network" },
       { title: "Environment Variables", path: "/docs/deployment/environment" },
       { title: "Secrets", path: "/docs/deployment/secrets" },
-      { title: "Monitoring", path: "/docs/deployment/monitoring" },
+      {
+        title: "Monitoring and Performance",
+        path: "/docs/deployment/monitoring-and-performance",
+      },
       {
         title: "Example Projects",
         path: "/docs/deployment/examples",

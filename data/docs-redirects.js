@@ -69,7 +69,7 @@ const supportRedirects = [
   },
   {
     src: "/docs/support/monitoring",
-    dest: "/docs/deployment/monitoring",
+    dest: "/docs/deployment/monitoring-and-performance",
   },
   {
     src: "/docs/support/network",
