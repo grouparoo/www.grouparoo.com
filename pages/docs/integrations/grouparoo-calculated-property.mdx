@@ -59,7 +59,7 @@ The Calculated Property Source is a specific type of Source. It performs a calcu
 In order to write the queries for a Calculated Property, Grouparoo uses [Mustache](https://mustache.github.io/) templates. Calculations resulting in a string property can be done using a JavaScript pattern similar to the following example for anything that would result in a string Property:
 
 ```js
-() => "{{{lastName}}}{{{firstName}}}".toLowerCase();
+() => "{{{firstName}}} {{{lastName}}}";
 ```
 
 <ImageInBrowserFrame
