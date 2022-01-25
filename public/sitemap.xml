@@ -281,6 +281,16 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/sources</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/deployment/environment</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/deployment/examples</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/deployment/monitoring-and-performance</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/deployment/network</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/deployment/secrets</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/development/databases</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/development/dataflow</loc><changefreq
@@ -351,21 +361,11 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/support/common-issues</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/support/debugging</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/support/environment</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/support/legal</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/support/monitoring</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/support/network</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/support/permissions</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/support/rest-api</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/support/secrets</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/support/security</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc

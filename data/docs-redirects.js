@@ -39,39 +39,6 @@ const guidesRedirects = [
   },
 ];
 
-/* -- Deployment -- */
-
-const deploymentRedirects = [
-  {
-    src: "/docs/deployment/environment",
-    dest: "/docs/support/environment",
-  },
-  {
-    src: "/docs/deployment/common-issues",
-    dest: "/docs/support/common-issues",
-  },
-  {
-    src: "/docs/deployment/monitoring-and-debugging",
-    dest: "/docs/support/debugging",
-  },
-  {
-    src: "/docs/deployment/security",
-    dest: "/docs/support/security",
-  },
-  {
-    src: "/docs/deployment/topology",
-    dest: "/docs/support/network",
-  },
-  {
-    src: "/docs/deployment/upgrading-grouparoo",
-    dest: "/docs/support/upgrading-grouparoo",
-  },
-  {
-    src: "/docs/deployment/code-config",
-    dest: "/docs/config/code-config",
-  },
-];
-
 /* -- Development -- */
 
 const developmentRedirects = [
@@ -86,6 +53,27 @@ const developmentRedirects = [
   {
     src: "/docs/development/security-disclosures",
     dest: "/docs/support/security",
+  },
+];
+
+/* -- Support -- */
+
+const supportRedirects = [
+  {
+    src: "/docs/support/environment",
+    dest: "/docs/deployment/environment",
+  },
+  {
+    src: "/docs/support/secrets",
+    dest: "/docs/deployment/secrets",
+  },
+  {
+    src: "/docs/support/monitoring",
+    dest: "/docs/deployment/monitoring-and-performance",
+  },
+  {
+    src: "/docs/support/network",
+    dest: "/docs/deployment/network",
   },
 ];
 
@@ -155,8 +143,8 @@ const configRedirects = [
 
 const combinedRedirects = [
   ...guidesRedirects,
-  ...deploymentRedirects,
   ...developmentRedirects,
+  ...supportRedirects,
   ...communityRedirects,
   ...configRedirects,
 ];

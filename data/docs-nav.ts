@@ -137,30 +137,44 @@ const DocsNav: NavItem[] = [
     title: "Step 4: Deploy",
     path: "/docs/deployment",
     children: [
+      { title: "Network Topology", path: "/docs/deployment/network" },
+      { title: "Environment Variables", path: "/docs/deployment/environment" },
+      { title: "Secrets", path: "/docs/deployment/secrets" },
       {
-        title: "Config",
-        path: "https://github.com/grouparoo/app-example-config",
-        target: "_blank",
+        title: "Monitoring and Performance",
+        path: "/docs/deployment/monitoring-and-performance",
       },
       {
-        title: "Heroku",
-        path: "https://github.com/grouparoo/app-example-heroku",
-        target: "_blank",
-      },
-      {
-        title: "AWS",
-        path: "https://github.com/grouparoo/app-example-aws",
-        target: "_blank",
-      },
-      {
-        title: "GCP",
-        path: "https://github.com/grouparoo/app-example-gcp",
-        target: "_blank",
-      },
-      {
-        title: "Docker",
-        path: "https://github.com/grouparoo/app-example-docker",
-        target: "_blank",
+        title: "Example Projects",
+        path: "/docs/deployment/examples",
+        linkText: "Example Projects",
+        children: [
+          {
+            title: "Config",
+            path: "https://github.com/grouparoo/app-example-config",
+            target: "_blank",
+          },
+          {
+            title: "Heroku",
+            path: "https://github.com/grouparoo/app-example-heroku",
+            target: "_blank",
+          },
+          {
+            title: "AWS",
+            path: "https://github.com/grouparoo/app-example-aws",
+            target: "_blank",
+          },
+          {
+            title: "GCP",
+            path: "https://github.com/grouparoo/app-example-gcp",
+            target: "_blank",
+          },
+          {
+            title: "Docker",
+            path: "https://github.com/grouparoo/app-example-docker",
+            target: "_blank",
+          },
+        ],
       },
     ],
   },
@@ -202,7 +216,7 @@ const DocsNav: NavItem[] = [
       { title: "Hubspot", path: "/docs/integrations/grouparoo-hubspot" },
       { title: "Intercom", path: "/docs/integrations/grouparoo-intercom" },
       { title: "Mailchimp", path: "/docs/integrations/grouparoo-mailchimp" },
-      {title: "Mailjet", path: "/docs/integrations/grouparoo-mailjet"},
+      { title: "Mailjet", path: "/docs/integrations/grouparoo-mailjet" },
       { title: "Marketo", path: "/docs/integrations/grouparoo-marketo" },
       { title: "Mongo", path: "/docs/integrations/grouparoo-mongo" },
       { title: "MySQL", path: "/docs/integrations/grouparoo-mysql" },
@@ -273,18 +287,14 @@ const DocsNav: NavItem[] = [
     path: "/docs/support",
     children: [
       { title: "Common Issues", path: "/docs/support/common-issues" },
-      { title: "Debugging", path: "/docs/support/debugging" },
-      { title: "Environment", path: "/docs/support/environment" },
       {
         title: "Grouparoo Privacy Policy & Legal",
         linkText: "Privacy Policy & Legal",
         path: "/docs/support/legal",
       },
-      { title: "Monitoring", path: "/docs/support/monitoring" },
-      { title: "Network", path: "/docs/support/network" },
+
       { title: "Permissions", path: "/docs/support/permissions" },
       { title: "REST API", path: "/docs/support/rest-api" },
-      { title: "Secrets", path: "/docs/support/secrets" },
       { title: "Security", path: "/docs/support/security" },
       { title: "Telemetry", path: "/docs/support/telemetry" },
       {

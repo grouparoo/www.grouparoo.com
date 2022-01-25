@@ -56,11 +56,18 @@ export default function DocPage({ pageProps }) {
             xs={12}
             className="documentationPage"
           >
-            <h1>{frontMatter.title}</h1>
-            <small>
-              <em>Last Updated: {frontMatter.date}</em>
-            </small>
-            <hr />
+            {frontMatter.hideTitle ? (
+              ""
+            ) : (
+              <>
+                <h1>{frontMatter.title}</h1>
+                <small>
+                  <em>Last Updated: {frontMatter.date}</em>
+                </small>
+                <hr />
+              </>
+            )}
+
             <div>{content}</div>
             <components.HavingProblems />
           </Col>
