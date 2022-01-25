@@ -68,8 +68,8 @@ const supportRedirects = [
     dest: "/docs/deployment/secrets",
   },
   {
-    src: "/docs/support/debugging",
-    dest: "/docs/deployment/debugging",
+    src: "/docs/support/monitoring",
+    dest: "/docs/deployment/monitoring",
   },
   {
     src: "/docs/support/network",
