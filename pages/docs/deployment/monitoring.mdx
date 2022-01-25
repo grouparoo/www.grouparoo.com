@@ -1,6 +1,6 @@
 ---
 title: "Monitoring"
-date: "2021-02-02"
+date: "2022-01-24"
 pullQuote: "How to Monitor your Grouparoo Cluster"
 ---
 
@@ -8,12 +8,13 @@ To ensure that you have a robust Grouparoo deployment, we recommend that you set
 
 ### Monitor the Application
 
-- Monitor the `/api/v1/status/private` endpoint from within your firewall. Doing so will let you know that the application is running in general. This endpoint reports on the resque queue length and the size of the backlog of jobs that need to be worked. The queue getting longer than normal can be an early indicator of a problem. This route requires authentication, so to monitor it, you'll need to create an APIKey with the `system:read` scope, e.g.: `curl "http://localhost:3000/api/v1/status/private?apiKey=abc123"`
+- Monitor the `/api/v1/status/private` endpoint from within your firewall. Doing so will let you know that the application is running in general. This endpoint reports on the resque queue length and the size of the backlog of jobs that need to be worked. The queue getting longer than normal can be an early indicator of a problem. This route requires authentication, so to monitor it, you'll need to create an APIKey with the `system:read` scope, e.g.: `curl "http://localhost:3000/api/v1/status/private?apiKey=abc123"`. Learn more about the Grouparoo rest API [here](/docs/support/rest-api).
 - Monitor the `/api/v1/status/public` endpoint from outside of your firewall (or from the vantage point of your end users). Doing so will ensure that your end users can use the Grouparoo application.
 - Monitor the Grouparoo application for errors. Use a tool like New Relic or Sentry to report and log errors to a central place. Check how often these errors happen. Be sure to check the Background Worker errors listed in the `/resque` interface, and retry or delete them accordingly. At this time, Grouparoo provides plugins for New Relic (`@grouparoo/newrelic`) and Sentry's (`@grouparoo/sentry`) Application Monitoring (APM) and Error Tracking services.
+- Send metrics to a central place to monitor changing trends. The `@grouparoo/prometheus` plugin can send metrics to your Prometheus server to create dashboards and alert on anomalies.
 
 ### Monitor the Tier
 
 - Monitor the hardware performance of the servers running the Grouparoo Application Tier. Is there enough RAM? Is the CPU constantly pegged to 100% usage? Your hosting provider should provide tools to monitor your servers. If you are deploying with a tool like Docker or Kubernetes, there are ways to aggregate this information for all instances of the container.
-- Monitor the number of rows in your database. Are there more Records or less Exports than you expect?
+- Monitor the number of rows in your database. Are there more Records or less Exports than you expect? Also be sure to monitor your query performance. Grouparoo is a write-heavy application an requires a reasonably fast "disk" backing the postgres database.
 - Monitor the memory consumption of Redis. Redis is an in-memory database, and if it gets full, it will either refuse to accept new data or start deleting old data. Keeping Redis’ data volume small involves tuning the batch sizes of your Grouparoo application and ensuring you have enough Application Background Workers to run all the tasks created and the data tier to support it.

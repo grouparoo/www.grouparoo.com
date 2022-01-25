@@ -39,39 +39,6 @@ const guidesRedirects = [
   },
 ];
 
-/* -- Deployment -- */
-
-const deploymentRedirects = [
-  {
-    src: "/docs/deployment/environment",
-    dest: "/docs/support/environment",
-  },
-  {
-    src: "/docs/deployment/common-issues",
-    dest: "/docs/support/common-issues",
-  },
-  {
-    src: "/docs/deployment/monitoring-and-debugging",
-    dest: "/docs/support/debugging",
-  },
-  {
-    src: "/docs/deployment/security",
-    dest: "/docs/support/security",
-  },
-  {
-    src: "/docs/deployment/topology",
-    dest: "/docs/support/network",
-  },
-  {
-    src: "/docs/deployment/upgrading-grouparoo",
-    dest: "/docs/support/upgrading-grouparoo",
-  },
-  {
-    src: "/docs/deployment/code-config",
-    dest: "/docs/config/code-config",
-  },
-];
-
 /* -- Development -- */
 
 const developmentRedirects = [
@@ -155,7 +122,6 @@ const configRedirects = [
 
 const combinedRedirects = [
   ...guidesRedirects,
-  ...deploymentRedirects,
   ...developmentRedirects,
   ...communityRedirects,
   ...configRedirects,
