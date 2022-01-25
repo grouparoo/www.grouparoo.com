@@ -47,6 +47,8 @@ While a number of factors are at play when determining how "fast" to make your d
 - Ensure that the database server is not in use by any other application.
 - Ensure that all of your data can fit into the allocated database's disk.
 
+You can tune Grouparoo's internal usage of the Postgres database further with [batch size environment variables](/docs/deployment/environment#batch-size-environment-variables).
+
 ### Redis
 
 Grouparoo only uses redis as a temporary background queue, cache, and distributed lock. The Grouparoo Redis server does not need to be replicated or backed up, and Grouparoo will recover any lost data after a few minutes in the result of the Redis server going down. 256 megabytes of memory allocated to your redis server should be enough for most deployments. Grouparoo does not support Redis cluster.

@@ -1,12 +1,12 @@
 ---
-title: "Environment"
-date: "2021-01-12"
+title: "Environment Variables"
+date: "2022-01-24"
 pullQuote: "Information about the Environment Variables used by Grouparoo"
 ---
 
 The Grouparoo application is configured primarily by setting environment variables. In the `development` and `test` environments, this can be done by modifying a `.env` file in the root of your application directory. For production environments, we recommend that you set these variables in other ways - usually directly in your OS, Docker Orchestrator or PaaS host.
 
-## Environment Variables and API Keys
+## Required Environment Variables
 
 **General Settings**
 
@@ -56,6 +56,15 @@ You can also modify the SSL connection options to your postgres database with th
 - `DATABASE_SSL_SELF_SIGNED=true`
 
 To use SQLite, set `DATABASE_URL="sqlite://grouparoo_development.sqlite"` which will be stored in your application directory by default, or you can provide an absolute path, ie: `DATABASE_URL="sqlite:///path/to/db.sqlite"`.
+
+## Batch Size Environment Variables
+
+Once your Grouparoo server is deployed, you may want to tune some of the batch sizes Grouparoo uses. These batch sizes effect how many Records and Properties Grouparoo Imports and Exports at once. Increasing these values may speed up your Imports and Exports, but require more resources to run (e.g. more memory for the Grouparoo process and a larger postgres database). Also, increasing the batch sizes for Exports may lead to hitting rate limits, depending on the provider. Be careful when changing these values!
+
+- `GROUPAROO_IMPORTS_BATCH_SIZE` - How many records to import from a Source at once? (default 1000)
+- `GROUPAROO_RECORDS_BATCH_SIZE` - How many records to process from a Source at once? (default 500)
+- `GROUPAROO_EXPORTS_BATCH_SIZE` - How many records to export to a Destination at once? (default 100)
+- `GROUPAROO_INTERNAL_BATCH_SIZE` - How many rows does the Grouparoo internal database support updating at once? (default 5000)
 
 ## `.env` example
 
