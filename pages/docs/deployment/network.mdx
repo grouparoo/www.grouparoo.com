@@ -43,7 +43,7 @@ To that end, the Postgres database you assign Grouparoo will need to be:
 While a number of factors are at play when determining how "fast" to make your database, the following tips may help:
 
 - The number one reason your Grouparoo application may be working slowly is a slow disk. Cloud vendors are notoriously stingy with the "hard drives" they provide by default on cloud databases. For example if your database is an AWS RDS instance, we recommend attaching at least 100GB of **_allocated storage_**. AWS scales IOPS along with the allocated storage.
-- Ensure that you have enough Memory to keep a days's worth of data in working memory. For 1 million Records x 20 Properties, have at least 8GB of Ram allocated.
+- Ensure that you have enough Memory to keep a day's worth of data in working memory. For 1 million Records x 20 Properties, have at least 8GB of Ram allocated.
 - Ensure that the database server is not in use by any other application.
 - Ensure that all of your data can fit into the allocated database's disk.
 
