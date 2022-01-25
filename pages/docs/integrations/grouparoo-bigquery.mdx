@@ -42,6 +42,16 @@ pageNavSelector: "h2"
 
 In order to use BigQuery, you’ll need to enable it as a service in your Google Cloud project. Create a service account which will be the source for a Client Email Address and Private key you will need to configure the initial connection for a BigQuery App in Grouparoo.
 
+Find this information by going to the Service Accounts (IAM & Admin) page for Cloud Console, selecting a project, and choosing the email address for the service account you are using. Then, click the Keys tab and select Add Key from the Dropdown menu to create a new key. Select JSON as the Key type to create. This downloads a JSON file to your computer with the setup information you need.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/bigquery/setup/setup-1.png"
+  alt="BigQuery Setup"
+  width={733}
+  height={414}
+/>
+<br />
+
 ## App
 
 To connect BigQuery to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to BigQuery. This specifies the connection details for the database you want to sync data to or from.
