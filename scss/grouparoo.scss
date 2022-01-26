@@ -257,7 +257,8 @@ a,
   .dropdown-menu {
     background-color: #fff;
     .nav-link,
-    .dropdown-header {
+    .dropdown-header,
+    .dropdown-header * {
       color: $grouparoo-font-color !important;
     }
   }
