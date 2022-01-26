@@ -1,26 +1,321 @@
 ---
-title: "@grouparoo / clickhouse"
-date: "2021-11-15"
+title: "ClickHouse"
+date: "2021-01-26"
 pullQuote: "Learn how to work with the ClickHouse Plugin as a Source or a Destination."
 pageNavSelector: "h2"
 ---
 
+## Overview
+
+Grouparoo's [ClickHouse](https://clickhouse.com/) Integration is configurable as both a Source and a Destination that enables you to import and export customer data to and from one or more ClickHouse databases. ClickHouse is a relational database management system (RDBMS). You can use Grouparoo to sync data between a ClickHouse database and other services to operationalize your data.
+
+### Sources
+
+<table className='docTable'>
+    <tablebody>
+  <tr>
+   <td>Source Name
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td><strong>
+
+<a href="#clickhouse-import-table">Clickhouse Import Table</a></strong>
+   </td>
+   <td>Import or update Records from a ClickHouse database table.
+   </td>
+  </tr>
+  <tr>
+   <td><strong>
+
+<a href="#clickhouse-import-query">Clickhouse Import Query</a></strong>
+   </td>
+   <td>Import or update Records via a custom ClickHouse query.
+   </td>
+  </tr>
+  </tablebody>
+</table>
+
+### Destinations
+
+<table className='docTable'>
+    <tablebody>
+  <tr>
+   <td>Destination Name
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td><strong>
+
+<a href="#clickhouse-export-record">Clickhouse Export Record</a></strong>
+   </td>
+   <td>Export Records to a ClickHouse table. Groups will be exported to a secondary table linked by a foreign key.
+   </td>
+  </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+To work with the ClickHouse [Plugin](https://www.grouparoo.com/docs/getting-started/product-concepts#plugin), you must first install it in an existing Grouparoo project. Grouparoo supports syncing with ClickHouse databases stored on a local machine or remotely, provided that there is no firewall or VPN prohibiting the connection. How you connect depends on how you configure the App.
+
+## App
+
+To connect ClickHouse to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to ClickHouse. This specifies the connection details for the database you want to use while syncing data.
+
+### App Options
+
+In Grouparoo, provide the options that best describe how you would like to connect to ClickHouse.
+
+![alt_text](images/image1.png "image_tooltip")
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Host</strong>
+      </td>
+      <td>The ClickHouse HTTP host.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Port</strong>
+      </td>
+      <td>
+        The ClickHouse HTTP interface port. Default value of 8123 can be changed
+        manually.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Database</strong> (required)
+      </td>
+      <td>The name of the ClickHouse database.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>User</strong>
+      </td>
+      <td>The name of the Clickhouse user.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Password</strong>
+      </td>
+      <td>The ClickHouse user's password.</td>
+    </tr>
+  </tablebody>
+</table>
+
+## ClickHouse Import Table
+
+This source reads from a single schema or table in your ClickHouse database using a primary or foreign key. Properties are generated from this table from row values or aggregations of row values.
+
+![alt_text](images/image2.png "image_tooltip")
+
+### Options
+
+There is one option to set for a ClickHouse Table Import Source. You need to choose the table from your database that will serve as the location for Grouparoo to scan for changes to Properties.
+
+<table className='docTable'>
+    <
+  <tr>
+   <td>Option Name
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td><strong>Table</strong> (required)
+   </td>
+   <td>The table you want to scan for updates to your data.
+   </td>
+  </tr>
+  </tablebody>
+</table>
+
+### Mapping
+
+Defining [Mappings](https://www.grouparoo.com/docs/getting-started/product-concepts#mapping) is a critical part of the process. It tells Grouparoo which Record to associate with the imported data.
+
+If you are using ClickHouse Import Table as the [primary source](https://www.grouparoo.com/docs/config/code-config/sources), choose the database column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model.
+
+In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources), choose the database column that ties this table to your primary source. This will often be a foreign key in your table.
+
+### Schedule
+
+[Create a schedule](https://www.grouparoo.com/docs/config/sources#step-4-add-a-schedule) to actively pull new data from this ClickHouse table. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh. When Recurring is selected, you will see a field for entering the frequency, in minutes, of recurrence.
+
+![alt_text](images/image3.png "image_tooltip")
+
+#### Options
+
+Configure a schedule for your project and determine how Grouparoo should check for new data by selecting filling out the options for this Source.
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>column</strong> (required)
+      </td>
+      <td>
+        Select which column Grouparoo should check to look for new data. Often,
+        this would be a column like “updated_at” - Grouparoo remembers the most
+        recent values so it can be based on an incremental count as well.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+#### Filters
+
+If there is a subset of rows data you want to specifically include or exclude from your ClickHouse database table, create a [Filter](https://www.grouparoo.com/docs/getting-started/product-concepts#filter).
+
+### Properties
+
+Properties populate your Records with data from your Clickhouse table based on table columns. [Create a Property](https://www.grouparoo.com/docs/config/properties) to be able to use row data in Grouparoo.
+
+![alt_text](images/image4.png "image_tooltip")
+
+#### Options
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Column Name</strong> (required)
+      </td>
+      <td>
+        Choose the column that will be the source of data for this Grouparoo
+        Property.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Aggregation Method</strong> (required)
+      </td>
+      <td>
+        Aggregation methods determine how to use the row values in the table.
+        ClickHouse supports the{" "}
+        <a href="https://www.grouparoo.com/docs/config/code-config/properties#aggregation-method-and-filters">
+          standard set
+        </a>{" "}
+        of aggregation methods for table sources.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+#### Filters
+
+If there is a subset of rows data you want to specifically include or exclude from your ClickHouse database table, create a [Filter](https://www.grouparoo.com/docs/getting-started/product-concepts#filter).
+
+## ClickHouse Import Query
+
+A Query Source works differently than a table-based source in that there are no any options to choose in setting up the connection to this type of source. A Query Source is a more flexible way to build properties.
+
+This type of Source provides the ability to write custom SQL code to extract data from one or more tables and import the result into Grouparoo.
+
+## ClickHouse Export Record
+
+ClickHouse Export Record allows you to set up a Grouparoo Project that uses ClickHouse as a [Destination](https://www.grouparoo.com/docs/getting-started/product-concepts#destination). As with ClickHouse Sources, to set up ClickHouse as a Destination you will need to have the App installed and configured with connection details.
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. ClickHouse supports the default sync behavior.
+
+- **Sync**: Add, update, and remove ClickHouse Exported Properties as needed. This option looks for new records, changes to existing records, and deletions.
+
+### Destination Options
+
+To further clarify how ClickHouse should sync data, select from the options provided that are specific to your database.
+
+![alt_text](images/image5.png "image_tooltip")
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Destination Option</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Table </strong>(Required)
+      </td>
+      <td>
+        The name of the table used to export Records. You must choose a table
+        that already exists in the ClickHouse database you are syncing to.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Primary Key </strong>(Required)
+      </td>
+      <td>
+        The primary key of the table. This will be used in the mapping of
+        properties.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Groups Table</strong> (Required)
+      </td>
+      <td>
+        The name of the table used to export groups. This table must already
+        exist in your database and must use a foreign key to relate to the
+        primary key you have already designated for in the previous field.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Group Foreign Key </strong>(Required)
+      </td>
+      <td>
+        The column name for the foreign key that the groups table uses to
+        reference the records table.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Group Column Name </strong>(Required)
+      </td>
+      <td>The column name used to store group names.</td>
+    </tr>
+  </tablebody>
+</table>
+
+### Record Data
+
+![alt_text](images/image6.png "image_tooltip")
+
+#### Required Properties
+
+In a ClickHouse Export Contacts Destination, you must choose the Grouparoo Property to map to the column listed as the primary key in the ClickHouse database table that this Destination syncs to. Therefore, the Exported Property listed as required will be whatever is designated as the Primary Key in the ClickHouse table.
+
+#### Optional Properties
+
+In addition to the required mapping for your table’s primary key, any other columns in the table can also have mappings to Grouparoo properties.
+
+### Group Data
+
+You can also use Grouparoo Groups to assign records to a Group in ClickHouse. This information is recorded in a table that lists the Grouping alongside a foreign key that relates to the associated Record being assigned to that Group in the ClickHouse database.
+
 <PluginDocsLinks plugin="ClickHouse" />
 
-Grouparoo's [ClickHouse](https://www.clickhouse.com/) Plugin enables you to import data from one or more ClickHouse databases or to export data to a ClickHouse database.
-
-This guide will show you how to work with the ClickHouse Plugin to [create a Source](#create-clickhouse-source) to import your data, or to [create a Destination](#create-clickhouse-destination) to export your data.
-
-<PluginDocsInstallation plugin="ClickHouse" />
-
-<PluginDocsCreateApp plugin="ClickHouse" />
-
-<ValidateAndApplyConfig headingLevel="h3" />
-
-<PluginDocsColumnarSource plugin="ClickHouse" />
-
-<PluginDocsColumnarDestination plugin="ClickHouse" />
-
-## ClickHouse Next Steps
-
-Once you have the Plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
+<PluginDocsIntegrationNotes plugin="ClickHouse" />
