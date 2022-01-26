@@ -208,7 +208,7 @@ There is one option to set for a Postgres Table Import Source. You need to choos
 
 ### Mapping
 
-Defining Mappings is a critical part of the process. It tells Grouparoo which Record to associate with the imported data.
+Defining [Mappings](https://www.grouparoo.com/docs/getting-started/product-concepts#mapping) is a critical part of the process. It tells Grouparoo which Record to associate with the imported data.
 
 If you are using Postgres Import Table as the [primary source](https://www.grouparoo.com/docs/config/code-config/sources), choose the database column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model.
 
@@ -252,7 +252,7 @@ Configure a schedule for your project and determine how Grouparoo should check f
 
 #### Filters
 
-If there is a subset of rows data you want to specifically include or exclude from your Postgres database table, create a filter.
+If there is a subset of rows data you want to specifically include or exclude from your Postgres database table, create a [Filter](https://www.grouparoo.com/docs/getting-started/product-concepts#filter).
 
 ### Properties
 
@@ -302,7 +302,7 @@ Properties populate your Records with data from your Postgres table based on tab
 
 #### Filters
 
-If there is a subset of data for a specific primary or foreign key you want to include from your database table, create a filter.
+If there is a subset of data for a specific primary or foreign key you want to include from your database table, create a Filter(https://www.grouparoo.com/docs/getting-started/product-concepts#filter).
 
 ## Postgres Import Query
 
@@ -317,7 +317,7 @@ This type of Source provides the ability to write custom SQL code to extract dat
 A Destination’s sync mode determines what to update in a Destination. The following are supported by Postgres:
 
 - **Sync**: Add, update, and remove Postgres Exported Properties as needed.This option looks for new records, changes to existing records, and deletions.
-- **Additive**: Add and update Postgres Exported Properties as needed, but do not remove anybody. This option looks for new Records to add to Postgres and changes to existing Intercom Contacts, but does not keep track of deletions.
+- **Additive**: Add and update Postgres Exported Properties as needed, but do not remove anybody. This option looks for new Records to add to Postgres and changes to existing Postgres Records, but does not keep track of deletions.
 - **Enrich**: Only update those Properties that already exist in Postgres. Do not add or remove Properties. This option will only update existing Properties in the Postgres database.
 
 ### Destination Options

@@ -53,7 +53,7 @@ Grouparoo's [MySQL](https://www.mysql.com/) Integration is both a Source and a D
         </a>
       </td>
       <td>
-        Export Records to a SQLite table. Groups will be exported to a secondary
+        Export Records to a MySQL table. Groups will be exported to a secondary
         table linked by a foreign key.
       </td>
     </tr>
@@ -135,7 +135,7 @@ In Grouparoo’s Config UI, you specify the options to connect to MySQL.
 
 ## MySQL Import Table
 
-The MySQL Source is a specific type of Source that we call a Columnar Source, which means it imports data from a column-based mechanism, like a database. MYSQL Import Table, more specifically, is a Columnar [Table Source](https://www.grouparoo.com/docs/getting-started/product-concepts#table-source). This source reads from a single table in your SQLite database using a primary key. Properties are generated from this table from row values or aggregations of row values.
+The MySQL Source is a specific type of Source that we call a Columnar Source, which means it imports data from a column-based mechanism, like a database. MySQL Import Table, more specifically, is a Columnar [Table Source](https://www.grouparoo.com/docs/getting-started/product-concepts#table-source). This source reads from a single table in your MySQL database using a primary key. Properties are generated from this table from row values or aggregations of row values.
 
 <ImageInBrowserFrame
   src="/images/docs/integrations/mysql/import-table/options.png"
@@ -148,7 +148,7 @@ The MySQL Source is a specific type of Source that we call a Columnar Source, wh
 
 ### Options
 
-There is one option to set for a SQLite Table Import Source. You need to choose a table from the database to serve as the location for Grouparoo to scan for changes to Properties.
+There is one option to set for a MySQL Table Import Source. You need to choose a table from the database to serve as the location for Grouparoo to scan for changes to Properties.
 
 <table className="docTable">
   <tablebody>
@@ -171,7 +171,7 @@ Defining Mappings is a critical part of the process. This step tells Grouparoo w
 
 If you are using MySQL Import Table as the [primary source](https://www.grouparoo.com/docs/config/code-config/sources), choose the MySQL column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model. The Property mapped to this column will be assigned as the Model's Primary Key.
 
-In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources), choose the SQLite column that ties this table to your primary source. This will often be a foreign key in your table.
+In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources), choose the MySQL column that ties this table to your primary source. This will often be a foreign key in your table.
 
 ### Schedule
 
@@ -211,7 +211,7 @@ In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources
 
 #### Filters
 
-If there is a subset of row data you want to specifically include or exclude from your MySQL table, create a filter by choosing a Key and Operation pair.
+If there is a subset of row data you want to specifically include or exclude from your MySQL table, create a [Filter](https://www.grouparoo.com/docs/getting-started/product-concepts#filter) by choosing a Key and Operation pair.
 
 ### Properties
 
@@ -262,7 +262,7 @@ Properties populate your Records with data from your MySQL table based on table 
 
 #### Filters
 
-If there is a subset of data for a specific primary or foreign key you want to include from your SQLite table, create a filter.
+If there is a subset of data for a specific primary or foreign key you want to include from your MySQL table, create a [Filter](https://www.grouparoo.com/docs/getting-started/product-concepts#filter).
 
 ## MySQL Import Query
 
