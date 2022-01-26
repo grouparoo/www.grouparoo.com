@@ -1,24 +1,92 @@
 ---
-title: "@grouparoo / calculated-property"
-date: "2021-10-12"
+title: "Calculated Property"
+date: "2022-01-18"
 pullQuote: "Learn how to work with the Calculated Property Plugin as a Source to generate custom transformed properties."
 pageNavSelector: "h2"
 ---
 
-<PluginDocsLinks plugin="CalculatedProperty" />
+<PluginDocsLinks plugin="Calculated-Property" />
 
-Grouparoo's Calculated Property Plugin enables you to write a custom function to generate a new Property based upon other existing Grouparoo Record Properties.
+## Overview
 
-This guide will show you how to work with the Calculated Property Plugin to [create a custom Calculated Property](#create-calculated-property-property)
+Grouparoo's Calculated Property Integration enables you to write a custom function to generate a new Property based upon other existing Grouparoo Record Properties. You may want to combine, aggregate, or manipulate properties from other Sources to create a new Property that suits your operational needs.
 
-<PluginDocsInstallation plugin="Calculated Property" />
+### Sources
 
-<PluginDocsCreateApp plugin="Calculated Property" />
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Source Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>Calculated Property Import</td>
+      <td>Import and calculate Calculated Properties from other Sources.</td>
+    </tr>
+  </tablebody>
+</table>
 
-<PluginDocsCalculatedPropertySource plugin="Calculated Property" />
+## Setup
 
-<ValidateAndApplyConfig headingLevel="h3" />
+To work with the Calculated Property Plugin, you must first install it in an existing Grouparoo project. In addition, you must have at least one other Source configured to make use of Calculated Properties.
 
-## Calculated Property Next Steps
+## App
 
-Once you have the Plugin installed, App and Source created, and Property configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
+To create Calculated Properties in Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps).
+
+### Options
+
+Some types of Apps require information about how to connect to a service. This integration works a little differently than most and no additional options are required in order to proceed in configuring a Calculated Property as a Source.
+
+## Calculated Property Import
+
+A Calculated Property Source should be assigned a descriptive name. When you go on to add a Property the Key field it should describe what the value of your calculated properties will look like. A good naming convention is to consider the function you will write and describe what that function would return.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/calculated-property/app/options.png"
+  alt="Calculated Property App Options"
+  width={733}
+  height={233}
+/>
+<br />
+
+### Options
+
+The Calculated Property Source is a specific type of Source. It performs a calculation on properties derived from another source and gives you the ability to generate custom Properties using a JavaScript function in the Property configuration.
+
+In order to write the queries for a Calculated Property, Grouparoo uses [Mustache](https://mustache.github.io/) templates. Calculations resulting in a string property can be done using a JavaScript pattern similar to the following example for anything that would result in a string Property:
+
+```js
+() => "{{{firstName}}} {{{lastName}}}";
+```
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/calculated-property/app/string-type.png"
+  alt="Calculated Property String Type Example"
+  width={733}
+  height={186}
+/>
+
+<br />
+
+Note that the variables wrapped in triple curly braces are the keys of the properties that you want to use in the calculation.
+
+Calculations using other types need to be parsed. So the pattern for such a calculation with integers would be similar to the following example:
+
+```js
+() => parseInt("{{{purchaseCount}}}") + parseInt("{{{cartCount}}}");
+```
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/calculated-property/app/int-type.png"
+  alt="Calculated Property Integer Type Example"
+  width={733}
+  height={187}
+/>
+<br />
+
+## Notes
+
+We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with Calculated Properties, please let us know by reaching out to [help@grouparoo.com](mailto:help@grouparoo.com).
+
+As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!
