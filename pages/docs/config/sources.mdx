@@ -1,77 +1,94 @@
 ---
 title: Sources
-date: "2021-10-13"
-pullQuote: "Learn how to configure sources using Grouparoo's UI Config."
+date: "2022-01-25"
+pullQuote: "Learn how to configure Sources using Grouparoo's UI Config."
 ---
 
 <Alert variant="warning">
   <p className="mb-0">
-    Sources require an App. <a href="/docs/config/apps">See here</a> if you
-    haven't created an App yet.
+    Sources require a <a href="/docs/config/models">Model</a> and an{" "}
+    <a href="/docs/config/apps">App</a>.
   </p>
 </Alert>
 
-A Source is a definition for how you pull data from an App into Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+A Source is a definition for how you pull data from an App into Grouparoo.
+
+A Model has two types of Sources:
+
+- **Primary Source**: This is the data Source that provides the bulk of the data to your Model. You can only have one Primary Source per Model.
+  The Primary Source will provide the unique identifier for each Record in the Model such as `user_id` or `email_address`.
+- **Secondary Sources**: These Sources supplement the data provided by the Primary Source.
+
+See the [Product Concepts documentation](/docs/getting-started/product-concepts) to learn more.
 
 ### Step 1: Choose an App
 
-To start, you'll click on the Sources navigation in the left-nav and click `Add new Source`.
+Select your Model in the left side navigation and click the "Create Primary Source" button (or "Add new Source" for Secondary Sources.)
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: New Source"
   src="/images/docs/guides/config/source--01-add.png"
-  width={1824}
+  width={1005}
   height={628}
 />
 
-Choose the kind of source you'd like to create from the list of available apps. The choices shown will be based on which apps you've already connected. If you don't see the App you want to use, you can [add a new App](/docs/config/apps).
+Choose the App you'd like to use to feed your Source. The choices shown will be based on which Apps you've already connected. If you don't see the App you need, you can [add a new App](/docs/config/apps).
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Choose App"
   src="/images/docs/guides/config/source--02-choose-app.png"
-  width={805}
+  width={1062}
   height={664}
 />
 
 ### Step 2: Configure Your Source
 
-Once you've chosen the App, fill in the appropriate configuration values for your source. This will determine what information from the source gets imported into Grouparoo.
+Once you've chosen the App, fill in the appropriate configuration values for your Source. This will determine what information from the Source gets imported into Grouparoo.
+
+You will also need to indicate what makes each Record in your Source unique. This must be a unique identifier such a `user id`, `uid`, or `email`.
+
+#### Configuring Primary Source
+
+When defining the Model's Primary Source, you will only need to select the identifier.
+Then, Grouparoo will generate a Property that will serve as the Primary Key for the Model where the Source is located.
+
+In the example below, the `id` column of the `users` table will be used to identify each unique record.
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Configure Source"
   src="/images/docs/guides/config/source--03-configure.png"
-  width={1830}
+  width={1061}
   height={746}
 />
 
-### Step 3: Connect this Source to Grouparoo Records
+#### Configuring Secondary Sources
 
-After you've chosen the source that contains your user data, you will need to indicate what makes your users unique. Often a unique identifier is a `user id`, `uid`, or `email`. If you already have a unique Record Property defined in Grouparoo, you can map your source to that Record Property. If your source has a new way of identifying records uniquely, you can create a new unique Record Property.
+When defining a Secondary Source, you can map an attribute in the Source to an existing property that ties it back to the Primary Source.
+
+In the example below, the "Pg Purchases" Source is being tied back to the Primary Source (Pg Users) via the `user_id` foreign key in the `purchases` table.
 
 <ImageInBrowserFrame
   centered
-  alt="UI Config: Source Mapping"
-  src="/images/docs/guides/config/source--04-mapping.png"
-  width={1832}
-  height={852}
+  alt="UI Config: Configure Source"
+  src="/images/docs/guides/config/source--03-configure-secondary.png"
+  width={1085}
+  height={746}
 />
 
-Check out [the Record Properties Config Guide](/docs/config/properties) for more information.
+### Step 3: Add a Schedule
 
-### Step 4: Add a Schedule
+A Schedule defines how often Grouparoo will check your Source for new data. When there are additions or changes in your data Source, Grouparoo will pull that data in based on your Schedule settings.
 
-A Schedule defines how often Grouparoo will check your source for new data. When there are additions or changes in your data source, Grouparoo will pull that data in based on your Schedule settings.
-
-You can choose how often Grouparoo will check your source for new data. You will also point Grouparoo to the column that indicates when a row in your users table has been updated, such as an `updated_at` timestamp column.
+You can choose how often Grouparoo will check your Source for new data. You will also point Grouparoo to the column that indicates when a row in your users table has been updated, such as an `updated_at` timestamp column.
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Add Schedule"
-  src="/images/docs/guides/config/source--05-schedule.png"
-  width={1826}
+  src="/images/docs/guides/config/source--04-schedule.png"
+  width={1238}
   height={846}
 />
 
@@ -82,16 +99,22 @@ You can choose how often Grouparoo will check your source for new data. You will
 
 ## Next Steps
 
-Once you've created a source, you'll probably want to [add more Record properties](/docs/config/properties) to it.
+Once you've created a Source, you'll probably want to [add more Record properties](/docs/config/properties) to it.
 
-<Button
-  href="/docs/config/properties"
-  variant="outline-primary"
-  className="mb-4"
->
-  Add more properties
-</Button>
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Configure Source"
+  src="/images/docs/guides/config/source--05-properties.png"
+  width={1091}
+  height={666}
+/>
 
 The real magic happens when you put your users into groups, which you can then export. Once you have all the appropriate properties, you'll want to [create some groups](/docs/config/groups) of users.
 
 And once you have those groups, you can [create a Destination](/docs/config/destinations) to export data from groups. (Just remember to [create an App](/docs/config/apps) for your Destination.)
+
+<Button href="/docs/config/groups" variant="outline-primary">
+  Create a Group
+</Button> <Button href="/docs/config/destinations" variant="outline-primary">
+  Create a Destination
+</Button>

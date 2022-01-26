@@ -1,17 +1,18 @@
 ---
 title: Properties
-date: "2021-10-13"
+date: "2022-01-25"
 pullQuote: "Learn how to configure properties using Grouparoo's UI Config."
 ---
 
 <Alert variant="warning">
   <p className="mb-0">
-    Properties require a source. <a href="/docs/config/sources">See here</a> if
-    you haven't created a source yet.
+    Properties require a Source.{" "}
+    <a href="/docs/config/sources">See the Sources documentation</a> if you
+    haven't created a Source yet.
   </p>
 </Alert>
 
-Once you have a source, you can begin to define additional Record properties for that source. Properties are data values associated to the records you have in Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+Once you have a Source, you can begin to define additional Properties for that Source. Properties are data values associated to the Records you have in Grouparoo. [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
 
 ### Step 1: Add Property
 
@@ -21,20 +22,30 @@ You can add a new Property from within a source and click the "Add Property" but
   centered
   alt="UI Config: Add Property"
   src="/images/docs/guides/config/property--01-add.png"
-  width={2428}
-  height={1870}
+  width={1014}
+  height={800}
 />
 
 ### Step 2: Configure Property
 
-There are a number of options for how you can define properties, such as whether it is `unique`, whether the Property is an `array`, as well as the aggregation method.
+There are a number of options for how you can define Properties such as whether it is `unique`, whether the Property is an `array`, as well as the aggregation method.
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Configure Property"
   src="/images/docs/guides/config/property--02-configure.png"
-  width={2433}
-  height={1735}
+  width={1029}
+  height={800}
+/>
+
+Alternatively, you can select "Add Multiple Properties" in the Source to quickly add multiple Properties at once:
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Configure Property"
+  src="/images/docs/guides/config/property--02-configure-multiple.png"
+  width={1400}
+  height={800}
 />
 
 <GeneratedConfigFile

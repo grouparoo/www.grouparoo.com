@@ -1,6 +1,6 @@
 ---
 title: Sample Records
-date: "2021-10-13"
+date: "2022-01-25"
 pullQuote: "Learn how to add sample records to Grouparoo's UI Config."
 ---
 
@@ -12,54 +12,66 @@ pullQuote: "Learn how to add sample records to Grouparoo's UI Config."
   </p>
 </Alert>
 
-While UI Config is focused on helping you configure how you're going to sync data from sources to destinations, it also provides some visibility into what your records will look like in production through _sample records_.
+While UI Config is focused on helping you configure how you're going to sync data from Sources to Destinations, it also provides some visibility into what your records will look like in production through _Sample Records_.
 
 A Record is a representation of one of your customers. The data that makes up a Record is what has been extracted and transformed from your source(s). The transformed data is then what gets synced to your Destination(s). [See this doc](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
 
-Here's how to select a sample Record in Grouparoo's UI Config.
+Here's how to select a Sample Record in Grouparoo's UI Config:
 
-### Step 1: Add Sample Record
+### Step 1: Find your Model
 
-Click on _Records_ in the left-nav and then click _Add Sample Record_.
+Select your Model from the navigation bar, scroll to the Sample Record section, and click the "Add Sample Record" button.
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Add Sample Record"
   src="/images/docs/guides/config/record--01-add.png"
-  width={1828}
-  height={653}
+  width={1135}
+  height={800}
 />
+
+### Step 2: Add Sample Record
 
 Choose the Property (which must be unique) and then add the value for that Property in the _Value_ field. If you don't see the Property you're looking for, [create a new one](/docs/config/properties) and check that it is unique.
 
 <ImageInBrowserFrame
   centered
-  alt="UI Config: Add Identifying Property"
+  alt="UI Config: Add Sample Record Modal"
   src="/images/docs/guides/config/record--02-add.png"
-  width={1823}
-  height={660}
+  width={1138}
+  height={800}
 />
 
-If that Record exists, it will be shown in a pending state.
+The Sample Record will now be visible in the card. You can select "Import Record Data" if the data has not been imported from your sources yet.
 
 <ImageInBrowserFrame
   centered
-  alt="UI Config: Pending Sample Record"
-  src="/images/docs/guides/config/record--03-pending.png"
-  width={1839}
-  height={739}
+  alt="UI Config: Sample Record Added"
+  src="/images/docs/guides/config/record--03-ready.png"
+  width={1136}
+  height={800}
 />
 
-### Step 2: Import Record Properties
+### View Sample Record
 
-You can click the _Import and Export_ button to import the sample Property's values. When finished, this will place the Record in the ready state, and you should see all of its Property values, along with its Group memberships.
+You can click the on the "View Record" button to see more details about your Record.
 
 <ImageInBrowserFrame
   centered
-  alt="UI Config: Sample Record"
-  src="/images/docs/guides/config/record--04-ready.png"
-  width={1828}
-  height={730}
+  alt="UI Config: Sample Record Detail"
+  src="/images/docs/guides/config/record--04-view.png"
+  width={1135}
+  height={800}
+/>
+
+The same Sample Record will shared across your Property and Destination edit pages:
+
+<ImageInBrowserFrame
+  centered
+  alt="UI Config: Sample Record in Property Editor"
+  src="/images/docs/guides/config/record--04-view-property.png"
+  width={1137}
+  height={800}
 />
 
 ## Generated Config File

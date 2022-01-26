@@ -1,7 +1,7 @@
 ---
 title: Groups
-date: "2021-10-13"
-pullQuote: "Learn how to configure groups using Grouparoo's UI Config."
+date: "2022-01-25"
+pullQuote: "Learn how to configure Groups using Grouparoo's UI Config."
 ---
 
 <Alert variant="warning">
@@ -12,42 +12,42 @@ pullQuote: "Learn how to configure groups using Grouparoo's UI Config."
   </p>
 </Alert>
 
-Groups are where the magic happens in Grouparoo. (It's in the name, after all!) Groups are a segment or cohort of Records. They are useful in that you can use Groups to target a specific set of models to [export to some Destination](/docs/config/destinations). [See here](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
+Groups are where the magic happens in *Group*aroo. (It's in the name, after all!) Groups are a segment or cohort of Records. They are useful in that you can use Groups to target a specific set of Records to [export to some Destination](/docs/config/destinations). [See here](/docs/getting-started/product-concepts) to learn more about the core concepts in Grouparoo.
 
 ### Step 1: Add a Group
 
-To add a Group, use the link in the main navigation, which will take you to your groups list page. Click the "Add Group" button to add a new Group.
+To add a Group, select your Model from the navigation bar and click the "Add new Group" button.
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Add Group"
   src="/images/docs/guides/config/group--01-add.png"
-  width={1832}
-  height={629}
+  width={1071}
+  height={800}
 />
 
-This will take you to a screen where you can name the Group.
+This will take you to a page where you can name your Group.
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Add Group Name"
   src="/images/docs/guides/config/group--02-add.png"
-  width={1833}
-  height={629}
+  width={1076}
+  height={800}
 />
 
 ### Step 2: Configure Group
 
-Groups add and remove records automatically based on Group Rules that you define. Each rule has several options for logically determining if a Record belongs in the Group.
+Groups add and remove Records automatically based on Group Rules that you define. Each rule has several options for logically determining if a Record belongs in the Group.
 
-After creating a Calculated Group, you will be able to define the rules for that Group.
+After creating a Group, you will be able to define the rules for that Group.
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Configure Group"
   src="/images/docs/guides/config/group--03-configure.png"
-  width={919}
-  height={606}
+  width={1074}
+  height={800}
 />
 
 ## Examples
@@ -65,39 +65,39 @@ Group Rules:
   centered
   alt="UI Config: Group Example #1"
   src="/images/docs/guides/config/group--04-example.png"
-  width={1202}
-  height={661}
+  width={1136}
+  height={800}
 />
 
-### Example: High-Value & Abandoned Cart Recently
+### Example: High Value with Recent Automotive Purchases
 
 Group Rules:
 
-- Records who have a Life-time Value (LTV) of over 30
-- Records who have recently added an item to their cart
-- Records with an email
+- Records who have a Life-time Value (LTV) of over 100
+- Records who have purchased in the last 60 days
+- Records with the Automotive purchase category
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Group Example #2"
   src="/images/docs/guides/config/group--05-example.png"
-  width={1368}
-  height={673}
+  width={1140}
+  height={800}
 />
 
-### Example: High-Value Xhosa Speakers
+### Example: High-Value Spanish Speakers
 
 Group Rules:
 
-- Records with a language set to `xhosa`
-- Records who have a Life-time Value (LTV) of over 50
+- Records who have an account value of 100 or greater
+- Records with a language set to `spanish`
 
 <ImageInBrowserFrame
   centered
   alt="UI Config: Group Example #3"
   src="/images/docs/guides/config/group--06-example.png"
-  width={1827}
-  height={671}
+  width={1142}
+  height={800}
 />
 
 <GeneratedConfigFile
@@ -107,4 +107,8 @@ Group Rules:
 
 ## Next Steps
 
-Once you've grouped your users, you're ready for the last step in the Grouparoo configuration journey, [adding destinations](/docs/config/destinations).
+Once you've grouped your users, you're ready for the last step in the Grouparoo configuration journey, adding Destinations.
+
+<Button href="/docs/config/destinations" variant="outline-primary">
+  Add a Destination
+</Button>

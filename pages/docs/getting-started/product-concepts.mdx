@@ -1,6 +1,6 @@
 ---
 title: "Product Concepts"
-date: "2021-05-19"
+date: "2022-01-25"
 pullQuote: "Learn about the terminology that Grouparoo uses."
 pageNavSelector: "h2"
 ---
@@ -28,6 +28,7 @@ Welcome to the Grouparoo Dictionary! This is the collection of terms we use thro
 - [Mapping](#mapping)
 - [Model](#model)
 - [Plugin](#plugin)
+- [Primary Key](#primary-key)
 - [Record](#record)
 - [Record Property](#record-property)
 - [Property](#property)
@@ -119,6 +120,12 @@ Being that Grouparoo is a Node.js application, the plugins are available as Java
 
 Learn more about [existing plugins](/docs/integrations), or [develop your own Plugin](/docs/development/plugins).
 
+## Primary Key
+
+The Primary Key for a [Model](#model) is the [Property](#property) that serves as the unique identifier [Mapping](#mapping) for the Primary [Source](#source) in that Model.
+
+For example, in a `User` Model with a Postgres table import as the Primary Source, the Primary Key may be the `userId` Property mapped to the `id` column in the Postgres `users` table.
+
 ## Record
 
 Records represent individual people. For your specific company or organization, that may mean:
@@ -149,9 +156,11 @@ Common examples of **Not Unique** Record Properties are:
 
 ## Property
 
-Properties define how a Record Property gets pulled from a Source. Every Source might be structured in slightly different ways, so Grouparoo plugins make it easy for you to define Properties.
+Properties define how a Record Property gets pulled from a [Source](#source). Every Source might be structured in slightly different ways, so Grouparoo [Plugins](#plugin) make it easy for you to define Properties.
 
 For example, you might define a Property called `first_name` which you are pulling from your product database via the `@grouparoo/postgres` Plugin.
+
+One Property in the [Model](#model) is set as the [Primary Key](#primary-key).
 
 ## Query Source
 
@@ -169,9 +178,13 @@ Though technically separate objects, Schedules are often used in conjunction wit
 
 ## Source
 
-Sources are the tools that Grouparoo will connect with to pull in customer data. A Source can be anything that contains customer data such as data warehouses, databases, and CRMs.
+Sources are the objects within [Apps](#app) that Grouparoo will connect with to pull in customer data. A Source can be anything that contains customer data such as data warehouses, databases, and CRMs.
 
 When you add a new Source, you will define how that Source connects with the [Records](#record) that already exist in Grouparoo through a `Unique` [Record Property](#record-property).
+
+Sources belong to [Models](#model), and each Model has a _Primary_ Source and, optionally, multiple _Secondary_ Sources.
+The Primary Source is the data source where the bulk of the Record data will be imported for the Model, and Secondary Sources serve additional data.
+The [Mapping](#mapping) for the Primary Source is set via the Model's [Primary Key](#primary-key).
 
 See [our Integrations page](/integrations) for an up-to-date list of our supported Sources. We are always adding support for more Sources. If you have a request, please [let us know](/meet)!
 
