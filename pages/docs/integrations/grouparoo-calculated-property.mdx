@@ -50,8 +50,6 @@ A Calculated Property Source should be assigned a descriptive name. When you go 
 />
 <br />
 
-In the next step, when you go on to add a Property the Key field it should describe what the value of your calculated properties will look like. A good naming convention is to consider the function you will write and describe what that function would return.
-
 ### Options
 
 The Calculated Property Source is a specific type of Source. It performs a calculation on properties derived from another source and gives you the ability to generate custom Properties using a JavaScript function in the Property configuration.
@@ -73,7 +71,7 @@ In order to write the queries for a Calculated Property, Grouparoo uses [Mustach
 
 Note that the variables wrapped in triple curly braces are the keys of the properties that you want to use in the calculation.
 
-Calculations using other types need to be parsed. So the pattern for such a calculation with Float types would be similar to the following example:
+Calculations using other types need to be parsed. So the pattern for such a calculation with integers would be similar to the following example:
 
 ```js
 () => parseInt("{{{purchaseCount}}}") + parseInt("{{{cartCount}}}");
