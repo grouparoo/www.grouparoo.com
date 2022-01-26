@@ -375,6 +375,8 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/tutorials/app-example-config</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/integrations/destinations/airtable</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/destinations/braze</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/sources/clickhouse</loc><changefreq
@@ -396,6 +398,8 @@
     >https://www.grouparoo.com/integrations/destinations/intercom</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/destinations/iterable</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/integrations/destinations/klaviyo</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/destinations/mailchimp</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
@@ -428,6 +432,8 @@
     >https://www.grouparoo.com/integrations/sources/snowflake</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/sources/sqlite</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/integrations/destinations/vero</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/destinations/zendesk</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc

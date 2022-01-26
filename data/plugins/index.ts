@@ -1,3 +1,4 @@
+import { Airtable } from "./airtable";
 import { Braze } from "./braze";
 import { CalculatedProperty } from "./calculated-property";
 import { CSV } from "./csv";
@@ -11,6 +12,7 @@ import { GoogleSheets } from "./googleSheets";
 import { Hubspot } from "./hubspot";
 import { Intercom } from "./intercom";
 import { Iterable } from "./iterable";
+import { Klaviyo } from "./klaviyo";
 import { Mailjet } from "./mailjet";
 import { Mailchimp } from "./mailchimp";
 import { Marketo } from "./marketo";
@@ -27,6 +29,7 @@ import { Salesforce } from "./salesforce";
 import { Sendgrid } from "./sendgrid";
 import { Snowflake } from "./snowflake";
 import { SQLite } from "./sqlite";
+import { Vero } from "./vero";
 import { Zendesk } from "./zendesk";
 
 export interface PluginConfigOption {
@@ -96,6 +99,7 @@ export interface Plugin {
 }
 
 export const PluginData: Plugin[] = [
+  Airtable,
   Braze,
   CalculatedProperty,
   ClickHouse,
@@ -109,6 +113,7 @@ export const PluginData: Plugin[] = [
   Hubspot,
   Intercom,
   Iterable,
+  Klaviyo,
   Mailchimp,
   Mailjet,
   Marketo,
@@ -125,6 +130,7 @@ export const PluginData: Plugin[] = [
   Sendgrid,
   Snowflake,
   SQLite,
+  Vero,
   Zendesk,
 ];
 

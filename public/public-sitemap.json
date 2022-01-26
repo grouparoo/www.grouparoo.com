@@ -117,6 +117,7 @@
   "/solutions/reverse-etl",
   "/solutions/segment-alternative",
   "/trial",
+  "/integrations/destinations/airtable",
   "/integrations/destinations/braze",
   "/integrations/sources/clickhouse",
   "/integrations/sources/csv",
@@ -128,6 +129,7 @@
   "/integrations/destinations/hubspot",
   "/integrations/destinations/intercom",
   "/integrations/destinations/iterable",
+  "/integrations/destinations/klaviyo",
   "/integrations/destinations/mailchimp",
   "/integrations/destinations/mailjet",
   "/integrations/destinations/marketo",
@@ -144,5 +146,6 @@
   "/integrations/destinations/sendgrid",
   "/integrations/sources/snowflake",
   "/integrations/sources/sqlite",
+  "/integrations/destinations/vero",
   "/integrations/destinations/zendesk"
 ]
