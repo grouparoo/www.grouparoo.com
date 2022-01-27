@@ -42,9 +42,18 @@ pageNavSelector: "h2"
 
 ## Setup
 
-In order to use Snowflake, you’ll need a Snowflake account. Your account name can be found in the URL when you are logged into Snowflake. It will consist of at least two parts. There will be a third part if you use either Microsoft Azure or Amazon Web Services as your Cloud provider. The first part is a unique alphanumeric identifier, the second part is a regional designation, and the optional third part will indicate the cloud service provider. For those using Snowflake’s cloud, this will not be part of the Account name needed to set up a connection.
+In order to use Snowflake, you’ll need a Snowflake account. Your account name can be found in the URL when you are logged into Snowflake. It will consist of at least two parts. There will be a third part if you use either Microsoft Azure or Amazon Web Services as your Cloud provider.
 
-![alt_text](images/image1.png "image_tooltip")
+The first part of the account information you'll need for setup is a unique alphanumeric identifier, the second part is a regional designation, and the optional third part will indicate the cloud service provider. For those using Snowflake’s cloud, this will not be part of the Account name needed to set up a connection.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/snowflake/setup/setup-1.png"
+  alt="Snowflake Setup"
+  width={733}
+  height={85}
+/>
+
+<br />
 
 ## App
 
@@ -54,9 +63,16 @@ To connect Snowflake to Grouparoo, you [create an App](https://www.grouparoo.com
 
 In Grouparoo, provide the options that best describe how you would like to connect to Snowflake.
 
-![alt_text](images/image2.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/snowflake/app/options.png"
+  alt="Snowflake App Options"
+  width={733}
+  height={710}
+/>
 
-<table classname="docTable">
+<br />
+
+<table className="docTable">
   <tablebody>
     <tr>
       <td>App Option</td>
@@ -115,7 +131,14 @@ This source reads from a single schema or table in your Snowflake database using
 
 There is one required option to select for this type of Source.
 
-![alt_text](images/image3.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/snowflake/import-table/options.png"
+  alt="Snowflake Table Import Options"
+  width={733}
+  height={135}
+/>
+
+<br />
 
 <table className="docTable">
   <tablebody>
@@ -134,7 +157,20 @@ There is one required option to select for this type of Source.
 
 ### Mapping
 
-![alt_text](images/image4.png "image_tooltip")
+Defining Mappings is a critical part of the process. This step tells Grouparoo which Record to associate with the imported data.
+
+If you are using Snowflake Import Table as the [primary source](https://www.grouparoo.com/docs/config/code-config/sources), choose the Snowflake column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model. The Property mapped to this column will be assigned as the Model's Primary Key.
+
+In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources), choose the Snowflake column that ties this table to your primary source. This will often be a foreign key in your table.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/snowflake/import-table/mapping.png"
+  alt="Snowflake Import Table Mapping"
+  width={733}
+  height={218}
+/>
+
+<br />
 
 ## Schedule
 
@@ -142,7 +178,14 @@ There is one required option to select for this type of Source.
 
 #### Options
 
-![alt_text](images/image5.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/snowflake/import-table/schedule.png"
+  alt="Snowflake Import Table Schedule"
+  width={733}
+  height={143}
+/>
+
+<br />
 
 <table className="docTable">
   <tablebody>
@@ -166,13 +209,20 @@ There is one required option to select for this type of Source.
 
 #### Filters
 
-If there is a subset of rows data you want to specifically include or exclude from your Snowflake database table, create a filter.
+If there is a subset of rows data you want to specifically include or exclude from your Snowflake database table, create a [Filter](https://www.grouparoo.com/docs/getting-started/product-concepts#filter). Only rows matching your criteria will be imported.
 
 ### Properties
 
 Properties populate your Records with data from your Snowflake table based on table columns. [Create a Property](https://www.grouparoo.com/docs/config/properties) to be able to use row data in Grouparoo.
 
-![alt_text](images/image6.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/snowflake/import-table/property.png"
+  alt="Snowflake Import Table Property"
+  width={733}
+  height={479}
+/>
+
+<br />
 
 #### Options
 
@@ -209,7 +259,7 @@ Properties populate your Records with data from your Snowflake table based on ta
 
 #### Filters
 
-If there is a subset of data for a specific primary or foreign key you want to include from your database table, create a filter and only rows matching your criteria will be imported.
+If there is a subset of rows data you want to specifically include or exclude from your Snowflake database table, create a [Filter](https://www.grouparoo.com/docs/getting-started/product-concepts#filter). Only rows matching your criteria will be imported.
 
 ## Snowflake Import Query
 
