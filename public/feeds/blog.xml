@@ -175,7 +175,8 @@ classyGreeterInstance<span class="token punctuation">.</span><span class="token 
       />
         </item>
         <item>
-            <title><![CDATA[Enabling CI/CD with Grouparoo Cloud]]></title>
+            <title
+      ><![CDATA[Enabling CI/CD for Reverse ETL Pipelines with Grouparoo Cloud]]></title>
             <link>https://www.grouparoo.com/blog/grouparoo-cloud</link>
             <guid>grouparoo-blog-post-grouparoo-cloud</guid>
             <pubDate>Tue, 21 Dec 2021 00:00:00 GMT</pubDate>
