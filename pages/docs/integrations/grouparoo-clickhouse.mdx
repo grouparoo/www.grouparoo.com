@@ -73,7 +73,13 @@ To connect ClickHouse to Grouparoo, you [create an App](https://www.grouparoo.co
 
 In Grouparoo, provide the options that best describe how you would like to connect to ClickHouse.
 
-![alt_text](images/image1.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/clickhouse/app/options.png"
+  alt="Clickhouse App Options"
+  width={750}
+  height={509}
+/>
+<br />
 
 <table className="docTable">
   <tablebody>
@@ -121,26 +127,30 @@ In Grouparoo, provide the options that best describe how you would like to conne
 
 This source reads from a single schema or table in your ClickHouse database using a primary or foreign key. Properties are generated from this table from row values or aggregations of row values.
 
-![alt_text](images/image2.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/clickhouse/import-table/options.png"
+  alt="Clickhouse Import Table Options"
+  width={750}
+  height={122}
+/>
+<br />
 
 ### Options
 
 There is one option to set for a ClickHouse Table Import Source. You need to choose the table from your database that will serve as the location for Grouparoo to scan for changes to Properties.
 
-<table className='docTable'>
-    <
-  <tr>
-   <td>Option Name
-   </td>
-   <td>Description
-   </td>
-  </tr>
-  <tr>
-   <td><strong>Table</strong> (required)
-   </td>
-   <td>The table you want to scan for updates to your data.
-   </td>
-  </tr>
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Table</strong> (required)
+      </td>
+      <td>The table you want to scan for updates to your data.</td>
+    </tr>
   </tablebody>
 </table>
 
@@ -156,7 +166,14 @@ In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources
 
 [Create a schedule](https://www.grouparoo.com/docs/config/sources#step-4-add-a-schedule) to actively pull new data from this ClickHouse table. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh. When Recurring is selected, you will see a field for entering the frequency, in minutes, of recurrence.
 
-![alt_text](images/image3.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/clickhouse/import-table/schedule.png"
+  alt="Clickhouse Import Table Schedule"
+  width={750}
+  height={367}
+/>
+<br />
+<br />
 
 #### Options
 
@@ -189,7 +206,13 @@ If there is a subset of rows data you want to specifically include or exclude fr
 
 Properties populate your Records with data from your Clickhouse table based on table columns. [Create a Property](https://www.grouparoo.com/docs/config/properties) to be able to use row data in Grouparoo.
 
-![alt_text](images/image4.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/clickhouse/import-table/properties.png"
+  alt="Clickhouse Import Table Properties"
+  width={750}
+  height={425}
+/>
+<br />
 
 #### Options
 
@@ -248,7 +271,13 @@ A Destination’s sync mode determines what to update in a Destination. ClickHou
 
 To further clarify how ClickHouse should sync data, select from the options provided that are specific to your database.
 
-![alt_text](images/image5.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/clickhouse/export-record/options.png"
+  alt="Clickhouse Export Record Options"
+  width={750}
+  height={467}
+/>
+<br />
 
 <table className="docTable">
   <tablebody>
@@ -304,7 +333,14 @@ To further clarify how ClickHouse should sync data, select from the options prov
 
 ### Record Data
 
-![alt_text](images/image6.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/clickhouse/export-record/properties.png"
+  alt="Clickhouse Export Record Properties"
+  width={750}
+  height={423}
+/>
+<br />
+<br />
 
 #### Required Properties
 
