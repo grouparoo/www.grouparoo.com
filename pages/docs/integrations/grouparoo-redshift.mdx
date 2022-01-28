@@ -7,20 +7,333 @@ pageNavSelector: "h2"
 
 <PluginDocsLinks plugin="Redshift" />
 
-Grouparoo's [Redshift](https://aws.amazon.com/redshift/) Plugin enables you to import data from one or more Redshift databases or to export data to a Redshift database.
+## Overview
 
-This guide will show you how to work with the Redshift Plugin to [create a Source](#create-redshift-source) to import your data, or to [create a Destination](#create-redshift-destination) to export your data.
+Grouparoo's [Redshift](https://aws.amazon.com/redshift/) Integration was made specifically to run on Amazon Infrastructure and is configurable as both a Source and a Destination that enables you to import and export customer data to and from one or more Redshift databases. Redshift is a relational database management system (RDBMS). You can use Grouparoo to sync data between a Redshift database and other services to operationalize your data.
 
-<PluginDocsInstallation plugin="Redshift" />
+### Sources
 
-<PluginDocsCreateApp plugin="Redshift" />
+<table className='docTable'>
+    <tablebody>
+  <tr>
+   <td>Source Name
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td><strong>
+    <a href="#redshift-import-table">Redshift Import Table</a></strong>
+   </td>
+   <td>Import or update Records from a Redshift database table.
+   </td>
+  </tr>
+  <tr>
+   <td><strong>
 
-<ValidateAndApplyConfig headingLevel="h3" />
+<a href="#redshift-import-query">Redshift Import Query</a></strong>
+   </td>
+   <td>Import or update Records via a custom Redshift query.
+   </td>
+  </tr>
+  </tablebody>
+</table>
 
-<PluginDocsColumnarSource plugin="Redshift" />
+### Destinations
 
-<PluginDocsColumnarDestination plugin="Redshift" />
+<table className='docTable'>
+    <tablebody>
+  <tr>
+   <td>Destination Name
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td><strong>
 
-## Redshift Next Steps
+<a href="#redshift-export-record">Redshift Export Record</a></strong>
+   </td>
+   <td>Export Records to a Redshift table. Groups will be exported to a secondary table linked by a foreign key.
+   </td>
+  </tr>
+  </tablebody>
+</table>
 
-Once you have the Plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
+## Setup
+
+To work with the Redshift [Plugin](https://www.grouparoo.com/docs/getting-started/product-concepts#plugin), you must first install it in an existing Grouparoo project. Grouparoo supports syncing with Redshift databases stored on a local machine or remotely, provided that there is no firewall or VPN prohibiting the connection. How you connect depends on how you configure the App in Grouparoo’s Config UI.
+
+## App
+
+To connect Redshift to Grouparoo, you create an App to tell Grouparoo how to connect to Postgres. This specifies the connection details for the database you want to sync data to or from.
+
+### App Options
+
+In Grouparoo, provide the options that best describe how you would like to connect to Redshift.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/redshift/app/options.png"
+  alt="Redshift App Options"
+  width={733}
+  height={769}
+/>
+
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Host</strong>
+      </td>
+      <td>The Redshift Host. This field defaults to ‘localhost’.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Port</strong>
+      </td>
+      <td>The Redshift Port. The default value is ‘5439’.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Database</strong> (required)
+      </td>
+      <td>The Redshift Database dame - e.g. ‘data_warehouse’.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Schema</strong>
+      </td>
+      <td>
+        The Redshift schema used to read tables. This plugin works inside a
+        single schema. This field defaults to ‘public’.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>User</strong>
+      </td>
+      <td>
+        The Redshift User to connect to the database -eg ‘grouparoo_user’. If
+        you are connecting to localhost, leave this field as undefined.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Password</strong>
+      </td>
+      <td>
+        The Redshift User’s password. If you don’t have a password, leave this
+        field as undefined.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>SSL</strong>
+      </td>
+      <td>
+        Require the use of a SSL connection (default: false). If you need custom
+        SSL certificates paste in their values below.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>SSL Certificate</strong>
+      </td>
+      <td>The SSL certificate</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>SSL Key</strong>
+      </td>
+      <td>The SSL certificate’s key.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>SSL Certificate Authority</strong>
+      </td>
+      <td>The SSL certificate authority (CA)</td>
+    </tr>
+  </tablebody>
+</table>
+
+## Redshift Import Table
+
+This source reads from a single schema or table in your Redshift database using a primary or foreign key. Properties are generated from this table from row values or aggregations of row values.
+
+### Options
+
+There is one option to set for a Redshift Table Import Source. You need to choose the table from your database that will serve as the location for Grouparoo to scan for changes to Properties.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/redshift/import-table/options.png"
+  alt="Redshift Import Table Options"
+  width={733}
+  height={188}
+/>
+
+<br />
+
+### Mapping
+
+Defining [Mappings](https://www.grouparoo.com/docs/getting-started/product-concepts#mapping) is a critical part of the process. It tells Grouparoo which Record to associate with the imported data.
+
+If you are using Redshift Import Table as the primary source, choose the database column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model.
+
+In secondary sources, choose the database column that ties this table to your primary source. This will often be a foreign key in your table.
+
+### Properties
+
+Properties populate your Records with data from your Redshift table based on table columns. [Create a Property](https://www.grouparoo.com/docs/config/properties) to be able to use row data in Grouparoo.
+
+#### Options
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/redshift/import-table/properties.png"
+  alt="Redshift Import Table Properties"
+  width={733}
+  height={666}
+/>
+
+<br />
+<br />
+
+#### Filters
+
+If there is a subset of rows data you want to specifically include or exclude from your Redshift database table, create a [Filter](https://www.grouparoo.com/docs/getting-started/product-concepts#filter).
+
+### Schedule
+
+[Create a schedule](https://www.grouparoo.com/docs/config/sources#step-4-add-a-schedule) to actively pull new data from this Redshift table. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh. When Recurring is selected, you will see a field for entering the frequency, in minutes, of recurrence.
+
+#### Options
+
+Configure a schedule for your project and determine how Grouparoo should check for new data by selecting filling out the options for this Source.
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>column</strong> (required)
+      </td>
+      <td>
+        Select which column Grouparoo should check to look for new data. Often,
+        this would be a column like “updated_at” - Grouparoo remembers the most
+        recent values so it can be based on an incremental count as well.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+#### Filters
+
+If there is a subset of rows data you want to specifically include or exclude from your Redshift database table, create a [Filter](https://www.grouparoo.com/docs/getting-started/product-concepts#filter).
+
+## Redshift Import Query
+
+A Query Source works differently than a table-based source in that there are no any options to choose in setting up the connection to this type of source. A Query Source is a more flexible way to build properties.
+
+This type of Source provides the ability to write custom SQL code to extract data from one or more tables and import the result into Grouparoo.
+
+## Redshift Export Record
+
+Redshift Export Record allows you to set up a Grouparoo Project that uses Redshift as a [Destination](https://www.grouparoo.com/docs/getting-started/product-concepts#destination) As with Redshift Sources, to set up ClickHouse as a Destination you will need to have the App installed and configured with connection details.
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. Redshift supports the following sync behaviors.
+
+- **Sync**: Add, update, and remove Redshift Exported Properties as needed. This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Redshift Records as needed, but do not remove any. This option looks for new Records to add to Redshift and changes to existing Redshift Records, but does not keep track of deletions.
+- **Enrich**: Only update those Records that already exist in Redshift. Do not add or remove Records. This option will only update existing Records in Redshift.
+
+### Destination Options
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/redshift/export-record/options.png"
+  alt="Redshift Export Record Options"
+  width={733}
+  height={680}
+/>
+
+<br />
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Table</strong> (required)
+      </td>
+      <td>The Redshift table to write records to</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Primary Key</strong> (required)
+      </td>
+      <td>The Primary key of the table you are writing to</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Groups Table</strong> (required)
+      </td>
+      <td>The Redshift table to write groups to</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Group Foreign Key</strong> (required)
+      </td>
+      <td>
+        The foreign key that the groups table uses to reference table
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Group Column Name</strong>
+      </td>
+      <td>
+        The column name for where to store the group names
+      </td>
+    </tr>
+
+  </tablebody>
+</table>
+
+### Record Data
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/redshift/export-record/properties.png"
+  alt="Redshift Export Record Properties"
+  width={733}
+  height={621}
+/>
+
+<br />
+<br />
+
+#### Required Properties
+
+In a Redshift Export Record Destination, you must choose the Grouparoo Property to map to the column listed as the primary key in the Redshift database table that this Destination syncs to. Therefore, the Exported Property listed as required will be whatever is designated as the Primary Key in the Redshift table.
+
+#### Optional Properties
+
+In addition to the required mapping for your table’s primary key, any other columns in the table can also have mappings to Grouparoo properties.
+
+### Group Data
+
+You can also use Grouparoo Groups to assign records to a Group in Redshift. This information is recorded in a table that lists the Grouping alongside a foreign key that relates to the associated Record being assigned to that Group in the Redshift database.
+
+<PluginDocsIntegrationNotes plugin="Redshift" />
