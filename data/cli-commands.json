@@ -27,11 +27,6 @@
     "name": "config [options]",
     "description": "Interactively configure Grouparoo",
     "inputs": {
-      "help": {
-        "default": false,
-        "description": "display help for command",
-        "letter": "h"
-      },
       "timestamps": {
         "default": false,
         "description": "Should timestamps be prepended to each log line?",
