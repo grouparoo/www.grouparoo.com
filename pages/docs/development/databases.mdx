@@ -1,7 +1,7 @@
 ---
 title: "Databases"
-date: "2020-08-01"
-pullQuote: "Tips for working with Databases for Grouparoo"
+date: "2022-02-01"
+pullQuote: "Tips, best practices, and recommendations for how to work with Databases when developing in Grouparoo."
 ---
 
 This document is a collection of the guidelines Grouparoo uses when dealing with Models and Databases internally.
@@ -12,10 +12,10 @@ This document is a collection of the guidelines Grouparoo uses when dealing with
 - Every table gets `id`, `createdAt` and `updatedAt`, even if it seems silly now... we will need it eventually!
 - No `enums` in the database, use `VARCHAR(191)`. Migrating an enum is too hard and database-specific. Of course, we can use ENUMs in the Models.
 - No default values for strings. Instead, Define defaults in the model. If you want to add a default value to a non-null column, you can accomplish this with a 2-part migration: first add the column with a default value (to update all the existing rows), and then remove the default.
-- Do not re-specify default values.  For example, setting a default value of null on a nullable string column is redundant. 
+- Do not re-specify default values. For example, setting a default value of null on a nullable string column is redundant.
 - No foreign key constraints in the database... do these checks in the model. But, it's probably a good idea to add a search index to these
 - All guids/uuids are 40 characters long - a real V4 UUID (36 characters) + 3 letter prefix + underscore, ie: `app_168c4564-e389-4fbd-8338-db04d62022ba`
-- Do not use compound indexes for SQLite. There's a [Seqeulzie bug](https://github.com/sequelize/sequelize/issues/12823)
+- Do not use compound indexes for SQLite. There's a [Seqeuelize bug](https://github.com/sequelize/sequelize/issues/12823)
   - Instead, do the uniqueness validation in the model in a `@BeforeSave` hook
   - You can continue to add compound indexes for Postgres (do so with a check against `config.seqeulize.dialect === 'postgres'`)
 - All migrations should be within a transation. If part of the migration fails, the whole migration will be rolled back.
@@ -24,7 +24,7 @@ This document is a collection of the guidelines Grouparoo uses when dealing with
 
 - No private methods. This breaks compatibility between Typescript-exported model definitions (to JS) and the TS files themselves. We require this compatibility as plugins both source and export to core... so a single runtime's require path may be `core/dist -> plugin/src` or even `core/dist -> plugin/dist -> core/src`
   - Instead, Pretend it's 1999 and prefix methods you want to be private with `_`, i.e. `async _privateMethod()`
-- Do not re-specify default values.  For example, setting a default value of null on a nullable string column is redundant (eg: `@Default(null)`). 
+- Do not re-specify default values. For example, setting a default value of null on a nullable string column is redundant (eg: `@Default(null)`).
 - New models need to be enumerated a few places:
   - `Index.ts`
   - `SpecHelper.ts`
@@ -33,7 +33,6 @@ This document is a collection of the guidelines Grouparoo uses when dealing with
   - Table/Column definitions, Class methods, Setters, Getters, and Validations belong on the Model
   - Methods that mutate the Model (or more than one Model), or interact with a Plugin, belong in a ModelOp
   - It is appropriate for convenience to have a Model method call out to a ModelOp (ie: `Record.import` => `RecordOpt.import(record)`)
-
 
 ## Querying
 
