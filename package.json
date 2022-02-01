@@ -27,7 +27,7 @@
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-brands-svg-icons": "5.15.4",
     "@fortawesome/free-solid-svg-icons": "5.15.4",
-    "@fortawesome/react-fontawesome": "0.1.16",
+    "@fortawesome/react-fontawesome": "0.1.17",
     "@mapbox/rehype-prism": "0.8.0",
     "@testing-library/jest-dom": "5.16.1",
     "@testing-library/react": "12.1.2",
