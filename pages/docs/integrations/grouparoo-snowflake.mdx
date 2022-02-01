@@ -1,24 +1,270 @@
 ---
-title: "@grouparoo / snowflake"
-date: "2021-10-12"
+title: "Snowflake"
+date: "2022-01-27"
 pullQuote: "Learn how to work with the Snowflake Plugin as a Source. Grouparoo helps connect your Snowflake warehouse to all your business and operational tools"
 pageNavSelector: "h2"
 ---
 
 <PluginDocsLinks plugin="Snowflake" />
 
-Grouparoo's [Snowflake](https://www.snowflake.com/) Plugin enables you to import data from one or more Snowflake data warehouses and databases.
+## Overview
 
-This guide will show you how to work with the Snowflake Plugin to [create a Source](#create-snowflake-source) to import your data.
+[Snowflake](https://www.snowflake.com/) is a popular cloud computing-based data warehousing solution. It is built to support storage, processing, and analysis. Specifically, Snowflake is designed to help companies manage and look for insights provided by large datasets. You can use Grouparoo to sync data from Snowflake to any of the Destinations we provide plugins for.
 
-<PluginDocsInstallation plugin="Snowflake" />
+### Sources
 
-<PluginDocsCreateApp plugin="Snowflake" />
+<table className='docTable'>
+    <tablebody>
+  <tr>
+   <td>Source Name
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td><strong>
 
-<ValidateAndApplyConfig headingLevel="h3" />
+<a href="#snowflake-import-table">Snowflake Import Table</a></strong>
+   </td>
+   <td>Import or update Records from a Snowflake database table.
+   </td>
+  </tr>
+  <tr>
+   <td><strong>
 
-<PluginDocsColumnarSource plugin="Snowflake" />
+<a href="#snowflake-import-query">Snowflake Import Query</a></strong>
+   </td>
+   <td>Import or update records via a custom Snowflake query.
+   </td>
+  </tr>
+  </tablebody>
+</table>
 
-## Snowflake Next Steps
+## Setup
 
-Once you have the Plugin installed, App created, and a Source configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import your data](/docs/cli/run#run)!
+In order to use Snowflake, you’ll need a Snowflake account. Your account name can be found in the URL when you are logged into Snowflake. It will consist of at least two parts. There will be a third part if you use either Microsoft Azure or Amazon Web Services as your Cloud provider.
+
+The first part of the account information you'll need for setup is a unique alphanumeric identifier, the second part is a regional designation, and the optional third part will indicate the cloud service provider. For those using Snowflake’s cloud, this will not be part of the Account name needed to set up a connection.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/snowflake/setup/setup-1.png"
+  alt="Snowflake Setup"
+  width={733}
+  height={85}
+/>
+
+<br />
+
+## App
+
+To connect Snowflake to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to Snowflake. This specifies the connection details for the database you want to sync data to or from.
+
+### App Options
+
+In Grouparoo, provide the options that best describe how you would like to connect to Snowflake.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/snowflake/app/options.png"
+  alt="Snowflake App Options"
+  width={733}
+  height={710}
+/>
+
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>App Option</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Account </strong>(required)
+      </td>
+      <td>
+        The full name of the account (provided by Snowflake). It is the
+        subdomain you use to access Snowflake.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>User Name</strong>(required)
+      </td>
+      <td>Snowflake user login name to connect with.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Password</strong> (required)
+      </td>
+      <td>Password for the given username.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Warehouse </strong>(required)
+      </td>
+      <td>The Snowflake warehouse to use.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Database </strong>(required)
+      </td>
+      <td>The Snowflake database to use.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Schema</strong>
+      </td>
+      <td>
+        The Snowflake schema. This field will default to ‘PUBLIC’ if not
+        manually set to a different schema.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+## Snowflake Import Table
+
+This source reads from a single schema or table in your Snowflake database using a primary or foreign key. Properties are generated from this table from row values or aggregations of row values.
+
+### Options
+
+There is one required option to select for this type of Source.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/snowflake/import-table/options.png"
+  alt="Snowflake Table Import Options"
+  width={733}
+  height={135}
+/>
+
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Table</strong> (required)
+      </td>
+      <td>The table to scan</td>
+    </tr>
+  </tablebody>
+</table>
+
+### Mapping
+
+Defining Mappings is a critical part of the process. This step tells Grouparoo which Record to associate with the imported data.
+
+If you are using Snowflake Import Table as the [primary source](https://www.grouparoo.com/docs/config/code-config/sources), choose the Snowflake column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model. The Property mapped to this column will be assigned as the Model's Primary Key.
+
+In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources), choose the Snowflake column that ties this table to your primary source. This will often be a foreign key in your table.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/snowflake/import-table/mapping.png"
+  alt="Snowflake Import Table Mapping"
+  width={733}
+  height={218}
+/>
+
+<br />
+
+## Schedule
+
+[Create a schedule](https://www.grouparoo.com/docs/config/sources#step-4-add-a-schedule) to actively pull new data from this Snowflake table. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh. When Recurring is selected, you will see a field for entering the frequency, in minutes, of recurrence.
+
+#### Options
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/snowflake/import-table/schedule.png"
+  alt="Snowflake Import Table Schedule"
+  width={733}
+  height={143}
+/>
+
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>column</strong> (required)
+      </td>
+      <td>
+        Select which column Grouparoo should check to look for new data. Often,
+        this would be a column like “UPDATED_AT” or a kind of time-stamp.
+        Grouparoo remembers the most recent values so it can be based on an
+        incremental count as well.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+#### Filters
+
+If there is a subset of rows data you want to specifically include or exclude from your Snowflake database table, create a [Filter](https://www.grouparoo.com/docs/getting-started/product-concepts#filter). Only rows matching your criteria will be imported.
+
+### Properties
+
+Properties populate your Records with data from your Snowflake table based on table columns. [Create a Property](https://www.grouparoo.com/docs/config/properties) to be able to use row data in Grouparoo.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/snowflake/import-table/property.png"
+  alt="Snowflake Import Table Property"
+  width={733}
+  height={479}
+/>
+
+<br />
+
+#### Options
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Column Name</strong> (required)
+      </td>
+      <td>
+        Choose the column that will be the source of data for this Grouparoo
+        Property.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Aggregation Method</strong> (required)
+      </td>
+      <td>
+        Aggregation methods determine how to use the row values in the table.
+        Snowflake supports the{" "}
+        <a href="https://www.grouparoo.com/docs/config/code-config/properties#aggregation-method-and-filters">
+          standard set
+        </a>{" "}
+        of aggregation methods for table sources.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+#### Filters
+
+If there is a subset of rows data you want to specifically include or exclude from your Snowflake database table, create a [Filter](https://www.grouparoo.com/docs/getting-started/product-concepts#filter). Only rows matching your criteria will be imported.
+
+## Snowflake Import Query
+
+A Query Source works differently than a table-based source in that there are no options to choose in setting up the connection to this type of source. A Query Source is a more flexible way to build properties.
+
+This type of Source provides the ability to write custom SQL code to extract data from one or more tables and import the result into Grouparoo.
+
+<PluginDocsIntegrationNotes plugin="Snowflake" />
