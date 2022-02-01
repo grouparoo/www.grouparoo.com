@@ -1,0 +1,70 @@
+---
+title: "Grouparoo v0.8 release"
+date: "2022-01-31"
+author: "Brian Leonard"
+pullQuote: "Grouparoo's v0.8 beings a new Model UI and other improvements."
+image: "v08-release/video.jpg"
+tags: [product, engineering]
+---
+
+The v0.8 release is our first major iteration on the UI for creating your data pipeline. In the v0.7 release, we added Models, which allowed data engineers to sync multiple data schemas to Destinations. This release summarizes those Models better in the UI, giving you a clearer overview of the configuration.
+
+Here are the key features of the release.
+
+- Model-centric UI to see on one page where the data comes from, what it looks like, and where it is going
+- Better filtering for Schedules and Properties
+- Upgrade to Google Sheets Source to act more like SQL Sources
+- New Destinations: Klaviyo, Vero, Salesforce Accounts and Contacts, Airtable
+
+## Model UI
+
+The main update is in the UI for working with Models. We have moved the navigation to have the Models in it and each Model now has an overview with:
+
+- Model data that includes Sources and Groups
+- Sample record to work with and get a quick sense of the Model schema
+- Destinations where the Model is being sent
+
+Here is how it works.
+
+<p className="video-responsive">
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/Pe99Py7LZO8?rel=0"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  ></iframe>
+</p>
+
+This outline also follows the flow of data. We hope that, by presenting it this way, you get a better feeling for the pipeline configuration.
+
+As a piece of this, we have also upgraded the sample Record portion of the Model overview. In the open source Config UI, we now automatically add sample Records so it is easier to visualize your schema.
+
+## Filtering Schedules and Properties
+
+Previously, Schedules and Properties could not be filtered by `NULL` values. We have updated the UI and normalized the JSON configuration between these and Group-building.
+
+Now, you can add those `NULL`-ish filters as you like.
+
+<Image
+  centered
+  alt="Schedule filter"
+  src="v08-release/filter.png"
+  width={533}
+  height={200}
+/>
+
+See the [upgrade notes](https://www.grouparoo.com/docs/support/upgrading-grouparoo/v07-v08) for information on how to update your configurations.
+
+## Plugins
+
+[Google Sheets](https://www.google.com/sheets/about/) now acts more like SQL Sources. For example, this allows it to work better in fetching single rows from the sheet, keeping your data more consistent.
+
+[Salesforce](https://salesforce.com/) adds two new Destinations targeted at syncing Contacts and Accounts. There is still the option to sync to any Salesforce Object with the older integration, but now it is even easier for these common use cases.
+
+[Airtable](https://airtable.com/) is a flexible database with a spreadsheet interface that can be a solution to a variety of business workflows. Grouparoo can now sync Records to any Airtable base and table.
+
+[Klaviyo](https://www.klaviyo.com/) is a popular Marketing tool. With the new Destination, you can sync your Grouparoo Records to Klaviyo Profiles and add them to Lists.
+
+[Vero](https://getvero.com/) is another communications tool for Marketing. This new Destination syncs Grouparoo Records to Vero Customers and tags them according to their Grouparoo membership.
