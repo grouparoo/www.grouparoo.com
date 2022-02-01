@@ -112,6 +112,15 @@ describe("sitemap integration", () => {
           expect(title.length).toBeLessThanOrEqual(60);
         }
       });
+      test("SEO: meta description between 60 chars and 140 chars", async () => {
+          const tag = $("meta[description]").text();
+          expect(tag).toBeTruthy();
+          const metaDescription = tag.attr("content");
+          expect(metaDescription).toBeTruthy();
+          
+          expect(metaDescription.length).toBeGreaterThanOrEqual(60);
+          expect(metaDescription.length).toBeLessThanOrEqual(140);
+      });
 
       test("it has a canonical link", async () => {
         const link = $("link[rel=canonical]");
