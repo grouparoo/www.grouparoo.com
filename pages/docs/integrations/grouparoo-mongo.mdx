@@ -1,24 +1,197 @@
 ---
-title: "@grouparoo / mongo"
-date: "2021-10-12"
+title: "MongoDB"
+date: "2022-01-27"
 pullQuote: "Learn how to work with the MongoDB Plugin as a Source."
 pageNavSelector: "h2"
 ---
 
 <PluginDocsLinks plugin="Mongo" />
 
-Grouparoo's [MongoDB](https://www.mongodb.com/) Plugin enables you to import data from one or more MongoDB databases.
+## Overview
 
-This guide will show you how to work with the MongoDB Plugin to [create a Source](#create-mongodb-source) to import your data.
+Grouparoo’s [MongoDB](https://www.mongodb.com/) Plugin can work as a source in your data syncing project. MongoDB is a document-oriented database program. It is built to support storage of both structured and unstructured data using a JSON-like format. MongoDB can help companies whose needs are high volume because it can scale to accommodate large amounts of data. You can use Grouparoo to sync data from MongoDB to any of the Destinations we provide plugins for.
 
-<PluginDocsInstallation plugin="Mongo" />
+### Sources
 
-<PluginDocsCreateApp plugin="Mongo" />
+<table className='docTable'>
+    <tablebody>
+  <tr>
+   <td>Source Name
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td><strong>
 
-<ValidateAndApplyConfig headingLevel="h3" />
+<a href="##mongodb-import-table">MongoDB Import Table</a></strong>
+   </td>
+   <td>Import or update Documents from a MongoDB database collection.
+   </td>
+  </tr>
+  <tr>
+   <td><strong>
 
-<PluginDocsColumnarSource plugin="Mongo" />
+<a href="#mongodb-import-query">MongoDB Import Query</a></strong>
+   </td>
+   <td>Import or update records via a custom MongoDB query.
+   </td>
+  </tr>
+  </tablebody>
+</table>
 
-## Mongo Next Steps
+## Setup
 
-Once you have the Plugin installed, App created, and a Source configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import your data](/docs/cli/run#run)!
+To work with the MongoDB [Plugin](https://www.grouparoo.com/docs/getting-started/product-concepts#plugin), you must first install it in an existing Grouparoo project. Grouparoo supports syncing with Mongo databases stored on a local machine or remotely, provided that there is no firewall or VPN prohibiting the connection. How you connect depends on how you configure the App.
+
+## App
+
+To connect MongoDB to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to Mongo. This specifies the connection details for the database you want to use while syncing data.
+
+### App Options
+
+In Grouparoo, provide the options that best describe how you would like to connect to MongoDB.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mongo/app/options.png"
+  alt="Mongo App Options"
+  width={750}
+  height={236}
+/>
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Connection String URI</strong> (required)
+      </td>
+      <td>
+        The MongoDB Connection String. Normally, this connection string is
+        provided by the MongoDB service.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Database Name </strong>(required)
+      </td>
+      <td>The MongoDB database name.</td>
+    </tr>
+  </tablebody>
+</table>
+
+## MongoDB Import Table
+
+This source reads from a single schema or collection in your MongoDB database using a primary or foreign key. Properties are generated from this table from row values or aggregations of row values.
+
+### Options
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mongo/import-table/options.png"
+  alt="Mongo Import Table Options"
+  width={750}
+  height={140}
+/>
+<br />
+
+### Mapping
+
+Select a column that uniquely identifies each record in this Source. The Property mapped to this column will be assigned as the Model's Primary Key.
+
+Defining [Mappings](https://www.grouparoo.com/docs/getting-started/product-concepts#mapping) is a critical part of the process. It tells Grouparoo which Record to associate with the imported data.
+
+If you are using MongoDB Import Table as the [primary source](https://www.grouparoo.com/docs/config/code-config/sources), choose the database field that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model.
+
+In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources), choose the database field that ties this table to your primary source. This will often be a foreign key in your table.
+
+### Schedule
+
+[Create a schedule](https://www.grouparoo.com/docs/config/sources#step-4-add-a-schedule) to actively pull new data from this MongoDB table. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh. When Recurring is selected, you will see a field for entering the frequency, in minutes, of recurrence.
+
+#### Options
+
+There is one option to set for a MongoDB Table Import Source. You need to choose the table from your database that will serve as the location for Grouparoo to scan for changes to Properties.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mongo/import-table/schedule.png"
+  alt="Mongo Import Table Schedule"
+  width={750}
+  height={211}
+/>
+<br />
+<br />
+
+#### Filters
+
+If there is a subset of data you want to specifically include or exclude from your MongoDB database collection, create a [Filter](https://www.grouparoo.com/docs/getting-started/product-concepts#filter).
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mongo/import-table/filters.png"
+  alt="Mongo Import Table Filters"
+  width={750}
+  height={386}
+/>
+<br />
+<br />
+
+### Properties
+
+Properties populate your Records with data from your MongoDB collection based on collection fields. [Create a Property](https://www.grouparoo.com/docs/config/properties) to be able to use document data from MongoDB in Grouparoo.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mongo/import-table/properties.png"
+  alt="Mongo Import Table Properties"
+  width={750}
+  height={723}
+/>
+<br />
+<br />
+
+#### Options
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Column Name</strong> (required)
+      </td>
+      <td>
+        Choose the column that will be the source of data for this Grouparoo
+        Property.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Aggregation Method</strong> (required)
+      </td>
+      <td>
+        Aggregation methods determine how to use the row values in the table.
+        MongoDB supports the{" "}
+        <a href="https://www.grouparoo.com/docs/config/code-config/properties#aggregation-method-and-filters">
+          standard set
+        </a>{" "}
+        of aggregation methods for table sources.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+#### Filters
+
+If there is a subset of rows data you want to specifically include or exclude from your MongoDB database collection, create a [Filter](https://www.grouparoo.com/docs/getting-started/product-concepts#filter).
+
+## MongoDB Import Query
+
+A Query Source works differently than a table-based source in that there are no options to choose in setting up the connection to this type of source. A Query Source is a more flexible way to build properties.
+a
+With a Query Source, you can add custom MongoDB Query Language (MQL) commands to your Properties, which could pull data from one or more collections in your database and import the result into Grouparoo.
+
+<PluginDocsIntegrationNotes plugin="MongoDB" />
