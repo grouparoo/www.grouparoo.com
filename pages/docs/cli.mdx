@@ -1,6 +1,6 @@
 ---
 title: "Command-Line Interface (CLI)"
-date: "2021-02-08"
+date: "2022-02-02"
 pullQuote: "Detailed information about the Grouparoo CLI commands."
 ---
 
@@ -18,7 +18,7 @@ You can obtain the grouparoo CLI via NPM with `npm install -g grouparoo`.
 
 ### Configuration
 
-- [`grouparoo generate [options] [template] [id]`](/docs/cli/config#generate) - Generate a config file for an new object (App, Source, Property, Destination, etc) from a template.
+- [`grouparoo config`](/docs/cli/config#config) - Starts the UI application to manage your config files
 - [`grouparoo validate (--local)`](/docs/cli/config#validate) - Test and validate your code config. Doesn't write changes to the database. Optionally disable checking with remote Apps.
 - [`grouparoo apply (--local)`](/docs/cli/config#apply) - Apply config changes to the database. This also happens automatically with `grouparoo start` and `grouparoo run` as well. Optionally disable checking with remote Apps.
 
@@ -50,12 +50,8 @@ npm install -g grouparoo
 # initialize the project (in a new directory)
 grouparoo init .
 
-# create an App, Source, and Properties
-grouparoo generate postgres:app data_warehouse
-grouparoo generate postgres:table:source users_table --parent data_warehouse
-grouparoo generate postgres:table:property email --parent users_table
-grouparoo generate postgres:table:property first_name --parent users_table
-grouparoo generate postgres:table:property last_name --parent users_table
+# configure your project
+grouparoo config
 
 # check out config files
 grouparoo validate
