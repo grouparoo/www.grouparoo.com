@@ -1,6 +1,6 @@
 ---
 title: "ELT & ETL Orchestration"
-date: "2021-11-11"
+date: "2022-02-02"
 pullQuote: "It's easy to integrate Grouparoo into your existing ELT/ELT process"
 ---
 
@@ -111,7 +111,7 @@ Note that in order to use this method, your API Key will need read access to the
 
 ## Triggering Schedules via a Query
 
-Grouparoo can be run by querying a table within your App using an App Refresh Query when configuring your App. For more information on implementing an App Refresh Query, check out our [App Configuration docs](/docs/config/apps), or you're using code config, check out [App Code Config docs](/docs/config/code-config/apps).
+Grouparoo can be run by querying a table within your App using an App Refresh Query when configuring your App. For more information on implementing an App Refresh Query, check out our [App Configuration docs](/docs/config/apps).
 
 At a high level, using a query to orchestrate your runs allows you to do things like sync data from multiple sources when a particular source, or even a meta or logs table, has new data.
 
@@ -119,7 +119,7 @@ At a high level, using a query to orchestrate your runs allows you to do things 
 
 Grouparoo can always be run via the command line with [`grouparoo run`](/docs/cli/run#run). It is important to note that this method runs once and then terminates when the job is completed. The `grouparoo run` command is a manual option that allows you to check for updates only once, each time you explicitly run it.
 
-Some customers may want to run Grouparoo via the CLI directly from their orchestrator as the final part of their ETL/ELT pipeline. Alternatively, it could simply run every night via `cron`. For these use cases, we recommend configuring Grouparoo via [code config](/docs/config/code-config) and using the `grouparoo run` command. This will run all Schedules immediately when `grouparoo run` is started.
+Some customers may want to run Grouparoo via the CLI directly from their orchestrator as the final part of their ETL/ELT pipeline. Alternatively, it could simply run every night via `cron`. For these use cases, we recommend configuring Grouparoo via the [config UI](/docs/config) and using the `grouparoo run` command. This will run all Schedules immediately when `grouparoo run` is started.
 
 ```bash
 $ grouparoo run

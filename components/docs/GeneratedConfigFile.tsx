@@ -1,4 +1,5 @@
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
+// TODO: Re-enable learn more about config files to new config files section
 
 export default function GeneratedConfigFile({ configDir, docPath }) {
   return (
@@ -12,9 +13,9 @@ export default function GeneratedConfigFile({ configDir, docPath }) {
         can further edit this file locally or through the UI Config.
       </p>
 
-      <Button href={docPath} variant="outline-primary">
+      {/* <Button href={docPath} variant="outline-primary">
         Learn more about config files
-      </Button>
+      </Button> */}
     </>
   );
 }
