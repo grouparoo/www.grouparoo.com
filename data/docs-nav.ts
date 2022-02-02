@@ -54,6 +54,33 @@ const DocsNav: NavItem[] = [
       { title: "Groups", path: "/docs/config/groups" },
       { title: "Destinations", path: "/docs/config/destinations" },
       { title: "Sample Records", path: "/docs/config/records" },
+      // TODO: Remove this commented out code once Code Config docs are removed.
+      // {
+      //   title: "Code Config",
+      //   path: "/docs/config/code-config",
+      //   children: [
+      //     {
+      //       title: "Apps",
+      //       path: "/docs/config/code-config/apps",
+      //     },
+      //     {
+      //       title: "Sources",
+      //       path: "/docs/config/code-config/sources",
+      //     },
+      //     {
+      //       title: "Properties",
+      //       path: "/docs/config/code-config/properties",
+      //     },
+      //     {
+      //       title: "Groups",
+      //       path: "/docs/config/code-config/groups",
+      //     },
+      //     {
+      //       title: "Destinations",
+      //       path: "/docs/config/code-config/destinations",
+      //     },
+      //   ],
+      // },
     ],
   },
 
