@@ -22,12 +22,15 @@ Intercom is a messaging platform for customer communications. You can use Interc
       <td>Destination Description</td>
     </tr>
     <tr>
+      <a href="#intercom-export-contacts">
       <td>Intercom Export Contacts</td>
+      </a>
       <td>
         This Destination exports Grouparoo Records to Contacts in an Intercom
         account.
       </td>
     </tr>
+
   </tbody>
 </table>
 
@@ -189,6 +192,8 @@ In addition to mapping Grouparoo Properties to Intercom User Attributes, you can
 
 In Intercom, tags are similar to User Attributes and segments but they are used for grouping users and companies manually to highlight special features such as those requiring VIP support or those who are loyal customers. Tags can be synced using Grouparoo Groups.
 
+Grouparoo will not affect tags with different names that were created and applied directly through Mailchimp.
+
 <ImageInBrowserFrame
   src="/images/docs/integrations/intercom/intercom-group-data.png"
   alt="Intercom Destination Options"
@@ -196,8 +201,4 @@ In Intercom, tags are similar to User Attributes and segments but they are used 
   height={367}
 />
 
-## Notes
-
-We strive to keep our documentation accurate, easy to use, and up to date. If you notice that something has changed or is not addressed in the process of setting up your Grouparoo connection with Intercom, please let us know by reaching out to help@grouparoo.com.
-
-As always, if you need support using Grouparoo, reach out to community members in our [Slack channel](https://www.grouparoo.com/chat). We are always happy to help!
+<PluginDocsIntegrationNotes plugin="Intercom" />

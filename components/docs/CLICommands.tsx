@@ -1,7 +1,11 @@
 import { Fragment } from "react";
 import CLICommandData from "../../data/cli-commands.json";
 
-export default function CLICommand({ name }) {
+interface Props {
+  name: string;
+}
+
+export default function CLICommand({ name }: Props) {
   const data = CLICommandData.find((c) => {
     const chunk = c.name.split(" ")[0];
     return chunk === name;
