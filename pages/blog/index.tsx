@@ -76,6 +76,10 @@ export default function BlogIndex({ pageProps }) {
           type="application/rss+xml"
           href="https://www.grouparoo.com/feeds/blog.xml"
         />
+        <meta
+          name="description"
+          content="Grouparoo Blog | Learn more about Grouparoo, data engineering and Reverse ETL"
+        />
         {category || author ? <meta name="robots" content="noindex" /> : null}
       </Head>
 

@@ -13,6 +13,7 @@ export default function Meet({ pageProps }) {
         title="Grouparoo Master Terms and Conditions"
         path="/legal/terms"
         canonical={true}
+        description="Grouparoo Legal Documents: Grouparoo's Master Terms and Conditions"
       />
 
       <Container className="mb-5">

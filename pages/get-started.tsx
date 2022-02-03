@@ -9,7 +9,7 @@ export default function GetStarted({ props }) {
     <>
       <SEO
         title={title}
-        description="Get Started Using Grouparoo"
+        description="Get Started Using Grouparoo. Learn how to use the open source community edition or request a trial for the cloud version."
         path="/get-started"
         canonical={true}
       />

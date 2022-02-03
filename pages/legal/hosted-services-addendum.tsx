@@ -13,6 +13,7 @@ export default function Meet({ pageProps }) {
         title="Grouparoo Hosted Services Addendum"
         path="/legal/hosted-services-addendum"
         canonical={true}
+        description="Grouparoo Legal Documents: Hosted Services Addendum"
       />
 
       <Container className="mb-5">

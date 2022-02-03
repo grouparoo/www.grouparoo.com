@@ -13,6 +13,7 @@ export default function Meet({ pageProps }) {
         title="Grouparoo Subprocessors"
         path="/legal/subprocessors"
         canonical={true}
+        description="Grouparoo Legal Documents: Grouparoo's Subprocessors"
       />
 
       <Container className="mb-5">

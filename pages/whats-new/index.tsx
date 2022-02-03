@@ -33,6 +33,10 @@ export default function ReleaseIndex({ pageProps }) {
           type="application/rss+xml"
           href="https://www.grouparoo.com/feeds/whatsnew.xml"
         />
+        <meta
+          name="description"
+          content="Learn more about the latest product improvements and releases to Grouparoo"
+        />
       </Head>
 
       <Container className="releasePage">

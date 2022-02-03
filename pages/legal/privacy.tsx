@@ -13,6 +13,7 @@ export default function Meet({ pageProps }) {
         title="Grouparoo Privacy Policy"
         path="/legal/privacy"
         canonical={true}
+        description="Grouparoo Legal Documents: Grouparoo's Privacy Policy"
       />
 
       <Container className="mb-5">
