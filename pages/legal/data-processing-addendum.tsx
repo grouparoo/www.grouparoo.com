@@ -13,6 +13,7 @@ export default function Meet({ pageProps }) {
         title="Grouparoo Data Processing Addendum"
         path="/legal/data-processing-addendum"
         canonical={true}
+        description="Grouparoo Legal Documents: Data Processing Addendum"
       />
 
       <Container className="mb-5">

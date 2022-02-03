@@ -12,7 +12,12 @@ import SEO from "../../components/SEO";
 export default function DocsIndex() {
   return (
     <>
-      <SEO title="Grouparoo Docs" path="/docs" canonical={true} />
+      <SEO
+        title="Grouparoo Docs"
+        path="/docs"
+        canonical={true}
+        description="Here are docs to help you learn how to configure Grouparoo to power your Reverse ETL pipelines."
+      />
 
       <Container>
         <Row>

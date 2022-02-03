@@ -9,7 +9,12 @@ export default function Meet({ pageProps }) {
 
   return (
     <>
-      <SEO title="Grouparoo Security" path="/legal/security" canonical={true} />
+      <SEO
+        title="Grouparoo Security"
+        path="/legal/security"
+        canonical={true}
+        description="Grouparoo Legal Documents: Grouparoo's Security Practices"
+      />
 
       <Container className="mb-5">
         <Row>
