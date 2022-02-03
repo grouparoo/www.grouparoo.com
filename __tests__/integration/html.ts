@@ -37,7 +37,10 @@ describe("sitemap integration", () => {
   });
 
   // parse sitemap and make a test for each
-  const pages = readSitemap();
+  // If you want to test just one page, do this: `TEST_PAGE="/about" ./node_modules/.bin/jest __tests__/integration/html.ts` (note the starting /)
+  const pages = process.env.TEST_PAGE
+    ? [`https://www.grouparoo.com${process.env.TEST_PAGE}`]
+    : readSitemap();
   const pagePaths = pages.map((page) => new URL(page).pathname);
 
   const linkIsValid = (link): boolean => {
@@ -78,7 +81,7 @@ describe("sitemap integration", () => {
   };
 
   test("read sitemap", async () => {
-    expect(pages.length).toBeGreaterThan(10);
+    if (!process.env.TEST_PAGE) expect(pages.length).toBeGreaterThan(10);
   });
 
   for (let productionUrl of pages) {
@@ -113,13 +116,11 @@ describe("sitemap integration", () => {
         }
       });
       test("SEO: meta description between 60 chars and 140 chars", async () => {
-          const tag = $("meta[description]").text();
-          expect(tag).toBeTruthy();
-          const metaDescription = tag.attr("content");
-          expect(metaDescription).toBeTruthy();
-          
-          expect(metaDescription.length).toBeGreaterThanOrEqual(60);
-          expect(metaDescription.length).toBeLessThanOrEqual(140);
+        const tag = $("meta[name=description]");
+        expect(tag).toBeTruthy();
+        const metaDescription = tag.attr("content");
+        expect(metaDescription.length).toBeGreaterThanOrEqual(60);
+        expect(metaDescription.length).toBeLessThanOrEqual(140);
       });
 
       test("it has a canonical link", async () => {
@@ -227,7 +228,7 @@ describe("sitemap integration", () => {
           }
         });
         expect(linksWithRedirects).toEqual([]);
-        expect(localPagesNotFound).toEqual([]);
+        if (!process.env.TEST_PAGE) expect(localPagesNotFound).toEqual([]);
         expect(missingRefOnBlank).toEqual([]);
       });
     });
