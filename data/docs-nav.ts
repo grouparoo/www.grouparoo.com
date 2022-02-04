@@ -214,6 +214,7 @@ const DocsNav: NavItem[] = [
       },
       { title: "ClickHouse", path: "/docs/integrations/grouparoo-clickhouse" },
       { title: "dbt", path: "/docs/integrations/grouparoo-dbt" },
+      { title: "Google Sheets", path: "/docs/integrations/google-sheets" },
       { title: "Hubspot", path: "/docs/integrations/grouparoo-hubspot" },
       { title: "Intercom", path: "/docs/integrations/grouparoo-intercom" },
       { title: "Mailchimp", path: "/docs/integrations/grouparoo-mailchimp" },
