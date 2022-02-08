@@ -17,7 +17,7 @@ export default function PricingPage() {
     <>
       <SEO
         canonical={true}
-        description="vailable."
+        description="Find Grouparoo pricing options to power your Reverse ETL pipelines. Open-source or cloud hosted options available."
         image="https://www.grouparoo.com/_next/image?url=%2Fimages%2Fhome%2Ftwitter-og-image.png&w=1920&q=75"
         path="/pricing"
         title="Grouparoo Pricing Options"

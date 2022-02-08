@@ -22,7 +22,7 @@ export const GetStartedCard = ({
   return (
     <Card className="mx-3 pt-4 pb-5 shadow-lg h-100 mb-4" bg="white">
       <Card.Header className="bg-white border-0">
-        <Image src={image} width={imageWidth} height="63"></Image>
+        <Image src={image} width={imageWidth} height="63" alt={title}></Image>
         <Card.Title>
           <div className="h3 pt-2 mb-2">{title}</div>
         </Card.Title>
