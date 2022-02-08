@@ -52,10 +52,10 @@ export default function GetStarted({ props }) {
               />
             </Col>
           </Row>
-          <Link href="/pricing">
-            <p className="my-2 text-black">
-              <u>View pricing plans</u>
-            </p>
+          <Link href="/pricing" passHref>
+            <a className="my-2 text-black text-decoration-underline">
+              View pricing plans
+            </a>
           </Link>
         </Container>
       </div>
