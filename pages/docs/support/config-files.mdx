@@ -4,22 +4,14 @@ date: "2022-02-09"
 pullQuote: "Definitions and examples of Grouparoo configuration files."
 ---
 
-Grouparoo configuration for Apps, Models, Sources, Properties, Groups, Destinations, and any other objects is exported into config files.
-These config files are created and updated with [UI config](/docs/config).
+Grouparoo projects contain configuration files for Apps, Models, Sources, Properties, Groups, Destinations, and any other objects is exported into config files.
+These config files can be created and updated with [UI config](/docs/config).
 
 Config files are either JSON or JavaScript which allow you the flexibility to manipulate data or load configuration from external sources.
 
-<Alert variant="warning">
-  <p className="mb-0">
-    Within the running Grouparoo community application, you will be able to see
-    the Apps/Models/Sources/Groups/etc. that you've configured via code, but
-    they will not be editable.
-  </p>
-</Alert>
-
 ## Config Files Location
 
-Config files are generated at the root of your application directory, in a directory called `config`. A typical application structure looks like this:
+Config files are saved at the root of your Grouparoo project directory, in a directory called `config`. A typical Grouparoo project structure looks like this:
 
 ```
 my-grouparoo-project/
@@ -36,7 +28,7 @@ You can optionally choose to use another directory for your configuration by set
 
 Every type of object has its own definition but all of them require these attributes:
 
-- `id`: (**required**) A unique identifier for this object. This is typically generated from the name and has some restrictions:
+- `id`: (**required**) A unique identifier for this object.
   - Lowercase letters, numbers, and underscores only
   - No spaces
   - Fewer than 38 characters
@@ -46,7 +38,43 @@ Every type of object has its own definition but all of them require these attrib
 
 ## App Config
 
-The best practice when configuring an App is to read the comments, keys, and values within the generated file and fill in the appropriate values for your App.
+The App configures the connections available to create Sources and Destinations.
+
+- `id`: (**required**) Unique identifier for this app config.
+- `name`: (**required**) A display name. It matches the `id` by default.
+- `class`: (**required**) This must be set to `"App"`.
+- `type`: (**required**) The type of the app define by a plugin. While the type can match the name of the plugin, plugins may offer multiple apps and the names may not match.
+- `refresh`: App refresh query. See below for details.
+- `options`: The App configuration options. These vary depending on the type of app.
+
+**Example:**
+
+```JSON
+{
+  "class": "App",
+  "id": "data_warehouse",
+  "name": "data_warehouse",
+  "type": "postgres",
+  // App Refresh Query
+  "refresh": {
+    "query": "..."
+    "recurringFrequency": 6000
+  }
+  // Option vary depending on the type of app
+  // Below is an example of the options for the Postgres app
+  "options": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "...",
+    "schema": "public",
+    "user": "...",
+    "password": "...",
+    "ssl": false,
+  }
+}
+```
+
+**App Refresh Query Configuration**
 
 App Refresh Query enables Grouparoo to check your data warehouse for new data, and run all Schedules for that App if it finds any. The following Plugins support App Refresh Query:
 
@@ -67,42 +95,9 @@ For the best results, configure your query up to return a single row of data. Fo
   }
 ```
 
-This query would check every minute for a new `updated_at` value in a table called `meta_table`. The table you check with your App Refresh Query may or may not be one that you include as a [Source](/docs/config/code-config/sources).
+This query would check every minute for a new `updated_at` value in a table called `meta_table`. The table you check with your App Refresh Query may or may not be one that you include as a [Source](#source-config).
 
-If there are [Schedules](/docs/config/code-config/sources#adding-a-schedule) on this App's [Sources](/docs/config/code-config/sources) that you do not want to be run, you can add:
-
-```JSON
-  "refreshEnabled": false
-```
-
-to your Schedule's config.
-
-```JSON
-[
-  {
-    "class": "App",
-    "id": "data_warehouse",
-    "name": "data_warehouse",
-    "type": "postgres",
-    // App Refresh Query
-    "refresh": {
-      "query": "..."
-      "recurringFrequency": 6000
-    }
-    // Option vary depending on the type of app
-    // Below is an example of the options for the Postgres app
-    "options": {
-      "host": "localhost",
-      "port": 5432,
-      "database": "...",
-      "schema": "public",
-      "user": "...",
-      "password": "...",
-      "ssl": false,
-    }
-  }
-]
-```
+If there are [Schedules](#schedule-config) on this App's Sources that you do not want to be run, you can add `"refreshEnabled": false` to your Schedule's config.
 
 ## Model Config
 
@@ -124,11 +119,7 @@ The Model config file is currently very basic:
 }
 ```
 
-## Source and Schedule Config
-
-The source and the schedule configuration are paired together because a Schedule depends on a Source.
-
-**Source**
+## Source Config
 
 Each Source has a common set of options, while other options are specific to the _type_ of Source. Here are the common options:
 
@@ -159,13 +150,13 @@ Each Source has a common set of options, while other options are specific to the
 }
 ```
 
-**Schedule**
+## Schedule Config
 
 A Schedule tells Grouparoo how frequently to check the Source for updated data and import it into the Application Database. This is the most common way to keep data fresh in Grouparoo.
 
 Here are the options for a Schedule:
 
-- `id`: (**required**) Like the Source, a Schedule must have a unique `id` to identify it. This will be generated by default from the Source's `id`.
+- `id`: (**required**) Like the Source, a Schedule must have a unique `id` to identify it.
 - `name`: (**required**) A display name. It matches the `id` by default.
 - `class`: (**required**) This must be set to `"Schedule"`.
 - `sourceId`: (**required**) This must match the `id` of the Source. It will be set automatically.
@@ -359,7 +350,7 @@ Which would count every subscription per Record, but leave out any trial subscri
     {
       "key": "created_at",
       "op": "lt",
-      "match": "2022-01-01T00:00:00.000+00:00"
+      "match": "2023-01-01T00:00:00.000+00:00"
     }
   ]
 }
@@ -369,7 +360,15 @@ Which would count every subscription per Record, but leave out any trial subscri
 
 ## Group Config
 
-Configuring a Group is all about adding Rules to the Group. A Rule is some logical operator to Filter Properties. A Record must match every Rule to be included in the Group.
+Group config files have a common format.
+
+- `id`: (**required**) The unique value that identifies this Source.
+- `class`: (**required**) Should be set to `"Group"`.
+- `modelId`: (**required**) The model that the group belongs to.
+- `name`: (**required**) A display name for the Group.
+- `rules`: (**required**) An array of rules to filter Records. See more details below.
+
+**Example:**
 
 ```JSON
 {
@@ -387,13 +386,15 @@ Configuring a Group is all about adding Rules to the Group. A Rule is some logic
 }
 ```
 
+Configuring a Group is all about adding Rules to the Group. A Rule is some logical operator to Filter Properties. A Record must match every Rule to be included in the Group.
+
 Available operations depends on both the _type_ of Property and the underlying Grouparoo database (SQLite vs. Postgres). See below for a list of rules. (If in doubt, choose Postgres.)
 
 Note you can use SQL wildcard characters (%, \_, [ ], ^, -) in your Group rule match values as appropriate and necessary.
 
 <RuleOpsTable />
 
-### Destination Config
+## Destination Config
 
 Each Destination has a common set of options, while other options are specific to the _type_ of Destination. Here are the commons set of options that may look similar to other config object shapes in Grouparoo:
 
@@ -452,7 +453,7 @@ Here's an example of a Mailchimp mapping configuration:
 }
 ```
 
-Notice the odd structure of the keys. That's specific to Mailchimp. Each Destination's config file will be generated will some helper comments to get you started.
+Notice the odd structure of the keys. That's specific to Mailchimp.
 
 **Destination Group Membership**
 
