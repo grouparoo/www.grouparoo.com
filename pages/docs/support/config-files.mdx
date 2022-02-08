@@ -1,0 +1,744 @@
+---
+title: "Configuration files"
+date: "2022-02-09"
+pullQuote: "Definitions and examples of Grouparoo configuration files."
+---
+
+Grouparoo configuration for Apps, Models, Sources, Properties, Groups, Destinations, and any other objects is exported into config files.
+These config files are created and updated with [UI config](/docs/config).
+
+Config files are either JSON or JavaScript which allow you the flexibility to manipulate data or load configuration from external sources.
+
+<Alert variant="warning">
+  <p className="mb-0">
+    Within the running Grouparoo community application, you will be able to see
+    the Apps/Models/Sources/Groups/etc. that you've configured via code, but
+    they will not be editable.
+  </p>
+</Alert>
+
+## Table of Contents
+
+- [Config Files Location](#config-files-location)
+- [Config Object Definitions](#config-object-definitions)
+  - [App Config](#app-config)
+  - [Model Config](#model-config)
+  - [Source and Schedule Config](#source-and-schedule-config)
+  - [Property Config](#property-config)
+  - [Group Config](#group-config)
+  - [Destination Config](#destination-config)
+- [Using Dynamic Values](#using-dynamic-values)
+  - [Environment Variables](#using-dynamic-values)
+  - [JavaScript Functions](#javascript-functions)
+- [Example Configs](#example-configs)
+- [Defining Multiple Objects in one File](#defining-multiple-objects-in-one-file)
+- [Referencing other Config Objects](#referencing-other-config-objects)
+- [Validating & Applying Your Config](#validating-and-applying-your-config)
+
+## Config Files Location
+
+Config files are generated at the root of your application directory, in a directory called `config`. A typical application structure looks like this:
+
+```
+my-grouparoo-project/
+├── package.json
+├── package-lock.json
+├── .env
+└── config/
+    └── ... (config files go here)
+```
+
+You can optionally choose to use another directory for your configuration by setting the `GROUPAROO_CONFIG_DIR` environment variable, for example `GROUPAROO_CONFIG_DIR=/path/to/config`.
+
+## Config Object Definitions
+
+Every type of object has its own definition but all of them require these properties:
+
+- `id`: A unique identifier for this object. This is typically generated from the name and has some restrictions:
+  - Lowercase letters, numbers, and underscores only
+  - No spaces
+  - Fewer than 38 characters
+  - Must be unique among other objects of the same type
+- `class`: The type of object that is being defined such as `App`, `Model`, `Source`, `Property`, `Group`, `Destination`
+- `name`: The display name of this object
+
+### App Config
+
+The best practice when configuring an App is to read the comments, keys, and values within the generated file and fill in the appropriate values for your App.
+
+App Refresh Query enables Grouparoo to check your data warehouse for new data, and run all Schedules for that App if it finds any. The following Plugins support App Refresh Query:
+
+- BigQuery
+- ClickHouse
+- MySQL
+- Postgres
+- Redshift
+- Snowflake
+- SQLite
+
+For the best results, configure your query up to return a single row of data. For example, you might set it up as:
+
+```JSON
+  "refresh": {
+    "query": "SELECT MAX(updated_at) FROM meta_table"
+    "recurringFrequency": 6000
+  }
+```
+
+This query would check every minute for a new `updated_at` value in a table called `meta_table`. The table you check with your App Refresh Query may or may not be one that you include as a [Source](/docs/config/code-config/sources).
+
+If there are [Schedules](/docs/config/code-config/sources#adding-a-schedule) on this App's [Sources](/docs/config/code-config/sources) that you do not want to be run, you can add:
+
+```JSON
+  "refreshEnabled": false
+```
+
+to your Schedule's config.
+
+```JSON
+[
+  {
+    "class": "App",
+    "id": "data_warehouse",
+    "name": "data_warehouse",
+    "type": "postgres",
+    // App Refresh Query
+    "refresh": {
+      "query": "..."
+      "recurringFrequency": 6000
+    }
+    // Option vary depending on the type of app
+    // Below is an example of the options for the Postgres app
+    "options": {
+      "host": "localhost",
+      "port": 5432,
+      "database": "...",
+      "schema": "public",
+      "user": "...",
+      "password": "...",
+      "ssl": false,
+    }
+  }
+]
+```
+
+### Model Config
+
+```JSON
+{
+  "class": "Model",
+  "id": "users",
+  "name": "Users",
+  "type": "profile"
+}
+```
+
+### Source and Schedule Config
+
+The source and the schedule configuration tend to be paired together.
+
+Each Source has a common set of options, while other options are specific to the _type_ of Source. Here are the common options:
+
+- `class`: (**required**) Should be set to `"source"`.
+- `id`: (**required**) The unique value that defines this Source.
+- `name`: (**required**) A display name for the Source. Will be set to the `id` by default.
+- `type`: (**required**) The type of Source will vary based on the Generator you're using. You likely don't want to change this value.
+- `appId`: (**required**) The `id` of the App (connection) that the Source uses.
+
+The Generator makes a _reasonable_ guess at the values in the config file it generated (in the `config/sources` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Postgres Source, all but `appId` and `options.table` were pre-populated.
+
+Other sections may be commented out but require some action by you. The best practice when configuring a Source is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Source.
+
+### Configuring Your First Source
+
+The very first Source you create in Grouparoo will need a [Property](/docs/config/code-config/properties) to use as a primary key for each Record. This must be unique to each of your Records, and is commonly a user ID or email address. Grouparoo will generate one Record per unique value for this Property.
+
+## Batch Source Generation
+
+Certain plugins may provide batch source generation options. This means that is you have a valid [`App`](/docs/config/code-config/apps) already configured and applied, Grouparoo can inspect that App and generate a Source and Properties automatically for you. Learn more about this from the [Generate CLI Command documentation](/docs/cli/config#batch-generation).
+
+## Adding a Schedule
+
+A Schedule tells Grouparoo how frequently to check the Source for updated data and import it into the Application Database. This is the most common way to keep data fresh in Grouparoo.
+
+Each Source config file has an example Schedule included with it as a separate object, commented out. Here are the options for a Schedule:
+
+- `id`: (**required**) Like the Source, a Schedule must have a unique `id` to identify it. This will be generated by default from the Source's `id`.
+- `name`: (**required**) A display name. It matches the `id` by default.
+- `class`: (**required**) This must be set to `"schedule"`.
+- `sourceId`: (**required**) This must match the `id` of the Source. It will be set automatically.
+- `recurring`: (**required**, default: `true`) Should this Schedule run regularly?
+- `recurringFrequency`: (**required**) The length of the Schedule's interval. This is measured in `ms`. For example, 15 minutes would be `1000 * 60 * 15` or `900000`.
+- `options`: These are the custom options that the specific Source type will bring.
+- `filters`: These can be used to exclude certain rows of data from your Schedule. Depending on your Source's database, only some of these filters may be available.
+
+### Filters
+
+- `"exists"` - exists with any value (is not null)
+- `"notExists"` - does not exist with any value (is null)
+- `"eq"`- equals
+- `"ne"` - does not equal
+- `"gt"` - greater than
+- `"gte"` - greater than or equal to
+- `"lt"` - less than
+- `"lte"` - less than or equal to
+- `"substring"` - contains
+- `"notSubstring"` - does not contain
+- `"in"` - in a given set
+
+For example, to create a schedule that will run every 5 minutes checking the `"updated_at"` column for rows where `status = "active"` and `last_purchase"` exists (is not null), you could do the following:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    "class": "Schedule",
+    "id": "users_schedule",
+    "name": "Users Schedule",
+    "sourceId": "users",
+    "recurring": true,
+    "recurringFrequency": 5 * 60 * 1000,
+    "confirmRecords": false,
+    "options": {
+      "column": "updated_at"
+    },
+    "filters": [{
+      "key": "status",
+      "op: "eq",
+      "match": "active"
+    }, {
+      "key": "last_purchase",
+      "op": "exists"
+    }]
+  }
+]}
+```
+
+If you've configured an App Refresh Query when you configured your App, you can also opt to leave a particular Schedule out of its updates by adding:
+
+```
+  refreshEnabled: false
+```
+
+to the schedule's config.
+
+Example:
+
+```JSON
+[
+  // The Source
+  {
+    "class": "Source",
+    "id": "demo_users",
+    "modelId": "users",
+    "name": "Product Users",
+    "type": "postgres-import-table",
+    "appId": "demo_db",
+    // Options depend on the type of app
+    "options": {
+      "table": "users"
+    },
+    // Mapping settings
+    "mapping": {
+      "id": "user_id"
+    }
+  },
+  // The Source's schedule
+  {
+    "class": "Schedule",
+    "id": "demo_users_schedule",
+    "name": "Users Schedule",
+    "sourceId": "demo_users",
+    "incremental": true,
+    "recurring": true,
+    "recurringFrequency": 900000,
+    "confirmRecords": false,
+    "refreshEnabled": true,
+    "options": {
+      "column": "updated_at"
+    },
+    "filters": []
+  }
+]
+```
+
+### Property Config
+
+Each Property has a common set of options, while other options are specific to the _type_ of Property. Here are the common options:
+
+- `class`: (**required**) Should be set to `"property"`.
+- `id`: (**required**) The unique value that defines this Property.
+- `identifying`: (**required**) Consider this option to be the primary key for your Record. It is how Grouparoo identifies the Property in the UI.
+- `isArray`: (**required**) Is the Property an array?
+- `name`: (**required**) A display name for the Property. Will be set to the `id` by default.
+- `sourceId`: (**required**) The `id` of the Source that the Property is created from. This will be the value of the `--parent` option you passed to the `generate` command.
+- `type`: (**required**) The data type of the Property. The options available will be generated as a comment in the generated config file.
+- `unique`: (**required**) If `true` Records will be forced to have unique records for this Property.
+
+The Generator attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/properties` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Property for a Postgres Source, all but `sourceId` and `options.column` were pre-populated.
+
+Other sections may be commented out but require some action by you. The best practice when configuring an Property is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Property.
+
+### Aggregation Method and Filters
+
+Your Property config file will also contain `aggregationMethod` and `Filter` options. Options for these may vary depending on your source type. All available options for your source will be listed in your config file template created when you run [grouparoo generate](/docs/cli/config#generate). Some common examples are:
+
+#### aggregationMethods
+
+- `"exact"`
+- `"sum"`
+- `"average"`
+- `"count"`
+- `"min"`
+- `"max"`
+- `"most recent value"`
+- `"least recent value"`
+
+#### filters
+
+- `"exists"` - exists with any value (is not null)
+- `"notExists"` - does not exist with any value (is null)
+- `"eq"`- equals
+- `"ne"` - does not equal
+- `"gt"` - greater than
+- `"gte"` - greater than or equal to
+- `"lt"` - less than
+- `"lte"` - less than or equal to
+- `"substring"` - contains
+- `"notSubstring"` - does not contain
+- `"in"` - in a given set
+
+These can be combined to create more complex properties such as:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      id: "active_paid_subscriptions",
+      name: "Active Paid Subscriptions",
+      class: "property",
+      sourceId: "users_table",
+      type: "integer",
+      unique: false,
+      identifying: false,
+      isArray: false,
+      options: {
+        column: "subscription_id",
+        aggregationMethod: "count",
+        sort: null,
+      },
+
+      filters: [
+        {
+          key: "status",
+          op: "eq",
+          match: "active",
+        },
+        {
+          key: "last_purchase",
+          op: "exists"
+        }
+        {
+          key: "subscription_type",
+          op: "ne",
+          match: "trial",
+        },
+      ],
+    },
+  ];
+};
+```
+
+Which would count every subscription per Record, but leave out any trial subscriptions or Records with no value for `last_purchase`. Or:
+
+```js
+exports.default = async function buildConfig() {
+  return [
+    {
+      id: "annual_purhcases_2020",
+      name: "Annual Purchases 2020",
+      class: "property",
+      sourceId: "purhcases_table",
+      type: "float",
+      unique: false,
+      identifying: false,
+      isArray: false,
+      options: {
+        column: "purhcase_amount",
+        aggregationMethod: "sum",
+        sort: null,
+      },
+
+      filters: [
+        {
+          key: "created_at",
+          op: "gt",
+          match: "2019-12-31T11:59:59.999+00.00",
+        },
+        {
+          key: "created_at",
+          op: "lt",
+          match: "2021-01-01T00:00:00.000+00:00",
+        },
+      ],
+    },
+  ];
+};
+```
+
+which would return the sum of a Record's purchases in 2020.
+
+```JSON
+{
+  "class": "Property",
+  "id": "contact_email",
+  "type": "email",
+  "key": "contactEmail",
+  "sourceId": "account_users",
+  "unique": false,
+  "isArray": false,
+  // Options can vary depending on the type of Source
+  "options": {
+    "aggregationMethod": "least recent value",
+    "column": "email",
+    "sortColumn": "created_at"
+  },
+  "filters": []
+}
+```
+
+Properties can have the following `type`:
+
+- `boolean`
+- `date`
+- `email`
+- `float`
+- `integer`
+- `phoneNumber`
+- `string`
+- `url`
+
+### Group Config
+
+Configuring a Group is all about adding Rules to the Group. A Rule is some logical operator to Filter Properties. A Record must match every Rule to be included in the Group.
+
+Available operations depends on both the _type_ of Property and the underlying Grouparoo database (SQLite vs. Postgres). See below for a list of rules. (If in doubt, choose Postgres.)
+
+Note you can use SQL wildcard characters (%, \_, [ ], ^, -) in your Group rule match values as appropriate and necessary.
+
+<RuleOpsTable />
+
+Add your list of Rules to the `rules` array in the generated config file. You may also change any of the other default values, as necessary.
+
+```JSON
+{
+  "id": "high_value_accounts",
+  "class": "Group",
+  "modelId": "accounts",
+  "name": "High Value Accounts",
+  "rules": [
+    {
+      "propertyId": "account_value",
+      "op": "gt",
+      "match": "800"
+    }
+  ]
+}
+```
+
+Rule operations (`op`) are available depending on the type of Property.
+For example, a `string` Property could be checked against `contains` but not a `float` Property.
+
+Here are all the available rule ops:
+
+- `eq`: Equals to
+- `ne`: Does not equal to
+- `gt`: Greater than
+- `gte`: Greater than or equals to
+- `lt`: Less than
+- `lte`: Less than or equals to
+- `substring`: Contains
+- `notSubstring`: Does not Contain
+- `in`: In
+- `exists`: Exists; It has a value
+- `notExists`: Does not exist; Does not have a value
+
+### Destination Config
+
+Each Destination has a common set of options, while other options are specific to the _type_ of Destination. Here are the commons set of options that may look similar to other config object shapes in Grouparoo:
+
+- `id`: (**required**) The unique value that defines this Destination.
+- `name`: (**required**) A display name for the Destination. Will be set to the `id` by default.
+- `class`: (**required**) Should be set to `"Destination"`.
+- `type`: (**required**) The type of Destination will vary based on the Generator you're using. You likely don't want to change this value.
+- `appId`: (**required**) The `id` of the App (connection) that the Destination uses.
+- `collection`: (**required**) Which records should be exported from this Destination? You can choose "group", "model", or "none".
+- `groupId`: The `id` of the Group whose members should be exported to the Destination. (This is where Groups in Grouparoo really come in handy.) You need to choose `collection: "group"` to choose a `groupId`.
+- `syncMode`: (**required**): The SyncMode you wish to use for this Destination. Options are "Sync", "Additive", and "Enrich".
+- `mapping`: See below.
+- `destinationGroupMemberships`: See below.
+
+The Generator attempts to make a _reasonable_ guess at the values in the config file it generated (in the `config/destinations` directory). There are ellipses (`"..."`) in the places in which it couldn't make a reasonable guess. In the example above, after generating a Postgres App, all but `appId`, `groupId`, and `options.listId` were pre-populated.
+
+The best practice when configuring an Destination is to read the comments, keys, and values within the generated file and fill in the appropriate values for your Destination.
+
+Example:
+
+```JSON
+[
+  {
+    "id": "newsletter",
+    "name": "newsletter",
+    "class": "destination",
+    "type": "mailchimp-export",
+    "appId": "...",
+    "collection": "...",
+    "groupId": "...",
+    "syncMode": "...",
+    "options": {
+      "listId": "...",
+    },
+    "mapping": {
+      "email_address": "email",
+      "FNAME": "firstName",
+      "LNAME": "lastName",
+    },
+    "destinationGroupMemberships": {
+      "High Value Customers!": "highValueCustomers",
+    },
+  }
+]
+```
+
+### Destination Mappings
+
+Mappings are a series of key-value pairs that tell Grouparoo which Properties to export to the Destination for each Record. The structure may vary for each type of Destination, but generally, the keys are the fields in the Destination, while the values are the `id` values for the Properties in Grouparoo.
+
+Here's an example of a Mailchimp mapping configuration:
+
+```json
+{
+  "mapping": {
+    "email": "email",
+    "FNAME": "firstName",
+    "LNAME": "lastName"
+  }
+}
+```
+
+Notice the odd structure of the keys. That's specific to Mailchimp. Each Destination's config file will be generated will some helper comments to get you started.
+
+### Destination Group Membership
+
+Grouparoo also provides the ability to attach Group membership to the exported data. How this looks within the Destination is specific to the Destination. But the shape of the config file largely remains the same. In most Destinations, Destinations Group Memberships become either tags (Mailchimp), lists (Hubspot), or appended as additional properties to the Record (Customer.io).
+
+`destinationGroupMemberships` are a set of key-value pairs that tell Grouparoo which memberships to publish to the Destination. For example, you may have sent all your users to a Mailchimp Destination, but you wanted to tag high-value customers. That config might look something like this:
+
+```json
+{
+  "destinationGroupMemberships": {
+    "High Value Customers!": "highValueCustomers"
+  }
+}
+```
+
+In the example above, the key represents the tag in Mailchimp, while the value is the `id` of the Group in Grouparoo.
+
+## Using Dynamic Values
+
+There are two methods for loading configuration information dynamically:
+
+- Environment Variables
+- JavaScript Functions
+
+### Environment Variables
+
+If you want to set a variable called `production_hubspot_api_key` for use only in Hubspot Apps, you would set `GROUPAROO_OPTION__APP__production_hubspot_api_key=abc123`.
+
+<Alert variant="warning">
+  <p className="mb-0">
+    ⚠️ <code>APP</code> (the object type) is surrounded by double underscores.
+  </p>
+</Alert>
+
+When setting an Environment Variable to use with Grouparoo, you'll be using the pattern:
+
+```bash
+export GROUPAROO_OPTION__{topic}__{name}={value}
+```
+
+See [the Secrets page](/docs/deployment/secrets) for more information about using environment variables for config.
+
+### JavaScript Functions
+
+Code config files can be use JavaScript functions that can export an `async` method, which can `await` while loading data from an database or API. (See the _Examples_ section below.)
+
+## Example Configs
+
+Let's say you wanted to define a Postgres App called "Data Warehouse" in code. You can use either JSON or JavaScript to define the application.
+
+**JSON:**
+
+```json
+// file: config/apps/data_warehouse.json
+
+[
+  {
+    "name": "Data Warehouse",
+    "id": "data_warehouse",
+    "class": "App",
+    "type": "postgres",
+    "options": {
+      "host": "127.0.0.1",
+      "port": "5432",
+      "username": "person",
+      "password": "pass",
+      "database": "data_warehouse"
+    }
+  }
+]
+```
+
+Grouparoo parses JSON config files with [`JSON5`](https://json5.org). This enables you to use comments and multi-line strings.
+
+**JavaScript:**
+
+```js
+// file: config/apps/data_warehouse.js
+
+exports.default = [
+  {
+    name: "Data Warehouse",
+    id: "data_warehouse",
+    class: "App",
+    type: "postgres",
+    options: {
+      host: "127.0.0.1",
+      port: "5432",
+      username: "person",
+      password: "pass",
+      database: "data_warehouse",
+    },
+  },
+];
+```
+
+**JavaScript with Async Loading:**
+
+```js
+// file: config/apps/data_warehouse.js
+
+exports.default = async function GetDataWarehouseConfig() {
+  const { databasePassword } = await fetch(`/api/company/secrets`);
+
+  return [
+    {
+      name: "Data Warehouse",
+      class: "App",
+      id: "data_warehouse",
+      type: "postgres",
+      options: {
+        host: "127.0.0.1",
+        port: "5432",
+        username: "person",
+        password: databasePassword,
+        database: "data_warehouse",
+      },
+    },
+  ];
+};
+```
+
+## Defining Multiple Objects in one File
+
+No matter which type of file you create for your code config, you can export more than one object per file. Note how in the examples above we always return/export an array.
+
+```js
+// file: config/apps/databases.js
+
+exports.default = [
+  {
+    name: "Data Warehouse",
+    id: "data_warehouse",
+    class: "app",
+    type: "postgres",
+    options: {
+      host: "datawarehouse.db.internal",
+      port: "5432",
+      username: "person",
+      password: "pass",
+      database: "data_warehouse",
+    },
+  },
+  {
+    name: "Product DB Replica",
+    id: "replica_db",
+    class: "app",
+    type: "postgres",
+    options: {
+      host: "replica.production.db.internal",
+      port: "5432",
+      username: "person",
+      password: "pass",
+      database: "product_db",
+    },
+  },
+];
+```
+
+## Referencing other Config Objects
+
+To fully define your infrastructure and Record Properties, you will need to reference one config from another. We do this by referencing the `id` of the related object.
+
+For example, to define an `App → Source → Record Property`, you could do:
+
+```js
+// file: config/grouparoo.js
+
+exports.default = [
+  // App
+  {
+    name: "Data Warehouse",
+    id: "data_warehouse",
+    class: "App",
+    type: "postgres",
+    options: {
+      host: "127.0.0.1",
+      port: "5432",
+      username: "person",
+      password: "pass",
+      database: "grouparoo_dev",
+    },
+  },
+  // Source
+  {
+    name: "Users Table",
+    id: "users_table",
+    class: "Source",
+    type: "postgres-table-import",
+    appId: "data_warehouse", // <-- reference id
+    options: {
+      table: "users",
+    },
+    mapping: {
+      id: "User Id",
+    },
+  },
+  // Property
+  {
+    name: "User Id",
+    class: "RecordPropertyRule",
+    type: "integer",
+    unique: true,
+    isArray: false,
+    sourceId: "users_table", // <-- reference id
+    options: {
+      column: "id",
+      aggregationMethod: "exact",
+      sort: null,
+    },
+    filters: [],
+  },
+];
+```
+
+<ValidateAndApplyConfig />
