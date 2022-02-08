@@ -145,18 +145,6 @@ mapping: {
           code={`grouparoo generate ${pluginData.slug}:table:source --describe`}
           cli={true}
         />
-        <p>
-          The configuration example above could have been completely generated
-          by using these extra options when running the <code>generate</code>{" "}
-          command.
-        </p>
-        <p>
-          To see an example of Batch Generation in action, check out our{" "}
-          <Link href="/docs/tutorials/app-example-config">
-            Declarative Sync Tutorial
-          </Link>
-          .
-        </p>
       </Alert>
 
       {/* --- Options --- */}
