@@ -177,7 +177,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/mixpanel",
-    "docsUrl": null
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-mixpanel"
   },
   {
     "name": "Mongo",
