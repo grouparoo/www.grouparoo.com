@@ -13,15 +13,17 @@ Mixpanel is a marketing analysis tool that helps you understand how users intera
 
 ### Destinations
 
-<table>
-  <tr>
-    <td>Destination Name</td>
-    <td>Destination Description</td>
-  </tr>
-  <tr>
-    <td>Mixpanel Export Profiles</td>
-    <td>Export Records to Mixpanel as User Profiles</td>
-  </tr>
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Destination Name</td>
+      <td>Destination Description</td>
+    </tr>
+    <tr>
+      <td>Mixpanel Export Profiles</td>
+      <td>Export Records to Mixpanel as User Profiles</td>
+    </tr>
+  </tablebody>
 </table>
 
 ## Setup
@@ -30,15 +32,23 @@ You will need a Mixpanel account and some additional information from your MixPa
 
 Navigate to Settings and choose the project you want to connect to from the Subheading called Project Settings. On the Overview Page, you can find the Project Token and Project Id.
 
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-![alt_text](images/image1.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mixpanel/setup/setup-1.png"
+  alt="Mixpanel Setup"
+  width={750}
+  height={395}
+/>
+<br />
 
 The other two values you will need to configure a Mixpanel App in Grouparoo are found under Project Settings → Service Accounts. There, you will see a list of usernames. The Secret associated with each username is only available upon creation. If you need to create a new service account to access a secret for configuration, be sure to set the project role for that account to Admin.
 
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-![alt_text](images/image2.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mixpanel/setup/setup-2.png"
+  alt="Mixpanel Setup"
+  width={750}
+  height={405}
+/>
+<br />
 
 ## App
 
@@ -48,39 +58,45 @@ To connect Mixpanel to Grouparoo, you [create an App](https://www.grouparoo.com/
 
 In Grouparoo’s UI config, you specify the options to connect to Mailjet and test the connection.
 
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mixpanel/app/options.png"
+  alt="Mixpanel App Options"
+  width={750}
+  height={426}
+/>
+<br />
 
-![alt_text](images/image3.png "image_tooltip")
-
-<table>
-  <tr>
-    <td>Option Name</td>
-    <td>Description</td>
-  </tr>
-  <tr>
-    <td>
-      <strong>Token</strong> (required)
-    </td>
-    <td>Mixpanel API Token</td>
-  </tr>
-  <tr>
-    <td>
-      <strong>User Name</strong> (required)
-    </td>
-    <td>Mixpanel API Service Account Username</td>
-  </tr>
-  <tr>
-    <td>
-      <strong>Secret</strong> (required)
-    </td>
-    <td>Mixpanel API Service Account Secret</td>
-  </tr>
-  <tr>
-    <td>
-      <strong>Project ID</strong> (required)
-    </td>
-    <td>Mixpanel project id</td>
-  </tr>
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Token</strong> (required)
+      </td>
+      <td>Mixpanel API Token</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>User Name</strong> (required)
+      </td>
+      <td>Mixpanel API Service Account Username</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Secret</strong> (required)
+      </td>
+      <td>Mixpanel API Service Account Secret</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Project ID</strong> (required)
+      </td>
+      <td>Mixpanel project id</td>
+    </tr>
+  </tablebody>
 </table>
 
 ## Mixpanel Export Profiles
@@ -103,9 +119,14 @@ Mapping Grouparoo Record Properties to Mixpanel Profile Properties is the key to
 
 Mixpanel Profile Properties can be used for customizing marketing campaigns and they allow you to personalize communications and segment your audience into lists for targeted mailings.
 
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-![alt_text](images/image4.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mixpanel/export-profiles/properties.png"
+  alt="Mixpanel Export Profiles Properties"
+  width={750}
+  height={636}
+/>
+<br />
+<br />
 
 #### Required Properties
 
@@ -123,8 +144,13 @@ In addition to mapping Grouparoo Properties to Mixpanel Profile Properties, you 
 
 These Groups help marketers to engage with customers and business prospects more effectively. This segmentation helps businesses target the most appropriate portion of a list for each campaign. It can also inform strategies for retention and report-building using Mixpanel’s suite of tools.
 
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image5.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-![alt_text](images/image5.png "image_tooltip")
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mixpanel/export-profiles/groups.png"
+  alt="Mixpanel Export Profiles Groups"
+  width={750}
+  height={215}
+/>
+<br />
+<br />
 
 <PluginDocsIntegrationNotes plugin="Mixpanel" />
