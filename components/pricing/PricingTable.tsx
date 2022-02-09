@@ -1,11 +1,10 @@
 import { Row, Col, Table } from "react-bootstrap";
 import Image from "../Image";
-import styles from "./PricingTable.module.scss";
 export const PricingTable = () => {
   return (
     <Row className="mt-3 mx-auto">
       <Col className="overflow-auto">
-        <Table className={`text-center bg-white ${styles.customTable}`}>
+        <Table className="text-center bg-white customTable">
           <thead>
             <tr>
               <th scope="col" className="w-50" />
