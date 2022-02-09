@@ -1,0 +1,209 @@
+---
+title: "Google Sheets"
+date: "2022-02-01"
+pullQuote: "Learn how to work with the Google Sheets Integration as a Source and Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Google-sheets" />
+
+## Overview
+
+Grouparoo’s Google Sheets integration is a Source that enables you to import data from a Google Sheet to any of the Destinations we support. You can use Grouparoo to sync data between a Google Sheet and other supported services to operationalize your data.
+
+### Sources
+
+<table className='docTable'>
+    <tablebody>
+  <tr>
+   <td>Source Name
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td>
+
+<a href="#google-sheets-import">Google Sheets Import</a>
+   </td>
+   <td>Import or update Records from a specific tab in a Google Sheet.
+   </td>
+  </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+From the [Google API Console](https://console.developers.google.com/apis), you’ll need to navigate to the credentials page using the left hand menu. There, you will see a list of service accounts. The email for the service account you are using is needed to set up an app connection to Google Sheets. Select the service account you will use and, if you haven’t already saved one, create a new JSON key. This will give you the information needed to create an App that connects Grouparoo and Google Sheets.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/google-sheets/setup/setup-1.png"
+  alt="Google Service Account"
+  width={750}
+  height={85}
+/>
+<br />
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/google-sheets/setup/setup-2.png"
+  alt="Google API Key"
+  width={750}
+  height={337}
+/>
+<br />
+
+## App
+
+To connect Google Sheets to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to Google Sheets. This specifies the location of the data you want to sync data to or from. When you go on to create the Source, you will further specify which table it should data should be pulled from.
+
+### App Options
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/google-sheets/app/options.png"
+  alt="Google Sheets App Options"
+  width={750}
+  height={196}
+/>
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>Client Email Address</td>
+      <td>
+        Email of service client. This can be found at the{" "}
+        <a href="https://console.developers.google.com/apis/dashboard">
+          Google API Console
+        </a>
+        .
+      </td>
+    </tr>
+    <tr>
+      <td>Private Key</td>
+      <td>
+        The private key of the service account. This is managed in the API
+        console and can be downloaded in JSON format.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+## Google Sheets Import
+
+This type of Source reads from a single Google Sheets tab using a primary key reference. Properties can be generated from row values in the table you choose to link.
+
+### Options
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/google-sheets/google-sheets-import/options.png"
+  alt="Google Sheets Import Options"
+  width={750}
+  height={225}
+/>
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>App Option</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>Google Sheet URL (Required)</td>
+      <td>
+        This should be the entire URL for one Google Sheet including the gid
+        value which refers to a specific tab in the file.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+### Mapping
+
+Defining Mappings is a critical part of the process. It tells Grouparoo which Record to associate with the imported data.
+
+If you are using Google Sheets Import as the [primary source](https://www.grouparoo.com/docs/config/code-config/sources), choose the Google Sheet column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model. The Property mapped to this column will be assigned as the Model's Primary Key.
+
+In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources), choose the Google Sheet column that ties this table to your primary source. This will often be a foreign key in your table.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/google-sheets/google-sheets-import/mapping.png"
+  alt="Google Sheets Import Mapping"
+  width={750}
+  height={571}
+/>
+<br />
+
+### Schedule
+
+[Create a schedule](https://www.grouparoo.com/docs/config/sources#step-4-add-a-schedule) to actively pull new data from this Google Sheets table. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/google-sheets/google-sheets-import/schedule.png"
+  alt="Google Sheets Import Schedule"
+  width={750}
+  height={229}
+/>
+<br />
+<br />
+
+#### Options
+
+Google Sheet Import Sources have no further options for configuration.
+
+#### Filters
+
+Google Sheet Import Sources do not support schedule related filters in configuration.
+
+### Properties
+
+Properties populate your Records with data from your Google Sheets table based on table columns. [Create a Property](https://www.grouparoo.com/docs/config/properties) to be able to use row data in Grouparoo.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/google-sheets/google-sheets-import/properties.png"
+  alt="Google Sheets Import Properties"
+  width={750}
+  height={413}
+/>
+<br />
+<br />
+
+#### Options
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Google Sheet Column</strong> (required)
+      </td>
+      <td>
+        Choose a column that will be the source of data for this Grouparoo
+        Property
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Aggregation Method</strong> (required)
+      </td>
+      <td>
+        Aggregation methods determine how to use the row values in the table.
+        Google Sheets Sources support only the <em>exact</em> use of table
+        values.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+#### Filters
+
+Google Sheet Import Sources do not support property related filters in configuration.
+
+<PluginDocsIntegrationNotes plugin="Google Sheets" />

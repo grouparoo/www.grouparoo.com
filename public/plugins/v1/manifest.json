@@ -97,7 +97,7 @@
     "source": true,
     "destination": false,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/google-sheets",
-    "docsUrl": null
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-google-sheets"
   },
   {
     "name": "Hubspot",
@@ -177,7 +177,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/mixpanel",
-    "docsUrl": null
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-mixpanel"
   },
   {
     "name": "Mongo",

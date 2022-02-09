@@ -1,0 +1,162 @@
+---
+title: "Mixpanel"
+date: "2022-02-04"
+pullQuote: "Learn how to work with the Mixpanel Integration as a Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Mixpanel" />
+
+## Overview
+
+Mixpanel is a marketing analysis tool that helps you understand how users interact with your products. Grouparoo can help you sync data from a centralized warehouse to Mixpanel for enhanced data quality and assurance in the most up to date information for your Mixpanel analysis.
+
+### Destinations
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Destination Name</td>
+      <td>Destination Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>
+          <a href="#mixpanel-export-profiles">Mixpanel Export Profiles</a>
+        </strong>
+      </td>
+      <td>Export Records to Mixpanel as User Profiles</td>
+    </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+You will need a Mixpanel account and some additional information from your MixPanel account in order to sync data to Mixpanel.
+
+Navigate to Settings and choose the project you want to connect to from the subheading called Project Settings. On the Overview Page, you can find the Project Id.
+
+The Token needed for configuration is also listed in the Overview Page, under the heading of Access Keys.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mixpanel/setup/setup-1.png"
+  alt="Mixpanel Setup"
+  width={750}
+  height={395}
+/>
+<br />
+
+Two other values you will need to configure a Mixpanel App in Grouparoo are found under Project Settings → Service Accounts. There, you will see a list of usernames. The Secret associated with each username is only available upon creation. If you need to create a new service account to access a secret for configuration, be sure to set the project role for that account to Admin.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mixpanel/setup/setup-2.png"
+  alt="Mixpanel Setup"
+  width={750}
+  height={405}
+/>
+<br />
+
+## App
+
+To connect Mixpanel to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) which tells Grouparoo the details of how to connect to Mixpanel. This specifies the account used for any Destinations.
+
+### App Options
+
+In Grouparoo’s UI config, you specify the options to connect to Mailjet and test the connection.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mixpanel/app/options.png"
+  alt="Mixpanel App Options"
+  width={750}
+  height={426}
+/>
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Token</strong> (required)
+      </td>
+      <td>Mixpanel API Token</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>User Name</strong> (required)
+      </td>
+      <td>Mixpanel API Service Account Username</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Secret</strong> (required)
+      </td>
+      <td>Mixpanel API Service Account Secret</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Project ID</strong> (required)
+      </td>
+      <td>Mixpanel project id</td>
+    </tr>
+  </tablebody>
+</table>
+
+## Mixpanel Export Profiles
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. The following are supported by Mixpanel:
+
+- **Sync**: Add, update, and remove Mixpanel Profiles as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Mixpanel Profiles as needed, but do not remove anybody. This option looks for new Profiles to add to Mixpanel and changes to existing Mixpanel Profiles, but does not keep track of deletions.
+- **Enrich**: Only update those Profiles that already exist in Mixpanel. Do not add or remove Profiles. This option will only update existing Profiles in Mixpanel.
+
+### Destination Options
+
+Some types of Destinations require further clarification about how data should sync. In the case of Mailjet, there are no further Options to configure before moving on to mapping Record Data.
+
+### Record Data
+
+Mapping Grouparoo Record Properties to Mixpanel Profile Properties is the key to syncing data to Mixpanel Profiles.
+
+Mixpanel Profile Properties can be used for customizing marketing campaigns and they allow you to personalize communications and segment your audience into lists for targeted mailings.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mixpanel/export-profiles/properties.png"
+  alt="Mixpanel Export Profiles Properties"
+  width={750}
+  height={636}
+/>
+<br />
+<br />
+
+#### Required Properties
+
+The only Grouparoo Property that is required to map to a Mixpanel Profile Property is **$distinct_id**. Choose the Grouparoo Property that corresponds with the Profile’s unique id.
+
+- **$distinct_id: **a Profile’s unique id in Mixpanel
+
+#### Optional Properties
+
+In addition to required fields, Mixpanel allows you to map a wide variety of data points about Profiles to a variety of Properties. This allows you to store useful details about subscribers. You can find those you have already created by scrolling through the dropdown menu in the Send Record Property portion of the form. Any of these can be synced to from Grouparoo Properties.
+
+### Group Data
+
+In addition to mapping Grouparoo Properties to Mixpanel Profile Properties, you can use Grouparoo Groups to add Profiles to Mixpanel Groups.
+
+These Groups help marketers to engage with customers and business prospects more effectively. This segmentation helps businesses target the most appropriate portion of a list for each campaign. It can also inform strategies for retention and report-building using Mixpanel’s suite of tools.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/mixpanel/export-profiles/groups.png"
+  alt="Mixpanel Export Profiles Groups"
+  width={750}
+  height={215}
+/>
+<br />
+<br />
+
+<PluginDocsIntegrationNotes plugin="Mixpanel" />
