@@ -1,11 +1,11 @@
-import { Container, Button, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
 import SEO from "../components/SEO";
 import {
   GetStartedCard,
   GetStartedCardProps,
 } from "../components/getStarted/GetStartedCard";
-
+import { urlize } from "../utils/inflectors";
 export default function GetStarted({ props }) {
   const cardContents: GetStartedCardProps[] = [
     {
@@ -48,7 +48,10 @@ export default function GetStarted({ props }) {
         <Row className="d-flex justify-content-center">
           {cardContents.map((cardContent) => {
             return (
-              <Col className="mb-4 col-12 col-xl-5 col-md-7">
+              <Col
+                className="mb-4 col-12 col-xl-5 col-md-7"
+                key={urlize(cardContent.title)}
+              >
                 <GetStartedCard {...cardContent} />
               </Col>
             );

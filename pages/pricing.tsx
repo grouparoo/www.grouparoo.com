@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col, Table } from "react-bootstrap";
-import Link from "next/link";
 import SEO from "../components/SEO";
 import {
   PricingCard,
@@ -8,6 +7,7 @@ import {
 } from "../components/pricing/PricingCard";
 import { PricingTable } from "../components/pricing/PricingTable";
 import PricingPlans from "../components/pricing/PricingPlans";
+import { urlize } from "../utils/inflectors";
 
 export default function PricingPage() {
   const cardContents: PricingCardProps[] = [
@@ -77,7 +77,10 @@ export default function PricingPage() {
         <Row className="mx-auto row-cols-1 row-cols-md-2 row-cols-lg-3 d-flex align-items-stretch">
           {cardContents.map((cardContent) => {
             return (
-              <Col className="mb-4 mx-auto d-flex align-items-stretch">
+              <Col
+                className="mb-4 mx-auto d-flex align-items-stretch"
+                key={urlize(cardContent.title)}
+              >
                 <PricingCard {...cardContent} />
               </Col>
             );
