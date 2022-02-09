@@ -4,7 +4,7 @@ date: "2022-02-09"
 pullQuote: "Definitions and examples of Grouparoo configuration files."
 ---
 
-Grouparoo projects contain configuration files for Apps, Models, Sources, Properties, Groups, Destinations, and any other objects is exported into config files.
+Grouparoo projects contain configuration files for Apps, Models, Sources, Properties, Groups, Destinations, and any other objects generated in the course of configuration.
 These config files can be created and updated with [UI config](/docs/config).
 
 Config files are either JSON or JavaScript which allow you the flexibility to manipulate data or load configuration from external sources.
@@ -41,9 +41,9 @@ Every type of object has its own definition but all of them require these attrib
 The App configures the connections available to create Sources and Destinations.
 
 - `id`: (**required**) Unique identifier for this app config.
-- `name`: (**required**) A display name. It matches the `id` by default.
+- `name`: (**required**) A display name for the app.
 - `class`: (**required**) This must be set to `"App"`.
-- `type`: (**required**) The type of the app define by a plugin. While the type can match the name of the plugin, plugins may offer multiple apps and the names may not match.
+- `type`: (**required**) The type of the app defined by a plugin. While the type can match the name of the plugin, plugins may offer multiple apps and the names may not match.
 - `refresh`: App refresh query. See below for details.
 - `options`: The App configuration options. These vary depending on the type of app.
 
@@ -86,7 +86,7 @@ App Refresh Query enables Grouparoo to check your data warehouse for new data, a
 - Snowflake
 - SQLite
 
-For the best results, configure your query up to return a single row of data. For example, you might set it up as:
+For the best results, configure your query to return a single row of data. For example, you might set it up as:
 
 ```JSON
   "refresh": {
@@ -121,7 +121,7 @@ The Model config file is currently very basic:
 
 ## Source Config
 
-Each Source has a common set of options, while other options are specific to the _type_ of Source. Here are the common options:
+Each Source has a common set of attributes. Certain _types_ of Sources may have additional attributes, but all Sources will have the following common attributes:
 
 - `class`: (**required**) Should be set to `"Source"`.
 - `id`: (**required**) The unique value that identifies this Source.
@@ -154,7 +154,7 @@ Each Source has a common set of options, while other options are specific to the
 
 A Schedule tells Grouparoo how frequently to check the Source for updated data and import it into the Application Database. This is the most common way to keep data fresh in Grouparoo.
 
-Here are the options for a Schedule:
+Here are the attributes for a Schedule:
 
 - `id`: (**required**) Like the Source, a Schedule must have a unique `id` to identify it.
 - `name`: (**required**) A display name. It matches the `id` by default.
@@ -213,7 +213,7 @@ If you've configured an App Refresh Query when you configured your App, you can 
 
 ## Property Config
 
-Each Property has a common set of options, while other options are specific to the _type_ of Property. Here are the common attributes:
+Each Property has a common set of attributes, while other attributes are specific to the _type_ of Property. Here are the common attributes:
 
 - `class`: (**required**) Should be set to `"Property"`.
 - `id`: (**required**) The unique value that defines this Property.
@@ -396,7 +396,8 @@ Note you can use SQL wildcard characters (%, \_, [ ], ^, -) in your Group rule m
 
 ## Destination Config
 
-Each Destination has a common set of options, while other options are specific to the _type_ of Destination. Here are the commons set of options that may look similar to other config object shapes in Grouparoo:
+Each Destination has a common set of attributess. Certain _types_ of Destinations may have additional attributes, but all Destinations will have the common attributes.
+These common attributes, which may look very similar to other config object shapes in Grouparoo, are listed here:
 
 - `id`: (**required**) The unique value that defines this Destination.
 - `name`: (**required**) A display name for the Destination. Will be set to the `id` by default.
@@ -457,7 +458,10 @@ Notice the odd structure of the keys. That's specific to Mailchimp.
 
 **Destination Group Membership**
 
-Grouparoo also provides the ability to attach Group membership to the exported data. How this looks within the Destination is specific to the Destination. But the shape of the config file largely remains the same. In most Destinations, Destinations Group Memberships become either tags (Mailchimp), lists (Hubspot), or appended as additional properties to the Record (Customer.io).
+Grouparoo also provides the ability to attach Group membership to the exported data.
+How this looks within the Destination is specific to the Destination.
+But the shape of the config file largely remains the same.
+In most Destinations, Destination Group Memberships become either tags (Mailchimp) or lists (Hubspot), or are appended as additional properties to the Record (Customer.io).
 
 `destinationGroupMemberships` are a set of key-value pairs that tell Grouparoo which memberships to publish to the Destination. For example, you may have sent all your users to a Mailchimp Destination, but you wanted to tag high-value customers. That config might look something like this:
 
@@ -498,7 +502,7 @@ See [the Secrets page](/docs/deployment/secrets) for more information about usin
 
 **JavaScript Functions**
 
-Code config files can be use JavaScript functions that can export an `async` method, which can `await` while loading data from an database or API. (See the _Examples_ section below.)
+Code config files can use JavaScript functions that can export an `async` method, which can `await` while loading data from a database or API. (See the _Examples_ section below.)
 
 ## Example Configs
 
