@@ -1,0 +1,164 @@
+---
+title: "Advanced Config File Usage"
+date: "2022-02-09"
+pullQuote: "Additional features for managing Grouparoo config files"
+---
+
+You can take Grouparoo [config files](/docs/support/config-files) to the next level with a few features:
+
+- [Using Environment Variables](#using-environment-variables)
+- [Using JavaScript](#using-javascript)
+- [Defining Multiple Objects in one File](#defining-multiple-objects-in-one-file)
+
+## Using Environment Variables
+
+There are cases where values on the config files need to be dynamic. These may include sensitive information such as API keys, passwords, etc.
+
+You can define environment variables with the following pattern:
+
+```bash
+export GROUPAROO_OPTION__{topic}__{name}={value}
+```
+
+<Alert variant="warning">
+  <p className="mb-0">⚠️ The topic must be surrounded by double underscores.</p>
+</Alert>
+
+You can also set these variables in your Grouparoo project's `.env` file.
+
+**Example:**
+
+If you want to set a variable called `MAILCHIMP_API_KEY` for use only in Mailchimp Apps, you would set `GROUPAROO_OPTION__APP__MAILCHIMP_API_KEY=abc123`.
+You can then use the value in your config file:
+
+```JSON
+{
+  "class": "App",
+  "id": "mailchimp",
+  "name": "Mailchimp",
+  "type": "mailchimp",
+  "options": {
+    "apiKey": "MAILCHIMP_API_KEY" // Note that the `GROUPAROO_OPTION__APP__` is omitted.
+  }
+}
+```
+
+See [the Secrets page](/docs/deployment/secrets) for more information about using environment variables for config.
+
+For an additional example, you can browse [app-example-config](https://github.com/grouparoo/app-example-config/) on Github.
+
+## Using JavaScript
+
+Grouparoo also supports migrating JSON config files to JavaScript.
+
+Note that once your file is on JavaScript, you will no longer be able to edit the configuration with Config UI, but you will only be to see a read-only version of the configuration.
+You will be expected to edit the file manually.
+
+**Example:**
+
+Let‘s define a Postgres App called "Data Warehouse" in code. Here's what the JSON file would look like:
+
+```json
+// file: config/apps/data_warehouse.json
+[
+  {
+    "name": "Data Warehouse",
+    "id": "data_warehouse",
+    "class": "App",
+    "type": "postgres",
+    "options": {
+      "host": "127.0.0.1",
+      "port": "5432",
+      "username": "person",
+      "password": "pass",
+      "database": "data_warehouse"
+    }
+  }
+]
+```
+
+You can convert the file to JavaScript by updating the extension and using the [CommonJS module](https://nodejs.org/api/modules.html) syntax:
+
+```js
+// file: config/apps/data_warehouse.js
+
+exports.default = [
+  {
+    name: "Data Warehouse",
+    id: "data_warehouse",
+    class: "App",
+    type: "postgres",
+    options: {
+      host: "127.0.0.1",
+      port: "5432",
+      username: "person",
+      password: "pass",
+      database: "data_warehouse",
+    },
+  },
+];
+```
+
+Additionally, you can use async/await functions to dynamically load a value:
+
+```js
+// file: config/apps/data_warehouse.js
+
+exports.default = async function GetDataWarehouseConfig() {
+  const { databasePassword } = await fetch(`/api/company/secrets`);
+
+  return [
+    {
+      name: "Data Warehouse",
+      class: "App",
+      id: "data_warehouse",
+      type: "postgres",
+      options: {
+        host: "127.0.0.1",
+        port: "5432",
+        username: "person",
+        password: databasePassword,
+        database: "data_warehouse",
+      },
+    },
+  ];
+};
+```
+
+## Defining Multiple Objects in one File
+
+No matter which type of file you create for your code config, you can export more than one object per file. You can do this by wrapping all the objects in an array.
+
+```json
+// file: config/apps/databases.json
+[
+  {
+    "name": "Data Warehouse",
+    "id": "data_warehouse",
+    "class": "app",
+    "type": "postgres",
+    "options": {
+      "host": "datawarehouse.db.internal",
+      "port": "5432",
+      "username": "person",
+      "password": "pass",
+      "database": "data_warehouse"
+    }
+  },
+  {
+    "name": "Product DB Replica",
+    "id": "replica_db",
+    "class": "app",
+    "type": "postgres",
+    "options": {
+      "host": "replica.production.db.internal",
+      "port": "5432",
+      "username": "person",
+      "password": "pass",
+      "database": "product_db"
+    }
+  }
+]
+```
+
+<ValidateAndApplyConfig />
