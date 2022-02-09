@@ -1,7 +1,7 @@
 import { Card, Button, Row } from "react-bootstrap";
 import Image from "../Image";
 
-interface GetStartedCardProps {
+export interface GetStartedCardProps {
   title: string;
   image: string;
   imageWidth: string;

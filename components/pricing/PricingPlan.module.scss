@@ -1,0 +1,8 @@
+@use "../../scss/variables";
+
+@media (min-width: 768px) {
+  .responsiveBorders {
+    border-left: 2px solid rgba(variables.$grouparoo-blue, 0.25);
+    border-right: 2px solid rgba(variables.$grouparoo-blue, 0.25);
+  }
+}

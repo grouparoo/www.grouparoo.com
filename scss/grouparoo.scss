@@ -11,7 +11,7 @@ $mobile-font-breakpoint: 800px;
 
 // Page Defaults
 body {
-  background-color: $grouparoo-background-blue;
+  background-color: white;
 }
 
 form {
@@ -262,11 +262,6 @@ a,
       color: $grouparoo-font-color !important;
     }
   }
-}
-
-// -- Get Started --
-#getStartedContainer {
-  background-color: #e9ecef;
 }
 
 // -- Homepage --

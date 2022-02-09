@@ -1,40 +1,53 @@
 import { Card, Button } from "react-bootstrap";
-import Link from "next/link";
 import styles from "../../pages/pricing.module.scss";
-interface PricingCardProps {}
+export interface PricingCardProps {
+  title: string;
 
-export const PricingCard = () => {
+  blurb?: string;
+  subtitle: string;
+  listItems: string[];
+  buttonVariant: string;
+  buttonText: string;
+  footerText?: string;
+}
+
+export const PricingCard = ({
+  title,
+  blurb,
+  subtitle,
+  listItems,
+  buttonVariant,
+  buttonText,
+  footerText,
+}: PricingCardProps) => {
   return (
     <Card
       className={`mx-auto col-12 p-3
-shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
-      bg="white"
+shadow-lg h-100 text-start ${styles.featureCard} ${
+        title === "Standard Cloud" ? styles.bgLight : "bg-white"
+      }`}
     >
       <Card.Body className="d-flex align-items-start flex-column">
-        <div className="h3">Community Edition</div>
-        Grouparoo is open source and free to run in your own cloud.
+        <div className="h3">{title}</div>
+        {blurb && <p className="bold text-uppercase">{blurb}</p>}
+        <p>{subtitle}</p>
         <br />
-        <br />
-        <div className={styles.pricingList}>
+        <div className={`${styles.pricingList}`}>
           <b>Features include:</b>
-          <li>Realtime syncing infrastructure</li>
-          <li>Access to all Sources and Destinations </li>
-          <li>Configurable with code and our CLI</li>
-          <li>Dynamic Group definition</li>
-          <li>Ticket-based support</li>
-          <li>
-            Enterprise UI add-on available (
-            <Link href="/meet">contact sales</Link>)
-          </li>
+          <ul>
+            {listItems.map((listItem, idx) => {
+              return <li key={idx}>{listItem}</li>;
+            })}
+          </ul>
         </div>
         <Button
-          variant="outline-dark"
-          className="w-100 mx-auto mt-auto"
+          variant={buttonVariant}
+          className="w-100 mx-auto mt-auto rounded-pill"
           href="/docs/getting-started"
         >
-          Try it now
+          {buttonText}
         </Button>
-        <small> </small>
+        {footerText && <span className="small mt-4 mx-auto">{footerText}</span>}
       </Card.Body>
     </Card>
   );

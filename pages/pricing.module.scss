@@ -1,4 +1,4 @@
-@use "../scss/_variables.scss";
+@use "../scss/_variables.scss" as colors;
 
 .pricingList {
   font-size: 14px;
@@ -9,6 +9,6 @@
   min-height: 501px;
 }
 
-.lightBg {
-  background-color: variables.$grouparoo-light-violet;
+.bgLight {
+  background-color: colors.$grouparoo-light-violet;
 }

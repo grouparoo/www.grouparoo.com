@@ -1,19 +1,59 @@
 import React from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Button,
-  Table,
-  Image,
-} from "react-bootstrap";
+import { Container, Row, Col, Table } from "react-bootstrap";
+import Link from "next/link";
 import SEO from "../components/SEO";
-import styles from "./pricing.module.scss";
-import { PricingCard } from "../components/pricing/PricingCard";
+import {
+  PricingCard,
+  PricingCardProps,
+} from "../components/pricing/PricingCard";
 import { PricingTable } from "../components/pricing/PricingTable";
+import PricingPlans from "../components/pricing/PricingPlans";
 
 export default function PricingPage() {
+  const cardContents: PricingCardProps[] = [
+    {
+      title: "Community Edition",
+      subtitle: "Grouparoo is Open Source and free to run in your own cloud",
+      listItems: [
+        "Realtime syncing infrastructure",
+        "Access to all Sources and Destinations",
+        "Configurable with code and our CLI",
+        "Dynamic Group definition",
+        "Ticket-based support",
+        "Enterprise UI add-on available",
+      ],
+      buttonVariant: "outline-dark",
+      buttonText: "Try it Now",
+    },
+    {
+      title: "Standard Cloud",
+      blurb: "Starting at $150/month",
+      subtitle:
+        "For companies wanting to sync up to 1,000,000 Records to their destinations",
+      listItems: [
+        "Up to 1,000,000 Records synced/month",
+        "Tiered pricing based on monthly usage",
+        "Access to all Sources and Destinations",
+        "A no-code web UI allowing team members to access data",
+        "Business hours support",
+      ],
+      buttonVariant: "secondary",
+      buttonText: "Start free Trial",
+      footerText: "No credit card required.",
+    },
+    {
+      title: "Enterprise Cloud",
+      subtitle: "For engineers with larger datasets or unique use cases",
+      listItems: [
+        ">1,000,000 Records synced per month",
+        "Business hours support",
+        "Enhanced support response",
+      ],
+      buttonVariant: "secondary",
+      buttonText: "Contact Sales",
+    },
+  ];
+
   return (
     <>
       <SEO
@@ -24,146 +64,78 @@ export default function PricingPage() {
         title="Grouparoo Pricing Options"
       />
 
-      <div id="headline" className="text-center py-5">
-        <Container>
-          <Row>
-            <Col>
-              <h1>Grouparoo Pricing Options</h1>
-              <p className="text-big-muted">
-                Choose the best plan for you and your team, whether you want to
-                self-host or have Grouparoo host for you.
-              </p>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-      <div id="pricingPlans" className="text-center">
-        <Container>
-          <Row className="mx-auto row-cols-1 row-cols-md-2 row-cols-lg-3 d-flex align-items-stretch">
-            <Col className="mb-4 mx-auto d-flex align-items-stretch">
-              <PricingCard />
-            </Col>
-            <Col className="mb-4">
-              <Card
-                className={`mx-auto col-12 p-3
-                shadow-lg h-100 text-start feature-card ${styles.featureCard} ${styles.lightBg}`}
-              >
-                <Card.Body className="d-flex align-items-start flex-column">
-                  <div className="h3">Standard Cloud</div>
-                  <h5>Starting at $150/month</h5>
-                  For companies wanting to sync up to 1,000,000 Records to their
-                  destinations.
-                  <br />
-                  <br />
-                  <div className={styles.pricingList}>
-                    <b>Features include:</b>
-                    <li>Up to 1,000,000 Records synced/month</li>
-                    <li>Tiered pricing based on monthly usage</li>
-                    <li> Access to all Sources and Destinations</li>
-                    <li>
-                      {" "}
-                      A no-code web UI allowing team members to access data
-                    </li>
-                    <li> Business hours support</li>
-                  </div>
-                </Card.Body>
-                <Button
-                  variant="primary"
-                  className="w-100 mx-auto"
-                  href="/trial"
-                >
-                  Start free trial
-                </Button>
-                <small className="text-center pt-1">
-                  No credit card required
-                </small>
-              </Card>
-            </Col>
+      <Container className="mx-auto py-5">
+        <Row className="pb-5 text-center">
+          <Col>
+            <h1 className="pb-3">Grouparoo Pricing Options</h1>
+            <p className="text-big-muted">
+              Choose the best plan for you and your team, whether you want to
+              self-host or have Grouparoo host for you.
+            </p>
+          </Col>
+        </Row>
+        <Row className="mx-auto row-cols-1 row-cols-md-2 row-cols-lg-3 d-flex align-items-stretch">
+          {cardContents.map((cardContent) => {
+            return (
+              <Col className="mb-4 mx-auto d-flex align-items-stretch">
+                <PricingCard {...cardContent} />
+              </Col>
+            );
+          })}
+        </Row>
+        <Row className="col-10 mx-auto">
+          <PricingTable />
+        </Row>
 
-            <Col className="mb-4 mx-auto ">
-              <Card
-                className={`mx-auto col-12 p-3
-                 shadow-lg h-100 text-start feature-card ${styles.featureCard}`}
-              >
-                <Card.Body className="d-flex align-items-start flex-column">
-                  <div className="h3">Enterprise Cloud</div>
-                  For enterprises with larger data sets or unique use cases.
-                  <br />
-                  <br />
-                  <div className={styles.pricingList}>
-                    <b>Features include:</b>
-                    <li> &gt; 1,000,000 Records synced/month</li>
-                    <li> Business hours support</li>
-                    <li> Enhanced support response time SLAs</li>
-                  </div>
-                  <Button
-                    variant="primary"
-                    className="w-100 mx-auto mt-auto"
-                    href="/meet"
-                  >
-                    Contact Sales
-                  </Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-      <div className="col-9 mx-auto">
-        <PricingTable />
-      </div>
-      <br />
-      <br />
-      <div id="frequently-asked-questions">
-        <Container>
-          <Row>
-            <Col>
-              <h2>Frequently Asked Questions</h2>
-              <br />
-              <h4>Is the Community edition of Grouparoo really free?</h4>
-              <p>
-                Yes! Our Community edition is open source and free. You will
-                need to be able to host it somewhere such as Heroku or AWS.
-              </p>
-              <h4>
-                What are Records, and how is Pricing based on Record volume?
-              </h4>
-              <p>
-                Records are the primary object type in Grouparoo. Records may be
-                people, such as leads or contacts, or a different object such as
-                companies or accounts. Your Destination will determine what type
-                of Record you use.
-              </p>
-              <p>
-                Pricing is based on monthly synced Records. Each Record that you
-                send to a Destination is a single synced Record, regardless of
-                how many destinations it goes to. You can monitor your monthly
-                usage at any time from your Grouparoo dashboard.
-              </p>
-              <h4>
-                Is there a limit to the number of Sources and Destinations that
-                I can use?
-              </h4>
-              <p>
-                Nope! Whether you're using the Community, Cloud, or Enterprise
-                editions of Grouparoo, you can connect as many Sources and
-                Destinations as you'd like.
-              </p>
-              <h4>Do you have onboarding support?</h4>
-              <p>
-                For customers on the Cloud or Enterprise plans, we provide
-                hands-on support for getting set up with Grouparoo. For folks
-                using the Community edition of Grouparoo, you can join the
-                Grouparoo <a href="docs/community">community</a> and discuss any
-                questions or topics you may have there. We're also active in the
-                community, so we're happy to help!
-              </p>
-            </Col>
-          </Row>
-        </Container>
-        <br />
-        <br />
-      </div>
+        <PricingPlans />
+        <Row>
+          <Col>
+            <h2>Frequently Asked Questions</h2>
+            <br />
+            <h4>Is the Community edition of Grouparoo really free?</h4>
+            <p>
+              Yes! Our Community edition is open source and free. You will need
+              to be able to host it somewhere such as Heroku or AWS.
+            </p>
+            <br />
+            <h4>
+              What are Records, and how is Pricing based on Record volume?
+            </h4>
+            <p>
+              Records are the primary object type in Grouparoo. Records may be
+              people, such as leads or contacts, or a different object such as
+              companies or accounts. Your Destination will determine what type
+              of Record you use.
+            </p>
+            <p>
+              Pricing is based on monthly synced Records. Each Record that you
+              send to a Destination is a single synced Record, regardless of how
+              many destinations it goes to. You can monitor your monthly usage
+              at any time from your Grouparoo dashboard.
+            </p>
+            <br />
+            <h4>
+              Is there a limit to the number of Sources and Destinations that I
+              can use?
+            </h4>
+            <p>
+              Nope! Whether you're using the Community, Cloud, or Enterprise
+              editions of Grouparoo, you can connect as many Sources and
+              Destinations as you'd like.
+            </p>
+            <br />
+            <h4>Do you have onboarding support?</h4>
+            <p>
+              For customers on the Cloud or Enterprise plans, we provide
+              hands-on support for getting set up with Grouparoo. For folks
+              using the Community edition of Grouparoo, you can join the
+              Grouparoo <a href="docs/community">community</a> and discuss any
+              questions or topics you may have there. We're also active in the
+              community, so we're happy to help!
+            </p>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }

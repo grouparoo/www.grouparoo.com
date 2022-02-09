@@ -1,28 +1,22 @@
 import { Row, Col, Table } from "react-bootstrap";
-import Link from "next/link";
 import Image from "../Image";
 import styles from "./PricingTable.module.scss";
 export const PricingTable = () => {
   return (
     <Row className="mt-3 mx-auto">
-      <Col style={{ overflowX: "scroll" }}>
-        <Table
-          className={`text-center bg-white ${styles.removeHeadBorders}`}
-          style={{ minWidth: 600 }}
-        >
+      <Col className="overflow-auto">
+        <Table className={`text-center bg-white ${styles.customTable}`}>
           <thead>
             <tr>
-              <th scope="col"></th>
+              <th scope="col" className="w-50" />
               <th scope="col">Community</th>
-              <th scope="col" className={styles.clearBorders}>
-                Standard Cloud
-              </th>
+              <th scope="col">Standard Cloud</th>
               <th scope="col">Enterprise Cloud</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td colSpan={4} className="text-start h5">
+              <td colSpan={12} className="text-start h5">
                 FEATURES
               </td>
             </tr>
@@ -115,7 +109,7 @@ export const PricingTable = () => {
             </tr>
             <tr>
               <td className="text-start">Configurable in the UI</td>
-              <td>License Available</td>
+              <td>add-on</td>
               <td>
                 <Image
                   src="/images/grouparoo-purple-checkmark.svg"
@@ -218,7 +212,7 @@ export const PricingTable = () => {
               </td>
             </tr>
             <tr>
-              <td colSpan={4} className="text-start h5">
+              <td colSpan={12} className="text-start h5">
                 SUPPORT
               </td>
             </tr>
@@ -299,48 +293,8 @@ export const PricingTable = () => {
             <tr>
               <td className="text-start">Enhanced Support SLAs</td>
               <td> - </td>
-              <td>Add-on</td>
-              <td>Add-on</td>
-            </tr>
-            <tr>
-              <td colSpan={4} className="text-start h5">
-                PRICING / USAGE
-              </td>
-            </tr>
-            <tr className="align-middle">
-              <td className="text-start">Monthly usage/price</td>
-              <td>
-                Free
-                <br />
-                <br />
-                Enterprise UI: $100/mo
-              </td>
-              <td>
-                <table className="table mb-0">
-                  <tbody>
-                    <tr className="w-100 mx-auto">
-                      <td className="border-bottom-1 border-bottom-light">
-                        100K synced Records: $150/mo
-                      </td>
-                    </tr>
-                    <tr className="w-100 mx-auto">
-                      <td className="border-bottom-1 border-bottom-light">
-                        300K synced Records: $300/mo
-                      </td>
-                    </tr>
-                    <tr className="w-100 mx-auto">
-                      <td className="border-bottom-0">
-                        1,000,000 synced Records: $600/mo
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td>
-                &gt; 1,000,000 synced Records:
-                <br />
-                <Link href="/meet">Contact sales</Link>
-              </td>
+              <td>add-on</td>
+              <td>add-on</td>
             </tr>
           </tbody>
         </Table>
