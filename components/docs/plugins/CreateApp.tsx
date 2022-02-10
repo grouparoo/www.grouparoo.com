@@ -78,7 +78,7 @@ exports.default = async function buildConfig() {
       <Alert variant="primary">
         <p className="mb-0">
           Every config object has a similar starting shape.{" "}
-          <Link href="/docs/config/code-config#config-object-shapes">
+          <Link href="/docs/support/config-files">
             Learn more about config object shapes
           </Link>
           .

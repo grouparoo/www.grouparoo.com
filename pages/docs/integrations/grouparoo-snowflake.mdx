@@ -159,9 +159,9 @@ There is one required option to select for this type of Source.
 
 Defining Mappings is a critical part of the process. This step tells Grouparoo which Record to associate with the imported data.
 
-If you are using Snowflake Import Table as the [primary source](https://www.grouparoo.com/docs/config/code-config/sources), choose the Snowflake column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model. The Property mapped to this column will be assigned as the Model's Primary Key.
+If you are using Snowflake Import Table as the [primary source](/docs/config/sources#configuring-primary-source), choose the Snowflake column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model. The Property mapped to this column will be assigned as the Model's Primary Key.
 
-In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources), choose the Snowflake column that ties this table to your primary source. This will often be a foreign key in your table.
+In [secondary sources](/docs/config/sources#configuring-secondary-sources), choose the Snowflake column that ties this table to your primary source. This will often be a foreign key in your table.
 
 <ImageInBrowserFrame
   src="/images/docs/integrations/snowflake/import-table/mapping.png"
@@ -174,7 +174,7 @@ In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources
 
 ## Schedule
 
-[Create a schedule](https://www.grouparoo.com/docs/config/sources#step-4-add-a-schedule) to actively pull new data from this Snowflake table. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh. When Recurring is selected, you will see a field for entering the frequency, in minutes, of recurrence.
+[Create a schedule](/docs/config/sources#step-3-add-a-schedule) to actively pull new data from this Snowflake table. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh. When Recurring is selected, you will see a field for entering the frequency, in minutes, of recurrence.
 
 #### Options
 
@@ -248,10 +248,8 @@ Properties populate your Records with data from your Snowflake table based on ta
       <td>
         Aggregation methods determine how to use the row values in the table.
         Snowflake supports the{" "}
-        <a href="https://www.grouparoo.com/docs/config/code-config/properties#aggregation-method-and-filters">
-          standard set
-        </a>{" "}
-        of aggregation methods for table sources.
+        <a href="/docs/support/config-files#properties">standard set</a> of
+        aggregation methods for table sources.
       </td>
     </tr>
   </tablebody>
