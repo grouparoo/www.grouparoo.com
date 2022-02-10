@@ -1,0 +1,68 @@
+---
+title: "ETL Testing Process"
+seoTitle: "ETL Testing Process"
+date: "2022-02-10"
+author: "Micah Bello"
+pullQuote: "ETL testing is the process of verifying and validating the data being moved to ensure that it is extracted, transformed, and loaded correctly into the destination system."
+seoDescription: "Looking to learn more about the ELT testing process? The Grouparoo experts will walk you through the data integration terms you should know. ✓ Start a free trial now!"
+twitterCard: summary_large_image
+image: "etl-testing-process/etl.png"
+tags: [engineering, data]
+---
+
+Today, organizations are adopting modern ETL tools and approaches to gain as many insights as possible from their data. However, to ensure the accuracy and reliability of such insights, effective ETL testing needs to be performed. So what is an ETL tester’s responsibility? In this ETL testing tutorial, we’ll look at what ETL testing involves, the different types of ETL tests, and some challenges of ETL testing.
+
+## What is ETL Testing?
+
+To understand ETL testing, we first need to understand how ETL works. ETL (Extract, Transform, Load) refers to the process of extracting data from source systems, transforming it into appropriate formats, and loading it into a target system.
+
+<Image
+  alt="a hand holding a glass sphere to the sky with inverted reflections of a flag and building"
+  src="etl-testing-process/etl.jpg"
+  centered
+  height={730}
+  width={1095}
+/>
+
+ETL testing is the process of verifying and validating the data being moved to ensure that it is extracted, transformed, and loaded correctly into the destination system. ETL QA also serves to ensure data quality by minimizing data loss, duplicate records, and invalid data.
+
+ETL testing is also used to verify that the ETL process runs smoothly without any bottlenecks or major performance issues. The testing process is often performed during the initial setup of a data warehouse after new data sources are added to a pipeline and after data integration and migration projects.
+
+ETL testing can be challenging since most ETL systems process large volumes of heterogeneous data. However, establishing clear requirements from the start can make it easier for ETL testers to perform the required tests.
+
+## Stages of the ETL Testing Process
+
+The ETL testing process can be broken down into 8 different stages. Let’s take a closer look at these stages.
+
+1. **Establish business requirements.** The first stage in ETL process testing involves clearly defining the scope of the project, designing the data model, and identifying data sources. During this stage, the business flow is also defined and reporting needs are assessed.
+2. **Validate data sources.** Next, the data sources need to be validated to ensure that all required data is moved properly and that there are no duplicate records. Without proper validation, the reports generated could be inaccurate.
+3. **Design test cases.** The next stage involves creating test scenarios and corresponding test cases to check for data completeness, consistency, quality, and cleanness. The mapping document is also validated to ensure that it contains the required ETL information.
+4. **Extract data from source systems.** During this stage of the testing process, the Extract part of ETL is performed. Issues encountered during the extraction of data from the source systems are reported and resolved before moving on to the next stage.
+5. **Transform the extracted data.** Once the data has been extracted properly, the necessary transformations are performed to ensure that the data matches the schema of the target system. During this process, the data flow is validated and the data threshold and alignment are inspected.
+6. **Load the transformed data into the data warehouse.** To ensure that all valid records are properly loaded, the number of records is checked before and after the data is loaded into the target warehouse.
+7. **Create a summary report.** Issues identified during the testing process are documented in a summary report, which provides stakeholders with key information about the testing process and its results.
+8. **File Test Closure.** The ETL testing process is concluded and a test closure is filed.
+
+## Types of ETL Testing
+
+There are many different types of tests that are performed during ETL testing. They can be divided into four broad categories: new system testing, migration tests, report testing, and change testing. Here are nine common tests that are executed during ETL testing.
+
+1. **Production validation.** This type of ETL testing is also called “table balancing” or “production reconciliation”. It is performed on data being loaded into production systems by comparing it with the source data. Production validation helps to prevent production systems from being compromised by bad data.
+2. **Source to target validation.** This type of ETL validation is carried out to ensure that the extracted and transformed data values meet expectations and that data isn’t lost or truncated.
+3. **Performance testing. **Performance testing verifies that the ETL process is performant and scalable. It ensures that data is extracted, transformed, and loaded into the target system within an acceptable time frame.
+4. **Metadata testing.** This involves validating data types, lengths, indexes, and constraints of the ETL metadata such as data quality metrics and load statistics.
+5. **Data quality testing.** Data quality testing aims to ensure that the ETL system rejects and reports invalid data. It includes syntax tests, reference tests, precision checks, and null checks, among others.
+6. **Data transformation testing.** This type of testing is carried out by writing SQL queries for the rows of data to ensure that the data is properly transformed in line with the business requirements.
+7. **Data integration testing.** This is done to confirm that data from the different source systems has been correctly loaded into the destination data warehouse.
+8. **Report testing.** Report testing involves reviewing the summary report to ensure that the calculations and conclusions in it are valid and that the layout and functionality are as expected.
+9. **Data completeness testing.** This often involves validating aggregates, counts, and data values between the source and target systems.
+
+Other types of testing that may also be performed during ETL testing include incremental ETL testing, acceptance testing, and GUI/Navigation testing.
+
+## Conclusion
+
+As more organizations switch to efficient cloud alternatives for their software needs, the future of ETL testing will undoubtedly involve AI and cloud computing. Today, using the right ETL testing tool is essential for efficient ETL QA testing. ETL testing can also be carried out on modern approaches to data integration such as ELT and [reverse ETL](https://www.grouparoo.com/solutions/reverse-etl).
+
+Grouparoo is a modern reverse ETL data pipeline tool that enables you to leverage the data you already have in your data warehouse to make better-informed business decisions. It’s easy to set up and use and integrates with a wide selection of CRMs, data warehouses, databases, ad platforms, and SaaS marketing tools.
+
+_featured image via [unsplash](https://unsplash.com/photos/p9EQ5Uqny5I)_
