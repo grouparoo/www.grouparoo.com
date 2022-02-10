@@ -8,6 +8,7 @@ export interface GetStartedCardProps {
   tagline: string;
   buttonVariant: string;
   buttonText: string;
+  href: string;
   footerText?: string;
 }
 export const GetStartedCard = ({
@@ -17,6 +18,7 @@ export const GetStartedCard = ({
   tagline,
   buttonVariant,
   buttonText,
+  href,
   footerText,
 }: GetStartedCardProps) => {
   return (
@@ -32,7 +34,7 @@ export const GetStartedCard = ({
         <Row>
           <Button
             variant={buttonVariant}
-            href="/docs/getting-started"
+            href={href}
             className="col-4 rounded-pill mx-auto"
           >
             {buttonText}

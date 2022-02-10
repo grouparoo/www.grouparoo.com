@@ -15,6 +15,7 @@ export default function GetStarted({ props }) {
       tagline: "Grouparoo is open source and free to run in your own cloud.",
       buttonVariant: "outline-dark",
       buttonText: "Learn More",
+      href: "/docs/getting-started",
     },
     {
       title: "Cloud",
@@ -23,6 +24,7 @@ export default function GetStarted({ props }) {
       tagline: "Get syncing from databases to SaaS tools right away.",
       buttonVariant: "secondary",
       buttonText: "Start Free Trial",
+      href: "/trial",
       footerText: "No credit card required",
     },
   ];
