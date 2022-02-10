@@ -39,7 +39,7 @@ export default function PricingPlans() {
             </Row>
             <Row className="h-100 pt-3 d-flex align-items-center">
               <div>
-                <p>&gt; 1,000,000 Synced Records</p>
+                <p>&gt; 1,000,000 Unique Records Synced</p>
                 <p>
                   <Link href="/meet">Contact sales</Link>
                 </p>
