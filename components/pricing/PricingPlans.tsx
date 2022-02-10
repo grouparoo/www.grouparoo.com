@@ -28,7 +28,7 @@ export default function PricingPlans() {
               <div>
                 <p>100K Unique Records Synced: $150/mo</p>
                 <p>300K Unique Records Synced: $300/mo</p>
-                <p>1,000,000 Synced Records: $600/mo</p>
+                <p>1,000,000 Unique Records Synced: $600/mo</p>
               </div>
             </Row>
           </Col>
