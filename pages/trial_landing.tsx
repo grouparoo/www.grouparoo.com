@@ -135,12 +135,18 @@ export default function Trial({ props }) {
     return <div style={{ fontSize: "smaller", color: "red" }}>{message}</div>;
   };
 
-  const privacyPolicyLabel = (
+  const termsAndPrivacyPolicyLabel = (
     <>
-      I agree to the{" "}
+      I agree to the Grouparoo{" "}
+      <Link href="/legal/terms" passHref>
+        <a target="_blank" rel="noopener noreferrer">
+          Terms and Conditions
+        </a>
+      </Link>{" "}
+      and{" "}
       <Link href="/legal/privacy" passHref>
         <a target="_blank" rel="noopener noreferrer">
-          privacy policy
+          Privacy Policy
         </a>
       </Link>
     </>
@@ -355,7 +361,7 @@ export default function Trial({ props }) {
                           id="privacy-policy-check"
                           defaultValue="false"
                           className="small align-items-center m-0"
-                          label={privacyPolicyLabel}
+                          label={termsAndPrivacyPolicyLabel}
                         />
                       </small>
                       {errors.check && (

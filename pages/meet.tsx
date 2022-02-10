@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useApi } from "./../hooks/useApi";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 import { Container, Alert, Row, Col, Form, Button } from "react-bootstrap";
 import Image from "../components/Image";
 import { ErrorHandler } from "../utils/errorHandler";
@@ -220,7 +221,16 @@ export default function Meet() {
                     </Form.Group>
                   </>
                 ) : null}
-
+                <small>
+                  By clicking the button below, you agree to accept Grouparoo's{" "}
+                  <Link href="/legal/privacy" passHref>
+                    <a target="_blank" rel="noopener noreferrer">
+                      Privacy Policy
+                    </a>
+                  </Link>
+                </small>
+                <br />
+                <br />
                 <Form.Group className="text-center">
                   {requested ? (
                     <Alert variant="success">Talk to you soon!</Alert>
