@@ -276,6 +276,16 @@ const DocsNav: NavItem[] = [
     linkText: "Support",
     path: "/docs/support",
     children: [
+      {
+        title: "Configuration Files",
+        path: "/docs/support/config-files",
+        children: [
+          {
+            title: "Advanced Usage",
+            path: "/docs/support/config-files/advanced-usage",
+          },
+        ],
+      },
       { title: "Common Issues", path: "/docs/support/common-issues" },
       {
         title: "Grouparoo Privacy Policy & Legal",
