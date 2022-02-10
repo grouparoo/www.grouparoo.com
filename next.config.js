@@ -52,6 +52,16 @@ const nextConfig = {
         statusCode: 302,
       },
       {
+        source: "/docs/config/code-config",
+        destination: "/docs/support/config-files",
+        statusCode: 302,
+      },
+      {
+        source: "/docs/config/code-config/:type",
+        destination: "/docs/support/config-files#:type",
+        statusCode: 302,
+      },
+      {
         source: "/docker-compose",
         destination:
           "https://raw.githubusercontent.com/grouparoo/omnibus/main/docker-compose.yml",
