@@ -1,5 +1,6 @@
 import { Row, Col, Table } from "react-bootstrap";
 import Image from "../Image";
+
 export const PricingTable = () => {
   return (
     <Row className="mt-3 mx-auto">
