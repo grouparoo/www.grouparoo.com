@@ -36,7 +36,7 @@ shadow-lg h-100 text-start ${styles.featureCard} ${
           <b>Features include:</b>
           <ul>
             {listItems.map((listItem, idx) => {
-              return <li key={idx}>{listItem}</li>;
+              return <li key={listItem}>{listItem}</li>;
             })}
           </ul>
         </div>
