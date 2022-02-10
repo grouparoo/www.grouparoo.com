@@ -1,8 +1,8 @@
 import { Card, Button } from "react-bootstrap";
 import styles from "../../pages/pricing.module.scss";
+
 export interface PricingCardProps {
   title: string;
-
   blurb?: string;
   subtitle: string;
   listItems: string[];
