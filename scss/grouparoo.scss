@@ -11,7 +11,7 @@ $mobile-font-breakpoint: 800px;
 
 // Page Defaults
 body {
-  background-color: $grouparoo-background-blue;
+  background-color: white;
 }
 
 form {
@@ -264,11 +264,6 @@ a,
   }
 }
 
-// -- Get Started --
-#getStartedContainer {
-  background-color: #e9ecef;
-}
-
 // -- Homepage --
 .homePageSection {
   padding-top: 50px;
@@ -311,6 +306,18 @@ a,
     padding: 0px;
   }
 }
+
+.customTable th {
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  min-width: 600 px;
+}
+
+.customTable > :not(:first-child) {
+  border: none;
+}
+
 .comparisonTableText {
   font-size: 80%;
 }

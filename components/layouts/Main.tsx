@@ -57,7 +57,7 @@ function PageTemplate({ children }) {
         </div>
         {noGetStarted.includes(router.route) ||
         noGetStarted.includes(router.asPath) ? null : (
-          <div id="getStartedContainer" className="text-center w-full py-5">
+          <div className="text-center w-full py-5">
             <Container>
               <Row>
                 <Col>

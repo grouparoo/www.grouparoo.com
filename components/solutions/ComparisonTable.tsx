@@ -9,8 +9,7 @@ export default function ComparisonTable({ comparisonChartData }) {
   return (
     <Table
       id="featureComparisons"
-      className="mx-auto col-xs-9"
-      style={{ textAlign: "center" }}
+      className="mx-auto col-xs-9 customTable text-center"
     >
       <thead>
         <tr>
