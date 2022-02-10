@@ -39,7 +39,7 @@ Every type of object has its own definition but all of them require these attrib
 - `class`: (**required**) The type of object that is being defined such as `App`, `Model`, `Source`, `Property`, `Group`, `Destination`
 - `name`: (**required**) The display name of this object
 
-## App Config
+## Apps
 
 The App configures the connections available to create Sources and Destinations.
 
@@ -102,7 +102,7 @@ This query would check every minute for a new `updated_at` value in a table call
 
 If there are [Schedules](#schedule-config) on this App's Sources that you do not want to be run, you can add `"refreshEnabled": false` to your Schedule's config.
 
-## Model Config
+## Models
 
 The Model config file is currently very basic:
 
@@ -122,7 +122,7 @@ The Model config file is currently very basic:
 }
 ```
 
-## Source Config
+## Sources
 
 Each Source has a common set of attributes. Certain _types_ of Sources may have additional attributes, but all Sources will have the following common attributes:
 
@@ -153,7 +153,7 @@ Each Source has a common set of attributes. Certain _types_ of Sources may have 
 }
 ```
 
-## Schedule Config
+## Schedules
 
 A Schedule tells Grouparoo how frequently to check the Source for updated data and import it into the Application Database. This is the most common way to keep data fresh in Grouparoo.
 
@@ -214,7 +214,7 @@ For example, to create a schedule that will run every 5 minutes checking the `"u
 
 If you've configured an App Refresh Query when you configured your App, you can also opt to leave a particular Schedule out of its updates by adding `"refreshEnabled": false` to the Schedule's config.
 
-## Property Config
+## Properties
 
 Each Property has a common set of attributes, while other attributes are specific to the _type_ of Property. Here are the common attributes:
 
@@ -361,7 +361,7 @@ Which would count every subscription per Record, but leave out any trial subscri
 
 ...which would return the sum of a Record's purchases in 2022.
 
-## Group Config
+## Groups
 
 Group config files have a common format.
 
@@ -397,7 +397,7 @@ Note you can use SQL wildcard characters (%, \_, [ ], ^, -) in your Group rule m
 
 <RuleOpsTable />
 
-## Destination Config
+## Destinations
 
 Each Destination has a common set of attributess. Certain _types_ of Destinations may have additional attributes, but all Destinations will have the common attributes.
 These common attributes, which may look very similar to other config object shapes in Grouparoo, are listed here:
