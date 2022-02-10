@@ -263,8 +263,6 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/apps</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/config/code-config</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/destinations</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/config/groups</loc><changefreq
@@ -436,16 +434,6 @@
     >https://www.grouparoo.com/integrations/destinations/vero</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/integrations/destinations/zendesk</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/config/code-config/apps</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/config/code-config/destinations</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/config/code-config/groups</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/config/code-config/properties</loc><changefreq
-    >daily</changefreq><priority>0.6</priority></url><url><loc
-    >https://www.grouparoo.com/docs/config/code-config/sources</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/running/ui-enterprise/apps</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
