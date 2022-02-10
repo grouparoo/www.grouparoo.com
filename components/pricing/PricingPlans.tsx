@@ -26,7 +26,7 @@ export default function PricingPlans() {
             </Row>
             <Row className="h-100 pt-3 d-flex align-items-center">
               <div>
-                <p>100K Synced Records: $150/mo</p>
+                <p>100K Unique Records Synced: $150/mo</p>
                 <p>300K Synced Records: $300/mo</p>
                 <p>1,000,000 Synced Records: $600/mo</p>
               </div>
