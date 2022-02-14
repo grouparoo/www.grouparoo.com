@@ -126,9 +126,9 @@ This type of Source reads from a single Google Sheets tab using a primary key re
 
 Defining Mappings is a critical part of the process. It tells Grouparoo which Record to associate with the imported data.
 
-If you are using Google Sheets Import as the [primary source](https://www.grouparoo.com/docs/config/code-config/sources), choose the Google Sheet column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model. The Property mapped to this column will be assigned as the Model's Primary Key.
+If you are using Google Sheets Import as the [primary source](/docs/config/sources#configuring-secondary-sources), choose the Google Sheet column that uniquely identifies Records in your Model. This will often be the primary key of the table that represents your Model. The Property mapped to this column will be assigned as the Model's Primary Key.
 
-In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources), choose the Google Sheet column that ties this table to your primary source. This will often be a foreign key in your table.
+In [secondary sources](/docs/config/sources#configuring-secondary-sources), choose the Google Sheet column that ties this table to your primary source. This will often be a foreign key in your table.
 
 <ImageInBrowserFrame
   src="/images/docs/integrations/google-sheets/google-sheets-import/mapping.png"
@@ -140,7 +140,7 @@ In [secondary sources](https://www.grouparoo.com/docs/config/code-config/sources
 
 ### Schedule
 
-[Create a schedule](https://www.grouparoo.com/docs/config/sources#step-4-add-a-schedule) to actively pull new data from this Google Sheets table. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh.
+[Create a schedule](/docs/config/sources#step-3-add-a-schedule) to actively pull new data from this Google Sheets table. If the recurring option is not selected, you are creating a one-time sync. There are also options to confirm records exist when running a schedule and to enable refresh.
 
 <ImageInBrowserFrame
   src="/images/docs/integrations/google-sheets/google-sheets-import/schedule.png"
