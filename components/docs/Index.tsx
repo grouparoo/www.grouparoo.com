@@ -1,6 +1,5 @@
 import { Alert, Button, Tab } from "react-bootstrap";
 import Link from "next/link";
-
 import { EnterpriseCTA, HavingProblems } from "./Callouts";
 import CLICommand from "./CLICommands";
 import GeneratedConfigFile from "./GeneratedConfigFile";
@@ -9,10 +8,6 @@ import ImageInBrowserFrame from "../ImageInBrowserFrame";
 import PluginsList from "./PluginsList";
 import {
   PluginDocsIntegrationNotes,
-  PluginDocsCalculatedPropertySource,
-  PluginDocsColumnarDestination,
-  PluginDocsColumnarSource,
-  PluginDocsCreateApp,
   PluginDocsInstallation,
   PluginDocsLinks,
   OptionsList,
@@ -33,10 +28,6 @@ export {
   Image,
   ImageInBrowserFrame,
   Link,
-  PluginDocsCalculatedPropertySource,
-  PluginDocsColumnarDestination,
-  PluginDocsColumnarSource,
-  PluginDocsCreateApp,
   PluginDocsInstallation,
   PluginDocsIntegrationNotes,
   PluginDocsLinks,
