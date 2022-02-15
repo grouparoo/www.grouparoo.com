@@ -1,193 +1,290 @@
 ---
-title: "@grouparoo / salesforce"
-date: "2021-10-12"
+title: "Salesforce"
+date: "2021-02-14"
 pullQuote: "Learn how to work with the Salesforce Plugin as a Destination."
 pageNavSelector: "h2"
 ---
 
 <PluginDocsLinks plugin="Salesforce" />
 
-Grouparoo's [Salesforce](https://www.salesforce.com/) Plugin enables you to export contacts and groups to Salesforce.
+## Overview
 
-This guide will show you how to work with the Salesforce Plugin to [create a Destination](#create-an-salesforce-destination) to export your data.
+[Salesforce](https://www.salesforce.com/) is a Customer Relationship Management tool with an extensive suite of tools for managing customer service, marketing automation, analytics and application development. Companies use Salesforce to track leads and communicate with clients in a well-documented and organized manner.
 
-<PluginDocsInstallation plugin="Salesforce" />
+### Destinations
 
-<PluginDocsCreateApp plugin="Salesforce" />
+<table className='docTable'>
+  <tablebody>
+  <tr>
+   <td>Destination Name
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td>
 
-<ValidateAndApplyConfig headingLevel="h3" />
+<a href="#salesforce-export-accounts">Salesforce Export Accounts</a>
+   </td>
+   <td>Export Records to Salesforce Accounts.
+   </td>
+  </tr>
+  <tr>
+   <td>
 
-## Create a Salesforce Destination
+<a href="#salesforce-export-contacts">Salesforce Export Contacts</a>
+   </td>
+   <td>Export Records to Salesforce Contacts.
+   </td>
+  </tr>
+  <tr>
+   <td>
 
-Once your App exists, you can generate a Salesforce Destination using the `generate` command. You must specify a `parent`, which should match the `id` of the App you just created.
+<a href="#salesforce-export-objects">Salesforce Export Objects</a>
+   </td>
+   <td>Export Records and Groups to Salesforce sales cloud objects.
+   </td>
+  </tr>
+  </tablebody>
+</table>
 
-This is the simplest form of [Generator](/docs/getting-started/product-concepts#generator) for Destinations:
+## Setup
 
-```
-$ grouparoo generate salesforce:destination salesforce_destination --parent my_salesforce_app
-```
+You will need a Salesforce account in order to start syncing data to Salesforce. Your username and email will be part of setting up the App to connect to Salesforce. You’ll also need to be sure to have a security token set up before you proceed with configuration.
 
-This would generate a config file at `config/destinations/salesforce_destination.js` in your Grouparoo project. You can then edit this file to match your desired configuration. Here is an example of what this config object will look like after generation:
+In Salesforce, navigate to the link for Settings under your avatar. This will bring you to “Personal Settings”. Then use the side navigation bar to navigate to choose ‘Reset My Security Token’. You will need this token to establish a connection with Salesforce.
 
-```js
-// config/destinations/salesforce_destination.js
+## App
 
-exports.default = async function buildConfig() {
-  return [
-    {
-      id: "salesforce_destination",
-      name: "salesforce_destination",
-      class: "destination",
-      type: "salesforce-export",
-      appId: "my_salesforce_app",
-      groupId: "...",
-      syncMode: "...",
+To connect Salesforce to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to make the connection. This specifies the account used for any Destinations.
 
-      options: {
-        recordObject: "Contact",
-        recordMatchField: "Email",
-        groupObject: "Campaign",
-        groupNameField: "Name",
-        membershipObject: "CampaignMember",
-        membershipRecordField: "ContactId",
-        membershipGroupField: "CampaignId",
-        recordReferenceField: "AccountId",
-        recordReferenceObject: "Account",
-        recordReferenceMatchField: "Name",
-      },
+### App Options
 
-      mapping: {
-        Email: "email",
-        FirstName: "firstName",
-        LastName: "lastName",
-      },
+<ImageInBrowserFrame
+  src="/images/docs/integrations/salesforce/app/options.png"
+  alt="Salesforce App Options"
+  width={750}
+  height={467}
+/>
+<br />
+<br />
 
-      destinationGroupMemberships: {
-        "High Value Customers": "highValueCustomers",
-      },
-    },
-  ];
-};
-```
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>User Name (required)</td>
+      <td>Email address used for logging into Salesforce</td>
+    </tr>
+    <tr>
+      <td>Password (required)</td>
+      <td>Password for logging into Salesforce</td>
+    </tr>
+    <tr>
+      <td>Security Token</td>
+      <td>
+        To get a new security token, click on “Reset My Security Token” in
+        “personal settings”
+      </td>
+    </tr>
+    <tr>
+      <td>Salesforce Domain</td>
+      <td>
+        Auto-Populated with{" "}
+        <a href="https://login.salesforce.com">https://login.salesforce.com</a>.
+        In most cases, this will be the Salesforce Domain you should use.
+      </td>
+    </tr>
+  </tablebody>
+</table>
 
-For more information on what all these Destinations attributes mean and how to configure them, see the [configuration files doc](/docs/support/config-files#destinations).
+For more information on options for keeping your credentials secure, visit our documentation on [secrets](https://www.grouparoo.com/docs/support/secrets).
+
+## Salesforce Export Accounts
+
+This Destination enables you to sync your Grouparoo Records as Accounts in Salesforce.
+
+Companies use Grouparoo to keep their Salesforce Accounts up-to-date in order to manage client relations effectively.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
 
 ### Sync Modes
 
-The Salesforce Destination supports all three sync modes:
 
-- **Sync** (`sync`): Add, update, and remove Records as needed.
-- **Additive** (`additive`): Add and update Records as needed, but do not remove anybody.
-- **Enrich** (`enrich`): Only update Records that already exist in the Destination. Do not add or remove anybody.
+- **Sync**: Add, update, and remove Salesforce Accounts as needed. This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Salesforce Accounts as needed, but do not remove anybody. This option looks for new Accounts to add to Salesforce and changes to existing Salesforce Accounts, but does not keep track of deletions.
+- **Enrich**: Only update those Accounts that already exist in Salesforce. Do not add or remove Accounts. This option will only update existing Accounts in Salesforce.
 
-You can set the desired Sync Mode through the `syncMode` Property in the config file:
+For more information on what all these Destinations attributes mean and how to configure them, see the [configuration files doc](/docs/support/config-files#destinations).
 
-```js
-syncMode: "additive";
-```
 
 ### Destination Options
 
-Here are the available options for a Salesforce Destination:
+Some types of Destinations require further clarification about how data should sync. In the case of Salesforce, there is one required option to configure before moving on to mapping Record Data: Primary Key. This tells Grouparoo which Account field will be used to match up Salesforce Accounts with Grouparoo Records with a unique identifier.
 
-<OptionsList
-  options={{
-    recordObject: {
-      displayName: "recordObject",
-      description: "Which object in Salesforce represents a Grouparoo Record?",
-    },
-    recordMatchField: {
-      displayName: "recordMatchField",
-      description:
-        "Which field in the Record Object is used to match Grouparoo records?",
-    },
-    groupObject: {
-      displayName: "groupObject",
-      description: "Which object in Salesforce represents a Grouparoo Group?",
-    },
-    groupNameField: {
-      displayName: "groupNameField",
-      description:
-        "Which field in the Group Object is used for the name of a Grouparoo Group?",
-    },
-    membershipObject: {
-      displayName: "membershipObject",
-      description:
-        "Which object in Salesforce maps the Record object to the Group object?",
-    },
-    membershipRecordField: {
-      displayName: "membershipRecordField",
-      description:
-        "Which object in Salesforce maps the Record object to the Group object?",
-    },
-    membershipGroupField: {
-      displayName: "membershipGroupField",
-      description:
-        "Which field in the membership Object is the reference to the Group?",
-    },
-    recordReferenceField: {
-      displayName: "recordReferenceField",
-      description:
-        "Is there a reference field on the Record Object to fill out?",
-    },
-    recordReferenceObject: {
-      displayName: "recordReferenceObject",
-      description:
-        "If there is a reference field, which Object should be created to apply to the Record?",
-    },
-    recordReferenceMatchField: {
-      displayName: "recordReferenceMatchField",
-      description:
-        "If there is a reference field, how should it be matched to Grouparoo records?",
-    },
-  }}
+<ImageInBrowserFrame
+  src="/images/docs/integrations/salesforce/export-accounts/options.png"
+  alt="Salesforce Export Accounts Options"
+  width={750}
+  height={130}
 />
+<br />
 
-You can configure these options by setting them inside the `options` object of the config file:
+### Record Data
 
-```js
-options: {
-  recordObject: "Contact",
-  recordMatchField: "Email",
-  groupObject: "Campaign",
-  groupNameField: "Name",
-  membershipObject: "CampaignMember",
-  membershipRecordField: "ContactId",
-  membershipGroupField: "CampaignId",
-  recordReferenceField: "AccountId",
-  recordReferenceObject: "Account",
-  recordReferenceMatchField: "Name",
-},
-```
+Mapping Record Properties to Salesforce Account Fields is the key to syncing data to Salesforce Accounts.
 
-### Property Mappings
+Salesforce Account Fields helps companies gather helpful information about business clients.
 
-These mappings are what tell Grouparoo which Properties you want to sync to the Destination and what they should be called. For this Plugin, **Grouparoo Properties** can be mapped to a **Salesforce Object** specified on the `options` object.
+<ImageInBrowserFrame
+  src="/images/docs/integrations/salesforce/export-accounts/properties.png"
+  alt="Salesforce Export Accounts Properties"
+  width={750}
+  height={340}
+/>
+<br />
+<br />
 
-You can also map to custom attributes that you've defined on Salesforce by adding them directly to the Mapping object (also include the \_\_c suffix).
+#### Required Properties
 
-Here's an example of how this would look in the config file. Note that the keys refer to Salesforce Attribute names and values refer to Grouparoo Property IDs.
+You must map two Grouparoo Properties to Salesforce Account Fields: AccountNumber and Name. Choose the Grouparoo Property that corresponds to the Account Number and Name from the dropdown menu. Properties associated with those values need to have been imported from your source.
 
-```js
-mapping: {
-  Email: "email",
-  FistName: "firstName",
-  "custom_lifetime_value__c": "ltv",
-},
-```
+- **AccountNumber (string):** An Account’s Account Number in Salesforce
+- **Name (string)**: The name associated with an Account in Salesforce.
 
-### Group Mappings
+#### Optional Properties
 
-You can use **Group Memberships** to automatically add your contacts to **Salesforce Objects**, defined by the Property `groupObject` on the `options` object.
+In addition to the required email field, companies can add many Reserved or Custom Fields to sync with Grouparoo Properties. These can be accessed from the Send Record Property dropdown menu.
 
-Here's an example of how to configure this in the config file. Keys refer to the name of the tag to be shown on Salesforce and values refer to the Grouparoo Group ID.
+### Group Data
 
-```js
-destinationGroupMemberships: {
-  "High Value Customers": "highValueCustomers",
-},
-```
+Some Destination types support further grouping data to create remote lists or tags. This Destination does not offer that functionality.
 
-## Salesforce Next Steps
+## Salesforce Export Contacts
 
-Once you have the Plugin installed, App created, and a Source or Destination configured, you are ready to [validate](/docs/cli/config#validate), [apply](/docs/cli/config#apply), then [import or export your data](/docs/cli/run#run)!
+This Destination enables you to sync your Grouparoo Records as Contacts in Salesforce.
+
+Companies use Grouparoo to keep their Salesforce Contacts up-to-date in order to manage client relations effectively.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+- **Sync**: Add, update, and remove Salesforce Accounts as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Salesforce Accounts as needed, but do not remove anybody. This option looks for new Accounts to add to Salesforce and changes to existing Salesforce Accounts, but does not keep track of deletions.
+- **Enrich**: Only update those Accounts that already exist in Salesforce. Do not add or remove Accounts. This option will only update existing Accounts in Salesforce.
+
+### Destination Options
+
+Some types of Destinations require further clarification about how data should sync. In the case of Salesforce, there is one required option to configure before moving on to mapping Record Data: **Primary Key.** This tells Grouparoo which Account field will be used to match up Salesforce Contacts with Grouparoo Records with a unique identifier. You may also indicate an **Account Key** to make an association with Salesforce Accounts.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/salesforce/export-contacts/options.png"
+  alt="Salesforce Export Contacts Options"
+  width={750}
+  height={224}
+/>
+<br />
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Primary Key</strong> (required)
+      </td>
+      <td>The Contact Field used to match to Grouparoo Records.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Account Key</strong>
+      </td>
+      <td>The Account Field used to match to Grouparoo Records.</td>
+    </tr>
+  </tablebody>
+</table>
+
+### Record Data
+
+Mapping Record Properties to Salesforce Contact Fields is the key to syncing data to Salesforce Contacts.
+
+Salesforce Contact Fields helps companies gather helpful information about business clients and the people they are working with within Accounts.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/salesforce/export-contacts/properties.png"
+  alt="Salesforce Export Contacts Properties"
+  width={750}
+  height={472}
+/>
+<br />
+<br />
+
+#### Required Properties
+
+There are several Grouparoo Properties you must map to Salesforce Account Fields: **AccountId**, **LastName**, **Account.AccountNumber** and **Account.AccountName**. Choose the Grouparoo Property that corresponds to the Contact’s AccountId and LastName. Then choose the Grouparoo Properties that correspond to the AccountNumber and Account Name for the Account associated with that Contact.
+
+- **AccountId (string)**: An Contact’s Account Id in Salesforce
+- **LastName (string)**: The last name associated with a Contact in Salesforce.
+- **Account.AccountNumber (string)**: The Account number associated with the Account that a Contact is part of.
+- **Account.Name (string)**: The name of an Account that is associated with the Contact in Salesforce.
+
+#### Optional Properties
+
+In addition to the required email field, companies can add many Reserved or Custom Fields to sync with Grouparoo Properties. These can be accessed from the Send Record Property dropdown menu.
+
+### Group Data
+
+Some Destination types support further grouping data to create remote lists or tags. This Destination does not offer that functionality.
+
+## Salesforce Export Objects
+
+This Destination enables you to sync your Grouparoo Records as Objects in Salesforce.
+
+Companies use Grouparoo to keep their Salesforce Objects up-to-date in order to manage client relations effectively.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+- **Sync**: Add, update, and remove Salesforce Objects as needed. This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Salesforce Objects as needed, but do not remove anybody. This option looks for new Objects to add to Salesforce and changes to existing Salesforce Objects, but does not keep track of deletions.
+- **Enrich**: Only update those Objects that already exist in Salesforce. Do not add or remove Objects. This option will only update existing Objects in Salesforce.
+
+### Destination Options
+
+Some types of Destinations require further clarification about how data should sync. In the case of Salesforce Export Object Destinations, there are two required options to configure before moving on to mapping Record Data: **Record Object** and **Record Match Field.** This tells Grouparoo which Account field will be used to match up Salesforce Contacts with Grouparoo Records with a unique identifier. Depending on the Objects you have set up in Salesforce, there are other optional fields to use in setting up your Destination Options
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/salesforce/export-objects/options.png"
+  alt="Salesforce Export Objects Options"
+  width={750}
+  height={827}
+/>
+<br />
+
+### Record Data
+
+Mapping Record Properties to Salesforce Contact Fields is the key to syncing data to Salesforce Objects.
+
+Salesforce Object Fields helps companies gather helpful information about businesses, clients and the people they are working with in the scope of a larger Object.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/salesforce/export-objects/properties.png"
+  alt="Salesforce Export Objects Properties"
+  width={750}
+  height={391}
+/>
+<br />
+
+### Group Data
+
+Some Destination types support further grouping data to create remote lists or tags. This Destination does not offer that functionality.
+
+<PluginDocsIntegrationNotes plugin="Salesforce" />
