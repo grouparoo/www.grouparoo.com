@@ -209,7 +209,7 @@ mapping: {
       </p>
 
       <p>
-        <Link href="/docs/config/code-config/sources#adding-a-schedule">
+        <Link href="/docs/support/config-files#schedules">
           You can read more about the common options here
         </Link>
         . The {plugin}-specific options (those in the <code>options</code>{" "}
@@ -261,7 +261,7 @@ mapping: {
 
       <p>
         The Property config object has several options.{" "}
-        <Link href="/docs/config/code-config/properties#configuring-your-property">
+        <Link href="/docs/support/config-files#properties">
           Some are share across all Properties
         </Link>
         , while others are more specific to the type of Property generated. A{" "}

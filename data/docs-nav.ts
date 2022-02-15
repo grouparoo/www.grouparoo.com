@@ -54,33 +54,6 @@ const DocsNav: NavItem[] = [
       { title: "Groups", path: "/docs/config/groups" },
       { title: "Destinations", path: "/docs/config/destinations" },
       { title: "Sample Records", path: "/docs/config/records" },
-      // TODO: Remove this commented out code once Code Config docs are removed.
-      // {
-      //   title: "Code Config",
-      //   path: "/docs/config/code-config",
-      //   children: [
-      //     {
-      //       title: "Apps",
-      //       path: "/docs/config/code-config/apps",
-      //     },
-      //     {
-      //       title: "Sources",
-      //       path: "/docs/config/code-config/sources",
-      //     },
-      //     {
-      //       title: "Properties",
-      //       path: "/docs/config/code-config/properties",
-      //     },
-      //     {
-      //       title: "Groups",
-      //       path: "/docs/config/code-config/groups",
-      //     },
-      //     {
-      //       title: "Destinations",
-      //       path: "/docs/config/code-config/destinations",
-      //     },
-      //   ],
-      // },
     ],
   },
 
@@ -214,7 +187,10 @@ const DocsNav: NavItem[] = [
       },
       { title: "ClickHouse", path: "/docs/integrations/grouparoo-clickhouse" },
       { title: "dbt", path: "/docs/integrations/grouparoo-dbt" },
-      { title: "Google Sheets", path: "/docs/integrations/grouparoo-google-sheets" },
+      {
+        title: "Google Sheets",
+        path: "/docs/integrations/grouparoo-google-sheets",
+      },
       { title: "Hubspot", path: "/docs/integrations/grouparoo-hubspot" },
       { title: "Intercom", path: "/docs/integrations/grouparoo-intercom" },
       { title: "Mailchimp", path: "/docs/integrations/grouparoo-mailchimp" },
