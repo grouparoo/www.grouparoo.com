@@ -12,8 +12,13 @@ describe("page/home", () => {
         }}
       />
     );
-    expect(screen.getByTestId("header")).toHaveTextContent(
-      "Stop writing code to sync data to AnnoyingPlugin"
+
+    const header = screen.getByTestId("header");
+    expect(header).toHaveTextContent(
+      "Stop writing code to sync data to AnnoyingPlugin*"
+    );
+    expect(header).toHaveTextContent(
+      "* Sorry, AnnoyingPlugin - we don't mean to pick on you specifically."
     );
   });
 });

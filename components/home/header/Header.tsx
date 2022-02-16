@@ -1,18 +1,20 @@
+import Link from "next/link";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { HeaderImage } from "./HeaderImage";
 import styles from "./Header.module.scss";
-import Link from "next/link";
 
 interface HeaderProps {
-  tagline: string;
+  pluginName: string;
 }
 
-export const Header = ({ tagline }: HeaderProps) => (
+export const Header = ({ pluginName }: HeaderProps) => (
   <Container fluid className={`pipes ${styles.container}`} data-testid="header">
     <Container>
       <Row>
-        <Col md="6" className={`${styles.text}`}>
-          <h2>{tagline}</h2>
+        <Col lg="6" className={`${styles.text}`}>
+          <h2 suppressHydrationWarning>
+            Stop writing code to sync data to {pluginName}*
+          </h2>
           <p className="outline">
             Grouparoo is an open source framework that helps you move data
             between your data warehouse and all of your cloud-based tools.
@@ -22,8 +24,28 @@ export const Header = ({ tagline }: HeaderProps) => (
               Get Started
             </Button>
           </Link>
+          <p className="mt-4 font-italics">
+            <small>
+              <em>
+                * Sorry,{" "}
+                <Link
+                  href={`/integrations/destinations/${pluginName.toLowerCase()}`}
+                >
+                  <a suppressHydrationWarning>{pluginName}</a>
+                </Link>{" "}
+                - we don't mean to pick on you specifically. We integrate with{" "}
+                <Link href="/integrations">
+                  <a>lots of marketing, operations, and sales tools</a>
+                </Link>
+                .
+              </em>
+            </small>
+          </p>
         </Col>
-        <Col md="6" className={`${styles.image}`}>
+        <Col
+          lg="6"
+          className={`${styles.image} d-md-none d-lg-block text-center`}
+        >
           <HeaderImage className={styles.headerImage} />
         </Col>
       </Row>
