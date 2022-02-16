@@ -207,6 +207,7 @@ const DocsNav: NavItem[] = [
       { title: "SendGrid", path: "/docs/integrations/grouparoo-sendgrid" },
       { title: "Snowflake", path: "/docs/integrations/grouparoo-snowflake" },
       { title: "SQLite", path: "/docs/integrations/grouparoo-sqlite" },
+      { title: "Zendesk", path: "/docs/integrations/grouparoo-zendesk" },
     ],
   },
 
@@ -225,6 +226,7 @@ const DocsNav: NavItem[] = [
       },
       { title: "Plugins: Sources", path: "/docs/development/sources" },
       { title: "Publishing", path: "/docs/development/publishing" },
+
     ],
   },
 
