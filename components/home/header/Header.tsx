@@ -24,7 +24,7 @@ export const Header = ({ pluginName }: HeaderProps) => (
               Get Started
             </Button>
           </Link>
-          <p className="mt-4 font-italics">
+          <p className="mt-4">
             <small>
               <em>
                 * Sorry,{" "}
