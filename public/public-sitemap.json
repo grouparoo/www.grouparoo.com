@@ -40,6 +40,7 @@
   "/docs/installation/node",
   "/docs/installation/plugins",
   "/docs/integrations",
+  "/docs/integrations/grouparoo-airtable",
   "/docs/integrations/grouparoo-bigquery",
   "/docs/integrations/grouparoo-braze",
   "/docs/integrations/grouparoo-calculated-property",
