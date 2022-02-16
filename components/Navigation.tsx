@@ -235,7 +235,7 @@ export default function Navigation() {
                 </Link>
               </div>
 
-              <div className="nav-link">
+              <div className="nav-link d-md-none d-lg-block">
                 <Link href="/blog" passHref>
                   <Nav.Link> Blog</Nav.Link>
                 </Link>
@@ -259,7 +259,7 @@ export default function Navigation() {
             <Link href="/get-started" passHref>
               <Nav.Link>
                 <Button
-                  style={{ minWidth: 188 }}
+                  style={{ minWidth: 145 }}
                   variant="secondary"
                   size="sm"
                   className="col-12 col-md-3 col-lg-2 mx-0 ms-lg-2 mt-3 rounded-pill"
