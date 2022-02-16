@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useEffect, useMemo } from "react";
-import { Col, Container, Row } from "react-bootstrap";
 import { About } from "../components/home/about/About";
 import { Actionable } from "../components/home/actionable/Actionable";
 import { Features } from "../components/home/features/Features";
