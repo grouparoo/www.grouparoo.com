@@ -317,6 +317,6 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/zendesk",
-    "docsUrl": null
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-zendesk"
   }
 ]
