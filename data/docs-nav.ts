@@ -179,6 +179,7 @@ const DocsNav: NavItem[] = [
     linkText: "Integrations",
     path: "/docs/integrations",
     children: [
+      { title: "Airtable", path: "/docs/integrations/grouparoo-airtable" },
       { title: "BigQuery", path: "/docs/integrations/grouparoo-bigquery" },
       { title: "Braze", path: "/docs/integrations/grouparoo-braze" },
       {
