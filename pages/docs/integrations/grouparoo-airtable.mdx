@@ -1,0 +1,179 @@
+---
+title: "Airtable"
+date: "2022-02-16"
+pullQuote: "Learn how to work with the Airtable Plugin as a Destination. Grouparoo helps connect your centralized data to business tools like Airtable."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Airtable" />
+
+## Overview
+
+[Airtable](https://airtable.com/) is a low-code platform for app-building that features a database-like tool using spreadsheets for easy to share relational database building. Companies use Airtable as a place to store, share, and collaboratively edit their data in a way that can be applied to many tasks such as inventory, event planning, customer management, task-tracking and more.
+
+### Destinations
+
+<table className='docTable'>
+    <tablebody>
+  <tr>
+   <td>Destination Name
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td>
+
+<a href="#airtable-export-records">Airtable Export Records</a>
+   </td>
+   <td>Export Records as Airtable Records in a Table
+   </td>
+  </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+You will need an Airbase account to sync data between Grouparoo and Airtable. You’ll also need to locate the Airtable API key associated with your account. There is only one API key per account and logged-in users can find it by navigating to the [account page](https://airtable.com/account). This key gives access to all tables in all bases and can be reset if needed.
+
+In order to sync to an Airtable Base/Table you will need a table that is already set up with columns and at least one row of data. When you are looking at an Airbase table, there are elements of the URL you will need to designate the base and the table for a data sync.
+
+## App
+
+To connect Airtable to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) which tells Grouparoo the details of how to connect to Airtable. This specifies the account used for any Destinations.
+
+### App Options
+
+In Grouparoo’s UI config, you specify the options to connect to Airtable and test the connection.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/airtable/app/options.png"
+  alt="Airtable App Options"
+  width={733}
+  height={349}
+/>
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Airtable API Key</strong> (required)
+      </td>
+      <td>
+        The Airtable API Key. You can find this by logging into Airtable and
+        navigating to the{" "}
+        <a href="https://airtable.com/account">account page</a>.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Airtable Base</strong> (required)
+      </td>
+      <td>
+        This designates the Airtable Base to sync data to. Each airtable base
+        has a name that is generated and used as part of the URL. This is the
+        portion of a base’s URL that begins with ‘app’.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Airtable API Host</strong>
+      </td>
+      <td>
+        The Host for the Airtable API. This field is auto populated with
+        ‘https://api.airtable.com’
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+## Airtable Export Records
+
+This Destination allows you to sync your Grouparoo Records to Records in Airtable.
+
+Companies use Airtable to organize their information in a user-friendly and collaborative environment that gives the simple structure of spreadsheets the additional functionality of a database.
+
+To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. The following are supported by Mailjet:
+
+- **Sync**: Add, update, and remove Airtable Records as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Airtable Records as needed, but do not remove anybody. This option looks for new Records to add to Airtable and changes to existing Airtable Records, but does not keep track of deletions.
+- **Enrich**: Only update those Records that already exist in Airtable. Do not add or remove Records. This option will only update existing Records in Airtable.
+
+### Destination Options
+
+To further clarify how Intercom should sync data, there are some options you should choose that designate details about Airtable’s organization.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/airtable/export-records/options.png"
+  alt="Airtable Export Records Options"
+  width={733}
+  height={203}
+/>
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Table Name</strong> (required)
+      </td>
+      <td>
+        Designates the table in Airtable that has rows representing a Grouparoo
+        Record. This is the Airtable Table to sync data to. Each Airtable Table
+        has a name that is automatically generated and used as part of the URL.
+        This is the portion of a base’s URL that begins with ‘tbl’.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Primary Key</strong> (required)
+      </td>
+      <td>
+        Designates the field in the Table that uniquely represents a Grouparoo
+        Record.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+### Record Data
+
+Mapping Grouparoo Properties to Airtable Record Properties is the key to syncing data to Airtable.
+
+In Airtable, Record Properties can be used to filter and segment data as needed.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/airtable/export-records/properties.png"
+  alt="Airtable Export Records Properties"
+  width={733}
+  height={436}
+/>
+<br />
+<br />
+
+#### Required Properties
+
+There will be one property listed that is required to find or create the correct Records in Airtable. Whatever field you designated in the Destination Options configuration as the primary key for the table you are syncing to will be the required Property to map.
+
+#### Optional Properties
+
+Any other fields that Grouparoo can detect in the table you are syncing to will be listed as known airtable properties. In order for a property to be known by Grouparoo, it must have a Record in Airtable with a value in that field during this configuration step.
+
+These other properties represent columns in the table Grouparoo will sync data to.
+
+### Group Data
+
+Some Destination types support further grouping data to create remote lists or tags. This Destination does not offer that functionality.
