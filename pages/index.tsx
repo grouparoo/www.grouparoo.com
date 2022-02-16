@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useEffect, useMemo } from "react";
-import { Col, Container, Row } from "react-bootstrap";
 import { About } from "../components/home/about/About";
 import { Actionable } from "../components/home/actionable/Actionable";
 import { Features } from "../components/home/features/Features";
@@ -14,25 +13,18 @@ import { WhyGrouparoo } from "../components/home/why-grouparoo/WhyGrouparoo";
 import { randomHomepagePlugins } from "../data/plugins";
 import { getReleaseNotes, ReleaseNote } from "../utils/releaseNotes";
 
-const getTagline = (pluginNames: string[]) =>
-  `Stop writing code to sync data to ${
-    pluginNames[Math.floor(Math.random() * pluginNames.length)]
-  }*`;
-
 const IndexPage = ({ pageProps, setReleaseNote }) => {
   const {
     pluginNames,
     releaseNote,
-    pluginName,
-  }: { pluginNames: string[]; releaseNote: ReleaseNote[]; pluginName: string } =
-    pageProps;
+  }: { pluginNames: string[]; releaseNote: ReleaseNote[] } = pageProps;
   const title = "Grouparoo: Open Source Data Synchronization Framework";
   const description =
     "Grouparoo is an open source framework that helps you move data between your data warehouse and all of your cloud-based tools.";
 
-  const tagline = useMemo(
-    () => pluginName ?? getTagline(pluginNames),
-    [pluginName, pluginNames]
+  const pluginName = useMemo(
+    () => pluginNames[Math.floor(Math.random() * pluginNames.length)],
+    [pluginNames]
   );
 
   useEffect(() => setReleaseNote(releaseNote), [releaseNote, setReleaseNote]);
@@ -72,7 +64,7 @@ const IndexPage = ({ pageProps, setReleaseNote }) => {
         <link rel="canonical" href="https://www.grouparoo.com/" />
       </Head>
 
-      <Header tagline={tagline} />
+      <Header pluginName={pluginName} />
       <Partners />
       <About />
       <Actionable />
@@ -88,9 +80,8 @@ const IndexPage = ({ pageProps, setReleaseNote }) => {
 
 export const getServerSideProps = async () => {
   const pluginNames = randomHomepagePlugins();
-  const pluginName = getTagline(pluginNames);
   const { notes } = await getReleaseNotes(1, 1);
-  return { props: { pluginNames, releaseNote: notes[0], pluginName } };
+  return { props: { pluginNames, releaseNote: notes[0] } };
 };
 
 export default IndexPage;
