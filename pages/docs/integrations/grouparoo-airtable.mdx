@@ -36,7 +36,11 @@ pageNavSelector: "h2"
 
 You will need an Airbase account to sync data between Grouparoo and Airtable. You’ll also need to locate the Airtable API key associated with your account. There is only one API key per account and logged-in users can find it by navigating to the [account page](https://airtable.com/account). This key gives access to all tables in all bases and can be reset if needed.
 
-In order to sync to an Airtable Base/Table you will need a table that is already set up with columns and at least one row of data. When you are looking at an Airbase table, there are elements of the URL you will need to designate the base and the table for a data sync.
+If your Airtable account has Metadata API support, Grouparoo will be able to read the schema of the tables in your Airtable account. Data types for your columns will be defined and readable by Grouparoo and those columns will be accessible for mapping.
+
+If your Airtable account is not set up with Metadata API support, having accessible fields for Grouparoo will rely on existing data in the Table to infer types for each column. In this case, you will need a table that is already set up with columns and at least one row of data.
+
+When viewing an Airbase table in your browser, there are elements of the URL you will need to be aware of in order to designate the base and the table for a data sync.
 
 <ImageInBrowserFrame
   src="/images/docs/integrations/airtable/setup/setup-1.png"
