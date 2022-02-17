@@ -41,6 +41,21 @@ Welcome to the Grouparoo Dictionary! This is the collection of terms we use thro
 
 ## Aggregation Methods
 
+Aggregation methods define how we combine the data. When adding multiple properties from a Source, the default aggregation is exact. This means that the imported Grouparoo Record will retain the exact value of each row for that property.
+
+When adding properties individually, one of the required options to choose is the aggregation method.
+
+Not all source types are compatible with all aggregation methods, but most are compatible with the following standard list:
+
+- `exact`: use the value directly
+- `average`: take the average
+- `count`: count the occurrences
+- `sum`: add it up
+- `min`: find the smallest value
+- `max`: find the largest value
+- `most recent value`: use the value of the newest record
+- `least recent value`: use the value of the oldest record
+
 ## App
 
 An App in Grouparoo represents a _integration_, or a _connection_ to some service. Every [Source](#source) and [Destination](#destination) requires an App. [See this page](/integrations) for a full list of available integrations.
@@ -79,7 +94,19 @@ See [our Integrations page](/integrations) for an up-to-date list of our support
 
 ## Filter
 
-Filters are a series of rules used to filter data into some desired subset.
+Filters are a series of rules used to filter data into some desired subset. Sometimes you may want to specifically include or exclued rows that meet a criteria. This is where Filters come in.
+
+Each filter rule has a key and operation. The key is a property name, and the operation is a comparison operator.
+
+The following are operations available in Grouparoo's filtering options:
+
+- `equals`
+- `does not equal`
+- `does not exist`
+- `greater than`
+- `greater than or equal to`
+- `less than`
+- `less than or equal to`
 
 ## Group
 
