@@ -55,6 +55,7 @@
   "/docs/integrations/grouparoo-mixpanel",
   "/docs/integrations/grouparoo-mongo",
   "/docs/integrations/grouparoo-mysql",
+  "/docs/integrations/grouparoo-onesignal",
   "/docs/integrations/grouparoo-pipedrive",
   "/docs/integrations/grouparoo-postgres",
   "/docs/integrations/grouparoo-redshift",
