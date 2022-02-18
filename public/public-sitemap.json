@@ -63,6 +63,7 @@
   "/docs/integrations/grouparoo-sendgrid",
   "/docs/integrations/grouparoo-snowflake",
   "/docs/integrations/grouparoo-sqlite",
+  "/docs/integrations/grouparoo-zendesk",
   "/docs/running",
   "/docs/running/orchestration",
   "/docs/running/settings",
