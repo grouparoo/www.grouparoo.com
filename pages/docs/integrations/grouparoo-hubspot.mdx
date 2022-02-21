@@ -1,6 +1,6 @@
 ---
 title: "HubSpot"
-date: "2022-01-10"
+date: "2022-02-21"
 pullQuote: "Learn how to work with the HubSpot Integration as a Destination."
 pageNavSelector: "h2"
 ---
@@ -42,24 +42,13 @@ HubSpot is a customer relationship management (CRM) tool. You can use HubSpot to
 
 ## Setup
 
-In order to use HubSpot as a destination you will need a HubSpot account,
-
-To find or create an API key for HubSpot, your HubSpot account must have Super Admin Permissions. Navigate to Settings > Integrations > API Key. Only one API key is allowed per HubSpot account and this key gives full developer access to make changes to the account via API. You will need to **Show** then **Copy** the API key from this page. There are also options for rotating out or deleting the key associated with your account.
-
-<ImageInBrowserFrame
-  src="/images/docs/integrations/hubspot/setup/setup-1.png"
-  alt="finding API key"
-  width={733}
-  height={106}
-/>
-<br></br>
-<br></br>
-
-## App
-
 To connect HubSpot to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps) to tell Grouparoo how to connect to HubSpot. This specifies the account used for any Destinations.
+There are two ways you can connect to your Hubspot data:
 
-### App Options
+1. With a Hubspot API Key
+2. With OAuth
+
+### Setup with API Key
 
 In Grouparoo, you specify the options to connect to HubSpot and then test the connection before updating the App.
 
@@ -69,8 +58,8 @@ In Grouparoo, you specify the options to connect to HubSpot and then test the co
   width={733}
   height={113}
 />
-<br></br>
-<br></br>
+
+The app's options include:
 
 <table className="docTable">
   <tablebody>
@@ -87,7 +76,31 @@ In Grouparoo, you specify the options to connect to HubSpot and then test the co
   </tablebody>
 </table>
 
-For more information on options for keeping your API Key secure, visit our documentation on [secrets](/docs/deployment/secrets).
+To find or create an API key for HubSpot, your HubSpot account must have Super Admin Permissions. Navigate to Settings > Integrations > API Key. Only one API key is allowed per HubSpot account and this key gives full developer access to make changes to the account via API. You will need to **Show** then **Copy** the API key from this page. There are also options for rotating out or deleting the key associated with your account.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/hubspot/setup/setup-1.png"
+  alt="finding API key"
+  width={733}
+  height={106}
+/>
+
+For more information on options for keeping your API Key secure, visit our documentation
+on [secrets](/docs/deployment/secrets).
+
+### Setup with OAuth
+
+With OAuth, you will grant permissions to Hubspot with a user account and store a Refresh Token that will be used to generate requests.
+Click the "Request Token" button to start the process.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/hubspot/setup/setup-2.png"
+  alt="HubSpot App Options"
+  width={733}
+  height={526}
+/>
+
+If the token becomes invalid, you can always return to the app page to re-request a new token.
 
 ## HubSpot Export Contacts
 
@@ -121,8 +134,6 @@ In HubSpot, Contact Properties can be used to store and organize all the differe
   width={733}
   height={550}
 />
-<br></br>
-<br></br>
 
 #### Required Properties
 
@@ -142,8 +153,6 @@ In addition to the required email property, HubSpot allows you to set many other
   width={733}
   height={229}
 />
-<br></br>
-<br></br>
 
 In addition to mapping Grouparoo Properties to Hubspot Lists, you can use Grouparoo Groups add Hubspot Contacts to Grouparoo defined lists.
 
@@ -177,8 +186,6 @@ To further clarify how HubSpot should sync data, select how data should be synce
   width={733}
   height={159}
 />
-<br></br>
-<br></br>
 
 <table className="docTable">
     <tablebody>
@@ -215,8 +222,6 @@ To further clarify how HubSpot should sync data, select how data should be synce
   width={733}
   height={627}
 />
-<br></br>
-<br></br>
 
 #### Required Properties
 
