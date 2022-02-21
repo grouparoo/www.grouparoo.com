@@ -200,6 +200,7 @@ const DocsNav: NavItem[] = [
       { title: "Mixpanel", path: "/docs/integrations/grouparoo-mixpanel" },
       { title: "Mongo", path: "/docs/integrations/grouparoo-mongo" },
       { title: "MySQL", path: "/docs/integrations/grouparoo-mysql" },
+      { title: "OneSignal", path: "/docs/integrations/grouparoo-onesignal" },
       { title: "Pipedrive", path: "/docs/integrations/grouparoo-pipedrive" },
       { title: "Postgres", path: "/docs/integrations/grouparoo-postgres" },
       { title: "Redshift", path: "/docs/integrations/grouparoo-redshift" },

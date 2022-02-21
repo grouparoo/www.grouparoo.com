@@ -1,0 +1,146 @@
+---
+title: "OneSignal"
+date: "2022-02-18"
+pullQuote: "Learn how to work with the OneSignal Plugin as a Destination in your Grouparoo Reverse ETL pipeline"
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="OneSignal" />
+
+## Overview
+
+OneSignal is a customer engagement platform that enables marketers to send push notifications, SMS, and email. Businesses use OneSignal to support business operations with quick and reliable and adaptable communications.
+
+### Destinations
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Destination Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#onesignal-export-users">
+          <strong>OneSignal Export Users</strong>
+        </a>
+      </td>
+      <td>
+        Enrich OneSignal devices/apps with record and group information as tags.
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+In order to sync data to OneSignal using Grouparoo, you’ll need a OneSignal account. The plan you have through OneSignal may have an effect on the number of contacts you can sync and the amount of tags you can apply.
+
+OneSignal allows you to set up multiple apps on their platform, think of a OneSignal App as a configuration for sending communications via push notifications, in-app messages, SMS, or email. To find the App ID and App Key you’ll need for the first steps of Grouparoo's configuration, navigate on OneSignal to the specific App where you want to sync data. Choose _Settings_, then _Keys & IDs_ from the top navigation bar. Treat your API key like a password and be sure to keep it private. Anyone with access to this key would be able to send notifications from your OneSignal app.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/onesignal/setup/setup-1.png"
+  alt="OneSignal Setup Guidance"
+  width={733}
+  height={98}
+/>
+
+<br />
+
+## App
+
+To get ready to sync from Grouparoo to OneSignal, you [create an App](https://www.grouparoo.com/docs/config/apps) which tells Grouparoo the details of how to connect to OneSignal. This specifies the account used for any Destinations.
+
+### App Options
+
+In Grouparoo’s UI config, you specify the options to connect to OneSignal and test the connection. Then Update your configuration to save it.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/onesignal/app/options.png"
+  alt="OneSignal App Options"
+  width={733}
+  height={259}
+/>
+
+<br />
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>App ID</strong> (required)
+      </td>
+      <td>OneSignal App ID. Found in the app’s Settings > Keys & IDs.</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>API Key</strong> (required)
+      </td>
+      <td>OneSignal REST API Key. Found in the app’s Settings > Keys & IDs</td>
+    </tr>
+  </tablebody>
+</table>
+
+## OneSignal Export Users
+
+This Destination allows you to sync your Grouparoo Records to Users in OneSignal.
+
+Companies use OneSignal to organize their information about customers in order to facilitate communications over multiple web and mobile platforms.
+
+When you [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. OneSignal supports only enrich mode:
+
+- **Enrich**: Only update those Users that already exist in OneSignal. Do not add or remove Users.
+
+### Destination Options
+
+Some types of Destinations require further clarification about how data should sync. In the case of OneSignal, there are no further Options to configure before moving on to mapping Record Data.
+
+### Record Data
+
+Mapping Grouparoo Record Properties to OneSignal Tags is the key to syncing data to OneSignal Users.
+
+OneSignal can be used for customizing marketing campaigns and customizing the content to the audience. They allow you to personalize communications and segment your audience into lists for targeted mailings, push notifications, and SMS messages.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/onesignal/export-users/properties.png"
+  alt="OneSignal Export Users Properties"
+  width={733}
+  height={550}
+/>
+
+<br />
+<br />
+
+#### Required Properties
+
+You must map a Grouparoo Property to the **external_user_id** OneSignal Tag. Choose the Grouparoo Property that uniquely identifies the OneSignal User from the dropdown menu.
+
+- **external_user_id:** A User’s unique identifier that relates the Source Record and the Grouparoo Property to the User in OneSignal.
+
+#### Optional Properties
+
+Onesignal allows you to add additional tags which you can then relate to Grouparoo Properties. OneSignal tags you can map to Grouparoo Properties may show up as Known OneSignal tags or as an option in the Send Record Property box in Grouparoo’s UI.
+
+### Group Data
+
+Any groups you have made in Grouparoo would be available to include as a OneSignal Group Tag. The groups you add tags to will help marketers engage with customers more effectively by applying meaningful segmenting to an audience.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/onesignal/export-users/groups.png"
+  alt="OneSignal Export Users Groups"
+  width={733}
+  height={262}
+/>
+
+<br />
+
+<PluginDocsIntegrationNotes plugin="OneSignal" />
