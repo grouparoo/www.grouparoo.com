@@ -36,7 +36,7 @@ OneSignal is a customer engagement platform that enables marketers to send push 
 
 In order to sync data to OneSignal using Grouparoo, you’ll need a OneSignal account. The plan you have through OneSignal may have an effect on the number of contacts you can sync and the amount of tags you can apply.
 
-OneSignal allows you to set up multiple apps on their platform, think of these as projects. To find the App ID and App Key you’ll need for the first steps of configuration, navigate to the specific app where you want to sync data. Choose _Settings_, then _Keys & IDs_ from the top navigation bar. Treat your API key like a password and be sure to keep it private. Anyone with access to this key would be able to send notifications from your OneSignal app.
+OneSignal allows you to set up multiple apps on their platform, think of a OneSignal App as a configuration for sending communications via push notifications, in-app messages, SMS, or email. To find the App ID and App Key you’ll need for the first steps of Grouparoo's configuration, navigate on OneSignal to the specific App where you want to sync data. Choose _Settings_, then _Keys & IDs_ from the top navigation bar. Treat your API key like a password and be sure to keep it private. Anyone with access to this key would be able to send notifications from your OneSignal app.
 
 <ImageInBrowserFrame
   src="/images/docs/integrations/onesignal/setup/setup-1.png"
@@ -122,9 +122,9 @@ OneSignal can be used for customizing marketing campaigns and customizing the co
 
 #### Required Properties
 
-You must map a Grouparoo Property to the **external_id** OneSignal Tag. Choose the Grouparoo Property that uniquely identifies the OneSignal User from the dropdown menu.
+You must map a Grouparoo Property to the **external_user_id** OneSignal Tag. Choose the Grouparoo Property that uniquely identifies the OneSignal User from the dropdown menu.
 
-- **external_id:** A User’s unique identifier that relates the Source Record and the Grouparoo Property to the User in OneSignal.
+- **external_user_id:** A User’s unique identifier that relates the Source Record and the Grouparoo Property to the User in OneSignal.
 
 #### Optional Properties
 
