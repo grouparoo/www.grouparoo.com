@@ -194,6 +194,7 @@ const DocsNav: NavItem[] = [
       },
       { title: "Hubspot", path: "/docs/integrations/grouparoo-hubspot" },
       { title: "Intercom", path: "/docs/integrations/grouparoo-intercom" },
+      { title: "Iterable", path: "/docs/integrations/grouparoo-iterable" },
       { title: "Mailchimp", path: "/docs/integrations/grouparoo-mailchimp" },
       { title: "Mailjet", path: "/docs/integrations/grouparoo-mailjet" },
       { title: "Marketo", path: "/docs/integrations/grouparoo-marketo" },
