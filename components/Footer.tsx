@@ -172,7 +172,7 @@ export default function Footer() {
                   </Link>
                   <br />
                   <Link href="/integrations/destinations/hubspot">
-                    <a>Hubspot Integration</a>
+                    <a>HubSpot Integration</a>
                   </Link>
                   <br />
                   <Link href="/integrations/destinations/iterable">

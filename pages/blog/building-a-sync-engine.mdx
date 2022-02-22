@@ -9,7 +9,7 @@ tags: [engineering]
 
 So you have data in your product database and you need to synchronize it with something else.
 
-Maybe you need to update a CRM or email system like [Mailchimp](https://www.mailchimp.com), [Hubspot](https://www.hubspot.com), or [Braze](https://www.braze.com). Maybe it is more of an ETL thing and you need to move the data into [Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html) or [Snowflake](https://www.snowflake.com/).
+Maybe you need to update a CRM or email system like [Mailchimp](https://www.mailchimp.com), [HubSpot](https://www.hubspot.com), or [Braze](https://www.braze.com). Maybe it is more of an ETL thing and you need to move the data into [Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html) or [Snowflake](https://www.snowflake.com/).
 
 In all cases, what we have here is a need for a **sync engine**. A sync engine monitors a source (your product database) for changes in order to process them in some way (update an external system). Specifically, the approach I am going to describe is called delta-based synchronization.
 

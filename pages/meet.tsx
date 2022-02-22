@@ -208,7 +208,7 @@ export default function Meet() {
                     <Form.Group>
                       <Form.Label>
                         What tools/products are you hoping to connect with
-                        Grouparoo? (e. g. MySQL, Snowflake, Salesforce, Hubspot)
+                        Grouparoo? (e. g. MySQL, Snowflake, Salesforce, HubSpot)
                       </Form.Label>
                       <Form.Control
                         {...register("requestDetails")}
