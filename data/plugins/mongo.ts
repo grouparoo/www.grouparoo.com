@@ -30,7 +30,7 @@ export const Mongo: Plugin = {
   ],
   dataModelTitle: "An Overview of Grouparoo's Data Model",
   dataModelDescription: [
-    "Grouparoo's core objects are Records and Record Properties. These objects are defined based on your data such as the data in your MongoDB. You can pull this data in with Grouparoo's help or you can write MongoDB queries directly.",
+    "Grouparoo's core objects are Records and Record Properties. These objects are defined based on your data such as the data in your MongoDB.",
     "Once you've defined these Records and Record Properties, you can use Grouparoo to create dynamic segments and cohorts.",
   ],
   otherPluginsHeading: "Send your customer data from MongoDB to these tools",
@@ -54,68 +54,5 @@ export const Mongo: Plugin = {
       imageWidth: 932,
       imageHeight: 506,
     },
-    {
-      header: "But you can also write MongoDB queries if you want",
-      description:
-        "Some Record Properties will require aggregations across collections or more complex queries. Use Grouparoo's Query mode to pull the data you need.",
-      imageSrc: "/images/home/integrations/mongo/mongo-query-mode.png",
-      imageAlt: "MongoDB Query Source",
-      imageWidth: 932,
-      imageHeight: 506,
-    },
   ],
-  configOptions: {
-    uri: {
-      required: true,
-      description: "MongoDB Connection String.",
-    },
-    database: {
-      required: true,
-      description: 'The database name - e.g. `"data_warehouse"`.',
-    },
-  },
-  queryLanguageAlternative: "MongoDB Query Language (MQL)",
-  queryScheduleAlternativeExample: `{
-  options: {
-    query: [
-      {
-        $match: {
-          updatedAt: {
-            $gt: "new Date(ISODate().getTime() - 1000 * 60 * 60 * 24 * 2)",
-          },
-        },
-      },
-      {
-        $project: {
-          _id: 1,
-        },
-      },
-    ],
-    propertyId: "userId"
-  }
-}`,
-  queryPropertiesAlternativeExample: `{
-  options: {
-    query: [
-      {
-       $match: {
-         user_id: {{userId}},
-       },
-      },
-      {
-       $group: {
-         _id: null,
-         total: {
-           $sum: "$price",
-         },
-       },
-      },
-      {
-       $project: {
-         _id: 0,
-       },
-      },
-    ],
-  }
-}`,
 };

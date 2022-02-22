@@ -40,10 +40,6 @@ export interface PluginConfigOption {
   options?: string[];
 }
 
-export interface PluginConfigOptions {
-  [key: string]: PluginConfigOption;
-}
-
 export interface PluginDisplay {
   name: string;
   slug: string;
@@ -85,16 +81,12 @@ export interface Plugin {
     imageWidth: number;
     imageHeight: number;
   }[];
-  configOptions?: PluginConfigOptions;
   narrative?: {
     p1: string;
     p2: string;
   };
   tableAlternative?: string;
   columnAlternative?: string;
-  queryLanguageAlternative?: string;
-  queryScheduleAlternativeExample?: string;
-  queryPropertiesAlternativeExample?: string;
   toDisplay?: boolean;
 }
 

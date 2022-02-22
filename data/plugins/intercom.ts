@@ -61,10 +61,4 @@ export const Intercom: Plugin = {
   ],
   otherPluginsHeading:
     "Import your customer data from these tools into Intercom",
-  configOptions: {
-    token: {
-      required: true,
-      description: "Access token from your private App in the developer hub",
-    },
-  },
 };

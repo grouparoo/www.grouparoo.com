@@ -58,18 +58,4 @@ export const Eloqua: Plugin = {
     },
   ],
   otherPluginsHeading: "Import your customer data from these tools into Eloqua",
-  configOptions: {
-    siteName: {
-      required: true,
-      description: "Eloqua Site Name",
-    },
-    userName: {
-      required: true,
-      description: "Eloqua User Name",
-    },
-    password: {
-      required: true,
-      description: "Eloqua Password",
-    },
-  },
 };

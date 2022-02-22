@@ -60,22 +60,4 @@ export const GoogleBigQuery: Plugin = {
       imageHeight: 506,
     },
   ],
-  configOptions: {
-    project_id: {
-      required: true,
-      description: "Project id from Google.",
-    },
-    dataset: {
-      required: true,
-      description: "Default dataset id to use for sources.",
-    },
-    client_email: {
-      required: true,
-      description: "Email of service account.",
-    },
-    private_key: {
-      required: true,
-      description: "Private key of service account.",
-    },
-  },
 };

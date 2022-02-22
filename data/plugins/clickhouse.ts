@@ -62,29 +62,4 @@ export const ClickHouse: Plugin = {
       imageHeight: 524,
     },
   ],
-  configOptions: {
-    host: {
-      default: "localhost",
-      required: true,
-      description: "Database HTTP host.",
-    },
-    port: {
-      default: 8123,
-      required: true,
-      description: "HTTP Port on which to open database connection.",
-    },
-    database: {
-      required: true,
-      description: 'The database name - e.g. `"data_warehouse"`.',
-    },
-    user: {
-      default: "default",
-      description:
-        'The user to connect to the database - e.g. `"grouparoo_user"`.  If you are connecting to localhost, leave as `default`.',
-    },
-    password: {
-      description:
-        'The database password - e.g. `"P@assword"`.  If you don\'t have a password, leave as `undefined`.',
-    },
-  },
 };

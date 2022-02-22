@@ -60,42 +60,4 @@ export const Snowflake: Plugin = {
       imageHeight: 506,
     },
   ],
-  configOptions: {
-    account: {
-      required: true,
-      description:
-        "The full name of the account (provided by Snowflake). It is the subdomain you use to access Snowflake.",
-    },
-    username: {
-      required: true,
-      description: "Snowflake user login name to connect with.",
-    },
-    password: {
-      required: true,
-      description: "Password for the given username.",
-    },
-    warehouse: {
-      required: true,
-      description: "The Snowflake warehouse to use.",
-    },
-    database: {
-      required: true,
-      description: "The Snowflake database to use.",
-    },
-    schema: {
-      required: false,
-      description: "The Snowflake schema (default: PUBLIC)",
-    },
-  },
-  queryScheduleAlternativeExample: `{
-  options: {
-    query: "SELECT ID FROM USERS WHERE UPDATED_AT >= (NOW() - INTERVAL '2 day')",
-    propertyId: "userId"
-  }
-}`,
-  queryPropertiesAlternativeExample: `{
-  options: {
-    query: "SELECT SUM(PRICE) from PURCHASES where USER_ID = {{userId}}";
-  }
-}`,
 };
