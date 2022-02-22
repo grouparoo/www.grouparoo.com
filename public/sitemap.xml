@@ -337,6 +337,8 @@
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/integrations/grouparoo-mysql</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/integrations/grouparoo-onesignal</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/integrations/grouparoo-pipedrive</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/integrations/grouparoo-postgres</loc><changefreq
@@ -352,6 +354,8 @@
     >https://www.grouparoo.com/docs/integrations/grouparoo-snowflake</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/integrations/grouparoo-sqlite</loc><changefreq
+    >daily</changefreq><priority>0.6</priority></url><url><loc
+    >https://www.grouparoo.com/docs/integrations/grouparoo-zendesk</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
     >https://www.grouparoo.com/docs/running/orchestration</loc><changefreq
     >daily</changefreq><priority>0.6</priority></url><url><loc
