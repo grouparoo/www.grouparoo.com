@@ -636,9 +636,9 @@
     },
     {
       "id": "grouparoo-release-note-2020-06-26-hubspot",
-      "content_html": "<p>You can now connect your Grouparoo profiles and groups to <a href=\"https://www.hubspot.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">Hubspot</a>. With this destination, you can empower your sales teams on the Hubspot platform with anything from your data warehouse.</p><p>Grouparoo will make contacts with properties and add the to lists inside the Hubspot environment.</p><div style=\"margin-bottom:20px\"><img alt=\"Hubspot destination concepts\" src=\"https://www.grouparoo.com/posts/releases/2020-06-26-hubspot.png\" height=\"250\" width=\"589\" style=\"height:250px;width:589px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
+      "content_html": "<p>You can now connect your Grouparoo profiles and groups to <a href=\"https://www.hubspot.com\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">HubSpot</a>. With this destination, you can empower your sales teams on the HubSpot platform with anything from your data warehouse.</p><p>Grouparoo will make contacts with properties and add the to lists inside the HubSpot environment.</p><div style=\"margin-bottom:20px\"><img alt=\"HubSpot destination concepts\" src=\"https://www.grouparoo.com/posts/releases/2020-06-26-hubspot.png\" height=\"250\" width=\"589\" style=\"height:250px;width:589px;max-height:100%;max-width:100%\" class=\"imageOutline\"/></div>",
       "url": "https://www.grouparoo.com/whats-new#2020-06-26-hubspot",
-      "title": "Hubspot Destination",
+      "title": "HubSpot Destination",
       "image": "https://www.grouparoo.com/posts/releases/2020-06-26-hubspot.png",
       "date_modified": "2020-06-26T00:00:00.000Z",
       "author": {

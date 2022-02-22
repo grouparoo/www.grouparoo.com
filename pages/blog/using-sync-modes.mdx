@@ -28,11 +28,11 @@ tags: [engineering, product]
 A few weeks ago we [wrote about Sync Modes](/blog/sync-modes) and why they may be useful when it comes to syncing data to a destination. In short, Sync Modes allow you to have more control over what operations are performed and how Grouparoo interacts with contacts that may already exist in the destination system.
 
 In Grouparoo v0.3, we're introducing Sync Modes as a core concept and making them available throughout all destinations. In this initial release, we're rolling out sync modes for our [Salesforce data integration](/integrations/destinations/salesforce), our [Marketo integration](/integrations/destinations/marketo), and our [Zendesk integration](/integrations/destinations/zendesk), as well as our
-[Intercom](/integrations/destinations/intercom), [Hubspot](/integrations/destinations/hubspot), [Mailchimp](/integrations/destinations/mailchimp), [Pipedrive](/integrations/destinations/pipedrive), [Facebook](/integrations/destinations/facebook), and [Iterable](/integrations/destinations/iterable) integrations. We'll continue adding to this list by updating remaining plugins and build them into new destinations going forward.
+[Intercom](/integrations/destinations/intercom), [HubSpot](/integrations/destinations/hubspot), [Mailchimp](/integrations/destinations/mailchimp), [Pipedrive](/integrations/destinations/pipedrive), [Facebook](/integrations/destinations/facebook), and [Iterable](/integrations/destinations/iterable) integrations. We'll continue adding to this list by updating remaining plugins and build them into new destinations going forward.
 
 <Image
   centered
-  alt="Hubspot destination configuration"
+  alt="HubSpot destination configuration"
   src="using-sync-modes/hubspot-destination-config.png"
   width={1630}
   height={996}
@@ -112,7 +112,7 @@ As you start sending data to your destinations, depending on which sync mode you
   height={295}
 />
 
-In the example above, we set a Hubspot destination to `enrich` mode. This mode does not allow any new profiles to be added to the destination, so an info message was added to the export.
+In the example above, we set a HubSpot destination to `enrich` mode. This mode does not allow any new profiles to be added to the destination, so an info message was added to the export.
 
 If you're using a sync mode that does not delete anybody from the destination (e.g. `enrich`, `additive`), you'll see Grouparoo remove them from any groups they may have been in, but the contact itself will be left in place:
 

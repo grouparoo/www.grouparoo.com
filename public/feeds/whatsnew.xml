@@ -744,12 +744,12 @@ Commands:
       />
         </item>
         <item>
-            <title><![CDATA[Hubspot Destination]]></title>
+            <title><![CDATA[HubSpot Destination]]></title>
             <link>https://www.grouparoo.com/whats-new#2020-06-26-hubspot</link>
             <guid>grouparoo-release-note-2020-06-26-hubspot</guid>
             <pubDate>Fri, 26 Jun 2020 00:00:00 GMT</pubDate>
             <content:encoded
-      ><![CDATA[<p>You can now connect your Grouparoo profiles and groups to <a href="https://www.hubspot.com" target="_blank" rel="nofollow noopener noreferrer">Hubspot</a>. With this destination, you can empower your sales teams on the Hubspot platform with anything from your data warehouse.</p><p>Grouparoo will make contacts with properties and add the to lists inside the Hubspot environment.</p><div style="margin-bottom:20px"><img alt="Hubspot destination concepts" src="https://www.grouparoo.com/posts/releases/2020-06-26-hubspot.png" height="250" width="589" style="height:250px;width:589px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
+      ><![CDATA[<p>You can now connect your Grouparoo profiles and groups to <a href="https://www.hubspot.com" target="_blank" rel="nofollow noopener noreferrer">HubSpot</a>. With this destination, you can empower your sales teams on the HubSpot platform with anything from your data warehouse.</p><p>Grouparoo will make contacts with properties and add the to lists inside the HubSpot environment.</p><div style="margin-bottom:20px"><img alt="HubSpot destination concepts" src="https://www.grouparoo.com/posts/releases/2020-06-26-hubspot.png" height="250" width="589" style="height:250px;width:589px;max-height:100%;max-width:100%" class="imageOutline"/></div>]]></content:encoded>
             <author>hello@grouparoo.com (Grouparoo, Inc.)</author>
             <enclosure
         url="https://www.grouparoo.com/posts/releases/2020-06-26-hubspot.png"

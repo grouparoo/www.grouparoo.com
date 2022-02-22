@@ -100,8 +100,8 @@
     "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-google-sheets"
   },
   {
-    "name": "Hubspot",
-    "description": "Grouparoo's Hubspot integration allows you to sync all of your data that lives in your data warehouse into Hubspot.",
+    "name": "HubSpot",
+    "description": "Grouparoo's HubSpot integration allows you to sync all of your data that lives in your data warehouse into HubSpot.",
     "imageUrl": "https://www.grouparoo.com/images/home/integrations/hubspot/hubspot.png",
     "packageName": "@grouparoo/hubspot",
     "source": false,

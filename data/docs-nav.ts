@@ -192,7 +192,7 @@ const DocsNav: NavItem[] = [
         title: "Google Sheets",
         path: "/docs/integrations/grouparoo-google-sheets",
       },
-      { title: "Hubspot", path: "/docs/integrations/grouparoo-hubspot" },
+      { title: "HubSpot", path: "/docs/integrations/grouparoo-hubspot" },
       { title: "Intercom", path: "/docs/integrations/grouparoo-intercom" },
       { title: "Mailchimp", path: "/docs/integrations/grouparoo-mailchimp" },
       { title: "Mailjet", path: "/docs/integrations/grouparoo-mailjet" },
@@ -228,7 +228,6 @@ const DocsNav: NavItem[] = [
       },
       { title: "Plugins: Sources", path: "/docs/development/sources" },
       { title: "Publishing", path: "/docs/development/publishing" },
-
     ],
   },
 
