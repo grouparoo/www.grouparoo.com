@@ -127,7 +127,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/iterable",
-    "docsUrl": null
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-iterable"
   },
   {
     "name": "Klaviyo",
