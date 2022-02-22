@@ -32,15 +32,9 @@ export default function DocPage({ pageProps }) {
         ) : null}
         <Row>
           <Col className="d-none d-md-block">
+            <PageNavigation pageNavSelector={frontMatter.pageNavSelector} />
+            <br />
             <TableOfContents />
-            <div
-              style={{
-                position: "sticky",
-                top: 10,
-              }}
-            >
-              <PageNavigation pageNavSelector={frontMatter.pageNavSelector} />
-            </div>
           </Col>
 
           <Col className="d-md-none">
