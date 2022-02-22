@@ -63,14 +63,4 @@ export const GoogleSheets: Plugin = {
       imageHeight: 506,
     },
   ],
-  configOptions: {
-    client_email: {
-      description: "Email of service account.",
-      required: true,
-    },
-    private_key: {
-      description: "Private key of service account.",
-      required: true,
-    },
-  },
 };

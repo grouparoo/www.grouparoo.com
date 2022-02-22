@@ -60,10 +60,4 @@ export const SQLite: Plugin = {
       imageHeight: 506,
     },
   ],
-  configOptions: {
-    file: {
-      description: `Path to your SQLite database. It can be an absolute path (e.g. \`/path/tpo/mydb.sqlite\`) or relative to the root of your project (e.g. \`mydb.sqlite\`).`,
-      required: true,
-    },
-  },
 };

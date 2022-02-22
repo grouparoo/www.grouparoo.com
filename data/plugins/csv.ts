@@ -50,16 +50,4 @@ export const CSV: Plugin = {
       imageHeight: 566,
     },
   ],
-  configOptions: {
-    url: {
-      description:
-        "The URL from a CSV File to import. This URL should point directly to your file.",
-      required: true,
-    },
-    fileAgeHours: {
-      description:
-        "How long can we cache the CSV file before re-downloading it?",
-      required: true,
-    },
-  },
 };
