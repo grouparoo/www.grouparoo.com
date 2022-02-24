@@ -1,0 +1,145 @@
+---
+title: "Iterable"
+date: "2022-02-22"
+pullQuote: "Learn how to work with the Iterable Integration as a Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Iterable" />
+
+## Overview
+
+[Iterable](https://iterable.com/) is a marketing platform that helps companies maximize the effect of their client communications across multiple communication channels. This platform also features AI-driven analytics and behavior-based personalization to enhance marketing strategies.
+
+### Destinations
+
+<table className='docTable'>
+<tablebody>
+  <tr>
+   <td>Destination Name
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td>
+
+<a href="#iterable-export-users">Iterable Export Users</a>
+   </td>
+   <td>Export records to Iterable as Users and put them in static Lists.
+   </td>
+  </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+In order to sync data to Iterable using Grouparoo, you must have an Iterable account. During configuration of the integration using Grouparoo’s UI, you will need an API key from Iterable. You can manage your account’s API keys at [https://app.iterable.com/settings/apiKeys](https://app.iterable.com/settings/apiKeys) or, while signed in, navigate using the tabs at the top to _Integrations > API keys_.
+
+When you create a new key, you should choose to make it _server side._ This means your key will give access to read and write Iterable data from a server-side application. Access all API endpoints, except those intended for exclusive use by Mobile, SDK, and Javascript clients.
+
+## App
+
+In order to sync from Grouparoo to Iterable, you [create an App](https://www.grouparoo.com/docs/config/apps) which tells Grouparoo the details of how to connect to Iterable. This specifies the account used for any Destinations.
+
+### App Options
+
+In Grouparoo’s UI config, you specify the options to connect to Iterable and test the connection. Be sure to click Update after testing to save the new configuration.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/iterable/app/options.png"
+  alt="Iterable App Options"
+  width={733}
+  height={153}
+/>
+
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Iterable API Key </strong>(required)
+      </td>
+      <td>
+        Iterable api key. The api keys can be managed at{" "}
+        <a href="https://app.iterable.com/settings/apiKeys">
+          https://app.iterable.com/settings/apiKeys
+        </a>
+      </td>
+    </tr>
+  </tablebody>
+</table>
+
+## Iterable Export Users
+
+This Destination allows you to sync your Grouparoo Records to Users in Iterable.
+
+Companies use Iterable to orchestrate communications over multiple channels with their customers while gathering data on user behavior and performing analytics that drive business decisions.
+
+When you [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+- **Sync**: Add, update, and remove Iterable Users as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Iterable Users as needed, but do not remove anybody. This option looks for new Users to add to Iterable and changes to existing Iterable Users, but does not keep track of deletions.
+- **Enrich**: Only update those Users that already exist in Iterable. Do not add or remove Users.
+
+### Destination Options
+
+Some types of Destinations require further clarification about how data should sync. In the case of Iterable, there are no further Options to configure before moving on to mapping Record Data.
+
+### Record Data
+
+Mapping Grouparoo Record Properties to Iterable User Fields is the key to syncing data to Iterable Users.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/iterable/export-users/properties.png"
+  alt="Iterable Export Users Properties"
+  width={733}
+  height={614}
+/>
+
+<br />
+
+#### Required Properties
+
+You must map a Grouparoo Property to the **email **User Field in Iterable. Choose the Grouparoo Property that uniquely identifies the email address of a User from the dropdown menu.
+
+- **email:** A User’s email address used to relate the Source Record and the Grouparoo Property to the User in Iterable.
+
+#### Optional Properties
+
+Iterable provides a list of User Fields and also has some reserved Field names you can not manually set. For information on those fields provided refer to [Iterable’s documentation](https://support.iterable.com/hc/en-us/articles/217744303-User-Profile-Fields-Used-by-Iterable-).
+
+Iterable User Fields you can map to Grouparoo Properties may show up as Known Iterable User Fields or as an option for the Send Record Property box in Grouparoo’s UI.
+
+Optional Iterable User Fields also allow you to use a Grouparoo Property to create a new User Field in Iterable. If you have a Property that you want to send to Iterable but no existing User Field is a logical mapping for it, use this option.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/iterable/export-users/new-field.png"
+  alt="Iterable Export Users New Field"
+  width={733}
+  height={202}
+/>
+
+<br />
+
+### Group Data
+
+Any groups you have made in Grouparoo would be available to use in compiling an Iterable List. The groups you add to Lists to will help marketers engage with customers more effectively by applying meaningful segmenting to the company’s audience.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/iterable/export-users/groups.png"
+  alt="Iterable Export Users Groups"
+  width={733}
+  height={270}
+/>
+
+<br />
+
+<PluginDocsIntegrationNotes plugin="Iterable" />
