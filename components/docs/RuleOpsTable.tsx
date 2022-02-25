@@ -1,18 +1,8 @@
 import { Fragment } from "react";
-import {
-  Alert,
-  Accordion,
-  Button,
-  Tabs,
-  Tab,
-  Table,
-  Row,
-  Col,
-  NavItem,
-} from "react-bootstrap";
+import { Alert, Accordion, Tabs, Tab, Row, Col } from "react-bootstrap";
 import pgRuleOps from "../../data/property-ops-dictionary--postgres.json";
 import sqliteRuleOps from "../../data/property-ops-dictionary--sqlite.json";
-import CodeBlock from "../Code";
+import { CodeBlock } from "../CodeBlock";
 
 const propertyTypes = [
   "boolean",
@@ -108,7 +98,7 @@ const DataTable = ({ data, heading, eventKey }) => {
                 <Col className="col-12 col-lg-8 mx-auto">
                   <div className="overflow-hidden">
                     <CodeBlock
-                      value={JSON.stringify(item.example, null, 2)}
+                      code={JSON.stringify(item.example, null, 2)}
                       language="json"
                     />
                   </div>
