@@ -1,13 +1,12 @@
 import { Container, Row, Col } from "react-bootstrap";
 import IntegrationMappings from "../../../components/home/IntegrationMappings";
 import IntegrationInstallation from "../../../components/home/IntegrationInstallation";
-import IntegrationSources from "../../../components/home/IntegrationSources";
-import IntegrationDestinations from "../../../components/home/IntegrationDestinations";
 import IntegrationsHead from "../../../components/home/IntegrationsHead";
 import BigArrow from "../../../components/BigArrow";
 import { PluginData, getUseCasePaths } from "../../../data/plugins";
 import ImageInBrowserFrame from "../../../components/ImageInBrowserFrame";
 import { IntegrationCard } from "../../../components/home/integrations/IntegrationCard";
+import { Integrations } from "../../../components/home/integrations/Integrations";
 
 export default function IntegrationsPage({
   pageProps,
@@ -166,7 +165,6 @@ export default function IntegrationsPage({
       ) : null}
       <div
         id={`Grouparoo Connects with ${data.name}`}
-        className="bg-dark text-white"
         style={{ paddingTop: 50, paddingBottom: 50 }}
       >
         <Container>
@@ -174,8 +172,22 @@ export default function IntegrationsPage({
             <Col style={{ textAlign: "center" }}>
               <h2>{data.otherPluginsHeading}</h2>
               <br />
-              {data.primaryType === "destination" && <IntegrationSources />}
-              {data.primaryType === "source" && <IntegrationDestinations />}
+              {data.primaryType === "destination" && (
+                <Integrations
+                  filter={({ primaryType, showLink }) =>
+                    primaryType === "source" && showLink
+                  }
+                  count={5}
+                />
+              )}
+              {data.primaryType === "source" && (
+                <Integrations
+                  filter={({ primaryType, showLink }) =>
+                    primaryType === "destination" && showLink
+                  }
+                  count={5}
+                />
+              )}
             </Col>
           </Row>
         </Container>

@@ -1,12 +1,18 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { PluginData } from "../../../data/plugins";
+import { Plugin, PluginData } from "../../../data/plugins";
 import { IntegrationCard } from "./IntegrationCard";
 
 interface IntegrationsProps {
   center?: boolean;
+  count?: number;
+  filter?: (plugin: Plugin) => boolean;
 }
 
-export const Integrations = ({ center }: IntegrationsProps) => {
+export const Integrations = ({
+  center,
+  count = 9,
+  filter = () => true,
+}: IntegrationsProps) => {
   return (
     <Container className="pb-4">
       <Row>
@@ -20,7 +26,8 @@ export const Integrations = ({ center }: IntegrationsProps) => {
           return b.priority - a.priority;
         })
           .filter((integration) => integration.primaryType)
-          .slice(0, 9)
+          .filter((integration) => filter(integration))
+          .slice(0, count)
           .map((plugin) => (
             <Col
               lg={4}

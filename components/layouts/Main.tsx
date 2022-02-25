@@ -5,7 +5,6 @@ import Navigation from "../Navigation";
 import Footer from "../Footer";
 import { useRouter } from "next/router";
 import GetStarted from "../home/GetStarted";
-import { OpenSourceDataStackConfBanner } from "../banners/OpenSourceDataStackConfBanner";
 import { DisplayReleaseNote, WhatsNewBanner } from "../banners/WhatsNewBanner";
 import { Favicon } from "../Favicon";
 
