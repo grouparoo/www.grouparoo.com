@@ -177,7 +177,9 @@ export default function IntegrationsPage({
                   filter={({ primaryType, showLink }) =>
                     primaryType === "source" && showLink
                   }
-                  count={5}
+                  count={6}
+                  showHeader={false}
+                  showFooter={true}
                 />
               )}
               {data.primaryType === "source" && (
@@ -185,7 +187,9 @@ export default function IntegrationsPage({
                   filter={({ primaryType, showLink }) =>
                     primaryType === "destination" && showLink
                   }
-                  count={5}
+                  count={6}
+                  showHeader={false}
+                  showFooter={true}
                 />
               )}
             </Col>
