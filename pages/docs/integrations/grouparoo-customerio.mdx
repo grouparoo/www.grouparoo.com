@@ -1,0 +1,150 @@
+---
+title: "Customer.io"
+date: "2022-02-22"
+pullQuote: "Learn how to work with the Customer.io Plugin as a Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Customer.io" />
+
+## Overview
+
+[Customer.io](https://customer.io/) is a tool for marketers that allows them to set up automated messaging via email, push notifications, and SMS messaging. Companies can use Grouparoo to sync from their data warehouse to Customer.io so that the marketing team continually has the most updated information available to them.
+
+### Destinations
+
+<table className='docTable'>
+<tablebody>
+  <tr>
+   <td>Destination Name
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td>
+
+<a href="customer.io-export-customers">Customer.io Export Customers</a>
+   </td>
+   <td>Export records to Customer.io as Customers
+   </td>
+  </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+In order to sync data to Customer.io with Grouparoo, you will need a Customer.io account.
+
+During configuration of this integration using Grouparoo’s UI, you will need several to know how to connect to the API. Customer.io has two different types of API keys and you will need both for configuration. You can manage your account’s API keys at [here](https://fly.customer.io/settings/api_credentials) or, while signed in, navigate to **Account Settings > API credentials** where you can manage both Tracking API keys and App API keys.
+
+You can create a new site ID and Tracking API Key or copy/paste and existing pair. App API keys are only available to view upon creation.
+
+## App
+
+To connect Customer.io to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps). This step will specify how Grouparoo can connect to Customer.io with your account information to prepare for setting up a new Destination in Grouparoo.
+
+### App Options
+
+In Grouparoo’s UI config, you specify the options to connect to Customer.io and test the connection. Be sure to click Update after testing to save the new configuration.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/customerio/app/options.png"
+  alt="Customer.io App Options"
+  width={733}
+  height={287}
+/>
+
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Side ID</strong> (required)
+      </td>
+      <td>Customer.io Tracking API site ID</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Tracking API Key</strong> (required)
+      </td>
+      <td>Customer.io Tracking API key</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>App API Key</strong> (required)
+      </td>
+      <td>Customer.io App API key</td>
+    </tr>
+  </tablebody>
+</table>
+
+## Customer.io Export Customers
+
+This Destination allows you to sync your Grouparoo Records to Customers in Customer.io.
+
+Companies use Customer.io to orchestrate data-driven communications through email, pugs notifications, and SMS messaging.
+
+When you [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+- **Sync**: Add, update, and remove Customer.io Customers as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Customer.io Customers as needed, but do not remove anybody. This option looks for new Customers to add to Customer.io and changes to existing Customers, but does not keep track of deletions.
+- **Enrich**: Only update those Customers that already exist in Customer.io. Do not add or remove Customers.
+
+### Destination Options
+
+Some types of Destinations require further clarification about how data should sync. In the case of Customer.io, there are no further Options to configure before moving on to mapping Record Data.
+
+### Record Data
+
+Mapping Grouparoo Record Properties to Customer.io Attributes is the key to syncing data to Customer.io Customers.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/customerio/export-customers/properties.png"
+  alt="Customer.io Export Customers Properties"
+  width={733}
+  height={378}
+/>
+
+<br />
+
+#### Required Properties
+
+You must map a Grouparoo Property to the **customer_id **Attribute in Customer.io. Choose the Grouparoo Property that uniquely identifies each individual customer’s record from the dropdown menu.
+
+- **customer_id:** A unique identifier that relates a Customer record to a Record in Grouparoo .
+
+#### Optional Properties
+
+In addition to being able to map required properties and properties already known to exist in Customer.io, this plugin offers you the ability to add new information to Customer.io by selecting a Grouparoo property and mapping to a new Attribute.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/customerio/export-customers/optional.png"
+  alt="Customer.io Export Customers Optional Properties"
+  width={733}
+  height={162}
+/>
+
+<br />
+
+### Group Data
+
+Any groups you have made in Grouparoo would be available to use as a Customer.io Group Attribute. The Group Attributes you assign will help marketers engage with customers more effectively by applying meaningful segmenting to your company’s audience.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/customerio/export-customers/groups.png"
+  alt="Customer.io Export Customers Groups"
+  width={733}
+  height={199}
+/>
+
+<br />
+
+<PluginDocsIntegrationNotes plugin="Customer.io" />
