@@ -2,11 +2,15 @@ import { Col, Container, Row } from "react-bootstrap";
 import { PluginData } from "../../../data/plugins";
 import { IntegrationCard } from "./IntegrationCard";
 
-export const Integrations = () => {
+interface IntegrationsProps {
+  center?: boolean;
+}
+
+export const Integrations = ({ center }: IntegrationsProps) => {
   return (
     <Container className="pb-4">
       <Row>
-        <Col>
+        <Col className={center ? "d-flex justify-content-center pb-3" : ""}>
           <h2>Integrations with all of your tools</h2>
           <br />
         </Col>

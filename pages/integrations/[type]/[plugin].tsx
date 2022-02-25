@@ -1,5 +1,4 @@
 import { Container, Row, Col } from "react-bootstrap";
-import IntegrationCard from "../../../components/home/IntegrationCard";
 import IntegrationMappings from "../../../components/home/IntegrationMappings";
 import IntegrationInstallation from "../../../components/home/IntegrationInstallation";
 import IntegrationSources from "../../../components/home/IntegrationSources";
@@ -8,6 +7,7 @@ import IntegrationsHead from "../../../components/home/IntegrationsHead";
 import BigArrow from "../../../components/BigArrow";
 import { PluginData, getUseCasePaths } from "../../../data/plugins";
 import ImageInBrowserFrame from "../../../components/ImageInBrowserFrame";
+import { IntegrationCard } from "../../../components/home/integrations/IntegrationCard";
 
 export default function IntegrationsPage({
   pageProps,
