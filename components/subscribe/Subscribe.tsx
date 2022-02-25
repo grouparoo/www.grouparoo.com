@@ -6,7 +6,7 @@ import { ErrorHandler } from "../../utils/errorHandler";
 import { isBrowser } from "../../utils/isBrowser";
 import styles from "./Subscribe.module.scss";
 
-export const NewSubscribe = ({
+export const Subscribe = ({
   campaign,
   small,
 }: {
