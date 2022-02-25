@@ -6,13 +6,13 @@ import { Container, Row, Col, Alert, Card } from "react-bootstrap";
 import Tweet from "../../components/blog/Tweet";
 import Image from "../../components/Image";
 import BlogTags from "../../utils/blogTags";
-import Subscribe from "../../components/Subscribe";
 import AuthorBox from "../../components/blog/AuthorBox";
 import getAuthor from "../../utils/getAuthor";
 import { BlogPost, getBlogPost, getBlogPaths } from "../../utils/blogPosts";
 import BlogImage from "../../components/blog/Image";
 import { PageNavigation } from "../../components/PageNavigation";
 import ImageInBrowserFrame from "../../components/ImageInBrowserFrame";
+import { NewSubscribe } from "../../components/subscribe/Subscribe";
 
 const components = {
   Image: BlogImage,
@@ -98,7 +98,7 @@ export default function BlogPage({ pageProps }) {
             <br />
             <Card>
               <Card.Body>
-                <Subscribe campaign="blog-subscribe" />
+                <NewSubscribe campaign="blog-subscribe" small={true} />
               </Card.Body>
             </Card>
             <br />
