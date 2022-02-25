@@ -6,6 +6,7 @@ import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { faBalanceScaleLeft } from "@fortawesome/free-solid-svg-icons";
 import { faBatteryFull } from "@fortawesome/free-solid-svg-icons";
 import { faBuilding } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -27,6 +28,7 @@ library.add(
   faBalanceScaleLeft,
   faBatteryFull,
   faBuilding,
+  faCaretDown,
   faChartLine,
   faCheck,
   faGithub,

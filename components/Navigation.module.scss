@@ -1,6 +1,49 @@
+@use "../scss/variables";
+
 .github {
   background-color: white;
   * {
     color: black;
   }
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  background: variables.$grouparoo-dark-gray;
+  font-size: 0.95rem;
+  width: 600px;
+}
+
+.dropdownContainer:hover > .dropdownContent {
+  border: 2px solid red;
+  display: block;
+  z-index: 100;
+}
+
+#seeMoreLink {
+  color: variables.$grouparoo-blue-gray;
+}
+
+#seeMoreLink:hover {
+  font-weight: 400;
+}
+.dropdown-menu {
+  padding: 1em;
+}
+
+.dropdown-item:hover {
+  outline: none;
+  box-shadow: none;
+  background: none;
+}
+
+.dropdown-item {
+  height: 2em;
+  padding-left: 0em;
+}
+
+.dropdown-header {
+  font-weight: 600;
+  padding-left: 0em;
 }

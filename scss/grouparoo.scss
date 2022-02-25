@@ -184,37 +184,6 @@ a,
   font-size: 0.95rem;
 }
 
-#basic-nav-dropdown {
-  font-size: 0.95rem;
-}
-
-#seeMoreLink {
-  color: $grouparoo-blue-gray;
-}
-
-#seeMoreLink:hover {
-  font-weight: 400;
-}
-.dropdown-menu {
-  padding: 1em;
-}
-
-.dropdown-item:hover {
-  outline: none;
-  box-shadow: none;
-  background: none;
-}
-
-.dropdown-item {
-  height: 2em;
-  padding-left: 0em;
-}
-
-.dropdown-header {
-  font-weight: 600;
-  padding-left: 0em;
-}
-
 @media only screen and (min-width: $mobile-display-breakpoint) {
   .solutionsNav {
     width: 22em;

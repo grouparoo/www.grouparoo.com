@@ -43,12 +43,23 @@ export default function Navigation() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav navbar-collapse">
             <Nav className="ms-auto mt-3">
-              <NavDropdown
-                className="pe-2 py-2 align-text-top"
-                title="Integrations"
-                id="basic-nav-dropdown"
+              <div
+                className={`pe-2 py-2 align-text-top ${styles.dropdownContainer}`}
               >
-                <Container className="integrationsNav pt-0 mt-0">
+                <Nav.Link
+                  className={styles.dropdownToggle}
+                  href="/integrations"
+                >
+                  Integrations
+                  <FontAwesomeIcon
+                    color="black"
+                    icon={"caret-down"}
+                    size="1x"
+                  />
+                </Nav.Link>
+                <Container
+                  className={`integrationsNav ${styles.dropdownContent} pt-0 mt-0`}
+                >
                   <Row>
                     <Col xs="12" md="6" className="text-start">
                       <Dropdown.Header>
@@ -125,7 +136,7 @@ export default function Navigation() {
                     </Col>
                   </Row>
                 </Container>
-              </NavDropdown>
+              </div>
 
               <NavDropdown
                 className="pe-2 py-2 align-text-top"
