@@ -1,6 +1,9 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Link from "next/link";
-import HomepageCodeBox from "./HomepageCodeBox";
+import { CodeBlock } from "../CodeBlock";
+
+const code = (packageName: string) => `$ grouparoo install ${packageName}
+$ grouparoo start`;
 
 export default function IntegrationInstallation({
   packageName,
@@ -24,15 +27,7 @@ export default function IntegrationInstallation({
           </p>
         </Col>
         <Col>
-          <HomepageCodeBox
-            code={
-              <>
-                {`$`} grouparoo install {packageName}
-                <br />
-                {`$`} grouparoo start
-              </>
-            }
-          />
+          <CodeBlock code={code(packageName)} />
         </Col>
       </Row>
       <br />

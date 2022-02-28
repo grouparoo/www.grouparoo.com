@@ -6,7 +6,13 @@ import { ErrorHandler } from "../../utils/errorHandler";
 import { isBrowser } from "../../utils/isBrowser";
 import styles from "./Subscribe.module.scss";
 
-export const NewSubscribe = ({ campaign }: { campaign: string }) => {
+export const Subscribe = ({
+  campaign,
+  small,
+}: {
+  campaign: string;
+  small?: boolean;
+}) => {
   const { handleSubmit, register } = useForm();
   const [loading, setLoading] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
@@ -48,17 +54,28 @@ export const NewSubscribe = ({ campaign }: { campaign: string }) => {
     [GoogleAdsSubscribeID, campaign, execApi]
   );
 
+  const [emailRowSize, buttonRowSize] = useMemo(
+    () =>
+      small
+        ? [{ xs: 12 }, { xs: 12 }]
+        : [
+            { md: 8, sm: 12, xs: 12 },
+            { md: 4, sm: 12, xs: 12 },
+          ],
+    [small]
+  );
+
   const form = useMemo(
     () =>
       subscribed ? null : (
         <Form id="form" onSubmit={handleSubmit(onSubmit)}>
           <Row className="pb-2">
-            <Col md={8} sm={8} xs={12}>
+            <Col {...emailRowSize}>
               <Form.Group>
                 <Form.Control
                   {...register("email", { required: true })}
                   type="email"
-                  placeholder="Enter email address"
+                  placeholder={small ? "Email" : "Enter email address"}
                   name="email"
                   defaultValue=""
                   disabled={loading}
@@ -66,11 +83,13 @@ export const NewSubscribe = ({ campaign }: { campaign: string }) => {
                 <div style={{ fontSize: "smaller", color: "red" }}>{error}</div>
               </Form.Group>
             </Col>
-            <Col md={4} sm={4} xs={12}>
+            <Col {...buttonRowSize}>
               <Button
                 type="submit"
                 variant="secondary"
-                className={`rounded-pill ${styles.subscribe}`}
+                className={`rounded-pill ${styles.subscribe} ${
+                  small ? styles.small : ""
+                }`}
               >
                 Subscribe
               </Button>
@@ -78,7 +97,17 @@ export const NewSubscribe = ({ campaign }: { campaign: string }) => {
           </Row>
         </Form>
       ),
-    [error, handleSubmit, loading, onSubmit, register, subscribed]
+    [
+      buttonRowSize,
+      emailRowSize,
+      error,
+      handleSubmit,
+      loading,
+      onSubmit,
+      register,
+      small,
+      subscribed,
+    ]
   );
   const content = useMemo(
     () =>

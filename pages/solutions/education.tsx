@@ -2,8 +2,8 @@ import React from "react";
 import { Container, Button, Tab, Nav, Row, Col } from "react-bootstrap";
 import Image from "../../components/Image";
 import SEO from "../../components/SEO";
-import IntegrationsSection from "../../components/home/IntegrationsSection";
 import ImageInBrowserFrame from "../../components/ImageInBrowserFrame";
+import { Integrations } from "../../components/home/integrations/Integrations";
 
 export default function Education() {
   return (
@@ -377,7 +377,8 @@ export default function Education() {
         </Container>
       </div>
 
-      <IntegrationsSection />
+      <br />
+      <Integrations center={true} />
     </>
   );
 }

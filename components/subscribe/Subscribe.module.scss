@@ -1,5 +1,11 @@
 .subscribe {
-  @media screen and (max-width: 576px) {
+  :not(.small) {
+    @media screen and (max-width: 768px) {
+      margin-top: 10px;
+    }
+  }
+
+  &.small {
     margin-top: 10px;
   }
 }

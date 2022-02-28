@@ -1,18 +1,8 @@
-import { Fragment } from "react";
-import {
-  Alert,
-  Accordion,
-  Button,
-  Tabs,
-  Tab,
-  Table,
-  Row,
-  Col,
-  NavItem,
-} from "react-bootstrap";
+import React, { Fragment } from "react";
+import { Alert, Accordion, Tabs, Tab, Row, Col } from "react-bootstrap";
 import pgRuleOps from "../../data/property-ops-dictionary--postgres.json";
 import sqliteRuleOps from "../../data/property-ops-dictionary--sqlite.json";
-import CodeBlock from "../Code";
+import { CodeBlock } from "../CodeBlock";
 
 const propertyTypes = [
   "boolean",
@@ -94,11 +84,8 @@ const DataTable = ({ data, heading, eventKey }) => {
           </p>
 
           {data.map((item, idx) => (
-            <>
-              <Row
-                key={idx}
-                className="pt-3 pb-2 align-items-center ps-lg-5 pe-lg-3"
-              >
+            <React.Fragment key={idx}>
+              <Row className="pt-3 pb-2 align-items-center ps-lg-5 pe-lg-3">
                 <Col className="col-lg-4 mx-auto mx-0 ps-4 ps-lg-0">
                   <Row>
                     <code className="h5 p-0">{item.op}</code>
@@ -108,7 +95,7 @@ const DataTable = ({ data, heading, eventKey }) => {
                 <Col className="col-12 col-lg-8 mx-auto">
                   <div className="overflow-hidden">
                     <CodeBlock
-                      value={JSON.stringify(item.example, null, 2)}
+                      code={JSON.stringify(item.example, null, 2)}
                       language="json"
                     />
                   </div>
@@ -118,7 +105,7 @@ const DataTable = ({ data, heading, eventKey }) => {
                 </Col>
               </Row>
               <hr />
-            </>
+            </React.Fragment>
           ))}
         </Fragment>
       </Accordion.Body>
