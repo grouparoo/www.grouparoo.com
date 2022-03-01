@@ -216,13 +216,15 @@ See [our Integrations page](/integrations) for an up-to-date list of our support
 
 ## Sync Mode
 
-When creating a Grouparoo [Destination](#destination), you will be asked to choose a Sync Mode. A Sync Mode tells the Grouparoo application how to create and delete Records on this Destination. The types of Sync Modes are:
+[Destinations](#destination) have a Sync Mode, which tell the Grouparoo application how to create and delete Records on this Destination. The types of Sync Modes are:
 
-- **Sync**: Add, update and remove records from the Destination as needed.
-- **Additive**: Add new records and update those that already exist in the Destination, but never remove anyone.
-- **Enrich**: Update records that already exist in the Destination, _enriching_ them with additional data and Group membership information. No records are added or removed.
+- **Append** (`sync`): Always create new records, even if they already exist in the Destination.
+- **Create** (`sync`): Create new records if they don‘t already exist in the Destination.
+- **Sync** (`sync`): Create, update, and delete Records as needed.
+- **Upsert** (`upsert`): Create new records if they don‘t already exist, or update existing record.
+- **Update** (`update`): Only update Records that already exist in the Destination. It does not add or remove any Records.
 
-You can learn more about in our blog posts [introducing Sync Modes](/blog/sync-modes) and [how to use Sync Modes](/blog/using-sync-modes)
+Not all plugins support all types of Sync Modes.
 
 ## Table Source
 

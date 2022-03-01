@@ -276,13 +276,7 @@ Companies use Grouparoo to sync to their databases in order to ensure that opera
 
 To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
 
-### Sync Modes
-
-A Destination’s sync mode determines what to update in a Destination. The following are supported by Intercom:
-
-- **Sync**: Add, update, and remove MySQL Records as needed.This option looks for new records, changes to existing records, and deletions.
-- **Additive**: Add and update MySQL Records as needed, but do not remove anybody. This option looks for new Records to add to MySQL and changes to existing MySQL Records, but does not keep track of deletions.
-- **Enrich**: Only update those Records that already exist in MySQL. Do not add or remove Records. This option will only update existing Records in MySQL.
+<DestinationSyncModes appName="MySQL" />
 
 ### Destination Options
 

@@ -100,13 +100,7 @@ Companies use Grouparoo to keep Sailthru Users up-to-date in order to create res
 
 When you [create a Destination](/docs/config/destinations), you make choices about what data to sync.
 
-### Sync Modes
-
-A Destination’s sync mode determines what to update in a Destination. The following are supported by Sailthru:
-
-- **Sync**: Add, update, and remove Sailthru Users as needed.This option looks for new records, changes to existing records, and deletions.
-- **Additive**: Add and update Sailthru Users as needed, but do not remove anybody. This option looks for new Users to add to Sailthru and changes to existing Sailthru Users, but does not keep track of deletions.
-- **Enrich**: Only update those Users that already exist in Sailthru. Do not add or remove Users. This option will only update existing Users in Sailthru.
+<DestinationSyncModes appName="Sailthru" recordsName="Users" />
 
 ### Destination Options
 

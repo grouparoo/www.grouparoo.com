@@ -94,11 +94,11 @@ Companies use OneSignal to organize their information about customers in order t
 
 When you [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
 
-### Sync Modes
-
-A Destination’s sync mode determines what to update in a Destination. OneSignal supports only enrich mode:
-
-- **Enrich**: Only update those Users that already exist in OneSignal. Do not add or remove Users.
+<DestinationSyncModes
+  appName="OneSignal"
+  syncModes={["update"]}
+  recordsName="Users"
+/>
 
 ### Destination Options
 

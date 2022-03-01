@@ -409,7 +409,7 @@ These common attributes, which may look very similar to other config object shap
 - `appId`: (**required**) The `id` of the App (connection) that the Destination uses.
 - `collection`: (**required**) Which records should be exported from this Destination? Values can be `"group"`, `"model"`, or `"none"`.
 - `groupId`: The `id` of the Group whose members should be exported to the Destination. (This is where Groups in Grouparoo really come in handy.) You need to choose `collection: "group"` to choose a `groupId`.
-- `syncMode`: (**required**): The SyncMode you wish to use for this Destination. Values can be `"Sync"`, `"Additive"`, and `"Enrich"`.
+- `syncMode`: (**required**): The SyncMode you wish to use for this Destination. Values depend on what the Destination supports. See details below.
 - `mapping`: See details below.
 - `destinationGroupMemberships`: See details below.
 
@@ -440,6 +440,20 @@ These common attributes, which may look very similar to other config object shap
   }
 ]
 ```
+
+**Destination Sync Mode**
+
+The Destination sync mode specifies the way records will be set in the Destination.
+
+Support of each sync mode depends on the App used for the Destination. Apps will most likely not support all sync modes.
+
+The possible sync modes are:
+
+- `append`: Always create as new records in the Destination. A Destination could either support `append` or `create`, but not both.
+- `create`: Create new records in the Destination if they don't already exist. A Destination could either support `append` or `create`, but not both.
+- `sync`: Keeps records synced to the Destination. It will create the record if it doesn't already exist, update the record if it already exists, and delete the record if no longer exist.
+- `upsert`: Create new records if they don‘t already exist, or update existing records.
+- `update`: Only update existing records that are in the Destination.
 
 **Destination Mappings**
 

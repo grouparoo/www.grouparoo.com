@@ -92,13 +92,7 @@ Companies use Grouparoo to keep their Intercom Contacts up-to-date in order to c
 
 To [create a Destination](/docs/config/destinations), you make choices about what data to sync.
 
-### Sync Modes
-
-A Destination’s sync mode determines what to update in a Destination. The following are supported by Intercom:
-
-- **Sync**: Add, update, and remove Intercom Contacts as needed.This option looks for new records, changes to existing records, and deletions.
-- **Additive**: Add and update Intercom Contacts as needed, but do not remove anybody. This option looks for new Contacts to add to Intercom and changes to existing Intercom Contacts, but does not keep track of deletions.
-- **Enrich**: Only update those Contacts that already exist in Intercom. Do not add or remove Contacts. This option will only update existing Contacts in Intercom.
+<DestinationSyncModes appName="Intercom" recordsName="Contacts" />
 
 ### Destination Options
 

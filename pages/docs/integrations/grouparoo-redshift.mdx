@@ -248,13 +248,7 @@ This type of Source provides the ability to write custom SQL code to extract dat
 
 Redshift Export Record allows you to set up a Grouparoo Project that uses Redshift as a [Destination](https://www.grouparoo.com/docs/getting-started/product-concepts#destination) As with Redshift Sources, to set up Redshift as a Destination you will need to have the App installed and configured with connection details.
 
-### Sync Modes
-
-A Destination’s sync mode determines what to update in a Destination. Redshift supports the following sync behaviors.
-
-- **Sync**: Add, update, and remove Redshift Exported Properties as needed. This option looks for new records, changes to existing records, and deletions.
-- **Additive**: Add and update Redshift Records as needed, but do not remove any. This option looks for new Records to add to Redshift and changes to existing Redshift Records, but does not keep track of deletions.
-- **Enrich**: Only update those Records that already exist in Redshift. Do not add or remove Records. This option will only update existing Records in Redshift.
+<DestinationSyncModes appName="Redshift" />
 
 ### Destination Options
 

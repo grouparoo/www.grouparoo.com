@@ -36,7 +36,6 @@ pageNavSelector: "h2"
 
 You will need an Airbase account to sync data between Grouparoo and Airtable. You’ll also need to locate the Airtable API key associated with your account. There is only one API key per account and logged-in users can find it by navigating to the [account page](https://airtable.com/account). This key gives access to all tables in all bases and can be reset if needed.
 
-
 If your Airtable account has Metadata API support, Grouparoo will be able to read the schema of the tables in your Airtable account. Data types for your columns will be defined and readable by Grouparoo and those columns will be accessible for mapping.
 
 If your Airtable account is not set up with Metadata API support, having accessible fields for Grouparoo will rely on existing data in the Table to infer types for each column. In this case, you will need a table that is already set up with columns and at least one row of data.
@@ -50,7 +49,6 @@ When viewing an Airbase table in your browser, there are elements of the URL you
   height={83}
 />
 <br />
-
 
 ## App
 
@@ -114,13 +112,7 @@ Companies use Airtable to organize their information in a user-friendly and coll
 
 To [create a Destination](https://www.grouparoo.com/docs/config/destinations), you make choices about what data to sync.
 
-### Sync Modes
-
-A Destination’s sync mode determines what to update in a Destination. The following are supported by Mailjet:
-
-- **Sync**: Add, update, and remove Airtable Records. This option looks for new records, changes to existing records, and deletions.
-- **Additive**: _Only_ add and update Airtable Records, no removal. This option looks for new Records to add to Airtable and changes to existing Airtable Records, but does not keep track of deletions.
-- **Enrich**: Only update those Records that already exist in Airtable. Do not add or remove Records. This option will only update existing Records in Airtable.
+<DestinationSyncModes appName="Airtable" />
 
 ### Destination Options
 

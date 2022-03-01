@@ -107,13 +107,7 @@ In Grouparoo’s UI config, you specify the options to connect to Mailjet and te
 
 ## Mixpanel Export Profiles
 
-### Sync Modes
-
-A Destination’s sync mode determines what to update in a Destination. The following are supported by Mixpanel:
-
-- **Sync**: Add, update, and remove Mixpanel Profiles as needed.This option looks for new records, changes to existing records, and deletions.
-- **Additive**: Add and update Mixpanel Profiles as needed, but do not remove anybody. This option looks for new Profiles to add to Mixpanel and changes to existing Mixpanel Profiles, but does not keep track of deletions.
-- **Enrich**: Only update those Profiles that already exist in Mixpanel. Do not add or remove Profiles. This option will only update existing Profiles in Mixpanel.
+<DestinationSyncModes appName="Mixpanel" recordsName="Profiles" />
 
 ### Destination Options
 

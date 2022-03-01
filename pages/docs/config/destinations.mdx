@@ -55,11 +55,13 @@ Here is [Mailchimp](https://mailchimp.com/) as an example. Mailchimp has audienc
   height={800}
 />
 
-In addition to any Plugin-specific Destination options, you will also be asked to choose a Sync Mode. Grouparoo supports 3 types of Sync Modes which determine how we deal with creating and deleting records for the Destination.
+In addition to any Plugin-specific Destination options, you will also be asked to choose a Sync Mode. An App supports a number Sync Modes which determine how we deal with creating and deleting records for the Destination.
 
-- **Sync** (`sync`): Add, update, and remove Records as needed.
-- **Additive** (`additive`): Add and update Records as needed, but do not remove anybody.
-- **Enrich** (`enrich`): Only update Records that already exist in the Destination. Do not add or remove anybody.
+- **Append** (`append`): Always create new records, even if they already exist in the Destination.
+- **Create** (`create`): Create new records if they don‘t already exist in the Destination.
+- **Sync** (`sync`): Create, update, and delete Records as needed.
+- **Upsert** (`upsert`): Create new records if they don‘t already exist, or update existing record.
+- **Update** (`update`): Only update Records that already exist in the Destination. It does not add or remove any Records.
 
 Not all plugins support all types of Sync Modes.
 

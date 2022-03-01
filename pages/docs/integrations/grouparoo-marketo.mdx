@@ -123,13 +123,7 @@ Companies use Marketo to organize a wide range of attributes describing behavior
 
 To [create a Destination](/docs/config/destinations), you make choices about what data to sync.
 
-### Sync Modes
-
-A Destination’s sync mode determines what to update in a Destination. The following are supported by Marketo:
-
-- **Sync**: Add, update, and remove Marketo Leads as needed.This option looks for new records, changes to existing records, and deletions.
-- **Additive**: Add and update Marketo Leads as needed, but do not remove anybody. This option looks for new Leads to add to Marketo and changes to existing Marketo Leads, but does not keep track of deletions.
-- **Enrich**: Only update those Leads that already exist in Marketo. Do not add or remove Leads. This option will only update existing Leads in Marketo.
+<DestinationSyncModes appName="Marketo" recordsName="Leads" />
 
 ### Destination Options
 

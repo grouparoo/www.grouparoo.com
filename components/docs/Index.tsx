@@ -16,12 +16,14 @@ import RuleOpsTable from "./RuleOpsTable";
 import Tabs from "./Tabs";
 import ValidateAndApplyConfig from "./ValidateAndApplyConfig";
 import AppExamplesReadme from "./AppExamplesReadme";
+import DestinationSyncModes from "./DestinationSyncModes";
 
 // The exported components are available for use in docs MDX files.
 export {
   Alert,
   Button,
   CLICommand,
+  DestinationSyncModes,
   EnterpriseCTA,
   GeneratedConfigFile,
   HavingProblems,

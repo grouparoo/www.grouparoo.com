@@ -110,15 +110,7 @@ Companies use Grouparoo to keep their Mailchimp Contacts up-to-date in order to 
 
 To [create a Destination](/docs/config/destinations), you make choices about what data to sync.
 
-### Sync Modes
-
-Mailchimp Export Contacts is one of the two options for configuring a Mailchimp destination.
-
-A Destination’s sync mode determines what to update in a Destination. In Mailchimp Export Contacts, the following sync modes are supported:
-
-- **Sync**: Add, update, and remove Mailchimp Contacts as needed.This option looks for new records, changes to existing records, and deletions.
-- **Additive**: Add and update Mailchimp Contacts as needed, but do not remove anybody. This option looks for new Contacts to add to Mailchimp and changes to existing Mailchimp Contacts, but does not keep track of deletions.
-- **Enrich**: Only update those Contacts that already exist in Mailchimp. Do not add or remove Contacts. This option will only update existing Contacts in Mailchimp.
+<DestinationSyncModes appName="Mailchimp" recordsName="Contacts" />
 
 ### Destination Options
 
@@ -199,11 +191,11 @@ Companies use Grouparoo to keep their Mailchimp Contacts up-to-date in order to 
 
 To [create a Destination](/docs/config/destinations), you make choices about what data to sync.
 
-### Sync Modes
-
-A Destination’s sync mode determines what to update in a Destination. In Mailchimp Export Contacts by Id, the only sync mode supported is:
-
-- **Enrich**: Only update those Contacts that already exist in Mailchimp. Do not add or remove Contacts. This option will only update existing Contacts in Mailchimp.
+<DestinationSyncModes
+  appName="Mailchimp"
+  syncModes={["update"]}
+  recordsName="Contacts"
+/>
 
 ### Destination Options
 

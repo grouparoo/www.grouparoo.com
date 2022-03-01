@@ -259,11 +259,7 @@ This type of Source provides the ability to write custom SQL code to extract dat
 
 ClickHouse Export Record allows you to set up a Grouparoo Project that uses ClickHouse as a [Destination](https://www.grouparoo.com/docs/getting-started/product-concepts#destination). As with ClickHouse Sources, to set up ClickHouse as a Destination you will need to have the App installed and configured with connection details.
 
-### Sync Modes
-
-A Destination’s sync mode determines what to update in a Destination. ClickHouse supports the default sync behavior.
-
-- **Sync**: Add, update, and remove ClickHouse Exported Properties as needed. This option looks for new records, changes to existing records, and deletions.
+<DestinationSyncModes appName="ClickHouse" syncModes={["sync"]} />
 
 ### Destination Options
 
