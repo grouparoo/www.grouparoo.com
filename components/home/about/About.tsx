@@ -3,10 +3,8 @@ import { Col, Container, Row } from "react-bootstrap";
 import { DatabaseNodes } from "./DatabaseNodes";
 import { ToolNodes } from "./ToolNodes";
 import styles from "./About.module.scss";
-import Highlight, { defaultProps } from "prism-react-renderer";
 import { WigglyLine } from "./WigglyLine";
-import vsDark from "prism-react-renderer/themes/vsDark";
-import Image from "next/image";
+import { CodeBlock } from "../../CodeBlock";
 
 const code = `
   # in a new directory
@@ -32,24 +30,7 @@ export const About = () => {
         </Col>
         <Col md={6} sm={12} className={`py-5 ${styles.codeCol}`}>
           <section className={styles.codeSection}>
-            <Highlight
-              {...defaultProps}
-              language="bash"
-              code={code}
-              theme={vsDark}
-            >
-              {({ className, style, tokens, getLineProps, getTokenProps }) => (
-                <pre className={className} style={style}>
-                  {tokens.map((line, i) => (
-                    <div {...getLineProps({ line, key: i })} key={i}>
-                      {line.map((token, key) => (
-                        <span {...getTokenProps({ token, key })} key={key} />
-                      ))}
-                    </div>
-                  ))}
-                </pre>
-              )}
-            </Highlight>
+            <CodeBlock code={code} />
           </section>
         </Col>
       </Row>

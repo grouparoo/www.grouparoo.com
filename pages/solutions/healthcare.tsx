@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Button, Tab, Nav, Row, Col } from "react-bootstrap";
 import Image from "../../components/Image";
-import IntegrationsSection from "../../components/home/IntegrationsSection";
 import ImageInBrowserFrame from "../../components/ImageInBrowserFrame";
 import SEO from "../../components/SEO";
+import { Integrations } from "../../components/home/integrations/Integrations";
 
 export default function Healthcare() {
   return (
@@ -369,7 +369,8 @@ export default function Healthcare() {
         </Container>
       </div>
 
-      <IntegrationsSection />
+      <br />
+      <Integrations center={true} />
     </>
   );
 }

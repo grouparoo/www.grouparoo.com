@@ -188,6 +188,7 @@ const DocsNav: NavItem[] = [
       },
       { title: "ClickHouse", path: "/docs/integrations/grouparoo-clickhouse" },
       { title: "Close.io", path: "/docs/integrations/grouparoo-closeio" },
+      { title: "Customer.io", path: "/docs/integrations/grouparoo-customerio" },
       { title: "dbt", path: "/docs/integrations/grouparoo-dbt" },
       {
         title: "Google Sheets",

@@ -45,6 +45,7 @@
   "/docs/integrations/grouparoo-braze",
   "/docs/integrations/grouparoo-calculated-property",
   "/docs/integrations/grouparoo-clickhouse",
+  "/docs/integrations/grouparoo-customerio",
   "/docs/integrations/grouparoo-dbt",
   "/docs/integrations/grouparoo-google-sheets",
   "/docs/integrations/grouparoo-hubspot",
