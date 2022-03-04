@@ -43,7 +43,7 @@ shadow-lg h-100 text-start ${styles.featureCard} ${
         <Button
           variant={buttonVariant}
           className="w-100 mx-auto mt-auto rounded-pill"
-          href="/docs/getting-started"
+          href="/trial"
         >
           {buttonText}
         </Button>
