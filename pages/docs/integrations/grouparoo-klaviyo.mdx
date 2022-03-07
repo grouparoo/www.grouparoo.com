@@ -78,7 +78,17 @@ In Grouparoo’s UI config, you specify the options to connect to Klaviyo and te
 
 ## Klaviyo Export Profiles
 
-{sync}
+This Destination enables you to sync your Grouparoo Records to Contacts inKlaviyo as Profiles.
+
+When you [create a Destination](/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. The following are supported by Klaviyo:
+
+- **Sync**: Add, update, and remove Klaviyo Profiles as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Klaviyo Profiles as needed, but do not remove anybody. This option looks for new Profiles to add to Klaviyo and changes to existing Klaviyo Profiles, but does not keep track of deletions.
+- **Enrich**: Only update those Profiles that already exist in Klaviyo. Do not add or remove Profiles. This option will only update existing Profiles in Klaviyo.
 
 ### Destination Options
 
