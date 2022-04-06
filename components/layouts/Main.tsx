@@ -5,16 +5,11 @@ import Navigation from "../Navigation";
 import Footer from "../Footer";
 import { useRouter } from "next/router";
 import GetStarted from "../home/GetStarted";
-import { DisplayReleaseNote, WhatsNewBanner } from "../banners/WhatsNewBanner";
+import { AcquiredBanner } from "../banners/AcquiredBanner";
 import { Favicon } from "../Favicon";
 
 function PageTemplate({ children }) {
   const router = useRouter();
-  const [releaseNote, setReleaseNote] = useState<DisplayReleaseNote>(null);
-
-  useEffect(() => {
-    if (router.asPath !== "/") setReleaseNote(null);
-  }, [router.asPath]);
 
   const noGetStarted = [
     "/404",
@@ -44,14 +39,13 @@ function PageTemplate({ children }) {
         <Favicon />
       </Head>
 
-      {/* <OpenSourceDataStackConfBanner router={router} /> */}
-      <WhatsNewBanner releaseNote={releaseNote} />
+      <AcquiredBanner />
 
       <div className="main">
         <Navigation />
         <div id="content-container">
           {Children.map(children, (child) =>
-            cloneElement(child, { setReleaseNote })
+            cloneElement(child, { })
           )}
         </div>
         {noGetStarted.includes(router.route) ||

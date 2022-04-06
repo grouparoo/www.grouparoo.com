@@ -13,7 +13,7 @@ import { WhyGrouparoo } from "../components/home/why-grouparoo/WhyGrouparoo";
 import { randomHomepagePlugins } from "../data/plugins";
 import { getReleaseNotes, ReleaseNote } from "../utils/releaseNotes";
 
-const IndexPage = ({ pageProps, setReleaseNote }) => {
+const IndexPage = ({ pageProps }) => {
   const {
     pluginNames,
     releaseNote,
@@ -26,8 +26,6 @@ const IndexPage = ({ pageProps, setReleaseNote }) => {
     () => pluginNames[Math.floor(Math.random() * pluginNames.length)],
     [pluginNames]
   );
-
-  useEffect(() => setReleaseNote(releaseNote), [releaseNote, setReleaseNote]);
 
   return (
     <>

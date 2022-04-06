@@ -6,7 +6,6 @@ describe("page/home", () => {
   test("renders the page", () => {
     render(
       <Home
-        setReleaseNote={() => {}}
         pageProps={{
           pluginNames: ["AnnoyingPlugin"],
         }}
