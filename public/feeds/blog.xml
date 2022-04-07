@@ -9,7 +9,7 @@
         <title>Grouparoo: Blog</title>
         <link>https://www.grouparoo.com/blog</link>
         <description>Articles and updates from Grouparoo.</description>
-        <lastBuildDate>Thu, 10 Feb 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 06 Apr 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <language>en</language>
@@ -24,6 +24,20 @@
       rel="self"
       type="application/rss+xml"
     />
+        <item>
+            <title><![CDATA[Grouparoo has been acquired by Airbyte]]></title>
+            <link
+      >https://www.grouparoo.com/blog/grouparoo-acquired-by-airbyte</link>
+            <guid>grouparoo-blog-post-grouparoo-acquired-by-airbyte</guid>
+            <pubDate>Wed, 06 Apr 2022 00:00:00 GMT</pubDate>
+            <content:encoded
+      ><![CDATA[<p>We started Grouparoo to enable organizations to make better use of their data. Our experience showed that there was a large gap in how Data and Product teams worked with operational teams like Marketing, Sales, and Support. We set out to accomplish our goal in an open way, both through open-source software and by creating a company culture valuing candor and transparency.</p><p>Continuing in this spirit of candor, I’ll say simply that it is hard to get a project like this off the ground. We all see and use popular open-source tools, but for every one of those, there are a hundred that remain unknown. It takes a special combination of timing and product-market fit to really take off.</p><p>Thank you to our users and investors for your continued support. Grouparoo certainly had a set of early believers and users that saw what we were trying to accomplish. They deployed Grouparoo in their infrastructure or on our cloud, and some even built their own plugins to extend the platform. When we really took a hard look at it, though, we were not on the right path to have the impact that we wanted to have in the world.</p><p>You can continue to use our open source software as long as you wish, but our repositories will be archived and no longer be accepting contributions.</p><h2 id="airbyte"><a href="#airbyte">Airbyte</a></h2><p>When we were approached by <a href="https://www.airbyte.com" target="_blank" rel="nofollow noopener noreferrer">Airbyte</a>, I saw how well things lined up with Grouparoo’s goals and culture. They, too, were building open-source software for data engineers. They also believed in the power of the long tail of integrations driving adoption. Their company handbook was public and had the same values in Grouparoo’s and the power of a distributed team.</p><p>The biggest difference is the adoption. Airbyte has clearly hit the right timing with a product that speaks to data engineers and their current needs.</p><p>I have written before about a hierarchy of needs in a data organization. I believe a lot of Airbyte’s success comes from being lower on that <a href="https://www.grouparoo.com/blog/data-hierarchy-of-needs" target="_blank" rel="nofollow noopener noreferrer">pyramid</a>. Extracting and loading data into a warehouse is a necessary and critical step that every organization must accomplish before they can make use of it. By aligning with the engineers that are responsible for this core task, Airbyte has thrived. By being further down the value chain with a more varied set of stakeholders, Grouparoo saw less demand.</p><h2 id="whats-next"><a href="#whats-next">What’s next?</a></h2><p>The exciting thing is that the end goal remains the same. No one loads data into a warehouse just for fun. Organizations still have the gap that Grouparoo identified and want to be more effective at putting their data to use in operational tools.</p><p>The Grouparoo team will be able to continue that mission with a bigger impact by enabling Reverse ETL for all Airbyte users.</p><p>Read more on the <a href="https://airbyte.com/blog/airbyte-acquires-grouparoo-to-accelerate-data-movement" target="_blank" rel="nofollow noopener noreferrer">Airbyte blog</a>.</p><div style="margin-bottom:20px"><div style="display:flex;justify-content:center"><img alt="Airbyte and Grouparoo high five" src="https://www.grouparoo.com/posts/grouparoo-acquired-by-airbyte/mascots.jpg" height="500" width="500" style="height:500px;width:500px;max-height:100%;max-width:100%" class="imageOutline"/></div></div>]]></content:encoded>
+            <enclosure
+        url="https://www.grouparoo.com/posts/grouparoo-acquired-by-airbyte/mascots.jpg"
+        length="0"
+        type="image/jpg"
+      />
+        </item>
         <item>
             <title><![CDATA[ETL Testing Process]]></title>
             <link>https://www.grouparoo.com/blog/etl-testing-process</link>
