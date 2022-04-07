@@ -1,4 +1,5 @@
 import { Alert } from "react-bootstrap";
+import Link from "next/link";
 
 export function AcquiredBanner() {
 
@@ -7,12 +8,11 @@ export function AcquiredBanner() {
       <small>
         Grouparoo has been acquired by Airbyte.{" "}
         <strong>
-          <a
+          <Link
             href="/blog/grouparoo-acquired-by-airbyte"
-            rel="noreferrer"
           >
             Learn more
-          </a>
+          </Link>
         </strong>{" "}
       </small>
     </Alert>
