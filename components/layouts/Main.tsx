@@ -44,9 +44,7 @@ function PageTemplate({ children }) {
       <div className="main">
         <Navigation />
         <div id="content-container">
-          {Children.map(children, (child) =>
-            cloneElement(child, { })
-          )}
+          {Children.map(children, (child) => cloneElement(child, {}))}
         </div>
         {noGetStarted.includes(router.route) ||
         noGetStarted.includes(router.asPath) ? null : (
