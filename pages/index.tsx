@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { About } from "../components/home/about/About";
 import { Actionable } from "../components/home/actionable/Actionable";
 import { Features } from "../components/home/features/Features";
@@ -11,13 +11,9 @@ import { Partners } from "../components/home/partners/Partners";
 import { Testimonials } from "../components/home/testimonials/Testimonials";
 import { WhyGrouparoo } from "../components/home/why-grouparoo/WhyGrouparoo";
 import { randomHomepagePlugins } from "../data/plugins";
-import { getReleaseNotes, ReleaseNote } from "../utils/releaseNotes";
 
 const IndexPage = ({ pageProps }) => {
-  const {
-    pluginNames,
-    releaseNote,
-  }: { pluginNames: string[]; releaseNote: ReleaseNote[] } = pageProps;
+  const { pluginNames }: { pluginNames: string[] } = pageProps;
   const title = "Grouparoo: Open Source Data Synchronization Framework";
   const description =
     "Grouparoo is an open source framework that helps you move data between your data warehouse and all of your cloud-based tools.";
@@ -78,8 +74,7 @@ const IndexPage = ({ pageProps }) => {
 
 export const getServerSideProps = async () => {
   const pluginNames = randomHomepagePlugins();
-  const { notes } = await getReleaseNotes(1, 1);
-  return { props: { pluginNames, releaseNote: notes[0] } };
+  return { props: { pluginNames } };
 };
 
 export default IndexPage;
