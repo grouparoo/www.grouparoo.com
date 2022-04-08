@@ -23,6 +23,6 @@ describe("integration", () => {
   test("it renders the home page", async () => {
     await browser.get(url);
     const header = await browser.findElement(by.tagName("h2")).getText();
-    expect(header).toContain("Stop writing code to sync data");
+    expect(header).toContain("Grouparoo has been acquired by Airbyte");
   });
 });

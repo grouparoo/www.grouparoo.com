@@ -1,7 +1,12 @@
 import { Alert } from "react-bootstrap";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export function AcquiredBanner() {
+  const router = useRouter();
+
+  if (router.asPath === "/") return null;
+
   return (
     <Alert variant="success" style={{ textAlign: "center", margin: 0 }}>
       <small>
