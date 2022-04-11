@@ -21,8 +21,8 @@ export const Header = ({ pluginName }: HeaderProps) => (
               <Row>
                 <Col md={3}>
                   <Image
-                    width={3869}
-                    height={2613}
+                    width={800}
+                    height={540}
                     alt="Gropuaroo + Airbyte logos"
                     src="/images/2022-Grouparoo.png"
                   />
