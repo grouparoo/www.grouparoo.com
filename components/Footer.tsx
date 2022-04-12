@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { FeaturedBlogPosts } from "../data/featuredBlogPosts";
 import { Fragment, useMemo } from "react";
-import { Subscribe } from "./subscribe/Subscribe";
 import styles from "./Footer.module.scss";
 
 function LogoAndSocialLinks({ router }) {
@@ -265,7 +264,6 @@ export default function Footer() {
                 </div>
               </Col>
             </Row>
-            <Subscribe campaign="footer-subscribe" />
           </Col>
         </Row>
       </Container>
