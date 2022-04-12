@@ -6,9 +6,9 @@ export default function TrialPage() {
   return (
     <>
       <SEO
-        title="Meet Grouparoo"
-        description="Sign up to meet with the Grouparoo team and see a demo of the Grouparoo product"
-        path="/meet"
+        title="Try Grouparoo"
+        description="Try Grouparoo Today!"
+        path="/trial"
         canonical={true}
       />
 
