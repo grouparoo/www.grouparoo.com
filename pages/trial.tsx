@@ -7,7 +7,7 @@ export default function TrialPage() {
     <>
       <SEO
         title="Try Grouparoo"
-        description="Try Grouparoo Today!"
+        description="Grouparoo has been acquired by Airbyte - No more Trials"
         path="/trial"
         canonical={true}
       />
