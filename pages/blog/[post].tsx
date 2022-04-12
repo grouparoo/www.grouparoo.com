@@ -12,7 +12,6 @@ import { BlogPost, getBlogPost, getBlogPaths } from "../../utils/blogPosts";
 import BlogImage from "../../components/blog/Image";
 import { PageNavigation } from "../../components/PageNavigation";
 import ImageInBrowserFrame from "../../components/ImageInBrowserFrame";
-import { Subscribe } from "../../components/subscribe/Subscribe";
 
 const components = {
   Image: BlogImage,
@@ -95,12 +94,6 @@ export default function BlogPage({ pageProps }) {
           </Col>
           <Col>
             <TwitterLink post={post} />
-            <br />
-            <Card>
-              <Card.Body>
-                <Subscribe campaign="blog-subscribe" small={true} />
-              </Card.Body>
-            </Card>
             <br />
             <div
               style={{

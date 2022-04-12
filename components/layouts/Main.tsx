@@ -14,6 +14,7 @@ function PageTemplate({ children }) {
   const noGetStarted = [
     "/404",
     "/meet",
+    "/trial",
     "/docs",
     "/docs/[section]",
     "/docs/[section]/[page]",
