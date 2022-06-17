@@ -187,6 +187,7 @@ const DocsNav: NavItem[] = [
         path: "/docs/integrations/grouparoo-calculated-property",
       },
       { title: "ClickHouse", path: "/docs/integrations/grouparoo-clickhouse" },
+      { title: "Close.io", path: "/docs/integrations/grouparoo-closeio" },
       { title: "Customer.io", path: "/docs/integrations/grouparoo-customerio" },
       { title: "dbt", path: "/docs/integrations/grouparoo-dbt" },
       {
