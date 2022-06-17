@@ -137,7 +137,7 @@
     "source": false,
     "destination": true,
     "npmUrl": "https://www.npmjs.com/package/@grouparoo/klaviyo",
-    "docsUrl": null
+    "docsUrl": "https://www.grouparoo.com/docs/integrations/grouparoo-klaviyo"
   },
   {
     "name": "Mailchimp",

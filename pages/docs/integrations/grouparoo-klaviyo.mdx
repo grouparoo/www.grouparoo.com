@@ -1,0 +1,140 @@
+---
+title: "Klaviyo"
+date: "2022-03-02"
+pullQuote: "Learn how to work with the Klaviyo Integration as a Destination."
+pageNavSelector: "h2"
+---
+
+<PluginDocsLinks plugin="Klaviyo" />
+
+## Overview
+
+Klaviyo provides a solution for omnichannel marketing automation. Companies can use Grouparoo to sync data from a data warehouse to Klaviyo to support marketing teams with the most up to date information available.
+
+### Destinations
+
+<table className='docTable'>
+    <tablebody>
+  <tr>
+   <td>Destination Name
+   </td>
+   <td>Description
+   </td>
+  </tr>
+  <tr>
+   <td>
+
+<a href="#klaviyo-export-profiles">Klaviyo Export Profiles</a>
+   </td>
+   <td>Export records to Klaviyo as Profiles
+   </td>
+  </tr>
+  </tablebody>
+</table>
+
+## Setup
+
+In order to sync data to Klaviyo with Grouparoo, you will need a Klaviyo account set up.
+
+During configuration of this integration using Grouparoo’s UI, you will need a private API key and a public API key. Both types of keys can be found by navigating to **Account > Settings > API Keys. **The public API key is displayed at the top of [this page](https://www.klaviyo.com/account#api-keys-tab). It is safe to expose this public key. Below the public key, you can manage private API keys, which should be managed securely.
+
+## App
+
+To connect Klaviyo to Grouparoo, you [create an App](https://www.grouparoo.com/docs/config/apps). This step will specify how Grouparoo can connect to Klaviyo using your account information. Having an App set up prepares you to set up a new Destination in Grouparoo.
+
+### App Options
+
+In Grouparoo’s UI config, you specify the options to connect to Klaviyo and test the connection. Be sure to click Update after testing to save the new configuration.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/klaviyo/app/options.png"
+  alt="Klaviyo App Options"
+  width={733}
+  height={192}
+/>
+
+<br />
+
+<table className="docTable">
+  <tablebody>
+    <tr>
+      <td>Option Name</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Private API Key</strong> (required)
+      </td>
+      <td>Klaviyo’s private token</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Public API Key/Site ID</strong> (required)
+      </td>
+      <td>Klaviyo’s public token</td>
+    </tr>
+  </tablebody>
+</table>
+
+## Klaviyo Export Profiles
+
+This Destination enables you to sync your Grouparoo Records to Contacts in Klaviyo as Profiles.
+
+When you [create a Destination](/docs/config/destinations), you make choices about what data to sync.
+
+### Sync Modes
+
+A Destination’s sync mode determines what to update in a Destination. The following are supported by Klaviyo:
+
+- **Sync**: Add, update, and remove Klaviyo Profiles as needed.This option looks for new records, changes to existing records, and deletions.
+- **Additive**: Add and update Klaviyo Profiles as needed, but do not remove anybody. This option looks for new Profiles to add to Klaviyo and changes to existing Klaviyo Profiles, but does not keep track of deletions.
+- **Enrich**: Only update those Profiles that already exist in Klaviyo. Do not add or remove Profiles. This option will only update existing Profiles in Klaviyo.
+
+### Destination Options
+
+Some types of Destinations require further clarification about how data should sync. In the case of Klaviyo, there are no further Options to configure before moving on to mapping Record Data.
+
+### Record Data
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/klaviyo/export-profiles/properties.png"
+  alt="Klaviyo Export Profiles Properties"
+  width={733}
+  height={562}
+/>
+
+<br />
+
+#### Required Fields
+
+You must map a Grouparoo Property to the **Email **Field in Klaviyo. Choose the Grouparoo Property that uniquely identifies each individual Profile’s email from the drop down menu.
+
+- **Email:** A unique identifier in email format that relates a Profile to a Record in Grouparoo .
+
+#### Optional Fields
+
+In addition to being able to map required properties and properties already known to exist in Klaviyo, this plugin offers you the ability to add new information to Klaviyo by selecting a Grouparoo property and mapping to a new Field.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/klaviyo/export-profiles/optional.png"
+  alt="Klaviyo Export Profiles Optional Properties"
+  width={733}
+  height={168}
+/>
+
+<br />
+
+### Group Data
+
+Any groups you have made in Grouparoo would be available to use as a Klaviyo List. The Lists you create will help marketers engage with customers more effectively by applying meaningful segmenting to your company’s audience.
+
+<ImageInBrowserFrame
+  src="/images/docs/integrations/klaviyo/export-profiles/groups.png"
+  alt="Klaviyo Export Profiles Groups"
+  width={733}
+  height={223}
+/>
+
+<br />
+
+<PluginDocsIntegrationNotes plugin="Klaviyo" />
